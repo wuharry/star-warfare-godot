@@ -1,0 +1,141 @@
+{
+  "converter": "Unity YAML Mesh serializedVersion 8 fallback",
+  "coordinate_conversion": "Prefab transforms baked; Unity +Z mirrored to Godot -Z; winding corrected",
+  "outputs": {
+    "bug01": {
+      "output": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Godot\\assets\\models\\enemies\\bug01.obj",
+      "vertices": 746,
+      "uvs": 746,
+      "normals": 746,
+      "faces": 276,
+      "source_normals": 0,
+      "generated_normals": 746,
+      "pieces": [
+        "bug01"
+      ],
+      "source_meshes": [
+        "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\bug01.asset"
+      ],
+      "textures": [
+        "bug_01.png"
+      ]
+    },
+    "gun00": {
+      "output": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Godot\\assets\\models\\weapons\\gun00.obj",
+      "vertices": 246,
+      "uvs": 246,
+      "normals": 246,
+      "faces": 200,
+      "source_normals": 0,
+      "generated_normals": 246,
+      "pieces": [
+        "gun00"
+      ],
+      "source_meshes": [
+        "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\polySurface154.asset"
+      ],
+      "textures": [
+        "FL334AR_TB10-LW.png"
+      ]
+    },
+    "player": {
+      "output": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Godot\\assets\\models\\player\\player.obj",
+      "vertices": 747,
+      "uvs": 747,
+      "normals": 747,
+      "faces": 762,
+      "source_normals": 0,
+      "generated_normals": 747,
+      "pieces": [
+        "body",
+        "foot",
+        "hand",
+        "head",
+        "Bag"
+      ],
+      "source_meshes": [
+        "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\5\\body.asset",
+        "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\6\\foot.asset",
+        "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\7\\hand.asset",
+        "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\6\\head.asset",
+        "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\polySurface117.asset"
+      ],
+      "textures": [
+        "01.png",
+        "body.png",
+        "foot.png",
+        "hand.png",
+        "head.png",
+        "jian.png"
+      ]
+    }
+  },
+  "validation": {
+    "bug01": {
+      "path": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Godot\\assets\\models\\enemies\\bug01.obj",
+      "vertices": 746,
+      "uvs": 746,
+      "normals": 746,
+      "faces": 276,
+      "bounds_min": [
+        -1.04145091,
+        -0.00767619857,
+        -1.71029498
+      ],
+      "bounds_max": [
+        1.04145091,
+        1.7536481,
+        0.857403965
+      ],
+      "material_libraries": [
+        "bug01.mtl"
+      ]
+    },
+    "gun00": {
+      "path": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Godot\\assets\\models\\weapons\\gun00.obj",
+      "vertices": 246,
+      "uvs": 246,
+      "normals": 246,
+      "faces": 200,
+      "bounds_min": [
+        -0.07475999,
+        -0.168216377,
+        -0.715180933
+      ],
+      "bounds_max": [
+        0.0747600049,
+        0.417817086,
+        0.464326382
+      ],
+      "material_libraries": [
+        "gun00.mtl"
+      ]
+    },
+    "player": {
+      "path": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Godot\\assets\\models\\player\\player.obj",
+      "vertices": 747,
+      "uvs": 747,
+      "normals": 747,
+      "faces": 762,
+      "bounds_min": [
+        -0.563261569,
+        -0.501711607,
+        -0.403328636
+      ],
+      "bounds_max": [
+        0.563150764,
+        1.9115015,
+        0.275329058
+      ],
+      "material_libraries": [
+        "player.mtl"
+      ]
+    }
+  },
+  "limitations": [
+    "OBJ is a static bind/default-pose export; skin weights, skeletons, and animation clips are not represented.",
+    "Legacy custom shaders are represented by diffuse MTL materials only.",
+    "For two-texture legacy light shaders, _texBase is copied as diffuse and _tex2 is intentionally omitted.",
+    "Source meshes without normal channels receive area-weighted smooth normals."
+  ]
+}

@@ -1,0 +1,1707 @@
+{
+  "format": 1,
+  "source_assets": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets",
+  "output_root": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels",
+  "levels": [
+    {
+      "level": 1,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level1.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_01\\stage.obj",
+        "vertices": 11734,
+        "uvs": 11734,
+        "normals": 11734,
+        "faces": 7939,
+        "source_normals": 11734,
+        "generated_normals": 0,
+        "pieces": [
+          "Level1_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\3\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "MT_21.png",
+          "MT_22.png",
+          "sc01_1.png",
+          "sc01_2.png",
+          "sc01_3.png",
+          "sc01_4.png",
+          "sc01_5.png",
+          "sc_light_A1.png",
+          "sc_sky_line.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_01\\collision.obj",
+        "vertices": 1116,
+        "uvs": 1116,
+        "normals": 1116,
+        "faces": 751,
+        "source_normals": 1116,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_PZ_room_066",
+          "collision_PZ_room_062",
+          "collision_PZ_room_061",
+          "collision_PZ_room_058",
+          "collision_PZ_room_055",
+          "collision_PZ_room_054",
+          "collision_PZ_room_052",
+          "collision_PZ_room_047",
+          "collision_PZ_room_046",
+          "collision_PZ_room_041",
+          "collision_PZ_room_040",
+          "collision_PZ_room_030",
+          "collision_PZ_Object14",
+          "collision_PZ_Object09",
+          "collision_PZ_Object05 1",
+          "collision_PZ_Object05",
+          "collision_PZ_Object04",
+          "collision_PZ_Object03 1",
+          "collision_PZ_Object03",
+          "collision_PZ_Object02",
+          "collision_PZ_Mountain_049",
+          "collision_PZ_entry_003",
+          "collision_PZ_entry_002",
+          "collision_PZ_entry_001"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_room_066.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_room_062.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_room_061.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_room_058.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_room_055.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_room_054.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_room_052.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_room_047.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_room_046.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_room_041.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_room_040.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_room_030.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object14.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object09.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_Object05.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object05.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_Object04.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object03.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_Object03.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_Object02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Mountain_049.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_entry_003.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_entry_002.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_entry_001.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_01\\level.json",
+      "summary": {
+        "game_objects": 244,
+        "visual_renderers": 1,
+        "primitive_colliders": 141,
+        "mesh_colliders": 24
+      },
+      "marker_counts": {
+        "Respawn": 4,
+        "EnemySpawnPoint": 4,
+        "WayPoint": 27,
+        "Grave": 3
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 2,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level2.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_02\\stage.obj",
+        "vertices": 9901,
+        "uvs": 9901,
+        "normals": 9901,
+        "faces": 5318,
+        "source_normals": 8919,
+        "generated_normals": 982,
+        "pieces": [
+          "MPZ_CR_07",
+          "MPZ_CR_11",
+          "MPZ_CR_05",
+          "MPZ_CR_06",
+          "MPZ_CR_01",
+          "MPZ_CR_09",
+          "MPZ_CR_04",
+          "MPZ_CR_02",
+          "MPZ_CR_10",
+          "MPZ_CR_03",
+          "MPZ_CR_08",
+          "CR_13",
+          "MPZ_CR_12",
+          "Level2_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_CR_07.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_CR_11.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_CR_05.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_CR_06.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_CR_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_CR_09.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_CR_04.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_CR_02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_CR_10.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_CR_03.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_CR_08.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\CR_13.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_CR_12.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\2\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "sc02_1.png",
+          "sc02_11.png",
+          "sc02_12.png",
+          "sc02_13.png",
+          "sc02_14.png",
+          "sc02_fx.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_02\\collision.obj",
+        "vertices": 1108,
+        "uvs": 1108,
+        "normals": 1108,
+        "faces": 599,
+        "source_normals": 0,
+        "generated_normals": 1108,
+        "pieces": [
+          "collision_PZ_sc02_064",
+          "collision_PZ_sc02_063",
+          "collision_PZ_sc02_062",
+          "collision_PZ_sc02_061",
+          "collision_PZ_sc02_060",
+          "collision_PZ_sc02_055",
+          "collision_PZ_sc02_032",
+          "collision_PZ_sc02_026",
+          "collision_PZ_Object34",
+          "collision_PZ_h"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_sc02_064.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_sc02_063.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_sc02_062.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_sc02_061.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_sc02_060.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_sc02_055.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_sc02_032.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_sc02_026.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object34.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_h.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_02\\level.json",
+      "summary": {
+        "game_objects": 187,
+        "visual_renderers": 14,
+        "primitive_colliders": 95,
+        "mesh_colliders": 10
+      },
+      "marker_counts": {
+        "Respawn": 4,
+        "EnemySpawnPoint": 4,
+        "WayPoint": 30,
+        "Grave": 3
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 3,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level3.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_03\\stage.obj",
+        "vertices": 10789,
+        "uvs": 10789,
+        "normals": 10789,
+        "faces": 5798,
+        "source_normals": 10483,
+        "generated_normals": 306,
+        "pieces": [
+          "Object34",
+          "MPZ_feng01",
+          "MPZ_feng",
+          "Level3_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\2\\Object34.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_feng01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_feng.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "ground.png",
+          "sc03_1.png",
+          "sc03_4.png",
+          "sc03_5.png",
+          "sc03_6.png",
+          "sc03_fx.png",
+          "sc_03_star.png",
+          "sky.png",
+          "wall_1.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_03\\collision.obj",
+        "vertices": 412,
+        "uvs": 412,
+        "normals": 412,
+        "faces": 229,
+        "source_normals": 412,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_PZ_window_",
+          "collision_PZ_Object52",
+          "collision_PZ_Object51 1",
+          "collision_PZ_Object51",
+          "collision_PZ_Object50 1",
+          "collision_PZ_Object50",
+          "collision_PZ_h_85",
+          "collision_PZ_h_84",
+          "collision_PZ_h_83",
+          "collision_PZ_h_52",
+          "collision_PZ_h_30",
+          "collision_PZ_h_29"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_window_.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object52.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object51.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_Object51.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object50.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_Object50.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_h_85.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_h_84.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_h_83.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_h_52.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_h_30.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_h_29.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_03\\level.json",
+      "summary": {
+        "game_objects": 272,
+        "visual_renderers": 4,
+        "primitive_colliders": 167,
+        "mesh_colliders": 12
+      },
+      "marker_counts": {
+        "Respawn": 4,
+        "EnemySpawnPoint": 3,
+        "BossSpawnPoint": 1,
+        "PlayerSpawnInBoss": 3,
+        "WayPoint": 16,
+        "Grave": 3
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 4,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level4.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_04\\stage.obj",
+        "vertices": 11432,
+        "uvs": 11432,
+        "normals": 11432,
+        "faces": 7100,
+        "source_normals": 11344,
+        "generated_normals": 88,
+        "pieces": [
+          "MPZ_light_A_04",
+          "MPZ_light_R01",
+          "MPZ_light_L",
+          "MPZ_light_R02",
+          "MPZ_light_R",
+          "MPZ_light_L01",
+          "MPZ_light_A_3",
+          "Level4_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_light_A_04.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_light_R01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_light_L.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_light_R02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_light_R.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_light_L01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_light_A_3.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "05.png",
+          "LM.png",
+          "MT_3.png",
+          "Mt_1.png",
+          "Mt_12.png",
+          "bug04.png",
+          "g.png",
+          "g_1.png",
+          "light_sfx.png",
+          "light_sfx_2.png",
+          "sc_sky_line.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_04\\collision.obj",
+        "vertices": 1067,
+        "uvs": 1067,
+        "normals": 1067,
+        "faces": 867,
+        "source_normals": 111,
+        "generated_normals": 956,
+        "pieces": [
+          "collision_Object46",
+          "collision_Object47",
+          "collision_Object25",
+          "collision_PZ_Object29",
+          "collision_PZ_Object24",
+          "collision_PZ_Object21",
+          "collision_PZ_Object04",
+          "collision_PZ_Object02",
+          "collision_PZ_Object01",
+          "collision_PZ_M_51",
+          "collision_PZ_M_47",
+          "collision_PZ_M_44",
+          "collision_PZ_M_43",
+          "collision_PZ_M_32",
+          "collision_PZ_M_24",
+          "collision_PZ_M_23",
+          "collision_PZ_M_19",
+          "collision_PZ_M_8",
+          "collision_ground"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\Object46.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\Object47.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\Object25.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object29.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object24.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object21.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object04.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_M_51.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_M_47.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_M_44.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_M_43.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_M_32.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_M_24.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_M_23.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_M_19.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_M_8.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\6\\ground.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_04\\level.json",
+      "summary": {
+        "game_objects": 224,
+        "visual_renderers": 8,
+        "primitive_colliders": 86,
+        "mesh_colliders": 19
+      },
+      "marker_counts": {
+        "Respawn": 4,
+        "EnemySpawnPoint": 4,
+        "BossSpawnPoint": 1,
+        "PlayerSpawnInBoss": 3,
+        "WayPoint": 33,
+        "Grave": 3
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 5,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level5.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_05\\stage.obj",
+        "vertices": 15674,
+        "uvs": 15674,
+        "normals": 15674,
+        "faces": 8252,
+        "source_normals": 15674,
+        "generated_normals": 0,
+        "pieces": [
+          "Level5_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "sc05_01.png",
+          "sc05_sfx01.png",
+          "sc_05_sfx.png",
+          "sc_05_sfx03.png",
+          "sc_C_01.png",
+          "sc_G_02.png",
+          "sc_sky_line.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_05\\collision.obj",
+        "vertices": 600,
+        "uvs": 600,
+        "normals": 600,
+        "faces": 320,
+        "source_normals": 600,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_PZ_sc_05_010",
+          "collision_PZ_Object112",
+          "collision_PZ_Object111",
+          "collision_PZ_Object71",
+          "collision_PZ_Object55",
+          "collision_PZ_Object41",
+          "collision_PZ_Object36",
+          "collision_PZ_G_01"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_sc_05_010.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object112.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object111.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object71.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object55.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object41.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_Object36.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_G_01.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_05\\level.json",
+      "summary": {
+        "game_objects": 302,
+        "visual_renderers": 1,
+        "primitive_colliders": 156,
+        "mesh_colliders": 8
+      },
+      "marker_counts": {
+        "Respawn": 4,
+        "EnemySpawnPoint": 3,
+        "BossSpawnPoint": 1,
+        "PlayerSpawnInBoss": 3,
+        "WayPoint": 38,
+        "Grave": 5
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 6,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level6.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_06\\stage.obj",
+        "vertices": 12965,
+        "uvs": 12965,
+        "normals": 12965,
+        "faces": 13213,
+        "source_normals": 12965,
+        "generated_normals": 0,
+        "pieces": [
+          "Level6_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\15\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "MOT_03.png",
+          "MOT_04.png",
+          "MOT_05.png",
+          "MOT_06.png",
+          "MOT_08.png",
+          "MOT_09.png",
+          "MOT_10.png",
+          "MOT_11.png",
+          "MOT_12.png",
+          "grass_1.png",
+          "grass_2.png",
+          "light_1.png",
+          "sc_sky_line.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_06\\collision.obj",
+        "vertices": 242,
+        "uvs": 242,
+        "normals": 242,
+        "faces": 239,
+        "source_normals": 242,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_PZ_MOT_3_M1",
+          "collision_PZ_MOT_1_M6",
+          "collision_PZ_MOT_1_M5",
+          "collision_PZ_MOT_1_M4",
+          "collision_PZ_MOT_1_M3",
+          "collision_PZ_MOT_1_M2",
+          "collision_PZ_MOT_1_M1",
+          "collision_ground"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_MOT_3_M1.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_MOT_1_M6.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_MOT_1_M5.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_MOT_1_M4.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_MOT_1_M3.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_MOT_1_M2.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_MOT_1_M1.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\7\\ground.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_06\\level.json",
+      "summary": {
+        "game_objects": 165,
+        "visual_renderers": 1,
+        "primitive_colliders": 74,
+        "mesh_colliders": 8
+      },
+      "marker_counts": {
+        "Respawn": 4,
+        "EnemySpawnPoint": 6,
+        "BossSpawnPoint": 2,
+        "PlayerSpawnInBoss": 3,
+        "WayPoint": 24,
+        "Grave": 5
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 7,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level7.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_07\\stage.obj",
+        "vertices": 8745,
+        "uvs": 8745,
+        "normals": 8745,
+        "faces": 6011,
+        "source_normals": 8745,
+        "generated_normals": 0,
+        "pieces": [
+          "Level7_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\14\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "L7_ground.png",
+          "L7_metal.png",
+          "L7_metal02.png",
+          "L7_metal03.png",
+          "L7_metal04.png",
+          "L7_metal05.png",
+          "L7_metal06.png",
+          "L7_metal07.png",
+          "L7_metal08.png",
+          "L7_pilla.png",
+          "sky.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_07\\collision.obj",
+        "vertices": 76,
+        "uvs": 76,
+        "normals": 76,
+        "faces": 46,
+        "source_normals": 76,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_ground_02",
+          "collision_ground"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\ground_02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\ground.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_07\\level.json",
+      "summary": {
+        "game_objects": 142,
+        "visual_renderers": 1,
+        "primitive_colliders": 69,
+        "mesh_colliders": 2
+      },
+      "marker_counts": {
+        "Respawn": 4,
+        "EnemySpawnPoint": 5,
+        "BossSpawnPoint": 1,
+        "PlayerSpawnInBoss": 3,
+        "WayPoint": 19,
+        "Grave": 9
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 8,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level8.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_08\\stage.obj",
+        "vertices": 10342,
+        "uvs": 10342,
+        "normals": 10342,
+        "faces": 6437,
+        "source_normals": 10342,
+        "generated_normals": 0,
+        "pieces": [
+          "Level8_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\13\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "SKY.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_08\\collision.obj",
+        "vertices": 10826,
+        "uvs": 10826,
+        "normals": 10826,
+        "faces": 6667,
+        "source_normals": 10826,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_PZ_c_05",
+          "collision_PZ_c_027",
+          "collision_PZ_c_032",
+          "collision_PZ_c_028",
+          "collision_PZ_c_017",
+          "collision_PZ_c_015",
+          "collision_PZ_c_021",
+          "collision_PZ_c_024",
+          "collision_PZ_c_01",
+          "collision_PZ_c_04",
+          "collision_PZ_c_03",
+          "collision_PZ_c_025",
+          "collision_PZ_c_023",
+          "collision_PZ_c_022",
+          "collision_PZ_c_030",
+          "collision_PZ_c_020",
+          "collision_PZ_c_029",
+          "collision_PZ_c_06",
+          "collision_PZ_c_09",
+          "collision_PZ_c_031",
+          "collision_ground_01",
+          "collision_PZ_c_012",
+          "collision_PZ_c_033",
+          "collision_PZ_c_018",
+          "collision_PZ_c_07",
+          "collision_PZ_c_011",
+          "collision_PZ_c_08",
+          "collision_PZ_c_02",
+          "collision_PZ_c_014",
+          "collision_PZ_c_019",
+          "collision_PZ_c_010",
+          "collision_PZ_c_016",
+          "collision_ground_02",
+          "collision_PZ_c_013"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\PZ_c_05.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_027.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_032.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_028.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_017.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_015.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_021.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_024.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\PZ_c_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\PZ_c_04.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\PZ_c_03.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_025.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_023.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_022.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_030.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_020.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_029.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\PZ_c_06.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\2\\PZ_c_09.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_031.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\3\\ground_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_012.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_033.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_018.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\PZ_c_07.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_011.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\PZ_c_08.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\PZ_c_02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_014.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_019.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_010.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_016.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\3\\ground_02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_013.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_08\\level.json",
+      "summary": {
+        "game_objects": 575,
+        "visual_renderers": 1,
+        "primitive_colliders": 0,
+        "mesh_colliders": 34
+      },
+      "marker_counts": {
+        "Respawn": 4,
+        "EnemySpawnPoint": 5,
+        "BossSpawnPoint": 1,
+        "PlayerSpawnInBoss": 3,
+        "WayPoint": 41,
+        "Grave": 7
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 13,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level13.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_13\\stage.obj",
+        "vertices": 14343,
+        "uvs": 14343,
+        "normals": 14343,
+        "faces": 9352,
+        "source_normals": 14343,
+        "generated_normals": 0,
+        "pieces": [
+          "Level13_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\12\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": []
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_13\\collision.obj",
+        "vertices": 883,
+        "uvs": 883,
+        "normals": 883,
+        "faces": 783,
+        "source_normals": 883,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_PZ_snow_01",
+          "collision_PZ_wall_002",
+          "collision_PZ_wall_003",
+          "collision_PZ_wall_001"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_snow_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_wall_002.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_wall_003.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_wall_001.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_13\\level.json",
+      "summary": {
+        "game_objects": 503,
+        "visual_renderers": 1,
+        "primitive_colliders": 117,
+        "mesh_colliders": 4
+      },
+      "marker_counts": {
+        "Respawn": 21,
+        "FlagSpawn": 11
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 14,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level14.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_14\\stage.obj",
+        "vertices": 14772,
+        "uvs": 14772,
+        "normals": 14772,
+        "faces": 8379,
+        "source_normals": 14772,
+        "generated_normals": 0,
+        "pieces": [
+          "Level14_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\11\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "booox_001.png",
+          "booox_002.png",
+          "booox_003.png",
+          "booox_004.png",
+          "booox_005.png",
+          "booox_006.png",
+          "booox_007.png",
+          "booox_008.png",
+          "booox_009.png",
+          "booox_010.png",
+          "booox_011.png",
+          "booox_012.png",
+          "booox_013.png",
+          "ground_01.png",
+          "ground_02.png",
+          "house_01.png",
+          "house_02.png",
+          "house_03.png",
+          "sky.png",
+          "wall_001.png",
+          "wall_002.png",
+          "wall_003.png",
+          "wall_004.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_14\\collision.obj",
+        "vertices": 310,
+        "uvs": 310,
+        "normals": 310,
+        "faces": 186,
+        "source_normals": 310,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_PZ_house_001",
+          "collision_PZ_house_002",
+          "collision_ground_1",
+          "collision_ground_2"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_house_001.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_house_002.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\ground_1.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\ground_2.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_14\\level.json",
+      "summary": {
+        "game_objects": 253,
+        "visual_renderers": 1,
+        "primitive_colliders": 184,
+        "mesh_colliders": 4
+      },
+      "marker_counts": {
+        "Respawn": 22,
+        "FlagSpawn": 25
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 15,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level15.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_15\\stage.obj",
+        "vertices": 12940,
+        "uvs": 12940,
+        "normals": 12940,
+        "faces": 7463,
+        "source_normals": 12924,
+        "generated_normals": 16,
+        "pieces": [
+          "Brockpilla12 1",
+          "Level15_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\Brockpilla12.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\10\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "SC_11_BOX01.png",
+          "SC_11_BOX02.png",
+          "SC_11_BUILDING01.png",
+          "SC_11_BUILDING02.png",
+          "SC_11_BUILDING03.png",
+          "SC_11_BUILDING04.png",
+          "SC_11_BUILDING0top.png",
+          "SC_11_DOOR.png",
+          "SC_11_GROUND01.png",
+          "SC_11_GROUND03.png",
+          "SC_11_GROUND04.png",
+          "SC_11_GROUND05.png",
+          "SC_11_GROUND06.png",
+          "SC_11_GROUNDCRASH.png",
+          "SC_11_GROUNDIN.png",
+          "SC_11_GROUNDIN02.png",
+          "SC_11_PILLA02.png",
+          "SC_11_TOWER.png",
+          "SC_11_WALL01.png",
+          "SC_11_WALL03.png",
+          "SC_11_line.png",
+          "lighting01.png",
+          "lighting02.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_15\\collision.obj",
+        "vertices": 413,
+        "uvs": 413,
+        "normals": 413,
+        "faces": 352,
+        "source_normals": 413,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_ground_01",
+          "collision_ground_02"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\2\\ground_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\2\\ground_02.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_15\\level.json",
+      "summary": {
+        "game_objects": 181,
+        "visual_renderers": 2,
+        "primitive_colliders": 113,
+        "mesh_colliders": 2
+      },
+      "marker_counts": {
+        "Respawn": 21,
+        "FlagSpawn": 18
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 16,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level16.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_16\\stage.obj",
+        "vertices": 14795,
+        "uvs": 14795,
+        "normals": 14795,
+        "faces": 8361,
+        "source_normals": 14795,
+        "generated_normals": 0,
+        "pieces": [
+          "Level16_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\9\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "booox_1.png",
+          "booox_10.png",
+          "booox_11.png",
+          "booox_12.png",
+          "booox_13.png",
+          "booox_14.png",
+          "booox_15.png",
+          "booox_16.png",
+          "booox_17.png",
+          "booox_18.png",
+          "booox_2.png",
+          "booox_3.png",
+          "booox_4.png",
+          "booox_5.png",
+          "booox_6.png",
+          "booox_7.png",
+          "booox_8.png",
+          "booox_9.png",
+          "str_skyline.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_16\\collision.obj",
+        "vertices": 267,
+        "uvs": 267,
+        "normals": 267,
+        "faces": 141,
+        "source_normals": 267,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_PZ_booox_002",
+          "collision_PZ_booox_003",
+          "collision_ground_02",
+          "collision_ground_01",
+          "collision_PZ_booox_004",
+          "collision_PZ_booox_005"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_booox_002.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_booox_003.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\ground_02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\ground_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_booox_004.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_booox_005.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_16\\level.json",
+      "summary": {
+        "game_objects": 164,
+        "visual_renderers": 1,
+        "primitive_colliders": 105,
+        "mesh_colliders": 6
+      },
+      "marker_counts": {
+        "Respawn": 20,
+        "FlagSpawn": 13
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 17,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level17.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_17\\stage.obj",
+        "vertices": 3209,
+        "uvs": 3209,
+        "normals": 3209,
+        "faces": 1813,
+        "source_normals": 3059,
+        "generated_normals": 150,
+        "pieces": [
+          "sky",
+          "Level17_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\5\\sky.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\8\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "booox_13.png",
+          "str_skyline.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_17\\collision.obj",
+        "vertices": 30,
+        "uvs": 30,
+        "normals": 30,
+        "faces": 18,
+        "source_normals": 30,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_ground_1",
+          "collision_ground_3",
+          "collision_ground_2"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\ground_1.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\ground_3.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\ground_2.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_17\\level.json",
+      "summary": {
+        "game_objects": 171,
+        "visual_renderers": 2,
+        "primitive_colliders": 106,
+        "mesh_colliders": 3
+      },
+      "marker_counts": {
+        "Respawn": 20,
+        "FlagSpawn": 24
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 18,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level18.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_18\\stage.obj",
+        "vertices": 9909,
+        "uvs": 9909,
+        "normals": 9909,
+        "faces": 6788,
+        "source_normals": 9909,
+        "generated_normals": 0,
+        "pieces": [
+          "Level18_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\7\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "building01.png",
+          "building02.png",
+          "building03.png",
+          "building04.png",
+          "building05.png",
+          "buildinginside.png",
+          "buildingout.png",
+          "ground.png",
+          "metal01.png",
+          "objnew.png",
+          "roof.png",
+          "sky.png",
+          "tower01.png",
+          "tower02.png",
+          "tower03.png",
+          "wall01.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_18\\collision.obj",
+        "vertices": 9,
+        "uvs": 9,
+        "normals": 9,
+        "faces": 8,
+        "source_normals": 9,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_ground"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\ground.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_18\\level.json",
+      "summary": {
+        "game_objects": 296,
+        "visual_renderers": 1,
+        "primitive_colliders": 230,
+        "mesh_colliders": 1
+      },
+      "marker_counts": {
+        "Respawn": 22,
+        "FlagSpawn": 19
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 19,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level19.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_19\\stage.obj",
+        "vertices": 8203,
+        "uvs": 8203,
+        "normals": 8203,
+        "faces": 4679,
+        "source_normals": 8203,
+        "generated_normals": 0,
+        "pieces": [
+          "MPZ_zhuan_01",
+          "MPZ_zhuan_00",
+          "Level19_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_zhuan_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\MPZ_zhuan_00.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\6\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "mask_003.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_19\\collision.obj",
+        "vertices": 7315,
+        "uvs": 7315,
+        "normals": 7315,
+        "faces": 4079,
+        "source_normals": 7315,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_PZ_item_50",
+          "collision_PZ_item_64",
+          "collision_PZ_item_11",
+          "collision_PZ_item_002",
+          "collision_PZ_item_60",
+          "collision_PZ_item_15 1",
+          "collision_PZ_item_62",
+          "collision_PZ_item_47",
+          "collision_PZ_item_006",
+          "collision_PZ_item_10 1",
+          "collision_PZ_item_16",
+          "collision_PZ_item_005",
+          "collision_PZ_item_19",
+          "collision_PZ_item_37",
+          "collision_PZ_item_38",
+          "collision_ground01",
+          "collision_PZ_item_004",
+          "collision_collision",
+          "collision_PZ_item_17 1",
+          "collision_PZ_item_22",
+          "collision_PZ_item_53",
+          "collision_PZ_item_51",
+          "collision_PZ_item_18 1",
+          "collision_PZ_item_49",
+          "collision_PZ_item_11 1",
+          "collision_PZ_item_35",
+          "collision_PZ_item_36",
+          "collision_PZ_item_46",
+          "collision_PZ_item_55",
+          "collision_PZ_item_48",
+          "collision_PZ_item_13",
+          "collision_PZ_item_14 1",
+          "collision_PZ_item_13 1",
+          "collision_PZ_item_16 1",
+          "collision_PZ_item_54",
+          "collision_PZ_item_39",
+          "collision_PZ_item_14",
+          "collision_PZ_item_58",
+          "collision_PZ_item_56",
+          "collision_PZ_item_43",
+          "collision_PZ_item_32",
+          "collision_PZ_item_45",
+          "collision_PZ_item_000",
+          "collision_PZ_item_18",
+          "collision_PZ_item_31",
+          "collision_PZ_item_17",
+          "collision_PZ_item_27",
+          "collision_PZ_zhuan_3",
+          "collision_PZ_item_57",
+          "collision_PZ_item_19 1",
+          "collision_PZ_item_25",
+          "collision_PZ_item_33",
+          "collision_PZ_item_29",
+          "collision_PZ_item_003",
+          "collision_PZ_item_44",
+          "collision_PZ_item_26",
+          "collision_PZ_item_001",
+          "collision_PZ_item_63",
+          "collision_PZ_item_21",
+          "collision_PZ_item_30",
+          "collision_PZ_item_34",
+          "collision_PZ_item_12 1",
+          "collision_PZ_item_41",
+          "collision_PZ_item_24",
+          "collision_PZ_item_20",
+          "collision_PZ_item_42",
+          "collision_PZ_item_61",
+          "collision_PZ_item_52",
+          "collision_PZ_item_28",
+          "collision_PZ_item_15",
+          "collision_PZ_item_23",
+          "collision_PZ_item_59",
+          "collision_PZ_item_12",
+          "collision_PZ_item_40",
+          "collision_PZ_item_10"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_50.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_64.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_11.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_002.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_60.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_item_15.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_62.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_47.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_006.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_item_10.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_16.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_005.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_19.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_37.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_38.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\ground01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_004.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\collision.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_item_17.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_22.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_53.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_51.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_item_18.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_49.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_item_11.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_35.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_36.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_46.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_55.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_48.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_13.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_item_14.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_item_13.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_item_16.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_54.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_39.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_14.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_58.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_56.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_43.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_32.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_45.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_000.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_18.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_31.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_17.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_27.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_zhuan_3.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_57.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_item_19.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_25.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_33.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_29.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_003.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_44.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_26.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_001.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_63.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_21.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_30.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_34.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_item_12.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_41.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_24.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_20.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_42.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_61.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_52.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_28.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_15.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_23.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_59.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_12.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_40.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_item_10.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_19\\level.json",
+      "summary": {
+        "game_objects": 327,
+        "visual_renderers": 3,
+        "primitive_colliders": 0,
+        "mesh_colliders": 75
+      },
+      "marker_counts": {
+        "Respawn": 20,
+        "FlagSpawn": 13
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 20,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level20.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_20\\stage.obj",
+        "vertices": 26808,
+        "uvs": 26808,
+        "normals": 26808,
+        "faces": 20785,
+        "source_normals": 26808,
+        "generated_normals": 0,
+        "pieces": [
+          "Level20_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\5\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "SC_11_SKY.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_20\\collision.obj",
+        "vertices": 310,
+        "uvs": 310,
+        "normals": 310,
+        "faces": 186,
+        "source_normals": 310,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_PZ_house_002",
+          "collision_ground_1",
+          "collision_ground_2",
+          "collision_PZ_house_001"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_house_002.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\ground_1.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\ground_2.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_house_001.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_20\\level.json",
+      "summary": {
+        "game_objects": 609,
+        "visual_renderers": 1,
+        "primitive_colliders": 208,
+        "mesh_colliders": 4
+      },
+      "marker_counts": {
+        "Respawn": 22,
+        "FlagSpawn": 25
+      },
+      "warning_count": 0
+    },
+    {
+      "level": 21,
+      "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level21.unity",
+      "visual": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_21\\stage.obj",
+        "vertices": 16083,
+        "uvs": 16083,
+        "normals": 16083,
+        "faces": 9751,
+        "source_normals": 16083,
+        "generated_normals": 0,
+        "pieces": [
+          "PZ_XL_05",
+          "PZ_XR_03",
+          "PZ_XR_02",
+          "PZ_XR_05",
+          "PZ_XL_04",
+          "PZ_XL_02",
+          "PZ_XR_04",
+          "PZ_c_11",
+          "PZ_XL_01",
+          "PZ_XL_03",
+          "PZ_XR_01",
+          "PZ_c_09",
+          "PZ_XL_06",
+          "PZ_XR_06",
+          "Level21_StaticBatch"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XL_05.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XR_03.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XR_02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XR_05.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XL_04.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XL_02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XR_04.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_11.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XL_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XL_03.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XR_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_09.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XL_06.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XR_06.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\4\\Combined Mesh (root_ scene).asset"
+        ],
+        "textures": [
+          "SC_21_SKY.png",
+          "light.png"
+        ]
+      },
+      "collision": {
+        "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_21\\collision.obj",
+        "vertices": 15935,
+        "uvs": 15935,
+        "normals": 15935,
+        "faces": 9605,
+        "source_normals": 15935,
+        "generated_normals": 0,
+        "pieces": [
+          "collision_PZ_c_44",
+          "collision_PZ_c_07",
+          "collision_PZ_c_14",
+          "collision_PZ_c_17",
+          "collision_PZ_c_98",
+          "collision_PZ_c_37",
+          "collision_PZ_XL_05",
+          "collision_PZ_c_31",
+          "collision_PZ_XR_03",
+          "collision_PZ_c_49",
+          "collision_PZ_c_51",
+          "collision_PZ_c_01",
+          "collision_PZ_c_39",
+          "collision_PZ_c_56",
+          "collision_PZ_c_36",
+          "collision_PZ_c_29",
+          "collision_PZ_c_86",
+          "collision_PZ_c_16",
+          "collision_PZ_c_10",
+          "collision_PZ_c_05",
+          "collision_PZ_c_08",
+          "collision_PZ_c_02",
+          "collision_PZ_c_13",
+          "collision_PZ_XR_02",
+          "collision_ground_05",
+          "collision_ground_03",
+          "collision_PZ_c_43",
+          "collision_PZ_c_20",
+          "collision_PZ_c_03",
+          "collision_PZ_XR_05",
+          "collision_PZ_XL_04",
+          "collision_PZ_c_58",
+          "collision_PZ_c_46",
+          "collision_PZ_c_33",
+          "collision_PZ_c_42",
+          "collision_PZ_XL_02",
+          "collision_PZ_c_45",
+          "collision_PZ_c_88",
+          "collision_PZ_c_38",
+          "collision_PZ_c_30",
+          "collision_PZ_c_81",
+          "collision_ground_04",
+          "collision_PZ_c_54",
+          "collision_PZ_c_77",
+          "collision_PZ_XR_04",
+          "collision_PZ_c_50",
+          "collision_PZ_c_96",
+          "collision_PZ_c_53",
+          "collision_PZ_c_11",
+          "collision_PZ_c_78",
+          "collision_PZ_c_28",
+          "collision_PZ_c_25",
+          "collision_PZ_c_84",
+          "collision_PZ_c_55",
+          "collision_PZ_c_85",
+          "collision_PZ_c_52",
+          "collision_PZ_c_40",
+          "collision_PZ_c_11",
+          "collision_PZ_c_19",
+          "collision_PZ_c_82",
+          "collision_PZ_c_92",
+          "collision_PZ_c_35",
+          "collision_PZ_c_32",
+          "collision_PZ_c_71",
+          "collision_PZ_XL_01",
+          "collision_PZ_c_04",
+          "collision_PZ_c_57",
+          "collision_PZ_c_27",
+          "collision_PZ_c_90",
+          "collision_PZ_c_15",
+          "collision_PZ_c_95",
+          "collision_PZ_c_06",
+          "collision_ground_02",
+          "collision_PZ_XL_03",
+          "collision_PZ_c_48",
+          "collision_PZ_c_09",
+          "collision_PZ_c_47",
+          "collision_ground_01",
+          "collision_PZ_c_79",
+          "collision_PZ_c_23",
+          "collision_PZ_c_12",
+          "collision_PZ_c_64",
+          "collision_PZ_c_41",
+          "collision_PZ_XR_01",
+          "collision_PZ_c_26",
+          "collision_PZ_c_18",
+          "collision_PZ_c_09",
+          "collision_PZ_c_87",
+          "collision_PZ_c_91",
+          "collision_PZ_c_24",
+          "collision_PZ_XL_06",
+          "collision_PZ_c_83",
+          "collision_PZ_c_63",
+          "collision_PZ_XR_06",
+          "collision_PZ_c_34",
+          "collision_PZ_c_99",
+          "collision_PZ_c_21",
+          "collision_PZ_c_97",
+          "collision_PZ_c_22"
+        ],
+        "source_meshes": [
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_44.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_07.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_14.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_17.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_98.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_37.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XL_05.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_31.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XR_03.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_49.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_51.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_39.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_56.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_36.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_29.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_86.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_16.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_10.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_05.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_08.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_13.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XR_02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\ground_05.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\ground_03.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_43.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_20.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_03.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XR_05.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XL_04.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_58.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_46.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_33.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_42.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XL_02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_45.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_88.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_38.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_30.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_81.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\ground_04.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_54.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_77.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XR_04.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_50.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_96.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_53.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_11.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_78.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_28.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_25.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_84.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_55.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_85.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_52.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_40.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_11.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_19.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_82.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_92.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_35.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_32.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_71.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XL_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_04.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_57.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_27.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_90.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_15.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_95.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_06.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\ground_02.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XL_03.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_48.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\PZ_c_09.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_47.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\1\\ground_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_79.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_23.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_12.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_64.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_41.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XR_01.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_26.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_18.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\0\\PZ_c_09.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_87.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_91.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_24.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XL_06.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_83.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_63.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_XR_06.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_34.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_99.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_21.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_97.asset",
+          "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\PZ_c_22.asset"
+        ],
+        "textures": []
+      },
+      "metadata": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_21\\level.json",
+      "summary": {
+        "game_objects": 739,
+        "visual_renderers": 15,
+        "primitive_colliders": 0,
+        "mesh_colliders": 99
+      },
+      "marker_counts": {
+        "Respawn": 21,
+        "FlagSpawn": 11,
+        "GiftSpawn": 20
+      },
+      "warning_count": 0
+    }
+  ],
+  "totals": {
+    "levels": 17,
+    "visual_renderers": 58,
+    "primitive_colliders": 1851,
+    "mesh_colliders": 315,
+    "warnings": 0
+  }
+}
