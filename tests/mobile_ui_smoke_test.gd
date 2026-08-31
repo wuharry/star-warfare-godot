@@ -1,5 +1,8 @@
 extends Node
 
+const REFERENCE_VIEWPORT := Vector2(1280.0, 720.0)
+const POSITION_TOLERANCE := 2.0
+
 var failures: Array[String] = []
 
 func _ready() -> void:
@@ -9,6 +12,35 @@ func _check(condition: bool, message: String) -> void:
 	if not condition:
 		failures.append(message)
 		push_error("MOBILE UI TEST: " + message)
+
+func _named_control(root: Node, control_name: String) -> Control:
+	return root.find_child(control_name, true, false) as Control
+
+func _check_center(control: Control, expected: Vector2, label: String) -> void:
+	if not is_instance_valid(control):
+		_check(false, "%s is missing" % label)
+		return
+	var actual := control.get_global_rect().get_center()
+	_check(
+		actual.distance_to(expected) <= POSITION_TOLERANCE,
+		"%s center does not match the recovered 960x640 layout (%s vs %s)" % [label, actual, expected]
+	)
+
+func _has_visible_texture(root: Control) -> bool:
+	if root is TextureRect and (root as TextureRect).texture != null:
+		return true
+	if root is TextureButton and (root as TextureButton).texture_normal != null:
+		return true
+	if root is Button and (root as Button).icon != null:
+		return true
+	if root is TextureProgressBar:
+		var progress := root as TextureProgressBar
+		if progress.texture_under != null and progress.texture_progress != null:
+			return true
+	for child in root.get_children():
+		if child is Control and _has_visible_texture(child):
+			return true
+	return false
 
 func _run() -> void:
 	_check(int(ProjectSettings.get_setting("display/window/handheld/orientation", -1)) == DisplayServer.SCREEN_SENSOR_LANDSCAPE, "project is not locked to sensor landscape orientation")
@@ -32,60 +64,90 @@ func _run() -> void:
 	await get_tree().process_frame
 	await get_tree().physics_frame
 
+	var viewport_rect := world.get_viewport().get_visible_rect()
+	_check(viewport_rect.size.is_equal_approx(REFERENCE_VIEWPORT), "HUD regression coordinates require a 1280x720 viewport, got %s" % viewport_rect.size)
 	_check(is_instance_valid(world.hud.touch_root), "touch control root was not created")
+	if not is_instance_valid(world.hud.touch_root):
+		await _cleanup(world, original_touch_setting)
+		return
 	_check(world.hud.touch_root.visible, "touch controls ignore the mobile preference")
 
-	var joystick: WarfareVirtualJoystick
-	var action_buttons: Array[TouchActionButton] = []
-	for child in world.hud.touch_root.get_children():
-		if child is WarfareVirtualJoystick:
-			if child.name != "ShootJoyStick":
-				joystick = child
-		elif child is TouchActionButton:
-			action_buttons.append(child)
-
-	_check(is_instance_valid(joystick), "virtual joystick was not created")
-	_check(action_buttons.size() == 1, "expected the DASH auxiliary touch button")
+	# The original mobile HUD had exactly two thumb controls. Weapon, skill,
+	# pause and status widgets belong to the shared HUD and must not be copied
+	# into touch_root.
 	var joysticks: Array[WarfareVirtualJoystick] = []
 	for child in world.hud.touch_root.get_children():
+		_check(child is WarfareVirtualJoystick, "touch_root contains added control %s instead of only the two original joysticks" % child.name)
 		if child is WarfareVirtualJoystick:
 			joysticks.append(child)
 	_check(joysticks.size() == 2, "the original dual-joystick mobile layout was not restored")
+	_check(world.hud.touch_root.find_children("*", "TouchActionButton", true, false).is_empty(), "touch_root still contains the added text DASH button")
+	_check(world.hud.touch_root.find_children("*", "BaseButton", true, false).is_empty(), "touch_root still contains a mobile-only weapon or skill button")
 
-	var viewport_rect := world.get_viewport().get_visible_rect()
-	if is_instance_valid(joystick):
-		_check(viewport_rect.encloses(joystick.get_global_rect()), "virtual joystick is outside the viewport")
-		_check(joystick.recovered_background != null and joystick.recovered_knob != null, "virtual joystick is not using the original HUD atlas")
-		joystick.vector_changed.emit(Vector2(0.35, -0.6))
-		_check(world.player.touch_move.is_equal_approx(Vector2(0.35, -0.6)), "joystick is not connected to player movement")
-
-	var captions: Array[String] = []
-	for button in action_buttons:
-		captions.append(button.caption)
-		_check(viewport_rect.encloses(button.get_global_rect()), "%s button is outside the viewport" % button.caption)
-	_check(captions.has("DASH"), "DASH touch action is missing")
-
-	var shoot_joystick := world.hud.touch_root.get_node_or_null("ShootJoyStick") as WarfareVirtualJoystick
-	_check(is_instance_valid(shoot_joystick), "shoot joystick is missing")
-	if is_instance_valid(shoot_joystick):
+	joysticks.sort_custom(func(a: WarfareVirtualJoystick, b: WarfareVirtualJoystick) -> bool:
+		return a.get_global_rect().get_center().x < b.get_global_rect().get_center().x
+	)
+	if joysticks.size() == 2:
+		var move_joystick := joysticks[0]
+		var shoot_joystick := joysticks[1]
+		_check_center(move_joystick, Vector2(280.0, 551.25), "move joystick")
+		_check_center(shoot_joystick, Vector2(1000.0, 551.25), "shoot joystick")
+		for joystick in joysticks:
+			_check(viewport_rect.encloses(joystick.get_global_rect()), "%s is outside the viewport" % joystick.name)
+			_check(joystick.recovered_background != null and joystick.recovered_knob != null, "%s is not using the original HUD atlas" % joystick.name)
+		move_joystick.vector_changed.emit(Vector2(0.35, -0.6))
+		_check(world.player.touch_move.is_equal_approx(Vector2(0.35, -0.6)), "move joystick is not connected to player movement")
 		shoot_joystick.engaged.emit()
 		_check(world.player.touch_fire, "shoot joystick engagement is not connected to fire")
 		shoot_joystick.released.emit()
 		_check(not world.player.touch_fire, "shoot joystick release leaves the weapon firing")
-	var weapon_selector := world.hud.touch_root.get_node_or_null("MobileWeaponSelector") as Button
-	_check(is_instance_valid(weapon_selector), "original right-edge weapon selector is missing")
+
+	var pause_button := _named_control(world.hud, "PauseButton") as BaseButton
+	var weapon_selector := _named_control(world.hud, "WeaponSelector") as BaseButton
+	var skill_button := _named_control(world.hud, "SkillButton") as BaseButton
+	var player_hp := _named_control(world.hud, "PlayerHP")
+	var ammo_bar := _named_control(world.hud, "AmmoBar")
+	var boss_state := _named_control(world.hud, "BossState")
+	_check(is_instance_valid(pause_button), "shared PauseButton is missing on mobile")
+	_check(is_instance_valid(weapon_selector), "shared WeaponSelector is missing on mobile")
+	_check(is_instance_valid(skill_button), "shared SkillButton is missing on mobile")
+	_check(is_instance_valid(player_hp), "the clean HUD is missing its single PlayerHP bar")
+	_check(is_instance_valid(ammo_bar), "the clean HUD is missing its single AmmoBar")
+	_check(is_instance_valid(boss_state), "the clean HUD is missing its centered boss bar")
+	_check(_named_control(world.hud, "EnemyProgress") == null, "the removed top-center level progress bar is back")
+	_check_center(pause_button, Vector2(56.25, 45.0), "PauseButton")
+	_check_center(player_hp, Vector2(230.625, 61.875), "PlayerHP")
+	_check_center(ammo_bar, Vector2(1055.0, 61.875), "AmmoBar")
+	_check_center(weapon_selector, Vector2(1201.25, 180.0), "WeaponSelector")
+	if is_instance_valid(boss_state):
+		_check(absf(boss_state.get_global_rect().get_center().x - viewport_rect.get_center().x) <= POSITION_TOLERANCE, "boss bar is not centered across the screen")
+
+	var textured_controls: Array[Control] = [pause_button, weapon_selector, skill_button, player_hp, ammo_bar, boss_state]
+	for item in textured_controls:
+		if is_instance_valid(item):
+			_check(_has_visible_texture(item), "%s is not backed by recovered atlas artwork" % item.name)
+
 	if is_instance_valid(weapon_selector):
-		_check(viewport_rect.encloses(weapon_selector.get_global_rect()), "weapon selector is outside the viewport")
-		_check(weapon_selector.icon != null, "weapon selector is missing the original weapon atlas icon")
 		var weapon_before := world.player.current_weapon_id
 		weapon_selector.pressed.emit()
-		_check(world.player.current_weapon_id != weapon_before, "weapon selector does not switch equipped weapons")
+		# Container layout is applied on the next UI frame after the AimID
+		# texture changes size. Check the position that can actually be drawn.
+		await get_tree().process_frame
+		_check(world.player.current_weapon_id != weapon_before, "shared WeaponSelector does not switch equipped weapons")
+
+	var viewport_center := viewport_rect.get_center()
+	var reticle_center := world.hud.crosshair.get_global_rect().get_center()
+	_check(reticle_center.distance_to(viewport_center) < 1.0, "reticle is not at the exact original screen center (%s vs %s)" % [reticle_center, viewport_center])
+	_check(world.hud.crosshair.texture != null, "reticle is missing its original AimID atlas sprite")
 
 	world.hud._notification(NOTIFICATION_WM_GO_BACK_REQUEST)
 	_check(get_tree().paused and world.hud.pause_overlay.visible, "Android Back does not pause gameplay")
 	world.hud._notification(NOTIFICATION_WM_GO_BACK_REQUEST)
 	_check(not get_tree().paused and not world.hud.pause_overlay.visible, "Android Back cannot resume a paused game")
 
+	await _cleanup(world, original_touch_setting)
+
+func _cleanup(world: WarfareGameWorld, original_touch_setting: bool) -> void:
 	world.completed = true
 	for audio in world.find_children("*", "AudioStreamPlayer", true, false):
 		audio.stop()
@@ -98,7 +160,7 @@ func _run() -> void:
 	await get_tree().create_timer(0.2).timeout
 
 	if failures.is_empty():
-		print("MOBILE_UI_SMOKE_TEST_PASS")
+		print("MOBILE_UI_SMOKE_TEST_PASS clean_shared_hud=true dual_joystick=true")
 		get_tree().quit(0)
 	else:
 		print("MOBILE_UI_SMOKE_TEST_FAIL: %s" % ", ".join(failures))

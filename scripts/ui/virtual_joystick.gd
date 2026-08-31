@@ -10,7 +10,7 @@ signal released
 var active_touch := -1
 var value := Vector2.ZERO
 var knob_position := Vector2.ZERO
-var radius := 78.0
+var radius := 90.0
 var deadzone := 0.12
 var recovered_background: Texture2D
 var recovered_knob: Texture2D
@@ -26,6 +26,9 @@ func _ready() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_RESIZED:
+		# HUD.prefab uses a 200 logical-pixel control with a 90-pixel
+		# interaction radius. Derive the scaled radius from the laid-out width.
+		radius = size.x * 0.45
 		knob_position = size * 0.5 if active_touch < 0 else knob_position
 		queue_redraw()
 
@@ -68,9 +71,12 @@ func _update_from_screen(screen_position: Vector2) -> void:
 func _draw() -> void:
 	var center := size * 0.5
 	if recovered_background and recovered_knob:
-		var background_size := Vector2.ONE * (radius + 18.0) * 2.0
-		draw_texture_rect(recovered_background, Rect2(center - background_size * 0.5, background_size), false, Color(1, 1, 1, 0.72))
-		var knob_size := Vector2(72, 72)
+		# The original left/right backgrounds are 200x201 and 200x197 in the
+		# prefab, while hud_38 is 108x107. Drawing into the full control rect
+		# preserves those silhouettes instead of clipping an oversized circle.
+		draw_texture_rect(recovered_background, Rect2(Vector2.ZERO, size), false, Color(1, 1, 1, 0.72))
+		var visual_scale := size.x / 200.0
+		var knob_size := Vector2(108, 107) * visual_scale
 		draw_texture_rect(recovered_knob, Rect2(knob_position - knob_size * 0.5, knob_size), false, Color(1, 1, 1, 0.88))
 	else:
 		draw_circle(center, radius + 10.0, Color(0.02, 0.09, 0.13, 0.38))

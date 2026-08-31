@@ -24,7 +24,9 @@ var dash_direction := Vector3.ZERO
 var dead := false
 
 var camera_yaw := 0.0
-var camera_pitch := deg_to_rad(-10.0)
+# ThirdPersonStandardCameraScript left angelV at its C# default of zero.  Start
+# level with the same horizontal sight line as the original game.
+var camera_pitch := 0.0
 # Recovered from every original Unity level's
 # ThirdPersonStandardCameraScript component.
 var camera_distance := 2.2
@@ -48,7 +50,16 @@ var animation_clock := 0.0
 var recovered_avatar: Node3D
 var recovered_skeleton: Skeleton3D
 var recovered_animation_player: AnimationPlayer
+var recovered_animation_tree: AnimationTree
+var recovered_animation_blend_tree: AnimationNodeBlendTree
+var recovered_locomotion_node: AnimationNodeAnimation
+var recovered_upper_body_node: AnimationNodeAnimation
+var recovered_upper_body_seek: AnimationNodeTimeSeek
+var recovered_upper_body_blend: AnimationNodeBlend2
 var recovered_animation_name := ""
+var recovered_locomotion_name := ""
+var recovered_upper_body_name := ""
+var recovered_layered_animation := false
 var gun_socket: BoneAttachment3D
 var backpack_socket: BoneAttachment3D
 var backpack_visual: MeshInstance3D
@@ -62,6 +73,7 @@ var shot_cooldown := 0.0
 var reload_left := 0.0
 var weapon_audio_active := false
 var shoot_pose_left := 0.0
+var restart_shoot_animation_requested := false
 var hurt_pose_left := 0.0
 var footstep_clock := 0.0
 
@@ -194,7 +206,61 @@ func _prepare_recovered_animations() -> void:
 		var animation := recovered_animation_player.get_animation(animation_name)
 		if animation_name.begins_with("idle_") or (animation_name.begins_with("run_") and not animation_name.begins_with("run_shoot_")):
 			animation.loop_mode = Animation.LOOP_LINEAR
+	_build_recovered_animation_layers()
 	_play_recovered_animation("idle_rifle", 0.0)
+
+func _build_recovered_animation_layers() -> void:
+	if not recovered_animation_player or not recovered_skeleton or not recovered_avatar:
+		return
+	recovered_animation_blend_tree = AnimationNodeBlendTree.new()
+	recovered_locomotion_node = AnimationNodeAnimation.new()
+	recovered_locomotion_node.animation = &"run_rifle"
+	recovered_upper_body_node = AnimationNodeAnimation.new()
+	recovered_upper_body_node.animation = &"run_shoot_rifle"
+	recovered_upper_body_seek = AnimationNodeTimeSeek.new()
+	recovered_upper_body_blend = AnimationNodeBlend2.new()
+	recovered_upper_body_blend.sync = true
+	recovered_upper_body_blend.filter_enabled = true
+	recovered_animation_blend_tree.add_node("locomotion", recovered_locomotion_node, Vector2(0.0, 80.0))
+	recovered_animation_blend_tree.add_node("upper_body", recovered_upper_body_node, Vector2(0.0, 240.0))
+	recovered_animation_blend_tree.add_node("upper_seek", recovered_upper_body_seek, Vector2(180.0, 240.0))
+	recovered_animation_blend_tree.add_node("layer", recovered_upper_body_blend, Vector2(260.0, 140.0))
+	recovered_animation_blend_tree.connect_node("upper_seek", 0, "upper_body")
+	recovered_animation_blend_tree.connect_node("layer", 0, "locomotion")
+	recovered_animation_blend_tree.connect_node("layer", 1, "upper_seek")
+	recovered_animation_blend_tree.connect_node("output", 0, "layer")
+
+	# Unity's Player.AddMixingTransformAnimation applies run_shoot clips only
+	# from Bip01 Spine1 downward through the hierarchy. Recreate that mask so
+	# the locomotion clip keeps driving the pelvis and legs during held fire.
+	for animation_name in recovered_animation_player.get_animation_list():
+		if not animation_name.begins_with("run_shoot_"):
+			continue
+		var animation := recovered_animation_player.get_animation(animation_name)
+		for track_index in range(animation.get_track_count()):
+			var track_path := animation.track_get_path(track_index)
+			if _is_upper_body_animation_track(track_path):
+				recovered_upper_body_blend.set_filter_path(track_path, true)
+
+	recovered_animation_tree = AnimationTree.new()
+	recovered_animation_tree.name = "RecoveredAnimationLayers"
+	recovered_avatar.add_child(recovered_animation_tree)
+	recovered_animation_tree.anim_player = recovered_animation_tree.get_path_to(recovered_animation_player)
+	recovered_animation_tree.tree_root = recovered_animation_blend_tree
+	recovered_animation_tree.callback_mode_process = AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS
+	recovered_animation_tree.set("parameters/layer/blend_amount", 1.0)
+	recovered_animation_tree.active = false
+
+func _is_upper_body_animation_track(track_path: NodePath) -> bool:
+	if track_path.get_subname_count() < 1:
+		return false
+	var bone_index := recovered_skeleton.find_bone(String(track_path.get_subname(0)))
+	var upper_body_index := recovered_skeleton.find_bone("Bip01 Spine1")
+	while bone_index >= 0:
+		if bone_index == upper_body_index:
+			return true
+		bone_index = recovered_skeleton.get_bone_parent(bone_index)
+	return false
 
 func _add_recovered_backpack() -> void:
 	var backpack_path := "res://assets/models/player/animated/bag.obj"
@@ -211,26 +277,60 @@ func _add_recovered_backpack() -> void:
 	backpack_visual = MeshInstance3D.new()
 	backpack_visual.name = "RecoveredBackpack"
 	backpack_visual.mesh = load(backpack_path)
-	# Original Player.prefab Bag transform under fly_bag, converted from
-	# Unity's left-handed coordinates to Godot. The socket now inherits the
-	# animated upper-spine and authored fly_bag motion instead of floating at a
-	# fixed position on ArmorModel.
-	backpack_visual.quaternion = Quaternion(
-		0.000000030908623,
-		0.7071068,
-		-0.7071068,
-		0.000000030908623
-	).normalized()
-	backpack_visual.scale = Vector3.ONE * 0.8
+	# AvatarBuilder placed the independent Bag prefab at fly_bag in world space
+	# before parenting it. Its prefab root rotation is already baked into the
+	# recovered OBJ, so cancel the socket's rest basis instead of applying the
+	# unrelated embedded Player.prefab Bag rotation a second time.
+	var fly_bag_rest := recovered_skeleton.get_bone_global_rest(fly_bag_bone)
+	backpack_visual.transform = Transform3D(
+		fly_bag_rest.basis.inverse() * Basis.from_scale(Vector3.ONE * 0.8),
+		Vector3.ZERO
+	)
 	backpack_socket.add_child(backpack_visual)
 
-func _play_recovered_animation(animation_name: String, blend := 0.08) -> void:
+func _play_recovered_animation(animation_name: String, blend := 0.08, restart := false) -> void:
 	if not recovered_animation_player or not recovered_animation_player.has_animation(animation_name):
 		return
-	if recovered_animation_name == animation_name and recovered_animation_player.is_playing():
+	if recovered_animation_tree and recovered_animation_tree.active:
+		recovered_animation_tree.active = false
+		recovered_layered_animation = false
+	if not restart and recovered_animation_name == animation_name and recovered_animation_player.is_playing():
 		return
 	recovered_animation_name = animation_name
 	recovered_animation_player.play(animation_name, blend)
+	if restart:
+		recovered_animation_player.seek(0.0, true)
+
+func _play_recovered_layered_animation(locomotion_name: String, upper_body_name: String, restart_upper_body := false) -> void:
+	if (
+		not recovered_animation_tree
+		or not recovered_animation_player.has_animation(locomotion_name)
+		or not recovered_animation_player.has_animation(upper_body_name)
+	):
+		_play_recovered_animation(upper_body_name, 0.08, restart_upper_body)
+		return
+	var same_layer := (
+		recovered_layered_animation
+		and recovered_animation_tree.active
+		and recovered_locomotion_name == locomotion_name
+		and recovered_upper_body_name == upper_body_name
+	)
+	recovered_animation_name = upper_body_name
+	if same_layer:
+		if restart_upper_body:
+			recovered_animation_tree.set("parameters/upper_seek/seek_request", 0.0)
+		return
+	recovered_locomotion_name = locomotion_name
+	recovered_upper_body_name = upper_body_name
+	recovered_locomotion_node.animation = StringName(locomotion_name)
+	recovered_upper_body_node.animation = StringName(upper_body_name)
+	recovered_animation_player.stop()
+	recovered_animation_tree.active = true
+	# AnimationNodeAnimation retains time when its clip changes or the tree is
+	# reactivated. Seek only on a new firing state; held automatic fire keeps
+	# advancing instead of being reset by every bullet.
+	recovered_animation_tree.set("parameters/upper_seek/seek_request", 0.0)
+	recovered_layered_animation = true
 
 func _build_gun_visual() -> void:
 	for child in gun_mount.get_children():
@@ -278,13 +378,14 @@ func _build_gun_visual() -> void:
 func _build_camera() -> void:
 	camera_rig = Node3D.new()
 	camera_rig.name = "CameraRig"
-	# The old camera pivots over the operative's right shoulder.  Keeping the
-	# lateral offset on the pivot (rather than on Camera3D) also lets the spring
-	# arm perform collision from the correct shoulder position.
-	camera_rig.position = Vector3(0.6, 1.683712, 0.0)
+	# Unity rotated the player first and then evaluated
+	# target.TransformPoint(pivotPosition). Keep the yaw pivot on the player's
+	# centerline so the authored +0.6 shoulder offset rotates with the view.
+	camera_rig.position = Vector3(0.0, 1.683712, 0.0)
 	add_child(camera_rig)
 	pitch_node = Node3D.new()
 	pitch_node.name = "Pitch"
+	pitch_node.position = Vector3(0.6, 0.0, 0.0)
 	camera_rig.add_child(pitch_node)
 	spring_arm = SpringArm3D.new()
 	spring_arm.name = "SpringArm"
@@ -363,8 +464,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	model.rotation.y = camera_yaw
-	_update_visual_animation(delta, desired.length())
+	# Resolve firing before choosing the pose. This keeps an automatic weapon's
+	# shoot window alive on the exact frame its cooldown expires instead of
+	# briefly falling back to run/idle between consecutive shots.
 	_handle_weapon_input()
+	_update_visual_animation(delta, desired.length())
 
 func _update_camera_controller(delta: float) -> void:
 	var look := Input.get_vector("look_left", "look_right", "look_up", "look_down")
@@ -427,6 +531,7 @@ func equip_weapon(weapon_id: String, persist_selection := true) -> void:
 	_stop_continuous_weapon_audio()
 	current_weapon_id = weapon_id
 	current_weapon = GameState.WEAPONS[weapon_id].duplicate(true)
+	restart_shoot_animation_requested = false
 	_build_gun_visual()
 	recovered_animation_name = ""
 	if persist_selection:
@@ -450,7 +555,9 @@ func _try_fire() -> void:
 	energy -= energy_cost
 	shot_cooldown = float(current_weapon.cooldown)
 	shoot_pose_left = maxf(0.14, minf(0.55, shot_cooldown))
-	recovered_animation_name = ""
+	# One-shot clips must restart on every successful trigger pull. Automatic
+	# clips deliberately remain continuous while the button is held.
+	restart_shoot_animation_requested = not bool(current_weapon.get("automatic", false))
 	muzzle_light.light_energy = 5.0
 	get_tree().create_timer(0.045).timeout.connect(func():
 		if is_instance_valid(muzzle_light): muzzle_light.light_energy = 0.0
@@ -648,26 +755,41 @@ func _update_visual_animation(delta: float, movement: float) -> void:
 		footstep_clock = 0.3
 
 func _update_recovered_animation(movement: float) -> void:
+	var restart_shoot_animation := restart_shoot_animation_requested
+	restart_shoot_animation_requested = false
 	if hurt_pose_left > 0.0 and recovered_animation_player.has_animation("attacked"):
 		_play_recovered_animation("attacked", 0.04)
 		return
 	var moving := movement > 0.1
 	var weapon_pose := str(current_weapon.get("animation", "rifle"))
+	var locomotion_pose := weapon_pose
+	if locomotion_pose == "grenade_launcher":
+		locomotion_pose = "shotgun"
+	elif locomotion_pose == "laser":
+		locomotion_pose = "rifle"
+	elif locomotion_pose == "BLACKSTARS":
+		locomotion_pose = "bazinga"
 	var candidate := ""
 	if shoot_pose_left > 0.0:
 		candidate = ("run_shoot_" if moving else "stand_shoot_") + weapon_pose
 	else:
-		var locomotion_pose := weapon_pose
-		if locomotion_pose == "grenade_launcher":
-			locomotion_pose = "shotgun"
-		elif locomotion_pose == "laser":
-			locomotion_pose = "rifle"
-		elif locomotion_pose == "BLACKSTARS":
-			locomotion_pose = "bazinga"
 		candidate = ("run_" if moving else "idle_") + locomotion_pose
 	if not recovered_animation_player.has_animation(candidate):
 		candidate = ("run_shoot_rifle" if moving else "stand_shoot_rifle") if shoot_pose_left > 0.0 else ("run_rifle" if moving else "idle_rifle")
-	_play_recovered_animation(candidate)
+	if shoot_pose_left > 0.0:
+		# The original AttackState used WrapMode.Loop for automatic weapons and
+		# kept the same run-shoot state alive between bullets. Reconfigure the
+		# shared imported clip for the equipped weapon instead of restarting it
+		# from frame zero on every successful shot.
+		var shoot_animation := recovered_animation_player.get_animation(candidate)
+		shoot_animation.loop_mode = Animation.LOOP_LINEAR if bool(current_weapon.get("automatic", false)) else Animation.LOOP_NONE
+		if moving and weapon_pose not in ["machinegun", "jian"]:
+			var locomotion_candidate := "run_" + locomotion_pose
+			if not recovered_animation_player.has_animation(locomotion_candidate):
+				locomotion_candidate = "run_rifle"
+			_play_recovered_layered_animation(locomotion_candidate, candidate, restart_shoot_animation)
+			return
+	_play_recovered_animation(candidate, 0.08, restart_shoot_animation and shoot_pose_left > 0.0)
 
 func _set_fire_sound(sound_id: String) -> void:
 	# Kept as an API-compatible no-op; AudioDirector now owns overlapping and

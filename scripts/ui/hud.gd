@@ -2,7 +2,6 @@ class_name WarfareHUD
 extends CanvasLayer
 
 const JoystickScript = preload("res://scripts/ui/virtual_joystick.gd")
-const TouchButtonScript = preload("res://scripts/ui/touch_action_button.gd")
 const Atlas = preload("res://scripts/ui/original_atlas.gd")
 
 var world: WarfareGameWorld
@@ -10,28 +9,25 @@ var player: WarfarePlayer
 var level_data: Dictionary
 
 var health_bar: Range
-var shield_bar: Range
 var health_text: Label
 var ammo_text: Label
-var weapon_text: Label
 var weapon_icon: TextureRect
-var wave_text: Label
-var score_text: Label
-var credits_text: Label
-var enemy_text: Label
-var boss_panel: PanelContainer
+var boss_panel: Control
 var boss_bar: Range
-var boss_text: Label
-var dash_bar: Range
 var energy_bar: Range
-var ammo_panel: PanelContainer
-var mobile_weapon_button: Button
+var weapon_button: Button
 var announcement: Label
 var pause_overlay: Control
 var result_overlay: Control
 var touch_root: Control
 var crosshair: TextureRect
 var reticle_target_refresh := 0.0
+var hud_root: Control
+var pause_button: Button
+var skill_button: Button
+var boss_icon: TextureRect
+var move_joystick: WarfareVirtualJoystick
+var shoot_joystick: WarfareVirtualJoystick
 
 func setup(game_world: WarfareGameWorld, controlled_player: WarfarePlayer, data: Dictionary) -> void:
 	world = game_world
@@ -40,11 +36,12 @@ func setup(game_world: WarfareGameWorld, controlled_player: WarfarePlayer, data:
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	_build_vignette()
 	_build_status_hud()
 	_build_crosshair()
 	_build_touch_controls()
 	_build_pause_overlay()
+	get_viewport().size_changed.connect(_layout_original_hud)
+	_layout_original_hud()
 	if is_instance_valid(player):
 		player.health_changed.connect(_on_health_changed)
 		player.ammo_changed.connect(_on_ammo_changed)
@@ -70,128 +67,81 @@ func _process(delta: float) -> void:
 	if is_instance_valid(crosshair) and reticle_target_refresh <= 0.0:
 		reticle_target_refresh = 0.09
 		# StateAim.cs used the weapon's AimID sprite with UIConstant.COLOR_AIM.
-		# Keep the original cyan exactly, and switch to red only on a valid target.
-		crosshair.modulate = Color(1.0, 0.0, 0.0, 0.95) if player.is_reticle_on_enemy() else Color(0.0, 1.0, 1.0, 0.8)
-		crosshair.scale = Vector2.ONE * (1.2 if player.shoot_pose_left > 0.0 else 1.0)
-	wave_text.text = "WAVE  %d / %d" % [world.current_wave, int(level_data.waves)]
-	score_text.text = "SCORE  %07d" % world.score
-	credits_text.text = "CREDITS  %05d" % world.battle_credits
-	enemy_text.text = "HOSTILES  %02d" % world.alive_enemies
-
-func _build_vignette() -> void:
-	var overlay := ColorRect.new()
-	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var shader := Shader.new()
-	shader.code = """
-shader_type canvas_item;
-void fragment(){
-	vec2 p = UV * 2.0 - 1.0;
-	float edge = smoothstep(.54, 1.35, length(p * vec2(.78, 1.0)));
-	COLOR = vec4(.0, .015, .025, edge * .37);
-}
-"""
-	var material := ShaderMaterial.new()
-	material.shader = shader
-	overlay.material = material
-	add_child(overlay)
+		# The original reticle never pulsed while firing. It only changed to
+		# opaque red when StateAim detected a valid hostile target.
+		crosshair.modulate = Color.RED if player.is_reticle_on_enemy() else Color(0.0, 1.0, 1.0, 0.8)
 
 func _build_status_hud() -> void:
-	var top_left := PanelContainer.new()
-	top_left.position = Vector2(10, 10)
-	top_left.custom_minimum_size = Vector2(403, 108)
-	top_left.add_theme_stylebox_override("panel", _atlas_panel_style("hud_41", 14))
-	add_child(top_left)
-	var bars := VBoxContainer.new()
-	bars.add_theme_constant_override("separation", 5)
-	top_left.add_child(bars)
-	var sector := _label("SECTOR %02d • %s" % [int(level_data.number), str(level_data.name)], 15, Color(0.48, 0.88, 1.0))
-	bars.add_child(sector)
-	health_bar = _atlas_progress("hud_71", "hud_70", 100.0)
-	bars.add_child(health_bar)
-	shield_bar = _atlas_progress("hud_68", "hud_64", 100.0)
-	bars.add_child(shield_bar)
-	health_text = _label("ARMOR 100  •  SHIELD 100", 13, Color(0.86, 0.94, 0.98))
-	bars.add_child(health_text)
+	# The recovered prefab uses a 960x640 logical canvas. At wider/taller
+	# aspect ratios the anchors stay on the screen edges while every sprite is
+	# uniformly scaled. Keeping the original states separate is what gives the
+	# battle view its sparse, readable appearance.
+	hud_root = Control.new()
+	hud_root.name = "BattleHUDRoot"
+	hud_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	hud_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(hud_root)
 
-	var top_center := VBoxContainer.new()
-	top_center.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	top_center.position = Vector2(-150, 20)
-	top_center.custom_minimum_size = Vector2(300, 86)
-	top_center.alignment = BoxContainer.ALIGNMENT_CENTER
-	add_child(top_center)
-	wave_text = _label("WAVE  0 / %d" % int(level_data.waves), 19, Color(0.76, 0.94, 1.0))
-	wave_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	top_center.add_child(wave_text)
-	enemy_text = _label("HOSTILES  00", 14, Color(1.0, 0.48, 0.23))
-	enemy_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	top_center.add_child(enemy_text)
-	announcement = _label("", 22, Color(1.0, 0.78, 0.22))
-	announcement.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	top_center.add_child(announcement)
-
-	var top_right := PanelContainer.new()
-	top_right.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	top_right.position = Vector2(-413, 10)
-	top_right.custom_minimum_size = Vector2(403, 108)
-	top_right.add_theme_stylebox_override("panel", _atlas_panel_style("hud_42", 14))
-	add_child(top_right)
-	var stats := VBoxContainer.new()
-	stats.add_theme_constant_override("separation", 4)
-	top_right.add_child(stats)
-	score_text = _label("SCORE  0000000", 18, Color(0.75, 0.92, 0.98))
-	credits_text = _label("CREDITS  00000", 15, Color(1.0, 0.77, 0.2))
-	stats.add_child(score_text)
-	stats.add_child(credits_text)
-	var pause_button := Button.new()
-	pause_button.text = "Ⅱ  PAUSE"
-	pause_button.focus_mode = Control.FOCUS_NONE
+	pause_button = _atlas_button("PauseButton", "skill_bk")
+	_make_centered_icon(pause_button, Atlas.hud("hud_29"), Vector2(34, 35), Vector2(88, 74))
 	pause_button.pressed.connect(toggle_pause)
-	stats.add_child(pause_button)
+	hud_root.add_child(pause_button)
 
-	ammo_panel = PanelContainer.new()
-	ammo_panel.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	ammo_panel.position = Vector2(-322, -154)
-	ammo_panel.custom_minimum_size = Vector2(302, 134)
-	ammo_panel.add_theme_stylebox_override("panel", _atlas_panel_style("hud_47", 16))
-	add_child(ammo_panel)
-	var ammo_column := VBoxContainer.new()
-	ammo_column.add_theme_constant_override("separation", 3)
-	ammo_panel.add_child(ammo_column)
-	weapon_text = _label("AR-01 RIFLE", 14, Color(0.45, 0.88, 1.0))
-	var weapon_row := HBoxContainer.new()
-	weapon_row.add_theme_constant_override("separation", 9)
-	weapon_icon = TextureRect.new()
-	weapon_icon.custom_minimum_size = Vector2(92, 58)
-	weapon_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	weapon_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	weapon_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	weapon_row.add_child(weapon_icon)
-	weapon_row.add_child(weapon_text)
-	ammo_text = _label("ENERGY 5000 / 5000", 24, Color.WHITE)
-	ammo_column.add_child(weapon_row)
-	ammo_column.add_child(ammo_text)
+	health_bar = _atlas_progress("hud_71", "hud_70", 200.0)
+	health_bar.name = "PlayerHP"
+	hud_root.add_child(health_bar)
+	health_text = _label("200/200", 13, Color(0.0, 0.82, 1.0))
+	health_text.name = "PlayerHPValue"
+	health_text.add_theme_constant_override("outline_size", 2)
+	health_text.add_theme_color_override("font_outline_color", Color.BLACK)
+	hud_root.add_child(health_text)
+
 	energy_bar = _atlas_progress("hud_69", "hud_70", 5000.0)
-	ammo_column.add_child(energy_bar)
-	dash_bar = _progress(Color(1.0, 0.67, 0.14), 1.0)
-	dash_bar.custom_minimum_size.y = 6
-	dash_bar.value = 1.0
-	ammo_column.add_child(dash_bar)
+	energy_bar.name = "AmmoBar"
+	energy_bar.fill_mode = TextureProgressBar.FILL_RIGHT_TO_LEFT
+	hud_root.add_child(energy_bar)
+	ammo_text = _label("5000/5000", 13, Color(1.0, 0.78, 0.05))
+	ammo_text.name = "AmmoValue"
+	ammo_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	ammo_text.add_theme_constant_override("outline_size", 2)
+	ammo_text.add_theme_color_override("font_outline_color", Color.BLACK)
+	hud_root.add_child(ammo_text)
 
-	boss_panel = PanelContainer.new()
-	boss_panel.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	boss_panel.position = Vector2(-330, 117)
-	boss_panel.custom_minimum_size = Vector2(660, 74)
+	weapon_button = _atlas_button("WeaponSelector", "hud_59")
+	weapon_button.tooltip_text = "SWITCH WEAPON"
+	weapon_button.pressed.connect(func(): if is_instance_valid(player): player.cycle_weapon(1))
+	hud_root.add_child(weapon_button)
+	weapon_icon = _make_centered_icon(weapon_button, null, Vector2(100, 77), Vector2(116, 98))
+
+	skill_button = _atlas_button("SkillButton", "hud_32")
+	skill_button.tooltip_text = "DASH"
+	_make_centered_icon(skill_button, Atlas.hud("skill_1"), Vector2(65, 66), Vector2(102, 98))
+	skill_button.pressed.connect(func(): if is_instance_valid(player): player.request_touch_dash())
+	hud_root.add_child(skill_button)
+
+	boss_panel = Control.new()
+	boss_panel.name = "BossState"
+	boss_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	boss_panel.visible = false
-	boss_panel.add_theme_stylebox_override("panel", _atlas_panel_style("hud_44", 15))
-	add_child(boss_panel)
-	var boss_column := VBoxContainer.new()
-	boss_panel.add_child(boss_column)
-	boss_text = _label("BOSS", 16, Color(1.0, 0.55, 0.25))
-	boss_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	boss_bar = _progress(Color(0.92, 0.08, 0.04), 100.0)
-	boss_column.add_child(boss_text)
-	boss_column.add_child(boss_bar)
+	hud_root.add_child(boss_panel)
+	boss_bar = _atlas_progress("hud_72", "hud_73", 100.0)
+	boss_bar.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	boss_panel.add_child(boss_bar)
+	boss_icon = TextureRect.new()
+	boss_icon.name = "BossIcon"
+	boss_icon.texture = Atlas.hud("hud_35")
+	boss_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	boss_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	boss_icon.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	boss_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	boss_panel.add_child(boss_icon)
+
+	announcement = _label("", 22, Color(1.0, 0.78, 0.22))
+	announcement.name = "Announcement"
+	announcement.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	announcement.add_theme_constant_override("outline_size", 4)
+	announcement.add_theme_color_override("font_outline_color", Color.BLACK)
+	hud_root.add_child(announcement)
 
 func _build_crosshair() -> void:
 	# A real full-screen Control parent is required here. CanvasLayer itself has
@@ -207,7 +157,9 @@ func _build_crosshair() -> void:
 	crosshair.pivot_offset = crosshair.size * 0.5
 	crosshair.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	crosshair.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	crosshair.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	# HUD.png used bilinear filtering in Unity. This matters when the original
+	# 960x640 UI is uniformly scaled to modern phone and desktop resolutions.
+	crosshair.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	crosshair.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	crosshair.modulate = Color(0.0, 1.0, 1.0, 0.8)
 	reticle_layer.add_child(crosshair)
@@ -222,24 +174,18 @@ func _build_touch_controls() -> void:
 	touch_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	touch_root.visible = bool(GameState.settings.show_touch_controls)
 	add_child(touch_root)
-	var joystick := JoystickScript.new()
-	joystick.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
-	# HUD.prefab authored these centers at (-320, -170)/(320, -170)
-	# in its 960x640 reference canvas. This is the equivalent 16:9 layout.
-	joystick.position = Vector2(176, -294)
-	joystick.size = Vector2(208, 208)
-	joystick.vector_changed.connect(func(value):
+	move_joystick = JoystickScript.new()
+	move_joystick.name = "MoveJoyStick"
+	move_joystick.background_sprite = "hud_37"
+	move_joystick.vector_changed.connect(func(value):
 		if is_instance_valid(player): player.set_touch_move(value)
 	)
-	touch_root.add_child(joystick)
+	touch_root.add_child(move_joystick)
 
 	# The original HUD used a second joystick for camera rotation and firing,
 	# rather than a large modern FIRE button.
-	var shoot_joystick := JoystickScript.new()
+	shoot_joystick = JoystickScript.new()
 	shoot_joystick.name = "ShootJoyStick"
-	shoot_joystick.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	shoot_joystick.position = Vector2(-384, -294)
-	shoot_joystick.size = Vector2(208, 208)
 	shoot_joystick.background_sprite = "hud_36"
 	shoot_joystick.vector_changed.connect(func(value):
 		if is_instance_valid(player): player.apply_touch_look(value * Vector2(5.5, 4.2))
@@ -248,33 +194,64 @@ func _build_touch_controls() -> void:
 	shoot_joystick.released.connect(func(): if is_instance_valid(player): player.set_touch_fire(false))
 	touch_root.add_child(shoot_joystick)
 
-	# State-Weapon in the Unity HUD was a compact right-edge draggable item,
-	# rather than separate PREV/SWAP buttons over the ammunition panel.
-	mobile_weapon_button = Button.new()
-	mobile_weapon_button.name = "MobileWeaponSelector"
-	mobile_weapon_button.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	mobile_weapon_button.position = Vector2(-118, 130)
-	mobile_weapon_button.size = Vector2(96, 88)
-	mobile_weapon_button.expand_icon = true
-	mobile_weapon_button.tooltip_text = "SWITCH WEAPON"
-	mobile_weapon_button.add_theme_stylebox_override("normal", _atlas_panel_style("hud_47", 10))
-	mobile_weapon_button.add_theme_stylebox_override("hover", _atlas_panel_style("hud_47", 10))
-	mobile_weapon_button.pressed.connect(func(): if is_instance_valid(player): player.cycle_weapon(1))
-	touch_root.add_child(mobile_weapon_button)
+func _layout_original_hud() -> void:
+	if not is_instance_valid(hud_root):
+		return
+	var ui_scale := _original_ui_scale()
 
-	var dash := _touch_button("DASH", Color(1.0, 0.7, 0.08), Vector2(400, -108), Vector2(72, 72))
-	dash.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
-	dash.pressed.connect(func(): if is_instance_valid(player): player.request_touch_dash())
-	touch_root.add_child(dash)
+	# HUD.prefab coordinates after converting Unity's positive-up Y to
+	# Godot's positive-down canvas coordinates.
+	_place_original(pause_button, Vector2(0.0, 0.0), Vector2(50, 40), Vector2(88, 74), ui_scale)
+	_place_original(health_bar, Vector2(0.0, 0.0), Vector2(205, 55), Vector2(215, 17), ui_scale)
+	_place_original(health_text, Vector2(0.0, 0.0), Vector2(205, 79), Vector2(215, 24), ui_scale)
+	_place_original(energy_bar, Vector2(1.0, 0.0), Vector2(-200, 55), Vector2(215, 17), ui_scale)
+	_place_original(ammo_text, Vector2(1.0, 0.0), Vector2(-200, 79), Vector2(215, 24), ui_scale)
+	_place_original(weapon_button, Vector2(1.0, 0.5), Vector2(-70, -160), Vector2(116, 98), ui_scale)
+	_place_original(skill_button, Vector2(1.0, 0.5), Vector2(-50, 50), Vector2(102, 98), ui_scale)
+	_place_original(boss_panel, Vector2(0.5, 0.0), Vector2(0, 20), Vector2(510, 32), ui_scale)
+	_place_original(announcement, Vector2(0.5, 0.0), Vector2(0, 72), Vector2(600, 40), ui_scale)
 
-	# Keep the useful restored energy readout, but place it between the original
-	# joystick centers so it cannot obstruct either thumb zone.
-	if is_instance_valid(ammo_panel):
-		ammo_panel.anchor_left = 0.5
-		ammo_panel.anchor_right = 0.5
-		ammo_panel.anchor_top = 1.0
-		ammo_panel.anchor_bottom = 1.0
-		ammo_panel.position = Vector2(-151, -144)
+	health_text.add_theme_font_size_override("font_size", maxi(10, roundi(13.0 * ui_scale)))
+	ammo_text.add_theme_font_size_override("font_size", maxi(10, roundi(13.0 * ui_scale)))
+	announcement.add_theme_font_size_override("font_size", maxi(14, roundi(22.0 * ui_scale)))
+
+	if is_instance_valid(boss_icon):
+		var boss_icon_size := Vector2(53, 19) * ui_scale
+		boss_icon.size = boss_icon_size
+		boss_icon.position = boss_panel.size * 0.5 + Vector2(-260.0 * ui_scale, 0.0) - boss_icon_size * 0.5
+
+	if is_instance_valid(move_joystick):
+		_place_original(move_joystick, Vector2(0.5, 0.5), Vector2(-320, 170), Vector2(200, 201), ui_scale)
+	if is_instance_valid(shoot_joystick):
+		_place_original(shoot_joystick, Vector2(0.5, 0.5), Vector2(320, 170), Vector2(200, 197), ui_scale)
+
+	_resize_crosshair()
+
+func _place_original(control: Control, anchor: Vector2, center_offset: Vector2, logical_size: Vector2, ui_scale: float) -> void:
+	if not is_instance_valid(control):
+		return
+	var half_size := logical_size * ui_scale * 0.5
+	var center := center_offset * ui_scale
+	control.anchor_left = anchor.x
+	control.anchor_right = anchor.x
+	control.anchor_top = anchor.y
+	control.anchor_bottom = anchor.y
+	control.offset_left = center.x - half_size.x
+	control.offset_right = center.x + half_size.x
+	control.offset_top = center.y - half_size.y
+	control.offset_bottom = center.y + half_size.y
+
+func _resize_crosshair() -> void:
+	if not is_instance_valid(crosshair) or crosshair.texture == null:
+		return
+	var display_size := crosshair.texture.get_size() * _original_ui_scale()
+	crosshair.custom_minimum_size = display_size
+	crosshair.size = display_size
+	crosshair.pivot_offset = display_size * 0.5
+
+func _original_ui_scale() -> float:
+	var viewport_size := get_viewport().get_visible_rect().size
+	return maxf(0.1, minf(viewport_size.x / 960.0, viewport_size.y / 640.0))
 
 func _build_pause_overlay() -> void:
 	pause_overlay = _modal_base()
@@ -341,31 +318,29 @@ func announce(message: String, duration := 2.0) -> void:
 	tween.tween_interval(duration)
 	tween.tween_property(announcement, "modulate:a", 0.0, 0.5)
 
-func report_boss(current: float, maximum: float, title := "ALIEN OVERLORD") -> void:
+func report_boss(current: float, maximum: float, _title := "ALIEN OVERLORD") -> void:
 	boss_panel.visible = true
 	boss_bar.max_value = maximum
 	boss_bar.value = current
-	boss_text.text = title
 
 func _on_health_changed(health: float, shield: float) -> void:
-	health_bar.value = health
-	shield_bar.value = shield
-	health_text.text = "ARMOR %03d  •  SHIELD %03d" % [int(health), int(shield)]
+	var maximum := 200.0
+	if is_instance_valid(player):
+		maximum = player.max_health + player.max_shield
+	health_bar.max_value = maximum
+	health_bar.value = health + shield
+	health_text.text = "%d/%d" % [int(health + shield), int(maximum)]
 
 func _on_ammo_changed(current: int, maximum: int, reloading: bool) -> void:
-	ammo_text.text = "ENERGY %04d / %04d" % [current, maximum]
-	ammo_text.add_theme_color_override("font_color", Color(1.0, 0.26, 0.12) if current < maximum / 10 else Color.WHITE)
+	ammo_text.text = "%d/%d" % [current, maximum]
+	ammo_text.add_theme_color_override("font_color", Color(1.0, 0.26, 0.12) if current < maximum / 10 else Color(1.0, 0.78, 0.05))
 	if is_instance_valid(energy_bar):
 		energy_bar.max_value = maximum
 		energy_bar.value = current
 
 func _on_weapon_changed(_weapon_id: String, data: Dictionary) -> void:
-	weapon_text.text = str(data.name)
-	weapon_text.add_theme_color_override("font_color", data.color)
 	if is_instance_valid(weapon_icon):
 		weapon_icon.texture = Atlas.weapon_icon(int(data.id))
-	if is_instance_valid(mobile_weapon_button):
-		mobile_weapon_button.icon = Atlas.weapon_icon(int(data.id))
 	_set_reticle_for_weapon(data)
 
 func _set_reticle_for_weapon(data: Dictionary) -> void:
@@ -378,15 +353,18 @@ func _set_reticle_for_weapon(data: Dictionary) -> void:
 	crosshair.texture = texture
 	if texture:
 		var original_size := texture.get_size()
-		crosshair.custom_minimum_size = original_size
-		crosshair.size = original_size
-		crosshair.pivot_offset = original_size * 0.5
+		var display_size := original_size * _original_ui_scale()
+		crosshair.custom_minimum_size = display_size
+		crosshair.size = display_size
+		crosshair.pivot_offset = display_size * 0.5
 
 func _should_build_mobile_ui() -> bool:
 	return OS.has_feature("mobile") or bool(ProjectSettings.get_setting("debug/restoration/force_mobile_ui", false))
 
 func _on_dash_changed(ratio: float) -> void:
-	dash_bar.value = ratio
+	if is_instance_valid(skill_button):
+		skill_button.disabled = ratio < 0.999
+		skill_button.modulate = Color(1.0, 1.0, 1.0, lerpf(0.42, 1.0, clampf(ratio, 0.0, 1.0)))
 
 func _restart() -> void:
 	get_tree().paused = false
@@ -400,54 +378,49 @@ func _next_level() -> void:
 	else:
 		GameState.return_to_menu()
 
-func _touch_button(caption: String, color: Color, offset: Vector2, button_size: Vector2) -> TouchActionButton:
-	var button := TouchButtonScript.new()
-	button.caption = caption
-	button.accent = color
-	button.position = offset
-	button.size = button_size
-	return button
-
-func _progress(color: Color, maximum: float) -> ProgressBar:
-	var bar := ProgressBar.new()
-	bar.custom_minimum_size = Vector2(250, 14)
-	bar.max_value = maximum
-	bar.value = maximum
-	bar.show_percentage = false
-	var background := StyleBoxFlat.new()
-	background.bg_color = Color(0.005, 0.02, 0.03, 0.85)
-	background.set_corner_radius_all(3)
-	var fill := StyleBoxFlat.new()
-	fill.bg_color = color
-	fill.set_corner_radius_all(3)
-	bar.add_theme_stylebox_override("background", background)
-	bar.add_theme_stylebox_override("fill", fill)
-	return bar
-
 func _atlas_progress(fill_sprite: String, background_sprite: String, maximum: float) -> TextureProgressBar:
 	var bar := TextureProgressBar.new()
-	bar.custom_minimum_size = Vector2(250, 17)
+	bar.custom_minimum_size = Vector2.ZERO
 	bar.max_value = maximum
 	bar.value = maximum
 	bar.texture_under = Atlas.hud(background_sprite)
 	bar.texture_progress = Atlas.hud(fill_sprite)
+	bar.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	bar.nine_patch_stretch = true
 	bar.stretch_margin_left = 8
 	bar.stretch_margin_right = 8
 	return bar
 
-func _atlas_panel_style(sprite_name: String, margin: float) -> StyleBox:
-	var texture := Atlas.hud(sprite_name)
-	if texture == null:
-		return _panel_style(Color(0.015, 0.06, 0.085, 0.86), Color(0.08, 0.52, 0.68, 0.78), 7)
+func _atlas_button(node_name: String, sprite_name: String) -> Button:
+	var button := Button.new()
+	button.name = node_name
+	button.text = ""
+	button.focus_mode = Control.FOCUS_NONE
+	button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	for state in ["normal", "hover", "pressed", "disabled"]:
+		button.add_theme_stylebox_override(state, _atlas_button_style(sprite_name))
+	return button
+
+func _atlas_button_style(sprite_name: String) -> StyleBoxTexture:
 	var style := StyleBoxTexture.new()
-	style.texture = texture
-	style.set_texture_margin_all(margin)
-	style.content_margin_left = margin
-	style.content_margin_right = margin
-	style.content_margin_top = margin * 0.75
-	style.content_margin_bottom = margin * 0.75
+	style.texture = Atlas.hud(sprite_name)
 	return style
+
+func _make_centered_icon(parent: Control, texture: Texture2D, logical_size: Vector2, parent_logical_size: Vector2) -> TextureRect:
+	var icon := TextureRect.new()
+	icon.texture = texture
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var relative_size := logical_size / parent_logical_size
+	icon.anchor_left = (1.0 - relative_size.x) * 0.5
+	icon.anchor_right = 1.0 - icon.anchor_left
+	icon.anchor_top = (1.0 - relative_size.y) * 0.5
+	icon.anchor_bottom = 1.0 - icon.anchor_top
+	parent.add_child(icon)
+	return icon
 
 func _panel_style(fill: Color, border: Color, radius: int) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
