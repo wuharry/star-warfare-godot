@@ -2,6 +2,15 @@ extends Control
 
 const Atlas = preload("res://scripts/ui/original_atlas.gd")
 
+# Menu art is loaded as individual component textures rather than sampled out of
+# the recovered NGUI page atlases at runtime. The hand written rectangles this
+# replaces were a standing source of bugs: the button plate sample was wide
+# enough to pull in the cyan play arrow packed two pixels to its right and short
+# enough to slice off the bottom border, and the title sample clipped its tail
+# flourish while catching the yellow reward coin beside it.
+# Regenerate with tools/ui_extractor/extract_ui_components.py.
+const COMPONENT_DIR := "res://assets/ui/components/"
+
 var content: VBoxContainer
 var modal_layer: Control
 var music_player: AudioStreamPlayer
@@ -66,7 +75,7 @@ void fragment() {
 	background.material = material
 	add_child(background)
 
-	var hero_texture := Atlas.region("res://assets/original/ui/pages/16.png", Rect2(0, 0, 1024, 650))
+	var hero_texture := _component("menu_hero")
 	if hero_texture:
 		var hero := TextureRect.new()
 		hero.texture = hero_texture
@@ -133,27 +142,21 @@ func _build_header() -> void:
 	add_child(modal_layer)
 
 func _build_main_buttons() -> void:
-	var logo_texture := Atlas.region("res://assets/original/ui/pages/2.png", Rect2(5, 180, 500, 112))
+	var logo_texture := _component("menu_logo")
 	if logo_texture:
 		var logo := TextureRect.new()
 		logo.texture = logo_texture
-		logo.custom_minimum_size = Vector2(460, 103)
+		logo.custom_minimum_size = Vector2(460, 128)
 		logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		# The legacy atlas packs a yellow reward coin partly over the title's
-		# rectangular bounds. It was a separate widget in NGUI, so discard only
-		# that packed yellow overlay when drawing the standalone logo.
-		var logo_shader := Shader.new()
-		logo_shader.code = "shader_type canvas_item; void fragment(){ vec4 c = texture(TEXTURE, UV); if(c.r > .72 && c.g > .52 && c.b < .22) c.a = 0.0; COLOR = c * COLOR; }"
-		var logo_material := ShaderMaterial.new()
-		logo_material.shader = logo_shader
-		logo.material = logo_material
+		# The shader that used to erase a yellow reward coin from this sprite is
+		# gone: the coin was a neighbouring atlas entry the old rectangle reached
+		# into, and the extracted component excludes it.
 		content.add_child(logo)
-		var subtitle_texture := Atlas.region("res://assets/original/ui/pages/2.png", Rect2(4, 495, 415, 60))
 		var subtitle_logo := TextureRect.new()
-		subtitle_logo.texture = subtitle_texture
-		subtitle_logo.custom_minimum_size = Vector2(410, 54)
+		subtitle_logo.texture = _component("menu_subtitle")
+		subtitle_logo.custom_minimum_size = Vector2(410, 34)
 		subtitle_logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		subtitle_logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		subtitle_logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -239,7 +242,7 @@ func _show_armory() -> void:
 	modal_layer.add_child(store)
 
 	var backdrop := TextureRect.new()
-	backdrop.texture = Atlas.region("res://assets/original/ui/pages/4.png", Rect2(1568, 0, 480, 640))
+	backdrop.texture = _component("store_backdrop")
 	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	backdrop.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	backdrop.stretch_mode = TextureRect.STRETCH_SCALE
@@ -269,7 +272,7 @@ func _show_armory() -> void:
 	var back := Button.new()
 	back.text = tr("◀  BACK")
 	back.custom_minimum_size = Vector2(150, 54)
-	back.add_theme_stylebox_override("normal", _recovered_button_style(Rect2(632, 0, 361, 56), Color(0.78, 0.95, 1.0)))
+	back.add_theme_stylebox_override("normal", _recovered_button_style("button_normal", Color(0.78, 0.95, 1.0)))
 	back.pressed.connect(func(): AudioDirector.play_ui("back"); _close_modal())
 	nav.add_child(back)
 	var title := _label(tr("STORE"), 31, Color(0.72, 1.0, 1.0))
@@ -375,7 +378,7 @@ func _show_armory() -> void:
 	store_equip_button.text = tr("EQUIP")
 	store_equip_button.custom_minimum_size.y = 58
 	store_equip_button.add_theme_font_size_override("font_size", 22)
-	store_equip_button.add_theme_stylebox_override("normal", _recovered_button_style(Rect2(632, 428, 361, 56), Color(0.74, 1.0, 0.95)))
+	store_equip_button.add_theme_stylebox_override("normal", _recovered_button_style("button_equip", Color(0.74, 1.0, 0.95)))
 	store_equip_button.pressed.connect(_equip_store_selection)
 	detail_column.add_child(store_equip_button)
 
@@ -614,16 +617,42 @@ func _menu_button(title_text: String, subtitle: String) -> Button:
 	button.add_theme_font_size_override("font_size", 17)
 	button.add_theme_color_override("font_color", Color(0.79, 0.92, 0.96))
 	button.add_theme_color_override("font_hover_color", Color.WHITE)
-	button.add_theme_stylebox_override("normal", _recovered_button_style(Rect2(632, 0, 361, 56), Color(0.72, 0.92, 1.0, 0.96)))
-	button.add_theme_stylebox_override("hover", _recovered_button_style(Rect2(632, 60, 361, 56), Color.WHITE))
-	button.add_theme_stylebox_override("pressed", _recovered_button_style(Rect2(632, 120, 361, 56), Color(0.72, 1.0, 1.0)))
+	button.add_theme_color_override("font_pressed_color", Color.WHITE)
+	button.add_theme_color_override("font_focus_color", Color.WHITE)
+	button.add_theme_stylebox_override("normal", _main_menu_button_style(Color(0.012, 0.024, 0.032, 0.78), Color(0.32, 0.43, 0.47, 0.82), 2))
+	button.add_theme_stylebox_override("hover", _main_menu_button_style(Color(0.025, 0.105, 0.13, 0.9), Color(0.18, 0.82, 0.92, 1.0), 3))
+	button.add_theme_stylebox_override("pressed", _main_menu_button_style(Color(0.035, 0.16, 0.19, 0.94), Color(0.42, 0.94, 1.0, 1.0), 3))
+	button.add_theme_stylebox_override("focus", _main_menu_button_style(Color(0.02, 0.08, 0.1, 0.84), Color(0.18, 0.82, 0.92, 1.0), 3))
 	return button
 
-func _recovered_button_style(rectangle: Rect2, tint: Color) -> StyleBoxTexture:
+func _main_menu_button_style(fill: Color, border: Color, left_border: int) -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = fill
+	style.border_color = border
+	style.border_width_left = left_border
+	style.border_width_top = 1
+	style.border_width_right = 1
+	style.border_width_bottom = 1
+	style.set_corner_radius_all(2)
+	style.content_margin_left = 18
+	style.content_margin_right = 18
+	style.content_margin_top = 5
+	style.content_margin_bottom = 5
+	return style
+
+func _component(component_name: String) -> Texture2D:
+	var path := COMPONENT_DIR + component_name + ".png"
+	return load(path) if ResourceLoader.exists(path) else null
+
+func _recovered_button_style(component_name: String, tint: Color) -> StyleBoxTexture:
 	var style := StyleBoxTexture.new()
-	style.texture = Atlas.region("res://assets/original/ui/pages/4.png", rectangle)
+	style.texture = _component(component_name)
 	style.modulate_color = tint
-	style.set_texture_margin_all(12)
+	# The plates are 2x source art, where a nine-patch would draw its corner
+	# slices at native texture size - twice their intended scale - and buckle the
+	# chamfered ends into visible steps. Leaving the texture margins at zero
+	# stretches the plate whole, which holds its shape at any button size and
+	# loses nothing, because the source has resolution to spare.
 	style.content_margin_left = 20
 	style.content_margin_right = 16
 	style.content_margin_top = 8
