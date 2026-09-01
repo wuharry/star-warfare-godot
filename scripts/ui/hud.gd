@@ -3,6 +3,10 @@ extends CanvasLayer
 
 const JoystickScript = preload("res://scripts/ui/virtual_joystick.gd")
 const Atlas = preload("res://scripts/ui/original_atlas.gd")
+const POWER_SLOT_KEYS := [
+	KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5,
+	KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10,
+]
 
 var world: WarfareGameWorld
 var player: WarfarePlayer
@@ -28,6 +32,16 @@ var skill_button: Button
 var boss_icon: TextureRect
 var move_joystick: WarfareVirtualJoystick
 var shoot_joystick: WarfareVirtualJoystick
+var clock_label: Label
+var clock_refresh := 0.0
+var power_controller: ArmorPowerController
+var power_panel: PanelContainer
+var power_grid: GridContainer
+var power_buttons: Dictionary = {}
+var power_icons: Dictionary = {}
+var power_shadows: Dictionary = {}
+var power_cooldown_labels: Dictionary = {}
+var power_shortcut_labels: Dictionary = {}
 
 func setup(game_world: WarfareGameWorld, controlled_player: WarfarePlayer, data: Dictionary) -> void:
 	world = game_world
@@ -39,6 +53,7 @@ func _ready() -> void:
 	_build_status_hud()
 	_build_crosshair()
 	_build_touch_controls()
+	_build_armor_power_hud()
 	_build_pause_overlay()
 	get_viewport().size_changed.connect(_layout_original_hud)
 	_layout_original_hud()
@@ -59,10 +74,25 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") and not is_instance_valid(result_overlay):
 		toggle_pause()
 		get_viewport().set_input_as_handled()
+		return
+	if event is InputEventKey:
+		var key_event := event as InputEventKey
+		if not key_event.pressed or key_event.echo or get_tree().paused or is_instance_valid(result_overlay):
+			return
+		var slot_index := POWER_SLOT_KEYS.find(key_event.keycode)
+		if slot_index < 0:
+			slot_index = POWER_SLOT_KEYS.find(key_event.physical_keycode)
+		if slot_index >= 0 and _activate_power_slot(slot_index):
+			get_viewport().set_input_as_handled()
 
 func _process(delta: float) -> void:
+	_update_armor_power_hud()
 	if not is_instance_valid(world):
 		return
+	clock_refresh -= delta
+	if is_instance_valid(clock_label) and clock_refresh <= 0.0:
+		clock_refresh = 0.25
+		_update_clock()
 	reticle_target_refresh -= delta
 	if is_instance_valid(crosshair) and reticle_target_refresh <= 0.0:
 		reticle_target_refresh = 0.09
@@ -136,6 +166,15 @@ func _build_status_hud() -> void:
 	boss_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	boss_panel.add_child(boss_icon)
 
+	# Sector clock. The campaign shares one continuous world time, so this is
+	# the only place a player can see which way the light is about to go.
+	clock_label = _label("", 13, Color(0.62, 0.86, 0.95))
+	clock_label.name = "SectorClock"
+	clock_label.add_theme_constant_override("outline_size", 2)
+	clock_label.add_theme_color_override("font_outline_color", Color.BLACK)
+	hud_root.add_child(clock_label)
+	_update_clock()
+
 	announcement = _label("", 22, Color(1.0, 0.78, 0.22))
 	announcement.name = "Announcement"
 	announcement.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -194,6 +233,146 @@ func _build_touch_controls() -> void:
 	shoot_joystick.released.connect(func(): if is_instance_valid(player): player.set_touch_fire(false))
 	touch_root.add_child(shoot_joystick)
 
+func _build_armor_power_hud() -> void:
+	# GameWorld creates this controller before the HUD. Keeping that ownership
+	# outside CanvasLayer makes the same timers/effects run on a headless host.
+	if not is_instance_valid(player):
+		return
+	power_controller = player.armor_power_controller as ArmorPowerController
+	if not is_instance_valid(power_controller):
+		return
+
+	power_panel = PanelContainer.new()
+	power_panel.name = "ArmorPowerPanel"
+	power_panel.mouse_filter = Control.MOUSE_FILTER_PASS
+	power_panel.add_theme_stylebox_override(
+		"panel",
+		_panel_style(Color(0.005, 0.025, 0.04, 0.72), Color(0.08, 0.72, 0.92, 0.72), 8)
+	)
+	hud_root.add_child(power_panel)
+	power_grid = GridContainer.new()
+	power_grid.name = "ArmorPowerGrid"
+	power_grid.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	power_panel.add_child(power_grid)
+
+	if not power_controller.skills_changed.is_connected(_rebuild_armor_power_buttons):
+		power_controller.skills_changed.connect(_rebuild_armor_power_buttons)
+	_rebuild_armor_power_buttons()
+
+func _rebuild_armor_power_buttons() -> void:
+	if not is_instance_valid(power_grid) or not is_instance_valid(power_controller):
+		return
+	for child in power_grid.get_children():
+		# Rebuilds happen on armor-change signals. Immediate free is safe here
+		# (buttons do not emit that signal) and avoids orphaning a queued Control
+		# after it has already been detached from the SceneTree.
+		child.free()
+	power_buttons.clear()
+	power_icons.clear()
+	power_shadows.clear()
+	power_cooldown_labels.clear()
+	power_shortcut_labels.clear()
+
+	var available := power_controller.get_available_skill_indices()
+	power_grid.columns = maxi(1, mini(5, available.size()))
+	power_panel.visible = not available.is_empty()
+	for slot_index in range(available.size()):
+		var skill_index := int(available[slot_index])
+		var state := power_controller.get_skill_state(skill_index)
+		var button := _atlas_button("ArmorPower_%d" % skill_index, "skill_bk")
+		button.custom_minimum_size = Vector2(54, 54)
+		button.tooltip_text = "%s\n%s\n%s: %.0fs  %s: %.0fs" % [
+			str(state.get("name", "ARMOR POWER")), str(state.get("summary", "")),
+			tr("DURATION"), float(state.get("duration", 0.0)),
+			tr("COOLDOWN"), float(state.get("cooldown", 0.0)),
+		]
+		button.pressed.connect(_activate_armor_power.bind(skill_index))
+		power_grid.add_child(button)
+
+		# Unity's HUD atlas stores a dark shadow at the even sprite index and
+		# its lit/ready version immediately after it.
+		var shadow := _make_centered_icon(
+			button, Atlas.hud("skill_%d" % (skill_index * 2)), Vector2(48, 48), Vector2(54, 54)
+		)
+		var icon := _make_centered_icon(
+			button, Atlas.hud("skill_%d" % (skill_index * 2 + 1)), Vector2(48, 48), Vector2(54, 54)
+		)
+		var cooldown_label := _label("", 18, Color.WHITE)
+		cooldown_label.name = "Cooldown"
+		cooldown_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		cooldown_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		cooldown_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		cooldown_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		cooldown_label.add_theme_constant_override("outline_size", 4)
+		cooldown_label.add_theme_color_override("font_outline_color", Color.BLACK)
+		button.add_child(cooldown_label)
+		var shortcut_label := _label("F%d" % (slot_index + 1), 9, Color(0.68, 0.94, 1.0))
+		shortcut_label.name = "Shortcut"
+		shortcut_label.position = Vector2(4, 2)
+		shortcut_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		shortcut_label.add_theme_constant_override("outline_size", 2)
+		shortcut_label.add_theme_color_override("font_outline_color", Color.BLACK)
+		button.add_child(shortcut_label)
+
+		power_buttons[skill_index] = button
+		power_icons[skill_index] = icon
+		power_shadows[skill_index] = shadow
+		power_cooldown_labels[skill_index] = cooldown_label
+		power_shortcut_labels[skill_index] = shortcut_label
+
+	_update_armor_power_hud()
+	_layout_original_hud()
+
+func _activate_power_slot(slot_index: int) -> bool:
+	if not is_instance_valid(power_controller):
+		return false
+	var available := power_controller.get_available_skill_indices()
+	if slot_index < 0 or slot_index >= available.size():
+		return false
+	_activate_armor_power(int(available[slot_index]))
+	return true
+
+func _activate_armor_power(skill_index: int) -> void:
+	if not is_instance_valid(power_controller) or get_tree().paused or is_instance_valid(result_overlay):
+		return
+	if power_controller.request_activate(skill_index):
+		var state := power_controller.get_skill_state(skill_index)
+		AudioDirector.play_ui("accept", -5.0)
+		announce(str(state.get("name", "ARMOR POWER")), 0.85)
+		_update_armor_power_hud()
+
+func _update_armor_power_hud() -> void:
+	if not is_instance_valid(power_controller):
+		return
+	for skill_index_value in power_buttons.keys():
+		var skill_index := int(skill_index_value)
+		var button: Button = power_buttons.get(skill_index) as Button
+		var icon: TextureRect = power_icons.get(skill_index) as TextureRect
+		var shadow: TextureRect = power_shadows.get(skill_index) as TextureRect
+		var cooldown_label: Label = power_cooldown_labels.get(skill_index) as Label
+		if not is_instance_valid(button) or not is_instance_valid(cooldown_label):
+			continue
+		var state := power_controller.get_skill_state(skill_index)
+		var active_left := float(state.get("active_left", 0.0))
+		var cooldown_left := float(state.get("cooldown_left", 0.0))
+		var ready := bool(state.get("ready", false))
+		button.disabled = not ready
+		if is_instance_valid(icon):
+			icon.visible = ready or active_left > 0.0
+		if is_instance_valid(shadow):
+			shadow.visible = not ready and active_left <= 0.0
+		if active_left > 0.0:
+			cooldown_label.text = str(ceili(active_left))
+			cooldown_label.add_theme_color_override("font_color", Color(0.25, 1.0, 1.0))
+			button.modulate = Color.WHITE
+		elif cooldown_left > 0.0:
+			cooldown_label.text = str(ceili(cooldown_left))
+			cooldown_label.add_theme_color_override("font_color", Color(0.78, 0.84, 0.9))
+			button.modulate = Color(0.72, 0.78, 0.84, 0.82)
+		else:
+			cooldown_label.text = ""
+			button.modulate = Color.WHITE
+
 func _layout_original_hud() -> void:
 	if not is_instance_valid(hud_root):
 		return
@@ -210,10 +389,35 @@ func _layout_original_hud() -> void:
 	_place_original(skill_button, Vector2(1.0, 0.5), Vector2(-50, 50), Vector2(102, 98), ui_scale)
 	_place_original(boss_panel, Vector2(0.5, 0.0), Vector2(0, 20), Vector2(510, 32), ui_scale)
 	_place_original(announcement, Vector2(0.5, 0.0), Vector2(0, 72), Vector2(600, 40), ui_scale)
+	_place_original(clock_label, Vector2(0.0, 1.0), Vector2(98, -24), Vector2(180, 22), ui_scale)
+	if is_instance_valid(power_panel) and power_panel.visible:
+		var power_count := power_buttons.size()
+		var power_columns := maxi(1, mini(5, power_count))
+		var power_rows := ceili(float(power_count) / float(power_columns))
+		var power_size := Vector2(power_columns * 58 + 20, power_rows * 58 + 16)
+		_place_original(
+			power_panel, Vector2(0.5, 1.0), Vector2(0, -power_size.y * 0.5 - 7.0), power_size, ui_scale
+		)
+		power_grid.add_theme_constant_override("h_separation", maxi(2, roundi(4.0 * ui_scale)))
+		power_grid.add_theme_constant_override("v_separation", maxi(2, roundi(4.0 * ui_scale)))
+		for power_button_value in power_buttons.values():
+			var power_button := power_button_value as Button
+			if is_instance_valid(power_button):
+				power_button.custom_minimum_size = Vector2(54, 54) * ui_scale
+		for cooldown_value in power_cooldown_labels.values():
+			var cooldown := cooldown_value as Label
+			if is_instance_valid(cooldown):
+				cooldown.add_theme_font_size_override("font_size", maxi(12, roundi(18.0 * ui_scale)))
+		for shortcut_value in power_shortcut_labels.values():
+			var shortcut := shortcut_value as Label
+			if is_instance_valid(shortcut):
+				shortcut.position = Vector2(4, 2) * ui_scale
+				shortcut.add_theme_font_size_override("font_size", maxi(8, roundi(9.0 * ui_scale)))
 
 	health_text.add_theme_font_size_override("font_size", maxi(10, roundi(13.0 * ui_scale)))
 	ammo_text.add_theme_font_size_override("font_size", maxi(10, roundi(13.0 * ui_scale)))
 	announcement.add_theme_font_size_override("font_size", maxi(14, roundi(22.0 * ui_scale)))
+	clock_label.add_theme_font_size_override("font_size", maxi(10, roundi(13.0 * ui_scale)))
 
 	if is_instance_valid(boss_icon):
 		var boss_icon_size := Vector2(53, 19) * ui_scale
@@ -359,6 +563,15 @@ func _set_reticle_for_weapon(data: Dictionary) -> void:
 		crosshair.custom_minimum_size = display_size
 		crosshair.size = display_size
 		crosshair.pivot_offset = display_size * 0.5
+
+func _update_clock() -> void:
+	if not is_instance_valid(clock_label):
+		return
+	var hour := GameState.get_world_hour()
+	clock_label.text = "%s  %s" % [
+		WarfareDayNightCycle.format_clock(hour),
+		tr(WarfareDayNightCycle.phase_key(hour))
+	]
 
 func _should_build_mobile_ui() -> bool:
 	return OS.has_feature("mobile") or bool(ProjectSettings.get_setting("debug/restoration/force_mobile_ui", false))

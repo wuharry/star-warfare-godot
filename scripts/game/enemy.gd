@@ -32,8 +32,35 @@ var navigation_refresh := 0.0
 var recovered_enemy: Node3D
 var recovered_animation_player: AnimationPlayer
 var recovered_animation_name := ""
+var hit_reaction_left := 0.0
 var spawn_left := 0.82
 var spawn_depth := 1.35
+
+# --- Tactical brain (veteran / elite difficulty only) -----------------------
+# On "recruit" every field below stays zeroed and _physics_process falls through
+# to _legacy_step, which is the original beeline behaviour byte for byte.
+var tactical := false
+var reaction_time := 0.0
+var aim_lead := 0.0
+var aim_spread := 0.0
+var melee_windup := 0.0
+var flank_spread := 0.0
+var separation_radius := 0.0
+var strafe_strength := 0.0
+var suppression_strength := 0.0
+var sight_check := false
+var reaction_left := 0.0
+var windup_left := 0.0
+var flank_angle := 0.0
+var flank_refresh := 0.0
+var strafe_sign := 1.0
+var suppressed_left := 0.0
+var separation_vector := Vector3.ZERO
+var separation_refresh := 0.0
+var token_hold_left := 0.0
+var holds_attack_token := false
+var target_velocity := Vector3.ZERO
+var last_target_position := Vector3.INF
 
 func configure(player: WarfarePlayer, kind: String, health_value: float, is_elite := false) -> void:
 	target = player
@@ -71,6 +98,29 @@ func configure(player: WarfarePlayer, kind: String, health_value: float, is_elit
 		reward *= 2
 		score_value *= 2
 	health = max_health
+	_apply_difficulty_profile()
+
+func _apply_difficulty_profile() -> void:
+	var profile := GameState.get_difficulty_profile()
+	tactical = bool(profile.get("tactical", false))
+	attack_interval *= float(profile.get("attack_speed", 1.0))
+	if not tactical:
+		return
+	reaction_time = float(profile.get("reaction", 0.0))
+	aim_lead = float(profile.get("aim_lead", 0.0))
+	aim_spread = float(profile.get("aim_spread", 0.0))
+	melee_windup = float(profile.get("melee_windup", 0.0))
+	flank_spread = float(profile.get("flank_spread", 0.0))
+	separation_radius = float(profile.get("separation", 0.0))
+	strafe_strength = float(profile.get("strafe", 0.0))
+	suppression_strength = float(profile.get("suppression", 0.0))
+	sight_check = bool(profile.get("sight_check", false))
+	# Stagger the first decision so a wave does not think in lockstep.
+	reaction_left = reaction_time * randf_range(0.6, 1.4)
+	flank_angle = randf_range(-1.0, 1.0) * flank_spread * PI * 0.55
+	flank_refresh = randf_range(1.2, 3.0)
+	separation_refresh = randf_range(0.0, 0.2)
+	strafe_sign = 1.0 if randf() < 0.5 else -1.0
 
 func _ready() -> void:
 	name = "Enemy_%s" % enemy_kind
@@ -199,13 +249,15 @@ func _prepare_recovered_animations() -> void:
 		if animation_name in ["idle", "run", "run01", "run02", "fly_idle", "fly_walk"]:
 			recovered_animation_player.get_animation(animation_name).loop_mode = Animation.LOOP_LINEAR
 
-func _play_recovered_animation(animation_name: String, blend := 0.1) -> void:
+func _play_recovered_animation(animation_name: String, blend := 0.1, restart := false) -> void:
 	if not recovered_animation_player or not recovered_animation_player.has_animation(animation_name):
 		return
-	if recovered_animation_name == animation_name and recovered_animation_player.is_playing():
+	if not restart and recovered_animation_name == animation_name:
 		return
 	recovered_animation_name = animation_name
 	recovered_animation_player.play(animation_name, blend)
+	if restart:
+		recovered_animation_player.seek(0.0, true)
 
 func _begin_grave_spawn() -> void:
 	model.position.y = -spawn_depth
@@ -268,9 +320,18 @@ func _physics_process(delta: float) -> void:
 			_play_recovered_animation("fly_idle" if enemy_kind == "boss" else "idle")
 		return
 	if not is_instance_valid(target) or target.dead:
-		velocity = Vector3.ZERO
+		_release_attack_token()
+		velocity.x = 0.0
+		velocity.z = 0.0
+		if is_on_floor():
+			velocity.y = -0.4
+		else:
+			velocity.y -= gravity * delta
+		move_and_slide()
+		_play_recovered_animation("fly_idle" if enemy_kind == "boss" else "idle")
 		return
 	attack_cooldown = maxf(0.0, attack_cooldown - delta)
+	hit_reaction_left = maxf(0.0, hit_reaction_left - delta)
 	charge_timer = maxf(0.0, charge_timer - delta)
 	navigation_refresh -= delta
 	if navigation_refresh <= 0.0 or navigation_target == Vector3.INF or global_position.distance_squared_to(navigation_target) < 1.7:
@@ -284,7 +345,25 @@ func _physics_process(delta: float) -> void:
 	var distance := target_offset.length()
 	var movement_offset := navigation_target - global_position
 	var planar := Vector3(movement_offset.x, 0.0, movement_offset.z)
-	_face_planar_direction(planar)
+	var desired := Vector3.ZERO
+	if tactical:
+		_track_target_velocity(delta)
+		desired = _tactical_step(delta, target_offset, distance, planar)
+	else:
+		_face_planar_direction(planar)
+		desired = _legacy_step(distance, planar)
+	velocity.x = move_toward(velocity.x, desired.x, 16.0 * delta)
+	velocity.z = move_toward(velocity.z, desired.z, 16.0 * delta)
+	if is_on_floor():
+		velocity.y = -0.4
+	else:
+		velocity.y -= gravity * delta
+	move_and_slide()
+	_update_animation(delta, desired.length())
+
+func _legacy_step(distance: float, planar: Vector3) -> Vector3:
+	# Original "recruit" behaviour: walk the path straight at the player and
+	# swing the moment the range check passes. Left untouched on purpose.
 	var desired := Vector3.ZERO
 	if enemy_kind == "spitter":
 		if distance > attack_range * 0.82:
@@ -303,14 +382,224 @@ func _physics_process(delta: float) -> void:
 			desired = planar.normalized() * speed
 		elif attack_cooldown <= 0.0:
 			_melee_attack()
-	velocity.x = move_toward(velocity.x, desired.x, 16.0 * delta)
-	velocity.z = move_toward(velocity.z, desired.z, 16.0 * delta)
-	if is_on_floor():
-		velocity.y = -0.4
+	return desired
+
+func _tactical_step(delta: float, offset: Vector3, distance: float, planar: Vector3) -> Vector3:
+	var los := _has_sight_to_target()
+	# Track the player while engaged; only steer by the waypoint heading when
+	# the path is blocked and we are navigating around geometry.
+	if los:
+		_face_planar_direction(Vector3(offset.x, 0.0, offset.z))
 	else:
-		velocity.y -= gravity * delta
-	move_and_slide()
-	_update_animation(delta, desired.length())
+		_face_planar_direction(planar)
+
+	if reaction_left > 0.0:
+		reaction_left = maxf(0.0, reaction_left - delta)
+		return Vector3.ZERO
+
+	# A committed strike roots the enemy for its telegraph, which is the window
+	# the player dashes out of.
+	if windup_left > 0.0:
+		windup_left = maxf(0.0, windup_left - delta)
+		if windup_left <= 0.0:
+			_resolve_melee_windup()
+		return Vector3.ZERO
+
+	if token_hold_left > 0.0:
+		token_hold_left = maxf(0.0, token_hold_left - delta)
+		if token_hold_left <= 0.0:
+			_release_attack_token()
+
+	suppressed_left = maxf(0.0, suppressed_left - delta)
+	_refresh_separation(delta)
+	_refresh_flank(delta)
+
+	if enemy_kind == "boss":
+		return _tactical_boss(distance, planar, los)
+	if enemy_kind == "spitter":
+		return _tactical_ranged(distance, planar, los)
+	return _tactical_melee(distance, planar, los)
+
+func _tactical_melee(distance: float, planar: Vector3, los: bool) -> Vector3:
+	if distance <= attack_range and attack_cooldown <= 0.0 and los:
+		if _claim_attack_token():
+			_begin_melee_windup()
+			return Vector3.ZERO
+	# Not our turn to strike, so take an approach lane around the player rather
+	# than queueing up behind whoever is already swinging.
+	return _approach_velocity(planar, los, attack_range * 0.85)
+
+func _tactical_ranged(distance: float, planar: Vector3, los: bool) -> Vector3:
+	var band := attack_range * 0.72
+	var can_fire := los and attack_cooldown <= 0.0 and distance <= attack_range
+	if can_fire and distance > attack_range * 0.28 and _claim_attack_token():
+		_ranged_attack()
+		token_hold_left = attack_interval * 0.5
+		return Vector3.ZERO
+	if not los:
+		return _approach_velocity(planar, los, band)
+	# Hold the firing band and keep sidestepping so the spitter is never a
+	# stationary silhouette while its acid sac recharges.
+	var to_player := Vector3(target.global_position.x - global_position.x, 0.0,
+		target.global_position.z - global_position.z)
+	if to_player.length_squared() < 0.001:
+		return Vector3.ZERO
+	var forward := to_player.normalized()
+	var side := Vector3(-forward.z, 0.0, forward.x) * strafe_sign
+	var direction := side * maxf(strafe_strength, 0.35)
+	if distance > band * 1.15:
+		direction += forward
+	elif distance < band * 0.7:
+		direction -= forward
+	direction += separation_vector * 0.35
+	if direction.length_squared() <= 0.001:
+		return Vector3.ZERO
+	return direction.normalized() * speed * 0.9
+
+func _tactical_boss(distance: float, planar: Vector3, los: bool) -> Vector3:
+	# The boss never queues for a token; it is the fight.
+	if distance <= attack_range and attack_cooldown <= 0.0:
+		_boss_attack(distance)
+		return Vector3.ZERO
+	if distance <= attack_range:
+		return Vector3.ZERO
+	var direction := _approach_velocity(planar, los, attack_range * 0.8)
+	return direction * (2.1 if charge_timer > 0.0 else 1.0)
+
+func _approach_velocity(planar: Vector3, los: bool, band: float) -> Vector3:
+	var direction := Vector3.ZERO
+	if los and is_instance_valid(target):
+		var slot := _flank_position(maxf(band, 1.2))
+		direction = Vector3(slot.x - global_position.x, 0.0, slot.z - global_position.z)
+		if direction.length_squared() < 0.04:
+			direction = Vector3.ZERO
+		else:
+			direction = direction.normalized()
+			var side := Vector3(-direction.z, 0.0, direction.x) * strafe_sign
+			direction += side * strafe_strength * (1.0 + suppressed_left)
+	elif planar.length_squared() > 0.001:
+		direction = planar.normalized()
+	direction += separation_vector * 0.35
+	if direction.length_squared() <= 0.001:
+		return Vector3.ZERO
+	return direction.normalized() * speed
+
+func _flank_position(radius: float) -> Vector3:
+	# Offset the enemy's own bearing to the player by its assigned lane, so the
+	# pack fans out across the ring instead of stacking on one approach.
+	var to_enemy := Vector3(global_position.x - target.global_position.x, 0.0,
+		global_position.z - target.global_position.z)
+	if to_enemy.length_squared() < 0.01:
+		to_enemy = Vector3.FORWARD
+	var angle := atan2(to_enemy.x, to_enemy.z) + flank_angle
+	return target.global_position + Vector3(sin(angle), 0.0, cos(angle)) * radius
+
+func _refresh_flank(delta: float) -> void:
+	flank_refresh -= delta
+	if flank_refresh > 0.0:
+		return
+	flank_refresh = randf_range(2.4, 4.2)
+	flank_angle = randf_range(-1.0, 1.0) * flank_spread * PI * 0.55
+	if randf() < 0.5:
+		strafe_sign = -strafe_sign
+
+func _refresh_separation(delta: float) -> void:
+	separation_refresh -= delta
+	if separation_refresh > 0.0:
+		return
+	separation_refresh = randf_range(0.16, 0.26)
+	separation_vector = Vector3.ZERO
+	if separation_radius <= 0.0:
+		return
+	for other_node in get_tree().get_nodes_in_group("enemies"):
+		var other := other_node as Node3D
+		if other == self or not is_instance_valid(other):
+			continue
+		var offset := Vector3(global_position.x - other.global_position.x, 0.0,
+			global_position.z - other.global_position.z)
+		var gap := offset.length()
+		if gap > 0.001 and gap < separation_radius:
+			separation_vector += offset / gap * (1.0 - gap / separation_radius)
+
+func _has_sight_to_target() -> bool:
+	if not sight_check or not is_instance_valid(target):
+		return true
+	var world := get_parent()
+	if world and world.has_method("has_line_of_sight"):
+		return bool(world.has_line_of_sight(global_position, target.global_position))
+	return true
+
+func _claim_attack_token() -> bool:
+	if holds_attack_token:
+		return true
+	var world := get_parent()
+	if world and world.has_method("request_attack_token"):
+		holds_attack_token = bool(world.request_attack_token(self))
+		return holds_attack_token
+	holds_attack_token = true
+	return true
+
+func _release_attack_token() -> void:
+	if not holds_attack_token:
+		return
+	holds_attack_token = false
+	token_hold_left = 0.0
+	var world := get_parent()
+	if world and world.has_method("release_attack_token"):
+		world.release_attack_token(self)
+
+func _track_target_velocity(delta: float) -> void:
+	if not is_instance_valid(target) or delta <= 0.0:
+		return
+	var current := target.global_position
+	if last_target_position == Vector3.INF:
+		last_target_position = current
+		return
+	var sample := (current - last_target_position) / delta
+	sample.y = 0.0
+	target_velocity = target_velocity.lerp(sample, clampf(delta * 8.0, 0.0, 1.0))
+	last_target_position = current
+
+func _begin_melee_windup() -> void:
+	attack_cooldown = attack_interval
+	windup_left = melee_windup
+	_play_recovered_animation("fly_attack" if enemy_kind == "boss" else "attack", 0.04)
+	# Growl on the wind-up, not the impact: that is the audio tell.
+	AudioDirector.play_3d(
+		"enemy/mantis/tanglang_attack_01.wav" if enemy_kind == "boss" else "enemies_smash1.wav",
+		global_position, -11.0, randf_range(0.66, 0.78)
+	)
+	var tween := create_tween()
+	tween.tween_property(model, "position:z", -0.55, maxf(melee_windup, 0.06))
+
+func _resolve_melee_windup() -> void:
+	_release_attack_token()
+	var tween := create_tween()
+	tween.tween_property(model, "position:z", 0.0, 0.18)
+	if not is_instance_valid(target) or target.dead:
+		return
+	# The strike only lands if the player is still inside the lunge when the
+	# telegraph ends, so dashing out of it is a real dodge.
+	if global_position.distance_to(target.global_position) > attack_range * 1.35:
+		return
+	target.take_damage(attack_damage, target.global_position, self)
+	AudioDirector.play_3d("enemies_smash1.wav", global_position, -7.0, randf_range(0.92, 1.07))
+
+func _predicted_aim_point(projectile_speed: float) -> Vector3:
+	var aim := target.global_position + Vector3.UP * 0.9
+	if not tactical:
+		return aim
+	var range_to_target := global_position.distance_to(aim)
+	if aim_lead > 0.0 and projectile_speed > 0.01:
+		aim += target_velocity * (range_to_target / projectile_speed) * aim_lead
+	if aim_spread > 0.0:
+		var spread := aim_spread * range_to_target
+		aim += Vector3(
+			randf_range(-spread, spread),
+			randf_range(-spread, spread) * 0.4,
+			randf_range(-spread, spread)
+		)
+	return aim
 
 func _face_planar_direction(direction: Vector3) -> void:
 	var planar := Vector3(direction.x, 0.0, direction.z)
@@ -339,7 +628,7 @@ func _ranged_attack() -> void:
 	AudioDirector.play_3d("enemy/feixingchong.wav", global_position, -8.0, randf_range(0.94, 1.05))
 	var projectile := ProjectileScript.new()
 	var origin := global_position + Vector3.UP * 1.15
-	var travel := (target.global_position + Vector3.UP * 0.9 - origin).normalized()
+	var travel := (_predicted_aim_point(16.0) - origin).normalized()
 	projectile.configure(self, travel, 16.0, attack_damage, 0.75, Color(0.6, 0.15, 0.9), true)
 	get_parent().add_child(projectile)
 	projectile.global_position = origin
@@ -350,20 +639,40 @@ func _boss_attack(distance: float) -> void:
 		for angle in [-0.22, 0.0, 0.22]:
 			var projectile := ProjectileScript.new()
 			var origin := global_position + Vector3.UP * 2.5
-			var travel := (target.global_position + Vector3.UP - origin).normalized().rotated(Vector3.UP, angle)
+			var aim := _predicted_aim_point(18.0)
+			var travel := (aim - origin).normalized().rotated(Vector3.UP, angle)
 			projectile.configure(self, travel, 18.0, attack_damage * 0.72, 1.6, Color(1.0, 0.13, 0.03), true)
 			get_parent().add_child(projectile)
 			projectile.global_position = origin
 	else:
 		charge_timer = 0.72
-		attack_cooldown = attack_interval * 1.4
 		_melee_attack()
+		# _melee_attack sets the normal cooldown; the boss charge has its own
+		# longer authored recovery and must override it after the shared call.
+		attack_cooldown = attack_interval * 1.4
 
 func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = null) -> void:
 	if dead:
 		return
+	var health_before := health
 	health = maxf(0.0, health - amount)
-	_play_recovered_animation("fly_attacked" if enemy_kind == "boss" else "attacked", 0.03)
+	var actual_damage := maxf(0.0, health_before - health)
+	# Armor powers such as HEALTH STEAL must use damage that actually reached
+	# this enemy (excluding overkill), not the weapon's requested raw damage.
+	if actual_damage > 0.0 and is_instance_valid(_source) and _source.has_method("on_damage_dealt"):
+		_source.on_damage_dealt(actual_damage)
+	if tactical and suppression_strength > 0.0 and enemy_kind != "boss":
+		# Taking fire breaks the current lane: sidestep and pick a new approach
+		# instead of walking up the barrel like the original AI did.
+		suppressed_left = suppression_strength
+		flank_refresh = minf(flank_refresh, 0.2)
+		if randf() < 0.5:
+			strafe_sign = -strafe_sign
+	var attacked_animation := "fly_attacked" if enemy_kind == "boss" else "attacked"
+	hit_reaction_left = 0.22
+	if recovered_animation_player and recovered_animation_player.has_animation(attacked_animation):
+		hit_reaction_left = clampf(recovered_animation_player.get_animation(attacked_animation).length, 0.16, 0.38)
+	_play_recovered_animation(attacked_animation, 0.03, true)
 	health_reported.emit(health, max_health, enemy_kind == "boss")
 	if randf() < 0.34:
 		AudioDirector.play_3d("enemy/mantis/tanglang_attacked.wav" if enemy_kind == "boss" else "enemies_smash2.wav", global_position, -10.0, randf_range(0.9, 1.08))
@@ -378,10 +687,13 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 		if is_instance_valid(body_material): body_material.emission_enabled = false
 	)
 	if health <= 0.0:
-		_die()
+		_die(_source)
 
-func _die() -> void:
+func _die(killer: Node = null) -> void:
 	dead = true
+	if is_instance_valid(killer) and killer.has_method("on_enemy_defeated"):
+		killer.on_enemy_defeated()
+	_release_attack_token()
 	collision_layer = 0
 	collision_mask = 0
 	var death_sound := "enemy/mantis/tanglang_dead.wav" if enemy_kind == "boss" else ("enemy/zibaochong.wav" if enemy_kind == "spitter" else "enemies_smash2.wav")
@@ -396,7 +708,9 @@ func _die() -> void:
 func _update_animation(delta: float, movement: float) -> void:
 	if recovered_animation_player:
 		var animation_name := ""
-		if attack_cooldown > attack_interval * 0.7:
+		if hit_reaction_left > 0.0:
+			animation_name = "fly_attacked" if enemy_kind == "boss" else "attacked"
+		elif attack_cooldown > attack_interval * 0.7:
 			animation_name = "fly_attack" if enemy_kind == "boss" else "attack"
 		else:
 			animation_name = ("fly_walk" if movement > 0.1 else "fly_idle") if enemy_kind == "boss" else ("run" if movement > 0.1 else "idle")

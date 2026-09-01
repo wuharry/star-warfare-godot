@@ -1,8 +1,8 @@
 # Legacy Unity YAML Mesh converter
 
 This is the no-Unity fallback converter for the text-serialized Mesh assets in
-Star Warfare. It supports the project's uncompressed Unity 2017
-`serializedVersion: 8` layout, including separated/interleaved vertex streams,
+Star Warfare. It supports the project's Unity 2017 `serializedVersion: 8`
+layout, including packed compressed meshes, separated/interleaved vertex streams,
 16/32-bit index buffers, submeshes, UVs, and normals. It applies the transform
 hierarchy from each prefab and converts Unity's handedness to Godot while fixing
 triangle winding.
@@ -37,7 +37,7 @@ python Godot/tools/yaml_mesh_converter/convert.py validate out.obj
   and animation clips are not exported.
 - The old custom shaders are reduced to MTL diffuse materials. In two-texture
   light shaders, `_texBase` is treated as diffuse and `_tex2` is not copied.
-- Compressed Unity meshes and serialized versions other than 8 fail loudly
-  instead of producing guessed geometry.
+- Serialized versions other than 8 fail loudly instead of producing guessed
+  geometry.
 - When a source lacks normals (as the selected assets do), the converter creates
   area-weighted smooth normals. Existing normals are preserved and transformed.

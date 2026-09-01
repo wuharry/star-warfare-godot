@@ -30,7 +30,7 @@ func _run() -> void:
 	_check(is_instance_valid(world.player.recovered_skeleton), "original player skeleton was not loaded")
 	_check(world.player.recovered_skeleton.get_bone_count() == 28, "original player attachment skeleton is incomplete")
 	_check(is_instance_valid(world.player.recovered_animation_player), "original AnimationPlayer was not loaded")
-	_check(world.player.recovered_animation_player.get_animation_list().size() == 44, "original action library is incomplete")
+	_check(world.player.recovered_animation_player.get_animation_list().size() == 79, "original action library is incomplete")
 	_check(world.player.gun_socket is BoneAttachment3D, "original animated weapon socket was not created")
 	if world.player.gun_socket is BoneAttachment3D:
 		_check(world.player.gun_socket.bone_name == "r hand gun", "weapon is not attached to the original r hand gun bone")

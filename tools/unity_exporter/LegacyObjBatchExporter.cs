@@ -64,6 +64,16 @@ public static class LegacyObjBatchExporter
                 output, "bug01", LegacyRoot + "Resources/enemy/bug01.prefab", report.warnings, true));
             report.models.Add(ExportSinglePrefab(
                 output, "gun00", LegacyRoot + "Resources/weapon/gun00.prefab", report.warnings, true));
+            foreach (int weaponId in new[] { 22, 23, 36, 37 })
+            {
+                string weaponName = "gun" + weaponId.ToString("00", CultureInfo.InvariantCulture);
+                report.models.Add(ExportSinglePrefab(
+                    output,
+                    weaponName,
+                    LegacyRoot + "Resources/weapon/" + weaponName + ".prefab",
+                    report.warnings,
+                    true));
+            }
 
             TryOptional(() => ExportSinglePrefab(
                     output, "player", LegacyRoot + "Resources/avatar/Player.prefab", report.warnings, false),

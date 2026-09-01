@@ -8,6 +8,9 @@ signal dash_changed(ratio: float)
 signal died
 
 const ProjectileScript = preload("res://scripts/game/projectile.gd")
+const ARMOR_HP_SCALE := 0.01
+const CAMERA_BASE_HEIGHT := 1.683712
+const FLY_CAMERA_OFFSET := 0.25
 
 var max_health := 100.0
 var max_shield := 100.0
@@ -22,6 +25,10 @@ var dash_time := 0.0
 var dash_cooldown_left := 0.0
 var dash_direction := Vector3.ZERO
 var dead := false
+var armor_skills: Dictionary = {}
+var speed_on_hit_left := 0.0
+var float_audio_state := ""
+var armor_power_controller: Node
 
 var camera_yaw := 0.0
 # ThirdPersonStandardCameraScript left angelV at its C# default of zero.  Start
@@ -61,6 +68,7 @@ var recovered_locomotion_name := ""
 var recovered_upper_body_name := ""
 var recovered_layered_animation := false
 var gun_socket: BoneAttachment3D
+var left_gun_socket: BoneAttachment3D
 var backpack_socket: BoneAttachment3D
 var backpack_visual: MeshInstance3D
 
@@ -85,14 +93,44 @@ func _ready() -> void:
 	add_to_group("player")
 	collision_layer = 4
 	collision_mask = 1
+	_apply_armor_stats(true)
 	_build_collision()
 	_build_visual()
 	_build_camera()
 	_build_audio()
-	weapon_order.assign(GameState.battle_weapons)
-	equip_weapon(GameState.selected_weapon, false)
+	_refresh_weapon_order_for_bag()
+	var starting_weapon := GameState.selected_weapon if weapon_order.has(GameState.selected_weapon) else weapon_order[0]
+	equip_weapon(starting_weapon, false)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if OS.has_feature("mobile") else Input.MOUSE_MODE_CAPTURED
 	health_changed.emit(health, shield)
+	if not GameState.armor_changed.is_connected(_on_armor_changed):
+		GameState.armor_changed.connect(_on_armor_changed)
+
+func _apply_armor_stats(restore_full := false) -> void:
+	var previous_max := max_health
+	armor_skills = GameState.get_armor_skills()
+	max_health = 100.0 + float(armor_skills.get("hp", 0.0)) * ARMOR_HP_SCALE
+	move_speed = maxf(3.5, 8.2 + float(armor_skills.get("speed_boost", 0.0)))
+	if restore_full:
+		health = max_health
+	else:
+		health = clampf(health + maxf(0.0, max_health - previous_max), 0.0, max_health)
+	if is_inside_tree():
+		health_changed.emit(health, shield)
+
+func _on_armor_changed(_part_key: String, _armor_key: String) -> void:
+	_apply_armor_stats()
+	if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("refresh_available_skills"):
+		armor_power_controller.refresh_available_skills()
+	_apply_recovered_armor_visibility()
+	if _part_key in ["bag", "body"]:
+		_refresh_recovered_backpack()
+	if _part_key == "bag":
+		_refresh_weapon_order_for_bag()
+		if not weapon_order.has(current_weapon_id):
+			equip_weapon(weapon_order[0], false)
+	if float(armor_skills.get("fly", 0.0)) <= 0.0:
+		_stop_flying_audio()
 
 func _build_collision() -> void:
 	var collision := CollisionShape3D.new()
@@ -125,6 +163,7 @@ func _build_visual() -> void:
 				recovered_animation_player = _find_animation_player(recovered_avatar)
 				_prepare_recovered_animations()
 				_add_recovered_backpack()
+				_apply_recovered_armor_visibility()
 	if not recovered_avatar and ResourceLoader.exists(restored_path):
 		var restored := MeshInstance3D.new()
 		restored.mesh = load(restored_path)
@@ -178,6 +217,11 @@ func _build_visual() -> void:
 		gun_mount.name = "GunMount"
 		gun_mount.position = Vector3(0.42, 1.24, -0.48)
 		model.add_child(gun_mount)
+	if recovered_skeleton and recovered_skeleton.find_bone("l hand gun") >= 0:
+		left_gun_socket = BoneAttachment3D.new()
+		left_gun_socket.name = "RecoveredLeftWeaponSocket"
+		left_gun_socket.bone_name = "l hand gun"
+		recovered_skeleton.add_child(left_gun_socket)
 	gun_mount_rest_position = gun_mount.position
 	_build_gun_visual()
 
@@ -204,7 +248,18 @@ func _prepare_recovered_animations() -> void:
 		return
 	for animation_name in recovered_animation_player.get_animation_list():
 		var animation := recovered_animation_player.get_animation(animation_name)
-		if animation_name.begins_with("idle_") or (animation_name.begins_with("run_") and not animation_name.begins_with("run_shoot_")):
+		var flying_locomotion := animation_name in [
+			"fly_idle", "fly_front", "fly_back", "fly_left", "fly_right",
+			"fly_rifle", "fly_shotgun", "fly_bazinga", "fly_jian",
+			"fly_bow", "fly_fist", "fly_machinegun", "fly_Sniper",
+			"fly_stand_shoot_jian_lower"
+		]
+		if (
+			animation_name.begins_with("idle_")
+			or animation_name.begins_with("fly_idle_")
+			or (animation_name.begins_with("run_") and not animation_name.begins_with("run_shoot_"))
+			or flying_locomotion
+		):
 			animation.loop_mode = Animation.LOOP_LINEAR
 	_build_recovered_animation_layers()
 	_play_recovered_animation("idle_rifle", 0.0)
@@ -263,7 +318,13 @@ func _is_upper_body_animation_track(track_path: NodePath) -> bool:
 	return false
 
 func _add_recovered_backpack() -> void:
-	var backpack_path := "res://assets/models/player/animated/bag.obj"
+	var bag_key := GameState.get_equipped_armor_key("bag")
+	var bag_id := int(GameState.get_armor_item(bag_key).get("visual_id", 0))
+	var backpack_path := "res://assets/models/player/animated/bags/ArmorBag_%02d/ArmorBag_%02d.obj" % [bag_id, bag_id]
+	if not ResourceLoader.exists(backpack_path):
+		backpack_path = "res://assets/models/player/animated/bag_%02d.obj" % bag_id
+	if not ResourceLoader.exists(backpack_path):
+		backpack_path = "res://assets/models/player/animated/bag.obj"
 	if not ResourceLoader.exists(backpack_path) or not recovered_skeleton:
 		return
 	var fly_bag_bone := recovered_skeleton.find_bone("fly_bag")
@@ -282,19 +343,72 @@ func _add_recovered_backpack() -> void:
 	# recovered OBJ, so cancel the socket's rest basis instead of applying the
 	# unrelated embedded Player.prefab Bag rotation a second time.
 	var fly_bag_rest := recovered_skeleton.get_bone_global_rest(fly_bag_bone)
+	var body_key := GameState.get_equipped_armor_key("body")
+	var body_id := int(GameState.get_armor_item(body_key).get("visual_id", 0))
+	var unity_scale := float({14: 1.2, 15: 1.2, 16: 1.2, 17: 1.2, 18: 1.1, 19: 1.2, 20: 1.2}.get(bag_id, 1.0))
+	var authored_scale := unity_scale if body_id == 5 else unity_scale * 0.8
 	backpack_visual.transform = Transform3D(
-		fly_bag_rest.basis.inverse() * Basis.from_scale(Vector3.ONE * 0.8),
+		fly_bag_rest.basis.inverse() * Basis.from_scale(Vector3.ONE * authored_scale),
 		Vector3.ZERO
 	)
 	backpack_socket.add_child(backpack_visual)
 
+func _refresh_recovered_backpack() -> void:
+	if is_instance_valid(backpack_socket):
+		backpack_socket.get_parent().remove_child(backpack_socket)
+		backpack_socket.queue_free()
+	backpack_socket = null
+	backpack_visual = null
+	_add_recovered_backpack()
+
+func _apply_recovered_armor_visibility() -> void:
+	if not is_instance_valid(recovered_avatar):
+		return
+	var equipped_ids := {
+		"head": int(GameState.get_armor_item(GameState.get_equipped_armor_key("head")).get("visual_id", 0)),
+		"body": int(GameState.get_armor_item(GameState.get_equipped_armor_key("body")).get("visual_id", 0)),
+		"hand": int(GameState.get_armor_item(GameState.get_equipped_armor_key("arms")).get("visual_id", 0)),
+		"foot": int(GameState.get_armor_item(GameState.get_equipped_armor_key("legs")).get("visual_id", 0))
+	}
+	for candidate in recovered_avatar.find_children("*", "MeshInstance3D", true, false):
+		var mesh_instance := candidate as MeshInstance3D
+		var lower_name := mesh_instance.name.to_lower()
+		var part_name := ""
+		for possible_part in equipped_ids:
+			if (
+				lower_name.begins_with("armor%s_" % possible_part)
+				or lower_name.ends_with("_%s" % possible_part)
+				or lower_name.begins_with("%s_" % possible_part)
+			):
+				part_name = possible_part
+				break
+		if part_name.is_empty():
+			continue
+		var visual_id := _armor_visual_id_from_name(lower_name)
+		if visual_id >= 0:
+			mesh_instance.visible = visual_id == int(equipped_ids[part_name])
+
+func _armor_visual_id_from_name(node_name: String) -> int:
+	# Exported parts use Armor00_Head; accept Head_00 as well so regenerated
+	# assets from the Unity project remain backward compatible.
+	if node_name.begins_with("armor") and node_name.length() >= 7:
+		var id_text := node_name.substr(5, 2)
+		if id_text.is_valid_int():
+			return int(id_text)
+	var suffix := node_name.get_slice("_", node_name.get_slice_count("_") - 1)
+	return int(suffix) if suffix.is_valid_int() else -1
+
 func _play_recovered_animation(animation_name: String, blend := 0.08, restart := false) -> void:
 	if not recovered_animation_player or not recovered_animation_player.has_animation(animation_name):
 		return
+	var was_layered := recovered_animation_tree != null and recovered_animation_tree.active
 	if recovered_animation_tree and recovered_animation_tree.active:
 		recovered_animation_tree.active = false
 		recovered_layered_animation = false
-	if not restart and recovered_animation_name == animation_name and recovered_animation_player.is_playing():
+	# A non-looping clip reports `is_playing() == false` on its last frame. The
+	# state timer may intentionally keep that pose a little longer; replaying it
+	# from zero every physics frame caused the visible freeze/stutter regression.
+	if not restart and recovered_animation_name == animation_name and not was_layered:
 		return
 	recovered_animation_name = animation_name
 	recovered_animation_player.play(animation_name, blend)
@@ -337,12 +451,22 @@ func _build_gun_visual() -> void:
 	if not is_instance_valid(gun_mount):
 		return
 	for child in gun_mount.get_children():
+		# Detach immediately so rapidly switching weapons can reuse stable node
+		# names (WeaponVisual/Muzzle) before queued deletion runs next frame.
+		gun_mount.remove_child(child)
 		child.queue_free()
 	var data: Dictionary = GameState.WEAPONS.get(current_weapon_id, GameState.WEAPONS.gun00)
+	_prepare_weapon_mount(int(data.id))
 	var weapon_color: Color = data.color
 	var metal := _material(Color(0.06, 0.075, 0.09), 0.43, 0.73)
 	var accent := _material(weapon_color.darkened(0.15), 0.28, 0.62, weapon_color * 0.5)
 	var kind := str(data.kind)
+	var visual_root := Node3D.new()
+	visual_root.name = "WeaponVisual"
+	if is_instance_valid(gun_socket):
+		var authored_radians := _weapon_authored_rotation(int(data.id)) * (PI / 180.0)
+		visual_root.basis = gun_mount.basis.inverse() * Basis.from_euler(authored_radians)
+	gun_mount.add_child(visual_root)
 	var size := Vector3(0.2, 0.22, 1.25)
 	if kind in ["shotgun", "shockwave"]:
 		size = Vector3(0.28, 0.25, 1.3)
@@ -367,11 +491,12 @@ func _build_gun_visual() -> void:
 			# The prefab converter already preserves the old model's grip origin.
 			# Centering here made every recovered gun float away from the hand.
 			restored.position = Vector3.ZERO
-			gun_mount.add_child(restored)
+			_repair_recovered_weapon_materials(restored, int(data.id))
+			visual_root.add_child(restored)
 			added_restored_visual = true
 	if not added_restored_visual:
-		_add_box(gun_mount, size, Vector3.ZERO, metal, "WeaponBody")
-		_add_box(gun_mount, Vector3(size.x * 1.25, 0.07, size.z * 0.72), Vector3(0, 0.14, -0.06), accent, "WeaponGlow")
+		_add_box(visual_root, size, Vector3.ZERO, metal, "WeaponBody")
+		_add_box(visual_root, Vector3(size.x * 1.25, 0.07, size.z * 0.72), Vector3(0, 0.14, -0.06), accent, "WeaponGlow")
 	muzzle = Marker3D.new()
 	muzzle.name = "Muzzle"
 	muzzle.position = Vector3(0, 0, -size.z * 0.62)
@@ -382,13 +507,98 @@ func _build_gun_visual() -> void:
 	muzzle_light.omni_range = 3.6
 	muzzle.add_child(muzzle_light)
 
+func _prepare_weapon_mount(weapon_id: int) -> void:
+	var use_left_hand := weapon_id in [22, 29, 44]
+	var target_socket: Node = left_gun_socket if use_left_hand and is_instance_valid(left_gun_socket) else gun_socket
+	if is_instance_valid(target_socket) and gun_mount.get_parent() != target_socket:
+		gun_mount.get_parent().remove_child(gun_mount)
+		target_socket.add_child(gun_mount)
+	if is_instance_valid(target_socket):
+		gun_mount.position = Vector3.ZERO
+		# Keep a stable aiming/recoil basis. Per-weapon Unity rotations are
+		# applied below this pivot to the mesh only, so special weapons do not
+		# turn the projectile direction sideways.
+		gun_mount.rotation_degrees = Vector3(-90.0, 0.0, 0.0)
+		gun_recoil_offset = Vector3(0.0, 0.1, 0.0)
+	gun_mount_rest_position = gun_mount.position
+
+func _weapon_authored_rotation(weapon_id: int) -> Vector3:
+	# Exact combat cases from Unity WeaponResourceConfig.RotateGun. Most legacy
+	# rifles need the authored -90° X bridge; bows, fists and several special
+	# weapons were already authored in hand-space and must not receive it.
+	if weapon_id in [22, 23, 24, 25, 28, 31, 32, 39, 41, 45, 46]:
+		return Vector3.ZERO
+	if weapon_id == 36:
+		return Vector3(0.0, 90.0, -90.0)
+	if weapon_id == 44:
+		return Vector3(90.0, 0.0, 0.0)
+	return Vector3(-90.0, 0.0, 0.0)
+
+func _repair_recovered_weapon_materials(instance: MeshInstance3D, weapon_id: int) -> void:
+	# Unity's additive/glow shaders were reduced to OBJ/MTL. Godot's OBJ
+	# importer otherwise treats them as ordinary opaque materials. Do not infer
+	# the shader from PNG alpha alone: several solid Unity weapon atlases contain
+	# semi-transparent pixels even though their shader deliberately ignored
+	# alpha. Restore only the material names whose source shader was actually
+	# AlphaBlend/Additive.
+	if instance.mesh == null:
+		return
+	var alpha_effect_names := [
+		"gong_1", "gun1112", "passer-standard_1", "sniper_effect",
+		"orig_standard_7"
+	]
+	var additive_effect_names := [
+		"fist_eff_001", "fist_eff_001_2", "rpg_mat_031",
+		"rpg_mat_031_2", "gunchristmas_02", "hotwing_qiangkou"
+	]
+	for surface_index in range(instance.mesh.get_surface_count()):
+		var source := instance.mesh.surface_get_material(surface_index) as StandardMaterial3D
+		if source == null or source.albedo_texture == null:
+			continue
+		var material_name := source.resource_name.to_lower()
+		var alpha_effect := material_name in alpha_effect_names
+		var additive_effect := material_name in additive_effect_names
+		# Keep exact surface fallbacks for regenerated OBJ imports that omit a
+		# material resource name.
+		if material_name.is_empty():
+			alpha_effect = weapon_id == 22 and surface_index in [1, 2]
+			additive_effect = (
+				(weapon_id == 23 and surface_index in [0, 1])
+				or (weapon_id == 37 and surface_index in [1, 2])
+			)
+		var forced_solid := (
+			(weapon_id == 22 and surface_index == 0)
+			or (weapon_id == 23 and surface_index == 2)
+			or (weapon_id == 37 and surface_index == 0)
+		)
+		var almost_black_tint := source.albedo_color.r + source.albedo_color.g + source.albedo_color.b < 0.15
+		if not alpha_effect and not additive_effect and not forced_solid and not almost_black_tint:
+			continue
+		var repaired := source.duplicate(true) as StandardMaterial3D
+		if forced_solid or almost_black_tint or alpha_effect or additive_effect:
+			# Unity's SolidTexture shader ignored the serialized black `_Color` on
+			# Light Bow, MCP76 and TheArrow. OBJ/MTL multiplied by that unused
+			# property and produced black weapons.
+			repaired.albedo_color = Color(1.0, 1.0, 1.0, source.albedo_color.a)
+		if forced_solid:
+			repaired.transparency = BaseMaterial3D.TRANSPARENCY_DISABLED
+		elif alpha_effect or additive_effect:
+			repaired.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+			repaired.cull_mode = BaseMaterial3D.CULL_DISABLED
+			repaired.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+			repaired.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_DISABLED
+			repaired.blend_mode = BaseMaterial3D.BLEND_MODE_ADD if additive_effect else BaseMaterial3D.BLEND_MODE_MIX
+			if material_name == "gong_1":
+				repaired.albedo_color.a = 0.58
+		instance.set_surface_override_material(surface_index, repaired)
+
 func _build_camera() -> void:
 	camera_rig = Node3D.new()
 	camera_rig.name = "CameraRig"
 	# Unity rotated the player first and then evaluated
 	# target.TransformPoint(pivotPosition). Keep the yaw pivot on the player's
 	# centerline so the authored +0.6 shoulder offset rotates with the view.
-	camera_rig.position = Vector3(0.0, 1.683712, 0.0)
+	camera_rig.position = Vector3(0.0, CAMERA_BASE_HEIGHT, 0.0)
 	add_child(camera_rig)
 	pitch_node = Node3D.new()
 	pitch_node.name = "Pitch"
@@ -427,11 +637,13 @@ func _build_audio() -> void:
 
 func _physics_process(delta: float) -> void:
 	if dead:
+		_stop_flying_audio()
 		velocity.y -= gravity * delta
 		move_and_slide()
 		return
 
 	shot_cooldown = maxf(0.0, shot_cooldown - delta)
+	_update_armor_effects(delta)
 	shoot_pose_left = maxf(0.0, shoot_pose_left - delta)
 	hurt_pose_left = maxf(0.0, hurt_pose_left - delta)
 	dash_cooldown_left = maxf(0.0, dash_cooldown_left - delta)
@@ -462,8 +674,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = dash_direction.x * dash_speed
 		velocity.z = dash_direction.z * dash_speed
 	else:
-		velocity.x = move_toward(velocity.x, desired.x * move_speed, 34.0 * delta)
-		velocity.z = move_toward(velocity.z, desired.z * move_speed, 34.0 * delta)
+		var power_speed_bonus := float(armor_power_controller.get_speed_bonus()) if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("get_speed_bonus") else 0.0
+		var active_move_speed := move_speed + power_speed_bonus + (float(armor_skills.get("speed_on_hit", 0.0)) if speed_on_hit_left > 0.0 else 0.0)
+		velocity.x = move_toward(velocity.x, desired.x * active_move_speed, 34.0 * delta)
+		velocity.z = move_toward(velocity.z, desired.z * active_move_speed, 34.0 * delta)
 	if is_on_floor():
 		velocity.y = -0.5
 	else:
@@ -475,7 +689,7 @@ func _physics_process(delta: float) -> void:
 	# shoot window alive on the exact frame its cooldown expires instead of
 	# briefly falling back to run/idle between consecutive shots.
 	_handle_weapon_input()
-	_update_visual_animation(delta, desired.length())
+	_update_visual_animation(delta, desired.length(), move_input)
 
 func _update_camera_controller(delta: float) -> void:
 	var look := Input.get_vector("look_left", "look_right", "look_up", "look_down")
@@ -487,6 +701,8 @@ func _update_camera_controller(delta: float) -> void:
 	camera.fov = lerpf(camera.fov, target_fov, 1.0 - exp(-10.0 * delta))
 	var target_length := 1.8 if focused else camera_distance
 	spring_arm.spring_length = lerpf(spring_arm.spring_length, target_length, 1.0 - exp(-11.0 * delta))
+	var target_height := CAMERA_BASE_HEIGHT + (FLY_CAMERA_OFFSET if float(armor_skills.get("fly", 0.0)) > 0.0 else 0.0)
+	camera_rig.position.y = lerpf(camera_rig.position.y, target_height, 1.0 - exp(-10.0 * delta))
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -557,6 +773,21 @@ func cycle_weapon(direction: int) -> void:
 		index = posmod(index + direction, weapon_order.size())
 	equip_weapon(weapon_order[index])
 
+func _refresh_weapon_order_for_bag() -> void:
+	# Keep the complete loadout in GameState so swapping back to a larger pack is
+	# non-destructive, but expose only the slots provided by the equipped bag in
+	# combat (matching Unity's BagNum behavior).
+	weapon_order.clear()
+	var capacity := maxi(1, GameState.get_bag_capacity())
+	for weapon_id_value in GameState.battle_weapons:
+		var weapon_id := str(weapon_id_value)
+		if weapon_order.size() >= capacity:
+			break
+		if GameState.WEAPONS.has(weapon_id) and not weapon_order.has(weapon_id):
+			weapon_order.append(weapon_id)
+	if weapon_order.is_empty():
+		weapon_order.append("gun00")
+
 func _try_fire() -> void:
 	if shot_cooldown > 0.0 or reload_left > 0.0 or dead or current_weapon.is_empty():
 		return
@@ -567,19 +798,22 @@ func _try_fire() -> void:
 		_build_gun_visual()
 	if not is_instance_valid(muzzle) or not is_instance_valid(muzzle_light) or not is_instance_valid(gun_mount):
 		return
-	var energy_cost := int(current_weapon.energy)
+	var energy_cost := 0 if float(armor_skills.get("unlimited_energy", 0.0)) > 0.0 else maxi(0, roundi(float(current_weapon.energy) * maxf(0.0, 1.0 + float(armor_skills.get("save_energy", 0.0)))))
 	if energy_cost > energy:
 		AudioDirector.play_3d(str(current_weapon.get("blank_sound", "blank/blank_shot01.wav")), global_position, -4.0)
 		return
 	energy -= energy_cost
-	shot_cooldown = float(current_weapon.cooldown)
+	shot_cooldown = float(current_weapon.cooldown) * maxf(0.2, 1.0 + float(armor_skills.get("attack_frequency", 0.0)))
 	shoot_pose_left = maxf(0.14, minf(0.55, shot_cooldown))
 	# One-shot clips must restart on every successful trigger pull. Automatic
 	# clips deliberately remain continuous while the button is held.
 	restart_shoot_animation_requested = not bool(current_weapon.get("automatic", false))
 	muzzle_light.light_energy = 5.0
+	var fired_muzzle_light_id: int = muzzle_light.get_instance_id()
 	get_tree().create_timer(0.045).timeout.connect(func():
-		if is_instance_valid(muzzle_light): muzzle_light.light_energy = 0.0
+		var light: OmniLight3D = instance_from_id(fired_muzzle_light_id) as OmniLight3D
+		if is_instance_valid(light):
+			light.light_energy = 0.0
 	)
 	if str(current_weapon.kind) != "sword" and not weapon_audio_active:
 		_play_weapon_fire_sound()
@@ -613,7 +847,7 @@ func _fire_hitscan() -> void:
 			hit_position = result.position
 			var collider = result.collider
 			if is_instance_valid(collider) and collider.has_method("take_damage"):
-				collider.take_damage(float(current_weapon.damage), result.position, self)
+				collider.take_damage(_current_weapon_damage(), result.position, self)
 		if get_parent().has_method("spawn_tracer"):
 			get_parent().spawn_tracer(muzzle.global_position, hit_position, current_weapon.color, str(current_weapon.kind) == "pierce")
 		if not result.is_empty() and get_parent().has_method("spawn_impact"):
@@ -628,7 +862,7 @@ func _fire_projectile(projectile_kind: String) -> void:
 	if projectile_kind == "grenade":
 		direction = (direction + Vector3.UP * 0.18).normalized()
 	var projectile := ProjectileScript.new()
-	projectile.configure(self, direction, float(current_weapon.speed), float(current_weapon.damage), maxf(float(current_weapon.splash), 0.65), current_weapon.color, false, projectile_kind, str(current_weapon.explosion_sound))
+	projectile.configure(self, direction, float(current_weapon.speed), _current_weapon_damage(), maxf(float(current_weapon.splash), 0.65), current_weapon.color, false, projectile_kind, str(current_weapon.explosion_sound))
 	get_parent().add_child(projectile)
 	projectile.global_position = muzzle.global_position
 
@@ -669,7 +903,7 @@ func _fire_melee() -> void:
 	for hit in get_world_3d().direct_space_state.intersect_shape(params, 12):
 		var target := hit.collider as Node
 		if is_instance_valid(target) and target.has_method("take_damage"):
-			target.take_damage(float(current_weapon.damage), center, self)
+			target.take_damage(_current_weapon_damage(), center, self)
 			made_contact = true
 	var sound_path := str(current_weapon.get("sound", ""))
 	if sound_path.is_empty():
@@ -693,12 +927,33 @@ func _emit_ammo() -> void:
 func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = null) -> void:
 	if dead:
 		return
-	var remaining := amount
-	if shield > 0.0:
+	if randf() < clampf(float(armor_skills.get("block_rate", 0.0)), 0.0, 0.9):
+		AudioDirector.play_3d("force_shield01.wav", global_position, -6.0)
+		return
+	# Unity multiplies personal reduction, the team aura and the optional
+	# weapon-category defence. Category defence matters in VS/co-op damage and is
+	# harmless for ordinary enemies, which do not expose a weapon category.
+	var damage_multiplier := maxf(0.0, 1.0 + float(armor_skills.get("damage_reduce", 0.0)))
+	damage_multiplier *= maxf(0.0, 1.0 + float(armor_skills.get("team_damage_reduce", 0.0)))
+	if is_instance_valid(_source) and _source.has_method("get_damage_category"):
+		var defence_key := str(_source.get_damage_category())
+		if not defence_key.is_empty():
+			damage_multiplier *= maxf(0.0, 1.0 + float(armor_skills.get(defence_key, 0.0)))
+	var remaining := amount * damage_multiplier
+	if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("modify_incoming_damage"):
+		remaining = float(armor_power_controller.modify_incoming_damage(remaining))
+	if remaining < 0.0:
+		# HURT HEALTH turns the final mitigated hit into healing. Unity applies it
+		# directly to HP, so it intentionally bypasses the restoration's shield.
+		health = minf(max_health, health - remaining)
+		remaining = 0.0
+	elif shield > 0.0:
 		var absorbed := minf(shield, remaining)
 		shield -= absorbed
 		remaining -= absorbed
 	health = maxf(0.0, health - remaining)
+	if remaining > 0.0 and float(armor_skills.get("speed_on_hit", 0.0)) > 0.0:
+		speed_on_hit_left = 2.5
 	health_changed.emit(health, shield)
 	if hurt_audio.stream and not hurt_audio.playing:
 		hurt_audio.play()
@@ -717,15 +972,107 @@ func restore(kind: String, amount: float) -> void:
 	elif kind == "shield":
 		shield = minf(max_shield, shield + amount)
 	elif kind == "health":
-		health = minf(max_health, health + amount)
+		health = minf(max_health, health + amount * maxf(0.0, 1.0 + float(armor_skills.get("recovery_boost", 0.0))))
 	elif kind == "ammo":
 		energy = mini(max_energy, energy + int(amount))
 		_emit_ammo()
 	health_changed.emit(health, shield)
 
+func set_armor_power_controller(controller: Node) -> void:
+	armor_power_controller = controller
+
+func heal_from_armor_power(amount: float) -> float:
+	if dead or amount <= 0.0:
+		return 0.0
+	var before := health
+	health = minf(max_health, health + amount)
+	if health > before:
+		health_changed.emit(health, shield)
+	return health - before
+
+func on_damage_dealt(actual_damage: float) -> void:
+	if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("on_damage_dealt"):
+		armor_power_controller.on_damage_dealt(actual_damage)
+
+func on_enemy_defeated() -> void:
+	var recovery := float(armor_skills.get("hp_on_kill", 0.0)) * ARMOR_HP_SCALE
+	if recovery <= 0.0 or dead:
+		return
+	health = minf(max_health, health + recovery)
+	health_changed.emit(health, shield)
+
+func _update_armor_effects(delta: float) -> void:
+	speed_on_hit_left = maxf(0.0, speed_on_hit_left - delta)
+	# GameWorld.TeamSkills contains at least the local player's aura even in the
+	# original single-player mode. With no remote peer model in this restoration,
+	# applying the equipped local aura reproduces that baseline exactly.
+	var recovery_per_second := (
+		float(armor_skills.get("hp_auto_recovery", 0.0))
+		+ float(armor_skills.get("team_hp_recovery", 0.0))
+	) * ARMOR_HP_SCALE
+	if recovery_per_second > 0.0 and health > 0.0 and health < max_health:
+		health = minf(max_health, health + recovery_per_second * delta)
+		health_changed.emit(health, shield)
+
+func _current_weapon_damage() -> float:
+	var base_damage := float(current_weapon.get("damage", 0.0))
+	var global_multiplier := maxf(
+		0.0,
+		1.0
+		+ float(armor_skills.get("attack_boost", 0.0))
+		+ float(armor_skills.get("team_attack_boost", 0.0))
+	)
+	var category_multiplier := maxf(0.0, 1.0 + float(armor_skills.get(_weapon_skill_key(), 0.0)))
+	var result := base_damage * global_multiplier * category_multiplier
+	if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("modify_outgoing_damage"):
+		result = float(armor_power_controller.modify_outgoing_damage(result))
+	return result
+
+func _weapon_skill_key() -> String:
+	return _weapon_skill_key_for_kind(str(current_weapon.get("kind", "hitscan")))
+
+func _weapon_skill_key_for_kind(kind: String) -> String:
+	match kind:
+		"shotgun": return "shotgun_boost"
+		"shockwave": return "impulse_boost"
+		"rocket": return "rpg_boost"
+		"grenade", "fly_grenade": return "grenade_boost"
+		"laser": return "laser_boost"
+		"beam", "snow": return "laser_cannon_boost"
+		"plasma": return "plasma_boost"
+		"machinegun": return "machine_boost"
+		"arrow": return "bow_boost"
+		"energy_fist", "spring": return "glove_boost"
+		"sword": return "sword_boost"
+		"sniper", "reflection": return "sniper_boost"
+		"tracking": return "tracking_boost"
+		"ricochet": return "pingpong_boost"
+		_: return "assault_boost"
+
+func get_damage_category() -> String:
+	match str(current_weapon.get("kind", "hitscan")):
+		"shotgun": return "shotgun_defence"
+		"shockwave": return "impulse_defence"
+		"rocket": return "rpg_defence"
+		"grenade", "fly_grenade": return "grenade_defence"
+		"laser": return "laser_defence"
+		"beam", "snow": return "laser_cannon_defence"
+		"plasma": return "plasma_defence"
+		"machinegun": return "machine_defence"
+		"arrow": return "bow_defence"
+		"energy_fist", "spring": return "glove_defence"
+		"sword": return "sword_defence"
+		"sniper", "reflection": return "sniper_defence"
+		"tracking": return "tracking_defence"
+		"ricochet": return "pingpong_defence"
+		_: return "assault_defence"
+
 func _die() -> void:
 	dead = true
+	if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("cancel_all_active"):
+		armor_power_controller.cancel_all_active(false)
 	_stop_continuous_weapon_audio()
+	_stop_flying_audio()
 	AudioDirector.play_3d("player_killed_1.wav", global_position)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if recovered_animation_player and recovered_animation_player.has_animation("dead"):
@@ -750,9 +1097,9 @@ func request_touch_dash() -> void:
 func request_touch_reload() -> void:
 	touch_reload_requested = true
 
-func _update_visual_animation(delta: float, movement: float) -> void:
+func _update_visual_animation(delta: float, movement: float, movement_input := Vector2.ZERO) -> void:
 	if recovered_animation_player:
-		_update_recovered_animation(movement)
+		_update_recovered_animation(movement, movement_input)
 	else:
 		animation_clock += delta * (8.5 if movement > 0.1 else 2.1)
 		if model.has_node("ArmL"):
@@ -765,7 +1112,9 @@ func _update_visual_animation(delta: float, movement: float) -> void:
 		var aim_weight := 1.0 if shoot_pose_left > 0.0 else 0.0
 		gun_mount.rotation.x = lerpf(gun_mount.rotation.x, -0.08 - aim_weight * 0.09, 1.0 - exp(-16.0 * delta))
 		model.rotation.z = lerpf(model.rotation.z, (0.12 if hurt_pose_left > 0.0 else 0.0), 1.0 - exp(-14.0 * delta))
-	if movement > 0.25 and is_on_floor():
+	var flying := float(armor_skills.get("fly", 0.0)) > 0.0
+	_update_flying_audio(flying, movement > 0.1)
+	if movement > 0.25 and is_on_floor() and not flying:
 		footstep_clock += delta * movement
 		if footstep_clock >= 0.38:
 			footstep_clock = 0.0
@@ -773,7 +1122,7 @@ func _update_visual_animation(delta: float, movement: float) -> void:
 	else:
 		footstep_clock = 0.3
 
-func _update_recovered_animation(movement: float) -> void:
+func _update_recovered_animation(movement: float, movement_input := Vector2.ZERO) -> void:
 	if not is_instance_valid(recovered_animation_player):
 		return
 	var restart_shoot_animation := restart_shoot_animation_requested
@@ -790,6 +1139,9 @@ func _update_recovered_animation(movement: float) -> void:
 		locomotion_pose = "rifle"
 	elif locomotion_pose == "BLACKSTARS":
 		locomotion_pose = "bazinga"
+	if float(armor_skills.get("fly", 0.0)) > 0.0:
+		_update_recovered_flying_animation(moving, movement_input, weapon_pose, locomotion_pose, restart_shoot_animation)
+		return
 	var requested_candidate := ""
 	if shoot_pose_left > 0.0:
 		requested_candidate = ("run_shoot_" if moving else "stand_shoot_") + weapon_pose
@@ -826,6 +1178,84 @@ func _update_recovered_animation(movement: float) -> void:
 				_play_recovered_layered_animation(locomotion_candidate, candidate, restart_shoot_animation)
 				return
 	_play_recovered_animation(candidate, 0.08, restart_shoot_animation and shoot_pose_left > 0.0)
+
+func _update_recovered_flying_animation(
+	moving: bool,
+	movement_input: Vector2,
+	weapon_pose: String,
+	locomotion_pose: String,
+	restart_shoot_animation: bool
+) -> void:
+	var base_candidate := _fly_direction_animation(movement_input) if moving else "fly_idle"
+	base_candidate = _first_available_recovered_animation([
+		base_candidate,
+		"fly_front" if moving else "fly_idle",
+		"run_rifle" if moving else "idle_rifle",
+	])
+	if base_candidate.is_empty():
+		return
+
+	if shoot_pose_left > 0.0:
+		var flying_shoot := ""
+		if moving and weapon_pose in ["machinegun", "jian"]:
+			flying_shoot = "fly_runshoot_" + weapon_pose
+		else:
+			flying_shoot = ("run_shoot_" if moving else "fly_stand_shoot_") + weapon_pose
+		var shoot_candidate := _first_available_recovered_animation([
+			flying_shoot,
+			("run_shoot_rifle" if moving else "fly_stand_shoot_rifle"),
+			("run_shoot_rifle" if moving else "stand_shoot_rifle"),
+		])
+		if shoot_candidate.is_empty():
+			_play_recovered_animation(base_candidate, 0.08)
+			return
+		var shoot_animation := recovered_animation_player.get_animation(shoot_candidate)
+		if shoot_animation:
+			shoot_animation.loop_mode = Animation.LOOP_LINEAR if bool(current_weapon.get("automatic", false)) else Animation.LOOP_NONE
+		# Unity supplies a looping lower-body sword hover while its upper-body
+		# strike plays. Preserve that authored exception when standing still.
+		if not moving and weapon_pose == "jian":
+			base_candidate = _first_available_recovered_animation([
+				"fly_stand_shoot_jian_lower", base_candidate
+			])
+		_play_recovered_layered_animation(base_candidate, shoot_candidate, restart_shoot_animation)
+		return
+
+	var upper_candidate := _first_available_recovered_animation([
+		("fly_" if moving else "fly_idle_") + locomotion_pose,
+		("fly_rifle" if moving else "fly_idle_rifle"),
+	])
+	if upper_candidate.is_empty():
+		_play_recovered_animation(base_candidate, 0.08)
+	else:
+		_play_recovered_layered_animation(base_candidate, upper_candidate)
+
+func _fly_direction_animation(movement_input: Vector2) -> String:
+	if absf(movement_input.x) > absf(movement_input.y):
+		return "fly_right" if movement_input.x > 0.0 else "fly_left"
+	return "fly_back" if movement_input.y > 0.0 else "fly_front"
+
+func _update_flying_audio(flying: bool, moving: bool) -> void:
+	if not flying:
+		_stop_flying_audio()
+		return
+	var requested := "move" if moving else "idle"
+	if requested == float_audio_state:
+		return
+	AudioDirector.stop("player_float")
+	float_audio_state = requested
+	AudioDirector.play_loop_3d(
+		"float_move.wav" if moving else "float_idle.wav",
+		global_position,
+		"player_float",
+		-10.0
+	)
+
+func _stop_flying_audio() -> void:
+	if float_audio_state.is_empty():
+		return
+	float_audio_state = ""
+	AudioDirector.stop("player_float")
 
 func _first_available_recovered_animation(candidates: Array) -> String:
 	if not is_instance_valid(recovered_animation_player):

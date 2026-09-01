@@ -15,6 +15,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Sequence
 
+from PIL import Image
+
 MESH_TOOL_DIR = Path(__file__).resolve().parents[1] / "yaml_mesh_converter"
 sys.path.insert(0, str(MESH_TOOL_DIR))
 import convert as unity_mesh  # noqa: E402
@@ -33,7 +35,40 @@ ANIMATION_NAMES = (
     "stand_shoot_laser", "run_shoot_laser",
     "stand_shoot_BLACKSTARS", "run_shoot_BLACKSTARS",
     "attacked", "attacked_back", "dead", "win", "win01", "idle01",
+    # The FLY armor skill swaps the entire locomotion/weapon animation stack in
+    # Unity.  These clips live beside the ground animations and target the same
+    # Bip01 skeleton, so keep them in the canonical avatar export as well.
+    "fly_idle", "fly_front", "fly_back", "fly_left", "fly_right",
+    "fly_rifle", "fly_shotgun", "fly_bazinga", "fly_jian", "fly_bow",
+    "fly_fist", "fly_machinegun", "fly_Sniper",
+    "fly_idle_rifle", "fly_idle_shotgun", "fly_idle_bazinga",
+    "fly_idle_jian", "fly_idle_bow", "fly_idle_fist",
+    "fly_idle_machinegun", "fly_idle_Sniper",
+    "fly_stand_shoot_rifle", "fly_stand_shoot_shotgun",
+    "fly_stand_shoot_bazinga", "fly_stand_shoot_jian",
+    "fly_stand_shoot_bow", "fly_stand_shoot_fist",
+    "fly_stand_shoot_machinegun", "fly_stand_shoot_Sniper",
+    "fly_stand_shoot_grenade_launcher", "fly_stand_shoot_laser",
+    "fly_stand_shoot_BLACKSTARS", "fly_stand_shoot_jian_lower",
+    "fly_runshoot_jian", "fly_runshoot_machinegun",
 )
+
+ARMOR_PART_NAMES = ("Head", "Body", "Hand", "Foot")
+ARMOR_VARIANT_COUNT = 21
+BAG_VARIANT_COUNT = 25
+# WeaponResourceConfig.GetBagSize() uses zero-based bag IDs. AvatarBuilder then
+# applies another 0.8 multiplier for every body except body ID 5.
+BAG_SIZE_OVERRIDES = {
+    14: 1.2,
+    15: 1.2,
+    16: 1.2,
+    17: 1.2,
+    18: 1.1,
+    19: 1.2,
+    20: 1.2,
+}
+ANIMATED_UNITY_BAGS = {15, 23}
+TEXTURE_EXPORT_SCALE = 2
 
 
 @dataclass
@@ -55,6 +90,19 @@ class SkinnedRenderer:
     mesh_guid: str
     material_guids: list[str]
     bone_names: list[str]
+
+
+@dataclass
+class ArmorPartData:
+    armor_id: int
+    part_name: str
+    source_prefab: Path
+    renderer: SkinnedRenderer
+    mesh_path: Path
+    mesh: object
+    bind_poses: list[tuple[float, ...]]
+    joints: list[tuple[int, ...]]
+    weights: list[tuple[float, ...]]
 
 
 class BufferBuilder:
@@ -349,11 +397,41 @@ def parse_animation(path: Path) -> dict[str, dict[str, list[tuple[float, tuple[f
     }
 
 
+def copy_upscaled_texture(source: Path, destination: Path) -> None:
+    """Copy a Unity texture into the restoration's 2x RGBA asset corpus."""
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if source.suffix.lower() != ".png" or TEXTURE_EXPORT_SCALE == 1:
+        if source.resolve() != destination.resolve():
+            shutil.copy2(source, destination)
+        return
+    with Image.open(source) as image:
+        rgba = image.convert("RGBA")
+        target_size = (
+            rgba.width * TEXTURE_EXPORT_SCALE,
+            rgba.height * TEXTURE_EXPORT_SCALE,
+        )
+        rgba.resize(target_size, Image.Resampling.LANCZOS).save(
+            destination,
+            format="PNG",
+            optimize=True,
+        )
+
+
 def add_material(
-    gltf: dict[str, object], material_info: unity_mesh.MaterialInfo, output_dir: Path, image_cache: dict[Path, int]
+    gltf: dict[str, object],
+    material_info: unity_mesh.MaterialInfo,
+    output_dir: Path,
+    image_cache: dict[Path, int],
+    image_uri_cache: dict[str, int],
+    *,
+    material_prefix: str = "",
+    texture_directory: str = "armor_textures",
 ) -> int:
+    material_name = material_info.name
+    if material_prefix:
+        material_name = f"{material_prefix}_{material_name}"
     material: dict[str, object] = {
-        "name": material_info.name,
+        "name": material_name,
         "pbrMetallicRoughness": {
             "baseColorFactor": list(material_info.color),
             "metallicFactor": 0.08,
@@ -363,30 +441,179 @@ def add_material(
     }
     source = material_info.diffuse_source
     if source and source.is_file():
-        if source not in image_cache:
-            safe_name = unity_mesh._sanitize_name(source.name)
-            destination = output_dir / safe_name
-            if source.resolve() != destination.resolve():
-                shutil.copy2(source, destination)
-            images: list[dict[str, object]] = gltf["images"]  # type: ignore[assignment]
-            textures: list[dict[str, object]] = gltf["textures"]  # type: ignore[assignment]
-            image_index = len(images)
-            images.append({"uri": safe_name})
-            texture_index = len(textures)
-            textures.append({"source": image_index, "sampler": 0})
-            image_cache[source] = texture_index
-        material["pbrMetallicRoughness"]["baseColorTexture"] = {"index": image_cache[source]}  # type: ignore[index]
+        source_key = source.resolve()
+        if source_key not in image_cache:
+            # The legacy project stores many unrelated textures as body.png,
+            # head.png, and similar basenames. Content-addressing the copied
+            # name keeps the glTF deterministic while preventing later armor
+            # variants from silently overwriting an earlier variant's image.
+            digest = hashlib.sha256(source.read_bytes()).hexdigest()[:12]
+            safe_stem = unity_mesh._sanitize_name(source.stem)
+            safe_name = f"{safe_stem}_{digest}_2x{source.suffix.lower()}"
+            relative_destination = Path(texture_directory) / safe_name
+            relative_uri = relative_destination.as_posix()
+            if relative_uri in image_uri_cache:
+                texture_index = image_uri_cache[relative_uri]
+            else:
+                destination = output_dir / relative_destination
+                copy_upscaled_texture(source, destination)
+                images: list[dict[str, object]] = gltf["images"]  # type: ignore[assignment]
+                textures: list[dict[str, object]] = gltf["textures"]  # type: ignore[assignment]
+                image_index = len(images)
+                images.append({"uri": relative_uri})
+                texture_index = len(textures)
+                textures.append({"source": image_index, "sampler": 0})
+                image_uri_cache[relative_uri] = texture_index
+            image_cache[source_key] = texture_index
+        material["pbrMetallicRoughness"]["baseColorTexture"] = {"index": image_cache[source_key]}  # type: ignore[index]
     materials: list[dict[str, object]] = gltf["materials"]  # type: ignore[assignment]
     index = len(materials)
     materials.append(material)
     return index
 
 
+def load_armor_parts(
+    assets: Path,
+    guid_index: unity_mesh.GuidIndex,
+    canonical_bones: set[str],
+) -> tuple[dict[tuple[str, int], ArmorPartData], dict[str, list[str]]]:
+    part_data: dict[tuple[str, int], ArmorPartData] = {}
+    ignored_zero_weight_bones: dict[str, list[str]] = {}
+    for armor_id in range(ARMOR_VARIANT_COUNT):
+        source_directory = assets / "Resources" / "avatar" / f"{armor_id + 1:02d}"
+        for part_name in ARMOR_PART_NAMES:
+            prefab = source_directory / f"{part_name}.prefab"
+            renderer = parse_skinned_renderer(prefab)
+            mesh_path = guid_index.resolve(renderer.mesh_guid)
+            mesh = unity_mesh.parse_mesh(mesh_path)
+            bind_poses, joints, weights = parse_skin(mesh_path, len(mesh.positions))
+            if len(bind_poses) != len(renderer.bone_names):
+                raise ValueError(
+                    f"{prefab}: {len(bind_poses)} bind poses for "
+                    f"{len(renderer.bone_names)} bones"
+                )
+
+            unknown_indices = {
+                index for index, bone_name in enumerate(renderer.bone_names)
+                if bone_name not in canonical_bones
+            }
+            weighted_unknowns: set[str] = set()
+            for vertex_joints, vertex_weights in zip(joints, weights):
+                for joint, weight in zip(vertex_joints, vertex_weights):
+                    if joint >= len(renderer.bone_names):
+                        raise ValueError(f"{prefab}: joint index {joint} is outside its bone list")
+                    if joint in unknown_indices and weight > 1e-6:
+                        weighted_unknowns.add(renderer.bone_names[joint])
+            if weighted_unknowns:
+                raise ValueError(
+                    f"{prefab}: non-canonical bones carry skin weights: "
+                    f"{', '.join(sorted(weighted_unknowns))}"
+                )
+            if unknown_indices:
+                node_name = f"Armor{part_name}_{armor_id:02d}"
+                ignored_zero_weight_bones[node_name] = sorted(
+                    renderer.bone_names[index] for index in unknown_indices
+                )
+
+            part_data[(part_name, armor_id)] = ArmorPartData(
+                armor_id,
+                part_name,
+                prefab,
+                renderer,
+                mesh_path,
+                mesh,
+                bind_poses,
+                joints,
+                weights,
+            )
+    return part_data, ignored_zero_weight_bones
+
+
+def export_bags(
+    assets: Path,
+    output_directory: Path,
+    guid_index: unity_mesh.GuidIndex,
+) -> dict[str, object]:
+    output_directory.mkdir(parents=True, exist_ok=True)
+    bag_records: list[dict[str, object]] = []
+    for bag_id in range(BAG_VARIANT_COUNT):
+        prefab = assets / "Resources" / "avatar" / f"{bag_id + 1:02d}" / "Bag.prefab"
+        renderers = unity_mesh.parse_prefab_renderers(prefab)
+        if not renderers:
+            raise ValueError(f"{prefab}: no renderable bag geometry")
+        pieces: list[unity_mesh.ObjPiece] = []
+        for renderer_index, renderer in enumerate(renderers):
+            mesh_path = guid_index.resolve(renderer.mesh_guid)
+            materials = [
+                unity_mesh.parse_material(guid_index.resolve(guid), guid_index)
+                for guid in renderer.material_guids
+            ]
+            if not materials:
+                materials = [unity_mesh.fallback_material(renderer.name)]
+            pieces.append(unity_mesh.ObjPiece(
+                f"ArmorBag_{bag_id:02d}_{renderer_index:02d}_{unity_mesh._sanitize_name(renderer.name)}",
+                unity_mesh.parse_mesh(mesh_path),
+                renderer.transform,
+                materials,
+            ))
+
+        bag_name = f"ArmorBag_{bag_id:02d}"
+        bag_directory = output_directory / bag_name
+        obj_path = bag_directory / f"{bag_name}.obj"
+        result = unity_mesh.write_obj(obj_path, pieces)
+        for texture_name in result["textures"]:
+            texture_path = bag_directory / str(texture_name)
+            # write_obj copied the original source image. Upscale from that
+            # fresh copy once so rerunning the exporter is idempotent.
+            with Image.open(texture_path) as image:
+                rgba = image.convert("RGBA")
+                rgba.resize(
+                    (rgba.width * TEXTURE_EXPORT_SCALE, rgba.height * TEXTURE_EXPORT_SCALE),
+                    Image.Resampling.LANCZOS,
+                ).save(texture_path, format="PNG", optimize=True)
+        validation = unity_mesh.validate_obj(obj_path)
+        unity_scale = BAG_SIZE_OVERRIDES.get(bag_id, 1.0)
+        bag_records.append({
+            "id": bag_id,
+            "name": bag_name,
+            "source_folder": f"{bag_id + 1:02d}",
+            "obj": obj_path.relative_to(output_directory).as_posix(),
+            "renderer_count": len(renderers),
+            "renderer_kinds": [renderer.kind for renderer in renderers],
+            "vertices": validation["vertices"],
+            "faces": validation["faces"],
+            "textures": result["textures"],
+            "unity_scale": unity_scale,
+            "default_body_scale": unity_scale * 0.8,
+            "body_05_scale": unity_scale,
+            "animated_in_unity": bag_id in ANIMATED_UNITY_BAGS,
+            "static_geometry_only": True,
+        })
+
+    manifest = {
+        "naming": "ArmorBag_XX uses the zero-based Unity bag ID",
+        "count": len(bag_records),
+        "special_animation_limit": (
+            "Unity bag IDs 15 and 23 use FlyBagAnimationScript. Their recovered "
+            "OBJ assets preserve all renderable geometry but not the legacy script animation."
+        ),
+        "bags": bag_records,
+    }
+    manifest_path = output_directory / "manifest.json"
+    manifest_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return {"manifest": str(manifest_path), **manifest}
+
+
 def export(project_root: Path, output_path: Path) -> dict[str, object]:
     assets = project_root / "Assets"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     guid_index = unity_mesh.GuidIndex(assets)
-    skeleton_nodes, root_transform_id = parse_transform_hierarchy(assets / "Resources" / "avatar" / "Bone.prefab")
+    skeleton_nodes, root_transform_id = parse_transform_hierarchy(
+        assets / "Resources" / "avatar" / "Bone.prefab"
+    )
 
     # Bone.prefab stores the non-deforming weapon helper in a construction
     # pose. Clips which animate it override that pose, but idle_rifle omits
@@ -407,6 +634,8 @@ def export(project_root: Path, output_path: Path) -> dict[str, object]:
 
     gltf: dict[str, object] = {
         "asset": {"version": "2.0", "generator": "Star Warfare Unity YAML avatar exporter"},
+        "extensionsUsed": ["KHR_node_visibility"],
+        "extensionsRequired": ["KHR_node_visibility"],
         "scene": 0,
         "scenes": [{"nodes": []}],
         "nodes": [], "meshes": [], "skins": [], "animations": [],
@@ -429,31 +658,35 @@ def export(project_root: Path, output_path: Path) -> dict[str, object]:
             nodes[node.node_index]["children"] = children
     root_node = by_transform[root_transform_id]
     gltf["scenes"][0]["nodes"].append(root_node.node_index)  # type: ignore[index]
-    path_to_node = {node.path.removeprefix(root_node.name + "/"): node.node_index for node in skeleton_nodes}
+    path_to_node = {
+        node.path.removeprefix(root_node.name + "/"): node.node_index
+        for node in skeleton_nodes
+    }
     name_to_node = {node.name: node.node_index for node in skeleton_nodes}
     bip_node = name_to_node["Bip01"]
 
     buffer = BufferBuilder(gltf)
     image_cache: dict[Path, int] = {}
+    image_uri_cache: dict[str, int] = {}
     material_cache: dict[Path, int] = {}
     mesh_nodes: list[int] = []
 
-    # Build one complete inverse-bind table from the four skinned parts. Each
-    # Unity renderer contains only the bones it deforms, while Godot needs a
-    # coherent joint hierarchy to expose legacy attachment bones.
-    part_data: dict[str, tuple[SkinnedRenderer, Path, object, list[tuple[float, ...]], list[tuple[int, ...]], list[tuple[float, ...]]]] = {}
+    canonical_bones = set(name_to_node)
+    part_data, ignored_zero_weight_bones = load_armor_parts(
+        assets,
+        guid_index,
+        canonical_bones,
+    )
+
+    # Build the canonical inverse-bind fallback from armor ID 0. Every variant
+    # keeps its own authored bind poses for the bones it uses; this table only
+    # fills attachment/end bones that Unity omits from a renderer's bone list.
     master_inverse_bind: dict[str, tuple[float, ...]] = {}
-    for part_name in ("Body", "Head", "Hand", "Foot"):
-        prefab = assets / "Resources" / "avatar" / "01" / f"{part_name}.prefab"
-        renderer = parse_skinned_renderer(prefab)
-        mesh_path = guid_index.resolve(renderer.mesh_guid)
-        mesh = unity_mesh.parse_mesh(mesh_path)
-        bind_poses, joints, weights = parse_skin(mesh_path, len(mesh.positions))
-        if len(bind_poses) != len(renderer.bone_names):
-            raise ValueError(f"{part_name}: {len(bind_poses)} bind poses for {len(renderer.bone_names)} bones")
-        part_data[part_name] = (renderer, mesh_path, mesh, bind_poses, joints, weights)
-        for bone_name, bind_pose in zip(renderer.bone_names, bind_poses):
-            master_inverse_bind.setdefault(bone_name, bind_pose)
+    for part_name in ARMOR_PART_NAMES:
+        data = part_data[(part_name, 0)]
+        for bone_name, bind_pose in zip(data.renderer.bone_names, data.bind_poses):
+            if bone_name in canonical_bones:
+                master_inverse_bind.setdefault(bone_name, bind_pose)
 
     skeleton_root_path = f"{root_node.name}/Bip01"
     complete_bone_names = [
@@ -464,68 +697,129 @@ def export(project_root: Path, output_path: Path) -> dict[str, object]:
             continue
         parent = by_transform[node.father_id]
         if parent.name not in master_inverse_bind:
-            raise ValueError(f"Cannot derive bind pose for {node.name}: parent {parent.name} is missing")
+            raise ValueError(
+                f"Cannot derive bind pose for {node.name}: parent {parent.name} is missing"
+            )
         inverse_local = invert_matrix(trs_matrix(node.translation, node.rotation, node.scale))
-        master_inverse_bind[node.name] = matrix_multiply(inverse_local, master_inverse_bind[parent.name])
+        master_inverse_bind[node.name] = matrix_multiply(
+            inverse_local,
+            master_inverse_bind[parent.name],
+        )
 
-    for part_name in ("Body", "Head", "Hand", "Foot"):
-        renderer, mesh_path, mesh, bind_poses, joints, weights = part_data[part_name]
-        # Unity's renderer only lists deforming bones. Attachment and end bones
-        # (notably "r hand gun" and "fly_bag") still need to be declared as
-        # glTF joints or Godot imports them as plain nodes outside Skeleton3D.
-        # Appending them keeps Unity's JOINTS_0 indices unchanged.
-        attachment_bones = [name for name in complete_bone_names if name not in renderer.bone_names]
-        skin_bone_names = renderer.bone_names + attachment_bones
-        skin_joints = [name_to_node[name] for name in skin_bone_names]
-        inverse_bind_by_name = master_inverse_bind.copy()
-        inverse_bind_by_name.update(zip(renderer.bone_names, bind_poses))
-        expanded_bind_poses = [inverse_bind_by_name[name] for name in skin_bone_names]
-        skin_index = len(gltf["skins"])  # type: ignore[arg-type]
-        inverse_accessor = buffer.accessor([convert_matrix(matrix) for matrix in expanded_bind_poses], 5126, "MAT4")
-        gltf["skins"].append({  # type: ignore[union-attr]
-            "name": f"{part_name}Skin", "inverseBindMatrices": inverse_accessor,
-            "joints": skin_joints, "skeleton": bip_node,
-        })
+    for armor_id in range(ARMOR_VARIANT_COUNT):
+        for part_name in ARMOR_PART_NAMES:
+            data = part_data[(part_name, armor_id)]
+            renderer = data.renderer
+            mesh = data.mesh
+            node_name = f"Armor{part_name}_{armor_id:02d}"
 
-        positions = [convert_translation(value) for value in mesh.positions]
-        faces = [tuple(submesh.indices[offset : offset + 3]) for submesh in mesh.submeshes for offset in range(0, len(submesh.indices), 3)]
-        reversed_faces = [(face[0], face[2], face[1]) for face in faces]
-        normals = [convert_translation(value) for value in mesh.normals] if mesh.normals else unity_mesh._generated_normals(positions, reversed_faces)
-        uvs = [(float(value[0]), 1.0 - float(value[1])) for value in (mesh.uvs or [(0.0, 0.0)] * len(positions))]
-        attributes = {
-            "POSITION": buffer.accessor(positions, 5126, "VEC3", target=34962, include_bounds=True),
-            "NORMAL": buffer.accessor(normals, 5126, "VEC3", target=34962),
-            "TEXCOORD_0": buffer.accessor(uvs, 5126, "VEC2", target=34962),
-            "JOINTS_0": buffer.accessor(joints, 5123, "VEC4", target=34962),
-            "WEIGHTS_0": buffer.accessor(weights, 5126, "VEC4", target=34962),
-        }
-        part_materials: list[int] = []
-        for guid in renderer.material_guids:
-            material_path = guid_index.resolve(guid)
-            if material_path not in material_cache:
-                material_cache[material_path] = add_material(gltf, unity_mesh.parse_material(material_path, guid_index), output_path.parent, image_cache)
-            part_materials.append(material_cache[material_path])
-        if not part_materials:
-            fallback = unity_mesh.fallback_material(part_name)
-            part_materials.append(add_material(gltf, fallback, output_path.parent, image_cache))
-        primitives: list[dict[str, object]] = []
-        for submesh_index, submesh in enumerate(mesh.submeshes):
-            indices: list[int] = []
-            for offset in range(0, len(submesh.indices), 3):
-                first, second, third = submesh.indices[offset : offset + 3]
-                indices.extend((first, third, second))
-            index_accessor = buffer.accessor(indices, 5125, "SCALAR", target=34963)
-            primitives.append({
-                "attributes": attributes,
-                "indices": index_accessor,
-                "material": part_materials[min(submesh_index, len(part_materials) - 1)],
-                "mode": 4,
+            # Unity's AvatarBuilder binds renderer bones to the canonical Bone
+            # prefab by name. A handful of prefabs list unused helper bones not
+            # present in Bone.prefab; load_armor_parts proves their weights are
+            # zero, so mapping those joint slots to Bip01 preserves JOINTS_0
+            # indices without expanding or destabilising the 28-bone import.
+            attachment_bones = [
+                name for name in complete_bone_names if name not in renderer.bone_names
+            ]
+            skin_bone_names = renderer.bone_names + attachment_bones
+            skin_joints = [name_to_node.get(name, bip_node) for name in skin_bone_names]
+            inverse_bind_by_name = master_inverse_bind.copy()
+            inverse_bind_by_name.update(zip(renderer.bone_names, data.bind_poses))
+            expanded_bind_poses = [inverse_bind_by_name[name] for name in skin_bone_names]
+            skin_index = len(gltf["skins"])  # type: ignore[arg-type]
+            inverse_accessor = buffer.accessor(
+                [convert_matrix(matrix) for matrix in expanded_bind_poses],
+                5126,
+                "MAT4",
+            )
+            gltf["skins"].append({  # type: ignore[union-attr]
+                "name": f"{node_name}Skin",
+                "inverseBindMatrices": inverse_accessor,
+                "joints": skin_joints,
+                "skeleton": bip_node,
             })
-        mesh_index = len(gltf["meshes"])  # type: ignore[arg-type]
-        gltf["meshes"].append({"name": part_name, "primitives": primitives})  # type: ignore[union-attr]
-        mesh_node_index = len(nodes)
-        nodes.append({"name": part_name, "mesh": mesh_index, "skin": skin_index})
-        mesh_nodes.append(mesh_node_index)
+
+            positions = [convert_translation(value) for value in mesh.positions]
+            faces = [
+                tuple(submesh.indices[offset : offset + 3])
+                for submesh in mesh.submeshes
+                for offset in range(0, len(submesh.indices), 3)
+            ]
+            reversed_faces = [(face[0], face[2], face[1]) for face in faces]
+            normals = (
+                [convert_translation(value) for value in mesh.normals]
+                if mesh.normals
+                else unity_mesh._generated_normals(positions, reversed_faces)
+            )
+            uvs = [
+                (float(value[0]), 1.0 - float(value[1]))
+                for value in (mesh.uvs or [(0.0, 0.0)] * len(positions))
+            ]
+            attributes = {
+                "POSITION": buffer.accessor(
+                    positions, 5126, "VEC3", target=34962, include_bounds=True
+                ),
+                "NORMAL": buffer.accessor(normals, 5126, "VEC3", target=34962),
+                "TEXCOORD_0": buffer.accessor(uvs, 5126, "VEC2", target=34962),
+                "JOINTS_0": buffer.accessor(data.joints, 5123, "VEC4", target=34962),
+                "WEIGHTS_0": buffer.accessor(data.weights, 5126, "VEC4", target=34962),
+            }
+            part_materials: list[int] = []
+            for guid in renderer.material_guids:
+                material_path = guid_index.resolve(guid)
+                if material_path not in material_cache:
+                    material_cache[material_path] = add_material(
+                        gltf,
+                        unity_mesh.parse_material(material_path, guid_index),
+                        output_path.parent,
+                        image_cache,
+                        image_uri_cache,
+                        material_prefix=node_name,
+                    )
+                part_materials.append(material_cache[material_path])
+            if not part_materials:
+                fallback = unity_mesh.fallback_material(node_name)
+                part_materials.append(add_material(
+                    gltf,
+                    fallback,
+                    output_path.parent,
+                    image_cache,
+                    image_uri_cache,
+                    material_prefix=node_name,
+                ))
+            primitives: list[dict[str, object]] = []
+            for submesh_index, submesh in enumerate(mesh.submeshes):
+                indices: list[int] = []
+                for offset in range(0, len(submesh.indices), 3):
+                    first, second, third = submesh.indices[offset : offset + 3]
+                    indices.extend((first, third, second))
+                index_accessor = buffer.accessor(indices, 5125, "SCALAR", target=34963)
+                primitives.append({
+                    "attributes": attributes,
+                    "indices": index_accessor,
+                    "material": part_materials[min(submesh_index, len(part_materials) - 1)],
+                    "mode": 4,
+                })
+            mesh_index = len(gltf["meshes"])  # type: ignore[arg-type]
+            gltf["meshes"].append({  # type: ignore[union-attr]
+                "name": node_name,
+                "primitives": primitives,
+            })
+            mesh_node_index = len(nodes)
+            mesh_node: dict[str, object] = {
+                "name": node_name,
+                "mesh": mesh_index,
+                "skin": skin_index,
+                "extras": {
+                    "armor_part": part_name.lower(),
+                    "armor_id": armor_id,
+                    "source_folder": f"{armor_id + 1:02d}",
+                },
+            }
+            if armor_id != 0:
+                mesh_node["extensions"] = {"KHR_node_visibility": {"visible": False}}
+            nodes.append(mesh_node)
+            mesh_nodes.append(mesh_node_index)
 
     nodes[root_node.node_index].setdefault("children", []).extend(mesh_nodes)  # type: ignore[union-attr]
 
@@ -535,8 +829,16 @@ def export(project_root: Path, output_path: Path) -> dict[str, object]:
         if not animation_path.is_file():
             continue
         curves = parse_animation(animation_path)
-        animation: dict[str, object] = {"name": animation_name, "samplers": [], "channels": []}
-        for target_path, gltf_path in (("translation", "translation"), ("rotation", "rotation"), ("scale", "scale")):
+        animation: dict[str, object] = {
+            "name": animation_name,
+            "samplers": [],
+            "channels": [],
+        }
+        for target_path, gltf_path in (
+            ("translation", "translation"),
+            ("rotation", "rotation"),
+            ("scale", "scale"),
+        ):
             for bone_path, keys in curves[target_path].items():
                 node_index = path_to_node.get(bone_path)
                 if node_index is None:
@@ -550,35 +852,73 @@ def export(project_root: Path, output_path: Path) -> dict[str, object]:
                         value = convert_translation(raw_value)
                     elif target_path == "rotation":
                         value = convert_rotation(raw_value)
-                        if previous_rotation is not None and sum(a * b for a, b in zip(previous_rotation, value)) < 0.0:
+                        if (
+                            previous_rotation is not None
+                            and sum(a * b for a, b in zip(previous_rotation, value)) < 0.0
+                        ):
                             value = tuple(-component for component in value)
                         previous_rotation = value
                     else:
                         value = tuple(float(component) for component in raw_value)
                     values.append(value)
-                input_accessor = buffer.accessor(times, 5126, "SCALAR", include_bounds=True)
-                output_accessor = buffer.accessor(values, 5126, "VEC4" if target_path == "rotation" else "VEC3")
+                input_accessor = buffer.accessor(
+                    times,
+                    5126,
+                    "SCALAR",
+                    include_bounds=True,
+                )
+                output_accessor = buffer.accessor(
+                    values,
+                    5126,
+                    "VEC4" if target_path == "rotation" else "VEC3",
+                )
                 samplers: list[dict[str, object]] = animation["samplers"]  # type: ignore[assignment]
                 sampler_index = len(samplers)
-                samplers.append({"input": input_accessor, "output": output_accessor, "interpolation": "LINEAR"})
+                samplers.append({
+                    "input": input_accessor,
+                    "output": output_accessor,
+                    "interpolation": "LINEAR",
+                })
                 animation["channels"].append({  # type: ignore[union-attr]
-                    "sampler": sampler_index, "target": {"node": node_index, "path": gltf_path}
+                    "sampler": sampler_index,
+                    "target": {"node": node_index, "path": gltf_path},
                 })
         if animation["channels"]:
             gltf["animations"].append(animation)  # type: ignore[union-attr]
 
     binary_name = output_path.with_suffix(".bin").name
     gltf["buffers"] = [{"uri": binary_name, "byteLength": len(buffer.data)}]
-    gltf["asset"]["extras"] = {"buffer_sha256": hashlib.sha256(buffer.data).hexdigest()}  # type: ignore[index]
+    gltf["asset"]["extras"] = {  # type: ignore[index]
+        "buffer_sha256": hashlib.sha256(buffer.data).hexdigest(),
+        "armor_variant_naming": "Armor{Head|Body|Hand|Foot}_XX; XX is zero-based",
+        "default_visible_armor_id": 0,
+    }
     output_path.with_suffix(".bin").write_bytes(buffer.data)
-    output_path.write_text(json.dumps(gltf, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    output_path.write_text(
+        json.dumps(gltf, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    bag_report = export_bags(
+        assets,
+        output_path.parent / "bags",
+        guid_index,
+    )
     return {
         "output": str(output_path),
         "binary_bytes": len(buffer.data),
-        "bones": len(skeleton_nodes),
+        "source_bones": len(skeleton_nodes),
+        "expected_godot_bones": 28,
         "meshes": len(gltf["meshes"]),  # type: ignore[arg-type]
+        "armor_parts": list(ARMOR_PART_NAMES),
+        "armor_variants_per_part": ARMOR_VARIANT_COUNT,
+        "armor_mesh_naming": "Armor{Head|Body|Hand|Foot}_XX",
+        "default_visible_armor_id": 0,
+        "textures": [image["uri"] for image in gltf["images"]],  # type: ignore[index]
         "animations": [animation["name"] for animation in gltf["animations"]],  # type: ignore[index]
+        "ignored_zero_weight_bones": ignored_zero_weight_bones,
         "unmatched_animation_paths": sorted(missing_paths),
+        "bags": bag_report,
     }
 
 

@@ -1,4 +1,11 @@
-; Star Warfare offline restoration for Godot 4.7+
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [application]
@@ -6,19 +13,19 @@ config_version=5
 config/name="Star Warfare: Offline Restoration"
 config/description="Offline, cross-platform restoration of Star Warfare"
 run/main_scene="res://scenes/main_menu.tscn"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://assets/icon.png"
-config/quit_on_go_back=false
+
+[audio]
+
+default_bus_layout="res://default_bus_layout.tres"
 
 [autoload]
 
 GameState="*res://scripts/core/game_state.gd"
 AudioDirector="*res://scripts/core/audio_director.gd"
 Localization="*res://scripts/core/localization.gd"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/android_setup/plugin.cfg")
 
 [display]
 
@@ -29,23 +36,13 @@ window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/handheld/orientation=4
 
-[input_devices]
+[editor_plugins]
 
-pointing/emulate_mouse_from_touch=true
-pointing/emulate_touch_from_mouse=false
+enabled=PackedStringArray("res://addons/android_setup/plugin.cfg")
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-textures/default_filters/use_nearest_mipmap_filter=false
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.015, 0.025, 0.055, 1)
-
-[physics]
-
-common/physics_ticks_per_second=60
-
-[audio]
-
-default_bus_layout="res://default_bus_layout.tres"

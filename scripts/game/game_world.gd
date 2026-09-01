@@ -5,9 +5,14 @@ const PlayerScript = preload("res://scripts/game/player.gd")
 const EnemyScript = preload("res://scripts/game/enemy.gd")
 const PickupScript = preload("res://scripts/game/pickup.gd")
 const HUDScript = preload("res://scripts/ui/hud.gd")
+const ArmorPowerControllerScript = preload("res://scripts/game/armor_power_controller.gd")
+const DayNightScript = preload("res://scripts/game/day_night_cycle.gd")
+const UnityColliderBuilderScript = preload("res://scripts/core/unity_collider_builder.gd")
+const UnityMaterialRestorerScript = preload("res://scripts/core/unity_material_restorer.gd")
 
 var level_data: Dictionary
 var player: WarfarePlayer
+var armor_power_controller: ArmorPowerController
 var hud: WarfareHUD
 var current_wave := 0
 var alive_enemies := 0
@@ -21,6 +26,7 @@ var completed := false
 var arena_size := 30.0
 var rng := RandomNumberGenerator.new()
 var effects_root: Node3D
+var day_night: WarfareDayNightCycle
 var music: AudioStreamPlayer
 var stage_metadata: Dictionary = {}
 var player_spawn_points: Array[Vector3] = []
@@ -31,9 +37,19 @@ var waypoint_graph: Array = []
 
 const MAX_ACTIVE_ENEMIES := 8
 
+# Squad-level throttle. Only this many enemies may commit to a strike at once;
+# everyone else keeps circling for a flank. Without it the pack dogpiles the
+# player from one direction, which is exactly what made the original AI read as
+# mindless. Boss enemies bypass the pool entirely.
+var attack_tokens: Array[int] = []
+var max_attack_tokens := 99
+var difficulty_profile: Dictionary = {}
+
 func _ready() -> void:
 	level_data = GameState.get_level_data(GameState.selected_level)
 	arena_size = float(level_data.arena_size)
+	difficulty_profile = GameState.get_difficulty_profile()
+	max_attack_tokens = int(difficulty_profile.get("attack_slots", 99))
 	GameState.apply_viewport_quality()
 	rng.seed = 0x5A17 + int(level_data.number) * 991
 	_load_stage_metadata()
@@ -54,47 +70,36 @@ func _exit_tree() -> void:
 		music.stream = null
 
 func _build_environment() -> void:
+	# The environment is only a shell now. Every colour, light angle and fog
+	# value on it is owned by the day/night cycle, which drives them from the
+	# shared campaign clock; the sector palette and the recovered Unity render
+	# settings survive as the tint it blends over its timecycle.
 	var palette: Array = level_data.palette
 	var restored_settings: Dictionary = stage_metadata.get("render_settings", {})
 	var quality: Dictionary = GameState.get_quality_profile()
 	var world_environment := WorldEnvironment.new()
 	var environment := Environment.new()
-	environment.background_mode = Environment.BG_COLOR
-	environment.background_color = Color(palette[0]).darkened(0.34)
 	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	if restored_settings.is_empty():
-		environment.ambient_light_color = Color(palette[2])
-		environment.ambient_light_energy = 0.48
-	else:
-		environment.ambient_light_color = _color_from_json(restored_settings.get("ambient_color", [0.2, 0.2, 0.2, 1.0]))
-		environment.ambient_light_energy = maxf(0.15, float(restored_settings.get("ambient_intensity", 1.0)))
 	environment.reflected_light_source = Environment.REFLECTION_SOURCE_BG
 	environment.tonemap_mode = Environment.TONE_MAPPER_FILMIC
-	environment.glow_enabled = bool(quality.glow)
-	environment.glow_intensity = 0.85
-	environment.fog_enabled = bool(quality.fog) and bool(restored_settings.get("fog_enabled", true))
-	environment.fog_light_color = _color_from_json(restored_settings.get("fog_color", [Color(palette[1]).r, Color(palette[1]).g, Color(palette[1]).b, 1.0]))
-	environment.fog_light_energy = 0.45
-	environment.fog_density = float(restored_settings.get("fog_density", 0.008))
-	environment.fog_sky_affect = 0.55
+	environment.fog_sky_affect = 0.35
+	environment.fog_aerial_perspective = 0.25
 	world_environment.environment = environment
 	add_child(world_environment)
-	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-54, -32, 0)
-	sun.light_color = Color(palette[2])
-	sun.light_energy = 1.35
-	sun.shadow_enabled = bool(quality.shadows)
-	sun.directional_shadow_max_distance = 65.0
-	add_child(sun)
-	var fill := OmniLight3D.new()
-	fill.position = Vector3(0, 7, 0)
-	fill.light_color = Color(palette[1])
-	fill.light_energy = 8.0
-	fill.omni_range = arena_size * 1.25
-	add_child(fill)
+
+	day_night = DayNightScript.new()
+	day_night.name = "DayNightCycle"
+	add_child(day_night)
+	day_night.configure(environment, palette, restored_settings, quality, _environment_fill_radius())
+
 	effects_root = Node3D.new()
 	effects_root.name = "Effects"
 	add_child(effects_root)
+
+func _environment_fill_radius() -> float:
+	# The bounce light covers the arena. Worlds that have no arena boundary
+	# override this rather than scaling a light to the whole map.
+	return arena_size * 1.25
 
 func _build_arena() -> void:
 	if _build_restored_arena():
@@ -133,6 +138,13 @@ func _build_player() -> void:
 		player.position = Vector3(0, 0.04, arena_size * 0.32)
 	else:
 		player.position = player_spawn_points[0] + Vector3.UP * 0.04
+	# Gameplay owns active armor powers so dedicated/headless hosts run the same
+	# authoritative timers and effects even when no HUD is instantiated.
+	armor_power_controller = ArmorPowerControllerScript.new()
+	armor_power_controller.name = "ArmorPowerController"
+	armor_power_controller.configure(player, self)
+	player.set_armor_power_controller(armor_power_controller)
+	player.add_child(armor_power_controller)
 	player.died.connect(_on_player_died)
 
 func _build_hud() -> void:
@@ -195,7 +207,7 @@ func _choose_enemy_kind(index: int, boss_wave: bool) -> String:
 		return "brute"
 	return "crawler"
 
-func _spawn_enemy(kind: String, elite: bool) -> void:
+func _spawn_enemy(kind: String, elite: bool) -> WarfareEnemy:
 	var enemy := EnemyScript.new()
 	var health_value := float(level_data.enemy_health) * (1.0 + (current_wave - 1) * 0.12)
 	enemy.configure(player, kind, health_value, elite)
@@ -212,6 +224,7 @@ func _spawn_enemy(kind: String, elite: bool) -> void:
 	enemy.health_reported.connect(_on_enemy_health_reported.bind(enemy))
 	alive_enemies += 1
 	total_spawned += 1
+	return enemy
 
 func _on_enemy_died(_enemy: WarfareEnemy, death_position: Vector3, reward: int, score_value_amount: int) -> void:
 	alive_enemies = maxi(0, alive_enemies - 1)
@@ -445,6 +458,7 @@ func _build_restored_arena() -> bool:
 	restored.name = "OriginalUnityLevel%02d" % level_number
 	restored.mesh = stage_mesh
 	restored.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+	UnityMaterialRestorerScript.apply_to_mesh(restored, stage_metadata.get("material_render_modes", {}))
 	add_child(restored)
 
 	var physics_body := StaticBody3D.new()
@@ -454,7 +468,7 @@ func _build_restored_arena() -> bool:
 	add_child(physics_body)
 	for record in stage_metadata.get("primitive_colliders", []):
 		if record is Dictionary:
-			_add_restored_primitive_collider(physics_body, record)
+			UnityColliderBuilderScript.add_primitive(physics_body, record)
 	var collision_file := str(stage_metadata.get("collision_mesh", ""))
 	if not collision_file.is_empty():
 		var collision_path := "%s/%s" % [level_root, collision_file]
@@ -467,65 +481,6 @@ func _build_restored_arena() -> bool:
 				if collision_shape.shape:
 					physics_body.add_child(collision_shape)
 	return true
-
-func _add_restored_primitive_collider(parent: StaticBody3D, record: Dictionary) -> void:
-	var transform_values: Variant = record.get("transform", [])
-	if not transform_values is Array or transform_values.size() < 16:
-		return
-	var source_transform := _transform_from_json(transform_values)
-	var source_scale := source_transform.basis.get_scale().abs()
-	var normalized_basis := source_transform.basis.orthonormalized()
-	var collision := CollisionShape3D.new()
-	collision.name = str(record.get("name", "Collider"))
-	collision.transform = Transform3D(normalized_basis, source_transform.origin)
-	var collider_type := str(record.get("type", "box"))
-	if collider_type == "box":
-		var size := _vector3_from_json(record.get("size", [1.0, 1.0, 1.0]))
-		var shape := BoxShape3D.new()
-		shape.size = size * source_scale
-		collision.shape = shape
-	elif collider_type == "sphere":
-		var shape := SphereShape3D.new()
-		shape.radius = float(record.get("radius", 0.5)) * maxf(source_scale.x, maxf(source_scale.y, source_scale.z))
-		collision.shape = shape
-	elif collider_type == "capsule":
-		var direction := int(record.get("direction", 1))
-		var axis_scale := source_scale.y
-		var radius_scale := maxf(source_scale.x, source_scale.z)
-		var axis_rotation := Basis.IDENTITY
-		if direction == 0:
-			axis_scale = source_scale.x
-			radius_scale = maxf(source_scale.y, source_scale.z)
-			axis_rotation = Basis(Vector3.FORWARD, -PI * 0.5)
-		elif direction == 2:
-			axis_scale = source_scale.z
-			radius_scale = maxf(source_scale.x, source_scale.y)
-			axis_rotation = Basis(Vector3.RIGHT, PI * 0.5)
-		collision.transform.basis = normalized_basis * axis_rotation
-		var shape := CapsuleShape3D.new()
-		shape.radius = float(record.get("radius", 0.5)) * radius_scale
-		shape.height = maxf(shape.radius * 2.0, float(record.get("height", 2.0)) * axis_scale)
-		collision.shape = shape
-	if collision.shape:
-		parent.add_child(collision)
-
-func _transform_from_json(values: Array) -> Transform3D:
-	var basis := Basis(
-		Vector3(float(values[0]), float(values[4]), float(values[8])),
-		Vector3(float(values[1]), float(values[5]), float(values[9])),
-		Vector3(float(values[2]), float(values[6]), float(values[10]))
-	)
-	return Transform3D(basis, Vector3(float(values[3]), float(values[7]), float(values[11])))
-
-func _vector3_from_json(values: Variant) -> Vector3:
-	if values is Array and values.size() >= 3:
-		return Vector3(float(values[0]), float(values[1]), float(values[2]))
-	return Vector3.ONE
-
-func _color_from_json(values: Variant) -> Color:
-	if values is Array and values.size() >= 3:
-		return Color(float(values[0]), float(values[1]), float(values[2]), float(values[3]) if values.size() > 3 else 1.0)
-	return Color.WHITE
 
 func _choose_restored_enemy_spawn(kind: String) -> Vector3:
 	var candidates := boss_spawn_points if kind == "boss" and not boss_spawn_points.is_empty() else enemy_spawn_points
@@ -543,6 +498,35 @@ func _choose_restored_enemy_spawn(kind: String) -> Vector3:
 			best = candidate
 			best_distance = distance
 	return best + Vector3.UP * 0.05
+
+func request_attack_token(enemy: Node) -> bool:
+	if not is_instance_valid(enemy):
+		return false
+	var id := enemy.get_instance_id()
+	if attack_tokens.has(id):
+		return true
+	_prune_attack_tokens()
+	if attack_tokens.size() >= max_attack_tokens:
+		return false
+	attack_tokens.append(id)
+	return true
+
+func release_attack_token(enemy: Node) -> void:
+	if is_instance_valid(enemy):
+		attack_tokens.erase(enemy.get_instance_id())
+
+func _prune_attack_tokens() -> void:
+	# Enemies that died mid-strike never release their token, so drop any id
+	# whose object is gone before judging whether the pool is full.
+	var live: Array[int] = []
+	for id in attack_tokens:
+		var holder := instance_from_id(id)
+		if holder != null and is_instance_valid(holder) and not holder.is_queued_for_deletion():
+			live.append(id)
+	attack_tokens = live
+
+func has_line_of_sight(from: Vector3, to: Vector3) -> bool:
+	return _has_clear_static_path(from, to)
 
 func get_enemy_navigation_target(from: Vector3, destination: Vector3) -> Vector3:
 	if waypoint_positions.is_empty() or waypoint_graph.size() != waypoint_positions.size():

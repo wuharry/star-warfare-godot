@@ -8,7 +8,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $ExportPath = [IO.Path]::GetFullPath($ExportPath)
 
-$required = @('level1_static', 'bug01', 'gun00')
+$required = @('level1_static', 'bug01', 'gun00', 'gun22', 'gun23', 'gun36', 'gun37')
 $optional = @('player', 'armor01')
 $results = [Collections.Generic.List[object]]::new()
 

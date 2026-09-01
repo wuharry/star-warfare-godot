@@ -2,6 +2,13 @@ extends Node
 
 var failures: Array[String] = []
 
+class DamageCategorySource:
+	extends Node
+	var category := ""
+
+	func get_damage_category() -> String:
+		return category
+
 func _ready() -> void:
 	call_deferred("_run")
 
@@ -110,6 +117,60 @@ func _run() -> void:
 	_check(not player.recovered_animation_tree.active, "sword should keep its original full-body run-shoot clip")
 	_check(player.recovered_animation_name == "run_shoot_jian", "sword run-shoot clip is incorrect")
 	_check(player.recovered_animation_player.current_animation_position <= 0.001, "sword one-shot clip did not restart from frame zero")
+	# If a one-shot reaches its final frame before the short combat pose timer,
+	# hold that frame. Replaying from zero each physics tick looked completely
+	# frozen even though AnimationPlayer itself was healthy.
+	player.recovered_animation_player.stop()
+	player.restart_shoot_animation_requested = false
+	player.shoot_pose_left = 0.1
+	player._update_recovered_animation(1.0)
+	_check(not player.recovered_animation_player.is_playing(), "finished sword one-shot restarted every animation update")
+
+	# A FLY skill is an animation/camera mode in the Unity game, not vertical
+	# physics. It layers directional hovering with the equipped weapon pose.
+	player.armor_skills["fly"] = 1.0
+	player.equip_weapon("gun00", false)
+	player.shoot_pose_left = 0.0
+	player._update_recovered_animation(1.0, Vector2(0.0, -1.0))
+	_check(player.recovered_animation_tree.active, "flying locomotion did not use the layered animation graph")
+	_check(player.recovered_locomotion_name == "fly_front", "forward flight did not select fly_front")
+	_check(player.recovered_upper_body_name == "fly_rifle", "flying rifle pose is incorrect")
+	player.shoot_pose_left = 0.3
+	player._update_recovered_animation(0.0)
+	_check(player.recovered_locomotion_name == "fly_idle", "stationary flying shot lost the hover base")
+	_check(player.recovered_upper_body_name == "fly_stand_shoot_rifle", "stationary flying shot uses the wrong upper-body clip")
+	player.armor_skills["fly"] = 0.0
+
+	# Exercise the less visible armor passives against their Unity categories.
+	# Shockwave is IMPULSE (not shotgun), while Spring belongs to GLOVE.
+	player.armor_skills = {
+		"attack_boost": 0.1, "team_attack_boost": 0.2,
+		"impulse_boost": 0.3, "shotgun_boost": 4.0,
+		"glove_boost": 0.4, "tracking_boost": 5.0,
+	}
+	player.equip_weapon("gun32", false)
+	_check(player._weapon_skill_key() == "impulse_boost", "shockwave incorrectly consumes the shotgun armor bonus")
+	_check(is_equal_approx(player._current_weapon_damage(), 800.0 * 1.3 * 1.3), "team/impulse attack bonuses use the wrong Unity formula")
+	player.equip_weapon("gun42", false)
+	_check(player._weapon_skill_key() == "glove_boost", "Spring incorrectly consumes the tracking armor bonus")
+	_check(is_equal_approx(player._current_weapon_damage(), 30.0 * 1.3 * 1.4), "Spring glove bonus is not applied")
+
+	var source := DamageCategorySource.new()
+	source.category = "impulse_defence"
+	world.add_child(source)
+	player.armor_skills = {
+		"block_rate": 0.0, "damage_reduce": -0.1,
+		"team_damage_reduce": -0.2, "impulse_defence": -0.3,
+		"speed_on_hit": 0.0,
+	}
+	player.shield = 0.0
+	player.health = 1000.0
+	player.take_damage(100.0, Vector3.ZERO, source)
+	_check(is_equal_approx(player.health, 1000.0 - 100.0 * 0.9 * 0.8 * 0.7), "personal/team/category defence was not multiplied like Unity")
+	player.armor_skills = {"hp_auto_recovery": 10.0, "team_hp_recovery": 20.0}
+	var health_before_recovery := player.health
+	player._update_armor_effects(1.0)
+	_check(is_equal_approx(player.health, health_before_recovery + 0.3), "team HP recovery aura is not active")
 	world.completed = true
 	for audio in world.find_children("*", "AudioStreamPlayer", true, false):
 		audio.stop()
@@ -120,7 +181,7 @@ func _run() -> void:
 	await get_tree().create_timer(0.15).timeout
 	if failures.is_empty():
 		print(
-			"RUN_SHOOT_ANIMATION_TEST_PASS weapons=5 continuous=true thigh_angle=%.3f moved=%.2f energy_spent=%d"
+			"RUN_SHOOT_ANIMATION_TEST_PASS weapons=7 fly=true armor_passives=true continuous=true thigh_angle=%.3f moved=%.2f energy_spent=%d"
 			% [max_thigh_angle, moved_distance, energy_spent]
 		)
 		get_tree().quit(0)

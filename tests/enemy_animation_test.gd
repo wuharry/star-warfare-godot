@@ -38,6 +38,19 @@ func _run() -> void:
 			var expected_forward := Vector3(0.7, 0.0, -0.7).normalized()
 			var actual_forward := -enemy.global_transform.basis.z.normalized()
 			_check(actual_forward.dot(expected_forward) > 0.999, "%s faces opposite its movement direction" % kind)
+			if is_instance_valid(enemy.recovered_animation_player):
+				enemy.spawn_left = 0.0
+				enemy.attack_cooldown = enemy.attack_interval
+				enemy.take_damage(1.0)
+				var attacked_name := "fly_attacked" if kind == "boss" else "attacked"
+				_check(enemy.recovered_animation_name == attacked_name, "%s did not enter its hit reaction" % kind)
+				enemy.recovered_animation_player.stop()
+				enemy._update_animation(0.016, 1.0)
+				_check(enemy.recovered_animation_name == attacked_name, "%s attack cooldown overwrote its hit reaction" % kind)
+				_check(not enemy.recovered_animation_player.is_playing(), "%s restarted a finished hit clip every frame" % kind)
+				enemy.hit_reaction_left = 0.0
+				enemy._update_animation(0.016, 1.0)
+				_check(enemy.recovered_animation_name == ("fly_attack" if kind == "boss" else "attack"), "%s did not leave its hit reaction" % kind)
 	world.completed = true
 	for audio in world.find_children("*", "AudioStreamPlayer", true, false):
 		audio.stop()

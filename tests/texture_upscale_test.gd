@@ -1,24 +1,31 @@
 extends Node
 
-const EXPECTED_TEXTURE_COUNT := 258
+const EXPECTED_TEXTURE_COUNT := 321
 # These are UI regions extracted losslessly from the recovered Unity atlases.
 # Their source rectangles intentionally keep the original odd dimensions and
-# are not part of the 2x texture-upscale corpus verified by this test.
-const EXCLUDED_TEXTURE_PREFIXES := ["res://assets/ui/components/"]
+# are not part of the 2x texture-upscale corpus verified by this test. Armor
+# variants and bags have their own stricter import/manifest coverage in
+# avatar_import_test.gd, so they are kept out of this fixed legacy corpus.
+const EXCLUDED_TEXTURE_PREFIXES := [
+	"res://assets/ui/components/",
+	"res://assets/models/player/animated/armor_textures/",
+	"res://assets/models/player/animated/bags/",
+]
 const EXPECTED_DIMENSIONS := {
 	"64x64": 3,
 	"128x64": 2,
-	"128x128": 5,
+	"128x128": 6,
+	"128x256": 1,
 	"256x128": 4,
-	"256x256": 17,
+	"256x256": 20,
 	"512x256": 2,
-	"512x512": 76,
+	"512x512": 83,
 	"1024x256": 1,
 	"1024x512": 4,
-	"1024x1024": 90,
+	"1024x1024": 130,
 	"2048x128": 1,
 	"2048x1024": 3,
-	"2048x2048": 49,
+	"2048x2048": 60,
 	"4096x2048": 1,
 }
 const IMPORT_CHECKS := {

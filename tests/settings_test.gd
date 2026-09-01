@@ -4,7 +4,7 @@ extends Node
 # both are pure settings systems that must behave identically headless and in
 # the shipped menu, so they are cheap and valuable to assert directly.
 
-const REQUIRED_QUALITY_KEYS := ["render_scale", "msaa", "shadows", "glow", "fog"]
+const REQUIRED_QUALITY_KEYS := ["render_scale", "msaa", "shadows", "glow", "fog", "sky"]
 const SAMPLE_TRANSLATIONS := {
 	"START": "開始",
 	"OPTIONS": "設定",
@@ -49,6 +49,7 @@ func _test_quality_profiles() -> void:
 	var high: Dictionary = GameState.QUALITY_PROFILES["high"]
 	_check(float(low.render_scale) < float(high.render_scale), "low render scale does not undercut high")
 	_check(not bool(low.shadows) and bool(high.shadows), "shadow toggle does not vary across presets")
+	_check(not bool(low.sky) and bool(high.sky), "sky toggle does not vary across presets")
 	_check(float(high.render_scale) == 1.0, "high preset should render at native resolution")
 
 	var restore := str(GameState.settings.quality)

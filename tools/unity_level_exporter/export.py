@@ -17,6 +17,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Sequence
 
+from PIL import Image
+
 
 CONVERTER_DIR = Path(__file__).resolve().parents[1] / "yaml_mesh_converter"
 sys.path.insert(0, str(CONVERTER_DIR))
@@ -35,6 +37,8 @@ MARKER_TAGS = (
     "Grave",
 )
 WAYPOINT_SCRIPT_GUID = "e6eb32104f095b444bc56c039c8cdd7f"
+TEXTURE_EXPORT_SCALE = 2
+MAX_TEXTURE_DIMENSION = 4096
 
 
 @dataclass
@@ -336,6 +340,77 @@ def _copy_material(material: legacy.MaterialInfo) -> legacy.MaterialInfo:
     return result
 
 
+def _prepare_level_texture(
+    material: legacy.MaterialInfo,
+    level_dir: Path,
+    claimed_names: dict[str, Path],
+) -> legacy.MaterialInfo:
+    """Point an exported material at a collision-safe, preserved 2x texture.
+
+    Existing restored textures may have been processed with a higher-quality
+    upscaler, so a repeatable level export must not replace them with the
+    lower-resolution Unity source.  Newly recovered textures are written as
+    RGBA and enlarged up to 2x while retaining the mobile-safe 4096px cap.
+    """
+    source = material.diffuse_source
+    if source is None:
+        return material
+    if not source.is_file():
+        raise legacy.ConversionError(f"Referenced diffuse texture is missing: {source}")
+
+    source_key = source.resolve()
+    destination_name = legacy._sanitize_name(source.name)
+    claimed_source = claimed_names.get(destination_name.casefold())
+    if claimed_source is not None and claimed_source != source_key:
+        safe_stem = legacy._sanitize_name(source.stem)
+        guid_suffix = (material.diffuse_guid or "texture")[:8]
+        destination_name = f"{safe_stem}_{guid_suffix}{source.suffix.lower()}"
+        suffix = 2
+        while (
+            destination_name.casefold() in claimed_names
+            and claimed_names[destination_name.casefold()] != source_key
+        ):
+            destination_name = (
+                f"{safe_stem}_{guid_suffix}_{suffix}{source.suffix.lower()}"
+            )
+            suffix += 1
+    claimed_names[destination_name.casefold()] = source_key
+
+    level_dir.mkdir(parents=True, exist_ok=True)
+    destination = level_dir / destination_name
+    with Image.open(source) as source_image:
+        target_scale = min(
+            TEXTURE_EXPORT_SCALE,
+            MAX_TEXTURE_DIMENSION / float(max(source_image.width, source_image.height)),
+        )
+        target_size = (
+            max(1, int(round(source_image.width * target_scale))),
+            max(1, int(round(source_image.height * target_scale))),
+        )
+        keep_existing = False
+        if destination.is_file():
+            try:
+                with Image.open(destination) as existing:
+                    keep_existing = (
+                        existing.width >= target_size[0]
+                        and existing.height >= target_size[1]
+                    )
+            except OSError:
+                keep_existing = False
+        if not keep_existing:
+            rgba = source_image.convert("RGBA")
+            if rgba.size != target_size:
+                rgba = rgba.resize(target_size, Image.Resampling.LANCZOS)
+            rgba.save(destination, format="PNG", optimize=True)
+
+    # write_obj copies from diffuse_source into the destination directory. By
+    # pointing it at the prepared destination itself, the existing/upscaled
+    # file is retained and its collision-safe name is written into map_Kd.
+    material.diffuse_source = destination
+    material.copied_name = destination_name
+    return material
+
+
 def export_level(
     scene_path: Path,
     assets_root: Path,
@@ -348,9 +423,11 @@ def export_level(
     resolver = SceneResolver(scene)
     level_number = int(re.search(r"(\d+)$", scene_path.stem).group(1))
     level_dir = output_root / f"level_{level_number:02d}"
+    level_dir.mkdir(parents=True, exist_ok=True)
     visual_path = level_dir / "stage.obj"
     collision_path = level_dir / "collision.obj"
     warnings: list[str] = []
+    claimed_texture_names: dict[str, Path] = {}
 
     def mesh_for(guid: str) -> legacy.MeshData | None:
         if guid not in mesh_cache:
@@ -374,7 +451,11 @@ def export_level(
         if isinstance(value, Exception):
             warnings.append(f"material {guid}: {value}")
             return legacy.fallback_material(fallback_name)
-        return _copy_material(value)
+        return _prepare_level_texture(
+            _copy_material(value),
+            level_dir,
+            claimed_texture_names,
+        )
 
     visual_pieces: list[legacy.ObjPiece] = []
     batched_renderers: dict[str, list[RendererInfo]] = {}
@@ -467,7 +548,11 @@ def export_level(
                     selected_materials,
                 )
             )
-    visual_result = legacy.write_obj(visual_path, visual_pieces)
+    visual_result = legacy.write_obj(
+        visual_path,
+        visual_pieces,
+        group_faces_by_material=True,
+    )
     visual_validation = legacy.validate_obj(visual_path)
 
     collision_pieces: list[legacy.ObjPiece] = []
@@ -556,7 +641,7 @@ def export_level(
 
     unique_warnings = list(dict.fromkeys(warnings))
     metadata = {
-        "format": 1,
+        "format": 2,
         "level": level_number,
         "source": str(scene_path),
         "visual": "stage.obj",
@@ -564,6 +649,7 @@ def export_level(
         "visual_bounds_min": visual_validation["bounds_min"],
         "visual_bounds_max": visual_validation["bounds_max"],
         "render_settings": scene.render_settings,
+        "material_render_modes": visual_result["material_states"],
         "markers": markers,
         "waypoint_graph": [sorted(neighbours) for neighbours in waypoint_graph],
         "primitive_colliders": primitive_records,

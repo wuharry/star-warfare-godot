@@ -14,6 +14,129 @@
         "faces": 7939,
         "source_normals": 11734,
         "generated_normals": 0,
+        "materials": 15,
+        "material_states": {
+          "SC01-Standard_15": {
+            "shader": "iPhone/Additive",
+            "blend": "additive",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-entry_light21-": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-entry_light22-": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-entry_light24": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-entry_light23": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-Standard_22": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-M_LIGHT": {
+            "shader": "iPhone/SolidAndAlphaTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-Standard_24": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-Standard_23": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-Standard_21": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-new": {
+            "shader": "iPhone/AlphaBlend",
+            "blend": "alpha",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-Standard_10": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-Standard_9": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-Standard_19": {
+            "shader": "iPhone/AlphaBlend",
+            "blend": "alpha",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC01-Standard_2a": {
+            "shader": "builtin",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "Level1_StaticBatch"
         ],
@@ -40,6 +163,201 @@
         "faces": 751,
         "source_normals": 1116,
         "generated_normals": 0,
+        "materials": 24,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_5": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_6": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_7": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_8": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_9": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_10": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_11": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_12": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_13": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_14": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_15": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_16": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_17": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_18": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_19": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_20": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_21": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_22": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_23": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_24": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_PZ_room_066",
           "collision_PZ_room_062",
@@ -120,6 +438,57 @@
         "faces": 5318,
         "source_normals": 8919,
         "generated_normals": 982,
+        "materials": 6,
+        "material_states": {
+          "sc02_1": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc02_fx": {
+            "shader": "iPhone/AlphaBlend_Bright_TwoSides",
+            "blend": "alpha",
+            "cull_disabled": true,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc02_14": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc02_12": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc02_13": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc02_11": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "MPZ_CR_07",
           "MPZ_CR_11",
@@ -169,6 +538,89 @@
         "faces": 599,
         "source_normals": 0,
         "generated_normals": 1108,
+        "materials": 10,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_5": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_6": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_7": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_8": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_9": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_10": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_PZ_sc02_064",
           "collision_PZ_sc02_063",
@@ -221,6 +673,121 @@
         "faces": 5798,
         "source_normals": 10483,
         "generated_normals": 306,
+        "materials": 14,
+        "material_states": {
+          "sc03-orig_Standard_16": {
+            "shader": "iPhone/SolidAndAlphaTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC03-Standard_1s": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC03-Standard_5": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc03-orig_Standard_15": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC03-Standard_3": {
+            "shader": "iPhone/AlphaBlend",
+            "blend": "alpha",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc03-Standard_19": {
+            "shader": "builtin",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC03-Standard_1": {
+            "shader": "iPhone/AlphaBlend",
+            "blend": "alpha",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC03-Standard_22": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC03-Standard_20": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "_SC03-Material_1601_": {
+            "shader": "builtin",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC03-Standard_13_ground_": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "_sc03-Material_1629_": {
+            "shader": "iPhone/AlphaBlend",
+            "blend": "alpha",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC03-Standard_2": {
+            "shader": "iPhone/AlphaBlend_Bright_TwoSides",
+            "blend": "alpha",
+            "cull_disabled": true,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC03-Standard_1s_1": {
+            "shader": "iPhone/AlphaBlend_Bright_TwoSides",
+            "blend": "alpha",
+            "cull_disabled": true,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "Object34",
           "MPZ_feng01",
@@ -236,9 +803,11 @@
         "textures": [
           "ground.png",
           "sc03_1.png",
+          "sc03_2.png",
           "sc03_4.png",
           "sc03_5.png",
           "sc03_6.png",
+          "sc03_61.png",
           "sc03_fx.png",
           "sc_03_star.png",
           "sky.png",
@@ -253,6 +822,105 @@
         "faces": 229,
         "source_normals": 412,
         "generated_normals": 0,
+        "materials": 12,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_5": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_6": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_7": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_8": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_9": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_10": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_11": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_12": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_PZ_window_",
           "collision_PZ_Object52",
@@ -311,6 +979,105 @@
         "faces": 7100,
         "source_normals": 11344,
         "generated_normals": 88,
+        "materials": 12,
+        "material_states": {
+          "SC04-02___Default": {
+            "shader": "iPhone/Additive_Bright",
+            "blend": "additive",
+            "cull_disabled": true,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC04-Standard_2": {
+            "shader": "iPhone/Additive_Bright",
+            "blend": "additive",
+            "cull_disabled": true,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC04-Standard_19": {
+            "shader": "builtin",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC04-Standard_17": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC04-orig_Standard_19": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC04-Standard_16asd": {
+            "shader": "iPhone/AlphaBlend",
+            "blend": "alpha",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC04-Standard_15asd": {
+            "shader": "iPhone/AlphaBlend",
+            "blend": "alpha",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC04-Standard_23": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC04-Standard_22": {
+            "shader": "builtin",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC04-Standard_3": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC04-Standard_21sss": {
+            "shader": "builtin",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC04-Standard_1": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "MPZ_light_A_04",
           "MPZ_light_R01",
@@ -353,6 +1120,161 @@
         "faces": 867,
         "source_normals": 111,
         "generated_normals": 956,
+        "materials": 19,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_5": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_6": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_7": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_8": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_9": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_10": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_11": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_12": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_13": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_14": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_15": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_16": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_17": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_18": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_19": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_Object46",
           "collision_Object47",
@@ -425,6 +1347,73 @@
         "faces": 8252,
         "source_normals": 15674,
         "generated_normals": 0,
+        "materials": 8,
+        "material_states": {
+          "sc_05-Standard_10": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_05-Standard_14": {
+            "shader": "iPhone/Additive_Bright",
+            "blend": "additive",
+            "cull_disabled": true,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_05-Standard_2": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_05-Standard_3": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_05-ent": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_05-orig_Standard_1_G_01_": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_05-01_-_Default": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_05-Standard_1": {
+            "shader": "iPhone/SolidAndAlphaTexture_Bright",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "Level5_StaticBatch"
         ],
@@ -449,6 +1438,73 @@
         "faces": 320,
         "source_normals": 600,
         "generated_normals": 0,
+        "materials": 8,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_5": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_6": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_7": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_8": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_PZ_sc_05_010",
           "collision_PZ_Object112",
@@ -499,6 +1555,217 @@
         "faces": 13213,
         "source_normals": 12965,
         "generated_normals": 0,
+        "materials": 26,
+        "material_states": {
+          "sc_08-sc08_MOT2_9": {
+            "shader": "iPhone/LightMap_AlphaBlend",
+            "blend": "alpha",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT2_10": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT3_4": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT3_5": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT2_4": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT2_1": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT2_7": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT2_2": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT3_1": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT3_2": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT3_3": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT1_3": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT1_1": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT1_2": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-Standard_4": {
+            "shader": "iPhone/Additive_TwoSides",
+            "blend": "additive",
+            "cull_disabled": true,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-Standard_10": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT2_8": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT2_3": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT3_10": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT3_7": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT3_12": {
+            "shader": "iPhone/LightMap_AlphaBlend",
+            "blend": "alpha",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_BG_1": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT1_4": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT1_12": {
+            "shader": "iPhone/LightMap_AlphaBlend",
+            "blend": "alpha",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT1_8": {
+            "shader": "builtin",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc_08-sc08_MOT1_6": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "Level6_StaticBatch"
         ],
@@ -529,6 +1796,73 @@
         "faces": 239,
         "source_normals": 242,
         "generated_normals": 0,
+        "materials": 8,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_5": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_6": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_7": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_8": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_PZ_MOT_3_M1",
           "collision_PZ_MOT_1_M6",
@@ -579,6 +1913,177 @@
         "faces": 6011,
         "source_normals": 8745,
         "generated_normals": 0,
+        "materials": 21,
+        "material_states": {
+          "shap_lightmap02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "shap_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "shap_lightmap03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "shap_lightmap04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "brokenobj_lightmap03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "brokenobj_lightmap02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "vip_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "vip_lightmap02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "vip_lightmap05": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "vip_lightmap04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "vip_lightmap03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "vip_lightmap06": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "vip_lightmap07": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sky": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "brokenobj_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "seat_lightmap02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "seat_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "seat_lightmap03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "seat_lightmap04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "01_-_Default": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "flytower_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "Level7_StaticBatch"
         ],
@@ -607,6 +2112,25 @@
         "faces": 46,
         "source_normals": 76,
         "generated_normals": 0,
+        "materials": 2,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_ground_02",
           "collision_ground"
@@ -645,6 +2169,57 @@
         "faces": 6437,
         "source_normals": 10342,
         "generated_normals": 0,
+        "materials": 6,
+        "material_states": {
+          "swpark02_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "swpark01_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SKY": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "BING_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "groundsnow_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "groundsnow_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "Level8_StaticBatch"
         ],
@@ -652,7 +2227,11 @@
           "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\13\\Combined Mesh (root_ scene).asset"
         ],
         "textures": [
-          "SKY.png"
+          "BING.png",
+          "SKY.png",
+          "groundsnow.png",
+          "swpark01.png",
+          "swpark02.png"
         ]
       },
       "collision": {
@@ -663,6 +2242,281 @@
         "faces": 6667,
         "source_normals": 10826,
         "generated_normals": 0,
+        "materials": 34,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_5": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_6": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_7": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_8": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_9": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_10": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_11": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_12": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_13": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_14": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_15": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_16": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_17": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_18": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_19": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_20": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_21": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_22": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_23": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_24": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_25": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_26": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_27": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_28": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_29": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_30": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_31": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_32": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_33": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_34": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_PZ_c_05",
           "collision_PZ_c_027",
@@ -765,13 +2619,96 @@
         "faces": 9352,
         "source_normals": 14343,
         "generated_normals": 0,
+        "materials": 9,
+        "material_states": {
+          "wall_03_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "wall_03_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Standard_1_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "wall_08_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "wall_07_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "wall_04_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "wall_07_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "mot_2_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "mot_1_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "Level13_StaticBatch"
         ],
         "source_meshes": [
           "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\12\\Combined Mesh (root_ scene).asset"
         ],
-        "textures": []
+        "textures": [
+          "MOT_01.png",
+          "MOT_02.png",
+          "sky.png",
+          "wall_L_03_T.png",
+          "wall_L_04_T.png",
+          "wall_L_07_T.png",
+          "wall_L_08_T.png"
+        ]
       },
       "collision": {
         "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\levels\\level_13\\collision.obj",
@@ -781,6 +2718,41 @@
         "faces": 783,
         "source_normals": 883,
         "generated_normals": 0,
+        "materials": 4,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_PZ_snow_01",
           "collision_PZ_wall_002",
@@ -819,6 +2791,193 @@
         "faces": 8379,
         "source_normals": 14772,
         "generated_normals": 0,
+        "materials": 23,
+        "material_states": {
+          "sc10-booox_09": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-house_01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-house_02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-ground_01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-ground_02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-Standard_8": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-booox_04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-booox_05": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-booox_03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-booox_01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-booox_02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-booox_06": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-booox_12": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-booox_11": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-booox_13": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-booox_08": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-booox_07": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-booox_10": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-wall_01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-wall_02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-wall_03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-wall_04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sc10-house_03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "Level14_StaticBatch"
         ],
@@ -859,6 +3018,41 @@
         "faces": 186,
         "source_normals": 310,
         "generated_normals": 0,
+        "materials": 4,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_PZ_house_001",
           "collision_PZ_house_002",
@@ -897,6 +3091,265 @@
         "faces": 7463,
         "source_normals": 12924,
         "generated_normals": 16,
+        "materials": 32,
+        "material_states": {
+          "Brocklightmap_02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Airlightmap_01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Objlightmap_01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Objlightmap_07": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Objlightmap_06": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Depotlightmap_06": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Groundlightmap_03": {
+            "shader": "iPhone/LightMap_TwoSides",
+            "blend": "opaque",
+            "cull_disabled": true,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Groundlightmap_02": {
+            "shader": "iPhone/LightMap_TwoSides",
+            "blend": "opaque",
+            "cull_disabled": true,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Groundlightmap_01": {
+            "shader": "iPhone/LightMap_TwoSides",
+            "blend": "opaque",
+            "cull_disabled": true,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tunellightmap_02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tunellightmap_03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Depotlightmap_02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Depotlightmap_01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Depotlightmap_04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Standard_10": {
+            "shader": "iPhone/Additive",
+            "blend": "additive",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Brocklightmap_01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "lighting": {
+            "shader": "iPhone/Additive",
+            "blend": "additive",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Airlightmap_03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "_Material_25_": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Brocklightmap_03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tunellightmap_01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Airlightmap_02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Objlightmap_02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Objlightmap_03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Objlightmap_04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Objlightmap_05": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Depotlightmap_05": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Airlightmap_04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tunellightmap_04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "OutsideLightmap_01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "OutsideLightmap_02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "OutsideLightmap_03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "Brockpilla12 1",
           "Level15_StaticBatch"
@@ -923,6 +3376,7 @@
           "SC_11_GROUNDIN.png",
           "SC_11_GROUNDIN02.png",
           "SC_11_PILLA02.png",
+          "SC_11_SKY.png",
           "SC_11_TOWER.png",
           "SC_11_WALL01.png",
           "SC_11_WALL03.png",
@@ -939,6 +3393,25 @@
         "faces": 352,
         "source_normals": 413,
         "generated_normals": 0,
+        "materials": 2,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_ground_01",
           "collision_ground_02"
@@ -973,6 +3446,217 @@
         "faces": 8361,
         "source_normals": 14795,
         "generated_normals": 0,
+        "materials": 26,
+        "material_states": {
+          "booox_4": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_3": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_6": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_8": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_10": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_16": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_5": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_2": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_1": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_11": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_7": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_13": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Standard_8": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_9": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "veh_1": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "bg_5": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "bg_15": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "bg_4": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "bg_18": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "bg_16": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "bg_3": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "bg_17": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "bg_10": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "bg_14": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "bg_1": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_12": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "Level16_StaticBatch"
         ],
@@ -1009,6 +3693,57 @@
         "faces": 141,
         "source_normals": 267,
         "generated_normals": 0,
+        "materials": 6,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_5": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_6": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_PZ_booox_002",
           "collision_PZ_booox_003",
@@ -1051,6 +3786,153 @@
         "faces": 1813,
         "source_normals": 3059,
         "generated_normals": 150,
+        "materials": 18,
+        "material_states": {
+          "Standard_8": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_6": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_14": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_16": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_7": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_8": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_9": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_3": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_15": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_12": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_10": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_17": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_5": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_11": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_13": {
+            "shader": "iPhone/LightMap_AlphaBlend_double",
+            "blend": "alpha",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_4": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "sky",
           "Level17_StaticBatch"
@@ -1060,7 +3942,23 @@
           "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\8\\Combined Mesh (root_ scene).asset"
         ],
         "textures": [
+          "booox_1.png",
+          "booox_10.png",
+          "booox_11.png",
+          "booox_12.png",
           "booox_13.png",
+          "booox_14.png",
+          "booox_15.png",
+          "booox_16.png",
+          "booox_17.png",
+          "booox_2.png",
+          "booox_3.png",
+          "booox_4.png",
+          "booox_5.png",
+          "booox_6.png",
+          "booox_7.png",
+          "booox_8.png",
+          "booox_9.png",
           "str_skyline.png"
         ]
       },
@@ -1072,6 +3970,33 @@
         "faces": 18,
         "source_normals": 30,
         "generated_normals": 0,
+        "materials": 3,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_ground_1",
           "collision_ground_3",
@@ -1108,6 +4033,369 @@
         "faces": 6788,
         "source_normals": 9909,
         "generated_normals": 0,
+        "materials": 45,
+        "material_states": {
+          "Building02_lightmap03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building02_lightmap07": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building01_lightmap04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building01_lightmap02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building01_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building01_lightmap06": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tunel_lightmap02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Object_lightmap02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Inside_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tower_lightmap02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tunel_lightmap03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Object_lightmap05": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tunel_lightmap05": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Object_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Inside_lightmap02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building01_lightmap05": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "newobj_lightmap02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tower_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Object_lightmap03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tunel_lightmap07": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tunel_lightmap06": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tunel_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Outside_lightmap06": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building02_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building02_lightmap06": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Object_lightmap06": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "newobj_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building01_lightmap07": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "sky": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Outside_lightmap04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Inside_lightmap03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Outside_lightmap03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Ground_lightmap": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building02_lightmap02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building02_lightmap04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Outside_lightmap02": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Outside_lightmap01": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Outside_lightmap05": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Object_lightmap04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Outside_lightmap07": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building01_lightmap03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "newobj_lightmap04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Building02_lightmap05": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "newobj_lightmap03": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Tunel_lightmap04": {
+            "shader": "iPhone/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "Level18_StaticBatch"
         ],
@@ -1141,6 +4429,17 @@
         "faces": 8,
         "source_normals": 9,
         "generated_normals": 0,
+        "materials": 1,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_ground"
         ],
@@ -1173,6 +4472,57 @@
         "faces": 4679,
         "source_normals": 8203,
         "generated_normals": 0,
+        "materials": 6,
+        "material_states": {
+          "house_01_0_Tiled_48": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "house_01_0_Tiled_135": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "Standard_17": {
+            "shader": "iPhone/Additive",
+            "blend": "additive",
+            "cull_disabled": false,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.5
+          },
+          "wall_003_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision": {
+            "shader": "builtin",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "house_01_0": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "MPZ_zhuan_01",
           "MPZ_zhuan_00",
@@ -1184,7 +4534,9 @@
           "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\6\\Combined Mesh (root_ scene).asset"
         ],
         "textures": [
-          "mask_003.png"
+          "house_01.png",
+          "mask_003.png",
+          "wall_003.png"
         ]
       },
       "collision": {
@@ -1195,6 +4547,609 @@
         "faces": 4079,
         "source_normals": 7315,
         "generated_normals": 0,
+        "materials": 75,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_5": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_6": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_7": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_8": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_9": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_10": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_11": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_12": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_13": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_14": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_15": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_16": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_17": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_18": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_19": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_20": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_21": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_22": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_23": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_24": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_25": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_26": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_27": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_28": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_29": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_30": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_31": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_32": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_33": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_34": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_35": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_36": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_37": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_38": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_39": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_40": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_41": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_42": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_43": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_44": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_45": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_46": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_47": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_48": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_49": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_50": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_51": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_52": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_53": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_54": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_55": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_56": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_57": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_58": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_59": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_60": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_61": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_62": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_63": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_64": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_65": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_66": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_67": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_68": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_69": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_70": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_71": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_72": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_73": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_74": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_75": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_PZ_item_50",
           "collision_PZ_item_64",
@@ -1375,6 +5330,305 @@
         "faces": 20785,
         "source_normals": 26808,
         "generated_normals": 0,
+        "materials": 37,
+        "material_states": {
+          "house_03_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "house_01_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "house_02_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_007_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_007_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "house_02_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_010_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_009_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_009_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_013_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_003_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_003_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC_11_SKY": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_008_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_008_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_012_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "wall_001_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "wall_002_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "wall_003_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "wall_004_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_006_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_006_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "house_01_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "uv_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "uv_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_002_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_004_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_005_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_002_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_004_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_005_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_001_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_001_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "ground_01_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "ground_02_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_011_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "booox_013_2": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "Level20_StaticBatch"
         ],
@@ -1382,7 +5636,30 @@
           "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\5\\Combined Mesh (root_ scene).asset"
         ],
         "textures": [
-          "SC_11_SKY.png"
+          "SC_11_SKY.png",
+          "booox_001.png",
+          "booox_002.png",
+          "booox_003.png",
+          "booox_004.png",
+          "booox_005.png",
+          "booox_006.png",
+          "booox_007.png",
+          "booox_008.png",
+          "booox_009.png",
+          "booox_010.png",
+          "booox_011.png",
+          "booox_012.png",
+          "booox_013.png",
+          "ground_01.png",
+          "ground_02.png",
+          "house_01.png",
+          "house_02.png",
+          "house_03.png",
+          "uv.png",
+          "wall_001.png",
+          "wall_002.png",
+          "wall_003.png",
+          "wall_004.png"
         ]
       },
       "collision": {
@@ -1393,6 +5670,41 @@
         "faces": 186,
         "source_normals": 310,
         "generated_normals": 0,
+        "materials": 4,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_PZ_house_002",
           "collision_ground_1",
@@ -1431,6 +5743,161 @@
         "faces": 9751,
         "source_normals": 16083,
         "generated_normals": 0,
+        "materials": 19,
+        "material_states": {
+          "RorL_1_Tiled_81": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "RorL_1_Tiled_99": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "RorL_1_Tiled_183": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "RorL_1_Tiled_233": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "RorL_1_Tiled_243": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "RorL_1_Tiled_269": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "RorL_1_Tiled_345": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "G2_1_Tiled_359": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "RorL_1_Tiled_470": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "RorL_1_Tiled_553": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "RorL_1_Tiled_615": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "G2_1_Tiled_650": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "RorL_1_Tiled_683": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "RorL_1_Tiled_702": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "SC_21_SKY": {
+            "shader": "iPhone/SolidTexture",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "G1_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "ice01AL_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "G2_1": {
+            "shader": "Optimized/LightMap",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "light": {
+            "shader": "Advanced/Advanced_Additive_TwoSide",
+            "blend": "additive",
+            "cull_disabled": true,
+            "depth_write": false,
+            "unshaded": true,
+            "alpha_scissor_threshold": 0.01
+          }
+        },
         "pieces": [
           "PZ_XL_05",
           "PZ_XR_03",
@@ -1466,8 +5933,12 @@
           "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Mesh\\4\\Combined Mesh (root_ scene).asset"
         ],
         "textures": [
+          "G1.png",
+          "G2.png",
           "SC_21_SKY.png",
-          "light.png"
+          "ice01AL.png",
+          "light.png",
+          "tree_LR.png"
         ]
       },
       "collision": {
@@ -1478,6 +5949,801 @@
         "faces": 9605,
         "source_normals": 15935,
         "generated_normals": 0,
+        "materials": 99,
+        "material_states": {
+          "collision": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_2": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_3": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_4": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_5": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_6": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_7": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_8": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_9": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_10": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_11": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_12": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_13": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_14": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_15": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_16": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_17": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_18": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_19": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_20": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_21": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_22": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_23": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_24": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_25": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_26": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_27": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_28": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_29": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_30": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_31": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_32": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_33": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_34": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_35": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_36": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_37": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_38": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_39": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_40": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_41": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_42": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_43": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_44": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_45": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_46": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_47": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_48": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_49": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_50": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_51": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_52": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_53": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_54": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_55": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_56": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_57": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_58": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_59": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_60": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_61": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_62": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_63": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_64": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_65": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_66": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_67": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_68": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_69": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_70": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_71": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_72": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_73": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_74": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_75": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_76": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_77": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_78": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_79": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_80": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_81": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_82": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_83": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_84": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_85": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_86": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_87": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_88": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_89": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_90": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_91": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_92": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_93": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_94": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_95": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_96": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_97": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_98": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          },
+          "collision_99": {
+            "shader": "",
+            "blend": "opaque",
+            "cull_disabled": false,
+            "depth_write": true,
+            "unshaded": false,
+            "alpha_scissor_threshold": 0.5
+          }
+        },
         "pieces": [
           "collision_PZ_c_44",
           "collision_PZ_c_07",

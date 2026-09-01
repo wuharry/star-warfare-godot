@@ -3,12 +3,19 @@ extends Node
 signal settings_changed
 signal loadout_changed
 signal store_changed
+signal armor_changed(part_key: String, armor_key: String)
 
 const SAVE_PATH := "user://star_warfare_save.json"
+const SAVE_VERSION := 2
+const ArmorCatalogData = preload("res://scripts/core/armor_catalog.gd")
 const SINGLEPLAYER_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8]
 const MULTIPLAYER_LEVELS := [13, 14, 15, 16, 17, 18, 19, 20, 21]
 const CAMPAIGN_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19, 20, 21]
 const LOADOUT_MAX_SLOTS := 8
+
+# Tests and portable builds may point an instance at an isolated save without
+# changing the production user:// location.
+var save_path := SAVE_PATH
 
 # Recovered verbatim from Resources/UI/resDataSets.bytes, table 13.  The old
 # game used one shared energy pool rather than conventional magazines.
@@ -67,16 +74,88 @@ const WEAPON_ROWS := [
 var WEAPONS: Dictionary = {}
 var battle_weapons: Array[String] = ["gun00"]
 var owned_weapons: Array[String] = ["gun00"]
+var ARMOR_ITEMS: Dictionary = {}
+var ARMOR_SET_BONUSES: Dictionary = {}
+var owned_armor: Array[String] = []
+var equipped_armor: Dictionary = {}
 
 # Three graphics presets. render_scale drives the root viewport's 3D
 # resolution (the biggest lever after the 2x texture upscale), while shadows,
 # glow and fog are read by the level when it builds its environment.
 const QUALITY_PROFILES := {
-	"low": {"render_scale": 0.7, "msaa": Viewport.MSAA_DISABLED, "shadows": false, "glow": false, "fog": false},
-	"medium": {"render_scale": 0.85, "msaa": Viewport.MSAA_2X, "shadows": true, "glow": true, "fog": true},
-	"high": {"render_scale": 1.0, "msaa": Viewport.MSAA_4X, "shadows": true, "glow": true, "fog": true},
+	"low": {"render_scale": 0.7, "msaa": Viewport.MSAA_DISABLED, "shadows": false, "glow": false, "fog": false, "sky": false},
+	"medium": {"render_scale": 0.85, "msaa": Viewport.MSAA_2X, "shadows": true, "glow": true, "fog": true, "sky": true},
+	"high": {"render_scale": 1.0, "msaa": Viewport.MSAA_4X, "shadows": true, "glow": true, "fog": true, "sky": true},
 }
 const QUALITY_ORDER := ["low", "medium", "high"]
+
+# How many real minutes one full 24-hour cycle takes. "standard" puts an
+# in-game hour at 90 real seconds, so a five-minute sector moves the sky about
+# three hours: long enough to walk out of a mission into a different sky.
+# "frozen" pins the world to `frozen_hour` for anyone who wants a fixed look.
+const DAY_LENGTH_PROFILES := {
+	"brisk": 30.0,
+	"standard": 36.0,
+	"slow": 45.0,
+	"frozen": 0.0,
+}
+const DAY_LENGTH_ORDER := ["brisk", "standard", "slow", "frozen"]
+const FROZEN_HOUR_PRESETS := [6.2, 12.5, 17.6, 22.0]
+
+# Only rewrite the save this often while the clock runs. Losing a few seconds
+# of sky drift to a crash is invisible; a disk write every frame is not.
+const WORLD_TIME_FLUSH_INTERVAL := 30.0
+
+# Three combat tiers. "recruit" is the original beeline AI kept untouched so the
+# old balance stays playable; "veteran" and "elite" switch enemies over to the
+# tactical brain in enemy.gd (flanking, attack tokens, telegraphed strikes,
+# predictive fire). Every field is a behaviour knob, not a stat multiplier —
+# the difficulty comes from how the pack fights, not from inflated numbers.
+const DIFFICULTY_PROFILES := {
+	"recruit": {
+		"tactical": false,
+		"reaction": 0.0,
+		"aim_lead": 0.0,
+		"aim_spread": 0.0,
+		"melee_windup": 0.0,
+		"attack_slots": 99,
+		"flank_spread": 0.0,
+		"separation": 0.0,
+		"strafe": 0.0,
+		"suppression": 0.0,
+		"sight_check": false,
+		"attack_speed": 1.0,
+	},
+	"veteran": {
+		"tactical": true,
+		"reaction": 0.42,
+		"aim_lead": 0.7,
+		"aim_spread": 0.055,
+		"melee_windup": 0.34,
+		"attack_slots": 2,
+		"flank_spread": 0.7,
+		"separation": 1.9,
+		"strafe": 0.55,
+		"suppression": 0.5,
+		"sight_check": true,
+		"attack_speed": 0.92,
+	},
+	"elite": {
+		"tactical": true,
+		"reaction": 0.18,
+		"aim_lead": 1.0,
+		"aim_spread": 0.018,
+		"melee_windup": 0.24,
+		"attack_slots": 3,
+		"flank_spread": 1.0,
+		"separation": 2.4,
+		"strafe": 0.95,
+		"suppression": 0.8,
+		"sight_check": true,
+		"attack_speed": 0.82,
+	},
+}
+const DIFFICULTY_ORDER := ["recruit", "veteran", "elite"]
 
 var selected_level := 1
 var selected_weapon := "gun00"
@@ -85,6 +164,13 @@ var unlocked_level := 1
 var credits := 0
 var mithril := 0
 var best_scores: Dictionary = {}
+
+# The campaign shares one continuous clock. It only advances while a sector is
+# live, and it travels in the save file, so every mission starts where the last
+# one left off. A fresh save opens at 16:48, an hour out from the first sunset.
+var world_time := 16.8
+var _world_time_flush := 0.0
+
 var settings := {
 	"music": 0.72,
 	"sfx": 0.85,
@@ -92,16 +178,28 @@ var settings := {
 	"invert_y": false,
 	"show_touch_controls": false,
 	"quality": "high",
-	"language": ""
+	"difficulty": "veteran",
+	"language": "",
+	"day_length": "standard",
+	"frozen_hour": 17.6
 }
 
 func _ready() -> void:
 	_build_weapon_database()
+	_build_armor_database()
 	_configure_input_map()
 	_load_save()
 	settings.show_touch_controls = bool(settings.show_touch_controls) or _device_prefers_touch()
 	_apply_audio_settings()
 	apply_viewport_quality()
+
+func _build_armor_database() -> void:
+	ARMOR_ITEMS = ArmorCatalogData.build_items()
+	ARMOR_SET_BONUSES = ArmorCatalogData.build_set_bonuses()
+	if equipped_armor.is_empty():
+		equipped_armor = _default_armor_equipment()
+	if owned_armor.is_empty():
+		owned_armor = _default_owned_armor()
 
 func _build_weapon_database() -> void:
 	WEAPONS.clear()
@@ -327,6 +425,22 @@ func start_level(level_number: int, game_mode: String = "") -> void:
 	_save()
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
+func start_expanse() -> void:
+	# THE EXPANSE is not a campaign sector, so selected_game_mode is left alone:
+	# the armoury, the store and the level select all keep working off whichever
+	# campaign mode the player was last in.
+	_save()
+	get_tree().change_scene_to_file("res://scenes/expanse.tscn")
+
+func complete_expanse_run(run_score: int, earned_credits: int) -> void:
+	# An expedition has no victory condition, so this banks whatever the run
+	# earned whenever it ends: death, or walking out through the pause menu.
+	var money_multiplier := 1.0 + float(get_armor_skills().get("money_boost", 0.0))
+	credits += maxi(0, roundi(float(earned_credits) * maxf(0.0, money_multiplier)))
+	best_scores["expanse"] = max(run_score, int(best_scores.get("expanse", 0)))
+	store_changed.emit()
+	_save()
+
 func get_levels_for_mode(game_mode: String) -> Array:
 	return MULTIPLAYER_LEVELS if game_mode == "multiplayer" else SINGLEPLAYER_LEVELS
 
@@ -343,6 +457,11 @@ func set_weapon(weapon_id: String) -> void:
 
 func set_loadout_weapon(slot: int, weapon_id: String) -> bool:
 	if slot < 0 or slot >= LOADOUT_MAX_SLOTS or slot > battle_weapons.size() or not is_weapon_owned(weapon_id):
+		return false
+	# Unity bags define how many new weapon slots may be filled. Existing saves
+	# that predate armor can keep their larger loadout; equipping a smaller bag
+	# must never discard weapons the player already earned.
+	if slot == battle_weapons.size() and slot >= get_bag_capacity():
 		return false
 	var old_index := battle_weapons.find(weapon_id)
 	if old_index == slot:
@@ -375,8 +494,12 @@ func is_weapon_owned(weapon_id: String) -> bool:
 
 func get_rank_id() -> int:
 	# The Unity store exposes weapon UnlockLevel as a zero-based rank. The
-	# restoration advances one local rank with each unlocked solo sector.
-	return clampi(unlocked_level - 1, 0, 8)
+	# restoration advances one local rank with each unlocked solo sector. Rank
+	# 8 is awarded when the final solo sector is completed, not merely opened.
+	var rank_id := clampi(unlocked_level - 1, 0, 8)
+	if best_scores.has(str(SINGLEPLAYER_LEVELS[-1])):
+		rank_id = maxi(rank_id, 8)
+	return rank_id
 
 func is_weapon_rank_unlocked(weapon_id: String) -> bool:
 	if not WEAPONS.has(weapon_id):
@@ -402,7 +525,17 @@ func purchase_weapon(weapon_id: String) -> String:
 			return "not_enough_credits"
 		credits -= credit_price
 	owned_weapons.append(weapon_id)
+	# Unity's store mounts a newly purchased gun immediately in bag slot zero.
+	# Ownership of the displaced gun is retained, so this is safe for migrated
+	# saves and makes the Store and combat loadout agree without another screen.
+	if battle_weapons.is_empty():
+		battle_weapons.append(weapon_id)
+	else:
+		battle_weapons[0] = weapon_id
+	selected_weapon = weapon_id
+	_normalize_store_state()
 	_save()
+	loadout_changed.emit()
 	store_changed.emit()
 	return "purchased"
 
@@ -413,8 +546,144 @@ func get_weapon_ids() -> Array[String]:
 	ids.sort_custom(func(a: String, b: String): return int(WEAPONS[a].display_order) < int(WEAPONS[b].display_order))
 	return ids
 
+func get_armor_ids(part: Variant) -> Array[String]:
+	var part_key := _armor_part_key(part)
+	var ids: Array[String] = []
+	if part_key.is_empty():
+		return ids
+	for armor_key: String in ARMOR_ITEMS:
+		if str(ARMOR_ITEMS[armor_key].part_key) == part_key:
+			ids.append(armor_key)
+	ids.sort_custom(func(a: String, b: String): return int(ARMOR_ITEMS[a].id) < int(ARMOR_ITEMS[b].id))
+	return ids
+
+func get_armor_item(armor_key: String) -> Dictionary:
+	return ARMOR_ITEMS.get(armor_key, {})
+
+func get_equipped_armor_key(part: Variant) -> String:
+	var part_key := _armor_part_key(part)
+	return str(equipped_armor.get(part_key, ""))
+
+func is_armor_owned(armor_key: String) -> bool:
+	return owned_armor.has(armor_key)
+
+func is_armor_rank_unlocked(armor_key: String) -> bool:
+	if not ARMOR_ITEMS.has(armor_key):
+		return false
+	return int(ARMOR_ITEMS[armor_key].unlock) <= get_rank_id()
+
+func purchase_armor(armor_key: String) -> String:
+	if not ARMOR_ITEMS.has(armor_key):
+		return "invalid"
+	if is_armor_owned(armor_key):
+		return "owned"
+	if not is_armor_rank_unlocked(armor_key):
+		return "rank_locked"
+	var item: Dictionary = ARMOR_ITEMS[armor_key]
+	var mithril_price := int(item.mithril)
+	if mithril_price > 0:
+		if mithril < mithril_price:
+			return "not_enough_mithril"
+		mithril -= mithril_price
+	else:
+		var credit_price := int(item.price)
+		if credits < credit_price:
+			return "not_enough_credits"
+		credits -= credit_price
+	owned_armor.append(armor_key)
+	var part_key := str(item.part_key)
+	equipped_armor[part_key] = armor_key
+	_normalize_armor_state()
+	_save()
+	armor_changed.emit(part_key, armor_key)
+	if part_key == "bag":
+		loadout_changed.emit()
+	store_changed.emit()
+	return "purchased"
+
+func equip_armor(armor_key: String) -> bool:
+	if not ARMOR_ITEMS.has(armor_key) or not is_armor_owned(armor_key):
+		return false
+	var part_key := str(ARMOR_ITEMS[armor_key].part_key)
+	if str(equipped_armor.get(part_key, "")) == armor_key:
+		return true
+	equipped_armor[part_key] = armor_key
+	_save()
+	armor_changed.emit(part_key, armor_key)
+	if part_key == "bag":
+		loadout_changed.emit()
+	store_changed.emit()
+	return true
+
+func equip_armor_set(set_id: int) -> bool:
+	if set_id < 0 or set_id >= ArmorCatalogData.SET_NAMES.size():
+		return false
+	var keys: Array[String] = []
+	for part in range(4):
+		var armor_key := ArmorCatalogData.item_key(part, set_id)
+		if not is_armor_owned(armor_key):
+			return false
+		keys.append(armor_key)
+	for part in range(4):
+		var part_key := str(ArmorCatalogData.PART_KEYS[part])
+		equipped_armor[part_key] = keys[part]
+		armor_changed.emit(part_key, keys[part])
+	_save()
+	store_changed.emit()
+	return true
+
+func get_equipped_set_id() -> int:
+	var equipped_set := -1
+	for part in range(4):
+		var armor_key := get_equipped_armor_key(part)
+		if not ARMOR_ITEMS.has(armor_key):
+			return -1
+		var item_set := int(ARMOR_ITEMS[armor_key].set_id)
+		if equipped_set < 0:
+			equipped_set = item_set
+		elif equipped_set != item_set:
+			return -1
+	return equipped_set
+
+func get_armor_skills() -> Dictionary:
+	var skills: Dictionary = ArmorCatalogData.empty_skills()
+	for part_key: String in ArmorCatalogData.PART_KEYS:
+		var armor_key := str(equipped_armor.get(part_key, ""))
+		if ARMOR_ITEMS.has(armor_key):
+			ArmorCatalogData.merge_skills(skills, ARMOR_ITEMS[armor_key].skills)
+	var set_id := get_equipped_set_id()
+	if set_id >= 0 and ARMOR_SET_BONUSES.has(set_id):
+		ArmorCatalogData.merge_skills(skills, ARMOR_SET_BONUSES[set_id].skills)
+	return skills
+
+func get_armor_summary() -> Dictionary:
+	var set_id := get_equipped_set_id()
+	return {
+		"skills": get_armor_skills(),
+		"full_set_id": set_id,
+		"full_set_name": str(ARMOR_SET_BONUSES[set_id].name) if set_id >= 0 else "",
+		"bag_slots": get_bag_capacity()
+	}
+
+func get_bag_capacity() -> int:
+	var bag_key := get_equipped_armor_key("bag")
+	if not ARMOR_ITEMS.has(bag_key):
+		return 1
+	return clampi(int(ARMOR_ITEMS[bag_key].bag_slots), 1, LOADOUT_MAX_SLOTS)
+
+func is_loadout_slot_active(slot: int) -> bool:
+	return slot >= 0 and slot < get_bag_capacity()
+
+func _armor_part_key(part: Variant) -> String:
+	if part is int:
+		var index := int(part)
+		return str(ArmorCatalogData.PART_KEYS[index]) if index >= 0 and index < ArmorCatalogData.PART_KEYS.size() else ""
+	var part_key := str(part).to_lower()
+	return part_key if ArmorCatalogData.PART_KEYS.has(part_key) else ""
+
 func complete_level(level_number: int, score: int, earned_credits: int) -> void:
-	credits += max(0, earned_credits)
+	var money_multiplier := 1.0 + float(get_armor_skills().get("money_boost", 0.0))
+	credits += maxi(0, roundi(float(earned_credits) * maxf(0.0, money_multiplier)))
 	best_scores[str(level_number)] = max(score, int(best_scores.get(str(level_number), 0)))
 	if selected_game_mode == "singleplayer":
 		var index := SINGLEPLAYER_LEVELS.find(level_number)
@@ -457,13 +726,45 @@ func set_setting(key: String, value: Variant) -> void:
 		if key == "quality":
 			apply_viewport_quality()
 		elif key == "language":
-			Localization.apply_locale(str(value))
+			# Resolve the autoload dynamically to avoid a compile-time dependency
+			# cycle (Localization reads GameState during its own _ready()).
+			var localization := get_node_or_null("/root/Localization")
+			if localization != null and localization.has_method("apply_locale"):
+				localization.call("apply_locale", str(value))
 		_save()
 		settings_changed.emit()
+
+func get_difficulty_profile() -> Dictionary:
+	var key := str(settings.get("difficulty", "veteran"))
+	return DIFFICULTY_PROFILES.get(key, DIFFICULTY_PROFILES["veteran"])
 
 func get_quality_profile() -> Dictionary:
 	var key := str(settings.get("quality", "high"))
 	return QUALITY_PROFILES.get(key, QUALITY_PROFILES["high"])
+
+func get_day_length_minutes() -> float:
+	var key := str(settings.get("day_length", "standard"))
+	return float(DAY_LENGTH_PROFILES.get(key, DAY_LENGTH_PROFILES["standard"]))
+
+func is_day_cycle_frozen() -> bool:
+	return get_day_length_minutes() <= 0.0
+
+func get_world_hour() -> float:
+	if is_day_cycle_frozen():
+		return fposmod(float(settings.get("frozen_hour", 17.6)), 24.0)
+	return world_time
+
+func advance_world_time(delta: float) -> void:
+	if delta <= 0.0 or is_day_cycle_frozen():
+		return
+	world_time = fposmod(world_time + delta * 24.0 / (get_day_length_minutes() * 60.0), 24.0)
+	_world_time_flush += delta
+	if _world_time_flush >= WORLD_TIME_FLUSH_INTERVAL:
+		flush_world_time()
+
+func flush_world_time() -> void:
+	_world_time_flush = 0.0
+	_save()
 
 func apply_viewport_quality() -> void:
 	# Render scale and MSAA live on the root window viewport, which survives
@@ -488,25 +789,34 @@ func _apply_audio_settings() -> void:
 		AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(clampf(float(settings.sfx), 0.001, 1.0)))
 
 func _load_save() -> void:
-	if not FileAccess.file_exists(SAVE_PATH):
-		return
-	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
-	if file == null:
-		return
-	var parsed: Variant = JSON.parse_string(file.get_as_text())
+	var parsed: Variant = _read_save_dictionary(save_path)
+	if not parsed is Dictionary:
+		var backup_path := save_path + ".bak"
+		parsed = _read_save_dictionary(backup_path)
+		if parsed is Dictionary:
+			push_warning("Recovered Star Warfare save from backup: %s" % backup_path)
 	if not parsed is Dictionary:
 		return
 	selected_level = int(parsed.get("selected_level", selected_level))
+	if selected_level not in CAMPAIGN_LEVELS:
+		selected_level = 1
 	selected_weapon = str(parsed.get("selected_weapon", selected_weapon))
 	if not WEAPONS.has(selected_weapon):
 		selected_weapon = "gun00"
 	selected_game_mode = str(parsed.get("selected_game_mode", selected_game_mode))
 	if selected_game_mode not in ["singleplayer", "multiplayer"]:
 		selected_game_mode = "singleplayer"
-	unlocked_level = int(parsed.get("unlocked_level", unlocked_level))
-	credits = int(parsed.get("credits", credits))
-	mithril = int(parsed.get("mithril", mithril))
-	best_scores = parsed.get("best_scores", best_scores)
+	unlocked_level = clampi(int(parsed.get("unlocked_level", unlocked_level)), 1, SINGLEPLAYER_LEVELS[-1])
+	world_time = fposmod(float(parsed.get("world_time", world_time)), 24.0)
+	credits = maxi(0, int(parsed.get("credits", credits)))
+	mithril = maxi(0, int(parsed.get("mithril", mithril)))
+	var stored_best_scores: Variant = parsed.get("best_scores", {})
+	if stored_best_scores is Dictionary:
+		best_scores.clear()
+		for level_key in stored_best_scores:
+			var normalized_key := str(level_key)
+			if normalized_key.is_valid_int() and int(normalized_key) in CAMPAIGN_LEVELS:
+				best_scores[normalized_key] = maxi(0, int(stored_best_scores[level_key]))
 	var stored_owned: Variant = parsed.get("owned_weapons")
 	if stored_owned is Array:
 		owned_weapons.clear()
@@ -525,6 +835,35 @@ func _load_save() -> void:
 		battle_weapons = ["gun00", "gun06", "gun11", "gun14", "gun17", "gun20", "gun24", "gun27"]
 		if not battle_weapons.has(selected_weapon):
 			battle_weapons[0] = selected_weapon
+	var stored_owned_armor: Variant = parsed.get("owned_armor")
+	if stored_owned_armor is Array:
+		owned_armor.clear()
+		for armor_key_value in stored_owned_armor:
+			owned_armor.append(str(armor_key_value))
+	elif stored_owned_armor is Dictionary:
+		# Accept the per-part schema used by early development builds as well as
+		# the compact flat array written by the current restoration.
+		owned_armor.clear()
+		for part_index in range(ArmorCatalogData.PART_KEYS.size()):
+			var part_key := str(ArmorCatalogData.PART_KEYS[part_index])
+			var values: Variant = stored_owned_armor.get(part_key, [])
+			if values is Array:
+				for item_value in values:
+					var candidate := _coerce_armor_key(part_index, item_value)
+					owned_armor.append(candidate)
+	else:
+		owned_armor = _default_owned_armor()
+	var stored_equipped_armor: Variant = parsed.get("equipped_armor")
+	if stored_equipped_armor is Dictionary:
+		equipped_armor.clear()
+		for part_index in range(ArmorCatalogData.PART_KEYS.size()):
+			var part_key := str(ArmorCatalogData.PART_KEYS[part_index])
+			var equipped_value: Variant = stored_equipped_armor.get(part_key, 0)
+			var armor_key := _coerce_armor_key(part_index, equipped_value)
+			equipped_armor[part_key] = armor_key
+	else:
+		equipped_armor = _default_armor_equipment()
+	_normalize_armor_state()
 	_normalize_store_state()
 	var stored_settings = parsed.get("settings", {})
 	if stored_settings is Dictionary:
@@ -532,11 +871,49 @@ func _load_save() -> void:
 			if settings.has(key):
 				settings[key] = stored_settings[key]
 
-func _save() -> void:
-	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+func _read_save_dictionary(path: String) -> Variant:
+	if not FileAccess.file_exists(path):
+		return null
+	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
+		return null
+	var contents := file.get_as_text()
+	file.close()
+	var json := JSON.new()
+	if json.parse(contents) != OK:
+		push_warning("Ignoring invalid Star Warfare save JSON: %s" % path)
+		return null
+	var parsed: Variant = json.data
+	return parsed if parsed is Dictionary else null
+
+func _coerce_armor_key(part_index: int, stored_value: Variant) -> String:
+	# JSON has a single numeric representation, so a legacy integer armor id
+	# commonly arrives as `1.0`. String.is_valid_int() rejects that spelling and
+	# used to silently migrate every such part back to the starter equipment.
+	if typeof(stored_value) in [TYPE_INT, TYPE_FLOAT]:
+		var numeric_value := float(stored_value)
+		var item_id := roundi(numeric_value)
+		if is_equal_approx(numeric_value, float(item_id)):
+			return ArmorCatalogData.item_key(part_index, item_id)
+	var candidate := str(stored_value)
+	if candidate.is_valid_int():
+		return ArmorCatalogData.item_key(part_index, int(candidate))
+	return candidate
+
+func _save() -> void:
+	var temporary_path := save_path + ".tmp"
+	var backup_path := save_path + ".bak"
+	var temporary_absolute := ProjectSettings.globalize_path(temporary_path)
+	var primary_absolute := ProjectSettings.globalize_path(save_path)
+	var backup_absolute := ProjectSettings.globalize_path(backup_path)
+	if FileAccess.file_exists(temporary_path):
+		DirAccess.remove_absolute(temporary_absolute)
+	var file := FileAccess.open(temporary_path, FileAccess.WRITE)
+	if file == null:
+		push_warning("Unable to create temporary Star Warfare save: %s" % temporary_path)
 		return
 	var data := {
+		"save_version": SAVE_VERSION,
 		"selected_level": selected_level,
 		"selected_weapon": selected_weapon,
 		"selected_game_mode": selected_game_mode,
@@ -545,10 +922,32 @@ func _save() -> void:
 		"mithril": mithril,
 		"owned_weapons": owned_weapons,
 		"battle_weapons": battle_weapons,
+		"owned_armor": owned_armor,
+		"equipped_armor": equipped_armor,
 		"best_scores": best_scores,
+		"world_time": world_time,
 		"settings": settings
 	}
 	file.store_string(JSON.stringify(data, "\t"))
+	file.flush()
+	file.close()
+
+	# Never truncate the only good copy. Move the current primary aside first,
+	# then publish the fully flushed temporary file. If publishing fails, restore
+	# the backup so the next boot can still recover progress.
+	if FileAccess.file_exists(save_path):
+		if FileAccess.file_exists(backup_path):
+			DirAccess.remove_absolute(backup_absolute)
+		var backup_error := DirAccess.rename_absolute(primary_absolute, backup_absolute)
+		if backup_error != OK:
+			DirAccess.remove_absolute(temporary_absolute)
+			push_warning("Unable to preserve previous Star Warfare save (error %d)" % backup_error)
+			return
+	var publish_error := DirAccess.rename_absolute(temporary_absolute, primary_absolute)
+	if publish_error != OK:
+		if not FileAccess.file_exists(save_path) and FileAccess.file_exists(backup_path):
+			DirAccess.rename_absolute(backup_absolute, primary_absolute)
+		push_warning("Unable to publish Star Warfare save (error %d)" % publish_error)
 
 func _normalize_store_state() -> void:
 	var normalized_owned: Array[String] = []
@@ -570,3 +969,45 @@ func _normalize_store_state() -> void:
 	battle_weapons = normalized_loadout
 	if not battle_weapons.has(selected_weapon):
 		selected_weapon = battle_weapons[0]
+
+func _default_owned_armor() -> Array[String]:
+	var defaults: Array[String] = []
+	for part in range(ArmorCatalogData.PART_KEYS.size()):
+		defaults.append(ArmorCatalogData.item_key(part, 0))
+	return defaults
+
+func _default_armor_equipment() -> Dictionary:
+	var defaults := {}
+	for part in range(ArmorCatalogData.PART_KEYS.size()):
+		defaults[str(ArmorCatalogData.PART_KEYS[part])] = ArmorCatalogData.item_key(part, 0)
+	return defaults
+
+func _normalize_armor_state() -> void:
+	var normalized_owned: Array[String] = []
+	for armor_key in owned_armor:
+		var candidate := str(armor_key)
+		if ARMOR_ITEMS.has(candidate) and not normalized_owned.has(candidate):
+			normalized_owned.append(candidate)
+	for part in range(ArmorCatalogData.PART_KEYS.size()):
+		var part_key := str(ArmorCatalogData.PART_KEYS[part])
+		var has_owned_part := false
+		for armor_key in normalized_owned:
+			if str(ARMOR_ITEMS[armor_key].part_key) == part_key:
+				has_owned_part = true
+				break
+		if not has_owned_part:
+			normalized_owned.append(ArmorCatalogData.item_key(part, 0))
+	owned_armor = normalized_owned
+
+	var normalized_equipped := {}
+	for part in range(ArmorCatalogData.PART_KEYS.size()):
+		var part_key := str(ArmorCatalogData.PART_KEYS[part])
+		var equipped_key := str(equipped_armor.get(part_key, ""))
+		if not is_armor_owned(equipped_key) or str(ARMOR_ITEMS.get(equipped_key, {}).get("part_key", "")) != part_key:
+			equipped_key = ""
+			for owned_key in owned_armor:
+				if str(ARMOR_ITEMS[owned_key].part_key) == part_key:
+					equipped_key = owned_key
+					break
+		normalized_equipped[part_key] = equipped_key
+	equipped_armor = normalized_equipped
