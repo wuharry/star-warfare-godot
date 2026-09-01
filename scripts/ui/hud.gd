@@ -244,7 +244,7 @@ func _place_original(control: Control, anchor: Vector2, center_offset: Vector2, 
 func _resize_crosshair() -> void:
 	if not is_instance_valid(crosshair) or crosshair.texture == null:
 		return
-	var display_size := crosshair.texture.get_size() * _original_ui_scale()
+	var display_size := Atlas.logical_size(crosshair.texture) * _original_ui_scale()
 	crosshair.custom_minimum_size = display_size
 	crosshair.size = display_size
 	crosshair.pivot_offset = display_size * 0.5
@@ -352,7 +352,7 @@ func _set_reticle_for_weapon(data: Dictionary) -> void:
 		texture = Atlas.hud("hud0")
 	crosshair.texture = texture
 	if texture:
-		var original_size := texture.get_size()
+		var original_size := Atlas.logical_size(texture)
 		var display_size := original_size * _original_ui_scale()
 		crosshair.custom_minimum_size = display_size
 		crosshair.size = display_size

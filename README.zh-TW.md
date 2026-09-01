@@ -50,8 +50,10 @@
 ## 測試與匯出
 
 ```powershell
+.\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --headless --path . --import
 .\BUILD_STAR_WARFARE.ps1 -Target All
 .\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --headless --path . res://tests/smoke_test.tscn
+.\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --headless --path . res://tests/texture_upscale_test.tscn
 .\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --headless --path . res://tests/mobile_ui_smoke_test.tscn
 .\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --headless --path . res://tests/restoration_test.tscn
 .\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --headless --path . res://tests/level_restoration_test.tscn

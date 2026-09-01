@@ -12,6 +12,12 @@ if (-not (Test-Path -LiteralPath $godot)) {
     throw "Godot 4.7.2 portable editor was not found at $godot"
 }
 
+# Finish source texture and model reimports before tests or exports consume the
+# generated cache. This is especially important after replacing many assets at
+# once, as an export should never mix old .ctex data with new source PNG files.
+& $godot --headless --path $projectPath --import
+if ($LASTEXITCODE -ne 0) { throw "Godot resource import failed with exit code $LASTEXITCODE" }
+
 if ($Target -in @("All", "Windows")) {
     New-Item -ItemType Directory -Force -Path (Join-Path $projectPath "builds\windows") | Out-Null
     & $godot --headless --path $projectPath --export-release "Windows Desktop" "builds/windows/StarWarfare.exe"
