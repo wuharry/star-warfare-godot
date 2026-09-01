@@ -1,8 +1,125 @@
 {
   "output": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\player.gltf",
-  "binary_bytes": 565256,
-  "bones": 30,
-  "meshes": 4,
+  "binary_bytes": 2424908,
+  "source_bones": 30,
+  "expected_godot_bones": 28,
+  "meshes": 84,
+  "armor_parts": [
+    "Head",
+    "Body",
+    "Hand",
+    "Foot"
+  ],
+  "armor_variants_per_part": 21,
+  "armor_mesh_naming": "Armor{Head|Body|Hand|Foot}_XX",
+  "default_visible_armor_id": 0,
+  "textures": [
+    "armor_textures/head_22f92a18e5f8_2x.png",
+    "armor_textures/body_41c59e886aaa_2x.png",
+    "armor_textures/jian_6847836cc115_2x.png",
+    "armor_textures/hand_f539ff620e61_2x.png",
+    "armor_textures/foot_3d4c778949e5_2x.png",
+    "armor_textures/head_669b47fdd3fe_2x.png",
+    "armor_textures/body_aa8d1a1b3465_2x.png",
+    "armor_textures/jian_0811a86c44a4_2x.png",
+    "armor_textures/hand_6ef14752ec18_2x.png",
+    "armor_textures/foot_8288ab97aa55_2x.png",
+    "armor_textures/head_27f2a32dc8b6_2x.png",
+    "armor_textures/hand_e05d06ac0d12_2x.png",
+    "armor_textures/body_ed36db00f85b_2x.png",
+    "armor_textures/jian_077c0f9d616a_2x.png",
+    "armor_textures/foot_31083bd2d7d1_2x.png",
+    "armor_textures/head_9d25898f6b16_2x.png",
+    "armor_textures/body_bd16b9436c5e_2x.png",
+    "armor_textures/jian_496b2bbd770e_2x.png",
+    "armor_textures/hand_c974522680fe_2x.png",
+    "armor_textures/foot_ee6e6e462c68_2x.png",
+    "armor_textures/head_0fec56bddc36_2x.png",
+    "armor_textures/body_c4fabbd7d47a_2x.png",
+    "armor_textures/jian_636c11b729f7_2x.png",
+    "armor_textures/hand_1a8b5c7e8dee_2x.png",
+    "armor_textures/foot_efec64cd00d2_2x.png",
+    "armor_textures/r_tou_54434b4b8e32_2x.png",
+    "armor_textures/r_shou_a_fef419c461f1_2x.png",
+    "armor_textures/r_shen_bb94860740e4_2x.png",
+    "armor_textures/r_shou_03cec9a53dd6_2x.png",
+    "armor_textures/r_jiao_962a757faf32_2x.png",
+    "armor_textures/09_head_1d5d05de7b53_2x.png",
+    "armor_textures/09_body_783880b587e1_2x.png",
+    "armor_textures/09_jian_1344077133c0_2x.png",
+    "armor_textures/09_hand_b608dd58d5f0_2x.png",
+    "armor_textures/09_foot_7f94fc6ee9cf_2x.png",
+    "armor_textures/head_bb67000287dd_2x.png",
+    "armor_textures/jian_aa13458c0049_2x.png",
+    "armor_textures/body_1b6b8f34e05d_2x.png",
+    "armor_textures/hand_0fc9da36fa37_2x.png",
+    "armor_textures/foot_2d50e768959c_2x.png",
+    "armor_textures/09_head_7f3e9b9b23ec_2x.png",
+    "armor_textures/09_body_078a88725c3f_2x.png",
+    "armor_textures/09_jian_3d289fdf8273_2x.png",
+    "armor_textures/09_hand_5cfca001cbd7_2x.png",
+    "armor_textures/09_foot_4c47253ee54a_2x.png",
+    "armor_textures/10_head_e0f50e924883_2x.png",
+    "armor_textures/10_body_3ae3c84f3d48_2x.png",
+    "armor_textures/10_jian_65bd618d01a0_2x.png",
+    "armor_textures/10_hand_81a30970e8c5_2x.png",
+    "armor_textures/10_foot_5b3d23be8b3b_2x.png",
+    "armor_textures/11_head_b52a3c95a113_2x.png",
+    "armor_textures/11_body_a85e7d5e28a8_2x.png",
+    "armor_textures/11_jian_f0978280b0ba_2x.png",
+    "armor_textures/11_hand_c31f0ebfc6d3_2x.png",
+    "armor_textures/11_foot_6852f656af02_2x.png",
+    "armor_textures/man12_head_451652e6b89d_2x.png",
+    "armor_textures/man12_body_1778b2d39261_2x.png",
+    "armor_textures/man12_jian_a2e46ef2f89e_2x.png",
+    "armor_textures/man12_hand_64abc2477921_2x.png",
+    "armor_textures/man12_foot_f6f97a1a8d53_2x.png",
+    "armor_textures/man14_head_0ab6d8812c14_2x.png",
+    "armor_textures/man14_jian_9e232c36c926_2x.png",
+    "armor_textures/man14_body_c6cc7be2b05d_2x.png",
+    "armor_textures/man14_hand_99131397b1b3_2x.png",
+    "armor_textures/man14_foot_e4fbb3b61198_2x.png",
+    "armor_textures/head15_ffc0e1fba300_2x.png",
+    "armor_textures/body15_42e7675d0242_2x.png",
+    "armor_textures/jian15_7300a1364c44_2x.png",
+    "armor_textures/hand15_6983ab4b649e_2x.png",
+    "armor_textures/foot15_96857982a4cc_2x.png",
+    "armor_textures/man16_head_7a337a2a18bd_2x.png",
+    "armor_textures/man16_body_63307083342a_2x.png",
+    "armor_textures/man16_jian_cbdccfc79697_2x.png",
+    "armor_textures/man16_hand_4a615a548275_2x.png",
+    "armor_textures/man16_foot_4169dc525c32_2x.png",
+    "armor_textures/man17_head_1_75e18329d0d6_2x.png",
+    "armor_textures/man17_body_401d03a8e6b3_2x.png",
+    "armor_textures/man17_jian_1_a73780a31b9b_2x.png",
+    "armor_textures/man17_hand_1_82204a05757f_2x.png",
+    "armor_textures/man17_foot_1_38483bb85489_2x.png",
+    "armor_textures/man18_head_65ccee2693b6_2x.png",
+    "armor_textures/man18_body_df7f25af8b26_2x.png",
+    "armor_textures/man18_jian_539b27ad97ee_2x.png",
+    "armor_textures/man18_hand_e5d6c7456eed_2x.png",
+    "armor_textures/man18_foot_5ef8d09b07ce_2x.png",
+    "armor_textures/man19_head_e614ab22f924_2x.png",
+    "armor_textures/man19_body_ab70729e6633_2x.png",
+    "armor_textures/man19_jian_323b94133c9f_2x.png",
+    "armor_textures/man19_hand_c16d26dd5cc0_2x.png",
+    "armor_textures/man19_foot_a94ec99687be_2x.png",
+    "armor_textures/renze_head_9b2c4db93098_2x.png",
+    "armor_textures/renze_body_16eb171eeab8_2x.png",
+    "armor_textures/renze_jian_5e960b431792_2x.png",
+    "armor_textures/renze_hand_1a5434190067_2x.png",
+    "armor_textures/renze_foot_e5aa5a82bb0c_2x.png",
+    "armor_textures/man_20_head_1b24ab63ae4c_2x.png",
+    "armor_textures/man_20_body_b03063fb74e7_2x.png",
+    "armor_textures/man_20_jian_01a02a9cb079_2x.png",
+    "armor_textures/man_20_hand_1d66f803fe84_2x.png",
+    "armor_textures/man_20_foot_899b6031a5df_2x.png",
+    "armor_textures/man21_head_a25624569c4f_2x.png",
+    "armor_textures/man21_body_01_66ab4425588d_2x.png",
+    "armor_textures/man21_body_02_c0d116bd9135_2x.png",
+    "armor_textures/man21_hand_00b7226ab905_2x.png",
+    "armor_textures/man21_foot_4341048b7988_2x.png"
+  ],
   "animations": [
     "idle_rifle",
     "run_rifle",
@@ -47,18 +164,619 @@
     "dead",
     "win",
     "win01",
-    "idle01"
+    "idle01",
+    "fly_idle",
+    "fly_front",
+    "fly_back",
+    "fly_left",
+    "fly_right",
+    "fly_rifle",
+    "fly_shotgun",
+    "fly_bazinga",
+    "fly_jian",
+    "fly_bow",
+    "fly_fist",
+    "fly_machinegun",
+    "fly_Sniper",
+    "fly_idle_rifle",
+    "fly_idle_shotgun",
+    "fly_idle_bazinga",
+    "fly_idle_jian",
+    "fly_idle_bow",
+    "fly_idle_fist",
+    "fly_idle_machinegun",
+    "fly_idle_Sniper",
+    "fly_stand_shoot_rifle",
+    "fly_stand_shoot_shotgun",
+    "fly_stand_shoot_bazinga",
+    "fly_stand_shoot_jian",
+    "fly_stand_shoot_bow",
+    "fly_stand_shoot_fist",
+    "fly_stand_shoot_machinegun",
+    "fly_stand_shoot_Sniper",
+    "fly_stand_shoot_grenade_launcher",
+    "fly_stand_shoot_laser",
+    "fly_stand_shoot_BLACKSTARS",
+    "fly_stand_shoot_jian_lower",
+    "fly_runshoot_jian",
+    "fly_runshoot_machinegun"
   ],
+  "ignored_zero_weight_bones": {
+    "ArmorFoot_11": [
+      "Bip01 Footsteps"
+    ],
+    "ArmorHand_20": [
+      "Bone01",
+      "Bone02",
+      "Bone03",
+      "Bone04"
+    ]
+  },
   "unmatched_animation_paths": [
     "Bip01/Bip01 Footsteps",
     "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 L Thigh/Bip01 L Calf/Bip01 L Foot/Bip01 L Toe0/Bip01 L Toe0Nub",
     "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 R Thigh/Bip01 R Calf/Bip01 R Foot/Bip01 R Toe0/Bip01 R Toe0Nub",
     "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bip01 HeadNub",
     "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bip01 Ponytail1",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bone L YA01",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bone L YA01/Bone L YA02",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bone L YA01/Bone L YA02/Bone L YA03",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bone L jiao01",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bone L jiao01/Bone L jiao02",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bone R YA01",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bone R YA01/Bone R YA02",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bone R YA01/Bone R YA02/Bone R YA03",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bone R jiao01",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bone R jiao01/Bone R jiao02",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bone mouth01",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 Head/Bone mouth01/Bone mouth02",
     "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 L Clavicle/Bip01 L UpperArm/Bip01 L Forearm/Bip01 L Hand/Bip01 L Finger0/Bip01 L Finger0Nub",
     "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand/Bip01 R Finger0/Bip01 R Finger0Nub",
     "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Neck/Bip01 R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand/Point01",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bone L Arm01",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bone L Arm01/Bone L Arm02",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bone L Arm01/Bone L Arm02/Bone L Arm03",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bone R Arm01",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bone R Arm01/Bone R Arm02",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bone R Arm01/Bone R Arm02/Bone R Arm03",
     "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Tail",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Tail/Bip01 Tail1",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Tail/Bip01 Tail1/Bip01 Tail2",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bone L Qchi 01",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bone L Qchi 01/Bone L Qchi 02",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bone L Qchi 01/Bone L Qchi 02/Bone L Qchi 03",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bone L Qchi 01/Bone L Qchi 02/Bone L Qchi 03/Bone L Qchi 04",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bone L Qchi 01/Bone L Qchi 02/Bone L Qchi 03/Bone L Qchi 04/Bone L Qchi 05",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bone R Qchi 01",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bone R Qchi 01/Bone R Qchi 02",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bone R Qchi 01/Bone R Qchi 02/Bone R Qchi 03",
+    "Bip01/Bip01 Pelvis/Bip01 Spine/Bone R Qchi 01/Bone R Qchi 02/Bone R Qchi 03/Bone R Qchi 04",
+    "Bip01/Bip01 Pelvis/Bone L Hchi 01",
+    "Bip01/Bip01 Pelvis/Bone L Hchi 01/Bone L Hchi 02",
+    "Bip01/Bip01 Pelvis/Bone L Hchi 01/Bone L Hchi 02/Bone L Hchi 03",
+    "Bip01/Bip01 Pelvis/Bone R Hchi 01",
+    "Bip01/Bip01 Pelvis/Bone R Hchi 01/Bone R Hchi 02",
+    "Bip01/Bip01 Pelvis/Bone R Hchi 01/Bone R Hchi 02/Bone R Hchi 03",
+    "Bip01/Bip01 Pelvis/Bone R Hchi 01/Bone R Hchi 02/Bone R Hchi 03/Bone R Hchi 04",
     "Bip01/Bip01 Pelvis/bullet_bag"
-  ]
+  ],
+  "bags": {
+    "manifest": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\bags\\manifest.json",
+    "naming": "ArmorBag_XX uses the zero-based Unity bag ID",
+    "count": 25,
+    "special_animation_limit": "Unity bag IDs 15 and 23 use FlyBagAnimationScript. Their recovered OBJ assets preserve all renderable geometry but not the legacy script animation.",
+    "bags": [
+      {
+        "id": 0,
+        "name": "ArmorBag_00",
+        "source_folder": "01",
+        "obj": "ArmorBag_00/ArmorBag_00.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 80,
+        "faces": 80,
+        "textures": [
+          "01.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 1,
+        "name": "ArmorBag_01",
+        "source_folder": "02",
+        "obj": "ArmorBag_01/ArmorBag_01.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 72,
+        "faces": 72,
+        "textures": [
+          "02.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 2,
+        "name": "ArmorBag_02",
+        "source_folder": "03",
+        "obj": "ArmorBag_02/ArmorBag_02.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 56,
+        "faces": 52,
+        "textures": [
+          "03.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 3,
+        "name": "ArmorBag_03",
+        "source_folder": "04",
+        "obj": "ArmorBag_03/ArmorBag_03.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 86,
+        "faces": 84,
+        "textures": [
+          "04.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 4,
+        "name": "ArmorBag_04",
+        "source_folder": "05",
+        "obj": "ArmorBag_04/ArmorBag_04.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 72,
+        "faces": 68,
+        "textures": [
+          "05.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 5,
+        "name": "ArmorBag_05",
+        "source_folder": "06",
+        "obj": "ArmorBag_05/ArmorBag_05.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 63,
+        "faces": 60,
+        "textures": [
+          "06.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 6,
+        "name": "ArmorBag_06",
+        "source_folder": "07",
+        "obj": "ArmorBag_06/ArmorBag_06.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 51,
+        "faces": 52,
+        "textures": [
+          "07.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 7,
+        "name": "ArmorBag_07",
+        "source_folder": "08",
+        "obj": "ArmorBag_07/ArmorBag_07.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 98,
+        "faces": 72,
+        "textures": [
+          "08.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 8,
+        "name": "ArmorBag_08",
+        "source_folder": "09",
+        "obj": "ArmorBag_08/ArmorBag_08.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 82,
+        "faces": 92,
+        "textures": [
+          "09.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 9,
+        "name": "ArmorBag_09",
+        "source_folder": "10",
+        "obj": "ArmorBag_09/ArmorBag_09.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 68,
+        "faces": 56,
+        "textures": [
+          "10.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 10,
+        "name": "ArmorBag_10",
+        "source_folder": "11",
+        "obj": "ArmorBag_10/ArmorBag_10.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 163,
+        "faces": 134,
+        "textures": [
+          "11.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 11,
+        "name": "ArmorBag_11",
+        "source_folder": "12",
+        "obj": "ArmorBag_11/ArmorBag_11.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 109,
+        "faces": 89,
+        "textures": [
+          "12.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 12,
+        "name": "ArmorBag_12",
+        "source_folder": "13",
+        "obj": "ArmorBag_12/ArmorBag_12.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 174,
+        "faces": 167,
+        "textures": [
+          "13.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 13,
+        "name": "ArmorBag_13",
+        "source_folder": "14",
+        "obj": "ArmorBag_13/ArmorBag_13.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 130,
+        "faces": 128,
+        "textures": [
+          "14.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 14,
+        "name": "ArmorBag_14",
+        "source_folder": "15",
+        "obj": "ArmorBag_14/ArmorBag_14.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 387,
+        "faces": 290,
+        "textures": [
+          "beg_up1_2.png"
+        ],
+        "unity_scale": 1.2,
+        "default_body_scale": 0.96,
+        "body_05_scale": 1.2,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 15,
+        "name": "ArmorBag_15",
+        "source_folder": "16",
+        "obj": "ArmorBag_15/ArmorBag_15.obj",
+        "renderer_count": 7,
+        "renderer_kinds": [
+          "MeshRenderer",
+          "MeshRenderer",
+          "MeshRenderer",
+          "MeshRenderer",
+          "MeshRenderer",
+          "MeshRenderer",
+          "SkinnedMeshRenderer"
+        ],
+        "vertices": 894,
+        "faces": 550,
+        "textures": [
+          "bag_up1_1.png",
+          "plasma_bolt1_blue01.png"
+        ],
+        "unity_scale": 1.2,
+        "default_body_scale": 0.96,
+        "body_05_scale": 1.2,
+        "animated_in_unity": true,
+        "static_geometry_only": true
+      },
+      {
+        "id": 16,
+        "name": "ArmorBag_16",
+        "source_folder": "17",
+        "obj": "ArmorBag_16/ArmorBag_16.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 858,
+        "faces": 478,
+        "textures": [
+          "bag17.png"
+        ],
+        "unity_scale": 1.2,
+        "default_body_scale": 0.96,
+        "body_05_scale": 1.2,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 17,
+        "name": "ArmorBag_17",
+        "source_folder": "18",
+        "obj": "ArmorBag_17/ArmorBag_17.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 268,
+        "faces": 276,
+        "textures": [
+          "bag_18.png"
+        ],
+        "unity_scale": 1.2,
+        "default_body_scale": 0.96,
+        "body_05_scale": 1.2,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 18,
+        "name": "ArmorBag_18",
+        "source_folder": "19",
+        "obj": "ArmorBag_18/ArmorBag_18.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 371,
+        "faces": 326,
+        "textures": [
+          "bag_19.png"
+        ],
+        "unity_scale": 1.1,
+        "default_body_scale": 0.8800000000000001,
+        "body_05_scale": 1.1,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 19,
+        "name": "ArmorBag_19",
+        "source_folder": "20",
+        "obj": "ArmorBag_19/ArmorBag_19.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 182,
+        "faces": 182,
+        "textures": [
+          "bag20.png"
+        ],
+        "unity_scale": 1.2,
+        "default_body_scale": 0.96,
+        "body_05_scale": 1.2,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 20,
+        "name": "ArmorBag_20",
+        "source_folder": "21",
+        "obj": "ArmorBag_20/ArmorBag_20.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 248,
+        "faces": 176,
+        "textures": [
+          "bag21.png"
+        ],
+        "unity_scale": 1.2,
+        "default_body_scale": 0.96,
+        "body_05_scale": 1.2,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 21,
+        "name": "ArmorBag_21",
+        "source_folder": "22",
+        "obj": "ArmorBag_21/ArmorBag_21.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "SkinnedMeshRenderer"
+        ],
+        "vertices": 220,
+        "faces": 248,
+        "textures": [
+          "bag_xueren.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 22,
+        "name": "ArmorBag_22",
+        "source_folder": "23",
+        "obj": "ArmorBag_22/ArmorBag_22.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 494,
+        "faces": 210,
+        "textures": [
+          "man18_beibao.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      },
+      {
+        "id": 23,
+        "name": "ArmorBag_23",
+        "source_folder": "24",
+        "obj": "ArmorBag_23/ArmorBag_23.obj",
+        "renderer_count": 4,
+        "renderer_kinds": [
+          "MeshRenderer",
+          "MeshRenderer",
+          "MeshRenderer",
+          "SkinnedMeshRenderer"
+        ],
+        "vertices": 347,
+        "faces": 208,
+        "textures": [
+          "dwings_fly01.png",
+          "man19_beibao.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": true,
+        "static_geometry_only": true
+      },
+      {
+        "id": 24,
+        "name": "ArmorBag_24",
+        "source_folder": "25",
+        "obj": "ArmorBag_24/ArmorBag_24.obj",
+        "renderer_count": 1,
+        "renderer_kinds": [
+          "MeshRenderer"
+        ],
+        "vertices": 194,
+        "faces": 154,
+        "textures": [
+          "bag25.png"
+        ],
+        "unity_scale": 1.0,
+        "default_body_scale": 0.8,
+        "body_05_scale": 1.0,
+        "animated_in_unity": false,
+        "static_geometry_only": true
+      }
+    ]
+  }
 }

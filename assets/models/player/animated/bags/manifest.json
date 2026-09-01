@@ -1,0 +1,518 @@
+{
+  "naming": "ArmorBag_XX uses the zero-based Unity bag ID",
+  "count": 25,
+  "special_animation_limit": "Unity bag IDs 15 and 23 use FlyBagAnimationScript. Their recovered OBJ assets preserve all renderable geometry but not the legacy script animation.",
+  "bags": [
+    {
+      "id": 0,
+      "name": "ArmorBag_00",
+      "source_folder": "01",
+      "obj": "ArmorBag_00/ArmorBag_00.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 80,
+      "faces": 80,
+      "textures": [
+        "01.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 1,
+      "name": "ArmorBag_01",
+      "source_folder": "02",
+      "obj": "ArmorBag_01/ArmorBag_01.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 72,
+      "faces": 72,
+      "textures": [
+        "02.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 2,
+      "name": "ArmorBag_02",
+      "source_folder": "03",
+      "obj": "ArmorBag_02/ArmorBag_02.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 56,
+      "faces": 52,
+      "textures": [
+        "03.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 3,
+      "name": "ArmorBag_03",
+      "source_folder": "04",
+      "obj": "ArmorBag_03/ArmorBag_03.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 86,
+      "faces": 84,
+      "textures": [
+        "04.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 4,
+      "name": "ArmorBag_04",
+      "source_folder": "05",
+      "obj": "ArmorBag_04/ArmorBag_04.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 72,
+      "faces": 68,
+      "textures": [
+        "05.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 5,
+      "name": "ArmorBag_05",
+      "source_folder": "06",
+      "obj": "ArmorBag_05/ArmorBag_05.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 63,
+      "faces": 60,
+      "textures": [
+        "06.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 6,
+      "name": "ArmorBag_06",
+      "source_folder": "07",
+      "obj": "ArmorBag_06/ArmorBag_06.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 51,
+      "faces": 52,
+      "textures": [
+        "07.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 7,
+      "name": "ArmorBag_07",
+      "source_folder": "08",
+      "obj": "ArmorBag_07/ArmorBag_07.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 98,
+      "faces": 72,
+      "textures": [
+        "08.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 8,
+      "name": "ArmorBag_08",
+      "source_folder": "09",
+      "obj": "ArmorBag_08/ArmorBag_08.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 82,
+      "faces": 92,
+      "textures": [
+        "09.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 9,
+      "name": "ArmorBag_09",
+      "source_folder": "10",
+      "obj": "ArmorBag_09/ArmorBag_09.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 68,
+      "faces": 56,
+      "textures": [
+        "10.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 10,
+      "name": "ArmorBag_10",
+      "source_folder": "11",
+      "obj": "ArmorBag_10/ArmorBag_10.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 163,
+      "faces": 134,
+      "textures": [
+        "11.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 11,
+      "name": "ArmorBag_11",
+      "source_folder": "12",
+      "obj": "ArmorBag_11/ArmorBag_11.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 109,
+      "faces": 89,
+      "textures": [
+        "12.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 12,
+      "name": "ArmorBag_12",
+      "source_folder": "13",
+      "obj": "ArmorBag_12/ArmorBag_12.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 174,
+      "faces": 167,
+      "textures": [
+        "13.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 13,
+      "name": "ArmorBag_13",
+      "source_folder": "14",
+      "obj": "ArmorBag_13/ArmorBag_13.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 130,
+      "faces": 128,
+      "textures": [
+        "14.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 14,
+      "name": "ArmorBag_14",
+      "source_folder": "15",
+      "obj": "ArmorBag_14/ArmorBag_14.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 387,
+      "faces": 290,
+      "textures": [
+        "beg_up1_2.png"
+      ],
+      "unity_scale": 1.2,
+      "default_body_scale": 0.96,
+      "body_05_scale": 1.2,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 15,
+      "name": "ArmorBag_15",
+      "source_folder": "16",
+      "obj": "ArmorBag_15/ArmorBag_15.obj",
+      "renderer_count": 7,
+      "renderer_kinds": [
+        "MeshRenderer",
+        "MeshRenderer",
+        "MeshRenderer",
+        "MeshRenderer",
+        "MeshRenderer",
+        "MeshRenderer",
+        "SkinnedMeshRenderer"
+      ],
+      "vertices": 894,
+      "faces": 550,
+      "textures": [
+        "bag_up1_1.png",
+        "plasma_bolt1_blue01.png"
+      ],
+      "unity_scale": 1.2,
+      "default_body_scale": 0.96,
+      "body_05_scale": 1.2,
+      "animated_in_unity": true,
+      "static_geometry_only": true
+    },
+    {
+      "id": 16,
+      "name": "ArmorBag_16",
+      "source_folder": "17",
+      "obj": "ArmorBag_16/ArmorBag_16.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 858,
+      "faces": 478,
+      "textures": [
+        "bag17.png"
+      ],
+      "unity_scale": 1.2,
+      "default_body_scale": 0.96,
+      "body_05_scale": 1.2,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 17,
+      "name": "ArmorBag_17",
+      "source_folder": "18",
+      "obj": "ArmorBag_17/ArmorBag_17.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 268,
+      "faces": 276,
+      "textures": [
+        "bag_18.png"
+      ],
+      "unity_scale": 1.2,
+      "default_body_scale": 0.96,
+      "body_05_scale": 1.2,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 18,
+      "name": "ArmorBag_18",
+      "source_folder": "19",
+      "obj": "ArmorBag_18/ArmorBag_18.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 371,
+      "faces": 326,
+      "textures": [
+        "bag_19.png"
+      ],
+      "unity_scale": 1.1,
+      "default_body_scale": 0.8800000000000001,
+      "body_05_scale": 1.1,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 19,
+      "name": "ArmorBag_19",
+      "source_folder": "20",
+      "obj": "ArmorBag_19/ArmorBag_19.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 182,
+      "faces": 182,
+      "textures": [
+        "bag20.png"
+      ],
+      "unity_scale": 1.2,
+      "default_body_scale": 0.96,
+      "body_05_scale": 1.2,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 20,
+      "name": "ArmorBag_20",
+      "source_folder": "21",
+      "obj": "ArmorBag_20/ArmorBag_20.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 248,
+      "faces": 176,
+      "textures": [
+        "bag21.png"
+      ],
+      "unity_scale": 1.2,
+      "default_body_scale": 0.96,
+      "body_05_scale": 1.2,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 21,
+      "name": "ArmorBag_21",
+      "source_folder": "22",
+      "obj": "ArmorBag_21/ArmorBag_21.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "SkinnedMeshRenderer"
+      ],
+      "vertices": 220,
+      "faces": 248,
+      "textures": [
+        "bag_xueren.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 22,
+      "name": "ArmorBag_22",
+      "source_folder": "23",
+      "obj": "ArmorBag_22/ArmorBag_22.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 494,
+      "faces": 210,
+      "textures": [
+        "man18_beibao.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    },
+    {
+      "id": 23,
+      "name": "ArmorBag_23",
+      "source_folder": "24",
+      "obj": "ArmorBag_23/ArmorBag_23.obj",
+      "renderer_count": 4,
+      "renderer_kinds": [
+        "MeshRenderer",
+        "MeshRenderer",
+        "MeshRenderer",
+        "SkinnedMeshRenderer"
+      ],
+      "vertices": 347,
+      "faces": 208,
+      "textures": [
+        "dwings_fly01.png",
+        "man19_beibao.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": true,
+      "static_geometry_only": true
+    },
+    {
+      "id": 24,
+      "name": "ArmorBag_24",
+      "source_folder": "25",
+      "obj": "ArmorBag_24/ArmorBag_24.obj",
+      "renderer_count": 1,
+      "renderer_kinds": [
+        "MeshRenderer"
+      ],
+      "vertices": 194,
+      "faces": 154,
+      "textures": [
+        "bag25.png"
+      ],
+      "unity_scale": 1.0,
+      "default_body_scale": 0.8,
+      "body_05_scale": 1.0,
+      "animated_in_unity": false,
+      "static_geometry_only": true
+    }
+  ]
+}

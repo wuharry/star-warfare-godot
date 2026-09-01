@@ -1,5 +1,5 @@
 {
-  "format": 1,
+  "format": 2,
   "level": 13,
   "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level13.unity",
   "visual": "stage.obj",
@@ -30,6 +30,80 @@
       1.0
     ],
     "ambient_intensity": 1.0
+  },
+  "material_render_modes": {
+    "wall_03_0": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "wall_03_1": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Standard_1_0": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "wall_08_0": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "wall_07_0": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "wall_04_0": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "wall_07_1": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "mot_2_0": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "mot_1_0": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    }
   },
   "markers": {
     "Respawn": [

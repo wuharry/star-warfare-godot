@@ -1,5 +1,5 @@
 {
-  "format": 1,
+  "format": 2,
   "level": 4,
   "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level4.unity",
   "visual": "stage.obj",
@@ -30,6 +30,104 @@
       1.0
     ],
     "ambient_intensity": 1.0
+  },
+  "material_render_modes": {
+    "SC04-02___Default": {
+      "shader": "iPhone/Additive_Bright",
+      "blend": "additive",
+      "cull_disabled": true,
+      "depth_write": false,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5
+    },
+    "SC04-Standard_2": {
+      "shader": "iPhone/Additive_Bright",
+      "blend": "additive",
+      "cull_disabled": true,
+      "depth_write": false,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5
+    },
+    "SC04-Standard_19": {
+      "shader": "builtin",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "SC04-Standard_17": {
+      "shader": "iPhone/SolidTexture",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "SC04-orig_Standard_19": {
+      "shader": "iPhone/SolidTexture",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "SC04-Standard_16asd": {
+      "shader": "iPhone/AlphaBlend",
+      "blend": "alpha",
+      "cull_disabled": false,
+      "depth_write": false,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5
+    },
+    "SC04-Standard_15asd": {
+      "shader": "iPhone/AlphaBlend",
+      "blend": "alpha",
+      "cull_disabled": false,
+      "depth_write": false,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5
+    },
+    "SC04-Standard_23": {
+      "shader": "iPhone/SolidTexture",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "SC04-Standard_22": {
+      "shader": "builtin",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "SC04-Standard_3": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "SC04-Standard_21sss": {
+      "shader": "builtin",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "SC04-Standard_1": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    }
   },
   "markers": {
     "Respawn": [

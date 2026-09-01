@@ -1,5 +1,5 @@
 {
-  "format": 1,
+  "format": 2,
   "level": 15,
   "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level15.unity",
   "visual": "stage.obj",
@@ -30,6 +30,264 @@
       1.0
     ],
     "ambient_intensity": 1.0
+  },
+  "material_render_modes": {
+    "Brocklightmap_02": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Airlightmap_01": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Objlightmap_01": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Objlightmap_07": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Objlightmap_06": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Depotlightmap_06": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Groundlightmap_03": {
+      "shader": "iPhone/LightMap_TwoSides",
+      "blend": "opaque",
+      "cull_disabled": true,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Groundlightmap_02": {
+      "shader": "iPhone/LightMap_TwoSides",
+      "blend": "opaque",
+      "cull_disabled": true,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Groundlightmap_01": {
+      "shader": "iPhone/LightMap_TwoSides",
+      "blend": "opaque",
+      "cull_disabled": true,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Tunellightmap_02": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Tunellightmap_03": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Depotlightmap_02": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Depotlightmap_01": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Depotlightmap_04": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Standard_10": {
+      "shader": "iPhone/Additive",
+      "blend": "additive",
+      "cull_disabled": false,
+      "depth_write": false,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Brocklightmap_01": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "lighting": {
+      "shader": "iPhone/Additive",
+      "blend": "additive",
+      "cull_disabled": false,
+      "depth_write": false,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Airlightmap_03": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "_Material_25_": {
+      "shader": "iPhone/SolidTexture",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Brocklightmap_03": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Tunellightmap_01": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Airlightmap_02": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Objlightmap_02": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Objlightmap_03": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Objlightmap_04": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Objlightmap_05": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Depotlightmap_05": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Airlightmap_04": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "Tunellightmap_04": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "OutsideLightmap_01": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "OutsideLightmap_02": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    },
+    "OutsideLightmap_03": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": false,
+      "alpha_scissor_threshold": 0.5
+    }
   },
   "markers": {
     "Respawn": [
