@@ -10,6 +10,6 @@ func _ready() -> void:
 	for _frame in range(4):
 		await get_tree().process_frame
 	var armory_error := get_viewport().get_texture().get_image().save_png("res://tests/armory_restoration_preview.png")
-	var passed := error == OK and armory_error == OK
+	var passed: bool = error == OK and armory_error == OK and menu.store_weapon_row.get_child_count() == 47
 	print("MENU_VISUAL_CAPTURE_PASS" if passed else "MENU_VISUAL_CAPTURE_FAIL")
 	get_tree().quit(0 if passed else 1)

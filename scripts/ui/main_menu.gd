@@ -23,6 +23,14 @@ var store_equipped: Label
 var store_equip_button: Button
 var store_preview_root: Node3D
 var store_preview_viewport: SubViewport
+var store_preview_tween: Tween
+var store_weapon_row: HBoxContainer
+var store_currency_label: Label
+var store_notice: Label
+var store_slot_picker: OptionButton
+var store_selected_slot := 0
+var store_category := "ALL"
+var store_category_buttons: Dictionary = {}
 
 func _ready() -> void:
 	var recovered_font := "res://assets/original/fonts/ZEROTWOS.ttf"
@@ -44,6 +52,12 @@ func _notification(what: int) -> void:
 		_close_modal()
 	else:
 		get_tree().quit()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel") and is_instance_valid(modal_layer) and modal_layer.get_child_count() > 0:
+		AudioDirector.play_ui("back")
+		_close_modal()
+		get_viewport().set_input_as_handled()
 
 func _exit_tree() -> void:
 	# Stop streamed audio explicitly so desktop quit and mobile app shutdown
@@ -116,7 +130,7 @@ func _build_header() -> void:
 	content = VBoxContainer.new()
 	content.custom_minimum_size = Vector2(470, 0)
 	content.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	content.add_theme_constant_override("separation", 12)
+	content.add_theme_constant_override("separation", 8)
 	root_row.add_child(content)
 
 	var spacer := Control.new()
@@ -134,11 +148,13 @@ func _build_header() -> void:
 	var profile := _label(tr("OFFLINE OPERATIVE"), 16, Color(0.43, 0.9, 1.0))
 	status.add_child(profile)
 	status.add_child(_label(tr("CREDITS  %07d") % GameState.credits, 25, Color(0.98, 0.77, 0.24)))
-	status.add_child(_label(tr("LOCAL SAVE • NO SERVER REQUIRED"), 12, Color(0.62, 0.72, 0.78)))
+	status.add_child(_label(tr("MITHRIL  %04d") % GameState.mithril, 14, Color(0.34, 0.92, 1.0)))
+	status.add_child(_label(tr("LOCAL SAVE / NO SERVER REQUIRED"), 12, Color(0.62, 0.72, 0.78)))
 
 	modal_layer = Control.new()
 	modal_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	modal_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	modal_layer.z_index = 10
 	add_child(modal_layer)
 
 func _build_main_buttons() -> void:
@@ -146,7 +162,7 @@ func _build_main_buttons() -> void:
 	if logo_texture:
 		var logo := TextureRect.new()
 		logo.texture = logo_texture
-		logo.custom_minimum_size = Vector2(460, 128)
+		logo.custom_minimum_size = Vector2(460, 108)
 		logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -156,7 +172,7 @@ func _build_main_buttons() -> void:
 		content.add_child(logo)
 		var subtitle_logo := TextureRect.new()
 		subtitle_logo.texture = _component("menu_subtitle")
-		subtitle_logo.custom_minimum_size = Vector2(410, 34)
+		subtitle_logo.custom_minimum_size = Vector2(410, 28)
 		subtitle_logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		subtitle_logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		subtitle_logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -166,13 +182,17 @@ func _build_main_buttons() -> void:
 	content.add_child(_label(tr("LOCAL OFFLINE RESTORATION"), 14, Color(0.33, 0.82, 0.94)))
 
 	var gap := Control.new()
-	gap.custom_minimum_size.y = 18
+	gap.custom_minimum_size.y = 6
 	content.add_child(gap)
 
-	var play := _menu_button(tr("START"), tr("SOLO MISSION"))
-	_bind_accept_sound(play)
-	play.pressed.connect(_show_level_select)
-	content.add_child(play)
+	var solo := _menu_button(tr("SINGLE PLAYER"), tr("CAMPAIGN / SECTORS 01-08"))
+	_bind_accept_sound(solo)
+	solo.pressed.connect(_show_level_select.bind("singleplayer"))
+	content.add_child(solo)
+	var multiplayer := _menu_button(tr("MULTIPLAYER"), tr("LOCAL SKIRMISH / SECTORS 13-21"))
+	_bind_accept_sound(multiplayer)
+	multiplayer.pressed.connect(_show_level_select.bind("multiplayer"))
+	content.add_child(multiplayer)
 	var armory := _menu_button(tr("SHOP & CUSTOMIZE"), tr("47 RECOVERED WEAPONS"))
 	_bind_accept_sound(armory)
 	armory.pressed.connect(_show_armory)
@@ -190,10 +210,11 @@ func _build_main_buttons() -> void:
 		_bind_accept_sound(quit)
 		quit.pressed.connect(get_tree().quit)
 		content.add_child(quit)
+	call_deferred("_focus_control", solo)
 
 func _build_footer() -> void:
 	var footer := Label.new()
-	footer.text = tr("COMM-LINK OFFLINE   •   ORIGINAL ONLINE SERVICES RETIRED   •   GODOT 4 RESTORATION")
+	footer.text = tr("COMM-LINK OFFLINE   /   ORIGINAL ONLINE SERVICES RETIRED   /   GODOT 4 RESTORATION")
 	footer.add_theme_font_size_override("font_size", 12)
 	footer.add_theme_color_override("font_color", Color(0.38, 0.58, 0.67))
 	footer.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
@@ -201,12 +222,17 @@ func _build_footer() -> void:
 	footer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(footer)
 
-func _show_level_select() -> void:
+func _show_level_select(game_mode: String = "singleplayer") -> void:
 	var body := VBoxContainer.new()
 	body.add_theme_constant_override("separation", 14)
-	body.add_child(_label(tr("SELECT SECTOR"), 28, Color(0.72, 0.94, 1.0)))
+	var heading := tr("SELECT SOLO SECTOR") if game_mode == "singleplayer" else tr("SELECT MULTIPLAYER MAP")
+	body.add_child(_label(heading, 28, Color(0.72, 0.94, 1.0)))
+	if game_mode == "multiplayer":
+		var note := _label(tr("Official servers are retired; multiplayer maps run as local offline skirmishes."), 13, Color(0.55, 0.76, 0.84))
+		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		body.add_child(note)
 	var scroll := ScrollContainer.new()
-	scroll.custom_minimum_size = Vector2(1050, 480)
+	scroll.custom_minimum_size = Vector2(1050, 430 if game_mode == "multiplayer" else 460)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	body.add_child(scroll)
 	var grid := GridContainer.new()
@@ -214,10 +240,11 @@ func _show_level_select() -> void:
 	grid.add_theme_constant_override("h_separation", 9)
 	grid.add_theme_constant_override("v_separation", 9)
 	scroll.add_child(grid)
-	for level_number in GameState.CAMPAIGN_LEVELS:
+	for level_number in GameState.get_levels_for_mode(game_mode):
 		var data: Dictionary = GameState.get_level_data(level_number)
 		var button := Button.new()
-		button.text = "%02d  %s" % [level_number, tr(str(data.name))]
+		var is_locked: bool = game_mode == "singleplayer" and level_number > GameState.unlocked_level
+		button.text = (tr("LOCKED • ") if is_locked else "") + "%02d  %s" % [level_number, tr(str(data.name))]
 		button.custom_minimum_size = Vector2(252, 108)
 		button.icon = _level_preview(level_number)
 		button.expand_icon = true
@@ -225,10 +252,11 @@ func _show_level_select() -> void:
 		button.add_theme_font_size_override("font_size", 13)
 		button.add_theme_stylebox_override("normal", _panel_style(Color(0.025, 0.12, 0.17, 0.96), Color(0.12, 0.52, 0.66, 0.8), 7))
 		button.add_theme_stylebox_override("hover", _panel_style(Color(0.05, 0.32, 0.4, 0.98), Color(0.35, 0.9, 1.0, 1.0), 7))
+		button.disabled = is_locked
 		_bind_accept_sound(button)
-		button.pressed.connect(func(): GameState.start_level(level_number))
+		button.pressed.connect(func(): GameState.start_level(level_number, game_mode))
 		grid.add_child(button)
-	_show_modal(body, Vector2(1130, 665))
+	_show_modal(body, Vector2(1130, 650))
 
 func _show_armory() -> void:
 	# ShopAndCustomize.unity built this screen at runtime from UI set 11.  Its
@@ -287,9 +315,10 @@ func _show_armory() -> void:
 	var nav_space := Control.new()
 	nav_space.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	nav.add_child(nav_space)
-	var credits := _label(tr("CREDITS  %07d") % GameState.credits, 21, Color(1.0, 0.77, 0.2))
-	credits.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	nav.add_child(credits)
+	store_currency_label = _label("", 19, Color(1.0, 0.77, 0.2))
+	store_currency_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	nav.add_child(store_currency_label)
+	_update_store_currency_label()
 
 	var main := HBoxContainer.new()
 	main.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -374,6 +403,20 @@ func _show_armory() -> void:
 	detail_column.add_child(store_price)
 	store_equipped = _label("", 15, Color(0.3, 1.0, 0.54))
 	detail_column.add_child(store_equipped)
+	var slot_row := HBoxContainer.new()
+	slot_row.add_theme_constant_override("separation", 10)
+	detail_column.add_child(slot_row)
+	var slot_label := _label(tr("LOADOUT SLOT"), 14, Color(0.58, 0.82, 0.9))
+	slot_label.custom_minimum_size.x = 130
+	slot_row.add_child(slot_label)
+	store_slot_picker = OptionButton.new()
+	store_slot_picker.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	store_slot_picker.item_selected.connect(func(index: int):
+		store_selected_slot = index
+		_select_store_weapon(store_selected_weapon)
+	)
+	slot_row.add_child(store_slot_picker)
+	_rebuild_store_loadout_picker()
 	store_equip_button = Button.new()
 	store_equip_button.text = tr("EQUIP")
 	store_equip_button.custom_minimum_size.y = 58
@@ -381,35 +424,36 @@ func _show_armory() -> void:
 	store_equip_button.add_theme_stylebox_override("normal", _recovered_button_style("button_equip", Color(0.74, 1.0, 0.95)))
 	store_equip_button.pressed.connect(_equip_store_selection)
 	detail_column.add_child(store_equip_button)
+	store_notice = _label("", 13, Color(1.0, 0.58, 0.26))
+	store_notice.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	store_notice.custom_minimum_size.y = 22
+	detail_column.add_child(store_notice)
 
 	var tabs := HBoxContainer.new()
 	tabs.custom_minimum_size.y = 42
 	tabs.add_theme_constant_override("separation", 6)
 	page.add_child(tabs)
+	store_category_buttons.clear()
+	var category_group := ButtonGroup.new()
+	category_group.allow_unpress = false
 	for tab_name in ["RIFLE", "SHOTGUN", "HEAVY", "SPECIAL", "MELEE", "ALL"]:
 		var tab := Button.new()
 		tab.text = tr(tab_name)
 		tab.custom_minimum_size = Vector2(128, 38)
-		tab.disabled = tab_name != "ALL"
+		tab.toggle_mode = true
+		tab.button_group = category_group
+		tab.button_pressed = tab_name == store_category
+		tab.pressed.connect(_select_store_category.bind(tab_name))
+		store_category_buttons[tab_name] = tab
 		tabs.add_child(tab)
 	var rail := ScrollContainer.new()
 	rail.custom_minimum_size.y = 118
 	rail.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	page.add_child(rail)
-	var weapon_row := HBoxContainer.new()
-	weapon_row.add_theme_constant_override("separation", 7)
-	rail.add_child(weapon_row)
-	for weapon_id: String in GameState.get_weapon_ids():
-		var weapon: Dictionary = GameState.WEAPONS[weapon_id]
-		var button := Button.new()
-		button.tooltip_text = str(weapon.name)
-		button.icon = Atlas.weapon_icon(int(weapon.id))
-		button.expand_icon = true
-		button.custom_minimum_size = Vector2(142, 102)
-		button.add_theme_stylebox_override("normal", _store_panel_style(Color(0.02, 0.05, 0.06, 0.95), Color(weapon.color, 0.38)))
-		button.add_theme_stylebox_override("hover", _store_panel_style(Color(weapon.color, 0.14), Color(weapon.color, 1.0)))
-		button.pressed.connect(_select_store_weapon.bind(weapon_id))
-		weapon_row.add_child(button)
+	store_weapon_row = HBoxContainer.new()
+	store_weapon_row.add_theme_constant_override("separation", 7)
+	rail.add_child(store_weapon_row)
+	_rebuild_store_weapon_row()
 	_select_store_weapon(GameState.selected_weapon)
 
 func _select_store_weapon(weapon_id: String) -> void:
@@ -419,32 +463,162 @@ func _select_store_weapon(weapon_id: String) -> void:
 	var weapon: Dictionary = GameState.WEAPONS[weapon_id]
 	store_name.text = str(weapon.name)
 	store_name.add_theme_color_override("font_color", Color(weapon.color))
-	store_type.text = tr("TYPE %02d   •   AIM HUD %02d") % [int(weapon.type), int(weapon.aim_id)]
+	store_type.text = tr("TYPE %02d   /   AIM HUD %02d") % [int(weapon.type), int(weapon.aim_id)]
 	store_stats.text = tr("DAMAGE                 %d\nRATE OF FIRE          %.2f / SEC\nENERGY PER SHOT       %d\nEFFECTIVE RANGE       %d\n\nRecovered directly from the original equipment database.") % [int(weapon.damage), float(weapon.fire_rate), int(weapon.energy), int(weapon.range)]
-	store_price.text = tr("PRICE  %s CREDITS") % _format_store_price(int(weapon.price))
-	store_equipped.text = tr("CURRENTLY EQUIPPED") if weapon_id == GameState.selected_weapon else tr("AVAILABLE IN OFFLINE RESTORATION")
-	store_equip_button.text = tr("EQUIPPED") if weapon_id == GameState.selected_weapon else tr("EQUIP")
-	store_equip_button.disabled = weapon_id == GameState.selected_weapon
+	if int(weapon.mithril) > 0:
+		store_price.text = tr("PRICE  #%s MITHRIL") % _format_store_price(int(weapon.mithril))
+	else:
+		store_price.text = tr("PRICE  $%s CREDITS") % _format_store_price(int(weapon.price))
+	var owned := GameState.is_weapon_owned(weapon_id)
+	var rank_unlocked := GameState.is_weapon_rank_unlocked(weapon_id)
+	var equipped_slot := GameState.battle_weapons.find(weapon_id)
+	if not rank_unlocked and not owned:
+		store_equipped.text = tr("LOCKED • REQUIRES RANK %d") % (int(weapon.unlock) + 1)
+		store_equip_button.text = tr("RANK %d REQUIRED") % (int(weapon.unlock) + 1)
+		store_equip_button.disabled = true
+	elif not owned:
+		store_equipped.text = tr("UNLOCKED • AVAILABLE FOR PURCHASE")
+		store_equip_button.text = tr("PURCHASE")
+		store_equip_button.disabled = false
+	elif equipped_slot == store_selected_slot:
+		store_equipped.text = tr("EQUIPPED / LOADOUT SLOT %d") % (equipped_slot + 1)
+		store_equip_button.text = tr("EQUIPPED")
+		store_equip_button.disabled = true
+	else:
+		store_equipped.text = tr("OWNED") + (tr(" / CURRENTLY IN SLOT %d") % (equipped_slot + 1) if equipped_slot >= 0 else "")
+		store_equip_button.text = tr("EQUIP TO SLOT %d") % (store_selected_slot + 1)
+		store_equip_button.disabled = false
 	_rebuild_store_preview(weapon)
 	AudioDirector.play_ui("switch", -5.0)
 
 func _equip_store_selection() -> void:
 	if store_selected_weapon.is_empty():
 		return
-	GameState.set_weapon(store_selected_weapon)
+	store_notice.text = ""
+	var purchased_now := false
+	if not GameState.is_weapon_owned(store_selected_weapon):
+		var purchase_result := GameState.purchase_weapon(store_selected_weapon)
+		match purchase_result:
+			"rank_locked":
+				store_notice.text = tr("Reach the required rank before purchasing this weapon.")
+				return
+			"not_enough_credits":
+				store_notice.text = tr("Not enough credits.")
+				return
+			"not_enough_mithril":
+				store_notice.text = tr("Not enough mithril.")
+				return
+			"purchased":
+				purchased_now = true
+				store_notice.text = tr("PURCHASE COMPLETE")
+				AudioDirector.play_ui("money")
+			_:
+				return
+	# The original Unity StoreUI always replaced battle-weapon slot zero after
+	# a purchase. Preserve that behaviour; owned weapons can still be moved to
+	# any of the eight recovered bag slots with the picker.
+	if purchased_now:
+		store_selected_slot = 0
+	if not GameState.set_loadout_weapon(store_selected_slot, store_selected_weapon):
+		store_notice.text = tr("Unable to equip this weapon in the selected slot.")
+		return
 	AudioDirector.play_ui("mount_weapon")
+	_rebuild_store_loadout_picker()
+	_rebuild_store_weapon_row()
+	_update_store_currency_label()
 	_select_store_weapon(store_selected_weapon)
+
+func _select_store_category(category: String) -> void:
+	store_category = category
+	_rebuild_store_weapon_row()
+	var visible_ids := _get_store_weapon_ids()
+	if not visible_ids.has(store_selected_weapon) and not visible_ids.is_empty():
+		_select_store_weapon(visible_ids[0])
+
+func _get_store_weapon_ids() -> Array[String]:
+	var result: Array[String] = []
+	for weapon_id: String in GameState.get_weapon_ids():
+		if _weapon_matches_store_category(GameState.WEAPONS[weapon_id], store_category):
+			result.append(weapon_id)
+	return result
+
+func _weapon_matches_store_category(weapon: Dictionary, category: String) -> bool:
+	var type_id := int(weapon.type)
+	match category:
+		"RIFLE":
+			return type_id in [1, 5, 23]
+		"SHOTGUN":
+			return type_id in [2, 15]
+		"HEAVY":
+			return type_id in [3, 4, 8, 11, 14, 21, 24, 43]
+		"SPECIAL":
+			return type_id in [7, 9, 10, 13, 17, 18, 19, 20, 40, 41, 42]
+		"MELEE":
+			return type_id in [12, 16]
+	return true
+
+func _rebuild_store_weapon_row() -> void:
+	if not is_instance_valid(store_weapon_row):
+		return
+	for child in store_weapon_row.get_children():
+		child.free()
+	for weapon_id: String in _get_store_weapon_ids():
+		var weapon: Dictionary = GameState.WEAPONS[weapon_id]
+		var button := Button.new()
+		var owned := GameState.is_weapon_owned(weapon_id)
+		var rank_unlocked := GameState.is_weapon_rank_unlocked(weapon_id)
+		var status := tr("OWNED") if owned else (tr("BUY") if rank_unlocked else tr("RANK %d") % (int(weapon.unlock) + 1))
+		button.text = status
+		button.tooltip_text = "%s / %s" % [str(weapon.name), status]
+		button.icon = Atlas.weapon_icon(int(weapon.id))
+		button.add_theme_constant_override("icon_max_width", 82)
+		button.expand_icon = true
+		button.custom_minimum_size = Vector2(142, 102)
+		button.alignment = HORIZONTAL_ALIGNMENT_CENTER
+		button.add_theme_font_size_override("font_size", 11)
+		var normal_fill := Color(0.02, 0.05, 0.06, 0.95) if rank_unlocked or owned else Color(0.018, 0.022, 0.026, 0.95)
+		var normal_border := Color(weapon.color, 0.38) if rank_unlocked or owned else Color(0.24, 0.29, 0.32, 0.65)
+		button.add_theme_stylebox_override("normal", _store_panel_style(normal_fill, normal_border))
+		button.add_theme_stylebox_override("hover", _store_panel_style(Color(weapon.color, 0.14), Color(weapon.color, 1.0)))
+		button.modulate = Color.WHITE if rank_unlocked or owned else Color(0.48, 0.53, 0.56)
+		button.pressed.connect(_select_store_weapon.bind(weapon_id))
+		store_weapon_row.add_child(button)
+
+func _rebuild_store_loadout_picker() -> void:
+	if not is_instance_valid(store_slot_picker):
+		return
+	store_slot_picker.clear()
+	for slot in range(GameState.battle_weapons.size()):
+		var weapon_id := GameState.battle_weapons[slot]
+		var weapon_name := str(GameState.WEAPONS.get(weapon_id, {}).get("name", tr("EMPTY")))
+		store_slot_picker.add_item(tr("SLOT %d / %s") % [slot + 1, weapon_name])
+	if GameState.battle_weapons.size() < GameState.LOADOUT_MAX_SLOTS:
+		store_slot_picker.add_item(tr("SLOT %d / EMPTY") % (GameState.battle_weapons.size() + 1))
+	store_selected_slot = clampi(store_selected_slot, 0, maxi(0, store_slot_picker.item_count - 1))
+	store_slot_picker.select(store_selected_slot)
+
+func _update_store_currency_label() -> void:
+	if is_instance_valid(store_currency_label):
+		store_currency_label.text = tr("CREDITS  %s   /   MITHRIL  %s") % [
+			_format_store_price(GameState.credits),
+			_format_store_price(GameState.mithril),
+		]
 
 func _rebuild_store_preview(weapon: Dictionary) -> void:
 	if not is_instance_valid(store_preview_root):
 		return
+	if store_preview_tween and store_preview_tween.is_valid():
+		store_preview_tween.kill()
 	for child in store_preview_root.get_children():
-		child.queue_free()
+		child.free()
 	var mesh_path := "res://assets/models/weapons/%s.obj" % str(weapon.model)
-	if not ResourceLoader.exists(mesh_path):
+	var preview_mesh := load(mesh_path) as Mesh if ResourceLoader.exists(mesh_path) else null
+	if preview_mesh == null:
+		_build_store_fallback_preview(weapon)
+		_start_store_preview_rotation()
 		return
 	var preview := MeshInstance3D.new()
-	preview.mesh = load(mesh_path)
+	preview.mesh = preview_mesh
 	# Preserve every recovered texture while neutralising legacy Kd=0 values
 	# which otherwise turn several weapons into black silhouettes in Godot.
 	for surface_index in preview.mesh.get_surface_count():
@@ -460,9 +634,37 @@ func _rebuild_store_preview(weapon: Dictionary) -> void:
 	preview.scale = Vector3.ONE * factor
 	preview.position = -(bounds.position + bounds.size * 0.5) * factor
 	store_preview_root.add_child(preview)
+	_start_store_preview_rotation()
+
+func _build_store_fallback_preview(weapon: Dictionary) -> void:
+	var color := Color(weapon.color)
+	var material := StandardMaterial3D.new()
+	material.albedo_color = color.darkened(0.42)
+	material.metallic = 0.72
+	material.roughness = 0.3
+	material.emission_enabled = true
+	material.emission = color * 0.35
+	var body := MeshInstance3D.new()
+	var body_mesh := BoxMesh.new()
+	body_mesh.size = Vector3(2.5, 0.58, 0.62)
+	body_mesh.material = material
+	body.mesh = body_mesh
+	store_preview_root.add_child(body)
+	var barrel := MeshInstance3D.new()
+	var barrel_mesh := CylinderMesh.new()
+	barrel_mesh.top_radius = 0.16
+	barrel_mesh.bottom_radius = 0.2
+	barrel_mesh.height = 2.2
+	barrel_mesh.material = material
+	barrel.mesh = barrel_mesh
+	barrel.rotation_degrees.z = 90.0
+	barrel.position.x = 1.65
+	store_preview_root.add_child(barrel)
+
+func _start_store_preview_rotation() -> void:
 	store_preview_root.rotation_degrees = Vector3(-8, -28, 4)
-	var tween := store_preview_root.create_tween().set_loops()
-	tween.tween_property(store_preview_root, "rotation_degrees:y", 332.0, 12.0).from(-28.0)
+	store_preview_tween = store_preview_root.create_tween().set_loops()
+	store_preview_tween.tween_property(store_preview_root, "rotation_degrees:y", 332.0, 12.0).from(-28.0)
 
 func _format_store_price(value: int) -> String:
 	var digits := str(value)
@@ -555,7 +757,7 @@ func _show_help() -> void:
 	body.add_child(_label(tr("Left stick move  •  Right stick aim  •  RB fire  •  LB focus  •  X previous weapon"), 15, Color.WHITE))
 	body.add_child(_label(tr("MOBILE"), 18, Color(1.0, 0.78, 0.24)))
 	body.add_child(_label(tr("Left thumbstick move  •  Drag right half to aim  •  FIRE / PREV / DASH buttons"), 15, Color.WHITE))
-	body.add_child(_label(tr("The retired network modes are intentionally replaced by offline campaign play."), 13, Color(0.55, 0.72, 0.8)))
+	body.add_child(_label(tr("Solo campaign and retired multiplayer maps now have separate offline entry points."), 13, Color(0.55, 0.72, 0.8)))
 	_show_modal(body, Vector2(870, 410))
 
 func _show_modal(body: Control, minimum_size: Vector2) -> void:
@@ -570,7 +772,11 @@ func _show_modal(body: Control, minimum_size: Vector2) -> void:
 	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	modal_layer.add_child(center)
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = minimum_size
+	var viewport_size := get_viewport_rect().size
+	panel.custom_minimum_size = Vector2(
+		minf(minimum_size.x, maxf(480.0, viewport_size.x - 32.0)),
+		minf(minimum_size.y, maxf(360.0, viewport_size.y - 24.0))
+	)
 	panel.add_theme_stylebox_override("panel", _panel_style(Color(0.018, 0.065, 0.095, 0.985), Color(0.17, 0.78, 0.94, 0.9), 14))
 	center.add_child(panel)
 	var outer := VBoxContainer.new()
@@ -585,10 +791,14 @@ func _show_modal(body: Control, minimum_size: Vector2) -> void:
 		_close_modal()
 	)
 	outer.add_child(close)
+	call_deferred("_focus_control", close)
 
 func _close_modal() -> void:
 	if not is_instance_valid(modal_layer):
 		return
+	if store_preview_tween and store_preview_tween.is_valid():
+		store_preview_tween.kill()
+	store_preview_tween = null
 	for child in modal_layer.get_children():
 		child.queue_free()
 	modal_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -612,7 +822,7 @@ func _slider_row(label_text: String, key: String, min_value: float, max_value: f
 func _menu_button(title_text: String, subtitle: String) -> Button:
 	var button := Button.new()
 	button.text = title_text + "\n" + subtitle
-	button.custom_minimum_size = Vector2(450, 58)
+	button.custom_minimum_size = Vector2(450, 50)
 	button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	button.add_theme_font_size_override("font_size", 17)
 	button.add_theme_color_override("font_color", Color(0.79, 0.92, 0.96))
@@ -624,6 +834,10 @@ func _menu_button(title_text: String, subtitle: String) -> Button:
 	button.add_theme_stylebox_override("pressed", _main_menu_button_style(Color(0.035, 0.16, 0.19, 0.94), Color(0.42, 0.94, 1.0, 1.0), 3))
 	button.add_theme_stylebox_override("focus", _main_menu_button_style(Color(0.02, 0.08, 0.1, 0.84), Color(0.18, 0.82, 0.92, 1.0), 3))
 	return button
+
+func _focus_control(control: Control) -> void:
+	if is_instance_valid(control) and control.is_visible_in_tree():
+		control.grab_focus()
 
 func _main_menu_button_style(fill: Color, border: Color, left_border: int) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()

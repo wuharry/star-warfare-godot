@@ -71,13 +71,14 @@ func _physics_process(delta: float) -> void:
 		query.exclude = [owner_node.get_rid()]
 	var result := get_world_3d().direct_space_state.intersect_ray(query)
 	if not result.is_empty():
-		if projectile_kind == "ricochet" and bounces_left > 0 and not result.collider.is_in_group("enemies"):
+		var collider := result.get("collider") as Node
+		if projectile_kind == "ricochet" and bounces_left > 0 and (not is_instance_valid(collider) or not collider.is_in_group("enemies")):
 			bounces_left -= 1
 			direction = direction.bounce(result.normal).normalized()
 			global_position = result.position + direction * 0.08
 			AudioDirector.play_3d("diablo/black_disk_bounce0%d.wav" % (4 - bounces_left), global_position, -3.0)
 			return
-		_impact(result.position, result.collider)
+		_impact(result.position, collider)
 		return
 	global_position = next_position
 

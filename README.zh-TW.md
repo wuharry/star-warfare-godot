@@ -4,11 +4,12 @@
 
 目前可遊玩內容：
 
-- 17 個離線關卡入口（原 PvE 關卡及已退役線上地圖的離線戰役版本）
+- 單人模式與多人模式分開：單人戰役為 Level 1–8；多人入口保留 Level 13–21，並以本機離線遭遇戰執行
 - 17 張原始 `Level*.unity` 的 Static Batch 場景配置、材質貼圖、Transform 與原生碰撞；不再使用程序化競技場
 - 原始 Respawn、EnemySpawnPoint、BossSpawnPoint、FlagSpawn、GiftSpawn、Grave、WayPoint 座標及 Level 1–8 的 waypoint 鄰接圖；敵人會用原路徑節點繞過場景障礙
 - 第三人稱移動、肩後視角、衝刺、護盾與生命
-- 從原始 `resDataSets.bytes` 還原的 47 把武器、原名、傷害、冷卻、Energy 消耗及 8 格裝備欄
+- 從原始 `resDataSets.bytes` 還原的 47 把武器、原名、傷害、冷卻、Energy 消耗及 8 格裝備欄；缺少匯入模型或動作時會安全降級，不會因裝備／射擊而中止
+- 商店依 Unity 原始資料顯示解鎖階級、Credits／Mithril 售價、持有狀態與購買流程；新購武器依原版先換入裝備欄第 1 格
 - 原作使用共用 Energy，沒有一般彈匣換彈；`R`、控制器 X 與手機 `PREV` 會切換上一把武器
 - Crawler、Spitter、Brute、Elite 與 Boss，波次上限維持原版約 8 隻同時在場
 - Credits、Energy、Shield 掉落，分數、進度及本機 JSON 存檔
@@ -31,6 +32,8 @@
 ```powershell
 .\PLAY_STAR_WARFARE.ps1 -Editor
 ```
+
+專案固定使用 Godot 4.7.x。若之前曾以 Godot 4.5 開啟，請先關閉所有該專案的編輯器與遊戲視窗，再雙擊 `UPGRADE_TO_GODOT_4_7.bat`；它會保留舊 `.godot` 匯入快取作備份、以內附的 4.7.2 完整重建素材，然後開啟正確版本的編輯器。4.7 可以升級讀取 4.5 專案，但 4.7 儲存／匯入後不應再用 4.5 開啟同一份工作目錄。
 
 ## Android 安裝
 
@@ -66,6 +69,6 @@ Windows 與 Android 的匯出設定已放在 `export_presets.cfg`。本機工具
 
 ## 復原範圍
 
-此版本重建原作的離線遊戲循環並保留可讀取的原始音訊、美術、角色動作與武器資料。17 個 sector 已直接從原始 `Level1`–`Level8`、`Level13`–`Level21` Unity YAML 場景轉換：Static Batch 的 `firstSubMesh/subMeshCount`、世界座標、原材質貼圖、1,851 個 Box／Sphere／Capsule Collider、315 個 MeshCollider 與各類出生標記均已接入 Godot。原倉庫本身是未完成的反編譯重建，而且不含線上伺服器，因此舊帳號、配對及官方多人服務無法直接復活；Level 13–21 現以其原始多人地圖配置作離線戰役使用。
+此版本重建原作的離線遊戲循環並保留可讀取的原始音訊、美術、角色動作與武器資料。17 個 sector 已直接從原始 `Level1`–`Level8`、`Level13`–`Level21` Unity YAML 場景轉換：Static Batch 的 `firstSubMesh/subMeshCount`、世界座標、原材質貼圖、1,851 個 Box／Sphere／Capsule Collider、315 個 MeshCollider 與各類出生標記均已接入 Godot。原倉庫本身是未完成的反編譯重建，而且不含線上伺服器，因此舊帳號、配對及官方多人服務無法直接復活；Level 13–21 現從獨立的「多人模式」入口，以原始多人地圖配置執行本機離線遭遇戰。
 
 `tools/unity_level_exporter` 會唯讀解析 17 個 Unity 場景並重建 Godot 關卡資源；`tools/yaml_mesh_converter` 是不需 Unity 授權的可重跑 Mesh 轉換器；`tools/unity_avatar_exporter` 會直接把舊 Unity YAML 骨架、蒙皮權重與 `.anim` 曲線輸出成 Godot 可用的 glTF。`gun23`、`gun36`、`gun37` 的來源 Mesh 使用舊版壓縮格式，目前以同類武器的程序化模型作安全替代；舊自訂 shader 則以 diffuse/PBR 材質近似。

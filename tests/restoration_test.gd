@@ -35,17 +35,33 @@ func _run() -> void:
 	_check(armory_buttons.size() == 47, "armory should render all 47 original weapons")
 	for button: Button in armory_buttons:
 		_check(button.icon != null, "armory weapon is missing its original atlas icon: " + button.text)
+	_check(menu.store_slot_picker.item_count >= 1, "armory is missing the Unity battle-weapon slot picker")
+	_check(menu.store_category_buttons.size() == 6, "armory is missing functional category tabs")
+	menu._select_store_category("RIFLE")
+	await get_tree().process_frame
+	var rifle_buttons := _store_weapon_buttons(menu.modal_layer)
+	_check(not rifle_buttons.is_empty() and rifle_buttons.size() < 47, "rifle category did not filter the Unity weapon catalog")
+	menu._select_store_category("ALL")
+	await get_tree().process_frame
 	menu._close_modal()
 	await get_tree().process_frame
-	menu._show_level_select()
+	_check(GameState.SINGLEPLAYER_LEVELS.size() == 8, "single-player campaign must contain sectors 01-08")
+	_check(GameState.MULTIPLAYER_LEVELS.size() == 9, "multiplayer skirmish must contain sectors 13-21")
+	menu._show_level_select("singleplayer")
 	await get_tree().process_frame
-	var preview_buttons := _buttons_with_icons(menu.modal_layer)
-	_check(preview_buttons.size() == GameState.CAMPAIGN_LEVELS.size(), "level selector is missing original preview cards")
+	var solo_preview_buttons := _buttons_with_icons(menu.modal_layer)
+	_check(solo_preview_buttons.size() == GameState.SINGLEPLAYER_LEVELS.size(), "single-player selector does not contain exactly eight campaign cards")
+	menu._close_modal()
+	await get_tree().process_frame
+	menu._show_level_select("multiplayer")
+	await get_tree().process_frame
+	var multiplayer_preview_buttons := _buttons_with_icons(menu.modal_layer)
+	_check(multiplayer_preview_buttons.size() == GameState.MULTIPLAYER_LEVELS.size(), "multiplayer selector does not contain exactly nine local-skirmish cards")
 	menu.queue_free()
 	AudioDirector.stop_all_sfx()
 	await get_tree().process_frame
 	if failures.is_empty():
-		print("RESTORATION_TEST_PASS weapons=47 armory_icons=47 level_cards=%d" % preview_buttons.size())
+		print("RESTORATION_TEST_PASS weapons=47 armory_icons=47 solo_cards=%d multiplayer_cards=%d" % [solo_preview_buttons.size(), multiplayer_preview_buttons.size()])
 		get_tree().quit(0)
 	else:
 		get_tree().quit(1)

@@ -295,12 +295,14 @@ func show_result(victory: bool, stats: Dictionary) -> void:
 	add_child(result_overlay)
 	var box := _modal_panel(result_overlay, Vector2(520, 500))
 	box.add_child(_center_label(tr("SECTOR SECURED") if victory else tr("OPERATIVE LOST"), 32, Color(0.35, 1.0, 0.63) if victory else Color(1.0, 0.24, 0.12)))
-	box.add_child(_center_label(tr("%s • SECTOR %02d") % [tr(str(level_data.name)), int(level_data.number)], 15, Color(0.6, 0.82, 0.9)))
+	box.add_child(_center_label(tr("%s / SECTOR %02d") % [tr(str(level_data.name)), int(level_data.number)], 15, Color(0.6, 0.82, 0.9)))
 	box.add_child(_center_label(tr("SCORE        %07d") % int(stats.score), 21, Color.WHITE))
 	box.add_child(_center_label(tr("HOSTILES     %d") % int(stats.kills), 18, Color.WHITE))
 	box.add_child(_center_label(tr("CREDITS      +%d") % int(stats.credits), 18, Color(1.0, 0.78, 0.2)))
 	box.add_child(_center_label(tr("TIME         %02d:%02d") % [int(int(stats.time) / 60), int(stats.time) % 60], 18, Color.WHITE))
-	if victory:
+	var mode_levels := GameState.get_levels_for_mode(GameState.selected_game_mode)
+	var level_index := mode_levels.find(int(level_data.number))
+	if victory and level_index >= 0 and level_index + 1 < mode_levels.size():
 		var next := _modal_button(tr("NEXT SECTOR"))
 		next.pressed.connect(_next_level)
 		box.add_child(next)
@@ -372,9 +374,10 @@ func _restart() -> void:
 
 func _next_level() -> void:
 	get_tree().paused = false
-	var index := GameState.CAMPAIGN_LEVELS.find(int(level_data.number))
-	if index >= 0 and index + 1 < GameState.CAMPAIGN_LEVELS.size():
-		GameState.start_level(int(GameState.CAMPAIGN_LEVELS[index + 1]))
+	var mode_levels := GameState.get_levels_for_mode(GameState.selected_game_mode)
+	var index := mode_levels.find(int(level_data.number))
+	if index >= 0 and index + 1 < mode_levels.size():
+		GameState.start_level(int(mode_levels[index + 1]), GameState.selected_game_mode)
 	else:
 		GameState.return_to_menu()
 

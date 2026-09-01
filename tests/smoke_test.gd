@@ -61,15 +61,40 @@ func _run() -> void:
 	world.player.set_touch_move(Vector2(0.5, -0.25))
 	_check(world.player.touch_move.is_equal_approx(Vector2(0.5, -0.25)), "touch movement input was not accepted")
 
-	for weapon_id in GameState.WEAPONS:
+	for weapon_id: String in GameState.get_weapon_ids():
 		world.player.equip_weapon(weapon_id, false)
 		_check(world.player.current_weapon_id == weapon_id, "%s could not be equipped" % weapon_id)
+		_check(is_instance_valid(world.player.muzzle), "%s has no valid muzzle after equip" % weapon_id)
 		world.player.energy = world.player.max_energy
 		var energy_before := world.player.energy
 		world.player.shot_cooldown = 0.0
 		world.player.reload_left = 0.0
 		world.player._try_fire()
 		_check(world.player.energy == energy_before - int(GameState.WEAPONS[weapon_id].energy), "%s did not consume original energy cost" % weapon_id)
+		world.player._update_recovered_animation(0.0)
+		_check(not world.player.recovered_animation_name.is_empty(), "%s could not select a safe firing animation" % weapon_id)
+
+	# Reproduce the user's Godot 4.5 import state: the requested sniper firing
+	# clip and stand_shoot_rifle fallback are both absent, while idle_rifle is
+	# still available. This used to call get_animation() with a missing name and
+	# then assign loop_mode on null.
+	var original_animation_player := world.player.recovered_animation_player
+	var original_animation_tree := world.player.recovered_animation_tree
+	var sparse_animation_player := AnimationPlayer.new()
+	var sparse_library := AnimationLibrary.new()
+	sparse_library.add_animation("idle_rifle", Animation.new())
+	sparse_animation_player.add_animation_library("", sparse_library)
+	world.player.add_child(sparse_animation_player)
+	world.player.recovered_animation_player = sparse_animation_player
+	world.player.recovered_animation_tree = null
+	world.player.equip_weapon("gun35", false)
+	world.player.shoot_pose_left = 0.2
+	world.player.recovered_animation_name = ""
+	world.player._update_recovered_animation(0.0)
+	_check(world.player.recovered_animation_name == "idle_rifle", "laser sniper did not fall back safely when firing clips were missing")
+	world.player.recovered_animation_player = original_animation_player
+	world.player.recovered_animation_tree = original_animation_tree
+	sparse_animation_player.queue_free()
 	world.player.equip_weapon(GameState.selected_weapon, false)
 
 	world._spawn_enemy("crawler", false)

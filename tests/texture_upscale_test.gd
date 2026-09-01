@@ -1,6 +1,10 @@
 extends Node
 
 const EXPECTED_TEXTURE_COUNT := 258
+# These are UI regions extracted losslessly from the recovered Unity atlases.
+# Their source rectangles intentionally keep the original odd dimensions and
+# are not part of the 2x texture-upscale corpus verified by this test.
+const EXCLUDED_TEXTURE_PREFIXES := ["res://assets/ui/components/"]
 const EXPECTED_DIMENSIONS := {
 	"64x64": 3,
 	"128x64": 2,
@@ -114,7 +118,13 @@ func _collect_pngs(directory_path: String, texture_paths: Array[String]) -> void
 			if directory.current_is_dir():
 				_collect_pngs(entry_path, texture_paths)
 			elif entry.get_extension().to_lower() == "png":
-				texture_paths.append(entry_path)
+				var excluded := false
+				for prefix: String in EXCLUDED_TEXTURE_PREFIXES:
+					if entry_path.begins_with(prefix):
+						excluded = true
+						break
+				if not excluded:
+					texture_paths.append(entry_path)
 		entry = directory.get_next()
 	directory.list_dir_end()
 

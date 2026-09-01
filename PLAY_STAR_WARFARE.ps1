@@ -16,6 +16,11 @@ if (Test-Path -LiteralPath $portableGodot) {
     $godot = $command.Source
 }
 
+$godotVersion = (& $godot --version | Select-Object -First 1).Trim()
+if (-not $godotVersion.StartsWith("4.7.")) {
+    throw "This restoration is pinned to Godot 4.7.x, but '$godot' is $godotVersion. Run UPGRADE_TO_GODOT_4_7.bat first."
+}
+
 if ($Editor) {
     & $godot --editor --path $projectPath
 } else {

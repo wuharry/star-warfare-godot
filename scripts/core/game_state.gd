@@ -2,9 +2,13 @@ extends Node
 
 signal settings_changed
 signal loadout_changed
+signal store_changed
 
 const SAVE_PATH := "user://star_warfare_save.json"
+const SINGLEPLAYER_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8]
+const MULTIPLAYER_LEVELS := [13, 14, 15, 16, 17, 18, 19, 20, 21]
 const CAMPAIGN_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+const LOADOUT_MAX_SLOTS := 8
 
 # Recovered verbatim from Resources/UI/resDataSets.bytes, table 13.  The old
 # game used one shared energy pool rather than conventional magazines.
@@ -61,7 +65,8 @@ const WEAPON_ROWS := [
 ]
 
 var WEAPONS: Dictionary = {}
-var battle_weapons: Array[String] = ["gun00", "gun06", "gun11", "gun14", "gun17", "gun20", "gun24", "gun27"]
+var battle_weapons: Array[String] = ["gun00"]
+var owned_weapons: Array[String] = ["gun00"]
 
 # Three graphics presets. render_scale drives the root viewport's 3D
 # resolution (the biggest lever after the 2x texture upscale), while shadows,
@@ -75,8 +80,10 @@ const QUALITY_ORDER := ["low", "medium", "high"]
 
 var selected_level := 1
 var selected_weapon := "gun00"
+var selected_game_mode := "singleplayer"
 var unlocked_level := 1
 var credits := 0
+var mithril := 0
 var best_scores: Dictionary = {}
 var settings := {
 	"music": 0.72,
@@ -308,10 +315,20 @@ func _add_joy_button(action: StringName, button: JoyButton) -> void:
 	event.button_index = button
 	InputMap.action_add_event(action, event)
 
-func start_level(level_number: int) -> void:
+func start_level(level_number: int, game_mode: String = "") -> void:
+	if game_mode in ["singleplayer", "multiplayer"]:
+		selected_game_mode = game_mode
+	var available_levels := get_levels_for_mode(selected_game_mode)
+	if not available_levels.has(level_number):
+		return
+	if selected_game_mode == "singleplayer" and level_number > unlocked_level:
+		return
 	selected_level = level_number
 	_save()
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
+
+func get_levels_for_mode(game_mode: String) -> Array:
+	return MULTIPLAYER_LEVELS if game_mode == "multiplayer" else SINGLEPLAYER_LEVELS
 
 func return_to_menu() -> void:
 	get_tree().paused = false
@@ -324,6 +341,71 @@ func set_weapon(weapon_id: String) -> void:
 		_save()
 		loadout_changed.emit()
 
+func set_loadout_weapon(slot: int, weapon_id: String) -> bool:
+	if slot < 0 or slot >= LOADOUT_MAX_SLOTS or slot > battle_weapons.size() or not is_weapon_owned(weapon_id):
+		return false
+	var old_index := battle_weapons.find(weapon_id)
+	if old_index == slot:
+		selected_weapon = weapon_id
+		_save()
+		loadout_changed.emit()
+		return true
+	if old_index >= 0 and slot < battle_weapons.size():
+		# Moving an equipped weapon to another occupied Unity bag slot swaps the
+		# two positions, so the displaced weapon is not silently lost.
+		var displaced_weapon := battle_weapons[slot]
+		battle_weapons[slot] = weapon_id
+		battle_weapons[old_index] = displaced_weapon
+	elif old_index >= 0:
+		battle_weapons.remove_at(old_index)
+		battle_weapons.append(weapon_id)
+	elif slot < battle_weapons.size():
+		battle_weapons[slot] = weapon_id
+	else:
+		battle_weapons.append(weapon_id)
+	_normalize_store_state()
+	selected_weapon = weapon_id
+	_save()
+	loadout_changed.emit()
+	store_changed.emit()
+	return true
+
+func is_weapon_owned(weapon_id: String) -> bool:
+	return owned_weapons.has(weapon_id)
+
+func get_rank_id() -> int:
+	# The Unity store exposes weapon UnlockLevel as a zero-based rank. The
+	# restoration advances one local rank with each unlocked solo sector.
+	return clampi(unlocked_level - 1, 0, 8)
+
+func is_weapon_rank_unlocked(weapon_id: String) -> bool:
+	if not WEAPONS.has(weapon_id):
+		return false
+	return int(WEAPONS[weapon_id].unlock) <= get_rank_id()
+
+func purchase_weapon(weapon_id: String) -> String:
+	if not WEAPONS.has(weapon_id):
+		return "invalid"
+	if is_weapon_owned(weapon_id):
+		return "owned"
+	if not is_weapon_rank_unlocked(weapon_id):
+		return "rank_locked"
+	var weapon: Dictionary = WEAPONS[weapon_id]
+	var mithril_price := int(weapon.mithril)
+	if mithril_price > 0:
+		if mithril < mithril_price:
+			return "not_enough_mithril"
+		mithril -= mithril_price
+	else:
+		var credit_price := int(weapon.price)
+		if credits < credit_price:
+			return "not_enough_credits"
+		credits -= credit_price
+	owned_weapons.append(weapon_id)
+	_save()
+	store_changed.emit()
+	return "purchased"
+
 func get_weapon_ids() -> Array[String]:
 	var ids: Array[String] = []
 	for weapon_id: String in WEAPONS:
@@ -334,9 +416,11 @@ func get_weapon_ids() -> Array[String]:
 func complete_level(level_number: int, score: int, earned_credits: int) -> void:
 	credits += max(0, earned_credits)
 	best_scores[str(level_number)] = max(score, int(best_scores.get(str(level_number), 0)))
-	var index := CAMPAIGN_LEVELS.find(level_number)
-	if index >= 0 and index + 1 < CAMPAIGN_LEVELS.size():
-		unlocked_level = max(unlocked_level, int(CAMPAIGN_LEVELS[index + 1]))
+	if selected_game_mode == "singleplayer":
+		var index := SINGLEPLAYER_LEVELS.find(level_number)
+		if index >= 0 and index + 1 < SINGLEPLAYER_LEVELS.size():
+			unlocked_level = max(unlocked_level, int(SINGLEPLAYER_LEVELS[index + 1]))
+	store_changed.emit()
 	_save()
 
 func get_level_data(level_number: int) -> Dictionary:
@@ -416,9 +500,32 @@ func _load_save() -> void:
 	selected_weapon = str(parsed.get("selected_weapon", selected_weapon))
 	if not WEAPONS.has(selected_weapon):
 		selected_weapon = "gun00"
+	selected_game_mode = str(parsed.get("selected_game_mode", selected_game_mode))
+	if selected_game_mode not in ["singleplayer", "multiplayer"]:
+		selected_game_mode = "singleplayer"
 	unlocked_level = int(parsed.get("unlocked_level", unlocked_level))
 	credits = int(parsed.get("credits", credits))
+	mithril = int(parsed.get("mithril", mithril))
 	best_scores = parsed.get("best_scores", best_scores)
+	var stored_owned: Variant = parsed.get("owned_weapons")
+	if stored_owned is Array:
+		owned_weapons.clear()
+		for weapon_id_value in stored_owned:
+			owned_weapons.append(str(weapon_id_value))
+	else:
+		# Saves from builds before the Unity shop restoration exposed every gun
+		# without ownership. Preserve that access during migration.
+		owned_weapons = get_weapon_ids()
+	var stored_loadout: Variant = parsed.get("battle_weapons")
+	if stored_loadout is Array:
+		battle_weapons.clear()
+		for weapon_id_value in stored_loadout:
+			battle_weapons.append(str(weapon_id_value))
+	else:
+		battle_weapons = ["gun00", "gun06", "gun11", "gun14", "gun17", "gun20", "gun24", "gun27"]
+		if not battle_weapons.has(selected_weapon):
+			battle_weapons[0] = selected_weapon
+	_normalize_store_state()
 	var stored_settings = parsed.get("settings", {})
 	if stored_settings is Dictionary:
 		for key in stored_settings:
@@ -432,9 +539,34 @@ func _save() -> void:
 	var data := {
 		"selected_level": selected_level,
 		"selected_weapon": selected_weapon,
+		"selected_game_mode": selected_game_mode,
 		"unlocked_level": unlocked_level,
 		"credits": credits,
+		"mithril": mithril,
+		"owned_weapons": owned_weapons,
+		"battle_weapons": battle_weapons,
 		"best_scores": best_scores,
 		"settings": settings
 	}
 	file.store_string(JSON.stringify(data, "\t"))
+
+func _normalize_store_state() -> void:
+	var normalized_owned: Array[String] = []
+	for weapon_id in owned_weapons:
+		if WEAPONS.has(weapon_id) and not normalized_owned.has(weapon_id):
+			normalized_owned.append(weapon_id)
+	if normalized_owned.is_empty():
+		normalized_owned.append("gun00")
+	owned_weapons = normalized_owned
+
+	var normalized_loadout: Array[String] = []
+	for weapon_id in battle_weapons:
+		if normalized_loadout.size() >= LOADOUT_MAX_SLOTS:
+			break
+		if is_weapon_owned(weapon_id) and not normalized_loadout.has(weapon_id):
+			normalized_loadout.append(weapon_id)
+	if normalized_loadout.is_empty():
+		normalized_loadout.append("gun00")
+	battle_weapons = normalized_loadout
+	if not battle_weapons.has(selected_weapon):
+		selected_weapon = battle_weapons[0]
