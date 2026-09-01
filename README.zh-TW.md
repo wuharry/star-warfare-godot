@@ -12,6 +12,7 @@
 - 原作使用共用 Energy，沒有一般彈匣換彈；`R`、控制器 X 與手機 `PREV` 會切換上一把武器
 - Crawler、Spitter、Brute、Elite 與 Boss，波次上限維持原版約 8 隻同時在場
 - Credits、Energy、Shield 掉落，分數、進度及本機 JSON 存檔
+- 選項內建繁體中文／英文即時切換的多語言介面，以及低／中／高三段畫質（3D 解析度縮放、MSAA、陰影、泛光、霧）
 - 鍵鼠、Xbox 相容控制器及手機橫向雙拇指操作
 - 原專案選單／戰鬥音樂，以及按鈕、武器、爆炸、敵人、玩家、腳步與撿取音效；連發武器保留開始／循環／停止音效時序
 - 原始 NGUI HUD、武器圖示、選單背景、按鈕、關卡預覽與 `ZEROTWOS` 字型
@@ -54,6 +55,7 @@
 .\BUILD_STAR_WARFARE.ps1 -Target All
 .\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --headless --path . res://tests/smoke_test.tscn
 .\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --headless --path . res://tests/texture_upscale_test.tscn
+.\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --headless --path . res://tests/settings_test.tscn
 .\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --headless --path . res://tests/mobile_ui_smoke_test.tscn
 .\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --headless --path . res://tests/restoration_test.tscn
 .\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --headless --path . res://tests/level_restoration_test.tscn

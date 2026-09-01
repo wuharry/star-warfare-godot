@@ -122,10 +122,10 @@ func _build_header() -> void:
 	var status := VBoxContainer.new()
 	status.add_theme_constant_override("separation", 5)
 	status_panel.add_child(status)
-	var profile := _label("OFFLINE OPERATIVE", 16, Color(0.43, 0.9, 1.0))
+	var profile := _label(tr("OFFLINE OPERATIVE"), 16, Color(0.43, 0.9, 1.0))
 	status.add_child(profile)
-	status.add_child(_label("CREDITS  %07d" % GameState.credits, 25, Color(0.98, 0.77, 0.24)))
-	status.add_child(_label("LOCAL SAVE • NO SERVER REQUIRED", 12, Color(0.62, 0.72, 0.78)))
+	status.add_child(_label(tr("CREDITS  %07d") % GameState.credits, 25, Color(0.98, 0.77, 0.24)))
+	status.add_child(_label(tr("LOCAL SAVE • NO SERVER REQUIRED"), 12, Color(0.62, 0.72, 0.78)))
 
 	modal_layer = Control.new()
 	modal_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -160,37 +160,37 @@ func _build_main_buttons() -> void:
 		content.add_child(subtitle_logo)
 	else:
 		content.add_child(_label("STAR WARFARE", 62, Color(0.95, 0.99, 1.0)))
-	content.add_child(_label("LOCAL OFFLINE RESTORATION", 14, Color(0.33, 0.82, 0.94)))
+	content.add_child(_label(tr("LOCAL OFFLINE RESTORATION"), 14, Color(0.33, 0.82, 0.94)))
 
 	var gap := Control.new()
 	gap.custom_minimum_size.y = 18
 	content.add_child(gap)
 
-	var play := _menu_button("START", "SOLO MISSION")
+	var play := _menu_button(tr("START"), tr("SOLO MISSION"))
 	_bind_accept_sound(play)
 	play.pressed.connect(_show_level_select)
 	content.add_child(play)
-	var armory := _menu_button("SHOP & CUSTOMIZE", "47 RECOVERED WEAPONS")
+	var armory := _menu_button(tr("SHOP & CUSTOMIZE"), tr("47 RECOVERED WEAPONS"))
 	_bind_accept_sound(armory)
 	armory.pressed.connect(_show_armory)
 	content.add_child(armory)
-	var options := _menu_button("OPTIONS", "Audio, aim and touch controls")
+	var options := _menu_button(tr("OPTIONS"), tr("Audio, quality, language and controls"))
 	_bind_accept_sound(options)
 	options.pressed.connect(_show_options)
 	content.add_child(options)
-	var help := _menu_button("FIELD MANUAL", "Desktop, controller and mobile controls")
+	var help := _menu_button(tr("FIELD MANUAL"), tr("Desktop, controller and mobile controls"))
 	_bind_accept_sound(help)
 	help.pressed.connect(_show_help)
 	content.add_child(help)
 	if not OS.has_feature("web") and not OS.has_feature("mobile"):
-		var quit := _menu_button("QUIT", "Return to desktop")
+		var quit := _menu_button(tr("QUIT"), tr("Return to desktop"))
 		_bind_accept_sound(quit)
 		quit.pressed.connect(get_tree().quit)
 		content.add_child(quit)
 
 func _build_footer() -> void:
 	var footer := Label.new()
-	footer.text = "COMM-LINK OFFLINE   •   ORIGINAL ONLINE SERVICES RETIRED   •   GODOT 4 RESTORATION"
+	footer.text = tr("COMM-LINK OFFLINE   •   ORIGINAL ONLINE SERVICES RETIRED   •   GODOT 4 RESTORATION")
 	footer.add_theme_font_size_override("font_size", 12)
 	footer.add_theme_color_override("font_color", Color(0.38, 0.58, 0.67))
 	footer.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
@@ -201,7 +201,7 @@ func _build_footer() -> void:
 func _show_level_select() -> void:
 	var body := VBoxContainer.new()
 	body.add_theme_constant_override("separation", 14)
-	body.add_child(_label("SELECT SECTOR", 28, Color(0.72, 0.94, 1.0)))
+	body.add_child(_label(tr("SELECT SECTOR"), 28, Color(0.72, 0.94, 1.0)))
 	var scroll := ScrollContainer.new()
 	scroll.custom_minimum_size = Vector2(1050, 480)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -214,7 +214,7 @@ func _show_level_select() -> void:
 	for level_number in GameState.CAMPAIGN_LEVELS:
 		var data: Dictionary = GameState.get_level_data(level_number)
 		var button := Button.new()
-		button.text = "%02d  %s" % [level_number, str(data.name)]
+		button.text = "%02d  %s" % [level_number, tr(str(data.name))]
 		button.custom_minimum_size = Vector2(252, 108)
 		button.icon = _level_preview(level_number)
 		button.expand_icon = true
@@ -267,24 +267,24 @@ func _show_armory() -> void:
 	nav.add_theme_constant_override("separation", 9)
 	page.add_child(nav)
 	var back := Button.new()
-	back.text = "◀  BACK"
+	back.text = tr("◀  BACK")
 	back.custom_minimum_size = Vector2(150, 54)
 	back.add_theme_stylebox_override("normal", _recovered_button_style(Rect2(632, 0, 361, 56), Color(0.78, 0.95, 1.0)))
 	back.pressed.connect(func(): AudioDirector.play_ui("back"); _close_modal())
 	nav.add_child(back)
-	var title := _label("STORE", 31, Color(0.72, 1.0, 1.0))
+	var title := _label(tr("STORE"), 31, Color(0.72, 1.0, 1.0))
 	title.custom_minimum_size.x = 230
 	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	nav.add_child(title)
 	var customize := Button.new()
-	customize.text = "CUSTOMIZE"
+	customize.text = tr("CUSTOMIZE")
 	customize.custom_minimum_size = Vector2(175, 54)
 	customize.disabled = true
 	nav.add_child(customize)
 	var nav_space := Control.new()
 	nav_space.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	nav.add_child(nav_space)
-	var credits := _label("CREDITS  %07d" % GameState.credits, 21, Color(1.0, 0.77, 0.2))
+	var credits := _label(tr("CREDITS  %07d") % GameState.credits, 21, Color(1.0, 0.77, 0.2))
 	credits.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	nav.add_child(credits)
 
@@ -299,7 +299,7 @@ func _show_armory() -> void:
 	main.add_child(preview_panel)
 	var preview_column := VBoxContainer.new()
 	preview_panel.add_child(preview_column)
-	var preview_header := _label("EQUIPMENT DISPLAY", 15, Color(0.32, 0.92, 1.0))
+	var preview_header := _label(tr("EQUIPMENT DISPLAY"), 15, Color(0.32, 0.92, 1.0))
 	preview_column.add_child(preview_header)
 	var preview_container := SubViewportContainer.new()
 	preview_container.stretch = true
@@ -372,7 +372,7 @@ func _show_armory() -> void:
 	store_equipped = _label("", 15, Color(0.3, 1.0, 0.54))
 	detail_column.add_child(store_equipped)
 	store_equip_button = Button.new()
-	store_equip_button.text = "EQUIP"
+	store_equip_button.text = tr("EQUIP")
 	store_equip_button.custom_minimum_size.y = 58
 	store_equip_button.add_theme_font_size_override("font_size", 22)
 	store_equip_button.add_theme_stylebox_override("normal", _recovered_button_style(Rect2(632, 428, 361, 56), Color(0.74, 1.0, 0.95)))
@@ -385,7 +385,7 @@ func _show_armory() -> void:
 	page.add_child(tabs)
 	for tab_name in ["RIFLE", "SHOTGUN", "HEAVY", "SPECIAL", "MELEE", "ALL"]:
 		var tab := Button.new()
-		tab.text = tab_name
+		tab.text = tr(tab_name)
 		tab.custom_minimum_size = Vector2(128, 38)
 		tab.disabled = tab_name != "ALL"
 		tabs.add_child(tab)
@@ -416,11 +416,11 @@ func _select_store_weapon(weapon_id: String) -> void:
 	var weapon: Dictionary = GameState.WEAPONS[weapon_id]
 	store_name.text = str(weapon.name)
 	store_name.add_theme_color_override("font_color", Color(weapon.color))
-	store_type.text = "TYPE %02d   •   AIM HUD %02d" % [int(weapon.type), int(weapon.aim_id)]
-	store_stats.text = "DAMAGE                 %d\nRATE OF FIRE          %.2f / SEC\nENERGY PER SHOT       %d\nEFFECTIVE RANGE       %d\n\nRecovered directly from the original equipment database." % [int(weapon.damage), float(weapon.fire_rate), int(weapon.energy), int(weapon.range)]
-	store_price.text = "PRICE  %s CREDITS" % _format_store_price(int(weapon.price))
-	store_equipped.text = "CURRENTLY EQUIPPED" if weapon_id == GameState.selected_weapon else "AVAILABLE IN OFFLINE RESTORATION"
-	store_equip_button.text = "EQUIPPED" if weapon_id == GameState.selected_weapon else "EQUIP"
+	store_type.text = tr("TYPE %02d   •   AIM HUD %02d") % [int(weapon.type), int(weapon.aim_id)]
+	store_stats.text = tr("DAMAGE                 %d\nRATE OF FIRE          %.2f / SEC\nENERGY PER SHOT       %d\nEFFECTIVE RANGE       %d\n\nRecovered directly from the original equipment database.") % [int(weapon.damage), float(weapon.fire_rate), int(weapon.energy), int(weapon.range)]
+	store_price.text = tr("PRICE  %s CREDITS") % _format_store_price(int(weapon.price))
+	store_equipped.text = tr("CURRENTLY EQUIPPED") if weapon_id == GameState.selected_weapon else tr("AVAILABLE IN OFFLINE RESTORATION")
+	store_equip_button.text = tr("EQUIPPED") if weapon_id == GameState.selected_weapon else tr("EQUIP")
 	store_equip_button.disabled = weapon_id == GameState.selected_weapon
 	_rebuild_store_preview(weapon)
 	AudioDirector.play_ui("switch", -5.0)
@@ -477,35 +477,82 @@ func _store_panel_style(fill: Color, border: Color) -> StyleBoxFlat:
 func _show_options() -> void:
 	var body := VBoxContainer.new()
 	body.add_theme_constant_override("separation", 15)
-	body.add_child(_label("OPTIONS", 28, Color(0.72, 0.94, 1.0)))
-	body.add_child(_slider_row("SOUND VOLUME", "sfx", 0.0, 1.0, 0.05))
-	body.add_child(_slider_row("MUSIC VOLUME", "music", 0.0, 1.0, 0.05))
-	body.add_child(_slider_row("LOOK SENSITIVITY", "look_sensitivity", 0.08, 0.65, 0.01))
+	body.add_child(_label(tr("OPTIONS"), 28, Color(0.72, 0.94, 1.0)))
+	body.add_child(_slider_row(tr("SOUND VOLUME"), "sfx", 0.0, 1.0, 0.05))
+	body.add_child(_slider_row(tr("MUSIC VOLUME"), "music", 0.0, 1.0, 0.05))
+	body.add_child(_slider_row(tr("LOOK SENSITIVITY"), "look_sensitivity", 0.08, 0.65, 0.01))
+	body.add_child(_quality_row())
+	body.add_child(_language_row())
 	var invert := CheckButton.new()
-	invert.text = "INVERT VERTICAL LOOK"
+	invert.text = tr("INVERT VERTICAL LOOK")
 	invert.button_pressed = bool(GameState.settings.invert_y)
 	invert.toggled.connect(func(value): GameState.set_setting("invert_y", value))
 	body.add_child(invert)
 	if OS.has_feature("mobile"):
 		var touch := CheckButton.new()
-		touch.text = "SHOW MOBILE TOUCH CONTROLS"
+		touch.text = tr("SHOW MOBILE TOUCH CONTROLS")
 		touch.button_pressed = bool(GameState.settings.show_touch_controls)
 		touch.toggled.connect(func(value): GameState.set_setting("show_touch_controls", value))
 		body.add_child(touch)
-	_show_modal(body, Vector2(650, 430))
+	_show_modal(body, Vector2(650, 560))
+
+func _quality_row() -> Control:
+	var labels := {"low": tr("LOW"), "medium": tr("MEDIUM"), "high": tr("HIGH")}
+	var options: Array[String] = []
+	for key: String in GameState.QUALITY_ORDER:
+		options.append(str(labels.get(key, key)))
+	var current := GameState.QUALITY_ORDER.find(str(GameState.settings.quality))
+	return _option_row(tr("GRAPHICS QUALITY"), options, maxi(0, current), func(index: int):
+		GameState.set_setting("quality", GameState.QUALITY_ORDER[index])
+	)
+
+func _language_row() -> Control:
+	# Selecting a language rebuilds the menu so every recovered string is drawn
+	# in the new locale straight away.
+	var codes := Localization.SUPPORTED_LOCALES
+	var options: Array[String] = []
+	var current := 0
+	# Resolve the stored preference (which may be "" for auto) to a concrete
+	# supported code so the dropdown always highlights the active language,
+	# regardless of how the TranslationServer normalises the locale string.
+	var active := Localization.resolve_locale(str(GameState.settings.language))
+	for i in range(codes.size()):
+		options.append(Localization.locale_display_name(codes[i]))
+		if codes[i] == active:
+			current = i
+	return _option_row(tr("LANGUAGE"), options, current, func(index: int):
+		GameState.set_setting("language", codes[index])
+		AudioDirector.play_ui("accept")
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	)
+
+func _option_row(label_text: String, options: Array[String], selected_index: int, on_select: Callable) -> Control:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 14)
+	var label := _label(label_text, 15, Color.WHITE)
+	label.custom_minimum_size.x = 220
+	row.add_child(label)
+	var picker := OptionButton.new()
+	picker.custom_minimum_size = Vector2(300, 40)
+	for option_text in options:
+		picker.add_item(option_text)
+	picker.select(clampi(selected_index, 0, maxi(0, options.size() - 1)))
+	picker.item_selected.connect(func(index: int): on_select.call(index))
+	row.add_child(picker)
+	return row
 
 func _show_help() -> void:
 	var body := VBoxContainer.new()
 	body.add_theme_constant_override("separation", 12)
-	body.add_child(_label("FIELD MANUAL", 28, Color(0.72, 0.94, 1.0)))
-	body.add_child(_label("DESKTOP", 18, Color(1.0, 0.78, 0.24)))
-	body.add_child(_label("WASD move  •  Mouse aim  •  LMB fire  •  RMB focus  •  R previous weapon  •  Shift dash", 15, Color.WHITE))
-	body.add_child(_label("1–4 switch weapon  •  Mouse wheel camera distance  •  Esc pause", 15, Color.WHITE))
-	body.add_child(_label("CONTROLLER", 18, Color(1.0, 0.78, 0.24)))
-	body.add_child(_label("Left stick move  •  Right stick aim  •  RB fire  •  LB focus  •  X previous weapon", 15, Color.WHITE))
-	body.add_child(_label("MOBILE", 18, Color(1.0, 0.78, 0.24)))
-	body.add_child(_label("Left thumbstick move  •  Drag right half to aim  •  FIRE / PREV / DASH buttons", 15, Color.WHITE))
-	body.add_child(_label("The retired network modes are intentionally replaced by offline campaign play.", 13, Color(0.55, 0.72, 0.8)))
+	body.add_child(_label(tr("FIELD MANUAL"), 28, Color(0.72, 0.94, 1.0)))
+	body.add_child(_label(tr("DESKTOP"), 18, Color(1.0, 0.78, 0.24)))
+	body.add_child(_label(tr("WASD move  •  Mouse aim  •  LMB fire  •  RMB focus  •  R previous weapon  •  Shift dash"), 15, Color.WHITE))
+	body.add_child(_label(tr("1–4 switch weapon  •  Mouse wheel camera distance  •  Esc pause"), 15, Color.WHITE))
+	body.add_child(_label(tr("CONTROLLER"), 18, Color(1.0, 0.78, 0.24)))
+	body.add_child(_label(tr("Left stick move  •  Right stick aim  •  RB fire  •  LB focus  •  X previous weapon"), 15, Color.WHITE))
+	body.add_child(_label(tr("MOBILE"), 18, Color(1.0, 0.78, 0.24)))
+	body.add_child(_label(tr("Left thumbstick move  •  Drag right half to aim  •  FIRE / PREV / DASH buttons"), 15, Color.WHITE))
+	body.add_child(_label(tr("The retired network modes are intentionally replaced by offline campaign play."), 13, Color(0.55, 0.72, 0.8)))
 	_show_modal(body, Vector2(870, 410))
 
 func _show_modal(body: Control, minimum_size: Vector2) -> void:
@@ -528,7 +575,7 @@ func _show_modal(body: Control, minimum_size: Vector2) -> void:
 	panel.add_child(outer)
 	outer.add_child(body)
 	var close := Button.new()
-	close.text = "BACK"
+	close.text = tr("BACK")
 	close.custom_minimum_size.y = 45
 	close.pressed.connect(func():
 		AudioDirector.play_ui("back")

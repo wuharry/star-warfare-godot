@@ -34,6 +34,7 @@ const MAX_ACTIVE_ENEMIES := 8
 func _ready() -> void:
 	level_data = GameState.get_level_data(GameState.selected_level)
 	arena_size = float(level_data.arena_size)
+	GameState.apply_viewport_quality()
 	rng.seed = 0x5A17 + int(level_data.number) * 991
 	_load_stage_metadata()
 	_build_environment()
@@ -55,6 +56,7 @@ func _exit_tree() -> void:
 func _build_environment() -> void:
 	var palette: Array = level_data.palette
 	var restored_settings: Dictionary = stage_metadata.get("render_settings", {})
+	var quality: Dictionary = GameState.get_quality_profile()
 	var world_environment := WorldEnvironment.new()
 	var environment := Environment.new()
 	environment.background_mode = Environment.BG_COLOR
@@ -68,9 +70,9 @@ func _build_environment() -> void:
 		environment.ambient_light_energy = maxf(0.15, float(restored_settings.get("ambient_intensity", 1.0)))
 	environment.reflected_light_source = Environment.REFLECTION_SOURCE_BG
 	environment.tonemap_mode = Environment.TONE_MAPPER_FILMIC
-	environment.glow_enabled = true
+	environment.glow_enabled = bool(quality.glow)
 	environment.glow_intensity = 0.85
-	environment.fog_enabled = bool(restored_settings.get("fog_enabled", true))
+	environment.fog_enabled = bool(quality.fog) and bool(restored_settings.get("fog_enabled", true))
 	environment.fog_light_color = _color_from_json(restored_settings.get("fog_color", [Color(palette[1]).r, Color(palette[1]).g, Color(palette[1]).b, 1.0]))
 	environment.fog_light_energy = 0.45
 	environment.fog_density = float(restored_settings.get("fog_density", 0.008))
@@ -81,7 +83,7 @@ func _build_environment() -> void:
 	sun.rotation_degrees = Vector3(-54, -32, 0)
 	sun.light_color = Color(palette[2])
 	sun.light_energy = 1.35
-	sun.shadow_enabled = true
+	sun.shadow_enabled = bool(quality.shadows)
 	sun.directional_shadow_max_distance = 65.0
 	add_child(sun)
 	var fill := OmniLight3D.new()
@@ -152,7 +154,7 @@ func _start_music() -> void:
 		music.play()
 
 func _begin_level() -> void:
-	hud.announce("SECTOR %02d • %s" % [int(level_data.number), str(level_data.name)], 2.2)
+	hud.announce(tr("SECTOR %02d • %s") % [int(level_data.number), tr(str(level_data.name))], 2.2)
 	await get_tree().create_timer(2.0).timeout
 	if not completed:
 		_start_next_wave()
@@ -165,7 +167,7 @@ func _start_next_wave() -> void:
 		_victory()
 		return
 	spawning = true
-	hud.announce("WAVE %d INBOUND" % current_wave, 1.35)
+	hud.announce(tr("WAVE %d INBOUND") % current_wave, 1.35)
 	var count := int(level_data.base_enemies) + (current_wave - 1) * 2
 	count = mini(count, 22)
 	var boss_wave := bool(level_data.boss) and current_wave == int(level_data.waves)
@@ -233,7 +235,7 @@ func _check_wave_complete() -> void:
 	if current_wave >= int(level_data.waves):
 		_victory()
 	else:
-		hud.announce("WAVE CLEAR", 1.3)
+		hud.announce(tr("WAVE CLEAR"), 1.3)
 		await get_tree().create_timer(2.1).timeout
 		_start_next_wave()
 

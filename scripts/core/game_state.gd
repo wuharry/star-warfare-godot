@@ -63,6 +63,16 @@ const WEAPON_ROWS := [
 var WEAPONS: Dictionary = {}
 var battle_weapons: Array[String] = ["gun00", "gun06", "gun11", "gun14", "gun17", "gun20", "gun24", "gun27"]
 
+# Three graphics presets. render_scale drives the root viewport's 3D
+# resolution (the biggest lever after the 2x texture upscale), while shadows,
+# glow and fog are read by the level when it builds its environment.
+const QUALITY_PROFILES := {
+	"low": {"render_scale": 0.7, "msaa": Viewport.MSAA_DISABLED, "shadows": false, "glow": false, "fog": false},
+	"medium": {"render_scale": 0.85, "msaa": Viewport.MSAA_2X, "shadows": true, "glow": true, "fog": true},
+	"high": {"render_scale": 1.0, "msaa": Viewport.MSAA_4X, "shadows": true, "glow": true, "fog": true},
+}
+const QUALITY_ORDER := ["low", "medium", "high"]
+
 var selected_level := 1
 var selected_weapon := "gun00"
 var unlocked_level := 1
@@ -73,7 +83,9 @@ var settings := {
 	"sfx": 0.85,
 	"look_sensitivity": 0.24,
 	"invert_y": false,
-	"show_touch_controls": false
+	"show_touch_controls": false,
+	"quality": "high",
+	"language": ""
 }
 
 func _ready() -> void:
@@ -82,6 +94,7 @@ func _ready() -> void:
 	_load_save()
 	settings.show_touch_controls = bool(settings.show_touch_controls) or _device_prefers_touch()
 	_apply_audio_settings()
+	apply_viewport_quality()
 
 func _build_weapon_database() -> void:
 	WEAPONS.clear()
@@ -357,8 +370,27 @@ func set_setting(key: String, value: Variant) -> void:
 	if settings.has(key):
 		settings[key] = value
 		_apply_audio_settings()
+		if key == "quality":
+			apply_viewport_quality()
+		elif key == "language":
+			Localization.apply_locale(str(value))
 		_save()
 		settings_changed.emit()
+
+func get_quality_profile() -> Dictionary:
+	var key := str(settings.get("quality", "high"))
+	return QUALITY_PROFILES.get(key, QUALITY_PROFILES["high"])
+
+func apply_viewport_quality() -> void:
+	# Render scale and MSAA live on the root window viewport, which survives
+	# scene changes, so the menu selection carries straight into the level.
+	var viewport := get_viewport()
+	if viewport == null:
+		return
+	var profile := get_quality_profile()
+	viewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
+	viewport.scaling_3d_scale = float(profile.render_scale)
+	viewport.msaa_3d = int(profile.msaa)
 
 func _apply_audio_settings() -> void:
 	var master := AudioServer.get_bus_index("Master")
