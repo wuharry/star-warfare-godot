@@ -4,6 +4,36 @@ const Atlas = preload("res://scripts/ui/original_atlas.gd")
 const EquipmentShell = preload("res://scripts/ui/unity_equipment_shell.gd")
 const COMPONENT_DIR := "res://assets/ui/components/"
 const DESIGN_SIZE := Vector2(960.0, 640.0)
+
+# Level select thumbnails, recovered from the shipped UI resource rather than
+# guessed. The campaign set comes from StageChoiseUI, which builds icon i from
+# vUI[3] frame 8 module i where stage i loads Level i+1; the PvP set comes from
+# CreateRoomUI, which builds the versus maps from vUI[5] frame 6 and whose index
+# n loads Level 13+n. Neither is in level order, and the two live on different
+# UI units, which is why no single grid could ever have produced them.
+# Regenerate with:
+#   python tools/ui_extractor/extract_stage_icons.py --assets-root <Assets> --mode solo
+#   python tools/ui_extractor/extract_stage_icons.py --assets-root <Assets> --mode vs
+# Values are 1x atlas coordinates; OriginalAtlas.region converts to the 2x pages.
+const CAMPAIGN_STAGE_ICONS := {
+	1: [15, Rect2(337, 182, 336, 181)],
+	2: [15, Rect2(0, 364, 336, 181)],
+	3: [15, Rect2(674, 0, 336, 181)],
+	4: [15, Rect2(0, 182, 336, 181)],
+	5: [15, Rect2(337, 364, 336, 181)],
+	6: [15, Rect2(674, 182, 336, 181)],
+	7: [15, Rect2(0, 0, 336, 181)],
+	8: [20, Rect2(676, 0, 336, 180)],
+	13: [14, Rect2(674, 182, 336, 181)],
+	14: [14, Rect2(337, 364, 336, 181)],
+	15: [14, Rect2(337, 182, 336, 181)],
+	16: [14, Rect2(0, 364, 336, 181)],
+	17: [14, Rect2(674, 364, 336, 181)],
+	18: [15, Rect2(674, 364, 336, 181)],
+	19: [20, Rect2(0, 0, 336, 181)],
+	20: [20, Rect2(338, 0, 336, 180)],
+	21: [20, Rect2(2, 388, 336, 180)],
+}
 const CYAN := Color(0.4, 1.0, 1.0)
 
 var design_root: Control
@@ -11,7 +41,7 @@ var main_page: Control
 var modal_layer: Control
 var drawer: Control
 var drawer_shadow: Button
-var drawer_toggle: Button
+var drawer_toggle: TextureButton
 var drawer_status: Label
 var drawer_open := false
 var drawer_tween: Tween
@@ -73,12 +103,16 @@ func _handle_back() -> void:
 
 
 func _build_letterbox() -> void:
-	var black := ColorRect.new()
-	black.name = "Letterbox"
-	black.color = Color.BLACK
-	black.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	black.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(black)
+	# Fill wide-screen margins with the recovered Unity artwork instead of a
+	# generated solid colour. The 960x640 interaction canvas remains unchanged.
+	var backdrop := TextureRect.new()
+	backdrop.name = "RecoveredMainBackdrop"
+	backdrop.texture = _component("menu_hero")
+	backdrop.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	backdrop.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(backdrop)
 
 
 func _build_design_root() -> void:
@@ -96,106 +130,54 @@ func _build_main_page() -> void:
 	_set_rect(main_page, Rect2(Vector2.ZERO, DESIGN_SIZE))
 	design_root.add_child(main_page)
 
-	var hero := TextureRect.new()
-	hero.name = "RecoveredMainBackdrop"
-	hero.texture = _component("menu_hero")
-	hero.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	hero.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-	_set_rect(hero, Rect2(Vector2.ZERO, DESIGN_SIZE))
-	hero.modulate = Color(0.74, 0.82, 0.86, 0.78)
-	hero.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	main_page.add_child(hero)
-
-	var shade := ColorRect.new()
-	shade.color = Color(0.0, 0.012, 0.022, 0.52)
-	_set_rect(shade, Rect2(Vector2.ZERO, DESIGN_SIZE))
-	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	main_page.add_child(shade)
-
-	for i in range(28):
-		var spark := ColorRect.new()
-		var spark_size := 1.0 + float((i * 13) % 3)
-		spark.color = Color(0.25, 0.85, 1.0, 0.16 + float(i % 3) * 0.08)
-		_set_rect(spark, Rect2(float((i * 193) % 920) + 20.0, float((i * 83) % 520) + 10.0, spark_size, spark_size))
-		spark.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		main_page.add_child(spark)
-
-	var strip := Panel.new()
+	var strip := Control.new()
 	strip.name = "DeploymentStrip"
-	strip.add_theme_stylebox_override("panel", _panel_style(Color(0.005, 0.035, 0.05, 0.96), Color(0.1, 0.64, 0.74, 0.82), 1, 3))
-	_set_rect(strip, Rect2(0, 0, 960, 150))
+	_set_rect(strip, Rect2(0, 490, 960, 150))
 	main_page.add_child(strip)
 
-	var solo := _deployment_button(tr("SINGLE PLAYER"), tr("CAMPAIGN / SECTORS 01-08"))
+	var strip_art := _texture_rect("main_bottom_panel")
+	strip_art.name = "RecoveredBottomPanel"
+	_set_rect(strip_art, Rect2(0, 0, 960, 150))
+	strip.add_child(strip_art)
+
+	var solo := _deployment_button("main_single_normal", "main_single_pressed")
 	solo.name = "SoloButton"
-	_set_rect(solo, Rect2(90, 28, 348, 87))
+	solo.tooltip_text = tr("SINGLE PLAYER • CAMPAIGN SECTORS 01-08")
+	_set_rect(solo, Rect2(90, 35, 348, 87))
 	solo.pressed.connect(func():
 		AudioDirector.play_ui("accept")
 		_show_level_select("singleplayer")
 	)
 	strip.add_child(solo)
 
-	var coop := _deployment_button(tr("MULTIPLAYER"), tr("LOCAL SKIRMISH / SECTORS 13-21"))
+	var coop := _deployment_button("main_online_normal", "main_online_pressed")
 	coop.name = "MultiplayerButton"
-	_set_rect(coop, Rect2(521, 28, 348, 87))
+	coop.tooltip_text = tr("ONLINE • ORIGINAL PVP ARENAS 13-21")
+	_set_rect(coop, Rect2(521, 35, 348, 87))
 	coop.pressed.connect(func():
 		AudioDirector.play_ui("accept")
 		_show_level_select("multiplayer")
 	)
 	strip.add_child(coop)
 
-	var divider := ColorRect.new()
-	divider.color = Color(0.38, 0.95, 1.0, 0.42)
-	_set_rect(divider, Rect2(479, 21, 2, 108))
-	divider.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	strip.add_child(divider)
-
-	var logo_texture := _component("menu_logo")
+	var logo_texture := _component("main_title")
 	if logo_texture:
 		var logo := TextureRect.new()
 		logo.name = "RecoveredTitle"
 		logo.texture = logo_texture
 		logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		logo.stretch_mode = TextureRect.STRETCH_SCALE
 		logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		_set_rect(logo, Rect2(250, 242, 460, 108))
+		_set_rect(logo, Rect2(482, 18, 417, 177))
 		main_page.add_child(logo)
-		var subtitle_texture := _component("menu_subtitle")
-		if subtitle_texture:
-			var subtitle := TextureRect.new()
-			subtitle.texture = subtitle_texture
-			subtitle.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-			subtitle.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-			subtitle.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			_set_rect(subtitle, Rect2(275, 353, 410, 28))
-			main_page.add_child(subtitle)
 	else:
 		var fallback_title := _label("STAR WARFARE", 56, Color(0.93, 0.99, 1.0))
 		fallback_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		_set_rect(fallback_title, Rect2(180, 255, 600, 80))
+		_set_rect(fallback_title, Rect2(460, 45, 450, 80))
 		main_page.add_child(fallback_title)
 
-	var edition := _label(tr("LOCAL OFFLINE RESTORATION"), 14, Color(0.38, 0.84, 0.94))
-	edition.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_set_rect(edition, Rect2(250, 390, 460, 24))
-	main_page.add_child(edition)
-
-	var expanse := _deployment_button(tr("THE EXPANSE"), tr("OPEN CONTINENT / FREE DEPLOYMENT"))
-	expanse.name = "ExpanseButton"
-	_set_rect(expanse, Rect2(280, 458, 400, 74))
-	expanse.pressed.connect(func():
-		AudioDirector.play_ui("accept")
-		GameState.start_expanse()
-	)
-	main_page.add_child(expanse)
-
-	var instruction := _label(tr("CHOOSE SOLO OR MULTIPLAYER • OPEN THE ARMORY FROM THE LOWER MENU"), 12, Color(0.55, 0.72, 0.78))
-	instruction.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_set_rect(instruction, Rect2(170, 432, 620, 24))
-	main_page.add_child(instruction)
-
-	var version := _label("VER 2.97  /  GODOT 4.7", 11, Color(0.7, 0.78, 0.8))
-	_set_rect(version, Rect2(10, 615, 230, 18))
+	var version := _label("VER 2.97", 11, Color.WHITE)
+	_set_rect(version, Rect2(10, 615, 100, 18))
 	main_page.add_child(version)
 
 	call_deferred("_focus_control", solo)
@@ -206,9 +188,10 @@ func _build_navigation_drawer() -> void:
 	drawer_shadow.name = "DrawerShadow"
 	drawer_shadow.text = ""
 	drawer_shadow.focus_mode = Control.FOCUS_NONE
-	drawer_shadow.add_theme_stylebox_override("normal", _flat_style(Color(0.0, 0.008, 0.015, 0.68)))
-	drawer_shadow.add_theme_stylebox_override("hover", _flat_style(Color(0.0, 0.008, 0.015, 0.68)))
-	drawer_shadow.add_theme_stylebox_override("pressed", _flat_style(Color(0.0, 0.008, 0.015, 0.72)))
+	var shadow_style := _recovered_button_style("main_nav_shadow", Color.WHITE)
+	drawer_shadow.add_theme_stylebox_override("normal", shadow_style)
+	drawer_shadow.add_theme_stylebox_override("hover", shadow_style)
+	drawer_shadow.add_theme_stylebox_override("pressed", shadow_style)
 	_set_rect(drawer_shadow, Rect2(Vector2.ZERO, DESIGN_SIZE))
 	drawer_shadow.z_index = 5
 	drawer_shadow.visible = false
@@ -217,67 +200,82 @@ func _build_navigation_drawer() -> void:
 
 	drawer = Control.new()
 	drawer.name = "NavigationDrawer"
-	_set_rect(drawer, Rect2(0, 544, 960, 350))
+	_set_rect(drawer, Rect2(0, -257, 960, 350))
 	drawer.z_index = 6
 	design_root.add_child(drawer)
 
-	var drawer_body := Panel.new()
-	drawer_body.add_theme_stylebox_override("panel", _panel_style(Color(0.01, 0.045, 0.058, 0.99), Color(0.09, 0.62, 0.7, 0.9), 2, 2))
-	_set_rect(drawer_body, Rect2(0, 78, 960, 272))
-	drawer.add_child(drawer_body)
+	var panel_art := _texture_rect("main_nav_panel")
+	panel_art.name = "RecoveredNavigationPanel"
+	_set_rect(panel_art, Rect2(0, 0, 960, 272))
+	drawer.add_child(panel_art)
 
-	var collapsed_bar := Panel.new()
-	collapsed_bar.add_theme_stylebox_override("panel", _panel_style(Color(0.008, 0.035, 0.048, 0.995), Color(0.12, 0.72, 0.82, 0.94), 1, 2))
-	_set_rect(collapsed_bar, Rect2(0, 0, 960, 96))
-	drawer.add_child(collapsed_bar)
-
-	var nav_title := _label(tr("STAR WARFARE COMMAND"), 19, CYAN)
-	_set_rect(nav_title, Rect2(24, 13, 340, 29))
-	collapsed_bar.add_child(nav_title)
-	var nav_hint := _label(tr("STORE • CUSTOMIZE • OPTIONS"), 11, Color(0.52, 0.76, 0.82))
-	_set_rect(nav_hint, Rect2(24, 47, 340, 20))
-	collapsed_bar.add_child(nav_hint)
-
-	drawer_status = _label("", 12, Color(0.95, 0.79, 0.32))
-	drawer_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	drawer_status = _label("", 19, CYAN)
 	drawer_status.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_set_rect(drawer_status, Rect2(390, 7, 425, 70))
-	collapsed_bar.add_child(drawer_status)
+	_set_rect(drawer_status, Rect2(31, 132, 440, 34))
+	drawer.add_child(drawer_status)
 	_refresh_drawer_status()
 
-	drawer_toggle = Button.new()
+	drawer_toggle = TextureButton.new()
 	drawer_toggle.name = "DrawerToggle"
-	drawer_toggle.text = tr("MENU") + "\n▲"
-	drawer_toggle.add_theme_font_size_override("font_size", 17)
-	drawer_toggle.add_theme_stylebox_override("normal", _recovered_button_style("button_normal", Color(0.72, 1.0, 1.0)))
-	drawer_toggle.add_theme_stylebox_override("hover", _recovered_button_style("button_hover", Color.WHITE))
-	drawer_toggle.add_theme_stylebox_override("pressed", _recovered_button_style("button_pressed", Color(0.72, 1.0, 1.0)))
-	_set_rect(drawer_toggle, Rect2(840, 0, 120, 96))
+	drawer_toggle.texture_normal = _component("main_nav_toggle")
+	drawer_toggle.texture_hover = _component("main_nav_toggle")
+	drawer_toggle.texture_pressed = _component("main_nav_toggle")
+	drawer_toggle.ignore_texture_size = true
+	drawer_toggle.stretch_mode = TextureButton.STRETCH_SCALE
+	drawer_toggle.tooltip_text = tr("OPEN / CLOSE MENU")
+	_set_rect(drawer_toggle, Rect2(840, 240, 120, 110))
 	drawer_toggle.pressed.connect(func(): _toggle_drawer(not drawer_open))
 	drawer.add_child(drawer_toggle)
 
-	var customize := _drawer_button(tr("CUSTOMIZE"), tr("EQUIP OWNED GEAR"))
-	_set_rect(customize, Rect2(520, 123, 190, 100))
+	var rank_icon := _texture_rect("main_rank_%02d" % clampi(GameState.get_rank_id(), 0, 11))
+	rank_icon.name = "RankIcon"
+	_set_rect(rank_icon, Rect2(28, 23, 64, 64))
+	drawer_toggle.add_child(rank_icon)
+
+	var bank := TextureButton.new()
+	bank.name = "BankButton"
+	bank.texture_normal = _component("main_nav_bank")
+	bank.texture_hover = _component("main_nav_bank")
+	bank.texture_pressed = _component("main_nav_bank")
+	bank.ignore_texture_size = true
+	bank.stretch_mode = TextureButton.STRETCH_SCALE
+	bank.tooltip_text = tr("BANK")
+	_set_rect(bank, Rect2(520, 17, 410, 100))
+	bank.pressed.connect(_show_bank_notice)
+	drawer.add_child(bank)
+
+	var customize := _drawer_button(tr("CUSTOMIZE"), "main_nav_customize_icon", "main_nav_customize_icon_pressed")
+	customize.name = "CustomizeButton"
+	_set_rect(customize, Rect2(520, 127, 190, 100))
 	customize.pressed.connect(func(): _show_armory("customize"))
 	drawer.add_child(customize)
-	var store := _drawer_button(tr("STORE"), tr("ARMOR & WEAPONS"))
-	_set_rect(store, Rect2(740, 123, 190, 100))
+	var store := _drawer_button(tr("STORE"), "main_nav_store_icon", "main_nav_store_icon_pressed")
+	store.name = "StoreButton"
+	_set_rect(store, Rect2(740, 127, 190, 100))
 	store.pressed.connect(func(): _show_armory("store"))
 	drawer.add_child(store)
 
-	var options := _drawer_button(tr("OPTIONS"), tr("AUDIO • VIDEO • CONTROL"), 14)
-	_set_rect(options, Rect2(29, 233, 190, 100))
+	var options := _drawer_button(tr("OPTIONS"), "main_nav_options_icon", "main_nav_options_icon_pressed")
+	options.name = "OptionsButton"
+	_set_rect(options, Rect2(29, 17, 190, 100))
 	options.pressed.connect(_show_options)
 	drawer.add_child(options)
-	var manual := _drawer_button(tr("FIELD MANUAL"), tr("CONTROLS & STATUS"), 13)
-	_set_rect(manual, Rect2(249, 233, 190, 100))
-	manual.pressed.connect(_show_help)
-	drawer.add_child(manual)
-	if not OS.has_feature("web") and not OS.has_feature("mobile"):
-		var quit := _drawer_button(tr("QUIT"), tr("RETURN TO DESKTOP"), 14)
-		_set_rect(quit, Rect2(469, 233, 190, 100))
-		quit.pressed.connect(get_tree().quit)
-		drawer.add_child(quit)
+
+	var edit_name := TextureButton.new()
+	edit_name.name = "EditNameButton"
+	edit_name.texture_normal = _component("main_nav_edit_normal")
+	edit_name.texture_hover = _component("main_nav_edit_pressed")
+	edit_name.texture_pressed = _component("main_nav_edit_pressed")
+	edit_name.ignore_texture_size = true
+	edit_name.stretch_mode = TextureButton.STRETCH_SCALE
+	_set_rect(edit_name, Rect2(47, 174, 151, 57))
+	edit_name.pressed.connect(_show_name_editor)
+	drawer.add_child(edit_name)
+	var edit_label := _label(tr("EDIT NAME"), 18, Color(0.78, 1.0, 1.0))
+	edit_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	edit_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_set_rect(edit_label, Rect2(0, 0, 151, 57))
+	edit_name.add_child(edit_label)
 
 
 func _build_modal_layer() -> void:
@@ -305,9 +303,9 @@ func _start_intro_animation() -> void:
 	var strip := main_page.get_node_or_null("DeploymentStrip") as Control
 	var title := main_page.get_node_or_null("RecoveredTitle") as Control
 	if is_instance_valid(strip):
-		strip.position.y = -150.0
+		strip.position.y = 640.0
 		var strip_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		strip_tween.tween_property(strip, "position:y", 0.0, 0.32)
+		strip_tween.tween_property(strip, "position:y", 490.0, 0.32)
 	if is_instance_valid(title):
 		title.modulate.a = 0.0
 		title.scale = Vector2(0.86, 0.86)
@@ -325,8 +323,7 @@ func _toggle_drawer(open: bool, animate := true) -> void:
 		drawer_tween.kill()
 	drawer_shadow.visible = open
 	drawer_shadow.mouse_filter = Control.MOUSE_FILTER_STOP if open else Control.MOUSE_FILTER_IGNORE
-	drawer_toggle.text = tr("MENU") + ("\n▼" if open else "\n▲")
-	var target_y := 290.0 if open else 544.0
+	var target_y := 0.0 if open else -257.0
 	if not animate:
 		drawer.position.y = target_y
 		return
@@ -336,11 +333,53 @@ func _toggle_drawer(open: bool, animate := true) -> void:
 
 func _refresh_drawer_status() -> void:
 	if is_instance_valid(drawer_status):
-		drawer_status.text = tr("RANK %d   /   CREDITS %s   /   MITHRIL %s") % [
-			GameState.get_rank_id() + 1,
-			_format_price(GameState.credits),
-			_format_price(GameState.mithril),
-		]
+		drawer_status.text = tr("NICKNAME: %s") % str(GameState.settings.get("nickname", "PLAYER"))
+
+
+func _show_name_editor() -> void:
+	var body := VBoxContainer.new()
+	body.add_theme_constant_override("separation", 14)
+	body.add_child(_label(tr("EDIT NAME"), 25, Color(0.72, 0.94, 1.0)))
+	var rule := _label(tr("LETTERS AND NUMBERS ONLY, 1-15 CHARACTERS"), 14, Color(0.62, 0.78, 0.78))
+	rule.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	body.add_child(rule)
+	var input := LineEdit.new()
+	input.name = "NicknameInput"
+	input.text = str(GameState.settings.get("nickname", "PLAYER"))
+	input.max_length = 15
+	input.placeholder_text = tr("PLAYER NAME")
+	input.custom_minimum_size = Vector2(480, 52)
+	body.add_child(input)
+	var validation := _label("", 13, Color(1.0, 0.45, 0.35))
+	validation.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	validation.custom_minimum_size.y = 24
+	body.add_child(validation)
+	var confirm := Button.new()
+	confirm.text = tr("CONFIRM")
+	confirm.custom_minimum_size.y = 46
+	body.add_child(confirm)
+	var submit := func() -> void:
+		var candidate := input.text.strip_edges()
+		var matcher := RegEx.new()
+		matcher.compile("^[A-Za-z0-9]{1,15}$")
+		if matcher.search(candidate) == null:
+			validation.text = tr("USE 1-15 LETTERS OR NUMBERS")
+			return
+		GameState.set_setting("nickname", candidate)
+		AudioDirector.play_ui("accept")
+		_close_modal()
+	confirm.pressed.connect(submit)
+	input.text_submitted.connect(func(_value: String): submit.call())
+	_show_modal(body, Vector2(620, 350))
+	call_deferred("_focus_control", input)
+
+
+func _show_bank_notice() -> void:
+	var body := VBoxContainer.new()
+	body.add_theme_constant_override("separation", 12)
+	body.add_child(_label(tr("BANK"), 25, Color(1.0, 0.88, 0.42)))
+	body.add_child(_wrapped_label(tr("The original in-app purchase service is no longer online. Credits and Mithril earned in the restored offline game remain available in the Store."), 14, Color.WHITE))
+	_show_modal(body, Vector2(650, 310))
 
 
 func _show_armory(start_mode: String = "store") -> void:
@@ -371,10 +410,10 @@ func _select_store_category(category: String) -> void:
 func _show_level_select(game_mode: String = "singleplayer") -> void:
 	var body := VBoxContainer.new()
 	body.add_theme_constant_override("separation", 10)
-	var heading := tr("SELECT SOLO SECTOR") if game_mode == "singleplayer" else tr("SELECT MULTIPLAYER MAP")
+	var heading := tr("SELECT SOLO SECTOR") if game_mode == "singleplayer" else tr("SELECT PVP ARENA")
 	body.add_child(_label(heading, 25, Color(0.72, 0.94, 1.0)))
 	if game_mode == "multiplayer":
-		var note := _label(tr("Official servers are retired; multiplayer maps run as local offline skirmishes."), 12, Color(0.55, 0.76, 0.84))
+		var note := _label(tr("Levels 13-21 are the original PvP arenas. Offline arena preview only; no PvE waves are used."), 12, Color(0.55, 0.76, 0.84))
 		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		note.custom_minimum_size.y = 34
 		body.add_child(note)
@@ -386,7 +425,7 @@ func _show_level_select(game_mode: String = "singleplayer") -> void:
 	for level_number in GameState.get_levels_for_mode(game_mode):
 		var data: Dictionary = GameState.get_level_data(level_number)
 		var button := Button.new()
-		var is_locked: bool = game_mode == "singleplayer" and level_number > GameState.unlocked_level
+		var is_locked: bool = not GameState.is_level_unlocked(level_number, game_mode)
 		button.text = (tr("LOCKED • ") if is_locked else "") + "%02d\n%s" % [level_number, tr(str(data.name))]
 		button.custom_minimum_size = Vector2(198, 96)
 		button.icon = _level_preview(level_number)
@@ -414,9 +453,6 @@ func _show_options() -> void:
 	body.add_child(_slider_row(tr("LOOK SENSITIVITY"), "look_sensitivity", 0.08, 0.65, 0.01))
 	body.add_child(_difficulty_row())
 	body.add_child(_quality_row())
-	body.add_child(_day_night_row())
-	if GameState.is_day_cycle_frozen():
-		body.add_child(_fixed_hour_row())
 	body.add_child(_language_row())
 	var invert := CheckButton.new()
 	invert.text = tr("INVERT VERTICAL LOOK")
@@ -451,38 +487,6 @@ func _quality_row() -> Control:
 	var current := GameState.QUALITY_ORDER.find(str(GameState.settings.quality))
 	return _option_row(tr("GRAPHICS QUALITY"), options, maxi(0, current), func(index: int):
 		GameState.set_setting("quality", GameState.QUALITY_ORDER[index])
-	)
-
-
-func _day_night_row() -> Control:
-	var labels := {
-		"brisk": tr("30 MIN / DAY"),
-		"standard": tr("36 MIN / DAY"),
-		"slow": tr("45 MIN / DAY"),
-		"frozen": tr("FROZEN TIME"),
-	}
-	var options: Array[String] = []
-	for key: String in GameState.DAY_LENGTH_ORDER:
-		options.append(str(labels.get(key, key)))
-	var current := GameState.DAY_LENGTH_ORDER.find(str(GameState.settings.day_length))
-	return _option_row(tr("DAY-NIGHT CYCLE"), options, maxi(0, current), func(index: int):
-		GameState.set_setting("day_length", GameState.DAY_LENGTH_ORDER[index])
-		_show_options()
-	)
-
-
-func _fixed_hour_row() -> Control:
-	var options: Array[String] = []
-	for preset in GameState.FROZEN_HOUR_PRESETS:
-		var hour := float(preset)
-		options.append("%s  %s" % [WarfareDayNightCycle.format_clock(hour), tr(WarfareDayNightCycle.phase_key(hour))])
-	var stored := float(GameState.settings.frozen_hour)
-	var current := 0
-	for index in range(GameState.FROZEN_HOUR_PRESETS.size()):
-		if absf(float(GameState.FROZEN_HOUR_PRESETS[index]) - stored) < 0.05:
-			current = index
-	return _option_row(tr("FIXED TIME"), options, current, func(index: int):
-		GameState.set_setting("frozen_hour", float(GameState.FROZEN_HOUR_PRESETS[index]))
 	)
 
 
@@ -547,7 +551,7 @@ func _show_help() -> void:
 	body.add_child(_wrapped_label(tr("Left stick move  •  Right stick aim  •  RB fire  •  LB focus  •  X previous weapon"), 14, Color.WHITE))
 	body.add_child(_manual_heading(tr("MOBILE")))
 	body.add_child(_wrapped_label(tr("Left thumbstick move  •  Drag right half to aim  •  FIRE / PREV / DASH buttons"), 14, Color.WHITE))
-	body.add_child(_wrapped_label(tr("Solo campaign and retired multiplayer maps now have separate offline entry points."), 12, Color(0.55, 0.72, 0.8)))
+	body.add_child(_wrapped_label(tr("Solo campaign and the original PvP arenas now have separate offline entry points."), 12, Color(0.55, 0.72, 0.8)))
 	_show_modal(body, Vector2(800, 500))
 
 
@@ -618,29 +622,51 @@ func _close_modal() -> void:
 	_refresh_drawer_status()
 
 
-func _deployment_button(title_text: String, subtitle: String) -> Button:
-	var button := Button.new()
-	button.text = title_text + "\n" + subtitle
-	button.alignment = HORIZONTAL_ALIGNMENT_CENTER
-	button.add_theme_font_size_override("font_size", 18)
-	button.add_theme_color_override("font_color", Color(0.75, 0.94, 0.98))
-	button.add_theme_color_override("font_hover_color", Color.WHITE)
-	button.add_theme_stylebox_override("normal", _recovered_button_style("button_normal", Color(0.72, 0.96, 1.0)))
-	button.add_theme_stylebox_override("hover", _recovered_button_style("button_hover", Color.WHITE))
-	button.add_theme_stylebox_override("pressed", _recovered_button_style("button_pressed", Color(0.7, 1.0, 1.0)))
+func _deployment_button(normal_component: String, pressed_component: String) -> TextureButton:
+	var button := TextureButton.new()
+	button.texture_normal = _component(normal_component)
+	button.texture_hover = _component(normal_component)
+	button.texture_pressed = _component(pressed_component)
+	button.ignore_texture_size = true
+	button.stretch_mode = TextureButton.STRETCH_SCALE
+	button.focus_mode = Control.FOCUS_ALL
 	return button
 
 
-func _drawer_button(title_text: String, subtitle: String, font_size := 15) -> Button:
-	var button := Button.new()
-	button.text = title_text + "\n" + subtitle
-	button.add_theme_font_size_override("font_size", font_size)
-	button.add_theme_color_override("font_color", Color(0.74, 0.94, 0.97))
-	button.add_theme_color_override("font_hover_color", Color.WHITE)
-	button.add_theme_stylebox_override("normal", _panel_style(Color(0.015, 0.08, 0.1, 0.98), Color(0.12, 0.54, 0.62, 0.85), 3, 8))
-	button.add_theme_stylebox_override("hover", _panel_style(Color(0.03, 0.24, 0.28, 1.0), CYAN, 3, 8))
-	button.add_theme_stylebox_override("pressed", _panel_style(Color(0.06, 0.34, 0.37, 1.0), Color.WHITE, 3, 8))
+func _drawer_button(title_text: String, icon_component: String, pressed_icon_component: String) -> TextureButton:
+	var button := TextureButton.new()
+	button.texture_normal = _component("main_nav_button_normal")
+	button.texture_hover = _component("main_nav_button_normal")
+	button.texture_pressed = _component("main_nav_button_pressed")
+	button.ignore_texture_size = true
+	button.stretch_mode = TextureButton.STRETCH_SCALE
+	var icon := _texture_rect(icon_component)
+	icon.name = "Icon"
+	var icon_size := icon.texture.get_size() * 0.5 if icon.texture else Vector2(52, 60)
+	_set_rect(icon, Rect2(Vector2((190.0 - icon_size.x) * 0.5, maxf(3.0, (68.0 - icon_size.y) * 0.5)), icon_size))
+	# Keep the original pressed icon available to input/controller users too.
+	button.button_down.connect(func(): icon.texture = _component(pressed_icon_component))
+	button.button_up.connect(func(): icon.texture = _component(icon_component))
+	button.mouse_exited.connect(func():
+		if not button.button_pressed:
+			icon.texture = _component(icon_component)
+	)
+	button.add_child(icon)
+	var label := _label(title_text, 18, CYAN)
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_set_rect(label, Rect2(0, 69, 190, 27))
+	button.add_child(label)
 	return button
+
+
+func _texture_rect(component_name: String) -> TextureRect:
+	var texture_rect := TextureRect.new()
+	texture_rect.texture = _component(component_name)
+	texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	texture_rect.stretch_mode = TextureRect.STRETCH_SCALE
+	texture_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return texture_rect
 
 
 func _component(component_name: String) -> Texture2D:
@@ -660,20 +686,15 @@ func _recovered_button_style(component_name: String, tint: Color) -> StyleBoxTex
 
 
 func _level_preview(level_number: int) -> AtlasTexture:
-	var index := GameState.CAMPAIGN_LEVELS.find(level_number)
-	if index < 8:
-		var rects := [
-			Rect2(0, 0, 332, 180), Rect2(338, 0, 332, 180), Rect2(675, 0, 333, 180),
-			Rect2(0, 184, 332, 180), Rect2(338, 184, 332, 180), Rect2(675, 184, 333, 180),
-			Rect2(0, 369, 332, 178), Rect2(338, 369, 332, 178),
-		]
-		return Atlas.region("res://assets/original/ui/pages/15.png", rects[index])
-	var late_rects := [
-		Rect2(0, 0, 332, 180), Rect2(338, 0, 332, 180), Rect2(675, 0, 333, 180),
-		Rect2(0, 184, 332, 180), Rect2(338, 184, 332, 180), Rect2(675, 184, 333, 180),
-		Rect2(0, 369, 332, 180), Rect2(338, 369, 332, 180), Rect2(675, 369, 333, 180),
-	]
-	return Atlas.region("res://assets/original/ui/pages/20.png", late_rects[(index - 8) % late_rects.size()])
+	# The tables are not in level order and span three atlas pages: Level 7 is
+	# the top-left cell of page 15, Level 1 is in the middle row, Level 8 is on
+	# page 20, and the PvP maps are mostly on page 14. Slicing a page into a
+	# grid and handing the cells out in order is what put the wrong picture on
+	# almost every card.
+	if not CAMPAIGN_STAGE_ICONS.has(level_number):
+		return null
+	var record: Array = CAMPAIGN_STAGE_ICONS[level_number]
+	return Atlas.region("res://assets/original/ui/pages/%d.png" % int(record[0]), record[1])
 
 
 func _panel_style(fill: Color, border: Color, radius: int, margins := 4) -> StyleBoxFlat:

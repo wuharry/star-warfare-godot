@@ -3,9 +3,13 @@ extends Node
 func _ready() -> void:
 	var menu := (load("res://scenes/main_menu.tscn") as PackedScene).instantiate()
 	add_child(menu)
-	for _frame in range(8):
-		await get_tree().process_frame
+	await get_tree().create_timer(0.45).timeout
 	var error := get_viewport().get_texture().get_image().save_png("res://tests/menu_restoration_preview.png")
+	menu._toggle_drawer(true, false)
+	for _frame in range(3):
+		await get_tree().process_frame
+	var navigation_error := get_viewport().get_texture().get_image().save_png("res://tests/menu_navigation_preview.png")
+	menu._toggle_drawer(false, false)
 	menu._show_armory()
 	for _frame in range(4):
 		await get_tree().process_frame
@@ -34,6 +38,6 @@ func _ready() -> void:
 	var bag_error := get_viewport().get_texture().get_image().save_png("res://tests/bag_restoration_preview.png")
 	var bag_count_ok: bool = menu.store_weapon_row.get_child_count() == GameState.get_armor_ids("bag").size()
 	var design_ok: bool = menu.design_root.size.is_equal_approx(Vector2(960, 640))
-	var passed: bool = error == OK and armory_error == OK and special_error == OK and additive_error == OK and armor_error == OK and bag_error == OK and weapon_count_ok and armor_count_ok and bag_count_ok and tabs_ok and slots_ok and design_ok
+	var passed: bool = error == OK and navigation_error == OK and armory_error == OK and special_error == OK and additive_error == OK and armor_error == OK and bag_error == OK and weapon_count_ok and armor_count_ok and bag_count_ok and tabs_ok and slots_ok and design_ok
 	print("MENU_VISUAL_CAPTURE_PASS" if passed else "MENU_VISUAL_CAPTURE_FAIL")
 	get_tree().quit(0 if passed else 1)

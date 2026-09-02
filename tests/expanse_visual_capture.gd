@@ -2,8 +2,8 @@ extends Node
 
 # Renders THE EXPANSE from four viewpoints into one sheet: the spawn inside a
 # recovered sector, the seam where that sector meets the procedural ground, the
-# same country at night, and an aerial pass over the continent with the
-# atmosphere lifted so the district layout is actually visible.
+# open country between districts, and an aerial pass over the continent with
+# the haze lifted so the district layout is actually visible.
 # Run it with a real display (no --headless), same as the other captures.
 
 const OUTPUT_PATH := "res://tests/expanse_preview.png"
@@ -13,11 +13,12 @@ var tile_size: Vector2i
 var sheet: Image
 
 func _ready() -> void:
+	# The captures drive real settings through the real save code, so they are
+	# pointed at a scratch profile rather than the player's own.
+	GameState.save_path = GameState.TEST_SAVE_PATH
 	GameState.selected_weapon = "gun00"
 	GameState.settings.show_touch_controls = false
 	GameState.settings.quality = "high"
-	GameState.settings.day_length = "frozen"
-	GameState.settings.frozen_hour = 17.4
 
 	var viewport_size := get_viewport().get_visible_rect().size
 	tile_size = Vector2i(int(viewport_size.x) / 2, int(viewport_size.y) / 2)
@@ -30,7 +31,7 @@ func _ready() -> void:
 
 	await _capture_into(0)
 	await _capture_seam(1)
-	await _capture_night(2)
+	await _capture_wilderness(2)
 	await _capture_aerial(3)
 
 	var error := sheet.save_png(OUTPUT_PATH)
@@ -78,13 +79,16 @@ func _capture_seam(slot: int) -> void:
 	await _capture_into(slot)
 	camera.queue_free()
 
-func _capture_night(slot: int) -> void:
-	GameState.settings.frozen_hour = 22.2
-	world.day_night.apply(22.2)
-	var origin := world.player.global_position
-	var eye := Vector3(origin.x + 60.0, 0.0, origin.z + 60.0)
-	eye.y = world.terrain.height_at(eye.x, eye.z) + 14.0
-	var camera := _place_camera(eye, Vector3(origin.x, origin.y + 2.0, origin.z), 64.0)
+func _capture_wilderness(slot: int) -> void:
+	# Open country between the first two districts: boulder fields and ridges,
+	# which is what most of the map actually is.
+	var first: Vector2 = (world.districts[0] as Dictionary).centre
+	var second: Vector2 = (world.districts[1] as Dictionary).centre
+	var midpoint := first.lerp(second, 0.5)
+	var eye := Vector3(midpoint.x, 0.0, midpoint.y)
+	eye.y = world.terrain.height_at(eye.x, eye.z) + 12.0
+	var target := Vector3(second.x, world.terrain.height_at(second.x, second.y) + 8.0, second.y)
+	var camera := _place_camera(eye, target, 68.0)
 	await _capture_into(slot)
 	camera.queue_free()
 
@@ -93,10 +97,9 @@ func _capture_aerial(slot: int) -> void:
 	# continent is forced resident and the haze is switched off, none of which
 	# is survivable for normal play.
 	world.process_mode = Node.PROCESS_MODE_DISABLED
-	# Late afternoon rather than noon: the long shadows are what make the relief
-	# of a landscape legible from the air.
-	world.day_night.apply(16.4)
-	world.day_night.environment.fog_enabled = false
+	for child in world.get_children():
+		if child is WorldEnvironment and (child as WorldEnvironment).environment:
+			(child as WorldEnvironment).environment.fog_enabled = false
 	world.terrain.prime(Vector3.ZERO, 1500.0)
 	for index in range(world.districts.size()):
 		if not world.landmark_build_queue.has(index):

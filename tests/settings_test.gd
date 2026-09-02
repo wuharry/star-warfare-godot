@@ -10,7 +10,8 @@ const SAMPLE_TRANSLATIONS := {
 	"OPTIONS": "設定",
 	"GRAPHICS QUALITY": "畫質",
 	"LANGUAGE": "語言",
-	"OUTPOST ZERO": "零號前哨",
+	# A recovered level name, read off the level-select artwork.
+	"FRONT LINE": "前線",
 	"WAVE CLEAR": "波次清除",
 }
 

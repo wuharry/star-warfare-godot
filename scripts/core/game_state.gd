@@ -13,8 +13,18 @@ const MULTIPLAYER_LEVELS := [13, 14, 15, 16, 17, 18, 19, 20, 21]
 const CAMPAIGN_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19, 20, 21]
 const LOADOUT_MAX_SLOTS := 8
 
+# Testing switch: every singleplayer sector is selectable regardless of
+# progress, so any map can be jumped into directly. unlocked_level is still
+# tracked and still advances on completion, so flipping this back to false
+# restores the real progression without losing anyone's place.
+const CAMPAIGN_FULLY_UNLOCKED := true
+
 # Tests and portable builds may point an instance at an isolated save without
-# changing the production user:// location.
+# changing the production user:// location. Anything that mutates settings and
+# then lets the game save — the visual captures pin the clock to shoot a
+# reproducible sunset — must redirect here first, or it freezes the real
+# player's sky for good.
+const TEST_SAVE_PATH := "user://star_warfare_test_profile.json"
 var save_path := SAVE_PATH
 
 # Recovered verbatim from Resources/UI/resDataSets.bytes, table 13.  The old
@@ -89,22 +99,6 @@ const QUALITY_PROFILES := {
 }
 const QUALITY_ORDER := ["low", "medium", "high"]
 
-# How many real minutes one full 24-hour cycle takes. "standard" puts an
-# in-game hour at 90 real seconds, so a five-minute sector moves the sky about
-# three hours: long enough to walk out of a mission into a different sky.
-# "frozen" pins the world to `frozen_hour` for anyone who wants a fixed look.
-const DAY_LENGTH_PROFILES := {
-	"brisk": 30.0,
-	"standard": 36.0,
-	"slow": 45.0,
-	"frozen": 0.0,
-}
-const DAY_LENGTH_ORDER := ["brisk", "standard", "slow", "frozen"]
-const FROZEN_HOUR_PRESETS := [6.2, 12.5, 17.6, 22.0]
-
-# Only rewrite the save this often while the clock runs. Losing a few seconds
-# of sky drift to a crash is invisible; a disk write every frame is not.
-const WORLD_TIME_FLUSH_INTERVAL := 30.0
 
 # Three combat tiers. "recruit" is the original beeline AI kept untouched so the
 # old balance stays playable; "veteran" and "elite" switch enemies over to the
@@ -165,12 +159,6 @@ var credits := 0
 var mithril := 0
 var best_scores: Dictionary = {}
 
-# The campaign shares one continuous clock. It only advances while a sector is
-# live, and it travels in the save file, so every mission starts where the last
-# one left off. A fresh save opens at 16:48, an hour out from the first sunset.
-var world_time := 16.8
-var _world_time_flush := 0.0
-
 var settings := {
 	"music": 0.72,
 	"sfx": 0.85,
@@ -180,8 +168,7 @@ var settings := {
 	"quality": "high",
 	"difficulty": "veteran",
 	"language": "",
-	"day_length": "standard",
-	"frozen_hour": 17.6
+	"nickname": "PLAYER"
 }
 
 func _ready() -> void:
@@ -419,7 +406,7 @@ func start_level(level_number: int, game_mode: String = "") -> void:
 	var available_levels := get_levels_for_mode(selected_game_mode)
 	if not available_levels.has(level_number):
 		return
-	if selected_game_mode == "singleplayer" and level_number > unlocked_level:
+	if not is_level_unlocked(level_number, selected_game_mode):
 		return
 	selected_level = level_number
 	_save()
@@ -440,6 +427,13 @@ func complete_expanse_run(run_score: int, earned_credits: int) -> void:
 	best_scores["expanse"] = max(run_score, int(best_scores.get("expanse", 0)))
 	store_changed.emit()
 	_save()
+
+func is_level_unlocked(level_number: int, game_mode: String = "") -> bool:
+	# Multiplayer maps were never gated; only the campaign runs on progress.
+	var mode := game_mode if not game_mode.is_empty() else selected_game_mode
+	if mode != "singleplayer":
+		return true
+	return CAMPAIGN_FULLY_UNLOCKED or level_number <= unlocked_level
 
 func get_levels_for_mode(game_mode: String) -> Array:
 	return MULTIPLAYER_LEVELS if game_mode == "multiplayer" else SINGLEPLAYER_LEVELS
@@ -694,7 +688,8 @@ func complete_level(level_number: int, score: int, earned_credits: int) -> void:
 
 func get_level_data(level_number: int) -> Dictionary:
 	var index: int = maxi(0, CAMPAIGN_LEVELS.find(level_number))
-	var boss_level := level_number in [8, 13, 16, 19, 21]
+	var is_pvp := level_number in MULTIPLAYER_LEVELS
+	var boss_level := level_number == 8
 	var palettes := [
 		[Color("17283c"), Color("42647b"), Color("8ed1e8")],
 		[Color("33231d"), Color("89543b"), Color("e4a96b")],
@@ -703,18 +698,30 @@ func get_level_data(level_number: int) -> Dictionary:
 		[Color("152b35"), Color("356e7d"), Color("72d6d1")]
 	]
 	var names := {
-		1: "OUTPOST ZERO", 2: "DUST LINE", 3: "INFESTED DEPOT", 4: "FROZEN ARRAY",
-		5: "ACID TRENCH", 6: "BROKEN CAUSEWAY", 7: "ALIEN HIVE", 8: "MANTIS NEST",
-		13: "IRON WASTELAND", 14: "CRIMSON DOCK", 15: "FALLEN CITY", 16: "EARTHWORM PIT",
-		17: "SKY FORT", 18: "BLACK ICE", 19: "DRAGON RUINS", 20: "SATAN WORKSHOP", 21: "FINAL BREACH"
+		# The original names, read off the level-select thumbnails. They are not in
+		# any data table or string file -- the artwork is the only place they
+		# survive, baked into each icon's name plate. The solo set is corroborated
+		# by the difficulty stars printed beside it, which run 1 to 8 in exactly
+		# this order.
+		1: "FRONT LINE", 2: "ENERGY CORE", 3: "SPACE STATION", 4: "LAIR",
+		5: "TRAINING BASE", 6: "FIRE IN THE HOLE", 7: "STADIUM ARCADIUM", 8: "CRAZY CARNIVAL",
+		13: "ANCIENT VISION", 14: "REACTOR", 15: "AIR CRASH", 16: "GARAGE",
+		17: "KILL HOUSE", 18: "Y8 FACTORY", 19: "MICROWAVE", 20: "GOLDEN FALL", 21: "BUNKER PARTY"
 	}
 	return {
 		"number": level_number,
 		"name": names.get(level_number, "UNKNOWN SECTOR"),
-		"waves": 3 + int(index / 3) + (1 if boss_level else 0),
-		"base_enemies": 4 + index,
+		"mode": "pvp" if is_pvp else "pve",
+		"pvp": is_pvp,
+		# Maps 13-21 are the original competitive arenas. Keep their recovered
+		# geometry available in this offline build, but never reinterpret them as
+		# alien-wave missions while networking is still being restored.
+		"waves": 0 if is_pvp else 3 + int(index / 3) + (1 if boss_level else 0),
+		"base_enemies": 0 if is_pvp else 4 + index,
 		"enemy_health": 52.0 + index * 9.0,
-		"boss": boss_level,
+		"boss": false if is_pvp else boss_level,
+		"score_limit": 20 if is_pvp else 0,
+		"time_limit": 600.0 if is_pvp else 0.0,
 		"palette": palettes[index % palettes.size()],
 		"arena_size": 29.0 + min(index * 0.55, 8.0)
 	}
@@ -741,30 +748,6 @@ func get_difficulty_profile() -> Dictionary:
 func get_quality_profile() -> Dictionary:
 	var key := str(settings.get("quality", "high"))
 	return QUALITY_PROFILES.get(key, QUALITY_PROFILES["high"])
-
-func get_day_length_minutes() -> float:
-	var key := str(settings.get("day_length", "standard"))
-	return float(DAY_LENGTH_PROFILES.get(key, DAY_LENGTH_PROFILES["standard"]))
-
-func is_day_cycle_frozen() -> bool:
-	return get_day_length_minutes() <= 0.0
-
-func get_world_hour() -> float:
-	if is_day_cycle_frozen():
-		return fposmod(float(settings.get("frozen_hour", 17.6)), 24.0)
-	return world_time
-
-func advance_world_time(delta: float) -> void:
-	if delta <= 0.0 or is_day_cycle_frozen():
-		return
-	world_time = fposmod(world_time + delta * 24.0 / (get_day_length_minutes() * 60.0), 24.0)
-	_world_time_flush += delta
-	if _world_time_flush >= WORLD_TIME_FLUSH_INTERVAL:
-		flush_world_time()
-
-func flush_world_time() -> void:
-	_world_time_flush = 0.0
-	_save()
 
 func apply_viewport_quality() -> void:
 	# Render scale and MSAA live on the root window viewport, which survives
@@ -807,7 +790,6 @@ func _load_save() -> void:
 	if selected_game_mode not in ["singleplayer", "multiplayer"]:
 		selected_game_mode = "singleplayer"
 	unlocked_level = clampi(int(parsed.get("unlocked_level", unlocked_level)), 1, SINGLEPLAYER_LEVELS[-1])
-	world_time = fposmod(float(parsed.get("world_time", world_time)), 24.0)
 	credits = maxi(0, int(parsed.get("credits", credits)))
 	mithril = maxi(0, int(parsed.get("mithril", mithril)))
 	var stored_best_scores: Variant = parsed.get("best_scores", {})
@@ -925,7 +907,6 @@ func _save() -> void:
 		"owned_armor": owned_armor,
 		"equipped_armor": equipped_armor,
 		"best_scores": best_scores,
-		"world_time": world_time,
 		"settings": settings
 	}
 	file.store_string(JSON.stringify(data, "\t"))

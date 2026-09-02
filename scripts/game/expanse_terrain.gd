@@ -417,11 +417,15 @@ func _ground_colour(height: float, normal: Vector3) -> Color:
 	var basin := Color(0.44, 0.42, 0.33)
 	var dust := Color(0.62, 0.52, 0.36)
 	var rock := Color(0.36, 0.33, 0.30)
-	var peak := Color(0.70, 0.71, 0.74)
+	var peak := Color(0.58, 0.57, 0.55)
 
 	# The thresholds follow the amplitudes above: pale stone is meant to mark the
 	# genuine ridges, not every rise in a landscape that now swings 40 units.
 	var ground := basin.lerp(dust, clampf((height + 30.0) / 70.0, 0.0, 1.0))
-	ground = ground.lerp(peak, clampf((height - 88.0) / 70.0, 0.0, 1.0))
+	ground = ground.lerp(peak, clampf((height - 105.0) / 60.0, 0.0, 1.0))
 	var slope := clampf((1.0 - normal.y) * 3.4, 0.0, 1.0)
-	return ground.lerp(rock, slope)
+	# Vertex colours reach the shader as linear values, but the palette above is
+	# authored the way it looks on screen. Without the conversion every one of
+	# these lands roughly a third brighter and washed out -- 0.62 sand renders
+	# as 0.81 bone.
+	return ground.lerp(rock, slope).srgb_to_linear()

@@ -21,6 +21,7 @@ func _check(condition: bool, message: String) -> void:
 		push_error("EXPANSE TEST: " + message)
 
 func _run() -> void:
+	GameState.save_path = GameState.TEST_SAVE_PATH
 	restore_credits = GameState.credits
 	restore_best = GameState.best_scores.duplicate(true)
 
@@ -191,7 +192,10 @@ func _test_world() -> void:
 
 	_check(world.terrain != null, "the expedition built no terrain")
 	_check(world.districts.size() == 17, "expected 17 districts, built %d" % world.districts.size())
-	_check(world.day_night != null, "the expedition has no day/night cycle")
+	var sun := world.get_node_or_null("KeyLight") as DirectionalLight3D
+	_check(sun != null, "the expedition has no key light")
+	if sun != null:
+		_check(sun.light_energy > 1.0, "the expedition key light is not lighting anything")
 	_check(is_instance_valid(world.player), "the expedition spawned no player")
 	if world.terrain == null or not is_instance_valid(world.player):
 		world.queue_free()

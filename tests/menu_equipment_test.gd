@@ -19,6 +19,27 @@ func _run() -> void:
 	await get_tree().process_frame
 	_check(menu.design_root.size.is_equal_approx(Vector2(960, 640)), "menu does not retain Unity's 960x640 design canvas")
 	_check(menu.design_root.position.x >= 0.0 and menu.design_root.position.y >= 0.0, "centered design canvas escaped the viewport")
+	_check(menu.main_page.get_node_or_null("ExpanseButton") == null, "removed Expanse entry returned to the main menu")
+	var recovered_backdrop := menu.get_node_or_null("RecoveredMainBackdrop") as TextureRect
+	_check(recovered_backdrop != null and recovered_backdrop.texture != null, "menu margins do not use the recovered Unity backdrop")
+	_check(menu.main_page.find_children("*", "ColorRect", true, false).is_empty(), "main menu reintroduced generated colour overlays or divider lines")
+	_check(menu.main_page.find_children("*", "Panel", true, false).is_empty(), "main menu reintroduced generated background panels")
+	_check(menu.drawer.find_children("*", "Panel", true, false).is_empty(), "navigation drawer reintroduced generated background panels")
+	var deployment_strip := menu.main_page.get_node_or_null("DeploymentStrip") as Control
+	var solo_button := menu.main_page.get_node_or_null("DeploymentStrip/SoloButton") as TextureButton
+	var online_button := menu.main_page.get_node_or_null("DeploymentStrip/MultiplayerButton") as TextureButton
+	_check(deployment_strip != null and is_zero_approx(deployment_strip.position.x) and deployment_strip.position.y >= 490.0 and deployment_strip.position.y <= 640.0, "original bottom menu strip is not animating into Unity's y=490 position")
+	_check(solo_button != null and solo_button.position.is_equal_approx(Vector2(90, 35)) and solo_button.size.is_equal_approx(Vector2(348, 87)), "SINGLE button does not use the original Unity placement")
+	_check(online_button != null and online_button.position.is_equal_approx(Vector2(521, 35)) and online_button.size.is_equal_approx(Vector2(348, 87)), "ONLINE button does not use the original Unity placement")
+	_check(menu.drawer.position.is_equal_approx(Vector2(0, -257)), "collapsed navigation drawer does not match the original top-right rank tab")
+	menu._toggle_drawer(true, false)
+	_check(menu.drawer.position.is_equal_approx(Vector2.ZERO), "expanded navigation drawer does not align to the top edge")
+	_check(menu.drawer.get_node_or_null("OptionsButton") is TextureButton, "original OPTIONS entry is missing")
+	_check(menu.drawer.get_node_or_null("BankButton") is TextureButton, "original BANK entry is missing")
+	_check(menu.drawer.get_node_or_null("CustomizeButton") is TextureButton, "original CUSTOMIZE entry is missing")
+	_check(menu.drawer.get_node_or_null("StoreButton") is TextureButton, "original STORE entry is missing")
+	_check(menu.drawer.get_node_or_null("EditNameButton") is TextureButton, "original EDIT NAME entry is missing")
+	menu._toggle_drawer(false, false)
 	menu._show_armory("store")
 	await get_tree().process_frame
 	var shell: UnityEquipmentShell = menu.equipment_shell
@@ -32,6 +53,24 @@ func _run() -> void:
 			await get_tree().process_frame
 			var expected_count := GameState.get_weapon_ids().size() if category_key == "gun" else GameState.get_armor_ids(category_key).size()
 			_check(shell.item_row.get_child_count() == expected_count, "%s carousel count differs from GameState" % category_key)
+		var horizontal_bar := shell.item_scroll.get_h_scroll_bar()
+		_check(not horizontal_bar.visible or is_zero_approx(horizontal_bar.self_modulate.a), "equipment carousel exposes a desktop scrollbar")
+		shell._select_category("gun", false)
+		var weapon_ids := GameState.get_weapon_ids()
+		var swipe_start := shell.selected_item_key
+		var swipe_start_index := weapon_ids.find(swipe_start)
+		shell.item_swipe_distance = -shell.SWIPE_THRESHOLD - 1.0
+		shell._commit_item_swipe()
+		_check(shell.selected_item_key == weapon_ids[posmod(swipe_start_index + 1, weapon_ids.size())], "left swipe does not select the next equipment item")
+		shell.item_swipe_distance = shell.SWIPE_THRESHOLD + 1.0
+		shell._commit_item_swipe()
+		_check(shell.selected_item_key == swipe_start, "right swipe does not select the previous equipment item")
+		shell.category_swipe_distance = -shell.SWIPE_THRESHOLD - 1.0
+		shell._commit_category_swipe()
+		_check(shell.selected_category == "head", "category carousel does not loop forward from gun to head")
+		shell.category_swipe_distance = shell.SWIPE_THRESHOLD + 1.0
+		shell._commit_category_swipe()
+		_check(shell.selected_category == "gun", "category carousel does not loop backward from head to gun")
 		_check(shell.slot_picker.item_count >= 1, "Gun customize screen has no bag-slot picker")
 		for material_case: Dictionary in [
 			{"key": "gun22", "effects": [1, 2], "solid": 0, "blend": BaseMaterial3D.BLEND_MODE_MIX},
@@ -205,6 +244,9 @@ func _run() -> void:
 
 
 func _first_preview_mesh(root: Node) -> MeshInstance3D:
+	var selected_weapon := root.find_child("SelectedWeapon", true, false) as MeshInstance3D
+	if selected_weapon != null and selected_weapon.visible:
+		return selected_weapon
 	for child in root.find_children("*", "MeshInstance3D", true, false):
 		if child is MeshInstance3D and (child as MeshInstance3D).visible:
 			return child as MeshInstance3D

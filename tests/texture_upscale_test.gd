@@ -11,6 +11,11 @@ const EXCLUDED_TEXTURE_PREFIXES := [
 	"res://assets/models/player/animated/armor_textures/",
 	"res://assets/models/player/animated/bags/",
 ]
+# Pages 11, 13 and 14 moved from 512x512 to 2048x2048 when they were
+# re-extracted: Resources/ui/{11,13,14}.mat point at Texture2D/0/*.png, but the
+# 256x256 same-named files from Texture2D/ had been picked up instead. The PvP
+# level thumbnails live on page 14, and at the wrong size their rectangles fell
+# off the end of the image.
 const EXPECTED_DIMENSIONS := {
 	"64x64": 3,
 	"128x64": 2,
@@ -19,13 +24,13 @@ const EXPECTED_DIMENSIONS := {
 	"256x128": 4,
 	"256x256": 20,
 	"512x256": 2,
-	"512x512": 83,
+	"512x512": 80,
 	"1024x256": 1,
 	"1024x512": 4,
 	"1024x1024": 130,
 	"2048x128": 1,
 	"2048x1024": 3,
-	"2048x2048": 60,
+	"2048x2048": 63,
 	"4096x2048": 1,
 }
 const IMPORT_CHECKS := {

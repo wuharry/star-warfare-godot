@@ -11,8 +11,6 @@ func _ready() -> void:
 	GameState.selected_weapon = "gun00"
 	GameState.settings.show_touch_controls = false
 	GameState.settings.quality = "high"
-	GameState.settings.day_length = "frozen"
-	GameState.settings.frozen_hour = 12.5
 
 	var viewport_size := Vector2i(get_viewport().get_visible_rect().size)
 	var tile_size := Vector2i(viewport_size.x / 2, viewport_size.y / 2)

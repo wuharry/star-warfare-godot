@@ -199,6 +199,84 @@ func _environment_fill_radius() -> float:
 	# a 1500-unit omni light, so the bounce is sized to the fight instead.
 	return 120.0
 
+func _build_environment() -> void:
+	# The recovered sectors are lit by the flat ambient their Unity scenes
+	# shipped with, and the campaign builder reproduces that. None of it suits
+	# open country: its fog density is tuned to hide an arena wall 30 units away
+	# and would close the horizon in at 300, and a sector with no skybox is
+	# fine indoors and wrong under an open sky. So the expedition carries its
+	# own fixed environment -- still fixed, just built for a landscape.
+	var quality: Dictionary = GameState.get_quality_profile()
+	var world_environment := WorldEnvironment.new()
+	var environment := Environment.new()
+	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	# Warm, because out here the bounce comes off sand rather than off a blue
+	# sky: a neutral ambient greys the whole continent out.
+	environment.ambient_light_color = Color(0.62, 0.57, 0.48)
+	environment.ambient_light_energy = 0.5
+	environment.reflected_light_source = Environment.REFLECTION_SOURCE_BG
+	environment.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	environment.glow_enabled = bool(quality.get("glow", true))
+	environment.glow_intensity = 0.85
+
+	if bool(quality.get("sky", true)):
+		var sky_material := ProceduralSkyMaterial.new()
+		sky_material.sky_top_color = Color(0.20, 0.38, 0.66)
+		sky_material.sky_horizon_color = Color(0.78, 0.74, 0.64)
+		sky_material.ground_horizon_color = Color(0.30, 0.26, 0.21)
+		sky_material.ground_bottom_color = Color(0.18, 0.15, 0.12)
+		sky_material.sky_curve = 0.18
+		sky_material.sun_angle_max = 8.0
+		sky_material.sun_curve = 0.09
+		sky_material.use_debanding = true
+		var sky := Sky.new()
+		sky.sky_material = sky_material
+		sky.radiance_size = Sky.RADIANCE_SIZE_128
+		sky.process_mode = Sky.PROCESS_MODE_INCREMENTAL
+		environment.sky = sky
+		environment.background_mode = Environment.BG_SKY
+	else:
+		environment.background_mode = Environment.BG_COLOR
+		environment.background_color = Color(0.62, 0.60, 0.54)
+
+	# Aerial perspective only: enough to settle the far ridges back and to cover
+	# the streaming boundary, never enough to shorten the map.
+	environment.fog_enabled = bool(quality.get("fog", true))
+	# 0.0022 put roughly half the fog colour over anything 300 units out, which
+	# flattened the dunes into pale grey long before they were far away. This
+	# keeps the far ridges settled back without bleaching the mid ground.
+	environment.fog_light_color = Color(0.72, 0.67, 0.58)
+	environment.fog_light_energy = 0.7
+	environment.fog_density = 0.0013
+	environment.fog_sky_affect = 0.3
+	environment.fog_aerial_perspective = 0.25
+	world_environment.environment = environment
+	add_child(world_environment)
+
+	var sun := DirectionalLight3D.new()
+	sun.name = "KeyLight"
+	sun.rotation_degrees = Vector3(-42.0, -38.0, 0.0)
+	sun.light_color = Color(1.0, 0.94, 0.84)
+	# 1.55 blew the sand out to flat white under the filmic curve; the dunes
+	# only keep their shape at roughly the campaign's key intensity.
+	sun.light_energy = 1.18
+	sun.shadow_enabled = bool(quality.get("shadows", true))
+	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
+	sun.directional_shadow_max_distance = 90.0
+	add_child(sun)
+
+	var fill := OmniLight3D.new()
+	fill.name = "FillLight"
+	fill.position = Vector3(0.0, 7.0, 0.0)
+	fill.light_color = Color(0.58, 0.60, 0.66)
+	fill.light_energy = 5.0
+	fill.omni_range = _environment_fill_radius()
+	add_child(fill)
+
+	effects_root = Node3D.new()
+	effects_root.name = "Effects"
+	add_child(effects_root)
+
 func _build_boundary() -> void:
 	# The border ridges are already too steep to climb; these are the backstop
 	# that keeps a stray dash or a knockback from leaving the map.

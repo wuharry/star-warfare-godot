@@ -32,8 +32,6 @@ var skill_button: Button
 var boss_icon: TextureRect
 var move_joystick: WarfareVirtualJoystick
 var shoot_joystick: WarfareVirtualJoystick
-var clock_label: Label
-var clock_refresh := 0.0
 var power_controller: ArmorPowerController
 var power_panel: PanelContainer
 var power_grid: GridContainer
@@ -89,10 +87,6 @@ func _process(delta: float) -> void:
 	_update_armor_power_hud()
 	if not is_instance_valid(world):
 		return
-	clock_refresh -= delta
-	if is_instance_valid(clock_label) and clock_refresh <= 0.0:
-		clock_refresh = 0.25
-		_update_clock()
 	reticle_target_refresh -= delta
 	if is_instance_valid(crosshair) and reticle_target_refresh <= 0.0:
 		reticle_target_refresh = 0.09
@@ -165,15 +159,6 @@ func _build_status_hud() -> void:
 	boss_icon.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	boss_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	boss_panel.add_child(boss_icon)
-
-	# Sector clock. The campaign shares one continuous world time, so this is
-	# the only place a player can see which way the light is about to go.
-	clock_label = _label("", 13, Color(0.62, 0.86, 0.95))
-	clock_label.name = "SectorClock"
-	clock_label.add_theme_constant_override("outline_size", 2)
-	clock_label.add_theme_color_override("font_outline_color", Color.BLACK)
-	hud_root.add_child(clock_label)
-	_update_clock()
 
 	announcement = _label("", 22, Color(1.0, 0.78, 0.22))
 	announcement.name = "Announcement"
@@ -389,7 +374,6 @@ func _layout_original_hud() -> void:
 	_place_original(skill_button, Vector2(1.0, 0.5), Vector2(-50, 50), Vector2(102, 98), ui_scale)
 	_place_original(boss_panel, Vector2(0.5, 0.0), Vector2(0, 20), Vector2(510, 32), ui_scale)
 	_place_original(announcement, Vector2(0.5, 0.0), Vector2(0, 72), Vector2(600, 40), ui_scale)
-	_place_original(clock_label, Vector2(0.0, 1.0), Vector2(98, -24), Vector2(180, 22), ui_scale)
 	if is_instance_valid(power_panel) and power_panel.visible:
 		var power_count := power_buttons.size()
 		var power_columns := maxi(1, mini(5, power_count))
@@ -417,7 +401,6 @@ func _layout_original_hud() -> void:
 	health_text.add_theme_font_size_override("font_size", maxi(10, roundi(13.0 * ui_scale)))
 	ammo_text.add_theme_font_size_override("font_size", maxi(10, roundi(13.0 * ui_scale)))
 	announcement.add_theme_font_size_override("font_size", maxi(14, roundi(22.0 * ui_scale)))
-	clock_label.add_theme_font_size_override("font_size", maxi(10, roundi(13.0 * ui_scale)))
 
 	if is_instance_valid(boss_icon):
 		var boss_icon_size := Vector2(53, 19) * ui_scale
@@ -467,7 +450,7 @@ func _build_pause_overlay() -> void:
 	var resume := _modal_button(tr("RESUME"))
 	resume.pressed.connect(toggle_pause)
 	box.add_child(resume)
-	var restart := _modal_button(tr("RESTART SECTOR"))
+	var restart := _modal_button(tr("RESTART ARENA") if bool(level_data.get("pvp", false)) else tr("RESTART SECTOR"))
 	restart.pressed.connect(_restart)
 	box.add_child(restart)
 	var options := _modal_button(tr("TOGGLE TOUCH CONTROLS"))
@@ -498,16 +481,20 @@ func show_result(victory: bool, stats: Dictionary) -> void:
 	result_overlay = _modal_base()
 	add_child(result_overlay)
 	var box := _modal_panel(result_overlay, Vector2(520, 500))
-	box.add_child(_center_label(tr("SECTOR SECURED") if victory else tr("OPERATIVE LOST"), 32, Color(0.35, 1.0, 0.63) if victory else Color(1.0, 0.24, 0.12)))
-	box.add_child(_center_label(tr("%s / SECTOR %02d") % [tr(str(level_data.name)), int(level_data.number)], 15, Color(0.6, 0.82, 0.9)))
+	var is_pvp := bool(level_data.get("pvp", false))
+	var result_title := tr("ARENA SESSION ENDED") if is_pvp else (tr("SECTOR SECURED") if victory else tr("OPERATIVE LOST"))
+	var location := tr("%s / PVP ARENA %02d") if is_pvp else tr("%s / SECTOR %02d")
+	box.add_child(_center_label(result_title, 32, Color(0.35, 1.0, 0.63) if victory else Color(1.0, 0.24, 0.12)))
+	box.add_child(_center_label(location % [tr(str(level_data.name)), int(level_data.number)], 15, Color(0.6, 0.82, 0.9)))
 	box.add_child(_center_label(tr("SCORE        %07d") % int(stats.score), 21, Color.WHITE))
-	box.add_child(_center_label(tr("HOSTILES     %d") % int(stats.kills), 18, Color.WHITE))
+	if not is_pvp:
+		box.add_child(_center_label(tr("HOSTILES     %d") % int(stats.kills), 18, Color.WHITE))
 	box.add_child(_center_label(tr("CREDITS      +%d") % int(stats.credits), 18, Color(1.0, 0.78, 0.2)))
 	box.add_child(_center_label(tr("TIME         %02d:%02d") % [int(int(stats.time) / 60), int(stats.time) % 60], 18, Color.WHITE))
 	var mode_levels := GameState.get_levels_for_mode(GameState.selected_game_mode)
 	var level_index := mode_levels.find(int(level_data.number))
 	if victory and level_index >= 0 and level_index + 1 < mode_levels.size():
-		var next := _modal_button(tr("NEXT SECTOR"))
+		var next := _modal_button(tr("NEXT ARENA") if is_pvp else tr("NEXT SECTOR"))
 		next.pressed.connect(_next_level)
 		box.add_child(next)
 	var retry := _modal_button(tr("RETRY"))
@@ -563,15 +550,6 @@ func _set_reticle_for_weapon(data: Dictionary) -> void:
 		crosshair.custom_minimum_size = display_size
 		crosshair.size = display_size
 		crosshair.pivot_offset = display_size * 0.5
-
-func _update_clock() -> void:
-	if not is_instance_valid(clock_label):
-		return
-	var hour := GameState.get_world_hour()
-	clock_label.text = "%s  %s" % [
-		WarfareDayNightCycle.format_clock(hour),
-		tr(WarfareDayNightCycle.phase_key(hour))
-	]
 
 func _should_build_mobile_ui() -> bool:
 	return OS.has_feature("mobile") or bool(ProjectSettings.get_setting("debug/restoration/force_mobile_ui", false))

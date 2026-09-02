@@ -46,7 +46,7 @@ func _run() -> void:
 	menu._close_modal()
 	await get_tree().process_frame
 	_check(GameState.SINGLEPLAYER_LEVELS.size() == 8, "single-player campaign must contain sectors 01-08")
-	_check(GameState.MULTIPLAYER_LEVELS.size() == 9, "multiplayer skirmish must contain sectors 13-21")
+	_check(GameState.MULTIPLAYER_LEVELS.size() == 9, "the original PvP set must contain maps 13-21")
 	menu._show_level_select("singleplayer")
 	await get_tree().process_frame
 	var solo_preview_buttons := _buttons_with_icons(menu.modal_layer)
@@ -55,8 +55,11 @@ func _run() -> void:
 	await get_tree().process_frame
 	menu._show_level_select("multiplayer")
 	await get_tree().process_frame
-	var multiplayer_preview_buttons := _buttons_with_icons(menu.modal_layer)
-	_check(multiplayer_preview_buttons.size() == GameState.MULTIPLAYER_LEVELS.size(), "multiplayer selector does not contain exactly nine local-skirmish cards")
+	# Counted by their sector number rather than by a thumbnail: the original UI
+	# had no icon table for the retired PvP maps (it asked vUI[3] for a frame
+	# that does not exist), so these cards deliberately carry no picture.
+	var multiplayer_preview_buttons := _level_cards(menu.modal_layer, GameState.MULTIPLAYER_LEVELS)
+	_check(multiplayer_preview_buttons.size() == GameState.MULTIPLAYER_LEVELS.size(), "multiplayer selector does not contain exactly nine original PvP arena cards")
 	menu.queue_free()
 	AudioDirector.stop_all_sfx()
 	await get_tree().process_frame
@@ -74,6 +77,19 @@ func _buttons_with_text(node: Node, token: String) -> Array[Button]:
 		result.append_array(_buttons_with_text(child, token))
 	return result
 
+func _level_cards(node: Node, levels: Array) -> Array[Button]:
+	var result: Array[Button] = []
+	if node is Button:
+		var text := (node as Button).text
+		for level_number: int in levels:
+			if text.begins_with("%02d
+" % level_number):
+				result.append(node as Button)
+				break
+	for child in node.get_children():
+		result.append_array(_level_cards(child, levels))
+	return result
+
 func _buttons_with_icons(node: Node) -> Array[Button]:
 	var result: Array[Button] = []
 	if node is Button and (node as Button).icon != null:
@@ -86,7 +102,9 @@ func _store_weapon_buttons(node: Node) -> Array[Button]:
 	var result: Array[Button] = []
 	if node is Button:
 		var button := node as Button
-		if button.icon != null and not button.tooltip_text.is_empty():
+		# Category buttons now use the recovered Unity atlas icons too. Weapon
+		# cards carry their catalog key as metadata, so count those explicitly.
+		if button.icon != null and str(button.get_meta("item_key", "")).begins_with("gun"):
 			result.append(button)
 	for child in node.get_children():
 		result.append_array(_store_weapon_buttons(child))

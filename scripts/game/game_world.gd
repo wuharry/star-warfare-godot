@@ -6,7 +6,6 @@ const EnemyScript = preload("res://scripts/game/enemy.gd")
 const PickupScript = preload("res://scripts/game/pickup.gd")
 const HUDScript = preload("res://scripts/ui/hud.gd")
 const ArmorPowerControllerScript = preload("res://scripts/game/armor_power_controller.gd")
-const DayNightScript = preload("res://scripts/game/day_night_cycle.gd")
 const UnityColliderBuilderScript = preload("res://scripts/core/unity_collider_builder.gd")
 const UnityMaterialRestorerScript = preload("res://scripts/core/unity_material_restorer.gd")
 
@@ -23,10 +22,10 @@ var battle_credits := 0
 var elapsed_time := 0.0
 var spawning := false
 var completed := false
+var pvp_arena := false
 var arena_size := 30.0
 var rng := RandomNumberGenerator.new()
 var effects_root: Node3D
-var day_night: WarfareDayNightCycle
 var music: AudioStreamPlayer
 var stage_metadata: Dictionary = {}
 var player_spawn_points: Array[Vector3] = []
@@ -47,6 +46,7 @@ var difficulty_profile: Dictionary = {}
 
 func _ready() -> void:
 	level_data = GameState.get_level_data(GameState.selected_level)
+	pvp_arena = bool(level_data.get("pvp", false))
 	arena_size = float(level_data.arena_size)
 	difficulty_profile = GameState.get_difficulty_profile()
 	max_attack_tokens = int(difficulty_profile.get("attack_slots", 99))
@@ -70,27 +70,57 @@ func _exit_tree() -> void:
 		music.stream = null
 
 func _build_environment() -> void:
-	# The environment is only a shell now. Every colour, light angle and fog
-	# value on it is owned by the day/night cycle, which drives them from the
-	# shared campaign clock; the sector palette and the recovered Unity render
-	# settings survive as the tint it blends over its timecycle.
+	# Fixed per-sector lighting, recovered from the original Unity scenes.
+	#
+	# None of the 17 scenes ships a directional light or a skybox: every one of
+	# them sets m_Sun to nothing, m_AmbientMode to flat, and lights the level
+	# from m_AmbientSkyColor alone with the rest baked into the textures. So the
+	# ambient here is the real recovered value and genuinely differs per map --
+	# 0.2 grey for the outposts, pure white for sectors 02-04, near-black violet
+	# for the late multiplayer maps -- while the key light is a fixed authored
+	# angle, because the originals had none to recover.
 	var palette: Array = level_data.palette
 	var restored_settings: Dictionary = stage_metadata.get("render_settings", {})
 	var quality: Dictionary = GameState.get_quality_profile()
 	var world_environment := WorldEnvironment.new()
 	var environment := Environment.new()
+	environment.background_mode = Environment.BG_COLOR
+	environment.background_color = Color(palette[0]).darkened(0.34)
 	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	if restored_settings.is_empty():
+		environment.ambient_light_color = Color(palette[2])
+		environment.ambient_light_energy = 0.48
+	else:
+		environment.ambient_light_color = _color_from_json(restored_settings.get("ambient_color", [0.2, 0.2, 0.2, 1.0]))
+		environment.ambient_light_energy = maxf(0.15, float(restored_settings.get("ambient_intensity", 1.0)))
 	environment.reflected_light_source = Environment.REFLECTION_SOURCE_BG
 	environment.tonemap_mode = Environment.TONE_MAPPER_FILMIC
-	environment.fog_sky_affect = 0.35
-	environment.fog_aerial_perspective = 0.25
+	environment.glow_enabled = bool(quality.glow)
+	environment.glow_intensity = 0.85
+	environment.fog_enabled = bool(quality.fog) and bool(restored_settings.get("fog_enabled", true))
+	environment.fog_light_color = _color_from_json(restored_settings.get("fog_color", [Color(palette[1]).r, Color(palette[1]).g, Color(palette[1]).b, 1.0]))
+	environment.fog_light_energy = 0.45
+	environment.fog_density = float(restored_settings.get("fog_density", 0.008))
+	environment.fog_sky_affect = 0.55
 	world_environment.environment = environment
 	add_child(world_environment)
 
-	day_night = DayNightScript.new()
-	day_night.name = "DayNightCycle"
-	add_child(day_night)
-	day_night.configure(environment, palette, restored_settings, quality, _environment_fill_radius())
+	var sun := DirectionalLight3D.new()
+	sun.name = "KeyLight"
+	sun.rotation_degrees = Vector3(-54, -32, 0)
+	sun.light_color = Color(palette[2])
+	sun.light_energy = 1.35
+	sun.shadow_enabled = bool(quality.shadows)
+	sun.directional_shadow_max_distance = 65.0
+	add_child(sun)
+
+	var fill := OmniLight3D.new()
+	fill.name = "FillLight"
+	fill.position = Vector3(0, 7, 0)
+	fill.light_color = Color(palette[1])
+	fill.light_energy = 8.0
+	fill.omni_range = _environment_fill_radius()
+	add_child(fill)
 
 	effects_root = Node3D.new()
 	effects_root.name = "Effects"
@@ -166,13 +196,18 @@ func _start_music() -> void:
 		music.play()
 
 func _begin_level() -> void:
-	hud.announce(tr("SECTOR %02d • %s") % [int(level_data.number), tr(str(level_data.name))], 2.2)
+	var heading := tr("PVP ARENA %02d • %s") if pvp_arena else tr("SECTOR %02d • %s")
+	hud.announce(heading % [int(level_data.number), tr(str(level_data.name))], 2.2)
 	await get_tree().create_timer(2.0).timeout
-	if not completed:
+	if completed:
+		return
+	if pvp_arena:
+		hud.announce(tr("OFFLINE ARENA PREVIEW • ONLINE MATCHMAKING NOT RESTORED"), 3.2)
+	else:
 		_start_next_wave()
 
 func _start_next_wave() -> void:
-	if spawning or completed:
+	if pvp_arena or spawning or completed:
 		return
 	current_wave += 1
 	if current_wave > int(level_data.waves):
@@ -243,7 +278,7 @@ func _on_enemy_health_reported(current: float, maximum: float, is_boss: bool, en
 		hud.report_boss(current, maximum, "ALIEN OVERLORD")
 
 func _check_wave_complete() -> void:
-	if spawning or alive_enemies > 0 or completed:
+	if pvp_arena or spawning or alive_enemies > 0 or completed:
 		return
 	if current_wave >= int(level_data.waves):
 		_victory()
@@ -481,6 +516,11 @@ func _build_restored_arena() -> bool:
 				if collision_shape.shape:
 					physics_body.add_child(collision_shape)
 	return true
+
+func _color_from_json(values: Variant) -> Color:
+	if values is Array and values.size() >= 3:
+		return Color(float(values[0]), float(values[1]), float(values[2]), float(values[3]) if values.size() > 3 else 1.0)
+	return Color.WHITE
 
 func _choose_restored_enemy_spawn(kind: String) -> Vector3:
 	var candidates := boss_spawn_points if kind == "boss" and not boss_spawn_points.is_empty() else enemy_spawn_points

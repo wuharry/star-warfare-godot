@@ -68,6 +68,15 @@ var preview_counter: Label
 var preview_viewport: SubViewport
 var preview_root: Node3D
 var preview_tween: Tween
+var screen_title: Label
+var category_layer: Control
+var item_dots_layer: Control
+var item_swipe_distance := 0.0
+var item_mouse_dragging := false
+var category_swipe_distance := 0.0
+var category_mouse_dragging := false
+
+const SWIPE_THRESHOLD := 34.0
 
 
 func setup(start_mode: String) -> void:
@@ -79,11 +88,11 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	clip_contents = true
 	_build_background()
-	_build_category_strip()
-	_build_left_rail()
 	_build_preview()
 	_build_item_carousel()
 	_build_details()
+	_build_category_strip()
+	_build_left_rail()
 	_build_bottom_bar()
 	if not GameState.store_changed.is_connected(_on_store_changed):
 		GameState.store_changed.connect(_on_store_changed)
@@ -104,121 +113,122 @@ func _exit_tree() -> void:
 func _build_background() -> void:
 	var background := TextureRect.new()
 	background.name = "UnityStoreBackdrop"
-	background.texture = _component("store_backdrop")
+	background.texture = _component("armory_background")
 	background.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	background.stretch_mode = TextureRect.STRETCH_SCALE
 	_set_rect(background, Rect2(Vector2.ZERO, DESIGN_SIZE))
-	background.modulate = Color(0.66, 0.74, 0.77)
 	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(background)
 
-	var wash := ColorRect.new()
-	wash.color = Color(0.0, 0.025, 0.04, 0.58)
-	_set_rect(wash, Rect2(Vector2.ZERO, DESIGN_SIZE))
-	wash.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(wash)
-
-	# Unity authored the screen as two 480px plates. These subtle divisions keep
-	# that recovered silhouette without stretching a single modern card across it.
-	var center_rule := ColorRect.new()
-	center_rule.color = Color(0.18, 0.82, 0.9, 0.18)
-	_set_rect(center_rule, Rect2(700, 16, 2, 532))
-	center_rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(center_rule)
-
 
 func _build_category_strip() -> void:
-	var title := _label(tr("EQUIPMENT CLASS"), 12, Color(0.48, 0.78, 0.84))
-	_set_rect(title, Rect2(112, 10, 584, 18))
-	add_child(title)
-
-	var strip := HBoxContainer.new()
-	strip.name = "CategoryTabs"
-	strip.add_theme_constant_override("separation", 5)
-	_set_rect(strip, Rect2(112, 30, 584, 54))
-	add_child(strip)
+	category_layer = Control.new()
+	category_layer.name = "CategoryTabs"
+	_set_rect(category_layer, Rect2(0, 0, 960, 640))
+	category_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(category_layer)
+	var swipe_area := Control.new()
+	swipe_area.name = "CategorySwipeArea"
+	swipe_area.mouse_filter = Control.MOUSE_FILTER_STOP
+	_set_rect(swipe_area, Rect2(177, 494, 450, 99))
+	swipe_area.gui_input.connect(_on_category_carousel_input)
+	category_layer.add_child(swipe_area)
 	var group := ButtonGroup.new()
 	group.allow_unpress = false
-	for category: Dictionary in CATEGORIES:
+	for category_index in range(CATEGORIES.size()):
+		var category: Dictionary = CATEGORIES[category_index]
 		var key := str(category.key)
 		var button := Button.new()
 		button.name = "%sTab" % key.capitalize()
-		button.text = tr(str(category.label))
+		button.text = ""
 		button.tooltip_text = tr("Browse %s equipment") % tr(str(category.label))
-		button.custom_minimum_size = Vector2(93, 50)
 		button.toggle_mode = true
 		button.button_group = group
-		button.add_theme_font_size_override("font_size", 13)
-		_style_tab(button, false)
+		button.icon = _component("armory_category_%02d" % category_index)
+		button.expand_icon = true
+		button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		button.add_theme_stylebox_override("normal", _empty_style())
+		button.add_theme_stylebox_override("hover", _texture_style("armory_category_frame", Color(0.75, 1.0, 1.0)))
+		button.add_theme_stylebox_override("pressed", _texture_style("armory_category_frame", Color.WHITE))
+		button.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+		button.gui_input.connect(_on_category_carousel_input)
 		button.pressed.connect(_select_category.bind(key, true))
 		category_buttons[key] = button
-		strip.add_child(button)
+		category_layer.add_child(button)
+	_layout_category_buttons()
+
+	for category_index in range(CATEGORIES.size()):
+		var dot := TextureRect.new()
+		dot.name = "CategoryDot%02d" % category_index
+		dot.texture = _component("armory_nav_dot")
+		dot.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		dot.stretch_mode = TextureRect.STRETCH_SCALE
+		dot.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_set_rect(dot, Rect2(324 + category_index * 30, 604, 10, 10))
+		category_layer.add_child(dot)
 
 
 func _build_left_rail() -> void:
-	var rail := Panel.new()
+	var rail := Control.new()
 	rail.name = "UtilityRail"
-	rail.add_theme_stylebox_override("panel", _panel_style(Color(0.005, 0.04, 0.055, 0.9), Color(0.08, 0.52, 0.6, 0.72), 2))
-	_set_rect(rail, Rect2(12, 96, 90, 452))
+	_set_rect(rail, Rect2(0, 0, 160, 640))
 	add_child(rail)
 
-	var y := 12.0
-	for mode_key in ["store", "customize"]:
+	var utility_rows := [
+		{"name": "ItemsButton", "label": "ITEMS", "y": 189.0},
+		{"name": "AmmoButton", "label": "AMMO", "y": 289.0},
+		{"name": "GoldButton", "label": "GOLD", "y": 389.0},
+	]
+	for row: Dictionary in utility_rows:
 		var button := Button.new()
-		button.text = tr("STORE" if mode_key == "store" else "CUSTOMIZE")
-		button.add_theme_font_size_override("font_size", 12)
-		_set_rect(button, Rect2(8, y, 74, 62))
-		button.pressed.connect(set_mode.bind(mode_key, true))
-		mode_buttons[mode_key] = button
+		button.name = str(row.name)
+		button.text = tr(str(row.label))
+		button.add_theme_font_size_override("font_size", 14)
+		button.add_theme_color_override("font_color", CYAN)
+		button.add_theme_stylebox_override("normal", _texture_style("armory_side_button", Color.WHITE))
+		button.add_theme_stylebox_override("hover", _texture_style("armory_side_button", Color(0.72, 1.0, 1.0)))
+		button.add_theme_stylebox_override("pressed", _texture_style("armory_side_button", Color(0.52, 0.92, 1.0)))
+		button.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+		_set_rect(button, Rect2(20, float(row.y), 88, 75))
+		match str(row.label):
+			"ITEMS":
+				button.pressed.connect(func(): _select_category("gun", true))
+			"AMMO":
+				button.pressed.connect(_show_ammo_notice)
+			"GOLD":
+				button.pressed.connect(_show_gold_notice)
 		rail.add_child(button)
-		y += 70.0
 
-	var armor_quick := Button.new()
-	armor_quick.text = tr("ARMOR")
-	armor_quick.tooltip_text = tr("Jump to equipped armor")
-	armor_quick.add_theme_font_size_override("font_size", 12)
-	_set_rect(armor_quick, Rect2(8, y + 6, 74, 54))
-	armor_quick.pressed.connect(func():
-		set_mode("customize", true)
-		_select_category("head", true)
-	)
-	rail.add_child(armor_quick)
-
-	var loadout_quick := Button.new()
-	loadout_quick.text = tr("LOADOUT")
-	loadout_quick.tooltip_text = tr("Jump to weapon loadout")
-	loadout_quick.add_theme_font_size_override("font_size", 11)
-	_set_rect(loadout_quick, Rect2(8, y + 68, 74, 54))
-	loadout_quick.pressed.connect(func():
-		set_mode("customize", true)
-		_select_category("gun", true)
-	)
-	rail.add_child(loadout_quick)
+	var active_flag := TextureRect.new()
+	active_flag.name = "ItemsActiveFlag"
+	active_flag.texture = _component("armory_side_flag")
+	active_flag.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	active_flag.stretch_mode = TextureRect.STRETCH_SCALE
+	active_flag.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_set_rect(active_flag, Rect2(53, 197, 21, 21))
+	rail.add_child(active_flag)
 
 	loadout_label = _label("", 11, Color(0.58, 0.82, 0.88))
-	loadout_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	loadout_label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
-	loadout_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_set_rect(loadout_label, Rect2(6, 338, 78, 102))
+	loadout_label.visible = false
+	_set_rect(loadout_label, Rect2(0, 0, 1, 1))
 	rail.add_child(loadout_label)
 
 
 func _build_preview() -> void:
-	var preview_panel := Panel.new()
+	var preview_panel := Control.new()
 	preview_panel.name = "EquipmentPreview"
-	preview_panel.add_theme_stylebox_override("panel", _panel_style(Color(0.0, 0.018, 0.027, 0.92), Color(0.04, 0.72, 0.82, 0.78), 3))
-	_set_rect(preview_panel, Rect2(112, 94, 584, 312))
+	_set_rect(preview_panel, Rect2(150, 90, 540, 430))
 	add_child(preview_panel)
 
 	var viewport_container := SubViewportContainer.new()
 	viewport_container.name = "PreviewViewportContainer"
 	viewport_container.stretch = true
-	_set_rect(viewport_container, Rect2(8, 8, 568, 252))
+	_set_rect(viewport_container, Rect2(0, 0, 540, 430))
 	preview_panel.add_child(viewport_container)
 
 	preview_viewport = SubViewport.new()
 	preview_viewport.name = "PreviewViewport"
-	preview_viewport.size = Vector2i(568, 252)
+	preview_viewport.size = Vector2i(540, 430)
 	preview_viewport.transparent_bg = true
 	preview_viewport.own_world_3d = true
 	preview_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
@@ -252,7 +262,7 @@ func _build_preview() -> void:
 	preview_viewport.add_child(fill_light)
 
 	var camera := Camera3D.new()
-	camera.position = Vector3(0, 0.25, 4.4)
+	camera.position = Vector3(0, 0.18, 4.8)
 	camera.current = true
 	preview_viewport.add_child(camera)
 	camera.look_at(Vector3(0, 0.15, 0), Vector3.UP)
@@ -261,157 +271,187 @@ func _build_preview() -> void:
 	preview_root.name = "Turntable"
 	preview_viewport.add_child(preview_root)
 
-	preview_caption = _label("", 20, Color.WHITE)
+	preview_caption = _label("", 16, Color.WHITE)
+	preview_caption.visible = false
 	preview_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	preview_caption.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	preview_caption.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.9))
 	preview_caption.add_theme_constant_override("shadow_offset_x", 2)
 	preview_caption.add_theme_constant_override("shadow_offset_y", 2)
-	_set_rect(preview_caption, Rect2(14, 264, 556, 38))
+	_set_rect(preview_caption, Rect2(30, 382, 480, 34))
 	preview_panel.add_child(preview_caption)
 
 
 func _build_item_carousel() -> void:
-	var carousel_panel := Panel.new()
+	var carousel_panel := Control.new()
 	carousel_panel.name = "EquipmentCarousel"
-	carousel_panel.add_theme_stylebox_override("panel", _panel_style(Color(0.0, 0.025, 0.035, 0.96), Color(0.06, 0.58, 0.66, 0.82), 2))
-	_set_rect(carousel_panel, Rect2(112, 416, 584, 132))
+	# UISliderAvatar uses a 600x135 clip with five 120px cells centred on x=400.
+	_set_rect(carousel_panel, Rect2(100, 273, 600, 154))
 	add_child(carousel_panel)
 
 	item_scroll = ScrollContainer.new()
 	item_scroll.name = "ItemScroll"
-	item_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	item_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
 	item_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	_set_rect(item_scroll, Rect2(8, 7, 568, 106))
+	item_scroll.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
+	item_scroll.gui_input.connect(_on_item_carousel_input)
+	_set_rect(item_scroll, Rect2(0, 0, 600, 135))
 	carousel_panel.add_child(item_scroll)
+	# Unity's UIScroller is gesture-only. Keep Godot's internal scrollbar fully
+	# non-visual while retaining programmatic centring and touch drag support.
+	var horizontal_bar := item_scroll.get_h_scroll_bar()
+	horizontal_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	horizontal_bar.self_modulate = Color(1, 1, 1, 0)
+	horizontal_bar.custom_minimum_size = Vector2.ZERO
 
 	item_row = HBoxContainer.new()
 	item_row.name = "ItemRow"
-	item_row.add_theme_constant_override("separation", 8)
+	item_row.add_theme_constant_override("separation", 10)
 	item_scroll.add_child(item_row)
 
 	preview_counter = _label("", 11, Color(0.48, 0.8, 0.86))
+	preview_counter.visible = false
 	preview_counter.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_set_rect(preview_counter, Rect2(8, 113, 568, 17))
+	_set_rect(preview_counter, Rect2(0, 136, 600, 18))
 	carousel_panel.add_child(preview_counter)
+
+	item_dots_layer = Control.new()
+	item_dots_layer.name = "ItemPositionDots"
+	item_dots_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_set_rect(item_dots_layer, Rect2(177, 86, 450, 18))
+	add_child(item_dots_layer)
 
 
 func _build_details() -> void:
-	var detail_panel := Panel.new()
+	var detail_panel := Control.new()
 	detail_panel.name = "EquipmentDetails"
-	detail_panel.add_theme_stylebox_override("panel", _panel_style(Color(0.008, 0.035, 0.046, 0.97), Color(0.08, 0.72, 0.68, 0.9), 3))
-	_set_rect(detail_panel, Rect2(704, 16, 244, 532))
+	_set_rect(detail_panel, Rect2(704, 240, 232, 374))
 	add_child(detail_panel)
+	var detail_art := TextureRect.new()
+	detail_art.name = "RecoveredDetailFrame"
+	detail_art.texture = _component("armory_detail_panel")
+	detail_art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	detail_art.stretch_mode = TextureRect.STRETCH_SCALE
+	detail_art.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_set_rect(detail_art, Rect2(0, 0, 232, 374))
+	detail_panel.add_child(detail_art)
 
-	name_label = _label("", 22, TEAL)
+	name_label = _label("", 18, TEAL)
 	name_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	_set_rect(name_label, Rect2(12, 10, 220, 31))
+	_set_rect(name_label, Rect2(12, 8, 208, 26))
 	detail_panel.add_child(name_label)
-	state_label = _label("", 13, Color.WHITE)
-	_set_rect(state_label, Rect2(12, 42, 220, 23))
+	state_label = _label("", 12, Color.WHITE)
+	_set_rect(state_label, Rect2(12, 34, 208, 20))
 	detail_panel.add_child(state_label)
-	meta_label = _label("", 11, Color(0.58, 0.78, 0.84))
+	meta_label = _label("", 10, Color(0.58, 0.78, 0.84))
 	meta_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	_set_rect(meta_label, Rect2(12, 66, 220, 20))
+	_set_rect(meta_label, Rect2(12, 54, 208, 18))
 	detail_panel.add_child(meta_label)
-
-	var rule := ColorRect.new()
-	rule.color = Color(0.18, 0.82, 0.9, 0.28)
-	_set_rect(rule, Rect2(12, 90, 220, 1))
-	detail_panel.add_child(rule)
 
 	stats_text = RichTextLabel.new()
 	stats_text.bbcode_enabled = true
 	stats_text.fit_content = false
 	stats_text.scroll_active = false
-	stats_text.add_theme_font_size_override("normal_font_size", 13)
-	_set_rect(stats_text, Rect2(12, 100, 220, 166))
+	stats_text.add_theme_font_size_override("normal_font_size", 12)
+	_set_rect(stats_text, Rect2(12, 58, 208, 108))
 	detail_panel.add_child(stats_text)
 
 	description_text = RichTextLabel.new()
 	description_text.bbcode_enabled = true
 	description_text.fit_content = false
 	description_text.scroll_active = true
-	description_text.add_theme_font_size_override("normal_font_size", 12)
+	description_text.add_theme_font_size_override("normal_font_size", 11)
 	description_text.add_theme_color_override("default_color", DESCRIPTION)
-	_set_rect(description_text, Rect2(12, 272, 220, 112))
+	_set_rect(description_text, Rect2(12, 146, 208, 102))
 	detail_panel.add_child(description_text)
 
-	price_label = _label("", 15, GOLD_COLOR)
+	price_label = _label("", 13, GOLD_COLOR)
 	price_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	price_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_set_rect(price_label, Rect2(12, 389, 220, 26))
+	_set_rect(price_label, Rect2(12, 254, 208, 23))
 	detail_panel.add_child(price_label)
 
 	slot_picker = OptionButton.new()
 	slot_picker.name = "LoadoutSlotPicker"
-	slot_picker.add_theme_font_size_override("font_size", 12)
+	slot_picker.add_theme_font_size_override("font_size", 10)
 	slot_picker.item_selected.connect(func(index: int):
 		selected_slot = index
 		_refresh_details()
 	)
-	_set_rect(slot_picker, Rect2(12, 419, 220, 34))
+	_set_rect(slot_picker, Rect2(12, 278, 208, 30))
 	detail_panel.add_child(slot_picker)
 
 	action_button = Button.new()
 	action_button.name = "PrimaryAction"
-	action_button.add_theme_font_size_override("font_size", 18)
+	action_button.add_theme_font_size_override("font_size", 16)
 	action_button.add_theme_stylebox_override("normal", _recovered_button_style("button_equip", Color(0.72, 1.0, 0.94)))
 	action_button.add_theme_stylebox_override("hover", _recovered_button_style("button_hover", Color.WHITE))
 	action_button.add_theme_stylebox_override("pressed", _recovered_button_style("button_pressed", Color(0.78, 1.0, 1.0)))
 	action_button.pressed.connect(_perform_primary_action)
-	_set_rect(action_button, Rect2(12, 459, 220, 46))
+	_set_rect(action_button, Rect2(26, 312, 180, 44))
 	detail_panel.add_child(action_button)
 
 	notice_label = _label("", 10, Color(1.0, 0.55, 0.2))
 	notice_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	notice_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	_set_rect(notice_label, Rect2(12, 508, 220, 18))
+	_set_rect(notice_label, Rect2(8, 355, 216, 17))
 	detail_panel.add_child(notice_label)
 
 
 func _build_bottom_bar() -> void:
-	var bar := Panel.new()
-	bar.name = "BottomStatusBar"
-	bar.add_theme_stylebox_override("panel", _panel_style(Color(0.012, 0.045, 0.06, 0.985), Color(0.1, 0.66, 0.76, 0.9), 1))
-	_set_rect(bar, Rect2(0, 560, 960, 80))
+	var bar := Control.new()
+	bar.name = "OriginalNavigationBar"
+	_set_rect(bar, Rect2(0, 0, 960, 80))
 	add_child(bar)
+	var bar_art := TextureRect.new()
+	bar_art.texture = _component("armory_nav_bar")
+	bar_art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	bar_art.stretch_mode = TextureRect.STRETCH_SCALE
+	bar_art.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_set_rect(bar_art, Rect2(0, 0, 960, 80))
+	bar.add_child(bar_art)
 
-	var back := Button.new()
+	var back := TextureButton.new()
 	back.name = "BackButton"
-	back.text = tr("◀  BACK")
-	back.add_theme_font_size_override("font_size", 17)
-	back.add_theme_stylebox_override("normal", _recovered_button_style("button_normal", Color(0.75, 0.96, 1.0)))
-	back.add_theme_stylebox_override("hover", _recovered_button_style("button_hover", Color.WHITE))
+	back.texture_normal = _component("armory_back_normal")
+	back.texture_hover = _component("armory_back_normal")
+	back.texture_pressed = _component("armory_back_pressed")
+	back.ignore_texture_size = true
+	back.stretch_mode = TextureButton.STRETCH_SCALE
 	back.pressed.connect(func():
 		AudioDirector.play_ui("back")
 		closed.emit()
 	)
-	_set_rect(back, Rect2(0, 1, 126, 78))
+	_set_rect(back, Rect2(0, 1, 125, 78))
 	bar.add_child(back)
 
-	for mode_key in ["store", "customize"]:
-		var button := Button.new()
-		button.text = tr("STORE" if mode_key == "store" else "CUSTOMIZE")
-		button.add_theme_font_size_override("font_size", 15)
-		button.pressed.connect(set_mode.bind(mode_key, true))
-		_set_rect(button, Rect2(140 if mode_key == "store" else 282, 14, 132, 52))
-		bar.add_child(button)
-		# Bottom and side switches intentionally share state styling.
-		button.set_meta("mode_mirror", true)
-		mode_buttons["bottom_" + mode_key] = button
+	screen_title = _label("", 25, CYAN)
+	screen_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	screen_title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_set_rect(screen_title, Rect2(138, 1, 559, 78))
+	bar.add_child(screen_title)
 
-	var title := _label(tr("ARMORY"), 23, CYAN)
-	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_set_rect(title, Rect2(422, 8, 250, 64))
-	bar.add_child(title)
-
-	currency_label = _label("", 13, Color(0.95, 0.8, 0.3))
-	currency_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	currency_label = _label("", 11, Color(0.72, 1.0, 1.0))
+	currency_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	currency_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_set_rect(currency_label, Rect2(682, 7, 264, 66))
+	_set_rect(currency_label, Rect2(731, 5, 145, 69))
 	bar.add_child(currency_label)
+
+	var rank_badge := TextureRect.new()
+	rank_badge.name = "RankBadge"
+	rank_badge.texture = _component("main_nav_toggle")
+	rank_badge.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	rank_badge.stretch_mode = TextureRect.STRETCH_SCALE
+	rank_badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_set_rect(rank_badge, Rect2(882, 0, 78, 72))
+	bar.add_child(rank_badge)
+	var rank_icon := TextureRect.new()
+	rank_icon.texture = _component("main_rank_%02d" % clampi(GameState.get_rank_id(), 0, 11))
+	rank_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	rank_icon.stretch_mode = TextureRect.STRETCH_SCALE
+	rank_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_set_rect(rank_icon, Rect2(19, 14, 40, 40))
+	rank_badge.add_child(rank_icon)
 
 
 func set_mode(next_mode: String, play_sound := true) -> void:
@@ -422,6 +462,8 @@ func set_mode(next_mode: String, play_sound := true) -> void:
 		var button := mode_buttons[key] as Button
 		var key_mode := "customize" if str(key).ends_with("customize") else "store"
 		_style_mode_button(button, key_mode == mode)
+	if is_instance_valid(screen_title):
+		screen_title.text = tr("CUSTOMIZE" if mode == "customize" else "STORE")
 	_refresh_loadout_summary()
 	_rebuild_item_row()
 	_select_preferred_item(false)
@@ -435,11 +477,61 @@ func _select_category(category_key: String, play_sound := true) -> void:
 		var active := str(key) == selected_category
 		var button := category_buttons[key] as Button
 		button.button_pressed = active
-		_style_tab(button, active)
+	_layout_category_buttons()
 	if play_sound:
 		AudioDirector.play_ui("switch", -5.0)
 	_rebuild_item_row()
 	_select_preferred_item(false)
+
+
+func _layout_category_buttons() -> void:
+	if not is_instance_valid(category_layer) or not category_buttons.has(selected_category):
+		return
+	var selected_index := 0
+	for index in range(CATEGORIES.size()):
+		if str(CATEGORIES[index].key) == selected_category:
+			selected_index = index
+			break
+	for index in range(CATEGORIES.size()):
+		var key := str(CATEGORIES[index].key)
+		var button := category_buttons.get(key) as Button
+		if button == null:
+			continue
+		var relative := index - selected_index
+		if relative > 3:
+			relative -= CATEGORIES.size()
+		elif relative < -2:
+			relative += CATEGORIES.size()
+		var active := index == selected_index
+		# Exact UISliderTag spacing is 90px; each step from centre scales by 20%.
+		var distance_scale := maxf(0.2, 1.0 - absf(float(relative)) * 0.2)
+		var button_size := Vector2(120, 99) * distance_scale
+		var center := Vector2(402.0 + relative * 90.0, 543.5)
+		_set_rect(button, Rect2(center - button_size * 0.5, button_size))
+		button.add_theme_constant_override("icon_max_width", roundi(64.0 * distance_scale))
+		button.add_theme_stylebox_override("normal", _texture_style("armory_category_frame", Color.WHITE) if active else _empty_style())
+		button.modulate = Color.WHITE if active else Color(0.64, 0.74, 0.76, 0.9)
+		button.z_index = 2 if active else 1
+	for index in range(CATEGORIES.size()):
+		var dot := category_layer.get_node_or_null("CategoryDot%02d" % index) as TextureRect
+		if dot == null:
+			continue
+		var active := index == selected_index
+		var dot_size := 18.0 if active else 10.0
+		dot.texture = _component("armory_nav_selected" if active else "armory_nav_dot")
+		_set_rect(dot, Rect2(324 + index * 30 - (dot_size - 10.0) * 0.5, 604 - (dot_size - 10.0) * 0.5, dot_size, dot_size))
+
+
+func _show_ammo_notice() -> void:
+	AudioDirector.play_ui("switch", -5.0)
+	if is_instance_valid(notice_label):
+		notice_label.text = tr("AMMO REFILL SERVICE IS NOT REQUIRED IN OFFLINE PLAY")
+
+
+func _show_gold_notice() -> void:
+	AudioDirector.play_ui("switch", -5.0)
+	if is_instance_valid(notice_label):
+		notice_label.text = tr("ONLINE GOLD SERVICE UNAVAILABLE")
 
 
 func _select_preferred_item(play_sound := false) -> void:
@@ -506,7 +598,7 @@ func _rebuild_item_row() -> void:
 		var button := Button.new()
 		button.name = "Card_%s" % item_key
 		button.set_meta("item_key", item_key)
-		button.custom_minimum_size = Vector2(108, 102)
+		button.custom_minimum_size = Vector2(110, 135)
 		button.add_theme_font_size_override("font_size", 10)
 		button.alignment = HORIZONTAL_ALIGNMENT_CENTER
 		var state := _get_item_state(item_key)
@@ -514,17 +606,19 @@ func _rebuild_item_row() -> void:
 			var weapon: Dictionary = GameState.WEAPONS[item_key]
 			button.icon = Atlas.weapon_icon(int(weapon.id))
 			button.expand_icon = true
-			button.add_theme_constant_override("icon_max_width", 70)
-			button.text = tr(state.to_upper())
+			button.add_theme_constant_override("icon_max_width", 78)
+			button.text = ""
 			button.tooltip_text = "%s • %s" % [str(weapon.name), tr(state.to_upper())]
 		else:
 			var item: Dictionary = GameState.ARMOR_ITEMS[item_key]
-			button.text = "%s\n%s" % [_short_item_name(str(item.name)), tr(state.to_upper())]
+			button.text = _short_item_name(str(item.name))
 			button.tooltip_text = "%s • %s" % [str(item.name), tr(state.to_upper())]
 		_style_item_card(button, item_key == selected_item_key, state)
+		button.gui_input.connect(_on_item_carousel_input)
 		button.pressed.connect(_select_item.bind(item_key, true))
 		item_row.add_child(button)
 	preview_counter.text = tr("%d ITEMS") % ids.size()
+	_rebuild_item_dots(ids.size())
 
 
 func _select_item(item_key: String, play_sound := true) -> void:
@@ -538,6 +632,7 @@ func _select_item(item_key: String, play_sound := true) -> void:
 	_rebuild_preview()
 	var ids := _get_category_ids()
 	preview_counter.text = "%02d / %02d" % [ids.find(item_key) + 1, ids.size()]
+	_rebuild_item_dots(ids.size())
 	call_deferred("_ensure_item_visible", item_key)
 
 
@@ -546,8 +641,100 @@ func _ensure_item_visible(item_key: String) -> void:
 		return
 	for child in item_row.get_children():
 		if child is Control and str(child.get_meta("item_key", "")) == item_key and item_scroll.is_ancestor_of(child):
-			item_scroll.ensure_control_visible(child)
+			var card := child as Control
+			var target := roundi(card.position.x + card.size.x * 0.5 - item_scroll.size.x * 0.5)
+			item_scroll.scroll_horizontal = maxi(0, target)
 			return
+
+
+func _on_item_carousel_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			item_swipe_distance = 0.0
+		else:
+			_commit_item_swipe()
+	elif event is InputEventScreenDrag:
+		item_swipe_distance += event.relative.x
+		item_scroll.scroll_horizontal -= roundi(event.relative.x)
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		item_mouse_dragging = event.pressed
+		if event.pressed:
+			item_swipe_distance = 0.0
+		else:
+			_commit_item_swipe()
+	elif event is InputEventMouseMotion and item_mouse_dragging:
+		item_swipe_distance += event.relative.x
+		item_scroll.scroll_horizontal -= roundi(event.relative.x)
+
+
+func _commit_item_swipe() -> void:
+	if absf(item_swipe_distance) < SWIPE_THRESHOLD:
+		item_swipe_distance = 0.0
+		return
+	var ids := _get_category_ids()
+	if ids.is_empty():
+		return
+	var index := ids.find(selected_item_key)
+	if index < 0:
+		index = 0
+	var direction := 1 if item_swipe_distance < 0.0 else -1
+	item_swipe_distance = 0.0
+	_select_item(ids[posmod(index + direction, ids.size())], true)
+
+
+func _on_category_carousel_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			category_swipe_distance = 0.0
+		else:
+			_commit_category_swipe()
+	elif event is InputEventScreenDrag:
+		category_swipe_distance += event.relative.x
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		category_mouse_dragging = event.pressed
+		if event.pressed:
+			category_swipe_distance = 0.0
+		else:
+			_commit_category_swipe()
+	elif event is InputEventMouseMotion and category_mouse_dragging:
+		category_swipe_distance += event.relative.x
+
+
+func _commit_category_swipe() -> void:
+	if absf(category_swipe_distance) < SWIPE_THRESHOLD:
+		category_swipe_distance = 0.0
+		return
+	var selected_index := 0
+	for index in range(CATEGORIES.size()):
+		if str(CATEGORIES[index].key) == selected_category:
+			selected_index = index
+			break
+	var direction := 1 if category_swipe_distance < 0.0 else -1
+	category_swipe_distance = 0.0
+	_select_category(str(CATEGORIES[posmod(selected_index + direction, CATEGORIES.size())].key), true)
+
+
+func _rebuild_item_dots(item_count: int) -> void:
+	if not is_instance_valid(item_dots_layer):
+		return
+	for child in item_dots_layer.get_children():
+		child.free()
+	if item_count <= 0:
+		return
+	var spacing := minf(30.0, 450.0 / float(item_count))
+	var width := (item_count - 1) * spacing + 10.0
+	var start_x := (450.0 - width) * 0.5
+	var selected_index := _get_category_ids().find(selected_item_key)
+	for index in range(item_count):
+		var selected := index == selected_index
+		var dot_size := 18.0 if selected else 10.0
+		var dot := TextureRect.new()
+		dot.texture = _component("armory_nav_selected" if selected else "armory_nav_dot")
+		dot.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		dot.stretch_mode = TextureRect.STRETCH_SCALE
+		dot.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_set_rect(dot, Rect2(start_x + index * spacing - (dot_size - 10.0) * 0.5, (18.0 - dot_size) * 0.5, dot_size, dot_size))
+		item_dots_layer.add_child(dot)
 
 
 func _refresh_card_styles() -> void:
@@ -615,9 +802,9 @@ func _refresh_weapon_details() -> void:
 	var state := _get_item_state(selected_item_key)
 	name_label.text = str(weapon.name)
 	name_label.add_theme_color_override("font_color", Color(weapon.color))
-	state_label.text = tr(state.to_upper())
+	state_label.text = tr("UNLOCK: RANK %d") % (_selected_unlock_rank() + 1) if state == "locked" else ""
 	state_label.add_theme_color_override("font_color", _state_color(state))
-	meta_label.text = tr("GUN • TYPE %02d • AIM %02d") % [int(weapon.type), int(weapon.aim_id)]
+	meta_label.text = ""
 	var current_key := GameState.selected_weapon
 	if selected_slot >= 0 and selected_slot < GameState.battle_weapons.size():
 		current_key = GameState.battle_weapons[selected_slot]
@@ -642,10 +829,10 @@ func _refresh_armor_details() -> void:
 	var state := _get_item_state(selected_item_key)
 	name_label.text = str(item.name)
 	name_label.add_theme_color_override("font_color", TEAL if state != "locked" else LOCKED)
-	state_label.text = tr(state.to_upper())
+	state_label.text = tr("UNLOCK: RANK %d") % (_selected_unlock_rank() + 1) if state == "locked" else ""
 	state_label.add_theme_color_override("font_color", _state_color(state))
 	var set_name := _armor_set_name(int(item.set_id))
-	meta_label.text = "%s • %s" % [tr(_category_label(selected_category)), set_name if not set_name.is_empty() else tr("UTILITY GEAR")]
+	meta_label.text = set_name if mode == "customize" and not set_name.is_empty() else ""
 	var current_key := GameState.get_equipped_armor_key(selected_category)
 	var current_item: Dictionary = GameState.ARMOR_ITEMS.get(current_key, item)
 	var skills: Dictionary = item.skills
@@ -809,7 +996,11 @@ func _rebuild_slot_picker() -> void:
 
 func _refresh_currency() -> void:
 	if is_instance_valid(currency_label):
-		currency_label.text = tr("CREDITS  %s\nMITHRIL  %s") % [_format_price(GameState.credits), _format_price(GameState.mithril)]
+		currency_label.text = "%s\n%s\n%s" % [
+			_format_price(GameState.mithril),
+			_format_price(GameState.credits),
+			tr("RANK %d") % (GameState.get_rank_id() + 1),
+		]
 
 
 func _refresh_loadout_summary() -> void:
@@ -860,13 +1051,93 @@ func _build_weapon_preview() -> void:
 		return
 	var mesh_path := "res://assets/models/weapons/%s.obj" % str(weapon.model)
 	var mesh := load(mesh_path) as Mesh if ResourceLoader.exists(mesh_path) else null
-	if mesh == null:
-		_build_fallback_weapon(Color(weapon.color))
+	if not _build_equipped_avatar_for_weapon(weapon, mesh):
+		if mesh == null:
+			_build_fallback_weapon(Color(weapon.color))
+		else:
+			var preview := MeshInstance3D.new()
+			preview.name = "SelectedWeapon"
+			preview.mesh = mesh
+			_normalize_preview_mesh(preview, 3.2, Color(weapon.color), 0.04, int(weapon.id))
+			preview_root.add_child(preview)
+
+
+func _build_equipped_avatar_for_weapon(weapon: Dictionary, weapon_mesh: Mesh) -> bool:
+	if not ResourceLoader.exists(ARMOR_AVATAR_PATH):
+		return false
+	var avatar_scene := load(ARMOR_AVATAR_PATH) as PackedScene
+	if avatar_scene == null:
+		return false
+	var avatar := avatar_scene.instantiate() as Node3D
+	if avatar == null:
+		return false
+	var display := Node3D.new()
+	display.name = "StoreAvatarDisplay"
+	preview_root.add_child(display)
+	avatar.name = "RecoveredStoreAvatar"
+	avatar.rotation_degrees.y = -90.0
+	display.add_child(avatar)
+	_apply_preview_armor_visibility(avatar)
+	if weapon_mesh != null:
+		_attach_preview_weapon(avatar, weapon, weapon_mesh)
+	_play_preview_idle(avatar, str(weapon.get("animation", "rifle")))
+	if not _normalize_avatar_preview(display, avatar, 4.55):
+		display.queue_free()
+		return false
+	return true
+
+
+func _attach_preview_weapon(avatar: Node3D, weapon: Dictionary, weapon_mesh: Mesh) -> void:
+	var skeleton: Skeleton3D = null
+	for candidate in avatar.find_children("*", "Skeleton3D", true, false):
+		skeleton = candidate as Skeleton3D
+		break
+	if skeleton == null:
 		return
+	var weapon_id := int(weapon.id)
+	var bone_name := "l hand gun" if weapon_id in [22, 29, 44] else "r hand gun"
+	if skeleton.find_bone(bone_name) < 0:
+		bone_name = "Bip01 R Hand"
+	if skeleton.find_bone(bone_name) < 0:
+		return
+	var attachment := BoneAttachment3D.new()
+	attachment.name = "StoreWeaponSocket"
+	attachment.bone_name = bone_name
+	skeleton.add_child(attachment)
+	var mount := Node3D.new()
+	mount.rotation_degrees.x = -90.0
+	attachment.add_child(mount)
 	var preview := MeshInstance3D.new()
-	preview.mesh = mesh
-	_normalize_preview_mesh(preview, 4.8, Color(weapon.color), 0.04, int(weapon.id))
-	preview_root.add_child(preview)
+	preview.name = "SelectedWeapon"
+	preview.mesh = weapon_mesh
+	_prepare_preview_materials(preview, Color(weapon.color), 0.04, weapon_id)
+	var kind := str(weapon.get("kind", "hitscan"))
+	var target_length := 1.25
+	if kind in ["shotgun", "shockwave"]:
+		target_length = 1.3
+	elif kind in ["rocket", "grenade", "fly_grenade"]:
+		target_length = 1.42
+	elif kind in ["sniper", "reflection"]:
+		target_length = 1.62
+	elif kind == "sword":
+		target_length = 1.55
+	var bounds := weapon_mesh.get_aabb()
+	var longest := maxf(bounds.size.x, maxf(bounds.size.y, bounds.size.z))
+	preview.scale = Vector3.ONE * (target_length / longest if longest > 0.001 else 1.0)
+	var authored_basis := Basis.from_euler(_preview_weapon_rotation(weapon_id) * (PI / 180.0))
+	preview.basis = mount.basis.inverse() * authored_basis.scaled(preview.scale)
+	mount.add_child(preview)
+
+
+func _preview_weapon_rotation(weapon_id: int) -> Vector3:
+	# WeaponResourceConfig.RotateGun cases used by the original player preview.
+	if weapon_id in [22, 23, 24, 25, 28, 31, 32, 39, 41, 45, 46]:
+		return Vector3.ZERO
+	if weapon_id == 36:
+		return Vector3(0.0, 90.0, -90.0)
+	if weapon_id == 44:
+		return Vector3(90.0, 0.0, 0.0)
+	return Vector3(-90.0, 0.0, 0.0)
 
 
 func _build_armor_preview() -> void:
@@ -936,14 +1207,23 @@ func _apply_preview_armor_visibility(avatar: Node3D) -> void:
 			break
 
 
-func _play_preview_idle(avatar: Node3D) -> void:
+func _play_preview_idle(avatar: Node3D, weapon_pose := "rifle") -> void:
+	var pose := weapon_pose
+	if pose == "grenade_launcher":
+		pose = "shotgun"
+	elif pose == "laser":
+		pose = "rifle"
+	elif pose == "BLACKSTARS":
+		pose = "bazinga"
+	var requested := "idle_%s" % pose
 	for candidate in avatar.find_children("*", "AnimationPlayer", true, false):
 		var animation_player := candidate as AnimationPlayer
-		if animation_player.has_animation("idle_rifle"):
-			var idle_animation := animation_player.get_animation("idle_rifle")
+		var idle_name := requested if animation_player.has_animation(requested) else "idle_rifle"
+		if animation_player.has_animation(idle_name):
+			var idle_animation := animation_player.get_animation(idle_name)
 			if idle_animation != null:
 				idle_animation.loop_mode = Animation.LOOP_LINEAR
-			animation_player.play("idle_rifle")
+			animation_player.play(idle_name)
 			animation_player.seek(0.0, true)
 			return
 
@@ -1165,12 +1445,13 @@ func _style_mode_button(button: Button, active: bool) -> void:
 
 func _style_item_card(button: Button, selected: bool, state: String) -> void:
 	var state_color := _state_color(state)
-	var fill := Color(0.025, 0.15, 0.17, 0.98) if selected else Color(0.006, 0.035, 0.045, 0.96)
-	button.add_theme_stylebox_override("normal", _panel_style(fill, state_color if selected else Color(state_color, 0.48), 2))
-	button.add_theme_stylebox_override("hover", _panel_style(Color(0.04, 0.23, 0.26, 0.98), state_color, 2))
-	button.add_theme_stylebox_override("pressed", _panel_style(Color(0.08, 0.32, 0.35, 1.0), Color.WHITE, 2))
+	# Unity hides the centre UISliderAvatar duplicate because the main avatar is
+	# already wearing/holding that selection. Neighbours float without cards.
+	button.add_theme_stylebox_override("normal", _empty_style())
+	button.add_theme_stylebox_override("hover", _panel_style(Color(0.04, 0.23, 0.26, 0.22), CYAN, 1))
+	button.add_theme_stylebox_override("pressed", _panel_style(Color(0.08, 0.32, 0.35, 0.28), Color.WHITE, 1))
 	button.add_theme_color_override("font_color", state_color)
-	button.modulate = Color.WHITE if state != "locked" else Color(0.58, 0.62, 0.64)
+	button.modulate = Color(1, 1, 1, 0) if selected else (Color.WHITE if state != "locked" else Color(0.48, 0.52, 0.54, 0.72))
 
 
 func _panel_style(fill: Color, border: Color, radius: int) -> StyleBoxFlat:
@@ -1183,6 +1464,17 @@ func _panel_style(fill: Color, border: Color, radius: int) -> StyleBoxFlat:
 	style.content_margin_right = 7
 	style.content_margin_top = 5
 	style.content_margin_bottom = 5
+	return style
+
+
+func _empty_style() -> StyleBoxEmpty:
+	return StyleBoxEmpty.new()
+
+
+func _texture_style(component_name: String, tint := Color.WHITE) -> StyleBoxTexture:
+	var style := StyleBoxTexture.new()
+	style.texture = _component(component_name)
+	style.modulate_color = tint
 	return style
 
 
