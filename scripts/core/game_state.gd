@@ -205,6 +205,7 @@ func _build_weapon_database() -> void:
 			"pellets": profile.pellets, "range": profile.range,
 			"spread": profile.spread, "automatic": profile.automatic,
 			"kind": profile.kind, "speed": profile.speed,
+			"tracer_style": profile.tracer_style, "tracer_every": profile.tracer_every,
 			"animation": profile.animation, "sound": profile.sound,
 			"sound_variants": profile.sound_variants,
 			"swing_sounds": profile.swing_sounds, "hit_sounds": profile.hit_sounds,
@@ -218,6 +219,7 @@ func _weapon_profile(type_id: int, gun_id: int, weapon_name: String) -> Dictiona
 	var profile := {
 		"pellets": 1, "range": 105.0, "spread": 0.012, "automatic": false,
 		"kind": "hitscan", "speed": 24.0, "animation": "rifle",
+		"tracer_style": "legacy", "tracer_every": 1,
 		"sound": "", "sound_variants": [], "swing_sounds": [], "hit_sounds": [],
 		"blank_sound": "blank/blank_shot01.wav",
 		"loop_sound": "", "stop_sound": "",
@@ -227,12 +229,17 @@ func _weapon_profile(type_id: int, gun_id: int, weapon_name: String) -> Dictiona
 		1, 23:
 			profile.automatic = true
 			profile.sound = "assault_rifle/%s_FiringSound.wav" % weapon_name
+			profile.tracer_style = "rifle"
+			profile.tracer_every = 3
+			profile.color = Color(1.0, 0.64, 0.08)
 		5:
 			profile.automatic = true
 			profile.kind = "laser"
 			profile.spread = 0.004
 			profile.sound = "lasergun/laser_rifle_fire.wav"
-			profile.color = Color(0.12, 0.72, 1.0)
+			profile.tracer_style = "laser"
+			profile.tracer_every = 1
+			profile.color = Color(0.08, 0.78, 1.0)
 		7:
 			profile.automatic = true
 			profile.kind = "plasma"
@@ -293,6 +300,8 @@ func _weapon_profile(type_id: int, gun_id: int, weapon_name: String) -> Dictiona
 			profile.kind = "machinegun"
 			profile.automatic = true
 			profile.animation = "machinegun"
+			profile.tracer_style = "machinegun"
+			profile.tracer_every = 5
 			profile.sound = "machinegun/%s_FiringSound_01.wav" % weapon_name
 			profile.loop_sound = "machinegun/%s_FiringSound_02.wav" % weapon_name
 			profile.stop_sound = "machinegun/%s_FiringSound_03.wav" % weapon_name
@@ -312,6 +321,7 @@ func _weapon_profile(type_id: int, gun_id: int, weapon_name: String) -> Dictiona
 			profile.range = 180.0
 			profile.spread = 0.0
 			profile.animation = "Sniper"
+			profile.tracer_style = "sniper_legacy_hd"
 			profile.sound = "sniper/r100_railgun.wav"
 			profile.color = Color(0.75, 0.2, 1.0)
 		19:

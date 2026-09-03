@@ -84,6 +84,7 @@ var shoot_pose_left := 0.0
 var restart_shoot_animation_requested := false
 var hurt_pose_left := 0.0
 var footstep_clock := 0.0
+var tracer_shot_counts: Dictionary = {}
 
 var fire_audio: AudioStreamPlayer3D
 var hurt_audio: AudioStreamPlayer3D
@@ -835,6 +836,12 @@ func _fire_hitscan() -> void:
 	var origin: Vector3 = aim.origin
 	var base_direction: Vector3 = aim.direction
 	var space := get_world_3d().direct_space_state
+	var tracer_style := str(current_weapon.get("tracer_style", "legacy"))
+	var show_tracer := _consume_tracer_slot(tracer_style, int(current_weapon.get("tracer_every", 1)))
+	if get_parent().has_method("spawn_muzzle_effect"):
+		get_parent().spawn_muzzle_effect(muzzle.global_position, base_direction, tracer_style)
+	if tracer_style == "machinegun" and get_parent().has_method("spawn_machinegun_muzzle_fx"):
+		get_parent().spawn_machinegun_muzzle_fx(muzzle.global_position, base_direction)
 	for pellet_index in range(int(current_weapon.pellets)):
 		var spread := float(current_weapon.spread)
 		var direction := (base_direction + camera.global_transform.basis.x * randf_range(-spread, spread) + camera.global_transform.basis.y * randf_range(-spread, spread)).normalized()
@@ -848,10 +855,17 @@ func _fire_hitscan() -> void:
 			var collider = result.collider
 			if is_instance_valid(collider) and collider.has_method("take_damage"):
 				collider.take_damage(_current_weapon_damage(), result.position, self)
-		if get_parent().has_method("spawn_tracer"):
-			get_parent().spawn_tracer(muzzle.global_position, hit_position, current_weapon.color, str(current_weapon.kind) == "pierce")
+		if show_tracer and get_parent().has_method("spawn_tracer"):
+			get_parent().spawn_tracer(muzzle.global_position, hit_position, current_weapon.color, tracer_style)
 		if not result.is_empty() and get_parent().has_method("spawn_impact"):
-			get_parent().spawn_impact(hit_position, result.normal, current_weapon.color)
+			get_parent().spawn_impact(hit_position, result.normal, current_weapon.color, tracer_style)
+
+func _consume_tracer_slot(tracer_style: String, every: int) -> bool:
+	if tracer_style not in ["rifle", "machinegun"]:
+		return true
+	var shot_count := int(tracer_shot_counts.get(current_weapon_id, 0))
+	tracer_shot_counts[current_weapon_id] = shot_count + 1
+	return shot_count % maxi(1, every) == 0
 
 func _fire_projectile(projectile_kind: String) -> void:
 	var aim := get_aim_solution(float(current_weapon.get("range", 105.0)))
@@ -862,7 +876,7 @@ func _fire_projectile(projectile_kind: String) -> void:
 	if projectile_kind == "grenade":
 		direction = (direction + Vector3.UP * 0.18).normalized()
 	var projectile := ProjectileScript.new()
-	projectile.configure(self, direction, float(current_weapon.speed), _current_weapon_damage(), maxf(float(current_weapon.splash), 0.65), current_weapon.color, false, projectile_kind, str(current_weapon.explosion_sound))
+	projectile.configure(self, direction, float(current_weapon.speed), _current_weapon_damage(), maxf(float(current_weapon.splash), 0.65), current_weapon.color, false, projectile_kind, str(current_weapon.explosion_sound), current_weapon_id)
 	get_parent().add_child(projectile)
 	projectile.global_position = muzzle.global_position
 

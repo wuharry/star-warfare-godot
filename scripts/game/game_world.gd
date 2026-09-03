@@ -319,11 +319,299 @@ func spawn_pickup(position_value: Vector3, kind: String, amount: float) -> void:
 	add_child(pickup)
 	pickup.global_position = position_value
 
-func spawn_tracer(from: Vector3, to: Vector3, color: Color, heavy := false) -> void:
+func spawn_tracer(from: Vector3, to: Vector3, color: Color, style := "legacy") -> Node3D:
 	var distance := from.distance_to(to)
 	if distance < 0.05:
-		return
+		return null
+	if style == "rifle" or style == "machinegun":
+		return _spawn_ballistic_tracer(from, to, color, style)
+	if style == "laser":
+		return _spawn_laser_tracer(from, to, color)
+	if style == "sniper_legacy_hd":
+		return _spawn_legacy_hd_sniper(from, to, color)
+	return _spawn_legacy_tracer(from, to, color, style == "pierce")
+
+func _spawn_ballistic_tracer(from: Vector3, to: Vector3, color: Color, style: String) -> Node3D:
+	var direction := (to - from).normalized()
+	var distance := from.distance_to(to)
+	var segment_length := minf(distance, 3.4 if style == "machinegun" else 5.6)
+	var duration := 0.045 if style == "machinegun" else 0.065
+	var tracer := Node3D.new()
+	tracer.name = "ModernMachinegunTracer" if style == "machinegun" else "ModernRifleTracer"
+	tracer.set_meta("tracer_style", style)
+	tracer.set_meta("segment_length", segment_length)
+	tracer.set_meta("lifetime", duration)
+	effects_root.add_child(tracer)
+	tracer.global_position = from + direction * segment_length * 0.5
+	_orient_beam(tracer, direction)
+	var core_radius := 0.012 if style == "machinegun" else 0.02
+	var glow_radius := 0.032 if style == "machinegun" else 0.052
+	var core := _vfx_material(Color(1.0, 0.96, 0.78), 10.0, 1.0)
+	var glow := _vfx_material(color, 7.0, 0.42)
+	_add_beam_layer(tracer, "WhiteHotCore", segment_length, core_radius, core)
+	_add_beam_layer(tracer, "GoldenGlow", segment_length, glow_radius, glow)
+	if style == "machinegun" and bool(GameState.get_quality_profile().get("glow", true)):
+		var smoke := _vfx_material(Color(0.45, 0.4, 0.31), 0.25, 0.11, false)
+		_add_beam_layer(tracer, "HeatSmoke", segment_length * 1.18, 0.046, smoke)
+	var head := MeshInstance3D.new()
+	head.name = "HotProjectileHead"
+	var head_mesh := SphereMesh.new()
+	head_mesh.radius = core_radius * 2.4
+	head_mesh.height = core_radius * 4.8
+	head_mesh.radial_segments = 8
+	head_mesh.rings = 4
+	head_mesh.material = core
+	head.mesh = head_mesh
+	head.position.y = segment_length * 0.5
+	tracer.add_child(head)
+	var end_center := to - direction * segment_length * 0.5
+	var tween := tracer.create_tween().set_parallel(true)
+	tween.tween_property(tracer, "global_position", end_center, duration).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(core, "albedo_color:a", 0.0, duration * 0.55).set_delay(duration * 0.45)
+	tween.tween_property(glow, "albedo_color:a", 0.0, duration * 0.7).set_delay(duration * 0.3)
+	tween.chain().tween_callback(tracer.queue_free)
+	return tracer
+
+func _spawn_laser_tracer(from: Vector3, to: Vector3, color: Color) -> Node3D:
+	var direction := (to - from).normalized()
+	var distance := from.distance_to(to)
+	var duration := 0.085
+	var tracer := Node3D.new()
+	tracer.name = "ModernBlueLaser"
+	tracer.set_meta("tracer_style", "laser")
+	tracer.set_meta("segment_length", distance)
+	tracer.set_meta("lifetime", duration)
+	effects_root.add_child(tracer)
+	tracer.global_position = (from + to) * 0.5
+	_orient_beam(tracer, direction)
+	var core := _vfx_material(Color(0.92, 0.99, 1.0), 12.0, 1.0)
+	var energy := _vfx_material(color, 9.0, 0.68)
+	var glow := _vfx_material(Color(0.05, 0.48, 1.0), 5.5, 0.2)
+	_add_beam_layer(tracer, "WhiteEnergyCore", distance, 0.018, core)
+	_add_beam_layer(tracer, "CyanEnergyFlow", distance, 0.045, energy)
+	_add_beam_layer(tracer, "BlueOuterGlow", distance, 0.09, glow)
+	var emission_flash := MeshInstance3D.new()
+	emission_flash.name = "LaserEmissionFlash"
+	var emission_mesh := SphereMesh.new()
+	emission_mesh.radius = 0.075
+	emission_mesh.height = 0.15
+	emission_mesh.radial_segments = 8
+	emission_mesh.rings = 4
+	emission_mesh.material = core
+	emission_flash.mesh = emission_mesh
+	emission_flash.position.y = -distance * 0.5
+	tracer.add_child(emission_flash)
+	var emission_particles := GPUParticles3D.new()
+	emission_particles.name = "LaserEmissionParticles"
+	emission_particles.position.y = -distance * 0.5
+	emission_particles.amount = 10
+	emission_particles.lifetime = 0.12
+	emission_particles.one_shot = true
+	emission_particles.explosiveness = 0.95
+	var emission_process := ParticleProcessMaterial.new()
+	emission_process.direction = Vector3.UP
+	emission_process.spread = 32.0
+	emission_process.initial_velocity_min = 0.8
+	emission_process.initial_velocity_max = 2.4
+	emission_process.scale_min = 0.025
+	emission_process.scale_max = 0.065
+	emission_process.color = Color(color.r, color.g, color.b, 0.9)
+	emission_particles.process_material = emission_process
+	var emission_particle_mesh := SphereMesh.new()
+	emission_particle_mesh.radius = 0.025
+	emission_particle_mesh.height = 0.05
+	emission_particle_mesh.radial_segments = 6
+	emission_particle_mesh.rings = 3
+	emission_particle_mesh.material = energy
+	emission_particles.draw_pass_1 = emission_particle_mesh
+	tracer.add_child(emission_particles)
+	emission_particles.emitting = true
+	for pulse_index in range(3):
+		var pulse := MeshInstance3D.new()
+		pulse.name = "EnergyPulse%02d" % pulse_index
+		var pulse_mesh := SphereMesh.new()
+		pulse_mesh.radius = 0.065
+		pulse_mesh.height = 0.19
+		pulse_mesh.radial_segments = 8
+		pulse_mesh.rings = 4
+		pulse_mesh.material = energy
+		pulse.mesh = pulse_mesh
+		pulse.position.y = lerpf(-distance * 0.42, distance * 0.2, float(pulse_index) / 2.0)
+		tracer.add_child(pulse)
+		var pulse_tween := pulse.create_tween()
+		pulse_tween.tween_property(pulse, "position:y", distance * 0.48, duration)
+	if bool(GameState.get_quality_profile().get("glow", true)):
+		var emission_light := OmniLight3D.new()
+		emission_light.name = "LaserEmissionLight"
+		emission_light.light_color = color
+		emission_light.light_energy = 2.6
+		emission_light.omni_range = 3.2
+		emission_light.position.y = -distance * 0.5
+		tracer.add_child(emission_light)
+		tracer.create_tween().tween_property(emission_light, "light_energy", 0.0, duration)
+		var endpoint_light := OmniLight3D.new()
+		endpoint_light.name = "LaserEndpointLight"
+		endpoint_light.light_color = color
+		endpoint_light.light_energy = 3.0
+		endpoint_light.omni_range = 3.8
+		endpoint_light.position.y = distance * 0.5
+		tracer.add_child(endpoint_light)
+		tracer.create_tween().tween_property(endpoint_light, "light_energy", 0.0, duration)
+	var tween := tracer.create_tween().set_parallel(true)
+	tween.tween_property(core, "albedo_color:a", 0.0, duration).set_delay(duration * 0.15)
+	tween.tween_property(energy, "albedo_color:a", 0.0, duration).set_delay(duration * 0.1)
+	tween.tween_property(glow, "albedo_color:a", 0.0, duration)
+	tween.tween_property(tracer, "scale", Vector3(1.55, 1.0, 1.55), duration)
+	tween.chain().tween_callback(tracer.queue_free)
+	return tracer
+
+func spawn_muzzle_effect(position_value: Vector3, direction: Vector3, style := "legacy") -> Node3D:
+	var effect := Node3D.new()
+	var textures: Array[String]
+	var source_effect := "Effect/GunFire"
+	var size := Vector2(0.42, 0.42)
+	var tint := Color(1.0, 0.76, 0.26)
+	match style:
+		"machinegun":
+			effect.name = "RecoveredGunFireM"
+			source_effect = "Effect/GunFire_M"
+			textures = ["gunpoint_m_01_hd.png", "gunpoint_m_02_hd.png", "gunpoint_m_03_hd.png"]
+			size = Vector2(0.34, 0.34)
+		"laser":
+			effect.name = "RecoveredGunFireLaser"
+			source_effect = "Effect/GunFire_Laser"
+			textures = ["gunpoint_blue_01_hd.png", "gunpoint_blue_02_hd.png", "gunpoint_blue_03_hd.png"]
+			size = Vector2(0.48, 0.48)
+			tint = Color(0.32, 0.9, 1.0)
+		_:
+			effect.name = "RecoveredGunFire"
+			textures = ["gunpoint_01_hd.png", "gunpoint_02_hd.png", "gunpoint_03_hd.png"]
+	effect.set_meta("source_effect", source_effect)
+	effects_root.add_child(effect)
+	effect.global_position = position_value
+	_orient_beam(effect, direction)
+	_add_recovered_flipbook(effect, textures, size, tint, 5.0, 0.03)
+	var cleanup_tween := effect.create_tween()
+	cleanup_tween.tween_interval(0.11)
+	cleanup_tween.tween_callback(effect.queue_free)
+	return effect
+
+func spawn_machinegun_muzzle_fx(position_value: Vector3, direction: Vector3) -> Node3D:
+	var effect := Node3D.new()
+	effect.name = "MachinegunMuzzleDetails"
+	effects_root.add_child(effect)
+	effect.global_position = position_value
+	_orient_beam(effect, direction)
+	var heat_material := _vfx_material(Color(1.0, 0.7, 0.3), 0.25, 0.1, false)
+	var heat_wave := MeshInstance3D.new()
+	heat_wave.name = "MuzzleHeatWave"
+	var heat_mesh := TorusMesh.new()
+	heat_mesh.inner_radius = 0.055
+	heat_mesh.outer_radius = 0.085
+	heat_mesh.rings = 10
+	heat_mesh.ring_segments = 6
+	heat_mesh.material = heat_material
+	heat_wave.mesh = heat_mesh
+	effect.add_child(heat_wave)
+	var casing := MeshInstance3D.new()
+	casing.name = "EjectedCasing"
+	var casing_mesh := BoxMesh.new()
+	casing_mesh.size = Vector3(0.035, 0.085, 0.025)
+	casing_mesh.material = _vfx_material(Color(0.78, 0.48, 0.12), 0.12, 1.0, false)
+	casing.mesh = casing_mesh
+	casing.position = Vector3(0.08, -0.04, 0.0)
+	effect.add_child(casing)
+	var heat_tween := effect.create_tween().set_parallel(true)
+	heat_tween.tween_property(heat_wave, "scale", Vector3.ONE * 2.2, 0.085)
+	heat_tween.tween_property(heat_material, "albedo_color:a", 0.0, 0.085)
+	heat_tween.tween_property(casing, "position", Vector3(0.48, -0.28, 0.16), 0.24).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	heat_tween.tween_property(casing, "rotation", Vector3(7.0, 4.0, 8.0), 0.24)
+	heat_tween.chain().tween_callback(effect.queue_free)
+	return effect
+
+func _add_recovered_flipbook(parent: Node3D, texture_names: Array[String], size: Vector2, color: Color, emission_energy: float, frame_duration: float) -> Node3D:
+	var flipbook := Node3D.new()
+	flipbook.name = "RecoveredFlipbook"
+	parent.add_child(flipbook)
+	var frames: Array[MeshInstance3D] = []
+	for frame_index in range(texture_names.size()):
+		var frame := MeshInstance3D.new()
+		frame.name = "Frame%02d" % frame_index
+		var mesh := QuadMesh.new()
+		mesh.size = size
+		mesh.material = _textured_vfx_material(texture_names[frame_index], color, emission_energy, true)
+		frame.mesh = mesh
+		frame.visible = frame_index == 0
+		flipbook.add_child(frame)
+		frames.append(frame)
+	var tween := flipbook.create_tween()
+	for frame_index in range(frames.size()):
+		tween.tween_callback(_show_flipbook_frame.bind(frames, frame_index))
+		tween.tween_interval(frame_duration)
+	tween.tween_callback(flipbook.queue_free)
+	return flipbook
+
+func _show_flipbook_frame(frames: Array[MeshInstance3D], visible_index: int) -> void:
+	for frame_index in range(frames.size()):
+		if is_instance_valid(frames[frame_index]):
+			frames[frame_index].visible = frame_index == visible_index
+
+func _textured_vfx_material(texture_name: String, color: Color, emission_energy: float, billboard := false) -> StandardMaterial3D:
+	var material := _vfx_material(color, emission_energy, color.a)
+	var texture_path := "res://assets/vfx/legacy_hd/" + texture_name
+	if ResourceLoader.exists(texture_path):
+		var texture := load(texture_path) as Texture2D
+		material.albedo_texture = texture
+		material.emission_texture = texture
+	if billboard:
+		material.billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
+	return material
+
+func _spawn_legacy_hd_sniper(from: Vector3, to: Vector3, color: Color) -> Node3D:
+	var direction := (to - from).normalized()
+	var distance := from.distance_to(to)
+	var tracer := Node3D.new()
+	tracer.name = "LegacyHDSniperTracer"
+	tracer.set_meta("tracer_style", "sniper_legacy_hd")
+	tracer.set_meta("segment_length", distance)
+	tracer.set_meta("lifetime", 0.12)
+	effects_root.add_child(tracer)
+	tracer.global_position = (from + to) * 0.5
+	_orient_beam(tracer, direction)
+	var material := StandardMaterial3D.new()
+	var texture_path := "res://assets/vfx/legacy_hd/laser_02_hd.png"
+	if ResourceLoader.exists(texture_path):
+		var texture := load(texture_path) as Texture2D
+		material.albedo_texture = texture
+		material.emission_texture = texture
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.cull_mode = BaseMaterial3D.CULL_DISABLED
+	material.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
+	material.albedo_color = Color(color.r, color.g, color.b, 0.9)
+	material.emission_enabled = true
+	material.emission = color
+	material.emission_energy_multiplier = 5.5
+	for plane_index in range(2):
+		var plane := MeshInstance3D.new()
+		plane.name = "RecoveredLaserPlane%02d" % plane_index
+		var mesh := QuadMesh.new()
+		mesh.size = Vector2(0.24, distance)
+		mesh.material = material
+		plane.mesh = mesh
+		plane.rotation.y = float(plane_index) * PI * 0.5
+		tracer.add_child(plane)
+	var tween := tracer.create_tween().set_parallel(true)
+	tween.tween_property(material, "albedo_color:a", 0.0, 0.12)
+	tween.tween_property(tracer, "scale", Vector3(1.8, 1.0, 1.8), 0.12)
+	tween.chain().tween_callback(tracer.queue_free)
+	return tracer
+
+func _spawn_legacy_tracer(from: Vector3, to: Vector3, color: Color, heavy: bool) -> Node3D:
+	var distance := from.distance_to(to)
 	var tracer := MeshInstance3D.new()
+	tracer.name = "LegacyTracer"
+	tracer.set_meta("tracer_style", "legacy")
 	var mesh := CylinderMesh.new()
 	mesh.top_radius = 0.025 if not heavy else 0.065
 	mesh.bottom_radius = mesh.top_radius
@@ -344,27 +632,134 @@ func spawn_tracer(from: Vector3, to: Vector3, color: Color, heavy := false) -> v
 	var tween := tracer.create_tween()
 	tween.tween_property(tracer, "scale", Vector3(0.05, 1.0, 0.05), 0.11)
 	tween.tween_callback(tracer.queue_free)
+	return tracer
 
-func spawn_impact(position_value: Vector3, normal: Vector3, color: Color) -> void:
-	var impact := MeshInstance3D.new()
-	var mesh := SphereMesh.new()
-	mesh.radius = 0.12
-	mesh.height = 0.24
+func _orient_beam(node: Node3D, direction: Vector3) -> void:
+	var beam_y := direction.normalized()
+	var beam_x := beam_y.cross(Vector3.FORWARD)
+	if beam_x.length_squared() < 0.001:
+		beam_x = beam_y.cross(Vector3.RIGHT)
+	beam_x = beam_x.normalized()
+	var beam_z := beam_x.cross(beam_y).normalized()
+	node.global_basis = Basis(beam_x, beam_y, beam_z)
+
+func _add_beam_layer(parent: Node3D, layer_name: String, length: float, radius: float, material: Material) -> MeshInstance3D:
+	var layer := MeshInstance3D.new()
+	layer.name = layer_name
+	var mesh := CylinderMesh.new()
+	mesh.top_radius = radius
+	mesh.bottom_radius = radius
+	mesh.height = length
 	mesh.radial_segments = 8
-	mesh.rings = 4
+	mesh.material = material
+	layer.mesh = mesh
+	parent.add_child(layer)
+	return layer
+
+func _vfx_material(color: Color, energy: float, alpha: float, additive := true) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
-	material.albedo_color = color
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.cull_mode = BaseMaterial3D.CULL_DISABLED
+	material.blend_mode = BaseMaterial3D.BLEND_MODE_ADD if additive else BaseMaterial3D.BLEND_MODE_MIX
+	material.albedo_color = Color(color.r, color.g, color.b, alpha)
 	material.emission_enabled = true
 	material.emission = color
-	material.emission_energy_multiplier = 3.0
-	mesh.material = material
-	impact.mesh = mesh
+	material.emission_energy_multiplier = energy
+	return material
+
+func spawn_impact(position_value: Vector3, normal: Vector3, color: Color, style := "legacy") -> Node3D:
+	var impact := Node3D.new()
+	impact.name = "ModernImpact_%s" % style
 	impact.position = position_value + normal * 0.03
 	effects_root.add_child(impact)
+	var flash := MeshInstance3D.new()
+	flash.name = "ImpactFlash"
+	var mesh := SphereMesh.new()
+	mesh.radius = 0.1 if style == "machinegun" else 0.14
+	mesh.height = mesh.radius * 2.0
+	mesh.radial_segments = 8
+	mesh.rings = 4
+	var material := _vfx_material(Color.WHITE.lerp(color, 0.35), 7.0 if style == "laser" else 4.5, 0.9)
+	mesh.material = material
+	flash.mesh = mesh
+	impact.add_child(flash)
+	if style == "laser":
+		_add_recovered_laser_hit(impact, normal, color)
+	else:
+		var recovered_burst := _add_recovered_flipbook(
+			impact,
+			["gunburst_01_hd.png", "gunburst_02_hd.png", "gunburst_03_hd.png"],
+			Vector2(0.56, 0.56),
+			Color.WHITE,
+			3.8,
+			0.02
+		)
+		recovered_burst.name = "RecoveredGunBurst"
+		recovered_burst.set_meta("source_effect", "Effect/GunBurst")
+	if style in ["rifle", "machinegun", "laser"]:
+		_add_directional_impact_sparks(impact, normal, color, style)
+	if style == "laser" and bool(GameState.get_quality_profile().get("glow", true)):
+		var light := OmniLight3D.new()
+		light.name = "LaserImpactLight"
+		light.light_color = color
+		light.light_energy = 4.0
+		light.omni_range = 4.2
+		impact.add_child(light)
+		impact.create_tween().tween_property(light, "light_energy", 0.0, 0.16)
 	var tween := impact.create_tween()
 	tween.tween_property(impact, "scale", Vector3.ONE * 2.8, 0.12)
 	tween.tween_property(impact, "scale", Vector3.ZERO, 0.18)
 	tween.tween_callback(impact.queue_free)
+	return impact
+
+func _add_recovered_laser_hit(parent: Node3D, normal: Vector3, color: Color) -> void:
+	var particles := GPUParticles3D.new()
+	particles.name = "RecoveredLaserHit"
+	particles.set_meta("source_effect", "Effect/LaserHit")
+	particles.amount = 18
+	particles.lifetime = 0.2
+	particles.one_shot = true
+	particles.explosiveness = 0.94
+	var process := ParticleProcessMaterial.new()
+	process.direction = normal
+	process.spread = 58.0
+	process.initial_velocity_min = 1.4
+	process.initial_velocity_max = 4.6
+	process.scale_min = 0.045
+	process.scale_max = 0.13
+	process.color = Color(color.r, color.g, color.b, 0.9)
+	particles.process_material = process
+	var particle_mesh := QuadMesh.new()
+	particle_mesh.size = Vector2(0.14, 0.14)
+	particle_mesh.material = _textured_vfx_material("laserParticle_hd.png", Color.WHITE, 5.0, true)
+	particles.draw_pass_1 = particle_mesh
+	parent.add_child(particles)
+	particles.emitting = true
+
+func _add_directional_impact_sparks(parent: Node3D, normal: Vector3, color: Color, style: String) -> void:
+	var sparks := GPUParticles3D.new()
+	sparks.name = "ElectricArcs" if style == "laser" else "DirectionalSparks"
+	sparks.amount = 14 if style == "laser" else (8 if style == "machinegun" else 11)
+	sparks.lifetime = 0.18 if style == "laser" else 0.24
+	sparks.one_shot = true
+	sparks.explosiveness = 0.92
+	var process := ParticleProcessMaterial.new()
+	process.direction = normal
+	process.spread = 48.0 if style == "laser" else 34.0
+	process.initial_velocity_min = 2.8
+	process.initial_velocity_max = 7.5 if style == "laser" else 5.5
+	process.gravity = Vector3.ZERO if style == "laser" else Vector3(0.0, -7.0, 0.0)
+	process.scale_min = 0.035
+	process.scale_max = 0.09
+	process.color = Color(color.r, color.g, color.b, 0.92)
+	sparks.process_material = process
+	var spark_mesh := BoxMesh.new()
+	spark_mesh.size = Vector3(0.025, 0.025, 0.28 if style == "laser" else 0.16)
+	spark_mesh.material = _vfx_material(color, 6.0, 0.9)
+	sparks.draw_pass_1 = spark_mesh
+	parent.add_child(sparks)
+	sparks.emitting = true
 
 func spawn_explosion(position_value: Vector3, color: Color, radius: float, recovered_sound := "") -> void:
 	var explosion := MeshInstance3D.new()
