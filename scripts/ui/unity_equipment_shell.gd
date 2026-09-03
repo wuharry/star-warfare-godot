@@ -71,6 +71,7 @@ var preview_tween: Tween
 var screen_title: Label
 var category_layer: Control
 var item_dots_layer: Control
+var comparison_rows: Array[Dictionary] = []
 var item_swipe_distance := 0.0
 var item_mouse_dragging := false
 var category_swipe_distance := 0.0
@@ -90,6 +91,7 @@ func _ready() -> void:
 	_build_background()
 	_build_preview()
 	_build_item_carousel()
+	_build_comparison_stats()
 	_build_details()
 	_build_category_strip()
 	_build_left_rail()
@@ -322,6 +324,90 @@ func _build_item_carousel() -> void:
 	add_child(item_dots_layer)
 
 
+func _build_comparison_stats() -> void:
+	# StoreUI.Create positions the authored HP/POW/SPD titles at y=106/146/186
+	# and their rails at y=126/166/206 on the original 960x640 canvas.  These
+	# are overall loadout comparisons; item-specific properties remain in the
+	# description panel below, as they do in the Unity screen.
+	var comparison := Control.new()
+	comparison.name = "OverallComparison"
+	comparison.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_set_rect(comparison, Rect2(706, 104, 240, 130))
+	add_child(comparison)
+	for index in range(3):
+		var key: String = str(["hp", "pow", "spd"][index])
+		var row := Control.new()
+		row.name = "%sComparison" % key.to_upper()
+		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_set_rect(row, Rect2(0, 2 + index * 40, 240, 34))
+		comparison.add_child(row)
+
+		var title := TextureRect.new()
+		title.name = "AuthoredTitle"
+		title.texture = _component("armory_stat_%s_title" % key)
+		title.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		title.stretch_mode = TextureRect.STRETCH_SCALE
+		title.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_set_rect(title, Rect2(0, 0, 240, 18))
+		row.add_child(title)
+
+		var value_label := _label("0", 12, DESCRIPTION)
+		value_label.name = "Value"
+		value_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		_set_rect(value_label, Rect2(64, -2, 106, 22))
+		row.add_child(value_label)
+		var delta_label := _label("", 11, DESCRIPTION)
+		delta_label.name = "Delta"
+		delta_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		delta_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		_set_rect(delta_label, Rect2(168, -2, 62, 22))
+		row.add_child(delta_label)
+
+		var meter := Control.new()
+		meter.name = "AuthoredMeter"
+		meter.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_set_rect(meter, Rect2(6, 22, 214, 12))
+		row.add_child(meter)
+		var rail := TextureRect.new()
+		rail.name = "Rail"
+		rail.texture = _component("armory_stat_rail")
+		rail.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		rail.stretch_mode = TextureRect.STRETCH_SCALE
+		rail.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_set_rect(rail, Rect2(0, 0, 214, 12))
+		meter.add_child(rail)
+
+		# Delta is drawn first and the current/selected value over it, matching
+		# StoreUI.DrawComparsion's cyan/orange/green clipped layers.
+		var gain_clip := _comparison_fill(meter, "Gain", "armory_stat_%s_gain" % key)
+		var loss_clip := _comparison_fill(meter, "Loss", "armory_stat_%s_loss" % key)
+		var value_clip := _comparison_fill(meter, "Selected", "armory_stat_%s_fill" % key)
+		comparison_rows.append({
+			"value": value_label,
+			"delta": delta_label,
+			"gain": gain_clip,
+			"loss": loss_clip,
+			"selected": value_clip,
+		})
+
+
+func _comparison_fill(parent: Control, node_name: String, component_name: String) -> Control:
+	var clip := Control.new()
+	clip.name = node_name
+	clip.clip_contents = true
+	clip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_set_rect(clip, Rect2(2, 1, 0, 10))
+	parent.add_child(clip)
+	var texture_rect := TextureRect.new()
+	texture_rect.texture = _component(component_name)
+	texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	texture_rect.stretch_mode = TextureRect.STRETCH_SCALE
+	texture_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_set_rect(texture_rect, Rect2(0, 0, 210, 10))
+	clip.add_child(texture_rect)
+	return clip
+
+
 func _build_details() -> void:
 	var detail_panel := Control.new()
 	detail_panel.name = "EquipmentDetails"
@@ -338,12 +424,13 @@ func _build_details() -> void:
 
 	name_label = _label("", 18, TEAL)
 	name_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	_set_rect(name_label, Rect2(12, 8, 208, 26))
+	_set_rect(name_label, Rect2(22, 8, 188, 26))
 	detail_panel.add_child(name_label)
 	state_label = _label("", 12, Color.WHITE)
 	_set_rect(state_label, Rect2(12, 34, 208, 20))
 	detail_panel.add_child(state_label)
 	meta_label = _label("", 10, Color(0.58, 0.78, 0.84))
+	meta_label.visible = false
 	meta_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	_set_rect(meta_label, Rect2(12, 54, 208, 18))
 	detail_panel.add_child(meta_label)
@@ -353,7 +440,7 @@ func _build_details() -> void:
 	stats_text.fit_content = false
 	stats_text.scroll_active = false
 	stats_text.add_theme_font_size_override("normal_font_size", 12)
-	_set_rect(stats_text, Rect2(12, 58, 208, 108))
+	_set_rect(stats_text, Rect2(62, 58, 160, 88))
 	detail_panel.add_child(stats_text)
 
 	description_text = RichTextLabel.new()
@@ -362,10 +449,14 @@ func _build_details() -> void:
 	description_text.scroll_active = true
 	description_text.add_theme_font_size_override("normal_font_size", 11)
 	description_text.add_theme_color_override("default_color", DESCRIPTION)
-	_set_rect(description_text, Rect2(12, 146, 208, 102))
+	_set_rect(description_text, Rect2(10, 146, 212, 136))
 	detail_panel.add_child(description_text)
 
 	price_label = _label("", 13, GOLD_COLOR)
+	# Unity draws the numeric price directly inside the compact action plate.
+	# Keep this compatibility label populated for callers, but do not render a
+	# second price line above the original button.
+	price_label.visible = false
 	price_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	price_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_set_rect(price_label, Rect2(12, 254, 208, 23))
@@ -378,17 +469,20 @@ func _build_details() -> void:
 		selected_slot = index
 		_refresh_details()
 	)
-	_set_rect(slot_picker, Rect2(12, 278, 208, 30))
+	_set_rect(slot_picker, Rect2(12, 250, 208, 30))
 	detail_panel.add_child(slot_picker)
 
 	action_button = Button.new()
 	action_button.name = "PrimaryAction"
-	action_button.add_theme_font_size_override("font_size", 16)
-	action_button.add_theme_stylebox_override("normal", _recovered_button_style("button_equip", Color(0.72, 1.0, 0.94)))
-	action_button.add_theme_stylebox_override("hover", _recovered_button_style("button_hover", Color.WHITE))
-	action_button.add_theme_stylebox_override("pressed", _recovered_button_style("button_pressed", Color(0.78, 1.0, 1.0)))
+	action_button.add_theme_font_size_override("font_size", 14)
+	action_button.add_theme_color_override("font_color", Color.WHITE)
+	action_button.add_theme_color_override("font_disabled_color", Color(0.5, 0.5, 0.5))
+	action_button.add_theme_stylebox_override("normal", _recovered_button_style("armory_action_normal", Color.WHITE))
+	action_button.add_theme_stylebox_override("hover", _recovered_button_style("armory_action_normal", Color(0.82, 1.0, 1.0)))
+	action_button.add_theme_stylebox_override("pressed", _recovered_button_style("armory_action_pressed", Color.WHITE))
+	action_button.add_theme_stylebox_override("disabled", _recovered_button_style("armory_action_disabled", Color(0.72, 0.72, 0.72)))
 	action_button.pressed.connect(_perform_primary_action)
-	_set_rect(action_button, Rect2(26, 312, 180, 44))
+	_set_rect(action_button, Rect2(43, 286, 150, 58))
 	detail_panel.add_child(action_button)
 
 	notice_label = _label("", 10, Color(1.0, 0.55, 0.2))
@@ -443,14 +537,17 @@ func _build_bottom_bar() -> void:
 	rank_badge.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	rank_badge.stretch_mode = TextureRect.STRETCH_SCALE
 	rank_badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_set_rect(rank_badge, Rect2(882, 0, 78, 72))
+	# This is the collapsed NavigationMenuUI tab, which remains present over
+	# StoreUI in the original game.  Preserve its actual off-screen origin.
+	_set_rect(rank_badge, Rect2(840, -14, 120, 110))
 	bar.add_child(rank_badge)
 	var rank_icon := TextureRect.new()
+	rank_icon.name = "RankIcon"
 	rank_icon.texture = _component("main_rank_%02d" % clampi(GameState.get_rank_id(), 0, 11))
 	rank_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	rank_icon.stretch_mode = TextureRect.STRETCH_SCALE
 	rank_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_set_rect(rank_icon, Rect2(19, 14, 40, 40))
+	_set_rect(rank_icon, Rect2(40, 15, 64, 64))
 	rank_badge.add_child(rank_icon)
 
 
@@ -780,6 +877,7 @@ func _refresh_details() -> void:
 	_refresh_currency()
 	_refresh_loadout_summary()
 	_rebuild_slot_picker()
+	_refresh_comparison_stats()
 	if selected_item_key.is_empty():
 		name_label.text = tr("NO EQUIPMENT")
 		state_label.text = ""
@@ -793,6 +891,118 @@ func _refresh_details() -> void:
 		_refresh_weapon_details()
 	else:
 		_refresh_armor_details()
+
+
+func _refresh_comparison_stats() -> void:
+	if comparison_rows.size() != 3:
+		return
+	var current_skills: Dictionary = GameState.get_armor_skills()
+	var preview_skills := _preview_armor_skills(current_skills)
+	var current_weapon := _comparison_weapon(false)
+	var preview_weapon := _comparison_weapon(true)
+	var current_values := [
+		float(current_skills.get("hp", 0.0)),
+		_comparison_power(current_weapon, current_skills),
+		maxf(3.5, 7.0 + float(current_skills.get("speed_boost", 0.0))),
+	]
+	var preview_values := [
+		float(preview_skills.get("hp", 0.0)),
+		_comparison_power(preview_weapon, preview_skills),
+		maxf(3.5, 7.0 + float(preview_skills.get("speed_boost", 0.0))),
+	]
+	for index in range(3):
+		_set_comparison_row(index, float(current_values[index]), float(preview_values[index]))
+
+
+func _comparison_weapon(use_preview: bool) -> Dictionary:
+	var weapon_key := GameState.selected_weapon
+	if selected_slot >= 0 and selected_slot < GameState.battle_weapons.size():
+		weapon_key = GameState.battle_weapons[selected_slot]
+	if use_preview and selected_category == "gun" and GameState.WEAPONS.has(selected_item_key):
+		weapon_key = selected_item_key
+	return GameState.WEAPONS.get(weapon_key, {})
+
+
+func _preview_armor_skills(current_skills: Dictionary) -> Dictionary:
+	var preview: Dictionary = current_skills.duplicate(true)
+	if selected_category == "gun" or not GameState.ARMOR_ITEMS.has(selected_item_key):
+		return preview
+	var current_key := GameState.get_equipped_armor_key(selected_category)
+	var current_item: Dictionary = GameState.ARMOR_ITEMS.get(current_key, {})
+	var selected_item: Dictionary = GameState.ARMOR_ITEMS[selected_item_key]
+	var current_set_id := GameState.get_equipped_set_id()
+	if current_set_id >= 0 and GameState.ARMOR_SET_BONUSES.has(current_set_id):
+		_merge_skill_delta(preview, GameState.ARMOR_SET_BONUSES[current_set_id].skills, -1.0)
+	if not current_item.is_empty():
+		_merge_skill_delta(preview, current_item.skills, -1.0)
+	_merge_skill_delta(preview, selected_item.skills, 1.0)
+	var preview_set_id := _preview_full_set_id()
+	if preview_set_id >= 0 and GameState.ARMOR_SET_BONUSES.has(preview_set_id):
+		_merge_skill_delta(preview, GameState.ARMOR_SET_BONUSES[preview_set_id].skills, 1.0)
+	return preview
+
+
+func _preview_full_set_id() -> int:
+	var set_id := -1
+	for part_key: String in ["head", "body", "arms", "legs"]:
+		var armor_key := selected_item_key if selected_category == part_key else GameState.get_equipped_armor_key(part_key)
+		if not GameState.ARMOR_ITEMS.has(armor_key):
+			return -1
+		var part_set_id := int(GameState.ARMOR_ITEMS[armor_key].set_id)
+		if set_id < 0:
+			set_id = part_set_id
+		elif part_set_id != set_id:
+			return -1
+	return set_id
+
+
+func _merge_skill_delta(target: Dictionary, source: Dictionary, multiplier: float) -> void:
+	for skill_key in source:
+		target[skill_key] = float(target.get(skill_key, 0.0)) + float(source[skill_key]) * multiplier
+
+
+func _comparison_power(weapon: Dictionary, skills: Dictionary) -> float:
+	if weapon.is_empty():
+		return 0.0
+	var multiplier := 1.0 + float(skills.get("attack_boost", 0.0)) + float(skills.get("team_attack_boost", 0.0))
+	return float(weapon.get("damage", 0.0)) * maxf(0.0, multiplier)
+
+
+func _set_comparison_row(index: int, current_value: float, preview_value: float) -> void:
+	var row: Dictionary = comparison_rows[index]
+	var value_label := row.value as Label
+	var delta_label := row.delta as Label
+	value_label.text = "%.1f" % preview_value if index == 2 else _format_price(roundi(preview_value))
+	var delta := preview_value - current_value
+	if absf(delta) < 0.01:
+		delta_label.text = ""
+	else:
+		var delta_text := "%.1f" % absf(delta) if index == 2 else _format_price(absi(roundi(delta)))
+		delta_label.text = "%s%s" % ["+" if delta > 0.0 else "-", delta_text]
+		delta_label.add_theme_color_override("font_color", Color(0.25, 1.0, 0.45) if delta > 0.0 else Color(1.0, 0.3, 0.25))
+
+	var current_width := _comparison_meter_width(index, current_value)
+	var preview_width := _comparison_meter_width(index, preview_value)
+	var gain_clip := row.gain as Control
+	var loss_clip := row.loss as Control
+	var selected_clip := row.selected as Control
+	gain_clip.size.x = 0.0
+	loss_clip.size.x = 0.0
+	selected_clip.size.x = preview_width
+	if preview_width > current_width:
+		gain_clip.size.x = preview_width
+		selected_clip.size.x = current_width
+	elif preview_width < current_width:
+		loss_clip.size.x = current_width
+
+
+func _comparison_meter_width(index: int, value: float) -> float:
+	if index == 2:
+		return clampf(value * 200.0 / 15.0 + 10.0, 0.0, 210.0)
+	var normalized := value / 10.0 if index == 0 else value
+	if normalized <= 0.0:
+		return 0.0
+	return clampf(45.0 * pow(normalized, 0.2) - 63.0, 0.0, 210.0)
 
 
 func _refresh_weapon_details() -> void:
@@ -919,6 +1129,18 @@ func _configure_action(state: String) -> void:
 			"locked":
 				action_button.text = tr("RANK %d REQUIRED") % (_selected_unlock_rank() + 1)
 				action_button.disabled = true
+	if mode == "store":
+		if state == "available":
+			action_button.text = "%s\n%s" % [_selected_price_token(), tr("BUY")]
+		elif state == "locked":
+			action_button.text = "%s %d\n%s" % [tr("RANK"), _selected_unlock_rank() + 1, tr("REQUIRED")]
+
+
+func _selected_price_token() -> String:
+	var item: Dictionary = GameState.WEAPONS.get(selected_item_key, {}) if selected_category == "gun" else GameState.ARMOR_ITEMS.get(selected_item_key, {})
+	if int(item.get("mithril", 0)) > 0:
+		return "#%s" % _format_price(int(item.mithril))
+	return "$%s" % _format_price(int(item.get("price", 0)))
 
 
 func _perform_primary_action() -> void:
@@ -999,7 +1221,7 @@ func _refresh_currency() -> void:
 		currency_label.text = "%s\n%s\n%s" % [
 			_format_price(GameState.mithril),
 			_format_price(GameState.credits),
-			tr("RANK %d") % (GameState.get_rank_id() + 1),
+			"0",
 		]
 
 

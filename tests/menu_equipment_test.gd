@@ -32,6 +32,8 @@ func _run() -> void:
 	_check(solo_button != null and solo_button.position.is_equal_approx(Vector2(90, 35)) and solo_button.size.is_equal_approx(Vector2(348, 87)), "SINGLE button does not use the original Unity placement")
 	_check(online_button != null and online_button.position.is_equal_approx(Vector2(521, 35)) and online_button.size.is_equal_approx(Vector2(348, 87)), "ONLINE button does not use the original Unity placement")
 	_check(menu.drawer.position.is_equal_approx(Vector2(0, -257)), "collapsed navigation drawer does not match the original top-right rank tab")
+	var drawer_rank := menu.drawer_toggle.get_node_or_null("RankIcon") as TextureRect
+	_check(drawer_rank != null and drawer_rank.position.is_equal_approx(Vector2(40, 15)), "main-menu rank emblem is not aligned to NavigationMenuUI's authored frame offset")
 	menu._toggle_drawer(true, false)
 	_check(menu.drawer.position.is_equal_approx(Vector2.ZERO), "expanded navigation drawer does not align to the top edge")
 	_check(menu.drawer.get_node_or_null("OptionsButton") is TextureButton, "original OPTIONS entry is missing")
@@ -45,6 +47,31 @@ func _run() -> void:
 	var shell: UnityEquipmentShell = menu.equipment_shell
 	_check(is_instance_valid(shell), "shared Store/Customize shell was not created")
 	if is_instance_valid(shell):
+		var comparison := shell.get_node_or_null("OverallComparison") as Control
+		_check(comparison != null and comparison.position.is_equal_approx(Vector2(706, 104)) and comparison.size.is_equal_approx(Vector2(240, 130)), "StoreUI overall comparison block is not at its original position")
+		_check(shell.comparison_rows.size() == 3, "StoreUI is missing the authored HP/POW/SPD comparison meters")
+		_check(shell.action_button.position.is_equal_approx(Vector2(43, 286)) and shell.action_button.size.is_equal_approx(Vector2(150, 58)), "StoreUI action plate does not match the original 150x58 dialog button")
+		_check(not shell.currency_label.text.contains("RANK"), "StoreUI energy counter still displays the player rank")
+		var store_rank_badge := shell.get_node_or_null("OriginalNavigationBar/RankBadge") as TextureRect
+		var store_rank_icon: TextureRect = null
+		if store_rank_badge != null:
+			store_rank_icon = store_rank_badge.get_node_or_null("RankIcon") as TextureRect
+		_check(store_rank_badge != null and store_rank_badge.position.is_equal_approx(Vector2(840, -14)), "StoreUI rank tab does not preserve NavigationMenuUI's off-screen origin")
+		_check(store_rank_icon != null and store_rank_icon.position.is_equal_approx(Vector2(40, 15)), "StoreUI rank emblem is not aligned to its authored frame offset")
+		var owned_weapons_before: Array[String] = GameState.owned_weapons.duplicate()
+		GameState.owned_weapons.assign(["gun00"])
+		var purchasable_weapon := ""
+		for weapon_key: String in GameState.get_weapon_ids():
+			if weapon_key != "gun00" and GameState.is_weapon_rank_unlocked(weapon_key):
+				purchasable_weapon = weapon_key
+				break
+		_check(not purchasable_weapon.is_empty(), "StoreUI test could not find a rank-unlocked purchase candidate")
+		if not purchasable_weapon.is_empty():
+			shell._select_category("gun", false)
+			shell._select_item(purchasable_weapon, false)
+			_check(shell.action_button.text.ends_with("\n" + tr("BUY")), "StoreUI price and BUY label are not combined inside the original action plate")
+		GameState.owned_weapons = owned_weapons_before
+		shell._select_category("gun", false)
 		var expected_tabs := ["head", "body", "arms", "legs", "bag", "gun"]
 		_check(shell.category_buttons.keys().size() == expected_tabs.size(), "equipment shell does not expose six Unity categories")
 		for category_key: String in expected_tabs:

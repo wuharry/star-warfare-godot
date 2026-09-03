@@ -229,7 +229,11 @@ func _build_navigation_drawer() -> void:
 
 	var rank_icon := _texture_rect("main_rank_%02d" % clampi(GameState.get_rank_id(), 0, 11))
 	rank_icon.name = "RankIcon"
-	_set_rect(rank_icon, Rect2(28, 23, 64, 64))
+	# NavigationMenuUI places the 64px rank module at (880,575) and the
+	# 120x110 pull tab at (840,544) in Unity's bottom-left coordinates.  After
+	# converting to Godot's top-left origin the authored local offset is
+	# (40,15), not the geometric centre of the asymmetric tab artwork.
+	_set_rect(rank_icon, Rect2(40, 15, 64, 64))
 	drawer_toggle.add_child(rank_icon)
 
 	var bank := TextureButton.new()

@@ -196,6 +196,29 @@ def build_unity_composites(pages: dict[str, Image.Image]) -> dict[str, Image.Ima
         "armory_nav_dot": module_crop(pages, "4", (406, 905, 10, 10)),
         "armory_nav_selected": module_crop(pages, "4", (406, 886, 18, 18)),
         "armory_detail_panel": detail_panel,
+        # StoreUI modules 30-41 form the three comparison meters above the
+        # equipment description.  Keeping the authored rails and coloured
+        # fills separate lets Godot clip them to the live HP/POW/SPD values in
+        # the same way as StoreUI.DrawComparsion.
+        "armory_stat_rail": module_crop(pages, "4", (187, 986, 214, 12)),
+        "armory_stat_hp_fill": module_crop(pages, "4", (406, 944, 210, 10)),
+        "armory_stat_hp_gain": module_crop(pages, "4", (179, 1003, 210, 10)),
+        "armory_stat_hp_loss": module_crop(pages, "4", (406, 977, 210, 10)),
+        "armory_stat_pow_fill": module_crop(pages, "4", (406, 933, 210, 10)),
+        "armory_stat_pow_gain": module_crop(pages, "4", (406, 922, 210, 10)),
+        "armory_stat_pow_loss": module_crop(pages, "4", (406, 966, 210, 10)),
+        "armory_stat_spd_fill": module_crop(pages, "4", (406, 955, 210, 10)),
+        "armory_stat_spd_gain": module_crop(pages, "4", (179, 1014, 210, 10)),
+        "armory_stat_spd_loss": module_crop(pages, "4", (406, 988, 210, 10)),
+        "armory_stat_hp_title": module_crop(pages, "4", (1084, 967, 240, 18)),
+        "armory_stat_pow_title": module_crop(pages, "4", (1084, 1005, 240, 18)),
+        "armory_stat_spd_title": module_crop(pages, "4", (1084, 986, 240, 18)),
+        # The original dialog owns a compact 150x58 action plate at
+        # (747,526).  Text and numeric price glyphs are separate UI controls,
+        # so only the three plate states are extracted here.
+        "armory_action_disabled": module_crop(pages, "4", (984, 704, 150, 58)),
+        "armory_action_pressed": module_crop(pages, "4", (984, 763, 150, 58)),
+        "armory_action_normal": module_crop(pages, "4", (983, 822, 150, 58)),
     })
     for category_id, rect in enumerate([
         (156, 173, 64, 64), (104, 173, 64, 64), (51, 173, 64, 64),
