@@ -65,6 +65,10 @@ func _test_pvp_wave_guard() -> void:
 	world._start_next_wave()
 	_check(world.current_wave == 0, "PVP arena entered the PVE wave loop")
 	_check(world.total_spawned == 0, "PVP arena spawned a PVE enemy")
+	var spawned := world._spawn_enemy("crawler", false)
+	_check(spawned == null, "PVP arena accepted a direct PVE enemy spawn")
+	_check(world.alive_enemies == 0, "PVP arena recorded a live PVE enemy")
+	_check(world.total_spawned == 0, "PVP arena counted a direct PVE enemy spawn")
 	world.free()
 
 func _test_level_select() -> void:

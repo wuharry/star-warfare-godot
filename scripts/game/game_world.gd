@@ -64,6 +64,9 @@ func _process(delta: float) -> void:
 	if not completed:
 		elapsed_time += delta
 
+func _is_pvp_arena() -> bool:
+	return pvp_arena or bool(level_data.get("pvp", false)) or str(level_data.get("mode", "")) == "pvp"
+
 func _exit_tree() -> void:
 	if is_instance_valid(music):
 		music.stop()
@@ -207,7 +210,7 @@ func _begin_level() -> void:
 		_start_next_wave()
 
 func _start_next_wave() -> void:
-	if pvp_arena or spawning or completed:
+	if _is_pvp_arena() or spawning or completed:
 		return
 	current_wave += 1
 	if current_wave > int(level_data.waves):
@@ -243,6 +246,8 @@ func _choose_enemy_kind(index: int, boss_wave: bool) -> String:
 	return "crawler"
 
 func _spawn_enemy(kind: String, elite: bool) -> WarfareEnemy:
+	if _is_pvp_arena():
+		return null
 	var enemy := EnemyScript.new()
 	var health_value := float(level_data.enemy_health) * (1.0 + (current_wave - 1) * 0.12)
 	enemy.configure(player, kind, health_value, elite)
@@ -278,7 +283,7 @@ func _on_enemy_health_reported(current: float, maximum: float, is_boss: bool, en
 		hud.report_boss(current, maximum, "ALIEN OVERLORD")
 
 func _check_wave_complete() -> void:
-	if pvp_arena or spawning or alive_enemies > 0 or completed:
+	if _is_pvp_arena() or spawning or alive_enemies > 0 or completed:
 		return
 	if current_wave >= int(level_data.waves):
 		_victory()
@@ -450,15 +455,20 @@ func _load_stage_metadata() -> void:
 	player_spawn_points = _marker_positions(markers.get("Respawn", []))
 	enemy_spawn_points = _marker_positions(markers.get("EnemySpawnPoint", []))
 	boss_spawn_points = _marker_positions(markers.get("BossSpawnPoint", []))
+	var flag_spawn_points := _marker_positions(markers.get("FlagSpawn", []))
 	waypoint_positions = _marker_positions(markers.get("WayPoint", []))
 	waypoint_graph = stage_metadata.get("waypoint_graph", [])
-	if enemy_spawn_points.is_empty():
-		# Levels 13–21 are the original multiplayer arenas. Their Respawn and
-		# FlagSpawn markers are the authored edge spawn locations.
-		enemy_spawn_points = _marker_positions(markers.get("FlagSpawn", []))
+	if _is_pvp_arena():
+		# PvP markers belong to players, teams, and objectives. Never reinterpret
+		# them as PvE spawn locations, even if a restored map contains enemy data.
+		enemy_spawn_points.clear()
+		boss_spawn_points.clear()
+	elif enemy_spawn_points.is_empty():
+		enemy_spawn_points = flag_spawn_points.duplicate()
 		if enemy_spawn_points.is_empty():
 			enemy_spawn_points = player_spawn_points.duplicate()
 	var gameplay_markers: Array[Vector3] = player_spawn_points.duplicate()
+	gameplay_markers.append_array(flag_spawn_points)
 	gameplay_markers.append_array(enemy_spawn_points)
 	gameplay_markers.append_array(boss_spawn_points)
 	for point in gameplay_markers:
@@ -523,6 +533,8 @@ func _color_from_json(values: Variant) -> Color:
 	return Color.WHITE
 
 func _choose_restored_enemy_spawn(kind: String) -> Vector3:
+	if _is_pvp_arena():
+		return Vector3.INF
 	var candidates := boss_spawn_points if kind == "boss" and not boss_spawn_points.is_empty() else enemy_spawn_points
 	if candidates.is_empty():
 		return Vector3.INF

@@ -42,8 +42,9 @@ func _run() -> void:
 			var collision_mesh := load("%s/%s" % [root, collision_name]) as Mesh
 			_check(collision_mesh != null and collision_mesh.get_surface_count() > 0, "Level %d mesh colliders did not import" % level_number)
 
-	# Instantiate every map one at a time so visual, collision, spawn, player,
-	# HUD, and audio construction are all covered without retaining the full set.
+	# Instantiate every map one at a time so visual, collision, player, HUD, and
+	# audio construction are covered. Solo maps must support enemies; PvP maps
+	# must reject them at both the metadata and runtime spawn layers.
 	for level_number in GameState.CAMPAIGN_LEVELS:
 		GameState.selected_level = level_number
 		var world := (load("res://scenes/game.tscn") as PackedScene).instantiate() as WarfareGameWorld
@@ -54,7 +55,7 @@ func _run() -> void:
 		var colliders := world.get_node_or_null("OriginalUnityColliders")
 		_check(colliders != null and colliders.get_child_count() > 0, "Level %d runtime collision is absent" % level_number)
 		_check(not world.player_spawn_points.is_empty(), "Level %d runtime Respawn list is empty" % level_number)
-		world._spawn_enemy("crawler", false)
+		var spawned := world._spawn_enemy("crawler", false)
 		await get_tree().process_frame
 		await get_tree().physics_frame
 		await get_tree().physics_frame
@@ -63,9 +64,17 @@ func _run() -> void:
 			if child is WarfareEnemy:
 				runtime_enemy = child
 				break
-		_check(is_instance_valid(runtime_enemy), "Level %d could not spawn an enemy" % level_number)
-		if is_instance_valid(runtime_enemy):
-			_check(runtime_enemy.navigation_target != Vector3.INF, "Level %d enemy navigation did not initialize" % level_number)
+		if level_number in GameState.MULTIPLAYER_LEVELS:
+			_check(spawned == null, "PVP level %d accepted an enemy spawn" % level_number)
+			_check(not is_instance_valid(runtime_enemy), "PVP level %d created a runtime enemy" % level_number)
+			_check(world.enemy_spawn_points.is_empty(), "PVP level %d retained enemy spawn points" % level_number)
+			_check(world.boss_spawn_points.is_empty(), "PVP level %d retained boss spawn points" % level_number)
+			_check(world.total_spawned == 0, "PVP level %d counted an enemy spawn" % level_number)
+		else:
+			_check(is_instance_valid(spawned), "Level %d rejected an enemy spawn" % level_number)
+			_check(is_instance_valid(runtime_enemy), "Level %d could not spawn an enemy" % level_number)
+			if is_instance_valid(runtime_enemy):
+				_check(runtime_enemy.navigation_target != Vector3.INF, "Level %d enemy navigation did not initialize" % level_number)
 		world.completed = true
 		for audio in world.find_children("*", "AudioStreamPlayer", true, false):
 			audio.stop()
