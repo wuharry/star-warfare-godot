@@ -47,7 +47,7 @@ func _ready() -> void:
 		add_child(enemy)
 		enemy.spawn_left = 0.0
 		enemy.model.position.y = 0.0
-		enemy._play_recovered_animation("fly_idle" if kinds[index] == "boss" else "idle", 0.0)
+		enemy._play_recovered_animation("idle", 0.0)
 		enemy._face_planar_direction(Vector3(0.0, 0.0, -1.0))
 		enemy.process_mode = Node.PROCESS_MODE_DISABLED
 

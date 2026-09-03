@@ -127,6 +127,7 @@ func _ready() -> void:
 	add_to_group("enemies")
 	collision_layer = 2
 	collision_mask = 1
+	floor_snap_length = 0.6
 	_build_collision()
 	_build_visual()
 	_build_audio()
@@ -240,6 +241,14 @@ func _normalize_recovered_enemy() -> void:
 	var factor: float = float(target_height) / bounds.size.y
 	recovered_enemy.scale = Vector3.ONE * factor
 	recovered_enemy.position = Vector3(0.0, -bounds.position.y * factor, 0.0)
+	# The brute and boss animation bounds include their airborne/death poses.
+	# Aligning that full envelope leaves the live idle pose visibly hovering, so
+	# compensate to the actual lowest limbs used by the grounded animations.
+	var grounded_visual_offset: float = float({
+		"brute": 0.72,
+		"boss": 1.4,
+	}.get(enemy_kind, 0.0))
+	recovered_enemy.position.y -= grounded_visual_offset
 	spawn_depth = minf(float(target_height) * 0.82, 2.4)
 
 func _prepare_recovered_animations() -> void:
@@ -261,7 +270,7 @@ func _play_recovered_animation(animation_name: String, blend := 0.1, restart := 
 
 func _begin_grave_spawn() -> void:
 	model.position.y = -spawn_depth
-	_play_recovered_animation("fly_walk" if enemy_kind == "boss" else "run", 0.0)
+	_play_recovered_animation("run", 0.0)
 	var dust := GPUParticles3D.new()
 	dust.name = "RecoveredGraveSmoke"
 	dust.amount = 22
@@ -317,7 +326,7 @@ func _physics_process(delta: float) -> void:
 		model.position.y = lerpf(-spawn_depth, 0.0, smoothstep(0.0, 1.0, ratio))
 		velocity = Vector3.ZERO
 		if spawn_left <= 0.0:
-			_play_recovered_animation("fly_idle" if enemy_kind == "boss" else "idle")
+			_play_recovered_animation("idle")
 		return
 	if not is_instance_valid(target) or target.dead:
 		_release_attack_token()
@@ -328,7 +337,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.y -= gravity * delta
 		move_and_slide()
-		_play_recovered_animation("fly_idle" if enemy_kind == "boss" else "idle")
+		_play_recovered_animation("idle")
 		return
 	attack_cooldown = maxf(0.0, attack_cooldown - delta)
 	hit_reaction_left = maxf(0.0, hit_reaction_left - delta)
@@ -563,7 +572,7 @@ func _track_target_velocity(delta: float) -> void:
 func _begin_melee_windup() -> void:
 	attack_cooldown = attack_interval
 	windup_left = melee_windup
-	_play_recovered_animation("fly_attack" if enemy_kind == "boss" else "attack", 0.04)
+	_play_recovered_animation("attack", 0.04)
 	# Growl on the wind-up, not the impact: that is the audio tell.
 	AudioDirector.play_3d(
 		"enemy/mantis/tanglang_attack_01.wav" if enemy_kind == "boss" else "enemies_smash1.wav",
@@ -612,7 +621,7 @@ func _face_planar_direction(direction: Vector3) -> void:
 
 func _melee_attack() -> void:
 	attack_cooldown = attack_interval
-	_play_recovered_animation("fly_attack" if enemy_kind == "boss" else "attack", 0.04)
+	_play_recovered_animation("attack", 0.04)
 	if is_instance_valid(target):
 		target.take_damage(attack_damage, target.global_position, self)
 	AudioDirector.play_3d("enemy/mantis/tanglang_attack_01.wav" if enemy_kind == "boss" else "enemies_smash1.wav", global_position, -7.0, randf_range(0.92, 1.07))
@@ -668,7 +677,7 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 		flank_refresh = minf(flank_refresh, 0.2)
 		if randf() < 0.5:
 			strafe_sign = -strafe_sign
-	var attacked_animation := "fly_attacked" if enemy_kind == "boss" else "attacked"
+	var attacked_animation := "attacked"
 	hit_reaction_left = 0.22
 	if recovered_animation_player and recovered_animation_player.has_animation(attacked_animation):
 		hit_reaction_left = clampf(recovered_animation_player.get_animation(attacked_animation).length, 0.16, 0.38)
@@ -709,11 +718,11 @@ func _update_animation(delta: float, movement: float) -> void:
 	if recovered_animation_player:
 		var animation_name := ""
 		if hit_reaction_left > 0.0:
-			animation_name = "fly_attacked" if enemy_kind == "boss" else "attacked"
+			animation_name = "attacked"
 		elif attack_cooldown > attack_interval * 0.7:
-			animation_name = "fly_attack" if enemy_kind == "boss" else "attack"
+			animation_name = "attack"
 		else:
-			animation_name = ("fly_walk" if movement > 0.1 else "fly_idle") if enemy_kind == "boss" else ("run" if movement > 0.1 else "idle")
+			animation_name = "run" if movement > 0.1 else "idle"
 		_play_recovered_animation(animation_name)
 		return
 	locomotion_clock += delta * (7.0 + movement)

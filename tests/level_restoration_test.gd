@@ -74,6 +74,16 @@ func _run() -> void:
 			_check(is_instance_valid(spawned), "Level %d rejected an enemy spawn" % level_number)
 			_check(is_instance_valid(runtime_enemy), "Level %d could not spawn an enemy" % level_number)
 			if is_instance_valid(runtime_enemy):
+				var ground_query := PhysicsRayQueryParameters3D.create(
+					runtime_enemy.global_position + Vector3.UP * 0.4,
+					runtime_enemy.global_position + Vector3.DOWN * 1.0,
+					1
+				)
+				var ground_hit := runtime_enemy.get_world_3d().direct_space_state.intersect_ray(ground_query)
+				_check(not ground_hit.is_empty(), "Level %d enemy spawn is not over restored ground" % level_number)
+				if not ground_hit.is_empty():
+					var ground_position: Vector3 = ground_hit.position
+					_check(absf(runtime_enemy.global_position.y - ground_position.y - 0.02) < 0.03, "Level %d enemy spawn floats above restored ground" % level_number)
 				_check(runtime_enemy.navigation_target != Vector3.INF, "Level %d enemy navigation did not initialize" % level_number)
 		world.completed = true
 		for audio in world.find_children("*", "AudioStreamPlayer", true, false):

@@ -26,6 +26,17 @@ func _run() -> void:
 				break
 		_check(is_instance_valid(enemy), "%s was not spawned" % kind)
 		if is_instance_valid(enemy):
+			var ground_query := PhysicsRayQueryParameters3D.create(
+				enemy.global_position + Vector3.UP * 0.4,
+				enemy.global_position + Vector3.DOWN * 1.0,
+				1
+			)
+			var ground_hit := enemy.get_world_3d().direct_space_state.intersect_ray(ground_query)
+			_check(not ground_hit.is_empty(), "%s has no ground directly below its spawn" % kind)
+			if not ground_hit.is_empty():
+				var ground_position: Vector3 = ground_hit.position
+				_check(absf(enemy.global_position.y - ground_position.y - 0.02) < 0.03, "%s spawned above the ground" % kind)
+			_check(enemy.floor_snap_length >= 0.6, "%s does not stay snapped to slopes" % kind)
 			_check(is_instance_valid(enemy.recovered_animation_player), "%s has no recovered AnimationPlayer" % kind)
 			if is_instance_valid(enemy.recovered_animation_player):
 				var animations := enemy.recovered_animation_player.get_animation_list()
@@ -42,7 +53,7 @@ func _run() -> void:
 				enemy.spawn_left = 0.0
 				enemy.attack_cooldown = enemy.attack_interval
 				enemy.take_damage(1.0)
-				var attacked_name := "fly_attacked" if kind == "boss" else "attacked"
+				var attacked_name := "attacked"
 				_check(enemy.recovered_animation_name == attacked_name, "%s did not enter its hit reaction" % kind)
 				enemy.recovered_animation_player.stop()
 				enemy._update_animation(0.016, 1.0)
@@ -50,7 +61,7 @@ func _run() -> void:
 				_check(not enemy.recovered_animation_player.is_playing(), "%s restarted a finished hit clip every frame" % kind)
 				enemy.hit_reaction_left = 0.0
 				enemy._update_animation(0.016, 1.0)
-				_check(enemy.recovered_animation_name == ("fly_attack" if kind == "boss" else "attack"), "%s did not leave its hit reaction" % kind)
+				_check(enemy.recovered_animation_name == "attack", "%s did not leave its hit reaction" % kind)
 	world.completed = true
 	for audio in world.find_children("*", "AudioStreamPlayer", true, false):
 		audio.stop()

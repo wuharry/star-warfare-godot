@@ -259,6 +259,7 @@ func _spawn_enemy(kind: String, elite: bool) -> WarfareEnemy:
 		spawn_position = Vector3(cos(angle) * radius, 0.05, sin(angle) * radius)
 		if spawn_position.distance_to(player.global_position) < 12.0:
 			spawn_position = -spawn_position
+	spawn_position = _snap_enemy_spawn_to_ground(spawn_position)
 	enemy.position = spawn_position
 	enemy.died.connect(_on_enemy_died)
 	enemy.health_reported.connect(_on_enemy_health_reported.bind(enemy))
@@ -550,6 +551,22 @@ func _choose_restored_enemy_spawn(kind: String) -> Vector3:
 			best = candidate
 			best_distance = distance
 	return best + Vector3.UP * 0.05
+
+func _snap_enemy_spawn_to_ground(spawn_position: Vector3) -> Vector3:
+	# Unity enemy markers use the prefab pivot rather than the floor and can sit
+	# more than a metre above it. Resolve that authored point against the restored
+	# collision before the grave-rise begins so the whole animation stays planted.
+	var query := PhysicsRayQueryParameters3D.create(
+		spawn_position + Vector3.UP * 0.5,
+		spawn_position + Vector3.DOWN * 16.0,
+		1
+	)
+	query.collide_with_areas = false
+	var hit := get_world_3d().direct_space_state.intersect_ray(query)
+	if hit.is_empty():
+		return spawn_position
+	var ground_position: Vector3 = hit.position
+	return Vector3(spawn_position.x, ground_position.y + 0.02, spawn_position.z)
 
 func request_attack_token(enemy: Node) -> bool:
 	if not is_instance_valid(enemy):
