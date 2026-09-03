@@ -550,7 +550,7 @@ func _show_help() -> void:
 	body.add_child(_label(tr("FIELD MANUAL"), 25, Color(0.72, 0.94, 1.0)))
 	body.add_child(_manual_heading(tr("DESKTOP")))
 	body.add_child(_wrapped_label(tr("WASD move  •  Mouse aim  •  LMB fire  •  RMB focus  •  R previous weapon  •  Shift dash"), 14, Color.WHITE))
-	body.add_child(_wrapped_label(tr("1–4 switch weapon  •  Mouse wheel camera distance  •  Esc pause"), 14, Color.WHITE))
+	body.add_child(_wrapped_label(tr("1–4 direct weapon select  •  Mouse wheel switch weapon  •  Esc pause"), 14, Color.WHITE))
 	body.add_child(_manual_heading(tr("CONTROLLER")))
 	body.add_child(_wrapped_label(tr("Left stick move  •  Right stick aim  •  RB fire  •  LB focus  •  X previous weapon"), 14, Color.WHITE))
 	body.add_child(_manual_heading(tr("MOBILE")))

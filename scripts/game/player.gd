@@ -706,16 +706,18 @@ func _update_camera_controller(delta: float) -> void:
 	camera_rig.position.y = lerpf(camera_rig.position.y, target_height, 1.0 - exp(-10.0 * delta))
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+	if event.is_action_pressed("weapon_previous"):
+		cycle_weapon(-1)
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("weapon_next"):
+		cycle_weapon(1)
+		get_viewport().set_input_as_handled()
+	elif event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		_apply_look_delta(event.relative)
-	elif event is InputEventMouseButton and event.pressed and not OS.has_feature("mobile") and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+	elif event is InputEventMouseButton and event.pressed and event.button_index in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT] and not OS.has_feature("mobile") and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	elif event is InputEventScreenDrag and event.position.x > get_viewport().get_visible_rect().size.x * 0.36:
 		_apply_look_delta(event.relative * 0.72)
-	elif event.is_action_pressed("zoom_in"):
-		camera_distance = maxf(1.9, camera_distance - 0.2)
-	elif event.is_action_pressed("zoom_out"):
-		camera_distance = minf(4.5, camera_distance + 0.2)
 
 func _apply_look_delta(relative: Vector2) -> void:
 	var sensitivity := float(GameState.settings.look_sensitivity) * 0.01
