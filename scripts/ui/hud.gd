@@ -3,6 +3,7 @@ extends CanvasLayer
 
 const JoystickScript = preload("res://scripts/ui/virtual_joystick.gd")
 const Atlas = preload("res://scripts/ui/original_atlas.gd")
+const HitMarkerScript = preload("res://scripts/ui/hit_marker.gd")
 const POWER_SLOT_KEYS := [
 	KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5,
 	KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10,
@@ -25,7 +26,10 @@ var pause_overlay: Control
 var result_overlay: Control
 var touch_root: Control
 var crosshair: TextureRect
+var fire_crosshair: TextureRect
+var hit_marker: WarfareHitMarker
 var reticle_target_refresh := 0.0
+var fire_reticle_left := 0.0
 var hud_root: Control
 var pause_button: Button
 var skill_button: Button
@@ -60,6 +64,9 @@ func _ready() -> void:
 		player.ammo_changed.connect(_on_ammo_changed)
 		player.weapon_changed.connect(_on_weapon_changed)
 		player.dash_changed.connect(_on_dash_changed)
+		player.hit_confirmed.connect(_on_hit_confirmed)
+		player.kill_confirmed.connect(_on_kill_confirmed)
+		player.shot_fired.connect(_on_shot_fired)
 		_on_health_changed(player.health, player.shield)
 		_on_weapon_changed(player.current_weapon_id, player.current_weapon)
 		player._emit_ammo()
@@ -87,13 +94,17 @@ func _process(delta: float) -> void:
 	_update_armor_power_hud()
 	if not is_instance_valid(world):
 		return
+	fire_reticle_left = maxf(0.0, fire_reticle_left - delta)
+	_update_fire_reticle_visibility()
 	reticle_target_refresh -= delta
 	if is_instance_valid(crosshair) and reticle_target_refresh <= 0.0:
 		reticle_target_refresh = 0.09
-		# StateAim.cs used the weapon's AimID sprite with UIConstant.COLOR_AIM.
-		# The original reticle never pulsed while firing. It only changed to
-		# opaque red when StateAim detected a valid hostile target.
-		crosshair.modulate = Color.RED if player.is_reticle_on_enemy() else Color(0.0, 1.0, 1.0, 0.8)
+		# StateAim.cs changes the recovered AimID sprite to red over a hostile.
+		# BattleHUD's separate 1.2x firing sprite receives the same target state.
+		var reticle_color := Color.RED if player.is_reticle_on_enemy() else Color(0.0, 1.0, 1.0, 0.8)
+		crosshair.modulate = reticle_color
+		if is_instance_valid(fire_crosshair):
+			fire_crosshair.modulate = reticle_color
 
 func _build_status_hud() -> void:
 	# The recovered prefab uses a 960x640 logical canvas. At wider/taller
@@ -187,7 +198,51 @@ func _build_crosshair() -> void:
 	crosshair.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	crosshair.modulate = Color(0.0, 1.0, 1.0, 0.8)
 	reticle_layer.add_child(crosshair)
+	# BattleHUD.SetAimOnFire uses the same AimID image at exactly 1.2x size.
+	# This trigger-state cue stays independent from confirmed hit feedback.
+	fire_crosshair = TextureRect.new()
+	fire_crosshair.name = "FireCrosshair"
+	fire_crosshair.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	fire_crosshair.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	fire_crosshair.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	fire_crosshair.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	fire_crosshair.modulate = crosshair.modulate
+	fire_crosshair.visible = false
+	reticle_layer.add_child(fire_crosshair)
+	# Keep hit confirmation independent from target-hover tint and from the
+	# recovered crosshair asset. This procedural layer is explicitly transitional
+	# and may be replaced without touching aiming behavior.
+	hit_marker = HitMarkerScript.new()
+	hit_marker.name = "TransitionalHitMarker"
+	reticle_layer.add_child(hit_marker)
 	_set_reticle_for_weapon({"aim_id": 0})
+
+func _on_hit_confirmed(actual_damage: float) -> void:
+	if is_instance_valid(hit_marker):
+		hit_marker.show_hit(actual_damage)
+
+func _on_kill_confirmed() -> void:
+	if is_instance_valid(hit_marker):
+		hit_marker.show_kill()
+
+func _on_shot_fired(_weapon_data: Dictionary) -> void:
+	# Preserve a short readable pulse even when a mouse click is released between
+	# rendered frames. Held non-sniper fire remains enlarged, as in BattleHUD.
+	fire_reticle_left = maxf(fire_reticle_left, 0.085)
+	_update_fire_reticle_visibility()
+
+func _update_fire_reticle_visibility() -> void:
+	if not is_instance_valid(crosshair) or not is_instance_valid(fire_crosshair):
+		return
+	var kind := str(player.current_weapon.get("kind", "hitscan")) if is_instance_valid(player) else ""
+	var held_non_sniper := (
+		is_instance_valid(player)
+		and player.is_fire_input_active()
+		and kind not in ["sniper", "reflection"]
+	)
+	var show_fire := fire_reticle_left > 0.0 or held_non_sniper
+	fire_crosshair.visible = show_fire
+	crosshair.visible = not show_fire
 
 func _build_touch_controls() -> void:
 	if not _should_build_mobile_ui():
@@ -435,6 +490,11 @@ func _resize_crosshair() -> void:
 	crosshair.custom_minimum_size = display_size
 	crosshair.size = display_size
 	crosshair.pivot_offset = display_size * 0.5
+	if is_instance_valid(fire_crosshair):
+		var fire_size := display_size * 1.2
+		fire_crosshair.custom_minimum_size = fire_size
+		fire_crosshair.size = fire_size
+		fire_crosshair.pivot_offset = fire_size * 0.5
 
 func _original_ui_scale() -> float:
 	var viewport_size := get_viewport().get_visible_rect().size
@@ -544,12 +604,19 @@ func _set_reticle_for_weapon(data: Dictionary) -> void:
 	if texture == null:
 		texture = Atlas.hud("hud0")
 	crosshair.texture = texture
+	if is_instance_valid(fire_crosshair):
+		fire_crosshair.texture = texture
 	if texture:
 		var original_size := Atlas.logical_size(texture)
 		var display_size := original_size * _original_ui_scale()
 		crosshair.custom_minimum_size = display_size
 		crosshair.size = display_size
 		crosshair.pivot_offset = display_size * 0.5
+		if is_instance_valid(fire_crosshair):
+			var fire_size := display_size * 1.2
+			fire_crosshair.custom_minimum_size = fire_size
+			fire_crosshair.size = fire_size
+			fire_crosshair.pivot_offset = fire_size * 0.5
 
 func _should_build_mobile_ui() -> bool:
 	return OS.has_feature("mobile") or bool(ProjectSettings.get_setting("debug/restoration/force_mobile_ui", false))

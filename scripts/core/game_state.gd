@@ -217,7 +217,10 @@ func _build_weapon_database() -> void:
 
 func _weapon_profile(type_id: int, gun_id: int, weapon_name: String) -> Dictionary:
 	var profile := {
-		"pellets": 1, "range": 105.0, "spread": 0.012, "automatic": false,
+		# The original rifle/laser/machine-gun families fire through the exact
+		# camera-centre ray. Enemy collision volumes provide the mobile-friendly
+		# tolerance; a generic random cone made an apparently centred shot miss.
+		"pellets": 1, "range": 105.0, "spread": 0.0, "automatic": false,
 		"kind": "hitscan", "speed": 24.0, "animation": "rifle",
 		"tracer_style": "legacy", "tracer_every": 1,
 		"sound": "", "sound_variants": [], "swing_sounds": [], "hit_sounds": [],
@@ -235,7 +238,6 @@ func _weapon_profile(type_id: int, gun_id: int, weapon_name: String) -> Dictiona
 		5:
 			profile.automatic = true
 			profile.kind = "laser"
-			profile.spread = 0.004
 			profile.sound = "lasergun/laser_rifle_fire.wav"
 			profile.tracer_style = "laser"
 			profile.tracer_every = 1

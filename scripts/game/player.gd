@@ -5,12 +5,16 @@ signal health_changed(health: float, shield: float)
 signal ammo_changed(current: int, reserve: int, reloading: bool)
 signal weapon_changed(weapon_id: String, weapon_data: Dictionary)
 signal dash_changed(ratio: float)
+signal hit_confirmed(actual_damage: float)
+signal kill_confirmed
+signal shot_fired(weapon_data: Dictionary)
 signal died
 
 const ProjectileScript = preload("res://scripts/game/projectile.gd")
 const ARMOR_HP_SCALE := 0.01
 const CAMERA_BASE_HEIGHT := 1.683712
 const FLY_CAMERA_OFFSET := 0.25
+const UPPER_BODY_AIM_LIMIT := deg_to_rad(75.0)
 
 var max_health := 100.0
 var max_shield := 100.0
@@ -31,6 +35,7 @@ var float_audio_state := ""
 var armor_power_controller: Node
 
 var camera_yaw := 0.0
+var body_yaw := 0.0
 # ThirdPersonStandardCameraScript left angelV at its C# default of zero.  Start
 # level with the same horizontal sight line as the original game.
 var camera_pitch := 0.0
@@ -50,6 +55,7 @@ var camera: Camera3D
 var model: Node3D
 var gun_mount: Node3D
 var gun_mount_rest_position := Vector3.ZERO
+var gun_mount_rest_rotation := Quaternion.IDENTITY
 var gun_recoil_offset := Vector3(0.0, 0.0, 0.1)
 var muzzle: Marker3D
 var muzzle_light: OmniLight3D
@@ -67,6 +73,7 @@ var recovered_animation_name := ""
 var recovered_locomotion_name := ""
 var recovered_upper_body_name := ""
 var recovered_layered_animation := false
+var upper_body_aim_override_active := false
 var gun_socket: BoneAttachment3D
 var left_gun_socket: BoneAttachment3D
 var backpack_socket: BoneAttachment3D
@@ -224,6 +231,7 @@ func _build_visual() -> void:
 		left_gun_socket.bone_name = "l hand gun"
 		recovered_skeleton.add_child(left_gun_socket)
 	gun_mount_rest_position = gun_mount.position
+	gun_mount_rest_rotation = gun_mount.quaternion
 	_build_gun_visual()
 
 func _find_skeleton(node: Node) -> Skeleton3D:
@@ -522,6 +530,7 @@ func _prepare_weapon_mount(weapon_id: int) -> void:
 		gun_mount.rotation_degrees = Vector3(-90.0, 0.0, 0.0)
 		gun_recoil_offset = Vector3(0.0, 0.1, 0.0)
 	gun_mount_rest_position = gun_mount.position
+	gun_mount_rest_rotation = gun_mount.quaternion
 
 func _weapon_authored_rotation(weapon_id: int) -> Vector3:
 	# Exact combat cases from Unity WeaponResourceConfig.RotateGun. Most legacy
@@ -685,7 +694,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= gravity * delta
 	move_and_slide()
 
-	model.rotation.y = camera_yaw
+	_update_body_facing(delta, desired)
+	_update_combat_aim_pose(delta)
 	# Resolve firing before choosing the pose. This keeps an automatic weapon's
 	# shoot window alive on the exact frame its cooldown expires instead of
 	# briefly falling back to run/idle between consecutive shots.
@@ -721,12 +731,85 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _apply_look_delta(relative: Vector2) -> void:
 	var sensitivity := float(GameState.settings.look_sensitivity) * 0.01
-	camera_yaw -= relative.x * sensitivity
+	camera_yaw = wrapf(camera_yaw - relative.x * sensitivity, -PI, PI)
 	var direction := -1.0 if bool(GameState.settings.invert_y) else 1.0
 	camera_pitch -= relative.y * sensitivity * direction
 	camera_pitch = clampf(camera_pitch, deg_to_rad(-62.0), deg_to_rad(38.0))
 	camera_rig.rotation.y = camera_yaw
 	pitch_node.rotation.x = camera_pitch
+
+func _update_body_facing(delta: float, desired_movement: Vector3) -> void:
+	# Camera yaw is deliberately independent from avatar yaw. This allows the
+	# player to orbit all the way around the suit (including a front view)
+	# without making the avatar spin in place.
+	var target_yaw := body_yaw
+	var turn_response := 0.0
+	var combat_facing := is_combat_aim_active()
+	if combat_facing:
+		# A high exponential response gives a short, readable turn instead of a
+		# one-frame 180-degree snap when firing from a front-facing camera.
+		target_yaw = camera_yaw
+		turn_response = 18.0
+	else:
+		var travel := desired_movement
+		if travel.length_squared() <= 0.0004:
+			travel = Vector3(velocity.x, 0.0, velocity.z)
+		if travel.length_squared() > 0.04:
+			target_yaw = atan2(-travel.x, -travel.z)
+			turn_response = 12.0
+	if turn_response <= 0.0:
+		return
+	body_yaw = lerp_angle(body_yaw, target_yaw, 1.0 - exp(-turn_response * delta))
+	if is_instance_valid(model):
+		model.rotation.y = body_yaw
+
+func is_combat_aim_active() -> bool:
+	return (
+		Input.is_action_pressed("aim")
+		or Input.is_action_pressed("fire")
+		or touch_fire
+		or shoot_pose_left > 0.0
+	)
+
+func is_fire_input_active() -> bool:
+	return Input.is_action_pressed("fire") or touch_fire
+
+func _update_combat_aim_pose(delta: float) -> void:
+	if not is_instance_valid(gun_mount):
+		return
+	if not is_combat_aim_active():
+		if upper_body_aim_override_active and is_instance_valid(recovered_skeleton):
+			recovered_skeleton.clear_bones_global_pose_override()
+			upper_body_aim_override_active = false
+		gun_mount.quaternion = gun_mount.quaternion.slerp(
+			gun_mount_rest_rotation,
+			1.0 - exp(-22.0 * delta)
+		)
+		return
+
+	# Keep the lower body on the readable short turn used by free orbit, while
+	# the chest supplies a bounded twist during those first frames. The weapon
+	# pivot resolves the remainder so its muzzle and the camera ray agree even
+	# when firing immediately from a full front view.
+	if is_instance_valid(recovered_skeleton):
+		var spine_index := recovered_skeleton.find_bone("Bip01 Spine1")
+		if spine_index >= 0:
+			var base_pose := recovered_skeleton.get_bone_global_pose_no_override(spine_index)
+			var local_up := recovered_skeleton.global_transform.basis.inverse() * Vector3.UP
+			var upper_yaw := clampf(
+				angle_difference(body_yaw, camera_yaw),
+				-UPPER_BODY_AIM_LIMIT,
+				UPPER_BODY_AIM_LIMIT
+			)
+			base_pose.basis = Basis(local_up.normalized(), upper_yaw) * base_pose.basis
+			recovered_skeleton.set_bone_global_pose_override(spine_index, base_pose, 1.0, true)
+			recovered_skeleton.force_update_bone_child_transform(spine_index)
+			upper_body_aim_override_active = true
+
+	var aim := get_aim_solution(float(current_weapon.get("range", 105.0)))
+	var target := Vector3(aim.target)
+	if gun_mount.global_position.distance_squared_to(target) > 0.0001:
+		gun_mount.look_at(target, Vector3.UP)
 
 func _handle_weapon_input() -> void:
 	if Input.is_action_just_pressed("weapon_1"):
@@ -808,6 +891,7 @@ func _try_fire() -> void:
 	energy -= energy_cost
 	shot_cooldown = float(current_weapon.cooldown) * maxf(0.2, 1.0 + float(armor_skills.get("attack_frequency", 0.0)))
 	shoot_pose_left = maxf(0.14, minf(0.55, shot_cooldown))
+	shot_fired.emit(current_weapon)
 	# One-shot clips must restart on every successful trigger pull. Automatic
 	# clips deliberately remain continuous while the button is held.
 	restart_shoot_animation_requested = not bool(current_weapon.get("automatic", false))
@@ -946,6 +1030,8 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 	if randf() < clampf(float(armor_skills.get("block_rate", 0.0)), 0.0, 0.9):
 		AudioDirector.play_3d("force_shield01.wav", global_position, -6.0)
 		return
+	var health_before := health
+	var shield_before := shield
 	# Unity multiplies personal reduction, the team aura and the optional
 	# weapon-category defence. Category defence matters in VS/co-op damage and is
 	# harmless for ordinary enemies, which do not expose a weapon category.
@@ -968,6 +1054,12 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 		shield -= absorbed
 		remaining -= absorbed
 	health = maxf(0.0, health - remaining)
+	var actual_damage := maxf(0.0, health_before + shield_before - health - shield)
+	# Keep PvP on the same authoritative confirmation path as enemy damage.
+	# Blocks, mitigation, overkill and negative/healing damage therefore cannot
+	# produce a false hitmarker on the attacking player's HUD.
+	if actual_damage > 0.0 and is_instance_valid(_source) and _source != self and _source.has_method("on_damage_dealt"):
+		_source.on_damage_dealt(actual_damage)
 	if remaining > 0.0 and float(armor_skills.get("speed_on_hit", 0.0)) > 0.0:
 		speed_on_hit_left = 2.5
 	health_changed.emit(health, shield)
@@ -979,7 +1071,7 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 	tween.tween_property(model, "scale", Vector3(1.08, 0.94, 1.08), 0.055)
 	tween.tween_property(model, "scale", Vector3.ONE, 0.1)
 	if health <= 0.0:
-		_die()
+		_die(_source)
 
 func restore(kind: String, amount: float) -> void:
 	if kind == "energy":
@@ -1009,8 +1101,11 @@ func heal_from_armor_power(amount: float) -> float:
 func on_damage_dealt(actual_damage: float) -> void:
 	if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("on_damage_dealt"):
 		armor_power_controller.on_damage_dealt(actual_damage)
+	if actual_damage > 0.0:
+		hit_confirmed.emit(actual_damage)
 
 func on_enemy_defeated() -> void:
+	kill_confirmed.emit()
 	var recovery := float(armor_skills.get("hp_on_kill", 0.0)) * ARMOR_HP_SCALE
 	if recovery <= 0.0 or dead:
 		return
@@ -1083,8 +1178,10 @@ func get_damage_category() -> String:
 		"ricochet": return "pingpong_defence"
 		_: return "assault_defence"
 
-func _die() -> void:
+func _die(killer: Node = null) -> void:
 	dead = true
+	if is_instance_valid(killer) and killer != self and killer.has_method("on_enemy_defeated"):
+		killer.on_enemy_defeated()
 	if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("cancel_all_active"):
 		armor_power_controller.cancel_all_active(false)
 	_stop_continuous_weapon_audio()
