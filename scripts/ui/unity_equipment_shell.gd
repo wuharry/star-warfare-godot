@@ -377,6 +377,19 @@ func _build_comparison_stats() -> void:
 		_set_rect(rail, Rect2(0, 0, 214, 12))
 		meter.add_child(rail)
 
+		# Keep the authored black rail, but reveal the entire available slot with
+		# a restrained colour bed. On modern bright displays the original near-black
+		# empty section otherwise disappears into the store background.
+		var track_glow := TextureRect.new()
+		track_glow.name = "TrackGlow"
+		track_glow.texture = _component("armory_stat_%s_fill" % key)
+		track_glow.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		track_glow.stretch_mode = TextureRect.STRETCH_SCALE
+		track_glow.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		track_glow.modulate = Color(1.0, 1.0, 1.0, 0.24)
+		_set_rect(track_glow, Rect2(2, 1, 210, 10))
+		meter.add_child(track_glow)
+
 		# Delta is drawn first and the current/selected value over it, matching
 		# StoreUI.DrawComparsion's cyan/orange/green clipped layers.
 		var gain_clip := _comparison_fill(meter, "Gain", "armory_stat_%s_gain" % key)
@@ -465,6 +478,13 @@ func _build_details() -> void:
 	slot_picker = OptionButton.new()
 	slot_picker.name = "LoadoutSlotPicker"
 	slot_picker.add_theme_font_size_override("font_size", 10)
+	slot_picker.add_theme_color_override("font_color", Color(0.76, 1.0, 1.0))
+	slot_picker.add_theme_color_override("font_hover_color", Color.WHITE)
+	slot_picker.add_theme_color_override("font_pressed_color", Color.WHITE)
+	slot_picker.add_theme_stylebox_override("normal", _panel_style(Color(0.02, 0.10, 0.13, 0.98), Color(0.24, 0.82, 0.9, 0.95), 2))
+	slot_picker.add_theme_stylebox_override("hover", _panel_style(Color(0.04, 0.2, 0.23, 1.0), CYAN, 2))
+	slot_picker.add_theme_stylebox_override("pressed", _panel_style(Color(0.06, 0.28, 0.3, 1.0), Color.WHITE, 2))
+	slot_picker.add_theme_stylebox_override("focus", _panel_style(Color(0.03, 0.16, 0.19, 1.0), CYAN, 2))
 	slot_picker.item_selected.connect(func(index: int):
 		selected_slot = index
 		_refresh_details()
@@ -599,16 +619,20 @@ func _layout_category_buttons() -> void:
 			relative -= CATEGORIES.size()
 		elif relative < -2:
 			relative += CATEGORIES.size()
-		var active := index == selected_index
 		# Exact UISliderTag spacing is 90px; each step from centre scales by 20%.
 		var distance_scale := maxf(0.2, 1.0 - absf(float(relative)) * 0.2)
 		var button_size := Vector2(120, 99) * distance_scale
 		var center := Vector2(402.0 + relative * 90.0, 543.5)
 		_set_rect(button, Rect2(center - button_size * 0.5, button_size))
 		button.add_theme_constant_override("icon_max_width", roundi(64.0 * distance_scale))
-		button.add_theme_stylebox_override("normal", _texture_style("armory_category_frame", Color.WHITE) if active else _empty_style())
-		button.modulate = Color.WHITE if active else Color(0.64, 0.74, 0.76, 0.9)
-		button.z_index = 2 if active else 1
+		# ResetUITag gives every icon module 42-47 its own module-17 background.
+		# Do not dim inactive icons: their authored art already darkens everything
+		# except the represented body part. Extra modulation made them unreadable.
+		button.add_theme_stylebox_override("normal", _texture_style("armory_category_frame", Color.WHITE))
+		button.modulate = Color.WHITE
+		# UISliderTag.Sort draws the larger, centre-nearest controls last. Mirror
+		# that ordering for both rendering and overlapping pointer hit areas.
+		button.z_index = roundi(distance_scale * 100.0)
 	for index in range(CATEGORIES.size()):
 		var dot := category_layer.get_node_or_null("CategoryDot%02d" % index) as TextureRect
 		if dot == null:

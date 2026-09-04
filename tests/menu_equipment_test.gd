@@ -74,6 +74,16 @@ func _run() -> void:
 		shell._select_category("gun", false)
 		var expected_tabs := ["head", "body", "arms", "legs", "bag", "gun"]
 		_check(shell.category_buttons.keys().size() == expected_tabs.size(), "equipment shell does not expose six Unity categories")
+		var selected_tag := shell.category_buttons.get("gun") as Button
+		var adjacent_tag := shell.category_buttons.get("bag") as Button
+		var distant_tag := shell.category_buttons.get("body") as Button
+		_check(selected_tag.get_theme_stylebox("normal") is StyleBoxTexture, "selected category lost the recovered module-17 frame")
+		_check(adjacent_tag.get_theme_stylebox("normal") is StyleBoxTexture, "inactive category lost the recovered module-17 frame")
+		_check(adjacent_tag.modulate.is_equal_approx(Color.WHITE), "inactive category icon is still artificially dimmed")
+		_check(selected_tag.z_index > adjacent_tag.z_index and adjacent_tag.z_index > distant_tag.z_index, "category draw order does not follow UISliderTag scale sorting")
+		var hp_track_glow := shell.get_node_or_null("OverallComparison/HPComparison/AuthoredMeter/TrackGlow") as TextureRect
+		_check(hp_track_glow != null and hp_track_glow.modulate.a >= 0.2, "upper-right comparison slot is still too dark")
+		_check(shell.slot_picker.get_theme_stylebox("normal") is StyleBoxFlat, "loadout slot picker has no bright custom frame")
 		for category_key: String in expected_tabs:
 			_check(shell.category_buttons.has(category_key), "missing category tab: " + category_key)
 			shell._select_category(category_key, false)
