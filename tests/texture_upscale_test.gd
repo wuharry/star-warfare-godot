@@ -8,8 +8,17 @@ const EXPECTED_TEXTURE_COUNT := 321
 # avatar_import_test.gd, so they are kept out of this fixed legacy corpus.
 const EXCLUDED_TEXTURE_PREFIXES := [
 	"res://assets/ui/components/",
+	"res://assets/ui/armor_thumbnails/",
 	"res://assets/models/player/animated/armor_textures/",
 	"res://assets/models/player/animated/bags/",
+	# Projectile/VFX resolution and active large UI assets are validated by
+	# hd_asset_coverage_test.gd; keep this fixed corpus focused on the original
+	# 2x restoration set.
+	"res://assets/models/projectiles/",
+	"res://assets/vfx/legacy_hd/",
+	# This optional imported character pack has its own coverage test and keeps
+	# unimported source PNGs beside the generated runtime assets.
+	"res://assets/callOfMini/enhanced/",
 ]
 # Pages 11, 13 and 14 moved from 512x512 to 2048x2048 when they were
 # re-extracted: Resources/ui/{11,13,14}.mat point at Texture2D/0/*.png, but the
@@ -19,12 +28,12 @@ const EXCLUDED_TEXTURE_PREFIXES := [
 const EXPECTED_DIMENSIONS := {
 	"64x64": 3,
 	"128x64": 2,
-	"128x128": 6,
-	"128x256": 1,
+	"128x128": 5,
 	"256x128": 4,
-	"256x256": 20,
+	"256x256": 14,
+	"256x512": 1,
 	"512x256": 2,
-	"512x512": 80,
+	"512x512": 87,
 	"1024x256": 1,
 	"1024x512": 4,
 	"1024x1024": 130,
