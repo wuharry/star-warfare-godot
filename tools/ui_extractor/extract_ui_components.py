@@ -220,6 +220,15 @@ def build_unity_composites(pages: dict[str, Image.Image]) -> dict[str, Image.Ima
         "armory_action_pressed": module_crop(pages, "4", (984, 763, 150, 58)),
         "armory_action_normal": module_crop(pages, "4", (983, 822, 150, 58)),
     })
+    # PropsStoreUI.SetProps takes ItemID 81-91 from vUI[20], frame 1. These
+    # eleven 128x128 modules are the actual health, revival and assist art.
+    for item_index, rect in enumerate([
+        (640, 0, 128, 128), (768, 0, 128, 128), (896, 0, 128, 128),
+        (896, 256, 128, 128), (640, 128, 128, 128), (768, 256, 128, 128),
+        (640, 256, 128, 128), (896, 384, 128, 128), (768, 128, 128, 128),
+        (896, 128, 128, 128), (765, 384, 128, 128),
+    ]):
+        result[f"props_item_{item_index:02d}"] = module_crop(pages, "3", rect)
     for category_id, rect in enumerate([
         (156, 173, 64, 64), (104, 173, 64, 64), (51, 173, 64, 64),
         (0, 173, 64, 64), (400, 192, 64, 64), (208, 172, 64, 64),

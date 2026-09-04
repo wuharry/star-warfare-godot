@@ -6,8 +6,9 @@ signal store_changed
 signal armor_changed(part_key: String, armor_key: String)
 
 const SAVE_PATH := "user://star_warfare_save.json"
-const SAVE_VERSION := 2
+const SAVE_VERSION := 3
 const ArmorCatalogData = preload("res://scripts/core/armor_catalog.gd")
+const PropsCatalogData = preload("res://scripts/core/props_catalog.gd")
 const SINGLEPLAYER_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8]
 const MULTIPLAYER_LEVELS := [13, 14, 15, 16, 17, 18, 19, 20, 21]
 const CAMPAIGN_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19, 20, 21]
@@ -88,6 +89,8 @@ var ARMOR_ITEMS: Dictionary = {}
 var ARMOR_SET_BONUSES: Dictionary = {}
 var owned_armor: Array[String] = []
 var equipped_armor: Dictionary = {}
+var PROPS: Dictionary = {}
+var owned_props: Dictionary = {}
 
 # Three graphics presets. render_scale drives the root viewport's 3D
 # resolution (the biggest lever after the 2x texture upscale), while shadows,
@@ -174,6 +177,7 @@ var settings := {
 func _ready() -> void:
 	_build_weapon_database()
 	_build_armor_database()
+	_build_props_database()
 	_configure_input_map()
 	_load_save()
 	settings.show_touch_controls = bool(settings.show_touch_controls) or _device_prefers_touch()
@@ -187,6 +191,9 @@ func _build_armor_database() -> void:
 		equipped_armor = _default_armor_equipment()
 	if owned_armor.is_empty():
 		owned_armor = _default_owned_armor()
+
+func _build_props_database() -> void:
+	PROPS = PropsCatalogData.build_items()
 
 func _build_weapon_database() -> void:
 	WEAPONS.clear()
@@ -621,6 +628,34 @@ func equip_armor(armor_key: String) -> bool:
 	store_changed.emit()
 	return true
 
+func get_prop_ids(category_key: String) -> Array[String]:
+	return PropsCatalogData.get_ids(category_key)
+
+func get_prop_count(prop_key: String) -> int:
+	return maxi(0, int(owned_props.get(prop_key, 0)))
+
+func purchase_prop(prop_key: String) -> String:
+	if not PROPS.has(prop_key):
+		return "invalid"
+	if get_prop_count(prop_key) >= 99:
+		return "full"
+	var item: Dictionary = PROPS[prop_key]
+	var mithril_price := int(item.mithril)
+	if mithril_price > 0:
+		if mithril < mithril_price:
+			return "not_enough_mithril"
+		mithril -= mithril_price
+	else:
+		var credit_price := int(item.price)
+		if credits < credit_price:
+			return "not_enough_credits"
+		credits -= credit_price
+	owned_props[prop_key] = get_prop_count(prop_key) + 1
+	_normalize_props_state()
+	_save()
+	store_changed.emit()
+	return "purchased"
+
 func equip_armor_set(set_id: int) -> bool:
 	if set_id < 0 or set_id >= ArmorCatalogData.SET_NAMES.size():
 		return false
@@ -857,8 +892,16 @@ func _load_save() -> void:
 			equipped_armor[part_key] = armor_key
 	else:
 		equipped_armor = _default_armor_equipment()
+	var stored_props: Variant = parsed.get("owned_props", {})
+	owned_props.clear()
+	if stored_props is Dictionary:
+		for prop_key_value in stored_props:
+			var prop_key := str(prop_key_value)
+			if PROPS.has(prop_key):
+				owned_props[prop_key] = clampi(int(stored_props[prop_key_value]), 0, 99)
 	_normalize_armor_state()
 	_normalize_store_state()
+	_normalize_props_state()
 	var stored_settings = parsed.get("settings", {})
 	if stored_settings is Dictionary:
 		for key in stored_settings:
@@ -918,6 +961,7 @@ func _save() -> void:
 		"battle_weapons": battle_weapons,
 		"owned_armor": owned_armor,
 		"equipped_armor": equipped_armor,
+		"owned_props": owned_props,
 		"best_scores": best_scores,
 		"settings": settings
 	}
@@ -962,6 +1006,17 @@ func _normalize_store_state() -> void:
 	battle_weapons = normalized_loadout
 	if not battle_weapons.has(selected_weapon):
 		selected_weapon = battle_weapons[0]
+
+func _normalize_props_state() -> void:
+	var normalized := {}
+	for prop_key_value in owned_props:
+		var prop_key := str(prop_key_value)
+		if not PROPS.has(prop_key):
+			continue
+		var count := clampi(int(owned_props[prop_key_value]), 0, 99)
+		if count > 0:
+			normalized[prop_key] = count
+	owned_props = normalized
 
 func _default_owned_armor() -> Array[String]:
 	var defaults: Array[String] = []

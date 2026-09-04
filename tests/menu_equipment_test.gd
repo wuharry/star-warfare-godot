@@ -47,8 +47,24 @@ func _run() -> void:
 	var shell: UnityEquipmentShell = menu.equipment_shell
 	_check(is_instance_valid(shell), "shared Store/Customize shell was not created")
 	if is_instance_valid(shell):
+		_check(shell.desktop_layout and shell.size.is_equal_approx(UnityEquipmentShell.DESKTOP_DESIGN_SIZE), "widescreen armory did not activate the desktop canvas")
+		_check(shell.section_buttons.size() == 2, "desktop armory is missing GEAR/SUPPLY navigation")
+		_check(shell.desktop_equipment_buttons.size() == 6, "desktop armory does not expose all six equipment categories")
+		_check(shell.supply_buttons.size() == 3, "desktop armory does not expose all three original supply categories")
+		_check(not shell.category_layer.visible, "desktop armory still duplicates the category controls along the bottom")
+		var gear_section := shell.section_buttons.get("equipment") as Button
+		var gun_catalog := shell.desktop_equipment_buttons.get("gun") as Button
+		var gear_style := gear_section.get_theme_stylebox("normal") as StyleBoxTexture
+		var gun_style := gun_catalog.get_theme_stylebox("normal") as StyleBoxTexture
+		_check(gear_style != null and gear_style.texture.resource_path.ends_with("armory_side_button.png"), "desktop shelf switch does not use the original StoreUI side plate")
+		_check(gun_style != null and gun_style.texture.resource_path.ends_with("button_pressed.png"), "desktop category does not use the original long button plate")
+		_check(shell.weapon_filter_picker is OptionButton and shell.weapon_filter_picker.item_count == 6, "desktop armory is missing the compact weapon type filter")
+		_check(shell.get_node_or_null("EquipmentCarousel/PreviousItem") is Button and shell.get_node_or_null("EquipmentCarousel/NextItem") is Button, "desktop armory is missing mouse-friendly carousel arrows")
+		var carousel := shell.get_node_or_null("EquipmentCarousel") as Control
+		_check(carousel != null and carousel.position.is_equal_approx(Vector2(205, 442)), "desktop product strip is not separated from the 3D showcase")
 		var comparison := shell.get_node_or_null("OverallComparison") as Control
-		_check(comparison != null and comparison.position.is_equal_approx(Vector2(706, 104)) and comparison.size.is_equal_approx(Vector2(240, 130)), "StoreUI overall comparison block is not at its original position")
+		var expected_comparison_position := Vector2(884, 104) if shell.desktop_layout else Vector2(706, 104)
+		_check(comparison != null and comparison.position.is_equal_approx(expected_comparison_position) and comparison.size.is_equal_approx(Vector2(240, 130)), "StoreUI overall comparison block is not at the active layout position")
 		_check(shell.comparison_rows.size() == 3, "StoreUI is missing the authored HP/POW/SPD comparison meters")
 		_check(shell.action_button.position.is_equal_approx(Vector2(43, 286)) and shell.action_button.size.is_equal_approx(Vector2(150, 58)), "StoreUI action plate does not match the original 150x58 dialog button")
 		_check(not shell.currency_label.text.contains("RANK"), "StoreUI energy counter still displays the player rank")
@@ -56,7 +72,8 @@ func _run() -> void:
 		var store_rank_icon: TextureRect = null
 		if store_rank_badge != null:
 			store_rank_icon = store_rank_badge.get_node_or_null("RankIcon") as TextureRect
-		_check(store_rank_badge != null and store_rank_badge.position.is_equal_approx(Vector2(840, -14)), "StoreUI rank tab does not preserve NavigationMenuUI's off-screen origin")
+		var expected_rank_position := Vector2(1018, -14) if shell.desktop_layout else Vector2(840, -14)
+		_check(store_rank_badge != null and store_rank_badge.position.is_equal_approx(expected_rank_position), "StoreUI rank tab does not preserve NavigationMenuUI's off-screen origin")
 		_check(store_rank_icon != null and store_rank_icon.position.is_equal_approx(Vector2(40, 15)), "StoreUI rank emblem is not aligned to its authored frame offset")
 		var owned_weapons_before: Array[String] = GameState.owned_weapons.duplicate()
 		GameState.owned_weapons.assign(["gun00"])
@@ -84,16 +101,48 @@ func _run() -> void:
 		var hp_track_glow := shell.get_node_or_null("OverallComparison/HPComparison/AuthoredMeter/TrackGlow") as TextureRect
 		_check(hp_track_glow != null and hp_track_glow.modulate.a >= 0.2, "upper-right comparison slot is still too dark")
 		_check(shell.slot_picker.get_theme_stylebox("normal") is StyleBoxFlat, "loadout slot picker has no bright custom frame")
+		for supply_case: Dictionary in [
+			{"key": "health", "count": 6},
+			{"key": "aid", "count": 2},
+			{"key": "assist", "count": 3},
+		]:
+			shell._select_supply_category(str(supply_case.key), false)
+			await get_tree().process_frame
+			_check(shell.item_row.get_child_count() == int(supply_case.count), "%s supply shelf has the wrong item count" % supply_case.key)
+			_check(not shell.category_layer.visible and not shell.comparison_panel.visible, "mobile equipment controls remain visible on the supply shelf")
+			var supply_card := shell.item_row.get_child(0) as Button
+			var supply_art := supply_card.get_node_or_null("SupplyArt") as TextureRect
+			_check(supply_art != null and supply_art.texture != null, "%s supply shelf is missing recovered Unity art" % supply_case.key)
+		_check(shell.supply_preview_art.visible and shell.supply_preview_art.texture != null, "selected supply has no large preview art")
+		shell._select_category("gun", false)
 		for category_key: String in expected_tabs:
 			_check(shell.category_buttons.has(category_key), "missing category tab: " + category_key)
 			shell._select_category(category_key, false)
 			await get_tree().process_frame
 			var expected_count := GameState.get_weapon_ids().size() if category_key == "gun" else GameState.get_armor_ids(category_key).size()
 			_check(shell.item_row.get_child_count() == expected_count, "%s carousel count differs from GameState" % category_key)
+			if category_key != "gun":
+				var armor_card := shell.item_row.get_child(0) as Button
+				var armor_art := armor_card.get_node_or_null("ArmorArt") as TextureRect
+				_check(armor_card.text.is_empty(), "%s carousel still uses armor names as its primary artwork" % category_key)
+				_check(armor_art != null and armor_art.texture != null, "%s carousel does not show the actual armor-part thumbnail" % category_key)
 		var horizontal_bar := shell.item_scroll.get_h_scroll_bar()
 		_check(not horizontal_bar.visible or is_zero_approx(horizontal_bar.self_modulate.a), "equipment carousel exposes a desktop scrollbar")
 		shell._select_category("gun", false)
 		var weapon_ids := GameState.get_weapon_ids()
+		shell._select_item(weapon_ids[-1], false)
+		await get_tree().process_frame
+		_check(str(shell.item_row.get_child(3).get_meta("item_key", "")) == weapon_ids[0], "weapon carousel does not place the first weapon after the final weapon")
+		var angled_art := shell.item_row.get_child(3).get_node_or_null("WeaponArt") as TextureRect
+		_check(angled_art != null and is_equal_approx(angled_art.rotation_degrees, -12.0), "weapon carousel artwork does not use the original oblique presentation")
+		shell.item_swipe_distance = -shell.SWIPE_THRESHOLD - 1.0
+		shell._commit_item_swipe()
+		_check(shell.selected_item_key == weapon_ids[0], "weapon carousel does not loop forward from the final weapon")
+		shell.item_swipe_distance = shell.SWIPE_THRESHOLD + 1.0
+		shell._commit_item_swipe()
+		_check(shell.selected_item_key == weapon_ids[-1], "weapon carousel does not loop backward from the first weapon")
+		_check(shell.preview_tween == null, "store character preview still starts an automatic turntable tween")
+		shell._select_preferred_item(false)
 		var swipe_start := shell.selected_item_key
 		var swipe_start_index := weapon_ids.find(swipe_start)
 		shell.item_swipe_distance = -shell.SWIPE_THRESHOLD - 1.0
@@ -250,7 +299,8 @@ func _run() -> void:
 			if child is Control:
 				var control := child as Control
 				var rect := Rect2(control.position, control.size)
-				_check(rect.position.x >= -0.1 and rect.position.y >= -0.1 and rect.end.x <= 960.1 and rect.end.y <= 640.1, "%s overflows the 960x640 shell" % control.name)
+				var active_size := shell._active_design_size()
+				_check(rect.position.x >= -0.1 and rect.position.y >= -0.1 and rect.end.x <= active_size.x + 0.1 and rect.end.y <= active_size.y + 0.1, "%s overflows the active equipment shell" % control.name)
 	menu.queue_free()
 	AudioDirector.stop_all_sfx()
 	await get_tree().process_frame
@@ -265,6 +315,8 @@ func _run() -> void:
 	_check(native_menu.design_root.position.is_equal_approx(Vector2.ZERO), "960x640 viewport unnecessarily letterboxes the Unity canvas")
 	native_menu._show_armory("store")
 	await get_tree().process_frame
+	_check(not native_menu.equipment_shell.desktop_layout, "960x640 viewport should keep the original mobile StoreUI layout")
+	_check(native_menu.equipment_shell.category_layer.visible, "960x640 viewport lost the original Unity category carousel")
 	for child in native_menu.equipment_shell.get_children():
 		if child is Control:
 			var native_control := child as Control

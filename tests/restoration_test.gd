@@ -34,7 +34,8 @@ func _run() -> void:
 	var armory_buttons := _store_weapon_buttons(menu.modal_layer)
 	_check(armory_buttons.size() == 47, "armory should render all 47 original weapons")
 	for button: Button in armory_buttons:
-		_check(button.icon != null, "armory weapon is missing its original atlas icon: " + button.text)
+		var weapon_art := button.get_node_or_null("WeaponArt") as TextureRect
+		_check(weapon_art != null and weapon_art.texture != null, "armory weapon is missing its original atlas icon: " + str(button.get_meta("item_key", "")))
 	_check(menu.store_slot_picker.item_count >= 1, "armory is missing the Unity battle-weapon slot picker")
 	_check(menu.store_category_buttons.size() == 6, "armory is missing functional category tabs")
 	menu._select_store_category("RIFLE")
@@ -104,7 +105,7 @@ func _store_weapon_buttons(node: Node) -> Array[Button]:
 		var button := node as Button
 		# Category buttons now use the recovered Unity atlas icons too. Weapon
 		# cards carry their catalog key as metadata, so count those explicitly.
-		if button.icon != null and str(button.get_meta("item_key", "")).begins_with("gun"):
+		if str(button.get_meta("item_key", "")).begins_with("gun"):
 			result.append(button)
 	for child in node.get_children():
 		result.append_array(_store_weapon_buttons(child))

@@ -395,7 +395,12 @@ func _show_armory(start_mode: String = "store") -> void:
 	modal_layer.mouse_filter = Control.MOUSE_FILTER_STOP
 	equipment_shell = EquipmentShell.new()
 	equipment_shell.name = "RecoveredUnityStore"
-	equipment_shell.setup(start_mode)
+	var desktop_armory := size.y > 0.0 and size.x / size.y >= 1.6 and not OS.has_feature("mobile")
+	# The original interaction canvas remains 960x640 for menus and mobile.
+	# On a desktop widescreen, let only the armory use the otherwise wasted
+	# letterbox area; its local 1138x640 canvas maps exactly to 1280x720.
+	design_root.clip_contents = not desktop_armory
+	equipment_shell.setup(start_mode, desktop_armory)
 	equipment_shell.closed.connect(_close_modal)
 	modal_layer.add_child(equipment_shell)
 	store_weapon_row = equipment_shell.item_row
@@ -615,6 +620,8 @@ func _close_modal() -> void:
 	store_weapon_row = null
 	store_slot_picker = null
 	store_category_buttons.clear()
+	if is_instance_valid(design_root):
+		design_root.clip_contents = true
 	for child in modal_layer.get_children():
 		child.queue_free()
 	modal_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
