@@ -72,17 +72,24 @@ func _run() -> void:
 		return
 	_check(world.hud.touch_root.visible, "touch controls ignore the mobile preference")
 
-	# The original mobile HUD had exactly two thumb controls. Weapon, skill,
-	# pause and status widgets belong to the shared HUD and must not be copied
-	# into touch_root.
+	# Keep the original dual joysticks. Reload is the one deliberate modern
+	# addition for the five magazine weapons; weapon, skill, pause and status
+	# widgets still belong to the shared HUD and must not be duplicated here.
 	var joysticks: Array[WarfareVirtualJoystick] = []
 	for child in world.hud.touch_root.get_children():
-		_check(child is WarfareVirtualJoystick, "touch_root contains added control %s instead of only the two original joysticks" % child.name)
 		if child is WarfareVirtualJoystick:
 			joysticks.append(child)
 	_check(joysticks.size() == 2, "the original dual-joystick mobile layout was not restored")
-	_check(world.hud.touch_root.find_children("*", "TouchActionButton", true, false).is_empty(), "touch_root still contains the added text DASH button")
+	var touch_actions := world.hud.touch_root.find_children("*", "TouchActionButton", true, false)
+	_check(touch_actions.size() == 1 and touch_actions[0].name == "ReloadButton", "touch_root must add only the required ReloadButton")
 	_check(world.hud.touch_root.find_children("*", "BaseButton", true, false).is_empty(), "touch_root still contains a mobile-only weapon or skill button")
+	_check(is_instance_valid(world.hud.reload_button) and world.hud.reload_button.visible, "magazine weapon has no visible mobile reload action")
+	if is_instance_valid(world.hud.reload_button):
+		world.player._set_magazine_rounds(world.player._magazine_rounds() - 1)
+		world.hud.reload_button.emit_signal("pressed")
+		world.player._handle_weapon_input()
+		_check(world.player.reload_left > 0.0, "mobile ReloadButton is not connected to the weapon reload state")
+		world.player._cancel_reload()
 
 	joysticks.sort_custom(func(a: WarfareVirtualJoystick, b: WarfareVirtualJoystick) -> bool:
 		return a.get_global_rect().get_center().x < b.get_global_rect().get_center().x

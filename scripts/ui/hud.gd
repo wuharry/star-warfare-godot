@@ -2,6 +2,7 @@ class_name WarfareHUD
 extends CanvasLayer
 
 const JoystickScript = preload("res://scripts/ui/virtual_joystick.gd")
+const TouchActionButtonScript = preload("res://scripts/ui/touch_action_button.gd")
 const Atlas = preload("res://scripts/ui/original_atlas.gd")
 const HitMarkerScript = preload("res://scripts/ui/hit_marker.gd")
 const POWER_SLOT_KEYS := [
@@ -36,6 +37,7 @@ var skill_button: Button
 var boss_icon: TextureRect
 var move_joystick: WarfareVirtualJoystick
 var shoot_joystick: WarfareVirtualJoystick
+var reload_button: Control
 var power_controller: ArmorPowerController
 var power_panel: PanelContainer
 var power_grid: GridContainer
@@ -273,6 +275,14 @@ func _build_touch_controls() -> void:
 	shoot_joystick.released.connect(func(): if is_instance_valid(player): player.set_touch_fire(false))
 	touch_root.add_child(shoot_joystick)
 
+	reload_button = TouchActionButtonScript.new()
+	reload_button.name = "ReloadButton"
+	reload_button.caption = "RELOAD"
+	reload_button.accent = Color(1.0, 0.58, 0.12)
+	reload_button.pressed.connect(func(): if is_instance_valid(player): player.request_touch_reload())
+	touch_root.add_child(reload_button)
+	reload_button.visible = is_instance_valid(player) and str(player.current_weapon.get("resource_model", "energy")) == "magazine"
+
 func _build_armor_power_hud() -> void:
 	# GameWorld creates this controller before the HUD. Keeping that ownership
 	# outside CanvasLayer makes the same timers/effects run on a headless host.
@@ -466,6 +476,8 @@ func _layout_original_hud() -> void:
 		_place_original(move_joystick, Vector2(0.5, 0.5), Vector2(-320, 170), Vector2(200, 201), ui_scale)
 	if is_instance_valid(shoot_joystick):
 		_place_original(shoot_joystick, Vector2(0.5, 0.5), Vector2(320, 170), Vector2(200, 197), ui_scale)
+	if is_instance_valid(reload_button):
+		_place_original(reload_button, Vector2(1.0, 0.5), Vector2(-172, 42), Vector2(88, 88), ui_scale)
 
 	_resize_crosshair()
 
@@ -489,11 +501,13 @@ func _resize_crosshair() -> void:
 	var display_size := Atlas.logical_size(crosshair.texture) * _original_ui_scale()
 	crosshair.custom_minimum_size = display_size
 	crosshair.size = display_size
+	crosshair.position = (crosshair.get_parent().size - display_size) * 0.5
 	crosshair.pivot_offset = display_size * 0.5
 	if is_instance_valid(fire_crosshair):
 		var fire_size := display_size * 1.2
 		fire_crosshair.custom_minimum_size = fire_size
 		fire_crosshair.size = fire_size
+		fire_crosshair.position = (fire_crosshair.get_parent().size - fire_size) * 0.5
 		fire_crosshair.pivot_offset = fire_size * 0.5
 
 func _original_ui_scale() -> float:
@@ -584,9 +598,14 @@ func _on_health_changed(health: float, shield: float) -> void:
 	health_bar.value = health + shield
 	health_text.text = "%d/%d" % [int(health + shield), int(maximum)]
 
-func _on_ammo_changed(current: int, maximum: int, reloading: bool) -> void:
-	ammo_text.text = "%d/%d" % [current, maximum]
-	ammo_text.add_theme_color_override("font_color", Color(1.0, 0.26, 0.12) if current < maximum / 10 else Color(1.0, 0.78, 0.05))
+func _on_ammo_changed(current: int, reserve: int, reloading: bool) -> void:
+	var uses_infinite_reserve := reserve < 0
+	var maximum := maxi(1, int(player.current_weapon.get("magazine_size", 1))) if uses_infinite_reserve and is_instance_valid(player) else maxi(1, reserve)
+	if uses_infinite_reserve:
+		ammo_text.text = ("RELOADING  %d / ∞" if reloading else "%d / ∞") % current
+	else:
+		ammo_text.text = "%d/%d" % [current, reserve]
+	ammo_text.add_theme_color_override("font_color", Color(1.0, 0.26, 0.12) if current <= maximum / 5 else Color(1.0, 0.78, 0.05))
 	if is_instance_valid(energy_bar):
 		energy_bar.max_value = maximum
 		energy_bar.value = current
@@ -594,6 +613,8 @@ func _on_ammo_changed(current: int, maximum: int, reloading: bool) -> void:
 func _on_weapon_changed(_weapon_id: String, data: Dictionary) -> void:
 	if is_instance_valid(weapon_icon):
 		weapon_icon.texture = Atlas.weapon_icon(int(data.id))
+	if is_instance_valid(reload_button):
+		reload_button.visible = str(data.get("resource_model", "energy")) == "magazine"
 	_set_reticle_for_weapon(data)
 
 func _set_reticle_for_weapon(data: Dictionary) -> void:
@@ -611,11 +632,13 @@ func _set_reticle_for_weapon(data: Dictionary) -> void:
 		var display_size := original_size * _original_ui_scale()
 		crosshair.custom_minimum_size = display_size
 		crosshair.size = display_size
+		crosshair.position = (crosshair.get_parent().size - display_size) * 0.5
 		crosshair.pivot_offset = display_size * 0.5
 		if is_instance_valid(fire_crosshair):
 			var fire_size := display_size * 1.2
 			fire_crosshair.custom_minimum_size = fire_size
 			fire_crosshair.size = fire_size
+			fire_crosshair.position = (fire_crosshair.get_parent().size - fire_size) * 0.5
 			fire_crosshair.pivot_offset = fire_size * 0.5
 
 func _should_build_mobile_ui() -> bool:

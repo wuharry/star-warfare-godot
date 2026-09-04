@@ -82,6 +82,48 @@ const WEAPON_ROWS := [
 	[46, "Spreader", 850.0, 1.00, 100, 15, 0.0, 100.0, 6, 2, 102, 3300000, 0]
 ]
 
+# First modern reload vertical slice. Reserve ammunition is intentionally
+# infinite: the magazine creates the short combat rhythm while the recovered
+# 9,999,999 Energy pool remains a compatibility detail rather than a second
+# resource the player has to manage.
+const RELOAD_PROFILES := {
+	"gun00": {
+		"resource_model": "magazine", "magazine_size": 30,
+		"reload_style": "rifle", "reload_time": 1.55, "empty_reload_bonus": 0.22,
+		"prop_shape": "box", "prop_size": Vector3(0.14, 0.30, 0.20),
+		"prop_position": Vector3(0.0, -0.19, 0.09), "prop_rotation": Vector3(-12.0, 0.0, 0.0),
+		"drop_fraction": 0.22, "hand_fraction": 0.38, "insert_fraction": 0.73,
+	},
+	"gun35": {
+		"resource_model": "magazine", "magazine_size": 5,
+		"reload_style": "sniper", "reload_time": 2.18, "empty_reload_bonus": 0.30,
+		"prop_shape": "box", "prop_size": Vector3(0.12, 0.24, 0.18),
+		"prop_position": Vector3(0.0, -0.17, 0.13), "prop_rotation": Vector3(-7.0, 0.0, 0.0),
+		"drop_fraction": 0.24, "hand_fraction": 0.42, "insert_fraction": 0.72,
+	},
+	"gun06": {
+		"resource_model": "magazine", "magazine_size": 6,
+		"reload_style": "shotgun_shell", "reload_time": 0.68, "empty_reload_bonus": 0.0,
+		"prop_shape": "shell", "prop_size": Vector3(0.055, 0.18, 0.055),
+		"prop_position": Vector3(0.0, -0.10, 0.17), "prop_rotation": Vector3(90.0, 0.0, 0.0),
+		"drop_fraction": -1.0, "hand_fraction": 0.08, "insert_fraction": 0.80,
+	},
+	"gun11": {
+		"resource_model": "magazine", "magazine_size": 1,
+		"reload_style": "rocket", "reload_time": 2.42, "empty_reload_bonus": 0.0,
+		"prop_shape": "rocket", "prop_size": Vector3(0.10, 0.62, 0.10),
+		"prop_position": Vector3(0.0, 0.0, 0.40), "prop_rotation": Vector3(90.0, 0.0, 0.0),
+		"drop_fraction": 0.16, "hand_fraction": 0.30, "insert_fraction": 0.83,
+	},
+	"gun14": {
+		"resource_model": "magazine", "magazine_size": 4,
+		"reload_style": "grenade_drum", "reload_time": 2.05, "empty_reload_bonus": 0.18,
+		"prop_shape": "drum", "prop_size": Vector3(0.20, 0.18, 0.20),
+		"prop_position": Vector3(0.0, -0.19, 0.10), "prop_rotation": Vector3(90.0, 0.0, 0.0),
+		"drop_fraction": 0.26, "hand_fraction": 0.43, "insert_fraction": 0.76,
+	},
+}
+
 var WEAPONS: Dictionary = {}
 var battle_weapons: Array[String] = ["gun00"]
 var owned_weapons: Array[String] = ["gun00"]
@@ -202,7 +244,7 @@ func _build_weapon_database() -> void:
 		var type_id := int(row[5])
 		var profile := _weapon_profile(type_id, int(row[0]), str(row[1]))
 		var cooldown := maxf(0.05, float(row[3]))
-		WEAPONS[weapon_id] = {
+		var weapon_data := {
 			"id": int(row[0]), "name": str(row[1]), "damage": float(row[2]),
 			"cooldown": cooldown, "fire_rate": 1.0 / cooldown,
 			"energy": int(row[4]), "type": type_id,
@@ -221,6 +263,10 @@ func _build_weapon_database() -> void:
 			"explosion_sound": profile.explosion_sound, "color": profile.color,
 			"model": weapon_id
 		}
+		weapon_data.merge(RELOAD_PROFILES.get(weapon_id, {
+			"resource_model": "energy", "magazine_size": 0, "reload_style": ""
+		}), true)
+		WEAPONS[weapon_id] = weapon_data
 
 func _weapon_profile(type_id: int, gun_id: int, weapon_name: String) -> Dictionary:
 	var profile := {
