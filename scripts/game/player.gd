@@ -82,8 +82,8 @@ var backpack_visual: MeshInstance3D
 var weapon_order: Array[String] = []
 var current_weapon_id := "gun00"
 var current_weapon: Dictionary = {}
-var max_energy := 5000
-var energy := 5000
+var max_energy := 9999999
+var energy := 9999999
 var shot_cooldown := 0.0
 var reload_left := 0.0
 var weapon_audio_active := false

@@ -131,11 +131,11 @@ func _build_status_hud() -> void:
 	health_text.add_theme_color_override("font_outline_color", Color.BLACK)
 	hud_root.add_child(health_text)
 
-	energy_bar = _atlas_progress("hud_69", "hud_70", 5000.0)
+	energy_bar = _atlas_progress("hud_69", "hud_70", 9999999.0)
 	energy_bar.name = "AmmoBar"
 	energy_bar.fill_mode = TextureProgressBar.FILL_RIGHT_TO_LEFT
 	hud_root.add_child(energy_bar)
-	ammo_text = _label("5000/5000", 13, Color(1.0, 0.78, 0.05))
+	ammo_text = _label("9999999/9999999", 13, Color(1.0, 0.78, 0.05))
 	ammo_text.name = "AmmoValue"
 	ammo_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	ammo_text.add_theme_constant_override("outline_size", 2)
