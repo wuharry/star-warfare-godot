@@ -51,9 +51,9 @@
 
 ## 操作
 
-- 鍵盤滑鼠：`WASD` 移動、滑鼠瞄準、左鍵射擊、右鍵聚焦、`R` 上一把武器、`Shift` 衝刺、`1`–`4` 指定武器、`F1`–`F10` 觸發目前裝備提供的主動技能、`Esc` 暫停。
-- 控制器：左／右搖桿移動與瞄準、RB 射擊、LB 聚焦、X 上一把武器、左搖桿按下衝刺、Start 暫停。
-- 手機：左側原版樣式虛擬搖桿移動，右半畫面拖曳瞄準，右側 `FIRE`／`PREV`／`DASH`／`SWAP` 操作。Android 以橫向全螢幕執行。
+- 鍵盤滑鼠：`WASD` 移動、滑鼠瞄準、左鍵射擊、右鍵聚焦、`R` 換彈、滾輪切換武器、`Shift` 衝刺、`1`–`4` 指定武器、`F1`–`F10` 觸發目前裝備提供的主動技能、`Esc` 暫停。
+- 控制器：左／右搖桿移動與瞄準、RB 射擊、LB 聚焦、X 換彈、左搖桿按下衝刺、Start 暫停。
+- 手機：保留原版雙虛擬搖桿，左側移動、右側瞄準與射擊；彈匣武器會額外顯示 `RELOAD`，武器與技能仍使用共用 HUD 按鈕。Android 以橫向全螢幕執行。
 
 ## 測試與匯出
 
@@ -84,9 +84,10 @@
 
 ```powershell
 .\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --path . res://tests/expanse_visual_capture.tscn
+.\.tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe --path . res://tests/reload_visual_capture.tscn
 ```
 
-輸出 `tests/expanse_preview.png`，含出生點、地標與地形的接縫、區間曠野，以及整片大陸的空拍。
+大陸預覽輸出到 `tests/expanse_preview.png`；換彈動作對照輸出到系統暫存目錄的 `star_warfare_reload_visuals`。
 
 Windows 與 Android 的匯出設定已放在 `export_presets.cfg`。本機工具鏈位於本專案的 `.tools`，建置腳本會自動設定 Android SDK 與 Java 路徑；將資料夾搬到另一台電腦時需另行安裝 Godot 4.7.2 export templates 與 JDK 17+。
 
