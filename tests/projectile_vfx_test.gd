@@ -16,7 +16,7 @@ func _run() -> void:
 	_test_hd_assets()
 	await _test_runtime_visuals()
 	if failures.is_empty():
-		print("PROJECTILE_VFX_TEST_PASS modern=3 legacy_hd=37 recovered_effects=5")
+		print("PROJECTILE_VFX_TEST_PASS modern=3 legacy_hd=37 recovered_effects=6 original_rocket=1")
 		get_tree().quit(0)
 	else:
 		print("PROJECTILE_VFX_TEST_FAIL: %s" % ", ".join(failures))
@@ -72,6 +72,11 @@ func _test_hd_assets() -> void:
 		if ResourceLoader.exists(path):
 			var texture := load(path) as Texture2D
 			_check(texture != null and mini(texture.get_width(), texture.get_height()) >= 256, file_name + " is not HD-sized")
+	_check(ResourceLoader.exists("res://assets/models/projectiles/original_rocket.obj"), "missing converted Unity Effect/Projectile mesh")
+	_check(ResourceLoader.exists("res://assets/models/projectiles/gun0910_hd.png"), "missing HD original rocket atlas")
+	if ResourceLoader.exists("res://assets/models/projectiles/gun0910_hd.png"):
+		var rocket_atlas := load("res://assets/models/projectiles/gun0910_hd.png") as Texture2D
+		_check(rocket_atlas != null and mini(rocket_atlas.get_width(), rocket_atlas.get_height()) >= 1024, "original rocket atlas was not HD-remastered")
 
 func _test_runtime_visuals() -> void:
 	GameState.selected_level = 1
@@ -106,7 +111,7 @@ func _test_runtime_visuals() -> void:
 	_check(sniper.name == "LegacyHDSniperTracer" and sniper.get_node_or_null("RecoveredLaserPlane00") != null, "sniper does not use the restored HD beam")
 	var variants := [
 		["plasma", "gun20", ["l_001_hd.png", "shandian_005_hd.png"]],
-		["rocket", "gun11", ["gun0910_hd.png", "plasma_bolt1_red_hd.png", "fire_00302_hd.png", "fire_smook_001_hd.png"]],
+		["rocket", "gun11", ["gun0910_hd.png", "plasma_bolt1_red.png", "fire_00302_hd.png", "fire_smook_001_hd.png"]],
 		["rocket", "gun30", ["bug_RPG6_hd.png", "gun_up_1_slf_sfx_hd.png", "fire_00302_hd.png", "fire_smook_001_hd.png"]],
 		["grenade", "gun14", ["gun0506_hd.png"]],
 		["grenade", "gun41", ["joke_force_hd.png", "joke_warning01_hd.png", "xmas_light01_r_hd.png"]],
@@ -122,6 +127,14 @@ func _test_runtime_visuals() -> void:
 		var texture_paths := _mesh_texture_paths(projectile)
 		for expected_texture: String in record[2]:
 			_check(texture_paths.any(func(path: String): return path.ends_with(expected_texture)), "%s %s does not use %s" % [record[0], record[1], expected_texture])
+		if record[0] == "rocket" and record[1] == "gun11":
+			var original_body := projectile.get_node_or_null("ProjectileVisual/OriginalUnityRocket") as MeshInstance3D
+			_check(original_body != null, "standard RPG does not instantiate the original Unity projectile")
+			if original_body != null:
+				_check(original_body.get_meta("source_prefab", "") == "Effect/Projectile", "standard RPG lost its Unity prefab provenance")
+				_check(original_body.mesh != null and original_body.mesh.get_surface_count() == 4, "original RPG body/flame mesh does not have its four recovered surfaces")
+			_check(projectile.get_node_or_null("ProjectileVisual/OriginalRocketSmokeLong") != null, "original RPG is missing its long smoke emitter")
+			_check(projectile.get_node_or_null("ProjectileVisual/OriginalRocketSmokeHot") != null, "original RPG is missing its hot smoke emitter")
 		projectile.queue_free()
 	for audio in world.find_children("*", "AudioStreamPlayer", true, false):
 		audio.stop()
@@ -137,7 +150,21 @@ func _mesh_texture_paths(node: Node) -> Array[String]:
 		var mesh_instance := mesh_node as MeshInstance3D
 		if mesh_instance.mesh == null:
 			continue
-		var material := mesh_instance.mesh.material as StandardMaterial3D
-		if material != null and material.albedo_texture != null:
-			paths.append(material.albedo_texture.resource_path)
+		_append_mesh_texture_paths(paths, mesh_instance.mesh, mesh_instance)
+	for particle_node in node.find_children("*", "GPUParticles3D", true, false):
+		var particles := particle_node as GPUParticles3D
+		if particles.draw_pass_1 != null:
+			_append_mesh_texture_paths(paths, particles.draw_pass_1)
 	return paths
+
+func _append_mesh_texture_paths(paths: Array[String], mesh: Mesh, mesh_instance: MeshInstance3D = null) -> void:
+	for surface_index in mesh.get_surface_count():
+		var material: Material
+		if mesh_instance != null:
+			material = mesh_instance.get_surface_override_material(surface_index)
+		if material == null:
+			material = mesh.surface_get_material(surface_index)
+		if material is StandardMaterial3D:
+			var standard := material as StandardMaterial3D
+			if standard.albedo_texture != null:
+				paths.append(standard.albedo_texture.resource_path)

@@ -6,8 +6,11 @@ extends Control
 # final art. Keep the signal contract (show_hit/show_kill) when replacing it
 # with authored textures or animation. See docs/TRANSITIONAL_HITMARKER.md.
 
-const HIT_DURATION := 0.085
-const KILL_DURATION := 0.155
+# 85 ms was technically visible but too easy to lose between recoil, muzzle
+# flash and a fast camera pan. Keep the marker brief while ensuring it spans
+# several frames on both 60 Hz and 120 Hz displays.
+const HIT_DURATION := 0.16
+const KILL_DURATION := 0.24
 const HIT_COLOR := Color(0.56, 0.96, 1.0)
 const KILL_COLOR := Color(1.0, 0.73, 0.2)
 

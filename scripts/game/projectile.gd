@@ -2,6 +2,14 @@ class_name WarfareProjectile
 extends Node3D
 
 const LEGACY_HD_ROOT := "res://assets/vfx/legacy_hd/"
+const ORIGINAL_ROCKET_MESH_PATH := "res://assets/models/projectiles/original_rocket.obj"
+const ORIGINAL_ROCKET_HD_TEXTURE_PATH := "res://assets/models/projectiles/gun0910_hd.png"
+const ORIGINAL_ROCKET_MATERIAL_STATES := {
+	"fire_001": {"blend": "additive", "depth_write": false, "cull_disabled": true, "unshaded": true},
+	"fire_001_2": {"blend": "additive", "depth_write": false, "cull_disabled": true, "unshaded": true},
+	"fire_001_3": {"blend": "additive", "depth_write": false, "cull_disabled": true, "unshaded": true},
+	"RPG_-13_-_Default": {"blend": "opaque", "depth_write": true, "cull_disabled": false, "unshaded": false},
+}
 
 var owner_node: Node
 var direction := Vector3.FORWARD
@@ -78,9 +86,14 @@ func _build_legacy_hd_visual() -> bool:
 			_add_projectile_light(tint, 3.2, 4.2)
 			return true
 		"rocket":
-			var rocket_texture := "bug_RPG6_hd.png" if visual_variant == "gun30" else "gun0910_hd.png"
-			_add_capsule(rocket_texture, 0.17, 0.7, Color.WHITE, 0.9)
-			_add_billboard("gun_up_1_slf_sfx_hd.png" if visual_variant == "gun30" else "plasma_bolt1_red_hd.png", Vector2(0.58, 1.25), tint, 4.8, Vector3(0.0, 0.0, 0.52))
+			# gun30 has its own recovered fantasy projectile. Standard RPG weapons use
+			# the exact Effect/Projectile mesh, crossed flame planes and texture atlas
+			# from the Unity project instead of the former capsule approximation.
+			if visual_variant != "gun30" and _add_original_rocket_visual():
+				_add_original_rocket_smoke()
+				return true
+			_add_capsule("bug_RPG6_hd.png", 0.17, 0.7, Color.WHITE, 0.9)
+			_add_billboard("gun_up_1_slf_sfx_hd.png", Vector2(0.58, 1.25), tint, 4.8, Vector3(0.0, 0.0, 0.52))
 			_add_billboard("fire_00302_hd.png", Vector2(0.46, 0.8), Color(1.0, 0.55, 0.18), 3.8, Vector3(0.0, 0.0, 0.72))
 			_add_billboard("fire_smook_001_hd.png", Vector2(0.72, 1.28), Color(0.62, 0.65, 0.68, 0.42), 0.35, Vector3(0.0, 0.0, 1.12))
 			visual_spin_speed = 5.0
@@ -115,6 +128,105 @@ func _build_legacy_hd_visual() -> bool:
 			visual_spin_speed = 16.0
 			return true
 	return false
+
+func _add_original_rocket_visual() -> bool:
+	if not ResourceLoader.exists(ORIGINAL_ROCKET_MESH_PATH):
+		return false
+	var rocket_mesh := load(ORIGINAL_ROCKET_MESH_PATH) as Mesh
+	if rocket_mesh == null:
+		return false
+	var body := MeshInstance3D.new()
+	body.name = "OriginalUnityRocket"
+	body.mesh = rocket_mesh
+	# The YAML converter preserves the prefab's authored world transform. Center
+	# the combined body/flame mesh so projectile movement still uses this node's
+	# origin, while leaving the original proportions and UV coordinates intact.
+	body.position = -rocket_mesh.get_aabb().get_center()
+	body.set_meta("source_prefab", "Effect/Projectile")
+	body.set_meta("hd_texture", "gun0910_hd.png")
+	UnityMaterialRestorer.apply_to_mesh(body, ORIGINAL_ROCKET_MATERIAL_STATES)
+	_apply_original_rocket_hd_texture(body)
+	visual_root.add_child(body)
+	return true
+
+func _apply_original_rocket_hd_texture(body: MeshInstance3D) -> void:
+	if not ResourceLoader.exists(ORIGINAL_ROCKET_HD_TEXTURE_PATH):
+		return
+	var hd_texture := load(ORIGINAL_ROCKET_HD_TEXTURE_PATH) as Texture2D
+	if hd_texture == null:
+		return
+	for surface_index in body.mesh.get_surface_count():
+		var material := body.get_surface_override_material(surface_index) as StandardMaterial3D
+		if material == null:
+			var source := body.mesh.surface_get_material(surface_index) as StandardMaterial3D
+			if source != null:
+				material = source.duplicate(true) as StandardMaterial3D
+		if material == null or not material.resource_name.begins_with("RPG_"):
+			continue
+		material.albedo_texture = hd_texture
+		body.set_surface_override_material(surface_index, material)
+
+func _add_original_rocket_smoke() -> void:
+	# Reconstruct the two legacy ParticleEmitter layers from Effect/Projectile:
+	# a long soft smoke plume and a tighter animated combustion puff.
+	_add_original_rocket_smoke_layer(
+		"OriginalRocketSmokeLong",
+		"fire_smook_001_hd.png",
+		15,
+		0.95,
+		Vector2(0.62, 0.62),
+		Vector2(0.9, 1.5),
+		Vector2(3.8, 5.2),
+		Color(0.58, 0.61, 0.64, 0.34),
+		0.25
+	)
+	_add_original_rocket_smoke_layer(
+		"OriginalRocketSmokeHot",
+		"fire_00302_hd.png",
+		12,
+		0.68,
+		Vector2(0.42, 0.42),
+		Vector2(0.4, 0.8),
+		Vector2(1.6, 2.4),
+		Color(1.0, 0.58, 0.22, 0.68),
+		0.12
+	)
+
+func _add_original_rocket_smoke_layer(
+	name_value: String,
+	texture_name: String,
+	particle_amount: int,
+	lifetime_value: float,
+	quad_size: Vector2,
+	scale_range: Vector2,
+	velocity_range: Vector2,
+	color_value: Color,
+	position_z: float
+) -> void:
+	var particles := GPUParticles3D.new()
+	particles.name = name_value
+	particles.amount = particle_amount
+	particles.lifetime = lifetime_value
+	particles.randomness = 0.25
+	particles.local_coords = true
+	particles.position.z = position_z
+	var process_material := ParticleProcessMaterial.new()
+	process_material.direction = Vector3(0.0, 0.0, 1.0)
+	process_material.spread = 12.0
+	process_material.gravity = Vector3.ZERO
+	process_material.initial_velocity_min = velocity_range.x
+	process_material.initial_velocity_max = velocity_range.y
+	process_material.scale_min = scale_range.x
+	process_material.scale_max = scale_range.y
+	process_material.color = color_value
+	particles.process_material = process_material
+	var quad := QuadMesh.new()
+	quad.size = quad_size
+	quad.orientation = PlaneMesh.FACE_Z
+	quad.material = _legacy_hd_material(texture_name, Color.WHITE, 0.55, true)
+	particles.draw_pass_1 = quad
+	particles.set_meta("source_emitter", "Effect/Projectile/%s" % name_value)
+	visual_root.add_child(particles)
 
 func _legacy_hd_material(texture_name: String, color: Color, emission_energy: float, billboard := false) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()

@@ -35,8 +35,8 @@ geometry or recovered sounds as locked art direction.
 
 ## Current temporary art direction
 
-- Hit: four tapered cyan-white segments, 85 ms, subtle outward expansion.
-- Kill: warm-gold double segments, 155 ms, stronger but still reticle-sized.
+- Hit: four tapered cyan-white segments, 160 ms, subtle outward expansion.
+- Kill: warm-gold double segments, 240 ms, stronger but still reticle-sized.
 - Temporary audio: recovered `menu/exp.wav` and `pickup/killcombo.wav`.
 
 ## Final asset handoff

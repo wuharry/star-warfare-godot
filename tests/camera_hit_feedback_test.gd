@@ -39,6 +39,8 @@ func _run() -> void:
 	_check(is_instance_valid(fire_crosshair), "original 1.2x fire crosshair was not created")
 	_check(marker.get_parent() == world.hud.crosshair.get_parent(), "hit marker did not stay in the crosshair layer")
 	_check(marker != world.hud.crosshair, "hit feedback replaced the recovered crosshair")
+	_check(marker.HIT_DURATION >= 0.15, "ordinary hit confirmation is still too brief to read during recoil")
+	_check(marker.KILL_DURATION >= 0.22, "kill confirmation is still too brief to distinguish from an ordinary hit")
 	_check(fire_crosshair.texture == world.hud.crosshair.texture, "fire crosshair does not use the recovered AimID texture")
 	_check(
 		fire_crosshair.custom_minimum_size.is_equal_approx(world.hud.crosshair.custom_minimum_size * 1.2),
