@@ -1095,7 +1095,7 @@ func _refresh_armor_details() -> void:
 	if item.is_empty():
 		return
 	var state := _get_item_state(selected_item_key)
-	name_label.text = str(item.name)
+	name_label.text = tr(str(item.name))
 	name_label.add_theme_color_override("font_color", Color(0.9, 0.97, 0.98))
 	state_label.text = tr("UNLOCK: RANK %d") % (_selected_unlock_rank() + 1) if state == "locked" else tr(state.to_upper())
 	state_label.add_theme_color_override("font_color", _state_color(state))
@@ -1119,7 +1119,7 @@ func _refresh_armor_details() -> void:
 	_set_price(item)
 	slot_picker.visible = false
 	_configure_action(state)
-	preview_caption.text = "%s  /  %s" % [str(item.name), tr(state.to_upper())]
+	preview_caption.text = "%s  /  %s" % [tr(str(item.name)), tr(state.to_upper())]
 
 
 func _refresh_prop_details() -> void:
@@ -1163,13 +1163,16 @@ func _refresh_prop_details() -> void:
 
 func _armor_description(item: Dictionary) -> String:
 	var fragments: Array[String] = []
+	var callofmini := str(item.get("appearance_source", "")) == "callofmini"
+	if callofmini:
+		fragments.append(tr("Call of Mini appearance • Viper stats and prices."))
 	var set_id := int(item.set_id)
 	var set_exp_boost := 0.0
 	if selected_category != "bag":
 		var pieces := _preview_set_piece_count(set_id)
 		fragments.append(tr("%s SET • %d/4 MATCHED") % [_armor_set_name(set_id).to_upper(), pieces])
 		if pieces == 4 and GameState.ARMOR_SET_BONUSES.has(set_id):
-			fragments.append("[color=#%s]%s[/color]" % [CYAN.to_html(false), tr("FULL SET BONUS ACTIVE")])
+			fragments.append("[color=#%s]%s[/color]" % [CYAN.to_html(false), tr("MATCHING SET EQUIPPED" if callofmini else "FULL SET BONUS ACTIVE")])
 			var set_skills: Dictionary = GameState.ARMOR_SET_BONUSES[set_id].get("skills", {})
 			set_exp_boost = float(set_skills.get("exp_boost", 0.0))
 	else:
@@ -1537,6 +1540,7 @@ func _build_bag_preview() -> void:
 	preview.name = bag_name
 	preview.mesh = mesh
 	_prepare_preview_materials(preview, Color.WHITE, 0.0)
+	preload("res://scripts/game/armor_visuals.gd").restore_starter_backpack(preview, visual_id)
 	display.add_child(preview)
 	if not _normalize_preview_node(display, 3.55):
 		display.queue_free()
@@ -1548,6 +1552,7 @@ func _apply_preview_armor_visibility(avatar: Node3D) -> void:
 	for part_key: String in ARMOR_MESH_PARTS:
 		var armor_key := selected_item_key if selected_category == part_key else GameState.get_equipped_armor_key(part_key)
 		visible_ids[part_key] = int(GameState.get_armor_item(armor_key).get("visual_id", 0))
+	preload("res://scripts/game/armor_visuals.gd").ensure_parts(avatar, visible_ids)
 	for candidate in avatar.find_children("*", "MeshInstance3D", true, false):
 		var mesh_instance := candidate as MeshInstance3D
 		var lower_name := mesh_instance.name.to_lower()
@@ -1765,7 +1770,7 @@ func _compact_value(value: float) -> String:
 
 
 func _armor_set_name(set_id: int) -> String:
-	return str(GameState.ARMOR_SET_BONUSES.get(set_id, {}).get("name", ""))
+	return tr(str(GameState.ARMOR_SET_BONUSES.get(set_id, {}).get("name", "")))
 
 
 func _category_label(category_key: String) -> String:

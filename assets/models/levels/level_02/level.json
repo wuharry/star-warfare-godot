@@ -1,8 +1,9 @@
 {
-  "format": 2,
+  "format": 3,
   "level": 2,
   "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level2.unity",
   "visual": "stage.obj",
+  "visual_with_uv2": "stage.gltf",
   "collision_mesh": "collision.obj",
   "visual_bounds_min": [
     -77.3551559,
@@ -37,8 +38,19 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_02/lightmap_7b1771b88636.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc02_fx": {
       "shader": "iPhone/AlphaBlend_Bright_TwoSides",
@@ -53,7 +65,7 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
+      "unshaded": true,
       "alpha_scissor_threshold": 0.5
     },
     "sc02_12": {
@@ -61,15 +73,26 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_02/lightmap_7b1771b88636.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc02_13": {
       "shader": "iPhone/SolidTexture",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
+      "unshaded": true,
       "alpha_scissor_threshold": 0.5
     },
     "sc02_11": {
@@ -77,10 +100,22 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_02/lightmap_7b1771b88636.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     }
   },
+  "source_lights": [],
   "markers": {
     "Respawn": [
       {
@@ -3949,7 +3984,9 @@
     "game_objects": 187,
     "visual_renderers": 14,
     "primitive_colliders": 95,
-    "mesh_colliders": 10
+    "mesh_colliders": 10,
+    "source_lights": 0,
+    "lightmapped_materials": 3
   },
   "warnings": []
 }

@@ -1,8 +1,9 @@
 {
-  "format": 2,
+  "format": 3,
   "level": 6,
   "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level6.unity",
   "visual": "stage.obj",
+  "visual_with_uv2": "stage.gltf",
   "collision_mesh": "collision.obj",
   "visual_bounds_min": [
     -183.501053,
@@ -38,111 +39,265 @@
       "cull_disabled": false,
       "depth_write": false,
       "unshaded": true,
-      "alpha_scissor_threshold": 0.5
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_12753f543b52.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT2_10": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_12753f543b52.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT3_4": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_e8f6c382d1f7.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT3_5": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_e8f6c382d1f7.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT2_4": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_d4a027a20a21.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT2_1": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_d4a027a20a21.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT2_7": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_d4a027a20a21.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT2_2": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_d4a027a20a21.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT3_1": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_e8f6c382d1f7.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT3_2": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_e8f6c382d1f7.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT3_3": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_e8f6c382d1f7.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT1_3": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_b35970ccbfc8.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT1_1": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_b35970ccbfc8.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT1_2": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_b35970ccbfc8.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-Standard_4": {
       "shader": "iPhone/Additive_TwoSides",
@@ -157,7 +312,7 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
+      "unshaded": true,
       "alpha_scissor_threshold": 0.5
     },
     "sc_08-sc08_MOT2_8": {
@@ -165,32 +320,76 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_d4a027a20a21.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT2_3": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_d4a027a20a21.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT3_10": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_e8f6c382d1f7.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT3_7": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_e8f6c382d1f7.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT3_12": {
       "shader": "iPhone/LightMap_AlphaBlend",
@@ -198,14 +397,25 @@
       "cull_disabled": false,
       "depth_write": false,
       "unshaded": true,
-      "alpha_scissor_threshold": 0.5
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_e8f6c382d1f7.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_BG_1": {
       "shader": "iPhone/SolidTexture",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
+      "unshaded": true,
       "alpha_scissor_threshold": 0.5
     },
     "sc_08-sc08_MOT1_4": {
@@ -213,8 +423,19 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_b35970ccbfc8.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT1_12": {
       "shader": "iPhone/LightMap_AlphaBlend",
@@ -222,7 +443,18 @@
       "cull_disabled": false,
       "depth_write": false,
       "unshaded": true,
-      "alpha_scissor_threshold": 0.5
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_b35970ccbfc8.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_08-sc08_MOT1_8": {
       "shader": "builtin",
@@ -237,10 +469,22 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_06/lightmap_48cc4f8afc31.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     }
   },
+  "source_lights": [],
   "markers": {
     "Respawn": [
       {
@@ -3541,7 +3785,9 @@
     "game_objects": 165,
     "visual_renderers": 1,
     "primitive_colliders": 74,
-    "mesh_colliders": 8
+    "mesh_colliders": 8,
+    "source_lights": 0,
+    "lightmapped_materials": 22
   },
   "warnings": []
 }

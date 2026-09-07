@@ -1,8 +1,9 @@
 {
-  "format": 2,
+  "format": 3,
   "level": 1,
   "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level1.unity",
   "visual": "stage.obj",
+  "visual_with_uv2": "stage.gltf",
   "collision_mesh": "collision.obj",
   "visual_bounds_min": [
     -160.336761,
@@ -45,63 +46,138 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_01/lightmap_1df0289d4d85.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "SC01-entry_light22-": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_01/lightmap_1df0289d4d85.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "SC01-entry_light24": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_01/lightmap_1358341ec3fe.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "SC01-entry_light23": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_01/lightmap_1358341ec3fe.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "SC01-Standard_22": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_01/lightmap_6d9888486222.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "SC01-M_LIGHT": {
       "shader": "iPhone/SolidAndAlphaTexture",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "overlay_texture": "res://assets/models/levels/level_01/sc01_3_l.png",
+      "overlay_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "overlay_multiplier": 1.0,
+      "base_uses_uv2": false
     },
     "SC01-Standard_24": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_01/lightmap_1df0289d4d85.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "SC01-Standard_23": {
       "shader": "iPhone/SolidTexture",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
+      "unshaded": true,
       "alpha_scissor_threshold": 0.5
     },
     "SC01-Standard_21": {
@@ -109,8 +185,19 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_01/lightmap_303d21e29f94.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "SC01-new": {
       "shader": "iPhone/AlphaBlend",
@@ -125,7 +212,7 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
+      "unshaded": true,
       "alpha_scissor_threshold": 0.5
     },
     "SC01-Standard_9": {
@@ -133,8 +220,19 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_01/lightmap_303d21e29f94.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "SC01-Standard_19": {
       "shader": "iPhone/AlphaBlend",
@@ -153,6 +251,7 @@
       "alpha_scissor_threshold": 0.5
     }
   },
+  "source_lights": [],
   "markers": {
     "Respawn": [
       {
@@ -5228,7 +5327,9 @@
     "game_objects": 244,
     "visual_renderers": 1,
     "primitive_colliders": 141,
-    "mesh_colliders": 24
+    "mesh_colliders": 24,
+    "source_lights": 0,
+    "lightmapped_materials": 8
   },
   "warnings": []
 }

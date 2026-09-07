@@ -1,8 +1,9 @@
 {
-  "format": 2,
+  "format": 3,
   "level": 15,
   "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level15.unity",
   "visual": "stage.obj",
+  "visual_with_uv2": "stage.gltf",
   "collision_mesh": "collision.obj",
   "visual_bounds_min": [
     -313.120056,
@@ -37,112 +38,266 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_e45e161324ca.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Airlightmap_01": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_c3d516aadc07.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Objlightmap_01": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_68266687d83a.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Objlightmap_07": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_68266687d83a.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Objlightmap_06": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_68266687d83a.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Depotlightmap_06": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_914587a423c3.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Groundlightmap_03": {
       "shader": "iPhone/LightMap_TwoSides",
       "blend": "opaque",
       "cull_disabled": true,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_368bc12c73ed.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Groundlightmap_02": {
       "shader": "iPhone/LightMap_TwoSides",
       "blend": "opaque",
       "cull_disabled": true,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_368bc12c73ed.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Groundlightmap_01": {
       "shader": "iPhone/LightMap_TwoSides",
       "blend": "opaque",
       "cull_disabled": true,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_368bc12c73ed.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Tunellightmap_02": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_6dbeff468fcd.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Tunellightmap_03": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_6dbeff468fcd.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Depotlightmap_02": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_914587a423c3.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Depotlightmap_01": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_914587a423c3.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Depotlightmap_04": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_914587a423c3.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Standard_10": {
       "shader": "iPhone/Additive",
@@ -157,8 +312,19 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_e45e161324ca.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "lighting": {
       "shader": "iPhone/Additive",
@@ -173,15 +339,26 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_c3d516aadc07.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "_Material_25_": {
       "shader": "iPhone/SolidTexture",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
+      "unshaded": true,
       "alpha_scissor_threshold": 0.5
     },
     "Brocklightmap_03": {
@@ -189,106 +366,250 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_e45e161324ca.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Tunellightmap_01": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_6dbeff468fcd.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Airlightmap_02": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_c3d516aadc07.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Objlightmap_02": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_68266687d83a.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Objlightmap_03": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_68266687d83a.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Objlightmap_04": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_68266687d83a.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Objlightmap_05": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_68266687d83a.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Depotlightmap_05": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_914587a423c3.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Airlightmap_04": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_c3d516aadc07.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "Tunellightmap_04": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_6dbeff468fcd.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "OutsideLightmap_01": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_73a5fabd1ec8.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "OutsideLightmap_02": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_73a5fabd1ec8.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "OutsideLightmap_03": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_15/lightmap_73a5fabd1ec8.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     }
   },
+  "source_lights": [],
   "markers": {
     "Respawn": [
       {
@@ -4422,7 +4743,9 @@
     "game_objects": 181,
     "visual_renderers": 2,
     "primitive_colliders": 113,
-    "mesh_colliders": 2
+    "mesh_colliders": 2,
+    "source_lights": 0,
+    "lightmapped_materials": 29
   },
   "warnings": []
 }

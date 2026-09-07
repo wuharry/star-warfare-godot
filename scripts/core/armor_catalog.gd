@@ -11,8 +11,17 @@ const SET_NAMES := [
 	"Viper", "Fortune", "Tank", "Hydra", "Strike", "Titan", "Thunder",
 	"Atom", "Pegasus", "Draco", "Phoenix", "Cygni", "Andromedae",
 	"Perseus", "Chaos", "DEC.24", "Knight", "R.O.M.E", "Black Hole",
-	"X-Field", "Wrath"
+	"X-Field", "Wrath", "Assault Armor", "Combat Suit", "Drillmaster",
+	"Heavy Battlesuit", "Mark-6 117R", "Recon Suit", "Sanguine Chaos", "Training Suit"
 ]
+
+# Additional appearance sets retain Viper prices/stats; Unity IDs remain stable.
+const CALLOFMINI_FIRST_ID := 21
+const CALLOFMINI_MODELS := [
+	"AssaultArmor", "CombatSuit", "Drillmaster", "HeavyBattlesuit",
+	"Mark6117R", "ReconSuit", "Sanguine", "TrainingSuit"
+]
+const CALLOFMINI_GAMEPLAY_DIR := "res://assets/callOfMini/gameplay/"
 
 const ARMOR_ROWS := [
 	["Viper Head",0,350,0,0,0,0,0,0,0,0,"",0,0,3000,0],
@@ -219,6 +228,18 @@ static func build_items() -> Dictionary:
 			"special_skill_ids": special_skill_ids, "description_token": str(row[11]),
 			"visual_id": item_id, "default_owned": item_id == 0
 		}
+	for index in range(CALLOFMINI_MODELS.size()):
+		var set_id := CALLOFMINI_FIRST_ID + index
+		for part in range(4):
+			var key := item_key(part, set_id)
+			var item: Dictionary = result[item_key(part, 0)].duplicate(true)
+			item.merge({
+				"key": key, "id": set_id, "visual_id": set_id, "set_id": set_id,
+				"source_row": -1, "default_owned": false,
+				"name": "%s %s" % [SET_NAMES[set_id], ["Head", "Chest", "Hands", "Legs"][part]],
+				"appearance_source": "callofmini"
+			}, true)
+			result[key] = item
 	return result
 
 static func build_set_bonuses() -> Dictionary:
@@ -229,7 +250,15 @@ static func build_set_bonuses() -> Dictionary:
 		for column in range(5, 8):
 			_add_advanced_skills(skills, int(row[column]))
 		result[set_id] = {"id": set_id, "name": SET_NAMES[set_id], "skills": skills}
+	for set_id in range(CALLOFMINI_FIRST_ID, SET_NAMES.size()):
+		result[set_id] = {"id": set_id, "name": SET_NAMES[set_id], "skills": empty_skills()}
 	return result
+
+static func gameplay_scene_path(visual_id: int) -> String:
+	var index := visual_id - CALLOFMINI_FIRST_ID
+	if index < 0 or index >= CALLOFMINI_MODELS.size():
+		return ""
+	return CALLOFMINI_GAMEPLAY_DIR + CALLOFMINI_MODELS[index] + ".scn"
 
 static func empty_skills() -> Dictionary:
 	var skills := {

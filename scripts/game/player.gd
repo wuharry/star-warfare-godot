@@ -367,6 +367,7 @@ func _add_recovered_backpack() -> void:
 	backpack_visual = MeshInstance3D.new()
 	backpack_visual.name = "RecoveredBackpack"
 	backpack_visual.mesh = load(backpack_path)
+	preload("res://scripts/game/armor_visuals.gd").restore_starter_backpack(backpack_visual, bag_id)
 	# AvatarBuilder placed the independent Bag prefab at fly_bag in world space
 	# before parenting it. Its prefab root rotation is already baked into the
 	# recovered OBJ, so cancel the socket's rest basis instead of applying the
@@ -399,6 +400,7 @@ func _apply_recovered_armor_visibility() -> void:
 		"hand": int(GameState.get_armor_item(GameState.get_equipped_armor_key("arms")).get("visual_id", 0)),
 		"foot": int(GameState.get_armor_item(GameState.get_equipped_armor_key("legs")).get("visual_id", 0))
 	}
+	preload("res://scripts/game/armor_visuals.gd").ensure_parts(recovered_avatar, equipped_ids)
 	for candidate in recovered_avatar.find_children("*", "MeshInstance3D", true, false):
 		var mesh_instance := candidate as MeshInstance3D
 		var lower_name := mesh_instance.name.to_lower()

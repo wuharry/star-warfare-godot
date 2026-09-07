@@ -155,7 +155,8 @@ func _test_mesh_clipping() -> void:
 	if not ResourceLoader.exists(mesh_path):
 		_check(false, "level 01 stage art is missing")
 		return
-	var source := load(mesh_path) as Mesh
+	var metadata: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/models/levels/level_01/level.json"))
+	var source := UnityMaterialRestorer.load_stage_mesh("res://assets/models/levels/level_01", metadata)
 	_check(source != null, "level 01 stage art failed to load")
 	if source == null:
 		return
@@ -177,7 +178,10 @@ func _test_mesh_clipping() -> void:
 	var worst := 0.0
 	var tallest := -INF
 	for surface_index in range(mesh.get_surface_count()):
-		var vertices: PackedVector3Array = mesh.surface_get_arrays(surface_index)[Mesh.ARRAY_VERTEX]
+		var arrays := mesh.surface_get_arrays(surface_index)
+		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+		var uv2s: PackedVector2Array = arrays[Mesh.ARRAY_TEX_UV2] if arrays[Mesh.ARRAY_TEX_UV2] != null else PackedVector2Array()
+		_check(uv2s.size() == vertices.size(), "a clipped landmark surface lost its baked lightmap coordinates")
 		for vertex in vertices:
 			worst = maxf(worst, Vector2(vertex.x, vertex.z).length())
 			tallest = maxf(tallest, vertex.y)

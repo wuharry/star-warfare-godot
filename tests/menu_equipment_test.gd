@@ -244,6 +244,9 @@ func _run() -> void:
 			all_armor_names.append(armor_mesh.name)
 			if armor_mesh.visible:
 				visible_armor_names.append(armor_mesh.name)
+				for surface_index in armor_mesh.mesh.get_surface_count():
+					var material := armor_mesh.get_active_material(surface_index) as BaseMaterial3D
+					_check(material != null and material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, "shop preview lost the original unlit armor shader")
 		_check(visible_armor_names.size() == 4, "animated armor preview does not show exactly four equipped pieces")
 		for expected_mesh_name: String in expected_mesh_names:
 			_check(visible_armor_names.has(expected_mesh_name), "animated armor preview is missing " + expected_mesh_name)
@@ -284,6 +287,12 @@ func _run() -> void:
 		_check(shell.description_text.text.contains(set_exp_notice), "inactive full-set EXP boost is not disclosed in the armor UI")
 		GameState.equipped_armor = armor_before_set_exp
 		shell._select_category("bag", false)
+		shell._select_item("armor_bag_00", false)
+		var starter_bag_preview := shell.preview_root.find_child("ArmorBag_00", true, false) as MeshInstance3D
+		_check(starter_bag_preview != null, "starter backpack preview is missing")
+		if starter_bag_preview != null:
+			var starter_bag_material := starter_bag_preview.get_active_material(0) as BaseMaterial3D
+			_check(starter_bag_material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED and starter_bag_material.albedo_color.is_equal_approx(Color.WHITE), "starter backpack preview lost its original unlit white tint")
 		for bag_key: String in GameState.get_armor_ids("bag"):
 			var resource_id := int(GameState.get_armor_item(bag_key).get("visual_id", 0))
 			var resource_name := "ArmorBag_%02d" % resource_id

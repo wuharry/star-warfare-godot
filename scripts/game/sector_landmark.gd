@@ -39,7 +39,13 @@ func configure(number: int, radius: float) -> bool:
 	if not ResourceLoader.exists(mesh_path):
 		push_warning("Landmark art is missing: %s" % mesh_path)
 		return false
-	var source := load(mesh_path) as Mesh
+	var metadata: Dictionary = {}
+	var metadata_path := "%s/level.json" % level_root
+	if FileAccess.file_exists(metadata_path):
+		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(metadata_path))
+		if parsed is Dictionary:
+			metadata = parsed
+	var source := UnityMaterialRestorerScript.load_stage_mesh(level_root, metadata)
 	if source == null:
 		push_warning("Landmark art failed to load: %s" % mesh_path)
 		return false
@@ -57,11 +63,7 @@ func configure(number: int, radius: float) -> bool:
 	visual.mesh = mesh
 	visual.position = Vector3(0.0, GROUND_LIFT, 0.0)
 	visual.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
-	var metadata_path := "%s/level.json" % level_root
-	if FileAccess.file_exists(metadata_path):
-		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(metadata_path))
-		if parsed is Dictionary:
-			UnityMaterialRestorerScript.apply_to_mesh(visual, parsed.get("material_render_modes", {}))
+	UnityMaterialRestorerScript.apply_to_mesh(visual, metadata.get("material_render_modes", {}))
 	add_child(visual)
 
 	_build_colliders(level_root, radius * KEEP_MARGIN)
@@ -82,6 +84,7 @@ static func clip_mesh(source: Mesh, keep_radius: float, max_height: float) -> Di
 			continue
 		var normals: PackedVector3Array = arrays[Mesh.ARRAY_NORMAL] if arrays[Mesh.ARRAY_NORMAL] != null else PackedVector3Array()
 		var uvs: PackedVector2Array = arrays[Mesh.ARRAY_TEX_UV] if arrays[Mesh.ARRAY_TEX_UV] != null else PackedVector2Array()
+		var uv2s: PackedVector2Array = arrays[Mesh.ARRAY_TEX_UV2] if arrays[Mesh.ARRAY_TEX_UV2] != null else PackedVector2Array()
 		var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX] if arrays[Mesh.ARRAY_INDEX] != null else PackedInt32Array()
 		if indices.is_empty():
 			# An unindexed surface lists its triangles vertex by vertex.
@@ -93,6 +96,7 @@ static func clip_mesh(source: Mesh, keep_radius: float, max_height: float) -> Di
 		var out_vertices := PackedVector3Array()
 		var out_normals := PackedVector3Array()
 		var out_uvs := PackedVector2Array()
+		var out_uv2s := PackedVector2Array()
 		var out_indices := PackedInt32Array()
 		var remap: Dictionary = {}
 
@@ -117,6 +121,8 @@ static func clip_mesh(source: Mesh, keep_radius: float, max_height: float) -> Di
 						out_normals.append(normals[original])
 					if not uvs.is_empty():
 						out_uvs.append(uvs[original])
+					if not uv2s.is_empty():
+						out_uv2s.append(uv2s[original])
 				out_indices.append(int(remap[original]))
 
 		if out_indices.is_empty():
@@ -128,6 +134,8 @@ static func clip_mesh(source: Mesh, keep_radius: float, max_height: float) -> Di
 			out_arrays[Mesh.ARRAY_NORMAL] = out_normals
 		if not out_uvs.is_empty():
 			out_arrays[Mesh.ARRAY_TEX_UV] = out_uvs
+		if not out_uv2s.is_empty():
+			out_arrays[Mesh.ARRAY_TEX_UV2] = out_uv2s
 		out_arrays[Mesh.ARRAY_INDEX] = out_indices
 		result.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, out_arrays)
 		var material := source.surface_get_material(surface_index)

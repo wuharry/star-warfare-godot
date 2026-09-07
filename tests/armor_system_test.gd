@@ -24,8 +24,13 @@ func _new_state(suffix: String) -> Node:
 
 func _run() -> void:
 	var state := _new_state("main")
-	_check(state.ARMOR_ITEMS.size() == 109, "Unity catalog must contain all 109 armor items")
-	var expected_counts := [21, 21, 21, 21, 25]
+	_check(state.ARMOR_ITEMS.size() == 141, "catalog must contain the 109 Unity items and 32 Call of Mini parts")
+	var unity_items := 0
+	for item: Dictionary in state.ARMOR_ITEMS.values():
+		if int(item.source_row) >= 0:
+			unity_items += 1
+	_check(unity_items == 109, "additional armor overwrote a recovered Unity item")
+	var expected_counts := [29, 29, 29, 29, 25]
 	for part in range(expected_counts.size()):
 		_check(state.get_armor_ids(part).size() == expected_counts[part], "%s item count is incomplete" % ArmorCatalogData.PART_KEYS[part])
 	_check(state.owned_armor.size() == 5, "new saves must own only the five starter pieces")
@@ -86,6 +91,21 @@ func _run() -> void:
 	_check(state.get_rank_id() == 7, "opening the final sector should award only rank 7")
 	state.best_scores["8"] = 1
 	_check(state.get_rank_id() == 8, "completing the final sector did not award rank 8")
+	# Use the real purchase/equip/save flow for each additional set. The copied
+	# starter stats keep these appearance choices out of progression balance.
+	state.credits = 200000
+	for set_id in range(21, 29):
+		for part in range(4):
+			var key := ArmorCatalogData.item_key(part, set_id)
+			var starter: Dictionary = state.get_armor_item(ArmorCatalogData.item_key(part, 0))
+			var item: Dictionary = state.get_armor_item(key)
+			_check(item.skills == starter.skills, key + " changed the Viper stat contract")
+			_check(item.price_amount == starter.price_amount, key + " changed the appearance price contract")
+			var credits_before: int = state.credits
+			_check(state.purchase_armor(key) == "purchased", "could not purchase " + key)
+			_check(state.credits == credits_before - int(item.price_amount), "wrong charge for " + key)
+		_check(state.equip_armor_set(set_id), "could not equip additional set %d" % set_id)
+		_check(state.get_equipped_set_id() == set_id, "additional full set was not recognized")
 
 	state._normalize_armor_state()
 	state._save()

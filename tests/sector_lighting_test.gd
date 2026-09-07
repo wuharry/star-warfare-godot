@@ -2,13 +2,9 @@ extends Node
 
 # Guards the fixed per-sector lighting.
 #
-# None of the 17 original Unity scenes ships a directional light or a skybox:
-# every one sets m_Sun to nothing and m_AmbientMode to flat, lighting the level
-# from m_AmbientSkyColor alone. That ambient is the one piece of real per-map
-# lighting data the exporter recovered, and it genuinely differs between maps,
-# so this asserts the game actually puts it on screen instead of substituting a
-# look of its own. It also pins the lighting down as *fixed*: no clock, no
-# drift, the same sector built twice is lit identically.
+# Source ambient is preserved for actors; static scenes use their authored
+# double-UV lightmaps. Source Light components are inactive editor/bake data.
+# The small dynamic enhancement remains fixed and governed by quality.
 
 const SAMPLE_LEVELS := [1, 2, 3, 5, 13, 20, 21]
 
@@ -25,6 +21,7 @@ func _check(condition: bool, message: String) -> void:
 func _run() -> void:
 	GameState.save_path = GameState.TEST_SAVE_PATH
 	_test_no_clock_remains()
+	_test_source_light_records()
 	await _test_recovered_ambient()
 	await _test_lighting_is_fixed()
 
@@ -52,6 +49,23 @@ func _level_metadata(level_number: int) -> Dictionary:
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
 	return parsed if parsed is Dictionary else {}
 
+
+func _test_source_light_records() -> void:
+	# Counts independently audited from Unity !u!108 records and their parent
+	# m_IsActive flags, not from the runtime light builder.
+	var source_counts := {8: 456, 13: 327, 19: 198, 20: 327, 21: 558}
+	for level_number: int in source_counts:
+		var records: Array = _level_metadata(level_number).get("source_lights", [])
+		_check(records.size() == int(source_counts[level_number]), "level %d lost source light provenance" % level_number)
+		for record: Dictionary in records:
+			_check(not bool(record.active_in_hierarchy), "inactive Unity bake light was marked active")
+			_check((record.transform as Array).size() == 16, "source light lost its world transform")
+	var atlas: Dictionary = _level_metadata(19).get("material_render_modes", {}).get("house_01_0_Tiled_135", {})
+	_check(not atlas.is_empty(), "Level 19 tiled lightmap fixture is missing")
+	if not atlas.is_empty():
+		_check(is_equal_approx(float(atlas.lightmap_scale[0]), 0.038085938), "Level 19 source lightmap atlas scale was discarded")
+		_check(is_equal_approx(float(atlas.lightmap_offset[0]), 0.7029762), "Level 19 source lightmap atlas offset was discarded")
+
 func _build_sector(level_number: int) -> WarfareGameWorld:
 	GameState.selected_level = level_number
 	var world := (load("res://scenes/game.tscn") as PackedScene).instantiate() as WarfareGameWorld
@@ -76,6 +90,7 @@ func _test_recovered_ambient() -> void:
 		var world := _build_sector(level_number)
 		await get_tree().process_frame
 		var environment := _environment_of(world)
+		_check(world.get_node_or_null("FillLight") == null, "sector %d adds an arena-wide fill over its baked lighting" % level_number)
 		_check(environment != null, "sector %d built no environment" % level_number)
 		if environment == null:
 			world.queue_free()

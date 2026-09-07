@@ -1,8 +1,9 @@
 {
-  "format": 2,
+  "format": 3,
   "level": 5,
   "source": "E:\\Star-Warfare-1.0.2\\Star-Warfare-1.0.2\\Assets\\Scenes\\Level5.unity",
   "visual": "stage.obj",
+  "visual_with_uv2": "stage.gltf",
   "collision_mesh": "collision.obj",
   "visual_bounds_min": [
     -128.506912,
@@ -37,7 +38,7 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
+      "unshaded": true,
       "alpha_scissor_threshold": 0.5
     },
     "sc_05-Standard_14": {
@@ -53,31 +54,64 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_05/lightmap_87d4b82a6725.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_05-Standard_3": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_05/lightmap_87d4b82a6725.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_05-ent": {
       "shader": "iPhone/LightMap",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/levels/level_05/lightmap_a30710c23ccc.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
     },
     "sc_05-orig_Standard_1_G_01_": {
       "shader": "iPhone/SolidTexture",
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
+      "unshaded": true,
       "alpha_scissor_threshold": 0.5
     },
     "sc_05-01_-_Default": {
@@ -85,7 +119,7 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
+      "unshaded": true,
       "alpha_scissor_threshold": 0.5
     },
     "sc_05-Standard_1": {
@@ -93,10 +127,20 @@
       "blend": "opaque",
       "cull_disabled": false,
       "depth_write": true,
-      "unshaded": false,
-      "alpha_scissor_threshold": 0.5
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "overlay_texture": "res://assets/models/levels/level_05/sc_05_sfx02.png",
+      "overlay_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "overlay_multiplier": 2.0,
+      "base_uses_uv2": true
     }
   },
+  "source_lights": [],
   "markers": {
     "Respawn": [
       {
@@ -5995,7 +6039,9 @@
     "game_objects": 302,
     "visual_renderers": 1,
     "primitive_colliders": 156,
-    "mesh_colliders": 8
+    "mesh_colliders": 8,
+    "source_lights": 0,
+    "lightmapped_materials": 3
   },
   "warnings": []
 }

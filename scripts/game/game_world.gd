@@ -8,6 +8,7 @@ const HUDScript = preload("res://scripts/ui/hud.gd")
 const ArmorPowerControllerScript = preload("res://scripts/game/armor_power_controller.gd")
 const UnityColliderBuilderScript = preload("res://scripts/core/unity_collider_builder.gd")
 const UnityMaterialRestorerScript = preload("res://scripts/core/unity_material_restorer.gd")
+const UnitySceneEffectsScript = preload("res://scripts/game/unity_scene_effects.gd")
 
 var level_data: Dictionary
 var player: WarfarePlayer
@@ -73,15 +74,9 @@ func _exit_tree() -> void:
 		music.stream = null
 
 func _build_environment() -> void:
-	# Fixed per-sector lighting, recovered from the original Unity scenes.
-	#
-	# None of the 17 scenes ships a directional light or a skybox: every one of
-	# them sets m_Sun to nothing, m_AmbientMode to flat, and lights the level
-	# from m_AmbientSkyColor alone with the rest baked into the textures. So the
-	# ambient here is the real recovered value and genuinely differs per map --
-	# 0.2 grey for the outposts, pure white for sectors 02-04, near-black violet
-	# for the late multiplayer maps -- while the key light is a fixed authored
-	# angle, because the originals had none to recover.
+	# The source scenes light their static geometry through a second texture
+	# and UV channel. All 1,866 authored Light components are inactive in their
+	# hierarchy; keep that baked result and add restrained dynamic response.
 	var palette: Array = level_data.palette
 	var restored_settings: Dictionary = stage_metadata.get("render_settings", {})
 	var quality: Dictionary = GameState.get_quality_profile()
@@ -97,7 +92,7 @@ func _build_environment() -> void:
 		environment.ambient_light_color = _color_from_json(restored_settings.get("ambient_color", [0.2, 0.2, 0.2, 1.0]))
 		environment.ambient_light_energy = maxf(0.15, float(restored_settings.get("ambient_intensity", 1.0)))
 	environment.reflected_light_source = Environment.REFLECTION_SOURCE_BG
-	environment.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	environment.tonemap_mode = Environment.TONE_MAPPER_LINEAR if not stage_metadata.is_empty() else Environment.TONE_MAPPER_FILMIC
 	environment.glow_enabled = bool(quality.glow)
 	environment.glow_intensity = 0.85
 	environment.fog_enabled = bool(quality.fog) and bool(restored_settings.get("fog_enabled", true))
@@ -111,19 +106,23 @@ func _build_environment() -> void:
 	var sun := DirectionalLight3D.new()
 	sun.name = "KeyLight"
 	sun.rotation_degrees = Vector3(-54, -32, 0)
-	sun.light_color = Color(palette[2])
-	sun.light_energy = 1.35
+	sun.light_color = Color(1.0, 0.97, 0.94) if not stage_metadata.is_empty() else Color(palette[2])
+	sun.light_energy = 0.8 if not stage_metadata.is_empty() else 1.35
 	sun.shadow_enabled = bool(quality.shadows)
 	sun.directional_shadow_max_distance = 65.0
+	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
+	sun.directional_shadow_blend_splits = true
+	sun.shadow_normal_bias = 0.8
 	add_child(sun)
 
-	var fill := OmniLight3D.new()
-	fill.name = "FillLight"
-	fill.position = Vector3(0, 7, 0)
-	fill.light_color = Color(palette[1])
-	fill.light_energy = 8.0
-	fill.omni_range = _environment_fill_radius()
-	add_child(fill)
+	if stage_metadata.is_empty():
+		var fill := OmniLight3D.new()
+		fill.name = "FillLight"
+		fill.position = Vector3(0, 7, 0)
+		fill.light_color = Color(palette[1])
+		fill.light_energy = 8.0
+		fill.omni_range = _environment_fill_radius()
+		add_child(fill)
 
 	effects_root = Node3D.new()
 	effects_root.name = "Effects"
@@ -891,7 +890,7 @@ func _build_restored_arena() -> bool:
 	if not ResourceLoader.exists(visual_path):
 		push_warning("Restored level art is missing: %s" % visual_path)
 		return false
-	var stage_mesh := load(visual_path) as Mesh
+	var stage_mesh := UnityMaterialRestorerScript.load_stage_mesh(level_root, stage_metadata)
 	if stage_mesh == null:
 		push_warning("Restored level art failed to load: %s" % visual_path)
 		return false
@@ -921,6 +920,7 @@ func _build_restored_arena() -> bool:
 				collision_shape.shape = collision_mesh.create_trimesh_shape()
 				if collision_shape.shape:
 					physics_body.add_child(collision_shape)
+	UnitySceneEffectsScript.build(self, level_number, GameState.get_quality_profile())
 	return true
 
 func _color_from_json(values: Variant) -> Color:

@@ -69,6 +69,7 @@ class MeshData:
     uvs: list[tuple[float, float]] | None
     submeshes: list[SubMesh]
     source_path: Path
+    uv2s: list[tuple[float, float]] | None = None
 
 
 @dataclass
@@ -95,6 +96,18 @@ class MaterialInfo:
     cull_disabled: bool = False
     depth_write: bool = True
     alpha_scissor_threshold: float = 0.5
+    lightmap_source: Path | None = None
+    lightmap_guid: str | None = None
+    lightmap_scale: tuple[float, float] = (1.0, 1.0)
+    lightmap_offset: tuple[float, float] = (0.0, 0.0)
+    lightmap_multiplier: float = 1.0
+    lightmap_repeat: bool = False
+    unshaded: bool = False
+    overlay_source: Path | None = None
+    overlay_guid: str | None = None
+    overlay_color: tuple[float, float, float, float] = (1.0, 1.0, 1.0, 1.0)
+    overlay_multiplier: float = 1.0
+    base_uses_uv2: bool = False
 
 
 @dataclass
@@ -311,6 +324,9 @@ def _parse_compressed_mesh(
             (uv_values[index], uv_values[index + 1])
             for index in range(0, vertex_count * 2, 2)
         ]
+    uv2s = None
+    if len(uv_values) >= vertex_count * 4:
+        uv2s = [tuple(uv_values[index:index + 2]) for index in range(vertex_count * 2, vertex_count * 4, 2)]
 
     normals = None
     normal_values = _unpack_packed_float(compressed_text, "m_Normals")
@@ -347,7 +363,7 @@ def _parse_compressed_mesh(
         submesh.indices = [index + submesh.base_vertex for index in all_indices[first_index:end_index]]
         if any(index < 0 or index >= vertex_count for index in submesh.indices):
             raise ConversionError(f"{path}: submesh {submesh_number} references an invalid vertex")
-    return MeshData(name, positions, normals, uvs, submeshes, path)
+    return MeshData(name, positions, normals, uvs, submeshes, path, uv2s)
 
 
 def parse_mesh(path: Path) -> MeshData:
@@ -470,6 +486,7 @@ def parse_mesh(path: Path) -> MeshData:
     positions = [tuple(value[:3]) for value in decoded["position"]]
     normals = [tuple(value[:3]) for value in decoded.get("normal", [])] or None
     uvs = [tuple(value[:2]) for value in decoded.get("uv0", [])] or None
+    uv2s = [tuple(value[:2]) for value in decoded.get("uv1", [])] or None
 
     for submesh_number, submesh in enumerate(submeshes):
         if submesh.topology != 0:
@@ -489,7 +506,7 @@ def parse_mesh(path: Path) -> MeshData:
         if any(index < 0 or index >= vertex_count for index in submesh.indices):
             raise ConversionError(f"{path}: submesh {submesh_number} references an invalid vertex")
 
-    return MeshData(name, positions, normals, uvs, submeshes, path)
+    return MeshData(name, positions, normals, uvs, submeshes, path, uv2s)
 
 
 def identity_matrix() -> tuple[tuple[float, ...], ...]:
@@ -762,7 +779,7 @@ def parse_material(path: Path, guid_index: GuidIndex) -> MaterialInfo:
         color = colors.get("_Color", (1.0, 1.0, 1.0, 1.0))
     else:
         color = (1.0, 1.0, 1.0, 1.0)
-    return MaterialInfo(
+    material = MaterialInfo(
         name,
         path,
         diffuse_source,
@@ -777,6 +794,35 @@ def parse_material(path: Path, guid_index: GuidIndex) -> MaterialInfo:
         depth_write,
         cutoff,
     )
+    material.unshaded = bool(shader_text) and not bool(re.search(
+        r"\bLighting\s+On\b|#pragma\s+surface\b|\bLIGHT_ATTENUATION\b", shader_text, re.IGNORECASE
+    ))
+    lightmap_guid = texture_entries.get("_texLightmap")
+    if lightmap_guid and "lightmap" in shader_name.lower():
+        material.lightmap_guid = lightmap_guid
+        material.lightmap_source = guid_index.resolve(lightmap_guid)
+        texture_meta = Path(str(material.lightmap_source) + ".meta")
+        if texture_meta.is_file():
+            wrap_match = re.search(r"\bwrapMode:\s*(\d+)", texture_meta.read_text(encoding="utf-8-sig"))
+            material.lightmap_repeat = wrap_match is not None and wrap_match.group(1) == "0"
+        # Keep the per-material atlas transform; StaticLightmap.FixTiling
+        # writes it for non-batched meshes, while batched UV1 is already tiled.
+        block = re.search(
+            r"(?:-\s+_texLightmap:|name:\s*_texLightmap\s*).*?m_Texture:.*?"
+            r"m_Scale:\s*\{([^}]+)\}\s*m_Offset:\s*\{([^}]+)\}", text, re.DOTALL
+        )
+        if block:
+            material.lightmap_scale = _yaml_vector("value: {" + block.group(1) + "}", "value", 2, (1.0, 1.0))
+            material.lightmap_offset = _yaml_vector("value: {" + block.group(2) + "}", "value", 2, (0.0, 0.0))
+        material.lightmap_multiplier = 2.0 if (shader_name == "Optimized/LightMap" or "double" in shader_name.lower()) else 1.0
+    if shader_name.startswith("iPhone/SolidAndAlphaTexture") and "_tex2" in texture_entries:
+        material.overlay_guid = texture_entries["_tex2"]
+        material.overlay_source = guid_index.resolve(material.overlay_guid)
+        material.overlay_color = colors.get("_TintColor", (1.0, 1.0, 1.0, 1.0))
+        material.color = (1.0, 1.0, 1.0, 1.0)
+        material.overlay_multiplier = 2.0 if shader_name.endswith("_Bright") else 1.0
+        material.base_uses_uv2 = shader_name.endswith("_Bright")
+    return material
 
 
 def fallback_material(name: str) -> MaterialInfo:
@@ -1095,8 +1141,21 @@ def write_obj(
             "blend": material.blend_mode,
             "cull_disabled": material.cull_disabled,
             "depth_write": material.depth_write,
-            "unshaded": material.blend_mode != "opaque",
+            "unshaded": material.unshaded or material.blend_mode != "opaque",
             "alpha_scissor_threshold": material.alpha_scissor_threshold,
+            **({
+                "lightmap_texture": material.lightmap_source.name,
+                "lightmap_scale": material.lightmap_scale,
+                "lightmap_offset": material.lightmap_offset,
+                "lightmap_multiplier": material.lightmap_multiplier,
+                "lightmap_repeat": material.lightmap_repeat,
+            } if material.lightmap_source else {}),
+            **({
+                "overlay_texture": material.overlay_source.name,
+                "overlay_color": material.overlay_color,
+                "overlay_multiplier": material.overlay_multiplier,
+                "base_uses_uv2": material.base_uses_uv2,
+            } if material.overlay_source else {}),
         }
         for material in canonical_materials
     }

@@ -14,6 +14,7 @@ var source_alpha_surfaces := 0
 var transparent_surfaces := 0
 var checked_texture_paths := {}
 var texture_alpha_modes := {}
+var lightmapped_surfaces := 0
 
 
 func _ready() -> void:
@@ -29,10 +30,11 @@ func _check(condition: bool, message: String) -> void:
 func _run() -> void:
 	for level_number in LEVEL_NUMBERS:
 		_check_level(level_number)
+	_check(lightmapped_surfaces == 270, "the source's 270 lightmapped surfaces were not all restored")
 	if failures.is_empty():
 		print(
-			"SCENE_ASSET_INTEGRITY_TEST_PASS levels=%d materials=%d textures=%d textured_surfaces=%d source_alpha_surfaces=%d transparent_surfaces=%d"
-			% [LEVEL_NUMBERS.size(), checked_materials, checked_textures, textured_surfaces, source_alpha_surfaces, transparent_surfaces]
+			"SCENE_ASSET_INTEGRITY_TEST_PASS levels=%d materials=%d textures=%d textured_surfaces=%d source_alpha_surfaces=%d transparent_surfaces=%d lightmapped_surfaces=%d"
+			% [LEVEL_NUMBERS.size(), checked_materials, checked_textures, textured_surfaces, source_alpha_surfaces, transparent_surfaces, lightmapped_surfaces]
 		)
 		get_tree().quit(0)
 	else:
@@ -86,10 +88,11 @@ func _check_level(level_number: int) -> void:
 			texture_alpha_modes[texture_path] = image.detect_alpha()
 		checked_textures += 1
 
-	var mesh := load(obj_path) as Mesh
+	var mesh := UnityMaterialRestorerScript.load_stage_mesh(root, metadata_value)
 	_check(mesh != null, "Level %d stage mesh did not import" % level_number)
 	if mesh == null:
 		return
+	_check_mesh_parity(level_number, load(obj_path) as Mesh, mesh)
 	var bounds := mesh.get_aabb()
 	_check(bounds.size.length_squared() > 1.0, "Level %d stage mesh bounds are empty" % level_number)
 	_check(_finite_vector(bounds.position) and _finite_vector(bounds.size), "Level %d stage mesh bounds are not finite" % level_number)
@@ -110,7 +113,15 @@ func _check_level(level_number: int) -> void:
 		_check(normals.size() == vertices.size(), "Level %d surface %d has incomplete normals" % [level_number, surface_index])
 		_check(uvs.size() == vertices.size(), "Level %d surface %d has incomplete UVs" % [level_number, surface_index])
 		var source_material := mesh.surface_get_material(surface_index) as BaseMaterial3D
-		var material := runtime_instance.get_surface_override_material(surface_index) as BaseMaterial3D
+		var override_material := runtime_instance.get_surface_override_material(surface_index)
+		if override_material is ShaderMaterial and source_material != null:
+			var state: Dictionary = material_states.get(source_material.resource_name, {})
+			if state.has("overlay_texture"):
+				_check_overlay_material(level_number, override_material as ShaderMaterial, state, source_material)
+				continue
+			_check_lightmap_material(level_number, surface_index, override_material as ShaderMaterial, state, arrays, source_material)
+			continue
+		var material := override_material as BaseMaterial3D
 		_check(source_material != null, "Level %d surface %d has no imported material" % [level_number, surface_index])
 		_check(material != null, "Level %d surface %d has no runtime material override" % [level_number, surface_index])
 		if source_material != null and material != null:
@@ -144,6 +155,95 @@ func _check_level(level_number: int) -> void:
 	# is already gone and reports a misleading "material is null" error.
 	runtime_instance.mesh = null
 	runtime_instance.free()
+
+
+func _check_mesh_parity(level_number: int, original: Mesh, runtime: Mesh) -> void:
+	_check(original != null, "Level %d has no OBJ reference mesh" % level_number)
+	if original == null:
+		return
+	var label := "Level %d glTF" % level_number
+	var source_bounds := original.get_aabb()
+	var bounds := runtime.get_aabb()
+	_check(bounds.position.distance_to(source_bounds.position) < 0.01 and bounds.size.distance_to(source_bounds.size) < 0.01, label + " changed the original scene bounds")
+	var source_triangles := 0
+	var runtime_triangles := 0
+	var source_coordinates: Dictionary = {}
+	for surface_index in original.get_surface_count():
+		var arrays := original.surface_get_arrays(surface_index)
+		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+		var uvs: PackedVector2Array = arrays[Mesh.ARRAY_TEX_UV]
+		var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX] if arrays[Mesh.ARRAY_INDEX] != null else PackedInt32Array()
+		source_triangles += (vertices.size() if indices.is_empty() else indices.size()) / 3
+		var material_name := original.surface_get_material(surface_index).resource_name
+		for vertex_index in vertices.size():
+			var point := vertices[vertex_index]
+			var key := "%s:%.3f:%.3f:%.3f" % [material_name, point.x, point.y, point.z]
+			if not source_coordinates.has(key):
+				source_coordinates[key] = []
+			(source_coordinates[key] as Array).append(uvs[vertex_index])
+	var mismatched_uvs := 0
+	for surface_index in runtime.get_surface_count():
+		var arrays := runtime.surface_get_arrays(surface_index)
+		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+		var uvs: PackedVector2Array = arrays[Mesh.ARRAY_TEX_UV]
+		var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX] if arrays[Mesh.ARRAY_INDEX] != null else PackedInt32Array()
+		runtime_triangles += (vertices.size() if indices.is_empty() else indices.size()) / 3
+		var material_name := runtime.surface_get_material(surface_index).resource_name
+		for vertex_index in vertices.size():
+			var point := vertices[vertex_index]
+			var key := "%s:%.3f:%.3f:%.3f" % [material_name, point.x, point.y, point.z]
+			var matched := false
+			for source_uv: Vector2 in source_coordinates.get(key, []):
+				if source_uv.distance_to(uvs[vertex_index]) < 0.001:
+					matched = true
+					break
+			if not matched:
+				mismatched_uvs += 1
+	_check(runtime_triangles == source_triangles, label + " changed the source triangle count")
+	_check(mismatched_uvs == 0, "%s changed %d source vertex/UV0 pairs" % [label, mismatched_uvs])
+
+
+func _check_lightmap_material(level_number: int, surface_index: int, material: ShaderMaterial, state: Dictionary, arrays: Array, source: BaseMaterial3D) -> void:
+	var label := "Level %d surface %d" % [level_number, surface_index]
+	_check(state.has("lightmap_texture"), label + " uses a lightmap shader without source lightmap metadata")
+	if not state.has("lightmap_texture"):
+		return
+	lightmapped_surfaces += 1
+	var uv2s: PackedVector2Array = arrays[Mesh.ARRAY_TEX_UV2] if arrays[Mesh.ARRAY_TEX_UV2] != null else PackedVector2Array()
+	var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+	_check(uv2s.size() == vertices.size(), label + " lost the authored UV2 channel")
+	var base: Texture2D = material.get_shader_parameter("base_texture")
+	var lightmap: Texture2D = material.get_shader_parameter("lightmap_texture")
+	_check(base != null and base == source.albedo_texture, label + " lost its base texture")
+	_check(lightmap != null and lightmap.resource_path == str(state.lightmap_texture), label + " lost its original lightmap")
+	if base != null:
+		textured_surfaces += 1
+		if int(texture_alpha_modes.get(base.resource_path, Image.ALPHA_NONE)) != Image.ALPHA_NONE:
+			source_alpha_surfaces += 1
+	_check(is_equal_approx(float(material.get_shader_parameter("lightmap_multiplier")), float(state.lightmap_multiplier)), label + " has the wrong source shader multiplier")
+	var expected_scale := Vector2(float(state.lightmap_scale[0]), float(state.lightmap_scale[1]))
+	var expected_offset := Vector2(float(state.lightmap_offset[0]), float(state.lightmap_offset[1]))
+	_check((material.get_shader_parameter("lightmap_scale") as Vector2).is_equal_approx(expected_scale), label + " lost the lightmap atlas scale")
+	_check((material.get_shader_parameter("lightmap_offset") as Vector2).is_equal_approx(expected_offset), label + " lost the lightmap atlas offset")
+	var alpha := str(state.blend) in ["alpha", "additive"]
+	_check(material.shader.code.contains("#define USE_ALPHA") == alpha, label + " changed the source transparency")
+	_check(material.shader.code.contains(", cull_disabled") == bool(state.cull_disabled), label + " changed the source culling")
+	_check(material.shader.code.contains("depth_draw_never") == (not bool(state.depth_write)), label + " changed the source depth write")
+	_check(material.shader.code.contains("filter_linear_mipmap, repeat_enable") == bool(state.get("lightmap_repeat", false)), label + " changed the source lightmap wrap mode")
+	if alpha:
+		transparent_surfaces += 1
+
+
+func _check_overlay_material(level_number: int, material: ShaderMaterial, state: Dictionary, source: BaseMaterial3D) -> void:
+	var label := "Level %d luminous fixture" % level_number
+	var base: Texture2D = material.get_shader_parameter("base_texture")
+	var overlay: Texture2D = material.get_shader_parameter("overlay_texture")
+	_check(base != null and base == source.albedo_texture, label + " lost its base texture")
+	_check(overlay != null and overlay.resource_path == str(state.overlay_texture), label + " lost its luminous layer")
+	_check(is_equal_approx(float(material.get_shader_parameter("overlay_multiplier")), 2.0 if level_number == 5 else 1.0), label + " changed the original shader multiplier")
+	_check(bool(material.get_shader_parameter("base_uses_uv2")) == (level_number == 5), label + " changed its source texture coordinate binding")
+	if base != null:
+		textured_surfaces += 1
 
 
 func _parse_materials(mtl_path: String) -> Dictionary:

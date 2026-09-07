@@ -12,6 +12,7 @@ import argparse
 import copy
 import json
 import re
+import shutil
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -23,6 +24,7 @@ from PIL import Image
 CONVERTER_DIR = Path(__file__).resolve().parents[1] / "yaml_mesh_converter"
 sys.path.insert(0, str(CONVERTER_DIR))
 import convert as legacy  # noqa: E402
+from lightmap_gltf import write_lightmap_gltf  # noqa: E402
 
 
 LEVEL_NUMBERS = (1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19, 20, 21)
@@ -89,6 +91,7 @@ class SceneData:
     mesh_colliders: list[tuple[int, str, bool]] = field(default_factory=list)
     waypoint_scripts: dict[int, tuple[int, list[int]]] = field(default_factory=dict)
     render_settings: dict[str, object] = field(default_factory=dict)
+    lights: list[dict[str, object]] = field(default_factory=list)
 
 
 def _bool_scalar(text: str, key: str, default: bool = True) -> bool:
@@ -211,6 +214,20 @@ def parse_scene(path: Path) -> SceneData:
                 "ambient_color": _yaml_color(body, "m_AmbientSkyColor", (0.2, 0.2, 0.2, 1.0)),
                 "ambient_intensity": _float_scalar(body, "m_AmbientIntensity", 1.0),
             }
+        elif class_id == 108:
+            shadow_body = body.split("m_Shadows:", 1)[-1].split("m_Cookie:", 1)[0]
+            scene.lights.append({
+                "source_file_id": file_id, "game_object": game_object,
+                "enabled": _bool_scalar(body, "m_Enabled"),
+                "type": _int_scalar(body, "m_Type"),
+                "color": _yaml_color(body, "m_Color", (1.0, 1.0, 1.0, 1.0)),
+                "intensity": _float_scalar(body, "m_Intensity", 1.0),
+                "range": _float_scalar(body, "m_Range", 10.0),
+                "spot_angle": _float_scalar(body, "m_SpotAngle", 30.0),
+                "lightmapping": _int_scalar(body, "m_Lightmapping"),
+                "shadow_type": _int_scalar(shadow_body, "m_Type"),
+                "shadow_strength": _float_scalar(shadow_body, "m_Strength", 1.0),
+            })
         elif class_id == 114 and legacy._reference_guid(body, "m_Script") == WAYPOINT_SCRIPT_GUID:
             nodes_match = re.search(r"^\s*nodes:\s*$", body, re.MULTILINE)
             node_ids: list[int] = []
@@ -451,11 +468,24 @@ def export_level(
         if isinstance(value, Exception):
             warnings.append(f"material {guid}: {value}")
             return legacy.fallback_material(fallback_name)
-        return _prepare_level_texture(
+        material = _prepare_level_texture(
             _copy_material(value),
             level_dir,
             claimed_texture_names,
         )
+        if material.lightmap_source:
+            # Copy lightmaps losslessly at the authored resolution. These are
+            # illumination data, not diffuse art to upscale or recolour.
+            destination = level_dir / f"lightmap_{material.lightmap_guid[:12]}.png"
+            shutil.copyfile(material.lightmap_source, destination)
+            material.lightmap_source = destination
+        if material.overlay_source:
+            overlay = _copy_material(material)
+            overlay.diffuse_source = material.overlay_source
+            overlay.diffuse_guid = material.overlay_guid
+            overlay = _prepare_level_texture(overlay, level_dir, claimed_texture_names)
+            material.overlay_source = overlay.diffuse_source
+        return material
 
     visual_pieces: list[legacy.ObjPiece] = []
     batched_renderers: dict[str, list[RendererInfo]] = {}
@@ -539,6 +569,7 @@ def export_level(
                 mesh.uvs,
                 selected_submeshes,
                 mesh.source_path,
+                mesh.uv2s,
             )
             visual_pieces.append(
                 legacy.ObjPiece(
@@ -554,6 +585,11 @@ def export_level(
         group_faces_by_material=True,
     )
     visual_validation = legacy.validate_obj(visual_path)
+    lightmap_visual = write_lightmap_gltf(visual_path, visual_pieces, visual_result["material_states"])
+    for state in visual_result["material_states"].values():
+        for texture_key in ("lightmap_texture", "overlay_texture"):
+            if texture_key in state:
+                state[texture_key] = f"res://assets/models/levels/level_{level_number:02d}/" + state[texture_key]
 
     collision_pieces: list[legacy.ObjPiece] = []
     mesh_collider_records: list[dict[str, object]] = []
@@ -641,15 +677,24 @@ def export_level(
 
     unique_warnings = list(dict.fromkeys(warnings))
     metadata = {
-        "format": 2,
+        "format": 3,
         "level": level_number,
         "source": str(scene_path),
         "visual": "stage.obj",
+        "visual_with_uv2": lightmap_visual["file"],
         "collision_mesh": "collision.obj" if collision_pieces else "",
         "visual_bounds_min": visual_validation["bounds_min"],
         "visual_bounds_max": visual_validation["bounds_max"],
         "render_settings": scene.render_settings,
         "material_render_modes": visual_result["material_states"],
+        "source_lights": [
+            {**light,
+             "name": scene.game_objects[light["game_object"]].name,
+             "active_in_hierarchy": resolver.active_in_hierarchy(light["game_object"]),
+             "transform": _matrix_json(_godot_node_transform(resolver.world_transform(light["game_object"]))),
+            }
+            for light in scene.lights
+        ],
         "markers": markers,
         "waypoint_graph": [sorted(neighbours) for neighbours in waypoint_graph],
         "primitive_colliders": primitive_records,
@@ -659,6 +704,8 @@ def export_level(
             "visual_renderers": len(visual_pieces),
             "primitive_colliders": len(primitive_records),
             "mesh_colliders": len(collision_pieces),
+            "source_lights": len(scene.lights),
+            "lightmapped_materials": sum("lightmap_texture" in state for state in visual_result["material_states"].values()),
         },
         "warnings": unique_warnings,
     }

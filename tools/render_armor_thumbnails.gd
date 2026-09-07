@@ -38,6 +38,11 @@ func _render_all() -> void:
 	var avatar := avatar_scene.instantiate() as Node3D
 	avatar.rotation_degrees.y = -90.0
 	stage.add_child(avatar)
+	var only_callofmini := OS.get_cmdline_user_args().has("--callofmini-only")
+	var additional_ids := {}
+	for visual_id in range(ArmorCatalogData.CALLOFMINI_FIRST_ID, ArmorCatalogData.SET_NAMES.size()):
+		additional_ids[visual_id] = visual_id
+	preload("res://scripts/game/armor_visuals.gd").ensure_parts(avatar, additional_ids)
 	_pose_avatar(avatar)
 	var catalog := ArmorCatalogData.build_items()
 	var meshes: Array[MeshInstance3D] = []
@@ -50,6 +55,8 @@ func _render_all() -> void:
 		for item_key: String in _item_ids(catalog, part_key):
 			var item: Dictionary = catalog[item_key]
 			var visual_id := int(item.visual_id)
+			if only_callofmini and visual_id < ArmorCatalogData.CALLOFMINI_FIRST_ID:
+				continue
 			var visible_meshes := _show_part(meshes, str(PART_PREFIXES[part_key]), visual_id)
 			if visible_meshes.is_empty():
 				push_warning("No mesh for %s" % item_key)
@@ -59,6 +66,10 @@ func _render_all() -> void:
 
 	avatar.queue_free()
 	await process_frame
+	if only_callofmini:
+		print("CALLOFMINI_THUMBNAILS_RENDERED count=32")
+		quit(0)
+		return
 	for item_key: String in _item_ids(catalog, "bag"):
 		var item: Dictionary = catalog[item_key]
 		var visual_id := int(item.visual_id)
