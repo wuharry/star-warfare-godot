@@ -1,0 +1,88 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.harness/claude_hook.py\"",
+            "timeout": 180
+          }
+        ],
+        "matcher": "Read|Edit|Write|MultiEdit"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.harness/claude_hook.py\"",
+            "timeout": 180
+          }
+        ],
+        "matcher": "Edit|Write|MultiEdit"
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.harness/claude_hook.py\"",
+            "timeout": 180
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.harness/claude_hook.py\"",
+            "timeout": 180
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "deny": [
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Edit(.env)",
+      "Edit(.env.*)",
+      "Edit(**/.env)",
+      "Edit(**/.env.*)",
+      "Write(.env)",
+      "Write(.env.*)",
+      "Write(**/.env)",
+      "Write(**/.env.*)",
+      "Edit(*.uid)",
+      "Edit(**/*.uid)",
+      "Edit(*.import)",
+      "Edit(**/*.import)",
+      "Edit(.godot/**)",
+      "Edit(**/.godot/**)",
+      "Write(*.uid)",
+      "Write(**/*.uid)",
+      "Write(*.import)",
+      "Write(**/*.import)",
+      "Write(.godot/**)",
+      "Write(**/.godot/**)"
+    ],
+    "ask": [
+      "Edit(*.gd)",
+      "Edit(**/*.gd)",
+      "Edit(*.tscn)",
+      "Edit(**/*.tscn)",
+      "Write(*.gd)",
+      "Write(**/*.gd)",
+      "Write(*.tscn)",
+      "Write(**/*.tscn)"
+    ]
+  }
+}

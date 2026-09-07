@@ -1,0 +1,54 @@
+{
+  "name": "star-warfare-godot",
+  "godot": true,
+  "required_docs": [
+    ".harness/project.md"
+  ],
+  "context_docs": [],
+  "checks": [
+    {
+      "id": "godot-smoke",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/smoke_test.tscn"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "godot-settings",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/settings_test.tscn"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "visual",
+      "manual": "跑與改動相關的 tests/*visual_capture.tscn／capture 腳本，固定 renderer 與 viewport，檢視圖片或互動結果。"
+    }
+  ],
+  "adopt": {},
+  "remove": {},
+  "retired_hook_commands": [],
+  "package_manager": "npm",
+  "learning_sources": {
+    "learner": "harvey",
+    "canonical_events": "../ai-wrapper/docs/learning/events.jsonl",
+    "ledger": {
+      "concept_prefix": "godot.cardgame.",
+      "path": "../card-game-demo-4.5--main/docs/LEARNING_LEDGER.md",
+      "authority": "existing ledger, preserve demotion"
+    },
+    "profile": {
+      "path": "../ai-wrapper/docs/learning-profile.md",
+      "authority": "historical advisory, not mastery"
+    },
+    "missing_source": "unknown; propose an event in handoff, do not create conflicting local scores"
+  }
+}
