@@ -84,6 +84,7 @@ func _test_runtime_visuals() -> void:
 	add_child(world)
 	await get_tree().process_frame
 	world.completed = true
+	_test_rocket_shots(world)
 	var from := Vector3(0.0, 2.0, 0.0)
 	var to := Vector3(0.0, 2.0, -30.0)
 	var rifle := world.spawn_tracer(from, to, Color(1.0, 0.64, 0.08), "rifle")
@@ -135,6 +136,15 @@ func _test_runtime_visuals() -> void:
 				_check(original_body.mesh != null and original_body.mesh.get_surface_count() == 4, "original RPG body/flame mesh does not have its four recovered surfaces")
 			_check(projectile.get_node_or_null("ProjectileVisual/OriginalRocketSmokeLong") != null, "original RPG is missing its long smoke emitter")
 			_check(projectile.get_node_or_null("ProjectileVisual/OriginalRocketSmokeHot") != null, "original RPG is missing its hot smoke emitter")
+			var hot := projectile.get_node("ProjectileVisual/OriginalRocketSmokeHot") as GPUParticles3D
+			var hot_material := hot.draw_pass_1.surface_get_material(0) as StandardMaterial3D
+			_check(hot_material.billboard_mode == BaseMaterial3D.BILLBOARD_PARTICLES and hot_material.particles_anim_h_frames == 6 and hot_material.particles_anim_v_frames == 6, "rocket exhaust displays the entire fire atlas as multiple fireballs")
+			var hot_process := hot.process_material as ParticleProcessMaterial
+			_check(is_equal_approx(hot_process.anim_speed_min, 1.0) and is_equal_approx(hot_process.anim_speed_max, 1.0), "rocket exhaust does not advance through its fire frames")
+		if record[0] == "rocket" and record[1] == "gun30":
+			var flame := projectile.get_node("ProjectileVisual/Fire00302Hd") as MeshInstance3D
+			var flame_material := flame.mesh.surface_get_material(0) as StandardMaterial3D
+			_check(flame_material.uv1_scale.is_equal_approx(Vector3(1.0 / 6.0, 1.0 / 6.0, 1.0)), "gun30 flame displays all fire atlas frames at once")
 		projectile.queue_free()
 	for audio in world.find_children("*", "AudioStreamPlayer", true, false):
 		audio.stop()
@@ -143,6 +153,30 @@ func _test_runtime_visuals() -> void:
 	world.free()
 	AudioDirector.stop_all_sfx()
 	await get_tree().process_frame
+
+func _test_rocket_shots(world: WarfareGameWorld) -> void:
+	var player := world.player
+	player.set_physics_process(false)
+	for weapon_id: String in GameState.WEAPONS:
+		if str(GameState.WEAPONS[weapon_id].kind) != "rocket":
+			continue
+		player.equip_weapon(weapon_id, false)
+		player.shot_cooldown = 0.0
+		player.energy = 9999
+		player._set_magazine_rounds(1)
+		player.set_touch_fire(true)
+		player._handle_weapon_input()
+		# A second input update in the same frame must not create another shot.
+		player._handle_weapon_input()
+		var shots: Array[Node] = world.get_children().filter(func(child: Node): return child is WarfareProjectile)
+		_check(shots.size() == 1, "%s did not fire exactly one rocket per trigger pull" % weapon_id)
+		_check(player._magazine_rounds() == 0, "%s did not consume exactly one round" % weapon_id)
+		player.shot_cooldown = 0.0
+		player._handle_weapon_input()
+		_check(world.get_children().filter(func(child: Node): return child is WarfareProjectile).size() == 1, "%s repeated a shot while the trigger stayed held" % weapon_id)
+		player.set_touch_fire(false)
+		for shot in shots:
+			shot.free()
 
 func _mesh_texture_paths(node: Node) -> Array[String]:
 	var paths: Array[String] = []

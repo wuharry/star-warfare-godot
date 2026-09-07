@@ -4,6 +4,8 @@ const Atlas = preload("res://scripts/ui/original_atlas.gd")
 const EquipmentShell = preload("res://scripts/ui/unity_equipment_shell.gd")
 const COMPONENT_DIR := "res://assets/ui/components/"
 const DESIGN_SIZE := Vector2(960.0, 640.0)
+# Allow pixel rounding at 16:9 while keeping 16:10 on the narrower canvas.
+const DESKTOP_ARMORY_MIN_ASPECT := 16.0 / 9.0 - 0.001
 
 # Level select thumbnails, recovered from the shipped UI resource rather than
 # guessed. The campaign set comes from StageChoiseUI, which builds icon i from
@@ -49,7 +51,7 @@ var music_player: AudioStreamPlayer
 var equipment_shell: UnityEquipmentShell
 
 # Compatibility fields kept for the restoration tests and older menu callers.
-var store_weapon_row: HBoxContainer
+var store_weapon_row: Container
 var store_slot_picker: OptionButton
 var store_category_buttons: Dictionary = {}
 
@@ -301,6 +303,15 @@ func _rescale_design() -> void:
 	design_root.scale = Vector2.ONE * maxf(scale_factor, 0.01)
 	design_root.position = (available - DESIGN_SIZE * scale_factor) * 0.5
 	design_root.size = DESIGN_SIZE
+	if is_instance_valid(equipment_shell):
+		var desktop_armory := _uses_desktop_armory(available)
+		design_root.clip_contents = not desktop_armory
+		if equipment_shell.desktop_layout != desktop_armory:
+			equipment_shell.apply_layout(desktop_armory)
+
+
+func _uses_desktop_armory(available: Vector2) -> bool:
+	return available.y > 0.0 and available.x / available.y >= DESKTOP_ARMORY_MIN_ASPECT and not OS.has_feature("mobile")
 
 
 func _start_intro_animation() -> void:
@@ -395,7 +406,7 @@ func _show_armory(start_mode: String = "store") -> void:
 	modal_layer.mouse_filter = Control.MOUSE_FILTER_STOP
 	equipment_shell = EquipmentShell.new()
 	equipment_shell.name = "RecoveredUnityStore"
-	var desktop_armory := size.y > 0.0 and size.x / size.y >= 1.6 and not OS.has_feature("mobile")
+	var desktop_armory := _uses_desktop_armory(size)
 	# The original interaction canvas remains 960x640 for menus and mobile.
 	# On a desktop widescreen, let only the armory use the otherwise wasted
 	# letterbox area; its local 1138x640 canvas maps exactly to 1280x720.

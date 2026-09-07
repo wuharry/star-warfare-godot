@@ -90,8 +90,8 @@ const RELOAD_PROFILES := {
 	"gun00": {
 		"resource_model": "magazine", "magazine_size": 30,
 		"reload_style": "rifle", "reload_time": 1.55, "empty_reload_bonus": 0.22,
-		"prop_shape": "box", "prop_size": Vector3(0.14, 0.30, 0.20),
-		"prop_position": Vector3(0.0, -0.19, 0.09), "prop_rotation": Vector3(-12.0, 0.0, 0.0),
+		"reload_body_model": "gun00_body", "prop_model": "gun00_magazine",
+		"prop_shape": "box",
 		"drop_fraction": 0.22, "hand_fraction": 0.38, "insert_fraction": 0.73,
 	},
 	"gun35": {

@@ -94,7 +94,10 @@ func _build_legacy_hd_visual() -> bool:
 				return true
 			_add_capsule("bug_RPG6_hd.png", 0.17, 0.7, Color.WHITE, 0.9)
 			_add_billboard("gun_up_1_slf_sfx_hd.png", Vector2(0.58, 1.25), tint, 4.8, Vector3(0.0, 0.0, 0.52))
-			_add_billboard("fire_00302_hd.png", Vector2(0.46, 0.8), Color(1.0, 0.55, 0.18), 3.8, Vector3(0.0, 0.0, 0.72))
+			var flame := _add_billboard("fire_00302_hd.png", Vector2(0.46, 0.8), Color(1.0, 0.55, 0.18), 3.8, Vector3(0.0, 0.0, 0.72))
+			# This static flame uses one cell of the 6 x 6 animation atlas.
+			var flame_material := flame.mesh.surface_get_material(0) as StandardMaterial3D
+			flame_material.uv1_scale = Vector3(1.0 / 6.0, 1.0 / 6.0, 1.0)
 			_add_billboard("fire_smook_001_hd.png", Vector2(0.72, 1.28), Color(0.62, 0.65, 0.68, 0.42), 0.35, Vector3(0.0, 0.0, 1.12))
 			visual_spin_speed = 5.0
 			return true
@@ -223,7 +226,16 @@ func _add_original_rocket_smoke_layer(
 	var quad := QuadMesh.new()
 	quad.size = quad_size
 	quad.orientation = PlaneMesh.FACE_Z
-	quad.material = _legacy_hd_material(texture_name, Color.WHITE, 0.55, true)
+	var draw_material := _legacy_hd_material(texture_name, Color.WHITE, 0.55, true)
+	if texture_name == "fire_00302_hd.png":
+		# Sample one animation cell per particle, never the whole sheet of fireballs.
+		draw_material.billboard_mode = BaseMaterial3D.BILLBOARD_PARTICLES
+		draw_material.particles_anim_h_frames = 6
+		draw_material.particles_anim_v_frames = 6
+		draw_material.particles_anim_loop = false
+		process_material.anim_speed_min = 1.0
+		process_material.anim_speed_max = 1.0
+	quad.material = draw_material
 	particles.draw_pass_1 = quad
 	particles.set_meta("source_emitter", "Effect/Projectile/%s" % name_value)
 	visual_root.add_child(particles)
@@ -336,7 +348,7 @@ func _physics_process(delta: float) -> void:
 		query.exclude = [owner_node.get_rid()]
 	var result := get_world_3d().direct_space_state.intersect_ray(query)
 	if not result.is_empty():
-		var collider := result.get("collider") as Node
+		var collider := EnemyHitGeometry.resolve(result.get("collider"))
 		if projectile_kind == "ricochet" and bounces_left > 0 and (not is_instance_valid(collider) or not collider.is_in_group("enemies")):
 			bounces_left -= 1
 			direction = direction.bounce(result.normal).normalized()
@@ -356,9 +368,13 @@ func _impact(position_value: Vector3, direct_target: Node) -> void:
 		params.shape = shape
 		params.transform = Transform3D(Basis.IDENTITY, position_value)
 		params.collision_mask = 4 if hostile else 2
-		for hit in get_world_3d().direct_space_state.intersect_shape(params, 24):
-			var target: Node3D = hit.collider as Node3D
+		var damaged: Dictionary = {}
+		for hit in get_world_3d().direct_space_state.intersect_shape(params, 512):
+			var target := EnemyHitGeometry.resolve(hit.collider) as Node3D
+			if damaged.has(target):
+				continue
 			if is_instance_valid(target) and target.has_method("take_damage"):
+				damaged[target] = true
 				var distance: float = target.global_position.distance_to(position_value)
 				target.take_damage(damage * clampf(1.0 - distance / maxf(splash_radius, 0.01), 0.25, 1.0), position_value, owner_node)
 	elif is_instance_valid(direct_target) and direct_target.has_method("take_damage"):

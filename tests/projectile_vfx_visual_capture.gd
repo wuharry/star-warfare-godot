@@ -43,6 +43,14 @@ func _ready() -> void:
 	_add_label("MACHINEGUN • 1 IN 5", Vector3(-6.7, 3.0, 0.0), Color(1.0, 0.82, 0.3))
 	_add_label("BLUE LASER • EVERY SHOT", Vector3(-6.7, 0.9, 0.0), Color(0.18, 0.82, 1.0))
 	_add_label("ORIGINAL UNITY RPG • HD", Vector3(-6.7, -1.2, 0.0), Color(0.7, 0.92, 0.3))
+	var rocket := WarfareProjectile.new()
+	rocket.configure(world.player, Vector3.RIGHT, 12.0, 10.0, 1.0, Color(1.0, 0.55, 0.15), false, "rocket", "", "gun11")
+	rocket.position = Vector3(-0.8, -1.95, 0.0)
+	rocket.scale = Vector3.ONE * 1.55
+	add_child(rocket)
+	rocket.set_physics_process(false)
+	# Warm up exhaust before creating short-lived tracers so both are visible.
+	await get_tree().create_timer(0.4).timeout
 	var starts := [Vector3(-5.7, 4.35, 0.0), Vector3(-5.7, 2.25, 0.0), Vector3(-5.7, 0.15, 0.0)]
 	var ends := [Vector3(5.7, 4.35, 0.0), Vector3(5.7, 2.25, 0.0), Vector3(5.7, 0.15, 0.0)]
 	world.spawn_muzzle_effect(starts[0], Vector3.RIGHT, "rifle")
@@ -55,12 +63,6 @@ func _ready() -> void:
 	world.spawn_muzzle_effect(starts[2], Vector3.RIGHT, "laser")
 	world.spawn_tracer(starts[2], ends[2], Color(0.08, 0.78, 1.0), "laser")
 	world.spawn_impact(ends[2], Vector3.LEFT, Color(0.08, 0.78, 1.0), "laser")
-	var rocket := WarfareProjectile.new()
-	rocket.configure(world.player, Vector3.RIGHT, 12.0, 10.0, 1.0, Color(1.0, 0.55, 0.15), false, "rocket", "", "gun11")
-	rocket.position = Vector3(-0.8, -1.95, 0.0)
-	rocket.scale = Vector3.ONE * 1.55
-	add_child(rocket)
-	rocket.set_physics_process(false)
 	for tween in get_tree().get_processed_tweens():
 		tween.pause()
 	# Fixed frame waits work in both interactive and headless renderers. Waiting

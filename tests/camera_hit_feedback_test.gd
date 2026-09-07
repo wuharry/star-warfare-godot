@@ -86,6 +86,7 @@ func _run() -> void:
 	player.shoot_pose_left = 0.0
 	player._update_combat_aim_pose(1.0)
 	_check(not player.upper_body_aim_override_active, "upper-body aim override persisted after combat")
+	_check_fr28a_reload_camera(player)
 
 	player.shot_fired.emit(player.current_weapon)
 	_check(fire_crosshair.visible and not world.hud.crosshair.visible, "successful shot did not switch to the 1.2x fire reticle")
@@ -130,6 +131,130 @@ func _run() -> void:
 		get_tree().quit(0)
 	else:
 		get_tree().quit(1)
+
+func _check_fr28a_reload_camera(player: WarfarePlayer) -> void:
+	var saved_weapon_id := player.current_weapon_id
+	var saved_magazines := player.weapon_magazines.duplicate(true)
+	var saved_auto_reload := player.auto_reload_left
+	var saved_body_yaw := player.body_yaw
+	var saved_model_rotation := player.model.rotation
+	var saved_camera_yaw := player.camera_yaw
+	var saved_camera_rotation := player.camera_rig.rotation
+	var saved_mount_transform := player.gun_mount.transform
+	var saved_velocity := player.velocity
+	var saved_shoot_pose := player.shoot_pose_left
+	var saved_touch_fire := player.touch_fire
+	var saved_aim_pressed := Input.is_action_pressed("aim")
+	var saved_fire_pressed := Input.is_action_pressed("fire")
+	Input.action_release("aim")
+	Input.action_release("fire")
+	player.touch_fire = false
+	player.shoot_pose_left = 0.0
+	player.equip_weapon("gun00", false)
+	player._set_magazine_rounds(0)
+	player._start_reload()
+	player._update_reload(player.reload_total * 0.5)
+	_check(player.reload_left > 0.0, "FR28a camera checks did not enter reload")
+	player.velocity = Vector3.ZERO
+	player.camera_yaw = PI * 0.75
+	player.camera_rig.rotation.y = player.camera_yaw
+	for trigger: String in ["none", "aim", "fire", "touch", "shoot_pose", "all"]:
+		Input.action_release("aim")
+		Input.action_release("fire")
+		if trigger in ["aim", "all"]:
+			Input.action_press("aim")
+		if trigger in ["fire", "all"]:
+			Input.action_press("fire")
+		player.touch_fire = trigger in ["touch", "all"]
+		player.shoot_pose_left = 0.25 if trigger in ["shoot_pose", "all"] else 0.0
+		player.body_yaw = 0.0
+		player.model.rotation.y = 0.0
+		_check(not player.is_combat_aim_active(), "FR28a reload still enables combat aim with %s" % trigger)
+		player._update_body_facing(0.5, Vector3.ZERO)
+		player._update_combat_aim_pose(1.0 / 60.0)
+		_check(is_zero_approx(player.body_yaw) and is_zero_approx(player.model.rotation.y), "stationary FR28a reload turned toward the camera with %s" % trigger)
+		_check(not player.upper_body_aim_override_active, "FR28a reload retained upper-body camera aim with %s" % trigger)
+
+	# Keep all triggers held: reloading must still permit orbit and travel facing.
+	var camera_before := player.camera_yaw
+	player._apply_look_delta(Vector2(80.0, 0.0))
+	_check(not is_equal_approx(player.camera_yaw, camera_before), "FR28a reload blocked camera look input")
+	_check(is_equal_approx(player.camera_rig.rotation.y, player.camera_yaw), "FR28a reload failed to apply camera orbit")
+	_check(is_zero_approx(player.model.rotation.y), "FR28a reload orbit rotated the stationary avatar")
+	player._update_body_facing(0.5, Vector3.RIGHT)
+	_check(absf(angle_difference(player.body_yaw, -PI * 0.5)) < 0.02, "moving FR28a reload followed the camera instead of travel")
+
+	# Exercise the real per-frame methods at one fixed pose. Repeating an
+	# unchanged reload progress must not add another tilt on every frame.
+	player._update_combat_aim_pose(1.0 / 60.0)
+	player._update_reload_pose()
+	var first_rotation := player.gun_mount.global_basis.get_rotation_quaternion()
+	_check((-player.gun_mount.global_basis.z).normalized().y > 0.05, "FR28a reload did not raise the barrel")
+	for _frame in range(120):
+		player._update_combat_aim_pose(1.0 / 60.0)
+		player._update_reload_pose()
+	var rotation_drift := first_rotation.angle_to(player.gun_mount.global_basis.get_rotation_quaternion())
+	_check(rotation_drift < 0.001, "FR28a reload pose accumulated rotation at fixed progress (%.3f degrees)" % rad_to_deg(rotation_drift))
+	var rotation_before_orbit := player.gun_mount.global_basis.get_rotation_quaternion()
+	player._apply_look_delta(Vector2(80.0, 0.0))
+	player._update_combat_aim_pose(1.0 / 60.0)
+	player._update_reload_pose()
+	_check(rotation_before_orbit.angle_to(player.gun_mount.global_basis.get_rotation_quaternion()) < 0.001, "FR28a reload weapon followed the orbiting camera")
+
+	player._update_reload(player.reload_total)
+	_check(is_zero_approx(player.reload_left), "FR28a camera checks did not finish reload")
+	Input.action_release("aim")
+	Input.action_release("fire")
+	player.touch_fire = false
+	player.shoot_pose_left = 0.0
+	for action: String in ["aim", "fire"]:
+		player.body_yaw = 0.0
+		player.model.rotation.y = 0.0
+		player.camera_yaw = 1.0
+		player.camera_rig.rotation.y = player.camera_yaw
+		Input.action_press(action)
+		_check(player.is_combat_aim_active(), "FR28a %s did not restore combat aim after reload" % action)
+		player._update_body_facing(1.0 / 60.0, Vector3.ZERO)
+		player._update_combat_aim_pose(1.0 / 60.0)
+		_check(player.body_yaw > 0.0, "FR28a %s did not resume turning toward the camera after reload" % action)
+		_check_weapon_aim_direction(player, "FR28a %s after reload" % action)
+		Input.action_release(action)
+		player._update_combat_aim_pose(1.0)
+
+	player.equip_weapon("gun35", false)
+	player._set_magazine_rounds(0)
+	player._start_reload()
+	player.body_yaw = 0.0
+	player.model.rotation.y = 0.0
+	_check(player.is_combat_aim_active(), "FR28a exception disabled camera aim for gun35 reload")
+	player._update_body_facing(1.0 / 60.0, Vector3.ZERO)
+	player._update_combat_aim_pose(1.0 / 60.0)
+	_check(player.body_yaw > 0.0 and player.upper_body_aim_override_active, "gun35 reload lost its original camera-facing behavior")
+	_check_weapon_aim_direction(player, "gun35 reload")
+
+	player._cancel_reload()
+	player.equip_weapon(saved_weapon_id, false)
+	player.weapon_magazines = saved_magazines
+	player.auto_reload_left = saved_auto_reload
+	player.body_yaw = saved_body_yaw
+	player.model.rotation = saved_model_rotation
+	player.camera_yaw = saved_camera_yaw
+	player.camera_rig.rotation = saved_camera_rotation
+	player.gun_mount.transform = saved_mount_transform
+	player.velocity = saved_velocity
+	player.shoot_pose_left = saved_shoot_pose
+	player.touch_fire = saved_touch_fire
+	if saved_aim_pressed:
+		Input.action_press("aim")
+	if saved_fire_pressed:
+		Input.action_press("fire")
+	player._emit_ammo()
+
+func _check_weapon_aim_direction(player: WarfarePlayer, context: String) -> void:
+	var aim := player.get_aim_solution(float(player.current_weapon.range))
+	var muzzle_direction := -player.gun_mount.global_transform.basis.z.normalized()
+	var expected_direction := (Vector3(aim.target) - player.gun_mount.global_position).normalized()
+	_check(muzzle_direction.dot(expected_direction) > 0.999, "%s weapon did not follow the camera aim ray" % context)
 
 func _on_hit_confirmed(_amount: float) -> void:
 	hit_count += 1

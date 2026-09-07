@@ -5,6 +5,14 @@ signal died(enemy: WarfareEnemy, death_position: Vector3, reward: int, score_val
 signal health_reported(current: float, maximum: float, is_boss: bool)
 
 const ProjectileScript = preload("res://scripts/game/projectile.gd")
+const FLESH_HIT_LIGHT := "combat/flesh_hit_light.wav"
+const FLESH_HIT_HEAVY := "combat/flesh_hit_heavy.wav"
+const HITBOX_PROFILES := {
+	"crawler": Vector2(0.76, 1.72),
+	"spitter": Vector2(1.00, 2.00),
+	"brute": Vector2(1.00, 2.00),
+	"boss": Vector2(1.50, 3.70),
+}
 
 var target: WarfarePlayer
 var enemy_kind := "crawler"
@@ -30,9 +38,11 @@ var voice: AudioStreamPlayer3D
 var navigation_target := Vector3.INF
 var navigation_refresh := 0.0
 var recovered_enemy: Node3D
+var animated_hitbox: EnemyHitGeometry
 var recovered_animation_player: AnimationPlayer
 var recovered_animation_name := ""
 var hit_reaction_left := 0.0
+var flesh_hit_cooldown := 0.0
 var spawn_left := 0.82
 var spawn_depth := 1.35
 
@@ -130,6 +140,12 @@ func _ready() -> void:
 	floor_snap_length = 0.6
 	_build_collision()
 	_build_visual()
+	if recovered_enemy:
+		animated_hitbox = EnemyHitGeometry.new()
+		add_child(animated_hitbox)
+		animated_hitbox.build(model)
+		if not animated_hitbox.parts.is_empty():
+			collision_layer = 0
 	_build_audio()
 	# Choose the first recovered waypoint before the grave-rise animation locks
 	# movement. The enemy emerges already oriented toward a valid route.
@@ -145,10 +161,11 @@ func _ready() -> void:
 
 func _build_collision() -> void:
 	var collision := CollisionShape3D.new()
+	collision.name = "EnemyHitbox"
 	var capsule := CapsuleShape3D.new()
-	var scale_factor := 2.45 if enemy_kind == "boss" else (1.45 if enemy_kind == "brute" else 1.0)
-	capsule.radius = 0.62 * scale_factor
-	capsule.height = 1.35 * scale_factor
+	var profile: Vector2 = HITBOX_PROFILES.get(enemy_kind, HITBOX_PROFILES.crawler)
+	capsule.radius = profile.x
+	capsule.height = profile.y
 	collision.shape = capsule
 	collision.position.y = capsule.height * 0.5
 	add_child(collision)
@@ -232,23 +249,28 @@ func _combined_mesh_aabb(root: Node3D) -> AABB:
 func _normalize_recovered_enemy() -> void:
 	if not recovered_enemy:
 		return
-	var bounds := _combined_mesh_aabb(recovered_enemy)
+	var bind_bounds := _combined_mesh_aabb(recovered_enemy)
+	# Mesh.get_aabb() is the unskinned bind pose, not the visible idle body.
+	# Sample the actual skin before scaling or grounding it.
+	if recovered_animation_player and recovered_animation_player.has_animation("idle"):
+		recovered_animation_player.play("idle")
+		recovered_animation_player.advance(0.0)
+		recovered_animation_player.seek(0.0, true)
+	var bounds := EnemyHitGeometry.posed_bounds(recovered_enemy)
+	if bounds.size.y <= 0.001:
+		bounds = _combined_mesh_aabb(recovered_enemy)
 	if bounds.size.y <= 0.001:
 		return
 	var target_height: float = float({
 		"crawler": 1.7, "spitter": 1.9, "brute": 2.5, "boss": 5.0
 	}.get(enemy_kind, 1.7))
 	var factor: float = float(target_height) / bounds.size.y
+	# Preserve the authored model size; only use the live pose to ground it.
+	# The flying boss is much wider than tall in idle, unlike its bind pose.
+	if bind_bounds.size.y > 0.001:
+		factor = float(target_height) / bind_bounds.size.y
 	recovered_enemy.scale = Vector3.ONE * factor
 	recovered_enemy.position = Vector3(0.0, -bounds.position.y * factor, 0.0)
-	# The brute and boss animation bounds include their airborne/death poses.
-	# Aligning that full envelope leaves the live idle pose visibly hovering, so
-	# compensate to the actual lowest limbs used by the grounded animations.
-	var grounded_visual_offset: float = float({
-		"brute": 0.72,
-		"boss": 1.4,
-	}.get(enemy_kind, 0.0))
-	recovered_enemy.position.y -= grounded_visual_offset
 	spawn_depth = minf(float(target_height) * 0.82, 2.4)
 
 func _prepare_recovered_animations() -> void:
@@ -324,6 +346,8 @@ func _physics_process(delta: float) -> void:
 		spawn_left = maxf(0.0, spawn_left - delta)
 		var ratio := 1.0 - spawn_left / 0.82
 		model.position.y = lerpf(-spawn_depth, 0.0, smoothstep(0.0, 1.0, ratio))
+		if is_instance_valid(animated_hitbox):
+			animated_hitbox.sync_pose()
 		velocity = Vector3.ZERO
 		if spawn_left <= 0.0:
 			_play_recovered_animation("idle")
@@ -341,6 +365,7 @@ func _physics_process(delta: float) -> void:
 		return
 	attack_cooldown = maxf(0.0, attack_cooldown - delta)
 	hit_reaction_left = maxf(0.0, hit_reaction_left - delta)
+	flesh_hit_cooldown = maxf(0.0, flesh_hit_cooldown - delta)
 	charge_timer = maxf(0.0, charge_timer - delta)
 	navigation_refresh -= delta
 	if navigation_refresh <= 0.0 or navigation_target == Vector3.INF or global_position.distance_squared_to(navigation_target) < 1.7:
@@ -666,6 +691,8 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 	var health_before := health
 	health = maxf(0.0, health - amount)
 	var actual_damage := maxf(0.0, health_before - health)
+	if actual_damage > 0.0:
+		_play_flesh_impact(actual_damage, _hit_position)
 	# Armor powers such as HEALTH STEAL must use damage that actually reached
 	# this enemy (excluding overkill), not the weapon's requested raw damage.
 	if actual_damage > 0.0 and is_instance_valid(_source) and _source.has_method("on_damage_dealt"):
@@ -683,8 +710,8 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 		hit_reaction_left = clampf(recovered_animation_player.get_animation(attacked_animation).length, 0.16, 0.38)
 	_play_recovered_animation(attacked_animation, 0.03, true)
 	health_reported.emit(health, max_health, enemy_kind == "boss")
-	if randf() < 0.34:
-		AudioDirector.play_3d("enemy/mantis/tanglang_attacked.wav" if enemy_kind == "boss" else "enemies_smash2.wav", global_position, -10.0, randf_range(0.9, 1.08))
+	if enemy_kind == "boss" and randf() < 0.28:
+		AudioDirector.play_3d("enemy/mantis/tanglang_attacked.wav", global_position, -11.0, randf_range(0.9, 1.08))
 	if is_instance_valid(hit_tween):
 		hit_tween.kill()
 	body_material.emission_enabled = true
@@ -698,8 +725,29 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 	if health <= 0.0:
 		_die(_source)
 
+func _play_flesh_impact(actual_damage: float, hit_position: Vector3) -> void:
+	# Shotguns report several pellets in the same physics frame. Keep one solid
+	# transient per enemy instead of stacking identical samples into clipping.
+	if flesh_hit_cooldown > 0.0:
+		return
+	var heavy := actual_damage >= maxf(28.0, max_health * 0.18) or health <= 0.0
+	var sound_path := FLESH_HIT_HEAVY if heavy else FLESH_HIT_LIGHT
+	var impact_position := hit_position
+	if impact_position == Vector3.ZERO:
+		impact_position = global_position + Vector3.UP * 0.85
+	AudioDirector.play_3d(
+		sound_path,
+		impact_position,
+		-2.5 if heavy else -4.5,
+		randf_range(0.92, 1.06),
+		"enemy_flesh_hit_%d" % get_instance_id()
+	)
+	flesh_hit_cooldown = 0.045
+
 func _die(killer: Node = null) -> void:
 	dead = true
+	if is_instance_valid(animated_hitbox):
+		animated_hitbox.collision_layer = 0
 	if is_instance_valid(killer) and killer.has_method("on_enemy_defeated"):
 		killer.on_enemy_defeated()
 	_release_attack_token()

@@ -303,7 +303,7 @@ func _damage_enemies_in_radius(center: Vector3, radius: float, base_damage: floa
 	parameters.transform = Transform3D(Basis.IDENTITY, center)
 	parameters.collision_mask = 2
 	var damaged_ids: Dictionary = {}
-	for hit in space.intersect_shape(parameters, 64):
+	for hit in space.intersect_shape(parameters, 512):
 		var enemy := _enemy_root(hit.get("collider") as Node)
 		if not is_instance_valid(enemy) or damaged_ids.has(enemy.get_instance_id()):
 			continue
@@ -375,7 +375,7 @@ func _hit_wave_targets(wave: Dictionary) -> bool:
 	parameters.transform = Transform3D(Basis.IDENTITY, visual.global_position)
 	parameters.collision_mask = 2
 	var hit_ids: Dictionary = wave.hit_ids
-	for hit in space.intersect_shape(parameters, 64):
+	for hit in space.intersect_shape(parameters, 512):
 		var enemy := _enemy_root(hit.get("collider") as Node)
 		if not is_instance_valid(enemy):
 			continue

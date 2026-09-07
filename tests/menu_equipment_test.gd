@@ -14,6 +14,10 @@ func _check(condition: bool, message: String) -> void:
 
 
 func _run() -> void:
+	# Exercise the actual purchase/equip signals without touching the player's save.
+	var original_save_path := GameState.save_path
+	var test_save_path := "user://menu_equipment_test_%d.json" % Time.get_ticks_usec()
+	GameState.save_path = test_save_path
 	var menu := (load("res://scenes/main_menu.tscn") as PackedScene).instantiate()
 	add_child(menu)
 	await get_tree().process_frame
@@ -51,30 +55,23 @@ func _run() -> void:
 		_check(shell.section_buttons.size() == 2, "desktop armory is missing GEAR/SUPPLY navigation")
 		_check(shell.desktop_equipment_buttons.size() == 6, "desktop armory does not expose all six equipment categories")
 		_check(shell.supply_buttons.size() == 3, "desktop armory does not expose all three original supply categories")
-		_check(not shell.category_layer.visible, "desktop armory still duplicates the category controls along the bottom")
+		_check(shell.category_layer.visible, "equipment catalog has no visible category controls")
 		var gear_section := shell.section_buttons.get("equipment") as Button
 		var gun_catalog := shell.desktop_equipment_buttons.get("gun") as Button
 		var gear_style := gear_section.get_theme_stylebox("normal") as StyleBoxTexture
 		var gun_style := gun_catalog.get_theme_stylebox("normal") as StyleBoxTexture
-		_check(gear_style != null and gear_style.texture.resource_path.ends_with("armory_side_button.png"), "desktop shelf switch does not use the original StoreUI side plate")
+		_check(gear_style != null and gear_style.texture.resource_path.begins_with("res://assets/ui/components/"), "shelf switch does not use the recovered UI art")
 		_check(gun_style != null and gun_style.texture.resource_path.ends_with("button_pressed.png"), "desktop category does not use the original long button plate")
 		_check(shell.weapon_filter_picker is OptionButton and shell.weapon_filter_picker.item_count == 6, "desktop armory is missing the compact weapon type filter")
-		_check(shell.get_node_or_null("EquipmentCarousel/PreviousItem") is Button and shell.get_node_or_null("EquipmentCarousel/NextItem") is Button, "desktop armory is missing mouse-friendly carousel arrows")
-		var carousel := shell.get_node_or_null("EquipmentCarousel") as Control
-		_check(carousel != null and carousel.position.is_equal_approx(Vector2(205, 442)), "desktop product strip is not separated from the 3D showcase")
-		var comparison := shell.get_node_or_null("OverallComparison") as Control
-		var expected_comparison_position := Vector2(884, 104) if shell.desktop_layout else Vector2(706, 104)
-		_check(comparison != null and comparison.position.is_equal_approx(expected_comparison_position) and comparison.size.is_equal_approx(Vector2(240, 130)), "StoreUI overall comparison block is not at the active layout position")
+		_check_store_layout(shell)
 		_check(shell.comparison_rows.size() == 3, "StoreUI is missing the authored HP/POW/SPD comparison meters")
-		_check(shell.action_button.position.is_equal_approx(Vector2(43, 286)) and shell.action_button.size.is_equal_approx(Vector2(150, 58)), "StoreUI action plate does not match the original 150x58 dialog button")
 		_check(not shell.currency_label.text.contains("RANK"), "StoreUI energy counter still displays the player rank")
-		var store_rank_badge := shell.get_node_or_null("OriginalNavigationBar/RankBadge") as TextureRect
+		var store_rank_badge := shell.get_node_or_null("OriginalNavigationBar/RankBadge") as Control
 		var store_rank_icon: TextureRect = null
 		if store_rank_badge != null:
 			store_rank_icon = store_rank_badge.get_node_or_null("RankIcon") as TextureRect
-		var expected_rank_position := Vector2(1018, -14) if shell.desktop_layout else Vector2(840, -14)
-		_check(store_rank_badge != null and store_rank_badge.position.is_equal_approx(expected_rank_position), "StoreUI rank tab does not preserve NavigationMenuUI's off-screen origin")
-		_check(store_rank_icon != null and store_rank_icon.position.is_equal_approx(Vector2(40, 15)), "StoreUI rank emblem is not aligned to its authored frame offset")
+		_check(store_rank_badge != null and _contains_control(shell, store_rank_badge), "StoreUI rank badge is clipped outside the screen")
+		_check(store_rank_icon != null and store_rank_icon.texture != null, "StoreUI rank emblem is missing")
 		var owned_weapons_before: Array[String] = GameState.owned_weapons.duplicate()
 		GameState.owned_weapons.assign(["gun00"])
 		var purchasable_weapon := ""
@@ -86,19 +83,22 @@ func _run() -> void:
 		if not purchasable_weapon.is_empty():
 			shell._select_category("gun", false)
 			shell._select_item(purchasable_weapon, false)
-			_check(shell.action_button.text.ends_with("\n" + tr("BUY")), "StoreUI price and BUY label are not combined inside the original action plate")
+			_check(shell.action_button.text == tr("BUY") and not shell.action_button.disabled, "purchasable weapon has no enabled single-line BUY action")
+			_check(shell.price_label.is_visible_in_tree() and not shell.price_label.text.is_empty(), "purchase price is not visible separately from BUY")
 		GameState.owned_weapons = owned_weapons_before
 		shell._select_category("gun", false)
 		var expected_tabs := ["head", "body", "arms", "legs", "bag", "gun"]
 		_check(shell.category_buttons.keys().size() == expected_tabs.size(), "equipment shell does not expose six Unity categories")
 		var selected_tag := shell.category_buttons.get("gun") as Button
 		var adjacent_tag := shell.category_buttons.get("bag") as Button
-		var distant_tag := shell.category_buttons.get("body") as Button
+		var category_positions := {}
+		for category_key: String in expected_tabs:
+			category_positions[category_key] = (shell.category_buttons[category_key] as Button).position
 		_check(selected_tag.get_theme_stylebox("normal") is StyleBoxTexture, "selected category lost the recovered module-17 frame")
 		_check(adjacent_tag.get_theme_stylebox("normal") is StyleBoxTexture, "inactive category lost the recovered module-17 frame")
 		_check(adjacent_tag.modulate.is_equal_approx(Color.WHITE), "inactive category icon is still artificially dimmed")
-		_check(selected_tag.z_index > adjacent_tag.z_index and adjacent_tag.z_index > distant_tag.z_index, "category draw order does not follow UISliderTag scale sorting")
-		var hp_track_glow := shell.get_node_or_null("OverallComparison/HPComparison/AuthoredMeter/TrackGlow") as TextureRect
+		_check(selected_tag.scale.is_equal_approx(Vector2.ONE) and adjacent_tag.scale.is_equal_approx(Vector2.ONE), "fixed category hit targets change size on selection")
+		var hp_track_glow := shell.comparison_panel.get_node_or_null("HPComparison/AuthoredMeter/TrackGlow") as TextureRect
 		_check(hp_track_glow != null and hp_track_glow.modulate.a >= 0.2, "upper-right comparison slot is still too dark")
 		_check(shell.slot_picker.get_theme_stylebox("normal") is StyleBoxFlat, "loadout slot picker has no bright custom frame")
 		for supply_case: Dictionary in [
@@ -114,7 +114,9 @@ func _run() -> void:
 			var supply_art := supply_card.get_node_or_null("SupplyArt") as TextureRect
 			_check(supply_art != null and supply_art.texture != null, "%s supply shelf is missing recovered Unity art" % supply_case.key)
 		_check(shell.supply_preview_art.visible and shell.supply_preview_art.texture != null, "selected supply has no large preview art")
-		shell._select_category("gun", false)
+		shell.set_weapon_filter("RIFLE")
+		_check(shell.selected_section == "equipment" and shell.selected_category == "gun", "weapon filter does not return from supplies to equipment")
+		shell.set_weapon_filter("ALL")
 		for category_key: String in expected_tabs:
 			_check(shell.category_buttons.has(category_key), "missing category tab: " + category_key)
 			shell._select_category(category_key, false)
@@ -124,40 +126,48 @@ func _run() -> void:
 			if category_key != "gun":
 				var armor_card := shell.item_row.get_child(0) as Button
 				var armor_art := armor_card.get_node_or_null("ArmorArt") as TextureRect
-				_check(armor_card.text.is_empty(), "%s carousel still uses armor names as its primary artwork" % category_key)
 				_check(armor_art != null and armor_art.texture != null, "%s carousel does not show the actual armor-part thumbnail" % category_key)
+			for stable_key: String in expected_tabs:
+				_check((shell.category_buttons[stable_key] as Button).position.is_equal_approx(category_positions[stable_key]), "category %s moved while selecting %s" % [stable_key, category_key])
 		var horizontal_bar := shell.item_scroll.get_h_scroll_bar()
-		_check(not horizontal_bar.visible or is_zero_approx(horizontal_bar.self_modulate.a), "equipment carousel exposes a desktop scrollbar")
+		_check(not horizontal_bar.visible, "product grid unexpectedly requires horizontal scrolling")
 		shell._select_category("gun", false)
 		var weapon_ids := GameState.get_weapon_ids()
+		_check(_item_key_order(shell) == weapon_ids, "product grid does not begin in catalog order")
 		shell._select_item(weapon_ids[-1], false)
-		await get_tree().process_frame
-		_check(str(shell.item_row.get_child(3).get_meta("item_key", "")) == weapon_ids[0], "weapon carousel does not place the first weapon after the final weapon")
-		var angled_art := shell.item_row.get_child(3).get_node_or_null("WeaponArt") as TextureRect
-		_check(angled_art != null and is_equal_approx(angled_art.rotation_degrees, -12.0), "weapon carousel artwork does not use the original oblique presentation")
-		shell.item_swipe_distance = -shell.SWIPE_THRESHOLD - 1.0
-		shell._commit_item_swipe()
-		_check(shell.selected_item_key == weapon_ids[0], "weapon carousel does not loop forward from the final weapon")
-		shell.item_swipe_distance = shell.SWIPE_THRESHOLD + 1.0
-		shell._commit_item_swipe()
-		_check(shell.selected_item_key == weapon_ids[-1], "weapon carousel does not loop backward from the first weapon")
+		for _frame in range(3):
+			await get_tree().process_frame
+		_check(_item_key_order(shell) == weapon_ids, "selecting a weapon rearranges the product grid")
+		_check(_contains_control(shell.item_scroll, shell.item_row.get_child(weapon_ids.size() - 1) as Control), "selected final weapon is not scrolled fully into view")
+		var next_item := shell.get_node_or_null("EquipmentCatalog/NextItem") as Button
+		var previous_item := shell.get_node_or_null("EquipmentCatalog/PreviousItem") as Button
+		if next_item != null and previous_item != null:
+			next_item.pressed.emit()
+			_check(shell.selected_item_key == weapon_ids[0], "next-item button does not loop forward from the final weapon")
+			previous_item.pressed.emit()
+			_check(shell.selected_item_key == weapon_ids[-1], "previous-item button does not loop backward from the first weapon")
 		_check(shell.preview_tween == null, "store character preview still starts an automatic turntable tween")
 		shell._select_preferred_item(false)
-		var swipe_start := shell.selected_item_key
-		var swipe_start_index := weapon_ids.find(swipe_start)
-		shell.item_swipe_distance = -shell.SWIPE_THRESHOLD - 1.0
-		shell._commit_item_swipe()
-		_check(shell.selected_item_key == weapon_ids[posmod(swipe_start_index + 1, weapon_ids.size())], "left swipe does not select the next equipment item")
-		shell.item_swipe_distance = shell.SWIPE_THRESHOLD + 1.0
-		shell._commit_item_swipe()
-		_check(shell.selected_item_key == swipe_start, "right swipe does not select the previous equipment item")
-		shell.category_swipe_distance = -shell.SWIPE_THRESHOLD - 1.0
-		shell._commit_category_swipe()
-		_check(shell.selected_category == "head", "category carousel does not loop forward from gun to head")
-		shell.category_swipe_distance = shell.SWIPE_THRESHOLD + 1.0
-		shell._commit_category_swipe()
-		_check(shell.selected_category == "gun", "category carousel does not loop backward from head to gun")
+		var keyboard_start := shell.selected_item_key
+		var keyboard_start_index := weapon_ids.find(keyboard_start)
+		_send_key(shell, KEY_D)
+		_check(shell.selected_item_key == weapon_ids[posmod(keyboard_start_index + 1, weapon_ids.size())], "D does not select the next product")
+		_send_key(shell, KEY_A)
+		_check(shell.selected_item_key == keyboard_start, "A does not select the previous product")
+		_send_key(shell, KEY_E)
+		_check(shell.selected_category == "head", "E does not loop forward from gun to head")
+		_send_key(shell, KEY_Q)
+		_check(shell.selected_category == "gun", "Q does not loop backward from head to gun")
+		for filter_key: String in ["RIFLE", "SHOTGUN", "HEAVY", "SPECIAL", "MELEE"]:
+			shell.set_weapon_filter(filter_key)
+			var filtered_ids := shell._get_category_ids()
+			_check(not filtered_ids.is_empty() and filtered_ids.size() < weapon_ids.size(), "%s filter does not narrow the weapon catalog" % filter_key)
+			_check(_item_key_order(shell) == filtered_ids and filtered_ids.has(shell.selected_item_key), "%s filter left stale cards or an invalid selection" % filter_key)
+		shell.set_weapon_filter("ALL")
+		_check(_item_key_order(shell) == weapon_ids, "ALL filter does not restore every weapon")
+		await _check_catalog_scroll_input(shell)
 		_check(shell.slot_picker.item_count >= 1, "Gun customize screen has no bag-slot picker")
+		_check_purchase_and_equip(shell)
 		for material_case: Dictionary in [
 			{"key": "gun22", "effects": [1, 2], "solid": 0, "blend": BaseMaterial3D.BLEND_MODE_MIX},
 			{"key": "gun23", "effects": [0, 1], "solid": 2, "blend": BaseMaterial3D.BLEND_MODE_ADD},
@@ -171,10 +181,8 @@ func _run() -> void:
 				var solid := preview_mesh.get_surface_override_material(int(material_case.solid)) as StandardMaterial3D
 				_check(solid != null and solid.transparency == BaseMaterial3D.TRANSPARENCY_DISABLED, "%s solid surface is not opaque" % material_case.key)
 				for surface_index: int in material_case.effects:
-					var effect := preview_mesh.get_surface_override_material(surface_index) as StandardMaterial3D
-					_check(effect != null and effect.transparency == BaseMaterial3D.TRANSPARENCY_ALPHA, "%s effect surface lacks alpha blending" % material_case.key)
-					_check(effect != null and effect.cull_mode == BaseMaterial3D.CULL_DISABLED and effect.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, "%s effect surface did not recover the two-sided unshaded Unity material" % material_case.key)
-					_check(effect != null and effect.depth_draw_mode == BaseMaterial3D.DEPTH_DRAW_DISABLED and effect.blend_mode == int(material_case.blend), "%s effect surface has the wrong depth/blend mode" % material_case.key)
+					var effect := preview_mesh.get_surface_override_material(surface_index)
+					_check_effect_material(effect, int(material_case.blend), "%s surface %d" % [material_case.key, surface_index])
 		for effect_case: Dictionary in [
 			{"key": "gun28", "name": "passer-standard_1", "blend": BaseMaterial3D.BLEND_MODE_MIX},
 			{"key": "gun34", "name": "sniper_effect", "blend": BaseMaterial3D.BLEND_MODE_MIX},
@@ -187,7 +195,7 @@ func _run() -> void:
 			var effect_preview := _first_preview_mesh(shell.preview_root)
 			var named_effect := _preview_material_by_name(effect_preview, str(effect_case.name))
 			_check(named_effect != null, "%s preview is missing classified material %s" % [effect_case.key, effect_case.name])
-			_check(named_effect != null and named_effect.transparency == BaseMaterial3D.TRANSPARENCY_ALPHA and named_effect.blend_mode == int(effect_case.blend), "%s material %s has the wrong Unity blend mode" % [effect_case.key, effect_case.name])
+			_check_effect_material(named_effect, int(effect_case.blend), "%s material %s" % [effect_case.key, effect_case.name])
 		for solid_key: String in ["gun24", "gun44"]:
 			shell._select_item(solid_key, false)
 			await get_tree().process_frame
@@ -195,7 +203,25 @@ func _run() -> void:
 			var solid_material := solid_preview.get_surface_override_material(0) as StandardMaterial3D
 			_check(solid_material != null and solid_material.transparency == BaseMaterial3D.TRANSPARENCY_DISABLED, solid_key + " black-Kd solid material became transparent")
 			_check(solid_material != null and solid_material.albedo_color.r > 0.99 and solid_material.albedo_color.g > 0.99 and solid_material.albedo_color.b > 0.99, solid_key + " black-Kd solid material was not normalized to white")
+		shell._select_item("gun22", false)
+		var store_weapon := shell.preview_root.find_child("SelectedWeapon", true, false) as MeshInstance3D
+		_check(store_weapon != null and shell.preview_root.find_child("RecoveredStoreAvatar", true, false) == null, "store does not showcase the selected weapon on its own")
 		shell.set_mode("customize", false)
+		_check(shell.selected_item_key == "gun22", "switching to Customize loses the selected weapon")
+		var customize_weapon := shell.preview_root.find_child("SelectedWeapon", true, false) as MeshInstance3D
+		_check(customize_weapon != null and shell.preview_root.find_child("RecoveredStoreAvatar", true, false) != null, "Customize no longer shows the weapon on the equipped avatar")
+		if customize_weapon != null:
+			var customize_solid := customize_weapon.get_surface_override_material(0) as StandardMaterial3D
+			var customize_effect := customize_weapon.get_surface_override_material(1) as StandardMaterial3D
+			_check(customize_solid != null and customize_solid.transparency == BaseMaterial3D.TRANSPARENCY_DISABLED, "Customize weapon solid material became transparent")
+			_check(customize_effect != null and customize_effect.transparency == BaseMaterial3D.TRANSPARENCY_ALPHA, "Customize weapon effect material lost alpha blending")
+		shell._select_item("gun23", false)
+		var customize_additive := _first_preview_mesh(shell.preview_root)
+		_check(customize_additive != null, "Customize additive weapon preview is missing")
+		if customize_additive != null:
+			_check_effect_material(customize_additive.get_surface_override_material(0), BaseMaterial3D.BLEND_MODE_ADD, "Customize additive weapon")
+			var additive_weapon_solid := customize_additive.get_surface_override_material(2) as StandardMaterial3D
+			_check(additive_weapon_solid != null and additive_weapon_solid.transparency == BaseMaterial3D.TRANSPARENCY_DISABLED, "Customize additive weapon solid surface became transparent")
 		shell._select_category("head", false)
 		await get_tree().process_frame
 		var preview_head_key := GameState.get_armor_ids("head")[-1]
@@ -315,8 +341,22 @@ func _run() -> void:
 	_check(native_menu.design_root.position.is_equal_approx(Vector2.ZERO), "960x640 viewport unnecessarily letterboxes the Unity canvas")
 	native_menu._show_armory("store")
 	await get_tree().process_frame
-	_check(not native_menu.equipment_shell.desktop_layout, "960x640 viewport should keep the original mobile StoreUI layout")
-	_check(native_menu.equipment_shell.category_layer.visible, "960x640 viewport lost the original Unity category carousel")
+	_check(not native_menu.equipment_shell.desktop_layout, "960x640 viewport should use the compact catalog layout")
+	_check(native_menu.equipment_shell.category_layer.visible, "960x640 viewport lost the fixed equipment categories")
+	_check_store_layout(native_menu.equipment_shell)
+	var native_shell: UnityEquipmentShell = native_menu.equipment_shell
+	native_shell._select_item("gun22", false)
+	var stable_grid := native_shell.item_row
+	native_viewport.size = Vector2i(1280, 720)
+	for _frame in range(3):
+		await get_tree().process_frame
+	_check(native_shell.desktop_layout and native_shell.size.is_equal_approx(UnityEquipmentShell.DESKTOP_DESIGN_SIZE), "resizing an open store does not activate the wide layout")
+	_check(native_shell.item_row == stable_grid and native_shell.selected_item_key == "gun22", "resizing an open store recreates the grid or loses selection")
+	_check_store_layout(native_shell)
+	native_viewport.size = Vector2i(960, 640)
+	for _frame in range(3):
+		await get_tree().process_frame
+	_check(not native_shell.desktop_layout and native_shell.selected_item_key == "gun22", "resizing back to compact layout loses selection or layout")
 	for child in native_menu.equipment_shell.get_children():
 		if child is Control:
 			var native_control := child as Control
@@ -325,11 +365,184 @@ func _run() -> void:
 	native_viewport.queue_free()
 	AudioDirector.stop_all_sfx()
 	await get_tree().process_frame
+	GameState.save_path = original_save_path
+	for candidate: String in [test_save_path, test_save_path + ".tmp", test_save_path + ".bak"]:
+		if FileAccess.file_exists(candidate):
+			DirAccess.remove_absolute(ProjectSettings.globalize_path(candidate))
 	if failures.is_empty():
 		print("MENU_EQUIPMENT_TEST_PASS tabs=6 armor=%d weapons=%d" % [GameState.ARMOR_ITEMS.size(), GameState.WEAPONS.size()])
 		get_tree().quit(0)
 	else:
 		get_tree().quit(1)
+
+
+func _check_store_layout(shell: UnityEquipmentShell) -> void:
+	var catalog := shell.get_node_or_null("EquipmentCatalog") as Control
+	var details := shell.get_node_or_null("EquipmentDetails") as Control
+	_check(catalog != null and details != null, "store has no distinct catalog and product-details panels")
+	if catalog == null or details == null:
+		return
+	_check(catalog.get_global_rect().end.x <= details.get_global_rect().position.x, "catalog and product-details panels overlap")
+	_check(_contains_control(shell, catalog) and _contains_control(shell, details), "store panels overflow the design canvas")
+	_check(shell.item_row is GridContainer and shell.item_row.columns == 3, "catalog is not a three-column product grid")
+	_check(catalog.is_ancestor_of(shell.item_scroll), "product scroll does not belong to the catalog panel")
+	_check(catalog.get_node_or_null("PreviousItem") is Button and catalog.get_node_or_null("NextItem") is Button, "catalog has no previous/next product controls")
+	for control: Control in [shell.name_label, shell.price_label, shell.action_button, shell.comparison_panel]:
+		_check(details.is_ancestor_of(control) and _contains_control(details, control), "%s is detached from or overflows product details" % control.name)
+	_check(not shell.price_label.get_global_rect().intersects(shell.action_button.get_global_rect()), "price collides with the purchase action")
+	_check(shell.item_scroll.get_global_rect().position.y >= shell.category_layer.get_global_rect().end.y, "product grid covers the category controls")
+	var category_rects: Array[Rect2] = []
+	for category_key: String in shell.category_buttons:
+		var category_button := shell.category_buttons[category_key] as Button
+		_check(_contains_control(catalog, category_button), "category %s is outside the catalog" % category_key)
+		for previous_rect: Rect2 in category_rects:
+			_check(not category_button.get_global_rect().intersects(previous_rect), "category hit targets overlap")
+		category_rects.append(category_button.get_global_rect())
+	for card: Button in shell.item_row.get_children():
+		var item_name := card.get_node_or_null("ItemName") as Label
+		var item_state := card.get_node_or_null("ItemState") as Label
+		_check(item_name != null and not item_name.text.is_empty(), "%s has no product name" % card.name)
+		_check(item_state != null and not item_state.text.is_empty(), "%s has no purchase/ownership state" % card.name)
+
+
+func _contains_control(parent: Control, child: Control) -> bool:
+	return parent.get_global_rect().grow(0.5).encloses(child.get_global_rect())
+
+
+func _item_key_order(shell: UnityEquipmentShell) -> Array[String]:
+	var keys: Array[String] = []
+	for child in shell.item_row.get_children():
+		keys.append(str(child.get_meta("item_key", "")))
+	return keys
+
+
+func _send_key(shell: UnityEquipmentShell, keycode: Key) -> void:
+	var event := InputEventKey.new()
+	event.keycode = keycode
+	event.pressed = true
+	shell._unhandled_key_input(event)
+
+
+func _check_catalog_scroll_input(shell: UnityEquipmentShell) -> void:
+	shell._select_item("gun00", false)
+	for _frame in range(3):
+		await get_tree().process_frame
+	var scroll_before := shell.item_scroll.scroll_vertical
+	var wheel := InputEventMouseButton.new()
+	wheel.button_index = MOUSE_BUTTON_WHEEL_DOWN
+	wheel.pressed = true
+	wheel.position = shell.item_scroll.get_global_rect().get_center()
+	get_viewport().push_input(wheel, true)
+	await get_tree().process_frame
+	_check(shell.item_scroll.scroll_vertical > scroll_before, "mouse wheel does not scroll the product catalog vertically")
+	_check(shell.selected_item_key == "gun00", "mouse-wheel browsing unexpectedly selects another product")
+	shell._select_item("gun00", false)
+	for _frame in range(3):
+		await get_tree().process_frame
+	scroll_before = shell.item_scroll.scroll_vertical
+	var touch_origin := shell.item_scroll.get_global_rect().get_center()
+	# Route touch through Input so Godot also emits the corresponding pointer
+	# events for ScrollContainer; push_input alone bypasses that conversion.
+	var emulate_touch_before := Input.emulate_touch_from_mouse
+	var emulate_mouse_before := Input.emulate_mouse_from_touch
+	Input.emulate_touch_from_mouse = true
+	Input.emulate_mouse_from_touch = true
+	var touch := InputEventScreenTouch.new()
+	touch.index = 0
+	touch.pressed = true
+	touch.position = touch_origin
+	Input.parse_input_event(touch)
+	Input.flush_buffered_events()
+	await get_tree().process_frame
+	for step in range(1, 5):
+		var drag := InputEventScreenDrag.new()
+		drag.index = 0
+		drag.position = touch_origin - Vector2(0, step * 28)
+		drag.relative = Vector2(0, -28)
+		drag.velocity = Vector2(0, -300)
+		Input.parse_input_event(drag)
+		Input.flush_buffered_events()
+		await get_tree().process_frame
+	touch.pressed = false
+	touch.position = touch_origin - Vector2(0, 112)
+	Input.parse_input_event(touch)
+	Input.flush_buffered_events()
+	await get_tree().process_frame
+	_check(shell.item_scroll.scroll_vertical > scroll_before, "touch drag does not scroll the product catalog vertically")
+	_check(shell.selected_item_key == "gun00", "touch-drag browsing accidentally selected a product")
+	await get_tree().create_timer(0.6).timeout
+	shell._select_item("gun00", false)
+	for _frame in range(3):
+		await get_tree().process_frame
+	var next_card := shell.item_row.get_child(1) as Button
+	var tap_down := InputEventScreenTouch.new()
+	tap_down.index = 0
+	tap_down.position = next_card.get_global_rect().get_center()
+	tap_down.pressed = true
+	get_viewport().push_input(tap_down, true)
+	await get_tree().process_frame
+	var tap_up := InputEventScreenTouch.new()
+	tap_up.index = 0
+	tap_up.position = tap_down.position
+	tap_up.pressed = false
+	get_viewport().push_input(tap_up, true)
+	await get_tree().process_frame
+	_check(shell.selected_item_key == str(next_card.get_meta("item_key")), "tapping a product card does not select it after touch scrolling")
+	Input.emulate_touch_from_mouse = emulate_touch_before
+	Input.emulate_mouse_from_touch = emulate_mouse_before
+
+
+func _check_purchase_and_equip(shell: UnityEquipmentShell) -> void:
+	var owned_before: Array[String] = GameState.owned_weapons.duplicate()
+	var loadout_before: Array[String] = GameState.battle_weapons.duplicate()
+	var selected_before := GameState.selected_weapon
+	var credits_before := GameState.credits
+	var mithril_before := GameState.mithril
+	GameState.owned_weapons.assign(["gun00"])
+	GameState.battle_weapons.assign(["gun00"])
+	GameState.credits = 0
+	GameState.mithril = 0
+	shell.set_mode("store", false)
+	shell._select_category("gun", false)
+	shell._select_item("gun01", false)
+	shell.action_button.pressed.emit()
+	_check(not GameState.owned_weapons.has("gun01") and GameState.credits == 0, "failed purchase changed ownership or funds")
+	_check(shell.notice_label.text == tr("Not enough credits."), "failed purchase is not explained in product details")
+	GameState.credits = int(GameState.WEAPONS.gun01.price)
+	shell.action_button.pressed.emit()
+	_check(GameState.owned_weapons.has("gun01") and GameState.credits == 0, "BUY did not purchase the selected weapon exactly once")
+	_check(shell.action_button.disabled and shell.action_button.text == tr("OWNED"), "purchased weapon action did not refresh to OWNED")
+	_check(shell._get_item_state("gun01") == "equipped" and GameState.battle_weapons[0] == "gun01", "purchase no longer mounts the weapon in slot zero")
+	shell.set_mode("customize", false)
+	_check(shell.selected_item_key == "gun01", "Store to Customize switch loses the purchased selection")
+	_check(shell.slot_picker.is_visible_in_tree(), "Customize has no visible loadout slot picker")
+	_check(shell.action_button.disabled and shell.action_button.text == tr("EQUIPPED"), "Customize does not show the automatically equipped purchase")
+	shell.selected_slot = 0
+	shell._select_item("gun00", false)
+	_check(shell.action_button.text == tr("EQUIP") and not shell.action_button.disabled, "displaced weapon cannot be re-equipped")
+	shell.action_button.pressed.emit()
+	_check(GameState.battle_weapons[0] == "gun00", "EQUIP did not restore the displaced weapon")
+	shell._select_item("gun01", false)
+	shell.action_button.pressed.emit()
+	_check(GameState.battle_weapons[0] == "gun01", "EQUIP does not assign the purchased weapon to the selected slot")
+	_check(shell.action_button.disabled and shell.action_button.text == tr("EQUIPPED"), "EQUIP does not refresh to EQUIPPED")
+	var unlocked_level_before := GameState.unlocked_level
+	var best_scores_before: Dictionary = GameState.best_scores.duplicate(true)
+	GameState.unlocked_level = 1
+	GameState.best_scores = {}
+	shell.set_mode("store", false)
+	shell._select_item("gun36", false)
+	_check(shell._get_item_state("gun36") == "locked" and shell.action_button.disabled, "rank-locked weapon has an enabled purchase action")
+	_check(shell.state_label.text.contains(str(shell._selected_unlock_rank() + 1)) or shell.action_button.text.contains(str(shell._selected_unlock_rank() + 1)), "rank-locked product does not display the required rank")
+	GameState.unlocked_level = unlocked_level_before
+	GameState.best_scores = best_scores_before
+	GameState.owned_weapons = owned_before
+	GameState.battle_weapons = loadout_before
+	GameState.selected_weapon = selected_before
+	GameState.credits = credits_before
+	GameState.mithril = mithril_before
+	shell.set_mode("store", false)
+	shell._select_category("gun", false)
 
 
 func _first_preview_mesh(root: Node) -> MeshInstance3D:
@@ -357,11 +570,25 @@ func _visible_preview_bounds(root: Node3D) -> AABB:
 	return bounds
 
 
-func _preview_material_by_name(preview_mesh: MeshInstance3D, material_name: String) -> StandardMaterial3D:
+func _check_effect_material(material: Material, blend_mode: int, context: String) -> void:
+	if blend_mode == BaseMaterial3D.BLEND_MODE_ADD:
+		var additive := material as ShaderMaterial
+		_check(additive != null and additive.shader == UnityEquipmentShell.AdditivePreviewShader, context + " does not use the transparent-preview additive shader")
+		if additive != null:
+			_check(additive.get_shader_parameter("effect_texture") is Texture2D, context + " has no recovered effect texture")
+			_check(additive.get_shader_parameter("effect_tint") is Color, context + " has no effect tint")
+		return
+	var alpha_mix := material as StandardMaterial3D
+	_check(alpha_mix != null and alpha_mix.transparency == BaseMaterial3D.TRANSPARENCY_ALPHA, context + " lacks alpha blending")
+	_check(alpha_mix != null and alpha_mix.cull_mode == BaseMaterial3D.CULL_DISABLED and alpha_mix.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, context + " lost the recovered two-sided unshaded material")
+	_check(alpha_mix != null and alpha_mix.depth_draw_mode == BaseMaterial3D.DEPTH_DRAW_DISABLED and alpha_mix.blend_mode == blend_mode, context + " has the wrong depth/blend mode")
+
+
+func _preview_material_by_name(preview_mesh: MeshInstance3D, material_name: String) -> Material:
 	if preview_mesh == null or preview_mesh.mesh == null:
 		return null
 	for surface_index in preview_mesh.mesh.get_surface_count():
 		var source := preview_mesh.mesh.surface_get_material(surface_index)
 		if source != null and source.resource_name.to_lower() == material_name:
-			return preview_mesh.get_surface_override_material(surface_index) as StandardMaterial3D
+			return preview_mesh.get_surface_override_material(surface_index)
 	return null

@@ -31,11 +31,13 @@
 .\PLAY_STAR_WARFARE.ps1
 ```
 
-開啟 Godot 編輯器：
+開啟 Godot 編輯器可直接雙擊 `OPEN_GODOT_EDITOR.bat`，或執行：
 
 ```powershell
 .\PLAY_STAR_WARFARE.ps1 -Editor
 ```
+
+此啟動方式會先完成待處理的資源匯入，並在外接螢幕已拔除時把編輯器視窗移回主螢幕，避免 Godot 4.7 在啟動期間崩潰。
 
 專案固定使用 Godot 4.7.x。若之前曾以 Godot 4.5 開啟，請先關閉所有該專案的編輯器與遊戲視窗，再雙擊 `UPGRADE_TO_GODOT_4_7.bat`；它會保留舊 `.godot` 匯入快取作備份、以內附的 4.7.2 完整重建素材，然後開啟正確版本的編輯器。4.7 可以升級讀取 4.5 專案，但 4.7 儲存／匯入後不應再用 4.5 開啟同一份工作目錄。
 
