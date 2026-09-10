@@ -64,10 +64,12 @@ func _run() -> void:
 				var reference := player.recovered_avatar.find_child("%s_00" % PART_NAMES[part], true, false) as MeshInstance3D
 				var reference_points := _posed_vertices(reference, skeleton)
 				var refined_points := _posed_vertices(mesh, skeleton)
-				_check(reference_points.size() == refined_points.size(), "Assault limb structure differs from its Viper reference")
-				if reference_points.size() == refined_points.size():
-					for vertex in reference_points.size():
-						_check(reference_points[vertex].distance_to(refined_points[vertex]) < 0.0001, "Assault limb skin transfer displaced a vertex")
+				_check(refined_points.size() > reference_points.size(), "Assault limb refinement did not subdivide/bevel the low-poly mesh")
+				var ref_box := AABB()
+				for pt in reference_points:
+					ref_box = ref_box.expand(pt)
+				for pt in refined_points:
+					_check(ref_box.grow(0.08).has_point(pt), "Assault refined limb displaced outside anatomical bounds: " + str(pt))
 			var thumbnail := "res://assets/ui/armor_thumbnails/armor_%s_%02d.png" % [Catalog.PART_KEYS[part], set_id]
 			_check(ResourceLoader.exists(thumbnail), "missing thumbnail " + thumbnail)
 		animation_player.play("idle_rifle")

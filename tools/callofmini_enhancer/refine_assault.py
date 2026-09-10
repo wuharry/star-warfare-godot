@@ -80,7 +80,9 @@ def main():
     bm.normal_update()
     # Real rounded geometry at hard plate edges. Never bevel across equipment
     # ownership boundaries: original and new armor must still mix cleanly.
-    edges = []
+    shoulder_edges = []
+    hand_edges = []
+    foot_edges = []
     for edge in bm.edges:
         if not edge.is_manifold:
             continue
@@ -90,15 +92,32 @@ def main():
         parts = [source["surfaces"][slot]["part"] for slot in slots]
         if parts[0] != parts[1]:
             continue
+        part = parts[0]
+        angle = edge.calc_face_angle()
         midpoint = (edge.verts[0].co + edge.verts[1].co) * 0.5
-        if midpoint.y < 1.0 or abs(midpoint.x) < 0.28:
-            continue
-        if edge.calc_face_angle() > math.radians(32):
-            edges.append(edge)
-    bevel = bmesh.ops.bevel(bm, geom=edges, offset=0.022, segments=3, material=-1,
-                            affect="EDGES", profile=0.5, clamp_overlap=True,
-                            loop_slide=True)
-    bevel_faces = set(bevel["faces"])
+        if part.startswith("ArmorBody"):
+            if midpoint.y > 1.0 and abs(midpoint.x) > 0.28 and angle > math.radians(30):
+                shoulder_edges.append(edge)
+        elif part.startswith("ArmorHand"):
+            if angle > math.radians(24):
+                hand_edges.append(edge)
+        elif part.startswith("ArmorFoot"):
+            if midpoint.y > 0.015 and angle > math.radians(24):
+                foot_edges.append(edge)
+
+    bevel_faces = set()
+    if shoulder_edges:
+        b1 = bmesh.ops.bevel(bm, geom=shoulder_edges, offset=0.022, segments=3, material=-1,
+                             affect="EDGES", profile=0.5, clamp_overlap=True, loop_slide=True)
+        bevel_faces.update(b1.get("faces", []))
+    if hand_edges:
+        b2 = bmesh.ops.bevel(bm, geom=hand_edges, offset=0.014, segments=2, material=-1,
+                             affect="EDGES", profile=0.5, clamp_overlap=True, loop_slide=True)
+        bevel_faces.update(b2.get("faces", []))
+    if foot_edges:
+        b3 = bmesh.ops.bevel(bm, geom=foot_edges, offset=0.016, segments=2, material=-1,
+                             affect="EDGES", profile=0.5, clamp_overlap=True, loop_slide=True)
+        bevel_faces.update(b3.get("faces", []))
     # Store subtle, fixed highlight/shadow modulation in mesh vertex colors.
     # Original armor is unlit, so relying on scene lamps would change its look.
     colors = bm.loops.layers.color.new("ArmorForm")

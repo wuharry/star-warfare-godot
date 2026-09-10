@@ -1,28 +1,6 @@
 {
-	"arms_legs": "Viper meshes transferred to the shared skin; original UVs retained",
+	"arms_legs": "Beveled rounded limbs with dedicated Assault dark metal & orange accent textures",
 	"baseline": [
-		{
-			"part": "ArmorHead_21",
-			"triangles": 170
-		},
-		{
-			"part": "ArmorBody_21",
-			"triangles": 312
-		},
-		{
-			"part": "ArmorHand_21",
-			"triangles": 88
-		},
-		{
-			"part": "ArmorFoot_21",
-			"triangles": 36
-		}
-	],
-	"body": "Tinted Viper base with remodeled Assault shoulder plates",
-	"head": "Original Assault helmet preserved",
-	"prototype": "Assault Armor only",
-	"reference": "res://assets/models/player/animated/player.gltf",
-	"refined": [
 		{
 			"part": "ArmorHead_21",
 			"triangles": 170
@@ -40,6 +18,28 @@
 			"triangles": 136
 		}
 	],
-	"source_sha256": "488de7b28064f3a5a515cbeed0618d258f6c64753398ec915e3ec2a654cd9059",
-	"version": 2
+	"body": "Cohesive dark metal torso with remodeled Assault shoulder plates",
+	"head": "Original Assault helmet preserved",
+	"prototype": "Assault Armor only",
+	"reference": "res://assets/models/player/animated/player.gltf",
+	"refined": [
+		{
+			"part": "ArmorHead_21",
+			"triangles": 170
+		},
+		{
+			"part": "ArmorBody_21",
+			"triangles": 3299
+		},
+		{
+			"part": "ArmorHand_21",
+			"triangles": 706
+		},
+		{
+			"part": "ArmorFoot_21",
+			"triangles": 1096
+		}
+	],
+	"source_sha256": "5325f7c143ff8974d9514e706386600f3f9245bab48c23ebc8eec67cac9be746",
+	"version": 3
 }

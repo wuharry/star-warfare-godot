@@ -7,6 +7,10 @@ const WORK_DIR := "res://test_output/assault_refinement"
 const REFERENCE_PATH := "res://assets/models/player/animated/player.gltf"
 const ASSAULT_TINT := Color(1.0, 0.62, 0.82, 1.0)
 
+const HAND_TEX_PATH := "res://assets/callOfMini/enhanced/Assault Armor/hand_assault.png"
+const FOOT_TEX_PATH := "res://assets/callOfMini/enhanced/Assault Armor/foot_assault.png"
+const BODY_TEX_PATH := "res://assets/callOfMini/enhanced/Assault Armor/body_assault.png"
+
 func _initialize() -> void:
 	_run.call_deferred()
 
@@ -19,7 +23,8 @@ func _run() -> void:
 	var scene := (load(source_path) as PackedScene).instantiate()
 	var baseline_stats := _mesh_stats(scene)
 	if OS.get_cmdline_user_args().has("--export"):
-		assert(not scene.has_meta("assault_refinement"), "Regenerate the baseline with retarget_armors.gd before refining again")
+		var allow_reexport := OS.get_cmdline_user_args().has("--force")
+		assert(allow_reexport or not scene.has_meta("assault_refinement"), "Regenerate the baseline with retarget_armors.gd before refining again")
 		var surfaces: Array = []
 		for instance: MeshInstance3D in scene.get_children():
 			for surface in instance.mesh.get_surface_count():
@@ -45,12 +50,26 @@ func _run() -> void:
 			# Keep the signature skull helmet byte-for-byte unchanged.
 			if String(instance.name).begins_with("ArmorHead"):
 				continue
-			# Use the original game's anatomical joins instead of reshaping the
-			# source pack's box gloves and single-wedge lower legs.
-			var mesh := _reference_mesh(reference, instance)
-			if not String(instance.name).begins_with("ArmorBody"):
-				instance.mesh = mesh
+			if String(instance.name).begins_with("ArmorHand"):
+				instance.mesh = _build_refined_limb_mesh(data, String(instance.name), HAND_TEX_PATH)
 				continue
+			if String(instance.name).begins_with("ArmorFoot"):
+				instance.mesh = _build_refined_limb_mesh(data, String(instance.name), FOOT_TEX_PATH)
+				continue
+			# ArmorBody: combine refined Viper torso/thigh with remodeled Assault shoulder plates
+			var mesh := _reference_mesh(reference, instance)
+			if mesh.get_surface_count() > 0:
+				var body_mat := mesh.surface_get_material(0).duplicate() as BaseMaterial3D
+				body_mat.albedo_texture = load(BODY_TEX_PATH)
+				body_mat.albedo_color = Color.WHITE
+				body_mat.vertex_color_use_as_albedo = true
+				mesh.surface_set_material(0, body_mat)
+			if mesh.get_surface_count() > 1:
+				var jian_mat := mesh.surface_get_material(1).duplicate() as BaseMaterial3D
+				jian_mat.albedo_texture = load(BODY_TEX_PATH)
+				jian_mat.albedo_color = Color.WHITE
+				jian_mat.vertex_color_use_as_albedo = true
+				mesh.surface_set_material(1, jian_mat)
 			for entry: Dictionary in data.surfaces:
 				if entry.part != String(instance.name):
 					continue
@@ -91,15 +110,15 @@ func _run() -> void:
 				mesh.surface_set_material(mesh.get_surface_count() - 1, material)
 			instance.mesh = mesh
 		reference.free()
-		scene.set_meta("assault_refinement", "Viper limb structure with Assault helmet and rounded shoulder plates v2")
+		scene.set_meta("assault_refinement", "Rounded limbs and shoulder plates with cohesive dark metal palette v3")
 		var packed := PackedScene.new()
 		assert(packed.pack(scene) == OK)
 		assert(ResourceSaver.save(packed, SCENE_PATH, ResourceSaver.FLAG_COMPRESS) == OK)
 		var report := FileAccess.open("res://assets/callOfMini/gameplay/assault_refinement_report.json", FileAccess.WRITE)
-		report.store_string(JSON.stringify({"prototype": "Assault Armor only", "version": 2,
+		report.store_string(JSON.stringify({"prototype": "Assault Armor only", "version": 3,
 			"reference": REFERENCE_PATH, "source_sha256": data.source_sha256,
-			"head": "Original Assault helmet preserved", "body": "Tinted Viper base with remodeled Assault shoulder plates",
-			"arms_legs": "Viper meshes transferred to the shared skin; original UVs retained",
+			"head": "Original Assault helmet preserved", "body": "Cohesive dark metal torso with remodeled Assault shoulder plates",
+			"arms_legs": "Beveled rounded limbs with dedicated Assault dark metal & orange accent textures",
 			"baseline": baseline_stats, "refined": _mesh_stats(scene)}, "\t") + "\n")
 		print("ASSAULT_IMPORT_PASS")
 	scene.free()
@@ -169,3 +188,41 @@ func _compact(arrays: Array) -> Array:
 				output[slot].append(arrays[slot][source_index * width + component])
 	output[Mesh.ARRAY_INDEX] = indices
 	return output
+
+func _build_refined_limb_mesh(data: Dictionary, part_name: String, texture_path: String) -> ArrayMesh:
+	var mesh := ArrayMesh.new()
+	for entry: Dictionary in data.surfaces:
+		if entry.part != part_name:
+			continue
+		var arrays: Array = []
+		arrays.resize(Mesh.ARRAY_MAX)
+		var vertices := PackedVector3Array()
+		var normals := PackedVector3Array()
+		var uvs := PackedVector2Array()
+		var colors := PackedColorArray()
+		for point: Array in entry.vertices:
+			vertices.append(Vector3(point[0], point[1], point[2]))
+		for normal: Array in entry.normals:
+			normals.append(Vector3(normal[0], normal[1], normal[2]))
+		for uv: Array in entry.uvs:
+			uvs.append(Vector2(uv[0], uv[1]))
+		for color: Array in entry.colors:
+			colors.append(Color(color[0], color[1], color[2], 1.0))
+		arrays[Mesh.ARRAY_VERTEX] = vertices
+		arrays[Mesh.ARRAY_NORMAL] = normals
+		arrays[Mesh.ARRAY_TEX_UV] = uvs
+		arrays[Mesh.ARRAY_COLOR] = colors
+		arrays[Mesh.ARRAY_BONES] = PackedInt32Array(entry.bones)
+		arrays[Mesh.ARRAY_WEIGHTS] = PackedFloat32Array(entry.weights)
+		arrays[Mesh.ARRAY_INDEX] = PackedInt32Array(entry.indices)
+		mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, _compact(arrays))
+		var material := StandardMaterial3D.new()
+		material.resource_name = part_name + "_refined"
+		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		material.albedo_texture = load(texture_path)
+		material.albedo_color = Color.WHITE
+		material.vertex_color_use_as_albedo = true
+		material.cull_mode = BaseMaterial3D.CULL_DISABLED
+		mesh.surface_set_material(mesh.get_surface_count() - 1, material)
+	return mesh
+
