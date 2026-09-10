@@ -5,8 +5,8 @@ signal died(enemy: WarfareEnemy, death_position: Vector3, reward: int, score_val
 signal health_reported(current: float, maximum: float, is_boss: bool)
 
 const ProjectileScript = preload("res://scripts/game/projectile.gd")
-const FLESH_HIT_LIGHT := "combat/flesh_hit_light.wav"
-const FLESH_HIT_HEAVY := "combat/flesh_hit_heavy.wav"
+const FLESH_HIT_LIGHT := "res://assets/audio/non_original/enemy_hit_light.wav"
+const FLESH_HIT_HEAVY := "res://assets/audio/non_original/enemy_hit_heavy_or_lethal.wav"
 const HITBOX_PROFILES := {
 	"crawler": Vector2(0.76, 1.72),
 	"spitter": Vector2(1.00, 2.00),

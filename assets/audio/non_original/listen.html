@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Star Warfare 音效試聽</title>
+<style>
+body{font:16px/1.6 system-ui,sans-serif;background:#151c21;color:#e0e9ed;max-width:850px;margin:40px auto;padding:0 22px}h1{font-size:26px}h2{font-size:20px;margin-top:32px}article{border-bottom:1px solid #39464e;padding:14px 0}h3,p{margin:6px 0}h3{font-size:17px}small{color:#a7bdc8}audio{display:block;width:min(100%,480px);margin-top:12px}code{overflow-wrap:anywhere}a{color:#84d6e5}
+</style>
+<h1>Star Warfare 音效試聽</h1>
+<p>四個外加音效已按實際用途命名；沒有替換、裁切或改音量。一次只播放一段，預設試聽音量 50%。</p>
+<p>這裡播放原檔，不模擬遊戲的音高、音量、3D 距離衰減與同時疊音。請先降低喇叭音量；是否融入戰鬥仍需在遊戲中確認。</p>
+<h2>外加音效：今晚優先確認</h2>
+<article><h3>敵人普通受擊</h3><code>enemy_hit_light.wav</code><p>來源：Epic Stock Media / Tower Defense Game，帶血液與木質撞擊的素材。遊戲：-4.5 dB，隨機音高 0.92–1.06。</p><audio controls preload="none" src="enemy_hit_light.wav"></audio></article>
+<article><h3>敵人重擊／致死命中</h3><code>enemy_hit_heavy_or_lethal.wav</code><p>來源：Epic Stock Media / Halloween Game，恐怖風格重撞擊。它不是 HUD 擊殺提示，但致死時可能與提示音和怪物死亡聲重疊。遊戲：-2.5 dB，隨機音高 0.92–1.06。</p><audio controls preload="none" src="enemy_hit_heavy_or_lethal.wav"></audio></article>
+<article><h3>換彈：退出彈匣／能源匣</h3><code>weapon_reload_magazine_eject.wav</code><p>來源：Epic Stock Media / HD Lock And Mechanism，機械容器操作。遊戲：-4.5 dB，火箭音高 0.94，其餘隨機 0.98–1.04。</p><audio controls preload="none" src="weapon_reload_magazine_eject.wav"></audio></article>
+<article><h3>換彈：插入彈匣／能源匣</h3><code>weapon_reload_magazine_insert.wav</code><p>來源：Epic Stock Media / HD Lock And Mechanism，機械卡榫。遊戲：-3.5 dB，隨機音高 0.97–1.04。逐發裝填霰彈槍仍用原版上膛聲。</p><audio controls preload="none" src="weapon_reload_magazine_insert.wav"></audio></article>
+<h2>原版對照：只連結，未搬動</h2>
+<article><h3>玩家命中確認：原版撞擊音，另一層回饋</h3><code>enemies_smash2.wav</code><p>每次有效傷害由玩家播放，再通知 HUD。遊戲：-7 dB，音高依傷害為 0.98–1.08。它可能與外加受擊音和下方 HUD 提示重疊；部分怪物死亡也會使用此檔。</p><audio controls preload="none" src="../../original/audio/enemies_smash2.wav"></audio></article>
+<article><h3>目前 HUD 命中確認：原版經驗音，後加用途</h3><code>menu/exp.wav</code><p>遊戲：-14 dB，音高 1.08。原檔與 Unity 一致，但拿來當命中確認是暫時設計。</p><audio controls preload="none" src="../../original/audio/menu/exp.wav"></audio></article>
+<article><h3>目前 HUD 擊殺確認：原版連殺音，後加用途</h3><code>pickup/killcombo.wav</code><p>遊戲：-9 dB，音高 1.02。不是外部下載音效；請和上方「重擊／致死命中」分別比較。</p><audio controls preload="none" src="../../original/audio/pickup/killcombo.wav"></audio></article>
+<article><h3>原版怪物死亡聲：螳螂</h3><code>enemy/mantis/tanglang_dead.wav</code><p>作為外星怪物風格對照；不同怪物死亡聲不一定相同。</p><audio controls preload="none" src="../../original/audio/enemy/mantis/tanglang_dead.wav"></audio></article>
+<p><a href="README.md">用途、原檔名與完整來源紀錄</a>。五份來源 ZIP 目前不在已檢查的位置，本頁只收錄專案現有的外加音效。</p>
+<script>
+const clips = [...document.querySelectorAll('audio')];
+for (const clip of clips) {
+  clip.volume = 0.5;
+  clip.addEventListener('play', () => {
+    for (const other of clips) if (other !== clip) other.pause();
+  });
+  clip.addEventListener('error', () => {
+    const note = document.createElement('p');
+    note.textContent = '無法播放：請用其他瀏覽器或直接以本機音樂播放器開啟這個 WAV。';
+    clip.after(note);
+  }, {once:true});
+}
+</script>
+</html>

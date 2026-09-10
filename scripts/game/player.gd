@@ -1124,7 +1124,7 @@ func _begin_reload_cycle() -> void:
 	# allowed to ring through into the next insertion cycle without being cut.
 	if reload_style != "shotgun_shell":
 		AudioDirector.play_3d(
-			"combat/reload_eject.wav",
+			"res://assets/audio/non_original/weapon_reload_magazine_eject.wav",
 			global_position,
 			-4.5,
 			0.94 if reload_style == "rocket" else randf_range(0.98, 1.04),
@@ -1156,7 +1156,7 @@ func _update_reload_visual_events(progress: float) -> void:
 		if is_instance_valid(attached_reload_part):
 			attached_reload_part.visible = str(current_weapon.get("reload_style", "")) != "shotgun_shell"
 		_cleanup_reload_hand_prop()
-		var insert_sound := "shotgun/ShotgunCock02.wav" if str(current_weapon.get("reload_style", "")) == "shotgun_shell" else "combat/reload_insert.wav"
+		var insert_sound := "shotgun/ShotgunCock02.wav" if str(current_weapon.get("reload_style", "")) == "shotgun_shell" else "res://assets/audio/non_original/weapon_reload_magazine_insert.wav"
 		AudioDirector.play_3d(insert_sound, global_position, -3.5, randf_range(0.97, 1.04), "player_reload_action")
 
 func _build_reload_attachment(visual_root: Node3D, data: Dictionary) -> void:

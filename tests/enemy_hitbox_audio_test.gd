@@ -39,7 +39,7 @@ func _run() -> void:
 		var heard_confirm := false
 		for audio in AudioDirector.get_children():
 			if audio is AudioStreamPlayer3D and audio.stream != null:
-				heard_flesh = heard_flesh or audio.stream.resource_path.ends_with("flesh_hit_light.wav")
+				heard_flesh = heard_flesh or audio.stream.resource_path.ends_with("enemy_hit_light.wav")
 			elif audio is AudioStreamPlayer and audio.stream != null:
 				heard_confirm = heard_confirm or audio.stream.resource_path.ends_with("enemies_smash2.wav")
 		_check(heard_flesh, "%s damage did not play a positional flesh impact" % kind)
@@ -50,7 +50,7 @@ func _run() -> void:
 		var heard_heavy := false
 		for audio in AudioDirector.get_children():
 			if audio is AudioStreamPlayer3D and audio.stream != null:
-				heard_heavy = heard_heavy or audio.stream.resource_path.ends_with("flesh_hit_heavy.wav")
+				heard_heavy = heard_heavy or audio.stream.resource_path.ends_with("enemy_hit_heavy_or_lethal.wav")
 		_check(heard_heavy, "%s heavy hit did not play the thick flesh impact" % kind)
 		AudioDirector.stop_all_sfx()
 		enemy.queue_free()
@@ -58,10 +58,10 @@ func _run() -> void:
 		await get_tree().physics_frame
 
 	for path in [
-		"res://assets/original/audio/combat/flesh_hit_light.wav",
-		"res://assets/original/audio/combat/flesh_hit_heavy.wav",
-		"res://assets/original/audio/combat/reload_eject.wav",
-		"res://assets/original/audio/combat/reload_insert.wav",
+		"res://assets/audio/non_original/enemy_hit_light.wav",
+		"res://assets/audio/non_original/enemy_hit_heavy_or_lethal.wav",
+		"res://assets/audio/non_original/weapon_reload_magazine_eject.wav",
+		"res://assets/audio/non_original/weapon_reload_magazine_insert.wav",
 	]:
 		_check(ResourceLoader.exists(path), "combat audio is missing: " + path)
 

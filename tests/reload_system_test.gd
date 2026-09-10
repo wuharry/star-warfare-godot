@@ -25,8 +25,8 @@ func _run() -> void:
 	await get_tree().process_frame
 	var player := world.player
 	player.set_physics_process(false)
-	_check(ResourceLoader.exists("res://assets/original/audio/combat/reload_eject.wav"), "reload eject audio is missing")
-	_check(ResourceLoader.exists("res://assets/original/audio/combat/reload_insert.wav"), "reload insert audio is missing")
+	_check(ResourceLoader.exists("res://assets/audio/non_original/weapon_reload_magazine_eject.wav"), "reload eject audio is missing")
+	_check(ResourceLoader.exists("res://assets/audio/non_original/weapon_reload_magazine_insert.wav"), "reload insert audio is missing")
 
 	var cases := {
 		"gun00": {"style": "rifle", "capacity": 30, "drops": true, "eject": true},
@@ -57,7 +57,7 @@ func _run() -> void:
 		player._start_reload()
 		_check(player.reload_left > 0.0, "%s did not begin reloading" % weapon_id)
 		_check(
-			_keyed_stream_path("player_reload_action").ends_with("reload_eject.wav") == bool(expected.eject),
+			_keyed_stream_path("player_reload_action").ends_with("weapon_reload_magazine_eject.wav") == bool(expected.eject),
 			"%s used the wrong magazine eject audio behavior" % weapon_id
 		)
 		player._update_reload(player.reload_total * 0.50)
@@ -77,7 +77,7 @@ func _run() -> void:
 					_check(box != null and box.size.is_equal_approx(hand_mesh.mesh.get_aabb().size * player.reload_prop_scale), "FR28a collision still uses the oversized placeholder")
 		var insert_fraction := float(player.current_weapon.get("insert_fraction", 0.75))
 		player._update_reload(player.reload_total * (insert_fraction - 0.48))
-		var expected_insert := "ShotgunCock02.wav" if str(expected.style) == "shotgun_shell" else "reload_insert.wav"
+		var expected_insert := "ShotgunCock02.wav" if str(expected.style) == "shotgun_shell" else "weapon_reload_magazine_insert.wav"
 		_check(_keyed_stream_path("player_reload_action").ends_with(expected_insert), "%s did not play its magazine insert sound" % weapon_id)
 		player._update_reload(player.reload_total)
 		if weapon_id == "gun00":

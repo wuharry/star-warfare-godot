@@ -109,7 +109,9 @@ func is_playing(key: String) -> bool:
 	return is_instance_valid(player) and bool(player.get("playing"))
 
 func _load_stream(relative_path: String) -> AudioStream:
-	var path := AUDIO_ROOT + relative_path.replace("\\", "/")
+	var normalized := relative_path.replace("\\", "/")
+	# Original callers keep relative names; external audio uses explicit res:// paths.
+	var path := normalized if normalized.begins_with("res://") else AUDIO_ROOT + normalized
 	if not ResourceLoader.exists(path):
 		push_warning("Recovered audio is missing: %s" % path)
 		return null
