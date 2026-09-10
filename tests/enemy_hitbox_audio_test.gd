@@ -35,23 +35,21 @@ func _run() -> void:
 
 		AudioDirector.stop_all_sfx()
 		enemy.take_damage(4.0, enemy.global_position + Vector3.UP, player)
-		var heard_flesh := false
-		var heard_confirm := false
-		for audio in AudioDirector.get_children():
-			if audio is AudioStreamPlayer3D and audio.stream != null:
-				heard_flesh = heard_flesh or audio.stream.resource_path.ends_with("enemy_hit_light.wav")
-			elif audio is AudioStreamPlayer and audio.stream != null:
-				heard_confirm = heard_confirm or audio.stream.resource_path.ends_with("enemies_smash2.wav")
-		_check(heard_flesh, "%s damage did not play a positional flesh impact" % kind)
-		_check(heard_confirm, "%s damage did not play local hit confirmation" % kind)
+		_check_only_impact("enemy_hit_light.wav", kind + " player hit")
 		AudioDirector.stop_all_sfx()
-		enemy.flesh_hit_cooldown = 0.0
-		enemy._play_flesh_impact(maxf(40.0, enemy.max_health * 0.20), enemy.global_position + Vector3.UP)
-		var heard_heavy := false
-		for audio in AudioDirector.get_children():
-			if audio is AudioStreamPlayer3D and audio.stream != null:
-				heard_heavy = heard_heavy or audio.stream.resource_path.ends_with("enemy_hit_heavy_or_lethal.wav")
-		_check(heard_heavy, "%s heavy hit did not play the thick flesh impact" % kind)
+		enemy.take_damage(0.0, enemy.global_position, player)
+		_check(not AudioDirector.is_playing("local_hit_confirm"), "zero damage played hit confirmation")
+		enemy.max_health = 200.0
+		enemy.health = 200.0
+		enemy.take_damage(60.0, enemy.global_position + Vector3.UP, player)
+		_check(not enemy.dead, "%s nonlethal damage killed the test enemy" % kind)
+		_check_only_impact("enemy_hit_light.wav", kind + " nonlethal heavy damage")
+		# Kill confirmation must replace the light sound even in the same frame.
+		enemy.take_damage(enemy.health + 1.0, enemy.global_position + Vector3.UP, player)
+		_check(enemy.dead, "%s lethal damage failed to kill" % kind)
+		_check_only_impact("enemy_hit_heavy_or_lethal.wav", kind + " HUD kill")
+		enemy.take_damage(10.0, enemy.global_position + Vector3.UP, player)
+		_check_only_impact("enemy_hit_heavy_or_lethal.wav", kind + " already dead")
 		AudioDirector.stop_all_sfx()
 		enemy.queue_free()
 		await get_tree().process_frame
@@ -69,7 +67,17 @@ func _run() -> void:
 	AudioDirector.stop_all_sfx()
 	await get_tree().create_timer(0.1).timeout
 	if failures.is_empty():
-		print("ENEMY_HITBOX_AUDIO_TEST_PASS enemies=4 animated_shapes=true light_heavy_flesh=true reload_assets=true")
+		print("ENEMY_HITBOX_AUDIO_TEST_PASS enemies=4 animated_shapes=true local_hit_light=true hud_kill_heavy=true no_duplicate_audio=true reload_assets=true")
 		get_tree().quit(0)
 	else:
 		get_tree().quit(1)
+
+func _check_only_impact(expected_file: String, context: String) -> void:
+	# Check the full audio mix, including accidental 3D copies and old UI cues.
+	var playing_count := 0
+	for audio in AudioDirector.get_children():
+		if (audio is AudioStreamPlayer or audio is AudioStreamPlayer3D) and audio.playing and audio.stream != null:
+			playing_count += 1
+			_check(audio is AudioStreamPlayer, "%s confirmation must be non-positional" % context)
+			_check(audio.stream.resource_path.ends_with(expected_file), "%s played unexpected audio: %s" % [context, audio.stream.resource_path])
+	_check(playing_count == 1, "%s should play exactly one impact, got %d" % [context, playing_count])

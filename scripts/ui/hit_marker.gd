@@ -17,8 +17,6 @@ const KILL_COLOR := Color(1.0, 0.73, 0.2)
 var feedback_kind := &""
 var elapsed := 0.0
 var duration := HIT_DURATION
-var _last_hit_audio_msec := -1000
-var _last_kill_audio_msec := -1000
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(112.0, 112.0)
@@ -29,7 +27,7 @@ func _ready() -> void:
 
 func show_hit(_actual_damage := 0.0) -> void:
 	# Shotguns and splash weapons can confirm several damage applications on
-	# one frame. Restart the visual but gate the UI tick so it stays crisp.
+	# one frame. Hit audio is owned by WarfarePlayer.on_damage_dealt.
 	# A splash hit enumerated after a lethal target must not downgrade the more
 	# important kill confirmation that is already on screen.
 	if feedback_kind == &"kill" and elapsed < KILL_DURATION:
@@ -40,11 +38,6 @@ func show_hit(_actual_damage := 0.0) -> void:
 	visible = true
 	set_process(true)
 	queue_redraw()
-	var now := Time.get_ticks_msec()
-	if now - _last_hit_audio_msec >= 55:
-		_last_hit_audio_msec = now
-		# Recovered 82 ms UI chirp used only as transitional sound design.
-		AudioDirector.play_2d("menu/exp.wav", -14.0, 1.08)
 
 func show_kill() -> void:
 	feedback_kind = &"kill"
@@ -53,12 +46,9 @@ func show_kill() -> void:
 	visible = true
 	set_process(true)
 	queue_redraw()
-	# The original short combo cue keeps this pass asset-free. It is explicitly
-	# temporary and should be replaced together with final hit-confirm art.
-	var now := Time.get_ticks_msec()
-	if now - _last_kill_audio_msec >= 65:
-		_last_kill_audio_msec = now
-		AudioDirector.play_2d("pickup/killcombo.wav", -9.0, 1.02)
+	# Replace the lethal hit's light confirmation instead of layering samples.
+	# The shared key limits this to one voice, including same-frame multi-kills.
+	AudioDirector.play_2d("res://assets/audio/non_original/enemy_hit_heavy_or_lethal.wav", -9.0, 1.02, "local_hit_confirm")
 
 func _process(delta: float) -> void:
 	elapsed += delta

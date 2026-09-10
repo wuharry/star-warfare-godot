@@ -1679,10 +1679,9 @@ func on_damage_dealt(actual_damage: float) -> void:
 	if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("on_damage_dealt"):
 		armor_power_controller.on_damage_dealt(actual_damage)
 	if actual_damage > 0.0:
-		# A short non-spatial transient gives the shooter a reliable confirmation;
-		# the enemy supplies the heavier positional flesh layer at the impact point.
+		# Local confirmation stays audible regardless of the target's distance.
 		AudioDirector.play_2d(
-			"enemies_smash2.wav",
+			"res://assets/audio/non_original/enemy_hit_light.wav",
 			-7.0,
 			clampf(0.98 + actual_damage * 0.0015, 0.98, 1.08),
 			"local_hit_confirm"

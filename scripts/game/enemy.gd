@@ -691,8 +691,10 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 	var health_before := health
 	health = maxf(0.0, health - amount)
 	var actual_damage := maxf(0.0, health_before - health)
-	if actual_damage > 0.0:
-		_play_flesh_impact(actual_damage, _hit_position)
+	# Player hits are sounded by local hit/kill confirmation, without a
+	# duplicate positional copy. Other damage sources retain world impacts.
+	if actual_damage > 0.0 and not (_source is WarfarePlayer):
+		_play_flesh_impact(_hit_position)
 	# Armor powers such as HEALTH STEAL must use damage that actually reached
 	# this enemy (excluding overkill), not the weapon's requested raw damage.
 	if actual_damage > 0.0 and is_instance_valid(_source) and _source.has_method("on_damage_dealt"):
@@ -710,8 +712,6 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 		hit_reaction_left = clampf(recovered_animation_player.get_animation(attacked_animation).length, 0.16, 0.38)
 	_play_recovered_animation(attacked_animation, 0.03, true)
 	health_reported.emit(health, max_health, enemy_kind == "boss")
-	if enemy_kind == "boss" and randf() < 0.28:
-		AudioDirector.play_3d("enemy/mantis/tanglang_attacked.wav", global_position, -11.0, randf_range(0.9, 1.08))
 	if is_instance_valid(hit_tween):
 		hit_tween.kill()
 	body_material.emission_enabled = true
@@ -725,20 +725,21 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 	if health <= 0.0:
 		_die(_source)
 
-func _play_flesh_impact(actual_damage: float, hit_position: Vector3) -> void:
+func _play_flesh_impact(hit_position: Vector3) -> void:
 	# Shotguns report several pellets in the same physics frame. Keep one solid
 	# transient per enemy instead of stacking identical samples into clipping.
-	if flesh_hit_cooldown > 0.0:
+	# A lethal pellet must still replace the preceding light impact.
+	if flesh_hit_cooldown > 0.0 and health > 0.0:
 		return
-	var heavy := actual_damage >= maxf(28.0, max_health * 0.18) or health <= 0.0
-	var sound_path := FLESH_HIT_HEAVY if heavy else FLESH_HIT_LIGHT
+	var lethal := health <= 0.0
+	var sound_path := FLESH_HIT_HEAVY if lethal else FLESH_HIT_LIGHT
 	var impact_position := hit_position
 	if impact_position == Vector3.ZERO:
 		impact_position = global_position + Vector3.UP * 0.85
 	AudioDirector.play_3d(
 		sound_path,
 		impact_position,
-		-2.5 if heavy else -4.5,
+		-2.5 if lethal else -4.5,
 		randf_range(0.92, 1.06),
 		"enemy_flesh_hit_%d" % get_instance_id()
 	)
@@ -753,8 +754,7 @@ func _die(killer: Node = null) -> void:
 	_release_attack_token()
 	collision_layer = 0
 	collision_mask = 0
-	var death_sound := "enemy/mantis/tanglang_dead.wav" if enemy_kind == "boss" else ("enemy/zibaochong.wav" if enemy_kind == "spitter" else "enemies_smash2.wav")
-	AudioDirector.play_3d(death_sound, global_position, -4.0, randf_range(0.86, 1.08))
+	# Death audio comes from the player's HUD or the non-player world impact.
 	_play_recovered_animation("dead", 0.04)
 	died.emit(self, global_position, reward, score_value)
 	var tween := create_tween()
