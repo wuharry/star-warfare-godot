@@ -39,6 +39,11 @@ func _render_all() -> void:
 	avatar.rotation_degrees.y = -90.0
 	stage.add_child(avatar)
 	var only_callofmini := OS.get_cmdline_user_args().has("--callofmini-only")
+	var only_set := -1
+	for argument: String in OS.get_cmdline_user_args():
+		if argument.begins_with("--set-id="):
+			only_set = int(argument.trim_prefix("--set-id="))
+	var rendered_count := 0
 	var additional_ids := {}
 	for visual_id in range(ArmorCatalogData.CALLOFMINI_FIRST_ID, ArmorCatalogData.SET_NAMES.size()):
 		additional_ids[visual_id] = visual_id
@@ -55,6 +60,8 @@ func _render_all() -> void:
 		for item_key: String in _item_ids(catalog, part_key):
 			var item: Dictionary = catalog[item_key]
 			var visual_id := int(item.visual_id)
+			if only_set >= 0 and visual_id != only_set:
+				continue
 			if only_callofmini and visual_id < ArmorCatalogData.CALLOFMINI_FIRST_ID:
 				continue
 			var visible_meshes := _show_part(meshes, str(PART_PREFIXES[part_key]), visual_id)
@@ -63,11 +70,12 @@ func _render_all() -> void:
 				continue
 			_frame_avatar_part(avatar, part_key)
 			await _save_frame("armor_%s_%02d.png" % [part_key, visual_id])
+			rendered_count += 1
 
 	avatar.queue_free()
 	await process_frame
-	if only_callofmini:
-		print("CALLOFMINI_THUMBNAILS_RENDERED count=32")
+	if only_callofmini or only_set >= 0:
+		print("CALLOFMINI_THUMBNAILS_RENDERED count=%d" % rendered_count)
 		quit(0)
 		return
 	for item_key: String in _item_ids(catalog, "bag"):

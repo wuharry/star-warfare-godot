@@ -60,6 +60,14 @@ func _run() -> void:
 		for part in range(4):
 			var mesh := player.recovered_avatar.find_child("%s_%02d" % [PART_NAMES[part], set_id], true, false) as MeshInstance3D
 			_validate_skin(mesh, skeleton)
+			if set_id == 21 and part in [2, 3]:
+				var reference := player.recovered_avatar.find_child("%s_00" % PART_NAMES[part], true, false) as MeshInstance3D
+				var reference_points := _posed_vertices(reference, skeleton)
+				var refined_points := _posed_vertices(mesh, skeleton)
+				_check(reference_points.size() == refined_points.size(), "Assault limb structure differs from its Viper reference")
+				if reference_points.size() == refined_points.size():
+					for vertex in reference_points.size():
+						_check(reference_points[vertex].distance_to(refined_points[vertex]) < 0.0001, "Assault limb skin transfer displaced a vertex")
 			var thumbnail := "res://assets/ui/armor_thumbnails/armor_%s_%02d.png" % [Catalog.PART_KEYS[part], set_id]
 			_check(ResourceLoader.exists(thumbnail), "missing thumbnail " + thumbnail)
 		animation_player.play("idle_rifle")
@@ -121,7 +129,11 @@ func _validate_skin(instance: MeshInstance3D, skeleton: Skeleton3D) -> void:
 	_check(instance.get_node_or_null(instance.skeleton) == skeleton, "%s does not use the player's skeleton" % instance.name)
 	for surface in instance.mesh.get_surface_count():
 		var material := instance.get_active_material(surface) as BaseMaterial3D
-		_check(material != null and material.albedo_texture != null and material.albedo_texture.resource_path.begins_with("res://assets/callOfMini/enhanced/"), "additional armor lost its restored atlas")
+		var texture_path := material.albedo_texture.resource_path if material != null and material.albedo_texture != null else ""
+		var source_atlas := texture_path.begins_with("res://assets/callOfMini/enhanced/")
+		var assault_reference := String(instance.name).ends_with("_21") and not String(instance.name).begins_with("ArmorHead")
+		var reference_atlas := assault_reference and texture_path.begins_with("res://assets/models/player/animated/")
+		_check(source_atlas or reference_atlas, "additional armor lost its authored or canonical reference atlas: " + texture_path)
 		_check(material != null and material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, "additional armor lost its baked-lighting material mode")
 		var arrays := instance.mesh.surface_get_arrays(surface)
 		var weights: PackedFloat32Array = arrays[Mesh.ARRAY_WEIGHTS]
