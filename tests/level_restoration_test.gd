@@ -85,6 +85,18 @@ func _run() -> void:
 					var ground_position: Vector3 = ground_hit.position
 					_check(absf(runtime_enemy.global_position.y - ground_position.y - 0.02) < 0.03, "Level %d enemy spawn floats above restored ground" % level_number)
 				_check(runtime_enemy.navigation_target != Vector3.INF, "Level %d enemy navigation did not initialize" % level_number)
+			var boss_candidate := world._choose_restored_enemy_spawn("boss")
+			if boss_candidate != Vector3.INF:
+				var boss_ground_query := PhysicsRayQueryParameters3D.create(
+					boss_candidate + Vector3.UP * 0.4,
+					boss_candidate + Vector3.DOWN * 1.0,
+					1
+				)
+				var boss_ground_hit := world.get_world_3d().direct_space_state.intersect_ray(boss_ground_query)
+				_check(not boss_ground_hit.is_empty(), "Level %d boss spawn is not over restored ground" % level_number)
+				if not boss_ground_hit.is_empty():
+					var boss_ground_y: float = boss_ground_hit.position.y
+					_check(absf(boss_candidate.y - boss_ground_y - 0.02) < 0.03, "Level %d boss spawn floats above restored ground" % level_number)
 		world.completed = true
 		for audio in world.find_children("*", "AudioStreamPlayer", true, false):
 			audio.stop()

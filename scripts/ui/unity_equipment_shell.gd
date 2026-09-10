@@ -1393,10 +1393,11 @@ func _fit_preview_camera() -> void:
 	camera.size = 5.8 if mode == "customize" and selected_category == "gun" else 4.6
 	var weapon := preview_root.get_node_or_null("SelectedWeapon") as MeshInstance3D
 	if weapon != null and weapon.mesh != null:
-		var bounds := preview_root.transform * weapon.transform * weapon.mesh.get_aabb()
+		var visual_bounds: AABB = preview_root.transform * (weapon.transform * weapon.mesh.get_aabb())
 		var viewport_size := (detail_panel.get_node("EquipmentPreview") as Control).size
 		var aspect := viewport_size.x / maxf(1.0, viewport_size.y)
-		camera.size = maxf(bounds.size.y, bounds.size.x / aspect) * 1.25
+		var required_size := maxf(visual_bounds.size.y, visual_bounds.size.x / aspect) * 1.12
+		camera.size = maxf(3.9, required_size)
 	camera.position = Vector3(0, 0, 6)
 	camera.look_at(Vector3.ZERO, Vector3.UP)
 
@@ -1414,7 +1415,7 @@ func _build_weapon_preview() -> void:
 			var preview := MeshInstance3D.new()
 			preview.name = "SelectedWeapon"
 			preview.mesh = mesh
-			_normalize_preview_mesh(preview, 3.2, Color(weapon.color), 0.04, int(weapon.id))
+			_normalize_preview_mesh(preview, _store_weapon_target_size(weapon), Color(weapon.color), 0.04, int(weapon.id))
 			preview_root.add_child(preview)
 
 
@@ -1648,11 +1649,46 @@ func _transform_relative_to_ancestor(node: Node3D, ancestor: Node3D) -> Transfor
 
 func _normalize_preview_mesh(preview: MeshInstance3D, target_size: float, tint: Color, tint_weight: float, weapon_id := -1) -> void:
 	_prepare_preview_materials(preview, tint, tint_weight, weapon_id)
-	var bounds := preview.mesh.get_aabb()
-	var longest := maxf(bounds.size.x, maxf(bounds.size.y, bounds.size.z))
+	var authored_rot := _store_weapon_rotation(weapon_id) if weapon_id >= 0 else Vector3.ZERO
+	var authored_basis := Basis.from_euler(authored_rot * (PI / 180.0))
+	var bounds: AABB = preview.mesh.get_aabb()
+	var oriented_box: AABB = Transform3D(authored_basis, Vector3.ZERO) * bounds
+	var longest := maxf(oriented_box.size.x, maxf(oriented_box.size.y, oriented_box.size.z))
 	var factor := target_size / longest if longest > 0.001 else 1.0
-	preview.scale = Vector3.ONE * factor
+	preview.basis = authored_basis.scaled(Vector3.ONE * factor)
 	preview.position = -(preview.basis * (bounds.position + bounds.size * 0.5))
+
+
+func _store_weapon_target_size(weapon: Dictionary) -> float:
+	var weapon_id := int(weapon.get("id", -1))
+	var kind := str(weapon.get("kind", ""))
+	if weapon_id in [23, 42]:
+		return 1.95 # Compact gloves / fists
+	elif weapon_id == 36:
+		return 2.3 # Arm drill
+	elif weapon_id in [26, 31]:
+		return 2.4 # Compact sidearms
+	elif kind in ["sniper", "reflection"]:
+		return 3.45 # Snipers & railguns
+	elif kind in ["rocket", "machinegun", "fly_grenade"] or weapon_id in [11, 12, 13, 16, 24, 25, 30, 37, 39, 45]:
+		return 3.3 # Heavy artillery & launcher weapons
+	elif weapon_id in [27, 28, 33]:
+		return 3.25 # Swords
+	elif weapon_id in [22, 29, 44]:
+		return 3.2 # Bows
+	return 2.8 # Standard rifles & shotguns
+
+
+func _store_weapon_rotation(weapon_id: int) -> Vector3:
+	if weapon_id == 20: # Plasma Neo: barrel along +Y, align to canonical rifle orientation
+		return Vector3(90.0, 180.0, 0.0)
+	elif weapon_id in [27, 28, 33]: # Swords: tilt diagonally across showcase with blade flat to camera
+		return Vector3(0.0, 110.0, -50.0)
+	elif weapon_id in [22, 29, 44]: # Bows: face forward, tilt diagonally across showcase
+		return Vector3(-15.0, 100.0, -35.0)
+	elif weapon_id == 23: # Energy Glove: face front-right
+		return Vector3(0.0, 180.0, 0.0)
+	return Vector3.ZERO
 
 
 func _prepare_preview_materials(preview: MeshInstance3D, tint: Color, tint_weight: float, weapon_id := -1) -> void:

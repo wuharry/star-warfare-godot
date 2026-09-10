@@ -258,7 +258,11 @@ func _spawn_enemy(kind: String, elite: bool) -> WarfareEnemy:
 		spawn_position = Vector3(cos(angle) * radius, 0.05, sin(angle) * radius)
 		if spawn_position.distance_to(player.global_position) < 12.0:
 			spawn_position = -spawn_position
-	spawn_position = _snap_enemy_spawn_to_ground(spawn_position)
+	var snapped := _snap_enemy_spawn_to_ground(spawn_position)
+	if snapped != Vector3.INF:
+		spawn_position = snapped
+	elif is_instance_valid(player):
+		spawn_position = player.global_position + Vector3.UP * 0.02
 	enemy.position = spawn_position
 	enemy.died.connect(_on_enemy_died)
 	enemy.health_reported.connect(_on_enemy_health_reported.bind(enemy))
@@ -935,17 +939,24 @@ func _choose_restored_enemy_spawn(kind: String) -> Vector3:
 	if candidates.is_empty():
 		return Vector3.INF
 	var start_index := rng.randi_range(0, candidates.size() - 1)
-	var best := candidates[start_index]
-	var best_distance := best.distance_to(player.global_position)
+	var best := Vector3.INF
+	var best_distance := -1.0
 	for offset in range(candidates.size()):
 		var candidate := candidates[(start_index + offset) % candidates.size()]
-		var distance := candidate.distance_to(player.global_position)
+		var snapped := _snap_enemy_spawn_to_ground(candidate)
+		if snapped == Vector3.INF:
+			continue
+		var distance := snapped.distance_to(player.global_position)
 		if distance >= 12.0:
-			return candidate + Vector3.UP * 0.05
+			return snapped
 		if distance > best_distance:
-			best = candidate
+			best = snapped
 			best_distance = distance
-	return best + Vector3.UP * 0.05
+	if best != Vector3.INF:
+		return best
+	if kind == "boss" and not enemy_spawn_points.is_empty():
+		return _choose_restored_enemy_spawn("crawler")
+	return Vector3.INF
 
 func _snap_enemy_spawn_to_ground(spawn_position: Vector3) -> Vector3:
 	# Unity enemy markers use the prefab pivot rather than the floor and can sit
@@ -953,13 +964,13 @@ func _snap_enemy_spawn_to_ground(spawn_position: Vector3) -> Vector3:
 	# collision before the grave-rise begins so the whole animation stays planted.
 	var query := PhysicsRayQueryParameters3D.create(
 		spawn_position + Vector3.UP * 0.5,
-		spawn_position + Vector3.DOWN * 16.0,
+		spawn_position + Vector3.DOWN * 24.0,
 		1
 	)
 	query.collide_with_areas = false
 	var hit := get_world_3d().direct_space_state.intersect_ray(query)
 	if hit.is_empty():
-		return spawn_position
+		return Vector3.INF
 	var ground_position: Vector3 = hit.position
 	return Vector3(spawn_position.x, ground_position.y + 0.02, spawn_position.z)
 

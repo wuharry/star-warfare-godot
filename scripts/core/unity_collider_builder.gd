@@ -5,6 +5,9 @@ class_name UnityColliderBuilder
 # geometry, so the transform maths lives here once rather than in each of them.
 
 static func add_primitive(parent: StaticBody3D, record: Dictionary, offset := Vector3.ZERO) -> bool:
+	var record_name := str(record.get("name", "")).to_lower()
+	if record_name.begins_with("pathfinding"):
+		return false
 	var transform_values: Variant = record.get("transform", [])
 	if not transform_values is Array or transform_values.size() < 16:
 		return false
