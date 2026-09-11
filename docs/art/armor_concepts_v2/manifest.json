@@ -1,0 +1,507 @@
+{
+  "version": 2,
+  "date": "2026-09-11",
+  "tool": "built-in imagegen",
+  "status": "all_slots_have_concept_candidates_pending_user_review",
+  "scope": "29 character armor slots; excludes backpack products and weapons",
+  "runtime_modified": false,
+  "commercial_clearance": "NOT ESTABLISHED",
+  "acceptance": "Harvey 逐套確認；比例、視角結構、LED 減量及新設計相似程度另行審查。",
+  "entries": [
+    {
+      "id": 0,
+      "original": "Viper",
+      "slug": "00_viper_style_anchor",
+      "role": "已保存的風格基準",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-acf8dbb0-95ca-431c-9421-dcf2c331ab5a.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_00.png",
+        "assets/ui/armor_thumbnails/armor_body_00.png",
+        "assets/ui/armor_thumbnails/armor_head_21.png",
+        "assets/ui/armor_thumbnails/armor_body_21.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/00_viper_style_anchor.png",
+      "prompt": "prompts/00_viper_style_anchor.txt",
+      "design_brief": "保存的 Viper／Assault 混合風格基準；沒有重新生成。",
+      "status": "saved_style_anchor",
+      "review_notes": "保存的風格基準；比 v2 其餘圖偏修長，仍接近 Viper，非權利清理完成。"
+    },
+    {
+      "id": 1,
+      "original": "Fortune",
+      "slug": "01_fortune",
+      "role": "寬護頰／U 型領甲",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-b897f4de-f91c-4081-a351-5921456c962e.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_01.png",
+        "assets/ui/armor_thumbnails/armor_body_01.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/01_fortune.png",
+      "prompt": "prompts/01_fortune.txt",
+      "design_brief": "保留原版厚側護頰、低平眉骨和 U 型胸口護領的辨識點。重新設計成工業護衛甲：橫向寬窄面罩、外凸的方形下顎、側耳短直角支架；胸前是完整 U 型厚領板加下方單片腹甲，肩甲為短厚方塊，禁止 Viper 的雙胸片。深青藍主色、暗灰內襯、少量冷灰邊，LED 只在耳側。",
+      "status": "generated_pending_user_review",
+      "review_notes": "U 型胸領與寬護頰可辨識；仍屬較基礎輪廓，需與 Viper 並排確認。"
+    },
+    {
+      "id": 2,
+      "original": "Tank",
+      "slug": "02_tank",
+      "role": "大面罩／綠色厚頸環",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-7d573c06-ecad-440a-b073-bcd4b7aab50c.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_02.png",
+        "assets/ui/armor_thumbnails/armor_body_02.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/02_tank.png",
+      "prompt": "prompts/02_tank.txt",
+      "design_brief": "保留原版大面積琥珀色面罩、綠色頸部護環和較厚的裝甲體量。設計成寬扁低重心的重甲，頭盔半埋在厚領環內，面罩寬且短，外框是一塊可拆卸厚盾板；肩甲明顯比一般步兵寬，胸甲用橫向堆疊厚板而不是雙乳房形片。藍灰金屬搭配局部霧橄欖綠，琥珀面罩不發光，少量琥珀 LED。",
+      "status": "generated_pending_user_review",
+      "review_notes": "厚領環與寬肩重甲可辨識；多視角頭身比例待建模校對。"
+    },
+    {
+      "id": 3,
+      "original": "Hydra",
+      "slug": "03_hydra",
+      "role": "綠面罩／外展肩片",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-606ab2af-40eb-4109-97d4-1dbc5ed7a55e.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_03.png",
+        "assets/ui/armor_thumbnails/armor_body_03.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/03_hydra.png",
+      "prompt": "prompts/03_hydra.txt",
+      "design_brief": "保留原版綠色面罩、分叉下顎與微向外翹的肩片。新頭盔採尖楔眉骨、下窄上寬的綠色煙燻面罩，頰部是獨立雙片向下護板；上肩外展片改成短厚可拆卸護擋，胸前有小型多面中央分流模組與寬側護板。主體深青藍，局部霧綠硬甲和暗灰內襯；不是紫色防毒面具，不加濾罐。",
+      "status": "generated_pending_user_review",
+      "review_notes": "綠面罩、分叉護頰和外展肩片保留；細節與原型相近，待設計相似程度審查。"
+    },
+    {
+      "id": 4,
+      "original": "Strike",
+      "slug": "04_strike",
+      "role": "高額前板／整塊綠面罩",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-414f987a-1957-4d62-a605-dc5d9d51a754.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_04.png",
+        "assets/ui/armor_thumbnails/armor_body_04.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/04_strike.png",
+      "prompt": "prompts/04_strike.txt",
+      "design_brief": "保留原版高聳額前護板、額前直向散熱槽和大型綠色面罩。新頭盔設計成前額斜上抬的厚盾型護板，三條深凹散熱口，側邊短方形感測器，突出的多面下顎；胸甲為窄中央龍骨加左右向外展開的兩塊水平護板，肩甲較緊湊。深海軍藍塗裝，綠色煙燻面罩，耳側小青色 LED。不要沿用基準機車頭盔形狀。",
+      "status": "generated_pending_user_review",
+      "review_notes": "額前高護板可辨識；燈點偏多，定稿前減少四肢與肩頂發光。"
+    },
+    {
+      "id": 5,
+      "original": "Titan",
+      "slug": "05_titan",
+      "role": "垂直長面罩／厚重胸框",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-47975f84-9a73-4870-ae45-6d69302eb9a7.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_05.png",
+        "assets/ui/armor_thumbnails/armor_body_05.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/05_titan.png",
+      "prompt": "prompts/05_titan.txt",
+      "design_brief": "保留原版從眉部向下延伸的巨大黃色面罩和寬厚機械側框。新頭盔採高深度的長梯形琥珀面窗，面窗佔正臉大部分，無普通眼罩加嘴罩；兩侧階梯狀厚護框托住頭盔，胸部是寬大厚 U 型護框包住中央深色胸腹模組。方厚下垂肩甲與厚短護脛，暗酒紅胸肩搭配藍灰頭盔框，少量黃銅接合片。",
+      "status": "generated_pending_user_review",
+      "review_notes": "長面罩與厚 U 框可辨識；輪廓保留程度高，待使用者與權利審查。"
+    },
+    {
+      "id": 6,
+      "original": "Thunder",
+      "slug": "06_thunder",
+      "role": "圓耳模組／上揚頭冠",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-17f7fdd1-309e-43a9-88e2-45cd1370c845.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_06.png",
+        "assets/ui/armor_thumbnails/armor_body_06.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/06_thunder.png",
+      "prompt": "prompts/06_thunder.txt",
+      "design_brief": "保留原版大型圓形側耳能源模組、上揚的頭頂短冠，以及亮黃綠小型能量標記。新頭盔低矮弧楔主殼加突起後掠短冠，面罩為深琥珀窄窗，外置圓盤耳罩由厚金屬框扣住。肩甲一側高另一側低，胸甲兩大厚切面向中央咬合。深鋼藍和暗灰，黃綠僅為少數狀態窗，不能沿身體全發光。",
+      "status": "generated_pending_user_review",
+      "review_notes": "圓耳、頭冠可辨識；胸腹與四肢亮窗偏多，需要減法。"
+    },
+    {
+      "id": 7,
+      "original": "Atom",
+      "slug": "07_atom",
+      "role": "外伸肩鰭／額前短簷",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-25b9476b-0514-4b7d-a5fe-f4ff1365e9ed.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_07.png",
+        "assets/ui/armor_thumbnails/armor_body_07.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/07_atom.png",
+      "prompt": "prompts/07_atom.txt",
+      "design_brief": "保留原版兩側明顯外伸的肩部尖鰭和額前短簷。把尖鰭重新做成厚實向外上方伸出的多面感測護板，底部有機械固定座，不是裝飾刺。頭盔為低帽簷、寬側殼、下顎中央凸起小楔塊，深藍紫面罩，圓形青色小感測器。主體霧藍金屬，胸腹中央為連續階梯脊甲，肩和髖有小圓 LED。",
+      "status": "generated_pending_user_review",
+      "review_notes": "肩鰭與面罩輪廓可辨識；頭部比例偏大，肩與髖部亮窗需減量。"
+    },
+    {
+      "id": 8,
+      "original": "Pegasus",
+      "slug": "08_pegasus",
+      "role": "深色窄眼縫／高側盔壁",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-c066d7e6-399f-4639-9723-2f04234d019d.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_08.png",
+        "assets/ui/armor_thumbnails/armor_body_08.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/08_pegasus.png",
+      "prompt": "prompts/08_pegasus.txt",
+      "design_brief": "保留原版高側盔壁、深凹窄面罩、額側切槽和偏紅頭盔的印象。新頭盔是高而緊湊的多面包覆殼，眼縫形成橫向折線，下顎與側壁厚實但下收；不做大透明飛行面罩。胸甲採冷灰藍的斜向薄厚交替分件，肩甲微向後收，背部是小型整合推進護殼。低飽和暗紅頭盔、灰藍身甲、少量青色 LED。",
+      "status": "generated_pending_user_review",
+      "review_notes": "紅色封閉頭盔與灰色身體有區別；頭身比例待校對。"
+    },
+    {
+      "id": 9,
+      "original": "Draco",
+      "slug": "09_draco",
+      "role": "封閉面甲／層疊鱗狀胸甲",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-2ebe85e3-8620-47f4-8825-9e560733d3e4.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_09.png",
+        "assets/ui/armor_thumbnails/armor_body_09.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/09_draco.png",
+      "prompt": "prompts/09_draco.txt",
+      "design_brief": "保留原版幾乎無大玻璃面罩的封閉面甲和胸腹層疊結構。重新設計金屬全封面甲，只留深凹細光學狹縫，額前厚短簷，下顎是收尖但不尖刺的多面口鼻盾。胸腹使用四層大幅度堆疊甲片形成清楚層次，低寬楔形肩甲。低飽和石墨青金屬，少量暗紅肩部識別片；不要一般摩托頭盔，不加龍角。",
+      "status": "generated_pending_user_review",
+      "review_notes": "封閉暗色面甲與層疊胸甲可辨識；待多視角與活動間隙校對。"
+    },
+    {
+      "id": 10,
+      "original": "Phoenix",
+      "slug": "10_phoenix",
+      "role": "後掠側鰭／折線眼框",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-00722828-2e97-4940-a7b6-9149d89db803.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_10.png",
+        "assets/ui/armor_thumbnails/armor_body_10.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/10_phoenix.png",
+      "prompt": "prompts/10_phoenix.txt",
+      "design_brief": "保留原版頭盔向後上方延伸的側鰭、折線面罩框與尖向外的肩甲。將側鰭設計為厚短雙層散熱護片，固定在耳後；頭盔低窄、面罩外框有清楚鋸折但沒有鳥嘴。胸甲是一塊細長中央硬殼搭配深色外側凹槽，肩片後掠。鋼藍金屬、冰青小感測窗，不用火焰、銅橘塗裝或巨翅。",
+      "status": "generated_pending_user_review",
+      "review_notes": "後延鰭與折角面罩可辨識；頭部光區和胸部條紋需減量。"
+    },
+    {
+      "id": 11,
+      "original": "Cygni",
+      "slug": "11_cygni",
+      "role": "側翼片／白金分色",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-315a8568-c17a-4129-9f9e-4aa25c49bc08.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_11.png",
+        "assets/ui/armor_thumbnails/armor_body_11.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/11_cygni.png",
+      "prompt": "prompts/11_cygni.txt",
+      "design_brief": "保留原版兩側向後伸出的短平翼片、下頰圓形接口、白色與金色分色。新頭盔主殼霧白，深凹黑色橫窗，鈍金色面框，兩片小型矩形後掠側翼有厚度和固定座；不做長鳥翼。胸甲霧白分叉中央板，肩甲有向後外伸的短矩形護板。暗灰藍內部金屬、少量暖白 LED。",
+      "status": "generated_pending_user_review",
+      "review_notes": "白金甲與短側鰭可辨識；胸部和四肢光點偏多。"
+    },
+    {
+      "id": 12,
+      "original": "Andromedae",
+      "slug": "12_andromedae",
+      "role": "頂部圓模組／側耳圓護罩",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-69dfcca7-8424-4f33-83b8-26474374d580.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_12.png",
+        "assets/ui/armor_thumbnails/armor_body_12.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/12_andromedae.png",
+      "prompt": "prompts/12_andromedae.txt",
+      "design_brief": "保留原版頭頂兩個分離圓形模組、圓形側耳護罩與無大玻璃面罩的外形。新頭盔是厚實封閉殼，額頂並排兩個圓形能源接座，耳側厚圓盤有半罩保護，只有窄暗色光學縫。肩部大圆筒模組包在方形支架內；胸甲寬而整潔、腹部偏置一個圓形檢修蓋。鋼藍加暗灰，青色小弧段 LED，非整圈燈。",
+      "status": "generated_pending_user_review",
+      "review_notes": "頭耳與肩部圓形模組可辨識；模組多視角位置待統一，四肢光點需減量。"
+    },
+    {
+      "id": 13,
+      "original": "Perseus",
+      "slug": "13_perseus",
+      "role": "面甲斜線／層片肩甲",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-128e6c38-71c8-4364-919a-fb4579292b07.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_13.png",
+        "assets/ui/armor_thumbnails/armor_body_13.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/13_perseus.png",
+      "prompt": "prompts/13_perseus.txt",
+      "design_brief": "保留原版前臉下斜的分叉線條、下顎圓接口及多層重疊肩甲。新頭盔是封閉長楔臉殼，兩道深凹斜向感測縫而非單一橫面罩；粗壯下顎兩側有小型圆检修蓋。肩甲三層寬短層片朝外上疊，胸甲中央是窄長內收脊板。低飽和灰藍金屬，淡冷灰面甲線是嵌件而不是整條發光。",
+      "status": "generated_pending_user_review",
+      "review_notes": "大型封閉額甲與層肩可辨識；斜線較像塗裝而非內嵌感測槽，頭身比例偏大。"
+    },
+    {
+      "id": 14,
+      "original": "Chaos",
+      "slug": "14_chaos",
+      "role": "角狀外展／紅黑裂紋",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-08fe16ea-65eb-4f07-ae9b-8b14e3917e72.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_14.png",
+        "assets/ui/armor_thumbnails/armor_body_14.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/14_chaos.png",
+      "prompt": "prompts/14_chaos.txt",
+      "design_brief": "保留原版頭後和肩外的角狀外展結構、紅黑配色與少數亮黃綠識別線。新頭盔為低楔形封閉面甲，左右額角向後外延成短厚散熱楔，不做魔鬼頭。肩甲各一個厚鈍外展護角，胸甲是折線分叉的大裝甲板，黑色凹槽分隔暗紅外殼。黃綠只在面部感測狹縫和胸前一個小狀態口發光，不畫全身裂紋。",
+      "status": "generated_pending_user_review",
+      "review_notes": "尖角與黑紅黃分區可辨識；尖角偏大、黃色胸紋偏多，需收斂。"
+    },
+    {
+      "id": 15,
+      "original": "DEC.24",
+      "slug": "15_dec24",
+      "role": "節慶帽型／白色下顎",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-687f1827-8930-4905-875a-cc33f31a45ad.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_15.png",
+        "assets/ui/armor_thumbnails/armor_body_15.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/15_dec24.png",
+      "prompt": "prompts/15_dec24.txt",
+      "design_brief": "保留原版節慶紅白、偏斜帽型頭冠和白色下顎護面。新設計為真正金屬硬殼：深紅不對稱偏斜後垂頭冠，末端小圆通信模組讓人聯想到帽球但不是毛球；寬淡金煙燻面罩，下頰是白色厚隔熱面板。短厚紅肩甲、白胸腹中央板、暗灰關節，微小暖白燈。保留趣味但不畫布帽、毛皮或聖誕老人。",
+      "status": "generated_pending_user_review",
+      "review_notes": "金屬帽型與白下顎可辨識；需建模驗證偏斜頭冠與通信球不穿肩。"
+    },
+    {
+      "id": 16,
+      "original": "Knight",
+      "slug": "16_knight",
+      "role": "寬額環／綠面盾／肩角",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-a6fb40f5-c637-429e-bc9a-f77626bbc36d.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_16.png",
+        "assets/ui/armor_thumbnails/armor_body_16.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/16_knight.png",
+      "prompt": "prompts/16_knight.txt",
+      "design_brief": "保留原版寬闊水平額環、鮮明綠面盾和向外上伸的短肩角。新頭盔有大幅外伸但厚實的六邊形眉部護環、窄深色視窗、下方大片半透明霧綠面盾；頰部內縮。肩甲短厚外展柱狀護片有可讀機械根部。胸甲寬綠中央盾板、石墨藍外框。綠面盾是材料而非光源，小綠 LED 即可。",
+      "status": "generated_pending_user_review",
+      "review_notes": "環簷與綠面罩可辨識；亮綠面積與頭冠活動空間待校對。"
+    },
+    {
+      "id": 17,
+      "original": "R.O.M.E",
+      "slug": "17_rome",
+      "role": "中央盔冠／深紅層肩",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-4e7e9e04-c49b-46cb-a77b-f6e1298ca0bc.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_17.png",
+        "assets/ui/armor_thumbnails/armor_body_17.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/17_rome.png",
+      "prompt": "prompts/17_rome.txt",
+      "design_brief": "保留原版中央直立盔冠、深紅黑配色和層疊肩甲。新頭盔是軍用科幻硬殼，短厚中央縱向金屬冠，寬深黑面窗，下顎大片裝甲與斜側護頰；不是羽毛冠。胸甲有大面紅側板包住暗灰中央腹片，肩甲橫向三層，中央小圓能源接口。少量青白 LED，沒有披風、羅馬標誌或裙甲。",
+      "status": "generated_pending_user_review",
+      "review_notes": "中央高冠與層肩差異明確；磨損較多，頭冠在背視圖不夠一致，需統一。"
+    },
+    {
+      "id": 18,
+      "original": "Black Hole",
+      "slug": "18_black_hole",
+      "role": "封閉尖楔面／稜脊後冠",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-e128b33e-6325-417a-a22c-c9ed9690a3c2.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_18.png",
+        "assets/ui/armor_thumbnails/armor_body_18.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/18_black_hole.png",
+      "prompt": "prompts/18_black_hole.txt",
+      "design_brief": "保留原版完全封閉且尖楔的前臉、頭頂稜脊及上肩機械扣座。新面甲是深石墨藍多面裝甲，不設玻璃面罩，額頂兩條不對称短隆脊向後收，眼部僅極細暗感測縫。胸甲高領加偏斜包覆面板，肩片帶粗壯短接口，腿甲較銳利。小型冷藍 LED 和少量銀灰切邊，不加黑洞光環或魔法。",
+      "status": "generated_pending_user_review",
+      "review_notes": "封閉尖面甲與中央脊線差異明確；側脊輪廓多視角待校對。"
+    },
+    {
+      "id": 19,
+      "original": "X-Field",
+      "slug": "19_xfield",
+      "role": "方框面盔／藍色發光格片",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-a6a4967c-2273-417a-afd4-22717c565c60.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_19.png",
+        "assets/ui/armor_thumbnails/armor_body_19.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/19_xfield.png",
+      "prompt": "prompts/19_xfield.txt",
+      "design_brief": "保留原版寬方額框、多色塊切面和肩頂藍色格片的識別。新頭盔寬而扁、方框視窗深陷，灰紅頂殼、藍色下顎和短圆耳；額框分成三段真實厚護板。肩甲上表面各一小組方形能源窗，胸前是不對稱短矩形模組嵌入寬板。暗酒紅、深藍和冷灰，不把格子鋪滿全身，僅肩頂小窗亮。",
+      "status": "generated_pending_user_review",
+      "review_notes": "寬扁額板與圆耳可辨識；肩部與面部光區偏多，磨損需減量。"
+    },
+    {
+      "id": 20,
+      "original": "Wrath",
+      "slug": "20_wrath",
+      "role": "新月頭環／層盤肩甲",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-84523485-ab71-4f6a-8b3e-76a08ffe111f.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_20.png",
+        "assets/ui/armor_thumbnails/armor_body_20.png"
+      ],
+      "source_family": "Star Warfare: Alien Invasion",
+      "image": "images/20_wrath.png",
+      "prompt": "prompts/20_wrath.txt",
+      "design_brief": "保留原版明顯的新月狀頭頂大護環與層盤肩甲。新造型為科幻金屬：額上獨立厚弧形防撞護架，兩端短且鈍，與封閉小面甲間有清楚空隙；不是角和魔法光環。肩甲採兩層向外延伸的短圓角菱形盤片，胸甲深藍中央垂直盾片，少量青色嵌入狀態窗。大形狀清楚，細節克制。",
+      "status": "generated_pending_user_review",
+      "review_notes": "弧形頭架和層肩可辨識；全身與特寫頭架弧線、背面層肩仍需幾何統一，光條偏多。"
+    },
+    {
+      "id": 21,
+      "original": "Assault Armor",
+      "slug": "21_assault",
+      "role": "全覆面盾／暗色重甲",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-34682558-ed98-40b7-8578-d36df8fab6eb.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_21.png",
+        "assets/ui/armor_thumbnails/armor_body_21.png"
+      ],
+      "source_family": "Call of Mini Infinity",
+      "image": "images/21_assault.png",
+      "prompt": "prompts/21_assault.txt",
+      "design_brief": "保留原版無分離眼罩的整面弧盾、下緣通信圈和暗色裝甲；不保留骷髏貼花。新頭盔是整片煙黑多面面盾，中央上部一塊霧暗黃可替換塗裝板、深凹側耳模組；面盾外輪廓切角而不圓滑。胸甲寬大深紫灰成對厚護板、肩部多面硬殼，重手套靴子。少量暗紫或青白 LED，讓全覆盾與其他頭盔不同。",
+      "status": "generated_pending_user_review",
+      "review_notes": "整面盾差異明確，骷髏貼花已移除；磨損較多，新增天線與盾面細節需多視角統一。"
+    },
+    {
+      "id": 22,
+      "original": "Combat Suit",
+      "slug": "22_combat",
+      "role": "紫盔綠面罩／簡單寬胸",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-36d0774c-5fbd-4961-bac8-3faf490af0d7.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_22.png",
+        "assets/ui/armor_thumbnails/armor_body_22.png"
+      ],
+      "source_family": "Call of Mini Infinity",
+      "image": "images/22_combat.png",
+      "prompt": "prompts/22_combat.txt",
+      "design_brief": "保留原版大塊紫色頭盔、綠色面罩與簡單寬胸板。新頭盔上殼像切角整體帽罩，額前低簷，面罩寬梯形向下收，短厚下顎分離護片；側耳採水平疊層槽。霧紫金屬塗裝、綠色煙燻玻璃、灰黑內襯；胸甲大而少分件，肩甲是短方塊，靴子寬厚。少量冷白 LED，不滿身條紋。",
+      "status": "generated_pending_user_review",
+      "review_notes": "紫色整體帽罩、簡單胸甲可辨識；頭部較大，紫色飽和度待統一。"
+    },
+    {
+      "id": 23,
+      "original": "Drillmaster",
+      "slug": "23_drillmaster",
+      "role": "下壓額尖／短腮罩",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-a1853cf2-14ab-4e24-9fa1-ad7f4863d5be.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_23.png",
+        "assets/ui/armor_thumbnails/armor_body_23.png"
+      ],
+      "source_family": "Call of Mini Infinity",
+      "image": "images/23_drillmaster.png",
+      "prompt": "prompts/23_drillmaster.txt",
+      "design_brief": "保留原版頭盔前額向下壓的中央凸尖、綠面罩及側邊短三格青燈。新頭盔大面積石墨灰整體頂殼，額中央低垂折角遮住上半面窗，左右側耳三個小狀態燈，短厚圓角方形呼吸面板。胸甲中央向前突起的長梯形控制護板、窄肩接縫和方肩。槍鐵灰主色、霧綠面窗，燈只在側耳與胸上緣。",
+      "status": "generated_pending_user_review",
+      "review_notes": "下壓額板與短腮罩可辨識；全身和特寫的額板比例需校對，胸燈位置與規格仍有差異。"
+    },
+    {
+      "id": 24,
+      "original": "Heavy Battlesuit",
+      "slug": "24_heavy",
+      "role": "雙側高鰭／米灰重甲",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-76025682-f233-444c-8cfc-f4a95a2ed4d0.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_24.png",
+        "assets/ui/armor_thumbnails/armor_body_24.png"
+      ],
+      "source_family": "Call of Mini Infinity",
+      "image": "images/24_heavy.png",
+      "prompt": "prompts/24_heavy.txt",
+      "design_brief": "保留原版兩側高直後掠鰭、米灰色大塊裝甲和藍面罩。新頭盔中央殼低而厚，兩側向上後方伸出短寬雙鰭，鰭根部是厚肩耳連接座，不是尖角。寬藍黑面罩下有短方下顎，肩甲寬方重疊、胸甲兩大片米灰盾板、護脛粗厚。少量淡藍 LED；人形短壯，不是機器人。",
+      "status": "generated_pending_user_review",
+      "review_notes": "雙側高鰭與米灰重甲可辨識；鰭比指定短寬造型更細長，需縮短並驗證活動空間。"
+    },
+    {
+      "id": 25,
+      "original": "Mark-6 117R",
+      "slug": "25_orbital",
+      "role": "綠紫分殼／金面罩",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-4e86bdbe-d443-45c3-abc8-ba38fb1e61d2.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_25.png",
+        "assets/ui/armor_thumbnails/armor_body_25.png"
+      ],
+      "source_family": "Call of Mini Infinity",
+      "image": "images/25_orbital.png",
+      "prompt": "prompts/25_orbital.txt",
+      "design_brief": "保留原版橄欖綠和紫色分殼、黃色面罩的印象，但重新設計輪廓。新頭盔採寬扁不對稱分段冠板，金色面窗是窄橫向多面條帶，外側矩形深陷傳感器，下顎是短小向前厚護塊；避免任何 Master Chief 經典頭盔或胸甲輪廓。胸甲由偏置大多邊形綠板與紫肩甲構成，少量暖白燈；保留緊湊比例。",
+      "status": "generated_pending_user_review",
+      "review_notes": "綠紫分殼與金面罩保留；全身三格側燈、特寫單格側燈不一致，非對稱胸甲要求未明顯落實。"
+    },
+    {
+      "id": 26,
+      "original": "Recon Suit",
+      "slug": "26_recon",
+      "role": "橙甲／單側高天線",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-42ae51cb-e2a8-4f24-a027-0934ff5b1fb6.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_26.png",
+        "assets/ui/armor_thumbnails/armor_body_26.png"
+      ],
+      "source_family": "Call of Mini Infinity",
+      "image": "images/26_recon.png",
+      "prompt": "prompts/26_recon.txt",
+      "design_brief": "保留原版橙色盔甲、藍色面罩和单側向上後延伸的天線護鰭。新頭盔是低斜額頭、深藍梯形面窗，單側厚短折角天線護片連到方形耳座，另一側無對稱天線。胸甲中央凸出長梯形板，短方肩和輕量腕甲；橙色降低飽和但仍清楚，黑色關節，少量青 LED。仍短壯而非長腿忍者。",
+      "status": "generated_pending_user_review",
+      "review_notes": "單側天線與橙藍分色可辨識；天線高度、前後左右一致性需校對。"
+    },
+    {
+      "id": 27,
+      "original": "Sanguine Chaos",
+      "slug": "27_sanguine",
+      "role": "高平額板／窄橙眼罩",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-9e179a52-3f2b-4f7c-b250-17edd03d11ab.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_27.png",
+        "assets/ui/armor_thumbnails/armor_body_27.png"
+      ],
+      "source_family": "Call of Mini Infinity",
+      "image": "images/27_sanguine.png",
+      "prompt": "prompts/27_sanguine.txt",
+      "design_brief": "保留原版高大平整額板、額側雙橙線和極窄橙色面罩。新頭盔是向上後傾的寬多面盾殼，眼窗壓在下方深凹處，厚方下顎；額側橙線改為不發光嵌條。胸甲寬 U 型兩大黑灰硬殼，肩甲厚水平層片，橙色細識別片保持少量。小琥珀 LED；不要紅色肉體、骷髏或惡魔。",
+      "status": "generated_pending_user_review",
+      "review_notes": "高額板與窄橙眼罩可辨識；肩胸橙紋與 LED 偏多，額板背視圖高度需統一。"
+    },
+    {
+      "id": 28,
+      "original": "Training Suit",
+      "slug": "28_training",
+      "role": "圓拱冠／極細眼縫",
+      "source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-7c1a2e82-c2a1-47aa-917d-eb80980e63d7.png",
+      "references": [
+        "assets/ui/armor_thumbnails/armor_head_28.png",
+        "assets/ui/armor_thumbnails/armor_body_28.png"
+      ],
+      "source_family": "Call of Mini Infinity",
+      "image": "images/28_training.png",
+      "prompt": "prompts/28_training.txt",
+      "design_brief": "保留原版拱形頭冠、左右圓弧側槽和極細橙色眼縫，與其他大面罩分開。新頭盔以霧橄欖綠整體殼和冷灰倒 U 形外骨架組成，前臉幾乎封閉，眼縫極窄，下顎橫向長方形檢修板，側額短青色三格燈。胸甲是一片平寬梯形板，方肩較小、護膝簡單、腳掌寬，乾淨基礎量產風格。",
+      "status": "generated_pending_user_review",
+      "review_notes": "圓拱冠與細橙眼縫差異明確；頭部偏大，額側三格燈較亮，待比例與亮度校對。"
+    }
+  ]
+}
