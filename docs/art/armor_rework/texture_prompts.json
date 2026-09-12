@@ -1,0 +1,49 @@
+{
+  "tool": "built-in image_gen",
+  "approach": "original armor refinement; concept-guided surface finish",
+  "entries": [
+    {
+      "part": "head",
+      "prompt": "Use case: precise-object-edit. Asset: production UV texture map for an EXISTING game helmet. Edit this exact square texture atlas. Preserve the position, scale, silhouette and orientation of EVERY existing UV island and every boundary; preserve the dark blue unused background. This is an atlas, do NOT produce a character render, do NOT rearrange islands, do NOT add borders. The user wants a restrained remaster of the original Viper helmet so it is still immediately recognizable, NOT a replacement design. Keep its existing muted steel-blue armor, broad curved crown, cyan-blue brow and jaw trim, charcoal ear/undersuit sections, and purple smoked visor island in the LOWER RIGHT. Improve painting quality: resolve blurry edges with clean precise small bevel highlights; slightly deepen existing assembly seams; subtle believable painted-metal variation; cleaner charcoal composite; delicate purple glass sheen. Preserve the original broad hand-painted light/dark volumes and all color region boundaries. Mostly clean broad panels with VERY restrained wear, no scattered noise, no gritty grain, no bolts that change layout, no new LEDs, no engraving patterns, no thick white outlines. Flat texture-map image, not photorealistic product lighting. Output one square high-resolution texture, same UV layout as input, aiming for 1024x1024.",
+      "output": "assets/armors/viper/textures/head.png",
+      "references": [
+        "assets/models/player/animated/armor_textures/head_22f92a18e5f8_2x.png"
+      ]
+    },
+    {
+      "part": "body",
+      "prompt": "Use case: precise-object-edit. This is a production UV atlas for an EXISTING Viper game armor mesh. Refine the supplied texture itself while preserving the exact normalized positions, shapes, sizes and rotations of ALL UV islands and ALL blue/black color boundaries. Keep the dark navy unused background. Do not rearrange, combine, crop or add islands. Do NOT generate a character or 3D render. Keep the original instantly recognizable: muted steel-blue painted plates, dark graphite flexible underlayer, original broad hand-painted lighting volumes. Improve blurry painting with crisp existing seams, restrained tiny bevel highlights and subtle painted-metal variation. Mostly clean large surfaces. No new geometry design, no new lights, no noisy grain, no excessive scratches, no added panel lines, no stickers, no text. Do not paint chrome or bright white outlines. Same square composition, high resolution, aim for 1024x1024. Keep the existing split chest motif and two diagonal dark chest vents in their exact atlas positions; preserve the waist crenellated dark belt and the upper-right thigh/hip island.",
+      "output": "assets/armors/viper/textures/body.png",
+      "references": [
+        "assets/models/player/animated/armor_textures/body_41c59e886aaa_2x.png"
+      ]
+    },
+    {
+      "part": "shoulder",
+      "prompt": "Use case: precise-object-edit. This is a production UV atlas for an EXISTING Viper game armor mesh. Refine the supplied texture itself while preserving the exact normalized positions, shapes, sizes and rotations of ALL UV islands and ALL blue/black color boundaries. Keep the dark navy unused background. Do not rearrange, combine, crop or add islands. Do NOT generate a character or 3D render. Keep the original instantly recognizable: muted steel-blue painted plates, dark graphite flexible underlayer, original broad hand-painted lighting volumes. Improve blurry painting with crisp existing seams, restrained tiny bevel highlights and subtle painted-metal variation. Mostly clean large surfaces. No new geometry design, no new lights, no noisy grain, no excessive scratches, no added panel lines, no stickers, no text. Do not paint chrome or bright white outlines. Same square composition, high resolution, aim for 1024x1024. Keep the central broad domed shoulder island, dark upper crown and steel-blue lower band, plus the two separate small black top islands. Retain their exact silhouettes; soften the old star-shaped hotspot into restrained broad hand-painted shading.",
+      "output": "assets/armors/viper/textures/shoulder.png",
+      "references": [
+        "assets/models/player/animated/armor_textures/jian_6847836cc115_2x.png"
+      ]
+    },
+    {
+      "part": "arms",
+      "prompt": "Use case: precise-object-edit. This is a production UV atlas for an EXISTING Viper game armor mesh. Refine the supplied texture itself while preserving the exact normalized positions, shapes, sizes and rotations of ALL UV islands and ALL blue/black color boundaries. Keep the dark navy unused background. Do not rearrange, combine, crop or add islands. Do NOT generate a character or 3D render. Keep the original instantly recognizable: muted steel-blue painted plates, dark graphite flexible underlayer, original broad hand-painted lighting volumes. Improve blurry painting with crisp existing seams, restrained tiny bevel highlights and subtle painted-metal variation. Mostly clean large surfaces. No new geometry design, no new lights, no noisy grain, no excessive scratches, no added panel lines, no stickers, no text. Do not paint chrome or bright white outlines. Same square composition, high resolution, aim for 1024x1024. Preserve the large angular blue forearm plate in the center/right and the black glove/undersuit at its base, the top horizontal black island, and the small lower-left island. Retain restrained broad old-style highlights; sharpen existing assembly edges without decorative new panel patterns. Image 1 is the EXACT UV-layout edit target; image 2 is ONLY a surface-finish reference for cleaner metal edges and matte soft joints. Never copy image 2's redesigned shapes or paint a character. Preserve image 1's original Viper shapes and palette. Avoid thick white chips and watercolor blotches.",
+      "output": "assets/armors/viper/textures/arms.png",
+      "references": [
+        "assets/models/player/animated/armor_textures/hand_f539ff620e61_2x.png",
+        "docs/art/armor_concepts_v2/images/00_viper_style_anchor.png"
+      ]
+    },
+    {
+      "part": "legs",
+      "prompt": "Use case: precise-object-edit. This is a production UV atlas for an EXISTING Viper game armor mesh. Refine the supplied texture itself while preserving the exact normalized positions, shapes, sizes and rotations of ALL UV islands and ALL blue/black color boundaries. Keep the dark navy unused background. Do not rearrange, combine, crop or add islands. Do NOT generate a character or 3D render. Keep the original instantly recognizable: muted steel-blue painted plates, dark graphite flexible underlayer, original broad hand-painted lighting volumes. Improve blurry painting with crisp existing seams, restrained tiny bevel highlights and subtle painted-metal variation. Mostly clean large surfaces. No new geometry design, no new lights, no noisy grain, no excessive scratches, no added panel lines, no stickers, no text. Do not paint chrome or bright white outlines. Same square composition, high resolution, aim for 1024x1024. Preserve the exact boot/shin atlas layout: upper-right large dark toe/sole wedge framed in blue, lower horizontal blue shin/ankle plates, upper-left dark islands and central dark patch. Preserve their original silhouettes. Clean up muddy highlights; distinguish matte dark rubber from steel-blue painted shell. Image 1 is the EXACT UV-layout edit target; image 2 is ONLY a surface-finish reference for cleaner metal edges and matte soft joints. Never copy image 2's redesigned shapes or paint a character. Preserve image 1's original Viper shapes and palette. Avoid thick white chips and watercolor blotches.",
+      "output": "assets/armors/viper/textures/legs.png",
+      "references": [
+        "assets/models/player/animated/armor_textures/foot_3d4c778949e5_2x.png",
+        "docs/art/armor_concepts_v2/images/00_viper_style_anchor.png"
+      ]
+    }
+  ],
+  "prompt_record": "Reusable normalized production prompts; not a verbatim tool invocation log."
+}

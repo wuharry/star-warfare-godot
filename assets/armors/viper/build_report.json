@@ -1,0 +1,44 @@
+{
+  "approach": "original mesh refinement; original UVs and bone weights retained",
+  "concept_reference": "068f4785eee8542217b2e0a3ab4f72b16056f5bf / v2 Viper style anchor",
+  "source_sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
+  "parts": [
+    {
+      "part": "ArmorBody_00",
+      "original_triangles": 298,
+      "triangles": 1294,
+      "max_bounds_change_m": 0.0008189380168914795,
+      "material_keys": [
+        "body",
+        "shoulder"
+      ]
+    },
+    {
+      "part": "ArmorFoot_00",
+      "original_triangles": 136,
+      "triangles": 856,
+      "max_bounds_change_m": 0.001179039478302002,
+      "material_keys": [
+        "legs"
+      ]
+    },
+    {
+      "part": "ArmorHand_00",
+      "original_triangles": 112,
+      "triangles": 584,
+      "max_bounds_change_m": 0.000520169734954834,
+      "material_keys": [
+        "arms"
+      ]
+    },
+    {
+      "part": "ArmorHead_00",
+      "original_triangles": 136,
+      "triangles": 578,
+      "max_bounds_change_m": 0.00027120113372802734,
+      "material_keys": [
+        "head"
+      ]
+    }
+  ]
+}
