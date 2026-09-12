@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>裝甲與武器原版細修比較</title>
+<style>
+:root{color-scheme:dark;font:16px/1.6 system-ui,sans-serif;background:#10171d;color:#dce5eb}body{max-width:1300px;margin:auto;padding:24px}h1{font-size:26px;margin:0}p{color:#aebdc9}nav{display:flex;gap:12px;flex-wrap:wrap;position:sticky;top:0;padding:16px 0;background:#10171df0;z-index:2}select,button,input{font:inherit;padding:8px;border:1px solid #41505c;background:#1a2630;color:inherit;border-radius:5px}button{cursor:pointer}main{display:grid;grid-template-columns:1fr 1fr;gap:12px}figure{margin:0;background:#0b1014}figcaption{padding:10px;text-align:center}img{display:block;width:100%;height:auto;cursor:zoom-in}table{width:100%;border-collapse:collapse;margin-top:24px}td,th{text-align:left;border-bottom:1px solid #33404a;padding:8px}dialog{padding:0;border:1px solid #526574;max-width:95vw;max-height:95vh}dialog img{max-height:90vh;width:auto;max-width:90vw;cursor:zoom-out}dialog::backdrop{background:#000c}@media(max-width:650px){body{padding:12px}main{grid-template-columns:1fr}nav{position:static}}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.gallery img{max-height:400px;object-fit:contain}.gallery figcaption{font-size:13px}details{margin-top:24px}summary{cursor:pointer}@media(max-width:650px){.gallery{grid-template-columns:1fr}}
+</style>
+<h1>保留原版，細修表面與邊緣</h1>
+<p>同一套原模型、骨骼、相機與照明，比較貼圖清晰度與小幅模型修整。保留原有輪廓、配色與換彈零件。下方提供完整對應表，以及移動換彈與實際關卡截圖。</p>
+<nav><label>類別 <select id="kind"><option value="all">全部</option><option value="armor">裝甲</option><option value="weapon">武器</option></select></label><label>項目 <select id="item"></select></label><label>視角 <select id="view"><option value="front">正面斜角</option><option value="side">側面</option><option value="rear">背面斜角</option></select></label><button id="prev">上一件</button><button id="next">下一件</button></nav>
+<main><figure><figcaption>原版</figcaption><img id="original" alt="原版遊戲模型"></figure><figure><figcaption>細修版</figcaption><img id="refined" alt="細修版遊戲模型"></figure></main>
+<dialog id="zoom"><img alt="放大比較"></dialog>
+<details><summary>移動換彈與實際關卡畫面</summary><div class="gallery">__GALLERY__</div></details>
+<p>共 28 套裝甲、47 把武器；160 張細修貼圖。12 張特效遮罩及 1 張原生 2048 貼圖保留原版，因此下表新圖數量不必等於來源數量。WHITE DRILL、Spreader 的原版比較側也已補回 Unity 缺漏材質。</p>
+<table><thead><tr><th>ID</th><th>裝備</th><th>已檢視新貼圖／來源貼圖</th><th>進度</th></tr></thead><tbody>__ROWS__</tbody></table>
+<script>
+const data=__CAPTURES__;
+const kind=document.querySelector('#kind'),item=document.querySelector('#item'),view=document.querySelector('#view');
+function refresh(){for(const version of ['original','refined'])document.getElementById(version).src=`${item.value}_${version}_${view.value}.png`;}
+function filter(){item.replaceChildren();for(const e of data.filter(e=>kind.value==='all'||e.kind===kind.value)){let o=document.createElement('option');o.value=e.key;o.textContent=e.key+' · '+e.name;item.append(o)}refresh()}
+kind.onchange=filter;item.onchange=view.onchange=refresh;
+for(const [id,d] of [['prev',-1],['next',1]])document.getElementById(id).onclick=()=>{item.selectedIndex=(item.selectedIndex+d+item.length)%item.length;refresh()};
+const zoom=document.getElementById('zoom');for(const id of ['original','refined'])document.getElementById(id).onclick=()=>{zoom.querySelector('img').src=document.getElementById(id).src;zoom.showModal()};for(const img of document.querySelectorAll('.gallery img'))img.onclick=()=>{zoom.querySelector('img').src=img.src;zoom.showModal()};for(const button of document.querySelectorAll('.jump'))button.onclick=()=>{kind.value='all';filter();item.value=button.dataset.key;refresh();window.scrollTo({top:0,behavior:'smooth'})};zoom.onclick=()=>zoom.close();filter();
+</script></html>

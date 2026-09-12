@@ -11,6 +11,8 @@ func _check(condition: bool, message: String) -> void:
 		push_error("WEAPON POSE TEST: " + message)
 
 func _run() -> void:
+	GameState.save_path = "user://equipment_weapon_pose_test.json"
+	GameState.battle_weapons.assign(["gun00"])
 	GameState.selected_level = 1
 	GameState.selected_weapon = "gun00"
 	var world := (load("res://scenes/game.tscn") as PackedScene).instantiate() as WarfareGameWorld

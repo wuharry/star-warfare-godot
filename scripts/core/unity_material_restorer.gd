@@ -3,25 +3,36 @@ class_name UnityMaterialRestorer
 const LIGHTMAP_SHADER = preload("res://assets/shaders/unity_lightmap.gdshader")
 const SOLID_OVERLAY_SHADER = preload("res://assets/shaders/unity_solid_overlay.gdshader")
 static var _lightmap_shaders: Dictionary = {}
+static var _weapon_overlays: Dictionary = {}
 
 
-static func restore_ufo_body(instance: MeshInstance3D, weapon_id: int) -> void:
-	if weapon_id != 45 or instance.mesh == null:
+static func restore_weapon_overlays(instance: MeshInstance3D, weapon_id: int) -> void:
+	if weapon_id not in [36, 45, 46] or instance.mesh == null:
 		return
-	# Unity HotWing-Material #25 uses SolidAndAlphaTexture: _texBase + _tex2.
-	# Match names, since the detachable chamber has different surface indices.
+	# Recover the original Unity two-texture materials omitted by old OBJ caches.
+	var definitions := {
+		36: ["_Material_26_", "gun_17.png", "gun_17_l.png", 2.0],
+		45: ["_HotWing-Material_25_", "HotWing_D.png", "HotWing_L.png", 1.0],
+		46: ["_33_EartherBreaker-Material_19_", "33_EartherBreaker_D.png", "33_EartherBreaker_L.png", 1.0],
+	}
+	var definition: Array = definitions[weapon_id]
 	for surface in instance.mesh.get_surface_count():
 		var source := instance.mesh.surface_get_material(surface) as StandardMaterial3D
-		if source == null or not source.resource_name.begins_with("_HotWing-Material_25_"):
+		if source == null or not source.resource_name.begins_with(str(definition[0])):
+			continue
+		# Share these immutable materials across rapid weapon swaps and reload props.
+		if _weapon_overlays.has(weapon_id):
+			instance.set_surface_override_material(surface, _weapon_overlays[weapon_id])
 			continue
 		var material := _overlay_material(source, {
-			"overlay_texture": "res://assets/models/weapons/HotWing_L.png",
+			"overlay_texture": "res://assets/models/weapons/" + str(definition[2]),
 			"overlay_color": [1.0, 1.0, 1.0, 1.0],
-			"overlay_multiplier": 1.0,
+			"overlay_multiplier": definition[3],
+			# WHITE DRILL's source mesh has no second UV channel; use its authored UV0.
 			"base_uses_uv2": false,
 		})
-		# Existing OBJ caches do not track changes to their external MTL file.
-		material.set_shader_parameter("base_texture", load("res://assets/models/weapons/HotWing_D.png"))
+		material.set_shader_parameter("base_texture", load(preload("res://scripts/core/equipment_refinement.gd").texture_path("res://assets/models/weapons/" + str(definition[1]))))
+		_weapon_overlays[weapon_id] = material
 		instance.set_surface_override_material(surface, material)
 
 

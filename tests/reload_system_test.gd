@@ -75,7 +75,7 @@ func _run() -> void:
 			for child in debris.get_children():
 				if child is CollisionShape3D:
 					var box := child.shape as BoxShape3D
-					_check(box != null and box.size.is_equal_approx(hand_mesh.mesh.get_aabb().size * player.reload_prop_scale), "FR28a collision still uses the oversized placeholder")
+					_check(box != null and box.size.is_equal_approx(preload("res://scripts/core/equipment_refinement.gd").authored_bounds(hand_mesh.mesh).size * player.reload_prop_scale), "FR28a collision still uses the oversized placeholder")
 		var insert_fraction := float(player.current_weapon.get("insert_fraction", 0.75))
 		player._update_reload(player.reload_total * (insert_fraction - 0.48))
 		var expected_insert := "ShotgunCock02.wav" if str(expected.style) == "shotgun_shell" else "weapon_reload_magazine_insert.wav"
@@ -317,7 +317,12 @@ func _check_fr28a_parts(player: WarfarePlayer) -> void:
 	_check(magazine.global_transform.is_equal_approx(body.global_transform), "FR28a magazine no longer matches the gun's original coordinates/scale")
 	var source := load("res://assets/models/weapons/gun00.obj") as Mesh
 	var source_faces := _mesh_triangles(source)
-	var remaining := _mesh_triangles(body.mesh) + _mesh_triangles(magazine.mesh)
+	# Validate the authored split independently from optional surface bevels.
+	var split_body := load("res://assets/models/weapons/%s.obj" % player.current_weapon.reload_body_model) as Mesh
+	var split_magazine := load("res://assets/models/weapons/%s.obj" % player.current_weapon.prop_model) as Mesh
+	var remaining := _mesh_triangles(split_body) + _mesh_triangles(split_magazine)
+	_check(preload("res://scripts/core/equipment_refinement.gd").authored_bounds(body.mesh).is_equal_approx(split_body.get_aabb()), "refined FR28a changed body alignment bounds")
+	_check(preload("res://scripts/core/equipment_refinement.gd").authored_bounds(magazine.mesh).is_equal_approx(split_magazine.get_aabb()), "refined FR28a changed magazine alignment bounds")
 	# Position compression uses 16 bits within each mesh's own AABB. The sum
 	# of both quantization bounds accounts for different part bounds, not gaps.
 	var tolerance := (source.get_aabb().size.length() + maxf(body.mesh.get_aabb().size.length(), magazine.mesh.get_aabb().size.length())) / 65535.0 + 0.0000001

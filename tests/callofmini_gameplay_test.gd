@@ -18,6 +18,7 @@ func _check(condition: bool, message: String) -> void:
 func _run() -> void:
 	GameState.save_path = "user://callofmini_gameplay_test.json"
 	GameState.selected_weapon = "gun00"
+	GameState.battle_weapons.assign(["gun00"])
 	GameState.credits = 200000
 	GameState.equipped_armor = {"head": "armor_head_00", "body": "armor_body_00", "arms": "armor_arms_00", "legs": "armor_legs_00", "bag": "armor_bag_00"}
 	GameState.owned_armor.assign(GameState.equipped_armor.values())
@@ -26,8 +27,11 @@ func _run() -> void:
 	player.set_physics_process(false)
 	var skeleton: Skeleton3D = player.recovered_skeleton
 	var animation_player: AnimationPlayer = player.recovered_animation_player
+	var original_avatar := (load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate()
 	for instance: MeshInstance3D in player.recovered_avatar.find_children("Armor*", "MeshInstance3D", true, false):
 		for surface in instance.mesh.get_surface_count():
+			if instance.has_meta("armor_rework"):
+				continue # Viper intentionally uses the retained painted-armor shader.
 			var material := instance.get_active_material(surface) as BaseMaterial3D
 			_check(material != null and material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, "%s lost Unity's unlit armor shader" % instance.name)
 	var bag_material := player.backpack_visual.get_active_material(0) as BaseMaterial3D
@@ -61,7 +65,7 @@ func _run() -> void:
 			var mesh := player.recovered_avatar.find_child("%s_%02d" % [PART_NAMES[part], set_id], true, false) as MeshInstance3D
 			_validate_skin(mesh, skeleton)
 			if set_id == 21 and part in [2, 3]:
-				var reference := player.recovered_avatar.find_child("%s_00" % PART_NAMES[part], true, false) as MeshInstance3D
+				var reference := original_avatar.find_child("%s_00" % PART_NAMES[part], true, false) as MeshInstance3D
 				var reference_points := _posed_vertices(reference, skeleton)
 				var refined_points := _posed_vertices(mesh, skeleton)
 				_check(refined_points.size() > reference_points.size(), "Assault limb refinement did not subdivide/bevel the low-poly mesh")
@@ -103,6 +107,7 @@ func _run() -> void:
 	_validate_visible_parts(player.recovered_avatar, [0, 0, 0, 0])
 	_check(player.recovered_avatar.find_children("Armor*", "MeshInstance3D", true, false).size() == 116, "armor selection duplicated meshes")
 	player.free()
+	original_avatar.free()
 	await get_tree().process_frame
 	AudioDirector.stop_all_sfx()
 	for suffix in ["", ".bak", ".tmp"]:
@@ -132,6 +137,12 @@ func _validate_skin(instance: MeshInstance3D, skeleton: Skeleton3D) -> void:
 	for surface in instance.mesh.get_surface_count():
 		var material := instance.get_active_material(surface) as BaseMaterial3D
 		var texture_path := material.albedo_texture.resource_path if material != null and material.albedo_texture != null else ""
+		if texture_path.begins_with("res://assets/equipment_refined/"):
+			var manifest: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/equipment_refined/manifest.json"))
+			for job: Dictionary in manifest.textures:
+				if job.output == texture_path and job.status == "approved":
+					texture_path = job.source
+					break
 		var source_atlas := texture_path.begins_with("res://assets/callOfMini/enhanced/")
 		var assault_reference := String(instance.name).ends_with("_21") and not String(instance.name).begins_with("ArmorHead")
 		var reference_atlas := assault_reference and texture_path.begins_with("res://assets/models/player/animated/")

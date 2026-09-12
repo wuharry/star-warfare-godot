@@ -202,7 +202,7 @@ func _run() -> void:
 		var ufo_body := _preview_material_by_name(ufo_preview, "_hotwing-material_25_") as ShaderMaterial
 		_check(ufo_body != null, "UFO store body lost original two-texture shader")
 		if ufo_body != null:
-			_check(ufo_body.get_shader_parameter("base_texture") == load("res://assets/models/weapons/HotWing_D.png"), "UFO store base atlas missing")
+			_check(ufo_body.get_shader_parameter("base_texture") == load(preload("res://scripts/core/equipment_refinement.gd").texture_path("res://assets/models/weapons/HotWing_D.png")), "UFO store base atlas missing")
 			_check(ufo_body.get_shader_parameter("overlay_texture") == load("res://assets/models/weapons/HotWing_L.png"), "UFO store light atlas missing")
 		for solid_key: String in ["gun24", "gun44"]:
 			shell._select_item(solid_key, false)
@@ -254,8 +254,9 @@ func _run() -> void:
 				visible_armor_names.append(armor_mesh.name)
 				for surface_index in armor_mesh.mesh.get_surface_count():
 					var material := armor_mesh.get_active_material(surface_index)
-					if armor_mesh.has_meta("armor_rework"):
-						_check(material is ShaderMaterial and material.shader.resource_path == "res://assets/armors/viper/painted_armor.gdshader", "shop preview lost refined armor material")
+					if armor_mesh.has_meta("armor_rework") and int(str(armor_mesh.name).right(2)) < 21:
+						var expected_shader := "res://assets/armors/viper/painted_armor.gdshader" if str(armor_mesh.name).ends_with("_00") else "res://assets/equipment_refined/painted_equipment.gdshader"
+						_check(material is ShaderMaterial and material.shader.resource_path == expected_shader, "shop preview lost refined armor material")
 					else:
 						_check(material is BaseMaterial3D and material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, "shop preview lost the original unlit armor shader")
 		_check(visible_armor_names.size() == 4, "animated armor preview does not show exactly four equipped pieces")

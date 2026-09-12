@@ -34,7 +34,7 @@ func _ready() -> void:
 									var material := instance.get_active_material(surface) as ShaderMaterial
 									check(material != null, "UFO body/chamber lost Unity overlay shader")
 									if material != null:
-										check(material.get_shader_parameter("base_texture") == load("res://assets/models/weapons/HotWing_D.png"), "UFO base atlas missing")
+										check(material.get_shader_parameter("base_texture") == load(preload("res://scripts/core/equipment_refinement.gd").texture_path("res://assets/models/weapons/HotWing_D.png")), "UFO base atlas missing")
 										check(material.get_shader_parameter("overlay_texture") == load("res://assets/models/weapons/HotWing_L.png"), "UFO light atlas missing")
 									restored += 1
 							check(restored > 0, "UFO body/chamber has no restored surfaces")
