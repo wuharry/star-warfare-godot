@@ -536,20 +536,20 @@ func _build_gun_visual() -> void:
 	var restored_weapon_path := "res://assets/models/weapons/%s.obj" % str(data.model)
 	var added_restored_visual := false
 	if ResourceLoader.exists(restored_weapon_path):
-		var restored_mesh := load(restored_weapon_path) as Mesh
+		var restored_mesh := preload("res://scripts/core/equipment_refinement.gd").weapon_mesh(str(data.model))
 		if restored_mesh:
 			var restored := MeshInstance3D.new()
 			restored.name = "Recovered_%s" % str(data.model)
 			restored.mesh = restored_mesh
-			var bounds := restored_mesh.get_aabb()
+			var bounds := preload("res://scripts/core/equipment_refinement.gd").authored_bounds(restored_mesh)
 			var longest := maxf(bounds.size.x, maxf(bounds.size.y, bounds.size.z))
 			var factor := size.z / longest if longest > 0.001 else 1.0
 			reload_prop_scale = factor
 			if data.has("reload_body_model"):
 				# Both parts keep the original gun's coordinates and scale. Measuring
 				# the cut-down body instead would change the assembled silhouette.
-				restored.mesh = load("res://assets/models/weapons/%s.obj" % str(data.reload_body_model)) as Mesh
-				reload_prop_mesh = load("res://assets/models/weapons/%s.obj" % str(data.prop_model)) as Mesh
+				restored.mesh = preload("res://scripts/core/equipment_refinement.gd").weapon_mesh(str(data.reload_body_model))
+				reload_prop_mesh = preload("res://scripts/core/equipment_refinement.gd").weapon_mesh(str(data.prop_model))
 				reload_prop_scale = factor
 			restored.scale = Vector3.ONE * factor
 			# The prefab converter already preserves the old model's grip origin.
@@ -660,7 +660,7 @@ func _repair_recovered_weapon_materials(instance: MeshInstance3D, weapon_id: int
 			if material_name == "gong_1":
 				repaired.albedo_color.a = 0.58
 		instance.set_surface_override_material(surface_index, repaired)
-	UnityMaterialRestorer.restore_ufo_body(instance, weapon_id)
+	UnityMaterialRestorer.restore_weapon_overlays(instance, weapon_id)
 
 func _build_camera() -> void:
 	camera_rig = Node3D.new()
@@ -1225,7 +1225,7 @@ func _build_reload_attachment(visual_root: Node3D, data: Dictionary) -> void:
 	reload_part_socket.position = Vector3(data.get("prop_position", Vector3.ZERO))
 	reload_part_socket.rotation_degrees = Vector3(data.get("prop_rotation", Vector3.ZERO))
 	if reload_prop_mesh != null:
-		reload_part_socket.position = (reload_prop_mesh.get_aabb().get_center() + Vector3(data.get("reload_model_offset", Vector3.ZERO))) * reload_prop_scale
+		reload_part_socket.position = (preload("res://scripts/core/equipment_refinement.gd").authored_bounds(reload_prop_mesh).get_center() + Vector3(data.get("reload_model_offset", Vector3.ZERO))) * reload_prop_scale
 		reload_part_socket.rotation = Vector3.ZERO
 	elif data.has("reload_port"):
 		reload_part_socket.position = Vector3(data.reload_port) * reload_prop_scale
@@ -1245,7 +1245,7 @@ func _create_reload_prop(data: Dictionary, node_name: String) -> Node3D:
 		original_part.name = "OriginalMagazine"
 		original_part.mesh = reload_prop_mesh
 		original_part.scale = Vector3.ONE * reload_prop_scale
-		original_part.position = -reload_prop_mesh.get_aabb().get_center() * reload_prop_scale
+		original_part.position = -preload("res://scripts/core/equipment_refinement.gd").authored_bounds(reload_prop_mesh).get_center() * reload_prop_scale
 		_repair_recovered_weapon_materials(original_part, int(data.id))
 		root.add_child(original_part)
 		return root
@@ -1321,7 +1321,7 @@ func _drop_reload_part() -> void:
 	var collision := CollisionShape3D.new()
 	var size := Vector3(current_weapon.get("prop_size", Vector3(0.12, 0.24, 0.16)))
 	if reload_prop_mesh != null:
-		size = reload_prop_mesh.get_aabb().size * reload_prop_scale
+		size = preload("res://scripts/core/equipment_refinement.gd").authored_bounds(reload_prop_mesh).size * reload_prop_scale
 	if str(current_weapon.get("prop_shape", "box")) in ["shell", "drum", "rocket"]:
 		var cylinder := CylinderShape3D.new()
 		cylinder.radius = maxf(size.x, size.z) * 0.52

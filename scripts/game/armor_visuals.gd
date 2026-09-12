@@ -34,12 +34,13 @@ static func ensure_parts(avatar: Node3D, visual_ids: Dictionary) -> void:
 
 static func _ensure_reworked_parts(avatar: Node3D, skeleton: Skeleton3D, visual_ids: Dictionary) -> void:
 	for visual_id: int in visual_ids.values():
-		if not REWORKED_SCENES.has(visual_id):
+		var scene_path := str(REWORKED_SCENES.get(visual_id, "res://assets/equipment_refined/armors/armor_%02d.scn" % visual_id))
+		if not ResourceLoader.exists(scene_path):
 			continue
 		var marker := "armor_rework_%02d" % visual_id
 		if avatar.has_meta(marker):
 			continue
-		var packed := load(str(REWORKED_SCENES[visual_id])) as PackedScene
+		var packed := load(scene_path) as PackedScene
 		if packed == null:
 			continue
 		var source := packed.instantiate() as Node3D
@@ -50,11 +51,11 @@ static func _ensure_reworked_parts(avatar: Node3D, skeleton: Skeleton3D, visual_
 			var existing := avatar.find_child(str(replacement.name), true, false) as MeshInstance3D
 			if existing != null:
 				# Keep node paths stable for animation tracks and mixed equipment.
-				existing.mesh = replacement.mesh
-				existing.skin = replacement.skin
 				existing.material_override = null
 				for surface in existing.get_surface_override_material_count():
 					existing.set_surface_override_material(surface, null)
+				existing.mesh = replacement.mesh
+				existing.skin = replacement.skin
 				existing.transform = replacement.transform
 				existing.extra_cull_margin = replacement.extra_cull_margin
 				existing.set_meta("armor_rework", replacement.get_meta("armor_rework"))

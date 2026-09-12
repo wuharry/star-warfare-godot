@@ -1406,8 +1406,7 @@ func _build_weapon_preview() -> void:
 	var weapon: Dictionary = GameState.WEAPONS.get(selected_item_key, {})
 	if weapon.is_empty():
 		return
-	var mesh_path := "res://assets/models/weapons/%s.obj" % str(weapon.model)
-	var mesh := load(mesh_path) as Mesh if ResourceLoader.exists(mesh_path) else null
+	var mesh := preload("res://scripts/core/equipment_refinement.gd").weapon_mesh(str(weapon.model))
 	if mode == "store" or not _build_equipped_avatar_for_weapon(weapon, mesh):
 		if mesh == null:
 			_build_fallback_weapon(Color(weapon.color))
@@ -1709,7 +1708,7 @@ func _prepare_preview_materials(preview: MeshInstance3D, tint: Color, tint_weigh
 				preview.set_surface_override_material(surface_index, effect)
 			else:
 				preview.set_surface_override_material(surface_index, material)
-	UnityMaterialRestorer.restore_ufo_body(preview, weapon_id)
+	UnityMaterialRestorer.restore_weapon_overlays(preview, weapon_id)
 
 
 func _repair_preview_weapon_material(material: StandardMaterial3D, source: StandardMaterial3D, weapon_id: int, surface_index: int) -> void:
