@@ -11,6 +11,8 @@ signal shot_fired(weapon_data: Dictionary)
 signal died
 
 const ProjectileScript = preload("res://scripts/game/projectile.gd")
+const RocketReloadPose = preload("res://scripts/game/rocket_reload_pose.gd")
+const WeaponReloadPose = preload("res://scripts/game/weapon_reload_pose.gd")
 const ARMOR_HP_SCALE := 0.01
 const CAMERA_BASE_HEIGHT := 1.683712
 const FLY_CAMERA_OFFSET := 0.25
@@ -94,6 +96,13 @@ var reload_start_rounds := 0
 var reload_event_mask := 0
 var reload_hand_start_local := Vector3.ZERO
 var reload_reference_chest_pose := Transform3D.IDENTITY
+var rocket_reference_chest_pose := Transform3D.IDENTITY
+@export_enum("Random:-1", "A:0", "B:1", "C:2") var reload_variant_override := -1
+@export_enum("Random:-1", "A:0", "B:1") var rocket_reload_variant := -1
+var active_rocket_reload_variant := 0
+var active_reload_variant := 0
+var reload_first_cycle := true
+var reload_chest_references: Dictionary = {}
 var reload_part_socket: Marker3D
 var attached_reload_part: Node3D
 var reload_prop_mesh: Mesh
@@ -292,6 +301,19 @@ func _prepare_recovered_animations() -> void:
 	var chest_index := recovered_skeleton.find_bone("Bip01 Spine1")
 	if chest_index >= 0:
 		reload_reference_chest_pose = recovered_skeleton.get_bone_global_pose_no_override(chest_index)
+		if recovered_animation_player.has_animation("idle_bazinga"):
+			_play_recovered_animation("idle_bazinga", 0.0)
+			recovered_animation_player.advance(0.0)
+			rocket_reference_chest_pose = recovered_skeleton.get_bone_global_pose_no_override(chest_index)
+			_play_recovered_animation("idle_rifle", 0.0)
+			recovered_animation_player.advance(0.0)
+		for idle in ["idle_rifle", "idle_shotgun", "idle_bazinga", "idle_Sniper", "idle_BLACKSTARS"]:
+			if recovered_animation_player.has_animation(idle):
+				_play_recovered_animation(idle, 0.0)
+				recovered_animation_player.advance(0.0)
+				reload_chest_references[idle] = recovered_skeleton.get_bone_global_pose_no_override(chest_index)
+		_play_recovered_animation("idle_rifle", 0.0)
+		recovered_animation_player.advance(0.0)
 
 func _build_recovered_animation_layers() -> void:
 	if not recovered_animation_player or not recovered_skeleton or not recovered_avatar:
@@ -522,6 +544,7 @@ func _build_gun_visual() -> void:
 			var bounds := restored_mesh.get_aabb()
 			var longest := maxf(bounds.size.x, maxf(bounds.size.y, bounds.size.z))
 			var factor := size.z / longest if longest > 0.001 else 1.0
+			reload_prop_scale = factor
 			if data.has("reload_body_model"):
 				# Both parts keep the original gun's coordinates and scale. Measuring
 				# the cut-down body instead would change the assembled silhouette.
@@ -531,7 +554,7 @@ func _build_gun_visual() -> void:
 			restored.scale = Vector3.ONE * factor
 			# The prefab converter already preserves the old model's grip origin.
 			# Centering here made every recovered gun float away from the hand.
-			restored.position = Vector3.ZERO
+			restored.position = Vector3(data.get("reload_model_offset", Vector3.ZERO)) * factor
 			_repair_recovered_weapon_materials(restored, int(data.id))
 			visual_root.add_child(restored)
 			added_restored_visual = true
@@ -566,6 +589,9 @@ func _prepare_weapon_mount(weapon_id: int) -> void:
 	gun_mount_rest_rotation = gun_mount.quaternion
 
 func _weapon_authored_rotation(weapon_id: int) -> Vector3:
+	var weapon: Dictionary = GameState.WEAPONS.get("gun%02d" % weapon_id, {})
+	if weapon.has("model_rotation"):
+		return Vector3(weapon.model_rotation)
 	# Exact combat cases from Unity WeaponResourceConfig.RotateGun. Most legacy
 	# rifles need the authored -90° X bridge; bows, fists and several special
 	# weapons were already authored in hand-space and must not receive it.
@@ -804,7 +830,7 @@ func _update_body_facing(delta: float, desired_movement: Vector3) -> void:
 		model.rotation.y = body_yaw
 
 func is_combat_aim_active() -> bool:
-	if current_weapon_id == "gun00" and reload_left > 0.0:
+	if _uses_magazine() and reload_left > 0.0:
 		return false
 	return (
 		Input.is_action_pressed("aim")
@@ -1094,6 +1120,8 @@ func _magazine_rounds() -> int:
 func _set_magazine_rounds(rounds: int) -> void:
 	if _uses_magazine():
 		weapon_magazines[current_weapon_id] = clampi(rounds, 0, int(current_weapon.get("magazine_size", 1)))
+		if bool(current_weapon.get("consume_reload_part", false)) and is_instance_valid(attached_reload_part):
+			attached_reload_part.visible = _magazine_rounds() > 0
 
 func _start_reload() -> void:
 	if dead or reload_left > 0.0 or not _uses_magazine():
@@ -1106,7 +1134,15 @@ func _start_reload() -> void:
 	shoot_pose_left = 0.0
 	_begin_reload_cycle()
 
-func _begin_reload_cycle() -> void:
+func _begin_reload_cycle(first_cycle := true) -> void:
+	reload_first_cycle = first_cycle
+	if first_cycle:
+		var count := maxi(1, int(current_weapon.get("reload_variants", 1)))
+		var override := reload_variant_override
+		if bool(current_weapon.get("consume_reload_part", false)) and rocket_reload_variant >= 0:
+			override = rocket_reload_variant
+		active_reload_variant = randi_range(0, count - 1) if override < 0 else clampi(override, 0, count - 1)
+		active_rocket_reload_variant = active_reload_variant
 	reload_start_rounds = _magazine_rounds()
 	reload_total = maxf(0.12, float(current_weapon.get("reload_time", 1.5)))
 	var reload_style := str(current_weapon.get("reload_style", ""))
@@ -1167,13 +1203,17 @@ func _build_reload_attachment(visual_root: Node3D, data: Dictionary) -> void:
 	reload_part_socket.position = Vector3(data.get("prop_position", Vector3.ZERO))
 	reload_part_socket.rotation_degrees = Vector3(data.get("prop_rotation", Vector3.ZERO))
 	if reload_prop_mesh != null:
-		reload_part_socket.position = reload_prop_mesh.get_aabb().get_center() * reload_prop_scale
+		reload_part_socket.position = (reload_prop_mesh.get_aabb().get_center() + Vector3(data.get("reload_model_offset", Vector3.ZERO))) * reload_prop_scale
 		reload_part_socket.rotation = Vector3.ZERO
+	elif data.has("reload_port"):
+		reload_part_socket.position = Vector3(data.reload_port) * reload_prop_scale
 	visual_root.add_child(reload_part_socket)
 	if str(data.get("reload_style", "")) == "shotgun_shell":
 		return
 	attached_reload_part = _create_reload_prop(data, "AttachedReloadPart")
 	reload_part_socket.add_child(attached_reload_part)
+	if bool(current_weapon.get("consume_reload_part", false)):
+		attached_reload_part.visible = _magazine_rounds() > 0
 
 func _create_reload_prop(data: Dictionary, node_name: String) -> Node3D:
 	var root := Node3D.new()
@@ -1184,6 +1224,7 @@ func _create_reload_prop(data: Dictionary, node_name: String) -> Node3D:
 		original_part.mesh = reload_prop_mesh
 		original_part.scale = Vector3.ONE * reload_prop_scale
 		original_part.position = -reload_prop_mesh.get_aabb().get_center() * reload_prop_scale
+		_repair_recovered_weapon_materials(original_part, int(data.id))
 		root.add_child(original_part)
 		return root
 	var shape_name := str(data.get("prop_shape", "box"))
@@ -1277,10 +1318,8 @@ func _drop_reload_part() -> void:
 	var debris_nodes := get_tree().get_nodes_in_group("reload_debris")
 	if debris_nodes.size() > 24 and is_instance_valid(debris_nodes[0]):
 		debris_nodes[0].queue_free()
-	get_tree().create_timer(7.0).timeout.connect(func():
-		if is_instance_valid(debris):
-			debris.queue_free()
-	)
+	# Native bound callables disconnect when the debris is removed by the cap.
+	get_tree().create_timer(7.0).timeout.connect(debris.queue_free)
 
 func _create_reload_hand_prop() -> void:
 	_cleanup_reload_hand_prop()
@@ -1300,8 +1339,12 @@ func _update_reload_hand_prop() -> void:
 	if not is_instance_valid(reload_hand_prop) or not is_instance_valid(reload_part_socket):
 		return
 	var progress := reload_elapsed / maxf(reload_total, 0.001)
-	if current_weapon_id == "gun00" and is_instance_valid(recovered_skeleton):
+	if current_weapon_id == "gun00" and active_reload_variant == 0 and is_instance_valid(recovered_skeleton):
 		reload_hand_prop.global_position = _fr28a_reload_magazine_position(progress)
+	elif bool(current_weapon.get("consume_reload_part", false)) and is_instance_valid(recovered_skeleton):
+		reload_hand_prop.global_position = RocketReloadPose.rocket_position(self, progress)
+	elif current_weapon.has("reload_variants") and is_instance_valid(recovered_skeleton):
+		reload_hand_prop.global_position = WeaponReloadPose.prop_position(self, progress)
 	elif is_instance_valid(recovered_skeleton):
 		reload_hand_prop.global_position = recovered_skeleton.to_global(_reload_left_hand_target(progress))
 	else:
@@ -1322,7 +1365,7 @@ func _finish_reload_cycle() -> void:
 	reload_elapsed = 0.0
 	_emit_ammo()
 	if style == "shotgun_shell" and _magazine_rounds() < capacity:
-		_begin_reload_cycle()
+		_begin_reload_cycle(false)
 	else:
 		_end_reload_pose()
 
@@ -1337,15 +1380,17 @@ func _cancel_reload(restore_attachment := true) -> void:
 	_cleanup_reload_hand_prop()
 	if restore_attachment and is_instance_valid(attached_reload_part):
 		attached_reload_part.visible = str(current_weapon.get("reload_style", "")) != "shotgun_shell"
+		if bool(current_weapon.get("consume_reload_part", false)):
+			attached_reload_part.visible = _magazine_rounds() > 0
 	_end_reload_pose()
 	_emit_ammo()
 
 func _end_reload_pose() -> void:
 	if is_instance_valid(gun_mount):
 		gun_mount.position = gun_mount_rest_position
-		if current_weapon_id == "gun00":
+		if _uses_magazine():
 			gun_mount.quaternion = gun_mount_rest_rotation
-	if current_weapon_id == "gun00" and is_instance_valid(attached_reload_part):
+	if is_instance_valid(attached_reload_part):
 		attached_reload_part.position = Vector3.ZERO
 	if is_instance_valid(recovered_skeleton):
 		recovered_skeleton.clear_bones_global_pose_override()
@@ -1355,8 +1400,14 @@ func _update_reload_pose() -> void:
 	if reload_left <= 0.0:
 		return
 	var progress := clampf(reload_elapsed / maxf(reload_total, 0.001), 0.0, 1.0)
-	if current_weapon_id == "gun00" and is_instance_valid(recovered_skeleton):
+	if current_weapon_id == "gun00" and active_reload_variant == 0 and is_instance_valid(recovered_skeleton):
 		_update_fr28a_reload_pose(progress)
+		return
+	if bool(current_weapon.get("consume_reload_part", false)) and is_instance_valid(recovered_skeleton):
+		RocketReloadPose.update(self, progress)
+		return
+	if current_weapon.has("reload_variants") and is_instance_valid(recovered_skeleton):
+		WeaponReloadPose.update(self, progress)
 		return
 	var pulse := sin(progress * PI)
 	var style := str(current_weapon.get("reload_style", "rifle"))
@@ -1384,12 +1435,6 @@ func _update_reload_pose() -> void:
 			right_upper = Vector3(10.0, 0.0, -10.0)
 			gun_tilt = Vector3(9.0, 0.0, 18.0)
 			gun_offset = Vector3(-0.04, -0.10, 0.04)
-		"rocket":
-			left_upper = Vector3(-62.0, 8.0, 58.0)
-			left_forearm = Vector3(-36.0, -22.0, -18.0)
-			right_upper = Vector3(18.0, 0.0, -18.0)
-			gun_tilt = Vector3(-28.0, 5.0, 34.0)
-			gun_offset = Vector3(-0.12, -0.14, 0.08)
 		"grenade_drum":
 			left_upper = Vector3(-34.0, -28.0, 50.0)
 			left_forearm = Vector3(-52.0, 28.0, -12.0)
@@ -1513,6 +1558,10 @@ func _solve_reload_arm_pose(side: String, target_pose: Transform3D) -> void:
 func _reload_left_hand_target(progress: float) -> Vector3:
 	if not is_instance_valid(recovered_skeleton) or not is_instance_valid(reload_part_socket):
 		return reload_hand_start_local
+	if bool(current_weapon.get("consume_reload_part", false)):
+		return RocketReloadPose.left_hand_pose(self, progress).origin
+	if current_weapon.has("reload_variants") and not (current_weapon_id == "gun00" and active_reload_variant == 0):
+		return WeaponReloadPose.left_pose(self, progress).origin
 	if current_weapon_id == "gun00":
 		var base_hand := recovered_skeleton.get_bone_global_pose_no_override(recovered_skeleton.find_bone("Bip01 L Hand"))
 		var gun_pose := recovered_skeleton.global_transform.affine_inverse() * gun_mount.global_transform
@@ -1819,6 +1868,12 @@ func _update_visual_animation(delta: float, movement: float, movement_input := V
 	else:
 		footstep_clock = 0.3
 
+func _reload_idle_animation() -> String:
+	var pose := str(current_weapon.get("animation", "rifle"))
+	if pose == "grenade_launcher":
+		pose = "shotgun"
+	return _first_available_recovered_animation(["idle_" + pose, "idle_rifle"])
+
 func _update_recovered_animation(movement: float, movement_input := Vector2.ZERO) -> void:
 	if not is_instance_valid(recovered_animation_player):
 		return
@@ -1836,20 +1891,21 @@ func _update_recovered_animation(movement: float, movement_input := Vector2.ZERO
 		locomotion_pose = "rifle"
 	elif locomotion_pose == "BLACKSTARS":
 		locomotion_pose = "bazinga"
-	if current_weapon_id == "gun00" and reload_left > 0.0:
+	if _uses_magazine() and reload_left > 0.0:
 		# Running swings the shoulders far apart in depth. Keep the recovered
-		# rifle upper body while the legs continue their locomotion, so the
-		# magazine remains within reach of the left hand throughout the reload.
-		var reload_locomotion := "run_rifle" if moving else "idle_rifle"
+		# weapon's idle upper body while the legs continue their locomotion, so
+		# the reload prop stays within reach of the left hand.
+		var reload_idle := _reload_idle_animation()
+		var reload_locomotion := _first_available_recovered_animation(["run_" + locomotion_pose, "run_rifle"]) if moving else reload_idle
 		if float(armor_skills.get("fly", 0.0)) > 0.0:
 			reload_locomotion = _first_available_recovered_animation([
 				_fly_direction_animation(movement_input) if moving else "fly_idle",
 				reload_locomotion,
 			])
-		if reload_locomotion == "idle_rifle":
-			_play_recovered_animation("idle_rifle", 0.08)
+		if reload_locomotion == reload_idle:
+			_play_recovered_animation(reload_idle, 0.08)
 		else:
-			_play_recovered_layered_animation(reload_locomotion, "idle_rifle")
+			_play_recovered_layered_animation(reload_locomotion, reload_idle)
 		return
 	if float(armor_skills.get("fly", 0.0)) > 0.0:
 		_update_recovered_flying_animation(moving, movement_input, weapon_pose, locomotion_pose, restart_shoot_animation)
