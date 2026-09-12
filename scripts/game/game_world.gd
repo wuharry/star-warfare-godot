@@ -275,11 +275,11 @@ func _on_enemy_died(_enemy: WarfareEnemy, death_position: Vector3, reward: int, 
 	kills += 1
 	score += score_value_amount
 	if rng.randf() < 0.72:
-		spawn_pickup(death_position + Vector3.UP * 0.4, "credits", reward)
+		spawn_pickup(death_position + Vector3.UP, "credits", reward)
 	if rng.randf() < 0.18:
-		spawn_pickup(death_position + Vector3(rng.randf_range(-0.7, 0.7), 0.4, rng.randf_range(-0.7, 0.7)), "energy", 22.0)
+		spawn_pickup(death_position + Vector3(rng.randf_range(-0.7, 0.7), 1.0, rng.randf_range(-0.7, 0.7)), "energy", 22.0)
 	elif rng.randf() < 0.14:
-		spawn_pickup(death_position + Vector3.UP * 0.4, "ammo", 18.0)
+		spawn_pickup(death_position + Vector3.UP, "energy", 18.0)
 	_check_wave_complete()
 
 func _on_enemy_health_reported(current: float, maximum: float, is_boss: bool, enemy: WarfareEnemy) -> void:
