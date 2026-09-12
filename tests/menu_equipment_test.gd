@@ -245,8 +245,11 @@ func _run() -> void:
 			if armor_mesh.visible:
 				visible_armor_names.append(armor_mesh.name)
 				for surface_index in armor_mesh.mesh.get_surface_count():
-					var material := armor_mesh.get_active_material(surface_index) as BaseMaterial3D
-					_check(material != null and material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, "shop preview lost the original unlit armor shader")
+					var material := armor_mesh.get_active_material(surface_index)
+					if armor_mesh.has_meta("armor_rework"):
+						_check(material is ShaderMaterial and material.shader.resource_path == "res://assets/armors/viper/painted_armor.gdshader", "shop preview lost refined armor material")
+					else:
+						_check(material is BaseMaterial3D and material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, "shop preview lost the original unlit armor shader")
 		_check(visible_armor_names.size() == 4, "animated armor preview does not show exactly four equipped pieces")
 		for expected_mesh_name: String in expected_mesh_names:
 			_check(visible_armor_names.has(expected_mesh_name), "animated armor preview is missing " + expected_mesh_name)
