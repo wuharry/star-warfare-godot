@@ -221,16 +221,28 @@ func _check_fr28a_reload_camera(player: WarfarePlayer) -> void:
 		Input.action_release(action)
 		player._update_combat_aim_pose(1.0)
 
-	player.equip_weapon("gun35", false)
-	player._set_magazine_rounds(0)
-	player._start_reload()
-	player.body_yaw = 0.0
-	player.model.rotation.y = 0.0
-	_check(player.is_combat_aim_active(), "FR28a exception disabled camera aim for gun35 reload")
-	player._update_body_facing(1.0 / 60.0, Vector3.ZERO)
-	player._update_combat_aim_pose(1.0 / 60.0)
-	_check(player.body_yaw > 0.0 and player.upper_body_aim_override_active, "gun35 reload lost its original camera-facing behavior")
-	_check_weapon_aim_direction(player, "gun35 reload")
+	# The staged reload contract now applies to every catalog weapon. Camera
+	# orbit stays free while hands operate the model-specific loading part;
+	# held aim must resume after cancellation/completion.
+	for key: String in GameState.RELOAD_PROFILES:
+		player.equip_weapon(key, false)
+		player._set_magazine_rounds(0)
+		player._start_reload()
+		player.body_yaw = 0.0
+		player.model.rotation.y = 0.0
+		Input.action_press("aim")
+		_check(not player.is_combat_aim_active(), key + " reload enabled camera-driven gun aim")
+		var before_orbit := player.camera_yaw
+		player._apply_look_delta(Vector2(40, 0))
+		player._update_body_facing(1.0 / 60.0, Vector3.ZERO)
+		player._update_combat_aim_pose(1.0 / 60.0)
+		_check(not is_equal_approx(before_orbit, player.camera_yaw), key + " reload blocked orbit input")
+		_check(is_zero_approx(player.body_yaw) and not player.upper_body_aim_override_active, key + " reload followed the orbiting camera")
+		player._cancel_reload()
+		_check(player.is_combat_aim_active(), key + " did not restore held aim after cancellation")
+		player._update_combat_aim_pose(1.0 / 60.0)
+		_check_weapon_aim_direction(player, key + " after reload cancellation")
+		Input.action_release("aim")
 
 	player._cancel_reload()
 	player.equip_weapon(saved_weapon_id, false)

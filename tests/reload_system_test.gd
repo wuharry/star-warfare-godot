@@ -24,6 +24,7 @@ func _run() -> void:
 	add_child(world)
 	await get_tree().process_frame
 	var player := world.player
+	player.reload_variant_override = 0
 	player.set_physics_process(false)
 	_check(ResourceLoader.exists("res://assets/audio/non_original/weapon_reload_magazine_eject.wav"), "reload eject audio is missing")
 	_check(ResourceLoader.exists("res://assets/audio/non_original/weapon_reload_magazine_insert.wav"), "reload insert audio is missing")
@@ -32,7 +33,7 @@ func _run() -> void:
 		"gun00": {"style": "rifle", "capacity": 30, "drops": true, "eject": true},
 		"gun35": {"style": "sniper", "capacity": 5, "drops": true, "eject": true},
 		"gun06": {"style": "shotgun_shell", "capacity": 6, "drops": false, "eject": false},
-		"gun11": {"style": "rocket", "capacity": 1, "drops": true, "eject": true},
+		"gun11": {"style": "rocket", "capacity": 1, "drops": false, "eject": true},
 		"gun14": {"style": "grenade_drum", "capacity": 4, "drops": true, "eject": true},
 	}
 	var styles: Dictionary = {}
