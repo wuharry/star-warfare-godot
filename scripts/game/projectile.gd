@@ -2,6 +2,7 @@ class_name WarfareProjectile
 extends Node3D
 
 const LEGACY_HD_ROOT := "res://assets/vfx/legacy_hd/"
+const VfxPolish = preload("res://scripts/game/weapon_vfx_polish.gd")
 const ORIGINAL_ROCKET_MESH_PATH := "res://assets/models/projectiles/original_rocket.obj"
 const ORIGINAL_ROCKET_HD_TEXTURE_PATH := "res://assets/models/projectiles/gun0910_hd.png"
 const ORIGINAL_ROCKET_MATERIAL_STATES := {
@@ -29,6 +30,13 @@ var visual_root: Node3D
 var visual_spin := 0.0
 var visual_spin_speed := 0.0
 var visual_variant := ""
+var ufo_vertical_speed := 0.0
+var ufo_horizontal := Vector3.FORWARD
+var pierced: Dictionary = {}
+var joke_variant := 0
+var joke_robot := false
+var grenade_velocity := Vector3.ZERO
+var wall_fuse := -1.0
 
 func configure(source: Node, travel_direction: Vector3, travel_speed: float, damage_value: float, splash: float, color_value: Color, is_hostile: bool, kind := "rocket", recovered_explosion_sound := "", recovered_visual_variant := "") -> void:
 	owner_node = source
@@ -41,8 +49,16 @@ func configure(source: Node, travel_direction: Vector3, travel_speed: float, dam
 	projectile_kind = kind
 	explosion_sound = recovered_explosion_sound
 	visual_variant = recovered_visual_variant
+	if kind == "fly_grenade":
+		speed = 10.0
+		ufo_horizontal = Vector3(direction.x, 0, direction.z).normalized()
+		ufo_vertical_speed = direction.y / maxf(Vector2(direction.x, direction.z).length(), 0.001) * speed
 	gravity_strength = 14.0 if kind == "grenade" else 0.0
+	if kind == "grenade":
+		gravity_strength = 9.81
+		grenade_velocity = direction * 15.0
 	lifetime = 8.0 if kind in ["tracking", "fly_grenade", "ricochet"] else 5.0
+	if OriginalWeaponEffect.catalog().has(visual_variant): lifetime = 3.0 if kind == "fly_grenade" else 8.0
 
 func _ready() -> void:
 	visual_root = Node3D.new()
@@ -54,8 +70,13 @@ func _ready() -> void:
 		_build_fallback_visual()
 	previous_position = global_position
 	_update_visual_orientation()
+	if not hostile and not OriginalWeaponEffect.catalog().has(visual_variant):
+		VfxPolish.trail(self, tint, projectile_kind)
 	if projectile_kind in ["tracking", "fly_grenade"] and not hostile:
 		homing_target = _find_nearest_enemy()
+	elif projectile_kind in ["arrow", "energy_fist", "spring"] and is_instance_valid(owner_node) and owner_node.has_method("get_aim_solution"):
+		var aimed: Variant = owner_node.get_aim_solution().collider
+		if is_instance_valid(aimed) and aimed.is_in_group("enemies"): homing_target = aimed
 
 func _build_fallback_visual() -> void:
 	var mesh_instance := MeshInstance3D.new()
@@ -79,6 +100,12 @@ func _build_fallback_visual() -> void:
 	visual_root.add_child(light)
 
 func _build_legacy_hd_visual() -> bool:
+	if OriginalWeaponEffect.catalog().has(visual_variant):
+		var original := OriginalWeaponEffect.create("Effect/TrackingGrenadeShot" if visual_variant=="gun41" and joke_variant>0 else OriginalWeaponEffect.catalog()[visual_variant][0])
+		if projectile_kind == "windblade":
+			original.rotate_object_local(Vector3.BACK, deg_to_rad(45 if randi() % 2 == 0 else -45))
+		visual_root.add_child(original)
+		return true
 	match projectile_kind:
 		"plasma":
 			_add_billboard("l_001_hd.png", Vector2(0.95, 0.95), tint, 5.5)
@@ -264,6 +291,11 @@ func _add_billboard(texture_name: String, size: Vector2, color: Color, emission_
 	var mesh := QuadMesh.new()
 	mesh.size = size
 	mesh.material = _legacy_hd_material(texture_name, color, emission_energy, true)
+	# Energy/fire textures have black backgrounds, not a cutout alpha channel.
+	# Additive blending removes the visible black card while preserving smoke.
+	if not texture_name.contains("smook"):
+		(mesh.material as StandardMaterial3D).blend_mode = BaseMaterial3D.BLEND_MODE_ADD
+		(mesh.material as StandardMaterial3D).depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_DISABLED
 	sprite.mesh = mesh
 	sprite.position = position_value
 	visual_root.add_child(sprite)
@@ -330,18 +362,46 @@ func _update_visual_orientation() -> void:
 
 func _physics_process(delta: float) -> void:
 	lifetime -= delta
+	if wall_fuse >= 0:
+		wall_fuse -= delta
+		if wall_fuse <= 0:
+			_impact(global_position,null)
+			return
 	if lifetime <= 0.0:
+		if joke_robot:
+			_impact(global_position,null)
+			return
+		if projectile_kind == "fly_grenade":
+			_impact(global_position + Vector3.DOWN * 8.0, null)
+			return
 		queue_free()
+		return
+	if projectile_kind == "fly_grenade" and not hostile:
+		_advance_ufo(delta)
+		return
+	if joke_robot:
+		if not is_instance_valid(homing_target): homing_target = _find_nearest_enemy()
+		if is_instance_valid(homing_target):
+			var offset := homing_target.global_position-global_position
+			offset.y = 0
+			if offset.length_squared() < 1:
+				_impact(global_position,homing_target)
+				return
+			if offset.length_squared() <= 64:
+				direction = offset.normalized()
+				global_position += direction*10.0*delta
+				_update_visual_orientation()
 		return
 	previous_position = global_position
 	if is_instance_valid(homing_target):
 		var desired := (homing_target.global_position + Vector3.UP * 0.8 - global_position).normalized()
 		direction = direction.slerp(desired, clampf(delta * 3.6, 0.0, 1.0)).normalized()
 	if gravity_strength > 0.0:
-		direction = (direction * speed + Vector3.DOWN * gravity_strength * delta).normalized()
+		grenade_velocity += Vector3.DOWN * gravity_strength * delta
+		direction = grenade_velocity.normalized()
 	visual_spin += visual_spin_speed * delta
 	_update_visual_orientation()
-	var next_position := global_position + direction * speed * delta
+	var next_position := global_position + (grenade_velocity if gravity_strength>0 else direction*speed) * delta
 	var mask := 5 if hostile else 3
 	var query := PhysicsRayQueryParameters3D.create(previous_position, next_position, mask)
 	if is_instance_valid(owner_node) and owner_node is CollisionObject3D:
@@ -349,15 +409,58 @@ func _physics_process(delta: float) -> void:
 	var result := get_world_3d().direct_space_state.intersect_ray(query)
 	if not result.is_empty():
 		var collider := EnemyHitGeometry.resolve(result.get("collider"))
-		if projectile_kind == "ricochet" and bounces_left > 0 and (not is_instance_valid(collider) or not collider.is_in_group("enemies")):
+		if projectile_kind == "grenade" and (not is_instance_valid(collider) or not collider.is_in_group("enemies")):
+			if visual_variant=="gun41" and joke_variant>0 and Vector3(result.normal).y>0.5:
+				joke_robot = true
+				lifetime = 2.0
+				global_position = result.position+Vector3.UP*0.05
+				for child in visual_root.get_children(): child.queue_free()
+				visual_root.add_child(OriginalWeaponEffect.create("Effect/TrackingRobot"))
+				return
+			if absf(Vector3(result.normal).y)<0.5:
+				if wall_fuse<0: wall_fuse=1.5
+				grenade_velocity=grenade_velocity.bounce(result.normal)*0.3
+				global_position=result.position+Vector3(result.normal)*0.05
+				return
+		if projectile_kind == "windblade" and is_instance_valid(collider) and collider.is_in_group("enemies"):
+			if not pierced.has(collider):
+				pierced[collider] = true
+				collider.take_damage(damage, result.position, owner_node)
+				var hit := OriginalWeaponEffect.create("Effect/LaserHit", true)
+				get_parent().add_child(hit)
+				hit.global_position = result.position
+			global_position = next_position
+			return
+		if projectile_kind in ["ricochet", "spring"] and bounces_left > 0 and (not is_instance_valid(collider) or not collider.is_in_group("enemies")):
 			bounces_left -= 1
 			direction = direction.bounce(result.normal).normalized()
 			global_position = result.position + direction * 0.08
-			AudioDirector.play_3d("diablo/black_disk_bounce0%d.wav" % (4 - bounces_left), global_position, -3.0)
+			if projectile_kind=="ricochet": AudioDirector.play_3d(OriginalWeaponEffect.ROOT + "audio/diablo/black_disk_bounce0%d.wav" % (4 - bounces_left), global_position, -3.0)
 			return
 		_impact(result.position, collider)
 		return
 	global_position = next_position
+
+func _advance_ufo(delta: float) -> void:
+	var ground := 0.0
+	var ray := PhysicsRayQueryParameters3D.create(global_position, global_position + Vector3.DOWN * 100.0, 1)
+	var floor_hit := get_world_3d().direct_space_state.intersect_ray(ray)
+	if not floor_hit.is_empty(): ground = Vector3(floor_hit.position).y
+	if global_position.y > ground + 7.0:
+		ufo_vertical_speed = (ground + 8.0 - global_position.y) * 10.0
+		if is_instance_valid(homing_target):
+			var offset := homing_target.global_position - global_position
+			offset.y = 0
+			if offset.length_squared() < 1.0:
+				_impact(global_position + Vector3.DOWN * 8.0, null)
+				return
+			ufo_horizontal = ufo_horizontal.slerp(offset.normalized(), 1.0-pow(0.8, delta*60.0))
+	else:
+		ufo_vertical_speed += (20.0 if global_position.y > ground+1.0 else 200.0) * delta
+	global_position += (ufo_horizontal * speed + Vector3.UP * ufo_vertical_speed) * delta
+	# The original disc remains horizontal while it ascends; it does not pitch like a rocket.
+	direction = ufo_horizontal
+	_update_visual_orientation()
 
 func _impact(position_value: Vector3, direct_target: Node) -> void:
 	global_position = position_value
@@ -380,7 +483,30 @@ func _impact(position_value: Vector3, direct_target: Node) -> void:
 	elif is_instance_valid(direct_target) and direct_target.has_method("take_damage"):
 		direct_target.take_damage(damage, position_value, owner_node)
 	var world := get_parent()
-	if is_instance_valid(world) and world.has_method("spawn_explosion"):
+	if projectile_kind == "fly_grenade" or (visual_variant=="gun41" and joke_variant==2):
+		var area := OriginalWeaponArea.new()
+		area.source = owner_node
+		area.damage = damage if projectile_kind == "fly_grenade" else 24.0
+		area.radius = splash_radius
+		if projectile_kind != "fly_grenade":
+			area.interval = 0.6
+			area.delay = 0.6
+			area.ticks_left = 6
+			area.height = 1.0
+			var slime := OriginalWeaponEffect.create("Effect/SatanMachine/joke_force",true)
+			slime.lifetime = 4.0
+			world.add_child(slime)
+			slime.global_position=position_value+Vector3.UP*0.05
+		world.add_child(area)
+		area.global_position=position_value
+	if not hostile and OriginalWeaponEffect.catalog().has(visual_variant):
+		var record: Array = OriginalWeaponEffect.catalog()[visual_variant]
+		var effect := OriginalWeaponEffect.create(record[1], true)
+		world.add_child(effect)
+		effect.global_position = position_value
+		if not str(record[3]).is_empty():
+			AudioDirector.play_3d(OriginalWeaponEffect.ROOT + "audio/" + str(record[3]), position_value, -1.0)
+	elif is_instance_valid(world) and world.has_method("spawn_explosion"):
 		world.spawn_explosion(position_value, tint, splash_radius, explosion_sound)
 	queue_free()
 

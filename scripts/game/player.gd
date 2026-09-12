@@ -1044,10 +1044,27 @@ func _fire_projectile(projectile_kind: String) -> void:
 	var direction: Vector3 = (Vector3(aim.target) - muzzle.global_position).normalized()
 	if projectile_kind == "grenade":
 		direction = (direction + Vector3.UP * 0.18).normalized()
-	var projectile := ProjectileScript.new()
-	projectile.configure(self, direction, float(current_weapon.speed), _current_weapon_damage(), maxf(float(current_weapon.splash), 0.65), current_weapon.color, false, projectile_kind, str(current_weapon.explosion_sound), current_weapon_id)
-	get_parent().add_child(projectile)
-	projectile.global_position = muzzle.global_position
+	var directions: Array[Vector3] = [direction]
+	if current_weapon_id == "gun29":
+		directions = [direction.rotated(Vector3.UP, deg_to_rad(5)), direction, direction.rotated(Vector3.UP, deg_to_rad(-5))]
+	elif current_weapon_id == "gun42":
+		directions = [direction.rotated(Vector3.UP, deg_to_rad(5+randi_range(0,1))), direction.rotated(Vector3.UP, deg_to_rad(-5+randi_range(-2,-1))), direction.rotated(camera.global_basis.x, deg_to_rad(5+randi_range(0,1))), direction, direction.rotated(camera.global_basis.x, deg_to_rad(-5+randi_range(-2,-1)))]
+	for shot_direction in directions:
+		var projectile := ProjectileScript.new()
+		var shot_damage := _current_weapon_damage() * (0.4 if projectile_kind == "windblade" else 1.0)
+		var shot_speed := 30.0 if projectile_kind == "windblade" else float(current_weapon.speed)
+		projectile.configure(self, shot_direction, shot_speed, shot_damage, 3.0 if projectile_kind == "windblade" else maxf(float(current_weapon.splash), 0.65), current_weapon.color, false, projectile_kind, str(current_weapon.explosion_sound), current_weapon_id)
+		if current_weapon_id == "gun41":
+			var now := Time.get_ticks_msec()
+			if not has_meta("joke_poison_time"): set_meta("joke_poison_time", now)
+			if now-int(get_meta("joke_poison_time")) >= 5000:
+				projectile.joke_variant = 2
+				set_meta("joke_poison_time",now)
+			else:
+				projectile.joke_variant = 1 if randi_range(0,99)<30 else 0
+		# Establish the muzzle position before world-space emitters enter the tree.
+		projectile.position = get_parent().to_local(muzzle.global_position)
+		get_parent().add_child(projectile)
 
 func get_aim_solution(maximum_range := 180.0) -> Dictionary:
 	var viewport_size := get_viewport().get_visible_rect().size
@@ -1074,6 +1091,8 @@ func apply_touch_look(value: Vector2) -> void:
 	_apply_look_delta(value)
 
 func _fire_melee() -> void:
+	if current_weapon_id == "gun33":
+		_fire_projectile("windblade")
 	var forward := -camera.global_transform.basis.z
 	var center := global_position + Vector3.UP + Vector3(forward.x, 0.0, forward.z).normalized() * 1.55
 	var shape := SphereShape3D.new()
@@ -1093,12 +1112,14 @@ func _fire_melee() -> void:
 			target.take_damage(_current_weapon_damage(), center, self)
 			made_contact = true
 	var sound_path := str(current_weapon.get("sound", ""))
+	if current_weapon_id == "gun33":
+		sound_path = OriginalWeaponEffect.ROOT + "audio/light_sword/windblade.wav"
 	if sound_path.is_empty():
 		var choices: Array = current_weapon.get("hit_sounds", []) if made_contact else current_weapon.get("swing_sounds", [])
 		if not choices.is_empty():
 			sound_path = str(choices.pick_random())
 	if not sound_path.is_empty():
-		AudioDirector.play_3d(sound_path, global_position, -1.0, randf_range(0.97, 1.03))
+		AudioDirector.play_3d(sound_path, global_position, -1.0, 1.0 if current_weapon_id=="gun33" else randf_range(0.97, 1.03))
 
 func _uses_magazine() -> bool:
 	return str(current_weapon.get("resource_model", "energy")) == "magazine"
@@ -2045,8 +2066,10 @@ func _play_weapon_fire_sound() -> void:
 	var variants: Array = current_weapon.get("sound_variants", [])
 	if not variants.is_empty():
 		sound_path = str(variants.pick_random())
+	if OriginalWeaponEffect.catalog().has(current_weapon_id):
+		sound_path = OriginalWeaponEffect.ROOT + "audio/" + (sound_path if current_weapon_id == "gun37" else str(OriginalWeaponEffect.catalog()[current_weapon_id][2]))
 	if not sound_path.is_empty():
-		AudioDirector.play_3d(sound_path, global_position, -1.0, randf_range(0.97, 1.03))
+		AudioDirector.play_3d(sound_path, global_position, -1.0, 1.0 if OriginalWeaponEffect.catalog().has(current_weapon_id) else randf_range(0.97, 1.03))
 
 func _update_continuous_weapon_audio(trigger: bool, just_triggered: bool) -> void:
 	var loop_path := str(current_weapon.get("loop_sound", ""))

@@ -9,6 +9,7 @@ const ArmorPowerControllerScript = preload("res://scripts/game/armor_power_contr
 const UnityColliderBuilderScript = preload("res://scripts/core/unity_collider_builder.gd")
 const UnityMaterialRestorerScript = preload("res://scripts/core/unity_material_restorer.gd")
 const UnitySceneEffectsScript = preload("res://scripts/game/unity_scene_effects.gd")
+const VfxPolish = preload("res://scripts/game/weapon_vfx_polish.gd")
 
 var level_data: Dictionary
 var player: WarfarePlayer
@@ -387,9 +388,11 @@ func _spawn_laser_tracer(from: Vector3, to: Vector3, color: Color) -> Node3D:
 	effects_root.add_child(tracer)
 	tracer.global_position = (from + to) * 0.5
 	_orient_beam(tracer, direction)
-	var core := _vfx_material(Color(0.92, 0.99, 1.0), 12.0, 1.0)
-	var energy := _vfx_material(color, 9.0, 0.68)
-	var glow := _vfx_material(Color(0.05, 0.48, 1.0), 5.5, 0.2)
+	# Keep the fine 3D core; soft camera-facing energy supplies the outer glow.
+	var core := _vfx_material(Color(0.92, 0.99, 1.0), 3.0, 0.9)
+	var energy := _vfx_material(color, 1.6, 0.24)
+	var glow := _vfx_material(Color(0.05, 0.48, 1.0), 0.6, 0.025)
+	VfxPolish.beam(effects_root, from, to, color)
 	_add_beam_layer(tracer, "WhiteEnergyCore", distance, 0.018, core)
 	_add_beam_layer(tracer, "CyanEnergyFlow", distance, 0.045, energy)
 	_add_beam_layer(tracer, "BlueOuterGlow", distance, 0.09, glow)
@@ -432,10 +435,10 @@ func _spawn_laser_tracer(from: Vector3, to: Vector3, color: Color) -> Node3D:
 	for pulse_index in range(3):
 		var pulse := MeshInstance3D.new()
 		pulse.name = "EnergyPulse%02d" % pulse_index
-		var pulse_mesh := SphereMesh.new()
-		pulse_mesh.radius = 0.065
-		pulse_mesh.height = 0.19
-		pulse_mesh.radial_segments = 8
+		var pulse_mesh := CapsuleMesh.new()
+		pulse_mesh.radius = 0.024
+		pulse_mesh.height = 0.65
+		pulse_mesh.radial_segments = 12
 		pulse_mesh.rings = 4
 		pulse_mesh.material = energy
 		pulse.mesh = pulse_mesh
@@ -676,6 +679,8 @@ func spawn_impact(position_value: Vector3, normal: Vector3, color: Color, style 
 	impact.name = "ModernImpact_%s" % style
 	impact.position = position_value + normal * 0.03
 	effects_root.add_child(impact)
+	if style == "laser":
+		VfxPolish.burst(effects_root, position_value + normal * 0.05, normal, color, 0.7)
 	var flash := MeshInstance3D.new()
 	flash.name = "ImpactFlash"
 	var mesh := SphereMesh.new()
@@ -765,6 +770,7 @@ func _add_directional_impact_sparks(parent: Node3D, normal: Vector3, color: Colo
 	sparks.emitting = true
 
 func spawn_explosion(position_value: Vector3, color: Color, radius: float, recovered_sound := "") -> void:
+	VfxPolish.burst(effects_root, position_value, Vector3.UP, color, maxf(0.8, radius * 0.5))
 	var explosion := MeshInstance3D.new()
 	var mesh := SphereMesh.new()
 	mesh.radius = 0.5
