@@ -196,6 +196,14 @@ func _run() -> void:
 			var named_effect := _preview_material_by_name(effect_preview, str(effect_case.name))
 			_check(named_effect != null, "%s preview is missing classified material %s" % [effect_case.key, effect_case.name])
 			_check_effect_material(named_effect, int(effect_case.blend), "%s material %s" % [effect_case.key, effect_case.name])
+		shell._select_item("gun45", false)
+		await get_tree().process_frame
+		var ufo_preview := _first_preview_mesh(shell.preview_root)
+		var ufo_body := _preview_material_by_name(ufo_preview, "_hotwing-material_25_") as ShaderMaterial
+		_check(ufo_body != null, "UFO store body lost original two-texture shader")
+		if ufo_body != null:
+			_check(ufo_body.get_shader_parameter("base_texture") == load("res://assets/models/weapons/HotWing_D.png"), "UFO store base atlas missing")
+			_check(ufo_body.get_shader_parameter("overlay_texture") == load("res://assets/models/weapons/HotWing_L.png"), "UFO store light atlas missing")
 		for solid_key: String in ["gun24", "gun44"]:
 			shell._select_item(solid_key, false)
 			await get_tree().process_frame

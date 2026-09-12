@@ -56,6 +56,9 @@ func _ready() -> void:
 				return
 		if data.has("reload_body_model"):
 			mesh.mesh = load("res://assets/models/weapons/" + str(data.reload_body_model) + ".obj")
+			for surface in mesh.mesh.get_surface_count():
+				mesh.set_surface_override_material(surface, null)
+			helper._repair_recovered_weapon_materials(mesh, id)
 			var part := MeshInstance3D.new()
 			part.mesh = load("res://assets/models/weapons/" + str(data.prop_model) + ".obj")
 			part.transform = mesh.transform
