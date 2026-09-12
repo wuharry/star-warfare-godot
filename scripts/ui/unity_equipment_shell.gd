@@ -1709,6 +1709,7 @@ func _prepare_preview_materials(preview: MeshInstance3D, tint: Color, tint_weigh
 				preview.set_surface_override_material(surface_index, effect)
 			else:
 				preview.set_surface_override_material(surface_index, material)
+	UnityMaterialRestorer.restore_ufo_body(preview, weapon_id)
 
 
 func _repair_preview_weapon_material(material: StandardMaterial3D, source: StandardMaterial3D, weapon_id: int, surface_index: int) -> void:

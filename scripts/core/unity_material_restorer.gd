@@ -5,6 +5,26 @@ const SOLID_OVERLAY_SHADER = preload("res://assets/shaders/unity_solid_overlay.g
 static var _lightmap_shaders: Dictionary = {}
 
 
+static func restore_ufo_body(instance: MeshInstance3D, weapon_id: int) -> void:
+	if weapon_id != 45 or instance.mesh == null:
+		return
+	# Unity HotWing-Material #25 uses SolidAndAlphaTexture: _texBase + _tex2.
+	# Match names, since the detachable chamber has different surface indices.
+	for surface in instance.mesh.get_surface_count():
+		var source := instance.mesh.surface_get_material(surface) as StandardMaterial3D
+		if source == null or not source.resource_name.begins_with("_HotWing-Material_25_"):
+			continue
+		var material := _overlay_material(source, {
+			"overlay_texture": "res://assets/models/weapons/HotWing_L.png",
+			"overlay_color": [1.0, 1.0, 1.0, 1.0],
+			"overlay_multiplier": 1.0,
+			"base_uses_uv2": false,
+		})
+		# Existing OBJ caches do not track changes to their external MTL file.
+		material.set_shader_parameter("base_texture", load("res://assets/models/weapons/HotWing_D.png"))
+		instance.set_surface_override_material(surface, material)
+
+
 static func load_stage_mesh(level_root: String, metadata: Dictionary) -> Mesh:
 	var visual := str(metadata.get("visual_with_uv2", "stage.obj"))
 	var resource: Resource = load(level_root.path_join(visual))

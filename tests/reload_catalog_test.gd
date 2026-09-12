@@ -25,6 +25,19 @@ func _ready() -> void:
 					var body := player.gun_mount.get_node("WeaponVisual/Recovered_" + key) as MeshInstance3D
 					var prop := player.attached_reload_part.get_node("OriginalMagazine") as MeshInstance3D
 					check(body.global_transform.is_equal_approx(prop.global_transform), key + " assembled part changed coordinates/scale")
+					if key == "gun45":
+						for instance in [body, prop]:
+							var restored := 0
+							for surface in instance.mesh.get_surface_count():
+								var source: Material = instance.mesh.surface_get_material(surface)
+								if source.resource_name.begins_with("_HotWing-Material_25_"):
+									var material := instance.get_active_material(surface) as ShaderMaterial
+									check(material != null, "UFO body/chamber lost Unity overlay shader")
+									if material != null:
+										check(material.get_shader_parameter("base_texture") == load("res://assets/models/weapons/HotWing_D.png"), "UFO base atlas missing")
+										check(material.get_shader_parameter("overlay_texture") == load("res://assets/models/weapons/HotWing_L.png"), "UFO light atlas missing")
+									restored += 1
+							check(restored > 0, "UFO body/chamber has no restored surfaces")
 				for progress in [0.12, 0.21, 0.32, 0.44, 0.60, 0.70, 0.79, 0.85, 0.94]:
 					advance_to(duration * progress)
 					await get_tree().process_frame

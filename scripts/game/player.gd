@@ -660,6 +660,7 @@ func _repair_recovered_weapon_materials(instance: MeshInstance3D, weapon_id: int
 			if material_name == "gong_1":
 				repaired.albedo_color.a = 0.58
 		instance.set_surface_override_material(surface_index, repaired)
+	UnityMaterialRestorer.restore_ufo_body(instance, weapon_id)
 
 func _build_camera() -> void:
 	camera_rig = Node3D.new()
