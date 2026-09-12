@@ -110,42 +110,15 @@ func _test_runtime_visuals() -> void:
 	_check(gun_impact.get_node_or_null("RecoveredGunBurst") != null and gun_impact.get_node("RecoveredGunBurst").get_meta("source_effect") == "Effect/GunBurst", "hitscan impact did not restore Effect/GunBurst")
 	_check(laser_impact.get_node_or_null("RecoveredLaserHit") != null and laser_impact.get_node("RecoveredLaserHit").get_meta("source_effect") == "Effect/LaserHit", "laser impact did not restore Effect/LaserHit")
 	_check(sniper.name == "LegacyHDSniperTracer" and sniper.get_node_or_null("RecoveredLaserPlane00") != null, "sniper does not use the restored HD beam")
-	var variants := [
-		["plasma", "gun20", ["l_001_hd.png", "shandian_005_hd.png"]],
-		["rocket", "gun11", ["gun0910_hd.png", "plasma_bolt1_red.png", "fire_00302_hd.png", "fire_smook_001_hd.png"]],
-		["rocket", "gun30", ["bug_RPG6_hd.png", "gun_up_1_slf_sfx_hd.png", "fire_00302_hd.png", "fire_smook_001_hd.png"]],
-		["grenade", "gun14", ["gun0506_hd.png"]],
-		["grenade", "gun41", ["joke_force_hd.png", "joke_warning01_hd.png", "xmas_light01_r_hd.png"]],
-		["fly_grenade", "gun45", ["HotWing_D_hd.png", "S2_Fireflys_hd.png", "Skill_1_01_hd.png", "VD5_Rush_01_hd.png"]],
-		["tracking", "gun36", ["dg_test_002_hd.png", "bc_002_hd.png", "glow_002_hd.png"]],
-		["spring", "gun42", ["dg_test_002_a_hd.png", "bc_002_a_hd.png", "glow_002_a_hd.png"]],
-		["ricochet", "gun37", ["fd_01_hd.png"]],
-	]
-	for record in variants:
-		var projectile := WarfareProjectile.new()
-		projectile.configure(world.player, Vector3.FORWARD, 12.0, 10.0, 1.0, Color.WHITE, false, record[0], "", record[1])
-		world.add_child(projectile)
-		var texture_paths := _mesh_texture_paths(projectile)
-		for expected_texture: String in record[2]:
-			_check(texture_paths.any(func(path: String): return path.ends_with(expected_texture)), "%s %s does not use %s" % [record[0], record[1], expected_texture])
-		if record[0] == "rocket" and record[1] == "gun11":
-			var original_body := projectile.get_node_or_null("ProjectileVisual/OriginalUnityRocket") as MeshInstance3D
-			_check(original_body != null, "standard RPG does not instantiate the original Unity projectile")
-			if original_body != null:
-				_check(original_body.get_meta("source_prefab", "") == "Effect/Projectile", "standard RPG lost its Unity prefab provenance")
-				_check(original_body.mesh != null and original_body.mesh.get_surface_count() == 4, "original RPG body/flame mesh does not have its four recovered surfaces")
-			_check(projectile.get_node_or_null("ProjectileVisual/OriginalRocketSmokeLong") != null, "original RPG is missing its long smoke emitter")
-			_check(projectile.get_node_or_null("ProjectileVisual/OriginalRocketSmokeHot") != null, "original RPG is missing its hot smoke emitter")
-			var hot := projectile.get_node("ProjectileVisual/OriginalRocketSmokeHot") as GPUParticles3D
-			var hot_material := hot.draw_pass_1.surface_get_material(0) as StandardMaterial3D
-			_check(hot_material.billboard_mode == BaseMaterial3D.BILLBOARD_PARTICLES and hot_material.particles_anim_h_frames == 6 and hot_material.particles_anim_v_frames == 6, "rocket exhaust displays the entire fire atlas as multiple fireballs")
-			var hot_process := hot.process_material as ParticleProcessMaterial
-			_check(is_equal_approx(hot_process.anim_speed_min, 1.0) and is_equal_approx(hot_process.anim_speed_max, 1.0), "rocket exhaust does not advance through its fire frames")
-		if record[0] == "rocket" and record[1] == "gun30":
-			var flame := projectile.get_node("ProjectileVisual/Fire00302Hd") as MeshInstance3D
-			var flame_material := flame.mesh.surface_get_material(0) as StandardMaterial3D
-			_check(flame_material.uv1_scale.is_equal_approx(Vector3(1.0 / 6.0, 1.0 / 6.0, 1.0)), "gun30 flame displays all fire atlas frames at once")
-		projectile.queue_free()
+	# Exact recovered prefab geometry/particles are covered for every weapon by
+	# original_weapon_test; retain the unrelated plasma/tracer checks here.
+	var plasma := WarfareProjectile.new()
+	plasma.configure(world.player, Vector3.FORWARD, 12.0, 10.0, 1.0, Color.WHITE, false, "plasma", "", "gun20")
+	world.add_child(plasma)
+	var texture_paths := _mesh_texture_paths(plasma)
+	for expected_texture: String in ["l_001_hd.png", "shandian_005_hd.png"]:
+		_check(texture_paths.any(func(path: String): return path.ends_with(expected_texture)), "plasma lost " + expected_texture)
+	plasma.queue_free()
 	for audio in world.find_children("*", "AudioStreamPlayer", true, false):
 		audio.stop()
 	for audio in world.find_children("*", "AudioStreamPlayer3D", true, false):
