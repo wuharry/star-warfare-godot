@@ -46,4 +46,10 @@ WHITE DRILL 與 Spreader 原 OBJ 材質漏掉 Unity 的主貼圖／發光疊圖�
 python tools/equipment_refinement/build_preview.py
 ```
 
-若要重新計算模型，依序執行 `export_sources.gd`、Blender `refine_meshes.py`、Godot `compile_assets.gd`；沿用現有 manifest，勿以初始化清單覆蓋已完成的檢視紀錄。`configure_imports.gd` 設定細修圖的 mipmap 與 VRAM 壓縮，之後需再跑編輯器匯入。Windows／Android 匯出設定已包含執行時需要的貼圖映射 manifest；本次未產生新的平台發行包。
+若要重新計算模型，依序執行 `export_sources.gd`、Blender `refine_meshes.py`、Godot `compile_assets.gd`；沿用現有 manifest，勿以初始化清單覆蓋已完成的檢視紀錄。`configure_imports.gd` 對齊 Viper：無損匯入、停用 mipmap 及自動 3D 壓縮，之後需再跑編輯器匯入。Windows／Android 匯出設定已包含執行時需要的貼圖映射 manifest；本次未產生新的平台發行包。
+
+## Viper 清晰度複查
+
+使用者反映其他裝甲仍明顯較模糊後，重新透過實際玩家逐套換裝，確認 29 套裝甲、172 個可見材質面均載入細修圖，尺寸均為 1254×1254。問題不在套用遺漏。原細修圖採 VRAM 壓縮與 mipmap，Viper 則為無損且沒有 mipmap；現已將 160 張細修圖統一為 Viper 的匯入方式，完成重新匯入與三套相同鏡位近景檢查。此設定會增加貼圖顯存占用，並可能增加遠距離細線閃爍；本次未做手機效能量測。
+
+近景比較仍顯示 Fortune 等貼圖本身的線條與表面刻畫比 Viper 模糊。上述功能測試與逐件套用完成不代表已達到 Viper 的美術細節標準；這部分需要後續逐件重繪與重新驗收，不能靠匯入設定宣稱已解決。原完整比較 HTML 是先前壓縮設定的截圖；本次同鏡位比較位於 `test_output/equipment_quality_comparison.html`。
