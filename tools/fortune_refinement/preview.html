@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fortune · Viper 標準細修比較</title>
+<style>
+:root{color-scheme:dark;font:16px/1.6 system-ui;background:#10171d;color:#dce5eb}body{max-width:1500px;margin:auto;padding:24px}h1{font-size:26px;margin:0}p{color:#b8c5cf}nav{display:flex;gap:16px;flex-wrap:wrap;margin:20px 0}select,button{font:inherit;background:#1a2630;color:inherit;border:1px solid #52636f;border-radius:5px;padding:7px}section{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}figure{margin:0;background:#0b1014}figcaption{text-align:center;padding:8px}img{width:100%;display:block;cursor:zoom-in}.game{grid-template-columns:1fr 1fr}details{margin-top:24px}summary{cursor:pointer;padding:12px 0}dialog{padding:0;max-width:95vw;max-height:95vh;border:1px solid #52636f}dialog img{max-height:90vh;max-width:90vw;width:auto;cursor:zoom-out}dialog::backdrop{background:#000c}@media(max-width:750px){section,.game{grid-template-columns:1fr}body{padding:12px}}
+</style>
+<h1>Fortune：保留原貌，重繪細節</h1>
+<p>原本的藍綠配色、深色面罩與盔甲輪廓，搭配重新繪製的五張貼圖。三欄使用相同相機與照明；右欄為指定版本的 Viper 品質基準。模型沿用既有小幅修邊。</p>
+<nav><label>左欄 <select id="baseline"><option value="previous">上一輪 Fortune</option><option value="original">原始 Fortune</option></select></label><label>距離 <select id="framing"><option value="close">近景細節</option><option value="full">全身輪廓</option></select></label><label>視角 <select id="view"><option value="front">前方</option><option value="side">側方</option><option value="rear">後方</option></select></label></nav>
+<section><figure><figcaption id="leftlabel">上一輪 Fortune</figcaption><img id="before" alt="調整前 Fortune"></figure><figure><figcaption>本次 Fortune</figcaption><img id="current" alt="本次 Fortune"></figure><figure><figcaption>Viper 品質基準</figcaption><img id="viper" alt="Viper"></figure></section>
+<details><summary>移動換彈檢查</summary><nav><label>動作視角 <select id="motionview"><option value="front">前方</option><option value="side">側方</option><option value="rear">後方</option></select></label></nav><section><figure><figcaption>收槍 20%</figcaption><img id="reload20" alt="換彈初段"></figure><figure><figcaption>裝填 52%</figcaption><img id="reload52" alt="換彈中段"></figure><figure><figcaption>回位 85%</figcaption><img id="reload85" alt="換彈末段"></figure></section></details>
+<details><summary>實際關卡畫面</summary><section class="game"><figure><figcaption>區域 01</figcaption><img src="game_1.png" alt="區域 01 中的 Fortune"></figure><figure><figcaption>區域 03</figcaption><img src="game_3.png" alt="區域 03 中的 Fortune"></figure></section></details>
+<dialog id="zoom"><img alt="放大比較"></dialog>
+<script>
+const files=__FILES__;
+const baseline=document.querySelector('#baseline'),framing=document.querySelector('#framing'),view=document.querySelector('#view'),motionview=document.querySelector('#motionview');
+if(!files.includes('previous_close_front.png')){baseline.querySelector('[value=previous]').remove();baseline.value='original'}
+function refresh(){for(const [id,version] of [['before',baseline.value],['current','current'],['viper','viper']])document.getElementById(id).src=`${version}_${framing.value}_${view.value}.png`;document.querySelector('#leftlabel').textContent=baseline.selectedOptions[0].textContent;for(const step of [20,52,85])document.getElementById('reload'+step).src=`reload_${step}_${motionview.value}.png`}
+for(const control of [baseline,framing,view,motionview])control.onchange=refresh;
+const zoom=document.querySelector('#zoom');for(const img of document.querySelectorAll('img:not(dialog img)'))img.onclick=()=>{zoom.querySelector('img').src=img.src;zoom.showModal()};zoom.onclick=()=>zoom.close();refresh();
+</script></html>

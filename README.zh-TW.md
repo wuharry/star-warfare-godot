@@ -1,6 +1,6 @@
 # Star Warfare：Godot 離線復原版
 
-這是與原始 Unity 2017 專案分開存放的 Godot 4 重建版。原專案檔沒有被覆寫；完整 Godot 專案位於 `E:\Star-Warfare-Godot-Restoration`。
+這是與原始 Unity 2017 專案分開存放的 Godot 4 重建版。原專案檔沒有被覆寫；完整 Godot 專案位於 `E:\01_Projects\GameDev\Star-Warfare\Star-Warfare-Godot-Restoration`。
 
 目前可遊玩內容：
 
