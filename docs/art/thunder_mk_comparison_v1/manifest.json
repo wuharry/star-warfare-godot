@@ -1,0 +1,111 @@
+{
+  "date": "2026-09-14",
+  "status": "helmet_revision_approved_runtime_first_pass_integrated",
+  "source_commit": "252aab1b38d0298994053ffaaec39677ef1ae4ee",
+  "objective": "A: mk2 geometry with current mk1 palette; B: mk1 identity/palette with mk2 hard-surface facets. B helmet revision: broad integrated crown, lowered brow, V amber visor and compact chin module based on user-uploaded close-up.",
+  "runtime_changed": true,
+  "runtime": {
+    "scene": "assets/armors/thunder/thunder.scn",
+    "mapping": "scripts/game/armor_visuals.gd REWORKED_SCENES[6]",
+    "revision": "thunder_mk1_helmet_v2",
+    "preview": "runtime.html",
+    "build_report": "assets/armors/thunder/build_report.json",
+    "capture_script": "tests/thunder_art_capture.gd",
+    "capture_manifest": "test_output/thunder_runtime/capture_manifest.json",
+    "renderer": "Godot 4.7.2 gl_compatibility",
+    "viewport": [1000, 1200],
+    "images": [
+      "runtime/full_three_quarter.png",
+      "runtime/helmet_three_quarter.png",
+      "runtime/full_rear.png",
+      "runtime/armed_idle.png",
+      "runtime/reload_52_three_quarter.png"
+    ],
+    "implementation": "Original Thunder mesh and UV base retained; fitted low crown and authored cheek/chin/side geometry on the original skeleton. Amber visor is selected and brightened in painted_armor.gdshader; material ID 9 remains reserved rather than being the main faceplate.",
+    "limitations": "First-pass 3D adaptation, not an exact complete reconstruction. The source low-poly silhouette remains visible; continuous curved shell, ear recesses and fine seams are simplified relative to the approved concept.",
+    "unchanged": "Equipment IDs, gameplay stats, save format, other armor sets and original source assets.",
+    "verification": {
+      "compiler_input_validation": "PASS: nine valid/invalid input cases",
+      "runtime_assertions": "PASS: dedicated Thunder test including Store and Customize preview loading",
+      "existing_equipment_regression": "PASS: other 27 armor sets, armor_system and menu_equipment tests",
+      "capture": "PASS: twelve fixed-viewport frames captured; visual judgment is separate from capture success",
+      "thumbnails": "PASS: four set06 part thumbnails rendered",
+      "html": "PASS: concept interaction regression and runtime seven images (five actual model captures), local links, desktop width 1440 and mobile width 390 without horizontal overflow; desktop actual-model view visually inspected",
+      "baseline_script": "PASS: GDScript parse check after fixing the old-scene path; archived before captures were not overwritten"
+    }
+  },
+  "source_selection": {
+    "mk1": "Before baseline: assets/equipment_refined/armors/armor_06.scn, now loaded directly by render_mk1.gd so the archive does not follow the new set06 runtime map",
+    "mk1_palette": "Deep steel blue + dark brown-black inner suit + gold accents + orange amber visor",
+    "mk1_not_used": "assets/redesigned_armors/set_06_storm_thunder/textures/ and previous AI concepts are not current runtime references",
+    "mk2": "assets/redesigned_armors/set_06_storm_thunder/reference_sw2_thunder/models/*.obj",
+    "mk2_uv_status": "Unresolved atlas mapping; no MTL/wrap/tiling data supplied. Tested sign/vertical/mirror transformations, none visually correct. No conclusion that source files are corrupt. Use clay geometry only."
+  },
+  "entries": [
+    {
+      "slug": "a_mk2_mk1_palette",
+      "image": "images/a_mk2_mk1_palette.png",
+      "prompt": "prompts/a_mk2_mk1_palette.txt",
+      "tool": "built-in imagegen",
+      "generated_source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-376bb6fe-81ee-44a7-9319-e8de16a3d57c.png",
+      "input_references": [
+        "references/mk2_clay_front.png",
+        "references/mk1_current_front.png",
+        "references/mk2_clay_rear.png"
+      ],
+      "review_notes": "深鋼藍／金黃／琥珀配色已呈現；中央圓形頭部機構、低冠與層肩保留。眼眉、肩甲與胸板接縫仍有局部 AI 重繪，不能當作原網格精準重貼皮。"
+    },
+    {
+      "slug": "b_mk1_mk2_facets",
+      "image": "images/b_mk1_mk2_facets.png",
+      "prompt": "prompts/b_mk1_mk2_facets.txt",
+      "tool": "built-in imagegen",
+      "generated_source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-59b6ac4d-4466-43dc-8999-76b0e691c48e.png",
+      "input_references": [
+        "references/mk1_current_front.png",
+        "references/mk1_current_rear.png",
+        "references/mk2_clay_front.png"
+      ],
+      "review_notes": "高頭冠、圓耳、面罩與腰部 V 記號保留；肩甲分層與胸膝切面明顯。前臂／靴面細紋仍稍多；更硬的甲片厚度和活動空間需建模驗證。"
+    },
+    {
+      "slug": "b_mk1_reference_helmet_v2",
+      "image": "images/b_mk1_reference_helmet_v2.png",
+      "prompt": "prompts/b_mk1_reference_helmet_v2.txt",
+      "tool": "built-in imagegen",
+      "generated_source": "/Users/harvey/.codex/generated_images/01a064e5-36cc-7dc2-96b5-79e9afa2e876/exec-ae4c10c1-0ad7-4fc1-9e2e-995d5e2b408d.png",
+      "input_references": [
+        "images/b_mk1_mk2_facets.png"
+      ],
+      "additional_reference": {
+        "kind": "user_uploaded_conversation_image",
+        "description": "512×512 square helmet close-up in user message: blue raised central forehead rib, downturned V brow, luminous orange-gold faceplate, compact chin block; local attachment path unavailable.",
+        "included_via": "num_last_images_to_include=2, together with explicitly viewed B target"
+      },
+      "review_notes": "概念階段：高薄頭冠改成寬低中央額脊，V 型金橙面罩與短下顎符合參考方向。主體盔甲、姿勢與配色整體保留；頸肩接縫的小金黃格有生成差異，不能聲稱頸部以下逐像素不變。此圖已由使用者核准，現已有另存的首版 3D 套用，請看 runtime.html；這張生成圖本身仍不是模型或遊戲截圖。"
+    }
+  ],
+  "references": {
+    "mk1_capture": {
+      "script": "render_mk1.gd",
+      "scene": "render_mk1.tscn",
+      "renderer": "Godot 4.7.2 gl_compatibility",
+      "viewport": [
+        1000,
+        1200
+      ],
+      "notes": "Archived pre-redesign refined meshes and materials, isolated stage. render_mk1.gd now fixes the source to the original armor_06.scn instead of following the new runtime map. Texture PNGs cached in memory because imported CTEX were unavailable at original capture time. No saves touched."
+    },
+    "mk2_clay": {
+      "script": "render_reference.py",
+      "renderer": "Blender 5.1.0 Cycles",
+      "viewport": [
+        1200,
+        1400
+      ],
+      "notes": "Transient OBJ import, neutral clay override only, original mesh files unchanged. Textured diagnostic outputs not valid references."
+    }
+  },
+  "commercial_clearance": "NOT ESTABLISHED",
+  "output_type": "Archived raster concept previews plus a separate first-pass 3D runtime adaptation and actual player captures. Concept PNGs are not UV atlases."
+}

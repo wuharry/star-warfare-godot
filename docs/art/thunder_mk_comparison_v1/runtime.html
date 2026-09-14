@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thunder B · 首版 3D 實際套用</title>
+<style>
+:root{color-scheme:dark;font:16px/1.65 system-ui,-apple-system,sans-serif;background:#12171b;color:#e2e8eb}
+*{box-sizing:border-box}body{max-width:1600px;margin:auto;padding:28px}h1{font-size:clamp(24px,3vw,36px);line-height:1.25;margin:12px 0}h2{font-size:21px;margin:0 0 16px}p{color:#b7c2c8;max-width:1050px}a{color:#acd3e3}a:focus-visible{outline:2px solid #e8c776;outline-offset:4px}.tag{font-size:12px;letter-spacing:.12em;color:#99aab4}.compare{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:26px 0 40px}.detail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.card{margin:0;min-width:0}.card h2{font-size:18px;margin:0 0 8px}.card a{display:block;background:#0d1114;border-radius:5px;overflow:hidden}.card img{display:block;width:100%;aspect-ratio:5/6;object-fit:contain}.card figcaption{color:#b7c2c8;font-size:14px;margin:8px 0}.label{display:block;font-size:12px;color:#d7c083;margin-bottom:5px}.limits{border-top:1px solid #34404a;margin:32px 0 24px;padding-top:18px;max-width:1050px}.limits li{margin:8px 0;color:#b7c2c8}footer{font-size:13px;color:#93a4af;margin-top:30px}code{overflow-wrap:anywhere}nav{display:flex;gap:18px;flex-wrap:wrap}@media(max-width:850px){.compare{grid-template-columns:1fr}.compare .card{max-width:620px;width:100%;margin:auto}.detail{grid-template-columns:1fr 1fr}}@media(max-width:520px){body{padding:18px}.detail{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<nav><a href="index.html">← 配色與頭盔概念比較</a><a href="README.md">製作紀錄</a></nav>
+<p class="tag">THUNDER B · RUNTIME FIRST PASS · 2026.09.14</p>
+<h1>新頭盔已套入 Thunder 的首版 3D。</h1>
+<p>沿用原 Thunder 網格、UV 與骨架，改造中央額脊、眉甲、金橙面罩與下顎，並加入硬甲切面。下方「實際套用」皆由遊戲角色載入器渲染，不是把概念圖貼成平面。</p>
+<p>這版是可在遊戲中觀看與裝備的初版；曲面、耳部和細節仍比概念簡化，並非概念圖的精準完整重建。點擊圖片可看原尺寸。</p>
+</header>
+<main>
+<section class="compare" aria-label="原版、核准概念、實際套用對照">
+<figure class="card">
+<span class="label">BEFORE · 真實模型</span><h2>改造前 Thunder mk1</h2>
+<a href="references/mk1_current_front.png"><img src="references/mk1_current_front.png" alt="改造前 Thunder mk1：高頭冠與原版裝甲"></a>
+<figcaption>固定讀取舊 <code>armor_06.scn</code> 的 Godot 截圖；保留作為改造前基準。</figcaption>
+</figure>
+<figure class="card">
+<span class="label">APPROVED · AI 概念</span><h2>你核准的新頭盔方向</h2>
+<a href="images/b_mk1_reference_helmet_v2.png"><img src="images/b_mk1_reference_helmet_v2.png" alt="核准的 Thunder B 概念：寬低中央額脊、金橙 V 形面罩和短下顎"></a>
+<figcaption>造型與材質的目標參考；此欄仍是生成概念，不是 3D 遊戲畫面。</figcaption>
+</figure>
+<figure class="card">
+<span class="label">AFTER · 真實遊戲角色</span><h2>目前實際套用</h2>
+<a href="runtime/full_three_quarter.png"><img src="runtime/full_three_quarter.png" alt="Thunder B 首版 3D 經實際 WarfarePlayer 裝備載入後的全身畫面"></a>
+<figcaption>新 <code>thunder.scn</code> 經目前角色裝備流程載入；保留原比例、骨架與動作。</figcaption>
+</figure>
+</section>
+<section aria-labelledby="details-title">
+<h2 id="details-title">看真實模型的近照與動作</h2>
+<div class="detail">
+<figure class="card"><a href="runtime/helmet_three_quarter.png"><img loading="lazy" src="runtime/helmet_three_quarter.png" alt="新 Thunder 3D 頭盔三分之四角度近照"></a><figcaption>頭盔近照：檢查額脊厚度、眉甲與下顎；耳部和表面細節仍是簡化版本。</figcaption></figure>
+<figure class="card"><a href="runtime/full_rear.png"><img loading="lazy" src="runtime/full_rear.png" alt="新 Thunder 實際 3D 模型背面"></a><figcaption>背面：實際網格另一側，不是生成的背面想像圖。</figcaption></figure>
+<figure class="card"><a href="runtime/armed_idle.png"><img loading="lazy" src="runtime/armed_idle.png" alt="新 Thunder 沿用原持槍待機動畫的畫面"></a><figcaption>持槍待機：沿用既有武器與骨架，不改武器操作方式。</figcaption></figure>
+<figure class="card"><a href="runtime/reload_52_three_quarter.png"><img loading="lazy" src="runtime/reload_52_three_quarter.png" alt="新 Thunder 在既有換彈動畫中段的姿勢"></a><figcaption>換彈中段：既有動畫的取樣畫面；單張截圖不能代表所有動作皆無穿模。</figcaption></figure>
+</div>
+</section>
+<section class="limits" aria-labelledby="limits-title">
+<h2 id="limits-title">這次套用的邊界</h2>
+<ul>
+<li>只替換 Thunder set06 的視覺；裝備 ID、數值、存檔格式與原素材不變，其他套裝不套用這個造型。</li>
+<li>首版沿用原網格／UV 加工；概念中的連續曲面、內凹耳部與部分細接縫尚未一比一建出。</li>
+<li>遊戲截圖使用固定 1000 × 1200 視口、OpenGL Compatibility；概念圖的燈光與材質表現不同，不作精準像素比較。</li>
+<li>改造仍含原作網格與貼圖，原素材的商用權利尚未清理。</li>
+</ul>
+</section>
+</main>
+<footer>來源：<a href="manifest.json">manifest</a> · <a href="../../../assets/armors/thunder/README.md">模型接線與重建方法</a> · <a href="../../../assets/armors/thunder/build_report.json">實際網格報告</a></footer>
+</body>
+</html>

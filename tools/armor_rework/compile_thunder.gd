@@ -1,0 +1,258 @@
+extends SceneTree
+
+const OUTPUT := "res://assets/armors/thunder/thunder.scn"
+const INPUT := "res://test_output/armor_rework/thunder_meshes.json"
+const ORIGINAL := "res://assets/models/player/animated/player.gltf"
+const PART_NAMES := ["ArmorHead_06", "ArmorBody_06", "ArmorHand_06", "ArmorFoot_06"]
+const MATERIAL_COUNT := 11
+const TEXTURES := [
+	"f8d96c60d30f", "dce7a1446714", "d6da6925f6b4", "df2d0a0b46da", "14ceb45bf36d",
+]
+
+
+func _initialize() -> void:
+	if "--self-test" in OS.get_cmdline_user_args():
+		_test_validation.call_deferred()
+	else:
+		_build.call_deferred()
+
+
+func _build() -> void:
+	var json := JSON.new()
+	if not FileAccess.file_exists(INPUT):
+		_fail("Missing Blender export: " + INPUT)
+		return
+	var parse_error := json.parse(FileAccess.get_file_as_string(INPUT))
+	if parse_error != OK or not json.data is Array:
+		_fail("Invalid Blender JSON: " + json.get_error_message())
+		return
+	var packed_original := load(ORIGINAL) as PackedScene
+	if packed_original == null:
+		_fail("Cannot load original player skeleton")
+		return
+	var original := packed_original.instantiate()
+	root.add_child(original)
+	var skeletons := original.find_children("*", "Skeleton3D", true, false)
+	if skeletons.is_empty():
+		original.free()
+		_fail("Original player has no Skeleton3D")
+		return
+	var skeleton := skeletons[0] as Skeleton3D
+	var skin := Skin.new()
+	var bone_indices := {}
+	for bone in skeleton.get_bone_count():
+		var bone_name := skeleton.get_bone_name(bone)
+		bone_indices[bone_name] = bone
+		skin.add_named_bind(bone_name, skeleton.get_bone_global_rest(bone).affine_inverse())
+	var source: Array = json.data
+	var validation_error := _validate_source(source, bone_indices)
+	if not validation_error.is_empty():
+		original.free()
+		_fail(validation_error)
+		return
+	var materials := _materials()
+	if materials.size() != MATERIAL_COUNT:
+		original.free()
+		_fail("Could not load Thunder shaders or source textures")
+		return
+	var container := Node3D.new()
+	container.name = "ThunderRework"
+	var triangle_count := 0
+	for part: Dictionary in source:
+		var mesh := ArrayMesh.new()
+		for material_id in MATERIAL_COUNT:
+			var arrays := []
+			arrays.resize(Mesh.ARRAY_MAX)
+			var vertices := PackedVector3Array()
+			var normals := PackedVector3Array()
+			var uvs := PackedVector2Array()
+			var bones := PackedInt32Array()
+			var weights := PackedFloat32Array()
+			for triangle in part.materials.size():
+				if int(part.materials[triangle]) != material_id:
+					continue
+				triangle_count += 1
+				# Blender's exported face winding and V axis match the Viper pipeline.
+				for corner in [2, 1, 0]:
+					var index: int = triangle * 3 + corner
+					vertices.append(Vector3(part.positions[index * 3], part.positions[index * 3 + 1], part.positions[index * 3 + 2]))
+					normals.append(Vector3(part.normals[index * 3], part.normals[index * 3 + 1], part.normals[index * 3 + 2]))
+					uvs.append(Vector2(part.uv[index * 2], 1.0 - float(part.uv[index * 2 + 1])))
+					for influence in range(4):
+						if influence < part.bones[index].size():
+							bones.append(bone_indices[part.bones[index][influence]])
+							weights.append(part.weights[index][influence])
+						else:
+							bones.append(0)
+							weights.append(0.0)
+			if vertices.is_empty():
+				continue
+			arrays[Mesh.ARRAY_VERTEX] = vertices
+			arrays[Mesh.ARRAY_NORMAL] = normals
+			arrays[Mesh.ARRAY_TEX_UV] = uvs
+			arrays[Mesh.ARRAY_BONES] = bones
+			arrays[Mesh.ARRAY_WEIGHTS] = weights
+			mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+			mesh.surface_set_material(mesh.get_surface_count() - 1, materials[material_id])
+		var instance := MeshInstance3D.new()
+		instance.name = str(part.name)
+		instance.mesh = mesh
+		instance.skin = skin
+		instance.skeleton = NodePath("..")
+		instance.extra_cull_margin = 1.0
+		instance.set_meta("armor_rework", "thunder_mk1_helmet_v2")
+		container.add_child(instance)
+		instance.owner = container
+	var packed := PackedScene.new()
+	var error := packed.pack(container)
+	if error == OK:
+		error = ResourceSaver.save(packed, OUTPUT)
+	print("THUNDER_COMPILE_%s parts=%d triangles=%d bones=%d" % ["PASS" if error == OK else "FAIL", container.get_child_count(), triangle_count, skin.get_bind_count()])
+	container.free()
+	original.free()
+	quit(0 if error == OK else 1)
+
+
+func _validate_source(source: Array, bone_indices: Dictionary) -> String:
+	if source.size() != PART_NAMES.size():
+		return "Expected exactly four Thunder parts"
+	var seen := {}
+	for value: Variant in source:
+		if not value is Dictionary:
+			return "Each part must be an object"
+		var part: Dictionary = value
+		var part_name := str(part.get("name", ""))
+		if not part_name in PART_NAMES or seen.has(part_name):
+			return "Unexpected or duplicated part: " + part_name
+		seen[part_name] = true
+		for key in ["positions", "normals", "uv", "bones", "weights", "materials"]:
+			if not part.get(key) is Array:
+				return part_name + " missing array: " + key
+		var triangles: int = part.materials.size()
+		var corners := triangles * 3
+		if triangles == 0 or part.positions.size() != corners * 3 or part.normals.size() != corners * 3 or part.uv.size() != corners * 2 or part.bones.size() != corners or part.weights.size() != corners:
+			return part_name + " has inconsistent triangle arrays"
+		for material_id: Variant in part.materials:
+			if not _is_number(material_id) or float(material_id) != int(material_id) or int(material_id) < 0 or int(material_id) >= MATERIAL_COUNT:
+				return part_name + " has invalid material ID"
+		for key in ["positions", "normals", "uv"]:
+			for component: Variant in part[key]:
+				if not _is_number(component):
+					return part_name + " has non-finite geometry: " + key
+		for index in corners:
+			var normal := Vector3(part.normals[index * 3], part.normals[index * 3 + 1], part.normals[index * 3 + 2])
+			if normal.length_squared() < 0.01:
+				return part_name + " has zero-length vertex normal"
+			if not part.bones[index] is Array or not part.weights[index] is Array:
+				return part_name + " has invalid skin arrays"
+			var names: Array = part.bones[index]
+			var vertex_weights: Array = part.weights[index]
+			if names.is_empty() or names.size() > 4 or names.size() != vertex_weights.size():
+				return part_name + " needs one to four matching skin influences"
+			var weight_sum := 0.0
+			for influence in names.size():
+				if not names[influence] is String or not bone_indices.has(names[influence]):
+					return part_name + " has unknown bone: " + str(names[influence])
+				var weight: Variant = vertex_weights[influence]
+				if not _is_number(weight) or float(weight) < 0.0:
+					return part_name + " has invalid skin weight"
+				weight_sum += float(weight)
+			if absf(weight_sum - 1.0) > 0.002:
+				return part_name + " skin weights are not normalized"
+	return ""
+
+
+func _is_number(value: Variant) -> bool:
+	return (value is float or value is int) and is_finite(float(value))
+
+
+func _materials() -> Array[ShaderMaterial]:
+	var result: Array[ShaderMaterial] = []
+	var painted_shader := load("res://assets/armors/thunder/painted_armor.gdshader") as Shader
+	var shell_shader := load("res://assets/armors/thunder/hard_surface.gdshader") as Shader
+	if painted_shader == null or shell_shader == null:
+		return result
+	for index in TEXTURES.size():
+		var texture := load("res://assets/equipment_refined/textures/%s.png" % TEXTURES[index]) as Texture2D
+		if texture == null:
+			return []
+		var material := ShaderMaterial.new()
+		material.resource_name = "ThunderPainted_" + ["head", "body", "shoulder", "arms", "legs"][index]
+		material.shader = painted_shader
+		material.set_shader_parameter("albedo_texture", texture)
+		material.set_shader_parameter("amber_visor", 1.0 if index == 0 else 0.0)
+		result.append(material)
+	# IDs 5..10 are shared with build_thunder.py. Colors are sRGB.
+	var finishes := [
+		["SteelBlueShell", Color("29476a"), 0.25, 0.52, 0.20, 0.0],
+		["NavyShell", Color("142539"), 0.25, 0.54, 0.18, 0.0],
+		["MetalEdge", Color("354b5c"), 0.28, 0.55, 0.14, 0.0],
+		["WarmGold", Color("bc8730"), 0.54, 0.35, 0.18, 0.0],
+		["AmberVisor", Color("e89720"), 0.35, 0.22, 0.08, 0.30],
+		["DarkJoint", Color("111b22"), 0.14, 0.74, 0.08, 0.0],
+	]
+	for finish: Array in finishes:
+		var material := ShaderMaterial.new()
+		material.resource_name = "Thunder_" + str(finish[0])
+		material.shader = shell_shader
+		material.set_shader_parameter("paint_color", finish[1])
+		material.set_shader_parameter("metalness", finish[2])
+		material.set_shader_parameter("surface_roughness", finish[3])
+		material.set_shader_parameter("readability_fill", finish[4])
+		material.set_shader_parameter("glow_strength", finish[5])
+		if finish[0] == "AmberVisor":
+			material.set_shader_parameter("visor_finish", 1.0)
+		result.append(material)
+	return result
+
+
+func _fail(message: String) -> void:
+	push_error("THUNDER_COMPILE_FAIL: " + message)
+	quit(1)
+
+
+func _test_validation() -> void:
+	# This path never loads or writes the game scene. Exercise malformed export
+	# rejection before Blender output is allowed to replace the runtime asset.
+	var valid := []
+	for part_name in PART_NAMES:
+		valid.append({
+			"name": part_name,
+			"positions": [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0],
+			"normals": [0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0],
+			"uv": [0.0, 0.0, 1.0, 0.0, 0.0, 1.0],
+			"bones": [["Head"], ["Head"], ["Head"]],
+			"weights": [[1.0], [1.0], [1.0]],
+			"materials": [5],
+		})
+	var bone_indices := {"Head": 0}
+	var rejected := []
+	var missing_part: Array = valid.duplicate(true)
+	missing_part.pop_back()
+	rejected.append(missing_part)
+	var duplicated_part: Array = valid.duplicate(true)
+	duplicated_part[1].name = PART_NAMES[0]
+	rejected.append(duplicated_part)
+	var wrong_length: Array = valid.duplicate(true)
+	wrong_length[0].positions.pop_back()
+	rejected.append(wrong_length)
+	var bad_material: Array = valid.duplicate(true)
+	bad_material[0].materials[0] = MATERIAL_COUNT
+	rejected.append(bad_material)
+	var bad_bone: Array = valid.duplicate(true)
+	bad_bone[0].bones[0][0] = "MissingBone"
+	rejected.append(bad_bone)
+	var bad_weights: Array = valid.duplicate(true)
+	bad_weights[0].weights[0][0] = 0.5
+	rejected.append(bad_weights)
+	var bad_float: Array = valid.duplicate(true)
+	bad_float[0].positions[0] = NAN
+	rejected.append(bad_float)
+	var bad_normal: Array = valid.duplicate(true)
+	bad_normal[0].normals = [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0]
+	rejected.append(bad_normal)
+	var passed := _validate_source(valid, bone_indices).is_empty()
+	for malformed: Array in rejected:
+		passed = not _validate_source(malformed, bone_indices).is_empty() and passed
+	print("THUNDER_COMPILER_VALIDATION_%s cases=%d" % ["PASS" if passed else "FAIL", rejected.size() + 1])
+	quit(0 if passed else 1)

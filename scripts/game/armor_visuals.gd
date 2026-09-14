@@ -2,7 +2,10 @@ extends RefCounted
 
 const Catalog = preload("res://scripts/core/armor_catalog.gd")
 const ORIGINAL_PART_PREFIXES := ["ArmorHead_", "ArmorBody_", "ArmorHand_", "ArmorFoot_"]
-const REWORKED_SCENES := {0: "res://assets/armors/viper/viper.scn"}
+const REWORKED_SCENES := {
+	0: "res://assets/armors/viper/viper.scn",
+	6: "res://assets/armors/thunder/thunder.scn",
+}
 
 
 static func ensure_parts(avatar: Node3D, visual_ids: Dictionary) -> void:

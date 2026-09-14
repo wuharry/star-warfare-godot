@@ -21,7 +21,16 @@ func _run() -> void:
 	var skeleton := avatar.find_children("*", "Skeleton3D", true, false)[0] as Skeleton3D
 	var animation := avatar.find_children("*", "AnimationPlayer", true, false)[0] as AnimationPlayer
 	var original_avatar := (load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate()
+	var checked_armor_sets := 0
 	for id in range(1, Catalog.SET_NAMES.size()):
+		if id == 6:
+			# Thunder now has deliberately redesigned helmet / plate geometry and
+			# materials. Old-atlas and < .025 silhouette parity are not its contract.
+			# tests/thunder_armor_test.tscn owns skinning, animation and mixed equips;
+			# all other refinement-only sets keep the original strict assertions.
+			_check(Visuals.REWORKED_SCENES.get(6, "") == "res://assets/armors/thunder/thunder.scn", "Thunder redesign lost its dedicated runtime mapping")
+			continue
+		checked_armor_sets += 1
 		var original: Node = original_avatar
 		if id >= Catalog.CALLOFMINI_FIRST_ID:
 			original = (load(Catalog.gameplay_scene_path(id)) as PackedScene).instantiate()
@@ -99,7 +108,7 @@ func _run() -> void:
 	fixture.cleanup()
 	fixture.queue_free()
 	await get_tree().process_frame
-	print("EQUIPMENT_REFINEMENT_TEST_PASS armor_sets=28 weapon_meshes=%d" % checked_models.size() if failures.is_empty() else "EQUIPMENT_REFINEMENT_TEST_FAIL count=%d" % failures.size())
+	print("EQUIPMENT_REFINEMENT_TEST_PASS armor_sets=%d weapon_meshes=%d thunder=dedicated_test" % [checked_armor_sets, checked_models.size()] if failures.is_empty() else "EQUIPMENT_REFINEMENT_TEST_FAIL count=%d" % failures.size())
 	get_tree().quit(0 if failures.is_empty() else 1)
 
 func _posed_bounds(instance: MeshInstance3D, skeleton: Skeleton3D) -> AABB:
