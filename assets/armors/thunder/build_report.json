@@ -1,32 +1,32 @@
 {
-  "design": "Thunder full concept reconstruction v3 / rounded helmet and layered armor",
-  "revision": "thunder_concept_v3",
+  "design": "Thunder detail v4 / paired SW2 helmet, recessed respirator and faceted armor",
+  "revision": "thunder_detail_v4",
   "concept": "docs\\art\\thunder_mk_comparison_v1\\images\\b_mk1_reference_helmet_v2.png",
   "concept_sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
   "source_sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
   "parts": [
     {
       "name": "ArmorHead_06",
-      "triangles": 28088,
-      "authored_panels": 52,
+      "triangles": 6316,
+      "authored_panels": 15,
       "bounds": [
         [
-          -0.28681856393814087,
-          0.28681856393814087
+          -0.2860451638698578,
+          0.2860451638698578
         ],
         [
-          1.2769999504089355,
-          1.9299900531768799
+          1.1799999475479126,
+          1.9273914098739624
         ],
         [
-          -0.40641164779663086,
-          0.3100000023841858
+          -0.31349921226501465,
+          0.25644949078559875
         ]
       ]
     },
     {
       "name": "ArmorBody_06",
-      "triangles": 3320,
+      "triangles": 3628,
       "authored_panels": 29,
       "bounds": [
         [
@@ -35,17 +35,17 @@
         ],
         [
           0.3348872661590576,
-          1.4029133319854736
+          1.4024790525436401
         ],
         [
-          -0.33423152565956116,
+          -0.3240417540073395,
           0.26353830099105835
         ]
       ]
     },
     {
       "name": "ArmorHand_06",
-      "triangles": 924,
+      "triangles": 980,
       "authored_panels": 6,
       "bounds": [
         [
@@ -57,14 +57,14 @@
           1.0512604713439941
         ],
         [
-          -0.09882577508687973,
-          0.14719098806381226
+          -0.09907814860343933,
+          0.15271490812301636
         ]
       ]
     },
     {
       "name": "ArmorFoot_06",
-      "triangles": 1610,
+      "triangles": 1770,
       "authored_panels": 10,
       "bounds": [
         [
@@ -76,8 +76,8 @@
           0.46488046646118164
         ],
         [
-          -0.3648209571838379,
-          0.16968226432800293
+          -0.36794596910476685,
+          0.18254582583904266
         ]
       ]
     }
@@ -88,7 +88,12 @@
     "blue_shell_paint.png": "132e9dd5547c570079e8747324662f3072401083e8500845cfd069be0a656b99",
     "d6da6925f6b4.png": "0c17892c2a354118a7c7fe2688d48c5a38cf5f16a55b3c0f11c6e0a19add3949",
     "dce7a1446714.png": "436b752b94895b8a7bb5df6cc283db3457a0d518eaefa6862b061aadae1f2e4d",
-    "df2d0a0b46da.png": "32cfab203a11e94fd0bf80c42e4f36f5b1475c8739e97dca0b527a685d539989"
+    "df2d0a0b46da.png": "32cfab203a11e94fd0bf80c42e4f36f5b1475c8739e97dca0b527a685d539989",
+    "helmet_detail_albedo.png": "3ecbcbeb9376bab75458c17f8a4fbdf069fe3a94b7ec4c531d481ecc4397287d",
+    "helmet_detail_emission.png": "054fbc63bd4e6fdb17a3ddc0c5950ddf4b56ed9edbeefbec7c4bc8c33279e844",
+    "helmet_detail_normal.png": "469f75d674c64f93fd71aeb3e6b435305e20207b8ad21c427e833009e9b29f0d",
+    "helmet_source_albedo.png": "10771919f82e5f787cb9d73bdd4e06af086d6e24f36d04fc8896909835f2240c"
   },
-  "scope": "Rebuilt rounded helmet, layered body armor, dedicated repainted atlases, original bind pose; set06 only"
+  "scope": "Paired original SW2 helmet topology/UV/normal map, low concept crown, recessed respirator, chamfered body armor, original bind pose; set06 only",
+  "head_source_sha256": "20bfa8c70bd1c25f34c48c7653505c76a56f524b2f821b18568c05eaee9485a3"
 }

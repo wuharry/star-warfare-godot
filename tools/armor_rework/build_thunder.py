@@ -64,19 +64,48 @@ for index in range(11):
             mat.node_tree.links.new(tex.outputs['Color'], tint.inputs[1])
             mat.node_tree.links.new(tint.outputs['Color'], shader.inputs['Base Color'])
     materials.append(mat)
+mat = bpy.data.materials.new('Thunder_PairedHelmet')
+mat.use_nodes = True
+tree = mat.node_tree
+shader = tree.nodes.get('Principled BSDF')
+shader.inputs['Roughness'].default_value = .68
+shader.inputs['Metallic'].default_value = .08
+tex = tree.nodes.new('ShaderNodeTexImage')
+tex.image = bpy.data.images.load(str(ROOT / 'assets/armors/thunder/textures/helmet_detail_albedo.png'))
+tree.links.new(tex.outputs['Color'], shader.inputs['Base Color'])
+texn = tree.nodes.new('ShaderNodeTexImage')
+texn.image = bpy.data.images.load(str(ROOT / 'assets/armors/thunder/textures/helmet_detail_normal.png'))
+texn.image.colorspace_settings.name = 'Non-Color'
+normal = tree.nodes.new('ShaderNodeNormalMap')
+tree.links.new(texn.outputs['Color'], normal.inputs['Color'])
+tree.links.new(normal.outputs['Normal'], shader.inputs['Normal'])
+materials.append(mat)
+for name, color in [('RespiratorSteel', (.042, .052, .068, 1)), ('RespiratorEdge', (.10, .125, .15, 1))]:
+    mat = bpy.data.materials.new('Thunder_' + name)
+    mat.use_nodes = True
+    shader = mat.node_tree.nodes.get('Principled BSDF')
+    shader.inputs['Base Color'].default_value = color
+    shader.inputs['Roughness'].default_value = .65
+    shader.inputs['Metallic'].default_value = .12
+    materials.append(mat)
 helmet = module('thunder_helmet')
 body = module('thunder_body')
 helmet.refine_helmet(parts[0], materials)
 for obj in parts[1:]:
-    body.refine_body(obj, materials)
+    body.refine_body(obj, materials[:11])
 output = []
 report = []
 for obj in parts:
     for modifier in list(obj.modifiers):
         obj.modifiers.remove(modifier)
+    bpy.context.view_layer.objects.active = obj
+    triangulate = obj.modifiers.new('Triangulate closed detail caps', 'TRIANGULATE')
+    triangulate.min_vertices = 5
+    bpy.ops.object.modifier_apply(modifier=triangulate.name)
     obj.data.calc_loop_triangles()
     assert obj.data.uv_layers.active is not None, (obj.name, 'missing UV layer')
-    attrs = {'name': obj.name, 'positions': [], 'normals': [], 'uv': [], 'bones': [], 'weights': [], 'materials': []}
+    obj.data.calc_tangents(uvmap=obj.data.uv_layers.active.name)
+    attrs = {'name': obj.name, 'positions': [], 'normals': [], 'tangents': [], 'uv': [], 'bones': [], 'weights': [], 'materials': []}
     normal_data = obj.data.corner_normals
     for tri in obj.data.loop_triangles:
         material = obj.data.materials[tri.material_index]
@@ -85,6 +114,8 @@ for obj in parts:
             vertex = obj.data.vertices[obj.data.loops[loop].vertex_index]
             attrs['positions'].extend(vertex.co)
             attrs['normals'].extend(normal_data[loop].vector.normalized())
+            attrs['tangents'].extend(obj.data.loops[loop].tangent)
+            attrs['tangents'].append(obj.data.loops[loop].bitangent_sign)
             attrs['uv'].extend(obj.data.uv_layers.active.data[loop].uv)
             groups = sorted((g for g in vertex.groups if g.weight > 0), key=lambda g: g.weight, reverse=True)[:4]
             total = sum(g.weight for g in groups)
@@ -103,14 +134,15 @@ asset_dir = ROOT / 'assets/armors/thunder'
 asset_dir.mkdir(parents=True, exist_ok=True)
 concept = ROOT / 'docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png'
 (asset_dir / 'build_report.json').write_text(json.dumps({
-    'design': 'Thunder full concept reconstruction v3 / rounded helmet and layered armor',
-    'revision': 'thunder_concept_v3',
+    'design': 'Thunder detail v4 / paired SW2 helmet, recessed respirator and faceted armor',
+    'revision': 'thunder_detail_v4',
     'concept': str(concept.relative_to(ROOT)),
     'concept_sha256': hashlib.sha256(concept.read_bytes()).hexdigest(),
     'source_sha256': hashlib.sha256((ROOT / 'assets/models/player/animated/player.gltf').read_bytes()).hexdigest(),
     'parts': report,
     'texture_sha256': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((asset_dir / 'textures').glob('*.png'))},
-    'scope': 'Rebuilt rounded helmet, layered body armor, dedicated repainted atlases, original bind pose; set06 only',
+    'scope': 'Paired original SW2 helmet topology/UV/normal map, low concept crown, recessed respirator, chamfered body armor, original bind pose; set06 only',
+    'head_source_sha256': hashlib.sha256((asset_dir / 'source_sw2/modern_head.json').read_bytes()).hexdigest(),
 }, indent=2) + '\n')
 for action in list(bpy.data.actions):
     bpy.data.actions.remove(action)

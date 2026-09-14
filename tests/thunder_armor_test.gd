@@ -3,7 +3,7 @@ extends Node3D
 const Visuals = preload("res://scripts/game/armor_visuals.gd")
 const Catalog = preload("res://scripts/core/armor_catalog.gd")
 const SCENE := "res://assets/armors/thunder/thunder.scn"
-const REVISION := "thunder_concept_v3"
+const REVISION := "thunder_detail_v4"
 var failures: Array[String] = []
 
 
@@ -58,6 +58,7 @@ func _run() -> void:
 				var identity := skeleton.get_bone_global_rest(bone) * part.skin.get_bind_pose(bind)
 				_check(identity.is_equal_approx(Transform3D.IDENTITY), part_name + " changes the skeleton rest pose")
 		triangle_count += _validate_mesh(part)
+		var paired_helmet_surfaces := 0
 		for surface in part.mesh.get_surface_count():
 			_check(part.get_active_material(surface) != null, part_name + " has missing material")
 			_check(part.get_active_material(surface) == authored.get_active_material(surface), part_name + " has a material override")
@@ -65,14 +66,10 @@ func _run() -> void:
 			if finish != null and finish.resource_name.begins_with("ThunderPainted_"):
 				var paint := finish.get_shader_parameter("albedo_texture") as Texture2D
 				_check(paint != null and paint.resource_path.begins_with("res://assets/armors/thunder/textures/"), part_name + " uses an old body atlas")
-			if finish != null and finish.resource_name == "Thunder_AmberVisor":
-				var glass := finish.get_shader_parameter("visor_paint_texture") as Texture2D
-				_check(glass != null and glass.resource_path == "res://assets/armors/thunder/textures/amber_visor_paint.png", "visor paint is missing from actual runtime material")
-				var visor_uv: PackedVector2Array = part.mesh.surface_get_arrays(surface)[Mesh.ARRAY_TEX_UV]
-				var uv_bounds := Rect2(visor_uv[0], Vector2.ZERO)
-				for coordinate in visor_uv:
-					uv_bounds = uv_bounds.expand(coordinate)
-				_check(uv_bounds.size.x > 0.99 and uv_bounds.size.y > 0.99, "visor UVs do not span its painted aperture")
+			if finish != null and finish.resource_name == "Thunder_PairedHelmet":
+				paired_helmet_surfaces += 1
+				_validate_helmet_detail(part, surface, finish)
+		_check(paired_helmet_surfaces == (1 if part_name == "ArmorHead_06" else 0), part_name + " has missing or misplaced paired helmet material")
 	_check(parts.size() == 4, "Thunder must have four exchangeable parts")
 	_check(triangle_count > 0, "mesh validation did not count any triangles")
 	_check_visible(avatar, ["ArmorHead_06", "ArmorBody_06", "ArmorHand_06", "ArmorFoot_06"])
@@ -134,6 +131,60 @@ func _validate_mesh(part: MeshInstance3D) -> int:
 				total += weights[index]
 			_check(absf(total - 1.0) < 0.0001, str(part.name) + " has unnormalized weights")
 	return triangles
+
+
+func _validate_helmet_detail(part: MeshInstance3D, surface: int, finish: ShaderMaterial) -> void:
+	_check(finish.shader != null and finish.shader.resource_path == "res://assets/armors/thunder/helmet_detail.gdshader", "paired helmet does not use its normal-mapped shader")
+	var bindings := {
+		"albedo_texture": "helmet_detail_albedo",
+		"source_albedo_texture": "helmet_source_albedo",
+		"normal_texture": "helmet_detail_normal",
+		"emission_texture": "helmet_detail_emission",
+	}
+	for binding: String in bindings:
+		var stem: String = bindings[binding]
+		var texture := finish.get_shader_parameter(binding) as Texture2D
+		_check(texture != null and texture.resource_path == "res://assets/armors/thunder/textures/%s.res" % stem, "paired helmet is missing runtime " + binding)
+		if texture == null:
+			continue
+		# Unity uses even transparent texels' RGB for surface/normal data. The
+		# portable texture must retain those bytes, not apply alpha-border repair.
+		var source := Image.new()
+		var png_path := "res://assets/armors/thunder/textures/%s.png" % stem
+		var decoded := source.load_png_from_buffer(FileAccess.get_file_as_bytes(png_path))
+		_check(decoded == OK, "cannot decode paired helmet source " + binding)
+		var runtime := texture.get_image()
+		_check(runtime != null and not runtime.is_empty(), "paired helmet has no runtime image " + binding)
+		if decoded != OK or runtime == null or runtime.is_empty():
+			continue
+		_check(not runtime.has_mipmaps(), "paired helmet unexpectedly generated mipmaps for " + binding)
+		_check(not runtime.is_compressed(), "paired helmet unexpectedly compressed image channels for " + binding)
+		_check(runtime.get_format() == source.get_format() and runtime.get_size() == source.get_size(), "paired helmet image format or size changed for " + binding)
+		_check(runtime.get_data() == source.get_data(), "paired helmet lost raw source RGB/alpha data for " + binding)
+	var strength: Variant = finish.get_shader_parameter("normal_strength")
+	# The headless dummy renderer can return null for an unset shader default.
+	# Check a material override when present; the shader supplies 0.85 otherwise.
+	if strength != null:
+		_check((strength is float or strength is int) and is_finite(float(strength)) and float(strength) > 0.0, "helmet engraved normal detail is disabled")
+	var arrays := part.mesh.surface_get_arrays(surface)
+	var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+	var normals: PackedVector3Array = arrays[Mesh.ARRAY_NORMAL]
+	var uv: PackedVector2Array = arrays[Mesh.ARRAY_TEX_UV]
+	var tangents: PackedFloat32Array = arrays[Mesh.ARRAY_TANGENT] if arrays[Mesh.ARRAY_TANGENT] != null else PackedFloat32Array()
+	var complete := not vertices.is_empty() and normals.size() == vertices.size() and uv.size() == vertices.size() and tangents.size() == vertices.size() * 4
+	_check(complete, "normal-mapped helmet needs one complete tangent frame per vertex")
+	if not complete:
+		return
+	var uv_bounds := Rect2(uv[0], Vector2.ZERO)
+	for vertex in vertices.size():
+		uv_bounds = uv_bounds.expand(uv[vertex])
+		var tangent := Vector3(tangents[vertex * 4], tangents[vertex * 4 + 1], tangents[vertex * 4 + 2])
+		var handedness := tangents[vertex * 4 + 3]
+		_check(tangent.is_finite() and is_finite(handedness), "helmet has a non-finite tangent frame")
+		_check(absf(tangent.length() - 1.0) < 0.03, "helmet tangent is not normalized")
+		_check(absf(tangent.dot(normals[vertex])) < 0.03, "helmet tangent is not perpendicular to its normal")
+		_check(absf(absf(handedness) - 1.0) < 0.001, "helmet tangent lost mirrored UV handedness")
+	_check(uv_bounds.size.x > 0.5 and uv_bounds.size.y > 0.5, "helmet UVs collapse its paired texture atlas")
 
 
 func _validate_store_preview(template: Node3D) -> void:
