@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thunder mk1 / mk2 · 配色、硬甲與新頭盔對照</title>
+<style>
+:root{color-scheme:dark;font:16px/1.6 system-ui,-apple-system,sans-serif;background:#12171b;color:#e2e8eb}
+*{box-sizing:border-box}body{max-width:1600px;margin:auto;padding:30px}header{max-width:1050px}h1{font-size:clamp(23px,3vw,36px);line-height:1.25;margin:0 0 12px;font-weight:650}h2{font-size:22px;margin:0 0 8px}p{margin:8px 0;color:#b7c2c8}a{color:#a9d7e7}.eyebrow{font-size:12px;letter-spacing:.13em;color:#99aab4;margin-bottom:12px}.toolbar{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin:22px 0}.toolbar label{cursor:pointer}.studies{display:grid;grid-template-columns:1fr 1fr;gap:24px}.study{min-width:0}.study>p{min-height:52px}.switches{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}button{font:inherit;border:1px solid #475762;background:#202b33;color:#dce6ed;padding:8px 14px;border-radius:5px;cursor:pointer}button[aria-pressed=true]{background:#314653;border-color:#8bb5c7;color:white}button:hover{border-color:#d2e1e9}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #e8c776;outline-offset:4px}.frame{width:100%;padding:0;border:0;background:#0d1114;display:block;cursor:zoom-in;border-radius:6px;overflow:hidden}.frame img{width:100%;height:auto;aspect-ratio:6/7;object-fit:contain;display:block}.status{font-size:13px;color:#d7c083;margin:8px 0;min-height:44px}.links{font-size:14px;display:flex;gap:14px}.gray .armor-image{filter:grayscale(1)}details{margin-top:32px;border-top:1px solid #34404a;padding-top:20px}summary{cursor:pointer;font-size:18px}.sources{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px}figure{margin:0}figure img{width:100%;height:300px;object-fit:contain;background:#0d1114;border-radius:5px}figcaption{font-size:13px;color:#b7c2c8;margin-top:6px}.notes{max-width:1050px;font-size:14px;line-height:1.8}.notes li{margin:8px 0}.palette{display:flex;gap:12px;flex-wrap:wrap}.swatch{display:flex;align-items:center;gap:6px;font-size:13px}.swatch i{display:inline-block;width:17px;height:17px;border-radius:50%;border:1px solid #ffffff30}.fine{font-size:13px;color:#93a4af;margin-top:30px}dialog{padding:12px;background:#12171b;color:inherit;border:1px solid #637582;max-width:96vw;max-height:96vh;border-radius:8px}dialog::backdrop{background:#000d}dialog img{display:block;max-width:90vw;max-height:80vh;object-fit:contain}dialog button{float:right}dialog p{clear:both}.error{color:#ffa392}
+@media(max-width:700px){body{padding:18px}.studies{grid-template-columns:1fr;gap:36px}.sources{grid-template-columns:1fr 1fr}.study>p{min-height:0}figure img{height:230px}.toolbar{gap:12px}}
+</style>
+</head>
+<body>
+<header>
+<div class="eyebrow">THUNDER · DESIGN STUDIES · 2026.09.14</div>
+<h1>同一套色系，兩種裝甲方向。</h1>
+<p><a href="runtime.html">看 B 新頭盔實際套用：原版／核准概念／首版 3D 遊戲截圖 →</a>（以下保留概念階段的候選與當時說明。）</p>
+<p>A 保留 mk2 的輪廓，套用遊戲目前 mk1 色系。B 沿用上一版硬甲方向，加入依你提供圖片調整的新頭盔；可切換舊頭盔與目前 mk1 比較。這是概念候選，尚未修改遊戲模型或 UV 貼圖。</p>
+</header>
+<div class="toolbar">
+<label><input id="gray" type="checkbox"> 灰階看切面與輪廓</label>
+<button id="reset" type="button">顯示最新候選</button>
+<span id="load-status" aria-live="polite">載入圖片中…</span>
+</div>
+<div class="palette" aria-label="配色方向，示意色票而非量測">
+<span class="swatch"><i style="background:#294354"></i>深鋼藍</span>
+<span class="swatch"><i style="background:#17191b"></i>暗色內襯</span>
+<span class="swatch"><i style="background:#b19b45"></i>少量金黃</span>
+<span class="swatch"><i style="background:#ba732c"></i>琥珀面罩</span>
+</div>
+<main class="studies">
+<section class="study" id="a">
+<h2>A · Thunder mk2 × mk1 配色</h2>
+<p>保留 mk2 圓形頭部機構、中央隆脊與層疊肩甲；外殼使用深鋼藍，減少亮藍與大面積黃光。</p>
+<div class="switches"><button type="button" data-study="a" data-version="candidate" aria-pressed="true">換色候選</button><button type="button" data-study="a" data-version="source" aria-pressed="false">mk2 網格來源</button></div>
+<button class="frame" type="button" data-zoom="a" aria-label="放大 A 圖"><img id="image-a" class="armor-image" src="images/a_mk2_mk1_palette.png" alt="A：Thunder mk2 套用 mk1 配色的生成候選"></button>
+<p class="status" id="status-a" aria-live="polite">AI 配色候選；生成圖可能有局部幾何偏移，不是貼圖已接回原網格。</p>
+<div class="links"><a id="full-a" href="images/a_mk2_mk1_palette.png">開啟原尺寸</a><a href="prompts/a_mk2_mk1_palette.txt">生成 prompt</a></div>
+</section>
+<section class="study" id="b">
+<h2>B · Thunder mk1 硬甲 × 新頭盔</h2>
+<p>頭頂改為寬厚中央甲脊，取代細高頭冠；搭配下壓眉甲、V 形橘色面罩與短下巴模組。身體以保留上一版硬甲與配色為目標。</p>
+<div class="switches"><button type="button" data-study="b" data-version="helmet" aria-pressed="true">新頭盔</button><button type="button" data-study="b" data-version="candidate" aria-pressed="false">舊頭盔</button><button type="button" data-study="b" data-version="source" aria-pressed="false">目前 mk1</button></div>
+<button class="frame" type="button" data-zoom="b" aria-label="放大 B 圖"><img id="image-b" class="armor-image" src="images/b_mk1_reference_helmet_v2.png" alt="B 新頭盔：寬厚中央甲脊、下壓眉甲與 V 形橘色面罩的生成候選"></button>
+<p class="status" id="status-b" aria-live="polite">AI 頭盔修改候選；身體以維持舊版為目標，仍需比較局部偏移，尚未接入遊戲。</p>
+<div class="links"><a id="full-b" href="images/b_mk1_reference_helmet_v2.png">開啟原尺寸</a><a id="prompt-b" href="prompts/b_mk1_reference_helmet_v2.txt">生成 prompt</a></div>
+</section>
+</main>
+<details id="reference-details"><summary>實際來源與背面參考</summary>
+<div class="sources">
+<figure><a href="references/mk1_current_front.png"><img class="armor-image" loading="lazy" src="references/mk1_current_front.png" alt="Godot 實際 mk1 正面截圖"></a><figcaption>mk1 正面 · runtime armor_06，非 AI</figcaption></figure>
+<figure><a href="references/mk1_current_rear.png"><img class="armor-image" loading="lazy" src="references/mk1_current_rear.png" alt="Godot 實際 mk1 背面截圖"></a><figcaption>mk1 背面 · 相同 runtime 部件</figcaption></figure>
+<figure><a href="references/mk2_clay_front.png"><img class="armor-image" loading="lazy" src="references/mk2_clay_front.png" alt="commit 的 mk2 無貼圖網格正面"></a><figcaption>mk2 正面 · commit 實際網格灰模，非原配色</figcaption></figure>
+<figure><a href="references/mk2_clay_rear.png"><img class="armor-image" loading="lazy" src="references/mk2_clay_rear.png" alt="commit 的 mk2 無貼圖網格背面"></a><figcaption>mk2 背面 · 同一組 OBJ</figcaption></figure>
+</div>
+</details>
+<details><summary>來源、限制與接續方式</summary>
+<ul class="notes">
+<li>mk1 色系取自實際載入的 <code>assets/equipment_refined/armors/armor_06.scn</code> 與其貼圖；不是尚未接入 runtime 的 redesigned_armors 藍青版，也不是前一批概念圖。</li>
+<li>mk2 來源 commit：<code>252aab1b38d0298994053ffaaec39677ef1ae4ee</code>。同名 OBJ / PNG 在已測 UV 翻轉與鏡像條件下仍無法正確對位，且未附完整材質設定，因此使用灰模作幾何參考。這不代表已判定來源檔損壞。</li>
+<li>mk1 由 Godot OpenGL Compatibility 截取；mk2 灰模由 Blender 渲染，攝影與燈光不同，不能當作相同光照下的材質量測。</li>
+<li>候選圖使用內建 imagegen，僅供決定配色與造型。A 不是已烘焙的新 UV，B 不是已完成新模型；多視角、動作與穿模仍待後續驗收。</li>
+<li>B 新頭盔依你提供的圖片調整：寬厚中央甲脊、下壓眉甲、V 形橘色面罩與短下巴模組。這次修改目標是頭盔，身體沿用舊硬甲候選；生成結果仍可能有非頭部細節偏移，請用「舊頭盔」切換比較。</li>
+<li>素材來源與商用授權另行處理；AI 改作不代表已清理原作品權利。</li>
+</ul>
+<p><a href="manifest.json">生成來源與審查備註</a> · <a href="README.md">製作與驗證紀錄</a></p>
+</details>
+<p class="fine">點圖放大，Esc 關閉。灰階只影響瀏覽器顯示，不修改檔案。色票是方向示意，不是從圖片量測出的精確數值。</p>
+<dialog id="zoom"><button id="close" type="button">關閉 ×</button><p id="zoom-title"></p><img id="zoom-image" class="armor-image" alt=""></dialog>
+<script>
+const studies={
+ a:{candidate:{src:'images/a_mk2_mk1_palette.png',alt:'A：Thunder mk2 套用 mk1 配色的生成候選',note:'AI 配色候選；生成圖可能有局部幾何偏移，不是貼圖已接回原網格。'},source:{src:'references/mk2_clay_front.png',alt:'A 來源：mk2 實際網格灰模',note:'Blender 實際 OBJ 灰模；因原貼圖對位尚未釐清，這裡不展示成原版配色。'}},
+ b:{helmet:{src:'images/b_mk1_reference_helmet_v2.png',alt:'B 新頭盔：寬厚中央甲脊、下壓眉甲與 V 形橘色面罩的生成候選',note:'AI 頭盔修改候選；身體以維持舊版為目標，仍需比較局部偏移，尚未接入遊戲。',prompt:'prompts/b_mk1_reference_helmet_v2.txt'},candidate:{src:'images/b_mk1_mk2_facets.png',alt:'B 舊頭盔：Thunder mk1 套用 mk2 硬甲切面的生成候選',note:'上一版 AI 硬甲候選；保留高頭冠與圓耳，可與新頭盔比較。',prompt:'prompts/b_mk1_mk2_facets.txt'},source:{src:'references/mk1_current_front.png',alt:'B 來源：目前 mk1 實際 Godot 截圖',note:'目前 runtime armor_06：實際細修模型、材質、貼圖，非 AI 圖片。'}}
+};
+function select(study,version){const data=studies[study][version];const img=document.querySelector('#image-'+study);img.src=data.src;img.alt=data.alt;document.querySelector('#status-'+study).textContent=data.note;document.querySelector('#full-'+study).href=data.src;const prompt=document.querySelector('#prompt-'+study);if(prompt){prompt.hidden=!data.prompt;if(data.prompt)prompt.href=data.prompt;}document.querySelectorAll('[data-study="'+study+'"]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.version===version)));}
+document.querySelectorAll('[data-study]').forEach(b=>b.addEventListener('click',()=>select(b.dataset.study,b.dataset.version)));
+document.querySelector('#gray').addEventListener('change',e=>document.body.classList.toggle('gray',e.target.checked));
+document.querySelector('#reset').addEventListener('click',()=>{select('a','candidate');select('b','helmet')});
+const zoom=document.querySelector('#zoom');
+document.querySelectorAll('[data-zoom]').forEach(b=>b.addEventListener('click',()=>{const src=document.querySelector('#image-'+b.dataset.zoom);document.querySelector('#zoom-image').src=src.src;document.querySelector('#zoom-image').alt=src.alt;document.querySelector('#zoom-title').textContent=src.alt;zoom.showModal()}));
+document.querySelector('#close').addEventListener('click',()=>zoom.close());
+const required=[...new Set([...Object.values(studies).flatMap(s=>Object.values(s).map(v=>v.src)),'references/mk1_current_rear.png','references/mk2_clay_rear.png'])];
+window.previewReady=Promise.all(required.map(src=>new Promise(resolve=>{const img=new Image();img.onload=()=>resolve({src,ok:img.naturalWidth>0});img.onerror=()=>resolve({src,ok:false});img.src=src}))).then(results=>{const missing=results.filter(r=>!r.ok);const label=document.querySelector('#load-status');label.textContent=missing.length?'圖片缺失：'+missing.map(r=>r.src).join('、'):'圖片已載入';label.classList.toggle('error',missing.length>0);return results;});
+</script>
+</body></html>
