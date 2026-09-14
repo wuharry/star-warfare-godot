@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode diffuse_burley, specular_schlick_ggx;
 
-uniform sampler2D albedo_texture : source_color, filter_linear_mipmap, repeat_disable;
+uniform sampler2D albedo_texture : source_color, filter_linear, repeat_disable;
 uniform float amber_visor : hint_range(0.0, 1.0) = 0.0;
 
 void fragment() {
@@ -12,8 +12,8 @@ void fragment() {
 	paint = mix(paint, min(paint * vec3(1.22, 1.52, 1.1), vec3(1.0)), amber * 0.8);
 	// Original atlases contain their own painted lighting. Preserve that read
 	// while the new raised shells supply real highlights and silhouette.
-	ALBEDO = paint * 0.30;
-	EMISSION = paint * 0.70;
+	ALBEDO = paint * 0.55;
+	EMISSION = paint * 0.45;
 	ROUGHNESS = 0.72;
 	METALLIC = 0.05;
 	SPECULAR = 0.16;

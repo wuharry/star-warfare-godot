@@ -1,4 +1,4 @@
-"""Build the approved Thunder B helmet/armor variant on the existing rig.
+"""Build the full reference Thunder helmet and armor on the existing rig.
 
 Blender --background --python tools/armor_rework/build_thunder.py
 godot --headless --path . --script tools/armor_rework/compile_thunder.gd
@@ -43,12 +43,26 @@ for index in range(11):
     shader.inputs['Roughness'].default_value = .48
     shader.inputs['Metallic'].default_value = .28 if index >= 5 else .05
     if index < 5:
-        image = bpy.data.images.load(str(ROOT / f'assets/equipment_refined/textures/{texture_stems[index]}.png'))
+        texture_dir = 'assets/equipment_refined/textures' if index == 0 else 'assets/armors/thunder/textures'
+        image = bpy.data.images.load(str(ROOT / texture_dir / f'{texture_stems[index]}.png'))
         tex = nodes.new('ShaderNodeTexImage')
         tex.image = image
         mat.node_tree.links.new(tex.outputs['Color'], shader.inputs['Base Color'])
     else:
         shader.inputs['Base Color'].default_value = colors[index - 5]
+        if index == 9:
+            tex = nodes.new('ShaderNodeTexImage')
+            tex.image = bpy.data.images.load(str(ROOT / 'assets/armors/thunder/textures/amber_visor_paint.png'))
+            mat.node_tree.links.new(tex.outputs['Color'], shader.inputs['Base Color'])
+        if index in [5, 6, 7]:
+            tex = nodes.new('ShaderNodeTexImage')
+            tex.image = bpy.data.images.load(str(ROOT / 'assets/armors/thunder/textures/blue_shell_paint.png'), check_existing=True)
+            tint = nodes.new('ShaderNodeMixRGB')
+            tint.blend_type = 'MULTIPLY'
+            tint.inputs[0].default_value = 1.0
+            tint.inputs[2].default_value = [(1,1,1,1),(.43,.50,.55,1),(1.45,1.35,1.22,1)][index-5]
+            mat.node_tree.links.new(tex.outputs['Color'], tint.inputs[1])
+            mat.node_tree.links.new(tint.outputs['Color'], shader.inputs['Base Color'])
     materials.append(mat)
 helmet = module('thunder_helmet')
 body = module('thunder_body')
@@ -61,6 +75,7 @@ for obj in parts:
     for modifier in list(obj.modifiers):
         obj.modifiers.remove(modifier)
     obj.data.calc_loop_triangles()
+    assert obj.data.uv_layers.active is not None, (obj.name, 'missing UV layer')
     attrs = {'name': obj.name, 'positions': [], 'normals': [], 'uv': [], 'bones': [], 'weights': [], 'materials': []}
     normal_data = obj.data.corner_normals
     for tri in obj.data.loop_triangles:
@@ -78,6 +93,7 @@ for obj in parts:
             attrs['weights'].append([g.weight / total for g in groups])
     output.append(attrs)
     report.append({'name': obj.name, 'triangles': len(attrs['materials']),
+                   'authored_panels': obj.get('thunder_raised_plates', 0),
                    'bounds': [[min(v.co[i] for v in obj.data.vertices), max(v.co[i] for v in obj.data.vertices)] for i in range(3)]})
     armature = obj.modifiers.new('Original player rig', 'ARMATURE')
     armature.object = rig
@@ -87,20 +103,21 @@ asset_dir = ROOT / 'assets/armors/thunder'
 asset_dir.mkdir(parents=True, exist_ok=True)
 concept = ROOT / 'docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png'
 (asset_dir / 'build_report.json').write_text(json.dumps({
-    'design': 'Thunder B / mk1 palette / approved reference helmet v2',
+    'design': 'Thunder full concept reconstruction v3 / rounded helmet and layered armor',
+    'revision': 'thunder_concept_v3',
     'concept': str(concept.relative_to(ROOT)),
     'concept_sha256': hashlib.sha256(concept.read_bytes()).hexdigest(),
     'source_sha256': hashlib.sha256((ROOT / 'assets/models/player/animated/player.gltf').read_bytes()).hexdigest(),
     'parts': report,
-    'scope': 'Original Thunder UV base and bind pose with authored hard shell geometry; set06 visual replacement only',
+    'texture_sha256': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((asset_dir / 'textures').glob('*.png'))},
+    'scope': 'Rebuilt rounded helmet, layered body armor, dedicated repainted atlases, original bind pose; set06 only',
 }, indent=2) + '\n')
 for action in list(bpy.data.actions):
     bpy.data.actions.remove(action)
 bpy.data.orphans_purge(do_recursive=True)
-for mat in materials[:5]:
-    for node in mat.node_tree.nodes:
-        if node.type == 'TEX_IMAGE':
-            node.image.filepath = '//../../../assets/equipment_refined/textures/' + Path(node.image.filepath).name
+for image in bpy.data.images:
+    if image.filepath and Path(image.filepath).is_absolute():
+        image.filepath = '//../../../' + Path(image.filepath).relative_to(ROOT).as_posix()
 native = ROOT / 'docs/art/armor_rework'
 native.mkdir(parents=True, exist_ok=True)
 bpy.context.preferences.filepaths.save_version = 0

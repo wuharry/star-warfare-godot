@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thunder · 概念與實際遊戲模型</title>
+<style>
+:root{color-scheme:dark;--bg:#111820;--panel:#1a2531;--line:#354555;--text:#ecf0f3;--muted:#aebdca;--gold:#f7c657}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:1500px;margin:auto;padding:30px 28px 64px}h1{font-size:clamp(25px,3vw,38px);line-height:1.2;margin:8px 0 14px}h2{font-size:21px;margin:30px 0 12px}p{margin:8px 0;color:var(--muted)}a{color:var(--gold)}.eyebrow{color:var(--gold);font-size:13px;letter-spacing:.15em}.top{max-width:1000px}.status{margin:18px 0;padding:12px 16px;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;background:var(--panel)}.controls{display:flex;align-items:end;gap:16px;flex-wrap:wrap;margin:18px 0}label{display:grid;gap:5px;font-size:13px;color:var(--muted)}select,button{font:inherit;background:#243341;color:var(--text);border:1px solid #496174;border-radius:7px;padding:9px 12px;min-height:44px}select{min-width:150px}button{cursor:pointer}button:hover,button:focus-visible{border-color:var(--gold)}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0;min-width:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}figcaption{display:flex;flex-wrap:wrap;gap:5px 12px;justify-content:space-between;padding:10px 14px;font-size:14px;color:var(--muted)}figcaption strong{color:var(--text)}.image-frame{aspect-ratio:5/6;background:#373a3d;overflow:hidden;position:relative}.image-frame img{width:100%;height:100%;object-fit:contain;display:block;cursor:zoom-in}.image-frame.helmet-ref img{height:280%;width:280%;max-width:none;object-fit:contain;position:absolute;left:-87%;top:-22%}.details{font-size:13px;color:var(--muted)}.notice{font-size:14px;margin:13px 0 25px;max-width:1150px}.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.gallery img{width:100%;display:block;cursor:zoom-in}.gallery figcaption{display:block}.game-gallery{grid-template-columns:repeat(2,1fr)}details{margin:24px 0;border:1px solid var(--line);padding:12px 16px;border-radius:8px}summary{cursor:pointer;color:var(--gold)}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.5 ui-monospace,monospace}dialog{padding:0;max-width:96vw;max-height:95vh;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:10px}dialog::backdrop{background:#000c}.zoom-head{padding:9px 15px;display:flex;align-items:center;justify-content:space-between;gap:20px}dialog img{display:block;max-width:93vw;max-height:83vh;object-fit:contain}.links{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px}.empty{padding:20px;color:var(--muted)}@media(max-width:680px){main{padding:22px 14px 40px}.comparison{gap:10px}.gallery{grid-template-columns:repeat(2,1fr)}.game-gallery{grid-template-columns:1fr}figcaption{padding:8px 10px;font-size:12px}.controls{gap:10px}label{flex:1;min-width:135px}select{width:100%;min-width:0}.notice{font-size:13px}.zoom-head{font-size:13px}}@media(prefers-reduced-motion:no-preference){button{transition:border-color .12s}}
+</style>
+<main>
+<header class="top"><div class="eyebrow">THUNDER / ACTUAL RUNTIME</div><h1>概念圖與遊戲內裝甲對照</h1><p>右側由真正的玩家裝備流程載入、Godot 直接渲染。全身與頭盔可切換四個視角，往下可檢查持槍、移動換彈與關卡實景。</p></header>
+<div class="status" id="status"></div>
+<div class="controls">
+<label>模型版本<select id="stage"></select></label>
+<label>檢查範圍<select id="scope"><option value="full">全身裝甲</option><option value="helmet">頭盔近景</option></select></label>
+<label>實際模型視角<select id="view"><option value="three_quarter">前側面</option><option value="front">正面</option><option value="side">側面</option><option value="rear">背面</option></select></label>
+<button id="reset" type="button">回到全身前側面</button>
+</div>
+<div class="comparison">
+<figure><div class="image-frame" id="reference-frame"><img id="reference" src="reference.png" alt="使用者指定的 Thunder 深鋼藍與金橙面罩概念圖"></div><figcaption><strong>指定概念圖</strong><span id="ref-caption">原始完整圖片</span></figcaption></figure>
+<figure><div class="image-frame"><img id="runtime" alt="實際遊戲 Thunder 裝甲"></div><figcaption><strong id="runtime-caption">實際遊戲模型</strong><span id="view-caption"></span></figcaption></figure>
+</div>
+<p class="notice" id="comparison-note"></p>
+<div class="details" id="revision"></div>
+<h2>持槍與移動換彈</h2><p>使用遊戲原有骨架與 FR28a 換彈動作。三個時間點搭配不同視角，用來檢查肩甲、前臂與胸甲的活動空間。</p>
+<div class="controls"><label>動作視角<select id="motion-view"><option value="three_quarter">前側面</option><option value="side">側面</option><option value="rear">背面</option></select></label></div>
+<div class="gallery" id="motion-gallery"></div>
+<h2>真正關卡畫面</h2><p>同一組 Thunder 部位載入關卡 1 與 3，保留遊戲本身的鏡頭、場景光照、材質與 HUD。</p>
+<div class="gallery game-gallery" id="game-gallery"></div>
+<details><summary>載入證據、拍攝資料與重現方式</summary><p>原玩家存檔的檔案雜湊在拍攝前後必須相同；測試變更只使用獨立的測試存檔路徑。</p><pre id="evidence"></pre><p><a href="__REPO_REL__tools/thunder_concept_preview/README.md">拍攝與 HTML 重建說明</a> · <a id="manifest-link">本版完整拍攝 manifest</a></p></details>
+<div class="links"><a href="__REPO_REL__docs/art/thunder_mk_comparison_v1/index.html">先前概念候選</a><a href="__REPO_REL__docs/art/thunder_mk_comparison_v1/runtime.html">上一版歷史紀錄</a><a href="reference.png">下載指定參考圖</a></div>
+</main>
+<dialog id="zoom"><div class="zoom-head"><span id="zoom-caption"></span><button id="zoom-close" type="button" autofocus>關閉 ×</button></div><img id="zoom-image" alt="放大檢查"></dialog>
+<script>
+const captures=__CAPTURE_DATA__;
+const $=id=>document.getElementById(id);
+const names={front:'正面',three_quarter:'前側面',side:'側面',rear:'背面'};
+const stages={baseline:'修改前實際版本',current:'目前實際版本'};
+for(const key of Object.keys(captures)) $('stage').add(new Option(stages[key],key));
+$('stage').value=captures.current?'current':'baseline';
+function openZoom(src,caption){$('zoom-image').src=src;$('zoom-caption').textContent=caption;$('zoom').showModal()}
+function picture(frame,label){const figure=document.createElement('figure');const img=document.createElement('img');img.src=$('stage').value+'/'+frame.file;img.alt=label;img.loading='lazy';img.addEventListener('click',()=>openZoom(img.src,label));const caption=document.createElement('figcaption');caption.textContent=label;figure.append(img,caption);return figure}
+function refresh(){
+ const stage=$('stage').value, data=captures[stage], view=$('view').value, scope=$('scope').value;
+ $('runtime').src=stage+'/'+scope+'_'+view+'.png';
+ $('runtime').alt=stages[stage]+'，'+(scope==='helmet'?'頭盔':'全身')+' '+names[view];
+ $('runtime-caption').textContent=stages[stage];$('view-caption').textContent=names[view]+' · 1200 × 1440';
+ $('reference-frame').classList.toggle('helmet-ref',scope==='helmet');$('ref-caption').textContent=scope==='helmet'?'原圖頭盔區域（僅頁面裁切）':'原始完整圖片';
+ $('status').textContent=(stage==='baseline'?'目前顯示修改前基準，尚非新模型。':'目前顯示已接入裝備流程的實際模型。')+' 拍攝：'+data.captured_at.replace('T',' ')+'；四件 Thunder 已載入；玩家原存檔未變更。';
+ $('comparison-note').textContent='全身展示保留遊戲原有步槍待機姿勢，只隱藏武器與背包，沒有調整人物或頭部比例。姿勢與光照和概念圖不同。'+(view==='rear'||view==='side'?'指定參考只有前側面；目前角度呈現模型依同一設計延伸的側背面。':'點圖片可放大；概念圖不是遊戲渲染截圖。');
+ $('revision').textContent='實際載入版本：'+[...new Set(data.parts.map(p=>p.revision))].join(' / ')+' · '+data.renderer;
+ $('motion-gallery').replaceChildren();
+ const idle=data.frames.find(f=>f.file==='armed_idle.png');if(idle)$('motion-gallery').append(picture(idle,'持槍待機 · 前側面'));
+ for(const percent of [20,52,85]){const f=data.frames.find(f=>f.file===`reload_${percent}_${$('motion-view').value}.png`);if(f)$('motion-gallery').append(picture(f,`移動換彈 ${percent}% · ${names[$('motion-view').value]}`))}
+ $('game-gallery').replaceChildren(...data.frames.filter(f=>f.category==='game').map(f=>picture(f,'關卡 '+f.file.match(/level_(\d+)/)[1]+' · 遊戲原鏡頭')));
+ $('evidence').textContent=JSON.stringify({runtime_loader:data.runtime_loader,renderer:data.renderer,quality:data.quality||{msaa:"disabled (archived capture default)"},runtime_scene_sha256:data.runtime_scene_sha256,runtime_resource_sha256:data.runtime_resource_sha256,save_unchanged:data.save_unchanged,parts:data.parts,full_bounds:data.full_bounds,head_bounds:data.head_bounds,captures:data.frames.length,status:data.status},null,2);
+ $('manifest-link').href=stage+'/manifest.json';
+}
+for(const id of ['stage','scope','view','motion-view'])$(id).addEventListener('change',refresh);
+$('reset').onclick=()=>{$('scope').value='full';$('view').value='three_quarter';refresh()};
+$('runtime').onclick=()=>openZoom($('runtime').src,$('runtime').alt);
+$('reference').onclick=()=>openZoom($('reference').src,'使用者指定的完整概念圖');
+$('zoom-close').onclick=()=>$('zoom').close();
+$('zoom').addEventListener('click',event=>{if(event.target===$('zoom'))$('zoom').close()});
+refresh();
+</script>
+</html>

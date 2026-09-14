@@ -1,0 +1,242 @@
+{
+	"captured_at": "2026-09-14T22:15:25",
+	"failures": [],
+	"frames": [
+		{
+			"category": "studio",
+			"file": "full_front.png",
+			"height": 1440,
+			"pose": "idle_rifle",
+			"time": 0.0,
+			"view": "front",
+			"width": 1200
+		},
+		{
+			"category": "studio",
+			"file": "full_three_quarter.png",
+			"height": 1440,
+			"pose": "idle_rifle",
+			"time": 0.0,
+			"view": "three_quarter",
+			"width": 1200
+		},
+		{
+			"category": "studio",
+			"file": "full_side.png",
+			"height": 1440,
+			"pose": "idle_rifle",
+			"time": 0.0,
+			"view": "side",
+			"width": 1200
+		},
+		{
+			"category": "studio",
+			"file": "full_rear.png",
+			"height": 1440,
+			"pose": "idle_rifle",
+			"time": 0.0,
+			"view": "rear",
+			"width": 1200
+		},
+		{
+			"category": "helmet",
+			"file": "helmet_front.png",
+			"height": 1440,
+			"pose": "idle_rifle",
+			"time": 0.0,
+			"view": "front",
+			"width": 1200
+		},
+		{
+			"category": "helmet",
+			"file": "helmet_three_quarter.png",
+			"height": 1440,
+			"pose": "idle_rifle",
+			"time": 0.0,
+			"view": "three_quarter",
+			"width": 1200
+		},
+		{
+			"category": "helmet",
+			"file": "helmet_side.png",
+			"height": 1440,
+			"pose": "idle_rifle",
+			"time": 0.0,
+			"view": "side",
+			"width": 1200
+		},
+		{
+			"category": "helmet",
+			"file": "helmet_rear.png",
+			"height": 1440,
+			"pose": "idle_rifle",
+			"time": 0.0,
+			"view": "rear",
+			"width": 1200
+		},
+		{
+			"category": "motion",
+			"file": "armed_idle.png",
+			"height": 1440,
+			"pose": "idle_rifle",
+			"time": 0.0,
+			"view": "three_quarter",
+			"width": 1200
+		},
+		{
+			"category": "motion",
+			"file": "reload_20_three_quarter.png",
+			"height": 1440,
+			"pose": "moving_gun00_reload_variant_0",
+			"time": 0.354,
+			"view": "three_quarter",
+			"width": 1200
+		},
+		{
+			"category": "motion",
+			"file": "reload_20_side.png",
+			"height": 1440,
+			"pose": "moving_gun00_reload_variant_0",
+			"time": 0.354,
+			"view": "side",
+			"width": 1200
+		},
+		{
+			"category": "motion",
+			"file": "reload_20_rear.png",
+			"height": 1440,
+			"pose": "moving_gun00_reload_variant_0",
+			"time": 0.354,
+			"view": "rear",
+			"width": 1200
+		},
+		{
+			"category": "motion",
+			"file": "reload_52_three_quarter.png",
+			"height": 1440,
+			"pose": "moving_gun00_reload_variant_0",
+			"time": 0.9204,
+			"view": "three_quarter",
+			"width": 1200
+		},
+		{
+			"category": "motion",
+			"file": "reload_52_side.png",
+			"height": 1440,
+			"pose": "moving_gun00_reload_variant_0",
+			"time": 0.9204,
+			"view": "side",
+			"width": 1200
+		},
+		{
+			"category": "motion",
+			"file": "reload_52_rear.png",
+			"height": 1440,
+			"pose": "moving_gun00_reload_variant_0",
+			"time": 0.9204,
+			"view": "rear",
+			"width": 1200
+		},
+		{
+			"category": "motion",
+			"file": "reload_85_three_quarter.png",
+			"height": 1440,
+			"pose": "moving_gun00_reload_variant_0",
+			"time": 1.5045,
+			"view": "three_quarter",
+			"width": 1200
+		},
+		{
+			"category": "motion",
+			"file": "reload_85_side.png",
+			"height": 1440,
+			"pose": "moving_gun00_reload_variant_0",
+			"time": 1.5045,
+			"view": "side",
+			"width": 1200
+		},
+		{
+			"category": "motion",
+			"file": "reload_85_rear.png",
+			"height": 1440,
+			"pose": "moving_gun00_reload_variant_0",
+			"time": 1.5045,
+			"view": "rear",
+			"width": 1200
+		},
+		{
+			"category": "game",
+			"file": "game_level_1.png",
+			"height": 900,
+			"pose": "live_game",
+			"time": 0.0,
+			"view": "game_camera",
+			"width": 1600
+		},
+		{
+			"category": "game",
+			"file": "game_level_3.png",
+			"height": 900,
+			"pose": "live_game",
+			"time": 0.0,
+			"view": "game_camera",
+			"width": 1600
+		}
+	],
+	"full_bounds": {
+		"position": [
+			-0.33612534403801,
+			0.0258887968957424,
+			-0.6956427693367
+		],
+		"size": [
+			0.912725210189819,
+			1.83882534503937,
+			1.07706117630005
+		]
+	},
+	"head_bounds": {
+		"position": [
+			-0.261172920465469,
+			1.18573117256165,
+			-0.427668750286102
+		],
+		"size": [
+			0.500150084495544,
+			0.678982973098755,
+			0.635668992996216
+		]
+	},
+	"notes": "Actual runtime meshes/materials. Studio uses the existing rifle idle pose with weapon/backpack hidden; pose and lighting differ from the concept. Rear is a model design continuation, not a provided rear reference. Motion/game views use existing game animations and materials.",
+	"parts": [
+		{
+			"mesh": "res://assets/armors/thunder/thunder.scn::ArrayMesh_ae06l",
+			"name": "ArmorHead_06",
+			"revision": "thunder_mk1_helmet_v2",
+			"surfaces": 5
+		},
+		{
+			"mesh": "res://assets/armors/thunder/thunder.scn::ArrayMesh_20o0s",
+			"name": "ArmorBody_06",
+			"revision": "thunder_mk1_helmet_v2",
+			"surfaces": 3
+		},
+		{
+			"mesh": "res://assets/armors/thunder/thunder.scn::ArrayMesh_o4un1",
+			"name": "ArmorHand_06",
+			"revision": "thunder_mk1_helmet_v2",
+			"surfaces": 2
+		},
+		{
+			"mesh": "res://assets/armors/thunder/thunder.scn::ArrayMesh_p5puc",
+			"name": "ArmorFoot_06",
+			"revision": "thunder_mk1_helmet_v2",
+			"surfaces": 2
+		}
+	],
+	"renderer": "gl_compatibility",
+	"runtime_loader": "WarfarePlayer._apply_recovered_armor_visibility",
+	"save_unchanged": true,
+	"stage": "baseline",
+	"status": "CAPTURED_REQUIRES_VISUAL_REVIEW"
+}

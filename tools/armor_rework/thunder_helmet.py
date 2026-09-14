@@ -1,17 +1,15 @@
-"""Thunder B helmet: low crown spine, V visor, cheek rails and chin unit.
+"""Reference Thunder: closed rounded shell, continuous spine and tall V visor.
 
-Coordinates are the recovered mesh's bind-pose XYZ (Y up, front -Z).
-Keep the existing dome UVs/neck skin; new hard pieces follow Bip01 Head.
+All coordinates use the original Y-up, -Z-forward bind pose. The pointed source
+shell is replaced, and every new helmet vertex follows the original Head bind.
 """
 import math
 import bpy
 import bmesh
 from mathutils import Vector
-from mathutils.bvhtree import BVHTree
-from mathutils.geometry import barycentric_transform
 
 
-def _piece(owner, name, vertices, faces, material, slots, bevel=0.002):
+def _piece(owner, name, vertices, faces, material, slots, bevel=.002, smooth=False):
     mesh = bpy.data.meshes.new(name)
     mesh.from_pydata(vertices, [], faces)
     mesh.update()
@@ -21,151 +19,316 @@ def _piece(owner, name, vertices, faces, material, slots, bevel=0.002):
         mesh.materials.append(slot)
     for poly in mesh.polygons:
         poly.material_index = material
-    group = obj.vertex_groups.new(name='Bip01 Head')
-    group.add(list(range(len(mesh.vertices))), 1.0, 'REPLACE')
+        poly.use_smooth = smooth
+    obj.vertex_groups.new(name='Bip01 Head').add(list(range(len(vertices))), 1.0, 'REPLACE')
     mesh.uv_layers.new(name='UVMap')
     bm = bmesh.new()
     bm.from_mesh(mesh)
     bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    for edge in bm.edges:
+        if edge.is_manifold and edge.calc_face_angle() > math.radians(45):
+            edge.smooth = False
     bm.to_mesh(mesh)
     bm.free()
     if bevel:
         bpy.ops.object.select_all(action='DESELECT')
         obj.select_set(True)
         bpy.context.view_layer.objects.active = obj
-        mod = obj.modifiers.new('Machined edge', 'BEVEL')
+        mod = obj.modifiers.new('Reference edge radius', 'BEVEL')
         mod.width = bevel
-        mod.segments = 2
-        mod.affect = 'EDGES'
+        mod.segments = 3
         mod.limit_method = 'ANGLE'
-        mod.angle_limit = math.radians(24)
-        mod.material = material
+        mod.angle_limit = math.radians(28)
         bpy.ops.object.modifier_apply(modifier=mod.name)
+    for poly in obj.data.polygons:
+        axis = max(range(3), key=lambda i: abs(poly.normal[i]))
+        axes = [i for i in range(3) if i != axis]
+        for loop in poly.loop_indices:
+            co = obj.data.vertices[obj.data.loops[loop].vertex_index].co
+            obj.data.uv_layers.active.data[loop].uv = (co[axes[0]] * 1.6 + .5, co[axes[1]] * 1.6)
     return obj
 
 
 def _front_plate(owner, name, outline, depth, material, slots, bevel=.002):
-    """Extrude an authored front outline toward the skull (+Z)."""
-    vertices = list(outline) + [(x, y, z + depth) for x, y, z in outline]
-    count = len(outline)
-    faces = [tuple(range(count)), tuple(reversed(range(count, count * 2)))]
-    for index in range(count):
-        nxt = (index + 1) % count
-        faces.append((index, nxt, nxt + count, index + count))
-    return _piece(owner, name, vertices, faces, material, slots, bevel)
+    n = len(outline)
+    verts = list(outline) + [(x, y, z + depth) for x, y, z in outline]
+    faces = [tuple(range(n)), tuple(reversed(range(n, 2*n)))]
+    faces += [(i, (i+1) % n, (i+1) % n+n, i+n) for i in range(n)]
+    return _piece(owner, name, verts, faces, material, slots, bevel)
 
 
-def _fitted_crown(owner, slots):
-    """Fit the new low rib to the skull surface, reusing its blue-painted UVs."""
-    source = owner.data
-    source.calc_loop_triangles()
-    triangles = list(source.loop_triangles)
-    coords = [v.co.copy() for v in source.vertices]
-    bvh = BVHTree.FromPolygons(coords, [t.vertices[:] for t in triangles], all_triangles=True)
-    center = Vector((0, 1.61, -.035))
-    path = [(.16, 1.80, .068), (.10, 1.86, .080), (.02, 1.88, .086),
-            (-.09, 1.88, .089), (-.19, 1.86, .082), (-.26, 1.79, .070),
-            (-.32, 1.71, .056), (-.38, 1.64, .042), (-.39, 1.57, .031),
-            (-.37, 1.48, .019)]
-    vertices, uvs = [], []
-    for z, y, width in path:
-        for fraction in (-1, -.84, 0, .84, 1):
-            direction = (Vector((width * fraction, y, z)) - center).normalized()
-            hit, normal, index, distance = bvh.ray_cast(center + direction * 2, -direction, 4)
-            if hit is None:
-                raise ValueError('Crown projection missed source helmet')
-            lift = .003 if abs(fraction) == 1 else .014
-            vertices.append(hit + normal * lift)
-            tri = triangles[index]
-            uv_coords = [Vector((*source.uv_layers.active.data[loop].uv, 0)) for loop in tri.loops]
-            uv = barycentric_transform(hit, *(coords[i] for i in tri.vertices), *uv_coords)
-            uvs.append((uv.x, uv.y))
+def _grid_shell(owner, name, rows, material, slots, depth=.009, smooth=True):
+    """Closed curved plate, with an inward shell and connected boundary."""
+    cyclic = all((Vector(row[0])-Vector(row[-1])).length < 1e-6 for row in rows)
+    if cyclic:
+        rows = [row[:-1] for row in rows]
+    width = len(rows[0])
+    verts = [Vector(v) for row in rows for v in row]
+    n = len(verts)
+    center = Vector((0, 1.57, -.025))
+    verts += [v - (v-center).normalized()*depth for v in verts[:]]
     faces = []
-    for ring in range(len(path) - 1):
-        for column in range(4):
-            a = ring * 5 + column
-            faces.append((a, a+1, a+6, a+5))
-    piece = _piece(owner, 'Skull fitted broad crown', vertices, faces, 0, slots, 0)
-    for poly in piece.data.polygons:
-        # Recessed narrow rails expose physical dark sides, not a white outline.
-        poly.material_index = 6 if poly.index % 4 in (0, 3) else 0
-        for loop in poly.loop_indices:
-            vertex = piece.data.loops[loop].vertex_index
-            piece.data.uv_layers.active.data[loop].uv = uvs[vertex]
-    return piece
+    for r in range(len(rows)-1):
+        for c in range(width if cyclic else width-1):
+            a = r*width+c
+            nxt = r*width+(c+1)%width
+            face = (a, nxt, nxt+width, a+width)
+            faces += [face, tuple(i+n for i in reversed(face))]
+    if cyclic:
+        boundaries = [list(range(width)),list(reversed(range(n-width,n)))]
+    else:
+        boundary = list(range(width))
+        boundary += [r*width+width-1 for r in range(1,len(rows))]
+        boundary += list(range(n-2,n-width-1,-1))
+        boundary += [r*width for r in range(len(rows)-2,0,-1)]
+        boundaries = [boundary]
+    for boundary in boundaries:
+        for i, a in enumerate(boundary):
+            b = boundary[(i+1)%len(boundary)]
+            faces.append((a, b, b+n, a+n))
+    return _piece(owner,name,verts,faces,material,slots,0,smooth)
+
+
+def _dome(theta, phi, lift=0):
+    return Vector(((.266+lift)*math.sin(theta)*math.sin(phi),
+                   1.588+(.326+lift)*math.cos(theta),
+                   -.025-(.314+lift)*math.sin(theta)*math.cos(phi)))
+
+
+def _line(owner, name, points, radius, material, slots):
+    closed=(Vector(points[0])-Vector(points[-1])).length < 1e-6
+    if closed:
+        points=points[:-1]
+    rows = []
+    for i, p in enumerate(points):
+        p = Vector(p)
+        before=(i-1)%len(points) if closed else max(i-1,0)
+        after=(i+1)%len(points) if closed else min(i+1,len(points)-1)
+        tangent = (Vector(points[after]) - Vector(points[before])).normalized()
+        normal = (p - Vector((0,1.57,-.025))).normalized()
+        cross = tangent.cross(normal).normalized()
+        rows.append([p+radius*(math.cos(a)*normal+math.sin(a)*cross) for a in [j*math.tau/6 for j in range(6)]])
+    verts=[p for row in rows for p in row]
+    faces=[]
+    for row in range(len(rows) if closed else len(rows)-1):
+        nxt=(row+1)%len(rows)
+        for c in range(6):
+            faces.append((row*6+c,row*6+(c+1)%6,nxt*6+(c+1)%6,nxt*6+c))
+    if not closed:
+        faces.extend([tuple(reversed(range(6))),tuple(range(len(verts)-6,len(verts)))])
+    return _piece(owner,name,verts,faces,material,slots,0,True)
+
+
+def _catmull(points, steps=6):
+    out = []
+    p = [Vector(points[0])] + [Vector(v) for v in points] + [Vector(points[-1])]
+    for i in range(1,len(p)-2):
+        a,b,c,d = p[i-1:i+3]
+        for j in range(steps):
+            t = j/steps
+            out.append(.5*((2*b)+(-a+c)*t+(2*a-5*b+4*c-d)*t*t+(-a+3*b-3*c+d)*t*t*t))
+    out.append(Vector(points[-1]))
+    return out
 
 
 def refine_helmet(obj, material_slots):
     for modifier in list(obj.modifiers):
         obj.modifiers.remove(modifier)
+    obj.data.clear_geometry()
+    for uv_layer in list(obj.data.uv_layers):
+        obj.data.uv_layers.remove(uv_layer)
+    obj.data.uv_layers.new(name='UVMap')
     obj.data.materials.clear()
-    for material in material_slots:
-        obj.data.materials.append(material)
-    for polygon in obj.data.polygons:
-        polygon.material_index = 0
-    # Source's duplicated UV-seam vertices must move together.
-    for vertex in obj.data.vertices:
-        x, y, z = vertex.co
-        if y > 1.95:
-            vertex.co.y = 1.858
-        if y < 1.35 and z < -.17:
-            vertex.co.y += (1.35 - y) * .8
-        # Turn the old pronounced circular ear boss into a compact inset housing.
-        if abs(x) > .225 and 1.42 < y < 1.62 and -.10 < z < .07:
-            vertex.co.x = math.copysign(.225 + (abs(x) - .225) * .32, x)
-    # The atlas carries the actual face aperture lower than the forehead shell.
-    # Keep its UV-defined edge; the head material selectively lights the amber.
-    obj.data.update()
-    # Weld coincident bind-pose vertices but retain each loop's UV seam.
-    bm = bmesh.new()
-    bm.from_mesh(obj.data)
-    bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=.000001)
-    bm.to_mesh(obj.data)
-    bm.free()
+    for mat in material_slots:
+        obj.data.materials.append(mat)
+    pieces = []
+    rows = []
+    for r in range(19):
+        row = []
+        for c in range(73):
+            phi = c*math.tau/72
+            end = math.radians(78+6*math.sin(phi)**2+34*max(0,-math.cos(phi)))
+            row.append(_dome(.012 + (end-.012)*r/18,phi))
+        rows.append(row)
+    pieces.append(_grid_shell(obj,'Continuous rounded shell',rows,5,material_slots,.014))
+    # Separate curved armor leaves make real stepped panel boundaries. The
+    # shared paint swatch stays continuous without projecting old atlas motifs.
+    panel_rows = [
+        [(25,35,69),(35,28,78),(49,30,78),(57,33,67),(63,39,67),(68,45,67)],
+        [(64,24,39),(70,24,75),(77,25,78),(81,31,77)],
+        [(43,85,123),(54,83,136),(69,83,140),(83,87,143),(96,96,142)],
+        [(31,143,167),(50,147,168),(73,149,169),(94,149,169),(109,151,168)],
+    ]
+    for side in (-1,1):
+        for number, outline in enumerate(panel_rows):
+            patch_rows=[]
+            dense_outline=[]
+            for first,last in zip(outline,outline[1:]):
+                steps=math.ceil((last[0]-first[0])/3.0)
+                for step in range(steps):
+                    t=step/steps
+                    dense_outline.append(tuple(a+(b-a)*t for a,b in zip(first,last)))
+            dense_outline.append(outline[-1])
+            for theta,left,right in dense_outline:
+                patch_rows.append([_dome(math.radians(theta),side*math.radians(left+(right-left)*i/8),.006) for i in range(9)])
+            patch=_grid_shell(obj,f'Curved crown armor leaf {side} {number}',patch_rows,5,material_slots,.009)
+            pieces.append(patch)
+            border=list(patch_rows[0])
+            border += [row[-1] for row in patch_rows[1:]]
+            border += list(reversed(patch_rows[-1][:-1]))
+            border += [row[0] for row in reversed(patch_rows[1:-1])]
+            border.append(border[0])
+            pieces.append(_line(obj,f'Machined crown leaf edge {side} {number}',border,.0009,7,material_slots))
+    rows = []
+    for r in range(7):
+        row=[]
+        for c in range(49):
+            phi = math.radians(72+216*c/48)
+            t=r/6
+            upper=1.62-.10*(1-math.cos(phi))/2
+            lower=1.32+.045*abs(math.sin(phi))
+            row.append((.259*(1-.16*t)*math.sin(phi),upper*(1-t)+lower*t,-.025-(.307-.05*t)*math.cos(phi)))
+        rows.append(row)
+    pieces.append(_grid_shell(obj,'Wraparound cheek and nape shell',rows,6,material_slots,.018))
+    # Closed inner jaw under the visible V rails. The previous open front-only
+    # rail left a view through to the background from either side.
+    liner=[]
+    for r in range(5):
+        row=[]
+        t=r/4
+        for c in range(73):
+            phi=c*math.tau/72
+            front_angle=min(phi,math.tau-phi)
+            u=min(1,front_angle/math.radians(77))
+            upper=1.327+.205*u**1.15 if front_angle<math.radians(95) else 1.48
+            lower=1.31+.070*abs(math.sin(phi))
+            row.append(((.242-.020*t)*math.sin(phi),upper*(1-t)+lower*t,-.025-(.335-.049*t)*math.cos(phi)))
+        liner.append(row)
+    pieces.append(_grid_shell(obj,'Closed fitted inner jaw liner',liner,6,material_slots,.027))
+
+    visor=[]
+    for r in range(9):
+        row=[]
+        for c in range(41):
+            u=-1+2*c/40
+            phi=u*math.radians(77)
+            t=r/8
+            top=1.648-.045*abs(u)
+            bottom=1.34+.205*abs(u)**1.15
+            row.append((.257*(1-.10*t)*math.sin(phi),top*(1-t)+bottom*t,-.025-(.335-.012*t)*math.cos(phi)))
+        visor.append(row)
+    aperture = _grid_shell(obj,'Tall wraparound amber V aperture',visor,9,material_slots,.012)
+    for loop in aperture.data.loops:
+        index = loop.vertex_index % (9*41)
+        aperture.data.uv_layers.active.data[loop.index].uv = (index % 41 / 40, 1-index // 41 / 8)
+    pieces.append(aperture)
+
+    # Sample the actual ellipsoid cross section. The underside intersects the
+    # shell by a small amount, leaving a closed seam instead of a floating arch.
+    rows=[]
+    for step in range(49):
+        angle=math.radians(-125+223*step/48)
+        a=math.degrees(angle)
+        w=.090 if a<70 else .090-(a-70)/28*.038
+        row=[]
+        for u in [-1,-.91,-.80,-.4,0,.4,.80,.91,1]:
+            x=u*w
+            radial=math.sqrt(1-(x/.266)**2)
+            lift=.016-.007*abs(u)**4
+            front_lift=max(0,min(1,(a-50)/35))*.031
+            y=1.588+(.326*radial+lift)*math.cos(angle)
+            z=-.025-(.314*radial+lift+front_lift)*math.sin(angle)
+            if step==48:
+                y-=.030*(1-abs(u))
+            row.append((x,y,z))
+        rows.append(row)
+    spine=_grid_shell(obj,'Continuous broad crown spine',rows,5,material_slots,.045)
+    pieces.append(spine)
+    for side in (-1,1):
+        edge=[row[0 if side<0 else -1] for row in rows]
+        pieces.append(_line(obj,f'Spine shadow channel {side}',edge,.0035,6,material_slots))
+        inner_edge=[(row[2 if side<0 else -3][0],row[2 if side<0 else -3][1]+.001,row[2 if side<0 else -3][2]-.001) for row in rows[9:-4]]
+        pieces.append(_line(obj,f'Spine narrow parallel channel {side}',inner_edge,.0012,6,material_slots))
+        points=[_dome(math.radians(t),side*math.radians(p),.001) for t,p in
+                [(23,57),(35,57),(47,57),(58,57),(64,53),(69,53),(70,66),(77,66)]]
+        pieces.append(_line(obj,f'Cap engraved channel {side}',_catmull(points,4),.0018,6,material_slots))
+        points=[_dome(math.radians(t),side*math.radians(p),.002) for t,p in
+                [(55,105),(65,105),(68,98),(74,98),(78,115),(88,115)]]
+        pieces.append(_line(obj,f'Side shell panel seam {side}',_catmull(points,3),.0016,6,material_slots))
+        rowset=[]
+        for t in [29,31,42,44]:
+            rowset.append([_dome(math.radians(t),side*math.radians(p),.010) for p in [50,54,61,65]])
+        pieces.append(_grid_shell(obj,f'Crown amber inset {side}',rowset,8,material_slots,.008))
+        def mirror(points):
+            return [(side*x,y,z) for x,y,z in points]
+        brow=[]
+        for height in [.016,-.008]:
+            row=[]
+            for c in range(13):
+                u=.22+.78*c/12
+                phi=side*u*math.radians(77)
+                row.append((.263*math.sin(phi),1.648-.045*u+height,-.025-.344*math.cos(phi)))
+            brow.append(row)
+        pieces.append(_grid_shell(obj,f'Fitted brow rail {side}',brow,7,material_slots,.020))
+        # Three fitted closed cheek segments follow the exact V edge. Separate
+        # grids avoid self-intersecting concave ngon extrusions at the mandible.
+        for segment,(start,end) in enumerate([(.16,.43),(.438,.72),(.728,1.04)]):
+            strip=[]
+            for ring,offset in enumerate([.014,.009,-.015,-.039,-.052]):
+                row=[]
+                for c in range(6):
+                    u=start+(end-start)*c/5
+                    phi=side*u*math.radians(77)
+                    lift=[0,.003,.008,.006,0][ring]
+                    row.append(((.243+lift)*math.sin(phi),1.34+.205*u**1.15+offset,-.025-(.341+lift)*math.cos(phi)))
+                strip.append(row)
+            guard=_grid_shell(obj,f'Fitted cheek segment {side} {segment}',strip,5,material_slots,.025,False)
+            # A narrow metal edge follows the top bevel, while the broad facet
+            # remains blue. This is a modeled edge, not a stretched atlas line.
+            for poly in guard.data.polygons:
+                if poly.index < 10 and poly.index % 2 == 0:
+                    poly.material_index=7
+            pieces.append(guard)
+        lower_cheek=[]
+        for start,end,offset in [(.70,1.08,-.044),(.69,1.11,-.074),(.76,1.06,-.112)]:
+            lower_cheek.append([(.244*math.sin(side*u*math.radians(77)),1.34+.205*u**1.15+offset,-.025-.342*math.cos(side*u*math.radians(77))) for u in [start+(end-start)*i/5 for i in range(6)]])
+        pieces.append(_grid_shell(obj,f'Stepped lower cheek guard {side}',lower_cheek,5,material_slots,.018,False))
+        outline=[(side*.279,1.600,-.081),(side*.282,1.611,-.015),(side*.281,1.582,.033),
+                 (side*.275,1.49,.023),(side*.266,1.468,-.043),(side*.272,1.504,-.090)]
+        n=len(outline)
+        verts=outline+[(x-side*.024,y,z) for x,y,z in outline]
+        faces=[tuple(range(n)),tuple(reversed(range(n,2*n)))]+[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
+        pieces.append(_piece(obj,f'Angular ear cartridge {side}',verts,faces,6,material_slots,.004))
+        inset=[(side*.285,1.586,-.063),(side*.287,1.590,-.011),(side*.283,1.514,-.005),(side*.281,1.498,-.038)]
+        verts=inset+[(x-side*.007,y,z) for x,y,z in inset]
+        faces=[(0,1,2,3),(7,6,5,4),(0,4,5,1),(1,5,6,2),(2,6,7,3),(3,7,4,0)]
+        pieces.append(_piece(obj,f'Ear recessed inset {side}',verts,faces,10,material_slots,.002))
+
+    chin=[(-.045,1.387,-.366),(.045,1.387,-.366),(.061,1.365,-.388),
+          (.054,1.297,-.378),(.032,1.277,-.357),(-.032,1.277,-.357),
+          (-.054,1.297,-.378),(-.061,1.365,-.388)]
+    pieces.append(_front_plate(obj,'Faceted chin respirator',chin,.034,5,material_slots,.005))
+    hood=[(-.038,1.402,-.376),(.038,1.402,-.376),(.049,1.383,-.405),
+          (.035,1.373,-.407),(-.035,1.373,-.407),(-.049,1.383,-.405)]
+    pieces.append(_front_plate(obj,'Respirator armored upper hood',hood,.024,7,material_slots,.003))
+    vent=[(-.034,1.370,-.401),(.034,1.370,-.401),(.030,1.332,-.396),(-.030,1.332,-.396)]
+    pieces.append(_front_plate(obj,'Respirator black inset',vent,.006,10,material_slots,.002))
+    latch=[(-.008,1.365,-.404),(.008,1.365,-.404),(.006,1.345,-.403),(-.006,1.345,-.403)]
+    pieces.append(_front_plate(obj,'Respirator center latch',latch,.004,7,material_slots,.001))
+    for y in [1.319,1.307]:
+        pieces.append(_front_plate(obj,'Recessed breathing slit',[(-.028,y+.002,-.387),(.028,y+.002,-.387),(.026,y-.002,-.387),(-.026,y-.002,-.387)],.004,10,material_slots,0))
+    collar=[]
+    for y in [1.285,1.345]:
+        collar.append([(.166*math.sin(i*math.tau/32),y,-.004-.156*math.cos(i*math.tau/32)) for i in range(33)])
+    pieces.append(_grid_shell(obj,'Dark neck collar',collar,10,material_slots,.015))
     bpy.ops.object.select_all(action='DESELECT')
     obj.hide_set(False)
     obj.select_set(True)
-    bpy.context.view_layer.objects.active = obj
-    bevel = obj.modifiers.new('Helmet shell edge refinement', 'BEVEL')
-    bevel.width = .0025
-    bevel.segments = 2
-    bevel.limit_method = 'ANGLE'
-    bevel.angle_limit = math.radians(38)
-    bpy.ops.object.modifier_apply(modifier=bevel.name)
-    pieces = [obj]
-    pieces.append(_fitted_crown(obj, material_slots))
-    # Cheek rails border the visor, with separate dark beds and solid blue covers.
-    for side in (-1, 1):
-        def mirrored(points):
-            return [(side * x, y, z) for x, y, z in points]
-        rail = [(.199, 1.544, -.173), (.165, 1.454, -.265), (.110, 1.378, -.308),
-                (.059, 1.343, -.350), (.044, 1.319, -.343), (.098, 1.331, -.313),
-                (.168, 1.401, -.250), (.211, 1.506, -.152)]
-        pieces.append(_front_plate(obj, f'Cheek rail {side}', mirrored(rail), .022, 5, material_slots))
-        # Small angular ear cover; no large round neon headset discs.
-        outline = [(side * .244, 1.580, -.075), (side * .250, 1.586, -.018),
-                   (side * .248, 1.552, .021), (side * .244, 1.489, .009),
-                   (side * .239, 1.466, -.045), (side * .238, 1.501, -.083)]
-        ear_vertices = outline + [(x - side * .016, y, z) for x, y, z in outline]
-        faces = [tuple(range(6)), tuple(reversed(range(6, 12)))]
-        faces += [(i, (i + 1) % 6, (i + 1) % 6 + 6, i + 6) for i in range(6)]
-        pieces.append(_piece(obj, f'Recessed ear housing {side}', ear_vertices, faces, 6, material_slots, .003))
-    chin = [(-.041, 1.408, -.354), (.041, 1.408, -.354), (.057, 1.388, -.370),
-            (.047, 1.328, -.366), (.029, 1.313, -.351), (-.029, 1.313, -.351),
-            (-.047, 1.328, -.366), (-.057, 1.388, -.370)]
-    pieces.append(_front_plate(obj, 'Faceted respirator housing', chin, .031, 6, material_slots, .004))
-    vent = [(-.028, 1.389, -.374), (.028, 1.389, -.374), (.028, 1.359, -.374), (-.028, 1.359, -.374)]
-    pieces.append(_front_plate(obj, 'Respirator inset', vent, .005, 10, material_slots, .001))
-    slot = [(-.007, 1.385, -.377), (.007, 1.385, -.377), (.007, 1.369, -.378), (-.007, 1.369, -.378)]
-    pieces.append(_front_plate(obj, 'Respirator center latch', slot, .005, 7, material_slots, .001))
-    for height in (1.348, 1.337):
-        line = [(-.025, height+.002, -.372), (.025, height+.002, -.372),
-                (.025, height-.002, -.372), (-.025, height-.002, -.372)]
-        pieces.append(_front_plate(obj, 'Lower vent', line, .004, 10, material_slots, 0))
-    bpy.ops.object.select_all(action='DESELECT')
     for piece in pieces:
-        piece.hide_set(False)
         piece.select_set(True)
-    bpy.context.view_layer.objects.active = obj
+    bpy.context.view_layer.objects.active=obj
     bpy.ops.object.join()
+    obj['thunder_raised_plates'] = len(pieces)
+    assert len(obj.data.uv_layers) > 0, 'Joined helmet must retain its painted surface UVs'
+    obj.data.uv_layers.active_index = 0
     return obj

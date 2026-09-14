@@ -100,7 +100,7 @@ func _build() -> void:
 		instance.skin = skin
 		instance.skeleton = NodePath("..")
 		instance.extra_cull_margin = 1.0
-		instance.set_meta("armor_rework", "thunder_mk1_helmet_v2")
+		instance.set_meta("armor_rework", "thunder_concept_v3")
 		container.add_child(instance)
 		instance.owner = container
 	var packed := PackedScene.new()
@@ -173,7 +173,8 @@ func _materials() -> Array[ShaderMaterial]:
 	if painted_shader == null or shell_shader == null:
 		return result
 	for index in TEXTURES.size():
-		var texture := load("res://assets/equipment_refined/textures/%s.png" % TEXTURES[index]) as Texture2D
+		var directory := "res://assets/equipment_refined/textures" if index == 0 else "res://assets/armors/thunder/textures"
+		var texture := load("%s/%s.png" % [directory, TEXTURES[index]]) as Texture2D
 		if texture == null:
 			return []
 		var material := ShaderMaterial.new()
@@ -184,13 +185,17 @@ func _materials() -> Array[ShaderMaterial]:
 		result.append(material)
 	# IDs 5..10 are shared with build_thunder.py. Colors are sRGB.
 	var finishes := [
-		["SteelBlueShell", Color("29476a"), 0.25, 0.52, 0.20, 0.0],
-		["NavyShell", Color("142539"), 0.25, 0.54, 0.18, 0.0],
-		["MetalEdge", Color("354b5c"), 0.28, 0.55, 0.14, 0.0],
-		["WarmGold", Color("bc8730"), 0.54, 0.35, 0.18, 0.0],
-		["AmberVisor", Color("e89720"), 0.35, 0.22, 0.08, 0.30],
-		["DarkJoint", Color("111b22"), 0.14, 0.74, 0.08, 0.0],
+		["SteelBlueShell", Color("355f88"), 0.12, 0.62, 0.38, 0.0],
+		["NavyShell", Color("203750"), 0.12, 0.64, 0.30, 0.0],
+		["MetalEdge", Color("496984"), 0.16, 0.55, 0.30, 0.0],
+		["WarmGold", Color("efb93d"), 0.12, 0.55, 0.34, 0.0],
+		["AmberVisor", Color("eea321"), 0.04, 0.42, 0.55, 0.22],
+		["DarkJoint", Color("181b20"), 0.0, 0.84, 0.20, 0.0],
 	]
+	var shell_detail := load("res://assets/armors/thunder/textures/blue_shell_paint.png") as Texture2D
+	var visor_paint := load("res://assets/armors/thunder/textures/amber_visor_paint.png") as Texture2D
+	if shell_detail == null or visor_paint == null:
+		return []
 	for finish: Array in finishes:
 		var material := ShaderMaterial.new()
 		material.resource_name = "Thunder_" + str(finish[0])
@@ -200,6 +205,9 @@ func _materials() -> Array[ShaderMaterial]:
 		material.set_shader_parameter("surface_roughness", finish[3])
 		material.set_shader_parameter("readability_fill", finish[4])
 		material.set_shader_parameter("glow_strength", finish[5])
+		material.set_shader_parameter("shell_detail_texture", shell_detail)
+		material.set_shader_parameter("visor_paint_texture", visor_paint)
+		material.set_shader_parameter("paint_detail", 1.0 if finish[0] in ["SteelBlueShell", "NavyShell", "MetalEdge"] else 0.0)
 		if finish[0] == "AmberVisor":
 			material.set_shader_parameter("visor_finish", 1.0)
 		result.append(material)

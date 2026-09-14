@@ -247,6 +247,7 @@ func _run() -> void:
 		]
 		var visible_armor_names: Array[String] = []
 		var all_armor_names: Array[String] = []
+		var thunder_template := (load("res://assets/armors/thunder/thunder.scn") as PackedScene).instantiate()
 		for candidate in shell.preview_root.find_children("*", "MeshInstance3D", true, false):
 			var armor_mesh := candidate as MeshInstance3D
 			all_armor_names.append(armor_mesh.name)
@@ -254,11 +255,15 @@ func _run() -> void:
 				visible_armor_names.append(armor_mesh.name)
 				for surface_index in armor_mesh.mesh.get_surface_count():
 					var material := armor_mesh.get_active_material(surface_index)
-					if armor_mesh.has_meta("armor_rework") and int(str(armor_mesh.name).right(2)) < 21:
+					if str(armor_mesh.name).ends_with("_06"):
+						var thunder_part := thunder_template.find_child(str(armor_mesh.name), true, false) as MeshInstance3D
+						_check(thunder_part != null and material == thunder_part.get_active_material(surface_index), "shop preview lost authored Thunder material")
+					elif armor_mesh.has_meta("armor_rework") and int(str(armor_mesh.name).right(2)) < 21:
 						var expected_shader := "res://assets/armors/viper/painted_armor.gdshader" if str(armor_mesh.name).ends_with("_00") else "res://assets/equipment_refined/painted_equipment.gdshader"
 						_check(material is ShaderMaterial and material.shader.resource_path == expected_shader, "shop preview lost refined armor material")
 					else:
 						_check(material is BaseMaterial3D and material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, "shop preview lost the original unlit armor shader")
+		thunder_template.free()
 		_check(visible_armor_names.size() == 4, "animated armor preview does not show exactly four equipped pieces")
 		for expected_mesh_name: String in expected_mesh_names:
 			_check(visible_armor_names.has(expected_mesh_name), "animated armor preview is missing " + expected_mesh_name)
