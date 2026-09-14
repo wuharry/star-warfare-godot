@@ -3,7 +3,7 @@ extends Node3D
 const Visuals = preload("res://scripts/game/armor_visuals.gd")
 const Catalog = preload("res://scripts/core/armor_catalog.gd")
 const SCENE := "res://assets/armors/thunder/thunder.scn"
-const REVISION := "thunder_mk1_helmet_v2"
+const REVISION := "thunder_concept_v3"
 var failures: Array[String] = []
 
 
@@ -61,6 +61,18 @@ func _run() -> void:
 		for surface in part.mesh.get_surface_count():
 			_check(part.get_active_material(surface) != null, part_name + " has missing material")
 			_check(part.get_active_material(surface) == authored.get_active_material(surface), part_name + " has a material override")
+			var finish := part.get_active_material(surface) as ShaderMaterial
+			if finish != null and finish.resource_name.begins_with("ThunderPainted_"):
+				var paint := finish.get_shader_parameter("albedo_texture") as Texture2D
+				_check(paint != null and paint.resource_path.begins_with("res://assets/armors/thunder/textures/"), part_name + " uses an old body atlas")
+			if finish != null and finish.resource_name == "Thunder_AmberVisor":
+				var glass := finish.get_shader_parameter("visor_paint_texture") as Texture2D
+				_check(glass != null and glass.resource_path == "res://assets/armors/thunder/textures/amber_visor_paint.png", "visor paint is missing from actual runtime material")
+				var visor_uv: PackedVector2Array = part.mesh.surface_get_arrays(surface)[Mesh.ARRAY_TEX_UV]
+				var uv_bounds := Rect2(visor_uv[0], Vector2.ZERO)
+				for coordinate in visor_uv:
+					uv_bounds = uv_bounds.expand(coordinate)
+				_check(uv_bounds.size.x > 0.99 and uv_bounds.size.y > 0.99, "visor UVs do not span its painted aperture")
 	_check(parts.size() == 4, "Thunder must have four exchangeable parts")
 	_check(triangle_count > 0, "mesh validation did not count any triangles")
 	_check_visible(avatar, ["ArmorHead_06", "ArmorBody_06", "ArmorHand_06", "ArmorFoot_06"])

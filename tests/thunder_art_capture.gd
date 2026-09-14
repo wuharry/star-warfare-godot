@@ -46,7 +46,7 @@ func _run() -> void:
 	for part: MeshInstance3D in fixture.player.recovered_avatar.find_children("Armor*", "MeshInstance3D", true, false):
 		if part.visible:
 			visible_parts += 1
-			if part.get_meta("armor_rework", "") != "thunder_mk1_helmet_v2":
+			if part.get_meta("armor_rework", "") != "thunder_concept_v3":
 				push_error("Capture loaded an old Thunder part: " + str(part.name))
 				failed = true
 	if visible_parts != 4 or failed:
@@ -101,7 +101,7 @@ func _run() -> void:
 			"viewport": [SIZE.x, SIZE.y],
 			"scene": "res://assets/armors/thunder/thunder.scn",
 			"runtime_loader": "WarfarePlayer._apply_recovered_armor_visibility",
-			"revision": "thunder_mk1_helmet_v2",
+			"revision": "thunder_concept_v3",
 			"frames": manifest,
 		}, "\t"))
 		file.close()

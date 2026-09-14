@@ -1,30 +1,33 @@
 {
-  "design": "Thunder B / mk1 palette / approved reference helmet v2",
-  "concept": "docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png",
+  "design": "Thunder full concept reconstruction v3 / rounded helmet and layered armor",
+  "revision": "thunder_concept_v3",
+  "concept": "docs\\art\\thunder_mk_comparison_v1\\images\\b_mk1_reference_helmet_v2.png",
   "concept_sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
-  "source_sha256": "15dbc5e532878e7fbc961a8bed45986f7b6a53a1fde5c955c66cfef806eee5bd",
+  "source_sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
   "parts": [
     {
       "name": "ArmorHead_06",
-      "triangles": 1922,
+      "triangles": 28088,
+      "authored_panels": 52,
       "bounds": [
         [
-          -0.24942131340503693,
-          0.24942129850387573
+          -0.28681856393814087,
+          0.28681856393814087
         ],
         [
-          1.2257640361785889,
-          1.880695104598999
+          1.2769999504089355,
+          1.9299900531768799
         ],
         [
-          -0.39632272720336914,
-          0.23922482132911682
+          -0.40641164779663086,
+          0.3100000023841858
         ]
       ]
     },
     {
       "name": "ArmorBody_06",
-      "triangles": 524,
+      "triangles": 3320,
+      "authored_panels": 29,
       "bounds": [
         [
           -0.6197892427444458,
@@ -35,14 +38,15 @@
           1.4029133319854736
         ],
         [
-          -0.3220524191856384,
+          -0.33423152565956116,
           0.26353830099105835
         ]
       ]
     },
     {
       "name": "ArmorHand_06",
-      "triangles": 194,
+      "triangles": 924,
+      "authored_panels": 6,
       "bounds": [
         [
           -0.5981501340866089,
@@ -54,13 +58,14 @@
         ],
         [
           -0.09882577508687973,
-          0.13819098472595215
+          0.14719098806381226
         ]
       ]
     },
     {
       "name": "ArmorFoot_06",
-      "triangles": 228,
+      "triangles": 1610,
+      "authored_panels": 10,
       "bounds": [
         [
           -0.29568153619766235,
@@ -71,11 +76,19 @@
           0.46488046646118164
         ],
         [
-          -0.36069491505622864,
-          0.15168225765228271
+          -0.3648209571838379,
+          0.16968226432800293
         ]
       ]
     }
   ],
-  "scope": "Original Thunder UV base and bind pose with authored hard shell geometry; set06 visual replacement only"
+  "texture_sha256": {
+    "14ceb45bf36d.png": "d0868b7e939df0aeebdf303b488b6b3ca127158028acba9d743fea9fc63b50a4",
+    "amber_visor_paint.png": "bfb941bd6bbb5abcd0d3e59f00c55a9b5dccce5881c8861006a53edba6123fb2",
+    "blue_shell_paint.png": "132e9dd5547c570079e8747324662f3072401083e8500845cfd069be0a656b99",
+    "d6da6925f6b4.png": "0c17892c2a354118a7c7fe2688d48c5a38cf5f16a55b3c0f11c6e0a19add3949",
+    "dce7a1446714.png": "436b752b94895b8a7bb5df6cc283db3457a0d518eaefa6862b061aadae1f2e4d",
+    "df2d0a0b46da.png": "32cfab203a11e94fd0bf80c42e4f36f5b1475c8739e97dca0b527a685d539989"
+  },
+  "scope": "Rebuilt rounded helmet, layered body armor, dedicated repainted atlases, original bind pose; set06 only"
 }
