@@ -59,6 +59,7 @@ var gun_mount: Node3D
 var gun_mount_rest_position := Vector3.ZERO
 var gun_mount_rest_rotation := Quaternion.IDENTITY
 var gun_recoil_offset := Vector3(0.0, 0.0, 0.1)
+var weapon_recoil_tween: Tween
 var muzzle: Marker3D
 var muzzle_light: OmniLight3D
 var animation_clock := 0.0
@@ -70,8 +71,10 @@ var recovered_animation_blend_tree: AnimationNodeBlendTree
 var recovered_locomotion_node: AnimationNodeAnimation
 var recovered_upper_body_node: AnimationNodeAnimation
 var recovered_upper_body_seek: AnimationNodeTimeSeek
+var recovered_upper_body_rate: AnimationNodeTimeScale
 var recovered_upper_body_blend: AnimationNodeBlend2
 var recovered_animation_name := ""
+var recovered_animation_speed := 1.0
 var recovered_locomotion_name := ""
 var recovered_upper_body_name := ""
 var recovered_layered_animation := false
@@ -324,16 +327,21 @@ func _build_recovered_animation_layers() -> void:
 	recovered_upper_body_node = AnimationNodeAnimation.new()
 	recovered_upper_body_node.animation = &"run_shoot_rifle"
 	recovered_upper_body_seek = AnimationNodeTimeSeek.new()
+	# Scales only the firing layer. The legs keep running at their own rate, so
+	# a fast automatic speeds up the arms without turning the run into a sprint.
+	recovered_upper_body_rate = AnimationNodeTimeScale.new()
 	recovered_upper_body_blend = AnimationNodeBlend2.new()
 	recovered_upper_body_blend.sync = true
 	recovered_upper_body_blend.filter_enabled = true
 	recovered_animation_blend_tree.add_node("locomotion", recovered_locomotion_node, Vector2(0.0, 80.0))
 	recovered_animation_blend_tree.add_node("upper_body", recovered_upper_body_node, Vector2(0.0, 240.0))
 	recovered_animation_blend_tree.add_node("upper_seek", recovered_upper_body_seek, Vector2(180.0, 240.0))
-	recovered_animation_blend_tree.add_node("layer", recovered_upper_body_blend, Vector2(260.0, 140.0))
+	recovered_animation_blend_tree.add_node("upper_rate", recovered_upper_body_rate, Vector2(360.0, 240.0))
+	recovered_animation_blend_tree.add_node("layer", recovered_upper_body_blend, Vector2(460.0, 140.0))
 	recovered_animation_blend_tree.connect_node("upper_seek", 0, "upper_body")
+	recovered_animation_blend_tree.connect_node("upper_rate", 0, "upper_seek")
 	recovered_animation_blend_tree.connect_node("layer", 0, "locomotion")
-	recovered_animation_blend_tree.connect_node("layer", 1, "upper_seek")
+	recovered_animation_blend_tree.connect_node("layer", 1, "upper_rate")
 	recovered_animation_blend_tree.connect_node("output", 0, "layer")
 
 	# Unity's Player.AddMixingTransformAnimation applies run_shoot clips only
@@ -451,7 +459,7 @@ func _armor_visual_id_from_name(node_name: String) -> int:
 	var suffix := node_name.get_slice("_", node_name.get_slice_count("_") - 1)
 	return int(suffix) if suffix.is_valid_int() else -1
 
-func _play_recovered_animation(animation_name: String, blend := 0.08, restart := false) -> void:
+func _play_recovered_animation(animation_name: String, blend := 0.08, restart := false, speed := 1.0) -> void:
 	if not recovered_animation_player or not recovered_animation_player.has_animation(animation_name):
 		return
 	var was_layered := recovered_animation_tree != null and recovered_animation_tree.active
@@ -461,21 +469,29 @@ func _play_recovered_animation(animation_name: String, blend := 0.08, restart :=
 	# A non-looping clip reports `is_playing() == false` on its last frame. The
 	# state timer may intentionally keep that pose a little longer; replaying it
 	# from zero every physics frame caused the visible freeze/stutter regression.
-	if not restart and recovered_animation_name == animation_name and not was_layered:
+	# A changed speed still has to go through, or swapping to a faster gun keeps
+	# the previous weapon's playback rate for as long as the clip name matches.
+	if (
+		not restart
+		and recovered_animation_name == animation_name
+		and not was_layered
+		and is_equal_approx(recovered_animation_speed, speed)
+	):
 		return
 	recovered_animation_name = animation_name
-	recovered_animation_player.play(animation_name, blend)
+	recovered_animation_speed = speed
+	recovered_animation_player.play(animation_name, blend, speed)
 	if restart:
 		recovered_animation_player.seek(0.0, true)
 
-func _play_recovered_layered_animation(locomotion_name: String, upper_body_name: String, restart_upper_body := false) -> void:
+func _play_recovered_layered_animation(locomotion_name: String, upper_body_name: String, restart_upper_body := false, upper_body_rate := 1.0) -> void:
 	if (
 		not recovered_animation_player
 		or not recovered_animation_tree
 		or not recovered_animation_player.has_animation(locomotion_name)
 		or not recovered_animation_player.has_animation(upper_body_name)
 	):
-		_play_recovered_animation(upper_body_name, 0.08, restart_upper_body)
+		_play_recovered_animation(upper_body_name, 0.08, restart_upper_body, upper_body_rate)
 		return
 	var same_layer := (
 		recovered_layered_animation
@@ -483,6 +499,9 @@ func _play_recovered_layered_animation(locomotion_name: String, upper_body_name:
 		and recovered_locomotion_name == locomotion_name
 		and recovered_upper_body_name == upper_body_name
 	)
+	# Set every call: the clip can stay the same across a weapon swap while the
+	# rate it should run at changes.
+	recovered_animation_tree.set("parameters/upper_rate/scale", upper_body_rate)
 	recovered_animation_name = upper_body_name
 	if same_layer:
 		if restart_upper_body:
@@ -751,7 +770,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = dash_direction.z * dash_speed
 	else:
 		var power_speed_bonus := float(armor_power_controller.get_speed_bonus()) if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("get_speed_bonus") else 0.0
-		var active_move_speed := move_speed + power_speed_bonus + (float(armor_skills.get("speed_on_hit", 0.0)) if speed_on_hit_left > 0.0 else 0.0)
+		var active_move_speed := (move_speed + power_speed_bonus + (float(armor_skills.get("speed_on_hit", 0.0)) if speed_on_hit_left > 0.0 else 0.0)) * maxf(0.0, float(current_weapon.get("move_speed_multiplier", 1.0)))
 		velocity.x = move_toward(velocity.x, desired.x * active_move_speed, 34.0 * delta)
 		velocity.z = move_toward(velocity.z, desired.z * active_move_speed, 34.0 * delta)
 	if is_on_floor():
@@ -898,7 +917,10 @@ func _handle_weapon_input() -> void:
 	touch_fire_started = false
 	if reload_left > 0.0 and str(current_weapon.get("reload_style", "")) == "shotgun_shell" and just_triggered and _magazine_rounds() > 0:
 		_cancel_reload()
-	_update_continuous_weapon_audio(trigger, just_triggered)
+	# Loop ambience may continue between shots, but cannot start from input
+	# alone (empty magazine, cooldown, reload or death can reject a shot).
+	if not trigger or dead or reload_left > 0.0 or (_uses_magazine() and _magazine_rounds() <= 0):
+		_stop_continuous_weapon_audio()
 	if (bool(current_weapon.automatic) and trigger) or (not bool(current_weapon.automatic) and just_triggered):
 		_try_fire()
 
@@ -911,6 +933,8 @@ func equip_weapon(weapon_id: String, persist_selection := true) -> void:
 		return
 	_cancel_reload(false)
 	_stop_continuous_weapon_audio()
+	if weapon_recoil_tween and weapon_recoil_tween.is_valid():
+		weapon_recoil_tween.kill()
 	current_weapon_id = weapon_id
 	current_weapon = GameState.WEAPONS[weapon_id].duplicate(true)
 	auto_reload_left = -1.0
@@ -949,6 +973,36 @@ func _refresh_weapon_order_for_bag() -> void:
 	if weapon_order.is_empty():
 		weapon_order.append("gun00")
 
+# The interval between two shots of the equipped weapon, armour fire-rate
+# bonuses included. shot_cooldown counts this value down, so anything asking
+# "how fast is this gun right now" after the shot must use this, not the timer.
+func _current_shot_interval() -> float:
+	if current_weapon.is_empty():
+		return 0.0
+	return float(current_weapon.get("cooldown", 0.1)) * maxf(0.2, 1.0 + float(armor_skills.get("attack_frequency", 0.0)))
+
+# Playback rate for a held-fire clip. The imported firing animations all run at
+# one fixed length (~0.17 s), so an 0.15 s AST-KK and a 0.35 s Plasma Neo used to
+# pump the arms at exactly the same speed no matter how far apart the bullets
+# were. Matching one loop to one shot is feedback tuning, not recovered original
+# data. The clamp is a guard against a pathological weapon or armour bonus, not
+# a tuning knob: every weapon in the current table resolves inside it, which
+# tests/weapon_fire_feedback_test.gd asserts so a future clamp that starts
+# flattening real weapons is caught instead of silently undoing this.
+const SHOOT_ANIMATION_RATE_MIN := 0.45
+const SHOOT_ANIMATION_RATE_MAX := 2.4
+
+func _shoot_animation_rate(animation_name: String) -> float:
+	if not bool(current_weapon.get("automatic", false)) or not recovered_animation_player:
+		return 1.0
+	var interval := _current_shot_interval()
+	if interval <= 0.0:
+		return 1.0
+	var clip := recovered_animation_player.get_animation(animation_name)
+	if clip == null or clip.length <= 0.0:
+		return 1.0
+	return clampf(clip.length / interval, SHOOT_ANIMATION_RATE_MIN, SHOOT_ANIMATION_RATE_MAX)
+
 func _try_fire() -> void:
 	if shot_cooldown > 0.0 or reload_left > 0.0 or dead or current_weapon.is_empty():
 		return
@@ -972,7 +1026,7 @@ func _try_fire() -> void:
 		_set_magazine_rounds(_magazine_rounds() - 1)
 		if _magazine_rounds() <= 0:
 			auto_reload_left = maxf(float(current_weapon.get("cooldown", 0.1)), 0.12)
-	shot_cooldown = float(current_weapon.cooldown) * maxf(0.2, 1.0 + float(armor_skills.get("attack_frequency", 0.0)))
+	shot_cooldown = _current_shot_interval()
 	shoot_pose_left = maxf(0.14, minf(0.55, shot_cooldown))
 	shot_fired.emit(current_weapon)
 	# One-shot clips must restart on every successful trigger pull. Automatic
@@ -985,11 +1039,14 @@ func _try_fire() -> void:
 		if is_instance_valid(light):
 			light.light_energy = 0.0
 	)
+	_update_continuous_weapon_audio(true, not weapon_audio_active)
 	if str(current_weapon.kind) != "sword" and not weapon_audio_active:
 		_play_weapon_fire_sound()
-	gun_mount.position = gun_mount_rest_position + gun_recoil_offset
-	var recoil_tween := create_tween()
-	recoil_tween.tween_property(gun_mount, "position", gun_mount_rest_position, 0.09).set_trans(Tween.TRANS_QUAD)
+	if weapon_recoil_tween and weapon_recoil_tween.is_valid():
+		weapon_recoil_tween.kill()
+	gun_mount.position = gun_mount_rest_position + gun_recoil_offset * float(current_weapon.get("recoil_strength", 1.0))
+	weapon_recoil_tween = create_tween()
+	weapon_recoil_tween.tween_property(gun_mount, "position", gun_mount_rest_position, clampf(shot_cooldown * 0.65, 0.045, 0.22)).set_trans(Tween.TRANS_QUAD)
 
 	var kind := str(current_weapon.kind)
 	if kind == "sword":
@@ -1954,6 +2011,7 @@ func _update_recovered_animation(movement: float, movement_input := Vector2.ZERO
 	# for the laser/sniper weapons (and could affect every other gun as well).
 	if candidate.is_empty():
 		return
+	var shoot_rate := 1.0
 	if shoot_pose_left > 0.0:
 		# The original AttackState used WrapMode.Loop for automatic weapons and
 		# kept the same run-shoot state alive between bullets. Reconfigure the
@@ -1962,12 +2020,13 @@ func _update_recovered_animation(movement: float, movement_input := Vector2.ZERO
 		var shoot_animation := recovered_animation_player.get_animation(candidate)
 		if shoot_animation:
 			shoot_animation.loop_mode = Animation.LOOP_LINEAR if bool(current_weapon.get("automatic", false)) else Animation.LOOP_NONE
+		shoot_rate = _shoot_animation_rate(candidate)
 		if moving and weapon_pose not in ["machinegun", "jian"]:
 			var locomotion_candidate := _first_available_recovered_animation(["run_" + locomotion_pose, "run_rifle"])
 			if not locomotion_candidate.is_empty() and candidate.begins_with("run_shoot_"):
-				_play_recovered_layered_animation(locomotion_candidate, candidate, restart_shoot_animation)
+				_play_recovered_layered_animation(locomotion_candidate, candidate, restart_shoot_animation, shoot_rate)
 				return
-	_play_recovered_animation(candidate, 0.08, restart_shoot_animation and shoot_pose_left > 0.0)
+	_play_recovered_animation(candidate, 0.08, restart_shoot_animation and shoot_pose_left > 0.0, shoot_rate)
 
 func _update_recovered_flying_animation(
 	moving: bool,
@@ -2008,7 +2067,9 @@ func _update_recovered_flying_animation(
 			base_candidate = _first_available_recovered_animation([
 				"fly_stand_shoot_jian_lower", base_candidate
 			])
-		_play_recovered_layered_animation(base_candidate, shoot_candidate, restart_shoot_animation)
+		_play_recovered_layered_animation(
+			base_candidate, shoot_candidate, restart_shoot_animation, _shoot_animation_rate(shoot_candidate)
+		)
 		return
 
 	var upper_candidate := _first_available_recovered_animation([
@@ -2062,6 +2123,10 @@ func _set_fire_sound(sound_id: String) -> void:
 	pass
 
 func _play_weapon_fire_sound() -> void:
+	var shot_sound := str(current_weapon.get("shot_sound", ""))
+	if not shot_sound.is_empty():
+		AudioDirector.play_3d(shot_sound, global_position, -1.0, 1.0)
+		return
 	var sound_path := str(current_weapon.get("sound", ""))
 	var variants: Array = current_weapon.get("sound_variants", [])
 	if not variants.is_empty():
@@ -2072,6 +2137,8 @@ func _play_weapon_fire_sound() -> void:
 		AudioDirector.play_3d(sound_path, global_position, -1.0, 1.0 if OriginalWeaponEffect.catalog().has(current_weapon_id) else randf_range(0.97, 1.03))
 
 func _update_continuous_weapon_audio(trigger: bool, just_triggered: bool) -> void:
+	if not str(current_weapon.get("shot_sound", "")).is_empty():
+		return
 	var loop_path := str(current_weapon.get("loop_sound", ""))
 	if loop_path.is_empty():
 		return
