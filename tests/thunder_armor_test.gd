@@ -2,8 +2,8 @@ extends Node3D
 
 const Visuals = preload("res://scripts/game/armor_visuals.gd")
 const Catalog = preload("res://scripts/core/armor_catalog.gd")
-const SCENE := "res://assets/armors/thunder/thunder.scn"
-const REVISION := "thunder_detail_v4"
+var scene_path := Visuals.reworked_scene_path(6)
+var revision := "thunder_helmet_v5_prototype" if "--thunder-helmet=prototype" in OS.get_cmdline_user_args() else "thunder_helmet_v5_sw2"
 var failures: Array[String] = []
 
 
@@ -23,9 +23,9 @@ func _run() -> void:
 	GameState.equipped_armor = GameState._default_armor_equipment()
 	_set_thunder()
 	GameState.selected_weapon = "gun00"
-	_check(Visuals.REWORKED_SCENES.get(6, "") == SCENE, "set 06 does not load the new scene")
+	_check(Visuals.reworked_scene_path(6) == scene_path, "set 06 does not load the new scene")
 	_check(Visuals.REWORKED_SCENES.get(0, "") == "res://assets/armors/viper/viper.scn", "Viper mapping changed")
-	if not ResourceLoader.exists(SCENE):
+	if not ResourceLoader.exists(scene_path):
 		_check(false, "Thunder scene has not been compiled")
 		_finish(0, 0)
 		return
@@ -34,7 +34,7 @@ func _run() -> void:
 	player.set_physics_process(false)
 	var avatar := player.recovered_avatar
 	var skeleton := player.recovered_skeleton
-	var template := (load(SCENE) as PackedScene).instantiate() as Node3D
+	var template := (load(scene_path) as PackedScene).instantiate() as Node3D
 	var parts: Array[MeshInstance3D] = []
 	var triangle_count := 0
 	for prefix: String in Visuals.ORIGINAL_PART_PREFIXES:
@@ -44,7 +44,7 @@ func _run() -> void:
 		if part == null:
 			continue
 		parts.append(part)
-		_check(part.get_meta("armor_rework", "") == REVISION, part_name + " uses an old rework")
+		_check(part.get_meta("armor_rework", "") == revision, part_name + " uses an old rework")
 		_check(part.visible and part.skin != null, part_name + " is hidden or has no skin")
 		_check(part.get_node_or_null(part.skeleton) == skeleton, part_name + " uses another skeleton")
 		var authored := template.find_child(part_name, true, false) as MeshInstance3D
@@ -66,8 +66,10 @@ func _run() -> void:
 			if finish != null and finish.resource_name.begins_with("ThunderPainted_"):
 				var paint := finish.get_shader_parameter("albedo_texture") as Texture2D
 				_check(paint != null and paint.resource_path.begins_with("res://assets/armors/thunder/textures/"), part_name + " uses an old body atlas")
-			if finish != null and finish.resource_name == "Thunder_PairedHelmet":
+			if finish != null and finish.resource_name == "Thunder_EngravedVisor":
 				paired_helmet_surfaces += 1
+				_validate_helmet_detail(part, surface, finish)
+			elif finish != null and finish.resource_name == "Thunder_PairedHelmet":
 				_validate_helmet_detail(part, surface, finish)
 		_check(paired_helmet_surfaces == (1 if part_name == "ArmorHead_06" else 0), part_name + " has missing or misplaced paired helmet material")
 	_check(parts.size() == 4, "Thunder must have four exchangeable parts")
@@ -81,7 +83,7 @@ func _run() -> void:
 		_check_visible(avatar, ["ArmorHead_06", "ArmorBody_00", "ArmorHand_21", "ArmorFoot_02"])
 		var legacy := avatar.find_child("ArmorFoot_02", true, false) as MeshInstance3D
 		_check(legacy.mesh == (legacy_template.find_child("ArmorFoot_02", true, false) as MeshInstance3D).mesh, "set 02 mesh changed during Thunder equip")
-		_check(legacy.get_meta("armor_rework", "") != REVISION, "Thunder metadata leaked into set 02")
+		_check(legacy.get_meta("armor_rework", "") != revision, "Thunder metadata leaked into set 02")
 		_set_thunder()
 		player._apply_recovered_armor_visibility()
 		_check_visible(avatar, ["ArmorHead_06", "ArmorBody_06", "ArmorHand_06", "ArmorFoot_06"])
@@ -184,7 +186,21 @@ func _validate_helmet_detail(part: MeshInstance3D, surface: int, finish: ShaderM
 		_check(absf(tangent.length() - 1.0) < 0.03, "helmet tangent is not normalized")
 		_check(absf(tangent.dot(normals[vertex])) < 0.03, "helmet tangent is not perpendicular to its normal")
 		_check(absf(absf(handedness) - 1.0) < 0.001, "helmet tangent lost mirrored UV handedness")
-	_check(uv_bounds.size.x > 0.5 and uv_bounds.size.y > 0.5, "helmet UVs collapse its paired texture atlas")
+	if finish.resource_name == "Thunder_EngravedVisor":
+		# A dedicated visor surface now uses the amber island in the lower
+		# right of the atlas; the shell still uses the full paired texture.
+		_check(uv_bounds.size.x > 0.12 and uv_bounds.size.y > 0.25, "visor UVs collapse the engraved amber island")
+		_check(uv_bounds.position.x >= 0.77 and uv_bounds.position.y >= 0.59 and uv_bounds.end.x <= 1.0 and uv_bounds.end.y <= 1.0, "visor UVs leave the paired amber island")
+		var upper_half_width := 0.0
+		var lower_half_width := 0.0
+		for point: Vector3 in vertices:
+			if point.z < -0.05 and point.y >= 1.53 and point.y <= 1.59:
+				upper_half_width = maxf(upper_half_width, absf(point.x))
+			if point.z < -0.05 and point.y >= 1.37 and point.y <= 1.43:
+				lower_half_width = maxf(lower_half_width, absf(point.x))
+		_check(upper_half_width > 0.08 and lower_half_width > 0.02 and lower_half_width / upper_half_width < 0.65, "visor lower opening is not narrower than its upper opening")
+	else:
+		_check(uv_bounds.size.x > 0.5 and uv_bounds.size.y > 0.5, "helmet UVs collapse its paired texture atlas")
 
 
 func _validate_store_preview(template: Node3D) -> void:
@@ -203,7 +219,7 @@ func _validate_store_preview(template: Node3D) -> void:
 			_check(preview != null and preview.visible, mode + " preview is missing " + part_name)
 			if preview == null:
 				continue
-			_check(preview.get_meta("armor_rework", "") == REVISION and preview.mesh == authored.mesh, mode + " preview uses old " + part_name)
+			_check(preview.get_meta("armor_rework", "") == revision and preview.mesh == authored.mesh, mode + " preview uses old " + part_name)
 			for surface in preview.mesh.get_surface_count():
 				_check(preview.get_active_material(surface) == authored.get_active_material(surface), mode + " preview overwrote " + part_name + " material")
 	shell.queue_free()

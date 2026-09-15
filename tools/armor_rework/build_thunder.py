@@ -6,12 +6,17 @@ godot --headless --path . --script tools/armor_rework/compile_thunder.gd
 import hashlib
 import importlib.util
 import json
+import shutil
 import runpy
+import sys
 from pathlib import Path
 import bpy
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+variant = next((a.split('=', 1)[1] for a in sys.argv if a.startswith('--helmet=')), 'sw2')
+assert variant in ['sw2', 'prototype'], variant
 runpy.run_path(str(HERE / 'inspect_source.py'))
 
 
@@ -88,7 +93,10 @@ for name, color in [('RespiratorSteel', (.042, .052, .068, 1)), ('RespiratorEdge
     shader.inputs['Roughness'].default_value = .65
     shader.inputs['Metallic'].default_value = .12
     materials.append(mat)
-helmet = module('thunder_helmet')
+visor = materials[11].copy()
+visor.name = 'Thunder_EngravedVisor'
+materials.append(visor)
+helmet = module('thunder_helmet' if variant == 'sw2' else 'thunder_prototype')
 body = module('thunder_body')
 helmet.refine_helmet(parts[0], materials)
 for obj in parts[1:]:
@@ -129,21 +137,23 @@ for obj in parts:
     armature = obj.modifiers.new('Original player rig', 'ARMATURE')
     armature.object = rig
 out = ROOT / 'test_output/armor_rework'
-(out / 'thunder_meshes.json').write_text(json.dumps(output, separators=(',', ':')))
+(out / f'thunder_{variant}_meshes.json').write_text(json.dumps(output, separators=(',', ':')))
 asset_dir = ROOT / 'assets/armors/thunder'
 asset_dir.mkdir(parents=True, exist_ok=True)
 concept = ROOT / 'docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png'
-(asset_dir / 'build_report.json').write_text(json.dumps({
-    'design': 'Thunder detail v4 / paired SW2 helmet, recessed respirator and faceted armor',
-    'revision': 'thunder_detail_v4',
+(asset_dir / f'build_report_{variant}.json').write_text(json.dumps({
+    'design': f'Thunder helmet v5 / {variant} shell, inward cheek armor, narrow engraved trapezoid',
+    'revision': f'thunder_helmet_v5_{variant}',
     'concept': str(concept.relative_to(ROOT)),
     'concept_sha256': hashlib.sha256(concept.read_bytes()).hexdigest(),
     'source_sha256': hashlib.sha256((ROOT / 'assets/models/player/animated/player.gltf').read_bytes()).hexdigest(),
     'parts': report,
     'texture_sha256': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((asset_dir / 'textures').glob('*.png'))},
-    'scope': 'Paired original SW2 helmet topology/UV/normal map, low concept crown, recessed respirator, chamfered body armor, original bind pose; set06 only',
+    'scope': f'{variant} helmet base with narrowed visor and fitted cheek armor; unchanged v4 body and original bind pose; set06 only',
     'head_source_sha256': hashlib.sha256((asset_dir / 'source_sw2/modern_head.json').read_bytes()).hexdigest(),
 }, indent=2) + '\n')
+if variant == 'sw2':
+    shutil.copyfile(asset_dir / 'build_report_sw2.json', asset_dir / 'build_report.json')
 for action in list(bpy.data.actions):
     bpy.data.actions.remove(action)
 bpy.data.orphans_purge(do_recursive=True)
@@ -153,5 +163,5 @@ for image in bpy.data.images:
 native = ROOT / 'docs/art/armor_rework'
 native.mkdir(parents=True, exist_ok=True)
 bpy.context.preferences.filepaths.save_version = 0
-bpy.ops.wm.save_as_mainfile(filepath=str(native / 'thunder.blend'), compress=True)
+bpy.ops.wm.save_as_mainfile(filepath=str(native / ('thunder.blend' if variant == 'sw2' else 'thunder_prototype.blend')), compress=True)
 print('THUNDER_MODEL_BUILD_PASS', json.dumps(report))
