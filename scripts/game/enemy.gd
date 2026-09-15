@@ -8,11 +8,27 @@ const ProjectileScript = preload("res://scripts/game/projectile.gd")
 const FLESH_HIT_LIGHT := "res://assets/audio/non_original/enemy_hit_light.wav"
 const FLESH_HIT_HEAVY := "res://assets/audio/non_original/enemy_hit_heavy_or_lethal.wav"
 const HITBOX_PROFILES := {
-	"crawler": Vector2(0.76, 1.72),
+	"crawler": Vector2(0.95, 2.00),
 	"spitter": Vector2(1.00, 2.00),
 	"brute": Vector2(1.00, 2.00),
-	"boss": Vector2(1.50, 3.70),
+	"boss": Vector2(1.80, 3.60),
 }
+
+# Visible height in metres, measured on the posed skin rather than the mesh AABB
+# (see _normalize_recovered_enemy for why those two disagree). The player capsule
+# is 1.82m tall, so a warrior reads as marginally taller than the player.
+const TARGET_HEIGHTS := {
+	"crawler": 2.00,
+	"spitter": 2.05,
+	"brute": 2.10,
+	"boss": 3.20,
+}
+
+# Far enemies use one damage box enclosing their animated bone bounds instead
+# of updating each limb's physics shape. The walking capsule remains separate.
+# Two thresholds keep an enemy pacing the boundary from flipping every frame.
+const HULL_NEAR_DISTANCE := 26.0
+const HULL_FAR_DISTANCE := 32.0
 
 var target: WarfarePlayer
 var enemy_kind := "crawler"
@@ -20,7 +36,10 @@ var max_health := 60.0
 var health := 60.0
 var speed := 4.1
 var attack_damage := 10.0
-var attack_range := 1.6
+# Crawler default. Measured from body centre, so it tracks TARGET_HEIGHTS: a
+# 2.0 m warrior reaches roughly 1.5 m forward and the player capsule adds 0.46,
+# leaving the same small gap the 1.24 m warrior used to strike from.
+var attack_range := 2.2
 var attack_interval := 1.0
 var attack_cooldown := 0.0
 var reward := 18
@@ -37,6 +56,7 @@ var charge_timer := 0.0
 var voice: AudioStreamPlayer3D
 var navigation_target := Vector3.INF
 var navigation_refresh := 0.0
+var hulls_active := true
 var recovered_enemy: Node3D
 var animated_hitbox: EnemyHitGeometry
 var recovered_animation_player: AnimationPlayer
@@ -258,20 +278,19 @@ func _normalize_recovered_enemy() -> void:
 		recovered_animation_player.seek(0.0, true)
 	var bounds := EnemyHitGeometry.posed_bounds(recovered_enemy)
 	if bounds.size.y <= 0.001:
-		bounds = _combined_mesh_aabb(recovered_enemy)
+		bounds = bind_bounds
 	if bounds.size.y <= 0.001:
 		return
-	var target_height: float = float({
-		"crawler": 1.7, "spitter": 1.9, "brute": 2.5, "boss": 5.0
-	}.get(enemy_kind, 1.7))
-	var factor: float = float(target_height) / bounds.size.y
-	# Preserve the authored model size; only use the live pose to ground it.
-	# The flying boss is much wider than tall in idle, unlike its bind pose.
-	if bind_bounds.size.y > 0.001:
-		factor = float(target_height) / bind_bounds.size.y
+	# Scale against the posed skin, not the mesh AABB. The AABB reads like the
+	# authored size but measures the unposed bind layout, which runs 1.4x tall
+	# for a warrior and 3x for the folded-up boss -- so every TARGET_HEIGHTS
+	# entry landed short. Measured in tests/enemy_scale_probe.tscn: the boss
+	# stood 1.68 m beside a 1.82 m player while its table entry said 5.0.
+	var target_height: float = float(TARGET_HEIGHTS.get(enemy_kind, TARGET_HEIGHTS.crawler))
+	var factor: float = target_height / bounds.size.y
 	recovered_enemy.scale = Vector3.ONE * factor
 	recovered_enemy.position = Vector3(0.0, -bounds.position.y * factor, 0.0)
-	spawn_depth = minf(float(target_height) * 0.82, 2.4)
+	spawn_depth = minf(target_height * 0.82, 2.4)
 
 func _prepare_recovered_animations() -> void:
 	if not recovered_animation_player:
@@ -377,6 +396,7 @@ func _physics_process(delta: float) -> void:
 			navigation_target = target.global_position
 	var target_offset := target.global_position - global_position
 	var distance := target_offset.length()
+	_update_hull_detail(distance)
 	var movement_offset := navigation_target - global_position
 	var planar := Vector3(movement_offset.x, 0.0, movement_offset.z)
 	var desired := Vector3.ZERO
@@ -394,6 +414,15 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= gravity * delta
 	move_and_slide()
 	_update_animation(delta, desired.length())
+
+func _update_hull_detail(distance: float) -> void:
+	if dead or not is_instance_valid(animated_hitbox) or animated_hitbox.parts.is_empty():
+		return
+	var want_hulls := distance <= HULL_FAR_DISTANCE if hulls_active else distance < HULL_NEAR_DISTANCE
+	if want_hulls == hulls_active:
+		return
+	hulls_active = want_hulls
+	animated_hitbox.set_coarse(not want_hulls)
 
 func _legacy_step(distance: float, planar: Vector3) -> Vector3:
 	# Original "recruit" behaviour: walk the path straight at the player and
@@ -545,15 +574,22 @@ func _refresh_separation(delta: float) -> void:
 	separation_vector = Vector3.ZERO
 	if separation_radius <= 0.0:
 		return
+	var radius_squared := separation_radius * separation_radius
+	var origin := global_position
 	for other_node in get_tree().get_nodes_in_group("enemies"):
 		var other := other_node as Node3D
 		if other == self or not is_instance_valid(other):
 			continue
-		var offset := Vector3(global_position.x - other.global_position.x, 0.0,
-			global_position.z - other.global_position.z)
-		var gap := offset.length()
-		if gap > 0.001 and gap < separation_radius:
-			separation_vector += offset / gap * (1.0 - gap / separation_radius)
+		var other_origin := other.global_position
+		var dx := origin.x - other_origin.x
+		var dz := origin.z - other_origin.z
+		var gap_squared := dx * dx + dz * dz
+		# Reject on the squared gap first. Past a handful of enemies almost every
+		# pair is out of range, and this skips the square root for all of them.
+		if gap_squared <= 0.000001 or gap_squared >= radius_squared:
+			continue
+		var gap := sqrt(gap_squared)
+		separation_vector += Vector3(dx, 0.0, dz) / gap * (1.0 - gap / separation_radius)
 
 func _has_sight_to_target() -> bool:
 	if not sight_check or not is_instance_valid(target):
@@ -749,6 +785,9 @@ func _die(killer: Node = null) -> void:
 	dead = true
 	if is_instance_valid(animated_hitbox):
 		animated_hitbox.collision_layer = 0
+		# The corpse plays its death clip for another 1.15 s and used to keep
+		# every hull in step with it -- work nothing can hit any more.
+		animated_hitbox.release()
 	if is_instance_valid(killer) and killer.has_method("on_enemy_defeated"):
 		killer.on_enemy_defeated()
 	_release_attack_token()
