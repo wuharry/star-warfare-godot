@@ -1,5 +1,5 @@
 {
-	"captured_at": "2026-09-15T23:21:25",
+	"captured_at": "2026-09-16T05:21:45",
 	"failures": [],
 	"frames": [
 		{
@@ -281,7 +281,7 @@
 		],
 		"size": [
 			0.941774249076843,
-			1.83043956756592,
+			1.87523484230042,
 			1.10784029960632
 		]
 	},
@@ -293,11 +293,11 @@
 		],
 		"size": [
 			0.56492954492569,
-			0.718819141387939,
-			0.571546196937561
+			0.763614416122437,
+			0.572812676429749
 		]
 	},
-	"notes": "Actual runtime meshes/materials. Studio uses the existing rifle idle pose with weapon/backpack hidden; pose and lighting differ from the concept. Rear is reviewed against original SW2 geometry; the concept only supplies a front three-quarter angle. Baseline and current studio framing use the baseline bounds. Motion/game views use existing game animations and materials.",
+	"notes": "Actual runtime meshes/materials. Studio uses the existing rifle idle pose with weapon/backpack hidden; pose and lighting differ from the concept. A retains the SW2 back; B retains the prototype back. Both use the same stored V3 framing bounds; the concept only supplies a front three-quarter angle. Motion/game views use existing game animations and materials.",
 	"parts": [
 		{
 			"mesh": "res://assets/armors/thunder/thunder_sw2.scn::ArrayMesh_5q6v7",
@@ -345,9 +345,9 @@
 		"res://assets/armors/thunder/textures/helmet_detail_emission.res": "cda178d14ed02dbc9e42070b22670d5e79312579516040480cedbd267ce8cefa",
 		"res://assets/armors/thunder/textures/helmet_detail_normal.res": "33bfc513732b3be40bd0a43d7a6c1458dc1e9527dab09a24c6181123818a1936",
 		"res://assets/armors/thunder/textures/helmet_source_albedo.res": "504c09d94363ca8215906f8a103ba028d55affb53b6e87e906089d29920abb35",
-		"res://assets/armors/thunder/thunder_sw2.scn": "b87c080493473b16468aeef5f14fdac600e64a9d65e70c134cf76d735839d759"
+		"res://assets/armors/thunder/thunder_sw2.scn": "831f49a296b55e3b059c5a01fbaf62f34d67ec90d3019efb676b381b2f11373f"
 	},
-	"runtime_scene_sha256": "b87c080493473b16468aeef5f14fdac600e64a9d65e70c134cf76d735839d759",
+	"runtime_scene_sha256": "831f49a296b55e3b059c5a01fbaf62f34d67ec90d3019efb676b381b2f11373f",
 	"save_unchanged": true,
 	"stage": "sw2",
 	"status": "CAPTURED_REQUIRES_VISUAL_REVIEW"
