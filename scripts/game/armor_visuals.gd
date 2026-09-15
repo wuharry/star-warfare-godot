@@ -8,6 +8,17 @@ const REWORKED_SCENES := {
 }
 
 
+static func reworked_scene_path(visual_id: int) -> String:
+	# Development comparison uses the same loader in gameplay and the store.
+	if visual_id == 6:
+		for argument in OS.get_cmdline_user_args():
+			if argument == "--thunder-helmet=prototype":
+				return "res://assets/armors/thunder/thunder_prototype.scn"
+			if argument == "--thunder-helmet=sw2":
+				return "res://assets/armors/thunder/thunder_sw2.scn"
+	return str(REWORKED_SCENES.get(visual_id, "res://assets/equipment_refined/armors/armor_%02d.scn" % visual_id))
+
+
 static func ensure_parts(avatar: Node3D, visual_ids: Dictionary) -> void:
 	_restore_original_materials(avatar)
 	var skeletons := avatar.find_children("*", "Skeleton3D", true, false)
@@ -37,7 +48,7 @@ static func ensure_parts(avatar: Node3D, visual_ids: Dictionary) -> void:
 
 static func _ensure_reworked_parts(avatar: Node3D, skeleton: Skeleton3D, visual_ids: Dictionary) -> void:
 	for visual_id: int in visual_ids.values():
-		var scene_path := str(REWORKED_SCENES.get(visual_id, "res://assets/equipment_refined/armors/armor_%02d.scn" % visual_id))
+		var scene_path := reworked_scene_path(visual_id)
 		if not ResourceLoader.exists(scene_path):
 			continue
 		var marker := "armor_rework_%02d" % visual_id

@@ -41,9 +41,16 @@ func _render_all() -> void:
 	var only_callofmini := OS.get_cmdline_user_args().has("--callofmini-only")
 	var only_refined := OS.get_cmdline_user_args().has("--refined-only")
 	var only_set := -1
+	var only_part := ""
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--set-id="):
 			only_set = int(argument.trim_prefix("--set-id="))
+		if argument.begins_with("--part="):
+			only_part = argument.trim_prefix("--part=")
+	if not only_part.is_empty() and not PART_PREFIXES.has(only_part):
+		push_error("Unknown armor part: " + only_part)
+		quit(1)
+		return
 	var rendered_count := 0
 	var additional_ids := {}
 	for visual_id in range(ArmorCatalogData.SET_NAMES.size()):
@@ -58,6 +65,8 @@ func _render_all() -> void:
 		meshes.append(mesh_instance)
 
 	for part_key: String in PART_PREFIXES:
+		if not only_part.is_empty() and part_key != only_part:
+			continue
 		for item_key: String in _item_ids(catalog, part_key):
 			var item: Dictionary = catalog[item_key]
 			var visual_id := int(item.visual_id)
@@ -77,7 +86,7 @@ func _render_all() -> void:
 
 	avatar.queue_free()
 	await process_frame
-	if only_callofmini or only_set >= 0 or only_refined:
+	if only_callofmini or only_set >= 0 or only_refined or not only_part.is_empty():
 		print("ARMOR_THUMBNAILS_RENDERED count=%d" % rendered_count)
 		quit(0)
 		return

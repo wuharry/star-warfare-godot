@@ -1,16 +1,26 @@
 extends SceneTree
 
 const OUTPUT := "res://assets/armors/thunder/thunder.scn"
-const INPUT := "res://test_output/armor_rework/thunder_meshes.json"
 const ORIGINAL := "res://assets/models/player/animated/player.gltf"
 const PART_NAMES := ["ArmorHead_06", "ArmorBody_06", "ArmorHand_06", "ArmorFoot_06"]
-const MATERIAL_COUNT := 14
+const MATERIAL_COUNT := 15
+var variant := "sw2"
+var input_path := ""
+var output_path := ""
 const TEXTURES := [
 	"f8d96c60d30f", "dce7a1446714", "d6da6925f6b4", "df2d0a0b46da", "14ceb45bf36d",
 ]
 
 
 func _initialize() -> void:
+	for argument in OS.get_cmdline_user_args():
+		if argument.begins_with("--helmet="):
+			variant = argument.trim_prefix("--helmet=")
+	if variant not in ["sw2", "prototype"]:
+		_fail("Unknown helmet variant: " + variant)
+		return
+	input_path = "res://test_output/armor_rework/thunder_%s_meshes.json" % variant
+	output_path = "res://assets/armors/thunder/thunder_%s.scn" % variant
 	if "--self-test" in OS.get_cmdline_user_args():
 		_test_validation.call_deferred()
 	else:
@@ -19,10 +29,10 @@ func _initialize() -> void:
 
 func _build() -> void:
 	var json := JSON.new()
-	if not FileAccess.file_exists(INPUT):
-		_fail("Missing Blender export: " + INPUT)
+	if not FileAccess.file_exists(input_path):
+		_fail("Missing Blender export: " + input_path)
 		return
-	var parse_error := json.parse(FileAccess.get_file_as_string(INPUT))
+	var parse_error := json.parse(FileAccess.get_file_as_string(input_path))
 	if parse_error != OK or not json.data is Array:
 		_fail("Invalid Blender JSON: " + json.get_error_message())
 		return
@@ -106,12 +116,14 @@ func _build() -> void:
 		instance.skin = skin
 		instance.skeleton = NodePath("..")
 		instance.extra_cull_margin = 1.0
-		instance.set_meta("armor_rework", "thunder_detail_v4")
+		instance.set_meta("armor_rework", "thunder_helmet_v5_" + variant)
 		container.add_child(instance)
 		instance.owner = container
 	var packed := PackedScene.new()
 	var error := packed.pack(container)
 	if error == OK:
+		error = ResourceSaver.save(packed, output_path)
+	if error == OK and variant == "sw2":
 		error = ResourceSaver.save(packed, OUTPUT)
 	print("THUNDER_COMPILE_%s parts=%d triangles=%d bones=%d" % ["PASS" if error == OK else "FAIL", container.get_child_count(), triangle_count, skin.get_bind_count()])
 	container.free()
@@ -149,7 +161,7 @@ func _validate_source(source: Array, bone_indices: Dictionary) -> String:
 			var normal := Vector3(part.normals[index * 3], part.normals[index * 3 + 1], part.normals[index * 3 + 2])
 			if normal.length_squared() < 0.01:
 				return part_name + " has zero-length vertex normal"
-			if int(part.materials[index / 3]) == 11:
+			if int(part.materials[index / 3]) in [11, 14]:
 				var tangent := Vector3(part.tangents[index * 4], part.tangents[index * 4 + 1], part.tangents[index * 4 + 2])
 				if absf(tangent.length_squared() - 1.0) > 0.02 or absf(tangent.dot(normal.normalized())) > 0.02 or absf(absf(part.tangents[index * 4 + 3]) - 1.0) > 0.002:
 					return part_name + " has invalid normal-map tangent frame"
@@ -245,6 +257,9 @@ func _materials() -> Array[ShaderMaterial]:
 		material.set_shader_parameter("paint_detail", 1.0)
 		material.set_shader_parameter("shell_detail_texture", shell_detail)
 		result.append(material)
+	var visor := helmet.duplicate() as ShaderMaterial
+	visor.resource_name = "Thunder_EngravedVisor"
+	result.append(visor)
 	return result
 
 

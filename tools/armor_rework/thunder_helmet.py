@@ -1,4 +1,4 @@
-"""Thunder v4: paired SW2 head topology, fitted crown and machined respirator.
+"""Thunder v5 A: fitted SW2 crown, narrowed face and machined respirator.
 
 Y up, facing -Z. Rear/ear/visor/cheek topology and UVs use the paired source.
 """
@@ -12,15 +12,10 @@ from mathutils import Vector
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from thunder_visor import expand_visor
 
 
 def _subdivide_source(source):
-    """Linear refinement before bending the visor, preserving UV/hard seams.
-
-    Midpoints stay exactly on the source triangles. Additional samples let
-    the enlarged lower arc bend smoothly without serrating its engraved UVs.
-    """
+    """Linear refinement keeps UV/hard seams during lower-face narrowing."""
     result = dict(source)
     for name in ['positions_game', 'normals_game', 'uv']:
         result[name] = [list(v) for v in source[name]]
@@ -136,10 +131,25 @@ def refine_helmet(obj, material_slots):
     vertices = [Vector(v) for v in source['positions_game']]
     normals = [Vector(n).normalized() for n in source['normals_game']]
     # Lower the tall original rear crest while keeping its original vent UVs.
-    deformed = expand_visor(vertices,source)
+    deformed = set()
+    def smooth(low, high, value):
+        t = max(0., min(1., (value-low)/(high-low)))
+        return t*t*(3-2*t)
     for index, vertex in enumerate(vertices):
+        # Move the original shared glass/cheek boundary together, preserving
+        # the sealed SW2 shell. Inner cheeks expand inward; ears stay fixed.
+        lower = smooth(1.33,1.40,vertex.y)*(1-smooth(1.46,1.59,vertex.y))
+        front = smooth(.055,.14,-vertex.z)
+        inner = 1-smooth(.14,.24,abs(vertex.x))
+        if lower*front*inner > 0:
+            vertex.x *= 1-.44*lower*front*inner
+            deformed.add(index)
+        # Reduce the original protruding front brow toward the concept.
+        if vertex.z < -.22 and vertex.y > 1.50:
+            vertex.z += .025 * min(1.0,(vertex.y-1.50)/.20)
+            deformed.add(index)
         if vertex.y > 1.865:
-            vertex.y = 1.865+(vertex.y-1.865)*.28
+            vertex.y = 1.865+(vertex.y-1.865)*.12
             deformed.add(index)
         # Fold the source nose latch inside the new housing. Move every UV
         # duplicate at the same coordinate together, preserving sealed faces.
@@ -162,6 +172,9 @@ def refine_helmet(obj, material_slots):
         uv.data[loop.index].uv = source['uv'][loop.vertex_index][:2]
     for poly in mesh.polygons:
         poly.material_index = 11
+        uv_center=sum((Vector(source['uv'][i][:2]) for i in poly.vertices),Vector((0,0)))/len(poly.vertices)
+        if uv_center.x>.775 and uv_center.y<.405:
+            poly.material_index = 14
         poly.use_smooth = True
     # Preserve source split normals outside deformed crown. Average the crown
     # by position rather than UV vertex to avoid a visible center UV seam.
@@ -172,13 +185,27 @@ def refine_helmet(obj, material_slots):
                 key = tuple(round(c,6) for c in vertices[index])
                 crown_normals[key] = crown_normals.get(key,Vector())+poly.normal*poly.area
     for index,vertex in enumerate(vertices):
-        if index in deformed:
+        if index in deformed and tuple(round(c,6) for c in vertex) in crown_normals:
             normals[index] = crown_normals[tuple(round(c,6) for c in vertex)].normalized()
     mesh.normals_split_custom_set_from_vertices(normals)
     obj.data = mesh
     obj.vertex_groups.clear()
     obj.vertex_groups.new(name='Bip01 Head').add(list(range(len(vertices))),1,'REPLACE')
     pieces = [_neck_bridge(obj,material_slots)]
+    pieces += create_respirator(obj,material_slots,front_offset=.008)
+    bpy.ops.object.select_all(action='DESELECT')
+    obj.select_set(True)
+    for piece in pieces:
+        piece.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+    bpy.ops.object.join()
+    obj['thunder_raised_plates'] = len(pieces)+6
+    obj['thunder_original_head_triangles'] = original_triangle_count
+    obj['thunder_detail'] = 'SW2 shell with inward lower cheeks, engraved trapezoid visor, low crown and flush respirator'
+
+
+def create_respirator(obj,material_slots,front_offset=0.0):
+    pieces = []
     pieces.append(_ring_piece(obj,'Six-plane respirator housing',[
         _octagon(.054,1.301,1.414,.014,-.244),
         _octagon(.060,1.304,1.414,.015,-.279),
@@ -208,16 +235,8 @@ def refine_helmet(obj, material_slots):
     # User feedback: hug the jaw rather than projecting as a second box.
     # Keep the mount plane, compress all housing/louvre/wing depths together
     # so the recessed intake retains its thickness and sealed back.
-    for piece in pieces[1:]:
-        for vertex in piece.data.vertices:
-            vertex.co.z = -.241+(vertex.co.z+.241)*.44
-        piece.data.update()
-    bpy.ops.object.select_all(action='DESELECT')
-    obj.select_set(True)
     for piece in pieces:
-        piece.select_set(True)
-    bpy.context.view_layer.objects.active = obj
-    bpy.ops.object.join()
-    obj['thunder_raised_plates'] = len(pieces)+6
-    obj['thunder_original_head_triangles'] = original_triangle_count
-    obj['thunder_detail'] = 'Paired SW2 helmet, engraved visor normal map, low crown, recessed six-plane respirator'
+        for vertex in piece.data.vertices:
+            vertex.co.z = -.241+(vertex.co.z+.241)*.44+front_offset
+        piece.data.update()
+    return pieces
