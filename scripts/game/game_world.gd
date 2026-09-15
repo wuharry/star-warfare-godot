@@ -36,7 +36,11 @@ var boss_spawn_points: Array[Vector3] = []
 var waypoint_positions: Array[Vector3] = []
 var waypoint_graph: Array = []
 
-const MAX_ACTIVE_ENEMIES := 8
+# The wave scheduler blocks on this (see _start_next_wave), so at 8 it turned
+# every wave into a drip feed: one enemy replaced each kill and the pressure on
+# the player never moved. Set above the largest authored wave (19 on sector 8)
+# so a wave arrives as a wave and the arena empties between them.
+const MAX_ACTIVE_ENEMIES := 80
 
 # Squad-level throttle. Only this many enemies may commit to a strike at once;
 # everyone else keeps circling for a flank. Without it the pack dogpiles the
