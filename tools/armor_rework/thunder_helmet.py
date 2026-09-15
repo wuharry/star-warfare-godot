@@ -151,6 +151,16 @@ def refine_helmet(obj, material_slots):
         if vertex.y > 1.865:
             vertex.y = 1.865+(vertex.y-1.865)*.12
             deformed.add(index)
+        # Round the upper shell instead of leaving the compressed SW2 crest
+        # as a flat cap. The accepted visor/brow/cheek region is below this
+        # smooth transition and keeps every existing vertex and UV unchanged.
+        crown_weight = smooth(1.70,1.845,vertex.y)
+        radial = (vertex.x/.290)**2+((vertex.z+.017)/.329)**2
+        if crown_weight > 0 and radial < 1:
+            dome_y = 1.620+.315*math.sqrt(1-radial)
+            panel_lift = max(0,vertex.y-1.865)*.25
+            vertex.y += (dome_y+panel_lift-vertex.y)*crown_weight*.88
+            deformed.add(index)
         # Fold the source nose latch inside the new housing. Move every UV
         # duplicate at the same coordinate together, preserving sealed faces.
         if abs(vertex.x)<.05 and 1.395<vertex.y<1.44 and vertex.z<-.15:

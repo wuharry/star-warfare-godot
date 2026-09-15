@@ -25,3 +25,7 @@ The capture tool redirects its own save path before creating players. An interme
 Existing broad equipment tests still report fallback to texture paths for old weapon UIDs. Save recovery tests intentionally exercise invalid test-save backups. These do not affect the Thunder assertions. User `.vscode` and unrelated reference-import edits are excluded from this change.
 
 See [runtime details](../../../assets/armors/thunder/README.md), [source provenance](../../../assets/armors/thunder/source_sw2/README.md), [image prompts](../../../assets/armors/thunder/helmet_texture_prompt.txt), and [interactive comparison](../thunder_detail_v4/index.html).
+
+## SW2 crown rounding — 2026-09-16
+
+The upper shell now follows a rounded dome instead of a compressed crest. The accepted visor, cheek plates and respirator (324 triangles on material slots 12–14) retain exactly the same positions, normals, tangents, UVs and skin weights. Body, arms, legs and prototype B remain unchanged. Godot front, three-quarter, side and in-level captures were reviewed; updated A/B images are in [the comparison page](../thunder_helmet_comparison_v5/index.html).

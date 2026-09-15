@@ -10,7 +10,7 @@
 <p>依照圈選的概念圖，修正面罩與眉甲的輪廓。A 從 SW2 連續網格調整；B 保留早期雛形的圓頂與中央脊甲，重做梯形面罩和包覆頰甲。兩版使用相同身甲、姿勢、燈光與取景，圖片直接由 Godot 的遊戲角色擷取。</p>
 <nav aria-label="對照控制"><label>範圍 <select id="scope"><option value="helmet">頭盔</option><option value="detail">細節</option><option value="full">全身</option><option value="motion">換彈中</option><option value="game">遊戲場景</option></select></label><label>畫面 <select id="view"></select></label><button id="reset">重設視角</button></nav>
 <div class="comparison">
-<figure id="sw2-card"><figcaption><strong>A · SW2 修訂</strong>保留原版分件與刻紋，收窄下方面罩，調整眉甲及冠頂。<br><small>目前遊戲預設版本</small></figcaption><img class="frame" id="sw2-image" alt="A SW2 修訂版的 Godot 實際畫面"></figure>
+<figure id="sw2-card"><figcaption><strong>A · SW2 修訂</strong>修圓頂部外殼；保留已確認的窄下面甲、眉甲與呼吸器。<br><small>目前遊戲預設版本</small></figcaption><img class="frame" id="sw2-image" alt="A SW2 修訂版的 Godot 實際畫面"></figure>
 <figure class="reference"><div class="reference-crop"><img src="reference.png" alt="使用者提供的 Thunder 概念參考"></div><figcaption><strong>造型參考</strong>斜切眉甲、中央下垂的脊甲；藍色頰甲逐漸向內包覆，金色面罩下邊窄。<a class="reference-link" href="annotated.png">查看紅圈標註</a><small>概念圖的姿勢與光線不同；本頁 A、B 互相比較時使用同一取景。</small></figcaption></figure>
 <figure id="prototype-card"><figcaption><strong>B · 雛形修訂</strong>保留圓頂與寬脊甲，新增向內包覆的頰甲、梯形面罩與弧形刻紋。<br><small>可在遊戲啟動時切換</small></figcaption><img class="frame" id="prototype-image" alt="B 雛形修訂版的 Godot 實際畫面"></figure>
 </div>
@@ -18,7 +18,7 @@
 <div id="status" class="status"></div>
 <details open><summary>兩版改動與遊戲切換</summary>
 <table><thead><tr><th>部位</th><th>A · SW2</th><th>B · 雛形</th></tr></thead><tbody>
-<tr><td>頭盔外殼</td><td>保留 SW2 耳部、後腦與分件；壓低原高冠，調整前眉深度。</td><td>保留原雛形圓頂、寬脊甲、側面板線及後腦。</td></tr>
+<tr><td>頭盔外殼</td><td>保留 SW2 分件、耳部與板線；頂部改為連續圓弧，已確認的面甲保持不變。</td><td>保留原雛形圓頂、寬脊甲、側面板線及後腦。</td></tr>
 <tr><td>金色面罩</td><td>變形原連續網格，讓下半部向中央收窄，保留原 UV 與弧形紋路。</td><td>新建上寬下窄曲面，配對金色紋路與法線；藍色頰甲包住兩側。</td></tr>
 <tr><td>呼吸器</td><td colspan="2">保留凹入通氣口與斜面外殼，分別貼合各自臉部深度。</td></tr>
 <tr><td>整套模型三角形</td><td>12,694</td><td>39,238（包含原雛形的圓頂細分；此數字不是效能量測）</td></tr>
