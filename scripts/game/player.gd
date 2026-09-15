@@ -1019,6 +1019,7 @@ func _try_fire() -> void:
 		return
 	var energy_cost := 0 if float(armor_skills.get("unlimited_energy", 0.0)) > 0.0 else maxi(0, roundi(float(current_weapon.energy) * maxf(0.0, 1.0 + float(armor_skills.get("save_energy", 0.0)))))
 	if energy_cost > energy:
+		_stop_continuous_weapon_audio()
 		AudioDirector.play_3d(str(current_weapon.get("blank_sound", "blank/blank_shot01.wav")), global_position, -4.0)
 		return
 	energy -= energy_cost
@@ -1211,6 +1212,11 @@ func _start_reload() -> void:
 	auto_reload_left = -1.0
 	_stop_continuous_weapon_audio()
 	shoot_pose_left = 0.0
+	# A shot immediately followed by reload must relinquish the weapon pivot;
+	# otherwise the recoil tween keeps overwriting the reload pose each frame.
+	if weapon_recoil_tween and weapon_recoil_tween.is_valid():
+		weapon_recoil_tween.kill()
+	gun_mount.position = gun_mount_rest_position
 	_begin_reload_cycle()
 
 func _begin_reload_cycle(first_cycle := true) -> void:
