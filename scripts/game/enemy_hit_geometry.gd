@@ -5,6 +5,9 @@ extends StaticBody3D
 # Bind-space hulls follow the same bone transforms as the rendered skin.
 var parts: Array[Dictionary] = []
 static var mesh_parts: Dictionary = {}
+var coarse := false
+var coarse_collision: CollisionShape3D
+var coarse_shape: BoxShape3D
 
 static func resolve(collider: Node) -> Node:
 	return collider.get_parent() if collider is EnemyHitGeometry else collider
@@ -59,9 +62,16 @@ func build(visual: Node3D) -> void:
 			collision.name = "Hit_" + str(skeleton.get_bone_name(bone))
 			collision.shape = entry.shape
 			add_child(collision)
-			parts.append({"skeleton": skeleton, "bone": bone, "collision": collision})
+			parts.append({"skeleton": skeleton, "bone": bone, "collision": collision, "bounds": entry.bounds})
 		if not skeleton.skeleton_updated.is_connected(sync_pose):
 			skeleton.skeleton_updated.connect(sync_pose)
+	if not parts.is_empty():
+		coarse_shape = BoxShape3D.new()
+		coarse_collision = CollisionShape3D.new()
+		coarse_collision.name = "CoarseHitbox"
+		coarse_collision.shape = coarse_shape
+		coarse_collision.disabled = true
+		add_child(coarse_collision)
 	sync_pose()
 
 func _build_bind_hulls(mesh: MeshInstance3D) -> Array[Dictionary]:
@@ -93,13 +103,60 @@ func _build_bind_hulls(mesh: MeshInstance3D) -> Array[Dictionary]:
 			continue
 		var shape := ConvexPolygonShape3D.new()
 		shape.points = clouds[bind]
-		result.append({"bind": bind, "shape": shape})
+		var points: PackedVector3Array = clouds[bind]
+		var bounds := AABB(points[0], Vector3.ZERO)
+		for point in points:
+			bounds = bounds.expand(point)
+		result.append({"bind": bind, "shape": shape, "bounds": bounds})
 	return result
+
+func set_coarse(enabled: bool) -> void:
+	if coarse_collision == null or coarse == enabled:
+		return
+	coarse = enabled
+	# Both tiers belong to the same damage body. Keep its layer active and
+	# switch shapes together after the physics callback has finished.
+	sync_pose()
+	for part in parts:
+		var collision: CollisionShape3D = part.collision
+		collision.set_deferred("disabled", enabled)
+	coarse_collision.set_deferred("disabled", not enabled)
+
+func release() -> void:
+	# skeleton_updated is the only automatic driver of sync_pose, so dropping it
+	# is the only thing that actually stops the per-bone transform writes --
+	# zeroing collision_layer leaves the body in the space still paying for them.
+	for part in parts:
+		var skeleton: Skeleton3D = part.skeleton
+		if is_instance_valid(skeleton) and skeleton.skeleton_updated.is_connected(sync_pose):
+			skeleton.skeleton_updated.disconnect(sync_pose)
 
 func sync_pose() -> void:
 	if not is_inside_tree():
 		return
+	# Both the inverse and the skeleton's own transform are constant across the
+	# loop -- nothing in the body moves this node or the skeleton mid-sync -- so
+	# each update needs one affine_inverse() instead of one per hull.
+	var to_local := global_transform.affine_inverse()
+	var cached_skeleton: Skeleton3D = null
+	var skeleton_to_local := Transform3D.IDENTITY
+	var bounds := AABB()
+	var first := true
 	for part in parts:
 		var skeleton: Skeleton3D = part.skeleton
-		var collision: CollisionShape3D = part.collision
-		collision.transform = global_transform.affine_inverse() * skeleton.global_transform * skeleton.get_bone_global_pose(int(part.bone))
+		if skeleton != cached_skeleton:
+			cached_skeleton = skeleton
+			skeleton_to_local = to_local * skeleton.global_transform
+		var pose := skeleton_to_local * skeleton.get_bone_global_pose(int(part.bone))
+		if coarse:
+			# Merge cached bone-local bounds in the CURRENT pose. A fixed walking
+			# capsule cannot cover a brute raising its torso or a boss unfolding.
+			var posed: AABB = pose * (part.bounds as AABB)
+			bounds = posed if first else bounds.merge(posed)
+			first = false
+		else:
+			var collision: CollisionShape3D = part.collision
+			collision.transform = pose
+	if coarse and not first:
+		coarse_shape.size = bounds.size.max(Vector3.ONE * 0.01)
+		coarse_collision.position = bounds.get_center()

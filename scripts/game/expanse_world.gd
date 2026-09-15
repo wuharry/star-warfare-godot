@@ -31,7 +31,10 @@ const LANDMARK_FREE_RADIUS := 1020.0
 # Roaming encounters. Hostiles arrive just outside a comfortable engagement
 # range, and anything the player walks away from is recycled rather than left
 # to trail across the continent forever.
-const ENCOUNTER_POPULATION := 8
+# Open terrain, so distant roamers sit in the coarse-hull tier most of the
+# time (see WarfareEnemy.HULL_FAR_DISTANCE). tests/expanse_test.gd asserts
+# against this constant rather than a literal, so it stays authoritative.
+const ENCOUNTER_POPULATION := 32
 const ENCOUNTER_INTERVAL := 0.85
 const SPAWN_MIN_DISTANCE := 58.0
 const SPAWN_MAX_DISTANCE := 98.0
