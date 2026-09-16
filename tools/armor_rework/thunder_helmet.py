@@ -171,12 +171,15 @@ def refine_helmet(obj, material_slots):
         # this local clearance the original SW2 chin pokes through the grille.
         # The amber UV island and the visible cheek/visor boundary stay fixed.
         u,v = source['uv'][index][:2]
-        if not (u>.775 and v<.405):
+        # This small blue latch occupies a separate island beside the amber
+        # glass, despite sharing its material slot in the source export.
+        blue_latch = u > .895 and v < .17
+        if not (u>.775 and v<.405) or blue_latch:
             mount = (1-smooth(.025,.060,abs(vertex.x)))
-            mount *= smooth(1.29,1.32,vertex.y)*(1-smooth(1.385,1.415,vertex.y))
-            mount *= smooth(.20,.235,-vertex.z)
+            mount *= smooth(1.29,1.32,vertex.y)*(1-smooth(1.41,1.44,vertex.y))
+            mount *= smooth(.16,.205,-vertex.z)
             if mount > 0:
-                mount_recess[index] = .026*mount
+                mount_recess[index] = .050*mount
     faces = []
     for submesh in source['submeshes']:
         for face in submesh:
@@ -226,7 +229,7 @@ def refine_helmet(obj, material_slots):
     obj.vertex_groups.clear()
     obj.vertex_groups.new(name='Bip01 Head').add(list(range(len(vertices))),1,'REPLACE')
     pieces = [_neck_bridge(obj,material_slots)]
-    pieces += create_respirator(obj,material_slots,front_offset=.008,depth_scale=.24)
+    pieces += create_respirator(obj,material_slots,depth_scale=.15,flush_mount=True)
     bpy.ops.object.select_all(action='DESELECT')
     obj.select_set(True)
     for piece in pieces:
@@ -238,7 +241,7 @@ def refine_helmet(obj, material_slots):
     obj['thunder_detail'] = 'SW2 shell with inward lower cheeks, engraved trapezoid visor, low crown and flush respirator'
 
 
-def create_respirator(obj,material_slots,front_offset=0.0,depth_scale=.44):
+def create_respirator(obj,material_slots,front_offset=0.0,depth_scale=.44,flush_mount=False):
     pieces = []
     pieces.append(_ring_piece(obj,'Six-plane respirator housing',[
         _octagon(.054,1.301,1.414,.014,-.244),
@@ -259,6 +262,8 @@ def create_respirator(obj,material_slots,front_offset=0.0,depth_scale=.44):
         _octagon(.033,1.301,1.318,.005,-.327),
     ],[12,13],material_slots))
     for sign in [-1,1]:
+        if flush_mount:
+            continue  # The original cheek shell surrounds the inset housing.
         points = [(sign*x,y,z) for x,y,z in [
             (.039,1.323,-.281),(.071,1.332,-.272),(.086,1.365,-.247),
             (.070,1.383,-.256),(.052,1.372,-.288),
@@ -271,6 +276,18 @@ def create_respirator(obj,material_slots,front_offset=0.0,depth_scale=.44):
     # so the recessed intake retains its thickness and sealed back.
     for piece in pieces:
         for vertex in piece.data.vertices:
-            vertex.co.z = -.241+(vertex.co.z+.241)*depth_scale+front_offset
+            if flush_mount:
+                # Follow the sloping chin instead of leaving a flat plate in
+                # front of it. Outer wings tuck into the original cheek armor.
+                x,y,z = vertex.co
+                x *= .88
+                y = 1.35+(y-1.35)*.92
+                vertex.co.x = x
+                vertex.co.y = y
+                mount_z = -.218+(y-1.30)*.20
+                mount_z += .008*(abs(x)/.05)**2
+                vertex.co.z = mount_z+(z+.241)*depth_scale
+            else:
+                vertex.co.z = -.241+(vertex.co.z+.241)*depth_scale+front_offset
         piece.data.update()
     return pieces

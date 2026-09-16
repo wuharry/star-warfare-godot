@@ -259,6 +259,12 @@ func _materials() -> Array[ShaderMaterial]:
 		result.append(material)
 	var visor := helmet.duplicate() as ShaderMaterial
 	visor.resource_name = "Thunder_EngravedVisor"
+	# The visor keeps the original shader settings and all amber channels.
+	# Only SW2's blue shell adopts the same two paints used by body panels.
+	if variant == "sw2":
+		helmet.set_shader_parameter("shell_palette_strength", 1.0)
+		helmet.set_shader_parameter("shell_blue", Color("355f88"))
+		helmet.set_shader_parameter("shell_navy", Color("203750"))
 	result.append(visor)
 	return result
 
