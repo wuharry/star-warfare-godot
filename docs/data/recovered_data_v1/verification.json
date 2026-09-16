@@ -1,0 +1,53 @@
+{
+  "source_sha256": "5b29368724eb16e5335d26bec215a6939bf9480c2076bf4c3c1f7b2dfc0e39bd",
+  "checks": {
+    "recovered_data_test": {
+      "result": "PASS",
+      "evidence": "RECOVERED_DATA_TEST_PASS"
+    },
+    "armor_system_test": {
+      "result": "PASS",
+      "evidence": "ARMOR_SYSTEM_TEST_PASS"
+    },
+    "props_store_test": {
+      "result": "PASS",
+      "evidence": "PROPS_STORE_TEST_PASS items=11 health=6 aid=2 assist=3"
+    },
+    "armor_power_test": {
+      "result": "PASS",
+      "evidence": "ARMOR_POWER_TEST_PASS checks=10"
+    },
+    "enemy_ai_test": {
+      "result": "PASS",
+      "evidence": "ENEMY_AI_TEST_PASS checks=8"
+    },
+    "weapon_fire_feedback_test": {
+      "result": "PASS",
+      "evidence": "WEAPON_FIRE_FEEDBACK_TEST_PASS checks=64"
+    },
+    "menu_equipment_test": {
+      "result": "PASS",
+      "evidence": "MENU_EQUIPMENT_TEST_PASS tabs=6 armor=141 weapons=47"
+    },
+    "expanse_test": {
+      "result": "PASS",
+      "evidence": "EXPANSE_TEST_PASS"
+    },
+    "reload_catalog_running_test": {
+      "result": "PASS",
+      "evidence": "RELOAD_CATALOG_MOVEMENT_PASS run_variants=55 fly_weapons=24"
+    },
+    "smoke_test": {
+      "result": "PASS",
+      "evidence": "SMOKE_TEST_PASS"
+    },
+    "settings_test": {
+      "result": "PASS",
+      "evidence": "SETTINGS_TEST_PASS"
+    }
+  },
+  "save_isolation": "Dedicated test paths; smoke/settings used temporary inheriting wrappers to keep original assertions unchanged. Runtime test and both visual captures confirm production save hash unchanged.",
+  "visual_review": "Godot Compatibility 1600x900 level frames: rounded SW2 shell, preserved face, updated five-digit HP fits HUD. Data HTML inspected at 1400x1100.",
+  "scope": "15 monster rows imported, 4 existing model/AI aliases use them; no new spawning AI or original substage/upgrade UI.",
+  "known_warnings": "Existing font/CanvasItem/ObjectDB cleanup warnings at exit and gun05/gun18 texture UID fallbacks in relevant equipment tests."
+}

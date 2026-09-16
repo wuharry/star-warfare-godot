@@ -253,8 +253,8 @@ func _spawn_enemy(kind: String, elite: bool) -> WarfareEnemy:
 	if _is_pvp_arena():
 		return null
 	var enemy := EnemyScript.new()
-	var health_value := float(level_data.enemy_health) * (1.0 + (current_wave - 1) * 0.12)
-	enemy.configure(player, kind, health_value, elite)
+	var health_scale := float(level_data.get("enemy_health_scale", 1.0)) * (1.0 + maxi(0, current_wave - 1) * 0.12)
+	enemy.configure_recovered(player, kind, health_scale, elite)
 	add_child(enemy)
 	var spawn_position := _choose_restored_enemy_spawn(kind)
 	if spawn_position == Vector3.INF:
@@ -275,12 +275,13 @@ func _spawn_enemy(kind: String, elite: bool) -> WarfareEnemy:
 	total_spawned += 1
 	return enemy
 
-func _on_enemy_died(_enemy: WarfareEnemy, death_position: Vector3, reward: int, score_value_amount: int) -> void:
+func _on_enemy_died(enemy: WarfareEnemy, death_position: Vector3, reward: int, score_value_amount: int) -> void:
 	alive_enemies = maxi(0, alive_enemies - 1)
 	kills += 1
 	score += score_value_amount
-	if rng.randf() < 0.72:
-		spawn_pickup(death_position + Vector3.UP, "credits", reward)
+	# Source lootCash is awarded for every kill; it is not a score or drop chance.
+	add_battle_credits(reward)
+	GameState.add_experience(enemy.experience_value)
 	if rng.randf() < 0.18:
 		spawn_pickup(death_position + Vector3(rng.randf_range(-0.7, 0.7), 1.0, rng.randf_range(-0.7, 0.7)), "energy", 22.0)
 	elif rng.randf() < 0.14:
@@ -289,7 +290,7 @@ func _on_enemy_died(_enemy: WarfareEnemy, death_position: Vector3, reward: int, 
 
 func _on_enemy_health_reported(current: float, maximum: float, is_boss: bool, enemy: WarfareEnemy) -> void:
 	if is_boss and is_instance_valid(hud) and not enemy.dead:
-		hud.report_boss(current, maximum, "ALIEN OVERLORD")
+		hud.report_boss(current, maximum, enemy.source_monster_name if not enemy.source_monster_name.is_empty() else "ALIEN OVERLORD")
 
 func _check_wave_complete() -> void:
 	if _is_pvp_arena() or spawning or alive_enemies > 0 or completed:

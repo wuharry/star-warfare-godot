@@ -131,6 +131,7 @@ func _build_harness() -> void:
 func _reset_harness() -> void:
 	controller.cancel_all_active(true)
 	harness_player.health = 50.0
+	harness_player.max_health = 100.0
 	harness_player.dead = false
 	harness_enemy.health = 300.0
 	harness_enemy.speed = 10.0
@@ -166,9 +167,10 @@ func _test_stat_powers() -> void:
 	_check(_approx(controller.modify_incoming_damage(100.0), 15.0), "DEFENCE UP must reduce incoming damage by 85 percent")
 
 	_reset_harness()
-	harness_player.health = 10.0
+	harness_player.max_health = 20000.0
+	harness_player.health = 1000.0
 	_check(controller.activate_authoritative(3), "ANDROMEDA UP should activate")
-	_check(_approx(harness_player.health, 100.0), "ANDROMEDA must restore the normalized 100 HP")
+	_check(_approx(harness_player.health, 11000.0), "ANDROMEDA must restore the original 10000 HP")
 	_check(_approx(controller.get_speed_bonus(), 1.0), "ANDROMEDA must add one movement unit")
 	_check(_approx(controller.modify_incoming_damage(100.0), 70.0), "ANDROMEDA must reduce incoming damage by 30 percent")
 
@@ -182,25 +184,26 @@ func _test_stat_powers() -> void:
 
 func _test_attack_shield() -> void:
 	_reset_harness()
-	harness_enemy.health = 10.0
+	harness_enemy.health = 1000.0
 	harness_enemy.position = Vector3(0.0, 0.0, -2.0)
 	await get_tree().physics_frame
 	_check(controller.activate_authoritative(5), "ATTACK SHIELD should activate")
 	controller.advance_simulation(0.25)
-	_check(_approx(harness_enemy.health, 9.0), "ATTACK SHIELD must deal normalized pulse damage every 0.25 seconds")
+	_check(_approx(harness_enemy.health, 900.0), "ATTACK SHIELD must deal original 100 damage every 0.25 seconds")
 
 
 func _test_impact_wave() -> void:
 	_reset_harness()
+	harness_enemy.health = 30000.0
 	harness_player.health = 20.0
 	await get_tree().physics_frame
 	_check(controller.activate_authoritative(6), "IMPACT WAVE should activate")
 	for _step in range(12):
 		controller.advance_simulation(0.05)
 		await get_tree().physics_frame
-		if harness_enemy.health < 300.0:
+		if harness_enemy.health < 30000.0:
 			break
-	_check(_approx(harness_enemy.health, 80.0), "IMPACT WAVE must deal normalized 220 penetrating damage")
+	_check(_approx(harness_enemy.health, 8000.0), "IMPACT WAVE must deal original 22000 penetrating damage")
 	_check(_approx(harness_player.health, 100.0), "IMPACT WAVE must heal half of actual damage, capped at max HP")
 
 
