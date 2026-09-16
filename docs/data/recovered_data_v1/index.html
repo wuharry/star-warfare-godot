@@ -1,0 +1,204 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>原版數據套用對照</title>
+<style>body{font:16px/1.65 system-ui,sans-serif;background:#101925;color:#e8f0fa;max-width:1200px;margin:32px auto;padding:0 20px}h1,h2{color:#81d6ff}.scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}th,td{text-align:left;padding:8px 12px;border-bottom:1px solid #304355}th{background:#203248;white-space:nowrap}a{color:#81d6ff}code{overflow-wrap:anywhere}small{color:#b4c7d7}</style>
+<h1>原版數據套用對照</h1>
+<p>武器、裝甲、背包、套裝／技能與道具共用這份資料；傷害、價格、解鎖需求在遊戲和商店採用同一來源。換彈動作與彈匣容量沿用已完成的設定。</p>
+<p>裝甲 HP、回血與技能恢復原單位，移除舊的 0.01 倍縮減。Viper 加初始背包為 1,400 HP；既有 100 點護盾另外計算。</p>
+<p>怪物資料收錄 15 種，目前關卡已有的 4 種模型套用相應基礎數值。crawler → 工蟲、spitter → 蠍尾蟲、brute（舊內部名稱）→ 自爆蟲、boss → 龍；未新增其他怪物的 AI 或生成排程。現有 AI 的攻擊動作與近戰距離仍沿用復刻版設定。關卡及精英倍率另外計算。</p>
+<p>經驗值會用於原版 12 級軍階門檻；保留既有關卡進度提供的階級下限。原始武器升級表與 54 張生成排程表已解出供查閱，此次不改造升級介面、原版子關卡流程或 Boss 狀態機。</p>
+<p><strong>欄位修正：</strong>附件的 clip_capacity 實為射擊間隔 × 100；req_level 實為單發能量；怪物 score 實為金錢獎勵。下表依原程式欄位顯示。</p>
+<p><a href="README.md">欄位來源與套用範圍</a> · <a href="tables.json">完整 76 張解碼表</a></p><small>resDataSets_raw.bin SHA-256: <code>5b29368724eb16e5335d26bec215a6939bf9480c2076bf4c3c1f7b2dfc0e39bd</code></small><h2>怪物基礎數據</h2><div class='scroll'><table><thead><tr><th>ID</th><th>名称</th><th>HP</th><th>移速</th><th>攻擊表</th><th>經驗</th><th>金錢</th><th>目前生成</th></tr></thead><tbody>
+<tr><td>0</td><td>工虫</td><td>45</td><td>4</td><td>1</td><td>10</td><td>90</td><td>crawler</td></tr>
+<tr><td>1</td><td>高速虫</td><td>60</td><td>7</td><td>2</td><td>25</td><td>250</td><td>未生成</td></tr>
+<tr><td>2</td><td>蝎尾虫</td><td>35</td><td>3</td><td>3</td><td>15</td><td>160</td><td>spitter</td></tr>
+<tr><td>3</td><td>自爆虫</td><td>25</td><td>6</td><td>4</td><td>20</td><td>130</td><td>brute</td></tr>
+<tr><td>4</td><td>大型甲虫</td><td>1000</td><td>5</td><td>5</td><td>150</td><td>1500</td><td>未生成</td></tr>
+<tr><td>5</td><td>金甲虫</td><td>300</td><td>3</td><td>6</td><td>60</td><td>450</td><td>未生成</td></tr>
+<tr><td>6</td><td>飞行虫</td><td>40</td><td>7</td><td>7</td><td>25</td><td>280</td><td>未生成</td></tr>
+<tr><td>7</td><td>轮胎虫</td><td>35</td><td>8</td><td>8</td><td>35</td><td>400</td><td>未生成</td></tr>
+<tr><td>8</td><td>巨甲虫</td><td>20000</td><td>0</td><td>9</td><td>25000</td><td>199999</td><td>未生成</td></tr>
+<tr><td>9</td><td>飞天螳螂</td><td>40000</td><td>0</td><td>10</td><td>10000</td><td>111111</td><td>未生成</td></tr>
+<tr><td>10</td><td>龙</td><td>80000</td><td>0</td><td>11</td><td>60000</td><td>299999</td><td>boss</td></tr>
+<tr><td>11</td><td>孪生螳螂哥</td><td>20000</td><td>0</td><td>10</td><td>120000</td><td>444444</td><td>未生成</td></tr>
+<tr><td>12</td><td>孪生螳螂弟</td><td>20000</td><td>0</td><td>10</td><td>0</td><td>0</td><td>未生成</td></tr>
+<tr><td>13</td><td>蠕虫</td><td>80000</td><td>0</td><td>11</td><td>150000</td><td>599999</td><td>未生成</td></tr>
+<tr><td>14</td><td>圣诞机器</td><td>90000</td><td>0</td><td>11</td><td>170000</td><td>639999</td><td>未生成</td></tr></tbody></table></div><h2>武器</h2><div class='scroll'><table><thead><tr><th>ID</th><th>名称</th><th>傷害</th><th>射擊間隔（秒）</th><th>能量</th><th>解鎖階級（從 1 起）</th><th>點數</th><th>秘銀</th></tr></thead><tbody>
+<tr><td>0</td><td>FR28a</td><td>20.0</td><td>0.24</td><td>5</td><td>1</td><td>15000</td><td>0</td></tr>
+<tr><td>1</td><td>MA72</td><td>30.0</td><td>0.23</td><td>7</td><td>1</td><td>25000</td><td>0</td></tr>
+<tr><td>2</td><td>MS06</td><td>36.0</td><td>0.2</td><td>8</td><td>1</td><td>40000</td><td>6</td></tr>
+<tr><td>3</td><td>FR43C</td><td>48.0</td><td>0.23</td><td>11</td><td>2</td><td>70000</td><td>0</td></tr>
+<tr><td>4</td><td>FL334AR</td><td>68.0</td><td>0.25</td><td>14</td><td>3</td><td>150000</td><td>0</td></tr>
+<tr><td>5</td><td>TB10-LW</td><td>100.0</td><td>0.24</td><td>18</td><td>4</td><td>280000</td><td>30</td></tr>
+<tr><td>6</td><td>TSG-03</td><td>90.0</td><td>0.85</td><td>18</td><td>1</td><td>20000</td><td>0</td></tr>
+<tr><td>7</td><td>SD58</td><td>130.0</td><td>0.95</td><td>22</td><td>1</td><td>45000</td><td>0</td></tr>
+<tr><td>8</td><td>WD03S</td><td>170.0</td><td>0.75</td><td>26</td><td>2</td><td>85000</td><td>7</td></tr>
+<tr><td>9</td><td>S92M</td><td>260.0</td><td>1.05</td><td>32</td><td>3</td><td>150000</td><td>0</td></tr>
+<tr><td>10</td><td>T740</td><td>320.0</td><td>0.9</td><td>50</td><td>4</td><td>260000</td><td>23</td></tr>
+<tr><td>11</td><td>RPG-21</td><td>250.0</td><td>1.4</td><td>120</td><td>4</td><td>300000</td><td>0</td></tr>
+<tr><td>12</td><td>RPG-24</td><td>450.0</td><td>1.7</td><td>220</td><td>5</td><td>1100000</td><td>0</td></tr>
+<tr><td>13</td><td>RPG-31</td><td>750.0</td><td>1.2</td><td>350</td><td>6</td><td>3500000</td><td>280</td></tr>
+<tr><td>14</td><td>Vox-07</td><td>80.0</td><td>0.5</td><td>20</td><td>2</td><td>150000</td><td>0</td></tr>
+<tr><td>15</td><td>M347</td><td>192.0</td><td>0.45</td><td>50</td><td>3</td><td>600000</td><td>0</td></tr>
+<tr><td>16</td><td>Ge09x</td><td>220.0</td><td>0.45</td><td>60</td><td>5</td><td>950000</td><td>80</td></tr>
+<tr><td>17</td><td>LG002B</td><td>50.0</td><td>0.3</td><td>22</td><td>3</td><td>85000</td><td>8</td></tr>
+<tr><td>18</td><td>M2456s</td><td>90.0</td><td>0.3</td><td>30</td><td>4</td><td>320000</td><td>0</td></tr>
+<tr><td>19</td><td>NOVA27</td><td>140.0</td><td>0.25</td><td>45</td><td>5</td><td>750000</td><td>0</td></tr>
+<tr><td>20</td><td>Plasma Neo</td><td>90.0</td><td>0.35</td><td>35</td><td>2</td><td>400000</td><td>0</td></tr>
+<tr><td>21</td><td>Laser Cannon</td><td>300.0</td><td>0.2</td><td>100</td><td>6</td><td>4000000</td><td>320</td></tr>
+<tr><td>22</td><td>Light Bow</td><td>100.0</td><td>0.5</td><td>40</td><td>2</td><td>300000</td><td>28</td></tr>
+<tr><td>23</td><td>Energy Glove</td><td>250.0</td><td>0.5</td><td>60</td><td>4</td><td>2300000</td><td>180</td></tr>
+<tr><td>24</td><td>MCP76</td><td>120.0</td><td>0.2</td><td>15</td><td>3</td><td>400000</td><td>0</td></tr>
+<tr><td>25</td><td>M-27B1</td><td>200.0</td><td>0.17</td><td>40</td><td>5</td><td>1400000</td><td>0</td></tr>
+<tr><td>26</td><td>LIT07</td><td>190.0</td><td>0.28</td><td>65</td><td>7</td><td>1350000</td><td>95</td></tr>
+<tr><td>27</td><td>Cutter</td><td>60.0</td><td>0.3</td><td>0</td><td>1</td><td>25000</td><td>0</td></tr>
+<tr><td>28</td><td>Passer</td><td>200.0</td><td>0.3</td><td>0</td><td>4</td><td>450000</td><td>35</td></tr>
+<tr><td>29</td><td>Trinity</td><td>150.0</td><td>0.65</td><td>130</td><td>5</td><td>2500000</td><td>200</td></tr>
+<tr><td>30</td><td>BLACK STARS</td><td>240.0</td><td>1.8</td><td>280</td><td>6</td><td>2700000</td><td>220</td></tr>
+<tr><td>31</td><td>Crab</td><td>200.0</td><td>0.3</td><td>90</td><td>7</td><td>3600000</td><td>0</td></tr>
+<tr><td>32</td><td>Morpheus</td><td>800.0</td><td>1.0</td><td>100</td><td>7</td><td>2200000</td><td>0</td></tr>
+<tr><td>33</td><td>WINDBLADE</td><td>250.0</td><td>0.3</td><td>0</td><td>5</td><td>800000</td><td>65</td></tr>
+<tr><td>34</td><td>R100-RAILGUN</td><td>1000.0</td><td>1.5</td><td>120</td><td>5</td><td>2000000</td><td>0</td></tr>
+<tr><td>35</td><td>R700-AA</td><td>1400.0</td><td>1.4</td><td>150</td><td>6</td><td>2500000</td><td>190</td></tr>
+<tr><td>36</td><td>WHITE DRILL</td><td>180.0</td><td>0.5</td><td>45</td><td>9</td><td>160000</td><td>166</td></tr>
+<tr><td>37</td><td>BLACK DISK</td><td>760.0</td><td>1.5</td><td>280</td><td>9</td><td>2200000</td><td>0</td></tr>
+<tr><td>38</td><td>XMAX-TREE</td><td>176.0</td><td>0.2</td><td>16</td><td>6</td><td>2800000</td><td>210</td></tr>
+<tr><td>39</td><td>M-Z7B2</td><td>275.0</td><td>0.17</td><td>80</td><td>7</td><td>4400000</td><td>320</td></tr>
+<tr><td>40</td><td>AST-KK</td><td>150.0</td><td>0.15</td><td>55</td><td>6</td><td>1800000</td><td>0</td></tr>
+<tr><td>41</td><td>J.O.K.E</td><td>270.0</td><td>0.4</td><td>120</td><td>7</td><td>4200000</td><td>238</td></tr>
+<tr><td>42</td><td>Spring</td><td>30.0</td><td>0.6</td><td>180</td><td>7</td><td>1600000</td><td>77</td></tr>
+<tr><td>43</td><td>Reflection</td><td>1200.0</td><td>1.5</td><td>220</td><td>8</td><td>2700000</td><td>230</td></tr>
+<tr><td>44</td><td>TheArrow</td><td>210.0</td><td>0.5</td><td>200</td><td>1</td><td>2200000</td><td>0</td></tr>
+<tr><td>45</td><td>U.F.O</td><td>300.0</td><td>1.5</td><td>330</td><td>8</td><td>4200000</td><td>228</td></tr>
+<tr><td>46</td><td>Spreader</td><td>850.0</td><td>1.0</td><td>100</td><td>7</td><td>3300000</td><td>0</td></tr></tbody></table></div><h2>裝甲與背包</h2><div class='scroll'><table><thead><tr><th>原表 ID</th><th>名称</th><th>HP</th><th>攻擊%</th><th>速度加成</th><th>金錢%</th><th>經驗%</th><th>階級</th><th>點數</th><th>秘銀</th></tr></thead><tbody>
+<tr><td>0</td><td>Viper Head</td><td>350</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>1</td><td>3000</td><td>0</td></tr>
+<tr><td>1</td><td>Viper Chest</td><td>400</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>1</td><td>4700</td><td>0</td></tr>
+<tr><td>2</td><td>Viper Hands</td><td>200</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>1</td><td>3000</td><td>0</td></tr>
+<tr><td>3</td><td>Viper Legs</td><td>250</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>1</td><td>2400</td><td>0</td></tr>
+<tr><td>4</td><td>Fortune Head</td><td>450</td><td>0</td><td>0.0</td><td>5</td><td>0</td><td>1</td><td>20000</td><td>0</td></tr>
+<tr><td>5</td><td>Fortune Chest</td><td>900</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>1</td><td>27000</td><td>0</td></tr>
+<tr><td>6</td><td>Fortune Hands</td><td>300</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>1</td><td>24000</td><td>0</td></tr>
+<tr><td>7</td><td>Fortune Legs</td><td>450</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>1</td><td>16000</td><td>0</td></tr>
+<tr><td>8</td><td>Tank Head</td><td>1000</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>3</td><td>80000</td><td>0</td></tr>
+<tr><td>9</td><td>Tank Chest</td><td>2300</td><td>0</td><td>-1.0</td><td>0</td><td>0</td><td>3</td><td>160000</td><td>0</td></tr>
+<tr><td>10</td><td>Tank Hands</td><td>900</td><td>15</td><td>-1.0</td><td>0</td><td>0</td><td>3</td><td>85000</td><td>0</td></tr>
+<tr><td>11</td><td>Tank Legs</td><td>750</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>3</td><td>75000</td><td>0</td></tr>
+<tr><td>12</td><td>Hydra Head</td><td>650</td><td>0</td><td>0.0</td><td>10</td><td>0</td><td>3</td><td>95000</td><td>0</td></tr>
+<tr><td>13</td><td>Hydra Chest</td><td>1800</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>3</td><td>145000</td><td>0</td></tr>
+<tr><td>14</td><td>Hydra Hands</td><td>800</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>3</td><td>100000</td><td>0</td></tr>
+<tr><td>15</td><td>Hydra Legs</td><td>600</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>3</td><td>60000</td><td>0</td></tr>
+<tr><td>16</td><td>Strike Head</td><td>2000</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>5</td><td>200000</td><td>0</td></tr>
+<tr><td>17</td><td>Strike Chest</td><td>3300</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>5</td><td>340000</td><td>0</td></tr>
+<tr><td>18</td><td>Strike Hands</td><td>1600</td><td>10</td><td>0.0</td><td>0</td><td>0</td><td>5</td><td>230000</td><td>0</td></tr>
+<tr><td>19</td><td>Strike Legs</td><td>1900</td><td>0</td><td>1.0</td><td>0</td><td>0</td><td>5</td><td>250000</td><td>0</td></tr>
+<tr><td>20</td><td>Titan Head</td><td>2600</td><td>5</td><td>0.0</td><td>10</td><td>0</td><td>5</td><td>270000</td><td>0</td></tr>
+<tr><td>21</td><td>Titan Chest</td><td>5000</td><td>0</td><td>-1.0</td><td>0</td><td>0</td><td>5</td><td>400000</td><td>0</td></tr>
+<tr><td>22</td><td>Titan Hands</td><td>2200</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>5</td><td>240000</td><td>0</td></tr>
+<tr><td>23</td><td>Titan Legs</td><td>2400</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>5</td><td>200000</td><td>0</td></tr>
+<tr><td>24</td><td>Thunder Head</td><td>4000</td><td>0</td><td>0.0</td><td>10</td><td>0</td><td>6</td><td>670000</td><td>0</td></tr>
+<tr><td>25</td><td>Thunder Chest</td><td>7500</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>6</td><td>980000</td><td>0</td></tr>
+<tr><td>26</td><td>Thunder Hands</td><td>4000</td><td>20</td><td>0.0</td><td>0</td><td>0</td><td>6</td><td>700000</td><td>0</td></tr>
+<tr><td>27</td><td>Thunder Legs</td><td>4500</td><td>0</td><td>1.0</td><td>0</td><td>0</td><td>6</td><td>550000</td><td>0</td></tr>
+<tr><td>28</td><td>Atom Head</td><td>7000</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>6</td><td>800000</td><td>0</td></tr>
+<tr><td>29</td><td>Atom Chest</td><td>11000</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>6</td><td>1200000</td><td>0</td></tr>
+<tr><td>30</td><td>Atom Hands</td><td>5000</td><td>10</td><td>0.0</td><td>0</td><td>0</td><td>6</td><td>650000</td><td>0</td></tr>
+<tr><td>31</td><td>Atom Legs</td><td>4000</td><td>0</td><td>1.0</td><td>0</td><td>0</td><td>6</td><td>450000</td><td>0</td></tr>
+<tr><td>32</td><td>Pegasus Head</td><td>10000</td><td>5</td><td>0.0</td><td>5</td><td>0</td><td>7</td><td>1500000</td><td>0</td></tr>
+<tr><td>33</td><td>Pegasus Chest</td><td>16000</td><td>10</td><td>0.0</td><td>0</td><td>0</td><td>7</td><td>2500000</td><td>140</td></tr>
+<tr><td>34</td><td>Pegasus Hands</td><td>8000</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>7</td><td>1300000</td><td>0</td></tr>
+<tr><td>35</td><td>Pegasus Legs</td><td>9000</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>7</td><td>1400000</td><td>0</td></tr>
+<tr><td>36</td><td>Draco Head</td><td>12000</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>7</td><td>1700000</td><td>0</td></tr>
+<tr><td>37</td><td>Draco Chest</td><td>13000</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>7</td><td>2300000</td><td>0</td></tr>
+<tr><td>38</td><td>Draco Hands</td><td>7500</td><td>10</td><td>0.0</td><td>0</td><td>0</td><td>7</td><td>1500000</td><td>0</td></tr>
+<tr><td>39</td><td>Draco Legs</td><td>6500</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>7</td><td>1200000</td><td>0</td></tr>
+<tr><td>40</td><td>Phoenix Head</td><td>13000</td><td>5</td><td>0.0</td><td>10</td><td>0</td><td>7</td><td>2200000</td><td>130</td></tr>
+<tr><td>41</td><td>Phoenix Chest</td><td>18000</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>7</td><td>3000000</td><td>0</td></tr>
+<tr><td>42</td><td>Phoenix Hands</td><td>9500</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>7</td><td>2000000</td><td>0</td></tr>
+<tr><td>43</td><td>Phoenix Legs</td><td>8500</td><td>0</td><td>1.0</td><td>0</td><td>0</td><td>7</td><td>2000000</td><td>120</td></tr>
+<tr><td>44</td><td>Cygni Head</td><td>14000</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>8</td><td>2000000</td><td>0</td></tr>
+<tr><td>45</td><td>Cygni Chest</td><td>15000</td><td>0</td><td>0.0</td><td>5</td><td>0</td><td>8</td><td>2500000</td><td>0</td></tr>
+<tr><td>46</td><td>Cygni Hands</td><td>10000</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>8</td><td>2200000</td><td>0</td></tr>
+<tr><td>47</td><td>Cygni Legs</td><td>11000</td><td>0</td><td>1.0</td><td>0</td><td>0</td><td>8</td><td>2500000</td><td>0</td></tr>
+<tr><td>48</td><td>Andromedae Head</td><td>13000</td><td>0</td><td>0.0</td><td>5</td><td>0</td><td>8</td><td>2100000</td><td>0</td></tr>
+<tr><td>49</td><td>Andromedae Chest</td><td>20000</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>8</td><td>3500000</td><td>180</td></tr>
+<tr><td>50</td><td>Andromedae Hands</td><td>11000</td><td>5</td><td>0.0</td><td>5</td><td>0</td><td>8</td><td>2400000</td><td>150</td></tr>
+<tr><td>51</td><td>Andromedae Legs</td><td>15000</td><td>5</td><td>-1.0</td><td>10</td><td>0</td><td>8</td><td>2700000</td><td>0</td></tr>
+<tr><td>52</td><td>Perseus Head</td><td>12000</td><td>0</td><td>0.0</td><td>10</td><td>0</td><td>8</td><td>1800000</td><td>0</td></tr>
+<tr><td>53</td><td>Perseus Chest</td><td>18000</td><td>10</td><td>0.0</td><td>0</td><td>0</td><td>8</td><td>3000000</td><td>0</td></tr>
+<tr><td>54</td><td>Perseus Hands</td><td>14000</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>8</td><td>2000000</td><td>0</td></tr>
+<tr><td>55</td><td>Perseus Legs</td><td>12000</td><td>0</td><td>1.0</td><td>0</td><td>0</td><td>8</td><td>2200000</td><td>0</td></tr>
+<tr><td>56</td><td>Chaos Head</td><td>12000</td><td>0</td><td>0.0</td><td>5</td><td>0</td><td>9</td><td>2200000</td><td>0</td></tr>
+<tr><td>57</td><td>Chaos Chest</td><td>16000</td><td>0</td><td>0.0</td><td>10</td><td>0</td><td>9</td><td>3300000</td><td>200</td></tr>
+<tr><td>58</td><td>Chaos Hands</td><td>10000</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>9</td><td>1800000</td><td>0</td></tr>
+<tr><td>59</td><td>Chaos Legs</td><td>12000</td><td>0</td><td>1.0</td><td>5</td><td>0</td><td>9</td><td>2200000</td><td>0</td></tr>
+<tr><td>60</td><td>DEC.24 Head</td><td>14000</td><td>5</td><td>0.0</td><td>5</td><td>0</td><td>9</td><td>3300000</td><td>0</td></tr>
+<tr><td>61</td><td>DEC.24 Chest</td><td>15000</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>9</td><td>1800000</td><td>0</td></tr>
+<tr><td>62</td><td>DEC.24 Hands</td><td>10000</td><td>0</td><td>0.0</td><td>10</td><td>0</td><td>9</td><td>1900000</td><td>0</td></tr>
+<tr><td>63</td><td>DEC.24 Legs</td><td>11000</td><td>0</td><td>0.0</td><td>5</td><td>0</td><td>9</td><td>2800000</td><td>0</td></tr>
+<tr><td>64</td><td>Knight Head</td><td>19000</td><td>10</td><td>0.0</td><td>0</td><td>0</td><td>9</td><td>3300000</td><td>180</td></tr>
+<tr><td>65</td><td>Knight Chest</td><td>16000</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>9</td><td>1800000</td><td>0</td></tr>
+<tr><td>66</td><td>Knight Hands</td><td>15000</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>9</td><td>1900000</td><td>0</td></tr>
+<tr><td>67</td><td>Knight Legs</td><td>14000</td><td>0</td><td>1.0</td><td>0</td><td>0</td><td>9</td><td>2800000</td><td>0</td></tr>
+<tr><td>68</td><td>R.O.M.E Head</td><td>18000</td><td>10</td><td>0.0</td><td>0</td><td>0</td><td>9</td><td>3500000</td><td>0</td></tr>
+<tr><td>69</td><td>R.O.M.E Chest</td><td>15000</td><td>5</td><td>0.0</td><td>5</td><td>0</td><td>9</td><td>2000000</td><td>0</td></tr>
+<tr><td>70</td><td>R.O.M.E Hands</td><td>13000</td><td>10</td><td>0.0</td><td>10</td><td>0</td><td>9</td><td>3500000</td><td>220</td></tr>
+<tr><td>71</td><td>R.O.M.E Legs</td><td>14000</td><td>5</td><td>1.0</td><td>5</td><td>0</td><td>9</td><td>3000000</td><td>0</td></tr>
+<tr><td>72</td><td>Black Hole Head</td><td>15000</td><td>10</td><td>0.0</td><td>10</td><td>0</td><td>9</td><td>3500000</td><td>180</td></tr>
+<tr><td>73</td><td>Black Hole Chest</td><td>21000</td><td>5</td><td>0.0</td><td>5</td><td>0</td><td>9</td><td>2700000</td><td>50</td></tr>
+<tr><td>74</td><td>Black Hole Hands</td><td>11000</td><td>10</td><td>0.0</td><td>0</td><td>10</td><td>9</td><td>2000000</td><td>0</td></tr>
+<tr><td>75</td><td>Black Hole Legs</td><td>16000</td><td>5</td><td>1.0</td><td>5</td><td>0</td><td>9</td><td>2200000</td><td>0</td></tr>
+<tr><td>76</td><td>X-Field Head</td><td>15000</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>9</td><td>3600000</td><td>0</td></tr>
+<tr><td>77</td><td>X-Field Chest</td><td>21000</td><td>0</td><td>0.0</td><td>15</td><td>0</td><td>9</td><td>2200000</td><td>42</td></tr>
+<tr><td>78</td><td>X-Field Hands</td><td>11000</td><td>5</td><td>0.0</td><td>0</td><td>0</td><td>9</td><td>3000000</td><td>0</td></tr>
+<tr><td>79</td><td>X-Field Legs</td><td>16000</td><td>5</td><td>1.0</td><td>0</td><td>0</td><td>9</td><td>2800000</td><td>200</td></tr>
+<tr><td>80</td><td>Wrath Head</td><td>20000</td><td>15</td><td>0.5</td><td>0</td><td>0</td><td>9</td><td>3600000</td><td>230</td></tr>
+<tr><td>81</td><td>Wrath Chest</td><td>16000</td><td>10</td><td>0.0</td><td>10</td><td>0</td><td>9</td><td>4000000</td><td>168</td></tr>
+<tr><td>82</td><td>Wrath Hands</td><td>13000</td><td>5</td><td>0.0</td><td>10</td><td>0</td><td>9</td><td>3300000</td><td>0</td></tr>
+<tr><td>83</td><td>Wrath Legs</td><td>10000</td><td>5</td><td>-0.5</td><td>0</td><td>0</td><td>9</td><td>2700000</td><td>0</td></tr>
+<tr><td>84</td><td>VB-03-II</td><td>200</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>1</td><td>3500</td><td>0</td></tr>
+<tr><td>85</td><td>VB-03-III</td><td>300</td><td>10</td><td>0.0</td><td>0</td><td>0</td><td>1</td><td>25000</td><td>0</td></tr>
+<tr><td>86</td><td>SP-04-IV</td><td>500</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>1</td><td>40000</td><td>0</td></tr>
+<tr><td>87</td><td>SP-11-V</td><td>300</td><td>10</td><td>1.0</td><td>0</td><td>0</td><td>2</td><td>80000</td><td>8</td></tr>
+<tr><td>88</td><td>KP-101-X</td><td>500</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>2</td><td>100000</td><td>10</td></tr>
+<tr><td>89</td><td>VP-22-VII</td><td>600</td><td>15</td><td>0.0</td><td>0</td><td>20</td><td>2</td><td>150000</td><td>0</td></tr>
+<tr><td>90</td><td>SPD-005-a</td><td>700</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>3</td><td>100000</td><td>0</td></tr>
+<tr><td>91</td><td>ECO-03-VI</td><td>500</td><td>0</td><td>1.0</td><td>10</td><td>0</td><td>3</td><td>200000</td><td>0</td></tr>
+<tr><td>92</td><td>TT-05-b</td><td>1000</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>4</td><td>280000</td><td>0</td></tr>
+<tr><td>93</td><td>SAM-005-I</td><td>800</td><td>20</td><td>1.0</td><td>25</td><td>25</td><td>4</td><td>600000</td><td>60</td></tr>
+<tr><td>94</td><td>STK-06-ZZ</td><td>900</td><td>30</td><td>2.0</td><td>0</td><td>0</td><td>5</td><td>700000</td><td>0</td></tr>
+<tr><td>95</td><td>HYD-00-IX</td><td>1500</td><td>15</td><td>0.0</td><td>0</td><td>0</td><td>5</td><td>480000</td><td>48</td></tr>
+<tr><td>96</td><td>H.F-V-03</td><td>1200</td><td>0</td><td>0.0</td><td>0</td><td>0</td><td>6</td><td>950000</td><td>95</td></tr>
+<tr><td>97</td><td>STK.F-VI-00</td><td>800</td><td>0</td><td>1.0</td><td>0</td><td>0</td><td>6</td><td>850000</td><td>85</td></tr>
+<tr><td>98</td><td>X02B-FREEDOM</td><td>2000</td><td>10</td><td>0.0</td><td>0</td><td>0</td><td>1</td><td>2000000</td><td>150</td></tr>
+<tr><td>99</td><td>F.L.O.A.T</td><td>1500</td><td>20</td><td>1.0</td><td>10</td><td>10</td><td>1</td><td>1500000</td><td>120</td></tr>
+<tr><td>100</td><td>Visnu</td><td>4000</td><td>0</td><td>0.0</td><td>0</td><td>10</td><td>6</td><td>1500000</td><td>120</td></tr>
+<tr><td>101</td><td>TRI-0-AVATAR</td><td>3500</td><td>15</td><td>1.0</td><td>0</td><td>0</td><td>6</td><td>1500000</td><td>120</td></tr>
+<tr><td>102</td><td>BLADE-MASTER</td><td>1000</td><td>0</td><td>1.0</td><td>0</td><td>0</td><td>4</td><td>1200000</td><td>0</td></tr>
+<tr><td>103</td><td>TOUCH AND GO</td><td>2000</td><td>0</td><td>1.0</td><td>0</td><td>0</td><td>5</td><td>1000000</td><td>0</td></tr>
+<tr><td>104</td><td>DRACULA</td><td>3000</td><td>5</td><td>1.0</td><td>0</td><td>0</td><td>5</td><td>1500000</td><td>110</td></tr>
+<tr><td>105</td><td>JIN.JINGLE</td><td>3600</td><td>30</td><td>2.0</td><td>35</td><td>30</td><td>5</td><td>1500000</td><td>140</td></tr>
+<tr><td>106</td><td>S.H.I.E.L.D</td><td>4000</td><td>25</td><td>1.0</td><td>0</td><td>30</td><td>5</td><td>1500000</td><td>200</td></tr>
+<tr><td>107</td><td>D-WINGS</td><td>4000</td><td>15</td><td>2.0</td><td>25</td><td>30</td><td>6</td><td>1500000</td><td>218</td></tr>
+<tr><td>108</td><td>Spectre</td><td>3000</td><td>5</td><td>1.0</td><td>10</td><td>25</td><td>7</td><td>1500000</td><td>188</td></tr></tbody></table></div><h2>消耗品</h2><div class='scroll'><table><thead><tr><th>ID</th><th>名稱</th><th>恢復 HP</th><th>持續秒數</th><th>點數</th><th>秘銀</th></tr></thead><tbody>
+<tr><td>0</td><td>minor health</td><td>800</td><td>0</td><td>1000</td><td>0</td></tr>
+<tr><td>1</td><td>small health</td><td>1500</td><td>0</td><td>2500</td><td>0</td></tr>
+<tr><td>2</td><td>medium health</td><td>3500</td><td>0</td><td>7000</td><td>0</td></tr>
+<tr><td>3</td><td>great health</td><td>8000</td><td>0</td><td>20000</td><td>0</td></tr>
+<tr><td>4</td><td>full health</td><td>999999</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>5</td><td>small first-aid kit</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>6</td><td>big first-aid kit</td><td>0</td><td>0</td><td>0</td><td>2</td></tr>
+<tr><td>7</td><td>booster</td><td>0</td><td>30</td><td>2000</td><td>0</td></tr>
+<tr><td>8</td><td>force shield</td><td>0</td><td>30</td><td>2000</td><td>0</td></tr>
+<tr><td>9</td><td>hyper clip</td><td>0</td><td>30</td><td>2000</td><td>0</td></tr>
+<tr><td>10</td><td>giant health</td><td>25000</td><td>0</td><td>40000</td><td>0</td></tr></tbody></table></div><h2>軍階</h2><div class='scroll'><table><thead><tr><th>階級</th><th>名稱</th><th>累積經驗門檻</th></tr></thead><tbody>
+<tr><td>1</td><td>Private</td><td>0</td></tr>
+<tr><td>2</td><td>Private E-2(PV2) </td><td>300</td></tr>
+<tr><td>3</td><td>Private FirstClass(PFC)</td><td>3500</td></tr>
+<tr><td>4</td><td>Corporal（CPL）</td><td>15500</td></tr>
+<tr><td>5</td><td>Sergeant（SGT）</td><td>60000</td></tr>
+<tr><td>6</td><td>Staff Sergeant(SSG) </td><td>180000</td></tr>
+<tr><td>7</td><td>Sergeant First Class(SFC) </td><td>550000</td></tr>
+<tr><td>8</td><td>Master Sergeant(MSG) </td><td>1300000</td></tr>
+<tr><td>9</td><td>Sergeant Major(SGM)</td><td>2500000</td></tr>
+<tr><td>10</td><td>Command Sergeant Major</td><td>6000000</td></tr>
+<tr><td>11</td><td>Sergeant Major of the Army</td><td>11000000</td></tr>
+<tr><td>12</td><td>Second Lieutenant</td><td>20000000</td></tr></tbody></table></div></html>

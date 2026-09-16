@@ -5,6 +5,7 @@ signal died(enemy: WarfareEnemy, death_position: Vector3, reward: int, score_val
 signal health_reported(current: float, maximum: float, is_boss: bool)
 
 const ProjectileScript = preload("res://scripts/game/projectile.gd")
+const MonsterCatalog = preload("res://scripts/core/monster_catalog.gd")
 const FLESH_HIT_LIGHT := "res://assets/audio/non_original/enemy_hit_light.wav"
 const FLESH_HIT_HEAVY := "res://assets/audio/non_original/enemy_hit_heavy_or_lethal.wav"
 const HITBOX_PROFILES := {
@@ -44,6 +45,11 @@ var attack_interval := 1.0
 var attack_cooldown := 0.0
 var reward := 18
 var score_value := 100
+var source_monster_id := -1
+var source_monster_name := ""
+var experience_value := 0
+var projectile_speed := 16.0
+var projectile_splash := 0.75
 var dead := false
 var elite := false
 var gravity := 24.0
@@ -130,6 +136,38 @@ func configure(player: WarfarePlayer, kind: String, health_value: float, is_elit
 	health = max_health
 	_apply_difficulty_profile()
 
+func configure_recovered(player: WarfarePlayer, kind: String, health_scale := 1.0, is_elite := false) -> void:
+	# Keep the explicit-health configure API for diagnostic fixtures. Live worlds
+	# use the model-matched source HP, attack, movement and reward fields here.
+	configure(player, kind, 1.0, false)
+	var data := MonsterCatalog.for_kind(kind)
+	source_monster_id = int(data.id)
+	source_monster_name = str(data.name)
+	var attack: Array = data.attacks[0]
+	max_health = float(data.hp) * maxf(0.01, health_scale)
+	if float(data.speed) > 0.0:
+		speed = float(data.speed)
+	# Boss movement and zero-range melee actions are controlled by their state
+	# machines in Unity. Keep the restoration's movement/reach for those zeros.
+	attack_damage = float(attack[1])
+	if float(attack[2]) > 0.0:
+		attack_interval = float(attack[2]) * float(GameState.get_difficulty_profile().get("attack_speed", 1.0))
+	if kind == "spitter":
+		attack_range = float(attack[3])
+		projectile_speed = maxf(1.0, float(attack[8]))
+		projectile_splash = float(attack[4])
+	reward = int(data.credits)
+	experience_value = int(data.experience)
+	elite = is_elite
+	if elite:
+		max_health *= 1.65
+		speed *= 1.16
+		attack_damage *= 1.35
+		reward *= 2
+		experience_value *= 2
+		score_value *= 2
+	health = max_health
+
 func _apply_difficulty_profile() -> void:
 	var profile := GameState.get_difficulty_profile()
 	tactical = bool(profile.get("tactical", false))
@@ -214,9 +252,7 @@ func _build_visual() -> void:
 	eye_material.emission_energy_multiplier = 4.0
 
 	var scale_factor := 2.35 if enemy_kind == "boss" else (1.42 if enemy_kind == "brute" else 1.0)
-	var animated_name: String = str({
-		"crawler": "bug01", "spitter": "bug03", "brute": "bug04", "boss": "boss01"
-	}.get(enemy_kind, "bug01"))
+	var animated_name: String = str(MonsterCatalog.RUNTIME_MODELS.get(enemy_kind, "bug01"))
 	var animated_path := "res://assets/models/enemies/animated/%s/%s.gltf" % [animated_name, animated_name]
 	if ResourceLoader.exists(animated_path):
 		var packed := load(animated_path) as PackedScene
@@ -698,8 +734,8 @@ func _ranged_attack() -> void:
 	AudioDirector.play_3d("enemy/feixingchong.wav", global_position, -8.0, randf_range(0.94, 1.05))
 	var projectile := ProjectileScript.new()
 	var origin := global_position + Vector3.UP * 1.15
-	var travel := (_predicted_aim_point(16.0) - origin).normalized()
-	projectile.configure(self, travel, 16.0, attack_damage, 0.75, Color(0.6, 0.15, 0.9), true)
+	var travel := (_predicted_aim_point(projectile_speed) - origin).normalized()
+	projectile.configure(self, travel, projectile_speed, attack_damage, projectile_splash, Color(0.6, 0.15, 0.9), true)
 	get_parent().add_child(projectile)
 	projectile.global_position = origin
 

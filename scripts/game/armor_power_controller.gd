@@ -10,7 +10,7 @@ signal skill_activated(skill_index: int, skill_key: String)
 # campaign and the locally simulated "multiplayer" sectors execute locally.
 signal remote_activation_requested(skill_index: int)
 
-const POWER_DAMAGE_SCALE := 0.01
+const POWER_DAMAGE_SCALE := 1.0
 const ANDROMEDA_HEAL := 10000.0 * POWER_DAMAGE_SCALE
 const ATTACK_SHIELD_DAMAGE := 100.0 * POWER_DAMAGE_SCALE
 const ATTACK_SHIELD_RADIUS := 4.0

@@ -13,7 +13,7 @@ signal died
 const ProjectileScript = preload("res://scripts/game/projectile.gd")
 const RocketReloadPose = preload("res://scripts/game/rocket_reload_pose.gd")
 const WeaponReloadPose = preload("res://scripts/game/weapon_reload_pose.gd")
-const ARMOR_HP_SCALE := 0.01
+const ARMOR_HP_SCALE := 1.0
 const CAMERA_BASE_HEIGHT := 1.683712
 const FLY_CAMERA_OFFSET := 0.25
 const UPPER_BODY_AIM_LIMIT := deg_to_rad(75.0)
@@ -142,7 +142,8 @@ func _ready() -> void:
 func _apply_armor_stats(restore_full := false) -> void:
 	var previous_max := max_health
 	armor_skills = GameState.get_armor_skills()
-	max_health = 100.0 + float(armor_skills.get("hp", 0.0)) * ARMOR_HP_SCALE
+	# Unity LocalPlayer adds the complete equipment HP sum to a zero base.
+	max_health = maxf(1.0, float(armor_skills.get("hp", 0.0)))
 	move_speed = maxf(3.5, 8.2 + float(armor_skills.get("speed_boost", 0.0)))
 	if restore_full:
 		health = max_health
@@ -770,7 +771,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = dash_direction.z * dash_speed
 	else:
 		var power_speed_bonus := float(armor_power_controller.get_speed_bonus()) if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("get_speed_bonus") else 0.0
-		var active_move_speed := (move_speed + power_speed_bonus + (float(armor_skills.get("speed_on_hit", 0.0)) if speed_on_hit_left > 0.0 else 0.0)) * maxf(0.0, float(current_weapon.get("move_speed_multiplier", 1.0)))
+		var active_move_speed := maxf(3.5, move_speed + float(current_weapon.get("speed_drag", 0.0)) + power_speed_bonus + (float(armor_skills.get("speed_on_hit", 0.0)) if speed_on_hit_left > 0.0 else 0.0)) * maxf(0.0, float(current_weapon.get("move_speed_multiplier", 1.0)))
 		velocity.x = move_toward(velocity.x, desired.x * active_move_speed, 34.0 * delta)
 		velocity.z = move_toward(velocity.z, desired.z * active_move_speed, 34.0 * delta)
 	if is_on_floor():

@@ -6,7 +6,8 @@ signal store_changed
 signal armor_changed(part_key: String, armor_key: String)
 
 const SAVE_PATH := "user://star_warfare_save.json"
-const SAVE_VERSION := 3
+const SAVE_VERSION := 4
+const Source = preload("res://scripts/core/recovered_game_data.gd")
 const ArmorCatalogData = preload("res://scripts/core/armor_catalog.gd")
 const PropsCatalogData = preload("res://scripts/core/props_catalog.gd")
 const SINGLEPLAYER_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8]
@@ -32,55 +33,7 @@ var save_path := SAVE_PATH
 # game used one shared energy pool rather than conventional magazines.
 # id, name, damage, cooldown seconds, energy, type, bomb radius, splash damage,
 # unlock level, aim id, display order, price, mithril.
-const WEAPON_ROWS := [
-	[0, "FR28a", 20.0, 0.24, 5, 1, 0.0, 0.0, 0, 0, 1, 15000, 0],
-	[1, "MA72", 30.0, 0.23, 7, 1, 0.0, 0.0, 0, 0, 2, 25000, 0],
-	[2, "MS06", 36.0, 0.20, 8, 1, 0.0, 0.0, 0, 0, 3, 40000, 6],
-	[3, "FR43C", 48.0, 0.23, 11, 1, 0.0, 0.0, 1, 0, 4, 70000, 0],
-	[4, "FL334AR", 68.0, 0.25, 14, 1, 0.0, 0.0, 2, 0, 5, 150000, 0],
-	[5, "TB10-LW", 100.0, 0.24, 18, 1, 0.0, 0.0, 3, 0, 6, 280000, 30],
-	[6, "TSG-03", 90.0, 0.85, 18, 2, 5.0, 0.0, 0, 2, 11, 20000, 0],
-	[7, "SD58", 130.0, 0.95, 22, 2, 7.0, 0.0, 0, 11, 12, 45000, 0],
-	[8, "WD03S", 170.0, 0.75, 26, 2, 4.0, 0.0, 1, 10, 13, 85000, 7],
-	[9, "S92M", 260.0, 1.05, 32, 2, 9.0, 0.0, 2, 12, 14, 150000, 0],
-	[10, "T740", 320.0, 0.90, 50, 2, 7.0, 0.0, 3, 2, 15, 260000, 23],
-	[11, "RPG-21", 250.0, 1.40, 120, 3, 7.0, 0.0, 3, 1, 21, 300000, 0],
-	[12, "RPG-24", 450.0, 1.70, 220, 3, 9.0, 0.0, 4, 1, 22, 1100000, 0],
-	[13, "RPG-31", 750.0, 1.20, 350, 3, 8.5, 0.0, 5, 1, 23, 3500000, 280],
-	[14, "Vox-07", 80.0, 0.50, 20, 4, 3.0, 0.0, 1, 3, 31, 150000, 0],
-	[15, "M347", 192.0, 0.45, 50, 4, 3.0, 0.0, 2, 3, 32, 600000, 0],
-	[16, "Ge09x", 220.0, 0.45, 60, 4, 3.5, 0.0, 4, 3, 33, 950000, 80],
-	[17, "LG002B", 50.0, 0.30, 22, 5, 0.0, 0.0, 2, 6, 41, 85000, 8],
-	[18, "M2456s", 90.0, 0.30, 30, 5, 0.0, 0.0, 3, 6, 42, 320000, 0],
-	[19, "NOVA27", 140.0, 0.25, 45, 5, 0.0, 0.0, 4, 6, 43, 750000, 0],
-	[20, "Plasma Neo", 90.0, 0.35, 35, 7, 0.0, 20.0, 1, 4, 51, 400000, 0],
-	[21, "Laser Cannon", 300.0, 0.20, 100, 8, 0.0, 0.0, 5, 7, 61, 4000000, 320],
-	[22, "Light Bow", 100.0, 0.50, 40, 9, 3.0, 0.0, 1, 9, 71, 300000, 28],
-	[23, "Energy Glove", 250.0, 0.50, 60, 10, 4.0, 0.0, 3, 8, 76, 2300000, 180],
-	[24, "MCP76", 120.0, 0.20, 15, 11, 0.0, 0.0, 2, 5, 81, 400000, 0],
-	[25, "M-27B1", 200.0, 0.17, 40, 11, 0.0, 0.0, 4, 5, 82, 1400000, 0],
-	[26, "LIT07", 190.0, 0.28, 65, 5, 0.0, 0.0, 6, 6, 44, 1350000, 95],
-	[27, "Cutter", 60.0, 0.30, 0, 12, 0.0, 0.0, 0, 0, 91, 25000, 0],
-	[28, "Passer", 200.0, 0.30, 0, 12, 0.0, 0.0, 3, 0, 92, 450000, 35],
-	[29, "Trinity", 150.0, 0.65, 130, 13, 2.5, 0.0, 4, 9, 72, 2500000, 200],
-	[30, "BLACK STARS", 240.0, 1.80, 280, 14, 7.0, 0.0, 5, 1, 24, 2700000, 220],
-	[31, "Crab", 200.0, 0.30, 90, 7, 0.0, 40.0, 6, 4, 52, 3600000, 0],
-	[32, "Morpheus", 800.0, 1.00, 100, 15, 0.0, 100.0, 6, 2, 101, 2200000, 0],
-	[33, "WINDBLADE", 250.0, 0.30, 0, 16, 0.0, 0.0, 4, 0, 93, 800000, 65],
-	[34, "R100-RAILGUN", 1000.0, 1.50, 120, 17, 0.0, 0.0, 4, 13, 110, 2000000, 0],
-	[35, "R700-AA", 1400.0, 1.40, 150, 18, 0.0, 0.0, 5, 13, 111, 2500000, 190],
-	[36, "WHITE DRILL", 180.0, 0.50, 45, 19, 2.0, 0.0, 8, 14, 121, 160000, 166],
-	[37, "BLACK DISK", 760.0, 1.50, 280, 20, 4.0, 0.0, 8, 15, 126, 2200000, 0],
-	[38, "XMAX-TREE", 176.0, 0.20, 16, 8, 0.0, 20.0, 5, 7, 127, 2800000, 210],
-	[39, "M-Z7B2", 275.0, 0.17, 80, 21, 0.0, 0.0, 6, 5, 83, 4400000, 320],
-	[40, "AST-KK", 150.0, 0.15, 55, 23, 0.0, 0.0, 5, 0, 7, 1800000, 0],
-	[41, "J.O.K.E", 270.0, 0.40, 120, 24, 4.0, 0.0, 6, 3, 34, 4200000, 238],
-	[42, "Spring", 30.0, 0.60, 180, 40, 2.0, 0.0, 6, 10, 122, 1600000, 77],
-	[43, "Reflection", 1200.0, 1.50, 220, 41, 0.0, 0.0, 7, 13, 112, 2700000, 230],
-	[44, "TheArrow", 210.0, 0.50, 200, 42, 3.5, 20.0, 0, 9, 73, 2200000, 0],
-	[45, "U.F.O", 300.0, 1.50, 330, 43, 4.0, 0.0, 7, 3, 35, 4200000, 228],
-	[46, "Spreader", 850.0, 1.00, 100, 15, 0.0, 100.0, 6, 2, 102, 3300000, 0]
-]
+const WEAPON_ROWS = Source.WEAPON_ROWS
 
 # First modern reload vertical slice. Reserve ammunition is intentionally
 # infinite: the magazine creates the short combat rhythm while the recovered
@@ -166,6 +119,7 @@ var selected_game_mode := "singleplayer"
 var unlocked_level := 1
 var credits := 0
 var mithril := 0
+var experience := 0
 var best_scores: Dictionary = {}
 
 var settings := {
@@ -205,6 +159,7 @@ func _build_weapon_database() -> void:
 	WEAPONS.clear()
 	for row: Array in WEAPON_ROWS:
 		var weapon_id := "gun%02d" % int(row[0])
+		var source_row: Array = Source.WEAPON_SOURCE_ROWS[int(row[0])]
 		var type_id := int(row[5])
 		var profile := _weapon_profile(type_id, int(row[0]), str(row[1]))
 		var cooldown := maxf(0.05, float(row[3]))
@@ -215,10 +170,12 @@ func _build_weapon_database() -> void:
 			"splash": float(row[6]), "splash_damage": float(row[7]),
 			"unlock": int(row[8]), "aim_id": int(row[9]), "display_order": int(row[10]),
 			"price": int(row[11]), "mithril": int(row[12]),
-			"pellets": profile.pellets, "range": profile.range,
+			"pellets": profile.pellets, "range": float(source_row[3]) if int(source_row[3]) > 0 else profile.range,
+			"speed_drag": float(ArmorCatalogData._signed_byte(int(source_row[7]))) / 10.0,
+			"splash_duration": float(ArmorCatalogData._signed_byte(int(source_row[6]))) / 10.0,
 			"spread": profile.spread, "automatic": profile.automatic,
 			"kind": profile.kind, "speed": profile.speed,
-			# Neutral until original held-weapon movement data is recovered.
+			# Additional restoration tuning; Unity speedDrag is additive above.
 			"move_speed_multiplier": 1.0,
 			# Feedback tuning, not recovered weapon damage/fire-rate data.
 			"recoil_strength": {"machinegun": 0.7, "rocket": 2.4, "grenade": 1.8, "sniper": 2.0}.get(profile.kind, 1.6 if type_id == 2 else 1.0),
@@ -475,6 +432,7 @@ func get_levels_for_mode(game_mode: String) -> Array:
 func return_to_menu() -> void:
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	_save()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func set_weapon(weapon_id: String) -> void:
@@ -521,13 +479,21 @@ func is_weapon_owned(weapon_id: String) -> bool:
 	return owned_weapons.has(weapon_id)
 
 func get_rank_id() -> int:
-	# The Unity store exposes weapon UnlockLevel as a zero-based rank. The
-	# restoration advances one local rank with each unlocked solo sector. Rank
-	# 8 is awarded when the final solo sector is completed, not merely opened.
+	# Preserve the existing sector-based unlock floor, including test profiles.
+	# Recovered experience thresholds now allow progression through all 12 ranks.
 	var rank_id := clampi(unlocked_level - 1, 0, 8)
 	if best_scores.has(str(SINGLEPLAYER_LEVELS[-1])):
 		rank_id = maxi(rank_id, 8)
+	for index in range(Source.RANK_ROWS.size()):
+		if experience >= int(Source.RANK_ROWS[index][1]):
+			rank_id = maxi(rank_id, index)
 	return rank_id
+
+func add_experience(amount: int) -> void:
+	var multiplier := maxf(0.0, 1.0 + float(get_armor_skills().get("exp_boost", 0.0)))
+	experience += maxi(0, roundi(float(amount) * multiplier))
+	store_changed.emit()
+	# Banked with the run or when returning to the menu; no disk I/O per kill.
 
 func is_weapon_rank_unlocked(weapon_id: String) -> bool:
 	if not WEAPONS.has(weapon_id):
@@ -780,7 +746,7 @@ func get_level_data(level_number: int) -> Dictionary:
 		# alien-wave missions while networking is still being restored.
 		"waves": 0 if is_pvp else 3 + int(index / 3) + (1 if boss_level else 0),
 		"base_enemies": 0 if is_pvp else 4 + index,
-		"enemy_health": 52.0 + index * 9.0,
+		"enemy_health_scale": 1.0 + index * 9.0 / 52.0,
 		"boss": false if is_pvp else boss_level,
 		"score_limit": 20 if is_pvp else 0,
 		"time_limit": 600.0 if is_pvp else 0.0,
@@ -854,6 +820,7 @@ func _load_save() -> void:
 	unlocked_level = clampi(int(parsed.get("unlocked_level", unlocked_level)), 1, SINGLEPLAYER_LEVELS[-1])
 	credits = maxi(0, int(parsed.get("credits", credits)))
 	mithril = maxi(0, int(parsed.get("mithril", mithril)))
+	experience = maxi(0, int(parsed.get("experience", 0)))
 	var stored_best_scores: Variant = parsed.get("best_scores", {})
 	if stored_best_scores is Dictionary:
 		best_scores.clear()
@@ -972,6 +939,7 @@ func _save() -> void:
 		"unlocked_level": unlocked_level,
 		"credits": credits,
 		"mithril": mithril,
+		"experience": experience,
 		"owned_weapons": owned_weapons,
 		"battle_weapons": battle_weapons,
 		"owned_armor": owned_armor,

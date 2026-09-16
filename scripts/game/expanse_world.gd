@@ -108,7 +108,7 @@ func _expanse_level_data() -> Dictionary:
 		"name": "THE EXPANSE",
 		"waves": 0,
 		"base_enemies": ENCOUNTER_POPULATION,
-		"enemy_health": 60.0,
+		"enemy_health_scale": 1.0,
 		"boss": false,
 		"palette": [Color("2a2018"), Color("6d5b40"), Color("dcc08a")],
 		"arena_size": WarfareExpanseTerrain.HALF_EXTENT,
@@ -150,7 +150,7 @@ func _plan_districts() -> void:
 			"node": null,
 			"name": str(GameState.get_level_data(level_number).get("name", "SECTOR")),
 			"boss": bool(GameState.get_level_data(level_number).get("boss", false)),
-			"enemy_health": float(GameState.get_level_data(level_number).get("enemy_health", 60.0)),
+			"enemy_health_scale": float(GameState.get_level_data(level_number).get("enemy_health_scale", 1.0)),
 		})
 
 func _load_level_metadata(level_number: int) -> Dictionary:
@@ -388,7 +388,7 @@ func _spawn_roamer(focus: Vector3) -> void:
 	# The campaign spawner reads the sector's health from level_data, which out
 	# here changes with whichever district the player is standing in: fighting
 	# near the final breach is meant to be nothing like the opening outpost.
-	level_data.enemy_health = float(district.get("enemy_health", 60.0)) if not district.is_empty() else 60.0
+	level_data.enemy_health_scale = float(district.get("enemy_health_scale", 1.0)) if not district.is_empty() else 1.0
 	pending_spawn_position = position
 	var spawned := _spawn_enemy(kind, rng.randf() < 0.18)
 	if spawned != null:
