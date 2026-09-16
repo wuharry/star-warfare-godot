@@ -132,6 +132,7 @@ def refine_helmet(obj, material_slots):
     normals = [Vector(n).normalized() for n in source['normals_game']]
     # Lower the tall original rear crest while keeping its original vent UVs.
     deformed = set()
+    mount_recess = {}
     def smooth(low, high, value):
         t = max(0., min(1., (value-low)/(high-low)))
         return t*t*(3-2*t)
@@ -166,6 +167,16 @@ def refine_helmet(obj, material_slots):
         if abs(vertex.x)<.05 and 1.395<vertex.y<1.44 and vertex.z<-.15:
             vertex.y = 1.395+(vertex.y-1.395)*.18
             deformed.add(index)
+        # Recess the blue mounting ridge behind the thinner intake. Without
+        # this local clearance the original SW2 chin pokes through the grille.
+        # The amber UV island and the visible cheek/visor boundary stay fixed.
+        u,v = source['uv'][index][:2]
+        if not (u>.775 and v<.405):
+            mount = (1-smooth(.025,.060,abs(vertex.x)))
+            mount *= smooth(1.29,1.32,vertex.y)*(1-smooth(1.385,1.415,vertex.y))
+            mount *= smooth(.20,.235,-vertex.z)
+            if mount > 0:
+                mount_recess[index] = .026*mount
     faces = []
     for submesh in source['submeshes']:
         for face in submesh:
@@ -197,12 +208,25 @@ def refine_helmet(obj, material_slots):
     for index,vertex in enumerate(vertices):
         if index in deformed and tuple(round(c,6) for c in vertex) in crown_normals:
             normals[index] = crown_normals[tuple(round(c,6) for c in vertex)].normalized()
+    # Apply the hidden mount relief after resolving shell normals, so shared
+    # neighbours cannot change the approved amber visor's shading.
+    for index, depth in mount_recess.items():
+        mesh.vertices[index].co.z += depth
+    mesh.update()
+    mount_normals = {index: Vector() for index in mount_recess}
+    for poly in mesh.polygons:
+        for index in poly.vertices:
+            if index in mount_normals:
+                mount_normals[index] += poly.normal*poly.area
+    for index, normal in mount_normals.items():
+        if normal.length_squared > 0:
+            normals[index] = normal.normalized()
     mesh.normals_split_custom_set_from_vertices(normals)
     obj.data = mesh
     obj.vertex_groups.clear()
     obj.vertex_groups.new(name='Bip01 Head').add(list(range(len(vertices))),1,'REPLACE')
     pieces = [_neck_bridge(obj,material_slots)]
-    pieces += create_respirator(obj,material_slots,front_offset=.008)
+    pieces += create_respirator(obj,material_slots,front_offset=.008,depth_scale=.24)
     bpy.ops.object.select_all(action='DESELECT')
     obj.select_set(True)
     for piece in pieces:
@@ -214,7 +238,7 @@ def refine_helmet(obj, material_slots):
     obj['thunder_detail'] = 'SW2 shell with inward lower cheeks, engraved trapezoid visor, low crown and flush respirator'
 
 
-def create_respirator(obj,material_slots,front_offset=0.0):
+def create_respirator(obj,material_slots,front_offset=0.0,depth_scale=.44):
     pieces = []
     pieces.append(_ring_piece(obj,'Six-plane respirator housing',[
         _octagon(.054,1.301,1.414,.014,-.244),
@@ -247,6 +271,6 @@ def create_respirator(obj,material_slots,front_offset=0.0):
     # so the recessed intake retains its thickness and sealed back.
     for piece in pieces:
         for vertex in piece.data.vertices:
-            vertex.co.z = -.241+(vertex.co.z+.241)*.44+front_offset
+            vertex.co.z = -.241+(vertex.co.z+.241)*depth_scale+front_offset
         piece.data.update()
     return pieces

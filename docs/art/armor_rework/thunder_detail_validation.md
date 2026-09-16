@@ -29,3 +29,7 @@ See [runtime details](../../../assets/armors/thunder/README.md), [source provena
 ## SW2 crown rounding — 2026-09-16
 
 The upper shell now follows a rounded dome instead of a compressed crest. The accepted visor, cheek plates and respirator (324 triangles on material slots 12–14) retain exactly the same positions, normals, tangents, UVs and skin weights. Body, arms, legs and prototype B remain unchanged. Godot front, three-quarter, side and in-level captures were reviewed; updated A/B images are in [the comparison page](../thunder_helmet_comparison_v5/index.html).
+
+## Further SW2 respirator inset — 2026-09-16
+
+The default SW2 respirator depth is reduced from 0.44 to 0.24 of the authored depth, moving its foremost face inward by 18.2 mm in model space. The intake, louvres and side bevels compress together. A local recess in the concealed original blue chin mounting ridge prevents it from breaking through the intake. The amber visor, rounded crown, body and prototype B remain unchanged. This supersedes the respirator position in the preceding crown-only update.
