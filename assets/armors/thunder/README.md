@@ -7,6 +7,8 @@
 | A：SW2 修訂（預設） | 在原 SW2 相連網格上變形下方面罩與內頰邊界，保留 UV、刻紋、耳部與後腦；壓低冠頂並調整眉甲深度 | `thunder.scn`（預設）、`thunder_sw2.scn`（明確選 A）；[thunder.blend](../../../docs/art/armor_rework/thunder.blend) |
 | B：雛形修訂 | 保留 V3 圓頂、寬脊甲與後腦；新建梯形面罩、分段倒角頰甲、斜眉甲，補齊側面包覆 | `thunder_prototype.scn`；[thunder_prototype.blend](../../../docs/art/armor_rework/thunder_prototype.blend) |
 
+A 的後續修訂已將冠頂修圓，呼吸器縮薄並沿下巴斜面嵌入；遊戲材質的藍／深藍基色對齊身甲，金色面甲不調色。原始點陣貼圖不變，配色由 `helmet_detail.gdshader` 套用；Blender 檔提供最新幾何，實際遊戲配色以 HTML 擷取為準。
+
 `ArmorVisuals.reworked_scene_path(6)` 供遊戲與商店共用；啟動參數 `--thunder-helmet=prototype` 選 B，`--thunder-helmet=sw2` 選 A。省略參數使用 A，不把方案寫入存檔。商品縮圖使用預設 A。
 
 [離線 HTML 對照](../../../docs/art/thunder_helmet_comparison_v5/index.html) 包含兩版各 30 張 Godot 實際擷取、概念圖、細節、換彈與關卡畫面；可點擊放大與切換角度。兩版使用相同燈光、姿勢與固定取景，未補畫或合成角色。概念圖自身的姿勢與光線不同，不宣稱像素級還原。

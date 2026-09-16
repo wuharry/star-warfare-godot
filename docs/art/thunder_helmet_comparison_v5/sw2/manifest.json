@@ -1,5 +1,5 @@
 {
-	"captured_at": "2026-09-16T20:33:45",
+	"captured_at": "2026-09-16T21:21:02",
 	"failures": [],
 	"frames": [
 		{
@@ -300,25 +300,25 @@
 	"notes": "Actual runtime meshes/materials. Studio uses the existing rifle idle pose with weapon/backpack hidden; pose and lighting differ from the concept. A retains the SW2 back; B retains the prototype back. Both use the same stored V3 framing bounds; the concept only supplies a front three-quarter angle. Motion/game views use existing game animations and materials.",
 	"parts": [
 		{
-			"mesh": "res://assets/armors/thunder/thunder_sw2.scn::ArrayMesh_5q6v7",
+			"mesh": "res://assets/armors/thunder/thunder_sw2.scn::ArrayMesh_fpnt5",
 			"name": "ArmorHead_06",
 			"revision": "thunder_helmet_v5_sw2",
-			"surfaces": 8
+			"surfaces": 6
 		},
 		{
-			"mesh": "res://assets/armors/thunder/thunder_sw2.scn::ArrayMesh_igavb",
+			"mesh": "res://assets/armors/thunder/thunder_sw2.scn::ArrayMesh_g0rnk",
 			"name": "ArmorBody_06",
 			"revision": "thunder_helmet_v5_sw2",
 			"surfaces": 4
 		},
 		{
-			"mesh": "res://assets/armors/thunder/thunder_sw2.scn::ArrayMesh_d2byj",
+			"mesh": "res://assets/armors/thunder/thunder_sw2.scn::ArrayMesh_igavb",
 			"name": "ArmorHand_06",
 			"revision": "thunder_helmet_v5_sw2",
 			"surfaces": 2
 		},
 		{
-			"mesh": "res://assets/armors/thunder/thunder_sw2.scn::ArrayMesh_61ehq",
+			"mesh": "res://assets/armors/thunder/thunder_sw2.scn::ArrayMesh_d2byj",
 			"name": "ArmorFoot_06",
 			"revision": "thunder_helmet_v5_sw2",
 			"surfaces": 2
@@ -333,7 +333,7 @@
 	"runtime_loader": "WarfarePlayer._apply_recovered_armor_visibility",
 	"runtime_resource_sha256": {
 		"res://assets/armors/thunder/hard_surface.gdshader": "95c02feec2750e25b84dd41ea3b1f92ea1adcf3aee7e49be15cd643da5315f4d",
-		"res://assets/armors/thunder/helmet_detail.gdshader": "3d7b915861351fcefe61a396b30ea685843c3914e3bb7818ec0722950ff1c664",
+		"res://assets/armors/thunder/helmet_detail.gdshader": "6da83996c5a62707788a8bdbb5e1e39af5c0ef61a6dcd8878cf00ced3a82ec42",
 		"res://assets/armors/thunder/painted_armor.gdshader": "c53de3a560ad3c01465805e9fac6e957ce545629ae39d608fc5a74b924308a7d",
 		"res://assets/armors/thunder/textures/14ceb45bf36d.png": "d0868b7e939df0aeebdf303b488b6b3ca127158028acba9d743fea9fc63b50a4",
 		"res://assets/armors/thunder/textures/amber_visor_paint.png": "bfb941bd6bbb5abcd0d3e59f00c55a9b5dccce5881c8861006a53edba6123fb2",
@@ -345,9 +345,9 @@
 		"res://assets/armors/thunder/textures/helmet_detail_emission.res": "cda178d14ed02dbc9e42070b22670d5e79312579516040480cedbd267ce8cefa",
 		"res://assets/armors/thunder/textures/helmet_detail_normal.res": "33bfc513732b3be40bd0a43d7a6c1458dc1e9527dab09a24c6181123818a1936",
 		"res://assets/armors/thunder/textures/helmet_source_albedo.res": "504c09d94363ca8215906f8a103ba028d55affb53b6e87e906089d29920abb35",
-		"res://assets/armors/thunder/thunder_sw2.scn": "dbd80efdb93011cba5313790bb286ae78f79f7b41a1f8fd3c2ae5d497ec62e18"
+		"res://assets/armors/thunder/thunder_sw2.scn": "81c43cffc6896c56cf7bf3cef7027db5665a376155106492cea753a2f6b5e0be"
 	},
-	"runtime_scene_sha256": "dbd80efdb93011cba5313790bb286ae78f79f7b41a1f8fd3c2ae5d497ec62e18",
+	"runtime_scene_sha256": "81c43cffc6896c56cf7bf3cef7027db5665a376155106492cea753a2f6b5e0be",
 	"save_unchanged": true,
 	"stage": "sw2",
 	"status": "CAPTURED_REQUIRES_VISUAL_REVIEW"

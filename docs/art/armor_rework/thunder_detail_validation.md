@@ -33,3 +33,13 @@ The upper shell now follows a rounded dome instead of a compressed crest. The ac
 ## Further SW2 respirator inset — 2026-09-16
 
 The default SW2 respirator depth is reduced from 0.44 to 0.24 of the authored depth, moving its foremost face inward by 18.2 mm in model space. The intake, louvres and side bevels compress together. A local recess in the concealed original blue chin mounting ridge prevents it from breaking through the intake. The amber visor, rounded crown, body and prototype B remain unchanged. This supersedes the respirator position in the preceding crown-only update.
+
+## Flush respirator and matching shell palette — 2026-09-16
+
+The SW2 respirator now follows the chin slope instead of standing as a flat box in front of the face. Its authored depth scale is 0.15, width 0.88 and height 0.92; the added side wings are removed and the concealed blue mounting ridge/latch is recessed behind the intake. This supersedes the preceding inset. The default runtime and SW2 scene each contain 12,662 triangles.
+
+Only SW2 blue shell texels are remapped to the body's `#355f88` blue and `#203750` navy, retaining painted panel variation, scratches and normal detail. The dedicated visor material has palette strength zero; amber color, normal detail and all source image bytes remain unchanged. The saved Blender file contains the new geometry; this runtime color treatment is authored in `helmet_detail.gdshader` and configured by `compile_thunder.gd`.
+
+Geometry comparison against the preceding commit confirms that all 176 amber-glass triangles retain identical positions, normals, tangents, UVs and weights. The other 32 triangles in the visor material belong to the concealed blue latch's separate atlas island and are intentionally recessed. Crown positions and all three body-part exports remain identical. Prototype B's scene and geometry are unchanged.
+
+Default, explicit SW2 and prototype armor tests pass, including palette isolation, raw texture channels, named binds, mixed equipment, animation and store preview. Compiler validation passes 12 cases. Refreshed Godot captures preserve the user's save and show the actual game materials; the head thumbnail is regenerated from the default runtime model. Existing font/CanvasItem cleanup warnings remain at capture exit.

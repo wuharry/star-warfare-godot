@@ -136,6 +136,13 @@ func _validate_mesh(part: MeshInstance3D) -> int:
 
 
 func _validate_helmet_detail(part: MeshInstance3D, surface: int, finish: ShaderMaterial) -> void:
+	var palette: Variant = finish.get_shader_parameter("shell_palette_strength")
+	if finish.resource_name == "Thunder_PairedHelmet" and revision.ends_with("sw2"):
+		_check(palette != null and is_equal_approx(float(palette), 1.0), "SW2 helmet body palette is disabled")
+		_check(finish.get_shader_parameter("shell_blue") == Color("355f88"), "helmet blue does not match body blue")
+		_check(finish.get_shader_parameter("shell_navy") == Color("203750"), "helmet navy does not match body navy")
+	else:
+		_check(palette == null or is_zero_approx(float(palette)), "shell palette changed visor or prototype")
 	_check(finish.shader != null and finish.shader.resource_path == "res://assets/armors/thunder/helmet_detail.gdshader", "paired helmet does not use its normal-mapped shader")
 	var bindings := {
 		"albedo_texture": "helmet_detail_albedo",
