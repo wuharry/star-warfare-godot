@@ -133,7 +133,7 @@ func _build_status_hud() -> void:
 	health_text.add_theme_color_override("font_outline_color", Color.BLACK)
 	hud_root.add_child(health_text)
 
-	energy_bar = _atlas_progress("hud_69", "hud_70", 9999999.0)
+	energy_bar = _atlas_progress("hud_69", "hud_70", 9999999.0, true)
 	energy_bar.name = "AmmoBar"
 	energy_bar.fill_mode = TextureProgressBar.FILL_RIGHT_TO_LEFT
 	hud_root.add_child(energy_bar)
@@ -662,12 +662,12 @@ func _next_level() -> void:
 	else:
 		GameState.return_to_menu()
 
-func _atlas_progress(fill_sprite: String, background_sprite: String, maximum: float) -> TextureProgressBar:
+func _atlas_progress(fill_sprite: String, background_sprite: String, maximum: float, flip_background_h: bool = false) -> TextureProgressBar:
 	var bar := TextureProgressBar.new()
 	bar.custom_minimum_size = Vector2.ZERO
 	bar.max_value = maximum
 	bar.value = maximum
-	bar.texture_under = Atlas.hud(background_sprite)
+	bar.texture_under = Atlas.hud_flipped_h(background_sprite) if flip_background_h else Atlas.hud(background_sprite)
 	bar.texture_progress = Atlas.hud(fill_sprite)
 	bar.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE

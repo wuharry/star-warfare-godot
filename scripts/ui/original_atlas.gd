@@ -4,6 +4,7 @@ extends RefCounted
 const SOURCE_PIXEL_SCALE := 2.0
 
 static var _frame_cache: Dictionary = {}
+static var _flipped_cache: Dictionary = {}
 
 static func sprite(atlas_path: String, json_path: String, sprite_name: String) -> AtlasTexture:
 	var frames := _frames(json_path)
@@ -47,6 +48,28 @@ static func hud(sprite_name: String) -> AtlasTexture:
 		"res://assets/ui/HUD.json",
 		sprite_name
 	)
+
+static func hud_flipped_h(sprite_name: String) -> Texture2D:
+	return flipped_h("res://assets/ui/HUD.png", "res://assets/ui/HUD.json", sprite_name)
+
+static func flipped_h(atlas_path: String, json_path: String, sprite_name: String) -> Texture2D:
+	var cache_key := "%s:%s:%s" % [atlas_path, json_path, sprite_name]
+	if _flipped_cache.has(cache_key):
+		return _flipped_cache[cache_key]
+	var base_texture := sprite(atlas_path, json_path, sprite_name)
+	if base_texture == null:
+		return null
+	var atlas := base_texture.atlas as Texture2D
+	if atlas == null:
+		return base_texture
+	var img := atlas.get_image()
+	if img == null:
+		return base_texture
+	var sub := img.get_region(Rect2i(base_texture.region))
+	sub.flip_x()
+	var flipped := ImageTexture.create_from_image(sub)
+	_flipped_cache[cache_key] = flipped
+	return flipped
 
 static func _frames(json_path: String) -> Dictionary:
 	if _frame_cache.has(json_path):
