@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>蟲族概念與建模參考 — Star Warfare</title>
+  <style>
+    :root {
+      --bg-main: #0e1117;
+      --bg-panel: #161b22;
+      --bg-card: #21262d;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --text-bright: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent: #ff7b72;
+      --chitin: #9e462a;
+      --glow-purple: #a855f7;
+      --glow-green: #22c55e;
+      --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-main);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      padding: 24px;
+    }
+    header {
+      max-width: 1400px;
+      margin: 0 auto 24px auto;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .title-group h1 {
+      color: var(--text-bright);
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge {
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(168, 85, 247, 0.2);
+      border: 1px solid var(--glow-purple);
+      color: #d8b4fe;
+      font-family: var(--font-mono);
+    }
+    .title-group p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+    }
+    @media (max-width: 1024px) {
+      .container { grid-template-columns: 1fr; }
+    }
+    .viewport-panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+    }
+    .tab-btn {
+      padding: 12px 20px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover {
+      color: var(--text-bright);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .tab-btn.active {
+      color: var(--text-bright);
+      border-bottom-color: var(--glow-purple);
+      background: rgba(168, 85, 247, 0.08);
+    }
+    .view-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #090c10;
+      min-height: 520px;
+      justify-content: center;
+    }
+    .preview-image {
+      max-width: 100%;
+      height: auto;
+      max-height: 720px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      cursor: zoom-in;
+      transition: transform 0.2s ease;
+    }
+    .preview-image:hover {
+      transform: scale(1.005);
+    }
+    .image-caption {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-family: var(--font-mono);
+    }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+    }
+    @media (max-width: 768px) {
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+    .compare-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .compare-card h3 {
+      font-size: 1rem;
+      color: var(--text-bright);
+    }
+    .compare-card img {
+      width: 100%;
+      border-radius: 6px;
+      background: #000;
+    }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .spec-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .spec-card h2 {
+      font-size: 1.1rem;
+      color: var(--text-bright);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .swatch-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .swatch-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .swatch-color {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      flex-shrink: 0;
+    }
+    .swatch-info {
+      flex: 1;
+      font-size: 0.85rem;
+    }
+    .swatch-name {
+      font-weight: 600;
+      color: var(--text-bright);
+    }
+    .swatch-hex {
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .data-table td {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(48, 54, 61, 0.6);
+    }
+    .data-table td:first-child {
+      color: var(--text-muted);
+      width: 45%;
+    }
+    .data-table td:last-child {
+      color: var(--text-bright);
+      font-weight: 500;
+      font-family: var(--font-mono);
+    }
+    .guide-list {
+      list-style: none;
+      font-size: 0.88rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .guide-list li {
+      position: relative;
+      padding-left: 18px;
+    }
+    .guide-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--glow-purple);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal.active { display: flex; }
+    .modal-img {
+      max-width: 95vw;
+      max-height: 95vh;
+      border-radius: 8px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    }
+    .art-gallery { display: grid; gap: 18px; margin-bottom: 24px; }
+    .art-gallery figure { padding: 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-panel); }
+    .art-gallery img { display: block; width: 100%; height: auto; border-radius: 6px; }
+    .art-gallery figcaption { margin-top: 10px; font-size: .88rem; color: var(--text-muted); }
+    .art-gallery a, .reference-note a { color: #93c5fd; }
+    .reference-note { padding: 14px; margin-bottom: 20px; background: var(--bg-card); border-left: 3px solid #58d6cc; font-size: .9rem; }
+    .species-colors { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 20px; list-style: none; }
+    .species-colors li { padding: 5px 9px; border: 1px solid var(--border); border-radius: 6px; font-size: .8rem; }
+    .species-colors i { display: inline-block; width: 12px; height: 12px; margin-right: 6px; border: 1px solid #ffffff55; background: var(--swatch); }
+    pre { max-width: 100%; overflow-x: auto; }
+    .container > *, .viewport-panel > *, .view-content > * { min-width: 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title-group">
+      <h1>蟲族概念與建模參考 <span class="badge">Star Warfare Art Ref</span></h1>
+      <p>兵蟲・刺客蟲・蠍子蟲・坦克蟲｜共用原生手繪甲殼畫法，各蟲種採獨立配色；每種以五個色彩角色為基準，容許 ±1。</p>
+    </div>
+    <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
+      概念提案 · 2026-09-18 · 圖稿供後續建模與素材生成
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="viewport-panel">
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('turnaround', this)">🎨 兵蟲概念圖</button>
+        <button class="tab-btn" onclick="switchTab('blueprint', this)">📐 兵蟲設計稿</button>
+        <button class="tab-btn" onclick="switchTab('compare', this)">🔍 原版素材</button>
+        <button class="tab-btn" onclick="switchTab('fastbug', this)">⚡ 刺客蟲</button>
+        <button class="tab-btn" onclick="switchTab('spitter', this)">🦂 蠍子蟲・雙形態</button>
+        <button class="tab-btn" onclick="switchTab('largebeetle', this)">🦏 坦克蟲</button>
+      </div>
+
+      <div id="view-turnaround" class="view-content">
+        <img class="preview-image" src="images/01_mantis_turnaround.jpg" alt="原生風格三視角" onclick="openModal(this.src)">
+        <p class="image-caption">高聳螳螂鐮足 (Raptorial Forelimbs) | 鍬形蟲大顎 | 正面 / 側面 / 3/4 視角 — 點擊放大</p>
+      </div>
+
+      <div id="view-blueprint" class="view-content" style="display: none;">
+        <img class="preview-image" src="images/02_mantis_blueprint.jpg" alt="Blender 建模工程圖" onclick="openModal(this.src)">
+        <p class="image-caption">螳螂鐮足運動學 (Coxa-Femur-Tibia) | 倒鉤鋸齒 (Spines) | 大顎球窩關節剖面</p>
+      </div>
+
+      
+      
+      
+      <!-- Tab 7: Large Beetle Design -->
+      <div id="view-largebeetle" class="view-content" style="display: none; align-items: flex-start; text-align: left; padding: 24px;">
+        <div style="width: 100%; max-width: 960px; margin: 0 auto;">
+<div class="reference-note"><strong>坦克蟲圖稿使用方式：</strong>三角頭冠、覆瓦重甲、四條承重足。前足採寬厚角質蹄墊，後足保留飛節；以低頭衝撞、重踏與腹部弱點示意支援後續模型調整。<br>全彩圖定義造型與配色；設計稿拆解結構；草稿檢查動作。圖示線網為結構示意，並非已驗證拓撲；既有下方數值為設計提案，未因本次出圖而實作。<br><a href="generation_prompts.json">查看生成提示詞與參考來源</a></div>
+          <ul class="species-colors" aria-label="坦克蟲專屬色票">
+            <li><i style="--swatch: #59634B;" aria-hidden="true"></i>主甲殼：橄欖灰 <code>#59634B</code></li>
+            <li><i style="--swatch: #D2C6A5;" aria-hidden="true"></i>角與甲緣：骨白 <code>#D2C6A5</code></li>
+            <li><i style="--swatch: #303430;" aria-hidden="true"></i>關節：深灰 <code>#303430</code></li>
+            <li><i style="--swatch: #DAA544;" aria-hidden="true"></i>發光縫：琥珀 <code>#DAA544</code></li>
+            <li><i style="--swatch: #BDCB78;" aria-hidden="true"></i>感應眼：淡黃綠 <code>#BDCB78</code></li>
+          </ul>
+          <div class="art-gallery" aria-label="坦克蟲概念、設計與草稿">
+            <figure>
+              <a href="images/largebeetle_concept_v2.png" target="_blank" rel="noopener"><img src="images/largebeetle_concept_v2.png" alt="坦克蟲 — 全彩概念圖：確認輪廓、材質與蟲種配色" loading="lazy"></a>
+              <figcaption><strong>全彩概念圖</strong>｜確認輪廓、材質與蟲種配色 · 點圖開啟原尺寸 · <a href="images/largebeetle_concept_v2.png" download>下載 PNG</a></figcaption>
+            </figure>
+            <figure>
+              <a href="images/largebeetle_design_v2.png" target="_blank" rel="noopener"><img src="images/largebeetle_design_v2.png" alt="坦克蟲 — 結構設計稿：多視角、關節與部件配置參考" loading="lazy"></a>
+              <figcaption><strong>結構設計稿</strong>｜多視角、關節與部件配置參考 · 點圖開啟原尺寸 · <a href="images/largebeetle_design_v2.png" download>下載 PNG</a></figcaption>
+            </figure>
+            <figure>
+              <a href="images/largebeetle_sketch_v2.png" target="_blank" rel="noopener"><img src="images/largebeetle_sketch_v2.png" alt="坦克蟲 — 動作草稿：姿態與動作方向探索" loading="lazy"></a>
+              <figcaption><strong>動作草稿</strong>｜姿態與動作方向探索 · 點圖開啟原尺寸 · <a href="images/largebeetle_sketch_v2.png" download>下載 PNG</a></figcaption>
+            </figure>
+            <figure>
+              <a href="images/07_large_beetle_turnaround.jpg" target="_blank" rel="noopener"><img src="images/07_large_beetle_turnaround.jpg" alt="坦克蟲 — 原生手繪風格 3D 三視角" loading="lazy"></a>
+              <figcaption><strong>原生手繪風格 3D 三視角</strong>｜四大兜蟲三叉角 · 象柱前足與馬式飛節後足 · 正交 Front/Side/3/4 · <a href="images/07_large_beetle_turnaround.jpg" download>下載 JPG</a></figcaption>
+            </figure>
+          </div>
+          <h2 style="color: #f0f6fc; font-size: 1.4rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            🦏 大型甲虫 (Large Beetle) — 四大兜蟲特化 ＋ 犀象馬運動學規格
+          </h2>
+          <p style="color: #8b949e; margin-bottom: 20px;">
+            融合蘇里南三角兜蟲、海克力士、獨角仙與犀角金龜的冠角優勢，捨棄輕盈爬行，導入大象柱足沉著踏步與犀牛狂暴直線破城衝刺。
+          </p>
+
+          <div style="background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 18px; margin-bottom: 20px; font-family: ui-monospace, monospace; font-size: 0.85rem; color: #ff7b72;">
+<pre style="margin: 0;">
+                   [海克力士/獨角仙 中央破城主角]
+                           ▲
+     [蘇里南左肩角]        │        [蘇里南右肩角]
+           ▲               │               ▲
+           │               │               │
+     ┌─────┴───────────────┴───────────────┴─────┐
+     │           [厚盾型多面斜角胸甲]             │ ── 彈開正面 80% 實彈
+     └─────────────────────┬─────────────────────┘
+                           │
+                 [犀牛低頭蓄勢衝角基部]
+                           │
+       ┌───────────────────┴───────────────────┐
+       │         大象柱狀承重前足 (前2足)       │ ── 寬大液壓蹄墊，原地重踏引發衝擊波
+       ├───────────────────────────────────────┤
+       │         圓拱重型覆瓦狀龜背甲           │ ── HP 1,000 厚實血庫
+       ├───────────────────────────────────────┤
+       │         馬式反關節飛節後足 (後2足)     │ ── 提供 15m 直線突進的狂暴推進力
+       └───────────────────────────────────────┘
+</pre>
+          </div>
+
+          <table class="data-table" style="margin-bottom: 20px;">
+            <thead>
+              <tr style="color: #8b949e; border-bottom: 1px solid #30363d;">
+                <th style="text-align: left; padding: 8px 0;">系統維度</th>
+                <th style="text-align: left; padding: 8px 0;">生物原型與運動學融合</th>
+                <th style="text-align: left; padding: 8px 0;">遊戲機制與戰術表現 (Attack Table 5)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>頭冠重角</strong></td>
+                <td>蘇里南三角兜蟲 (兩側肩角) ＋ 海克力士/獨角仙 (中央長下彎角)</td>
+                <td>形成天然「破城鉗」；發動「挑動」招式由下往上將玩家挑飛至空中 (150 傷害)。</td>
+              </tr>
+              <tr>
+                <td><strong>常態步態</strong></td>
+                <td><strong>大象柱足 (Elephant Pillar Legs)</strong>：沉著、低頻重踏、穩定壓低重心</td>
+                <td>常態移速 5.0 m/s，行走時伴隨金屬地面震顫低音，不受玩家普通子彈擊退。</td>
+              </tr>
+              <tr>
+                <td><strong>衝刺爆發</strong></td>
+                <td><strong>犀牛衝撞 ＋ 馬式飛節後足 (Horse Hock Joints)</strong>：強大後蹬爆發力</td>
+                <td>發動「突進」技能：低頭蓄力 0.8 秒後狂暴向前衝刺 15 公尺 (200 傷害)，撞毀掩體。</td>
+              </tr>
+              <tr>
+                <td><strong>近身震盪</strong></td>
+                <td>雙前足高高抬起後重砸地面</td>
+                <td>發動「原地重踏」技能：引發半徑 5.0 公尺範圍震波擊退 (250 傷害)。</td>
+              </tr>
+              <tr>
+                <td><strong>遠程威懾</strong></td>
+                <td>角根兩側高壓生化噴口</td>
+                <td>發動「吐液」技能：射程達 24 公尺的重腐蝕性酸彈 (200 傷害)。</td>
+              </tr>
+              <tr>
+                <td><strong>體積規格</strong></td>
+                <td>視覺身高 2.80m | 體寬 3.20m | 體長 4.10m</td>
+                <td>血量 1,000 HP (工虫的 22 倍)，作為小 Boss 級精英破陣坦克。</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="background: rgba(255, 123, 114, 0.1); border-left: 3px solid #ff7b72; padding: 12px 16px; border-radius: 4px; font-size: 0.88rem;">
+            <strong style="color: #f0f6fc;">Blender 建模與動畫改造關鍵：</strong><br>
+            1. <strong>腳掌不能做成細尖爪</strong>：前足底端做成類似大象或犀牛的寬厚角質塊蹄，提供沉重噸位的立足感。<br>
+            2. <strong>頸部與肩部護盾</strong>：頭角根部與胸甲之間要有粗厚肌肉皺褶，支持低頭鏟起重物的槓桿動作。<br>
+            3. <strong>弱點分佈</strong>：正面與背甲為極厚抗彈甲，唯一弱點在衝撞過後轉彎遲緩時露出的腹部軟質節片。
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 6: Spitter Design -->
+      <div id="view-spitter" class="view-content" style="display: none; align-items: flex-start; text-align: left; padding: 24px;">
+        <div style="width: 100%; max-width: 960px; margin: 0 auto;">
+          <div class="reference-note"><strong>蠍子蟲圖稿使用方式：</strong>A 遠程型與 B 近戰型各按五個色彩角色配置，容許相近色合併為四個色系。兩者共用寬扁胸甲、四條步足、兩支前螯與一條分節尾；A 保留球狀酸囊與細長生物鉗，B 使用膨大厚殼蟹螯與實心倒鉤尾刺。鉗口必須可辨識固定指、活動指、不規則咬齒及柔軟關節膜，避免平面機械盾板。<br>全彩圖定義造型與配色；設計稿拆解結構；草稿檢查動作。圖示線網為結構示意，並非已驗證拓撲；既有下方數值為設計提案，未因本次出圖而實作。<br><a href="generation_prompts.json">查看生成提示詞與參考來源</a></div>
+          <ul class="species-colors" aria-label="蠍子蟲專屬色票">
+            <li><i style="--swatch: #A8864A;" aria-hidden="true"></i>A 主甲殼：沙赭 <code>#A8864A</code></li>
+            <li><i style="--swatch: #D5C9A8;" aria-hidden="true"></i>A 甲緣：淺骨色 <code>#D5C9A8</code></li>
+            <li><i style="--swatch: #393129;" aria-hidden="true"></i>A 關節：暗褐 <code>#393129</code></li>
+            <li><i style="--swatch: #B7DB48;" aria-hidden="true"></i>A 發光縫／毒囊：酸綠 <code>#B7DB48</code></li>
+            <li><i style="--swatch: #D99040;" aria-hidden="true"></i>A 感應眼：琥珀 <code>#D99040</code></li>
+            <li><i style="--swatch: #25282A;" aria-hidden="true"></i>B 主甲殼：黑曜灰 <code>#25282A</code></li>
+            <li><i style="--swatch: #80543B;" aria-hidden="true"></i>B 甲緣：暗銅 <code>#80543B</code></li>
+            <li><i style="--swatch: #171B1D;" aria-hidden="true"></i>B 關節：炭黑 <code>#171B1D</code></li>
+            <li><i style="--swatch: #BC6836;" aria-hidden="true"></i>B 發光縫：暗橙 <code>#BC6836</code></li>
+            <li><i style="--swatch: #D99040;" aria-hidden="true"></i>B 感應眼：琥珀 <code>#D99040</code></li>
+          </ul>
+          <div class="art-gallery" aria-label="蠍子蟲概念、設計與草稿">
+            <figure>
+              <a href="images/spitter_concept_v2.png" target="_blank" rel="noopener"><img src="images/spitter_concept_v2.png" alt="蠍子蟲 — 全彩概念圖：確認輪廓、材質與蟲種配色" loading="lazy"></a>
+              <figcaption><strong>全彩概念圖</strong>｜確認輪廓、材質與蟲種配色 · 點圖開啟原尺寸 · <a href="images/spitter_concept_v2.png" download>下載 PNG</a></figcaption>
+            </figure>
+            <figure>
+              <a href="images/spitter_design_v2.png" target="_blank" rel="noopener"><img src="images/spitter_design_v2.png" alt="蠍子蟲 — 結構設計稿：多視角、關節與部件配置參考" loading="lazy"></a>
+              <figcaption><strong>結構設計稿</strong>｜多視角、關節與部件配置參考 · 點圖開啟原尺寸 · <a href="images/spitter_design_v2.png" download>下載 PNG</a></figcaption>
+            </figure>
+            <figure>
+              <a href="images/spitter_sketch_v2.png" target="_blank" rel="noopener"><img src="images/spitter_sketch_v2.png" alt="蠍子蟲 — 動作草稿：姿態與動作方向探索" loading="lazy"></a>
+              <figcaption><strong>動作草稿</strong>｜姿態與動作方向探索 · 點圖開啟原尺寸 · <a href="images/spitter_sketch_v2.png" download>下載 PNG</a></figcaption>
+            </figure>
+            <figure>
+              <a href="images/06_spitter_turnaround.jpg" target="_blank" rel="noopener"><img src="images/06_spitter_turnaround.jpg" alt="蠍子蟲 — 原生手繪風格 3D 三視角" loading="lazy"></a>
+              <figcaption><strong>原生手繪風格 3D 三視角</strong>｜死神蠍反弓尾刺 · 酸液蓄壓囊 · 鋸齒前螯 · 正交 Front/Side/3/4 · <a href="images/06_spitter_turnaround.jpg" download>下載 JPG</a></figcaption>
+            </figure>
+          </div>
+          <h2 style="color: #f0f6fc; font-size: 1.4rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            🦂 蝎尾虫 (Spitter) — 沙漠死神蠍 ＋ 鞭蠍雙形態規格
+          </h2>
+          <p style="color: #8b949e; margin-bottom: 20px;">
+            以 Harvey 上傳的重甲死神蠍與鞭蠍模型為架構基準，明確拆分「遠程迫擊酸池型」與「近戰重甲緩速型」兩種戰術職能。
+          </p>
+
+          <div class="compare-grid" style="margin-bottom: 24px;">
+            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 14px;">
+              <h3 style="color: #f0f6fc; font-size: 1rem; margin-bottom: 8px;">📸 造型架構基準（Harvey 提供）</h3>
+              <img src="images/spitter_ref.png" style="width: 100%; border-radius: 6px; border: 1px solid #30363d; cursor: zoom-in;" onclick="openModal(this.src)" alt="蝎尾虫參考圖">
+              <p style="font-size: 0.8rem; color: #8b949e; margin-top: 8px;">
+                特徵：寬扁蟹狀胸甲、向前伸展的生物前螯、弧形反弓粗厚分節尾刺與頂端球狀噴射口。新版前螯以固定指、活動指、圓弧掌部及不規則咬齒呈現生物感。
+              </p>
+            </div>
+
+            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h3 style="color: #a855f7; font-size: 1rem; margin-bottom: 8px;">🧬 雙形態戰術核心</h3>
+                <ul style="list-style: none; font-size: 0.85rem; display: flex; flex-direction: column; gap: 10px; padding: 0;">
+                  <li style="border-left: 2px solid #22c55e; padding-left: 8px;">
+                    <strong style="color: #22c55e;">形態 A：遠程迫擊型 (Artillery)</strong><br>
+                    移動緩慢 (3.0 m/s)。尾刺發射高弧度酸液彈（射程 18m），著彈點殘留 1.5 秒腐蝕小酸池 (DoT)。近戰被貼身時用鋸齒前螯推開揮擊。
+                  </li>
+                  <li style="border-left: 2px solid #ff7b72; padding-left: 8px;">
+                    <strong style="color: #ff7b72;">形態 B：近戰重甲型 (Armored Striker)</strong><br>
+                    取消遠程射擊。前螯改為膨大的厚殼蟹螯，以圓弧掌部提供防護，保留可開合的固定指與活動指；尾端為重型倒鉤骨刺。戰鬥採「前螯抓擊下壓 ＋ 尾刺猛烈螫入」Combo，造成 35% 緩速持續 2 秒。
+                  </li>
+                </ul>
+              </div>
+              <div style="background: #21262d; padding: 8px 12px; border-radius: 6px; font-size: 0.8rem; color: #8b949e;">
+                視覺高：2.05m | 走位半徑：1.00m | 移速：3.0 m/s
+              </div>
+            </div>
+          </div>
+
+          <table class="data-table" style="margin-bottom: 20px;">
+            <thead>
+              <tr style="color: #8b949e; border-bottom: 1px solid #30363d;">
+                <th style="text-align: left; padding: 8px 0;">戰術維度</th>
+                <th style="text-align: left; padding: 8px 0;">形態 A：遠程酸液迫擊型</th>
+                <th style="text-align: left; padding: 8px 0;">形態 B：近戰重甲緩速型</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>作戰定位</td><td>後排陣地火力 / 封鎖走位</td><td>前鋒重裝防盾 / 限制玩家位移</td></tr>
+              <tr><td>蠍尾武裝</td><td>球狀生物液壓噴射囊 (Acid Sac)</td><td>重型尖銳倒角幾丁刺 (Heavy Stinger)</td></tr>
+              <tr><td>遠程攻擊</td><td>18m 弧線酸液彈，產生 1.5s DoT 酸池</td><td>無遠程投射物 (射程 0)</td></tr>
+              <tr><td>近戰動作</td><td>前螯普通橫掃擊退 (自衛)</td><td>前螯重擊砸地 + 尾刺急速突刺 (Combo)</td></tr>
+              <tr><td>特殊異常</td><td>DoT 護甲腐蝕 (1.5s 後揮發)</td><td>螫刺命中附加 35% 緩速 (2.0s)</td></tr>
+              <tr><td>本次定稿配色</td><td>沙赭甲殼／骨色甲緣／暗褐關節／酸綠囊與縫／琥珀眼</td><td>黑曜灰甲殼／暗銅甲緣／炭黑關節／暗橙縫／琥珀眼</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 5: Fast Bug Assassin -->
+      <div id="view-fastbug" class="view-content" style="display: none; align-items: flex-start; text-align: left; padding: 24px;">
+        <div style="width: 100%; max-width: 900px; margin: 0 auto;">
+          <div class="reference-note"><strong>刺客蟲圖稿使用方式：</strong>輪廓參考異形／星海爭霸奎蛇／惡靈進化 Wraith：細長分節軀幹、貼肋收折雙刃，四條攀附足加兩條獨立刃臂。頭部依 Harvey 補充圖片改為前壓骨質眉甲、後掠頭冠、外露顎與不規則獠牙；保留午夜藍黑五色配置。草稿檢查前撲、攀牆、倒掛與鑽管，鑽管時收顎並壓低頭頸。<br>全彩圖定義造型與配色；設計稿拆解結構；草稿檢查動作。圖示線網為結構示意，並非已驗證拓撲；既有下方數值為設計提案，未因本次出圖而實作。<br><a href="generation_prompts.json">查看生成提示詞與參考來源</a></div>
+          <ul class="species-colors" aria-label="刺客蟲專屬色票">
+            <li><i style="--swatch: #172A38;" aria-hidden="true"></i>主甲殼：午夜藍黑 <code>#172A38</code></li>
+            <li><i style="--swatch: #426575;" aria-hidden="true"></i>刃緣：灰藍 <code>#426575</code></li>
+            <li><i style="--swatch: #242B30;" aria-hidden="true"></i>關節：深灰 <code>#242B30</code></li>
+            <li><i style="--swatch: #58D6CC;" aria-hidden="true"></i>發光縫：冷青 <code>#58D6CC</code></li>
+            <li><i style="--swatch: #C4D879;" aria-hidden="true"></i>感應眼：淡黃綠 <code>#C4D879</code></li>
+          </ul>
+          <div class="art-gallery" aria-label="刺客蟲概念、設計與草稿">
+            <figure>
+              <a href="images/fastbug_concept_v3.png" target="_blank" rel="noopener"><img src="images/fastbug_concept_v3.png" alt="刺客蟲 — 全彩概念圖：確認輪廓、材質與蟲種配色" loading="lazy"></a>
+              <figcaption><strong>全彩概念圖</strong>｜確認輪廓、材質與蟲種配色 · 點圖開啟原尺寸 · <a href="images/fastbug_concept_v3.png" download>下載 PNG</a></figcaption>
+            </figure>
+            <figure>
+              <a href="images/fastbug_design_v3.png" target="_blank" rel="noopener"><img src="images/fastbug_design_v3.png" alt="刺客蟲 — 結構設計稿：多視角、關節與部件配置參考" loading="lazy"></a>
+              <figcaption><strong>結構設計稿</strong>｜多視角、關節與部件配置參考 · 點圖開啟原尺寸 · <a href="images/fastbug_design_v3.png" download>下載 PNG</a></figcaption>
+            </figure>
+            <figure>
+              <a href="images/fastbug_sketch_v3.png" target="_blank" rel="noopener"><img src="images/fastbug_sketch_v3.png" alt="刺客蟲 — 動作草稿：姿態與動作方向探索" loading="lazy"></a>
+              <figcaption><strong>動作草稿</strong>｜姿態與動作方向探索 · 點圖開啟原尺寸 · <a href="images/fastbug_sketch_v3.png" download>下載 PNG</a></figcaption>
+            </figure>
+            <figure>
+              <a href="images/05_fast_bug_turnaround.jpg" target="_blank" rel="noopener"><img src="images/05_fast_bug_turnaround.jpg" alt="刺客蟲 — 原生手繪風格 3D 三視角" loading="lazy"></a>
+              <figcaption><strong>原生手繪風格 3D 三視角</strong>｜異形後掠長頭蓋 · 幽靈隱刃雙鐮 · 牆面攀爬飛撲姿態 · <a href="images/05_fast_bug_turnaround.jpg" download>下載 JPG</a></figcaption>
+            </figure>
+          </div>
+          <h2 style="color: #f0f6fc; font-size: 1.4rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            ⚡ 刺客蟲 (Fast Bug) — 異形 × 奎蛇 × Wraith 機動刺客
+          </h2>
+          <p style="color: #8b949e; margin-bottom: 20px;">
+            依 Harvey 指定的異形／星海爭霸奎蛇／惡靈進化 Wraith 方向，結合後掠長頭蓋、柔性分節軀幹與貼身雙刃。造型需支援高速前撲、牆面攀爬、天花板倒掛與收身鑽入通風管；以下動作與數值均為設計目標。
+          </p>
+
+          <div style="background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 18px; margin-bottom: 20px; font-family: ui-monospace, monospace; font-size: 0.85rem; color: #a855f7;">
+<pre style="margin: 0;">
+         [異形後掠流線長頭蓋]
+              ▲
+              │ 狹長冷青感應縫／淡黃綠眼
+   ┌──────────┴──────────┐
+   │  ┌───────┬───────┐  │
+   │  │ 獠牙及分節口器 │  │
+   └──┴───────┬───────┴──┘
+              │  [雙肩折疊關節 (Wraith Scythe Pivot)]
+       ┌──────┴──────┐
+       │   柔韌胸廓   ├──[幽靈折疊長雙刃]（緊貼肋側，出刀橫斬）
+       └──────┬──────┘
+              │
+       [多段鉸接蛇形脊椎] ── (可滑動壓縮，直徑 < 0.8m 通過通風管)
+              │
+       ┌──────┴──────┐
+       │   後推進腔   │ ── 冷青微光能量狹縫
+       └──┬────────┬─┘
+          │        │
+     [折疊彈簧足] [折疊彈簧足] ── (附帶微刺吸附墊，支援天花板/牆面倒掛)
+</pre>
+          </div>
+
+          <table class="data-table" style="margin-bottom: 20px;">
+            <tr><td>戰術定位</td><td>隱秘暗殺刺客 / 垂直管道滲透者</td></tr>
+            <tr><td>移動速度</td><td>7.0 m/s (原版數值，全場最高)</td></tr>
+            <tr><td>生命值</td><td>60 HP (高於兵蟲 45)</td></tr>
+            <tr><td>專屬攻擊技能</td><td>8.0m 凌空扑击 (130 傷害) + 隱蔽雙刃近身交叉斬 (90 傷害)</td></tr>
+            <tr><td>管道通過尺寸</td><td>直徑 0.85m 圓柱管道 (身形完全收縮)</td></tr>
+            <tr><td>特殊機動</td><td>天花板倒掛行走、金屬壁面高速垂直攀爬、管道穿梭</td></tr>
+            <tr><td>Blender 骨架</td><td>Spline IK 柔性脊椎鏈 (5~7節) + 兩側雙鐮關節 + 4 條壁面攀爬足</td></tr>
+          </table>
+
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 3px solid #a855f7; padding: 12px 16px; border-radius: 4px; font-size: 0.88rem;">
+            <strong style="color: #f0f6fc;">Blender 改造關鍵提示：</strong><br>
+            1. 雙肩鐮刀採用「反向折疊關節」，平時收折在胸腹兩側護板內，高速奔跑時完全流線破風。<br>
+            2. 足爪末端必須有三向反對稱錐爪與肉墊，呈現能夠牢牢抓死金屬牆面與天花板的抓力感。<br>
+            3. 身體截面必須是扁平水滴型（寬而扁），而非兵蟲的隆起圓拱，才能鑽入通風管道。
+          </div>
+        </div>
+      </div>
+
+      <div id="view-compare" class="view-content" style="display: none;">
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h3>原版 bug_01.png 貼圖（版權風險＋肉食犬齒）</h3>
+            <img src="images/original_texture.png" alt="原版貼圖">
+            <p style="font-size: 0.82rem; color: var(--accent);">問題：頭部為低矮平胸，嘴部帶有哺乳動物犬齒與紅肉牙齦，缺乏具備威脅感的高聳捕食肢體。</p>
+          </div>
+          <div class="compare-card">
+            <h3>新版重製方案（高聳螳螂鐮足 ＋ 鍬形大顎 ＋ 原生配色）</h3>
+            <img src="images/01_mantis_turnaround.jpg" alt="新版三視角">
+            <p style="font-size: 0.82rem; color: var(--glow-green);">解決：肩膀上方聳立一對螳螂倒鉤鐮足，下顎為鍬形蟲鋸齒巨螯；完美保留紅褐手繪甲殼與幽紫發光裂縫。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="spec-card">
+        <h2>🎨 兵蟲參考色票 (Palette)</h2>
+        <p class="reference-note">此組色票僅供既有兵蟲使用。刺客、蠍子與坦克的專屬色票位於各分頁；共用材質畫法，不共用整套顏色。明暗變化不另算色系。</p>
+        <div class="swatch-list">
+          <div class="swatch-item">
+            <div class="swatch-color" style="background: #8b3e2b;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">幾丁質主甲殼 (Chitin Carapace)</div>
+              <div class="swatch-hex">#8B3E2B (紅褐手繪質感)</div>
+            </div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-color" style="background: #a855f7; box-shadow: 0 0 8px #a855f7;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">幽紫生物發光縫 (Biolum Slits)</div>
+              <div class="swatch-hex">#A855F7 (鐮足/甲殼側縫)</div>
+            </div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-color" style="background: #22c55e; box-shadow: 0 0 8px #22c55e;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">蜘蛛複單眼群 (Spider Eyes)</div>
+              <div class="swatch-hex">#22C55E (冷翠綠透鏡)</div>
+            </div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-color" style="background: #2b282c;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">關節活動底膜 (Joint Underlayer)</div>
+              <div class="swatch-hex">#2B282C (暗炭黑幾丁膜)</div>
+            </div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-color" style="background: #84cc16;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">毒牙強酸腐蝕液 (Acid Droplets)</div>
+              <div class="swatch-hex">#84CC16 (酸蝕滲液)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec-card">
+        <h2>📐 兵蟲建模規格參數</h2>
+        <table class="data-table">
+          <tr><td>總可視高度</td><td>2.00 m (含高聳鐮足)</td></tr>
+          <tr><td>本體佔地</td><td>2.28m X × 3.01m Z</td></tr>
+          <tr><td>攻擊動作半徑</td><td>2.20 m (鐮足垂直下劈射程)</td></tr>
+          <tr><td>目標面數</td><td>1,500 ~ 2,800 三角面 (Mid-poly)</td></tr>
+          <tr><td>骨骼架構</td><td>原版 22 骨 + 鐮足 6 骨 + 大顎 2 骨</td></tr>
+          <tr><td>貼圖解析度</td><td>1024x1024 (手繪風格 Diffuse)</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h2>🛡️ 兵蟲肢體運動參考</h2>
+        <ul class="guide-list">
+          <li><strong>螳螂前肢 (Raptorial)</strong>：具備基節 (Coxa)、轉節、腿節 (Femur) 與脛節 (Tibia)，內側長有一排倒鉤刺，負責下劈刺穿。</li>
+          <li><strong>鍬形大顎 (Mandibles)</strong>：水平閉合剪碎獵物，基部為球窩關節。</li>
+          <li><strong>後行進足 (Legs)</strong>：4 條爬行後足負責貼地高速推進。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <img id="modalImg" class="modal-img" src="" alt="放大預覽">
+  </div>
+
+  <script>
+    function switchTab(tabId, button) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      document.getElementById('view-turnaround').style.display = 'none';
+      document.getElementById('view-blueprint').style.display = 'none';
+      document.getElementById('view-compare').style.display = 'none';
+      document.getElementById('view-fastbug').style.display = 'none';
+      document.getElementById('view-spitter').style.display = 'none';
+      document.getElementById('view-largebeetle').style.display = 'none';
+
+      document.getElementById('view-' + tabId).style.display = (tabId === 'compare') ? 'flex' : 'flex';
+    }
+
+    function openModal(src) {
+      document.getElementById('modalImg').src = src;
+      document.getElementById('imageModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').classList.remove('active');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>
