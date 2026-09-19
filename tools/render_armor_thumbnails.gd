@@ -41,10 +41,18 @@ func _render_all() -> void:
 	var only_callofmini := OS.get_cmdline_user_args().has("--callofmini-only")
 	var only_refined := OS.get_cmdline_user_args().has("--refined-only")
 	var only_set := -1
+	var excluded_sets: Array[int] = []
 	var only_part := ""
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--set-id="):
 			only_set = int(argument.trim_prefix("--set-id="))
+		if argument.begins_with("--exclude-set-ids="):
+			for value: String in argument.trim_prefix("--exclude-set-ids=").split(","):
+				if not value.is_valid_int() or int(value) < 0 or int(value) >= ArmorCatalogData.SET_NAMES.size():
+					push_error("Unknown excluded armor set: " + value)
+					quit(1)
+					return
+				excluded_sets.append(int(value))
 		if argument.begins_with("--part="):
 			only_part = argument.trim_prefix("--part=")
 	if not only_part.is_empty() and not PART_PREFIXES.has(only_part):
@@ -70,6 +78,8 @@ func _render_all() -> void:
 		for item_key: String in _item_ids(catalog, part_key):
 			var item: Dictionary = catalog[item_key]
 			var visual_id := int(item.visual_id)
+			if visual_id in excluded_sets:
+				continue
 			if only_refined and visual_id == 0:
 				continue
 			if only_set >= 0 and visual_id != only_set:
@@ -86,7 +96,7 @@ func _render_all() -> void:
 
 	avatar.queue_free()
 	await process_frame
-	if only_callofmini or only_set >= 0 or only_refined or not only_part.is_empty():
+	if only_callofmini or only_set >= 0 or only_refined or not only_part.is_empty() or not excluded_sets.is_empty():
 		print("ARMOR_THUMBNAILS_RENDERED count=%d" % rendered_count)
 		quit(0)
 		return

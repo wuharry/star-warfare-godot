@@ -1,0 +1,1019 @@
+{
+  "batch": "legacy_a",
+  "direction": "Fortune af01d8a and Viper ea55de4 quality; preserve UV, colors, silhouette",
+  "entries": [
+    {
+      "owner": "armor_02",
+      "name": "Tank",
+      "part": "body",
+      "source": "res://assets/models/player/animated/armor_textures/body_ed36db00f85b_2x.png",
+      "output": "res://assets/equipment_refined/textures/b0d6ec57f49b.png",
+      "style_reference": "res://assets/armors/viper/textures/body.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Tank body atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Tank palette: muted steel-blue metal, sage/olive-green trim and dark brown-black backing. Preserve the amber-orange visor exactly (not purple). Keep existing squared panel corners and thin sage boundaries. Black atlas background remains black. Maintain green torso borders, blue inset plates and the two round fasteners already present.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-d0d7bc1b-0504-4d3e-9cab-4759f13fd275.png",
+      "correction_prompt": "Precise localized color correction of INPUT 1 HD Tank torso UV atlas. Input 2 is original source for exact colors only. The small curved horizontal opening centered near x43% y42% must be dark warm brown-black cloth matching adjacent backing, NOT amber glass. Change only that small orange region to warm dark brown-black textured cloth. Preserve all geometry, UV layout, blue and sage paint, shading, outlines, and detail elsewhere. No other changes. Full flat square 1254x1254 atlas.",
+      "initial_generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-df6331f2-c066-40e0-af2c-a4db1984bb08.png",
+      "inspection": "Inspected source, Viper reference and generated atlas. Original UV island arrangement, steel-blue/sage palette, amber visor on head only, and dark cloth retained; thinner crisp bevels and fine painted surface detail. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "0179a16dd2fbcf3a291d9367eee99e68bf4cf0e28df6d928ea7af57593f3bfaf",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "98a1803ffa1838c4fd39223dd302de4a0725684404dd7bdf5cc3d87e4cd14104",
+      "style_reference_sha256": "16b0d02bda5f02be11600bc648371010b750fec98ba595951de2b49c1a231e7c",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_02",
+      "name": "Tank",
+      "part": "legs",
+      "source": "res://assets/models/player/animated/armor_textures/foot_31083bd2d7d1_2x.png",
+      "output": "res://assets/equipment_refined/textures/0425e1d5d249.png",
+      "style_reference": "res://assets/armors/viper/textures/legs.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Tank legs atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Tank palette: muted steel-blue metal, sage/olive-green trim and dark brown-black backing. Preserve the amber-orange visor exactly (not purple). Keep existing squared panel corners and thin sage boundaries. Black atlas background remains black. Keep dark green lower bands and disconnected black sole islands; blue toe/knee islands retain exact locations.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-006dee33-b48f-4ae9-92d6-b2c34cdd0c06.png",
+      "correction_prompt": "Precise localized color correction of INPUT 1 HD Tank leg UV atlas. Input 2 is original source for exact colors only. The tiny U-shaped highlight at x41% y59% on the central blue knee plate must be a muted silver-white worn paint highlight, NOT glowing amber. Change only this tiny orange U highlight to desaturated pale blue-silver. Preserve all UV layout, outlines, blue and olive paint, and detail elsewhere. No other changes. Full flat square 1254x1254 atlas.",
+      "initial_generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-dcbbc88d-53f3-4d20-b29c-a77f887e32e2.png",
+      "inspection": "Inspected source, Viper reference and generated atlas. Original UV island arrangement, steel-blue/sage palette, amber visor on head only, and dark cloth retained; thinner crisp bevels and fine painted surface detail. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "99d1eb61ee5f7167c8eba06a1002018e2047d1e90e1d7d1cfb0b4cb7b510ea50",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "8e5dde835854e66f41577e4c21fa5f4d37b5522f99237a1671cee6e7c15fcf3d",
+      "style_reference_sha256": "562fd2974295e73b0917e25ba1301d00078ef9c2d6bc998257e764c89b9192c6",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_02",
+      "name": "Tank",
+      "part": "arms",
+      "source": "res://assets/models/player/animated/armor_textures/hand_e05d06ac0d12_2x.png",
+      "output": "res://assets/equipment_refined/textures/11cfd40c650e.png",
+      "style_reference": "res://assets/armors/viper/textures/arms.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Tank arms atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Tank palette: muted steel-blue metal, sage/olive-green trim and dark brown-black backing. Preserve the amber-orange visor exactly (not purple). Keep existing squared panel corners and thin sage boundaries. Black atlas background remains black. Keep the sage top cuff edge, blue central forearm and knuckle patch, and dark palm fabric.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-ac84aeae-5487-4e94-afbf-859d86aea7be.png",
+      "inspection": "Inspected source, Viper reference and generated atlas. Original UV island arrangement, steel-blue/sage palette, amber visor on head only, and dark cloth retained; thinner crisp bevels and fine painted surface detail. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "e8e847aed679b3859e0f5a292a11f7c40790b25cb9f9102d9d06032b0807aef3",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "82cdcfea69c126971e52f3221da8823d901d26f9f80a4c5337f640b55ccf34a3",
+      "style_reference_sha256": "8daf8b0b5fe5400b8a9cdcfca6ad520ee654e62784ae22fb334922a9bdc0cb52",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_02",
+      "name": "Tank",
+      "part": "head",
+      "source": "res://assets/models/player/animated/armor_textures/head_27f2a32dc8b6_2x.png",
+      "output": "res://assets/equipment_refined/textures/d0549fa28a30.png",
+      "style_reference": "res://assets/armors/viper/textures/head.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Tank head atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Tank palette: muted steel-blue metal, sage/olive-green trim and dark brown-black backing. Preserve the amber-orange visor exactly (not purple). Keep existing squared panel corners and thin sage boundaries. Black atlas background remains black. Keep orange visor, sage dome arch and segmented blue chin strip exactly positioned; do not enlarge visor.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-0d3f5567-5983-46d3-bc46-673f494c4dfa.png",
+      "inspection": "Inspected source, Viper reference and generated atlas. Original UV island arrangement, steel-blue/sage palette, amber visor on head only, and dark cloth retained; thinner crisp bevels and fine painted surface detail. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "8dc72544a46a81e30758a176ec33d4e95c6c14e13d912444fb8b1bdc377dcbcf",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "93d71adfd46866b2cb26aa22bd5993377c584924d5a5a9e652ef1a1216cf765c",
+      "style_reference_sha256": "d72e781353001b23f389cd29256000a22ccebdeadbb0ddca995e27830a773c6f",
+      "copied_byte_identical": true,
+      "before_runtime_correction_generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-7e56023a-a1b8-4780-b715-8ce8153df910.png",
+      "runtime_correction_prompt": "Use case: precise-object-edit. This is a localized production UV-atlas edge cleanup, NOT a redesign. INPUT 1 is the accepted Tank HD helmet atlas; INPUT 2 is the original only as a palette reference. Remove the accidental neon green/yellow/cyan/blue one-pixel noise/fringing OUTSIDE the painted UV island boundaries, especially along the large sage-green crown arch outer contour in the upper half, and around the lower segmented blue chin/back strip. These colored halo pixels are garbage from transparency and show on the 3D helmet seams. Keep every visible armor and visor pixel, original exact UV island silhouette/location/size, amber visor, sage green and steel-blue colors, thin edge wear and all existing details unchanged. Flatten the unused canvas to solid opaque BLACK and make the ENTIRE output opaque, with smooth clean antialiasing against that black. Extend each island's own nearby paint only 2-3 pixels past its edge for texture padding; this padding must use the LOCAL same metal/cloth color, never a bright colored halo. NO new highlights or lines on UV seam boundaries. Do not repaint, recolor, enlarge, rearrange or sharpen the whole atlas. Same square 1254x1254 atlas, no text.",
+      "runtime_correction_inspection": "Inspected tool result: neon fringe removed, opaque black canvas, Tank helmet geometry/colors/details retained; await runtime recapture."
+    },
+    {
+      "owner": "armor_02",
+      "name": "Tank",
+      "part": "shoulder",
+      "source": "res://assets/models/player/animated/armor_textures/jian_077c0f9d616a_2x.png",
+      "output": "res://assets/equipment_refined/textures/8f57364be727.png",
+      "style_reference": "res://assets/armors/viper/textures/shoulder.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Tank shoulder atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Tank palette: muted steel-blue metal, sage/olive-green trim and dark brown-black backing. Preserve the amber-orange visor exactly (not purple). Keep existing squared panel corners and thin sage boundaries. Black atlas background remains black. Keep separated sage cap and blue angular shoulder plate with its large black central opening and two existing fasteners.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-0dafafa8-83a6-4d13-8739-a0f4b454bd32.png",
+      "inspection": "Inspected source, Viper reference and generated atlas. Original UV island arrangement, steel-blue/sage palette, amber visor on head only, and dark cloth retained; thinner crisp bevels and fine painted surface detail. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "8a2b5ad1d89192d79c7ca093b76adf64297aa6dbf999244a51a937a07842902c",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "7572036a24caf732eabff2629c0ab7364d89a267a825a41342b17f99afdca67f",
+      "style_reference_sha256": "e9239a999a1c839b8c40fc66bfa44e1b1671cbac7d52e4cc876f03cbae1d83eb",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_03",
+      "name": "Hydra",
+      "part": "body",
+      "source": "res://assets/models/player/animated/armor_textures/body_bd16b9436c5e_2x.png",
+      "output": "res://assets/equipment_refined/textures/a60e8070de0c.png",
+      "style_reference": "res://assets/armors/viper/textures/body.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Hydra body atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Hydra palette is dark teal-blue metal with muted leaf-green trim and warm black-brown cloth. Retain original black background. No amber or orange highlights. Keep green torso inset border, dark cloth upper back, existing blue plates and segmented seams.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-0167fe28-4afc-470f-b6fa-18181a482ef4.png",
+      "inspection": "Source/reference/output visually inspected: original teal-blue, green and dark cloth regions retained, lime-green visor unchanged, islands and panel boundaries preserved with thin defined edges and visible painted grain. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "4ae7b938253290ab7970ff3041c4bb51750f60db274ee0ea07551df24275870b",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "90878024c950f285b302841e25be651ad6610865887ceffba4e84065309da0a6",
+      "style_reference_sha256": "16b0d02bda5f02be11600bc648371010b750fec98ba595951de2b49c1a231e7c",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_03",
+      "name": "Hydra",
+      "part": "legs",
+      "source": "res://assets/models/player/animated/armor_textures/foot_ee6e6e462c68_2x.png",
+      "output": "res://assets/equipment_refined/textures/d731fd1424f6.png",
+      "style_reference": "res://assets/armors/viper/textures/legs.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Hydra legs atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Hydra palette is dark teal-blue metal with muted leaf-green trim and warm black-brown cloth. Retain original black background. No amber or orange highlights. Preserve muted green lower zigzag bands and isolated black soles; blue knee/toe plate boundaries unchanged.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-63dfd2a7-73fd-4041-8b52-8f33f4d4163b.png",
+      "inspection": "Source/reference/output visually inspected: original teal-blue, green and dark cloth regions retained, lime-green visor unchanged, islands and panel boundaries preserved with thin defined edges and visible painted grain. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "5690ef1f7e573e39ca7327972a76736a6bc2d079271c145064624b0701e90f86",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "0c38d3f243cec54d5f99bb826efd047492c2d8025c41304afa5ba52197678cf3",
+      "style_reference_sha256": "562fd2974295e73b0917e25ba1301d00078ef9c2d6bc998257e764c89b9192c6",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_03",
+      "name": "Hydra",
+      "part": "arms",
+      "source": "res://assets/models/player/animated/armor_textures/hand_c974522680fe_2x.png",
+      "output": "res://assets/equipment_refined/textures/3c5547e69196.png",
+      "style_reference": "res://assets/armors/viper/textures/arms.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Hydra arms atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Hydra palette is dark teal-blue metal with muted leaf-green trim and warm black-brown cloth. Retain original black background. No amber or orange highlights. Keep green trapezoid cuff and pointed green knuckle inset, angular blue plate, dark brown glove.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-2f3989a9-70c9-4859-bb6c-5a3bb00577b8.png",
+      "inspection": "Source/reference/output visually inspected: original teal-blue, green and dark cloth regions retained, lime-green visor unchanged, islands and panel boundaries preserved with thin defined edges and visible painted grain. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "287ae5366ae8d34415158ffe2be7c45479a09778e4564c66aabc8944a50e404c",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "ed9ff2b8bc216f802e77802c507611119b038c6ffd6bd8e3e634433b3fc30511",
+      "style_reference_sha256": "8daf8b0b5fe5400b8a9cdcfca6ad520ee654e62784ae22fb334922a9bdc0cb52",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_03",
+      "name": "Hydra",
+      "part": "head",
+      "source": "res://assets/models/player/animated/armor_textures/head_9d25898f6b16_2x.png",
+      "output": "res://assets/equipment_refined/textures/27d8aca6862e.png",
+      "style_reference": "res://assets/armors/viper/textures/head.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Hydra head atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Hydra palette is dark teal-blue metal with muted leaf-green trim and warm black-brown cloth. Retain original black background. No amber or orange highlights. Preserve separate lime-green visor exactly; curved teal helmet shell, original bright teal highlights and green side/chin details unchanged.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-93ae2c54-f9fd-49f2-81e9-d4242c02b88a.png",
+      "inspection": "Source/reference/output visually inspected: original teal-blue, green and dark cloth regions retained, lime-green visor unchanged, islands and panel boundaries preserved with thin defined edges and visible painted grain. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "159f2d596e55b34300c276d349e24aea28dc3a669d9310007b62ffa99b87bd5f",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "1275f49dc08d07bb9f673defb6b0310c1d82e8fe336450cc3bcf0efe581d8d5f",
+      "style_reference_sha256": "d72e781353001b23f389cd29256000a22ccebdeadbb0ddca995e27830a773c6f",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_03",
+      "name": "Hydra",
+      "part": "shoulder",
+      "source": "res://assets/models/player/animated/armor_textures/jian_496b2bbd770e_2x.png",
+      "output": "res://assets/equipment_refined/textures/b470c43e21aa.png",
+      "style_reference": "res://assets/armors/viper/textures/shoulder.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Hydra shoulder atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Hydra palette is dark teal-blue metal with muted leaf-green trim and warm black-brown cloth. Retain original black background. No amber or orange highlights. Preserve all five islands: upper side black backing patches, small dark-green top cap, larger sage-green central cap and lower blue/green shoulder plate.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-ad91d699-94a9-4e28-8d1a-ab896432ca91.png",
+      "inspection": "Source/reference/output visually inspected: original teal-blue, green and dark cloth regions retained, lime-green visor unchanged, islands and panel boundaries preserved with thin defined edges and visible painted grain. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "ec845b20fd083560469798062e6f89877e476b6bbdbcdc64c0dbaf86c4f6b867",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "aa7560b374160584f627b68ca30d1b4b2516f8fdc0cde706996e50ef7331c7d5",
+      "style_reference_sha256": "e9239a999a1c839b8c40fc66bfa44e1b1671cbac7d52e4cc876f03cbae1d83eb",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_04",
+      "name": "Strike",
+      "part": "body",
+      "source": "res://assets/models/player/animated/armor_textures/body_c4fabbd7d47a_2x.png",
+      "output": "res://assets/equipment_refined/textures/cb8393bb76ac.png",
+      "style_reference": "res://assets/armors/viper/textures/body.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Strike body atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Strike palette: desaturated teal-blue armor with dark navy shadow panels, dark brown-black cloth and existing bright cyan light markings. Preserve each cyan marking's original shape, location and luminance without spreading glow. No green recolor. Keep existing cyan rings on chest/back, small gold latch only at far left, dark cloth patches.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-97067d80-daba-44e9-bd2d-0055aaac5096.png",
+      "inspection": "Original/source/output inspected: blue/navy plates, warm dark cloth, cyan rings/strips and amber head visor retained. Existing panel arrangement and UV positions match visually, worn thin borders and metal grain clarified. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "76bb100f2f0954fac70d611bf5063d7c55c686ef2fffd5075f5721f311d1f47b",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "a5ee77df2e13753f58da7f9ed49e02e574b9be5b92dff0898363aae85f116599",
+      "style_reference_sha256": "16b0d02bda5f02be11600bc648371010b750fec98ba595951de2b49c1a231e7c",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_04",
+      "name": "Strike",
+      "part": "legs",
+      "source": "res://assets/models/player/animated/armor_textures/foot_efec64cd00d2_2x.png",
+      "output": "res://assets/equipment_refined/textures/013e5345e988.png",
+      "style_reference": "res://assets/armors/viper/textures/legs.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Strike legs atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Strike palette: desaturated teal-blue armor with dark navy shadow panels, dark brown-black cloth and existing bright cyan light markings. Preserve each cyan marking's original shape, location and luminance without spreading glow. No green recolor. Keep three cyan lines on left shin and central knee, one cyan ring at lower-right island.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-61b6fe61-60b1-4859-930c-8706af405c80.png",
+      "inspection": "Original/source/output inspected: blue/navy plates, warm dark cloth, cyan rings/strips and amber head visor retained. Existing panel arrangement and UV positions match visually, worn thin borders and metal grain clarified. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "40b2d8f1bbced8a10e068a9a7bf88ef0c1fcd9eaa5e5d776b67ebe5102114ef2",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "fc5aabe890404edf1fddb3ad7cdfb0b9dbc2d6e0eafee4bceecec0d53d4f7f81",
+      "style_reference_sha256": "562fd2974295e73b0917e25ba1301d00078ef9c2d6bc998257e764c89b9192c6",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_04",
+      "name": "Strike",
+      "part": "arms",
+      "source": "res://assets/models/player/animated/armor_textures/hand_1a8b5c7e8dee_2x.png",
+      "output": "res://assets/equipment_refined/textures/8a5b8abdb8a5.png",
+      "style_reference": "res://assets/armors/viper/textures/arms.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Strike arms atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Strike palette: desaturated teal-blue armor with dark navy shadow panels, dark brown-black cloth and existing bright cyan light markings. Preserve each cyan marking's original shape, location and luminance without spreading glow. No green recolor. Keep single cyan ring on central forearm, blue knuckle patch, dark glove and top cloth strip.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-938db886-536e-411f-bc7d-ecfaa6fba1c6.png",
+      "inspection": "Original/source/output inspected: blue/navy plates, warm dark cloth, cyan rings/strips and amber head visor retained. Existing panel arrangement and UV positions match visually, worn thin borders and metal grain clarified. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "3f517f6602413fb41c2bc6ae0da5f48fe44ab9d74609228862985cc7868abf64",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "fd84255464fdbad923108e20b6359d6892a4406254c9500ac249f22d88e409d4",
+      "style_reference_sha256": "8daf8b0b5fe5400b8a9cdcfca6ad520ee654e62784ae22fb334922a9bdc0cb52",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_04",
+      "name": "Strike",
+      "part": "head",
+      "source": "res://assets/models/player/animated/armor_textures/head_0fec56bddc36_2x.png",
+      "output": "res://assets/equipment_refined/textures/e93dd6dddc72.png",
+      "style_reference": "res://assets/armors/viper/textures/head.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Strike head atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Strike palette: desaturated teal-blue armor with dark navy shadow panels, dark brown-black cloth and existing bright cyan light markings. Preserve each cyan marking's original shape, location and luminance without spreading glow. No green recolor. Keep original amber-yellow visor and exact cyan strips/rings; retain small detached lit blue plate near top left and detached jaw strips/vents.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-f86a8e05-eb4d-4ee6-a996-830af245fd97.png",
+      "inspection": "Original/source/output inspected: blue/navy plates, warm dark cloth, cyan rings/strips and amber head visor retained. Existing panel arrangement and UV positions match visually, worn thin borders and metal grain clarified. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "270103b177b00cb16f190c180939f5dd1826ea02df5940aaf417dd1852aa6f2b",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "294809b57133048fadaa8292bd10bed32309f3e5edf3f933230c3f976dbc491e",
+      "style_reference_sha256": "d72e781353001b23f389cd29256000a22ccebdeadbb0ddca995e27830a773c6f",
+      "copied_byte_identical": true,
+      "before_runtime_correction_generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-87ba10a0-5397-4937-9543-a09a7d5349e3.png",
+      "runtime_correction_prompt": "Precisely restore and enhance this exact existing game texture atlas in place. Keep every feature at the exact same pixel coordinates, retain identical canvas and UV boundaries. This is an edit, not a redesign. Make the blurry painted metal and edge scratches clearer and finer, add subtle hand-painted texture within the existing armor panels, and sharpen the existing cyan details, amber visor and woven cloth. Crucial: NO repositioning, NO repacking, NO adding margins, NO shrinking, NO growing or reshaping any region; leave the lowermost four-vent plate touching the bottom edge and the top plates touching the top edge exactly like this input. Keep all gaps and the helmet shape fixed. Replace ONLY the bright green stray pixels beside the gold visor with neighboring gold/dark boundary colors to remove UV bleed. Plain opaque black background, no alpha. Dark muted teal-blue, cyan lights, golden visor color proportions unchanged. Output same square texture atlas with exact original layout and crisp hand-painted high definition finish, not a render of an object.",
+      "runtime_correction_reference": "res://test_output/armor_hd_refinement/baseline/textures/e93dd6dddc72.png",
+      "runtime_rejected_candidate": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-a61b1b54-16ea-4933-9058-6c3ef4d959fa.png",
+      "runtime_rejected_candidate_reason": "UV island vertical drift remains in raw plus style two-reference result.",
+      "runtime_correction_inspection": "Baseline-only edit visually preserves normalized UV layout, bottom-edge vent plate and visor placement. Cyan/gold/blue identity intact, stray neon fringe removed. Await recapture."
+    },
+    {
+      "owner": "armor_04",
+      "name": "Strike",
+      "part": "shoulder",
+      "source": "res://assets/models/player/animated/armor_textures/jian_636c11b729f7_2x.png",
+      "output": "res://assets/equipment_refined/textures/bb972009e25a.png",
+      "style_reference": "res://assets/armors/viper/textures/shoulder.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Strike shoulder atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Strike palette: desaturated teal-blue armor with dark navy shadow panels, dark brown-black cloth and existing bright cyan light markings. Preserve each cyan marking's original shape, location and luminance without spreading glow. No green recolor. Preserve three islands: two dark upper polygons, blue lower dome with exact cyan ring, three left dashes and bottom strips.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-d7b31b78-af60-4f57-82ab-156838cf084b.png",
+      "inspection": "Original/source/output inspected: blue/navy plates, warm dark cloth, cyan rings/strips and amber head visor retained. Existing panel arrangement and UV positions match visually, worn thin borders and metal grain clarified. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "830353756b76b3f5202c213db0c04877b4ad605f4d0889cfec5dcf07790693ac",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "cea7181983e7fbdd0b0e57c318ee5e24e463b34739fe5022bab582add8dc87c9",
+      "style_reference_sha256": "e9239a999a1c839b8c40fc66bfa44e1b1671cbac7d52e4cc876f03cbae1d83eb",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_05",
+      "name": "Titan",
+      "part": "legs",
+      "source": "res://assets/models/player/animated/armor_textures/r_jiao_962a757faf32_2x.png",
+      "output": "res://assets/equipment_refined/textures/41b8af21a374.png",
+      "style_reference": "res://assets/armors/viper/textures/legs.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Titan legs atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Titan palette: desaturated blue/slate metal with darker navy panels, dark charcoal backing and exact existing yellow-orange insets. Keep original atlas background color (blue-grey or grey), avoid replacing with Viper background. No new damage or light patches; keep fine existing scratches subtle. Keep original single broad boot/leg island and detached slatted sole upper right; exact existing small orange rings and horizontal knee inset.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-c542eed1-f464-4937-b72f-1f7d9c900168.png",
+      "inspection": "Compared source/reference/output: slate-blue armor, navy recesses, yellow/orange existing lights and golden visor with geometric seams retained. Original disconnected island arrangement and specific panels preserved; precise hand-painted bevels, subtle scratches and cloth grain added. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "1a4231bbd4e76d8ac1bf703aa0dfde7908470bf53d3cdd313d4a1959f873c7f0",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "272a0e1bb485c4438d6b32e4b580d1a2493506633272178f7b09603cf0ad2a39",
+      "style_reference_sha256": "562fd2974295e73b0917e25ba1301d00078ef9c2d6bc998257e764c89b9192c6",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_05",
+      "name": "Titan",
+      "part": "body",
+      "source": "res://assets/models/player/animated/armor_textures/r_shen_bb94860740e4_2x.png",
+      "output": "res://assets/equipment_refined/textures/3783cf91e1d4.png",
+      "style_reference": "res://assets/armors/viper/textures/body.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Titan body atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Titan palette: desaturated blue/slate metal with darker navy panels, dark charcoal backing and exact existing yellow-orange insets. Keep original atlas background color (blue-grey or grey), avoid replacing with Viper background. No new damage or light patches; keep fine existing scratches subtle. Keep all existing torso islands, black central hexagon hole, amber chest strips and tiny red warning triangles. No new panel lines.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-355abb37-3101-4eea-9efb-20112b19d6cb.png",
+      "inspection": "Compared source/reference/output: slate-blue armor, navy recesses, yellow/orange existing lights and golden visor with geometric seams retained. Original disconnected island arrangement and specific panels preserved; precise hand-painted bevels, subtle scratches and cloth grain added. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "9720648711f4ff2dea3512759980638a8eb10e8c55323e4f25798ad94cb94e42",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "38be6a3f31ba2c844dffd70f9a9ba3311dc58aa59b771fa93dab3a855dae5282",
+      "style_reference_sha256": "16b0d02bda5f02be11600bc648371010b750fec98ba595951de2b49c1a231e7c",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_05",
+      "name": "Titan",
+      "part": "arms",
+      "source": "res://assets/models/player/animated/armor_textures/r_shou_03cec9a53dd6_2x.png",
+      "output": "res://assets/equipment_refined/textures/378b90c0e5c4.png",
+      "style_reference": "res://assets/armors/viper/textures/arms.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Titan arms atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Titan palette: desaturated blue/slate metal with darker navy panels, dark charcoal backing and exact existing yellow-orange insets. Keep original atlas background color (blue-grey or grey), avoid replacing with Viper background. No new damage or light patches; keep fine existing scratches subtle. Keep broad glove plate layout, three yellow round knuckle lights and short yellow-orange cuff strip; preserve charcoal hand/finger divisions and lower detached black palm polygon.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-0508b567-2c6a-47d1-a03b-722efbc4175a.png",
+      "inspection": "Compared source/reference/output: slate-blue armor, navy recesses, yellow/orange existing lights and golden visor with geometric seams retained. Original disconnected island arrangement and specific panels preserved; precise hand-painted bevels, subtle scratches and cloth grain added. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "7ea1139d5b17c57b0e9e3aa31e7be878b8cc531ae4972274c3ee414a99f67120",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "59e0c53028b36fd59bbb51e9bece5ca194e6dd017413a7e86013d47e76e3c1c8",
+      "style_reference_sha256": "8daf8b0b5fe5400b8a9cdcfca6ad520ee654e62784ae22fb334922a9bdc0cb52",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_05",
+      "name": "Titan",
+      "part": "shoulder",
+      "source": "res://assets/models/player/animated/armor_textures/r_shou_a_fef419c461f1_2x.png",
+      "output": "res://assets/equipment_refined/textures/4d90748e1d2d.png",
+      "style_reference": "res://assets/armors/viper/textures/shoulder.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Titan shoulder atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Titan palette: desaturated blue/slate metal with darker navy panels, dark charcoal backing and exact existing yellow-orange insets. Keep original atlas background color (blue-grey or grey), avoid replacing with Viper background. No new damage or light patches; keep fine existing scratches subtle. Keep separated upper strip with large dark backing inset, small upper-left blue island and lattice black island, then lower shoulder dome with orange contour and yellow horizontal lower light.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-dcda40e0-1000-4c52-83a0-77ce21cf860a.png",
+      "inspection": "Compared source/reference/output: slate-blue armor, navy recesses, yellow/orange existing lights and golden visor with geometric seams retained. Original disconnected island arrangement and specific panels preserved; precise hand-painted bevels, subtle scratches and cloth grain added. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "e3a6c64f4f1ae73bedb119ab7025ad9f41444c7ebfd47126d987bab76434221b",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "6c91c18cd86a56d37cca6e259692839143b9714828a0dc5a5c044d1f0ec8dd65",
+      "style_reference_sha256": "e9239a999a1c839b8c40fc66bfa44e1b1671cbac7d52e4cc876f03cbae1d83eb",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_05",
+      "name": "Titan",
+      "part": "head",
+      "source": "res://assets/models/player/animated/armor_textures/r_tou_54434b4b8e32_2x.png",
+      "output": "res://assets/equipment_refined/textures/b2e6cadb7e24.png",
+      "style_reference": "res://assets/armors/viper/textures/head.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Titan head atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Titan palette: desaturated blue/slate metal with darker navy panels, dark charcoal backing and exact existing yellow-orange insets. Keep original atlas background color (blue-grey or grey), avoid replacing with Viper background. No new damage or light patches; keep fine existing scratches subtle. Preserve the large golden-yellow visor and its existing subtle geometric seam lines exactly, slate blue shell with dark cheek inset, orange curved ear strip and three circular dots. Keep separated lower-right plate with three blue vent dashes.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-0b592526-faec-49a1-8a39-f2de8758f959.png",
+      "inspection": "Compared source/reference/output: slate-blue armor, navy recesses, yellow/orange existing lights and golden visor with geometric seams retained. Original disconnected island arrangement and specific panels preserved; precise hand-painted bevels, subtle scratches and cloth grain added. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "459b9c7132c921535f493b4add0e7bc03f0d15477d9c68e4a7509a95991ec376",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "a131e4a51e90518915f0060b203ff322c45b032640d5bc860a58d58ad5960dba",
+      "style_reference_sha256": "d72e781353001b23f389cd29256000a22ccebdeadbb0ddca995e27830a773c6f",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_07",
+      "name": "Atom",
+      "part": "body",
+      "source": "res://assets/models/player/animated/armor_textures/body_1b6b8f34e05d_2x.png",
+      "output": "res://assets/equipment_refined/textures/107c30555389.png",
+      "style_reference": "res://assets/armors/viper/textures/body.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Atom body atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Atom palette is muted cyan/steel-blue metal plus dark violet-purple panels and almost black cloth; existing small cyan lights only. Retain original background. No green or orange substitutions. Keep all original brightness relationships between purple and blue. Keep violet chest/back insets, blue trim, existing small cyan circles and rectangular dark olive vertical island.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-777ef7c0-1279-4e92-9820-4972e7d9bc46.png",
+      "inspection": "Inspected source/reference/output: Atom purple and steel-blue panels, cyan details, cyan-violet visor gradient, central shoulder inset and original island placement retained. Thin contours and fine painted surface/fabric detail clarified. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "52300ccd59922feb55f445ca982ad01f601c9d68b483498b9fac07923b00a8fd",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "2ee571cd15d4bad6e003bfbbda1a913fd7847f736b23428e4ba1bb4bb3f1908f",
+      "style_reference_sha256": "16b0d02bda5f02be11600bc648371010b750fec98ba595951de2b49c1a231e7c",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_07",
+      "name": "Atom",
+      "part": "legs",
+      "source": "res://assets/models/player/animated/armor_textures/foot_2d50e768959c_2x.png",
+      "output": "res://assets/equipment_refined/textures/5b9bd919fde2.png",
+      "style_reference": "res://assets/armors/viper/textures/legs.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Atom legs atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Atom palette is muted cyan/steel-blue metal plus dark violet-purple panels and almost black cloth; existing small cyan lights only. Retain original background. No green or orange substitutions. Keep all original brightness relationships between purple and blue. Keep purple leg plates, steel-blue knee/toe metal and lower Y-shaped trim; sole islands dark purple; single cyan dot on upper-left strip.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-581d8603-f933-4cd2-bf3b-f57985311785.png",
+      "inspection": "Inspected source/reference/output: Atom purple and steel-blue panels, cyan details, cyan-violet visor gradient, central shoulder inset and original island placement retained. Thin contours and fine painted surface/fabric detail clarified. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "289a7a27d83f8d815afa8ed49fcb4ebe35e5bf955fcb1d32eb60a7d835b21099",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "05309542695bc332278871c11f415b4dfc3c6b8e08f58fa5183f36ebac7517a7",
+      "style_reference_sha256": "562fd2974295e73b0917e25ba1301d00078ef9c2d6bc998257e764c89b9192c6",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_07",
+      "name": "Atom",
+      "part": "arms",
+      "source": "res://assets/models/player/animated/armor_textures/hand_0fc9da36fa37_2x.png",
+      "output": "res://assets/equipment_refined/textures/113ffba8b645.png",
+      "style_reference": "res://assets/armors/viper/textures/arms.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Atom arms atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Atom palette is muted cyan/steel-blue metal plus dark violet-purple panels and almost black cloth; existing small cyan lights only. Retain original background. No green or orange substitutions. Keep all original brightness relationships between purple and blue. Keep cyan dot on steel-blue central forearm, purple wing panels and pointed purple knuckle guard, dark soft fabric glove.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-32e8af16-213b-4732-b38e-94eaaf9ab9b3.png",
+      "inspection": "Inspected source/reference/output: Atom purple and steel-blue panels, cyan details, cyan-violet visor gradient, central shoulder inset and original island placement retained. Thin contours and fine painted surface/fabric detail clarified. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "848b32e21226747a6c52ea3367802b3f08024f1cb1e7ce7f5e7effda6ff70a18",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "a8ae7a58c8536045fe8ff6a423a155723d9b387414d73033401498001fff368a",
+      "style_reference_sha256": "8daf8b0b5fe5400b8a9cdcfca6ad520ee654e62784ae22fb334922a9bdc0cb52",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_07",
+      "name": "Atom",
+      "part": "head",
+      "source": "res://assets/models/player/animated/armor_textures/head_bb67000287dd_2x.png",
+      "output": "res://assets/equipment_refined/textures/ef825f99cf05.png",
+      "style_reference": "res://assets/armors/viper/textures/head.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Atom head atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Atom palette is muted cyan/steel-blue metal plus dark violet-purple panels and almost black cloth; existing small cyan lights only. Retain original background. No green or orange substitutions. Keep all original brightness relationships between purple and blue. Keep original cyan-to-violet gradient visor, purple brow and pointed chin, blue dome and round cyan ear ring. Do not make visor amber or uniform purple. Keep isolated upper-right cyan fan-pattern island and lower dark backing.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-413a6bba-22fd-48eb-aafc-73e438016367.png",
+      "inspection": "Inspected source/reference/output: Atom purple and steel-blue panels, cyan details, cyan-violet visor gradient, central shoulder inset and original island placement retained. Thin contours and fine painted surface/fabric detail clarified. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "78af28816a8c2f437355ab8f91feaeb7bf6f609160c33f0237a57a3784486874",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "2fca1535c7ff1c03a0b915ec4609f700009b8c9326754e60a5a28763f2f228dc",
+      "style_reference_sha256": "d72e781353001b23f389cd29256000a22ccebdeadbb0ddca995e27830a773c6f",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_07",
+      "name": "Atom",
+      "part": "shoulder",
+      "source": "res://assets/models/player/animated/armor_textures/jian_aa13458c0049_2x.png",
+      "output": "res://assets/equipment_refined/textures/b95319369d61.png",
+      "style_reference": "res://assets/armors/viper/textures/shoulder.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Atom shoulder atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Atom palette is muted cyan/steel-blue metal plus dark violet-purple panels and almost black cloth; existing small cyan lights only. Retain original background. No green or orange substitutions. Keep all original brightness relationships between purple and blue. Keep blue upper-left trapezoid, small dark backing islands at upper-right, blue top rim of lower shoulder dome, purple side panels and black central tapered inset with single cyan light.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-de19fab1-1a76-43fe-9dca-7ef629db2bb2.png",
+      "inspection": "Inspected source/reference/output: Atom purple and steel-blue panels, cyan details, cyan-violet visor gradient, central shoulder inset and original island placement retained. Thin contours and fine painted surface/fabric detail clarified. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "913bac25e581614974659e6d66542c634e9295ac860bb5337c5d093c0af58a8a",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "70aa31f956d00d4d7847de840f3be6fea0a7d06ba41d90fd34d04d93ef863d47",
+      "style_reference_sha256": "e9239a999a1c839b8c40fc66bfa44e1b1671cbac7d52e4cc876f03cbae1d83eb",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_08",
+      "name": "Pegasus",
+      "part": "body",
+      "source": "res://assets/models/player/animated/armor_textures/09_body_078a88725c3f_2x.png",
+      "output": "res://assets/equipment_refined/textures/a7537bc21d67.png",
+      "style_reference": "res://assets/armors/viper/textures/body.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Pegasus body atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Pegasus palette: SILVER-WHITE painted armor with black/deep navy undersuit and thin cobalt-blue circuit lines. Do not copy Viper blue armor; preserve original silver-white brightness, no amber or cyan recolor. Keep flat grey atlas background. Minimal existing wear, fine intentional hand-painted surface grain, matte silver. Keep silver chest/back armor, thin cobalt circuit tracery on undersuit, radial shoulder trim and lower silver plate borders. Keep existing small holes/fasteners unchanged.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-c6b4e6bf-9a55-41ab-b4b2-827d9d244f9b.png",
+      "inspection": "Source/reference/output inspected: silver-white shell, navy/black fabric, cobalt-blue circuit details and narrow indigo visor retained without Viper palette substitution. Flat island positions, existing holes and panel borders checked. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "eadc0ccc70ed2e3bafdadcf40113775337dabd18222d9c495c1a95133ae83d76",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "c87d8c1d190fc1bd8ccf0300c9af9f53f416bd2fbf46ffb799a72154ec3b0ec7",
+      "style_reference_sha256": "16b0d02bda5f02be11600bc648371010b750fec98ba595951de2b49c1a231e7c",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_08",
+      "name": "Pegasus",
+      "part": "legs",
+      "source": "res://assets/models/player/animated/armor_textures/09_foot_4c47253ee54a_2x.png",
+      "output": "res://assets/equipment_refined/textures/b5ba61172d0a.png",
+      "style_reference": "res://assets/armors/viper/textures/legs.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Pegasus legs atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Pegasus palette: SILVER-WHITE painted armor with black/deep navy undersuit and thin cobalt-blue circuit lines. Do not copy Viper blue armor; preserve original silver-white brightness, no amber or cyan recolor. Keep flat grey atlas background. Minimal existing wear, fine intentional hand-painted surface grain, matte silver. Preserve silver-white boot plates, blue thin angular outlines, dark soles and exact blue circuit traces in side gaps.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-94fa7162-dbea-439b-b813-614175b162df.png",
+      "inspection": "Source/reference/output inspected: silver-white shell, navy/black fabric, cobalt-blue circuit details and narrow indigo visor retained without Viper palette substitution. Flat island positions, existing holes and panel borders checked. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "2d83407da3db7d0d43747144a872f2400e6f7e0fe58da0aa25c7e6ba292943b7",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "9f2323e5cf358ab63501ad1d4ad7fdb03048f5f27abff9618099e68b39399fc5",
+      "style_reference_sha256": "562fd2974295e73b0917e25ba1301d00078ef9c2d6bc998257e764c89b9192c6",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_08",
+      "name": "Pegasus",
+      "part": "arms",
+      "source": "res://assets/models/player/animated/armor_textures/09_hand_5cfca001cbd7_2x.png",
+      "output": "res://assets/equipment_refined/textures/2ca09b153e65.png",
+      "style_reference": "res://assets/armors/viper/textures/arms.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Pegasus arms atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Pegasus palette: SILVER-WHITE painted armor with black/deep navy undersuit and thin cobalt-blue circuit lines. Do not copy Viper blue armor; preserve original silver-white brightness, no amber or cyan recolor. Keep flat grey atlas background. Minimal existing wear, fine intentional hand-painted surface grain, matte silver. Keep silver-white main plate with two long finger armor extensions and blue trim; upper detached black rectangle has precise blue circuits; glove remains black.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-b12b388b-db0e-45d5-a0aa-ca7c5824390c.png",
+      "inspection": "Source/reference/output inspected: silver-white shell, navy/black fabric, cobalt-blue circuit details and narrow indigo visor retained without Viper palette substitution. Flat island positions, existing holes and panel borders checked. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "cc9cda1e9e69a1be66e7d60b5116dbd1199f0b0bd8e5697cfb7efcb28d6ac76c",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "19d2e2aa005ab811d81af910d2b2563e405fb24b0fb510727d4813ffbb501300",
+      "style_reference_sha256": "8daf8b0b5fe5400b8a9cdcfca6ad520ee654e62784ae22fb334922a9bdc0cb52",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_08",
+      "name": "Pegasus",
+      "part": "head",
+      "source": "res://assets/models/player/animated/armor_textures/09_head_7f3e9b9b23ec_2x.png",
+      "output": "res://assets/equipment_refined/textures/a5429f0c7b50.png",
+      "style_reference": "res://assets/armors/viper/textures/head.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Pegasus head atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Pegasus palette: SILVER-WHITE painted armor with black/deep navy undersuit and thin cobalt-blue circuit lines. Do not copy Viper blue armor; preserve original silver-white brightness, no amber or cyan recolor. Keep flat grey atlas background. Minimal existing wear, fine intentional hand-painted surface grain, matte silver. Preserve narrow DARK INDIGO visor exactly; large silver shell, thin blue geometric trim, existing small blue rectangle vent accents, dark side panel circuit tracery.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-24116542-88b2-4673-956a-1ac4822cce0f.png",
+      "inspection": "Source/reference/output inspected: silver-white shell, navy/black fabric, cobalt-blue circuit details and narrow indigo visor retained without Viper palette substitution. Flat island positions, existing holes and panel borders checked. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "e33dd98ad13f66a6811d8798d18d1e861790f5e734be473c19c30aeed1c7d6f1",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "69eed4b716b846ba0042b5e334006872a8368400acbe6a9e40c68201b276b0ed",
+      "style_reference_sha256": "d72e781353001b23f389cd29256000a22ccebdeadbb0ddca995e27830a773c6f",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_08",
+      "name": "Pegasus",
+      "part": "shoulder",
+      "source": "res://assets/models/player/animated/armor_textures/09_jian_3d289fdf8273_2x.png",
+      "output": "res://assets/equipment_refined/textures/b7e6b31639fc.png",
+      "style_reference": "res://assets/armors/viper/textures/shoulder.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Pegasus shoulder atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Pegasus palette: SILVER-WHITE painted armor with black/deep navy undersuit and thin cobalt-blue circuit lines. Do not copy Viper blue armor; preserve original silver-white brightness, no amber or cyan recolor. Keep flat grey atlas background. Minimal existing wear, fine intentional hand-painted surface grain, matte silver. Keep asymmetric silver main shoulder island at left/lower area, two original dark upper polygons, tiny navy cap and small blue inset. Right half background mostly empty; do not enlarge or center islands.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-61f170b4-5eae-47f3-b3a7-84e546d146e4.png",
+      "inspection": "Source/reference/output inspected: silver-white shell, navy/black fabric, cobalt-blue circuit details and narrow indigo visor retained without Viper palette substitution. Flat island positions, existing holes and panel borders checked. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "67b3255301b1807cd4ee91f80e9de245e54d322c8e081722b5ce94bc81bd399f",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "c8b05308d3db988c7ef519a73c846ff5661e08207fb8af944aa8b3e4fa74980d",
+      "style_reference_sha256": "e9239a999a1c839b8c40fc66bfa44e1b1671cbac7d52e4cc876f03cbae1d83eb",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_09",
+      "name": "Draco",
+      "part": "body",
+      "source": "res://assets/models/player/animated/armor_textures/10_body_3ae3c84f3d48_2x.png",
+      "output": "res://assets/equipment_refined/textures/5ca3cf9fa974.png",
+      "style_reference": "res://assets/armors/viper/textures/body.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Draco body atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Draco is deliberately DARK GRAPHITE/CHARCOAL GREY armor, silver-grey restrained thin highlights, black undersuit. Preserve monochrome dark graphite color and original dark value; do NOT recolor blue/purple, do not brighten grey to white/silver armor, add no lights or glowing visor. Material distinction is dark matte metal plates versus soft ribbed/herringbone fabric. Use Viper craftsmanship only, NEVER its palette. Preserve dark grey background. Keep three stacked abdominal ribs and segmented chest plates, grey upper-back plate and existing small slit vents; black ribbed fabric stays dark.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-8cd59808-fa69-40ec-992f-153ef2388450.png",
+      "inspection": "Source/reference/output inspected: dark graphite plates remain monochrome, no colored lights or silver-white recolor. Existing slit vents, abdominal ribs, black herringbone cloth and original UV islands retained with finer edge definition and grain. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "5513419ca8787be368031fd7cd7a01a747ad68c6126fe4f23d1f9f9519f4f398",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "a81457a17e5390df377f3799eba76e2a0a76db7a30b1b1b72d87cf09ee10a31a",
+      "style_reference_sha256": "16b0d02bda5f02be11600bc648371010b750fec98ba595951de2b49c1a231e7c",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_09",
+      "name": "Draco",
+      "part": "legs",
+      "source": "res://assets/models/player/animated/armor_textures/10_foot_5b3d23be8b3b_2x.png",
+      "output": "res://assets/equipment_refined/textures/ea42d0b7ad24.png",
+      "style_reference": "res://assets/armors/viper/textures/legs.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Draco legs atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Draco is deliberately DARK GRAPHITE/CHARCOAL GREY armor, silver-grey restrained thin highlights, black undersuit. Preserve monochrome dark graphite color and original dark value; do NOT recolor blue/purple, do not brighten grey to white/silver armor, add no lights or glowing visor. Material distinction is dark matte metal plates versus soft ribbed/herringbone fabric. Use Viper craftsmanship only, NEVER its palette. Preserve dark grey background. Keep grey toe/knee plates, dark soles, ribbed black side insets, original three slit vents on lower-left plate.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-02e80852-5466-4636-bae7-44ed6e94d1e4.png",
+      "inspection": "Source/reference/output inspected: dark graphite plates remain monochrome, no colored lights or silver-white recolor. Existing slit vents, abdominal ribs, black herringbone cloth and original UV islands retained with finer edge definition and grain. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "d2be9c068d81b80e16cadcb4d18fe9413cf7eb15d71c24ef6550680ee6730017",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "2737cd3b6b16dc6a84a7ff5d5d4c7eddd6e0d37ebb008c9c3c79f29c3ec5bb69",
+      "style_reference_sha256": "562fd2974295e73b0917e25ba1301d00078ef9c2d6bc998257e764c89b9192c6",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_09",
+      "name": "Draco",
+      "part": "arms",
+      "source": "res://assets/models/player/animated/armor_textures/10_hand_81a30970e8c5_2x.png",
+      "output": "res://assets/equipment_refined/textures/7c12265b4a47.png",
+      "style_reference": "res://assets/armors/viper/textures/arms.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Draco arms atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Draco is deliberately DARK GRAPHITE/CHARCOAL GREY armor, silver-grey restrained thin highlights, black undersuit. Preserve monochrome dark graphite color and original dark value; do NOT recolor blue/purple, do not brighten grey to white/silver armor, add no lights or glowing visor. Material distinction is dark matte metal plates versus soft ribbed/herringbone fabric. Use Viper craftsmanship only, NEVER its palette. Preserve dark grey background. Keep existing broad angular grey forearm plate, U-shaped knuckle trim, black glove and top herringbone strip; separated upper-right grey polygon remains same.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-8ca5ad12-0227-4b43-be6e-44d370f8274b.png",
+      "inspection": "Source/reference/output inspected: dark graphite plates remain monochrome, no colored lights or silver-white recolor. Existing slit vents, abdominal ribs, black herringbone cloth and original UV islands retained with finer edge definition and grain. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "25990832dc77a26db641e497a8b049801b5b776fe6cce90182cb65259c3cfcb2",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "a50c185be59c356f0195c78f73438d37718ff3eb87f7dac4776ca2c77cbe3f59",
+      "style_reference_sha256": "8daf8b0b5fe5400b8a9cdcfca6ad520ee654e62784ae22fb334922a9bdc0cb52",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_09",
+      "name": "Draco",
+      "part": "head",
+      "source": "res://assets/models/player/animated/armor_textures/10_head_e0f50e924883_2x.png",
+      "output": "res://assets/equipment_refined/textures/e09934561080.png",
+      "style_reference": "res://assets/armors/viper/textures/head.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Draco head atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Draco is deliberately DARK GRAPHITE/CHARCOAL GREY armor, silver-grey restrained thin highlights, black undersuit. Preserve monochrome dark graphite color and original dark value; do NOT recolor blue/purple, do not brighten grey to white/silver armor, add no lights or glowing visor. Material distinction is dark matte metal plates versus soft ribbed/herringbone fabric. Use Viper craftsmanship only, NEVER its palette. Preserve dark grey background. Keep VERY NARROW black visor slit with no color/glow, all graphite cheek/dome/chin plates and existing small vent slots; no new features.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-eb3f7f61-e345-4970-9908-41f859710864.png",
+      "inspection": "Source/reference/output inspected: dark graphite plates remain monochrome, no colored lights or silver-white recolor. Existing slit vents, abdominal ribs, black herringbone cloth and original UV islands retained with finer edge definition and grain. Runtime wrap review handled by root. Black narrow helmet slit remains black; separate shoulder islands retained.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "5a6fad63f0b894155e4c1c4b31ad99a3b2689e6dd280daa7b74c384a81c7de60",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "4f73ec7d46d23acde499ebe2aeef8c58fc85151fb2fe8724254065cc62be7eb4",
+      "style_reference_sha256": "d72e781353001b23f389cd29256000a22ccebdeadbb0ddca995e27830a773c6f",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_09",
+      "name": "Draco",
+      "part": "shoulder",
+      "source": "res://assets/models/player/animated/armor_textures/10_jian_65bd618d01a0_2x.png",
+      "output": "res://assets/equipment_refined/textures/9638bb9b5656.png",
+      "style_reference": "res://assets/armors/viper/textures/shoulder.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Draco shoulder atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Draco is deliberately DARK GRAPHITE/CHARCOAL GREY armor, silver-grey restrained thin highlights, black undersuit. Preserve monochrome dark graphite color and original dark value; do NOT recolor blue/purple, do not brighten grey to white/silver armor, add no lights or glowing visor. Material distinction is dark matte metal plates versus soft ribbed/herringbone fabric. Use Viper craftsmanship only, NEVER its palette. Preserve dark grey background. Keep split lower islands: left angular shoulder shield with two slit vents and right simple folded grey band, plus original three small top backing polygons.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-6e2f0f62-624c-4b5f-bf04-d21dd93ee38f.png",
+      "inspection": "Source/reference/output inspected: dark graphite plates remain monochrome, no colored lights or silver-white recolor. Existing slit vents, abdominal ribs, black herringbone cloth and original UV islands retained with finer edge definition and grain. Runtime wrap review handled by root. Black narrow helmet slit remains black; separate shoulder islands retained.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "b4fc17b4a49382c708b0c37408af8bbe43465b0716ab225bf80885fdd1be95bb",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "99aed47e437726fda65be3be1da01b75bc5a975137a1f5298e07230465535d71",
+      "style_reference_sha256": "e9239a999a1c839b8c40fc66bfa44e1b1671cbac7d52e4cc876f03cbae1d83eb",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_10",
+      "name": "Phoenix",
+      "part": "body",
+      "source": "res://assets/models/player/animated/armor_textures/11_body_a85e7d5e28a8_2x.png",
+      "output": "res://assets/equipment_refined/textures/37a0f053aec6.png",
+      "style_reference": "res://assets/armors/viper/textures/body.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Phoenix body atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Phoenix palette: muted dark violet-grey/graphite metal with black ribbed/herringbone textile and original thin blue-cyan circuitry. Preserve exact original dark value balance; no Viper blue recolor or new purple visor. Existing blue-cyan luminous patches stay confined to original locations. Keep muted grey-violet background and every asymmetrical island. Keep dark violet-grey chest panels, original blue branched circuit lines and ribbed black textile, unchanged existing plate edges. No additional rivets or plates.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-c9887932-bc86-438d-a9dc-40fda0012e24.png",
+      "inspection": "Compared source/reference/output: original dark grey-violet panels, thin blue circuitry and black ribbed textile preserved with precise edge work. No Viper palette transfer or extra features. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "921ea7b55bd0e0e865479e0cc70de77322eba10883184f69b18eed1c4dd2ba51",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "b59e7bc9a372c23b3baff00700bd76240b723ee384276dc6199800786767e687",
+      "style_reference_sha256": "16b0d02bda5f02be11600bc648371010b750fec98ba595951de2b49c1a231e7c",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_10",
+      "name": "Phoenix",
+      "part": "legs",
+      "source": "res://assets/models/player/animated/armor_textures/11_foot_6852f656af02_2x.png",
+      "output": "res://assets/equipment_refined/textures/08879dd1e04a.png",
+      "style_reference": "res://assets/armors/viper/textures/legs.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Phoenix legs atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Phoenix palette: muted dark violet-grey/graphite metal with black ribbed/herringbone textile and original thin blue-cyan circuitry. Preserve exact original dark value balance; no Viper blue recolor or new purple visor. Existing blue-cyan luminous patches stay confined to original locations. Keep muted grey-violet background and every asymmetrical island. Keep thin blue tracery, dark angular leg plates, isolated textured upper-left sole and central black polygon, and small dark red/cyan inset on upper-left strip.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-6aa5888e-c3ae-4b89-9560-448039f4f9f5.png",
+      "inspection": "Compared source/reference/output: original dark grey-violet panels, thin blue circuitry and black ribbed textile preserved with precise edge work. No Viper palette transfer or extra features. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "0b35fae05e40c3ba99a7be8d5e790fefb93df828e8330b8faa85fa6656c4c6b5",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "e6c56297442104e576fe84cb4d384cb8394a82203443885f36c990de577ed7b0",
+      "style_reference_sha256": "562fd2974295e73b0917e25ba1301d00078ef9c2d6bc998257e764c89b9192c6",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_10",
+      "name": "Phoenix",
+      "part": "arms",
+      "source": "res://assets/models/player/animated/armor_textures/11_hand_c31f0ebfc6d3_2x.png",
+      "output": "res://assets/equipment_refined/textures/1af616b7a660.png",
+      "style_reference": "res://assets/armors/viper/textures/arms.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Phoenix arms atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Phoenix palette: muted dark violet-grey/graphite metal with black ribbed/herringbone textile and original thin blue-cyan circuitry. Preserve exact original dark value balance; no Viper blue recolor or new purple visor. Existing blue-cyan luminous patches stay confined to original locations. Keep muted grey-violet background and every asymmetrical island. Preserve the unusual layout: large black herringbone wrap with blue circuits and central cutout, top-left small dark plate, right long dark-violet piece with dark red recessed strip. Do not invent blue armor over cloth.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-17736c12-fd10-4d76-84b7-f59f6f20050d.png",
+      "inspection": "Source/reference/output inspected: dark violet-grey original islands retained, black textile with blue circuitry, localized cyan marks, and arm dark-red inset unchanged. Crisp thin metal borders and finer original cloth/metal separation. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "bdf3d44bc5057dde81228cba9e53c6a4f6e15a464a10066e903ba36ef4ff3bcb",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "68a2b618e86c3f728cb7e540e48bb3916eea47c2d8f436fe2eb4e18b87814f89",
+      "style_reference_sha256": "8daf8b0b5fe5400b8a9cdcfca6ad520ee654e62784ae22fb334922a9bdc0cb52",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_10",
+      "name": "Phoenix",
+      "part": "head",
+      "source": "res://assets/models/player/animated/armor_textures/11_head_b52a3c95a113_2x.png",
+      "output": "res://assets/equipment_refined/textures/a9e2d4fb952b.png",
+      "style_reference": "res://assets/armors/viper/textures/head.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Phoenix head atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Phoenix palette: muted dark violet-grey/graphite metal with black ribbed/herringbone textile and original thin blue-cyan circuitry. Preserve exact original dark value balance; no Viper blue recolor or new purple visor. Existing blue-cyan luminous patches stay confined to original locations. Keep muted grey-violet background and every asymmetrical island. Keep angular visor-like cyan zigzag accents exactly where shown, charcoal/violet-grey shell, central polygon, upper-left black rectangle, upper-right circuitry triangle, lower-right round cap. No purple glass visor, no new lights.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-5ad6b049-f3dc-4cac-be28-95ddd84505d0.png",
+      "inspection": "Source/reference/output inspected: dark violet-grey original islands retained, black textile with blue circuitry, localized cyan marks, and arm dark-red inset unchanged. Crisp thin metal borders and finer original cloth/metal separation. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "db5ff22ea68367a50a9e3d671035c0abacc77b7a597e19ca173f28c76a49f8e1",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "af583b305e915387296b295fd6fddf680e50e501989493b2d7d3feddafc3d678",
+      "style_reference_sha256": "d72e781353001b23f389cd29256000a22ccebdeadbb0ddca995e27830a773c6f",
+      "copied_byte_identical": true
+    },
+    {
+      "owner": "armor_10",
+      "name": "Phoenix",
+      "part": "shoulder",
+      "source": "res://assets/models/player/animated/armor_textures/11_jian_f0978280b0ba_2x.png",
+      "output": "res://assets/equipment_refined/textures/5db9841c0dae.png",
+      "style_reference": "res://assets/armors/viper/textures/shoulder.png",
+      "tool": "built-in image_gen",
+      "status": "approved",
+      "prompt": "Use case: precise-object-edit. Asset type: production high-definition hand-painted game UV albedo atlas. Repaint INPUT 1, the original Phoenix shoulder atlas, using INPUT 2 (Viper) ONLY as a craftsmanship and clarity reference. Match Viper's crisp thin edge highlights, precise dark seams, smooth intentional painted gradients, restrained fine painted metal grain, and clear cloth/metal separation. This must be a visibly detailed HD repaint, not enlarged blur. Keep INPUT 1's EXACT UV island positions, contours, holes, internal panel shapes and color block boundaries at the same normalized coordinates. Match the original palette and luminosity; do not copy Viper's blue palette, purple visor, layout or damage. Restore existing worn edges delicately, no new panels, rivets, lights, labels or decorations. Preserve the original hand-painted sci-fi style with matte painted metal, cloth and controlled visor reflections. No photorealistic PBR, plastic CGI, render or perspective. Output ONLY a complete square flat UV atlas edge-to-edge, no margin, legend or text. Highest native available resolution, at least 1254x1254. Phoenix palette: muted dark violet-grey/graphite metal with black ribbed/herringbone textile and original thin blue-cyan circuitry. Preserve exact original dark value balance; no Viper blue recolor or new purple visor. Existing blue-cyan luminous patches stay confined to original locations. Keep muted grey-violet background and every asymmetrical island. Keep all separated shoulder pieces: upper dark polygon, small inverted triangular patch, middle-left pointed grey plate with cyan rectangular light, lower broad shoulder panel with black central inset and narrow cyan bar/circuits.",
+      "generated": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b953-302e-7d00-8765-469a52595212\\exec-60e44eda-7a00-4d3b-8302-2944c207a01d.png",
+      "inspection": "Source/reference/output inspected: dark violet-grey original islands retained, black textile with blue circuitry, localized cyan marks, and arm dark-red inset unchanged. Crisp thin metal borders and finer original cloth/metal separation. Runtime wrap review handled by root.",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "sha256": "90f24ba3132a43cd1e4e7f815918477cb6b2dbc9fe8061052f2f3e7b6a01a6b5",
+      "source_size": [
+        512,
+        512
+      ],
+      "source_sha256": "de1f0d9c334a0205a1de672c3017e0a4118feb6d9505fb880bba9ffe69201bf8",
+      "style_reference_sha256": "e9239a999a1c839b8c40fc66bfa44e1b1671cbac7d52e4cc876f03cbae1d83eb",
+      "copied_byte_identical": true
+    }
+  ]
+}

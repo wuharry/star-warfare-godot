@@ -4,6 +4,7 @@ const Catalog = preload("res://scripts/core/armor_catalog.gd")
 const Visuals = preload("res://scripts/game/armor_visuals.gd")
 const Refined = preload("res://scripts/core/equipment_refinement.gd")
 var failures: Array[String] = []
+var checked_armor_textures: Dictionary = {}
 
 func _ready() -> void:
 	_run.call_deferred()
@@ -108,7 +109,7 @@ func _run() -> void:
 	fixture.cleanup()
 	fixture.queue_free()
 	await get_tree().process_frame
-	print("EQUIPMENT_REFINEMENT_TEST_PASS armor_sets=%d weapon_meshes=%d thunder=dedicated_test" % [checked_armor_sets, checked_models.size()] if failures.is_empty() else "EQUIPMENT_REFINEMENT_TEST_FAIL count=%d" % failures.size())
+	print("EQUIPMENT_REFINEMENT_TEST_PASS armor_sets=%d weapon_meshes=%d armor_textures=%d thunder=dedicated_test" % [checked_armor_sets, checked_models.size(), checked_armor_textures.size()] if failures.is_empty() else "EQUIPMENT_REFINEMENT_TEST_FAIL count=%d" % failures.size())
 	get_tree().quit(0 if failures.is_empty() else 1)
 
 func _posed_bounds(instance: MeshInstance3D, skeleton: Skeleton3D) -> AABB:
@@ -166,3 +167,51 @@ func _validate_material(source: Material, refined: Material, label: String) -> v
 			_check(source.albedo_color.is_equal_approx(tint), "painted material lost original tint " + label)
 		if source.albedo_texture != null:
 			_check(actual != null and actual.resource_path == Refined.texture_path(source.albedo_texture.resource_path), "incorrect refined atlas " + label)
+			if actual != null and label.begins_with("Armor"):
+				_validate_armor_texture(actual)
+
+
+func _validate_armor_texture(texture: Texture2D) -> void:
+	var path := texture.resource_path
+	if checked_armor_textures.has(path):
+		return
+	checked_armor_textures[path] = true
+	var config := ConfigFile.new()
+	if config.load(path + ".import") != OK:
+		_check(false, "missing armor texture import settings " + path)
+		return
+	_check(config.get_value("params", "compress/mode", -1) == 0, "armor texture must remain lossless " + path)
+	_check(not config.get_value("params", "mipmaps/generate", true), "armor texture unexpectedly has mipmaps " + path)
+	_check(config.get_value("params", "detect_3d/compress_to", -1) == 0, "armor texture enables automatic 3D compression " + path)
+	var source := Image.load_from_file(ProjectSettings.globalize_path(path))
+	var runtime := texture.get_image()
+	if source == null or source.is_empty() or runtime == null or runtime.is_empty():
+		_check(false, "cannot inspect actual imported armor pixels " + path)
+		return
+	_check(source.get_width() >= 1254 and source.get_height() >= 1254, "armor atlas below accepted native detail size " + path)
+	_check(source.get_size() == runtime.get_size(), "runtime armor texture size differs from PNG " + path)
+	_check(not runtime.has_mipmaps(), "runtime armor texture contains mip chain " + path)
+	# Godot's alpha-border repair can replace RGB under fully transparent pixels.
+	# Composite both images onto black in memory so that unused transparent atlas
+	# padding does not cause false positives; visible imported paint must still
+	# match the native PNG byte for byte. This catches an outdated .ctex cache.
+	_check(_visible_pixels(source) == _visible_pixels(runtime), "runtime armor texture cache differs from native PNG " + path)
+
+
+func _visible_pixels(image: Image) -> PackedByteArray:
+	var decoded := image.duplicate() as Image
+	if decoded.is_compressed():
+		decoded.decompress()
+	decoded.convert(Image.FORMAT_RGBA8)
+	var data := decoded.get_data()
+	for i in range(3, data.size(), 4):
+		if data[i] < 26:
+			data[i - 3] = 0
+			data[i - 2] = 0
+			data[i - 1] = 0
+			data[i] = 0
+	var cleaned := Image.create_from_data(decoded.get_width(), decoded.get_height(), false, Image.FORMAT_RGBA8, data)
+	var canvas := Image.create(decoded.get_width(), decoded.get_height(), false, Image.FORMAT_RGBA8)
+	canvas.fill(Color.BLACK)
+	canvas.blend_rect(cleaned, Rect2i(Vector2i.ZERO, decoded.get_size()), Vector2i.ZERO)
+	return canvas.get_data()
