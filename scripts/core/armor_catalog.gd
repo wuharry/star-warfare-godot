@@ -2,6 +2,7 @@ class_name ArmorCatalog
 extends RefCounted
 
 const Source = preload("res://scripts/core/recovered_game_data.gd")
+const CoMSource = preload("res://scripts/core/recovered_com_data.gd")
 
 # Recovered from Unity Resources/UI/resDataSets.bytes tables 14, 15 and 73-75.
 # Armor rows: name, authored type, HP, attack%, speed*10, cash%, exp%,
@@ -17,7 +18,7 @@ const SET_NAMES := [
 	"Heavy Battlesuit", "Mark-6 117R", "Recon Suit", "Sanguine Chaos", "Training Suit"
 ]
 
-# Additional appearance sets retain Viper prices/stats; Unity IDs remain stable.
+# CoM's original whole suits retain stable visual IDs in the four-part adapter.
 const CALLOFMINI_FIRST_ID := 21
 const CALLOFMINI_MODELS := [
 	"AssaultArmor", "CombatSuit", "Drillmaster", "HeavyBattlesuit",
@@ -62,6 +63,7 @@ static func build_items() -> Dictionary:
 		var part := 4 if row_index >= 84 else row_index % 4
 		var item_id := row_index - 84 if part == 4 else int(row_index / 4)
 		var skills := _base_skills(row, 2)
+		skills["shield"] = 25.0 if part < 4 else 0.0
 		var special_skill_ids: Array[int] = []
 		for column in range(7, 10):
 			var special_id := int(row[column])
@@ -82,14 +84,27 @@ static func build_items() -> Dictionary:
 		}
 	for index in range(CALLOFMINI_MODELS.size()):
 		var set_id := CALLOFMINI_FIRST_ID + index
+		var source: Dictionary = CoMSource.ARMOR_SETS[str(set_id)]
 		for part in range(4):
 			var key := item_key(part, set_id)
 			var item: Dictionary = result[item_key(part, 0)].duplicate(true)
+			var skills := empty_skills()
+			# The source sells a complete suit. Four mixed parts add back to the
+			# exact original HP/shield; a purchase grants the complete suit once.
+			skills["hp"] = float(source.hp) / 4.0
+			skills["shield"] = float(source.shield) / 4.0
 			item.merge({
 				"key": key, "id": set_id, "visual_id": set_id, "set_id": set_id,
 				"source_row": -1, "default_owned": false,
 				"name": "%s %s" % [SET_NAMES[set_id], ["Head", "Chest", "Hands", "Legs"][part]],
-				"appearance_source": "callofmini"
+				"appearance_source": "callofmini", "source_game": "com",
+				"source_type": int(source.source_type), "source_model": str(source.source_model),
+				"skills": skills, "unlock": 0, "source_unlock_level": int(source.unlock_level),
+				"price": int(source.credits), "mithril": int(source.premium),
+				"currency": "mithril" if int(source.premium) > 0 else "credits",
+				"price_amount": int(source.premium) if int(source.premium) > 0 else int(source.credits),
+				"purchase_whole_set": true, "source_icon": str(source.icon),
+				"source_description": str(source.description), "special_skill_ids": []
 			}, true)
 			result[key] = item
 	return result
@@ -114,7 +129,7 @@ static func gameplay_scene_path(visual_id: int) -> String:
 
 static func empty_skills() -> Dictionary:
 	var skills := {
-		"hp": 0.0, "attack_boost": 0.0, "speed_boost": 0.0,
+		"hp": 0.0, "shield": 0.0, "attack_boost": 0.0, "speed_boost": 0.0,
 		"money_boost": 0.0, "exp_boost": 0.0, "save_energy": 0.0,
 		"recovery_boost": 0.0, "hp_auto_recovery": 0.0,
 		"hp_on_kill": 0.0, "damage_reduce": 0.0, "block_rate": 0.0,

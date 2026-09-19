@@ -91,19 +91,22 @@ func _run() -> void:
 	_check(state.get_rank_id() == 7, "opening the final sector should award only rank 7")
 	state.best_scores["8"] = 1
 	_check(state.get_rank_id() == 8, "completing the final sector did not award rank 8")
-	# Use the real purchase/equip/save flow for each additional set. The copied
-	# starter stats keep these appearance choices out of progression balance.
+	# Recovered CoM suits replace the former copied Viper contract. Buying one
+	# part grants the suit exactly once, while mixed-part equipment stays valid.
 	state.credits = 200000
+	state.mithril = 2000
+	state.experience = 20000000
+	var source_hp := [130.0, 200.0, 150.0, 120.0, 155.0, 150.0, 300.0, 250.0]
 	for set_id in range(21, 29):
 		for part in range(4):
 			var key := ArmorCatalogData.item_key(part, set_id)
-			var starter: Dictionary = state.get_armor_item(ArmorCatalogData.item_key(part, 0))
 			var item: Dictionary = state.get_armor_item(key)
-			_check(item.skills == starter.skills, key + " changed the Viper stat contract")
-			_check(item.price_amount == starter.price_amount, key + " changed the appearance price contract")
+			_check(is_equal_approx(float(item.skills.hp) * 4.0, source_hp[set_id - 21]), key + " lost original whole-suit HP")
 			var credits_before: int = state.credits
-			_check(state.purchase_armor(key) == "purchased", "could not purchase " + key)
-			_check(state.credits == credits_before - int(item.price_amount), "wrong charge for " + key)
+			var premium_before: int = state.mithril
+			_check(state.purchase_armor(key) == ("purchased" if part == 0 else "owned"), "whole-suit ownership missing " + key)
+			_check(state.credits == credits_before - (int(item.price) if part == 0 else 0), "wrong credit charge for " + key)
+			_check(state.mithril == premium_before - (int(item.mithril) if part == 0 else 0), "wrong premium charge for " + key)
 		_check(state.equip_armor_set(set_id), "could not equip additional set %d" % set_id)
 		_check(state.get_equipped_set_id() == set_id, "additional full set was not recognized")
 

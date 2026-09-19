@@ -1,0 +1,12 @@
+extends SceneTree
+
+func _initialize() -> void:
+    _run.call_deferred()
+
+func _run() -> void:
+    var state = root.get_node("GameState")
+    var scene_path = OS.get_cmdline_user_args()[0]
+    state.save_path = "user://source_reconstruction_" + scene_path.get_file().get_basename() + ".json"
+    state.owned_armor = state._default_owned_armor()
+    state.equipped_armor = state._default_armor_equipment()
+    root.add_child(load(scene_path).instantiate())

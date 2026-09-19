@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Conf>
+  <Rewards>
+    <!--
+    <VirtualCurrency id="" type="" icon=""/>
+  id - 奖励id 老卢服务器需要使用 不能重复
+  type - 虚拟货币类型  gold  crystal guild voucher
+  icon - 对应图标名称 不要后缀名
+
+    <Item id ="" type="" icon="" value=""/>
+  id - 奖励id 老卢服务器需要使用 不能重复
+  type - 道具类型  avatar weapon prop
+  value 道具id
+  icon - 对应图标名称 不要后缀名
+  -->
+   <VirtualCurrency id="1" type="guild" icon="HYS"/> 
+    <VirtualCurrency id="2" type="gold" icon="JB"/> 
+	 <VirtualCurrency id="3" type="crystal" icon="SJ"/> 
+   <Item id ="prop32" type="prop" icon="Mightywings" value="32"/>
+  </Rewards>
+</Conf>

@@ -1,0 +1,46 @@
+extends SceneTree
+
+func _initialize() -> void:
+    _run.call_deferred()
+
+func _run() -> void:
+    var pack_path := OS.get_cmdline_user_args()[0]
+    if not ProjectSettings.load_resource_pack(pack_path):
+        push_error("SOURCE_PACK_FAIL could not mount exported pack")
+        quit(1)
+        return
+    var raw := FileAccess.get_file_as_string("res://assets/recovered_sources/catalog.json")
+    var parsed: Variant = JSON.parse_string(raw)
+    if not parsed is Dictionary:
+        push_error("SOURCE_PACK_FAIL missing catalog")
+        quit(1)
+        return
+    var audio_paths := {}
+    for path: String in parsed.audio.values():
+        audio_paths[path] = true
+    for path: String in audio_paths:
+        var stream := load(path) as AudioStream
+        if stream == null or stream.get_length() <= 0.0:
+            push_error("SOURCE_PACK_FAIL audio " + path)
+            quit(1)
+            return
+    var frames_loaded := 0
+    for entry: Dictionary in parsed.ui.values():
+        var texture := load(str(entry.texture)) as Texture2D
+        if texture == null:
+            push_error("SOURCE_PACK_FAIL texture " + str(entry.texture))
+            quit(1)
+            return
+        if entry.has("atlas"):
+            var frames: Variant = JSON.parse_string(FileAccess.get_file_as_string(str(entry.atlas)))
+            if not frames is Dictionary or not frames.has("frames"):
+                push_error("SOURCE_PACK_FAIL atlas JSON " + str(entry.atlas))
+                quit(1)
+                return
+            frames_loaded += 1
+    if not FileAccess.file_exists("res://assets/i18n/strings.json"):
+        push_error("SOURCE_PACK_FAIL missing translations")
+        quit(1)
+        return
+    print("SOURCE_PACK_PASS audio=%d textures=%d atlas_json=%d" % [audio_paths.size(), parsed.ui.size(), frames_loaded])
+    quit(0)

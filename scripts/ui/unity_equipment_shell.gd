@@ -4,6 +4,7 @@ extends Control
 signal closed
 
 const Atlas = preload("res://scripts/ui/original_atlas.gd")
+const SourceAssets = preload("res://scripts/core/recovered_source_assets.gd")
 const PropsCatalogData = preload("res://scripts/core/props_catalog.gd")
 const AdditivePreviewShader = preload("res://scripts/ui/store_additive_preview.gdshader")
 const COMPONENT_DIR := "res://assets/ui/components/"
@@ -794,7 +795,7 @@ func _rebuild_item_row() -> void:
 		else:
 			state_label_card.text = _item_price_token(item)
 			if state == "locked":
-				rank_label.text = tr("RANK %d") % (int(item.get("unlock", 0)) + 1)
+				rank_label.text = (tr("LEVEL %d") % int(item.source_unlock_level)) if str(item.get("source_game", "")) == "com" else tr("RANK %d") % (int(item.get("unlock", 0)) + 1)
 		button.tooltip_text = "%s · %s" % [title.text, state_label_card.text]
 		_style_item_card(button, item_key == selected_item_key, state)
 		button.pressed.connect(_select_item.bind(item_key, true))
@@ -1106,19 +1107,30 @@ func _refresh_armor_details() -> void:
 	var current_item: Dictionary = GameState.ARMOR_ITEMS.get(current_key, item)
 	var skills: Dictionary = item.skills
 	var current_skills: Dictionary = current_item.skills
+	var fractional_parts := bool(item.get("purchase_whole_set", false)) or bool(current_item.get("purchase_whole_set", false))
 	var lines := [
-		_stat_line("HP", float(skills.get("hp", 0.0)), float(current_skills.get("hp", 0.0)), HP_COLOR, false),
+		_stat_line("HP", float(skills.get("hp", 0.0)), float(current_skills.get("hp", 0.0)), HP_COLOR, fractional_parts),
 		_stat_line("POW", float(skills.get("attack_boost", 0.0)) * 100.0, float(current_skills.get("attack_boost", 0.0)) * 100.0, POWER_COLOR, false, false, "%"),
 		_stat_line("SPD", float(skills.get("speed_boost", 0.0)) * 100.0, float(current_skills.get("speed_boost", 0.0)) * 100.0, SPEED_COLOR, false, false, "%"),
 		_stat_line("GOLD", float(skills.get("money_boost", 0.0)) * 100.0, float(current_skills.get("money_boost", 0.0)) * 100.0, GOLD_COLOR, false, false, "%"),
 	]
 	if selected_category == "bag":
 		lines.append(_stat_line("SLOTS", float(item.bag_slots), float(current_item.bag_slots), CYAN, false))
+	if float(skills.get("shield", 0.0)) > 0.0:
+		lines.append(_stat_line("SHIELD", float(skills.shield), float(current_skills.get("shield", 0.0)), CYAN, fractional_parts))
 	stats_text.text = "\n".join(lines)
 	description_text.text = _armor_description(item)
 	_set_price(item)
 	slot_picker.visible = false
 	_configure_action(state)
+	if str(item.get("source_game", "")) == "com":
+		meta_label.text = tr("LEVEL %d") % GameState.get_com_level()
+		meta_label.visible = true
+		if state == "locked":
+			state_label.text = tr("LEVEL %d REQUIRED") % int(item.source_unlock_level)
+			action_button.text = state_label.text
+		elif state == "available" and mode == "store":
+			action_button.text = tr("BUY COMPLETE SET")
 	preview_caption.text = "%s  /  %s" % [tr(str(item.name)), tr(state.to_upper())]
 
 
@@ -1165,7 +1177,10 @@ func _armor_description(item: Dictionary) -> String:
 	var fragments: Array[String] = []
 	var callofmini := str(item.get("appearance_source", "")) == "callofmini"
 	if callofmini:
-		fragments.append(tr("Call of Mini appearance • Viper stats and prices."))
+		fragments.append(tr("One purchase unlocks all four pieces. Each piece contributes 25% of the suit's HP and shield."))
+		var source: Dictionary = GameState.ArmorCatalogData.CoMSource.ARMOR_SETS[str(item.set_id)]
+		fragments.append(tr("Full suit: %s HP / %s SHIELD") % [String.num(float(source.hp), 2), String.num(float(source.shield), 2)])
+		fragments.append(tr("Full set shield: recovers %d%% per second after %s sec without damage.") % [roundi(float(source.shield_recovery_fraction) * 100.0), String.num(float(source.shield_delay), 2)])
 	var set_id := int(item.set_id)
 	var set_exp_boost := 0.0
 	if selected_category != "bag":
@@ -1179,13 +1194,13 @@ func _armor_description(item: Dictionary) -> String:
 		fragments.append(tr("BAG CAPACITY • %d WEAPON SLOTS") % int(item.bag_slots))
 	var exp_boost := float(item.skills.get("exp_boost", 0.0))
 	if not is_zero_approx(exp_boost):
-		fragments.append(tr("EXP BOOST %s • XP SYSTEM NOT RESTORED") % _compact_value(exp_boost))
+		fragments.append(tr("EXP BOOST %s") % _compact_value(exp_boost))
 	if not is_zero_approx(set_exp_boost):
-		fragments.append(tr("SET EXP BOOST %s • XP SYSTEM NOT RESTORED") % _compact_value(set_exp_boost))
+		fragments.append(tr("SET EXP BOOST %s") % _compact_value(set_exp_boost))
 	var advanced: Array[String] = []
 	for skill_key in item.skills:
 		var value := float(item.skills[skill_key])
-		if absf(value) <= 0.0001 or skill_key in ["hp", "attack_boost", "speed_boost", "money_boost", "exp_boost"]:
+		if absf(value) <= 0.0001 or skill_key in ["hp", "shield", "attack_boost", "speed_boost", "money_boost", "exp_boost"]:
 			continue
 		advanced.append("%s %s" % [str(skill_key).replace("_", " ").to_upper(), _compact_value(value)])
 		if advanced.size() >= 3:
@@ -1260,7 +1275,10 @@ func _perform_primary_action() -> void:
 		match result:
 			"purchased":
 				notice_label.text = tr("PURCHASE COMPLETE")
-				AudioDirector.play_ui("money")
+				if _selected_is_com():
+					AudioDirector.play_source_2d("com", "UI_buy")
+				else:
+					AudioDirector.play_ui("money")
 			"rank_locked":
 				notice_label.text = tr("Reach the required rank before purchasing this equipment.")
 			"not_enough_credits":
@@ -1283,7 +1301,10 @@ func _perform_primary_action() -> void:
 		else:
 			equipped = GameState.equip_armor(selected_item_key)
 			if equipped:
-				AudioDirector.play_ui("mount_gear")
+				if _selected_is_com():
+					AudioDirector.play_source_2d("com", "UI_weapon_equip")
+				else:
+					AudioDirector.play_ui("mount_gear")
 		if not equipped:
 			notice_label.text = tr("Unable to equip this item in the selected slot.")
 	_on_store_changed()
@@ -1908,8 +1929,15 @@ func _style_desktop_picker(picker: OptionButton) -> void:
 
 
 func _armor_thumbnail(item: Dictionary) -> Texture2D:
+	if mode == "store" and bool(item.get("purchase_whole_set", false)) and not GameState.is_armor_owned(str(item.key)):
+		var original_icon := SourceAssets.sprite("com", "Equipments", str(item.source_icon))
+		if original_icon != null:
+			return original_icon
 	var path := "%sarmor_%s_%02d.png" % [ARMOR_THUMBNAIL_DIR, str(item.part_key), int(item.visual_id)]
 	return load(path) if ResourceLoader.exists(path) else null
+
+func _selected_is_com() -> bool:
+	return str(GameState.ARMOR_ITEMS.get(selected_item_key, {}).get("source_game", "")) == "com"
 
 
 func _component(component_name: String) -> Texture2D:

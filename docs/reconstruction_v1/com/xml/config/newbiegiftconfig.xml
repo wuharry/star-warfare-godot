@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Conf>
+  <Gifts>
+    <Gift id="1" type="Weapon" value="2">
+      <Requirement type="Level" value="3">Reaching level 3 can obtain</Requirement>
+    </Gift>
+
+    <Gift id="2" type="Weapon" value="3">
+      <Requirement type="Kill" value="15">Killing 15 enemies can obtain </Requirement>
+    </Gift>
+
+    <Gift id="3" type="Weapon" value="7">
+      <Requirement type="Level" value="7">Reaching level 7 can obtain</Requirement>
+    </Gift>
+    <Gift id="4" type="Weapon" value="1001">
+      <Requirement type="LoginTimes" value="15">Login in the game for 15days can obtain</Requirement>
+    </Gift>
+  </Gifts>
+</Conf>

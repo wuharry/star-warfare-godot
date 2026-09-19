@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Conf>
+  <!--
+  "WeaponIds" - 刷出来的武器Id,(1,2)参考武器配置里面的id;
+  "EnemyInterval" - 怪物刷新间隔;
+  "MaxCount" - 怪物最大数量;
+  "PositionType" - 怪物出现的位置类型(1,2,3) (1:近处刷新; 2:中间刷新; 3:远处刷新; 可配合使用)
+  "EnemyType" - 怪物类型(1,2,3,4,5); (5种种类,对应HP不同 及ai表现不同:(5种类型，1:不动; 2:持续移动(慢); 3:持续移动(快); 4:动一下停一下; 5:出现一定时间消失))
+  -->
+  
+  <TrainStages_Easy>
+    <TrainStage WeaponIds="1,2,3,5,8" EnemyInterval="3" MaxCount="6" EnemyType="1" PositionType="1,2" />
+    <TrainStage WeaponIds="1,2,3,5,8" EnemyInterval="2.5" MaxCount="7" EnemyType="1,2" PositionType="1,2,3" />
+    <TrainStage WeaponIds="5,1001,1003" EnemyInterval="2" MaxCount="8" EnemyType="1,3,5" PositionType="2" />
+    <TrainStage WeaponIds="4,6" EnemyInterval="2" MaxCount="8" EnemyType="2,3,5" PositionType="3" />
+    <TrainStage WeaponIds="1,2,3,5,8,1001,1003,1010" EnemyInterval="1.5" MaxCount="10" EnemyType="1,2,3,5" PositionType="1,2,3" />
+    <TrainStage WeaponIds="1,2,3,5,8,1001,1003,1010" EnemyInterval="1.5" MaxCount="10" EnemyType="1,2,3,5" PositionType="1,2,3" />
+  </TrainStages_Easy>
+  
+  <TrainStages_Normal>
+    <TrainStage WeaponIds="1,2,3,5,8" EnemyInterval="2.5" MaxCount="6" EnemyType="1" PositionType="1,2" />
+    <TrainStage WeaponIds="1,2,3,5,8" EnemyInterval="2.5" MaxCount="7" EnemyType="1,2" PositionType="1,2,3" />
+    <TrainStage WeaponIds="5,1001,1003" EnemyInterval="2" MaxCount="8" EnemyType="1,3,5" PositionType="2" />
+    <TrainStage WeaponIds="4,6" EnemyInterval="2" MaxCount="8" EnemyType="2,3,5" PositionType="3" />
+    <TrainStage WeaponIds="1,2,3,5,8,1001,1003,1010" EnemyInterval="1.5" MaxCount="10" EnemyType="1,2,3,5" PositionType="1,2,3" />
+    <TrainStage WeaponIds="1,2,3,5,8,1001,1003,1010" EnemyInterval="1.5" MaxCount="10" EnemyType="1,2,3,5" PositionType="1,2,3" />
+  </TrainStages_Normal>
+  
+  <TrainStages_Hard>
+    <TrainStage WeaponIds="1,2,3,5,8" EnemyInterval="2.5" MaxCount="6" EnemyType="1" PositionType="1,2" />
+    <TrainStage WeaponIds="1,2,3,5,8" EnemyInterval="2.5" MaxCount="7" EnemyType="1,2" PositionType="1,2,3" />
+    <TrainStage WeaponIds="5,1001,1003" EnemyInterval="2" MaxCount="8" EnemyType="1,3,5" PositionType="2" />
+    <TrainStage WeaponIds="4,6" EnemyInterval="2" MaxCount="8" EnemyType="2,3,5" PositionType="3" />
+    <TrainStage WeaponIds="1,2,3,5,8,1001,1003,1010" EnemyInterval="1.5" MaxCount="10" EnemyType="2,3,5" PositionType="1,2,3" />
+    <TrainStage WeaponIds="1,2,3,5,8,1001,1003,1010" EnemyInterval="1.5" MaxCount="10" EnemyType="2,3,5" PositionType="1,2,3" />
+  </TrainStages_Hard>
+  
+  <TrainEnemies_Easy>
+    <TrainEnemy EnemyType="1" HP="120" Score="20" Energy="12"/>
+    <TrainEnemy EnemyType="2" HP="100" Score="30" Energy="14"/>
+    <TrainEnemy EnemyType="3" HP="150" Score="50" Energy="17"/>
+    <TrainEnemy EnemyType="4" HP="500" Score="200" Energy="10"/>
+    <TrainEnemy EnemyType="5" HP="500" Score="200" Energy="30"/>
+  </TrainEnemies_Easy>
+  
+  <TrainEnemies_Normal>
+    <TrainEnemy EnemyType="1" HP="360" Score="40" Energy="10"/>
+    <TrainEnemy EnemyType="2" HP="300" Score="60" Energy="14"/>
+    <TrainEnemy EnemyType="3" HP="450" Score="100" Energy="17"/>
+    <TrainEnemy EnemyType="4" HP="1300" Score="400" Energy="10"/>
+    <TrainEnemy EnemyType="5" HP="1300" Score="400" Energy="30"/>
+  </TrainEnemies_Normal>
+  
+  <TrainEnemies_Hard>
+    <TrainEnemy EnemyType="1" HP="700" Score="80" Energy="8"/>
+    <TrainEnemy EnemyType="2" HP="600" Score="120" Energy="13"/>
+    <TrainEnemy EnemyType="3" HP="800" Score="200" Energy="17"/>
+    <TrainEnemy EnemyType="4" HP="2500" Score="800" Energy="10"/>
+    <TrainEnemy EnemyType="5" HP="2500" Score="800" Energy="30"/>
+  </TrainEnemies_Hard>
+  
+  <!--
+  "TotalTime" - 总时间;
+  "StageTime" - 每一段的时间;
+  "TotalScore" - 一级的总分数(到分数就累加一级);
+  "DecreaseSpeed" - 分数减少速度(几点每秒);
+  -->
+  <TrainEnemyCfg_Easy TotalTime="120" StageTime="20" TotalScore="100" DecreaseSpeed="2,3,5,7,7,7" />
+  <TrainEnemyCfg_Normal TotalTime="120" StageTime="20" TotalScore="100" DecreaseSpeed="2,4,6,7,7,7" />
+  <TrainEnemyCfg_Hard TotalTime="120" StageTime="20" TotalScore="100" DecreaseSpeed="2,4,6,7,7,7" />
+
+</Conf>
