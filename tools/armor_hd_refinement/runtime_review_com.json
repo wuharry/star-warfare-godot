@@ -1,0 +1,329 @@
+{
+  "reviewed_at": "2026-09-19T12:51:32.008747+00:00",
+  "method": "Visual review of actual runtime captures from unchanged player equipment path, full and close front/side/rear, compared with pre-task texture overrides on identical mesh, camera, pose and lighting. This verifies observed views, not all animation frames.",
+  "sets": [
+    {
+      "id": 23,
+      "name": "Drillmaster",
+      "status": "correction_pending_runtime",
+      "observations": [
+        "Slate blue/silver plates, green visor and cyan lights preserved.",
+        "All six full/close views inspected; fabric weave and existing painted panel edges visibly sharper than baseline.",
+        "Camera framing, pose and lighting match baseline; all full views include entire armor."
+      ],
+      "issues": [
+        "Initial capture added a bright center-forehead mirror seam. Localized atlas correction removes border along measured UV mirror edge; fresh runtime verification pending."
+      ],
+      "frames": [
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_23/current_full_front.png",
+          "sha256": "41709a475e5122ca2e8d6bcb13323c4f3835ba2936155dbcc34230eda99c8043",
+          "scale": "full",
+          "angle": "front"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_23/current_full_side.png",
+          "sha256": "5834d030d558339824692212855555e0ddeb334352b8838b63f5725c7b0d3cae",
+          "scale": "full",
+          "angle": "side"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_23/current_full_rear.png",
+          "sha256": "a0d37f5a2d0f18b8ea7b7cd72e8f6103281ba59627fccbc4cfc7d904348ebd0e",
+          "scale": "full",
+          "angle": "rear"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_23/current_close_front.png",
+          "sha256": "7550c551b73741f088511fa5b6b7f13b9b434a64b53b9670bf051d22a4ad407b",
+          "scale": "close",
+          "angle": "front"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_23/current_close_side.png",
+          "sha256": "3d6384242aebfce762400a5c010683f7f6f545f859eafdea646e3cd29fb7319e",
+          "scale": "close",
+          "angle": "side"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_23/current_close_rear.png",
+          "sha256": "1200b8f9e28fe25ffdddbcb38300af2b843347417a808146efec7eec29c88c6b",
+          "scale": "close",
+          "angle": "rear"
+        }
+      ],
+      "baseline_comparisons": [
+        "test_output/armor_hd_refinement/sets/armor_23/baseline_full_front.png",
+        "test_output/armor_hd_refinement/sets/armor_23/baseline_close_front.png"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Heavy Battlesuit",
+      "status": "correction_pending_runtime",
+      "observations": [
+        "Beige/taupe plates, ice-blue visor and antenna silhouette retained.",
+        "Full/close front, side and rear reviewed; sharper cloth and painted plate boundaries visible."
+      ],
+      "issues": [
+        "Initial capture exposed black/red-yellow padding in center helmet slit because atlas bottom coverage contracted. Restored color bleed through mapped bottom UV edge; fresh runtime verification pending."
+      ],
+      "frames": [
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_24/current_full_front.png",
+          "sha256": "91d12b1038b49974ed9b9b3f1e6aabadb04c2927395bd2dc00ad04bc804b88fa",
+          "scale": "full",
+          "angle": "front"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_24/current_full_side.png",
+          "sha256": "bb0e00d65b8673a9bc109dd3fe665fb8d05370ed031b9c1a9322be544566dfed",
+          "scale": "full",
+          "angle": "side"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_24/current_full_rear.png",
+          "sha256": "b6f4b873c944afcb7fdbdfff5b582e48b810bede4b426cdf4633dd9547cae64c",
+          "scale": "full",
+          "angle": "rear"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_24/current_close_front.png",
+          "sha256": "b513599514b3fe2208d3cc5f4929e1e4f42c355eaa8d941c119ba561a4990c6c",
+          "scale": "close",
+          "angle": "front"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_24/current_close_side.png",
+          "sha256": "88bc855662e8abe00d079af8c025b3ea15d2ec1628c9418b680195bb5d10d353",
+          "scale": "close",
+          "angle": "side"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_24/current_close_rear.png",
+          "sha256": "d3ec042d73105598f4463576afbdaa3114df84e2b7b9b1bfe4b9fc7841797589",
+          "scale": "close",
+          "angle": "rear"
+        }
+      ],
+      "baseline_comparisons": [
+        "test_output/armor_hd_refinement/sets/armor_24/baseline_full_front.png",
+        "test_output/armor_hd_refinement/sets/armor_24/baseline_close_front.png"
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Mark-6 117R",
+      "status": "shared_atlas_recheck_pending",
+      "observations": [
+        "Olive green armor, purple helmet stripe and yellow visor retain original design.",
+        "Existing narrow purple center channel is visible in baseline and remains consistent.",
+        "All six views reviewed; fine paint texture and dark undercloth improved without new geometry."
+      ],
+      "issues": [
+        "No direct issue found. Helmet shares atlas with 24; recheck after localized repair to other island."
+      ],
+      "frames": [
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_25/current_full_front.png",
+          "sha256": "5962c3a994d0c7e4f63f4935e0e445582c712425e16706ece679c672b6fdbb7f",
+          "scale": "full",
+          "angle": "front"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_25/current_full_side.png",
+          "sha256": "98171b6eb3c09728024b3195f728879a7bc956cd451c66f7299ac7d09762b418",
+          "scale": "full",
+          "angle": "side"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_25/current_full_rear.png",
+          "sha256": "a68b0bc8b82e3e0d424a1b8d6b7a4594d99f56144055f82843c3534e3f3eabf6",
+          "scale": "full",
+          "angle": "rear"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_25/current_close_front.png",
+          "sha256": "821d03bd03f7702d92e372f418d16f64f0b0bc74500b64c13bcc0151efb9acdc",
+          "scale": "close",
+          "angle": "front"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_25/current_close_side.png",
+          "sha256": "c4428043390dd247bbed0fc785b23756cb214efda665ddca04360fdc7eb34e6a",
+          "scale": "close",
+          "angle": "side"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_25/current_close_rear.png",
+          "sha256": "69e00ff4a6e060a65961592ebafaa510dd95a39f08ce01b5d3f3cb0602319a2a",
+          "scale": "close",
+          "angle": "rear"
+        }
+      ],
+      "baseline_comparisons": [
+        "test_output/armor_hd_refinement/sets/armor_25/baseline_full_front.png"
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Recon Suit",
+      "status": "pass",
+      "observations": [
+        "Orange/brown camouflage and blue visor retain distinct identity.",
+        "Full/close front, side and rear show clearer panel edges, cloth weave and restrained surface texture.",
+        "Previously corrected Assault/Recon shared atlas renders without center highlight artifact here.",
+        "Pose, silhouette and framing match baseline."
+      ],
+      "issues": [],
+      "frames": [
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_26/current_full_front.png",
+          "sha256": "16e4a71c92e444a2870f2eb64588859f172acba28dfbd94084c17001c86d8a7a",
+          "scale": "full",
+          "angle": "front"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_26/current_full_side.png",
+          "sha256": "62cfd9bff486cc21d6d3a5cfce76eadc58795df4f12c4fdb813b7a1bf8da3dce",
+          "scale": "full",
+          "angle": "side"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_26/current_full_rear.png",
+          "sha256": "ec16d7dd2aff5c1bb0b2ae3dfa7958f2158a1fabb6bd1d1606b7564b3c4fc603",
+          "scale": "full",
+          "angle": "rear"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_26/current_close_front.png",
+          "sha256": "1e77b841502dc2855c7557bed2063be22cf50848e062cfc16db064301de6fd4e",
+          "scale": "close",
+          "angle": "front"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_26/current_close_side.png",
+          "sha256": "83d243fc06d7b4a34acfce771969832d05b60f88c0f291e4a76beb404109e3e2",
+          "scale": "close",
+          "angle": "side"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_26/current_close_rear.png",
+          "sha256": "67c073b55920f6a5b98ac9fd72f65a303e4d1a662289ccdad25e677fe9b01a81",
+          "scale": "close",
+          "angle": "rear"
+        }
+      ],
+      "baseline_comparisons": [
+        "test_output/armor_hd_refinement/sets/armor_26/baseline_full_front.png"
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Sanguine Chaos",
+      "status": "correction_pending_runtime",
+      "observations": [
+        "Bronze/charcoal armor, yellow stripes and orange visor retain source palette.",
+        "All six views inspected; clearer existing edges and cloth seams."
+      ],
+      "issues": [
+        "Initial capture widened pure-black crown channel because bottom strip coverage shrank. Extended original slate-blue/charcoal strip through measured UV points; fresh runtime verification pending."
+      ],
+      "frames": [
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_27/current_full_front.png",
+          "sha256": "1fe583329dc6a5336455ed9d274721392bdaeb0e1f761982ccaedf0cbd9cc459",
+          "scale": "full",
+          "angle": "front"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_27/current_full_side.png",
+          "sha256": "221cfc7e38932186068c29783473b222467962e64e38a89baed2a2919662960c",
+          "scale": "full",
+          "angle": "side"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_27/current_full_rear.png",
+          "sha256": "7c57b2e8f4ab0b71220058721fe16f9de1af2b07d7b8e36a7ba851b214f882d8",
+          "scale": "full",
+          "angle": "rear"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_27/current_close_front.png",
+          "sha256": "f4540e59e36769fbeabc5a7e96471331074698c8cffd2403324d9092a4960f5c",
+          "scale": "close",
+          "angle": "front"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_27/current_close_side.png",
+          "sha256": "4a193fea755d97fb1b2a24a03d3c6351df386351c9210d05fe46f447258337f0",
+          "scale": "close",
+          "angle": "side"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_27/current_close_rear.png",
+          "sha256": "bb4e9ca921e561be92ff8cbb98d7b40ecd5d8bf08c4177f18fc7ddb8bb844ff5",
+          "scale": "close",
+          "angle": "rear"
+        }
+      ],
+      "baseline_comparisons": [
+        "test_output/armor_hd_refinement/sets/armor_27/baseline_full_front.png",
+        "test_output/armor_hd_refinement/sets/armor_27/baseline_close_front.png"
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Training Suit",
+      "status": "shared_atlas_recheck_pending",
+      "observations": [
+        "Green plates, silver helmet band, orange visor slit and cyan lights preserved.",
+        "All six full/close views reviewed; upper-left helmet island is well aligned and cloth/paint details are clearer."
+      ],
+      "issues": [
+        "No direct issue found. Helmet shares atlas with 23; recheck after localized repair to other island."
+      ],
+      "frames": [
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_28/current_full_front.png",
+          "sha256": "b5d019d9c6b6f20e4772db366c6cc2444cbd68733204f070e536e592b212c0db",
+          "scale": "full",
+          "angle": "front"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_28/current_full_side.png",
+          "sha256": "a7c9bcb927abc68b8f25a187aa83243fd585f4af66f42c4c5507d7ff4a8ca644",
+          "scale": "full",
+          "angle": "side"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_28/current_full_rear.png",
+          "sha256": "0ac8dba80b93c06fc5b881d5f2fb403a3fc6967f474201631125ade329c16dc1",
+          "scale": "full",
+          "angle": "rear"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_28/current_close_front.png",
+          "sha256": "e26ffa5122cd7d2277f3a1a73c4363f5b04fbbe4a3337bb17c07f84ac5f028fe",
+          "scale": "close",
+          "angle": "front"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_28/current_close_side.png",
+          "sha256": "4036d6ff258b7ea82709cfdbfbb6b70dff4856c94d6b3b3ff1091d553fdf27c8",
+          "scale": "close",
+          "angle": "side"
+        },
+        {
+          "file": "test_output/armor_hd_refinement/sets/armor_28/current_close_rear.png",
+          "sha256": "def923d20c20ef9cc788486752ec9ede7d797bab255a8fc60564c7f96e7b3a43",
+          "scale": "close",
+          "angle": "rear"
+        }
+      ],
+      "baseline_comparisons": [
+        "test_output/armor_hd_refinement/sets/armor_28/baseline_full_front.png"
+      ]
+    }
+  ]
+}

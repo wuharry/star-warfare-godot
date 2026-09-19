@@ -1,0 +1,493 @@
+[
+  {
+    "key": "23_armor",
+    "source": "res://assets/callOfMini/enhanced/Drillmaster/armor.png",
+    "style_reference": "res://assets/armors/viper/textures/body.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-d4770f8a-3471-40fd-a995-128a6a7b8477.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Drillmaster underlying BODY/CLOTH atlas. Source is very dark black and charcoal fabric with exact gray U-shaped chest trim at lower right. Preserve that dark palette and cloth softness, recover subtle readable weave and seams without inventing armored plates or increasing overall brightness. All existing islands remain at exactly their source UV coordinates.",
+    "tool": "built-in image_gen",
+    "visual_review": "Dark cloth palette and U-shaped trim preserved; recovered seams and subtle weave retain source layout.",
+    "status": "atlas_reviewed_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/48b80808b3d2.png",
+    "owners": [
+      "armor_23"
+    ],
+    "output_sha256": "f04b1508e3448e61376511a82468f82845f1a1433d30cd46dc88bbccacce8538",
+    "source_sha256": "87adade4bd6e3197303f0c429d2e11a6cadf7a400e6f8bb950813fa5e979e4ba",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "alpha_note": "Generated atlas has transparent unused black background; runtime albedo consumes RGB with opaque material, no cutout. No pixel conversion performed."
+  },
+  {
+    "key": "23_equip",
+    "source": "res://assets/callOfMini/enhanced/Drillmaster/equip.png",
+    "style_reference": "res://assets/armors/viper/textures/body.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-7bcb7c6b-fbad-4a5c-82d7-35448f5de071.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Drillmaster EQUIPMENT atlas. Preserve slate blue-gray and dark graphite plates and both turquoise round lights, exact placement, original geometric seams and tiny existing scratches. Sharpen thin painted edges and plate depth, no added design or glowing outline.",
+    "tool": "built-in image_gen",
+    "visual_review": "Slate equipment islands, paired cyan round lights and existing panel boundaries retained; edge highlights and metal surfaces visibly clearer.",
+    "status": "atlas_reviewed_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/438e24f3b96b.png",
+    "owners": [
+      "armor_23"
+    ],
+    "output_sha256": "be5ac2724c781162c49045f162f299cca5465469a95f71ae54835bbc4f64da2b",
+    "source_sha256": "3abc96709d489e27c5a9f9a0966e0403523dc0e07190e1a7b635f0eddc725aeb",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "alpha_note": "Generated atlas has transparent unused black background; runtime albedo consumes RGB with opaque material, no cutout. No pixel conversion performed."
+  },
+  {
+    "key": "23_helmet",
+    "source": "res://assets/callOfMini/enhanced/Drillmaster/helmet.png",
+    "style_reference": "res://assets/armors/viper/textures/head.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-d1b8daaa-e578-459d-b981-34c44b245b3d.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Drillmaster HELMET atlas. Preserve olive-green top panels, steel gray lower jaw plates, orange diagonal visor island in upper left, cyan small lights at left and bottom. Keep their exact colors and all UV shapes, slot spacing and black gaps. Draw clear controlled edge highlights and intentional fine surfaces without recoloring to Viper.",
+    "tool": "built-in image_gen",
+    "visual_review": "Green/silver/slate helmet regions, orange upper-left visor and cyan light placements retained; source island layout checked. Corrected UV mirror boundary using measured mesh UV coordinates; atlas reviewed, corrected runtime recheck pending.",
+    "status": "atlas_corrected_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/fce740b7bd77.png",
+    "owners": [
+      "armor_23"
+    ],
+    "output_sha256": "50eafd093e93fa1911d2cb53145e51c33e97835affa4c4a2b5ead1eaba0a6376",
+    "source_sha256": "95842bdfbfe5e508f1adc80b1817a38c9dcd16cae7bdbac0a1b3b0c7d7a60460",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "alpha_note": "Corrected native image is opaque RGB; unused atlas background is black; no pixel conversion performed.",
+    "previous_generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-8d724512-4ef9-4f6a-887c-a99d53491991.png",
+    "previous_output_sha256": "ca9270bbe0f3ffdd269610077453a37a03a6db0cf4af429ac95c3fef1ddbf88f",
+    "correction_prompt": "Use case: precise-object-edit. Edit ONLY the first flat production UV albedo texture atlas. The second image is the original atlas and establishes exact normalized coverage; the third current in-game render shows the defect and the fourth baseline render shows the desired clean helmet geometry. Output only a corrected square flat texture atlas, same 1254x1254 resolution, positions, palette, details and UV layout as input 1, never output a character render. Preserve all previously refined painted material detail except the precise repair. Opaque RGB PNG with solid black unused padding; do not create transparency or colored fringe pixels. All other islands must remain exactly fixed. Repair only the LARGE SLATE BLUE HELMET SHELL ISLAND AT BOTTOM LEFT (roughly x=0.00..0.50,y=0.71..1.00, with one small cyan light). Its lower outer contour is NOT a visible plate border: this is the UV MIRROR SEAM across the smooth central forehead and crown. Remove the thin bright silver outline and black notch along this lower contour; continue the adjacent blue painted fill smoothly right through this contour with a little bleed outside. Measured UV seam points on the unchanged model are (0.016,0.882),(0.092,0.945),(0.211,0.986),(0.318,0.984),(0.433,0.963),(0.491,0.943). These exact points must lie within continuous matching slate-blue paint (or existing charcoal brow where appropriate), without white hairline or dark edging. Preserve the sharp H-shaped brow cutout, cyan light, upper edges and all other island outlines; do NOT add a center seam. The green/silver helmet at upper left is a different armor and must be completely unchanged.",
+    "correction_reference": "assets/callOfMini/enhanced/Drillmaster/helmet.png"
+  },
+  {
+    "key": "24_armor",
+    "source": "res://assets/callOfMini/enhanced/Heavy Battlesuit/armor.png",
+    "style_reference": "res://assets/armors/viper/textures/body.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-d4770f8a-3471-40fd-a995-128a6a7b8477.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Drillmaster underlying BODY/CLOTH atlas. Source is very dark black and charcoal fabric with exact gray U-shaped chest trim at lower right. Preserve that dark palette and cloth softness, recover subtle readable weave and seams without inventing armored plates or increasing overall brightness. All existing islands remain at exactly their source UV coordinates.",
+    "tool": "built-in image_gen",
+    "visual_review": "Dark cloth palette and U-shaped trim preserved; recovered seams and subtle weave retain source layout.",
+    "status": "atlas_reviewed_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/c7715af76e7a.png",
+    "owners": [
+      "armor_24"
+    ],
+    "output_sha256": "f04b1508e3448e61376511a82468f82845f1a1433d30cd46dc88bbccacce8538",
+    "source_sha256": "87adade4bd6e3197303f0c429d2e11a6cadf7a400e6f8bb950813fa5e979e4ba",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "reused_from_source": "res://assets/callOfMini/enhanced/Drillmaster/armor.png",
+    "reuse_reason": "Original source bytes are identical; shared accepted cloth detail preserves consistency.",
+    "alpha_note": "Generated atlas has transparent unused black background; runtime albedo consumes RGB with opaque material, no cutout. No pixel conversion performed."
+  },
+  {
+    "key": "24_equip",
+    "source": "res://assets/callOfMini/enhanced/Heavy Battlesuit/equip.png",
+    "style_reference": "res://assets/armors/viper/textures/body.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-0e16c864-0b1f-45ee-8da7-2c1c172429ab.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Heavy Battlesuit EQUIPMENT atlas. Retain exact muted olive-gray armor and near-black brown segments, two bright blue small rectangular lights in the right center, existing thin pale edge rims and UV boundaries. Improve sharp edges and restrained paint material without turning gray armor blue or adding weathering.",
+    "tool": "built-in image_gen",
+    "visual_review": "Olive-gray armor tone, two blue square lights and original plate islands retained; clean thin edges and restrained surfaces checked.",
+    "status": "atlas_reviewed_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/b8a17c36a791.png",
+    "owners": [
+      "armor_24"
+    ],
+    "output_sha256": "2eee8384fab53c2b1cf2316a293d07d8575fb5dabe8f8a2758c7afa74e0bb3d8",
+    "source_sha256": "38107b20b365b1ecfb064ad4eb230aec341fc90bc5fa0d9bd73503e927ea9f87",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "alpha_note": "Generated atlas has transparent unused black background; runtime albedo consumes RGB with opaque material, no cutout. No pixel conversion performed."
+  },
+  {
+    "key": "24_helmet",
+    "source": "res://assets/callOfMini/enhanced/Heavy Battlesuit/helmet.png",
+    "style_reference": "res://assets/armors/viper/textures/head.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-4640fe0b-5b93-4cff-a31f-38b6b9301a6e.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Heavy Battlesuit HELMET atlas. This sheet intentionally contains several helmet fragments: upper green helmet with purple visor bands, top-right detached yellow-gold visor, middle-right detached pale blue visor, bottom olive-gray helmet and gray jaw frames. Keep all these differing colors and all silhouettes exactly in place; no rearrangement and no unifying colors. Refine existing contours, amber mini lamps, blue mini lamps and metal surfaces.",
+    "tool": "built-in image_gen",
+    "visual_review": "Multi-helmet atlas retains all green/purple, gold, pale blue and olive-gray regions at original positions; crisper seams checked. Corrected UV mirror boundary using measured mesh UV coordinates; atlas reviewed, corrected runtime recheck pending.",
+    "status": "atlas_corrected_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/5729f3514182.png",
+    "owners": [
+      "armor_24"
+    ],
+    "output_sha256": "bd4e945aab467e4510f6e772039d7abb4ae56cdadf3633128fe03bf10f220f17",
+    "source_sha256": "dbea6d62b3c095c628ee5d11c44b16782024195fef1f8f8b6000e1d770bfa7d2",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "alpha_note": "Corrected native image is opaque RGB; unused atlas background is black; no pixel conversion performed.",
+    "previous_generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-d529ded4-d905-404d-ad36-650ae0c3252c.png",
+    "previous_output_sha256": "fb53e0045e1e2fd189ae21450ec58c27462b9dbff5b11a8d21fcbb0e4f1f3a34",
+    "correction_prompt": "Precise localized edit of ONLY INPUT1, this square production helmet UV albedo texture atlas. Leave every detail above the bottom 80 pixel rows unchanged. Output the same full flat atlas, 1254x1254, opaque RGB with no transparency. CRITICAL REQUIRED CHANGE: REMOVE THE BLACK EMPTY BOTTOM MARGIN. The two beige/taupe helmet islands at the bottom must extend ALL THE WAY OFF THE BOTTOM EDGE OF THE IMAGE, cut off by the frame, with ZERO black margin beneath them. Continue the nearest beige/taupe or charcoal panel colors downward through the very last row (row1253) across the entire image width, including bottom-left, middle and bottom-right. Specifically every pixel around row1235 at x640..1240 must be beige/taupe continuation (not black); row1235 at x80..625 must also continue the corresponding bottom-left taupe/charcoal island. Do not draw a new white border along the bottom; this part wraps into a mirror seam and should be continuous material. Think texture UV bleed: extrapolate existing painted colors straight downward to the canvas boundary, not new geometry, not extra motifs. The original atlas in input2 shows coverage but input1's upper fine details are final. Keep the exact purple/green helmet, both visors, upper beige helmet details, their normalized coordinates and their existing HD rendering unchanged. Pure texture atlas output only; absolutely no surrounding margin/frame/background at its BOTTOM edge.",
+    "correction_reference": "assets/callOfMini/enhanced/Heavy Battlesuit/helmet.png"
+  },
+  {
+    "key": "25_armor",
+    "source": "res://assets/callOfMini/enhanced/Mark-6 117R/armor.png",
+    "style_reference": "res://assets/armors/viper/textures/body.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-d4770f8a-3471-40fd-a995-128a6a7b8477.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Drillmaster underlying BODY/CLOTH atlas. Source is very dark black and charcoal fabric with exact gray U-shaped chest trim at lower right. Preserve that dark palette and cloth softness, recover subtle readable weave and seams without inventing armored plates or increasing overall brightness. All existing islands remain at exactly their source UV coordinates.",
+    "tool": "built-in image_gen",
+    "visual_review": "Dark cloth palette and U-shaped trim preserved; recovered seams and subtle weave retain source layout.",
+    "status": "atlas_reviewed_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/09914f050dbd.png",
+    "owners": [
+      "armor_25"
+    ],
+    "output_sha256": "f04b1508e3448e61376511a82468f82845f1a1433d30cd46dc88bbccacce8538",
+    "source_sha256": "87adade4bd6e3197303f0c429d2e11a6cadf7a400e6f8bb950813fa5e979e4ba",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "reused_from_source": "res://assets/callOfMini/enhanced/Drillmaster/armor.png",
+    "reuse_reason": "Original source bytes are identical; shared accepted cloth detail preserves consistency.",
+    "alpha_note": "Generated atlas has transparent unused black background; runtime albedo consumes RGB with opaque material, no cutout. No pixel conversion performed."
+  },
+  {
+    "key": "25_equip",
+    "source": "res://assets/callOfMini/enhanced/Mark-6 117R/equip.png",
+    "style_reference": "res://assets/armors/viper/textures/body.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-16386b72-9031-4c07-a0c6-7b0c5cb7503b.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Background constraint: retain the original opaque black atlas background in all unused spaces; NO new transparency, no checkerboard.Mark-6 117R EQUIPMENT atlas. Preserve desaturated forest-green plates, dark gray/black panels, purple strip on two large lower-left bands and small purple upper-center inset. All exact shapes and UV positions unchanged. Improve only fine painted material detail and crisp existing edge trim, original brightness remains controlled.",
+    "tool": "built-in image_gen",
+    "visual_review": "Forest-green equipment and purple bands/inset retained; source panel positions and dark material separation checked.",
+    "status": "atlas_reviewed_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/e4b61105acb2.png",
+    "owners": [
+      "armor_25"
+    ],
+    "output_sha256": "2cfc08e1961466ca58e65ed160b5b84942a2330b363c0edd459261ba03885989",
+    "source_sha256": "28f782e18af6e4ad51132b67df48f1bada4cabb5cc52c5d7e7397bf4e88857bb",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "alpha_note": "Opaque original background retained."
+  },
+  {
+    "key": "25_helmet",
+    "source": "res://assets/callOfMini/enhanced/Mark-6 117R/helmet.png",
+    "style_reference": "res://assets/armors/viper/textures/head.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-4640fe0b-5b93-4cff-a31f-38b6b9301a6e.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Heavy Battlesuit HELMET atlas. This sheet intentionally contains several helmet fragments: upper green helmet with purple visor bands, top-right detached yellow-gold visor, middle-right detached pale blue visor, bottom olive-gray helmet and gray jaw frames. Keep all these differing colors and all silhouettes exactly in place; no rearrangement and no unifying colors. Refine existing contours, amber mini lamps, blue mini lamps and metal surfaces.",
+    "tool": "built-in image_gen",
+    "visual_review": "Multi-helmet atlas retains all green/purple, gold, pale blue and olive-gray regions at original positions; crisper seams checked. Corrected UV mirror boundary using measured mesh UV coordinates; atlas reviewed, corrected runtime recheck pending.",
+    "status": "atlas_corrected_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/861e0887ba58.png",
+    "owners": [
+      "armor_25"
+    ],
+    "output_sha256": "bd4e945aab467e4510f6e772039d7abb4ae56cdadf3633128fe03bf10f220f17",
+    "source_sha256": "dbea6d62b3c095c628ee5d11c44b16782024195fef1f8f8b6000e1d770bfa7d2",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "reused_from_source": "res://assets/callOfMini/enhanced/Heavy Battlesuit/helmet.png",
+    "reuse_reason": "Original helmet atlas bytes are identical, including island positions, colors and visor regions.",
+    "alpha_note": "Corrected native image is opaque RGB; unused atlas background is black; no pixel conversion performed.",
+    "previous_generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-d529ded4-d905-404d-ad36-650ae0c3252c.png",
+    "previous_output_sha256": "fb53e0045e1e2fd189ae21450ec58c27462b9dbff5b11a8d21fcbb0e4f1f3a34",
+    "correction_prompt": "Precise localized edit of ONLY INPUT1, this square production helmet UV albedo texture atlas. Leave every detail above the bottom 80 pixel rows unchanged. Output the same full flat atlas, 1254x1254, opaque RGB with no transparency. CRITICAL REQUIRED CHANGE: REMOVE THE BLACK EMPTY BOTTOM MARGIN. The two beige/taupe helmet islands at the bottom must extend ALL THE WAY OFF THE BOTTOM EDGE OF THE IMAGE, cut off by the frame, with ZERO black margin beneath them. Continue the nearest beige/taupe or charcoal panel colors downward through the very last row (row1253) across the entire image width, including bottom-left, middle and bottom-right. Specifically every pixel around row1235 at x640..1240 must be beige/taupe continuation (not black); row1235 at x80..625 must also continue the corresponding bottom-left taupe/charcoal island. Do not draw a new white border along the bottom; this part wraps into a mirror seam and should be continuous material. Think texture UV bleed: extrapolate existing painted colors straight downward to the canvas boundary, not new geometry, not extra motifs. The original atlas in input2 shows coverage but input1's upper fine details are final. Keep the exact purple/green helmet, both visors, upper beige helmet details, their normalized coordinates and their existing HD rendering unchanged. Pure texture atlas output only; absolutely no surrounding margin/frame/background at its BOTTOM edge.",
+    "correction_reference": "assets/callOfMini/enhanced/Heavy Battlesuit/helmet.png"
+  },
+  {
+    "key": "26_armor",
+    "source": "res://assets/callOfMini/enhanced/Recon Suit/armor.png",
+    "style_reference": "res://assets/armors/viper/textures/body.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-d4770f8a-3471-40fd-a995-128a6a7b8477.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Drillmaster underlying BODY/CLOTH atlas. Source is very dark black and charcoal fabric with exact gray U-shaped chest trim at lower right. Preserve that dark palette and cloth softness, recover subtle readable weave and seams without inventing armored plates or increasing overall brightness. All existing islands remain at exactly their source UV coordinates.",
+    "tool": "built-in image_gen",
+    "visual_review": "Dark cloth palette and U-shaped trim preserved; recovered seams and subtle weave retain source layout.",
+    "status": "atlas_reviewed_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/5f56b01ebe2b.png",
+    "owners": [
+      "armor_26"
+    ],
+    "output_sha256": "f04b1508e3448e61376511a82468f82845f1a1433d30cd46dc88bbccacce8538",
+    "source_sha256": "87adade4bd6e3197303f0c429d2e11a6cadf7a400e6f8bb950813fa5e979e4ba",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "reused_from_source": "res://assets/callOfMini/enhanced/Drillmaster/armor.png",
+    "reuse_reason": "Original source bytes are identical; shared accepted cloth detail preserves consistency.",
+    "alpha_note": "Generated atlas has transparent unused black background; runtime albedo consumes RGB with opaque material, no cutout. No pixel conversion performed."
+  },
+  {
+    "key": "26_equip",
+    "source": "res://assets/callOfMini/enhanced/Recon Suit/equip.png",
+    "style_reference": "res://assets/armors/viper/textures/body.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-3a17d19a-2ffc-4fe7-805b-8580994594c7.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Background constraint: retain the original opaque black atlas background in all unused spaces; NO new transparency, no checkerboard.Recon Suit EQUIPMENT atlas. Preserve warm burnt-orange/brown panels, vivid orange angular camouflage shapes in exactly their original locations, dark charcoal stripes and segments, small blue triangle at right middle and small cyan horizontal light at bottom left. Do not alter the camouflage design or create new markings. Clarify clean metal edges and brushed hand-painted texture, avoid gloss.",
+    "tool": "built-in image_gen",
+    "visual_review": "Orange angular camouflage, burnt-orange plates, charcoal stripes and blue/cyan lights retained; source island arrangement checked.",
+    "status": "atlas_reviewed_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/b3a8f050444f.png",
+    "owners": [
+      "armor_26"
+    ],
+    "output_sha256": "59683bdb5179dcce8a6204fcf6039096e39f38c850752067545ba71ea0d1602e",
+    "source_sha256": "9da1f05204846b728c7c6fb6f884a813cade41c3ea406cf8acca1a9da84d7722",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "alpha_note": "Opaque original background retained."
+  },
+  {
+    "key": "26_helmet",
+    "source": "res://assets/callOfMini/enhanced/Recon Suit/helmet.png",
+    "output": "res://assets/equipment_refined/textures/398d02e6d38e.png",
+    "owners": [
+      "armor_26"
+    ],
+    "prompt": "Use case: precise-object-edit. Asset type: production hand-painted game UV albedo atlas. Repaint INPUT 1 at high native definition matching INPUT 2 (Viper) ONLY for crisp craftsmanship, precise thin edge highlights, clean dark seams, subtle intentional metal grain and woven fabric detail. Preserve the EXACT INPUT 1 normalized UV island positions, boundaries, cutouts, panel shapes, color blocking and original luminance. Keep identity recognizable. Reconstruct fuzzy existing edges cleanly, not a blurry enlargement. No added bolts, panels, lights, symbols or decorations. Do NOT copy Viper palette, purple visor, layout or damage. Matte stylized painted surfaces, no photoreal PBR/plastic CGI. Full square flat texture only, no render, no labels/borders/perspective, highest native resolution at least1254square. Assault Armor helmet atlas. Maintain orange crown panels, dark charcoal frame, deep blue visor on right, two tiny magenta lights, lower-left gold dragon insignia and lower-right segmented strip. Clean original art without enlarging or moving insignia. Fine thin metal borders, vivid but unchanged blue visor.",
+    "style_reference": "res://assets/armors/viper/textures/head.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-6db0a37b-8419-4508-828a-bc0afeb69c85.png",
+    "tool": "built-in image_gen",
+    "status": "atlas_reviewed_pending_runtime",
+    "visual_review": "Localized atlas correction inspected; actual Assault Armor runtime close-front capture after Godot reimport confirms the artificial bright forehead mirror seam is gone. Gold motif, charcoal shell, pink lights and other atlas regions retained. Recon uses byte-identical corrected atlas; its full runtime review remains in final collection.",
+    "reused_from_source": "res://assets/callOfMini/enhanced/Assault Armor/helmet.png",
+    "reuse_reason": "Byte-identical original shared helmet atlas.",
+    "source_sha256": "fcdcf3cc1368aed29e82449b29e1a0268475a6952361db5b3150d78175a4a2d8",
+    "output_sha256": "12b18d1d365e262621d2ee0d630b61311d4805e509dc55a95c83c0f75e64fb88",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "alpha_note": "Opaque original background retained.",
+    "previous_generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a07c18-0b85-7e43-beab-8989f3fc6e28\\exec-d44d120b-9c48-4165-8fc3-35f7384d57b7.png",
+    "previous_output_sha256": "8a493ff0b0540c3fef69cf50c3f3cd7e62f9432ee515e9a41c497e7107e707d7",
+    "correction_prompt": "Use case: precise-object-edit. Make ONE localized seam correction to INPUT 1, a production flat UV atlas, keeping all other painted pixels and UV island placements unchanged. INPUT 2 is the lower-detail ORIGINAL atlas only to identify which seam originally had no bright border. The large charcoal helmet shell with the yellow/gold emblem occupies the LOWER LEFT quadrant, with an adjoining dark upper-left extension beginning at normalized x~0.006 y~0.50. Its LEFT outer boundary is a UV MIRROR JOIN at the center of the character's forehead, NOT a physical metal edge. Remove ALL thin white/silver/light-gray highlight strokes along ONLY this left mirror boundary, from the dark extension at y~0.50 downward through the gold emblem region y~0.62-0.86. Repaint those narrow strokes with immediately adjacent charcoal paint or gold emblem color as appropriate, smoothly reaching across the UV join with no bright seam and no dark dividing line. Preserve the exact yellow emblem silhouette, holes, coverage, muted gold shade and charcoal grain; do not shrink/move/repaint the emblem. Preserve every other island, orange pieces, blue visor, pink lights, lower-right segments, all other borders, resolution and composition exactly. This is a localized texture repair, not a redesign or whole-image restyle. Full square flat 1254x1254 or higher atlas only, same canvas, opaque black background unchanged. No perspective, no model render, no text, no new scratches. Output INPUT 1 with only that nonphysical left UV seam highlight removed.",
+    "correction_reference": "res://assets/callOfMini/enhanced/Assault Armor/helmet.png",
+    "correction_runtime_evidence": "test_output/armor_hd_refinement/sets/armor_21/current_close_front.png"
+  },
+  {
+    "key": "27_armor",
+    "source": "res://assets/callOfMini/enhanced/Sanguine Chaos/armor.png",
+    "style_reference": "res://assets/armors/viper/textures/body.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-d4770f8a-3471-40fd-a995-128a6a7b8477.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Drillmaster underlying BODY/CLOTH atlas. Source is very dark black and charcoal fabric with exact gray U-shaped chest trim at lower right. Preserve that dark palette and cloth softness, recover subtle readable weave and seams without inventing armored plates or increasing overall brightness. All existing islands remain at exactly their source UV coordinates.",
+    "tool": "built-in image_gen",
+    "visual_review": "Dark cloth palette and U-shaped trim preserved; recovered seams and subtle weave retain source layout.",
+    "status": "atlas_reviewed_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/a73271fead2a.png",
+    "owners": [
+      "armor_27"
+    ],
+    "output_sha256": "f04b1508e3448e61376511a82468f82845f1a1433d30cd46dc88bbccacce8538",
+    "source_sha256": "87adade4bd6e3197303f0c429d2e11a6cadf7a400e6f8bb950813fa5e979e4ba",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "reused_from_source": "res://assets/callOfMini/enhanced/Drillmaster/armor.png",
+    "reuse_reason": "Original source bytes are identical; shared accepted cloth detail preserves consistency.",
+    "alpha_note": "Generated atlas has transparent unused black background; runtime albedo consumes RGB with opaque material, no cutout. No pixel conversion performed."
+  },
+  {
+    "key": "27_equip",
+    "source": "res://assets/callOfMini/enhanced/Sanguine Chaos/equip.png",
+    "style_reference": "res://assets/armors/viper/textures/body.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-4fdac233-21f6-4e72-a091-98ef84d6dc4b.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Background constraint: retain the original opaque black atlas background in all unused spaces; NO new transparency, no checkerboard. Sanguine Chaos EQUIPMENT atlas. Preserve warm dark taupe-gray armor and graphite panels, the precise orange-gold double bent stripe on upper-left chest, all matching orange-gold stripes on top-right and lower-left parts, single middle vertical stripe. Same stripe shape, number and placement, no new lights or colors. Clarify dark seams and thin existing trim without brightening the dark overall armor.",
+    "tool": "built-in image_gen",
+    "visual_review": "Dark taupe/graphite plating, golden bent stripes and existing islands retained; readable edge trim checked.",
+    "status": "atlas_reviewed_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/bf9d524d5d67.png",
+    "owners": [
+      "armor_27"
+    ],
+    "output_sha256": "254b6ce23e2d86ee6838ecbe60fa41034bcfc9a4acd9f65d3fdeb3f8e51d7df4",
+    "source_sha256": "9aad43b707447bac8e7c5b191d3a60f39d615a6b6f28e5a37287f605bd130b31",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "alpha_note": "Opaque original background retained."
+  },
+  {
+    "key": "27_helmet",
+    "source": "res://assets/callOfMini/enhanced/Sanguine Chaos/helmet.png",
+    "style_reference": "res://assets/armors/viper/textures/head.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-f5b57945-b4fc-4571-90b7-fadb4a4531f6.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Background constraint: retain the original opaque black atlas background in all unused spaces; NO new transparency, no checkerboard. Sanguine Chaos HELMET atlas. Preserve steel/slate blue rounded upper-left plate and circular ear assembly with turquoise arc and four dots, top-right bright orange visor, middle brown-gray and black plates, orange visor lower left and two yellow-orange bent stripes on bottom-left jaw plate. All separate island positions and exact shapes unchanged. Draw clean painted bevel highlights and restrained surfaces; amber stays amber, no Viper purple.",
+    "tool": "built-in image_gen",
+    "visual_review": "Slate circular assembly, turquoise arc/four dots, both orange visor islands and gold jaw stripes retained with clearer surface seams. Corrected UV mirror boundary using measured mesh UV coordinates; atlas reviewed, corrected runtime recheck pending.",
+    "status": "atlas_corrected_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/da3741ed2d06.png",
+    "owners": [
+      "armor_27"
+    ],
+    "output_sha256": "a0817af14466d3db981317d300e978bcb355339c3ff607b5963a0c01a10f7e07",
+    "source_sha256": "f025a9c257150409a537f22db17ff3782dc3ad342f1267f2c89188e6abd9a762",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "alpha_note": "Corrected native image is opaque RGB; unused atlas background is black; no pixel conversion performed.",
+    "previous_generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-66ce9796-0355-4585-97b3-422326dca7e9.png",
+    "previous_output_sha256": "9b7cc52f6ccf5652f9c653e356625ee8b9f5d2c4d0c63909f369cc2401deb458",
+    "correction_prompt": "Precise localized edit of ONLY INPUT1, this square production helmet UV albedo texture atlas. Output the same full square flat atlas, 1254x1254, opaque RGB. All other islands and details are final and must remain unchanged. CRITICAL REQUIRED CHANGE: the long blue curved strip at the BOTTOM RIGHT is too short vertically. Extend ONLY ITS BOTTOM SIDE so there is ZERO BLACK MARGIN BELOW IT anywhere between x=680 and x=1230. The extended strip must continue off the bottom edge of the canvas, physically cut off by the image frame at row1253. Fill the former black margin from row1200 down through1253 with the adjacent deep slate-blue/charcoal painted material from the strip, smooth continuation; NO white outline at the old contour, NO black border at the bottom. Keep just the narrow original charcoal material boundary, matching input2, with gentle painted detail. Measured coordinates on model sample (749,1221),(839,1235),(965,1232),(1088,1227),(1165,1212): these must be charcoal or dark slate-blue, NEVER near-black empty padding. Lower edge of blue fill should reach within about4pixels above those points, with charcoal bleed continuing to canvas edge. This repairs the giant black stripe visible in input3 and returns to narrow painted gray groove in input4. Keep the upper edge of this strip unchanged, only expand its lower side downward. Preserve all bronze/yellow/orange islands, visors and other design details exactly. This is a UV texture coverage repair. The rightmost bottom strip MUST be clipped by the bottom image edge with no space underneath.",
+    "correction_reference": "assets/callOfMini/enhanced/Sanguine Chaos/helmet.png"
+  },
+  {
+    "key": "28_armor",
+    "source": "res://assets/callOfMini/enhanced/Training Suit/armor.png",
+    "style_reference": "res://assets/armors/viper/textures/body.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-d4770f8a-3471-40fd-a995-128a6a7b8477.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Drillmaster underlying BODY/CLOTH atlas. Source is very dark black and charcoal fabric with exact gray U-shaped chest trim at lower right. Preserve that dark palette and cloth softness, recover subtle readable weave and seams without inventing armored plates or increasing overall brightness. All existing islands remain at exactly their source UV coordinates.",
+    "tool": "built-in image_gen",
+    "visual_review": "Dark cloth palette and U-shaped trim preserved; recovered seams and subtle weave retain source layout.",
+    "status": "atlas_reviewed_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/8ff4bf12f676.png",
+    "owners": [
+      "armor_28"
+    ],
+    "output_sha256": "f04b1508e3448e61376511a82468f82845f1a1433d30cd46dc88bbccacce8538",
+    "source_sha256": "87adade4bd6e3197303f0c429d2e11a6cadf7a400e6f8bb950813fa5e979e4ba",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "reused_from_source": "res://assets/callOfMini/enhanced/Drillmaster/armor.png",
+    "reuse_reason": "Original source bytes are identical; shared accepted cloth detail preserves consistency.",
+    "alpha_note": "Generated atlas has transparent unused black background; runtime albedo consumes RGB with opaque material, no cutout. No pixel conversion performed."
+  },
+  {
+    "key": "28_equip",
+    "source": "res://assets/callOfMini/enhanced/Training Suit/equip.png",
+    "style_reference": "res://assets/armors/viper/textures/body.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-e7e53e35-8714-4a09-9f52-2471c3bcbe77.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Background constraint: retain the original opaque black atlas background in all unused spaces; NO new transparency, no checkerboard. Training Suit EQUIPMENT atlas. Preserve olive forest-green and charcoal armor, the precise large dark hexagonal slotted island near center-right, turquoise two lamps at right edge and the two small turquoise windows in lower-left plate. Keep exact existing UV islands and vents. Clarify thin olive highlights and soft hand-painted surfaces, do not add plate decorations or recolor green armor blue.",
+    "tool": "built-in image_gen",
+    "visual_review": "Olive/charcoal panels, slotted hexagon and cyan windows retain source placements and palette; sharper existing edges checked.",
+    "status": "atlas_reviewed_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/8ac8c70fe46c.png",
+    "owners": [
+      "armor_28"
+    ],
+    "output_sha256": "b0ba430281306b56d3e8133c5dfb506b6451579a6c7065af7c8142a1c428d6e2",
+    "source_sha256": "e0e967486799ee58ff6b3f03a722e2f447fb3f657f4095bf69528e68ec6ace81",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "alpha_note": "Opaque original background retained."
+  },
+  {
+    "key": "28_helmet",
+    "source": "res://assets/callOfMini/enhanced/Training Suit/helmet.png",
+    "style_reference": "res://assets/armors/viper/textures/head.png",
+    "generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-d1b8daaa-e578-459d-b981-34c44b245b3d.png",
+    "prompt": "Use case: precise-object-edit. Asset: production flat hand-painted game UV albedo atlas. Input 1 is the exact original UV atlas EDIT TARGET. Input 2 is Viper ONLY as craftsmanship/clarity reference: crisp fine edge highlights, precise dark seams, smooth intentional gradients and clearly separated materials. Repaint fuzzy source details into truly high-definition readable forms, NOT just enlarging blur. Preserve input 1 EXACT normalized UV island positions, outlines, spacing, topology, existing interior panels, emblems, original palette and baked lighting. Do not copy Viper layout, armor shape, colors or purple visor. Keep original silhouette and identity when wrapped on its unchanged mesh. No new panels, vents, screws, symbols or ornaments; only restrained existing wear. No realistic PBR/plastic/CGI sheen; preserve matte stylized hand-painted game art. Full square atlas edge-to-edge, no frame, no text/legend, no perspective or rendered model. Highest native detail, at least 1254 x 1254. Preserve existing transparency if any. Drillmaster HELMET atlas. Preserve olive-green top panels, steel gray lower jaw plates, orange diagonal visor island in upper left, cyan small lights at left and bottom. Keep their exact colors and all UV shapes, slot spacing and black gaps. Draw clear controlled edge highlights and intentional fine surfaces without recoloring to Viper.",
+    "tool": "built-in image_gen",
+    "visual_review": "Green/silver/slate helmet regions, orange upper-left visor and cyan light placements retained; source island layout checked. Corrected UV mirror boundary using measured mesh UV coordinates; atlas reviewed, corrected runtime recheck pending.",
+    "status": "atlas_corrected_pending_runtime",
+    "output": "res://assets/equipment_refined/textures/443b5cb7ec3d.png",
+    "owners": [
+      "armor_28"
+    ],
+    "output_sha256": "50eafd093e93fa1911d2cb53145e51c33e97835affa4c4a2b5ead1eaba0a6376",
+    "source_sha256": "95842bdfbfe5e508f1adc80b1817a38c9dcd16cae7bdbac0a1b3b0c7d7a60460",
+    "source_size": [
+      1024,
+      1024
+    ],
+    "output_size": [
+      1254,
+      1254
+    ],
+    "reused_from_source": "res://assets/callOfMini/enhanced/Drillmaster/helmet.png",
+    "reuse_reason": "Original helmet atlas bytes are identical, including island positions, colors and visor regions.",
+    "alpha_note": "Corrected native image is opaque RGB; unused atlas background is black; no pixel conversion performed.",
+    "previous_generated_source": "C:\\Users\\whw88\\.codex\\generated_images\\01a0b950-cbf8-73b1-ad0a-83492b1a6c8f\\exec-8d724512-4ef9-4f6a-887c-a99d53491991.png",
+    "previous_output_sha256": "ca9270bbe0f3ffdd269610077453a37a03a6db0cf4af429ac95c3fef1ddbf88f",
+    "correction_prompt": "Use case: precise-object-edit. Edit ONLY the first flat production UV albedo texture atlas. The second image is the original atlas and establishes exact normalized coverage; the third current in-game render shows the defect and the fourth baseline render shows the desired clean helmet geometry. Output only a corrected square flat texture atlas, same 1254x1254 resolution, positions, palette, details and UV layout as input 1, never output a character render. Preserve all previously refined painted material detail except the precise repair. Opaque RGB PNG with solid black unused padding; do not create transparency or colored fringe pixels. All other islands must remain exactly fixed. Repair only the LARGE SLATE BLUE HELMET SHELL ISLAND AT BOTTOM LEFT (roughly x=0.00..0.50,y=0.71..1.00, with one small cyan light). Its lower outer contour is NOT a visible plate border: this is the UV MIRROR SEAM across the smooth central forehead and crown. Remove the thin bright silver outline and black notch along this lower contour; continue the adjacent blue painted fill smoothly right through this contour with a little bleed outside. Measured UV seam points on the unchanged model are (0.016,0.882),(0.092,0.945),(0.211,0.986),(0.318,0.984),(0.433,0.963),(0.491,0.943). These exact points must lie within continuous matching slate-blue paint (or existing charcoal brow where appropriate), without white hairline or dark edging. Preserve the sharp H-shaped brow cutout, cyan light, upper edges and all other island outlines; do NOT add a center seam. The green/silver helmet at upper left is a different armor and must be completely unchanged.",
+    "correction_reference": "assets/callOfMini/enhanced/Drillmaster/helmet.png"
+  }
+]
