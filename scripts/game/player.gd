@@ -22,6 +22,9 @@ var max_health := 100.0
 var max_shield := 100.0
 var health := 100.0
 var shield := 100.0
+var source_shield_profile: Dictionary = {}
+var source_shield_delay_left := 0.0
+var source_shield_recovering := false
 var move_speed := 8.2
 var gravity := 24.0
 var dash_speed := 19.0
@@ -141,14 +144,23 @@ func _ready() -> void:
 
 func _apply_armor_stats(restore_full := false) -> void:
 	var previous_max := max_health
+	var previous_shield_max := max_shield
 	armor_skills = GameState.get_armor_skills()
 	# Unity LocalPlayer adds the complete equipment HP sum to a zero base.
 	max_health = maxf(1.0, float(armor_skills.get("hp", 0.0)))
+	max_shield = maxf(0.0, float(armor_skills.get("shield", 100.0)))
+	source_shield_profile = GameState.get_source_shield_profile()
+	source_shield_delay_left = float(source_shield_profile.get("delay", 0.0))
+	source_shield_recovering = false
 	move_speed = maxf(3.5, 8.2 + float(armor_skills.get("speed_boost", 0.0)))
 	if restore_full:
 		health = max_health
+		shield = max_shield
 	else:
 		health = clampf(health + maxf(0.0, max_health - previous_max), 0.0, max_health)
+		# Preserve the remaining fraction so swapping between small/large pools
+		# cannot refill a damaged shield by cycling the same two armor pieces.
+		shield = clampf(shield / maxf(1.0, previous_shield_max), 0.0, 1.0) * max_shield
 	if is_inside_tree():
 		health_changed.emit(health, shield)
 
@@ -1767,6 +1779,9 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 		remaining -= absorbed
 	health = maxf(0.0, health - remaining)
 	var actual_damage := maxf(0.0, health_before + shield_before - health - shield)
+	if actual_damage > 0.0 and not source_shield_profile.is_empty():
+		source_shield_delay_left = float(source_shield_profile.delay)
+		source_shield_recovering = false
 	# Keep PvP on the same authoritative confirmation path as enemy damage.
 	# Blocks, mitigation, overkill and negative/healing damage therefore cannot
 	# produce a false hitmarker on the attacking player's HUD.
@@ -1775,6 +1790,13 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 	if remaining > 0.0 and float(armor_skills.get("speed_on_hit", 0.0)) > 0.0:
 		speed_on_hit_left = 2.5
 	health_changed.emit(health, shield)
+	if GameState.get_equipped_set_id() >= 21:
+		if not hurt_audio.playing:
+			var hurt_path := AudioDirector.SourceAssets.audio_path("com", "Vox_hurt_01")
+			if not hurt_path.is_empty():
+				hurt_audio.stream = load(hurt_path)
+	elif hurt_audio.stream != load("res://assets/original/audio/playerGotHit.wav"):
+		hurt_audio.stream = load("res://assets/original/audio/playerGotHit.wav")
 	if hurt_audio.stream and not hurt_audio.playing:
 		hurt_audio.play()
 	hurt_pose_left = 0.22
@@ -1833,6 +1855,7 @@ func on_enemy_defeated() -> void:
 
 func _update_armor_effects(delta: float) -> void:
 	speed_on_hit_left = maxf(0.0, speed_on_hit_left - delta)
+	_update_source_shield(delta)
 	# GameWorld.TeamSkills contains at least the local player's aura even in the
 	# original single-player mode. With no remote peer model in this restoration,
 	# applying the equipped local aura reproduces that baseline exactly.
@@ -1843,6 +1866,20 @@ func _update_armor_effects(delta: float) -> void:
 	if recovery_per_second > 0.0 and health > 0.0 and health < max_health:
 		health = minf(max_health, health + recovery_per_second * delta)
 		health_changed.emit(health, shield)
+
+func _update_source_shield(delta: float) -> void:
+	if dead or source_shield_profile.is_empty() or shield >= max_shield:
+		return
+	var recovery_delta := maxf(0.0, delta - source_shield_delay_left)
+	source_shield_delay_left = maxf(0.0, source_shield_delay_left - delta)
+	if recovery_delta <= 0.0:
+		return
+	if not source_shield_recovering:
+		source_shield_recovering = true
+		# Player.ShieldOn -> sfx_amour_heal prefab -> sfx_amour_heal_01.
+		AudioDirector.play_source_3d("com", "sfx_amour_heal_01", global_position, -10.0)
+	shield = minf(max_shield, shield + max_shield * float(source_shield_profile.fraction) * recovery_delta)
+	health_changed.emit(health, shield)
 
 func _current_weapon_damage() -> float:
 	var base_damage := float(current_weapon.get("damage", 0.0))

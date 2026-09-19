@@ -1,6 +1,7 @@
 extends Node
 
 const AUDIO_ROOT := "res://assets/original/audio/"
+const SourceAssets = preload("res://scripts/core/recovered_source_assets.gd")
 
 const UI_EVENTS := {
 	"accept": "menu/click_ok.wav",
@@ -16,6 +17,14 @@ const UI_EVENTS := {
 }
 
 var _keyed_players: Dictionary = {}
+
+func play_source_2d(game: String, clip_name: String, volume_db := 0.0) -> AudioStreamPlayer:
+	var path := SourceAssets.audio_path(game, clip_name)
+	return play_2d(path, volume_db) if not path.is_empty() else null
+
+func play_source_3d(game: String, clip_name: String, position: Vector3, volume_db := 0.0) -> AudioStreamPlayer3D:
+	var path := SourceAssets.audio_path(game, clip_name)
+	return play_3d(path, position, volume_db) if not path.is_empty() else null
 
 func play_ui(event_name: String, volume_db := 0.0) -> void:
 	var relative_path := str(UI_EVENTS.get(event_name, "menu/click_ok.wav"))

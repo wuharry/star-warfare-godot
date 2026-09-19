@@ -564,7 +564,23 @@ func is_armor_owned(armor_key: String) -> bool:
 func is_armor_rank_unlocked(armor_key: String) -> bool:
 	if not ARMOR_ITEMS.has(armor_key):
 		return false
+	var item: Dictionary = ARMOR_ITEMS[armor_key]
+	if str(item.get("source_game", "")) == "com":
+		return get_com_level() >= int(item.source_unlock_level)
 	return int(ARMOR_ITEMS[armor_key].unlock) <= get_rank_id()
+
+func get_com_level() -> int:
+	# The original GetLevelUpgradeExp uses the CURRENT level, clamped to 2..31.
+	# Thus both 1->2 and 2->3 cost the level-2 row (250), not 250 then 350.
+	var remaining := experience
+	var level := 1
+	while level < 31:
+		var cost := int(ArmorCatalogData.CoMSource.LEVEL_EXP[maxi(2, level) - 2][1])
+		if remaining < cost:
+			break
+		remaining -= cost
+		level += 1
+	return level
 
 func purchase_armor(armor_key: String) -> String:
 	if not ARMOR_ITEMS.has(armor_key):
@@ -584,7 +600,13 @@ func purchase_armor(armor_key: String) -> String:
 		if credits < credit_price:
 			return "not_enough_credits"
 		credits -= credit_price
-	owned_armor.append(armor_key)
+	if bool(item.get("purchase_whole_set", false)):
+		for part in range(4):
+			var granted_key := ArmorCatalogData.item_key(part, int(item.set_id))
+			if not owned_armor.has(granted_key):
+				owned_armor.append(granted_key)
+	else:
+		owned_armor.append(armor_key)
 	var part_key := str(item.part_key)
 	equipped_armor[part_key] = armor_key
 	_normalize_armor_state()
@@ -676,7 +698,17 @@ func get_armor_skills() -> Dictionary:
 	var set_id := get_equipped_set_id()
 	if set_id >= 0 and ARMOR_SET_BONUSES.has(set_id):
 		ArmorCatalogData.merge_skills(skills, ARMOR_SET_BONUSES[set_id].skills)
+	if ArmorCatalogData.CoMSource.ARMOR_SETS.has(str(set_id)):
+		# Original Player.CalcMaxHp has a 1 + (level - 1) * 5 player base.
+		skills["hp"] += 1.0 + float(get_com_level() - 1) * 5.0
 	return skills
+
+func get_source_shield_profile() -> Dictionary:
+	var key := str(get_equipped_set_id())
+	if not ArmorCatalogData.CoMSource.ARMOR_SETS.has(key):
+		return {}
+	var source: Dictionary = ArmorCatalogData.CoMSource.ARMOR_SETS[key]
+	return {"delay": float(source.shield_delay), "fraction": float(source.shield_recovery_fraction)}
 
 func get_armor_summary() -> Dictionary:
 	var set_id := get_equipped_set_id()
@@ -1019,6 +1051,15 @@ func _normalize_armor_state() -> void:
 		var candidate := str(armor_key)
 		if ARMOR_ITEMS.has(candidate) and not normalized_owned.has(candidate):
 			normalized_owned.append(candidate)
+	# Existing CoM part purchases become complete-suit ownership without
+	# charging again; equipped pieces and the player's currency stay intact.
+	for armor_key in normalized_owned.duplicate():
+		var item: Dictionary = ARMOR_ITEMS[armor_key]
+		if bool(item.get("purchase_whole_set", false)):
+			for part in range(4):
+				var suit_key := ArmorCatalogData.item_key(part, int(item.set_id))
+				if not normalized_owned.has(suit_key):
+					normalized_owned.append(suit_key)
 	for part in range(ArmorCatalogData.PART_KEYS.size()):
 		var part_key := str(ArmorCatalogData.PART_KEYS[part])
 		var has_owned_part := false

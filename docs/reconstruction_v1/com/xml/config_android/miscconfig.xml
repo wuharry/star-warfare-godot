@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Conf>
+	<MiscDatas>
+		<MiscData PlayerRotateSlowSpeedThrehold="80" PlayerRotateFastSpeedThrehold="200" PlayerRotateSlowSpeedFac="0.012" PlayerRotateFastSpeedFac_960="0.032" PlayerRotateFastSpeedFac_1024="0.032" PlayerRotateFastSpeedFac_2048="0.032" PlayerRotateSpeedFac="11.0" PlayerAutoRotateSpeedFac="5.0" PlayerRotateButtonBorderPercent="0.9" PlayerFireSlowDownPercent="-0.2" KillOneGoldBase="20" KillOneExpBase="10" AutoFireAttackFreq ="270" Lv1-5Buff="0.75" Lv6-8Buff="0.3"/>
+		<JoystickSensitivity Value="5.5" PercentMin="0.5" PercentMax="1.5" SniperContinuous ="0.3" SniperDisContinuous="0.3"/>
+		<BombModeBuff HpBuff="1" DamageBuff="1" SpeedBuff="1" BombDamage="58" Reward="0:200;2:3"/> 
+	</MiscDatas>
+
+	<PickupItemDatas>
+		<Value Gold ="50" Crystal="1"/>
+		<NormalProbability Gold="0.15" Crystal="0.07" Voucher="0.15" HCake="0"/>
+		<CandyBagProbability Probability ="1" Gold="0.85" Crystal="0.15" Voucher="0"/>
+	<KOHBagProbability Probability ="1" Gold="0.3" Crystal="0.2" Voucher="0.5" HCake="0"/>
+	</PickupItemDatas>
+
+	<LotteryDatas>
+		<!--type=1 -> avatar, type=2 -> weapon, type=3 -> prop, type=4 -> profession
+				ImgColor=2->yellow, ImgColor=1 -> white, ImgColor=0->blue
+				realID: 在各自的category里面的真实ID-->
+		<Misc Time="25" PriorProbability="0.1"/>
+
+		<LotteryData ID="0" isRare="0" type="0" realID="0" Name="Cash" ImgColor="0" Probability="0.3" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="1" isRare="0" type="3" realID="14" Name="Antler1" ImgColor="0" Probability="0.09" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="2" isRare="0" type="3" realID="15" Name="Antler2" ImgColor="0" Probability="0.09" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="3" isRare="0" type="3" realID="16" Name="Antler3" ImgColor="0" Probability="0.09" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="4" isRare="0" type="3" realID="18" Name="ChristHat2" ImgColor="0" Probability="0.09" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="5" isRare="0" type="3" realID="19" Name="ChristHat3" ImgColor="0" Probability="0.09" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="7" isRare="0" type="3" realID="21" Name="FunHat2" ImgColor="1" Probability="0.05" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="6" isRare="0" type="3" realID="20" Name="FunHat1" ImgColor="1" Probability="0.04" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="12" isRare="0" type="3" realID="42" Name="xinzeng_04" ImgColor="1" Probability="0.04" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="8" isRare="0" type="3" realID="22" Name="FunHat3" ImgColor="1" Probability="0.04" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="13" isRare="0" type="3" realID="43" Name="xinzeng_05" ImgColor="1" Probability="0.04" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="11" isRare="0" type="2" realID="11" Name="weapon_011" ImgColor="1" Probability="0.04" CrystalToCash="9000" VoucherToCash="2000" />
+
+		<LotteryData ID="10" isRare="1" type="2" realID="10" Name="weapon_010" ImgColor="2" Probability="0.2" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="9" isRare="1" type="1" realID="11" Name="epuip_018" ImgColor="2" Probability="0.2" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="14" isRare="1" type="3" realID="44" Name="xinzeng_07" ImgColor="2" Probability="0.2" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="15" isRare="1" type="3" realID="45" Name="xinzeng_06" ImgColor="2" Probability="0.2" CrystalToCash="9000" VoucherToCash="2000" />
+		<LotteryData ID="17" isRare="1" type="4" realID="8" Name="equip_021_1" ImgColor="2" Probability="0.2" CrystalToCash="9000" VoucherToCash="2000" />
+
+	</LotteryDatas>
+</Conf>

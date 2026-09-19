@@ -292,16 +292,17 @@ func _run() -> void:
 		if not exp_item_key.is_empty():
 			shell._select_item(exp_item_key, false)
 			var exp_value := float(GameState.get_armor_item(exp_item_key).skills.exp_boost)
-			var exp_notice := tr("EXP BOOST %s • XP SYSTEM NOT RESTORED") % shell._compact_value(exp_value)
-			_check(shell.description_text.text.contains(exp_notice), "inactive EXP boost is not disclosed in the armor UI")
+			var exp_notice := tr("EXP BOOST %s") % shell._compact_value(exp_value)
+			_check(shell.description_text.text.contains(exp_notice), "active EXP boost is missing from armor UI")
+			_check(not shell.description_text.text.contains("XP SYSTEM NOT RESTORED"), "UI incorrectly marks applied XP as unavailable")
 		var armor_before_set_exp: Dictionary = GameState.equipped_armor.duplicate(true)
 		for set_part_key: String in ["head", "body", "arms", "legs"]:
 			GameState.equipped_armor[set_part_key] = "armor_%s_08" % set_part_key
 		shell._select_category("head", false)
 		shell._select_item("armor_head_08", false)
 		var set_exp_value := float(GameState.ARMOR_SET_BONUSES[8].skills.exp_boost)
-		var set_exp_notice := tr("SET EXP BOOST %s • XP SYSTEM NOT RESTORED") % shell._compact_value(set_exp_value)
-		_check(shell.description_text.text.contains(set_exp_notice), "inactive full-set EXP boost is not disclosed in the armor UI")
+		var set_exp_notice := tr("SET EXP BOOST %s") % shell._compact_value(set_exp_value)
+		_check(shell.description_text.text.contains(set_exp_notice), "active full-set EXP boost is missing from armor UI")
 		GameState.equipped_armor = armor_before_set_exp
 		shell._select_category("bag", false)
 		shell._select_item("armor_bag_00", false)

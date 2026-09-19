@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Conf>
+  <PlayModes>
+    <PlayMode ID="2" Name="Fight for Cash" IconName="4V4-mssm" SmallIconName="4V4-1" Desc="Earn cash by killing enemies. The team with more cash when time runs out wins. All cash won will be evenly distributed among team members." UnlockLevel="5" />
+    <PlayMode ID="3" Name="Team Deathmatch" IconName="4V4-mssm" SmallIconName="4V4-1" Desc="Within a certain amount of time, the first team to get 20 kills wins and gets rewards. If both teams fail to make it, the team with the most kills wins." UnlockLevel="1" />
+    <PlayMode ID="4" Name="Duel" IconName="1V1-mssm" SmallIconName="1V1-1" Desc="It's a battle between two players. The player who gets 5 kills first wins." UnlockLevel="10" />
+    <PlayMode ID="5" Name="King of the Hill" IconName="king-mssm" SmallIconName="king-1" Desc="Capture the Hill to earn points. To win the match, a team must garner 300 points or have more points than the other team when the timer ends." UnlockLevel="3" />
+    <PlayMode ID="6" Name="Drop the Bomb" IconName="bomb-mssm" SmallIconName="zhadan-1" Desc="Seizing bombs and successfully carrying them to the enemy base will score. The team firstly achieved 3 points wins.The scorers will have extra rewards." UnlockLevel="6" />
+   <PlayMode ID="0" Name="Train Enemy" IconName="king-mssm" SmallIconName="xunlian" Desc="" UnlockLevel="15" />
+  </PlayModes>
+
+  <EquipSlot Slot2UnlockLevel ="6" Slot3UnlockLevel="6" Slot3UnlockCrystal="150" >
+  </EquipSlot>
+</Conf>

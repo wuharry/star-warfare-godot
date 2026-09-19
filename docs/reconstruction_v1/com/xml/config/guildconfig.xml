@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Conf>
+  <GuildIconCfg>
+    <!--
+    GuildIcon 配置:
+    IconName:公会图标; 
+    IconNameBg:公会图标的可变色的背景; 
+    IconSolidBg:公会图标的大背景，不可变色; 
+    UnlockLevel:公会图标解锁等级;
+    -->
+    <GuildIcon IconName="qb_01_b" IconNameBlue="qb_01_x" IconBg="qz_01_b_qm" IconSolidBg="qz_01_b" IconBgSmall="qz_01_x" UnlockLevel="1"/>
+    <GuildIcon IconName="qb_02_b" IconNameBlue="qb_02_x" IconBg="qz_02_b_qm" IconSolidBg="qz_02_b" IconBgSmall="qz_02_x" UnlockLevel="1"/>
+    <GuildIcon IconName="qb_03_b" IconNameBlue="qb_03_x" IconBg="qz_03_b_qm" IconSolidBg="qz_03_b" IconBgSmall="qz_03_x" UnlockLevel="1"/>
+    <GuildIcon IconName="qb_04_b" IconNameBlue="qb_04_x" IconBg="qz_04_b_qm" IconSolidBg="qz_04_b" IconBgSmall="qz_04_x" UnlockLevel="1"/>
+    <GuildIcon IconName="qb_05_b" IconNameBlue="qb_05_x" IconBg="qz_05_b_qm" IconSolidBg="qz_05_b" IconBgSmall="qz_05_x" UnlockLevel="1"/>
+    <GuildIcon IconName="qb_06_b" IconNameBlue="qb_06_x" IconBg="qz_06_b_qm" IconSolidBg="qz_06_b" IconBgSmall="qz_06_x" UnlockLevel="2"/>
+    <GuildIcon IconName="qb_07_b" IconNameBlue="qb_07_x" IconBg="qz_07_b_qm" IconSolidBg="qz_07_b" IconBgSmall="qz_07_x" UnlockLevel="3"/>
+    <GuildIcon IconName="qb_08_b" IconNameBlue="qb_08_x" IconBg="qz_08_b_qm" IconSolidBg="qz_08_b" IconBgSmall="qz_08_x" UnlockLevel="4"/>
+    <GuildIcon IconName="qb_09_b" IconNameBlue="qb_09_x" IconBg="qz_09_b_qm" IconSolidBg="qz_09_b" IconBgSmall="qz_09_x" UnlockLevel="5"/>
+    <GuildIcon IconName="qb_10_b" IconNameBlue="qb_10_x" IconBg="qz_10_b_qm" IconSolidBg="qz_10_b" IconBgSmall="qz_10_x" UnlockLevel="6"/>
+    <GuildIcon IconName="qb_11_b" IconNameBlue="qb_11_x" IconBg="qz_11_b_qm" IconSolidBg="qz_11_b" IconBgSmall="qz_11_x" UnlockLevel="7"/>
+    <GuildIcon IconName="qb_12_b" IconNameBlue="qb_12_x" IconBg="qz_12_b_qm" IconSolidBg="qz_12_b" IconBgSmall="qz_12_x" UnlockLevel="8"/>
+    <GuildIcon IconName="qb_13_b" IconNameBlue="qb_13_x" IconBg="qz_13_b_qm" IconSolidBg="qz_13_b" IconBgSmall="qz_13_x" UnlockLevel="9"/>
+    <GuildIcon IconName="qb_14_b" IconNameBlue="qb_14_x" IconBg="qz_14_b_qm" IconSolidBg="qz_14_b" IconBgSmall="qz_14_x" UnlockLevel="10"/>
+    <GuildIcon IconName="qb_15_b" IconNameBlue="qb_15_x" IconBg="qz_15_b_qm" IconSolidBg="qz_15_b" IconBgSmall="qz_15_x" UnlockLevel="10"/>
+  </GuildIconCfg>
+
+  <GuildLevelMiscConfig>
+    <!--
+    Level:等级;
+    WinScore: 当前等级对应的胜利积分;
+    ObsidianCount: 当前等级胜利奖励黑曜石数;
+    -->
+    <GuildLevelMisc Level="1" WinScore="2000" ObsidianCount="2"/>
+    <GuildLevelMisc Level="2" WinScore="3000" ObsidianCount="4"/>
+    <GuildLevelMisc Level="3" WinScore="4000" ObsidianCount="6"/>
+    <GuildLevelMisc Level="4" WinScore="5000" ObsidianCount="8"/>
+    <GuildLevelMisc Level="5" WinScore="7000" ObsidianCount="10"/>
+    <GuildLevelMisc Level="6" WinScore="10000" ObsidianCount="12"/>
+    <GuildLevelMisc Level="7" WinScore="13500" ObsidianCount="14"/>
+    <GuildLevelMisc Level="8" WinScore="17000" ObsidianCount="16"/>
+    <GuildLevelMisc Level="9" WinScore="21000" ObsidianCount="18"/>
+    <GuildLevelMisc Level="10" WinScore="25000" ObsidianCount="20"/>
+  </GuildLevelMiscConfig>
+
+  <GuildLevelDiffCalcFacConfig>
+    <!--
+    等级差的积分衰减;
+    DiffLevel: 等级差;
+    Fac: 当前等级差的积分衰减系数;
+    -->
+	<GuildLevelDiffCalcFac DiffLevel="0" Fac="1"/>
+    <GuildLevelDiffCalcFac DiffLevel="1" Fac="1"/>
+    <GuildLevelDiffCalcFac DiffLevel="2" Fac="1"/>
+    <GuildLevelDiffCalcFac DiffLevel="3" Fac="0.7"/>
+    <GuildLevelDiffCalcFac DiffLevel="4" Fac="0.4"/>
+    <GuildLevelDiffCalcFac DiffLevel="5" Fac="0.1"/>
+    <GuildLevelDiffCalcFac DiffLevel="6" Fac="0.1"/>
+    <GuildLevelDiffCalcFac DiffLevel="7" Fac="0.1"/>
+    <GuildLevelDiffCalcFac DiffLevel="8" Fac="0.1"/>
+    <GuildLevelDiffCalcFac DiffLevel="9" Fac="0.1"/>
+  </GuildLevelDiffCalcFacConfig>
+
+  <!--
+        工会福利 配置
+        
+        <Buff requirement="1" type="gold" value="5" percent ="true" icon="jinqian" description=""/>
+        Buff 工会福利 Buff类型
+        requirement 解锁等级
+        type Buff类型: gold,exp,hit,dodge,crtical,damage,shield,hp,revive,member,officer
+        percent 是否是百分比
+        icon 图标
+        description 描述
+        
+        <Item requirement="10" value="" icon="chibang" decsription="" />
+        道具福利
+        requirement 解锁等级
+        type 道具类型 weapon,avatar,porp,flag,icon
+        value 道具id
+         icon 图标
+        description 描述
+    -->
+  <Welfare>
+
+    <Buff requirement="1" type="exp" value="5" percent ="true" icon="exp" title="EXP +5%" description="Additional 5% of EXP achieved in the game"/>
+
+    <Buff requirement="2" type="member" value="2" percent ="false" icon="renyuan" title="Upper limit of members +2" description="Upper limit of members +2"/>
+    <Buff requirement="2" type="officer" value="1" percent ="false" icon="guanliyuan" title="Admin + 1" description="Admin + 1"/>
+    <Item requirement="2" type="flag" value="qz_06_b" icon="qz_06_b" title="BACKGROUND +1 " description="BACKGROUND +1 " />
+    <Item requirement="2" type="icon" value="qb_06_b" icon="qb_06_b" title="EMBLEMS +1" description="EMBLEMS +1" />
+    <Buff requirement="2" type="gold" value="5" percent ="true" icon="jinqian" title="GOLD +5%" description="Additional 5% of Gold achieved in the game"/>
+
+    <Buff requirement="3" type="member" value="2" percent ="false" icon="renyuan" title="Upper limit of members +2" description="Upper limit of members +2"/>
+    <Item requirement="3" type="flag" value="qz_07_b" icon="qz_07_b" title="BACKGROUND +1 " description="BACKGROUND +1 " />
+    <Item requirement="3" type="icon" value="qb_07_b" icon="qb_07_b" title="EMBLEMS +1" description="EMBLEMS +1" />
+    <Buff requirement="3" type="hit" value="5" percent ="true" icon="miaozhun" title="Accuracy +5%" description="Decreases enemies'evade by 5%"/>
+
+    <Buff requirement="4" type="member" value="2" percent ="false" icon="renyuan" title="Upper limit of members +2" description="Upper limit of members +2"/>
+    <Buff requirement="4" type="officer" value="1" percent ="false" icon="guanliyuan" title="Admin + 1" description="Admin + 1"/>
+    <Item requirement="4" type="flag" value="qz_08_b" icon="qz_08_b" title="BACKGROUND +1 " description="BACKGROUND +1 " />
+    <Item requirement="4" type="icon" value="qb_08_b" icon="qb_08_b" title="EMBLEMS +1" description="EMBLEMS +1" />
+    <Buff requirement="4" type="dodge" value="5" percent ="true" icon="shanbi" title="Evade +5%" description="Increase Evade by 5%"/>
+
+    <Buff requirement="5" type="member" value="2" percent ="false" icon="renyuan" title="Upper limit of members +2" description="Upper limit of members +2"/>
+    <Item requirement="5" type="flag" value="qz_09_b" icon="qz_09_b" title="BACKGROUND +1 " description="BACKGROUND +1 " />
+    <Item requirement="5" type="icon" value="qb_09_b" icon="qb_09_b" title="EMBLEMS +1" description="EMBLEMS +1" />
+    <Buff requirement="5" type="revive" value="-1" percent ="false" icon="siwang" title="Respawn time -1 sec" description="Respawn time -1 sec"/>
+
+    <Buff requirement="6" type="member" value="2" percent ="false" icon="renyuan" title="Upper limit of members +2" description="Upper limit of members +2"/>
+    <Buff requirement="6" type="officer" value="1" percent ="false" icon="guanliyuan" title="Admin + 1" description="Admin + 1"/>
+    <Item requirement="6" type="flag" value="qz_10_b" icon="qz_10_b" title="BACKGROUND +1 " description="BACKGROUND +1 " />
+    <Item requirement="6" type="icon" value="qb_10_b" icon="qb_10_b" title="EMBLEMS +1" description="EMBLEMS +1" />
+    <Buff requirement="6" type="damage" value="5" percent ="true" icon="atk" title="ATK +5%" description="Increase ATK by 5%"/>
+
+    <Buff requirement="7" type="member" value="2" percent ="false" icon="renyuan" title="Upper limit of members +2" description="Upper limit of members +2"/>
+    <Buff requirement="7" type="officer" value="1" percent ="false" icon="guanliyuan" title="Admin + 1" description="Admin + 1"/>
+	<Item requirement="7" type="flag" value="qz_11_b" icon="qz_11_b" title="BACKGROUND +1 " description="BACKGROUND +1 " />
+    <Item requirement="7" type="icon" value="qb_11_b" icon="qb_11_b" title="EMBLEMS +1" description="EMBLEMS +1" />
+    <Buff requirement="7" type="shield" value="5" percent ="true" icon="shield" title="Shield +5%" description="Increase Shield power by 5%"/>
+
+    <Buff requirement="8" type="member" value="2" percent ="false" icon="renyuan" title="Upper limit of members +2" description="Upper limit of members +2"/>
+    <Buff requirement="8" type="officer" value="1" percent ="false" icon="guanliyuan" title="Admin + 1" description="Admin + 1"/>
+    <Item requirement="8" type="flag" value="qz_12_b" icon="qz_12_b" title="BACKGROUND +1 " description="BACKGROUND +1 " />
+    <Item requirement="8" type="icon" value="qb_12_b" icon="qb_12_b" title="EMBLEMS +1" description="EMBLEMS +1" />
+    <Buff requirement="8" type="hp" value="5" percent ="true" icon="hp" title="HP +5%" description="Increase HP by 5%"/>
+
+    <Buff requirement="9" type="member" value="2" percent ="false" icon="renyuan" title="Upper limit of members +2" description="Upper limit of members +2"/>
+    <Buff requirement="9" type="officer" value="1" percent ="false" icon="guanliyuan" title="Admin + 1" description="Admin + 1"/>
+    <Item requirement="9" type="flag" value="qz_13_b" icon="qz_13_b" title="BACKGROUND +1 " description="BACKGROUND +1 " />
+    <Item requirement="9" type="icon" value="qb_13_b" icon="qb_13_b" title="EMBLEMS +1" description="EMBLEMS +1" />
+    <Buff requirement="9" type="crtical" value="5" percent ="true" icon="baoji" title="Critial+5%" description="Increases critical hit chance by 5%."/>
+
+    <Buff requirement="10" type="member" value="2" percent ="false" icon="renyuan" title="Upper limit of members +2" description="Upper limit of members +2"/>
+    <Item requirement="10" type="flag" value="qz_14_b" icon="qz_14_b" title="BACKGROUND +1 " description="BACKGROUND +1 " />
+    <Item requirement="10" type="icon" value="qb_14_b" icon="qb_14_b" title="EMBLEMS +1" description="EMBLEMS +1" />
+    <Item requirement="10" type="flag" value="qz_15_b" icon="qz_15_b" title="BACKGROUND +1 " description="BACKGROUND +1 " />
+    <Item requirement="10" type="icon" value="qb_15_b" icon="qb_15_b" title="EMBLEMS +1" description="EMBLEMS +1" />
+    <Item requirement="10" type="porp" value="" icon="chibang_fuli" title="Unique Wing" description="Obtained special wing. Only can equip it at level 10" />
+  </Welfare>
+</Conf>

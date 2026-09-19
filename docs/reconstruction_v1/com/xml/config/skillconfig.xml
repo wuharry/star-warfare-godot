@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Conf>
+	<Skills>
+		<Skill Type="3" Name="Grenade" IconName="POPIANSHOULEI" UnlockLevel="6" UnlockGold="0" UnlockCrystal="30" Damage="200;220;240;260;280;300;320" BuyMoney="5000;2000;5000;10000;20000;30000;50000" BuyCrystal="0;0;0;0;0;0;0" CDTime="10;10;10;10;10;10;10" Desc="Throw a grenade, damaging all enemies in range.Initial damage 200" LevelDesc=" ::: Damage +20\n once throw 1 grenade::: Damage +20\n once throw 2 grenade::: Damage +20\n once throw 2 grenade::: Damage +20\n once throw 2 grenade::: Damage +20\n once throw 3 grenade::: Damage +20\n once throw 3 grenade" />
+
+		<Skill Type="4" Name="Autoturret" IconName="ZIDONGHUOLI" UnlockLevel="8" UnlockGold="0" UnlockCrystal="50" Damage="10;14;18;22;26;30;34" Hp="400" HpAddPer="0.125" BuyMoney="10000;2000;5000;10000;20000;30000;50000" BuyCrystal="0;0;0;0;0;0;0" CDTime="20;20;20;20;20;20;20" Desc="Set up a turret that automatically attacks enemies in range.Initial damage 10." LevelDesc=" ::: Damage +4\n Hp +50::: Damage +4\n Hp +50::: Damage +4\n Hp +50::: Damage +4\n Hp +50::: Damage +4\n Hp +50::: Damage +4\n Hp +50" />
+
+		<Skill Type="5" Name="EM Force Field" IconName="ZHENGDIDUN" UnlockLevel="11" UnlockGold="0" UnlockCrystal="60" Hp="1000" HpAddPer="0.5" BuyMoney="10000;2000;5000;10000;20000;30000;50000" BuyCrystal="0;0;0;0;0;0;0" CDTime="25;25;25;25;25;25;25" Desc="Generate an electromagnetic force field to block frontal attacks." LevelDesc=" ::: ShieldHP +500::: ShieldHP +500::: ShieldHP +500::: ShieldHP +500::: ShieldHP +500::: ShieldHP +500" />
+
+		<Skill Type="6" Name="Cloaking" IconName="YINGXINGMICAI" UnlockLevel="0" UnlockGold="0" UnlockCrystal="40" BuyMoney="0;0;0;0;0;0;0" BuyCrystal="150;24;24;49;49;99;99" CDTime="17;17;17;17;17;17;17" Desc="Turn invisible for a short time.Initial duration 3s." LevelDesc=" ::: Duration +0.5s::: Duration +0.5s::: Duration +0.5s::: Duration +0.5s::: Duration +0.5s::: Duration +0.5s" />
+
+		<Skill Type="7" Name="Portal" IconName="PORTAL" UnlockLevel="0" UnlockGold="0" UnlockCrystal="40" Hp="800" HpAddPer="0.25" BuyMoney="0;5000;10000;0;0;0;0" BuyCrystal="150;0;0;49;49;99;99" CDTime="30;25;22;19;16;13;10" Life="30;40;50;60;70;80;90" Desc="Fast transport between two points" LevelDesc=" ::: Hp +200\nCD -5s\nDuration +10s::: Hp +200\nCD -3s\nDuration +10s::: Hp +200\nCD -3s\nDuration +10s::: Hp +200\nCD -3s\nDuration +10s::: Hp +200\nCD -3s\nDuration +10s::: Killing Blows Chance: +15%" />
+
+		<Skill Type="8" Name="HealingMachine" IconName="MEDICALSTATION" UnlockLevel="0" UnlockGold="0" UnlockCrystal="40" Damage="0.02;0.03;0.04;0.05;0.06;0.07;0.08" Hp="400" HpAddPer="0.125" BuyMoney="0;5000;10000;0;0;0;0" BuyCrystal="0;0;0;49;49;99;99" BuyObsidian="100;0;0;0;0;0;0" CDTime="30;30;30;30;30;30;30" Life="10;10;10;10;10;10;10" Desc="Help proportionally restore the HP per second within limits.Initial 2% per second,lasts 10 seconds)" LevelDesc=" ::: Hp +50\nHeal 3%/s\n::: Hp +50\nHeal +4%/s\n::: Hp +50\nHeal 5%/s\n::: Hp +50\nHeal 6%/s\n::: Hp +50\nHeal 7%/s\n%::: Hp +50\nHeal 8%/s\n%" />
+
+	</Skills>
+
+	<IndividualSkills>
+		<Skill Type="101" AvatarType="11" AvatarLevel="6" CDInterval="15" IconName="skill_snowman" Name="Invincible snowman." Desc="Turn into a limbless snowman,becoming invulnerable but unable to take any actions." PreviewImgs = "img01;img02"/>
+		<Skill Type="102" AvatarType="10" AvatarLevel="6" CDInterval="-1" IconName="skill_santa" Name="Candy Kit" Desc="sets each time you get a kill." PreviewImgs = "img01;img02"/>
+		<Skill Type="120" AvatarType="12" AvatarLevel="2" CDInterval="12" IconName="zidongbuqiang" Name="Autoturrets" Desc="Summon three Autoturrets at the most" Hp="700" DamageValue="50" PreviewImgs = "Summon three Autoturrets at the most"/>
+		<Skill Type="103" AvatarType="12" AvatarLevel="6" CDInterval="18" IconName="feixingqi" Name="Summon" Desc="Summon HW-07 Flamethrower" PreviewImgs = "Summon HW-07 Flamethrower"/>
+		<Skill Type="104" AvatarType="13" AvatarLevel="6" CDInterval="20" IconName="kuangre" Name="Fanaticism" Desc="ATK Speed + 50%\nlasting for 10s.During this period, killing one enemy per time recovers 35% of HP" PreviewImgs = "Fanaticism"/>
+		<Skill Type="105" AvatarType="14" AvatarLevel="6" CDInterval="12" IconName="xuanfengzhan" Damage ="0.3" DamageInterval ="0.2" Name="Storm Fury" Desc="Speed+ 50%, the character keeps revolving to attack (Whirlwind), lasting for 5s." PreviewImgs = "Storm Fury"/>
+		<Skill Type="106" AvatarType="15" AvatarLevel="2" CDInterval="12" IconName="shunshen" Name="Teleport" Desc="Throw out a substitute doll. Can flashly move to the destination of the doll." PreviewImgs = "Teleport-1;Teleport-2"/>
+		<Skill Type="107" AvatarType="15" AvatarLevel="4" CDInterval="30" IconName="fenshen" Name="Replication" Desc="Create two clones to hit surrounding enemies." PreviewImgs = "Replication-1;Replication-2"/>
+		<Skill Type="108" AvatarType="16" AvatarLevel="4" CDInterval="12" IconName="qifangqianggong" Name="Assault" Desc="Break your shield and greatly increase your speed of generating weapon energy for 5 secs." PreviewImgs = "Assault"/>
+		<Skill Type="109" AvatarType="16" AvatarLevel="6" CDInterval="20" IconName="fuchouzhe" Name="Transform" Desc="Transform into an Avenger for 3 secs,during which you are immune to all damage, and release an bomb with ultimate power 3 secs later." PreviewImgs = "Transform"/>
+		<Skill Type="110" AvatarType="17" AvatarLevel="2" CDInterval="12" IconName="lieyanchongfeng" Name="Flame dash" Desc="Instantly move forward to a destination and cause explosion there." PreviewImgs = "Flame dash"/>
+		<Skill Type="111" AvatarType="17" AvatarLevel="4" CDInterval="20" IconName="guiyingnangua" Name="Pumpkin Missle" Desc="Summon three Pumpkin ghost who follow enemies and explode." PreviewImgs = "Pumpkin Missle"/>
+		<Skill Type="112" AvatarType="18" AvatarLevel="2" CDInterval="15" IconName="zhizhulei" ManualStop="1" ManualStopIcons="zhizhulei_zibao|zhizhulei_maidi" Name="Summon Spide Landmine" Desc="Control spide robot to land mines or self-destructively attack enmeies." PreviewImgs = "Summon Spide Landmine"/>
+		<Skill Type="113" AvatarType="18" AvatarLevel="4" CDInterval="20" IconName="feixing" ManualStop="1" ManualStopIcons="|feixing_zhaohui" Name="Summon unmanned plane" Desc="Control a unmanned plane to hit enemies by air." PreviewImgs = "Summon unmanned plane"/>
+		<Skill Type="114" AvatarType="19" AvatarLevel="2" CDInterval="13" IconName="binggantujin" Name="Ginger Assault" Desc="Ginger solider can make a sudden and violent attack when moving forward. When reaching the destination, explosion will be triggered." PreviewImgs = "Ginger Assault"/>
+		<Skill Type="115" AvatarType="19" AvatarLevel="4" CDInterval="10" IconName="jiangbindilei" Name="Cake landmine" Desc="Ginger solider throws 3 landmines forward.Landmines will explode when enemy touches it or after a few seconds." PreviewImgs = "Cake landmine"/>
+		<Skill Type="116" AvatarType="20" AvatarLevel="2" CDInterval="13" IconName="Mark" ItemMoveSpeed="50" Name="Mark" Desc="Throw a signal flare to the aim point (in the range),if enemy is hitted, he will be marked.Bolt can automatically track the marked enemy and increases 50% critical hit.Mark lasts 5s." PreviewImgs = "Mark-1;Mark-2"/>
+		<Skill Type="117" AvatarType="20" AvatarLevel="4" CDInterval="10" IconName="Fire" Damage="0.3" DamageValue="15" DamageInterval="0.2" DamageRadius="8" Name="Strafe" Desc="Deal 400 damages to all around enemies.If using this skill to kill marked character,cooldown time for mark and strafe will be reset immediately." PreviewImgs = "Strafe"/>
+		<Skill Type="118" AvatarType="21" AvatarLevel="2" CDInterval="15" IconName="Energy shield" Hp="3000" Name="Energy shield" Desc="Obtain a powerful shield for a short period which could protect character from 1000damages for 2.5s." LifeTime="2.5" Lv6LifeTime="4" PreviewImgs = "Energy shield"/>
+		<Skill Type="119" AvatarType="21" AvatarLevel="4" CDInterval="18" IconName="unmanned aerial vehicle" DamageValue="600" DamageRadius="10" ManualStop="1" ManualStopIcons="|Precision Bombing" ItemMoveSpeed="10" Name="Precision Bombing" Desc="Summon a unmanned aerial vehicle and click it again could calling for fire support." PreviewImgs = "unmanned aerial vehicle;fire support1;fire support2"/>
+	</IndividualSkills>
+
+	<SpiderRobotData MaxHp="150" />
+	<RemoteAircraftData MaxHp="150" Damage="100" AttrRPM="240" />
+
+</Conf>

@@ -1,0 +1,137 @@
+{
+  "checked_at_utc": "2026-09-19T16:56:30.410439+00:00",
+  "engine": "Godot 4.7.2 stable ed1daf0bf",
+  "checks": [
+    {
+      "check": "source_integration_headless",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "validation/runtime_final_console.log",
+      "note": "Two ObjectDB / one resource cleanup diagnostics at exit; behavioral assertions passed."
+    },
+    {
+      "check": "source_integration_graphical",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "validation/capture_final_console.log",
+      "note": "OpenGL Compatibility 1280x720; final heal audio, fractional UI values and isolated save assertions passed; no stderr."
+    },
+    {
+      "check": "sw1_recovered_data",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "validation/regression_data_console.log",
+      "note": "Existing font/CanvasItem/ObjectDB cleanup diagnostics at exit."
+    },
+    {
+      "check": "armor_catalog_purchase_save",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "validation/regression_armor_console.log",
+      "note": "Intentional corrupt-save test emitted backup-recovery warnings."
+    },
+    {
+      "check": "armor_power",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "validation/regression_power_console.log",
+      "note": "Existing font/CanvasItem/ObjectDB cleanup diagnostics at exit."
+    },
+    {
+      "check": "menu_equipment",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "validation/regression_menu_console.log",
+      "note": "Six tabs, 141 armor/backpack items, 47 weapons."
+    },
+    {
+      "check": "smoke",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "validation/smoke_console.log",
+      "note": "Ran through isolated save wrapper; exit RID/ObjectDB/resource cleanup diagnostics recorded."
+    },
+    {
+      "check": "settings",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "validation/settings_console.log",
+      "note": "Ran through isolated save wrapper; translations and graphics presets passed."
+    },
+    {
+      "check": "harness_integrity",
+      "status": "FAIL",
+      "exit_code": 1,
+      "log": "validation/harness_console.log",
+      "note": "Pre-existing generated drift in tracked harness/Claude files; no files in these areas changed by this task."
+    },
+    {
+      "check": "windows_resource_pack",
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "Godot --headless --path . --export-pack \"Windows Desktop\" test_output/source_reconstruction/validation.pck",
+      "pack_bytes": 799224020,
+      "loaded_from_isolated_empty_project": true,
+      "audio_paths": 556,
+      "textures": 29,
+      "atlas_json": 25,
+      "log": "validation/pack_probe_console.log",
+      "note": "PCK export/load validation; Android APK build and full standalone executable gameplay were not run."
+    }
+  ],
+  "original_sw1_generator": {
+    "command": "python tools/update_recovered_game_data.py --check",
+    "status": "PASS",
+    "exit_code": 0
+  },
+  "decoding": {
+    "status": "PASS",
+    "sw1_tables": 76,
+    "sw1_payload_byte_identical": true,
+    "sw2_tables": 227,
+    "sw2_bytes_consumed": 2169816,
+    "com_configs": 39,
+    "mapped_com_suits": 8
+  },
+  "asset_integrity": {
+    "status": "PASS",
+    "report": "asset_integrity.json"
+  },
+  "browser": {
+    "status": "PASS",
+    "report": "browser_report.json",
+    "command": "node tools/check_reconstruction_report.mjs (isolated Chrome 19470)"
+  },
+  "visual_review": {
+    "status": "PASS",
+    "game_capture": "store_applied.png",
+    "renderer": "OpenGL Compatibility",
+    "viewport": "1280x720",
+    "observations": [
+      "Original CoM whole-suit icons visible",
+      "Whole-suit purchase label/8000 credits visible",
+      "Selected Assault piece HP 32.50 and shield 62.50 are displayed without rounding",
+      "Description remains inside scroll area"
+    ],
+    "html_captures": [
+      "browser_desktop.png",
+      "browser_mobile.png"
+    ]
+  },
+  "not_run": [
+    "Original APK execution on Android",
+    "Original multiplayer/back-end behavior",
+    "Full native IL2CPP consumer decompilation for SW2",
+    "Unimplemented SW2/CoM missions, equipment and upgrade behavior",
+    "Android APK build / device run"
+  ],
+  "save_isolation": "Game integration assertion confirms production SAVE_PATH hash unchanged; smoke/settings use isolated_checks.gd wrapper.",
+  "source_whitespace": {
+    "full_diff_check": "FAIL",
+    "reason": "Original recovered XML includes CRLF and trailing whitespace, preserved byte-for-byte as source evidence.",
+    "raw_source_diagnostics": 1381,
+    "code_and_authored_docs_check": "PASS",
+    "xml_payload_sha_matches_staged_git": true,
+    "xml_files_checked": 36
+  }
+}
