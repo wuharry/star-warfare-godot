@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "armor_sets": 28,
+  "images_loaded": 113,
+  "image_dimensions_match": true,
+  "gallery_boxes_4_by_5": true,
+  "search": true,
+  "filters": [
+    {
+      "group": "sw",
+      "count": 20
+    },
+    {
+      "group": "com",
+      "count": 8
+    },
+    {
+      "group": "all",
+      "count": 28
+    }
+  ],
+  "combined_search_filter": true,
+  "dialog_cases": 28,
+  "reference_view_cases": 112,
+  "next_previous": true,
+  "thunder_style_shortcut": true,
+  "escape_close": true,
+  "local_links": 59,
+  "desktop": "1500x1150",
+  "mobile": "390x844",
+  "horizontal_overflow": false,
+  "browser_errors": [],
+  "scope": "Static concept-gallery behavior; this does not test in-game integration.",
+  "visual_review": {
+    "status": "PASS",
+    "observations": [
+      "已實際檢視 desktop1500x1150：四欄卡片完整顯示人物與文字，原生height造成的空白已修正。",
+      "已實際檢視 mobile390x844：搜尋、篩選與單欄卡片排版正常，無横向溢位。",
+      "已實際檢視 mobile dialog：Thunder參考和Phoenix概念圖依序顯示，圖片完整縮放、關閉與前後按鈕可見。"
+    ],
+    "screenshots": {
+      "browser_desktop.png": "fa80314f9fe095959eb9c59707582d307a7758555acdffda15f6177d158f272c",
+      "browser_mobile.png": "a661e8374b254275eb2b5d60c37f60e5637a62ec180b38ec13b0bf1f771e1625",
+      "browser_mobile_dialog.png": "7e45feb479ed842b761433a77638d4b589878416c1d371d55fbdf3268185cab2"
+    }
+  },
+  "index_sha256": "aed7dd40b9556ab232ba05f4bcafea0d4ad973c6841efc60718b0f9e4bf60cd7"
+}
