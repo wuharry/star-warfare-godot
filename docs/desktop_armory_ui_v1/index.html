@@ -14,9 +14,10 @@ figure{margin:0}figure a{display:block;background:#090e11;border:1px solid #3b53
 <header><small>DESKTOP ARMORY · 2026-09-20 · GODOT 實際截圖</small>
 <h1>細邊框，完整的金屬切角</h1>
 <p>電腦版商店與裝備頁統一使用 SW1 外框、Call of Mini 控制項。修正粗框、按鈕切角破圖，以及縮窄視窗時商品卡被裁切的問題。</p>
+<p>數值條使用三種亮度：基準為正常實色，減少的區段變暗，增加的區段變亮；HP／POW／SPD 保留藍／橙／綠配色。</p>
 <p>選擇畫面查看；點擊圖片可開啟原尺寸。以下都是遊戲直接輸出的截圖。</p></header>
 <nav aria-label="比較畫面" id="views"></nav>
-<figure><a id="full" href="captures/store.png" target="_blank" rel="noopener"><img id="shot" src="captures/store.png" alt="修正後的桌面武器商店"></a><figcaption id="caption"></figcaption></figure>
+<figure><a id="full" href="captures/stats_normal.png" target="_blank" rel="noopener"><img id="shot" src="captures/stats_normal.png" alt="正常亮度的 HP、POW、SPD 數值條"></a><figcaption id="caption"></figcaption></figure>
 <h2>UI 與原始素材對應</h2>
 <div class="scroll"><table>
 <thead><tr><th>遊戲中位置</th><th>原始素材</th><th>調整方式</th></tr></thead><tbody>
@@ -38,6 +39,9 @@ figure{margin:0}figure a{display:block;background:#090e11;border:1px solid #3b53
 </main>
 <script>
 const views=[
+ ['stats_normal','數值：基準','檢視已裝備的 FR28a，HP／POW／SPD 都以正常亮度顯示，沒有增減區段。'],
+ ['stats_gain_loss','數值：增加','改看 Light Bow：POW 增加的區段亮起，原有的區段維持正常亮度；HP／SPD 不變。'],
+ ['stats_reverse','數值：減少','測試裝備 Light Bow 再預覽 FR28a：POW 減少的區段變暗，仍保留的區段維持正常亮度。'],
  ['store','武器商店','細邊框與深藍灰商品卡；選取項目使用青藍色。'],
  ['filter_open','武器類型選單','展開選單使用相同外框、原始箭頭與金色選取標記；目前游標停在「重型」。'],
  ['filter_applied','篩選結果','鍵盤確認「重型」後，只顯示對應武器，並收起選單。'],
