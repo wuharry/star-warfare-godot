@@ -50,6 +50,9 @@ var owned_armor: Array[String] = []
 var equipped_armor: Dictionary = {}
 var PROPS: Dictionary = {}
 var owned_props: Dictionary = {}
+## Optional SW1 mobile package arrangement. Ownership remains authoritative.
+var package_slots: Array[String] = []
+var package_storage: Array[String] = []
 
 # Three graphics presets. render_scale drives the root viewport's 3D
 # resolution (the biggest lever after the 2x texture upscale), while shadows,
@@ -477,6 +480,121 @@ func set_loadout_weapon(slot: int, weapon_id: String) -> bool:
 
 func is_weapon_owned(weapon_id: String) -> bool:
 	return owned_weapons.has(weapon_id)
+
+func get_package_slots() -> Array[String]:
+	var active: Array[String] = []
+	for key: String in battle_weapons.slice(0, get_bag_capacity()):
+		if is_weapon_owned(key) and not active.has(key):
+			active.append(key)
+	var existing: Array[String] = []
+	for key: String in package_slots.slice(0, get_bag_capacity()):
+		if WEAPONS.has(key):
+			existing.append(key)
+	# A desktop loadout change invalidates only the optional arrangement.
+	# Legacy saves keep the same active weapons until a mobile edit is applied.
+	if existing != active or not _valid_package(package_slots):
+		package_slots = active.duplicate()
+	package_slots.resize(get_bag_capacity())
+	return package_slots.duplicate()
+
+func get_package_storage() -> Array[String]:
+	var slots := get_package_slots()
+	var available: Array[String] = []
+	for key: String in owned_weapons:
+		if WEAPONS.has(key) and not slots.has(key):
+			available.append(key)
+	for key: String in PROPS:
+		if get_prop_count(key) > slots.count(key):
+			available.append(key)
+	var result: Array[String] = []
+	result.resize(72) # Global.STORAGE_MAX_PANEL = 8, nine cells per page.
+	for index in mini(72, package_storage.size()):
+		var key := package_storage[index]
+		if available.has(key):
+			result[index] = key
+			available.erase(key)
+	for key: String in available:
+		var index := result.find("")
+		if index >= 0:
+			result[index] = key
+	package_storage = result
+	return result.duplicate()
+
+func _valid_package(slots: Array[String]) -> bool:
+	if slots.size() > get_bag_capacity():
+		return false
+	var guns: Array[String] = []
+	var props := {}
+	for key: String in slots:
+		if key.is_empty():
+			continue
+		if WEAPONS.has(key):
+			if not is_weapon_owned(key) or guns.has(key):
+				return false
+			guns.append(key)
+		elif PROPS.has(key):
+			props[key] = int(props.get(key, 0)) + 1
+			if int(props[key]) > get_prop_count(key):
+				return false
+		else:
+			return false
+	return not guns.is_empty()
+
+func set_package(slots: Array[String], storage: Array[String]) -> bool:
+	# Validate before touching the loadout: never remove its last weapon.
+	if not _valid_package(slots):
+		return false
+	package_slots = slots.duplicate()
+	package_slots.resize(get_bag_capacity())
+	package_storage = storage.duplicate()
+	battle_weapons.clear()
+	for key: String in package_slots:
+		if WEAPONS.has(key):
+			battle_weapons.append(key)
+	selected_weapon = battle_weapons[0]
+	get_package_storage() # Reconcile counts/order without altering ownership.
+	_save()
+	loadout_changed.emit()
+	store_changed.emit()
+	return true
+
+func apply_equipment_preview(selection: Dictionary) -> bool:
+	var gun := str(selection.get("gun", ""))
+	if not is_weapon_owned(gun) or not WEAPONS.has(gun):
+		return false
+	var outfit := {}
+	for part: String in ArmorCatalogData.PART_KEYS:
+		var key := str(selection.get(part, ""))
+		if not is_armor_owned(key) or not ARMOR_ITEMS.has(key) or str(ARMOR_ITEMS[key].part_key) != part:
+			return false
+		outfit[part] = key
+	var slots := get_package_slots()
+	var primary := -1
+	for index in slots.size():
+		if WEAPONS.has(slots[index]):
+			primary = index
+			break
+	if primary < 0:
+		return false
+	var previous := slots[primary]
+	var carried := slots.find(gun)
+	slots[primary] = gun
+	if carried >= 0 and carried != primary:
+		slots[carried] = previous
+	var capacity := clampi(int(ARMOR_ITEMS[outfit.bag].bag_slots), 1, LOADOUT_MAX_SLOTS)
+	if capacity < slots.size():
+		# CustomizeUI.ChangeBag keeps the primary; overflow returns to storage.
+		var resized: Array[String] = [gun]
+		for index in slots.size():
+			if index != primary and resized.size() < capacity:
+				resized.append(slots[index])
+		slots = resized
+	equipped_armor = outfit
+	# All validation above precedes this one save and the observer notifications.
+	set_package(slots, package_storage)
+	for part: String in ArmorCatalogData.PART_KEYS:
+		armor_changed.emit(part, str(outfit[part]))
+	return true
 
 func get_rank_id() -> int:
 	# Preserve the existing sector-based unlock floor, including test profiles.
@@ -917,6 +1035,14 @@ func _load_save() -> void:
 	_normalize_store_state()
 	_normalize_props_state()
 	var stored_settings = parsed.get("settings", {})
+	package_slots.clear()
+	package_storage.clear()
+	for field: String in ["package_slots", "package_storage"]:
+		var stored: Variant = parsed.get(field, [])
+		if stored is Array:
+			var target: Array[String] = package_slots if field == "package_slots" else package_storage
+			for value: Variant in stored.slice(0, 8 if field == "package_slots" else 72):
+				target.append(str(value) if value is String else "")
 	if stored_settings is Dictionary:
 		for key in stored_settings:
 			if settings.has(key):
@@ -977,6 +1103,8 @@ func _save() -> void:
 		"owned_armor": owned_armor,
 		"equipped_armor": equipped_armor,
 		"owned_props": owned_props,
+		"package_slots": package_slots,
+		"package_storage": package_storage,
 		"best_scores": best_scores,
 		"settings": settings
 	}

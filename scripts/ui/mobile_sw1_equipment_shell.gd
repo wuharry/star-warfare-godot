@@ -6,6 +6,7 @@ const Layout = preload("res://scripts/ui/sw1_store_layout.gd")
 const Scroller = preload("res://scripts/ui/sw1_store_scroller.gd")
 const ArmorVisuals = preload("res://scripts/game/armor_visuals.gd")
 const Refinement = preload("res://scripts/core/equipment_refinement.gd")
+const PackagePage = preload("res://scripts/ui/mobile_sw1_package.gd")
 const DESCRIPTION_SKILLS := {
 	"HP_BOOTH": ["hp", false, true], "ATTACK_BOOTH": ["attack_boost", true, true],
 	"SPEED_BOOTH": ["speed_boost", false, true], "MONEY_BOOTH": ["money_boost", true, true],
@@ -39,6 +40,15 @@ var _prop_category_marker: TextureRect
 var _category_tween: Tween
 var _gear_spread := 1.0
 var _refresh_pending := false
+var equip_button: Button
+var customize_controls: Control
+var package_page: Control
+var _items_button: Button
+var _items_flag: TextureRect
+var _equip_art: Array[TextureRect] = []
+var _suit_icons: Array[TextureRect] = []
+var _level_icons: Array[TextureRect] = []
+var _interaction_enabled := true
 
 
 func _build_background() -> void:
@@ -110,12 +120,113 @@ func _build_catalog() -> void:
 	var items := _side_button(equipment_controls, "ITEMS", Layout.rect(11, 48))
 	items.name = "ItemsButton"
 	items.pressed.connect(_select_supply_category.bind("health", true))
-	_module_art(equipment_controls, 11, 75)
+	_items_button = items
+	_items_flag = _module_art(equipment_controls, 11, 75)
 	var ammo := _side_button(equipment_controls, "AMMO", Layout.rect(11, 49))
 	ammo.name = "AmmoButton"
 	ammo.pressed.connect(_show_ammo)
 	_module_art(equipment_controls, 11, 76)
 	_build_props()
+	_build_customize()
+
+
+func _build_customize() -> void:
+	customize_controls = Control.new()
+	customize_controls.z_index = 5
+	customize_controls.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(customize_controls)
+	for index in [75, 76, 77, 78, 79, 80, 81]:
+		var art := _module_art(customize_controls, 10, index)
+		art.set_meta("module", index)
+		_equip_art.append(art)
+	equip_button = Button.new()
+	equip_button.name = "EquipPreviewButton"
+	for state in ["normal", "hover", "pressed", "disabled", "focus"]:
+		equip_button.add_theme_stylebox_override(state, _empty_style())
+	equip_button.focus_mode = Control.FOCUS_NONE
+	_set_rect(equip_button, Layout.rect(10, 79).grow_individual(40, 16, 40, 16))
+	customize_controls.add_child(equip_button)
+	equip_button.pressed.connect(_equip_preview)
+	equip_button.button_down.connect(_refresh_equip_button.bind(true))
+	equip_button.button_up.connect(_refresh_equip_button.bind(false))
+	for index in 4:
+		_suit_icons.append(_module_art(customize_controls, 10, 59 + index))
+	for index in 7:
+		var icon := _module_art(customize_controls, 10, 67)
+		icon.position.x += index * 18
+		_level_icons.append(icon)
+	customize_controls.hide()
+
+
+func set_mode(next_mode: String, play_sound := true) -> void:
+	if is_instance_valid(package_page):
+		package_page.queue_free()
+		package_page = null
+	if next_mode == "customize":
+		# CreateClone in CustomizeUI starts from the equipped outfit and first gun.
+		for category: Dictionary in CATEGORIES:
+			var key := str(category.key)
+			preview_selection[key] = GameState.battle_weapons[0] if key == "gun" else GameState.get_equipped_armor_key(key)
+		selected_item_key = str(preview_selection[selected_category])
+		selected_section = "equipment"
+	super.set_mode(next_mode, play_sound)
+	apply_layout(false)
+	_refresh_details()
+
+
+func _get_category_ids() -> Array[String]:
+	var ids: Array[String] = super._get_category_ids()
+	if mode != "customize" or selected_section != "equipment":
+		return ids
+	var owned: Array[String] = []
+	for key: String in ids:
+		if GameState.is_weapon_owned(key) if selected_category == "gun" else GameState.is_armor_owned(key):
+			owned.append(key)
+	return owned
+
+
+func _equip_preview() -> void:
+	if mode != "customize" or not _interaction_enabled or equip_button.disabled:
+		return
+	if GameState.apply_equipment_preview(preview_selection):
+		AudioDirector.play_ui("mount_gear")
+		_refresh_details()
+
+
+func _refresh_equip_button(pressed := false) -> void:
+	var changed := str(preview_selection.get("gun", "")) != GameState.battle_weapons[0]
+	for key: String in ["head", "body", "arms", "legs", "bag"]:
+		changed = changed or str(preview_selection.get(key, "")) != GameState.get_equipped_armor_key(key)
+	equip_button.disabled = not changed or not _interaction_enabled
+	for art: TextureRect in _equip_art:
+		var index := int(art.get_meta("module"))
+		art.visible = index in ([75, 77 if pressed else 79, 80] if changed else [76, 78, 81])
+
+
+func _select_supply_category(category_key: String, play_sound := true) -> void:
+	if mode == "customize":
+		_show_package()
+	else:
+		super._select_supply_category(category_key, play_sound)
+
+
+func _show_package() -> void:
+	if not _interaction_enabled or is_instance_valid(package_page):
+		return
+	set_interaction_enabled(false)
+	package_page = PackagePage.new()
+	package_page.shell = self
+	add_child(package_page)
+	move_child(package_page, get_node("OriginalNavigationBar").get_index())
+	screen_title.text = "PACKAGE"
+	AudioDirector.play_ui("accept")
+
+
+func _close_package() -> void:
+	package_page.queue_free()
+	package_page = null
+	set_mode("customize", false)
+	set_interaction_enabled(true)
 
 
 func _build_props() -> void:
@@ -206,6 +317,7 @@ func _build_comparison_stats() -> void:
 
 func _build_bottom_bar() -> void:
 	var bar := Control.new()
+	bar.z_index = 20
 	bar.name = "OriginalNavigationBar"
 	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_set_rect(bar, Rect2(0, 0, 960, 80))
@@ -243,7 +355,7 @@ func apply_layout(_use_desktop_layout: bool) -> void:
 	_set_rect(detail_panel, Rect2(704, 240, 232, 374))
 	_set_rect(name_label, _detail_rect(52))
 	_set_rect(state_label, _detail_rect(53))
-	_set_rect(stats_text, Rect2(14, 58, 216, 88))
+	_set_rect(stats_text, Rect2(62, 58, 180, 88) if mode == "customize" else Rect2(14, 58, 216, 88))
 	_set_rect(description_text, _detail_rect(50))
 	_set_rect(action_button, _detail_rect(19))
 	_set_rect(price_label, _detail_rect(58))
@@ -253,7 +365,7 @@ func apply_layout(_use_desktop_layout: bool) -> void:
 
 
 func _detail_rect(index: int) -> Rect2:
-	var rect := Layout.rect(11, index)
+	var rect := Layout.rect(10 if mode == "customize" else 11, index)
 	rect.position -= Vector2(704, 240)
 	return rect
 
@@ -264,6 +376,10 @@ func _refresh_filter_buttons() -> void:
 
 func _refresh_desktop_navigation() -> void:
 	var equipment := selected_section == "equipment"
+	if is_instance_valid(customize_controls):
+		customize_controls.visible = mode == "customize" and equipment
+		_items_button.text = "PACK." if mode == "customize" else "ITEMS"
+		_items_flag.texture = _module_texture(10, 82) if mode == "customize" else _module_texture(11, 75)
 	equipment_controls.visible = equipment
 	props_controls.visible = not equipment
 	if is_instance_valid(detail_panel):
@@ -368,8 +484,8 @@ func _refresh_details() -> void:
 		var weapon: Dictionary = GameState.WEAPONS[selected_item_key]
 		# SW1 displays seconds per shot, not shots per second, beside FIRERATE.
 		stats_text.text = "[color=#ffa500]POW %s\nFIRERATE %.2f\nENG %d%s[/color]" % [
-			_compact_value(float(weapon.damage)), float(weapon.cooldown), int(weapon.energy),
-			"\nSPD %s" % _compact_value(float(weapon.speed_drag)) if not is_zero_approx(float(weapon.speed_drag)) else ""]
+			_source_value(float(weapon.damage)), float(weapon.cooldown), int(weapon.energy),
+			"\nSPD %s" % _source_value(float(weapon.speed_drag)) if not is_zero_approx(float(weapon.speed_drag)) else ""]
 		description_text.text = str(Layout.WEAPON_DESCRIPTIONS[int(weapon.id)]).replace("[n]", "\n").replace("[EMPTY]", "")
 	elif selected_section == "equipment" and GameState.ARMOR_ITEMS.has(selected_item_key):
 		var item: Dictionary = GameState.ARMOR_ITEMS[selected_item_key]
@@ -381,7 +497,7 @@ func _refresh_details() -> void:
 				if is_zero_approx(value):
 					continue
 				var percentage := index in [1, 3]
-				var text := ("+" if value > 0.0 else "") + _compact_value(value * (100.0 if percentage else 1.0)) + ("%" if percentage else "")
+				var text := ("+" if value > 0.0 else "") + _source_value(value * (100.0 if percentage else 1.0)) + ("%" if percentage else "")
 				var color: Color = [HP_COLOR, POWER_COLOR, SPEED_COLOR, GOLD_COLOR][index]
 				lines.append("[color=#%s]%s %s[/color]" % [color.to_html(false), text, ["HP", "POW", "SPD", "GOLD"][index]])
 			stats_text.text = "\n".join(lines)
@@ -389,6 +505,41 @@ func _refresh_details() -> void:
 		price_label.text = ""
 	# Keep longer restored CoM/full-suit labels inside the original button.
 	action_button.add_theme_font_size_override("font_size", 12 if action_button.text.length() > 14 else 20)
+	if mode == "customize":
+		slot_picker.hide()
+		price_label.hide()
+		# UPGRADE is separate from EQUIP in CustomizeUI. The current game has
+		# no weapon-level progression; don't turn this into an unrelated action.
+		action_button.visible = selected_category == "gun"
+		action_button.disabled = true
+		action_button.text = "UPGRADE"
+		action_button.tooltip_text = "武器升級尚未接入目前的遊戲規則"
+		state_label.text = "LV 1" if selected_category == "gun" else ""
+		state_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		stats_text.position.x = 62
+		stats_text.size.x = 180
+		var rect := _detail_rect(50)
+		if selected_category != "gun":
+			rect.size.y += 58
+		_set_rect(description_text, rect)
+		for icon: TextureRect in _level_icons:
+			icon.visible = selected_category == "gun"
+		for index in _suit_icons.size():
+			var icon := _suit_icons[index]
+			icon.visible = selected_category in ARMOR_MESH_PARTS
+			if icon.visible:
+				var set_id := int(GameState.ARMOR_ITEMS[selected_item_key].set_id)
+				var part := str(["head", "body", "arms", "legs"][index])
+				var equipped_set := int(GameState.ARMOR_ITEMS[str(preview_selection[part])].set_id)
+				icon.texture = _module_texture(10, 59 + index + (4 if set_id == equipped_set else 0))
+		_refresh_equip_button()
+	else:
+		price_label.show()
+		action_button.show()
+		action_button.tooltip_text = ""
+		state_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		stats_text.position.x = 14
+		stats_text.size.x = 216
 
 
 func _armor_description(item: Dictionary) -> String:
@@ -404,7 +555,7 @@ func _armor_description(item: Dictionary) -> String:
 	for token: String in DESCRIPTION_SKILLS:
 		var rule: Array = DESCRIPTION_SKILLS[token]
 		var value := float(skills.get(str(rule[0]), 0.0))
-		var formatted := ("+" if bool(rule[2]) and value > 0.0 else "") + _compact_value(value * (100.0 if bool(rule[1]) else 1.0)) + ("%" if bool(rule[1]) else "")
+		var formatted := ("+" if bool(rule[2]) and value > 0.0 else "") + _source_value(value * (100.0 if bool(rule[1]) else 1.0)) + ("%" if bool(rule[1]) else "")
 		text = text.replace("[%s]" % token, formatted)
 	return text
 
@@ -518,7 +669,9 @@ func _position_gear() -> void:
 	for slot in gear_cards.size():
 		var index := posmod(center + slot - 3, _ids.size())
 		var card := gear_cards[slot]
-		var distance: float = gear_scroller.distance(index) * _gear_spread
+		# CustomizeUI.GetDispCount repeats small owned lists around the avatar.
+		# Use each visible copy's unwrapped position, not the same wrapped index.
+		var distance: float = ((center + slot - 3) * 120.0 - gear_scroller.offset) * _gear_spread
 		card.visible = absf(distance) > 25.0 and absf(distance) < 360.0
 		if not card.visible:
 			continue
@@ -555,7 +708,9 @@ func _fill_gear_cell(card: Control, item_key: String) -> void:
 	viewport.transparent_bg = true
 	viewport.own_world_3d = true
 	viewport.size = Vector2i(120, 135)
-	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+	# Redraw while visible: a newly reused cell can still be resizing and
+	# compiling its material on its first frame (especially after a tag switch).
+	viewport.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
 	container.add_child(viewport)
 	var camera := Camera3D.new()
 	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
@@ -683,24 +838,36 @@ func _draw_dots(parent: Control, count: int, selected: int, center: Vector2, spa
 
 
 func set_interaction_enabled(value: bool) -> void:
+	_interaction_enabled = value
+	if is_instance_valid(package_page):
+		package_page.set_interaction_enabled(value)
+	if is_instance_valid(equip_button):
+		_refresh_equip_button()
 	if _category_tween and _category_tween.is_valid():
 		_category_tween.kill()
 		tag_scroller.select(category_buttons.keys().find(selected_category))
 	_set_gear_spread(1.0)
 	for scroller: Control in [gear_scroller, tag_scroller, props_scroller]:
-		scroller.enabled = value
-		if not value:
+		scroller.enabled = value and not is_instance_valid(package_page)
+		if not scroller.enabled:
 			scroller.cancel()
 
 
 func handle_back() -> void:
 	AudioDirector.play_ui("back")
-	if is_instance_valid(_ammo_dialog) and _ammo_dialog.visible:
+	if is_instance_valid(package_page):
+		_close_package()
+	elif is_instance_valid(_ammo_dialog) and _ammo_dialog.visible:
 		_ammo_dialog.hide()
 	elif selected_section == "supplies":
 		_select_category(selected_category, false)
 	else:
 		closed.emit()
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if _interaction_enabled and not is_instance_valid(package_page):
+		super._unhandled_key_input(event)
 
 
 func _show_ammo() -> void:
@@ -736,6 +903,12 @@ func _module_art(parent: Node, unit: int, index: int, frame := 0) -> TextureRect
 	_set_rect(art, Layout.rect(unit, index, frame))
 	parent.add_child(art)
 	return art
+
+
+func _module_texture(unit: int, index: int, frame := 0) -> Texture2D:
+	var module := Layout.module(unit, index, frame)
+	var region: Array = module.rect
+	return Atlas.region("res://assets/original/ui/pages/%d.png" % int(module.page), Rect2(region[0], region[1], region[2], region[3]))
 
 
 func _side_button(parent: Node, caption: String, rect: Rect2, component := "armory_side_button") -> Button:
@@ -820,7 +993,14 @@ func _refresh_mobile_state() -> void:
 	_refresh_pending = false
 	if not is_inside_tree() or is_queued_for_deletion():
 		return
+	if is_instance_valid(package_page):
+		_refresh_currency()
+		return
 	super._on_store_changed()
+
+
+func _source_value(value: float) -> String:
+	return str(roundi(value)) if is_equal_approx(value, roundf(value)) else ("%.2f" % value).trim_suffix("0")
 
 
 func _exit_tree() -> void:
