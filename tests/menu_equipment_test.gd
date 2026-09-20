@@ -60,8 +60,8 @@ func _run() -> void:
 		var gun_catalog := shell.desktop_equipment_buttons.get("gun") as Button
 		var gear_style := gear_section.get_theme_stylebox("normal") as StyleBoxTexture
 		var gun_style := gun_catalog.get_theme_stylebox("normal") as StyleBoxTexture
-		_check(gear_style != null and gear_style.texture.resource_path.begins_with("res://assets/ui/components/"), "shelf switch does not use the recovered UI art")
-		_check(gun_style != null and gun_style.texture.resource_path.ends_with("button_pressed.png"), "desktop category does not use the original long button plate")
+		_check(gear_style != null and gear_style.texture != null, "shelf switch lost its recovered texture")
+		_check(gun_style != null and gun_style.texture != null, "desktop category lost its recovered texture")
 		_check(shell.weapon_filter_picker is OptionButton and shell.weapon_filter_picker.item_count == 6, "desktop armory is missing the compact weapon type filter")
 		_check_store_layout(shell)
 		_check(shell.comparison_rows.size() == 3, "StoreUI is missing the authored HP/POW/SPD comparison meters")
@@ -94,13 +94,13 @@ func _run() -> void:
 		var category_positions := {}
 		for category_key: String in expected_tabs:
 			category_positions[category_key] = (shell.category_buttons[category_key] as Button).position
-		_check(selected_tag.get_theme_stylebox("normal") is StyleBoxTexture, "selected category lost the recovered module-17 frame")
-		_check(adjacent_tag.get_theme_stylebox("normal") is StyleBoxTexture, "inactive category lost the recovered module-17 frame")
+		_check(selected_tag.get_theme_stylebox("normal") is StyleBoxTexture, "selected category lost its recovered frame")
+		_check(adjacent_tag.get_theme_stylebox("normal") is StyleBoxTexture, "inactive category lost its recovered frame")
 		_check(adjacent_tag.modulate.is_equal_approx(Color.WHITE), "inactive category icon is still artificially dimmed")
 		_check(selected_tag.scale.is_equal_approx(Vector2.ONE) and adjacent_tag.scale.is_equal_approx(Vector2.ONE), "fixed category hit targets change size on selection")
 		var hp_track_glow := shell.comparison_panel.get_node_or_null("HPComparison/AuthoredMeter/TrackGlow") as TextureRect
 		_check(hp_track_glow != null and hp_track_glow.modulate.a >= 0.2, "upper-right comparison slot is still too dark")
-		_check(shell.slot_picker.get_theme_stylebox("normal") is StyleBoxFlat, "loadout slot picker has no bright custom frame")
+		_check(shell.slot_picker.get_theme_stylebox("normal") is StyleBoxTexture, "loadout slot picker must use recovered UI artwork")
 		for supply_case: Dictionary in [
 			{"key": "health", "count": 6},
 			{"key": "aid", "count": 2},

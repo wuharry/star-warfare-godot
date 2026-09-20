@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>電腦版商店 UI — SW1 × Call of Mini</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,"Microsoft JhengHei",sans-serif;color:#d7e9ec;background:#10191e}
+*{box-sizing:border-box}body{margin:0}main{max-width:1440px;margin:auto;padding:32px 24px 56px}
+header{border-bottom:1px solid #32454d;padding-bottom:24px;margin-bottom:24px}small{color:#69d5e6;letter-spacing:.08em}h1{font-size:clamp(24px,3vw,38px);margin:10px 0}p{line-height:1.7;color:#abc3cb;margin:8px 0}
+a{color:#72dbeb}nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}button{font:inherit;font-size:14px;border:1px solid #3b5360;background:#1b2c34;color:#b9d3dc;padding:9px 15px;cursor:pointer;border-radius:3px}button[aria-pressed=true]{background:#146d88;color:white;border-color:#79dcec}button:hover{background:#24546a}button:focus-visible{outline:2px solid #ffe09c;outline-offset:3px}
+figure{margin:0}figure a{display:block;background:#090e11;border:1px solid #3b5360}figure img{display:block;max-width:100%;max-height:780px;margin:auto}figcaption{padding:12px 0;line-height:1.7;color:#bdd0d7}h2{font-size:21px;margin-top:32px}.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;line-height:1.7;font-size:14px}td,th{text-align:left;padding:12px 14px;border-bottom:1px solid #32454d}th{color:#80d9e5;background:#15242c}code{font-size:13px;color:#bfdde6}details{margin:26px 0;padding:18px;background:#15242c;border:1px solid #32454d}summary{cursor:pointer}footer{font-size:13px;color:#90a9b1;margin-top:24px}
+</style>
+<main>
+<header><small>DESKTOP ARMORY · 2026-09-20 · GODOT 實際截圖</small>
+<h1>細邊框，完整的金屬切角</h1>
+<p>電腦版商店與裝備頁統一使用 SW1 外框、Call of Mini 控制項。修正粗框、按鈕切角破圖，以及縮窄視窗時商品卡被裁切的問題。</p>
+<p>選擇畫面查看；點擊圖片可開啟原尺寸。以下都是遊戲直接輸出的截圖。</p></header>
+<nav aria-label="比較畫面" id="views"></nav>
+<figure><a id="full" href="captures/store.png" target="_blank" rel="noopener"><img id="shot" src="captures/store.png" alt="修正後的桌面武器商店"></a><figcaption id="caption"></figcaption></figure>
+<h2>UI 與原始素材對應</h2>
+<div class="scroll"><table>
+<thead><tr><th>遊戲中位置</th><th>原始素材</th><th>調整方式</th></tr></thead><tbody>
+<tr><td>商品欄、詳細資料、展開選單與提示框</td><td>SW1 <code>armory_detail_panel</code></td><td>保留原始貼圖細節，以 1/4 邏輯尺寸切片，縮小外框與切角。</td></tr>
+<tr><td>頁籤、類別、商品卡、兩個下拉選單</td><td>Call of Mini <code>HUIKUANG / PUTONG</code></td><td>半尺寸切片；一般狀態為深藍灰，選取與滑過為青藍色，停用時降低亮度。</td></tr>
+<tr><td>頁首</td><td>SW1 <code>armory_nav_bar</code></td><td>使用中段金屬斜紋，排除原手機貨幣區域，避免拉出藍色邊角。</td></tr>
+<tr><td>前後商品、下拉箭頭、已選項目</td><td>Call of Mini <code>back / xuanjiao</code></td><td>使用原圖示；下拉選單開啟時箭頭轉向上方。</td></tr>
+<tr><td>捲軸、價格上方分隔線</td><td>Call of Mini <code>huadongtiao-1 / huadongtiao-3 / fenlan-zuo</code></td><td>圖集切片，同步套用到商品列及文字說明的捲軸。</td></tr>
+<tr><td>購買、能力比較、裝備縮圖</td><td>既有 SW1 按鈕、數值條、目前裝備美術</td><td>沿用既有素材與功能；鍵盤焦點框統一為原作風格。</td></tr>
+</tbody></table></div>
+<details><summary>驗證與來源</summary>
+<p>桌面 UI 互動、購買與指定欄位裝備、手機商店、手機裝備與背包測試均 PASS。桌面畫面以 Godot 4.7.2 Compatibility / OpenGL 3.3、RTX 4080 Laptop GPU 取得。</p>
+<p>寬版截圖 1280 × 720；縮窄版與手機對照 1080 × 720（遊戲邏輯畫布 960 × 640）。測試使用隔離存檔。</p>
+<p>CommonUI 的命名區域來自已提取的原始 XML，共 87 個。貼圖 PNG 未重畫，桌面版適配集中在 <code>recovered_armory_skin.gd</code>；手機版仍使用原先的 SW1 版面。</p>
+<p>Harness 檢查仍有既有的 generated drift，與本次遊戲 UI 驗證分開記錄。未執行 Android / iOS 實機及打包版本驗證。</p>
+<p><a href="README.md">完整說明與重現指令</a> · <a href="../../assets/recovered_sources/com/ui/CommonUI.json">CommonUI 命名區域</a> · <a href="../reconstruction_v1/index.html">原始資料整理</a> · <a href="../mobile_customize_sw1/index.html">手機裝備頁</a></p>
+</details>
+<footer>本頁用於比較 UI；美術是否符合你的偏好，仍以你的檢視為準。</footer>
+</main>
+<script>
+const views=[
+ ['store','武器商店','細邊框與深藍灰商品卡；選取項目使用青藍色。'],
+ ['filter_open','武器類型選單','展開選單使用相同外框、原始箭頭與金色選取標記；目前游標停在「重型」。'],
+ ['filter_applied','篩選結果','鍵盤確認「重型」後，只顯示對應武器，並收起選單。'],
+ ['purchased','購買完成','購買仍沿用既有交易規則；持有後按鈕停用，不會重複扣款。'],
+ ['slots_open','裝備欄位選單','靠近畫面底部的欄位選單向上展開，全部六個欄位可見。'],
+ ['customize','裝備完成','選取最後一個欄位並裝備 MS06，保留第一個欄位的 FR28a。'],
+ ['armor','裝甲商店','裝甲縮圖、原有能力比較與購買功能，使用相同薄框。'],
+ ['supplies','補給商店','補給分類與商品卡使用同一套控制項樣式。'],
+ ['narrow_filter','縮窄視窗','縮窄至 960 × 640 邏輯畫布後，三欄商品保持在面板內。'],
+ ['mobile_unchanged','手機版對照','手機版延用先前還原的 SW1 版面與操作。']
+];
+const nav=document.querySelector('#views'),shot=document.querySelector('#shot'),full=document.querySelector('#full'),caption=document.querySelector('#caption');
+views.forEach(([key,title,description],i)=>{
+ const button=document.createElement('button');button.textContent=title;button.type='button';button.setAttribute('aria-pressed',i===0?'true':'false');
+ button.addEventListener('click',()=>{nav.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed','false'));button.setAttribute('aria-pressed','true');shot.src=full.href='captures/'+key+'.png';shot.alt=title;caption.textContent=description;});nav.appendChild(button);
+});caption.textContent=views[0][2];
+</script>
+</html>
