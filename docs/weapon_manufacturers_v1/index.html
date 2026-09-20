@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>武器與廠商介紹 · 七家軍工廠商</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#10191e;color:#dbe8ec;font:16px/1.8 system-ui,sans-serif}main{max-width:1280px;padding:30px 22px;margin:auto}h1{font-size:30px}h2{font-size:23px;color:#75d7e8;margin-top:30px}h3{color:#a6e2eb}small{color:#9fb8c2}a{color:#7bdded}label{display:block;margin:10px 0}select{font:inherit;max-width:100%;padding:8px 12px;color:#edf7fa;background:#21343e;border:1px solid #577a8b}.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.card{background:#18282f;border:1px solid #3b5866;padding:22px}.card p{white-space:pre-wrap}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:12px;border-bottom:1px solid #39525d}th{color:#84d8e6}.scroll{overflow:auto}figure{margin:20px 0}img{display:block;max-width:100%;height:auto;border:1px solid #405966}figcaption{padding:10px 0;color:#afc6cf}code{overflow-wrap:anywhere}@media(max-width:720px){.grid{grid-template-columns:1fr}h1{font-size:25px}main{padding:20px 14px}}
+</style>
+<main>
+<small>2026-09-20 · 使用者定名 · 遊戲實際資料與截圖</small>
+<h1>武器名稱旁的「!」：武器介紹與廠商背景</h1>
+<p>七家廠商採用新的正式名稱與軍規縮寫。全部 47 把武器都有自己的介紹，以及唯一的製造商歸屬；桌面與手機的商店／改裝頁均可開啟，未購買或尚未解鎖也能閱讀。</p>
+<p><a href="README.md">實作與驗證</a> · <a href="../desktop_armory_ui_v1/index.html">商店 UI</a> · <a href="../equipment_upgrades_v1/index.html">升級系統</a></p>
+<h2>逐把檢查文案</h2>
+<label>語言 <select id="language"><option value="zh">繁體中文</option><option value="en">English</option></select></label>
+<label>武器 <select id="weapon"></select></label>
+<div class="grid"><article class="card"><h3 id="weapon-name"></h3><small id="weapon-id"></small><p id="weapon-story"></p></article><article class="card"><h3 id="company-name"></h3><small id="company-en"></small><p id="company-story"></p></article></div>
+<h2>製造商對應表</h2>
+<div class="scroll"><table><thead><tr><th>縮寫</th><th>正式名稱</th><th>旗下武器</th></tr></thead><tbody id="companies"></tbody></table></div>
+<h2>實際遊戲畫面</h2>
+<label>畫面 <select id="view"></select></label>
+<figure><a id="full" href="desktop_entry.png"><img id="capture" src="desktop_entry.png" alt="武器名稱右側的方形驚嘆號"></a><figcaption id="caption"></figcaption></figure>
+<p><small>新廠商背景與武器故事屬本專案原創世界觀，不是 APK 官方設定；本輪沒有新增廠商戰鬥加成、修改模型或重新塗裝。截圖為 Godot 4.7.2 Compatibility / OpenGL 3.3 的直接輸出。</small></p>
+</main>
+<script src="data.js"></script>
+<script>
+const data=window.manufacturerReview,byWeapon={};
+const $=id=>document.getElementById(id),picker=$('weapon'),language=$('language');
+for(const company of Object.values(data.manufacturers)){
+ const row=$('companies').insertRow();for(const text of [company.code,company.name_zh,company.weapons.map(id=>data.names[id]).join('、')])row.insertCell().textContent=text;
+ for(const id of company.weapons)byWeapon[id]=company;
+}
+for(const id of Object.keys(data.names).sort()){const option=document.createElement('option');option.value=id;option.textContent=`${data.names[id]} · ${byWeapon[id].code}`;picker.append(option)}
+function render(){const id=picker.value,company=byWeapon[id],locale=language.value;
+ $('weapon-name').textContent=data.names[id];$('weapon-id').textContent=id;
+ $('weapon-story').textContent=data.weapons[id][locale==='zh'?0:1];
+ $('company-name').textContent=`${company.code} · ${company['name_'+locale]}`;
+ $('company-en').textContent=locale==='zh'?company.name_en:company.name_zh;
+ $('company-story').textContent=company['story_'+locale];}
+picker.addEventListener('change',render);language.addEventListener('change',render);render();
+const views=[['desktop_entry','桌面入口','武器名稱右側的方形 !；說明區顯示廠商名稱。'],['desktop_rifle','鐵衡／FR28a','武器介紹與廠商背景分開顯示。'],['desktop_launcher','坩堝／RPG-21','依所選武器切換製造商與獨立文案。'],['desktop_locked','未解鎖武器','未購買的 U.F.O 仍可閱讀裂相背景。'],['desktop_english','英文介紹','依遊戲語言顯示英文名稱與故事。'],['mobile_entry','手機入口','! 放在名稱旁，避開輪播觸控區與等級星號。'],['mobile_details','手機介紹','開啟期間暫停背景輪播，返回後恢復操作。']];
+for(const [key,title] of views){const option=document.createElement('option');option.value=key;option.textContent=title;$('view').append(option)}
+function renderView(){const view=views.find(x=>x[0]===$('view').value);$('capture').src=$('full').href=view[0]+'.png';$('capture').alt=view[1];$('caption').textContent=view[2]}
+$('view').addEventListener('change',renderView);renderView();
+</script>
+</html>

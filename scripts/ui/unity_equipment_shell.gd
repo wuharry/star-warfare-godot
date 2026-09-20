@@ -9,6 +9,8 @@ const PropsCatalogData = preload("res://scripts/core/props_catalog.gd")
 const AdditivePreviewShader = preload("res://scripts/ui/store_additive_preview.gdshader")
 const ArmorySkin = preload("res://scripts/ui/recovered_armory_skin.gd")
 const UpgradeDialog = preload("res://scripts/ui/equipment_upgrade_dialog.gd")
+const ManufacturerData = preload("res://scripts/core/manufacturer_catalog.gd")
+const WeaponInformation = preload("res://scripts/ui/weapon_information_dialog.gd")
 const COMPONENT_DIR := "res://assets/ui/components/"
 const ARMOR_THUMBNAIL_DIR := "res://assets/ui/armor_thumbnails/"
 const DESIGN_SIZE := Vector2(960.0, 640.0)
@@ -96,6 +98,8 @@ var catalog_panel: Control
 var detail_panel: Control
 var upgrade_button: Button
 var upgrade_dialog: Control
+var weapon_info_button: Button
+var weapon_info_dialog: Control
 var comparison_title: Label
 var comparison_rows: Array[Dictionary] = []
 var comparison_panel: Control
@@ -132,6 +136,8 @@ func _exit_tree() -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
+	if is_instance_valid(weapon_info_dialog) and weapon_info_dialog.visible:
+		return
 	if is_instance_valid(upgrade_dialog) and upgrade_dialog.visible:
 		return
 	if not event is InputEventKey or not event.pressed or event.echo:
@@ -542,6 +548,17 @@ func _build_details() -> void:
 	upgrade_button.pressed.connect(_request_upgrade)
 	upgrade_button.hide()
 	detail_panel.add_child(upgrade_button)
+	weapon_info_button = Button.new()
+	weapon_info_button.name = "WeaponInformation"
+	weapon_info_button.text = "!"
+	weapon_info_button.tooltip_text = tr("WEAPON INFORMATION")
+	weapon_info_button.add_theme_font_size_override("font_size", 25)
+	for state: String in ["normal", "hover", "pressed", "disabled"]:
+		weapon_info_button.add_theme_stylebox_override(state, ArmorySkin.plate(state, Vector4.ZERO))
+	weapon_info_button.add_theme_stylebox_override("focus", ArmorySkin.focus())
+	weapon_info_button.pressed.connect(_show_weapon_information)
+	weapon_info_button.hide()
+	detail_panel.add_child(weapon_info_button)
 
 
 func _build_bottom_bar() -> void:
@@ -624,7 +641,8 @@ func apply_layout(use_desktop_layout: bool) -> void:
 	catalog_panel.get_node("SelectionHint").visible = not OS.has_feature("mobile")
 	for card in item_row.get_children():
 		_layout_item_card(card)
-	_set_rect(name_label, Rect2(20, 14, detail_width - 40, 35))
+	_set_rect(name_label, Rect2(20, 14, detail_width - (90 if selected_section == "equipment" and selected_category == "gun" else 40), 35))
+	_set_rect(weapon_info_button, Rect2(detail_width - 60, 12, 40, 40))
 	_set_rect(state_label, Rect2(20, 53, detail_width - 40, 22))
 	_set_rect(meta_label, Rect2(detail_width - 226, 78, 206, 18))
 	var preview_panel := detail_panel.get_node("EquipmentPreview") as Control
@@ -961,6 +979,10 @@ func _active_battle_weapon_ids() -> Array[String]:
 
 
 func _refresh_details() -> void:
+	if _recovered_desktop_skin:
+		name_label.size.x = detail_panel.size.x - (90 if selected_section == "equipment" and selected_category == "gun" else 40)
+	if is_instance_valid(weapon_info_button):
+		weapon_info_button.hide()
 	if is_instance_valid(upgrade_button):
 		upgrade_button.hide()
 	price_label.show()
@@ -1004,6 +1026,8 @@ func _refresh_upgrade_controls() -> void:
 
 
 func _request_upgrade() -> void:
+	if is_instance_valid(weapon_info_dialog) and weapon_info_dialog.visible:
+		return
 	var quote := GameState.get_upgrade_quote(selected_item_key)
 	if str(quote.status) in ["unsupported", "not_owned", "max_level"]:
 		return
@@ -1035,6 +1059,33 @@ func _confirm_upgrade(item_key: String, expected_level: int) -> void:
 func close_upgrade_dialog() -> bool:
 	if is_instance_valid(upgrade_dialog) and upgrade_dialog.visible:
 		upgrade_dialog.close()
+		return true
+	return false
+
+
+func _show_weapon_information() -> void:
+	if selected_section != "equipment" or selected_category != "gun":
+		return
+	if is_instance_valid(upgrade_dialog) and upgrade_dialog.visible:
+		return
+	if ManufacturerData.get_manufacturer_for_weapon(selected_item_key).is_empty():
+		return
+	if not is_instance_valid(weapon_info_dialog):
+		weapon_info_dialog = WeaponInformation.new()
+		weapon_info_dialog.name = "WeaponInformationDialog"
+		add_child(weapon_info_dialog)
+		weapon_info_dialog.dismissed.connect(func():
+			if has_method("set_interaction_enabled"):
+				call("set_interaction_enabled", true))
+	if has_method("set_interaction_enabled"):
+		call("set_interaction_enabled", false)
+	weapon_info_dialog.show_weapon(selected_item_key, str(GameState.WEAPONS[selected_item_key].name))
+	AudioDirector.play_ui("click")
+
+
+func close_weapon_information() -> bool:
+	if is_instance_valid(weapon_info_dialog) and weapon_info_dialog.visible:
+		weapon_info_dialog.close()
 		return true
 	return false
 
@@ -1148,6 +1199,7 @@ func _refresh_weapon_details() -> void:
 	var weapon := GameState.get_weapon_data(selected_item_key)
 	if weapon.is_empty():
 		return
+	weapon_info_button.show()
 	var state := _get_item_state(selected_item_key)
 	name_label.text = str(weapon.name)
 	name_label.add_theme_color_override("font_color", Color(0.9, 0.97, 0.98))
@@ -1165,7 +1217,8 @@ func _refresh_weapon_details() -> void:
 		_stat_line("ENG", float(weapon.energy), float(current.energy), GOLD_COLOR, false, true),
 		_stat_line("RANGE", float(weapon.range), float(current.range), SPEED_COLOR, false),
 	])
-	description_text.text = tr("Weapon performance compared with the selected loadout slot.")
+	var manufacturer := ManufacturerData.get_manufacturer_for_weapon(selected_item_key)
+	description_text.text = "%s · %s\n%s" % [str(manufacturer.get("code", "")), ManufacturerData.localized(manufacturer, "name"), tr("View weapon and manufacturer information with !.")]
 	_set_price(weapon)
 	slot_picker.visible = mode == "customize"
 	_configure_action(state)
