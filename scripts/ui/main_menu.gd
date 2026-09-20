@@ -2,6 +2,7 @@ extends Control
 
 const Atlas = preload("res://scripts/ui/original_atlas.gd")
 const EquipmentShell = preload("res://scripts/ui/unity_equipment_shell.gd")
+const MobileEquipmentShell = preload("res://scripts/ui/mobile_sw1_equipment_shell.gd")
 const COMPONENT_DIR := "res://assets/ui/components/"
 const DESIGN_SIZE := Vector2(960.0, 640.0)
 # Allow pixel rounding at 16:9 while keeping 16:10 on the narrower canvas.
@@ -49,6 +50,7 @@ var drawer_open := false
 var drawer_tween: Tween
 var music_player: AudioStreamPlayer
 var equipment_shell: UnityEquipmentShell
+var mobile_armory_matte: ColorRect
 
 # Compatibility fields kept for the restoration tests and older menu callers.
 var store_weapon_row: Container
@@ -95,6 +97,12 @@ func _exit_tree() -> void:
 
 
 func _handle_back() -> void:
+	if is_instance_valid(equipment_shell) and equipment_shell is MobileEquipmentShell:
+		if drawer_open:
+			_toggle_drawer(false)
+		else:
+			equipment_shell.handle_back()
+		return
 	if is_instance_valid(modal_layer) and modal_layer.get_child_count() > 0:
 		AudioDirector.play_ui("back")
 		_close_modal()
@@ -311,7 +319,11 @@ func _rescale_design() -> void:
 
 
 func _uses_desktop_armory(available: Vector2) -> bool:
-	return available.y > 0.0 and available.x / available.y >= DESKTOP_ARMORY_MIN_ASPECT and not OS.has_feature("mobile")
+	return available.y > 0.0 and available.x / available.y >= DESKTOP_ARMORY_MIN_ASPECT and not _uses_mobile_armory()
+
+
+func _uses_mobile_armory() -> bool:
+	return OS.has_feature("mobile") or bool(ProjectSettings.get_setting("debug/restoration/force_mobile_ui", false))
 
 
 func _start_intro_animation() -> void:
@@ -334,6 +346,8 @@ func _toggle_drawer(open: bool, animate := true) -> void:
 	if not is_instance_valid(drawer) or not drawer.visible:
 		return
 	drawer_open = open
+	if is_instance_valid(equipment_shell) and equipment_shell is MobileEquipmentShell:
+		equipment_shell.set_interaction_enabled(not open)
 	if drawer_tween and drawer_tween.is_valid():
 		drawer_tween.kill()
 	drawer_shadow.visible = open
@@ -404,7 +418,7 @@ func _show_armory(start_mode: String = "store") -> void:
 	drawer.visible = false
 	drawer_shadow.visible = false
 	modal_layer.mouse_filter = Control.MOUSE_FILTER_STOP
-	equipment_shell = EquipmentShell.new()
+	equipment_shell = MobileEquipmentShell.new() if _uses_mobile_armory() else EquipmentShell.new()
 	equipment_shell.name = "RecoveredUnityStore"
 	var desktop_armory := _uses_desktop_armory(size)
 	# The original interaction canvas remains 960x640 for menus and mobile.
@@ -414,6 +428,21 @@ func _show_armory(start_mode: String = "store") -> void:
 	equipment_shell.setup(start_mode, desktop_armory)
 	equipment_shell.closed.connect(_close_modal)
 	modal_layer.add_child(equipment_shell)
+	if _uses_mobile_armory():
+		# ShopAndCustomize initializes a black backing behind the 960 x 640 UI.
+		if not is_instance_valid(mobile_armory_matte):
+			mobile_armory_matte = ColorRect.new()
+			mobile_armory_matte.name = "MobileArmoryMatte"
+			mobile_armory_matte.color = Color.BLACK
+			mobile_armory_matte.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			add_child(mobile_armory_matte)
+			move_child(mobile_armory_matte, design_root.get_index())
+			mobile_armory_matte.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		mobile_armory_matte.show()
+		# Reuse the original NavigationMenuUI drawer above the mobile store.
+		drawer.visible = true
+		drawer.z_index = 30
+		drawer_shadow.z_index = 29
 	store_weapon_row = equipment_shell.item_row
 	store_slot_picker = equipment_shell.slot_picker
 	store_category_buttons = equipment_shell.category_buttons
@@ -625,6 +654,8 @@ func _show_modal(body: Control, requested_size: Vector2) -> void:
 func _close_modal() -> void:
 	if not is_instance_valid(modal_layer):
 		return
+	if is_instance_valid(mobile_armory_matte):
+		mobile_armory_matte.hide()
 	if is_instance_valid(equipment_shell):
 		equipment_shell.queue_free()
 	equipment_shell = null
@@ -640,6 +671,8 @@ func _close_modal() -> void:
 		main_page.visible = true
 	if is_instance_valid(drawer):
 		drawer.visible = true
+		drawer.z_index = 6
+		drawer_shadow.z_index = 5
 		_toggle_drawer(false, false)
 	_refresh_drawer_status()
 

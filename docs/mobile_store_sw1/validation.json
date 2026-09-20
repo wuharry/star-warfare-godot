@@ -1,0 +1,23 @@
+{
+  "desktop_shell_sha256_lf": "9cce3895202b9d7fe5ae34b27bf9f584940dd18816e936c74c973f32b5f00988",
+  "desktop_comparison_commit": "b90c5312c495899def55aa2c9274413ae2408433",
+  "renderer": "Godot 4.7.2 Compatibility / OpenGL 3.3 / RTX 4080 Laptop GPU",
+  "tests": {
+    "test.log": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nMOBILE_STORE_SW1_PASS\n",
+    "capture.log": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\nOpenGL API 3.3.0 NVIDIA 595.79 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4080 Laptop GPU\n\nMOBILE_STORE_SW1_PASS\n",
+    "capture_errors.log": "",
+    "desktop_test.log": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nMENU_EQUIPMENT_TEST_PASS tabs=6 armor=141 weapons=47\n",
+    "data_regression.log": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nSOURCE_RECONSTRUCTION_TEST_PASS\nWARNING: 2 ObjectDB instances were leaked at exit (run with `--verbose` for details).\n   at: cleanup (core/object/object.cpp:2536)\nERROR: 1 resources still in use at exit (run with --verbose for details).\n   at: clear (core/io/resource.cpp:822)\n"
+  },
+  "captures": {
+    "mobile_weapons": "ee5705ace737de087250016e913d501124bbd152a539c8feba45d6a8104a039f",
+    "mobile_armor": "4063f08cf1f873c84bf2a6acca652fcb87fb045b272fc3a4c2191e58f6518d06",
+    "mobile_items": "ee9d0843d431aa68b8753297c45515f3315d6fe374f011d85fa955a165c39078",
+    "mobile_navigation": "6a23e6edf34da278e82de45dadf94167f13653b047be136a12a19b585de25f38",
+    "mobile_customize": "99deba9f1211f682643a33fdaa59e062ccc5fd7bfd0a6cf31cc74abd993d2774",
+    "mobile_backpack": "027bd52ea214d803cad8073a0ffb68c0979cf2a98bffe9f07cedefe680fd9a42",
+    "mobile_wide": "5a3b8ac037be355c21fecf5944a4518ac1e984797806f08dd887e4a4bd3f6475",
+    "mobile_source_aspect": "3d38413485d2a1297585d603ce8ae8d0ba770fdb8cafe7c428bddc1c046d8485",
+    "desktop_unchanged": "5a4e80ef4e529ea32d0583da161226f5c46a0eead9cffabddff7d8b663363abe"
+  }
+}
