@@ -354,6 +354,10 @@ func apply_layout(_use_desktop_layout: bool) -> void:
 		return
 	_set_rect(detail_panel, Rect2(704, 240, 232, 374))
 	_set_rect(name_label, _detail_rect(52))
+	# Keep the button inside the details panel, outside the carousel input region.
+	name_label.size.x = 150 if selected_section == "equipment" and selected_category == "gun" else _detail_rect(52).size.x
+	weapon_info_button.add_theme_font_size_override("font_size", 20)
+	_set_rect(weapon_info_button, Rect2(185, 2, 32, 32))
 	_set_rect(state_label, _detail_rect(53))
 	_set_rect(stats_text, Rect2(62, 58, 180, 88) if mode == "customize" else Rect2(14, 58, 216, 88))
 	_set_rect(description_text, _detail_rect(50))
@@ -478,6 +482,7 @@ func _select_item(item_key: String, play_sound := true) -> void:
 
 func _refresh_details() -> void:
 	super._refresh_details()
+	name_label.size.x = 150 if selected_section == "equipment" and selected_category == "gun" else _detail_rect(52).size.x
 	comparison_title.hide()
 	meta_label.hide()
 	if selected_section == "equipment" and selected_category == "gun" and not selected_item_key.is_empty():
@@ -873,6 +878,8 @@ func set_interaction_enabled(value: bool) -> void:
 
 func handle_back() -> void:
 	AudioDirector.play_ui("back")
+	if close_weapon_information():
+		return
 	if close_upgrade_dialog():
 		return
 	if is_instance_valid(package_page):
@@ -883,6 +890,11 @@ func handle_back() -> void:
 		_select_category(selected_category, false)
 	else:
 		closed.emit()
+
+
+func _show_weapon_information() -> void:
+	if _interaction_enabled:
+		super._show_weapon_information()
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
