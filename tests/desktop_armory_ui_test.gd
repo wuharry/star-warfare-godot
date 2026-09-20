@@ -3,6 +3,8 @@ extends "res://tests/mobile_store_sw1_test.gd"
 func _run() -> void:
 	var original_save := GameState.save_path
 	GameState.save_path = "user://desktop_armory_ui_%d.json" % Time.get_ticks_usec()
+	GameState.weapon_levels.clear()
+	GameState.armor_set_levels.clear()
 	GameState.equipped_armor = GameState._default_armor_equipment()
 	GameState.owned_armor = GameState._default_owned_armor()
 	GameState.owned_weapons.assign(["gun00"])

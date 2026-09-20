@@ -19,7 +19,7 @@ SOURCE = ROOT / "assets/starwarfare_data/resDataSets_raw.bin"
 REPORT = ROOT / "docs/data/recovered_data_v1"
 TABLES = {
     "MONSTER_ROWS": 0, "WEAPON_SOURCE_ROWS": 13, "ARMOR_ROWS": 14,
-    "SET_BONUS_ROWS": 15, "PROP_ROWS": 16, "RANK_ROWS": 17,
+    "SET_BONUS_ROWS": 15, "PROP_ROWS": 16, "RANK_ROWS": 17, "WEAPON_UPGRADE_ROWS": 18,
     "SKILL_ROWS": 73, "WEAPON_BOOST_ROWS": 74, "DEFENCE_ROWS": 75,
 }
 SHAPES = {0: (15, 6), 13: (47, 16), 14: (109, 16), 15: (21, 8),

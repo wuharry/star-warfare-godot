@@ -199,7 +199,7 @@ func _select(address: Vector2i) -> void:
 	stats.text = ""
 	description.text = ""
 	if GameState.WEAPONS.has(key):
-		var item: Dictionary = GameState.WEAPONS[key]
+		var item := GameState.get_weapon_data(key)
 		title.text = str(item.name)
 		stats.text = "[color=#ffa500]POW %s\nFIRERATE %.2f\nENG %d\nSPD %s[/color]" % [shell._source_value(item.damage), float(item.cooldown), int(item.energy), shell._source_value(item.speed_drag)]
 		description.text = str(Layout.WEAPON_DESCRIPTIONS[int(item.id)]).replace("[n]", "\n").replace("[EMPTY]", "")

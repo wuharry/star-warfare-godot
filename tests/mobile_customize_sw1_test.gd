@@ -4,6 +4,8 @@ extends "res://tests/mobile_store_sw1_test.gd"
 func _run() -> void:
 	var original_save := GameState.save_path
 	GameState.save_path = "user://mobile_customize_sw1_%d.json" % Time.get_ticks_usec()
+	GameState.weapon_levels.clear()
+	GameState.armor_set_levels.clear()
 	GameState.equipped_armor = GameState._default_armor_equipment()
 	GameState.owned_armor = GameState._default_owned_armor()
 	GameState.owned_weapons.assign(["gun00", "gun01", "gun02", "gun03"])
@@ -37,7 +39,7 @@ func _run() -> void:
 	_check(shell._items_button.text == "PACK." and not shell.slot_picker.visible, "source PACK. entry, no desktop slot picker")
 	_check(shell.equip_button.get_rect() == Rect2(735, 556, 170, 60), "source expanded EQUIP touch area")
 	_check(shell.action_button.position + shell.detail_panel.position == Vector2(745, 491), "source UPGRADE rectangle")
-	_check(shell.action_button.text == "UPGRADE" and shell.action_button.disabled, "unimplemented upgrade must not masquerade as Equip")
+	_check(shell.action_button.text == tr("UPGRADE") and not shell.action_button.disabled, "owned weapon must expose Upgrade separately from Equip")
 	await _capture("customize_weapons")
 	await _swipe(shell.gear_scroller, Vector2(340, 68), Vector2(220, 68), false)
 	_check(shell.selected_item_key == "gun01" and GameState.battle_weapons[0] == "gun00", "swipe must preview without equipping")
