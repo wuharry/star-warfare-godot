@@ -411,7 +411,7 @@ func _build_comparison_stats() -> void:
 		# empty section otherwise disappears into the store background.
 		var track_glow := TextureRect.new()
 		track_glow.name = "TrackGlow"
-		track_glow.texture = _component("armory_stat_%s_fill" % key)
+		track_glow.texture = _component("armory_stat_%s_loss" % key)
 		track_glow.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		track_glow.stretch_mode = TextureRect.STRETCH_SCALE
 		track_glow.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -419,11 +419,13 @@ func _build_comparison_stats() -> void:
 		_set_rect(track_glow, Rect2(2, 1, 210, 10))
 		meter.add_child(track_glow)
 
-		# Delta is drawn first and the current/selected value over it, matching
-		# StoreUI.DrawComparsion's cyan/orange/green clipped layers.
+		# Legacy filenames do not describe rendered brightness: _loss is the solid
+		# coloured strip, _fill has half alpha, and _gain has an opaque white core.
+		# Keep unchanged values solid, losses dim and gains bright. Draw the delta
+		# underneath the shared part, as in StoreUI.DrawComparsion.
 		var gain_clip := _comparison_fill(meter, "Gain", "armory_stat_%s_gain" % key)
-		var loss_clip := _comparison_fill(meter, "Loss", "armory_stat_%s_loss" % key)
-		var value_clip := _comparison_fill(meter, "Selected", "armory_stat_%s_fill" % key)
+		var loss_clip := _comparison_fill(meter, "Loss", "armory_stat_%s_fill" % key)
+		var value_clip := _comparison_fill(meter, "Selected", "armory_stat_%s_loss" % key)
 		comparison_rows.append({
 			"value": value_label,
 			"delta": delta_label,

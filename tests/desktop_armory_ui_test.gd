@@ -39,6 +39,19 @@ func _run() -> void:
 	_check(shell.theme.get_stylebox("panel", "TooltipPanel") is StyleBoxTexture, "tooltip is still default")
 	for card: Button in shell.item_row.get_children():
 		_check(card.get_theme_stylebox("normal") is StyleBoxTexture and card.get_theme_stylebox("focus") is StyleBoxTexture, "product card still uses generic panel/focus")
+	# Actual loadout comparisons exercise unchanged, brighter gains and dim losses.
+	shell._select_item("gun00", false)
+	await _capture("stats_normal")
+	shell._select_item("gun22", false)
+	_check(shell.comparison_rows[1].gain.size.x > shell.comparison_rows[1].selected.size.x and is_zero_approx(shell.comparison_rows[1].loss.size.x), "Light Bow must show a damage gain")
+	await _capture("stats_gain_loss")
+	GameState.owned_weapons.append("gun22")
+	GameState.battle_weapons[0] = "gun22"
+	shell._select_item("gun00", false)
+	_check(shell.comparison_rows[1].loss.size.x > shell.comparison_rows[1].selected.size.x and is_zero_approx(shell.comparison_rows[1].gain.size.x), "returning to FR28a must show a damage loss")
+	await _capture("stats_reverse")
+	GameState.battle_weapons[0] = "gun00"
+	GameState.owned_weapons.erase("gun22")
 	shell._select_item("gun01", false)
 	await _capture("store")
 	await _click(shell.weapon_filter_picker)
