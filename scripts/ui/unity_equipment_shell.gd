@@ -7,6 +7,7 @@ const Atlas = preload("res://scripts/ui/original_atlas.gd")
 const SourceAssets = preload("res://scripts/core/recovered_source_assets.gd")
 const PropsCatalogData = preload("res://scripts/core/props_catalog.gd")
 const AdditivePreviewShader = preload("res://scripts/ui/store_additive_preview.gdshader")
+const ArmorySkin = preload("res://scripts/ui/recovered_armory_skin.gd")
 const COMPONENT_DIR := "res://assets/ui/components/"
 const ARMOR_THUMBNAIL_DIR := "res://assets/ui/armor_thumbnails/"
 const DESIGN_SIZE := Vector2(960.0, 640.0)
@@ -55,6 +56,7 @@ const SUPPLY_CATEGORIES := [
 var requested_mode := "store"
 var mode := "store"
 var desktop_layout := false
+var _recovered_desktop_skin := false
 var selected_category := "gun"
 var selected_section := "equipment"
 var selected_supply_category := "health"
@@ -144,6 +146,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 func _build_background() -> void:
+	_recovered_desktop_skin = true
+	theme = ArmorySkin.make_theme()
 	var background := TextureRect.new()
 	background.name = "UnityStoreBackdrop"
 	background.texture = _component("armory_background")
@@ -158,7 +162,7 @@ func _build_background() -> void:
 func _build_catalog() -> void:
 	catalog_panel = Panel.new()
 	catalog_panel.name = "EquipmentCatalog"
-	catalog_panel.add_theme_stylebox_override("panel", _panel_style(Color(0.025, 0.045, 0.052, 0.92), Color(0.16, 0.28, 0.3), 4))
+	catalog_panel.add_theme_stylebox_override("panel", ArmorySkin.panel())
 	add_child(catalog_panel)
 	for section_key in ["equipment", "supplies"]:
 		var button := Button.new()
@@ -216,7 +220,9 @@ func _build_catalog() -> void:
 	catalog_panel.add_child(preview_counter)
 	item_scroll = ScrollContainer.new()
 	item_scroll.name = "ItemScroll"
-	item_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	# Do not inherit the grid's previous minimum width when the window shrinks.
+	# Cards resize to the available width below; horizontal scrolling stays hidden.
+	item_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
 	item_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	item_scroll.follow_focus = true
 	item_scroll.scroll_deadzone = 12
@@ -229,7 +235,7 @@ func _build_catalog() -> void:
 	item_row.add_theme_constant_override("v_separation", 8)
 	item_scroll.add_child(item_row)
 	for direction in [-1, 1]:
-		var arrow := _desktop_carousel_arrow("PreviousItem" if direction < 0 else "NextItem", "‹" if direction < 0 else "›", direction)
+		var arrow := _desktop_carousel_arrow("PreviousItem" if direction < 0 else "NextItem", direction)
 		catalog_panel.add_child(arrow)
 	var hint := _label(tr("A / D  SELECT"), 10, Color(0.53, 0.71, 0.74))
 	hint.name = "SelectionHint"
@@ -442,7 +448,7 @@ func _comparison_fill(parent: Control, node_name: String, component_name: String
 func _build_details() -> void:
 	detail_panel = Panel.new()
 	detail_panel.name = "EquipmentDetails"
-	detail_panel.add_theme_stylebox_override("panel", _frame_style("armory_detail_panel", Color(0.72, 0.85, 0.88)))
+	detail_panel.add_theme_stylebox_override("panel", ArmorySkin.panel() if _recovered_desktop_skin else _frame_style("armory_detail_panel", Color(0.72, 0.85, 0.88)))
 	add_child(detail_panel)
 	name_label = _label("", 27, Color.WHITE)
 	name_label.name = "ItemName"
@@ -472,9 +478,17 @@ func _build_details() -> void:
 	comparison_title = _label(tr("EQUIPMENT COMPARISON"), 11, Color(0.57, 0.73, 0.76))
 	comparison_title.name = "ComparisonTitle"
 	detail_panel.add_child(comparison_title)
-	var divider := ColorRect.new()
+	var divider: Control
+	if _recovered_desktop_skin:
+		var art := TextureRect.new()
+		art.texture = ArmorySkin.com_sprite("fenlan-zuo")
+		art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		divider = art
+	else:
+		var line := ColorRect.new()
+		line.color = Color(0.22, 0.4, 0.43, 0.5)
+		divider = line
 	divider.name = "PurchaseDivider"
-	divider.color = Color(0.22, 0.4, 0.43, 0.5)
 	divider.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	detail_panel.add_child(divider)
 	price_label = _label("", 16, Color(1.0, 0.78, 0.3))
@@ -484,9 +498,12 @@ func _build_details() -> void:
 	slot_picker = OptionButton.new()
 	slot_picker.name = "LoadoutSlotPicker"
 	slot_picker.add_theme_font_size_override("font_size", 12)
-	slot_picker.add_theme_stylebox_override("normal", _panel_style(Color(0.02, 0.10, 0.13), Color(0.24, 0.65, 0.7), 2))
-	slot_picker.add_theme_stylebox_override("hover", _panel_style(Color(0.04, 0.2, 0.23), CYAN, 2))
-	slot_picker.add_theme_stylebox_override("pressed", _panel_style(Color(0.06, 0.28, 0.3), Color.WHITE, 2))
+	if _recovered_desktop_skin:
+		_style_desktop_picker(slot_picker)
+	else:
+		slot_picker.add_theme_stylebox_override("normal", _panel_style(Color(0.02, 0.10, 0.13), Color(0.24, 0.65, 0.7), 2))
+		slot_picker.add_theme_stylebox_override("hover", _panel_style(Color(0.04, 0.2, 0.23), CYAN, 2))
+		slot_picker.add_theme_stylebox_override("pressed", _panel_style(Color(0.06, 0.28, 0.3), Color.WHITE, 2))
 	slot_picker.item_selected.connect(func(index: int):
 		selected_slot = index
 		_refresh_details()
@@ -501,7 +518,7 @@ func _build_details() -> void:
 	action_button.add_theme_stylebox_override("hover", _recovered_button_style("armory_action_normal", Color(0.82, 1.0, 1.0)))
 	action_button.add_theme_stylebox_override("pressed", _recovered_button_style("armory_action_pressed", Color.WHITE))
 	action_button.add_theme_stylebox_override("disabled", _recovered_button_style("armory_action_disabled", Color(0.72, 0.72, 0.72)))
-	action_button.add_theme_stylebox_override("focus", _panel_style(Color(0, 0, 0, 0), CYAN, 3))
+	action_button.add_theme_stylebox_override("focus", ArmorySkin.focus() if _recovered_desktop_skin else _panel_style(Color(0, 0, 0, 0), CYAN, 3))
 	action_button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	action_button.pressed.connect(_perform_primary_action)
 	detail_panel.add_child(action_button)
@@ -514,7 +531,7 @@ func _build_details() -> void:
 func _build_bottom_bar() -> void:
 	var bar := Panel.new()
 	bar.name = "OriginalNavigationBar"
-	bar.add_theme_stylebox_override("panel", _panel_style(Color(0.025, 0.04, 0.05, 0.98), Color(0.15, 0.27, 0.29), 0))
+	bar.add_theme_stylebox_override("panel", ArmorySkin.header())
 	add_child(bar)
 	var back := TextureButton.new()
 	back.name = "BackButton"
@@ -608,7 +625,7 @@ func apply_layout(use_desktop_layout: bool) -> void:
 		row.position = Vector2(index * (column_width + 8), 0)
 		row.scale = Vector2(column_width / 240.0, 1)
 	_set_rect(slot_picker, Rect2(20, 416, detail_width - 40, 28))
-	_set_rect(detail_panel.get_node("PurchaseDivider"), Rect2(20, 450, detail_width - 40, 1))
+	_set_rect(detail_panel.get_node("PurchaseDivider"), Rect2(20, 450, detail_width - 40, 3))
 	_set_rect(price_label, Rect2(20, 470, detail_width - 248, 26))
 	_set_rect(action_button, Rect2(detail_width - 216, 462, 196, 44))
 	_set_rect(notice_label, Rect2(20, 510, detail_width - 40, 18))
@@ -867,10 +884,11 @@ func _step_category(direction: int) -> void:
 	_select_category(str(CATEGORIES[posmod(selected_index + direction, CATEGORIES.size())].key), true)
 
 
-func _desktop_carousel_arrow(node_name: String, glyph: String, direction: int) -> Button:
+func _desktop_carousel_arrow(node_name: String, direction: int) -> Button:
 	var button := Button.new()
 	button.name = node_name
-	button.text = glyph
+	var chevron := ArmorySkin.chevron(button, direction > 0)
+	button.resized.connect(func(): chevron.position = (button.size - chevron.size) * 0.5)
 	button.tooltip_text = tr("PREVIOUS WEAPON" if direction < 0 else "NEXT WEAPON")
 	button.add_theme_font_size_override("font_size", 22)
 	button.add_theme_color_override("font_color", Color(0.62, 1.0, 1.0))
@@ -878,7 +896,7 @@ func _desktop_carousel_arrow(node_name: String, glyph: String, direction: int) -
 	button.add_theme_stylebox_override("normal", _texture_style("armory_side_button"))
 	button.add_theme_stylebox_override("hover", _texture_style("armory_side_button", Color(0.72, 1.0, 1.0)))
 	button.add_theme_stylebox_override("pressed", _texture_style("armory_side_button", Color(0.52, 0.9, 1.0)))
-	button.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+	button.add_theme_stylebox_override("focus", ArmorySkin.focus())
 	button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	button.pressed.connect(_step_item.bind(direction))
 	return button
@@ -1853,10 +1871,10 @@ func _state_color(state: String) -> Color:
 
 
 func _style_tab(button: Button, active: bool) -> void:
-	button.add_theme_stylebox_override("normal", _texture_style("button_pressed" if active else "button_normal"))
-	button.add_theme_stylebox_override("hover", _texture_style("button_hover"))
-	button.add_theme_stylebox_override("pressed", _texture_style("button_pressed"))
-	button.add_theme_stylebox_override("focus", _panel_style(Color(0, 0, 0, 0), CYAN, 2))
+	button.add_theme_stylebox_override("normal", ArmorySkin.plate("pressed" if active else "normal"))
+	button.add_theme_stylebox_override("hover", ArmorySkin.plate("hover"))
+	button.add_theme_stylebox_override("pressed", ArmorySkin.plate("pressed"))
+	button.add_theme_stylebox_override("focus", ArmorySkin.focus())
 	button.add_theme_color_override("font_color", Color.WHITE if active else Color(0.56, 0.72, 0.74))
 	button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
@@ -1868,10 +1886,10 @@ func _style_mode_button(button: Button, active: bool) -> void:
 
 
 func _style_item_card(button: Button, selected: bool, state: String) -> void:
-	button.add_theme_stylebox_override("normal", _texture_style("button_pressed") if selected else _panel_style(Color(0.055, 0.075, 0.082), Color(0.16, 0.23, 0.25), 3))
-	button.add_theme_stylebox_override("hover", _texture_style("button_hover"))
-	button.add_theme_stylebox_override("pressed", _texture_style("button_pressed"))
-	button.add_theme_stylebox_override("focus", _panel_style(Color(0, 0, 0, 0), CYAN, 3))
+	button.add_theme_stylebox_override("normal", ArmorySkin.plate("pressed" if selected else "normal", Vector4.ZERO))
+	button.add_theme_stylebox_override("hover", ArmorySkin.plate("hover", Vector4.ZERO))
+	button.add_theme_stylebox_override("pressed", ArmorySkin.plate("pressed", Vector4.ZERO))
+	button.add_theme_stylebox_override("focus", ArmorySkin.focus())
 	var label := button.get_node("ItemState") as Label
 	label.add_theme_color_override("font_color", Color(0.64, 0.73, 0.75) if state == "locked" else (CYAN if state in ["owned", "equipped"] else Color(1.0, 0.77, 0.35)))
 
@@ -1909,23 +1927,8 @@ func _texture_style(component_name: String, tint := Color.WHITE) -> StyleBoxText
 	return style
 
 
-func _selector_plate_style(component_name: String, tint := Color.WHITE) -> StyleBoxTexture:
-	var style := _texture_style(component_name, tint)
-	style.content_margin_left = 14
-	style.content_margin_right = 12
-	style.content_margin_top = 4
-	style.content_margin_bottom = 4
-	return style
-
-
 func _style_desktop_picker(picker: OptionButton) -> void:
-	picker.add_theme_color_override("font_color", Color(0.62, 0.83, 0.86))
-	picker.add_theme_color_override("font_hover_color", Color.WHITE)
-	picker.add_theme_color_override("font_pressed_color", Color.WHITE)
-	picker.add_theme_stylebox_override("normal", _selector_plate_style("button_normal"))
-	picker.add_theme_stylebox_override("hover", _selector_plate_style("button_hover"))
-	picker.add_theme_stylebox_override("pressed", _selector_plate_style("button_pressed"))
-	picker.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+	ArmorySkin.style_picker(picker, theme)
 
 
 func _armor_thumbnail(item: Dictionary) -> Texture2D:
