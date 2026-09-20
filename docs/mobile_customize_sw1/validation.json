@@ -1,0 +1,27 @@
+{
+  "desktop_comparison_commit": "2be7b5c8788ee2ea62196a30a305245a81c8852e",
+  "desktop_files_sha256_lf": {
+    "scripts/ui/unity_equipment_shell.gd": "9cce3895202b9d7fe5ae34b27bf9f584940dd18816e936c74c973f32b5f00988",
+    "scripts/ui/main_menu.gd": "974ffa905a5ea78ebca95c06b039114898e52c4dae82c407ffcf24ffa2eacdcd"
+  },
+  "renderer": "Godot 4.7.2 Compatibility / OpenGL 3.3 / RTX 4080 Laptop GPU",
+  "source_resUI_sha256": "4e4483438b125cb0e7e63fcf74be1e5d34f026d908cbf6a20f2d927252b36dbf",
+  "tests": {
+    "test.log": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nMOBILE_CUSTOMIZE_SW1_PASS\n",
+    "capture.log": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\nOpenGL API 3.3.0 NVIDIA 595.79 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4080 Laptop GPU\n\nMOBILE_CUSTOMIZE_SW1_PASS\n",
+    "store_regression.log": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nMOBILE_STORE_SW1_PASS\n",
+    "desktop_test.log": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nMENU_EQUIPMENT_TEST_PASS tabs=6 armor=141 weapons=47\n",
+    "armor_test.log": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nWARNING: Ignoring invalid Star Warfare save JSON: user://armor_system_test_recovery.json\n   at: push_warning (core/variant/variant_utility.cpp:1033)\n   GDScript backtrace (most recent call first):\n       [0] _read_save_dictionary (res://scripts/core/game_state.gd:1061)\n       [1] _load_save (res://scripts/core/game_state.gd:953)\n       [2] _ready (res://scripts/core/game_state.gd:145)\n       [3] _run (res://tests/armor_system_test.gd:174)\nWARNING: Recovered Star Warfare save from backup: user://armor_system_test_recovery.json.bak\n   at: push_warning (core/variant/variant_utility.cpp:1033)\n   GDScript backtrace (most recent call first):\n       [0] _load_save (res://scripts/core/game_state.gd:958)\n       [1] _ready (res://scripts/core/game_state.gd:145)\n       [2] _run (res://tests/armor_system_test.gd:174)\nARMOR_SYSTEM_TEST_PASS\n"
+  },
+  "capture_stderr": "",
+  "harness": "generated drift: .claude/rules/mentor-claude-harness.md\ngenerated drift: .claude/rules/mentor-godot.md\ngenerated drift: .claude/rules/mentor-python.md\ngenerated drift: .claude/settings.json\ngenerated drift: .harness/claude_hook.py\ngenerated drift: .harness/learning-event.schema.json\ngenerated drift: .harness/learning-sources.json\ngenerated drift: .harness/policies/claude-harness.md\ngenerated drift: .harness/policies/godot.md\ngenerated drift: .harness/policies/python.md\ngenerated drift: .harness/verify.py\ngenerated drift: AGENTS.md\ngenerated drift: CLAUDE.md\n",
+  "captures": {
+    "customize_weapons": "7245fb2aea6f21140cd71c3aacf0e0f303db0a0fe9a71a88eea1537c2f8cdcfa",
+    "customize_preview": "dbbf8ddaa131ef6ec04409b7161f1e6dfe31309b9cd50d77ef2a23e5b319a6e8",
+    "customize_equipped": "2a094caacdb3337d9e6b9cb2c0fea4c6bdda70a4ed3dbda219c88b4c9efeb8d2",
+    "package_inventory": "e87718b404721b027e3df5ca1522e5ecef3f2a43277876f26d9ca1dfcbe314ca",
+    "package_props": "9dd89ad83f8aa04c4e4f01107d67cdf4ba8e8610245e55a46e65ee18a2a39d1e",
+    "customize_wide": "293445ed6d6682875dbf3d828405ccc187073f1eaae031d92c5bed0a20f61f24",
+    "desktop_customize": "b0ec02918f7ff0c2e7b1fb8ae6341bccb1b066e44bda4fcf0b5199e0e41964a3"
+  }
+}

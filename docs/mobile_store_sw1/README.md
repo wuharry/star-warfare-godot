@@ -1,5 +1,7 @@
 # 手機版 SW1 商店還原
 
+裝備頁已另行還原：請看 [CUSTOMIZE / PACKAGE 最新實際畫面](../mobile_customize_sw1/index.html)。本頁較早的 EQUIP 截圖保留作為商店階段紀錄。
+
 手機商店使用 SW1 的原始 960 × 640 版面、中央持槍角色、橫向裝備／分類滑動與直向道具頁。桌面繼續使用原本的 `UnityEquipmentShell` 商品格；沒有改動該檔案。
 
 ## 資料流與邊界

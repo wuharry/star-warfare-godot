@@ -1,0 +1,104 @@
+"""Publish unedited Godot captures and source-coordinate overlays for CUSTOMIZE."""
+from __future__ import annotations
+
+import hashlib
+import json
+import shutil
+import subprocess
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+CAPTURES = ROOT / "test_output/mobile_customize_sw1"
+OUTPUT = ROOT / "docs/mobile_customize_sw1"
+PAGES = [
+    ("customize_weapons", "已擁有的武器", "customize"),
+    ("customize_preview", "混搭試穿 · 尚未套用", "customize"),
+    ("customize_equipped", "EQUIP · 已整套套用", "customize"),
+    ("package_inventory", "PACK. · 倉庫與攜帶欄", "package"),
+    ("package_props", "PACK. · 道具堆疊", "package"),
+    ("customize_wide", "20:9 手機畫布", "customize"),
+    ("desktop_customize", "桌面版 · 保持原樣", ""),
+]
+
+
+def main() -> None:
+    logs = {}
+    for name, token in (
+        ("test.log", "MOBILE_CUSTOMIZE_SW1_PASS"),
+        ("capture.log", "MOBILE_CUSTOMIZE_SW1_PASS"),
+        ("store_regression.log", "MOBILE_STORE_SW1_PASS"),
+        ("desktop_test.log", "MENU_EQUIPMENT_TEST_PASS"),
+        ("armor_test.log", "ARMOR_SYSTEM_TEST_PASS"),
+    ):
+        log = (CAPTURES / name).read_text(encoding="utf-8-sig")
+        if token not in log or "ERROR:" in log:
+            raise SystemExit(f"Validation failed or missing: {name}")
+        logs[name] = log
+    errors = (CAPTURES / "capture_errors.log").read_text(encoding="utf-8-sig")
+    if errors.strip():
+        raise SystemExit("Capture stderr is not clean")
+    baseline = "2be7b5c8788ee2ea62196a30a305245a81c8852e"
+    desktop_hashes = {}
+    for path in ("scripts/ui/unity_equipment_shell.gd", "scripts/ui/main_menu.gd"):
+        before = subprocess.check_output(["git", "show", f"{baseline}:{path}"], cwd=ROOT).replace(b"\r\n", b"\n")
+        after = (ROOT / path).read_bytes().replace(b"\r\n", b"\n")
+        if before != after:
+            raise SystemExit(f"Desktop baseline changed: {path}")
+        desktop_hashes[path] = hashlib.sha256(after).hexdigest()
+    OUTPUT.mkdir(parents=True, exist_ok=True)
+    for name, _, _ in PAGES:
+        shutil.copyfile(CAPTURES / f"{name}.png", OUTPUT / f"{name}.png")
+    evidence = {
+        "desktop_comparison_commit": baseline,
+        "desktop_files_sha256_lf": desktop_hashes,
+        "renderer": "Godot 4.7.2 Compatibility / OpenGL 3.3 / RTX 4080 Laptop GPU",
+        "source_resUI_sha256": "4e4483438b125cb0e7e63fcf74be1e5d34f026d908cbf6a20f2d927252b36dbf",
+        "tests": logs,
+        "capture_stderr": errors,
+        "harness": (CAPTURES / "harness.log").read_text(encoding="utf-8-sig"),
+        "captures": {name: hashlib.sha256((OUTPUT / f"{name}.png").read_bytes()).hexdigest() for name, _, _ in PAGES},
+    }
+    (OUTPUT / "validation.json").write_text(json.dumps(evidence, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    page = '''<!doctype html>
+<html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SW1 手機裝備與 PACKAGE · 遊戲實際畫面</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#11191e;color:#dce7ec;font:16px/1.6 system-ui,sans-serif}main{max-width:1440px;margin:auto;padding:24px}h1{font-size:28px;margin:0}p{max-width:1000px}a{color:#6ce7f5}nav,.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}button{background:#23333d;color:inherit;border:1px solid #536674;border-radius:6px;padding:10px 14px;cursor:pointer}button[aria-current=true]{background:#095d69;border-color:#72edee}.toolbar{justify-content:space-between}.stage{position:relative;background:#000}.stage img{display:block;width:100%}.stage svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}svg rect{fill:#ffe55712;stroke:#ffe557;stroke-width:1.5}svg text{fill:#ffe557;font-size:12px;paint-order:stroke;stroke:#111;stroke-width:3px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;margin:20px 0}th,td{text-align:left;border-bottom:1px solid #3d4b55;padding:10px;vertical-align:top}.pass{color:#80e3b3}.pending{color:#ffc779}small{color:#a2b4c0}pre{overflow:auto;background:#0b1115;padding:16px}
+</style><main><h1>手機裝備頁 · SW1 CUSTOMIZE / PACKAGE</h1>
+<p>以 SW1 的 <code>CustomizeUI</code>、<code>MakePackageUI</code> 與二進位布局還原手機頁面。以下是 Godot 實際執行截圖；裝甲與武器仍使用專案目前的高清素材。</p>
+<nav id="tabs" aria-label="選擇檢視畫面"></nav>
+<div class="toolbar"><strong id="caption"></strong><label><input type="checkbox" id="bounds"> 疊加 SW1 原始座標</label><a id="original" href="customize_weapons.png">開啟原尺寸圖片</a></div>
+<div class="stage"><img id="capture" src="customize_weapons.png" alt="手機版 SW1 裝備頁遊戲畫面"><svg id="overlay" aria-hidden="true"></svg></div>
+<small>測試採隔離存檔。1280×720 與 1600×720 邏輯畫布，維持 SW1 的 960×640 比例；截圖沒有重繪或修圖。</small>
+<div class="table-wrap"><table><thead><tr><th>原版行為</th><th>目前實作</th><th>驗證</th></tr></thead><tbody>
+<tr><td>只瀏覽已擁有的裝備</td><td>六種部位、循環滑動；持有數量少時重複顯示，和 GetDispCount 相同。</td><td class="pass">PASS</td></tr>
+<tr><td>試穿 → EQUIP</td><td>六個選項一起套用；未按 EQUIP 直接返回，不更動實際裝備。</td><td class="pass">PASS</td></tr>
+<tr><td>PACK. 九宮格倉庫</td><td>八頁、每頁九格；橫滑翻頁、縱向拖曳取物；下方欄位數依已裝備背包決定。</td><td class="pass">PASS</td></tr>
+<tr><td>交換武器／存放道具</td><td>武器槽交換及主武器生效；道具數量預留，退回倉庫合併堆疊，不重複扣除擁有數量。</td><td class="pass">PASS</td></tr>
+<tr><td>保留最後一把武器</td><td>無武器配置拒絕寫入；縮小背包保留主武器，多餘物品回倉庫。</td><td class="pass">PASS</td></tr>
+<tr><td>中斷／返回／存檔</td><td>第二指、外部放開、導覽抽屜中斷不誤換；存檔重讀保留稀疏欄位與堆疊。</td><td class="pass">PASS</td></tr>
+<tr><td>桌面版、手機商店</td><td>桌面 shell 與 main_menu 和基準 commit 內容相同；商店、裝甲資料與存檔回歸通過。</td><td class="pass">PASS</td></tr>
+<tr><td>UPGRADE／付費 AMMO</td><td>既有遊戲尚無原版武器等級及共用付費能量規則。升級保留停用按鈕；AMMO 說明目前補給方式，不扣款。</td><td class="pending">未接入</td></tr>
+<tr><td>道具在戰鬥中使用</td><td>本次還原攜帶、堆疊及存檔；沒有新增戰鬥道具按鈕或消耗效果。</td><td class="pending">未包含</td></tr>
+<tr><td>Android／iOS 實機</td><td>本次用 Windows 的 Godot 手機模式與 ScreenTouch / ScreenDrag 驗證。</td><td class="pending">NOT RUN</td></tr>
+<tr><td>Harness</td><td>既有生成政策檔漂移，未變更這些檔案。</td><td class="pending">FAIL（既有）</td></tr>
+</tbody></table></div>
+<p><a href="README.md">來源與重現指令</a> · <a href="validation.json">驗證紀錄／雜湊</a> · <a href="../mobile_store_sw1/index.html">手機商店</a></p>
+<details><summary>資料如何套用</summary><pre>滑動裝備 → preview_selection → 角色試穿與能力比較
+按 EQUIP → 驗證六個選項皆已擁有 → 整套寫入 GameState → 一次存檔
+PACK 拖曳 → 驗證物品數量及至少一把武器 → 攜帶欄與倉庫排序存檔
+返回 CUSTOMIZE → 從實際裝備重新建立試穿狀態</pre></details>
+<script>
+const pages=PAGES;let selected=0;
+const img=document.getElementById('capture'),svg=document.getElementById('overlay'),bounds=document.getElementById('bounds'),tabs=document.getElementById('tabs');
+const regions={customize:[[177,494,450,99,'vUI10 / 2'],[714,386,212,102,'vUI10 / 50'],[745,491,150,58,'UPGRADE'],[775,572,90,28,'EQUIP artwork'],[735,556,170,60,'EQUIP touch'],[20,189,88,75,'PACK.']],package:[[0,83,710,385,'vUI12 / 2 storage'],[718,252,220,192,'vUI12 / 37'],[20,519,88,75,'slot 1'],[328,519,88,75,'slot 4']]};
+function draw(){svg.replaceChildren();if(!bounds.checked||!pages[selected][2])return;const w=img.naturalWidth,h=img.naturalHeight,s=Math.min(w/960,h/640),ns='http://www.w3.org/2000/svg';svg.setAttribute('viewBox',`0 0 ${w} ${h}`);const g=document.createElementNS(ns,'g');g.setAttribute('transform',`translate(${(w-960*s)/2} ${(h-640*s)/2}) scale(${s})`);svg.append(g);for(const [x,y,w,h,label] of regions[pages[selected][2]]){const r=document.createElementNS(ns,'rect');for(const [k,v] of Object.entries({x,y,width:w,height:h}))r.setAttribute(k,v);g.append(r);const t=document.createElementNS(ns,'text');t.setAttribute('x',x+3);t.setAttribute('y',y-4);t.textContent=label;g.append(t)}}
+function select(i){selected=i;img.src=pages[i][0]+'.png';img.alt=pages[i][1];document.getElementById('caption').textContent=pages[i][1];document.getElementById('original').href=img.src;[...tabs.children].forEach((b,j)=>b.setAttribute('aria-current',j===i));draw()}
+pages.forEach((p,i)=>{const b=document.createElement('button');b.textContent=p[1];b.onclick=()=>select(i);tabs.append(b)});img.onload=draw;bounds.onchange=draw;select(0);
+</script></main></html>'''
+    (OUTPUT / "index.html").write_text(page.replace("const pages=PAGES", "const pages=" + json.dumps(PAGES, ensure_ascii=False)), encoding="utf-8")
+    print(f"Published {len(PAGES)} unedited captures: {OUTPUT / 'index.html'}")
+
+
+if __name__ == "__main__":
+    main()

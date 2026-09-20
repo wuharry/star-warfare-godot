@@ -21,7 +21,7 @@ def main() -> None:
     data = (source / "resUI.bytes").read_bytes()
     offsets = read_ui_offsets(source / "res.bytes")
     units = {}
-    for index in (11, 13, 19):
+    for index in (10, 11, 12, 13, 19, 20):
         unit = read_unit_ui(data, offsets[index])
         assert unit["end"] == offsets[index + 1], f"UI {index} parse boundary"
         frames = []
@@ -49,7 +49,7 @@ def main() -> None:
     load_data(reader, header >> 24, 5)
     reader.unicode()
     text_groups = load_data(reader, 0, 0)
-    descriptions = [group.split("\n") for group in text_groups[:3]]
+    descriptions = [group.split("\n") for group in text_groups[:4]]
     digest = hashlib.sha256(data).hexdigest()
     # One module per line makes source coordinate diffs reviewable.
     serialized = "{\n" + ",\n".join(
@@ -62,7 +62,7 @@ def main() -> None:
         f'# Source resUI.bytes SHA-256: {digest}\n'
         '# Coordinates: Unity bottom-left -> Godot top-left, 960 x 640.\n' +
         ''.join('const ' + name + ' := ' + json.dumps(values, ensure_ascii=False) + '\n\n'
-                for name, values in zip(("WEAPON_DESCRIPTIONS", "ARMOR_DESCRIPTIONS", "BAG_DESCRIPTIONS"), descriptions)) +
+                for name, values in zip(("WEAPON_DESCRIPTIONS", "ARMOR_DESCRIPTIONS", "BAG_DESCRIPTIONS", "PROP_DESCRIPTIONS"), descriptions)) +
         'const UNITS := ' + serialized + '\n\n'
         'static func module(unit: int, index: int, frame := 0) -> Dictionary:\n'
         '\treturn UNITS[str(unit)][frame][index]\n\n'
