@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SW1 / Call of Mini 裝備升級</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#10191e;color:#dce8ec;font:16px/1.7 system-ui,sans-serif}main{max-width:1300px;margin:auto;padding:32px 24px}h1{font-size:30px}h2{color:#73d5e7;font-size:23px;margin-top:38px}a{color:#7be0ed}p{max-width:1000px}small{color:#a6b9c2}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}figure{margin:0;border:1px solid #40535f;background:#17252d}img{width:100%;height:auto;display:block}figcaption{padding:12px 16px}select{max-width:100%;background:#21343e;color:#eefaff;padding:10px;border:1px solid #6897a9;font:inherit}label{display:block;margin:12px 0}table{border-collapse:collapse;width:100%;margin:18px 0}th,td{padding:10px;text-align:left;border-bottom:1px solid #344d5b}th{color:#80d4e3}.scroll{overflow-x:auto}.note{border-left:3px solid #e4b85b;padding:12px 18px;background:#24303a}code{overflow-wrap:anywhere}.flow{border:1px solid #466675;padding:18px;color:#a2e6ed}@media(max-width:760px){.grid{grid-template-columns:1fr}main{padding:18px}h1{font-size:25px}}
+</style>
+<main>
+<small>2026-09-20 · 實際 Godot 畫面與原始數據查詢</small>
+<h1>SW1 / Call of Mini 裝備升級</h1>
+<p>桌面商店與手機改裝頁已接入升級確認、扣款、存檔與戰鬥數值。SW1 武器最高 LV 8；目前收錄的 Call of Mini 裝甲最高 LV 7，四個部件共用同一次升級。</p>
+<p><a href="README.md">來源、公式與重現步驟</a> · <a href="../reconstruction_v1/index.html">APK 解析報告</a> · <a href="../desktop_armory_ui_v1/index.html">桌面 UI</a></p>
+<div class="flow">選擇已持有裝備 → 預覽下一級數值與費用 → 確認 → 重新檢查等級／餘額 → 儲存 → 更新介面與戰鬥</div>
+<h2>逐級數據</h2>
+<p>選單涵蓋 47 把 SW1 武器與 8 套 CoM 裝甲。費用是「升到該列等級」的單次費用，LV 1 為已購買裝備的起點。裝甲顯示整套基礎數值，不含角色等級、背包或其他套裝加成。</p>
+<label for="equipment">裝備 <select id="equipment"></select></label>
+<div class="scroll"><table id="levels"><thead></thead><tbody></tbody></table></div>
+<div class="note">本次實裝 SW1 武器傷害與 CoM 裝甲 HP／護盾升級。CoM 的弱點、等級特殊被動、暴擊連鎖、天賦與進化尚未移植。SW1 裝甲與背包維持原有數值，沒有另外發明升級級距。</div>
+<h2>桌面</h2>
+<div class="grid">
+<figure><a href="desktop_weapon_quote.png"><img src="desktop_weapon_quote.png" alt="FR28a 升級確認，傷害 20 至 23，4500 點數"></a><figcaption>確認前可看見下一級差異；取消不扣款。</figcaption></figure>
+<figure><a href="desktop_weapon_lv2.png"><img src="desktop_weapon_lv2.png" alt="桌面 FR28a 升至 LV 2，傷害 23"></a><figcaption>升級後 LV、POW、剩餘金額與下一次費用同步更新。</figcaption></figure>
+<figure><a href="desktop_suit_quote.png"><img src="desktop_suit_quote.png" alt="CoM 整套裝甲升級確認"></a><figcaption>CoM 使用下一級 BuyMoney／BuyCrystal，只收一次整套費用。</figcaption></figure>
+<figure><a href="desktop_insufficient.png"><img src="desktop_insufficient.png" alt="餘額不足，確認按鈕停用"></a><figcaption>餘額不足停用確認；Esc 返回商店。</figcaption></figure>
+</div>
+<h2>手機布局</h2>
+<div class="grid">
+<figure><a href="mobile_weapon.png"><img src="mobile_weapon.png" alt="手機原版 UPGRADE 位置與升級星號"></a><figcaption>沿用 SW1 UPGRADE 與七個等級圖示；EQUIP 保持獨立。</figcaption></figure>
+<figure><a href="mobile_suit_quote.png"><img src="mobile_suit_quote.png" alt="手機 CoM 裝甲確認視窗"></a><figcaption>確認期間鎖住背景滑動；返回後恢復操作。</figcaption></figure>
+<figure><a href="mobile_suit_lv6.png"><img src="mobile_suit_lv6.png" alt="CoM 裝甲 LV 6，下一級 99 秘銀"></a><figcaption>每個部件顯示整套數值的四分之一；說明與升級按鈕保持間距。</figcaption></figure>
+<figure><a href="mobile_max.png"><img src="mobile_max.png" alt="武器 LV 8 滿級，七個圖示亮起"></a><figcaption>滿級停用升級，不再收費。</figcaption></figure>
+</div>
+<h2>驗證與限制</h2>
+<div class="scroll"><table><thead><tr><th>範圍</th><th>結果</th><th>實際檢查</th></tr></thead><tbody>
+<tr><td>數據、交易、存檔、戰鬥</td><td>PASS</td><td>47 把武器／8 套裝甲、逐級費用、重複確認、未持有、餘額不足、滿級、舊存檔、存檔失敗撤回、實際射擊傷害與生命／護盾。</td></tr>
+<tr><td>桌面與手機 UI</td><td>PASS</td><td>點擊、Tab／Enter、Esc、取消、固定交易目標、背景滑動鎖定、升級刷新、文字與按鈕間距。</td></tr>
+<tr><td>既有裝備流程</td><td>PASS</td><td>mobile_customize_sw1、mobile_store_sw1、desktop_armory_ui、menu_equipment、armor_system 場景。</td></tr>
+<tr><td>APK 資料回歸</td><td>斷言 PASS／清理警告</td><td>source_reconstruction_test 退出時仍報 2 個 ObjectDB instance／1 個 resource 尚未釋放。</td></tr>
+<tr><td>實際畫面</td><td>已檢視</td><td>Godot 4.7.2 Compatibility / OpenGL 3.3，1280 × 720，八張直接截圖。手機為強制手機布局。</td></tr>
+<tr><td>Android／iOS 實機</td><td>NOT RUN</td><td>本輪未封裝與安裝到手機。</td></tr>
+<tr><td>Harness 完整性</td><td>FAIL</td><td>既有規則快照 generated drift；本輪未修改 harness 或提高 baseline。</td></tr>
+</tbody></table></div>
+<p><small>測試使用隔離存檔。頁面與截圖不改動你的正式金額、持有裝備或等級。圖片可點開原尺寸。</small></p>
+</main>
+<script src="data.js"></script>
+<script>
+const picker=document.getElementById('equipment'),table=document.getElementById('levels');
+const items=[...upgrades.weapons.map(x=>({...x,kind:'SW1'})),...upgrades.suits.map(x=>({...x,kind:'CoM'}))];
+for(const [i,item] of items.entries()){const option=document.createElement('option');option.value=i;option.textContent=`${item.kind} · ${item.name}`;picker.append(option)}
+const number=value=>value.toLocaleString('zh-TW',{maximumFractionDigits:2});
+function render(){const item=items[Number(picker.value)],weapon=item.kind==='SW1';table.tHead.replaceChildren();table.tBodies[0].replaceChildren();
+const header=table.tHead.insertRow();for(const title of weapon?['等級','傷害','升至此級費用']:['等級','整套 HP','整套護盾','升至此級費用']){const cell=document.createElement('th');cell.textContent=title;header.append(cell)}
+for(const stage of item.stages){const row=table.tBodies[0].insertRow(),cost=stage.level===1?'起始等級':[stage.credits?`${number(stage.credits)} 點數`:'',stage.mithril?`${number(stage.mithril)} 秘銀`:''].filter(Boolean).join(' + ')||'免費';
+for(const value of [`LV ${stage.level}`,...(weapon?[number(stage.damage)]:[number(stage.hp),number(stage.shield)]),cost])row.insertCell().textContent=value}}
+picker.addEventListener('change',render);render();
+</script>
+</html>

@@ -292,6 +292,18 @@ const RANK_ROWS := [
 	["Second Lieutenant", 20000000],
 ]
 
+# Unity table 18; signed bytes are decoded by the consuming catalog.
+const WEAPON_UPGRADE_ROWS := [
+	[0, 0],
+	[30, 15],
+	[50, 20],
+	[70, 25],
+	[100, 30],
+	[200, 40],
+	[300, 50],
+	[450, 70],
+]
+
 # Unity table 73; signed bytes are decoded by the consuming catalog.
 const SKILL_ROWS := [
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

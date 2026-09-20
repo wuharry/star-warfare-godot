@@ -4,12 +4,14 @@ signal settings_changed
 signal loadout_changed
 signal store_changed
 signal armor_changed(part_key: String, armor_key: String)
+signal equipment_upgraded(item_key: String)
 
 const SAVE_PATH := "user://star_warfare_save.json"
-const SAVE_VERSION := 4
+const SAVE_VERSION := 5
 const Source = preload("res://scripts/core/recovered_game_data.gd")
 const ArmorCatalogData = preload("res://scripts/core/armor_catalog.gd")
 const PropsCatalogData = preload("res://scripts/core/props_catalog.gd")
+const UpgradeRules = preload("res://scripts/core/equipment_upgrade_rules.gd")
 const SINGLEPLAYER_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8]
 const MULTIPLAYER_LEVELS := [13, 14, 15, 16, 17, 18, 19, 20, 21]
 const CAMPAIGN_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19, 20, 21]
@@ -44,6 +46,9 @@ var RELOAD_PROFILES: Dictionary = preload("res://scripts/core/weapon_reload_cata
 var WEAPONS: Dictionary = {}
 var battle_weapons: Array[String] = ["gun00"]
 var owned_weapons: Array[String] = ["gun00"]
+var weapon_levels: Dictionary = {}
+## CoM sells/upgrades whole suits; all four pieces share one saved level.
+var armor_set_levels: Dictionary = {}
 var ARMOR_ITEMS: Dictionary = {}
 var ARMOR_SET_BONUSES: Dictionary = {}
 var owned_armor: Array[String] = []
@@ -670,7 +675,91 @@ func get_armor_ids(part: Variant) -> Array[String]:
 	return ids
 
 func get_armor_item(armor_key: String) -> Dictionary:
-	return ARMOR_ITEMS.get(armor_key, {})
+	var item: Dictionary = ARMOR_ITEMS.get(armor_key, {}).duplicate(true)
+	if str(item.get("source_game", "")) == "com":
+		var level := get_equipment_level(armor_key)
+		var multiplier := UpgradeRules.armor_multiplier(int(item.set_id), level)
+		item.skills.hp *= multiplier
+		item.skills.shield *= multiplier
+		item["upgrade_level"] = level
+	return item
+
+func get_weapon_data(weapon_key: String) -> Dictionary:
+	var weapon: Dictionary = WEAPONS.get(weapon_key, {}).duplicate(true)
+	if not weapon.is_empty():
+		var level := get_equipment_level(weapon_key)
+		weapon.damage *= UpgradeRules.weapon_multiplier(level)
+		weapon["upgrade_level"] = level
+	return weapon
+
+func get_equipment_level(item_key: String) -> int:
+	if WEAPONS.has(item_key):
+		return clampi(int(weapon_levels.get(item_key, 1)), 1, Source.WEAPON_UPGRADE_ROWS.size()) if is_weapon_owned(item_key) else 1
+	var item: Dictionary = ARMOR_ITEMS.get(item_key, {})
+	if str(item.get("source_game", "")) == "com" and is_armor_owned(item_key):
+		return clampi(int(armor_set_levels.get(str(item.set_id), 1)), 1, UpgradeRules.COM_MAX_LEVEL)
+	return 1
+
+func get_upgrade_quote(item_key: String) -> Dictionary:
+	var quote := {"item_key": item_key, "status": "unsupported", "level": get_equipment_level(item_key),
+		"max_level": 1, "credits": 0, "mithril": 0, "current": {}, "next": {}}
+	var owned := false
+	if WEAPONS.has(item_key):
+		owned = is_weapon_owned(item_key)
+		quote.max_level = Source.WEAPON_UPGRADE_ROWS.size()
+		var weapon: Dictionary = WEAPONS[item_key]
+		quote.credits = UpgradeRules.weapon_cost(int(weapon.price), int(quote.level))
+		quote.current = {"POW": float(weapon.damage) * UpgradeRules.weapon_multiplier(int(quote.level))}
+		quote.next = {"POW": float(weapon.damage) * UpgradeRules.weapon_multiplier(int(quote.level) + 1)}
+	elif ARMOR_ITEMS.has(item_key) and str(ARMOR_ITEMS[item_key].get("source_game", "")) == "com":
+		var set_id := int(ARMOR_ITEMS[item_key].set_id)
+		owned = true
+		for part in range(4):
+			owned = owned and is_armor_owned(ArmorCatalogData.item_key(part, set_id))
+		quote.max_level = UpgradeRules.COM_MAX_LEVEL
+		var cost := UpgradeRules.armor_cost(set_id, int(quote.level))
+		quote.credits = cost.credits
+		quote.mithril = cost.mithril
+		var source: Dictionary = ArmorCatalogData.CoMSource.ARMOR_SETS[str(set_id)]
+		for pair: Array in [["current", int(quote.level)], ["next", int(quote.level) + 1]]:
+			var multiplier := UpgradeRules.armor_multiplier(set_id, int(pair[1]))
+			quote[pair[0]] = {"HP": float(source.hp) * multiplier, "SHIELD": float(source.shield) * multiplier}
+	else:
+		return quote
+	quote["next_level"] = mini(int(quote.level) + 1, int(quote.max_level))
+	quote.status = "ready" if owned else "not_owned"
+	if owned and int(quote.level) >= int(quote.max_level):
+		quote.status = "max_level"
+	elif owned and credits < int(quote.credits):
+		quote.status = "not_enough_credits"
+	elif owned and mithril < int(quote.mithril):
+		quote.status = "not_enough_mithril"
+	return quote
+
+func upgrade_equipment(item_key: String, expected_level := -1) -> String:
+	var quote := get_upgrade_quote(item_key)
+	if expected_level >= 0 and expected_level != int(quote.level):
+		return "stale"
+	if str(quote.status) != "ready":
+		return str(quote.status)
+	var levels: Dictionary = weapon_levels if WEAPONS.has(item_key) else armor_set_levels
+	var key := item_key if WEAPONS.has(item_key) else str(ARMOR_ITEMS[item_key].set_id)
+	var had_entry := levels.has(key)
+	var old_value: Variant = levels.get(key)
+	credits -= int(quote.credits)
+	mithril -= int(quote.mithril)
+	levels[key] = int(quote.next_level)
+	if not _save():
+		credits += int(quote.credits)
+		mithril += int(quote.mithril)
+		if had_entry:
+			levels[key] = old_value
+		else:
+			levels.erase(key)
+		return "save_failed"
+	equipment_upgraded.emit(item_key)
+	store_changed.emit()
+	return "upgraded"
 
 func get_equipped_armor_key(part: Variant) -> String:
 	var part_key := _armor_part_key(part)
@@ -795,9 +884,12 @@ func equip_armor_set(set_id: int) -> bool:
 	return true
 
 func get_equipped_set_id() -> int:
+	return _armor_set_id_for(equipped_armor)
+
+func _armor_set_id_for(outfit: Dictionary) -> int:
 	var equipped_set := -1
 	for part in range(4):
-		var armor_key := get_equipped_armor_key(part)
+		var armor_key := str(outfit.get(str(ArmorCatalogData.PART_KEYS[part]), ""))
 		if not ARMOR_ITEMS.has(armor_key):
 			return -1
 		var item_set := int(ARMOR_ITEMS[armor_key].set_id)
@@ -808,12 +900,15 @@ func get_equipped_set_id() -> int:
 	return equipped_set
 
 func get_armor_skills() -> Dictionary:
+	return get_armor_skills_for(equipped_armor)
+
+func get_armor_skills_for(outfit: Dictionary) -> Dictionary:
 	var skills: Dictionary = ArmorCatalogData.empty_skills()
 	for part_key: String in ArmorCatalogData.PART_KEYS:
-		var armor_key := str(equipped_armor.get(part_key, ""))
+		var armor_key := str(outfit.get(part_key, ""))
 		if ARMOR_ITEMS.has(armor_key):
-			ArmorCatalogData.merge_skills(skills, ARMOR_ITEMS[armor_key].skills)
-	var set_id := get_equipped_set_id()
+			ArmorCatalogData.merge_skills(skills, get_armor_item(armor_key).skills)
+	var set_id := _armor_set_id_for(outfit)
 	if set_id >= 0 and ARMOR_SET_BONUSES.has(set_id):
 		ArmorCatalogData.merge_skills(skills, ARMOR_SET_BONUSES[set_id].skills)
 	if ArmorCatalogData.CoMSource.ARMOR_SETS.has(str(set_id)):
@@ -1035,6 +1130,8 @@ func _load_save() -> void:
 	_normalize_store_state()
 	_normalize_props_state()
 	var stored_settings = parsed.get("settings", {})
+	weapon_levels = _read_upgrade_levels(parsed.get("weapon_levels", {}), true)
+	armor_set_levels = _read_upgrade_levels(parsed.get("armor_set_levels", {}), false)
 	package_slots.clear()
 	package_storage.clear()
 	for field: String in ["package_slots", "package_storage"]:
@@ -1077,7 +1174,32 @@ func _coerce_armor_key(part_index: int, stored_value: Variant) -> String:
 		return ArmorCatalogData.item_key(part_index, int(candidate))
 	return candidate
 
-func _save() -> void:
+func _read_upgrade_levels(stored: Variant, weapons: bool) -> Dictionary:
+	var result := {}
+	if not stored is Dictionary:
+		return result
+	for key: Variant in stored:
+		if not key is String or typeof(stored[key]) not in [TYPE_INT, TYPE_FLOAT]:
+			continue
+		var value := float(stored[key])
+		if not is_finite(value) or value != floorf(value):
+			continue
+		var maximum := Source.WEAPON_UPGRADE_ROWS.size() if weapons else UpgradeRules.COM_MAX_LEVEL
+		if weapons:
+			if not WEAPONS.has(key) or not is_weapon_owned(key):
+				continue
+		else:
+			if not UpgradeRules.CoM.ARMOR_SETS.has(key):
+				continue
+			var owned := true
+			for part in range(4):
+				owned = owned and is_armor_owned(ArmorCatalogData.item_key(part, int(key)))
+			if not owned:
+				continue
+		result[key] = int(clampf(value, 1, maximum))
+	return result
+
+func _save() -> bool:
 	var temporary_path := save_path + ".tmp"
 	var backup_path := save_path + ".bak"
 	var temporary_absolute := ProjectSettings.globalize_path(temporary_path)
@@ -1088,7 +1210,7 @@ func _save() -> void:
 	var file := FileAccess.open(temporary_path, FileAccess.WRITE)
 	if file == null:
 		push_warning("Unable to create temporary Star Warfare save: %s" % temporary_path)
-		return
+		return false
 	var data := {
 		"save_version": SAVE_VERSION,
 		"selected_level": selected_level,
@@ -1099,6 +1221,8 @@ func _save() -> void:
 		"mithril": mithril,
 		"experience": experience,
 		"owned_weapons": owned_weapons,
+		"weapon_levels": weapon_levels,
+		"armor_set_levels": armor_set_levels,
 		"battle_weapons": battle_weapons,
 		"owned_armor": owned_armor,
 		"equipped_armor": equipped_armor,
@@ -1110,7 +1234,12 @@ func _save() -> void:
 	}
 	file.store_string(JSON.stringify(data, "\t"))
 	file.flush()
+	var write_error := file.get_error()
 	file.close()
+	if write_error != OK:
+		DirAccess.remove_absolute(temporary_absolute)
+		push_warning("Unable to write Star Warfare save (error %d)" % write_error)
+		return false
 
 	# Never truncate the only good copy. Move the current primary aside first,
 	# then publish the fully flushed temporary file. If publishing fails, restore
@@ -1122,12 +1251,14 @@ func _save() -> void:
 		if backup_error != OK:
 			DirAccess.remove_absolute(temporary_absolute)
 			push_warning("Unable to preserve previous Star Warfare save (error %d)" % backup_error)
-			return
+			return false
 	var publish_error := DirAccess.rename_absolute(temporary_absolute, primary_absolute)
 	if publish_error != OK:
 		if not FileAccess.file_exists(save_path) and FileAccess.file_exists(backup_path):
 			DirAccess.rename_absolute(backup_absolute, primary_absolute)
 		push_warning("Unable to publish Star Warfare save (error %d)" % publish_error)
+		return false
+	return true
 
 func _normalize_store_state() -> void:
 	var normalized_owned: Array[String] = []

@@ -141,6 +141,19 @@ func _ready() -> void:
 	health_changed.emit(health, shield)
 	if not GameState.armor_changed.is_connected(_on_armor_changed):
 		GameState.armor_changed.connect(_on_armor_changed)
+	GameState.equipment_upgraded.connect(_on_equipment_upgraded)
+
+func _on_equipment_upgraded(item_key: String) -> void:
+	if item_key == current_weapon_id:
+		# Refresh damage without switching guns, canceling reload or refilling ammo.
+		current_weapon = GameState.get_weapon_data(item_key)
+		weapon_changed.emit(item_key, current_weapon)
+	elif GameState.ARMOR_ITEMS.has(item_key):
+		var set_id := int(GameState.ARMOR_ITEMS[item_key].set_id)
+		for part: String in ["head", "body", "arms", "legs"]:
+			if int(GameState.get_armor_item(GameState.get_equipped_armor_key(part)).get("set_id", -1)) == set_id:
+				_apply_armor_stats()
+				break
 
 func _apply_armor_stats(restore_full := false) -> void:
 	var previous_max := max_health
@@ -949,7 +962,7 @@ func equip_weapon(weapon_id: String, persist_selection := true) -> void:
 	if weapon_recoil_tween and weapon_recoil_tween.is_valid():
 		weapon_recoil_tween.kill()
 	current_weapon_id = weapon_id
-	current_weapon = GameState.WEAPONS[weapon_id].duplicate(true)
+	current_weapon = GameState.get_weapon_data(weapon_id)
 	auto_reload_left = -1.0
 	_ensure_magazine_state()
 	restart_shoot_animation_requested = false

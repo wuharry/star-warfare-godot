@@ -20,6 +20,8 @@ func _check(condition: bool, message: String) -> void:
 func _run() -> void:
 	var original_save := GameState.save_path
 	GameState.save_path = "user://mobile_store_sw1_%d.json" % Time.get_ticks_usec()
+	GameState.weapon_levels.clear()
+	GameState.armor_set_levels.clear()
 	GameState.equipped_armor = GameState._default_armor_equipment()
 	GameState.owned_armor = GameState._default_owned_armor()
 	GameState.owned_weapons.assign(["gun00"])
@@ -124,6 +126,8 @@ func _run() -> void:
 	_check(GameState.is_weapon_owned("gun01") and GameState.credits == 75000, "weapon Buy charged wrong amount or failed")
 	await _click(shell.action_button)
 	_check(GameState.credits == 75000, "owned weapon charged twice")
+	_check(shell.upgrade_dialog.visible, "owned mobile weapon should preview an upgrade")
+	shell.close_upgrade_dialog()
 	shell.set_mode("customize", false)
 	shell._select_item("gun00", false)
 	await _frames(2)

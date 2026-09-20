@@ -481,7 +481,7 @@ func _refresh_details() -> void:
 	comparison_title.hide()
 	meta_label.hide()
 	if selected_section == "equipment" and selected_category == "gun" and not selected_item_key.is_empty():
-		var weapon: Dictionary = GameState.WEAPONS[selected_item_key]
+		var weapon := GameState.get_weapon_data(selected_item_key)
 		# SW1 displays seconds per shot, not shots per second, beside FIRERATE.
 		stats_text.text = "[color=#ffa500]POW %s\nFIRERATE %.2f\nENG %d%s[/color]" % [
 			_source_value(float(weapon.damage)), float(weapon.cooldown), int(weapon.energy),
@@ -508,22 +508,19 @@ func _refresh_details() -> void:
 	if mode == "customize":
 		slot_picker.hide()
 		price_label.hide()
-		# UPGRADE is separate from EQUIP in CustomizeUI. The current game has
-		# no weapon-level progression; don't turn this into an unrelated action.
-		action_button.visible = selected_category == "gun"
-		action_button.disabled = true
-		action_button.text = "UPGRADE"
-		action_button.tooltip_text = "武器升級尚未接入目前的遊戲規則"
-		state_label.text = "LV 1" if selected_category == "gun" else ""
+		action_button.hide()
+		state_label.text = ""
 		state_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		stats_text.position.x = 62
-		stats_text.size.x = 180
+		stats_text.size.x = 156
 		var rect := _detail_rect(50)
-		if selected_category != "gun":
+		if selected_category != "gun" and not _selected_is_com():
 			rect.size.y += 58
 		_set_rect(description_text, rect)
-		for icon: TextureRect in _level_icons:
+		for index in _level_icons.size():
+			var icon := _level_icons[index]
 			icon.visible = selected_category == "gun"
+			icon.texture = _module_texture(10, 68 if index < GameState.get_equipment_level(selected_item_key) - 1 else 67)
 		for index in _suit_icons.size():
 			var icon := _suit_icons[index]
 			icon.visible = selected_category in ARMOR_MESH_PARTS
@@ -540,6 +537,27 @@ func _refresh_details() -> void:
 		state_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		stats_text.position.x = 14
 		stats_text.size.x = 216
+	if selected_section == "equipment":
+		var quote := GameState.get_upgrade_quote(selected_item_key)
+		if str(quote.status) not in ["unsupported", "not_owned"]:
+			state_label.text = "LV %d / %d" % [int(quote.level), int(quote.max_level)]
+			action_button.show()
+			action_button.disabled = str(quote.status) == "max_level"
+			action_button.text = tr("MAX LEVEL") if action_button.disabled else tr("UPGRADE")
+			action_button.tooltip_text = tr("Preview the next level and confirm its cost.")
+			price_label.visible = not action_button.disabled
+			price_label.text = UpgradeDialog.price_text(quote)
+			if selected_category == "gun" and not action_button.disabled:
+				var extra := _source_value(float(quote.next.POW) - float(quote.current.POW))
+				stats_text.text = stats_text.text.replace("POW %s" % _source_value(float(quote.current.POW)), "POW %s (+%s)" % [_source_value(float(quote.current.POW)), extra])
+	action_button.add_theme_font_size_override("font_size", 12 if action_button.text.length() > 14 else (14 if action_button.text.length() > 8 else 20))
+
+
+func _perform_primary_action() -> void:
+	if selected_section == "equipment" and str(GameState.get_upgrade_quote(selected_item_key).status) not in ["unsupported", "not_owned"]:
+		_request_upgrade()
+	else:
+		super._perform_primary_action()
 
 
 func _armor_description(item: Dictionary) -> String:
@@ -855,6 +873,8 @@ func set_interaction_enabled(value: bool) -> void:
 
 func handle_back() -> void:
 	AudioDirector.play_ui("back")
+	if close_upgrade_dialog():
+		return
 	if is_instance_valid(package_page):
 		_close_package()
 	elif is_instance_valid(_ammo_dialog) and _ammo_dialog.visible:
@@ -945,19 +965,15 @@ func _release_preview(node: Node) -> void:
 
 func _comparison_weapon(use_preview: bool) -> Dictionary:
 	if use_preview:
-		return GameState.WEAPONS.get(str(preview_selection.get("gun", GameState.selected_weapon)), {})
+		return GameState.get_weapon_data(str(preview_selection.get("gun", GameState.selected_weapon)))
 	return super._comparison_weapon(false)
 
 
 func _preview_armor_skills(_current: Dictionary) -> Dictionary:
-	var result: Dictionary = GameState.ArmorCatalogData.empty_skills()
+	var outfit: Dictionary = GameState.equipped_armor.duplicate()
 	for key: String in ["head", "body", "arms", "legs", "bag"]:
-		var item := GameState.get_armor_item(str(preview_selection.get(key, GameState.get_equipped_armor_key(key))))
-		_merge_skill_delta(result, item.get("skills", {}), 1.0)
-	var set_id := _preview_full_set_id()
-	if set_id >= 0 and GameState.ARMOR_SET_BONUSES.has(set_id):
-		_merge_skill_delta(result, GameState.ARMOR_SET_BONUSES[set_id].skills, 1.0)
-	return result
+		outfit[key] = str(preview_selection.get(key, GameState.get_equipped_armor_key(key)))
+	return GameState.get_armor_skills_for(outfit)
 
 
 func _preview_full_set_id() -> int:

@@ -8,6 +8,7 @@ const SourceAssets = preload("res://scripts/core/recovered_source_assets.gd")
 const PropsCatalogData = preload("res://scripts/core/props_catalog.gd")
 const AdditivePreviewShader = preload("res://scripts/ui/store_additive_preview.gdshader")
 const ArmorySkin = preload("res://scripts/ui/recovered_armory_skin.gd")
+const UpgradeDialog = preload("res://scripts/ui/equipment_upgrade_dialog.gd")
 const COMPONENT_DIR := "res://assets/ui/components/"
 const ARMOR_THUMBNAIL_DIR := "res://assets/ui/armor_thumbnails/"
 const DESIGN_SIZE := Vector2(960.0, 640.0)
@@ -93,6 +94,8 @@ var screen_title: Label
 var category_layer: Control
 var catalog_panel: Control
 var detail_panel: Control
+var upgrade_button: Button
+var upgrade_dialog: Control
 var comparison_title: Label
 var comparison_rows: Array[Dictionary] = []
 var comparison_panel: Control
@@ -129,6 +132,8 @@ func _exit_tree() -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
+	if is_instance_valid(upgrade_dialog) and upgrade_dialog.visible:
+		return
 	if not event is InputEventKey or not event.pressed or event.echo:
 		return
 	match event.keycode:
@@ -526,6 +531,15 @@ func _build_details() -> void:
 	notice_label.name = "ActionNotice"
 	notice_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	detail_panel.add_child(notice_label)
+	upgrade_button = Button.new()
+	upgrade_button.name = "UpgradeAction"
+	upgrade_button.add_theme_font_size_override("font_size", 14)
+	for state: String in ["normal", "hover", "pressed", "disabled"]:
+		upgrade_button.add_theme_stylebox_override(state, ArmorySkin.plate(state))
+	upgrade_button.add_theme_stylebox_override("focus", ArmorySkin.focus())
+	upgrade_button.pressed.connect(_request_upgrade)
+	upgrade_button.hide()
+	detail_panel.add_child(upgrade_button)
 
 
 func _build_bottom_bar() -> void:
@@ -628,6 +642,7 @@ func apply_layout(use_desktop_layout: bool) -> void:
 	_set_rect(detail_panel.get_node("PurchaseDivider"), Rect2(20, 450, detail_width - 40, 3))
 	_set_rect(price_label, Rect2(20, 470, detail_width - 248, 26))
 	_set_rect(action_button, Rect2(detail_width - 216, 462, 196, 44))
+	_set_rect(upgrade_button, Rect2(20, 462, 216, 44))
 	_set_rect(notice_label, Rect2(20, 510, detail_width - 40, 18))
 	var bar := get_node("OriginalNavigationBar") as Control
 	_set_rect(bar, Rect2(0, 0, width, 72))
@@ -944,6 +959,9 @@ func _active_battle_weapon_ids() -> Array[String]:
 
 
 func _refresh_details() -> void:
+	if is_instance_valid(upgrade_button):
+		upgrade_button.hide()
+	price_label.show()
 	_refresh_currency()
 	_refresh_loadout_summary()
 	_rebuild_slot_picker()
@@ -963,6 +981,60 @@ func _refresh_details() -> void:
 		_refresh_weapon_details()
 	else:
 		_refresh_armor_details()
+	_refresh_upgrade_controls()
+
+
+func _refresh_upgrade_controls() -> void:
+	if not _recovered_desktop_skin or selected_section != "equipment":
+		return
+	var quote := GameState.get_upgrade_quote(selected_item_key)
+	if str(quote.status) == "unsupported":
+		return
+	meta_label.text = "LV %d / %d" % [int(quote.level), int(quote.max_level)]
+	meta_label.show()
+	if str(quote.status) == "not_owned":
+		return
+	price_label.hide()
+	upgrade_button.show()
+	upgrade_button.disabled = str(quote.status) == "max_level"
+	upgrade_button.text = tr("MAX LEVEL") if upgrade_button.disabled else "%s  %s" % [tr("UPGRADE"), UpgradeDialog.price_text(quote)]
+	upgrade_button.tooltip_text = tr("Preview the next level and confirm its cost.")
+
+
+func _request_upgrade() -> void:
+	var quote := GameState.get_upgrade_quote(selected_item_key)
+	if str(quote.status) in ["unsupported", "not_owned", "max_level"]:
+		return
+	if not is_instance_valid(upgrade_dialog):
+		upgrade_dialog = UpgradeDialog.new()
+		upgrade_dialog.name = "EquipmentUpgradeDialog"
+		add_child(upgrade_dialog)
+		upgrade_dialog.confirmed.connect(_confirm_upgrade)
+		upgrade_dialog.dismissed.connect(func():
+			if has_method("set_interaction_enabled"):
+				call("set_interaction_enabled", true))
+	if has_method("set_interaction_enabled"):
+		call("set_interaction_enabled", false)
+	upgrade_dialog.show_quote(quote, name_label.text, GameState.ARMOR_ITEMS.has(selected_item_key))
+	AudioDirector.play_ui("click")
+
+
+func _confirm_upgrade(item_key: String, expected_level: int) -> void:
+	var result := GameState.upgrade_equipment(item_key, expected_level)
+	notice_label.text = upgrade_dialog.result_text(result)
+	if result == "upgraded":
+		if GameState.ARMOR_ITEMS.has(item_key):
+			AudioDirector.play_source_2d("com", "UI_buy")
+		else:
+			AudioDirector.play_ui("money")
+	_refresh_details()
+
+
+func close_upgrade_dialog() -> bool:
+	if is_instance_valid(upgrade_dialog) and upgrade_dialog.visible:
+		upgrade_dialog.close()
+		return true
+	return false
 
 
 func _refresh_comparison_stats() -> void:
@@ -996,26 +1068,15 @@ func _comparison_weapon(use_preview: bool) -> Dictionary:
 		weapon_key = GameState.battle_weapons[selected_slot]
 	if use_preview and selected_category == "gun" and GameState.WEAPONS.has(selected_item_key):
 		weapon_key = selected_item_key
-	return GameState.WEAPONS.get(weapon_key, {})
+	return GameState.get_weapon_data(weapon_key)
 
 
 func _preview_armor_skills(current_skills: Dictionary) -> Dictionary:
-	var preview: Dictionary = current_skills.duplicate(true)
 	if selected_category == "gun" or not GameState.ARMOR_ITEMS.has(selected_item_key):
-		return preview
-	var current_key := GameState.get_equipped_armor_key(selected_category)
-	var current_item: Dictionary = GameState.ARMOR_ITEMS.get(current_key, {})
-	var selected_item: Dictionary = GameState.ARMOR_ITEMS[selected_item_key]
-	var current_set_id := GameState.get_equipped_set_id()
-	if current_set_id >= 0 and GameState.ARMOR_SET_BONUSES.has(current_set_id):
-		_merge_skill_delta(preview, GameState.ARMOR_SET_BONUSES[current_set_id].skills, -1.0)
-	if not current_item.is_empty():
-		_merge_skill_delta(preview, current_item.skills, -1.0)
-	_merge_skill_delta(preview, selected_item.skills, 1.0)
-	var preview_set_id := _preview_full_set_id()
-	if preview_set_id >= 0 and GameState.ARMOR_SET_BONUSES.has(preview_set_id):
-		_merge_skill_delta(preview, GameState.ARMOR_SET_BONUSES[preview_set_id].skills, 1.0)
-	return preview
+		return current_skills.duplicate(true)
+	var outfit: Dictionary = GameState.equipped_armor.duplicate()
+	outfit[selected_category] = selected_item_key
+	return GameState.get_armor_skills_for(outfit)
 
 
 func _preview_full_set_id() -> int:
@@ -1082,7 +1143,7 @@ func _comparison_meter_width(index: int, value: float) -> float:
 
 
 func _refresh_weapon_details() -> void:
-	var weapon: Dictionary = GameState.WEAPONS.get(selected_item_key, {})
+	var weapon := GameState.get_weapon_data(selected_item_key)
 	if weapon.is_empty():
 		return
 	var state := _get_item_state(selected_item_key)
@@ -1095,7 +1156,7 @@ func _refresh_weapon_details() -> void:
 	var current_key := GameState.selected_weapon
 	if selected_slot >= 0 and selected_slot < GameState.battle_weapons.size():
 		current_key = GameState.battle_weapons[selected_slot]
-	var current: Dictionary = GameState.WEAPONS.get(current_key, weapon)
+	var current := GameState.get_weapon_data(current_key)
 	stats_text.text = "\n".join([
 		_stat_line("POW", float(weapon.damage), float(current.damage), POWER_COLOR, false),
 		_stat_line("FIRE", float(weapon.fire_rate), float(current.fire_rate), CYAN, true),
@@ -1110,7 +1171,7 @@ func _refresh_weapon_details() -> void:
 
 
 func _refresh_armor_details() -> void:
-	var item: Dictionary = GameState.ARMOR_ITEMS.get(selected_item_key, {})
+	var item := GameState.get_armor_item(selected_item_key)
 	if item.is_empty():
 		return
 	var state := _get_item_state(selected_item_key)
@@ -1122,7 +1183,7 @@ func _refresh_armor_details() -> void:
 	meta_label.text = set_name if mode == "customize" and not set_name.is_empty() else ""
 	meta_label.visible = not meta_label.text.is_empty()
 	var current_key := GameState.get_equipped_armor_key(selected_category)
-	var current_item: Dictionary = GameState.ARMOR_ITEMS.get(current_key, item)
+	var current_item := GameState.get_armor_item(current_key)
 	var skills: Dictionary = item.skills
 	var current_skills: Dictionary = current_item.skills
 	var fractional_parts := bool(item.get("purchase_whole_set", false)) or bool(current_item.get("purchase_whole_set", false))
@@ -1197,7 +1258,7 @@ func _armor_description(item: Dictionary) -> String:
 	if callofmini:
 		fragments.append(tr("One purchase unlocks all four pieces. Each piece contributes 25% of the suit's HP and shield."))
 		var source: Dictionary = GameState.ArmorCatalogData.CoMSource.ARMOR_SETS[str(item.set_id)]
-		fragments.append(tr("Full suit: %s HP / %s SHIELD") % [String.num(float(source.hp), 2), String.num(float(source.shield), 2)])
+		fragments.append(tr("Full suit: %s HP / %s SHIELD") % [String.num(float(item.skills.hp) * 4.0, 2), String.num(float(item.skills.shield) * 4.0, 2)])
 		fragments.append(tr("Full set shield: recovers %d%% per second after %s sec without damage.") % [roundi(float(source.shield_recovery_fraction) * 100.0), String.num(float(source.shield_delay), 2)])
 	var set_id := int(item.set_id)
 	var set_exp_boost := 0.0

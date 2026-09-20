@@ -97,6 +97,8 @@ func _exit_tree() -> void:
 
 
 func _handle_back() -> void:
+	if is_instance_valid(equipment_shell) and equipment_shell.close_upgrade_dialog():
+		return
 	if is_instance_valid(equipment_shell) and equipment_shell is MobileEquipmentShell:
 		if drawer_open:
 			_toggle_drawer(false)

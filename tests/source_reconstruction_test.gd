@@ -16,6 +16,8 @@ func _check(ok: bool, message: String) -> void:
 func _run() -> void:
 	var original_save_hash := FileAccess.get_sha256(GameState.SAVE_PATH)
 	GameState.save_path = "user://source_reconstruction_test.json"
+	GameState.weapon_levels.clear()
+	GameState.armor_set_levels.clear()
 	GameState.experience = 0
 	GameState.owned_armor = GameState._default_owned_armor()
 	GameState.equipped_armor = GameState._default_armor_equipment()
