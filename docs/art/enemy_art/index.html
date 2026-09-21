@@ -1,0 +1,1735 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>蟲族與封面美術圖冊 — Star Warfare</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f3efe7;
+        --ink: #252e33;
+        --muted: #647075;
+        --line: #d6d0c5;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          16px/1.7 system-ui,
+          "Microsoft JhengHei",
+          sans-serif;
+      }
+      main {
+        max-width: 1500px;
+        margin: auto;
+        padding: 44px 28px;
+      }
+      a {
+        color: #315e76;
+        text-underline-offset: 4px;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      button,
+      a,
+      input {
+        touch-action: manipulation;
+      }
+      :focus-visible {
+        outline: 3px solid #af672f;
+        outline-offset: 4px;
+      }
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 0.2em;
+        color: var(--muted);
+      }
+      h1 {
+        font-size: clamp(30px, 4vw, 54px);
+        line-height: 1.2;
+        margin: 14px 0 22px;
+      }
+      h2 {
+        font-size: 27px;
+        margin: 34px 0 18px;
+      }
+      h2 small {
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: 400;
+      }
+      h3 {
+        font-size: 22px;
+        margin: 0;
+      }
+      .intro {
+        max-width: 920px;
+      }
+      .toolbar {
+        position: sticky;
+        top: 0;
+        background: #f3efe7f5;
+        z-index: 2;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      nav {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      nav button {
+        border: 1px solid #c8c0b1;
+        border-radius: 5px;
+        background: transparent;
+        padding: 8px 13px;
+        cursor: pointer;
+        color: var(--ink);
+      }
+      nav button[aria-pressed="true"] {
+        background: #293e49;
+        color: white;
+        border-color: #293e49;
+      }
+      .search-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+      input {
+        border: 1px solid #bfb6a7;
+        border-radius: 4px;
+        background: #fffdf8;
+        padding: 8px 12px;
+        width: min(100%, 360px);
+      }
+      .count {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+      .card {
+        background: #fffdf8;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        min-width: 0;
+      }
+      .card-copy {
+        padding: 20px 22px 12px;
+      }
+      .card-copy p {
+        font-size: 14px;
+        margin: 7px 0;
+      }
+      .role {
+        color: #52646b;
+      }
+      .image-link {
+        display: block;
+        background: #e9e5dc;
+      }
+      .image-link img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .card-bottom {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding: 12px 20px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .swatches {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        padding: 0 20px 15px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .swatches:empty {
+        display: none;
+      }
+      .swatches span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .swatches i {
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        border: 1px solid #0002;
+        display: inline-block;
+      }
+      .notice {
+        border-left: 3px solid #9b7c4f;
+        background: #e9e2d7;
+        padding: 12px 18px;
+      }
+      details {
+        border-top: 1px solid var(--line);
+        padding: 16px 0;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .source-text {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        padding: 14px;
+        background: #fffdf8;
+        font-size: 14px;
+      }
+      footer {
+        margin-top: 36px;
+        border-top: 1px solid var(--line);
+        padding-top: 20px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      #empty {
+        padding: 30px 0;
+        color: var(--muted);
+      }
+      @media (max-width: 760px) {
+        main {
+          padding: 26px 15px;
+        }
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+        .toolbar {
+          position: static;
+        }
+        .card-copy {
+          padding: 16px;
+        }
+        .search-row {
+          gap: 8px;
+        }
+        nav button {
+          padding: 7px 10px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="eyebrow">STAR WARFARE · ART COLLECTION</div>
+        <h1>蟲族與封面美術圖冊</h1>
+        <p class="intro">
+          原有蟲種重製、新增兵種、封面候選與歷史參考集中在同一份圖冊。選擇分類或搜尋名稱，點圖可開啟原尺寸；展示保留的原圖、文字設定與生成提示詞。
+        </p>
+        <p class="notice">
+          這些是概念與造型草案，尚未直接替換遊戲素材。原文件中的數值與結構示意仍需建模及遊戲驗證。
+        </p>
+      </header>
+      <div class="toolbar">
+        <nav aria-label="圖冊分類">
+          <button type="button" data-filter="all" aria-pressed="false">
+            全部</button
+          ><button type="button" data-filter="replacement" aria-pressed="false">
+            原有蟲種新版</button
+          ><button type="button" data-filter="new" aria-pressed="false">
+            新增兵種</button
+          ><button type="button" data-filter="covers" aria-pressed="false">
+            封面候選</button
+          ><button type="button" data-filter="archive" aria-pressed="false">
+            歷史設計與動作稿</button
+          ><button type="button" data-filter="reference" aria-pressed="false">
+            參考素材
+          </button>
+        </nav>
+        <div class="search-row">
+          <label for="search">搜尋圖稿</label
+          ><input
+            id="search"
+            type="search"
+            placeholder="例如：刺客、坦克、封面"
+            autocomplete="off"
+          /><output id="count" class="count" aria-live="polite"></output
+          ><a href="#specs">文字規格與提示詞</a>
+        </div>
+      </div>
+      <section data-category="replacement" id="section-replacement">
+        <h2>原有蟲種新版 <small>5 張</small></h2>
+        <div class="gallery">
+          <article
+            class="card"
+            data-search="兵蟲 前排近戰／雙鐮下劈 四條步足＋兩條高舉螳螂鐮足；鍬形蟲大顎屬口器。 images/enemy_replacement_concepts_v1__images__warrior_concept_v1.png"
+          >
+            <div class="card-copy">
+              <h3>兵蟲</h3>
+              <p class="role">前排近戰／雙鐮下劈</p>
+              <p>四條步足＋兩條高舉螳螂鐮足；鍬形蟲大顎屬口器。</p>
+              <p>鐮足的折疊關節、倒鉤齒列與水平開合大顎。</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/enemy_replacement_concepts_v1__images__warrior_concept_v1.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/enemy_replacement_concepts_v1__images__warrior_concept_v1.png"
+                alt="兵蟲"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/enemy_replacement_concepts_v1__images__warrior_concept_v1.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches">
+              <span><i style="background: #8b3e2b"></i>主甲殼 #8B3E2B</span
+              ><span><i style="background: #a855f7"></i>發光縫 #A855F7</span
+              ><span><i style="background: #22c55e"></i>感應眼 #22C55E</span
+              ><span><i style="background: #2b282c"></i>關節膜 #2B282C</span
+              ><span><i style="background: #84cc16"></i>酸液 #84CC16</span>
+            </div>
+          </article>
+          <article
+            class="card"
+            data-search="刺客蟲 高速撲擊／攀附滲透 四條攀附足＋兩條貼肋收折刃臂；低扁軀幹與柔性分節頸背。 images/enemy_replacement_concepts_v1__images__assassin_concept_v1.png"
+          >
+            <div class="card-copy">
+              <h3>刺客蟲</h3>
+              <p class="role">高速撲擊／攀附滲透</p>
+              <p>四條攀附足＋兩條貼肋收折刃臂；低扁軀幹與柔性分節頸背。</p>
+              <p>三向抓爪、吸附墊與貼身收刃的位置。</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/enemy_replacement_concepts_v1__images__assassin_concept_v1.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/enemy_replacement_concepts_v1__images__assassin_concept_v1.png"
+                alt="刺客蟲"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/enemy_replacement_concepts_v1__images__assassin_concept_v1.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches">
+              <span><i style="background: #172a38"></i>主甲殼 #172A38</span
+              ><span><i style="background: #426575"></i>刃緣 #426575</span
+              ><span><i style="background: #242b30"></i>關節膜 #242B30</span
+              ><span><i style="background: #58d6cc"></i>發光縫 #58D6CC</span
+              ><span><i style="background: #c4d879"></i>感應眼 #C4D879</span>
+            </div>
+          </article>
+          <article
+            class="card"
+            data-search="蠍子蟲 a・遠程型 酸液迫擊／區域封鎖 四條步足＋兩支細長前螯＋一條反弓分節尾；尾端球狀酸囊噴口。 images/enemy_replacement_concepts_v1__images__scorpion_artillery_concept_v1.png"
+          >
+            <div class="card-copy">
+              <h3>蠍子蟲 A・遠程型</h3>
+              <p class="role">酸液迫擊／區域封鎖</p>
+              <p>四條步足＋兩支細長前螯＋一條反弓分節尾；尾端球狀酸囊噴口。</p>
+              <p>圓弧掌部、固定指與活動指、球狀酸囊。</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/enemy_replacement_concepts_v1__images__scorpion_artillery_concept_v1.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/enemy_replacement_concepts_v1__images__scorpion_artillery_concept_v1.png"
+                alt="蠍子蟲 A・遠程型"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/enemy_replacement_concepts_v1__images__scorpion_artillery_concept_v1.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches">
+              <span><i style="background: #a8864a"></i>主甲殼 #A8864A</span
+              ><span><i style="background: #d5c9a8"></i>甲緣 #D5C9A8</span
+              ><span><i style="background: #393129"></i>關節膜 #393129</span
+              ><span><i style="background: #b7db48"></i>酸囊／縫 #B7DB48</span
+              ><span><i style="background: #d99040"></i>感應眼 #D99040</span>
+            </div>
+          </article>
+          <article
+            class="card"
+            data-search="蠍子蟲 b・近戰型 前螯抓壓／尾刺連擊 四條步足＋兩支膨大厚螯＋一條反弓分節尾；尾端實心倒鉤。 images/enemy_replacement_concepts_v1__images__scorpion_striker_concept_v1.png"
+          >
+            <div class="card-copy">
+              <h3>蠍子蟲 B・近戰型</h3>
+              <p class="role">前螯抓壓／尾刺連擊</p>
+              <p>四條步足＋兩支膨大厚螯＋一條反弓分節尾；尾端實心倒鉤。</p>
+              <p>厚圓掌螯的活動指，以及實心骨刺；不使用酸囊。</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/enemy_replacement_concepts_v1__images__scorpion_striker_concept_v1.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/enemy_replacement_concepts_v1__images__scorpion_striker_concept_v1.png"
+                alt="蠍子蟲 B・近戰型"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/enemy_replacement_concepts_v1__images__scorpion_striker_concept_v1.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches">
+              <span><i style="background: #25282a"></i>主甲殼 #25282A</span
+              ><span><i style="background: #80543b"></i>甲緣 #80543B</span
+              ><span><i style="background: #171b1d"></i>關節膜 #171B1D</span
+              ><span><i style="background: #bc6836"></i>發光縫 #BC6836</span
+              ><span><i style="background: #d99040"></i>感應眼 #D99040</span>
+            </div>
+          </article>
+          <article
+            class="card"
+            data-search="坦克蟲 重甲破陣／衝撞重踏 四條承重足；一支中央長角＋兩支肩角；前柱足、後飛節與寬蹄墊。 images/enemy_replacement_concepts_v1__images__tank_concept_v1.png"
+          >
+            <div class="card-copy">
+              <h3>坦克蟲</h3>
+              <p class="role">重甲破陣／衝撞重踏</p>
+              <p>
+                四條承重足；一支中央長角＋兩支肩角；前柱足、後飛節與寬蹄墊。
+              </p>
+              <p>寬厚蹄墊、頸部皺褶與背甲下的腹側软膜。</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/enemy_replacement_concepts_v1__images__tank_concept_v1.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/enemy_replacement_concepts_v1__images__tank_concept_v1.png"
+                alt="坦克蟲"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/enemy_replacement_concepts_v1__images__tank_concept_v1.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches">
+              <span><i style="background: #59634b"></i>主甲殼 #59634B</span
+              ><span><i style="background: #d2c6a5"></i>角／甲緣 #D2C6A5</span
+              ><span><i style="background: #303430"></i>關節膜 #303430</span
+              ><span><i style="background: #daa544"></i>發光縫 #DAA544</span
+              ><span><i style="background: #bdcb78"></i>感應眼 #BDCB78</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section data-category="new" id="section-new">
+        <h2>新增兵種 <small>3 張</small></h2>
+        <div class="gallery">
+          <article
+            class="card"
+            data-search="裂土蟲 掘地突襲／切斷退路  images/enemy_troop_concepts_v1__images__rift_burrower_concept_v1.png"
+          >
+            <div class="card-copy">
+              <h3>裂土蟲</h3>
+              <p class="role">掘地突襲／切斷退路</p>
+              <p>
+                寬扁楔形頭甲、前端兩條鏟掘足與四條短步足，覆瓦背甲在鑽地時閉合；出土後腹側軟膜暴露，提供反擊機會。
+              </p>
+            </div>
+            <a
+              class="image-link"
+              href="images/enemy_troop_concepts_v1__images__rift_burrower_concept_v1.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/enemy_troop_concepts_v1__images__rift_burrower_concept_v1.png"
+                alt="裂土蟲"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/enemy_troop_concepts_v1__images__rift_burrower_concept_v1.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches">
+              <span><i style="background: #855346"></i>配色 #855346</span
+              ><span><i style="background: #c5a078"></i>配色 #C5A078</span
+              ><span><i style="background: #28282b"></i>配色 #28282B</span
+              ><span><i style="background: #da7644"></i>配色 #DA7644</span
+              ><span><i style="background: #e2be72"></i>配色 #E2BE72</span>
+            </div>
+          </article>
+          <article
+            class="card"
+            data-search="囊翼蟲 空中投彈／區域封鎖  images/enemy_troop_concepts_v1__images__sacwing_concept_v1.png"
+          >
+            <div class="card-copy">
+              <h3>囊翼蟲</h3>
+              <p class="role">空中投彈／區域封鎖</p>
+              <p>
+                四片寬翼、六條收折足與外露腹囊；投彈前腹囊膨大，飛行輪廓與地面蟲種明顯不同。
+              </p>
+            </div>
+            <a
+              class="image-link"
+              href="images/enemy_troop_concepts_v1__images__sacwing_concept_v1.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/enemy_troop_concepts_v1__images__sacwing_concept_v1.png"
+                alt="囊翼蟲"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/enemy_troop_concepts_v1__images__sacwing_concept_v1.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches">
+              <span><i style="background: #596e70"></i>配色 #596E70</span
+              ><span><i style="background: #aec3b4"></i>配色 #AEC3B4</span
+              ><span><i style="background: #2c323b"></i>配色 #2C323B</span
+              ><span><i style="background: #a8d56c"></i>配色 #A8D56C</span
+              ><span><i style="background: #e6c77b"></i>配色 #E6C77B</span>
+            </div>
+          </article>
+          <article
+            class="card"
+            data-search="鳴脊蟲 蟲群支援／鳴叫預警  images/enemy_troop_concepts_v1__images__chorus_spine_concept_v1.png"
+          >
+            <div class="card-copy">
+              <h3>鳴脊蟲</h3>
+              <p class="role">蟲群支援／鳴叫預警</p>
+              <p>
+                六條長步足支撐拱形軀幹，背部三對高低錯落的共鳴骨板；鳴叫時張開背板並露出柔軟聲囊，提供中斷攻擊的窗口。
+              </p>
+            </div>
+            <a
+              class="image-link"
+              href="images/enemy_troop_concepts_v1__images__chorus_spine_concept_v1.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/enemy_troop_concepts_v1__images__chorus_spine_concept_v1.png"
+                alt="鳴脊蟲"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/enemy_troop_concepts_v1__images__chorus_spine_concept_v1.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches">
+              <span><i style="background: #675a78"></i>配色 #675A78</span
+              ><span><i style="background: #c7b9c7"></i>配色 #C7B9C7</span
+              ><span><i style="background: #292735"></i>配色 #292735</span
+              ><span><i style="background: #c4839c"></i>配色 #C4839C</span
+              ><span><i style="background: #d7c788"></i>配色 #D7C788</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section data-category="covers" id="section-covers">
+        <h2>封面候選 <small>5 張</small></h2>
+        <div class="gallery">
+          <article
+            class="card featured"
+            data-search="最後的破口 低飽和統一封面候選 last breach muted cover project style menu hero images/cover_last_breach_20260921_v2.png"
+          >
+            <div class="card-copy">
+              <h3>最後的破口：統一封面調色版</h3>
+              <p class="role">封面與構圖候選</p>
+              <p>
+                保留小隊死守與蟲潮壓境的構圖，改成接近 menu_hero.png
+                的灰藍陰影、煙塵與低飽和橘光。
+              </p>
+            </div>
+            <a
+              class="image-link"
+              href="images/cover_last_breach_20260921_v2.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/cover_last_breach_20260921_v2.png"
+                alt="最後的破口：統一封面調色版"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a href="images/cover_last_breach_20260921_v2.png" download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches">
+              <span><i style="background: #18212b"></i>暗灰藍</span
+              ><span><i style="background: #35485d"></i>鋼藍</span
+              ><span><i style="background: #b9c6cf"></i>冷白</span
+              ><span><i style="background: #9a5a36"></i>低飽和橘</span
+              ><span><i style="background: #4dd5e8"></i>青色能量</span>
+            </div>
+          </article>
+
+
+          <article
+            class="card"
+            data-search="小隊死守：新構圖封面候選 封面與構圖候選  images/warrior_bug_concept__images__cover_fireteam_new_v2.png"
+          >
+            <div class="card-copy">
+              <h3>小隊死守：新構圖封面候選</h3>
+              <p class="role">封面與構圖候選</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__cover_fireteam_new_v2.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__cover_fireteam_new_v2.png"
+                alt="小隊死守：新構圖封面候選"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__cover_fireteam_new_v2.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="cover fireteam restyle v1 封面與構圖候選  images/warrior_bug_concept__images__cover_fireteam_restyle_v1.png"
+          >
+            <div class="card-copy">
+              <h3>cover fireteam restyle v1</h3>
+              <p class="role">封面與構圖候選</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__cover_fireteam_restyle_v1.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__cover_fireteam_restyle_v1.png"
+                alt="cover fireteam restyle v1"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__cover_fireteam_restyle_v1.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="小隊死守：統一材質與光影後的改造候選 封面與構圖候選  images/warrior_bug_concept__images__cover_fireteam_restyle_v2.png"
+          >
+            <div class="card-copy">
+              <h3>小隊死守：統一材質與光影後的改造候選</h3>
+              <p class="role">封面與構圖候選</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__cover_fireteam_restyle_v2.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__cover_fireteam_restyle_v2.png"
+                alt="小隊死守：統一材質與光影後的改造候選"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__cover_fireteam_restyle_v2.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="威士忌哨站城防：新構圖封面候選 封面與構圖候選  images/warrior_bug_concept__images__cover_outpost_new_v2.png"
+          >
+            <div class="card-copy">
+              <h3>威士忌哨站城防：新構圖封面候選</h3>
+              <p class="role">封面與構圖候選</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__cover_outpost_new_v2.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__cover_outpost_new_v2.png"
+                alt="威士忌哨站城防：新構圖封面候選"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__cover_outpost_new_v2.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+
+
+
+
+
+        </div>
+      </section>
+      <section data-category="archive" id="section-archive">
+        <h2>歷史設計與動作稿 <small>13 張</small></h2>
+        <div class="gallery">
+          <article
+            class="card"
+            data-search="新版三視角 保留原稿與歷次版本  images/warrior_bug_concept__images__01_mantis_turnaround.jpg"
+          >
+            <div class="card-copy">
+              <h3>新版三視角</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__01_mantis_turnaround.jpg"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__01_mantis_turnaround.jpg"
+                alt="新版三視角"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__01_mantis_turnaround.jpg"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+
+          <article
+            class="card"
+            data-search="02 blueprint wireframe 保留原稿與歷次版本  images/warrior_bug_concept__images__02_blueprint_wireframe.jpg"
+          >
+            <div class="card-copy">
+              <h3>02 blueprint wireframe</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__02_blueprint_wireframe.jpg"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__02_blueprint_wireframe.jpg"
+                alt="02 blueprint wireframe"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__02_blueprint_wireframe.jpg"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="blender 建模工程圖 保留原稿與歷次版本  images/warrior_bug_concept__images__02_mantis_blueprint.jpg"
+          >
+            <div class="card-copy">
+              <h3>Blender 建模工程圖</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__02_mantis_blueprint.jpg"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__02_mantis_blueprint.jpg"
+                alt="Blender 建模工程圖"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__02_mantis_blueprint.jpg"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+
+          <article
+            class="card"
+            data-search="蠍子蟲 — 原生手繪風格 3d 三視角 保留原稿與歷次版本  images/warrior_bug_concept__images__06_spitter_turnaround.jpg"
+          >
+            <div class="card-copy">
+              <h3>蠍子蟲 — 原生手繪風格 3D 三視角</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__06_spitter_turnaround.jpg"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__06_spitter_turnaround.jpg"
+                alt="蠍子蟲 — 原生手繪風格 3D 三視角"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__06_spitter_turnaround.jpg"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+
+
+
+
+          <article
+            class="card"
+            data-search="刺客蟲 — 結構設計稿：多視角、關節與部件配置參考 保留原稿與歷次版本  images/warrior_bug_concept__images__fastbug_design_v3.png"
+          >
+            <div class="card-copy">
+              <h3>刺客蟲 — 結構設計稿：多視角、關節與部件配置參考</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__fastbug_design_v3.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__fastbug_design_v3.png"
+                alt="刺客蟲 — 結構設計稿：多視角、關節與部件配置參考"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__fastbug_design_v3.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="fastbug sketch v2 保留原稿與歷次版本  images/warrior_bug_concept__images__fastbug_sketch_v2.png"
+          >
+            <div class="card-copy">
+              <h3>fastbug sketch v2</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__fastbug_sketch_v2.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__fastbug_sketch_v2.png"
+                alt="fastbug sketch v2"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__fastbug_sketch_v2.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="刺客蟲 — 動作草稿：姿態與動作方向探索 保留原稿與歷次版本  images/warrior_bug_concept__images__fastbug_sketch_v3.png"
+          >
+            <div class="card-copy">
+              <h3>刺客蟲 — 動作草稿：姿態與動作方向探索</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__fastbug_sketch_v3.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__fastbug_sketch_v3.png"
+                alt="刺客蟲 — 動作草稿：姿態與動作方向探索"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__fastbug_sketch_v3.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="坦克蟲 — 全彩概念圖：確認輪廓、材質與蟲種配色 保留原稿與歷次版本  images/warrior_bug_concept__images__largebeetle_concept_v2.png"
+          >
+            <div class="card-copy">
+              <h3>坦克蟲 — 全彩概念圖：確認輪廓、材質與蟲種配色</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__largebeetle_concept_v2.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__largebeetle_concept_v2.png"
+                alt="坦克蟲 — 全彩概念圖：確認輪廓、材質與蟲種配色"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__largebeetle_concept_v2.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="坦克蟲 — 結構設計稿：多視角、關節與部件配置參考 保留原稿與歷次版本  images/warrior_bug_concept__images__largebeetle_design_v2.png"
+          >
+            <div class="card-copy">
+              <h3>坦克蟲 — 結構設計稿：多視角、關節與部件配置參考</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__largebeetle_design_v2.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__largebeetle_design_v2.png"
+                alt="坦克蟲 — 結構設計稿：多視角、關節與部件配置參考"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__largebeetle_design_v2.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="坦克蟲 — 動作草稿：姿態與動作方向探索 保留原稿與歷次版本  images/warrior_bug_concept__images__largebeetle_sketch_v2.png"
+          >
+            <div class="card-copy">
+              <h3>坦克蟲 — 動作草稿：姿態與動作方向探索</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__largebeetle_sketch_v2.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__largebeetle_sketch_v2.png"
+                alt="坦克蟲 — 動作草稿：姿態與動作方向探索"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__largebeetle_sketch_v2.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="蠍子蟲 — 全彩概念圖：確認輪廓、材質與蟲種配色 保留原稿與歷次版本  images/warrior_bug_concept__images__spitter_concept_v2.png"
+          >
+            <div class="card-copy">
+              <h3>蠍子蟲 — 全彩概念圖：確認輪廓、材質與蟲種配色</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__spitter_concept_v2.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__spitter_concept_v2.png"
+                alt="蠍子蟲 — 全彩概念圖：確認輪廓、材質與蟲種配色"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__spitter_concept_v2.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="蠍子蟲 — 結構設計稿：多視角、關節與部件配置參考 保留原稿與歷次版本  images/warrior_bug_concept__images__spitter_design_v2.png"
+          >
+            <div class="card-copy">
+              <h3>蠍子蟲 — 結構設計稿：多視角、關節與部件配置參考</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__spitter_design_v2.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__spitter_design_v2.png"
+                alt="蠍子蟲 — 結構設計稿：多視角、關節與部件配置參考"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__spitter_design_v2.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="蠍子蟲 — 動作草稿：姿態與動作方向探索 保留原稿與歷次版本  images/warrior_bug_concept__images__spitter_sketch_v2.png"
+          >
+            <div class="card-copy">
+              <h3>蠍子蟲 — 動作草稿：姿態與動作方向探索</h3>
+              <p class="role">保留原稿與歷次版本</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__spitter_sketch_v2.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__spitter_sketch_v2.png"
+                alt="蠍子蟲 — 動作草稿：姿態與動作方向探索"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__spitter_sketch_v2.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+        </div>
+      </section>
+      <section data-category="reference" id="section-reference">
+        <h2>參考素材 <small>9 張</small></h2>
+        <div class="gallery">
+          <article
+            class="card"
+            data-search="封面敵人參考板 生成中介素材 enemy cover board reference images/reference_enemy_cover_board_20260921_v1.png"
+          >
+            <div class="card-copy">
+              <h3>封面敵人參考板</h3>
+              <p class="role">素材／風格參考</p>
+              <p>
+                把兵蟲、刺客蟲、蠍尾蟲、坦克蟲與飛行蟲集中成一張參考板，用於封面生成時穩定敵人辨識。
+              </p>
+            </div>
+            <a
+              class="image-link"
+              href="images/reference_enemy_cover_board_20260921_v1.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/reference_enemy_cover_board_20260921_v1.png"
+                alt="封面敵人參考板"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/reference_enemy_cover_board_20260921_v1.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="cover armor board 素材／風格參考  images/warrior_bug_concept__cover_references_20260921__cover_armor_board.png"
+          >
+            <div class="card-copy">
+              <h3>cover armor board</h3>
+              <p class="role">素材／風格參考</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__cover_references_20260921__cover_armor_board.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__cover_references_20260921__cover_armor_board.png"
+                alt="cover armor board"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__cover_references_20260921__cover_armor_board.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="cover bag board 素材／風格參考  images/warrior_bug_concept__cover_references_20260921__cover_bag_board.png"
+          >
+            <div class="card-copy">
+              <h3>cover bag board</h3>
+              <p class="role">素材／風格參考</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__cover_references_20260921__cover_bag_board.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__cover_references_20260921__cover_bag_board.png"
+                alt="cover bag board"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__cover_references_20260921__cover_bag_board.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="cover enemy board 素材／風格參考  images/warrior_bug_concept__cover_references_20260921__cover_enemy_board.png"
+          >
+            <div class="card-copy">
+              <h3>cover enemy board</h3>
+              <p class="role">素材／風格參考</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__cover_references_20260921__cover_enemy_board.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__cover_references_20260921__cover_enemy_board.png"
+                alt="cover enemy board"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__cover_references_20260921__cover_enemy_board.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="cover mixed armor board 素材／風格參考  images/warrior_bug_concept__cover_references_20260921__cover_mixed_armor_board.png"
+          >
+            <div class="card-copy">
+              <h3>cover mixed armor board</h3>
+              <p class="role">素材／風格參考</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__cover_references_20260921__cover_mixed_armor_board.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__cover_references_20260921__cover_mixed_armor_board.png"
+                alt="cover mixed armor board"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__cover_references_20260921__cover_mixed_armor_board.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="original game preview 素材／風格參考  images/warrior_bug_concept__images__original_game_preview.png"
+          >
+            <div class="card-copy">
+              <h3>original game preview</h3>
+              <p class="role">素材／風格參考</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__original_game_preview.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__original_game_preview.png"
+                alt="original game preview"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__original_game_preview.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="原版貼圖 素材／風格參考  images/warrior_bug_concept__images__original_texture.png"
+          >
+            <div class="card-copy">
+              <h3>原版貼圖</h3>
+              <p class="role">素材／風格參考</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__original_texture.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__original_texture.png"
+                alt="原版貼圖"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__original_texture.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="蝎尾虫參考圖 素材／風格參考  images/warrior_bug_concept__images__spitter_ref.png"
+          >
+            <div class="card-copy">
+              <h3>蝎尾虫參考圖</h3>
+              <p class="role">素材／風格參考</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/warrior_bug_concept__images__spitter_ref.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/warrior_bug_concept__images__spitter_ref.png"
+                alt="蝎尾虫參考圖"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a
+                href="images/warrior_bug_concept__images__spitter_ref.png"
+                download
+                >下載原圖</a
+              >
+            </div>
+            <div class="swatches"></div>
+          </article>
+          <article
+            class="card"
+            data-search="原始封面畫風基準：立體模型、青光與煙塵 素材／風格參考  images/reference__menu_hero.png"
+          >
+            <div class="card-copy">
+              <h3>原始封面畫風基準：立體模型、青光與煙塵</h3>
+              <p class="role">素材／風格參考</p>
+            </div>
+            <a
+              class="image-link"
+              href="images/reference__menu_hero.png"
+              target="_blank"
+              rel="noopener"
+              ><img
+                loading="lazy"
+                src="images/reference__menu_hero.png"
+                alt="原始封面畫風基準：立體模型、青光與煙塵"
+            /></a>
+            <div class="card-bottom">
+              <span>點圖開啟原尺寸</span
+              ><a href="images/reference__menu_hero.png" download>下載原圖</a>
+            </div>
+            <div class="swatches"></div>
+          </article>
+        </div>
+      </section>
+      <p id="empty" hidden>沒有符合的圖稿，請更換關鍵字或選擇「全部」。</p>
+      <section id="specs">
+        <p class="notice">以下為歷史文字紀錄，可能提及已刪除的圖稿；目前保留圖片以上方圖冊為準。</p>
+        <h2>文字規格與生成紀錄</h2>
+        <p>
+          <a href="generation_prompts.json">下載合併提示詞 JSON</a> ·
+          <a href="consolidation_manifest.json">檔案整理對應表</a>
+        </p>
+        <p>
+          以下保留原頁文字；歷史版本的描述、實驗數值和舊路徑是當時紀錄，不代表本次重新驗證或實裝。
+        </p>
+        <details>
+          <summary>封面候選比較 — Star Warfare</summary>
+          <div class="source-text">
+            封面候選比較 — Star Warfare 封面候選比較 兩張新構圖 · 兩張原稿改造 ·
+            點圖查看原尺寸 返回蟲族設計展示板 封面畫風統一 · 2026-09-21 以
+            menu_hero.png 為唯一畫風與整體色調基準。
+            保留立體遊戲模型、硬面裝甲、冷青局部光、暗灰藍陰影與低彩度褐色煙塵。蟲種依指定
+            commit 9a70bc5 的圖稿，保留各自辨識色並融入同一場景光線。
+            裝甲、武器、背包皆以遊戲現有素材為參考，分開混搭；新構圖採
+            Fortune、Strike、Atom、Draco，背包採
+            ArmorBag_00／02／04／07。畫風基準不限制裝備款式。
+            下方提供兩張新構圖與兩張 Antigravity
+            原圖改造候選；原稿保留供對照。這是封面候選比較，尚未替換遊戲中的
+            menu_hero.png 。 生成提示詞、引用素材與檢查記錄
+            展開原始畫風基準：menu_hero.png 小隊死守
+            微仰角、四人戰術圓陣；前方兵蟲、殘骸刺客、右後方坦克蟲。 新構圖版 ·
+            下載 PNG Antigravity 原圖 原構圖與原畫風，供比較。 原構圖改造版
+            保留大致構圖，重繪材質、光影與裝備辨識特徵。 下載 PNG 威士忌哨站城防
+            高處俯瞰城牆與蟲海；坦克蟲破門、遠山蠍尾蟲發射酸液彈。 新構圖版 ·
+            下載 PNG Antigravity 原圖 原構圖與原畫風，供比較。 原構圖改造版
+            保留大致構圖，重繪材質、光影與裝備辨識特徵。 下載 PNG 原始
+            menu_hero.png 為 1920 ×
+            1280（3:2）；候選採寬幅構圖。實際接入選單前仍需依介面裁切檢查。生成圖為美術候選，裝備細節與模型逐面一致性仍需人工驗收。
+          </div>
+        </details>
+        <details>
+          <summary>蟲族概念與建模參考 — Star Warfare</summary>
+          <div class="source-text">
+            蟲族概念與建模參考 — Star Warfare 蟲族概念與建模參考 Star Warfare
+            Art Ref
+            兵蟲・刺客蟲・蠍子蟲・坦克蟲｜共用原生手繪甲殼畫法，各蟲種採獨立配色；每種以五個色彩角色為基準，容許
+            ±1。 2026-09-20
+            新版：原有蟲種重製草案（只依文字重新生成，含蠍子雙形態） 概念提案 ·
+            2026-09-18 · 圖稿供後續建模與素材生成 🎨 兵蟲概念圖 📐 兵蟲設計稿 🔍
+            原版素材 ⚡ 刺客蟲 🦂 蠍子蟲・雙形態 🦏 坦克蟲 🖼️ 大廳封面提案
+            高聳螳螂鐮足 (Raptorial Forelimbs) | 鍬形蟲大顎 | 正面 / 側面 / 3/4
+            視角 — 點擊放大 螳螂鐮足運動學 (Coxa-Femur-Tibia) | 倒鉤鋸齒
+            (Spines) | 大顎球窩關節剖面 坦克蟲圖稿使用方式：
+            三角頭冠、覆瓦重甲、四條承重足。前足採寬厚角質蹄墊，後足保留飛節；以低頭衝撞、重踏與腹部弱點示意支援後續模型調整。
+            全彩圖定義造型與配色；設計稿拆解結構；草稿檢查動作。圖示線網為結構示意，並非已驗證拓撲；既有下方數值為設計提案，未因本次出圖而實作。
+            查看生成提示詞與參考來源 主甲殼：橄欖灰 #59634B 角與甲緣：骨白
+            #D2C6A5 關節：深灰 #303430 發光縫：琥珀 #DAA544 感應眼：淡黃綠
+            #BDCB78 全彩概念圖 ｜確認輪廓、材質與蟲種配色 · 點圖開啟原尺寸 ·
+            下載 PNG 結構設計稿 ｜多視角、關節與部件配置參考 · 點圖開啟原尺寸 ·
+            下載 PNG 動作草稿 ｜姿態與動作方向探索 · 點圖開啟原尺寸 · 下載 PNG
+            原生手繪風格 3D 三視角 ｜四大兜蟲三叉角 · 象柱前足與馬式飛節後足 ·
+            正交 Front/Side/3/4 · 下載 JPG 🦏 大型甲虫 (Large Beetle) —
+            四大兜蟲特化 ＋ 犀象馬運動學規格
+            融合蘇里南三角兜蟲、海克力士、獨角仙與犀角金龜的冠角優勢，捨棄輕盈爬行，導入大象柱足沉著踏步與犀牛狂暴直線破城衝刺。
+            [海克力士/獨角仙 中央破城主角] ▲ [蘇里南左肩角] │ [蘇里南右肩角] ▲ │
+            ▲ │ │ │ ┌─────┴───────────────┴───────────────┴─────┐ │
+            [厚盾型多面斜角胸甲] │ ── 彈開正面 80% 實彈
+            └─────────────────────┬─────────────────────┘ │
+            [犀牛低頭蓄勢衝角基部] │ ┌───────────────────┴───────────────────┐ │
+            大象柱狀承重前足 (前2足) │ ── 寬大液壓蹄墊，原地重踏引發衝擊波
+            ├───────────────────────────────────────┤ │ 圓拱重型覆瓦狀龜背甲 │
+            ── HP 1,000 厚實血庫 ├───────────────────────────────────────┤ │
+            馬式反關節飛節後足 (後2足) │ ── 提供 15m 直線突進的狂暴推進力
+            └───────────────────────────────────────┘ 系統維度
+            生物原型與運動學融合 遊戲機制與戰術表現 (Attack Table 5) 頭冠重角
+            蘇里南三角兜蟲 (兩側肩角) ＋ 海克力士/獨角仙 (中央長下彎角)
+            形成天然「破城鉗」；發動「挑動」招式由下往上將玩家挑飛至空中 (150
+            傷害)。 常態步態 大象柱足 (Elephant Pillar Legs)
+            ：沉著、低頻重踏、穩定壓低重心 常態移速 5.0
+            m/s，行走時伴隨金屬地面震顫低音，不受玩家普通子彈擊退。 衝刺爆發
+            犀牛衝撞 ＋ 馬式飛節後足 (Horse Hock Joints) ：強大後蹬爆發力
+            發動「突進」技能：低頭蓄力 0.8 秒後狂暴向前衝刺 15 公尺 (200
+            傷害)，撞毀掩體。 近身震盪 雙前足高高抬起後重砸地面
+            發動「原地重踏」技能：引發半徑 5.0 公尺範圍震波擊退 (250 傷害)。
+            遠程威懾 角根兩側高壓生化噴口 發動「吐液」技能：射程達 24
+            公尺的重腐蝕性酸彈 (200 傷害)。 體積規格 視覺身高 2.80m | 體寬 3.20m
+            | 體長 4.10m 血量 1,000 HP (工虫的 22 倍)，作為小 Boss
+            級精英破陣坦克。 Blender 建模與動畫改造關鍵： 1. 腳掌不能做成細尖爪
+            ：前足底端做成類似大象或犀牛的寬厚角質塊蹄，提供沉重噸位的立足感。
+            2. 頸部與肩部護盾
+            ：頭角根部與胸甲之間要有粗厚肌肉皺褶，支持低頭鏟起重物的槓桿動作。
+            3. 弱點分佈
+            ：正面與背甲為極厚抗彈甲，唯一弱點在衝撞過後轉彎遲緩時露出的腹部軟質節片。
+            蠍子蟲圖稿使用方式： A 遠程型與 B
+            近戰型各按五個色彩角色配置，容許相近色合併為四個色系。兩者共用寬扁胸甲、四條步足、兩支前螯與一條分節尾；A
+            保留球狀酸囊與細長生物鉗，B
+            使用膨大厚殼蟹螯與實心倒鉤尾刺。鉗口必須可辨識固定指、活動指、不規則咬齒及柔軟關節膜，避免平面機械盾板。
+            全彩圖定義造型與配色；設計稿拆解結構；草稿檢查動作。圖示線網為結構示意，並非已驗證拓撲；既有下方數值為設計提案，未因本次出圖而實作。
+            查看生成提示詞與參考來源 A 主甲殼：沙赭 #A8864A A 甲緣：淺骨色
+            #D5C9A8 A 關節：暗褐 #393129 A 發光縫／毒囊：酸綠 #B7DB48 A
+            感應眼：琥珀 #D99040 B 主甲殼：黑曜灰 #25282A B 甲緣：暗銅 #80543B B
+            關節：炭黑 #171B1D B 發光縫：暗橙 #BC6836 B 感應眼：琥珀 #D99040
+            全彩概念圖 ｜確認輪廓、材質與蟲種配色 · 點圖開啟原尺寸 · 下載 PNG
+            結構設計稿 ｜多視角、關節與部件配置參考 · 點圖開啟原尺寸 · 下載 PNG
+            動作草稿 ｜姿態與動作方向探索 · 點圖開啟原尺寸 · 下載 PNG
+            原生手繪風格 3D 三視角 ｜死神蠍反弓尾刺 · 酸液蓄壓囊 · 鋸齒前螯 ·
+            正交 Front/Side/3/4 · 下載 JPG 🦂 蝎尾虫 (Spitter) — 沙漠死神蠍 ＋
+            鞭蠍雙形態規格 以 Harvey
+            上傳的重甲死神蠍與鞭蠍模型為架構基準，明確拆分「遠程迫擊酸池型」與「近戰重甲緩速型」兩種戰術職能。
+            📸 造型架構基準（Harvey 提供）
+            特徵：寬扁蟹狀胸甲、向前伸展的生物前螯、弧形反弓粗厚分節尾刺與頂端球狀噴射口。新版前螯以固定指、活動指、圓弧掌部及不規則咬齒呈現生物感。
+            🧬 雙形態戰術核心 形態 A：遠程迫擊型 (Artillery) 移動緩慢 (3.0
+            m/s)。尾刺發射高弧度酸液彈（射程 18m），著彈點殘留 1.5 秒腐蝕小酸池
+            (DoT)。近戰被貼身時用鋸齒前螯推開揮擊。 形態 B：近戰重甲型 (Armored
+            Striker)
+            取消遠程射擊。前螯改為膨大的厚殼蟹螯，以圓弧掌部提供防護，保留可開合的固定指與活動指；尾端為重型倒鉤骨刺。戰鬥採「前螯抓擊下壓
+            ＋ 尾刺猛烈螫入」Combo，造成 35% 緩速持續 2 秒。 視覺高：2.05m |
+            走位半徑：1.00m | 移速：3.0 m/s 戰術維度 形態 A：遠程酸液迫擊型 形態
+            B：近戰重甲緩速型 作戰定位 後排陣地火力 / 封鎖走位 前鋒重裝防盾 /
+            限制玩家位移 蠍尾武裝 球狀生物液壓噴射囊 (Acid Sac)
+            重型尖銳倒角幾丁刺 (Heavy Stinger) 遠程攻擊 18m 弧線酸液彈，產生
+            1.5s DoT 酸池 無遠程投射物 (射程 0) 近戰動作 前螯普通橫掃擊退 (自衛)
+            前螯重擊砸地 + 尾刺急速突刺 (Combo) 特殊異常 DoT 護甲腐蝕 (1.5s
+            後揮發) 螫刺命中附加 35% 緩速 (2.0s) 本次定稿配色
+            沙赭甲殼／骨色甲緣／暗褐關節／酸綠囊與縫／琥珀眼
+            黑曜灰甲殼／暗銅甲緣／炭黑關節／暗橙縫／琥珀眼 刺客蟲圖稿使用方式：
+            輪廓參考異形／星海爭霸奎蛇／惡靈進化
+            Wraith：細長分節軀幹、貼肋收折雙刃，四條攀附足加兩條獨立刃臂。頭部依
+            Harvey
+            補充圖片改為前壓骨質眉甲、後掠頭冠、外露顎與不規則獠牙；保留午夜藍黑五色配置。草稿檢查前撲、攀牆、倒掛與鑽管，鑽管時收顎並壓低頭頸。
+            全彩圖定義造型與配色；設計稿拆解結構；草稿檢查動作。圖示線網為結構示意，並非已驗證拓撲；既有下方數值為設計提案，未因本次出圖而實作。
+            查看生成提示詞與參考來源 主甲殼：午夜藍黑 #172A38 刃緣：灰藍 #426575
+            關節：深灰 #242B30 發光縫：冷青 #58D6CC 感應眼：淡黃綠 #C4D879
+            全彩概念圖 ｜確認輪廓、材質與蟲種配色 · 點圖開啟原尺寸 · 下載 PNG
+            結構設計稿 ｜多視角、關節與部件配置參考 · 點圖開啟原尺寸 · 下載 PNG
+            動作草稿 ｜姿態與動作方向探索 · 點圖開啟原尺寸 · 下載 PNG
+            原生手繪風格 3D 三視角 ｜異形後掠長頭蓋 · 幽靈隱刃雙鐮 ·
+            牆面攀爬飛撲姿態 · 下載 JPG ⚡ 刺客蟲 (Fast Bug) — 異形 × 奎蛇 ×
+            Wraith 機動刺客 依 Harvey 指定的異形／星海爭霸奎蛇／惡靈進化 Wraith
+            方向，結合後掠長頭蓋、柔性分節軀幹與貼身雙刃。造型需支援高速前撲、牆面攀爬、天花板倒掛與收身鑽入通風管；以下動作與數值均為設計目標。
+            [異形後掠流線長頭蓋] ▲ │ 狹長冷青感應縫／淡黃綠眼
+            ┌──────────┴──────────┐ │ ┌───────┬───────┐ │ │ │ 獠牙及分節口器 │ │
+            └──┴───────┬───────┴──┘ │ [雙肩折疊關節 (Wraith Scythe Pivot)]
+            ┌──────┴──────┐ │ 柔韌胸廓 ├──[幽靈折疊長雙刃]（緊貼肋側，出刀橫斬）
+            └──────┬──────┘ │ [多段鉸接蛇形脊椎] ── (可滑動壓縮，直徑 &lt; 0.8m
+            通過通風管) │ ┌──────┴──────┐ │ 後推進腔 │ ── 冷青微光能量狹縫
+            └──┬────────┬─┘ │ │ [折疊彈簧足] [折疊彈簧足] ──
+            (附帶微刺吸附墊，支援天花板/牆面倒掛) 戰術定位 隱秘暗殺刺客 /
+            垂直管道滲透者 移動速度 7.0 m/s (原版數值，全場最高) 生命值 60 HP
+            (高於兵蟲 45) 專屬攻擊技能 8.0m 凌空扑击 (130 傷害) +
+            隱蔽雙刃近身交叉斬 (90 傷害) 管道通過尺寸 直徑 0.85m 圓柱管道
+            (身形完全收縮) 特殊機動
+            天花板倒掛行走、金屬壁面高速垂直攀爬、管道穿梭 Blender 骨架 Spline
+            IK 柔性脊椎鏈 (5~7節) + 兩側雙鐮關節 + 4 條壁面攀爬足 Blender
+            改造關鍵提示： 1.
+            雙肩鐮刀採用「反向折疊關節」，平時收折在胸腹兩側護板內，高速奔跑時完全流線破風。
+            2.
+            足爪末端必須有三向反對稱錐爪與肉墊，呈現能夠牢牢抓死金屬牆面與天花板的抓力感。
+            3.
+            身體截面必須是扁平水滴型（寬而扁），而非兵蟲的隆起圓拱，才能鑽入通風管道。
+            原版 bug_01.png 貼圖（版權風險＋肉食犬齒）
+            問題：頭部為低矮平胸，嘴部帶有哺乳動物犬齒與紅肉牙齦，缺乏具備威脅感的高聳捕食肢體。
+            新版重製方案（高聳螳螂鐮足 ＋ 鍬形大顎 ＋ 原生配色）
+            解決：肩膀上方聳立一對螳螂倒鉤鐮足，下顎為鍬形蟲鋸齒巨螯；完美保留紅褐手繪甲殼與幽紫發光裂縫。
+            封面畫風統一 · 2026-09-21 開啟獨立大圖比較頁 以 menu_hero.png
+            為唯一畫風與整體色調基準。
+            保留立體遊戲模型、硬面裝甲、冷青局部光、暗灰藍陰影與低彩度褐色煙塵。蟲種依指定
+            commit 9a70bc5 的圖稿，保留各自辨識色並融入同一場景光線。
+            裝甲、武器、背包皆以遊戲現有素材為參考，分開混搭；新構圖採
+            Fortune、Strike、Atom、Draco，背包採
+            ArmorBag_00／02／04／07。畫風基準不限制裝備款式。
+            下方提供兩張新構圖與兩張 Antigravity
+            原圖改造候選；原稿保留供對照。這是封面候選比較，尚未替換遊戲中的
+            menu_hero.png 。 生成提示詞、引用素材與檢查記錄
+            展開原始畫風基準：menu_hero.png 小隊死守
+            微仰角、四人戰術圓陣；前方兵蟲、殘骸刺客、右後方坦克蟲。 新構圖版 ·
+            下載 PNG Antigravity 原圖 原構圖與原畫風，供比較。 原構圖改造版
+            保留大致構圖，重繪材質、光影與裝備辨識特徵。 下載 PNG 威士忌哨站城防
+            高處俯瞰城牆與蟲海；坦克蟲破門、遠山蠍尾蟲發射酸液彈。 新構圖版 ·
+            下載 PNG Antigravity 原圖 原構圖與原畫風，供比較。 原構圖改造版
+            保留大致構圖，重繪材質、光影與裝備辨識特徵。 下載 PNG 原始
+            menu_hero.png 為 1920 ×
+            1280（3:2）；候選採寬幅構圖。實際接入選單前仍需依介面裁切檢查。生成圖為美術候選，裝備細節與模型逐面一致性仍需人工驗收。
+            🎨 兵蟲參考色票 (Palette)
+            此組色票僅供既有兵蟲使用。刺客、蠍子與坦克的專屬色票位於各分頁；共用材質畫法，不共用整套顏色。明暗變化不另算色系。
+            幾丁質主甲殼 (Chitin Carapace) #8B3E2B (紅褐手繪質感) 幽紫生物發光縫
+            (Biolum Slits) #A855F7 (鐮足/甲殼側縫) 蜘蛛複單眼群 (Spider Eyes)
+            #22C55E (冷翠綠透鏡) 關節活動底膜 (Joint Underlayer) #2B282C
+            (暗炭黑幾丁膜) 毒牙強酸腐蝕液 (Acid Droplets) #84CC16 (酸蝕滲液) 📐
+            兵蟲建模規格參數 總可視高度 2.00 m (含高聳鐮足) 本體佔地 2.28m X ×
+            3.01m Z 攻擊動作半徑 2.20 m (鐮足垂直下劈射程) 目標面數 1,500 ~
+            2,800 三角面 (Mid-poly) 骨骼架構 原版 22 骨 + 鐮足 6 骨 + 大顎 2 骨
+            貼圖解析度 1024x1024 (手繪風格 Diffuse) 🛡️ 兵蟲肢體運動參考 螳螂前肢
+            (Raptorial) ：具備基節 (Coxa)、轉節、腿節 (Femur) 與脛節
+            (Tibia)，內側長有一排倒鉤刺，負責下劈刺穿。 鍬形大顎 (Mandibles)
+            ：水平閉合剪碎獵物，基部為球窩關節。 後行進足 (Legs) ：4
+            條爬行後足負責貼地高速推進。
+          </div>
+        </details>
+        <details>
+          <summary>原有蟲種重製草案｜兵蟲・刺客蟲・蠍子蟲・坦克蟲</summary>
+          <div class="source-text">
+            原有蟲種重製草案｜兵蟲・刺客蟲・蠍子蟲・坦克蟲 STAR WARFARE ·
+            EXISTING ENEMY REDESIGN · 2026.09.20 原有蟲種・重製造型草案
+            兵蟲、刺客蟲、蠍子蟲與坦克蟲重新起稿；蠍子蟲按遠程／近戰分開製作。本輪只讀取原文件文字，保留各蟲種的輪廓方向、器官分工與專屬配色，用於後續生成替換原生素材的美術參考。
+            共五張概念板，每張包含全身主圖、正／側／背面造型草稿、部件細節與五個配色角色。目前是造型探索，還不是可直接匯入遊戲的模型、UV
+            貼圖或校正過的正交三視圖。 兵蟲 刺客蟲 蠍子蟲 A・遠程型 蠍子蟲
+            B・近戰型 坦克蟲 完整提示詞 蟲種 戰術方向 必須保留的結構 兵蟲
+            前排近戰／雙鐮下劈 四條步足＋兩條高舉螳螂鐮足；鍬形蟲大顎屬口器。
+            刺客蟲 高速撲擊／攀附滲透
+            四條攀附足＋兩條貼肋收折刃臂；低扁軀幹與柔性分節頸背。 蠍子蟲
+            A・遠程型 酸液迫擊／區域封鎖
+            四條步足＋兩支細長前螯＋一條反弓分節尾；尾端球狀酸囊噴口。 蠍子蟲
+            B・近戰型 前螯抓壓／尾刺連擊
+            四條步足＋兩支膨大厚螯＋一條反弓分節尾；尾端實心倒鉤。 坦克蟲
+            重甲破陣／衝撞重踏
+            四條承重足；一支中央長角＋兩支肩角；前柱足、後飛節與寬蹄墊。 兵蟲
+            WARRIOR BUG 前排近戰／雙鐮下劈
+            用高於頭部的捕食鐮足建立威脅輪廓；口器保持鍬形大顎，主甲殼採紅褐色，幽紫只出現在少量縫隙。
+            肢體規格： 四條步足＋兩條高舉螳螂鐮足；鍬形蟲大顎屬口器。 細節重點：
+            鐮足的折疊關節、倒鉤齒列與水平開合大顎。 1536 × 1024 PNG ·
+            點圖開啟原尺寸 下載 兵蟲 主甲殼 #8B3E2B 發光縫 #A855F7 感應眼
+            #22C55E 關節膜 #2B282C 酸液 #84CC16 刺客蟲 ASSASSIN BUG
+            高速撲擊／攀附滲透
+            以後掠骨質頭冠、外露顎、低長分節身體與貼肋雙刃表現機動性。午夜藍與灰藍統一殼面，冷青只做細縫。
+            肢體規格： 四條攀附足＋兩條貼肋收折刃臂；低扁軀幹與柔性分節頸背。
+            細節重點： 三向抓爪、吸附墊與貼身收刃的位置。 1536 × 1024 PNG ·
+            點圖開啟原尺寸 下載 刺客蟲 主甲殼 #172A38 刃緣 #426575 關節膜
+            #242B30 發光縫 #58D6CC 感應眼 #C4D879 蠍子蟲 A・遠程型 SCORPION /
+            ARTILLERY 酸液迫擊／區域封鎖
+            以沙赭甲殼、細長生物前螯與尾端酸囊辨識遠程職能；鉗口保留固定指、活動指、不規則咬齒與柔軟基部。
+            肢體規格：
+            四條步足＋兩支細長前螯＋一條反弓分節尾；尾端球狀酸囊噴口。
+            細節重點： 圓弧掌部、固定指與活動指、球狀酸囊。 1536 × 1024 PNG ·
+            點圖開啟原尺寸 下載 蠍子蟲 A・遠程型 主甲殼 #A8864A 甲緣 #D5C9A8
+            關節膜 #393129 酸囊／縫 #B7DB48 感應眼 #D99040 蠍子蟲 B・近戰型
+            SCORPION / STRIKER 前螯抓壓／尾刺連擊
+            以黑曜灰重甲、暗銅色甲緣與膨大圓掌螯表現近戰防護；尾端為實心倒鉤，沒有酸囊。
+            肢體規格： 四條步足＋兩支膨大厚螯＋一條反弓分節尾；尾端實心倒鉤。
+            細節重點： 厚圓掌螯的活動指，以及實心骨刺；不使用酸囊。 1536 × 1024
+            PNG · 點圖開啟原尺寸 下載 蠍子蟲 B・近戰型 主甲殼 #25282A 甲緣
+            #80543B 關節膜 #171B1D 發光縫 #BC6836 感應眼 #D99040 坦克蟲 TANK
+            BEETLE 重甲破陣／衝撞重踏
+            以橄欖灰覆瓦背甲、骨白三角頭冠與四肢承重感呈現破陣角色；中央長角向前下彎，前足採寬厚蹄墊。
+            肢體規格：
+            四條承重足；一支中央長角＋兩支肩角；前柱足、後飛節與寬蹄墊。
+            細節重點： 寬厚蹄墊、頸部皺褶與背甲下的腹側軟膜。 1536 × 1024 PNG ·
+            點圖開啟原尺寸 下載 坦克蟲 主甲殼 #59634B 角／甲緣 #D2C6A5 關節膜
+            #303430 發光縫 #DAA544 感應眼 #BDCB78 後續替換素材時，如何使用這批圖
+            主圖用來確認輪廓、材質與配色；其他視角用來討論背甲、足部與器官配置。選定造型後，先統一各視角比例和關節根部，再製作模型、展開
+            UV 與生成貼圖，最後核對遊戲內持姿、碰撞與動畫。
+            已檢視五張成圖，並修正兵蟲多餘步足、刺客蟲收刃與足部、遠程蠍的重複足影，以及坦克中央角形。部分遮擋關節和前／背視角的刃臂投影仍需校正；請以上方文字肢體規格為準，不直接照草稿建立骨架。色票是配色目標，不代表每個像素都精確符合色碼。
+            工具：內建
+            image_gen。初次生成只使用文字；後續局部修圖只使用本輪新圖。未查看或輸入原概念頁的圖片，未修改遊戲模型、貼圖、動畫或數值。
+            文字依據： 原生成規格 · 原蟲族概念頁 。本輪完整紀錄：
+            生成與修訂提示詞 。 其他提案：
+            上一輪新增兵種：裂土蟲／囊翼蟲／鳴脊蟲 。
+          </div>
+        </details>
+        <details>
+          <summary>新敵人兵種｜文字參考概念提案</summary>
+          <div class="source-text">
+            新敵人兵種｜文字參考概念提案 STAR WARFARE · ENEMY EXPLORATION ·
+            2026.09.20 蟲群的新分工
+            只讀取既有文件的文字規格，重新生成三種敵人。延續手繪甲殼、大塊切面、深色關節膜與克制發光；以不同輪廓、配色與生物構造區分戰術用途。
+            本輪是概念提案：每種一張全彩造型＋側視結構草稿＋兩個動作草稿。能力、弱點與肢體規格是新設計，尚未製作模型、動畫或套用遊戲數值。
+            裂土蟲 囊翼蟲 鳴脊蟲 完整提示詞 兵種 戰術提案 主要辨識特徵 裂土蟲
+            掘地突襲／切斷退路 鏟足、楔形頭甲、低伏覆瓦背甲 囊翼蟲
+            空中投彈／區域封鎖 四片寬翼、下垂分節腹囊 鳴脊蟲 蟲群支援／鳴叫預警
+            高拱軀幹、成對共鳴背板 裂土蟲 RIFT BURROWER 掘地突襲／切斷退路
+            寬扁楔形頭甲、前端兩條鏟掘足與四條短步足，覆瓦背甲在鑽地時閉合；出土後腹側軟膜暴露，提供反擊機會。
+            結構目標： 兩條鏟掘前足＋四條步足；閉合背甲與腹側軟膜。 動作提案：
+            挖掘 → 出土突襲 → 露腹回復 全彩造型／結構草稿／動作探索 · 點圖放大
+            下載 PNG 主甲殼 #855346 次材質 #C5A078 關節膜 #28282B 功能強調
+            #DA7644 感應眼 #E2BE72 囊翼蟲 SACWING 空中投彈／區域封鎖
+            四片寬翼、六條收折足與外露腹囊；投彈前腹囊膨大，飛行輪廓與地面蟲種明顯不同。
+            結構目標： 四片翼＋六條足；腹囊分節，翼根集中於胸部。 動作提案：
+            懸停蓄壓 → 投下一枚酸滴 → 轉移 全彩造型／結構草稿／動作探索 ·
+            點圖放大 下載 PNG 主甲殼 #596E70 次材質 #AEC3B4 關節膜 #2C323B
+            功能強調 #A8D56C 感應眼 #E6C77B 鳴脊蟲 CHORUS SPINE
+            蟲群支援／鳴叫預警
+            六條長步足支撐拱形軀幹，背部三對高低錯落的共鳴骨板；鳴叫時張開背板並露出柔軟聲囊，提供中斷攻擊的窗口。
+            結構目標： 六條步足＋三對共鳴背板；背板基部保留柔軟聲囊。 動作提案：
+            收攏背板 → 張板鳴叫 → 收攏回復 全彩造型／結構草稿／動作探索 ·
+            點圖放大 下載 PNG 主甲殼 #675A78 次材質 #C7B9C7 關節膜 #292735
+            功能強調 #C4839C 感應眼 #D7C788 文字來源： 原生成規格 JSON 、
+            原概念頁
+            。本輪沒有查看或輸入原頁圖片；鳴脊蟲只以本輪新生成圖修正過背景與文字對比。
+            檢視範圍：
+            已檢視三張成圖的風格、輪廓、配色與標籤。側視與動作草稿有肢體遮擋和數量歧義，尤其裂土蟲側視足部；後續應依上方結構目標另做三視圖，確認關節與足數。這些圖片不是已驗證的骨架或拓撲藍圖。
+            使用內建 image_gen
+            生成。圖片與完整提示詞均保存在本資料夾，無外部字型、腳本或網路依賴。
+          </div>
+        </details>
+        <details>
+          <summary>Star Warfare: Alien Invasion — 遊戲封面圖展示庫</summary>
+          <div class="source-text">
+            Star Warfare: Alien Invasion — 遊戲封面圖展示庫 STAR WARFARE: ALIEN
+            INVASION KEY ART GALLERY
+            遊戲封面概念圖展示（忠實依據專案裝甲概念、武器貼圖與 commit 9a70bc5
+            敵對生物設定） ASPECT RATIO: 16:9 • NATIVE RESOLUTION 封面圖
+            V2：雙人戰術背水一戰 (推薦版本) 最新產出 cover_v2_dual_tactical.jpg
+            出場角色與裝甲 雷霆裝甲 Thunder Armor 突擊裝甲 Strike Armor
+            手持裝備與武器 FR28a 制式突擊步槍 RPG-21 軍規火箭筒 收錄敵人 (commit
+            9a70bc5) 兵蟲 (Warrior / 雙鐮紫光) 刺客蟲 (Assassin / 飛躍) 蠍尾蟲
+            (Spitter / 迫擊酸球) 大型甲蟲 (Tank Beetle / 三叉角) 氛圍參考
+            星艦戰將陣地防禦 × 星海爭霸雙人陸戰隊 × 異形生體外骨骼 本機檔案路徑:
+            E:\Star-Warfare-Godot-Restoration\docs\art\cover_art\cover_v2_dual_tactical.jpg
+            封面圖 V1：單兵守點突圍 (初版) cover_v1_solo_thunder.jpg
+            出場角色與裝甲 雷霆裝甲 Thunder Armor 手持裝備與武器 FR28a
+            制式突擊步槍 收錄敵人 刺客蟲 (Assassin Bug) 大型甲蟲 (Tank Beetle)
+            構圖特點 左下角單兵開火壓制、右上方巨獸破防、空中低空砲艇支援
+            本機檔案路徑:
+            E:\Star-Warfare-Godot-Restoration\docs\art\cover_art\cover_v1_solo_thunder.jpg
+          </div>
+        </details>
+      </section>
+      <footer>
+        整理日期：2026-09-21。已依指定清單移除 13 張圖稿與實體圖片；保留圖片未重新生成或壓縮。全部內容可離線開啟。
+      </footer>
+    </main>
+    <script>
+      const buttons = [...document.querySelectorAll("[data-filter]")],
+        groups = [...document.querySelectorAll("[data-category]")],
+        search = document.getElementById("search");
+      let selected = "replacement";
+      function apply() {
+        let total = 0;
+        const query = search.value.trim().toLowerCase();
+        for (const group of groups) {
+          let visible = 0;
+          for (const card of group.querySelectorAll(".card")) {
+            const show =
+              (selected === "all" || group.dataset.category === selected) &&
+              card.dataset.search.includes(query);
+            card.hidden = !show;
+            if (show) visible++;
+          }
+          group.hidden = visible === 0;
+          total += visible;
+        }
+        for (const b of buttons)
+          b.setAttribute("aria-pressed", String(b.dataset.filter === selected));
+        document.getElementById("count").textContent =
+          "顯示 " + total + " 張圖稿";
+        document.getElementById("empty").hidden = total !== 0;
+      }
+      function fromHash() {
+        const key = location.hash.slice(1);
+        if (buttons.some((b) => b.dataset.filter === key)) {
+          selected = key;
+          apply();
+        }
+      }
+      buttons.forEach((b) =>
+        b.addEventListener("click", () => {
+          selected = b.dataset.filter;
+          history.replaceState(null, "", "#" + selected);
+          apply();
+        }),
+      );
+      search.addEventListener("input", apply);
+      addEventListener("hashchange", fromHash);
+      fromHash();
+      apply();
+    </script>
+  </body>
+</html>
