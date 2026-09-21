@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>封面候選比較 — Star Warfare</title><style>
+    :root {
+      --bg-main: #0e1117;
+      --bg-panel: #161b22;
+      --bg-card: #21262d;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --text-bright: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent: #ff7b72;
+      --chitin: #9e462a;
+      --glow-purple: #a855f7;
+      --glow-green: #22c55e;
+      --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-main);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      padding: 24px;
+    }
+    header {
+      max-width: 1400px;
+      margin: 0 auto 24px auto;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .title-group h1 {
+      color: var(--text-bright);
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge {
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(168, 85, 247, 0.2);
+      border: 1px solid var(--glow-purple);
+      color: #d8b4fe;
+      font-family: var(--font-mono);
+    }
+    .title-group p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+    }
+    @media (max-width: 1024px) {
+      .container { grid-template-columns: 1fr; }
+    }
+    .viewport-panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+    }
+    .tab-btn {
+      padding: 12px 20px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover {
+      color: var(--text-bright);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .tab-btn.active {
+      color: var(--text-bright);
+      border-bottom-color: var(--glow-purple);
+      background: rgba(168, 85, 247, 0.08);
+    }
+    .view-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #090c10;
+      min-height: 520px;
+      justify-content: center;
+    }
+    .preview-image {
+      max-width: 100%;
+      height: auto;
+      max-height: 720px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      cursor: zoom-in;
+      transition: transform 0.2s ease;
+    }
+    .preview-image:hover {
+      transform: scale(1.005);
+    }
+    .image-caption {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-family: var(--font-mono);
+    }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+    }
+    @media (max-width: 768px) {
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+    .compare-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .compare-card h3 {
+      font-size: 1rem;
+      color: var(--text-bright);
+    }
+    .compare-card img {
+      width: 100%;
+      border-radius: 6px;
+      background: #000;
+    }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .spec-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .spec-card h2 {
+      font-size: 1.1rem;
+      color: var(--text-bright);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .swatch-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .swatch-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .swatch-color {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      flex-shrink: 0;
+    }
+    .swatch-info {
+      flex: 1;
+      font-size: 0.85rem;
+    }
+    .swatch-name {
+      font-weight: 600;
+      color: var(--text-bright);
+    }
+    .swatch-hex {
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .data-table td {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(48, 54, 61, 0.6);
+    }
+    .data-table td:first-child {
+      color: var(--text-muted);
+      width: 45%;
+    }
+    .data-table td:last-child {
+      color: var(--text-bright);
+      font-weight: 500;
+      font-family: var(--font-mono);
+    }
+    .guide-list {
+      list-style: none;
+      font-size: 0.88rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .guide-list li {
+      position: relative;
+      padding-left: 18px;
+    }
+    .guide-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--glow-purple);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal.active { display: flex; }
+    .modal-img {
+      max-width: 95vw;
+      max-height: 95vh;
+      border-radius: 8px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    }
+    .art-gallery { display: grid; gap: 18px; margin-bottom: 24px; }
+    .art-gallery figure { padding: 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-panel); }
+    .art-gallery img { display: block; width: 100%; height: auto; border-radius: 6px; }
+    .art-gallery figcaption { margin-top: 10px; font-size: .88rem; color: var(--text-muted); }
+    .art-gallery a, .reference-note a { color: #93c5fd; }
+    .reference-note { padding: 14px; margin-bottom: 20px; background: var(--bg-card); border-left: 3px solid #58d6cc; font-size: .9rem; }
+    .species-colors { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 20px; list-style: none; }
+    .species-colors li { padding: 5px 9px; border: 1px solid var(--border); border-radius: 6px; font-size: .8rem; }
+    .species-colors i { display: inline-block; width: 12px; height: 12px; margin-right: 6px; border: 1px solid #ffffff55; background: var(--swatch); }
+    pre { max-width: 100%; overflow-x: auto; }
+    .container > *, .viewport-panel > *, .view-content > * { min-width: 0; }
+
+body { max-width: 1440px; margin: auto; } .view-content { border-radius: 12px; } figcaption a { color: #93c5fd; } summary { padding: 12px; background: #161b22; } </style></head>
+<body>
+<header><div class="title-group"><h1>封面候選比較</h1><p>兩張新構圖 · 兩張原稿改造 · 點圖查看原尺寸</p></div><a href="index.html" style="color: #93c5fd;">返回蟲族設計展示板</a></header>
+      <!-- Tab 8: Lobby Covers -->
+      <div id="view-covers" class="view-content" style="display: flex; align-items: flex-start; text-align: left; padding: 24px;">
+        <div style="width: 100%; max-width: 1100px; margin: 0 auto;">
+          <h2 style="color: var(--text-bright); margin-bottom: 12px;">封面畫風統一 · 2026-09-21</h2>
+          <div class="reference-note">
+            <strong>以 menu_hero.png 為唯一畫風與整體色調基準。</strong>保留立體遊戲模型、硬面裝甲、冷青局部光、暗灰藍陰影與低彩度褐色煙塵。蟲種依指定 commit <code>9a70bc5</code> 的圖稿，保留各自辨識色並融入同一場景光線。<br>
+            裝甲、武器、背包皆以遊戲現有素材為參考，分開混搭；新構圖採 Fortune、Strike、Atom、Draco，背包採 ArmorBag_00／02／04／07。畫風基準不限制裝備款式。<br>
+            下方提供兩張新構圖與兩張 Antigravity 原圖改造候選；原稿保留供對照。這是封面候選比較，尚未替換遊戲中的 <code>menu_hero.png</code>。<br>
+            <a href="cover_generation_20260921.json">生成提示詞、引用素材與檢查記錄</a>
+          </div>
+          <details style="margin-bottom: 24px;">
+            <summary style="cursor: pointer; color: #93c5fd;">展開原始畫風基準：menu_hero.png</summary>
+            <a href="../../../assets/ui/components/menu_hero.png" target="_blank" rel="noopener"><img src="../../../assets/ui/components/menu_hero.png" alt="原始封面畫風基準：立體模型、青光與煙塵" style="width: 100%; height: auto; margin-top: 12px;" loading="lazy"></a>
+          </details>
+          <h3 style="margin: 20px 0 12px; color: var(--text-bright);">小隊死守</h3>
+          <p style="margin-bottom: 12px;">微仰角、四人戰術圓陣；前方兵蟲、殘骸刺客、右後方坦克蟲。</p>
+          <div class="art-gallery">
+            <figure>
+              <a href="images/cover_fireteam_new_v2.png" target="_blank" rel="noopener"><img src="images/cover_fireteam_new_v2.png" alt="小隊死守：新構圖封面候選" loading="lazy"></a>
+              <figcaption><strong>新構圖版</strong> · <a href="images/cover_fireteam_new_v2.png" download>下載 PNG</a></figcaption>
+            </figure>
+          </div>
+          <div class="compare-grid" style="margin-bottom: 28px;">
+            <figure class="compare-card">
+              <h3>Antigravity 原圖</h3>
+              <a href="images/cover_fireteam_ambush.jpg" target="_blank" rel="noopener"><img src="images/cover_fireteam_ambush.jpg" alt="小隊死守：保留的 Antigravity 原稿" loading="lazy"></a>
+              <figcaption>原構圖與原畫風，供比較。</figcaption>
+            </figure>
+            <figure class="compare-card">
+              <h3>原構圖改造版</h3>
+              <a href="images/cover_fireteam_restyle_v2.png" target="_blank" rel="noopener"><img src="images/cover_fireteam_restyle_v2.png" alt="小隊死守：統一材質與光影後的改造候選" loading="lazy"></a>
+              <figcaption>保留大致構圖，重繪材質、光影與裝備辨識特徵。<a href="images/cover_fireteam_restyle_v2.png" download>下載 PNG</a></figcaption>
+            </figure>
+          </div>
+          <h3 style="margin: 20px 0 12px; color: var(--text-bright);">威士忌哨站城防</h3>
+          <p style="margin-bottom: 12px;">高處俯瞰城牆與蟲海；坦克蟲破門、遠山蠍尾蟲發射酸液彈。</p>
+          <div class="art-gallery">
+            <figure>
+              <a href="images/cover_outpost_new_v2.png" target="_blank" rel="noopener"><img src="images/cover_outpost_new_v2.png" alt="威士忌哨站城防：新構圖封面候選" loading="lazy"></a>
+              <figcaption><strong>新構圖版</strong> · <a href="images/cover_outpost_new_v2.png" download>下載 PNG</a></figcaption>
+            </figure>
+          </div>
+          <div class="compare-grid" style="margin-bottom: 28px;">
+            <figure class="compare-card">
+              <h3>Antigravity 原圖</h3>
+              <a href="images/cover_whiskey_outpost.jpg" target="_blank" rel="noopener"><img src="images/cover_whiskey_outpost.jpg" alt="威士忌哨站城防：保留的 Antigravity 原稿" loading="lazy"></a>
+              <figcaption>原構圖與原畫風，供比較。</figcaption>
+            </figure>
+            <figure class="compare-card">
+              <h3>原構圖改造版</h3>
+              <a href="images/cover_outpost_restyle_v2.png" target="_blank" rel="noopener"><img src="images/cover_outpost_restyle_v2.png" alt="威士忌哨站城防：統一材質與光影後的改造候選" loading="lazy"></a>
+              <figcaption>保留大致構圖，重繪材質、光影與裝備辨識特徵。<a href="images/cover_outpost_restyle_v2.png" download>下載 PNG</a></figcaption>
+            </figure>
+          </div>
+          <p class="reference-note">原始 menu_hero.png 為 1920 × 1280（3:2）；候選採寬幅構圖。實際接入選單前仍需依介面裁切檢查。生成圖為美術候選，裝備細節與模型逐面一致性仍需人工驗收。</p>
+        </div>
+      </div>
+
+</body></html>
