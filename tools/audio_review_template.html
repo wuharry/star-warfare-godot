@@ -1,0 +1,1569 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>非原生音效篩選與動作解析 — Star Warfare</title>
+  <style>
+    :root {
+      --bg-body: #080d14;
+      --bg-panel: #0f1724;
+      --bg-card: #152234;
+      --bg-card-hover: #1c2e47;
+      --border: #23354e;
+      --border-light: rgba(255, 255, 255, 0.08);
+      --cyan: #06b6d4;
+      --cyan-dim: rgba(6, 182, 212, 0.15);
+      --cyan-glow: rgba(6, 182, 212, 0.35);
+      --amber: #f59e0b;
+      --amber-dim: rgba(245, 158, 11, 0.15);
+      --emerald: #10b981;
+      --emerald-dim: rgba(16, 185, 129, 0.15);
+      --rose: #f43f5e;
+      --rose-dim: rgba(244, 63, 94, 0.15);
+      --purple: #a855f7;
+      --purple-dim: rgba(168, 85, 247, 0.15);
+      --text: #c8d5e5;
+      --text-bright: #ffffff;
+      --text-muted: #738ba5;
+      --font-mono: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-body);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+
+    /* 頂部固定播放器 HUD */
+    .top-player {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 36, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.75);
+      padding: 14px 24px;
+    }
+    .player-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .player-row-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .track-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 320px;
+      flex: 1;
+    }
+    .pulse-ring {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .pulse-ring.active {
+      animation: pulse 1s infinite alternate ease-in-out;
+    }
+    @keyframes pulse {
+      from { transform: scale(0.8); opacity: 0.6; }
+      to { transform: scale(1.3); opacity: 1; box-shadow: 0 0 20px var(--cyan); }
+    }
+
+    .track-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .track-specs-row {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 2px;
+      flex-wrap: wrap;
+    }
+
+    .ctrl-btns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-main {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--cyan);
+      color: #000;
+      border: none;
+      cursor: pointer;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+    }
+    .btn-main:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 20px var(--cyan);
+    }
+    .btn-sec {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-bright);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .btn-sec:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: var(--cyan-dim);
+    }
+
+    .quick-decision-hud {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(8, 13, 20, 0.6);
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .player-options {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+    .player-options label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      user-select: none;
+    }
+
+    .seek-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .seek-bar {
+      flex: 1;
+      height: 6px;
+      accent-color: var(--cyan);
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    /* 主容器 */
+    main {
+      max-width: 1400px;
+      margin: 24px auto 0 auto;
+      padding: 0 24px;
+    }
+
+    /* 頂部看板 */
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(15, 23, 36, 0.95) 0%, rgba(21, 34, 52, 0.85) 100%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .hero-title h1 {
+      font-size: 1.65rem;
+      color: var(--text-bright);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-desc {
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-size: 0.92rem;
+      max-width: 860px;
+      line-height: 1.6;
+    }
+
+    /* 決策狀態統計條 */
+    .stats-bar {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.88rem;
+    }
+    .stat-pill-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: rgba(8, 13, 20, 0.5);
+    }
+    .stat-pill.total { color: #94a3b8; }
+    .stat-pill.keep { color: #34d399; border-color: rgba(16, 185, 129, 0.4); background: var(--emerald-dim); }
+    .stat-pill.delete { color: #f87171; border-color: rgba(244, 63, 94, 0.4); background: var(--rose-dim); }
+    .stat-pill.pending { color: #cbd5e1; }
+    .stat-pill.matched { color: var(--cyan); border-color: rgba(6, 182, 212, 0.4); background: var(--cyan-dim); }
+
+    .io-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-export {
+      background: var(--cyan-dim);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .btn-export:hover {
+      background: var(--cyan);
+      color: #000;
+    }
+    .btn-import-label {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.84rem;
+    }
+    .btn-import-label:hover {
+      border-color: var(--cyan);
+      color: var(--text-bright);
+    }
+
+    /* 工具篩選列 */
+    .filter-panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .filter-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .search-input-wrap {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      color: var(--text-bright);
+      padding: 8px 12px 8px 34px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--cyan);
+    }
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .select-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    select {
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      color: var(--text-bright);
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      outline: none;
+      cursor: pointer;
+    }
+    select:focus {
+      border-color: var(--cyan);
+    }
+
+    /* 檢視切換與分頁設定 */
+    .view-toggles {
+      display: inline-flex;
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px;
+      gap: 2px;
+    }
+    .view-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .view-btn.active {
+      background: var(--cyan);
+      color: #000;
+    }
+
+    /* 徽章樣式 */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.74rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge-synth {
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      color: #d8b4fe;
+    }
+    .badge-rec {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
+    }
+    .badge-orig {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fcd34d;
+    }
+    .badge-extra {
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      color: #93c5fd;
+    }
+    .badge-source {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-light);
+      color: #cbd5e1;
+    }
+    .badge-action {
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      color: #67e8f9;
+      font-size: 0.78rem;
+    }
+    .badge-ref {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fcd34d;
+    }
+
+    /* 列表卡片佈局 */
+    #listCards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 16px;
+    }
+
+    .review-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-left: 5px solid #475569;
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.18s ease;
+      position: relative;
+    }
+    .review-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+    .review-card.active {
+      box-shadow: 0 0 20px var(--cyan-glow);
+    }
+    .review-card[data-choice="keep"] {
+      border-left-color: var(--emerald);
+      background: linear-gradient(90deg, rgba(16, 185, 129, 0.05) 0%, var(--bg-panel) 40%);
+    }
+    .review-card[data-choice="delete"] {
+      border-left-color: var(--rose);
+      opacity: 0.8;
+      background: linear-gradient(90deg, rgba(244, 63, 94, 0.05) 0%, var(--bg-panel) 40%);
+    }
+    .review-card[data-choice="pending"] {
+      border-left-color: #64748b;
+    }
+
+    .card-top-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .btn-play-card {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--cyan);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      margin-top: 2px;
+    }
+    .btn-play-card:hover, .review-card.active .btn-play-card {
+      background: var(--cyan);
+      color: #000;
+      border-color: var(--cyan);
+    }
+
+    .card-main-meta {
+      flex: 1;
+      min-width: 0;
+    }
+    .card-name-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      font-family: var(--font-mono);
+      word-break: break-all;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .card-orig-path {
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      word-break: break-all;
+      margin-top: 3px;
+    }
+
+    .badge-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    /* 語意動作與部位區塊 */
+    .card-semantic-box {
+      background: rgba(8, 13, 20, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* 決策按鈕列 */
+    .decision-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .btn-decide {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .btn-decide:hover {
+      border-color: var(--cyan);
+      color: var(--text-bright);
+    }
+    .btn-decide.keep[aria-pressed="true"] {
+      background: var(--emerald);
+      color: #000;
+      border-color: var(--emerald);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+    }
+    .btn-decide.delete[aria-pressed="true"] {
+      background: var(--rose);
+      color: #fff;
+      border-color: var(--rose);
+      box-shadow: 0 0 10px rgba(244, 63, 94, 0.4);
+    }
+    .btn-decide.pending[aria-pressed="true"] {
+      background: #64748b;
+      color: #fff;
+      border-color: #64748b;
+    }
+
+    .note-input {
+      flex: 1;
+      min-width: 150px;
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      color: var(--text-bright);
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      outline: none;
+    }
+    .note-input:focus {
+      border-color: var(--cyan);
+    }
+
+    .card-footer-refs {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-light);
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* 表格檢視 */
+    .table-wrap {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+    .review-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      text-align: left;
+    }
+    .review-table th {
+      background: #111a28;
+      color: var(--text-bright);
+      padding: 10px 12px;
+      border-bottom: 2px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+    .review-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-light);
+      vertical-align: middle;
+    }
+    .review-table tr:hover td {
+      background: var(--bg-card-hover);
+    }
+    .review-table tr.active td {
+      background: rgba(6, 182, 212, 0.08);
+      border-bottom-color: var(--cyan);
+    }
+    .review-table tr[data-choice="keep"] td {
+      border-left: 4px solid var(--emerald);
+    }
+    .review-table tr[data-choice="delete"] td {
+      border-left: 4px solid var(--rose);
+      opacity: 0.8;
+    }
+
+    /* 分頁控制 */
+    .pager-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .pager-btns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-page {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    .btn-page:hover:not(:disabled) {
+      border-color: var(--cyan);
+      color: var(--text-bright);
+    }
+    .btn-page:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* 來源細節折疊區 */
+    details {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin-top: 32px;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text-bright);
+      outline: none;
+    }
+    #sourcesContent {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      #listCards { grid-template-columns: 1fr; }
+      .player-row-main { flex-direction: column; align-items: stretch; }
+      .hero-banner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 固定頂部播放器 HUD -->
+  <div class="top-player">
+    <div class="player-inner">
+      <div class="player-row-main">
+        <div class="track-meta">
+          <div class="pulse-ring" id="pulseIndicator"></div>
+          <div style="min-width: 0;">
+            <div class="track-title" id="trackTitle">請點選任一音效開始試聽</div>
+            <div class="track-specs-row" id="trackSpecs">
+              <span>快捷鍵：Space 播放/暫停 • K 保留 • D 刪除 • P 待定</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl-btns">
+          <button class="btn-sec" id="btnPrev" title="上一段 (快捷鍵: [)">⏮</button>
+          <button class="btn-main" id="btnPlay" title="播放 / 暫停 (快捷鍵: Space 空白鍵)">▶</button>
+          <button class="btn-sec" id="btnNext" title="下一段 (快捷鍵: ])">⏭</button>
+        </div>
+
+        <div class="quick-decision-hud" id="hudDecisionGroup" style="display: none;">
+          <span style="font-size: 0.76rem; color: var(--text-muted); margin-right: 2px;">當前決定:</span>
+          <button class="btn-decide keep" id="hudKeep" title="標記保留 (K)">✓ 保留</button>
+          <button class="btn-decide delete" id="hudDelete" title="標記刪除 (D)">✕ 刪除</button>
+          <button class="btn-decide pending" id="hudPending" title="標記待定 (P)">? 待定</button>
+        </div>
+
+        <div class="player-options">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span title="音量">🔊</span>
+            <input type="range" id="volSlider" min="0" max="1" step="0.05" value="0.5" style="width: 70px; accent-color: var(--cyan); cursor: pointer;">
+          </div>
+          <label title="單曲循環">
+            <input type="checkbox" id="chkLoop"> 循環
+          </label>
+          <label title="曲目結束自動切換至下一首">
+            <input type="checkbox" id="chkAuto" checked> 連續播放
+          </label>
+        </div>
+      </div>
+
+      <div class="seek-row">
+        <span id="timeCurrent">0:00</span>
+        <input type="range" class="seek-bar" id="seekBar" min="0" max="1000" value="0">
+        <span id="timeDuration">0:00</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- 看板 -->
+    <div class="hero-banner">
+      <div class="hero-title">
+        <h1>非原生音效篩選與動作解析</h1>
+      </div>
+      <div class="hero-desc">
+        本工作台收錄專案中所有外加素材（包括 <strong>sfx_pack 合成音效</strong>、<strong>Sonniss 擬真錄音</strong>、<strong>Lentikula CC0 雷射音效</strong> 與 <strong>遊戲現用剪輯</strong>）。系統自動解析每一段音效對應的<strong>槍械類別</strong>與<strong>具體動作部位（上膛／插拔彈匣／開火／持續光束／拋殼／著彈）</strong>，並標示來源與是否為合成音，方便批次決策保留或刪除。
+      </div>
+    </div>
+
+    <!-- 狀態統計與匯入匯出 -->
+    <div class="stats-bar">
+      <div class="stat-pill-group">
+        <div class="stat-pill total">總數: <span id="cntTotal">0</span></div>
+        <div class="stat-pill keep">🟢 已保留: <span id="cntKeep">0</span></div>
+        <div class="stat-pill delete">🔴 已刪除: <span id="cntDelete">0</span></div>
+        <div class="stat-pill pending">⚪ 待定: <span id="cntPending">0</span></div>
+        <div class="stat-pill matched">🔍 符合條件: <span id="cntMatched">0</span></div>
+      </div>
+
+      <div class="io-actions">
+        <button class="btn-export" id="btnExport" title="匯出選擇紀錄為 JSON">
+          <span>💾</span> 匯出選擇 JSON
+        </button>
+        <label class="btn-import-label" title="匯入之前儲存的選擇 JSON">
+          <span>📂</span> 匯入選擇
+          <input type="file" id="fileImport" accept=".json,application/json" style="display: none;">
+        </label>
+      </div>
+    </div>
+
+    <!-- 工具篩選列 -->
+    <div class="filter-panel">
+      <div class="filter-row">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="search" id="searchInput" class="search-input" placeholder="搜尋檔名、原始路徑、動作部位、武器名稱、來源或備註...">
+        </div>
+
+        <div class="view-toggles">
+          <button class="view-btn active" id="viewBtnCards">🎴 解析卡片</button>
+          <button class="view-btn" id="viewBtnTable">📊 高密表格</button>
+        </div>
+      </div>
+
+      <div class="filter-row">
+        <div class="select-group">
+          <select id="selSource" aria-label="音效來源">
+            <option value="">全部來源</option>
+          </select>
+
+          <select id="selKind" aria-label="音效性質 / 是否合成">
+            <option value="">全部性質 (合成/實錄)</option>
+            <option value="合成音效">⚡ 程式合成音效</option>
+            <option value="外部素材包">🎙️ 外部擬真素材</option>
+            <option value="原版錄音剪輯">🎮 原版錄音剪輯</option>
+            <option value="外加音效">📦 外加音效</option>
+          </select>
+
+          <select id="selCategory" aria-label="用途分類">
+            <option value="">全部用途大類</option>
+          </select>
+
+          <select id="selState" aria-label="選擇狀態">
+            <option value="">全部決定狀態</option>
+            <option value="pending">⚪ 待定</option>
+            <option value="keep">🟢 保留</option>
+            <option value="delete">🔴 刪除</option>
+          </select>
+
+          <label style="font-size: 0.84rem; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+            <input type="checkbox" id="chkUsed"> 僅程式引用
+          </label>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 0.84rem;">
+          <span>每頁顯示:</span>
+          <select id="selPageSize" style="padding: 4px 8px;">
+            <option value="30">30 筆</option>
+            <option value="60">60 筆</option>
+            <option value="120">120 筆</option>
+            <option value="999999">全部顯示</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- 列表容器 A：解析卡片 -->
+    <div id="listCards"></div>
+
+    <!-- 列表容器 B：高密表格 -->
+    <div id="tableContainer" class="table-wrap" style="display: none;">
+      <table class="review-table">
+        <thead>
+          <tr>
+            <th style="width: 40px; text-align: center;">試聽</th>
+            <th>音效檔名與原始路徑</th>
+            <th>音效來源</th>
+            <th>是否合成 (性質)</th>
+            <th>動作 / 部位解析</th>
+            <th>規格</th>
+            <th>決定操作</th>
+            <th>備註</th>
+            <th style="width: 45px; text-align: center;">原檔</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- 分頁控制 Bar -->
+    <div class="pager-bar">
+      <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
+        頁次: <span id="pageInfo" style="color: var(--text-bright); font-weight: 700;">1 / 1</span>
+      </div>
+      <div class="pager-btns">
+        <button class="btn-page" id="btnPagePrev">◀ 上一頁</button>
+        <button class="btn-page" id="btnPageNext">下一頁 ▶</button>
+      </div>
+    </div>
+
+    <!-- 來源、授權與說明折疊 -->
+    <details>
+      <summary>來源、授權說明與附件文件清單</summary>
+      <div id="sourcesContent"></div>
+    </details>
+  </main>
+
+  <audio id="audioElement" preload="none"></audio>
+
+  <script id="catalog" type="application/json">__CATALOG__</script>
+  <script>
+    const rawCatalog = JSON.parse(document.getElementById('catalog').textContent);
+    const items = rawCatalog.items;
+    const key = 'sw-non-original-audio-review-v1';
+    const labels = { pending: '待定', keep: '保留', delete: '刪除' };
+
+    let choices = {};
+    let page = 0;
+    let pageSize = 30;
+    let currentId = null;
+    let visibleItems = [];
+    let activeView = 'cards'; // 'cards' | 'table'
+
+    // 取得與儲存使用者決定
+    function sanitizeChoices(data) {
+      const res = {};
+      for (const row of items) {
+        const v = data?.[row.id];
+        if (v && Object.hasOwn(labels, v.state)) {
+          res[row.id] = {
+            state: v.state,
+            note: typeof v.note === 'string' ? v.note : ''
+          };
+        }
+      }
+      return res;
+    }
+
+    try {
+      choices = sanitizeChoices(JSON.parse(localStorage.getItem(key) || '{}'));
+    } catch (e) {
+      console.warn('localStorage read error:', e);
+    }
+
+    function saveChoices() {
+      try {
+        localStorage.setItem(key, JSON.stringify(choices));
+      } catch (e) {
+        console.warn('localStorage save error:', e);
+      }
+    }
+
+    function getChoice(row) {
+      return choices[row.id] || { state: 'pending', note: '' };
+    }
+
+    function setChoiceState(rowId, state) {
+      const curr = choices[rowId] || { state: 'pending', note: '' };
+      choices[rowId] = { ...curr, state };
+      saveChoices();
+      updateCounters();
+      updateRowState(rowId);
+    }
+
+    function setChoiceNote(rowId, note) {
+      const curr = choices[rowId] || { state: 'pending', note: '' };
+      choices[rowId] = { ...curr, note };
+      saveChoices();
+    }
+
+    // 智能語意分析：判斷音效是「幹嘛的、對應什麼動作、哪個部位」
+    function parseSemanticAction(row) {
+      // Lentikula 專屬槍械與動作配對
+      if (row.source === 'Lentikula') {
+        const lentikulaMap = {
+          'Laser Beam 1.wav': { weapon: 'Laser Cannon (重雷射砲)', action: '⚡ 瞬發光束 (Attack/Sustain)' },
+          'Laser Beam 2.wav': { weapon: 'Plasma Neo (電漿發射器)', action: '⚡ 蓄力電漿 (Charge/Sustain/Tail)' },
+          'Laser Beam 3.wav': { weapon: 'Reflection (反射狙擊)', action: '⚡ 聚焦過載 (Deep Charge/Climax)' },
+          'Laser Beam 4.wav': { weapon: 'Crab (重型電漿砲)', action: '⚡ 持續引導 (13s Continuous Loop)' },
+          'Laser Beam 5.wav': { weapon: 'Boss 殲滅射線', action: '⚡ 廣域掃射 (Overdrive Eruption)' },
+          'Laser Pistol 1.wav': { weapon: 'LG002B (制式光束手槍)', action: '🔫 單發點射 (Crisp Zap)' },
+          'Laser Pistol 2.wav': { weapon: 'MCP76 (副手微衝)', action: '🔫 高速點射 (Pre-tick/Decay)' },
+          'Laser Pistol 3.wav': { weapon: '雙持手槍 (Dual Wield)', action: '🔫 雙槍交替 (Pure Zap)' },
+          'Laser Pistol 4.wav': { weapon: 'Energy Glove (能量手套)', action: '🔫 近距衝擊 (Soft Impact)' },
+          'Laser Pistol 5.wav': { weapon: 'M-27B1 (能量左輪)', action: '🔫 重光彈 (Micro Charge/Blast)' },
+          'Laser Rifle 1.wav': { weapon: 'M2456s (連發光能槍)', action: '⚡ 強脈衝 (Coil Whine/Blast)' },
+          'Laser Rifle 2.wav': { weapon: 'NOVA27 (新星重型步槍)', action: '⚡ 瞬發破甲 (Bass Impact)' },
+          'Laser Rifle 3.wav': { weapon: 'LIT07 (高頻脈衝步槍)', action: '⚡ 全自動連發 (Pulse Shot)' },
+          'Laser Rifle 4.wav': { weapon: 'XMAX-TREE (限定款)', action: '⚡ 奇異頻率 (Chirp Zap)' },
+          'Laser Rifle 5.wav': { weapon: 'Light Bow (光弓射擊)', action: '⚡ 凝縮光矢 (Arrow Release/Stereo)' }
+        };
+        if (lentikulaMap[row.name]) {
+          return lentikulaMap[row.name];
+        }
+      }
+
+      const text = (row.original + ' ' + row.name).toLowerCase();
+
+      // 武器與載具分類
+      let weapon = '';
+      if (/pistol|handgun|revolver|lg002/.test(text)) weapon = '手槍 (Pistol)';
+      else if (/sniper|reflection/.test(text)) weapon = '狙擊槍 (Sniper)';
+      else if (/shotgun|pump/.test(text)) weapon = '散彈槍 (Shotgun)';
+      else if (/rifle|assault|m2456|m-27/.test(text)) weapon = '步槍 (Rifle)';
+      else if (/smg|machinegun|mg|mcp76/.test(text)) weapon = '衝鋒/機槍 (SMG)';
+      else if (/laser|plasma|beam|cannon/.test(text)) weapon = '能量/光束 (Energy)';
+      else if (/rocket|missile|rpg|launcher/.test(text)) weapon = '重火器 (Heavy)';
+      else if (/grenade|bomb|explo/.test(text)) weapon = '爆炸物 (Explosion)';
+
+      // 具體動作與發聲部位
+      let action = '';
+      if (/chamber/.test(text)) action = '⚙️ 槍機上膛 (Chamber)';
+      else if (/magin|insert|mag.*in/.test(text)) action = '📥 彈匣卡入 (Mag In)';
+      else if (/magout|remove|mag.*out|eject/.test(text)) action = '📤 彈匣拔出 (Mag Out)';
+      else if (/reload/.test(text)) action = '🔄 換彈操作 (Reload)';
+      else if (/cock|slide|bolt/.test(text)) action = '🔧 拉機柄/滑套 (Cocking/Slide)';
+      else if (/casing|shell/.test(text)) action = '🟡 拋殼落地 (Shell Drop)';
+      else if (/beam|stream/.test(text)) action = '⚡ 持續光束 (Continuous Beam)';
+      else if (/charge|warmup|windup/.test(text)) action = '⚡ 蓄能充能 (Charge-up)';
+      else if (/tail|decay|cool/.test(text)) action = '💨 散熱尾音 (Decay Tail)';
+      else if (/fire|shot|blast|zap|pew/.test(text)) action = '🔥 擊發開火 (Primary Fire)';
+      else if (/flesh|body|blood|gore/.test(text)) action = '🩸 肉體著彈 (Flesh Hit)';
+      else if (/ricochet|ping|metal.*hit/.test(text)) action = '🛡️ 跳彈/金屬著彈 (Metal Hit)';
+      else if (/hit|impact/.test(text)) action = '💥 衝擊著彈 (Impact Hit)';
+      else if (/step|foot/.test(text)) action = '👣 腳步步態 (Footstep)';
+      else if (/voice|grunt|scre|vox|yell/.test(text)) action = '🗣️ 人聲受創 (Voice/Grunt)';
+      else if (/mech|servo|turret|hydraulic/.test(text)) action = '🤖 機械運轉 (Mechanism)';
+      else if (/ui|click|button|beep/.test(text)) action = '🖥️ 介面反饋 (UI Feedback)';
+      else action = `📦 ${row.category}`;
+
+      return { weapon, action };
+    }
+
+    // 格式化時間
+    function formatTime(s) {
+      if (isNaN(s) || s < 0) return '0:00';
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    // 音訊元件
+    const audio = document.getElementById('audioElement');
+    const btnPlay = document.getElementById('btnPlay');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const trackTitle = document.getElementById('trackTitle');
+    const trackSpecs = document.getElementById('trackSpecs');
+    const pulseIndicator = document.getElementById('pulseIndicator');
+    const seekBar = document.getElementById('seekBar');
+    const timeCurrent = document.getElementById('timeCurrent');
+    const timeDuration = document.getElementById('timeDuration');
+    const volSlider = document.getElementById('volSlider');
+    const chkLoop = document.getElementById('chkLoop');
+    const chkAuto = document.getElementById('chkAuto');
+
+    const hudDecisionGroup = document.getElementById('hudDecisionGroup');
+    const hudKeep = document.getElementById('hudKeep');
+    const hudDelete = document.getElementById('hudDelete');
+    const hudPending = document.getElementById('hudPending');
+
+    // 播放指定列
+    function playRow(row) {
+      currentId = row.id;
+      audio.src = encodeURI(row.url);
+
+      const semantic = parseSemanticAction(row);
+      const isSynth = (row.kind === '合成音效');
+      const kindBadge = isSynth
+        ? `<span class="badge badge-synth">⚡ 程式合成音效</span>`
+        : `<span class="badge badge-rec">🎙️ ${row.kind}</span>`;
+
+      trackTitle.innerHTML = `<span>${row.name}</span> <span class="badge badge-source">${row.source}</span> ${kindBadge}`;
+      trackSpecs.innerHTML = `
+        <span class="badge badge-action">${semantic.action}</span>
+        ${semantic.weapon ? `<span class="badge badge-orig">${semantic.weapon}</span>` : ''}
+        <span>⏱ ${row.duration != null ? row.duration + 's' : '?'}</span>
+        <span>•</span>
+        <span>${row.sample_rate || 44100}Hz ${row.bits || 16}bit</span>
+        <span>•</span>
+        <span style="color: #94a3b8;">${row.original}</span>
+      `;
+
+      hudDecisionGroup.style.display = 'flex';
+      updateHudDecision();
+
+      audio.play().catch(e => console.warn('Play error:', e));
+      updateActiveUI();
+    }
+
+    function updateHudDecision() {
+      if (!currentId) return;
+      const c = choices[currentId] || { state: 'pending' };
+      hudKeep.setAttribute('aria-pressed', String(c.state === 'keep'));
+      hudDelete.setAttribute('aria-pressed', String(c.state === 'delete'));
+      hudPending.setAttribute('aria-pressed', String(c.state === 'pending'));
+    }
+
+    hudKeep.onclick = () => { if (currentId) { setChoiceState(currentId, 'keep'); updateHudDecision(); } };
+    hudDelete.onclick = () => { if (currentId) { setChoiceState(currentId, 'delete'); updateHudDecision(); } };
+    hudPending.onclick = () => { if (currentId) { setChoiceState(currentId, 'pending'); updateHudDecision(); } };
+
+    function stepAudio(delta) {
+      if (visibleItems.length === 0) return;
+      const idx = visibleItems.findIndex(r => r.id === currentId);
+      const nextIdx = idx < 0 ? 0 : (idx + delta + visibleItems.length) % visibleItems.length;
+      playRow(visibleItems[nextIdx]);
+    }
+
+    btnPlay.onclick = () => {
+      if (!currentId && visibleItems.length > 0) {
+        playRow(visibleItems[0]);
+        return;
+      }
+      if (audio.paused) audio.play();
+      else audio.pause();
+      updateActiveUI();
+    };
+    btnPrev.onclick = () => stepAudio(-1);
+    btnNext.onclick = () => stepAudio(1);
+
+    audio.onplay = updateActiveUI;
+    audio.onpause = updateActiveUI;
+    audio.onended = () => {
+      if (!chkLoop.checked && chkAuto.checked) stepAudio(1);
+      else updateActiveUI();
+    };
+
+    audio.ontimeupdate = () => {
+      if (!isNaN(audio.duration) && audio.duration > 0) {
+        seekBar.value = (audio.currentTime / audio.duration) * 1000;
+        timeCurrent.textContent = formatTime(audio.currentTime);
+        timeDuration.textContent = formatTime(audio.duration);
+      }
+    };
+    seekBar.oninput = () => {
+      if (!isNaN(audio.duration) && audio.duration > 0) {
+        audio.currentTime = (seekBar.value / 1000) * audio.duration;
+      }
+    };
+    volSlider.oninput = () => { audio.volume = volSlider.value; };
+    chkLoop.onchange = () => { audio.loop = chkLoop.checked; };
+
+    function updateActiveUI() {
+      const isPlaying = !audio.paused && !audio.ended && audio.currentTime > 0;
+      btnPlay.textContent = isPlaying ? '⏸' : '▶';
+      if (isPlaying) pulseIndicator.classList.add('active');
+      else pulseIndicator.classList.remove('active');
+
+      document.querySelectorAll('.review-card, .review-table tr').forEach(el => {
+        const id = el.dataset.id;
+        const pBtn = el.querySelector('.btn-play-card, .table-play-btn');
+        if (id === currentId) {
+          el.classList.add('active');
+          if (pBtn) pBtn.textContent = isPlaying ? '⏸' : '▶';
+        } else {
+          el.classList.remove('active');
+          if (pBtn) pBtn.textContent = '▶';
+        }
+      });
+    }
+
+    function updateRowState(rowId) {
+      const c = choices[rowId] || { state: 'pending' };
+      const card = document.querySelector(`.review-card[data-id="${rowId}"]`);
+      if (card) {
+        card.dataset.choice = c.state;
+        card.querySelectorAll('.btn-decide').forEach(b => {
+          b.setAttribute('aria-pressed', String(b.classList.contains(c.state)));
+        });
+      }
+      const tr = document.querySelector(`tr[data-id="${rowId}"]`);
+      if (tr) {
+        tr.dataset.choice = c.state;
+        tr.querySelectorAll('.btn-decide').forEach(b => {
+          b.setAttribute('aria-pressed', String(b.classList.contains(c.state)));
+        });
+      }
+    }
+
+    // 統計更新
+    function updateCounters() {
+      let keep = 0, del = 0, pend = 0;
+      for (const row of items) {
+        const s = (choices[row.id] && choices[row.id].state) || 'pending';
+        if (s === 'keep') keep++;
+        else if (s === 'delete') del++;
+        else pend++;
+      }
+      document.getElementById('cntTotal').textContent = items.length;
+      document.getElementById('cntKeep').textContent = keep;
+      document.getElementById('cntDelete').textContent = del;
+      document.getElementById('cntPending').textContent = pend;
+      document.getElementById('cntMatched').textContent = visibleItems.length;
+    }
+
+    // 篩選與搜尋
+    function filterItems() {
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+      const selSrc = document.getElementById('selSource').value;
+      const selKind = document.getElementById('selKind').value;
+      const selCat = document.getElementById('selCategory').value;
+      const selSt = document.getElementById('selState').value;
+      const onlyUsed = document.getElementById('chkUsed').checked;
+
+      visibleItems = items.filter(r => {
+        if (selSrc && r.source !== selSrc) return false;
+        if (selKind && r.kind !== selKind) return false;
+        if (selCat && r.category !== selCat) return false;
+        const cState = getChoice(r).state;
+        if (selSt && cState !== selSt) return false;
+        if (onlyUsed && r.refs.length === 0) return false;
+
+        if (q) {
+          const note = (choices[r.id] && choices[r.id].note) || '';
+          const match = [r.name, r.original, r.source, r.kind, r.category, note].join(' ').toLowerCase().includes(q);
+          if (!match) return false;
+        }
+        return true;
+      });
+
+      page = Math.max(0, Math.min(page, Math.ceil(visibleItems.length / pageSize) - 1));
+      updateCounters();
+      renderList();
+    }
+
+    // 渲染卡片
+    function renderCard(r) {
+      const c = getChoice(r);
+      const semantic = parseSemanticAction(r);
+      const isSynth = (r.kind === '合成音效');
+      const kindBadge = isSynth
+        ? `<span class="badge badge-synth" title="README記載為程式合成音效">⚡ 程式合成音效</span>`
+        : (r.kind === '原版錄音剪輯' ? `<span class="badge badge-orig">🎮 原版錄音剪輯</span>` : `<span class="badge badge-rec">🎙️ ${r.kind}</span>`);
+
+      const card = document.createElement('article');
+      card.className = 'review-card';
+      card.dataset.id = r.id;
+      card.dataset.choice = c.state;
+
+      card.innerHTML = `
+        <div class="card-top-row">
+          <button class="btn-play-card" title="試聽音效">▶</button>
+          <div class="card-main-meta">
+            <div class="card-name-title">
+              <span>${r.name}</span>
+              <span style="font-size: 0.76rem; font-weight: normal; color: var(--text-muted);">${r.duration != null ? r.duration + 's' : '?'} • ${r.channels || 1}ch</span>
+            </div>
+            <div class="card-orig-path" title="${r.original}">📁 ${r.original}</div>
+            <div class="badge-bar">
+              <span class="badge badge-source">${r.source}</span>
+              ${kindBadge}
+              <span class="badge badge-source">${r.category}</span>
+              ${r.duplicates && r.duplicates.length ? `<span class="badge badge-orig" title="與其他 ${r.duplicates.length} 檔案內容完全相同">重複內容: ${r.duplicates.length}</span>` : ''}
+            </div>
+          </div>
+        </div>
+
+        <div class="card-semantic-box">
+          <span class="badge badge-action">${semantic.action}</span>
+          ${semantic.weapon ? `<span class="badge badge-orig">${semantic.weapon}</span>` : `<span style="font-size: 0.78rem; color: var(--text-muted);">${r.sample_rate || 44100}Hz ${r.bits || 16}bit</span>`}
+        </div>
+
+        <div class="decision-row">
+          <button class="btn-decide keep" aria-pressed="${c.state === 'keep'}">🟢 保留 (K)</button>
+          <button class="btn-decide delete" aria-pressed="${c.state === 'delete'}">🔴 刪除 (D)</button>
+          <button class="btn-decide pending" aria-pressed="${c.state === 'pending'}">⚪ 待定 (P)</button>
+          <input type="text" class="note-input" placeholder="備註：用途、建議槍械或替換對象..." value="${c.note}">
+        </div>
+
+        <div class="card-footer-refs">
+          <div>
+            ${r.refs.length
+              ? `<span class="badge badge-ref">✅ 程式引用: ${r.refs.join(', ')}</span>`
+              : `<span style="color: var(--text-muted);">📦 待選備用素材 (無直接引用)</span>`
+            }
+          </div>
+          <a href="${encodeURI(r.url)}" target="_blank" rel="noopener" style="color: var(--cyan); text-decoration: none; font-size: 0.78rem;">🔗 原檔</a>
+        </div>
+      `;
+
+      // 監聽互動
+      const btnPlayCard = card.querySelector('.btn-play-card');
+      btnPlayCard.onclick = () => playRow(r);
+
+      const btnK = card.querySelector('.btn-decide.keep');
+      const btnD = card.querySelector('.btn-decide.delete');
+      const btnP = card.querySelector('.btn-decide.pending');
+      const noteInput = card.querySelector('.note-input');
+
+      btnK.onclick = () => { setChoiceState(r.id, 'keep'); if (currentId === r.id) updateHudDecision(); };
+      btnD.onclick = () => { setChoiceState(r.id, 'delete'); if (currentId === r.id) updateHudDecision(); };
+      btnP.onclick = () => { setChoiceState(r.id, 'pending'); if (currentId === r.id) updateHudDecision(); };
+      noteInput.oninput = () => setChoiceNote(r.id, noteInput.value);
+
+      return card;
+    }
+
+    // 渲染表格列
+    function renderTableRow(r) {
+      const c = getChoice(r);
+      const semantic = parseSemanticAction(r);
+      const isSynth = (r.kind === '合成音效');
+      const kindBadge = isSynth
+        ? `<span class="badge badge-synth">⚡ 合成音</span>`
+        : `<span class="badge badge-rec">${r.kind}</span>`;
+
+      const tr = document.createElement('tr');
+      tr.dataset.id = r.id;
+      tr.dataset.choice = c.state;
+
+      tr.innerHTML = `
+        <td style="text-align: center;">
+          <button class="btn-play-card table-play-btn" style="width: 30px; height: 30px; font-size: 0.9rem;" title="試聽">▶</button>
+        </td>
+        <td>
+          <div style="font-weight: 700; color: var(--text-bright); font-family: var(--font-mono);">${r.name}</div>
+          <div style="font-size: 0.74rem; color: var(--text-muted); font-family: var(--font-mono);">${r.original}</div>
+        </td>
+        <td><span class="badge badge-source">${r.source}</span></td>
+        <td>${kindBadge}</td>
+        <td>
+          <span class="badge badge-action">${semantic.action}</span>
+          ${semantic.weapon ? `<span class="badge badge-orig" style="margin-left: 4px;">${semantic.weapon}</span>` : ''}
+        </td>
+        <td style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); white-space: nowrap;">
+          ${r.duration != null ? r.duration + 's' : '?'}<br>${r.sample_rate || 44100}Hz
+        </td>
+        <td style="white-space: nowrap;">
+          <button class="btn-decide keep" style="padding: 3px 8px;" aria-pressed="${c.state === 'keep'}">保留</button>
+          <button class="btn-decide delete" style="padding: 3px 8px;" aria-pressed="${c.state === 'delete'}">刪除</button>
+          <button class="btn-decide pending" style="padding: 3px 8px;" aria-pressed="${c.state === 'pending'}">待定</button>
+        </td>
+        <td>
+          <input type="text" class="note-input" style="width: 100%; min-width: 120px;" placeholder="備註..." value="${c.note}">
+        </td>
+        <td style="text-align: center;">
+          <a href="${encodeURI(r.url)}" target="_blank" rel="noopener" style="color: var(--cyan); text-decoration: none;">🔗</a>
+        </td>
+      `;
+
+      tr.querySelector('.table-play-btn').onclick = () => playRow(r);
+      tr.querySelector('.btn-decide.keep').onclick = () => { setChoiceState(r.id, 'keep'); if (currentId === r.id) updateHudDecision(); };
+      tr.querySelector('.btn-decide.delete').onclick = () => { setChoiceState(r.id, 'delete'); if (currentId === r.id) updateHudDecision(); };
+      tr.querySelector('.btn-decide.pending').onclick = () => { setChoiceState(r.id, 'pending'); if (currentId === r.id) updateHudDecision(); };
+      tr.querySelector('.note-input').oninput = (e) => setChoiceNote(r.id, e.target.value);
+
+      return tr;
+    }
+
+    // 渲染當前頁內容
+    function renderList() {
+      const listCards = document.getElementById('listCards');
+      const tableBody = document.getElementById('tableBody');
+      listCards.replaceChildren();
+      tableBody.replaceChildren();
+
+      const totalPages = Math.ceil(visibleItems.length / pageSize) || 1;
+      const startIdx = page * pageSize;
+      const pageSlice = visibleItems.slice(startIdx, startIdx + pageSize);
+
+      document.getElementById('pageInfo').textContent = `${visibleItems.length === 0 ? 0 : page + 1} / ${totalPages} 頁 (每頁 ${pageSize > 9999 ? '全部' : pageSize} 筆)`;
+      document.getElementById('btnPagePrev').disabled = (page === 0);
+      document.getElementById('btnPageNext').disabled = ((page + 1) * pageSize >= visibleItems.length);
+
+      if (visibleItems.length === 0) {
+        listCards.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted); background: var(--bg-panel); border: 1px dashed var(--border); border-radius: 8px;">沒有符合目前篩選條件的音效檔案。</div>';
+        tableBody.innerHTML = '<tr><td colspan="9" style="text-align: center; padding: 40px; color: var(--text-muted);">沒有符合條件的音效。</td></tr>';
+        return;
+      }
+
+      for (const r of pageSlice) {
+        if (activeView === 'cards') {
+          listCards.appendChild(renderCard(r));
+        } else {
+          tableBody.appendChild(renderTableRow(r));
+        }
+      }
+
+      updateActiveUI();
+    }
+
+    // 分頁切換
+    document.getElementById('btnPagePrev').onclick = () => { if (page > 0) { page--; renderList(); window.scrollTo({ top: 220, behavior: 'smooth' }); } };
+    document.getElementById('btnPageNext').onclick = () => { if ((page + 1) * pageSize < visibleItems.length) { page++; renderList(); window.scrollTo({ top: 220, behavior: 'smooth' }); } };
+    document.getElementById('selPageSize').onchange = (e) => {
+      pageSize = parseInt(e.target.value, 10);
+      page = 0;
+      renderList();
+    };
+
+    // 檢視模式切換
+    const viewBtnCards = document.getElementById('viewBtnCards');
+    const viewBtnTable = document.getElementById('viewBtnTable');
+    const cardsEl = document.getElementById('listCards');
+    const tableEl = document.getElementById('tableContainer');
+
+    viewBtnCards.onclick = () => {
+      activeView = 'cards';
+      viewBtnCards.classList.add('active');
+      viewBtnTable.classList.remove('active');
+      cardsEl.style.display = 'grid';
+      tableEl.style.display = 'none';
+      renderList();
+    };
+    viewBtnTable.onclick = () => {
+      activeView = 'table';
+      viewBtnTable.classList.add('active');
+      viewBtnCards.classList.remove('active');
+      cardsEl.style.display = 'none';
+      tableEl.style.display = 'block';
+      renderList();
+    };
+
+    // 篩選輸入事件
+    ['searchInput', 'selSource', 'selKind', 'selCategory', 'selState', 'chkUsed'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => {
+        page = 0;
+        filterItems();
+      });
+    });
+
+    // 快捷鍵支援：K = 保留並下一首, D = 刪除並下一首, P = 待定, Space = 播放暫停
+    window.addEventListener('keydown', (e) => {
+      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+
+      if (e.code === 'Space') {
+        e.preventDefault();
+        btnPlay.click();
+      } else if (e.key === 'k' || e.key === 'K') {
+        e.preventDefault();
+        if (currentId) {
+          setChoiceState(currentId, 'keep');
+          updateHudDecision();
+          stepAudio(1);
+        }
+      } else if (e.key === 'd' || e.key === 'D') {
+        e.preventDefault();
+        if (currentId) {
+          setChoiceState(currentId, 'delete');
+          updateHudDecision();
+          stepAudio(1);
+        }
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        if (currentId) {
+          setChoiceState(currentId, 'pending');
+          updateHudDecision();
+          stepAudio(1);
+        }
+      } else if (e.code === 'BracketLeft') {
+        e.preventDefault();
+        stepAudio(-1);
+      } else if (e.code === 'BracketRight') {
+        e.preventDefault();
+        stepAudio(1);
+      }
+    });
+
+    // 匯出 JSON
+    document.getElementById('btnExport').onclick = () => {
+      const exportData = {
+        schema: 'star-warfare-audio-review-v1',
+        exported_at: new Date().toISOString(),
+        items: items.map(r => ({
+          id: r.id,
+          path: r.path,
+          source: r.source,
+          original: r.original,
+          sha256: r.sha256,
+          ...getChoice(r)
+        }))
+      };
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'audio-selection.json';
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    };
+
+    // 匯入 JSON
+    document.getElementById('fileImport').onchange = async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        if (data.schema !== 'star-warfare-audio-review-v1' || !Array.isArray(data.items)) {
+          throw new Error('格式不符合');
+        }
+        const known = new Map(items.map(r => [r.id, r]));
+        const imported = {};
+        for (const row of data.items) {
+          if (!known.has(row.id)) continue;
+          if (row.sha256 !== known.get(row.id).sha256 || !Object.hasOwn(labels, row.state)) continue;
+          imported[row.id] = row;
+        }
+        choices = { ...choices, ...sanitizeChoices(imported) };
+        saveChoices();
+        filterItems();
+        alert(`已成功匯入 ${Object.keys(imported).length} 段音效的選擇紀錄！`);
+      } catch (err) {
+        alert('匯入失敗：請選擇本頁匯出的 audio-selection.json，且檔案格式需相符。');
+      }
+      e.target.value = '';
+    };
+
+    // 初始化下拉選項
+    function initOptions() {
+      const selSource = document.getElementById('selSource');
+      const selCat = document.getElementById('selCategory');
+
+      const allSources = [...new Set(items.map(r => r.source))];
+      allSources.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s;
+        opt.textContent = s;
+        selSource.appendChild(opt);
+      });
+
+      const allCats = [...new Set(items.map(r => r.category))];
+      allCats.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = c;
+        selCat.appendChild(opt);
+      });
+
+      // 來源與授權附件清單
+      const sourcesContent = document.getElementById('sourcesContent');
+      for (const s of rawCatalog.sources) {
+        const div = document.createElement('div');
+        div.innerHTML = `<strong style="color: var(--text-bright);">${s.name}</strong> (共 ${s.count} 段音效)`;
+        if (s.documents && s.documents.length) {
+          const ul = document.createElement('ul');
+          ul.style.marginLeft = '20px';
+          s.documents.forEach(d => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="${encodeURI(d.url)}" target="_blank" rel="noopener" style="color: var(--cyan);">${d.name}</a>`;
+            ul.appendChild(li);
+          });
+          div.appendChild(ul);
+        }
+        sourcesContent.appendChild(div);
+      }
+
+      const extraDocs = [
+        ['Lentikula CC0 來源說明', '../lentikula_sfx/Readme.txt'],
+        ['Lentikula 15 款雷射專屬音效檢視', '../lentikula_sfx/index.html'],
+        ['現用外加音效說明', '../../../assets/audio/non_original/README.md'],
+        ['原版機槍剪輯說明', '../../../assets/audio/non_original/weapon_shots/README.md']
+      ];
+      extraDocs.forEach(([title, url]) => {
+        const p = document.createElement('p');
+        p.innerHTML = `<a href="${url}" target="_blank" style="color: var(--cyan);">📄 ${title}</a>`;
+        sourcesContent.appendChild(p);
+      });
+    }
+
+    initOptions();
+    filterItems();
+  </script>
+</body>
+</html>
