@@ -7,6 +7,7 @@ Coordinates are the recovered bind pose: Y up, front toward minus Z.
 from collections import Counter
 import bmesh
 from mathutils import Matrix, Vector
+from mathutils.bvhtree import BVHTree
 
 MATERIAL_COUNT = 11
 DARK_NAVY = 6
@@ -23,7 +24,8 @@ class _Surface:
 
 class _Shells:
     """Authored bevelled caps with physically connected walls and backing."""
-    def __init__(self, obj):
+    def __init__(self, obj, fit_profile=None):
+        self.fit_profile = fit_profile or {}
         self.bm = bmesh.new()
         self.bm.from_mesh(obj.data)
         self.uv = self.bm.loops.layers.uv.active
@@ -64,6 +66,10 @@ class _Shells:
         retains every original UV seam and all intermediate surface curvature.
         """
         source = self.surface(material)
+        outer_tree = None
+        if self.fit_profile.get('outer_surface_only', False):
+            outer_tree = BVHTree.FromPolygons(source.coords,
+                [tuple(t.vertices) for t in source.triangles], all_triangles=True)
         if 'abdomen rib' not in name:
             # Keep the closed supporting wall tucked under its painted plate;
             # exaggerated extrusion reads as a loose strap at macro distance.
@@ -85,6 +91,12 @@ class _Shells:
         for triangle in source.triangles:
             if triangle.normal.z * direction < .12:
                 continue
+            if outer_tree is not None:
+                center = sum((source.coords[i] for i in triangle.vertices), Vector()) / 3
+                ray_origin = center + Vector((0, 0, direction * 10))
+                hit, _, _, _ = outer_tree.ray_cast(ray_origin, Vector((0, 0, -direction)), 20)
+                if hit is None or abs(hit.z - center.z) > .0001:
+                    continue
             polygon = [(source.coords[index].copy(), source.uvs[loop].copy(), source.weights[index].copy())
                        for index, loop in zip(triangle.vertices, triangle.loops)]
             for a, b in zip(outline, outline[1:] + outline[:1]):
@@ -221,6 +233,8 @@ class _Shells:
                     soft_boundaries.append((start, end))
 
         def boundary_blend(point):
+            if not self.fit_profile.get('blend_source_boundaries', True):
+                return 1.0
             result = 1.0
             for a, b in soft_boundaries:
                 span = b - a
@@ -231,7 +245,7 @@ class _Shells:
         # Each plate is a broad manufactured surface rather than a lifted copy
         # of the coarse recovered triangles. Retain enough source curvature to
         # fit the moving joints, and make the angular crest the primary break.
-        flatten = {1: .12, 2: .15, 3: .18, 4: .25}[material]
+        flatten = self.fit_profile.get('flatten', {1: .12, 2: .15, 3: .18, 4: .25}[material])
         if 'abdomen rib' in name:
             flatten = 0.0
         xyz = list(points.values())
@@ -264,6 +278,9 @@ class _Shells:
                         / max((ridge_max - ridge_min) * .5, .0001))
             cap_point.z += direction * (height + bulge * ridge)
             cap_point.z = point.z + (cap_point.z - point.z) * edge_blend
+            lift_limit = self.fit_profile.get('max_lift', 0.0)
+            if lift_limit > 0:
+                cap_point.z = point.z + direction * max(0.0, min(lift_limit, direction * (cap_point.z - point.z)))
             if flare:
                 cap_point.x += (1 if point.x > 0 else -1) * flare * max(0.0, (abs(point.x) - .28) / .34) * edge_blend
             base[key] = self.vertex(point + Vector((0, 0, direction * .0007 * edge_blend)), weights[key])

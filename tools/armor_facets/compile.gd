@@ -6,6 +6,7 @@ const Catalog = preload("res://scripts/core/armor_catalog.gd")
 const PREFIXES := ["ArmorHead_", "ArmorBody_", "ArmorHand_", "ArmorFoot_"]
 const PAINT_SHADERS := ["res://assets/equipment_refined/painted_equipment.gdshader", "res://assets/armors/viper/painted_armor.gdshader"]
 var meshes: Dictionary
+var build_state: Dictionary
 
 
 func _initialize() -> void:
@@ -32,6 +33,11 @@ func _run() -> void:
 		_abort("Generated geometry must be a JSON dictionary")
 		return
 	meshes = parsed
+	var state_data: Variant = JSON.parse_string(FileAccess.get_file_as_string(WORK + "build_state.json"))
+	if not state_data is Dictionary:
+		_abort("Missing geometry build state; rebuild meshes")
+		return
+	build_state = state_data
 	# Validate every selected set before saving any scene. A helper assertion
 	# only exits that helper in Godot and must never stand in for this gate.
 	if not _preflight(selected):
@@ -75,6 +81,9 @@ func _run() -> void:
 
 
 func _preflight(selected: Array[int]) -> bool:
+	var fingerprints := {}
+	for path: String in ["tools/armor_facets/build_meshes.py", "tools/armor_rework/thunder_body.py", "test_output/armor_facets/sources.json"]:
+		fingerprints[path] = FileAccess.get_sha256("res://" + path)
 	for id: int in Catalog.SET_NAMES.size():
 		if id == 6 or (not selected.is_empty() and id not in selected):
 			continue
@@ -85,6 +94,9 @@ func _preflight(selected: Array[int]) -> bool:
 		var baseline := packed.instantiate()
 		for prefix: String in PREFIXES:
 			var key := prefix + "%02d" % id
+			if not build_state.has(key) or build_state[key] != fingerprints:
+				baseline.free()
+				return _invalid("Stale geometry; rebuild before compiling: " + key)
 			var original := baseline.find_child(key, true, false) as MeshInstance3D
 			if original == null or original.mesh == null or original.skin == null:
 				baseline.free()
