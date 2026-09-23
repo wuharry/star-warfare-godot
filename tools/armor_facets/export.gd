@@ -12,6 +12,7 @@ func _initialize() -> void:
 func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT))
 	var entries: Array[Dictionary] = []
+	var original := (load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate()
 	for id: int in Catalog.SET_NAMES.size():
 		if id == 6:
 			continue
@@ -21,10 +22,14 @@ func _run() -> void:
 		for prefix: String in PREFIXES:
 			var part := source.find_child(prefix + "%02d" % id, true, false) as MeshInstance3D
 			assert(part != null and part.skin != null, "Missing accepted baseline part")
-			parts.append(_mesh(part))
+			var exported := _mesh(part)
+			if id < 21:
+				var raw := _mesh(original.find_child(prefix + "%02d" % id, true, false) as MeshInstance3D)
+				exported["raw_surfaces"] = raw.surfaces
+				exported["raw_binds"] = raw.binds
+			parts.append(exported)
 		entries.append({"key": "armor_%02d" % id, "kind": "armor", "id": id, "name": Catalog.SET_NAMES[id], "source": source_path, "parts": parts})
 		source.free()
-	var original := (load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate()
 	var reference_parts: Array[Dictionary] = []
 	for prefix: String in PREFIXES:
 		reference_parts.append(_mesh(original.find_child(prefix + "06", true, false) as MeshInstance3D))
