@@ -36,11 +36,14 @@ var boss_spawn_points: Array[Vector3] = []
 var waypoint_positions: Array[Vector3] = []
 var waypoint_graph: Array = []
 
-# The wave scheduler blocks on this (see _start_next_wave), so at 8 it turned
-# every wave into a drip feed: one enemy replaced each kill and the pressure on
-# the player never moved. Set above the largest authored wave (19 on sector 8)
-# so a wave arrives as a wave and the arena empties between them.
-const MAX_ACTIVE_ENEMIES := 80
+# Keep one complete late-sector swarm on screen while bounding the number of
+# animated enemies and collision hulls. The largest regular wave is 35; sector
+# 8's boss wave has fewer escorts so the boss remains readable.
+const MAX_ACTIVE_ENEMIES := 48
+const MAX_WAVE_ENEMIES := 42
+const SWARM_GROUP_SIZE := 6
+const SWARM_MEMBER_INTERVAL := 0.09
+const SWARM_GROUP_INTERVAL := 0.32
 
 # Squad-level throttle. Only this many enemies may commit to a strike at once;
 # everyone else keeps circling for a flank. Without it the pack dogpiles the
@@ -222,11 +225,9 @@ func _start_next_wave() -> void:
 		return
 	spawning = true
 	hud.announce(tr("WAVE %d INBOUND") % current_wave, 1.35)
-	var count := int(level_data.base_enemies) + (current_wave - 1) * 2
-	count = mini(count, 22)
 	var boss_wave := bool(level_data.boss) and current_wave == int(level_data.waves)
-	if boss_wave:
-		count = maxi(3, int(count * 0.36))
+	var count := _wave_enemy_count(boss_wave)
+	var group_origin := Vector3.INF
 	for i in range(count):
 		if completed:
 			break
@@ -234,11 +235,58 @@ func _start_next_wave() -> void:
 			await get_tree().create_timer(0.18).timeout
 		if completed:
 			break
+		# A new edge of the arena opens for each group. Keeping six enemies near
+		# the same marker makes a visible surge instead of isolated trickles from
+		# unrelated directions; each member gets its own safe patch of ground.
+		if i % SWARM_GROUP_SIZE == 0:
+			group_origin = _choose_swarm_group_origin(group_origin)
 		var kind := _choose_enemy_kind(i, boss_wave)
-		_spawn_enemy(kind, i > 0 and current_wave >= 3 and i % 7 == 0)
-		await get_tree().create_timer(0.2 if boss_wave else 0.34).timeout
+		var spawn_position := _choose_restored_enemy_spawn("boss") if kind == "boss" else _swarm_spawn_position(group_origin, i % SWARM_GROUP_SIZE)
+		_spawn_enemy(kind, i > 0 and current_wave >= 3 and i % 7 == 0, spawn_position)
+		if i < count - 1:
+			var interval := SWARM_GROUP_INTERVAL if (i + 1) % SWARM_GROUP_SIZE == 0 else SWARM_MEMBER_INTERVAL
+			await get_tree().create_timer(interval).timeout
 	spawning = false
 	_check_wave_complete()
+
+func _wave_enemy_count(boss_wave: bool) -> int:
+	# Sector 1: 12 / 16 / 20. Sector 8: 19 / 23 / 27 / 31 / 35,
+	# then 14 escorts including the boss on its final wave.
+	var count := mini(8 + int(level_data.base_enemies) + (current_wave - 1) * 4, MAX_WAVE_ENEMIES)
+	return maxi(8, roundi(float(count) * 0.36)) if boss_wave else count
+
+func _choose_swarm_group_origin(previous_origin: Vector3) -> Vector3:
+	# Use the nearest safe lane, then switch lanes for the next group. Some
+	# restored maps have markers more than 100 metres apart; rolling any marker
+	# makes most of a wave spend its first moments outside the fight.
+	var nearest := Vector3.INF
+	var nearest_distance := INF
+	for marker in enemy_spawn_points:
+		var grounded := _snap_enemy_spawn_to_ground(marker)
+		if grounded == Vector3.INF:
+			continue
+		var distance := grounded.distance_to(player.global_position)
+		if distance >= 12.0 and grounded.distance_to(previous_origin) >= 8.0 and distance < nearest_distance:
+			nearest = grounded
+			nearest_distance = distance
+	if nearest != Vector3.INF:
+		return nearest
+	return _choose_restored_enemy_spawn("crawler")
+
+func _swarm_spawn_position(origin: Vector3, slot: int) -> Vector3:
+	if origin == Vector3.INF or slot == 0:
+		return origin
+	# Place the five followers around the authored marker. A ray confirms that
+	# the offset is still on the same floor; narrow ledges fall back to the
+	# marker rather than spawning enemies below the stage.
+	for attempt in range(3):
+		var angle := TAU * float(slot - 1) / float(SWARM_GROUP_SIZE - 1) + float(attempt) * 0.45
+		var radius := 2.8 - float(attempt) * 0.6
+		var candidate := origin + Vector3(cos(angle) * radius, 0.0, sin(angle) * radius)
+		var grounded := _snap_enemy_spawn_to_ground(candidate)
+		if grounded != Vector3.INF and absf(grounded.y - origin.y) <= 1.5 and grounded.distance_to(player.global_position) >= 10.0:
+			return grounded
+	return origin
 
 func _choose_enemy_kind(index: int, boss_wave: bool) -> String:
 	if boss_wave and index == 0:
@@ -249,14 +297,14 @@ func _choose_enemy_kind(index: int, boss_wave: bool) -> String:
 		return "brute"
 	return "crawler"
 
-func _spawn_enemy(kind: String, elite: bool) -> WarfareEnemy:
+func _spawn_enemy(kind: String, elite: bool, position_override: Vector3 = Vector3.INF) -> WarfareEnemy:
 	if _is_pvp_arena():
 		return null
 	var enemy := EnemyScript.new()
 	var health_scale := float(level_data.get("enemy_health_scale", 1.0)) * (1.0 + maxi(0, current_wave - 1) * 0.12)
 	enemy.configure_recovered(player, kind, health_scale, elite)
 	add_child(enemy)
-	var spawn_position := _choose_restored_enemy_spawn(kind)
+	var spawn_position := position_override if position_override != Vector3.INF else _choose_restored_enemy_spawn(kind)
 	if spawn_position == Vector3.INF:
 		var angle := rng.randf_range(0.0, TAU)
 		var radius := rng.randf_range(arena_size * 0.72, arena_size * 0.9)
