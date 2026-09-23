@@ -7,6 +7,7 @@ No texture pixels, skeletons, socket positions or Thunder assets are changed.
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 import sys
@@ -59,10 +60,21 @@ class SourceAttributes:
         self.points = [rotation @ Vector(v) for v in arrays["0"]]
         self.normals = [rotation @ Vector(v) for v in arrays["1"]]
         ids = arrays.get("12") or list(range(len(self.points)))
-        self.faces = [ids[i:i + 3] for i in range(0, len(ids), 3)]
+        self.faces = []
+        for i in range(0, len(ids), 3):
+            a, b, c = ids[i:i + 3]
+            if (self.points[b] - self.points[a]).cross(self.points[c] - self.points[a]).length_squared > 1e-20:
+                self.faces.append([a, b, c])
         self.tree = BVHTree.FromPolygons(self.points, self.faces, all_triangles=True)
         use_color = surface.get("parameters", {}).get("vertex_color_use_as_albedo", False)
         self.colors = [Vector(c[:3]) for c in arrays["3"]] if use_color and arrays.get("3") else None
+        self.exact: dict[tuple, list[int]] = {}
+        for i, (point, uv) in enumerate(zip(self.points, arrays["4"])):
+            self.exact.setdefault(self.key(point, uv), []).append(i)
+
+    @staticmethod
+    def key(point, uv) -> tuple:
+        return tuple(round(float(v), 7) for v in (*point, *uv))
 
     def triangle(self, center: Vector) -> list[int]:
         _, _, index, _ = self.tree.find_nearest(center)
@@ -173,6 +185,12 @@ def export_object(obj: bpy.types.Object, inverse: Matrix, source: SourceAttribut
             continue
         source_face = source.triangle(sum((mesh.vertices[i].co for i in tri.vertices), Vector()) / 3.0)
         is_original = mesh.polygons[tri.polygon_index].use_smooth
+        a, b, c = (mesh.vertices[i].co for i in tri.vertices)
+        geometric_normal = (b - a).cross(c - a).normalized()
+        if geometric_normal.length_squared < .5:
+            # Blender's polygon area can be nonzero for an individual collapsed
+            # loop triangle. Such a triangle has no renderable oriented surface.
+            continue
         for li in reversed(tri.loops):
             vertex = mesh.vertices[mesh.loops[li].vertex_index]
             weights = sorted(((g.group, g.weight) for g in vertex.groups if g.weight > 0), key=lambda v: -v[1])[:4]
@@ -181,10 +199,19 @@ def export_object(obj: bpy.types.Object, inverse: Matrix, source: SourceAttribut
                 raise ValueError(f"Unbound generated vertex in {obj.name}")
             result["0"].append(list(inverse @ vertex.co))
             normal = source.interpolate(vertex.co, source_face, source.normals) if is_original else normals[li].vector
+            uv = mesh.uv_layers.active.data[li].uv
+            matches = source.exact.get(source.key(vertex.co, uv), []) if is_original else []
+            exact = min(matches, key=lambda i: (source.normals[i] - normal).length_squared) if matches else None
+            if exact is not None:
+                normal = source.normals[exact]
+            if normal.length_squared < 1e-10:
+                normal = geometric_normal
             result["1"].append(list((inverse @ normal).normalized()))
-            result["4"].append(list(mesh.uv_layers.active.data[li].uv))
+            result["4"].append(list(uv))
             shade = .38 if tri.material_index in (6, 10) else 1.0
             color = source.interpolate(vertex.co, source_face, source.colors) if source.colors else Vector((1, 1, 1))
+            if exact is not None and source.colors:
+                color = source.colors[exact]
             result["3"].append([max(0.0, min(1.0, c)) * shade for c in color] + [1.0])
             result["10"].extend([g for g, _ in weights] + [0] * (4 - len(weights)))
             result["11"].extend([w / total for _, w in weights] + [0.0] * (4 - len(weights)))
@@ -213,6 +240,10 @@ def main() -> None:
     output: dict[str, Any] = json.loads(output_path.read_text()) if output_path.exists() else {}
     report_path = WORK / "geometry_report.json"
     reports = json.loads(report_path.read_text()) if report_path.exists() else {}
+    state_path = WORK / "build_state.json"
+    state = json.loads(state_path.read_text()) if state_path.exists() else {}
+    fingerprints = {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+                    for path in (Path(__file__), ROOT / "tools/armor_rework/thunder_body.py", WORK / "sources.json")}
     bpy.ops.wm.read_factory_settings(use_empty=True)
     for entry in data["entries"]:
         set_id = entry["id"]
@@ -222,6 +253,17 @@ def main() -> None:
         for part in entry["parts"]:
             surfaces, report = [], []
             for sid, surface in enumerate(part["surfaces"]):
+                surface = copy.deepcopy(surface)
+                if "raw_surfaces" in part:
+                    raw = copy.deepcopy(part["raw_surfaces"][sid]["arrays"])
+                    # Use the pre-bevel topology: bevel microfaces are not
+                    # independent plate regions. Keep accepted paint/material.
+                    bind_map = {b["name"]: b["index"] for b in part["binds"]}
+                    raw["10"] = [bind_map[part["raw_binds"][int(index)]["name"]] for index in raw["10"]]
+                    if set_id == 0:
+                        for key in ("0", "1"):
+                            raw[key] = [list(UPRIGHT @ Vector(v)) for v in raw[key]]
+                    surface["arrays"] = raw
                 arrays = surface["arrays"]
                 points = [rotation @ Vector(v) for v in arrays["0"]]
                 role = role_for(part["name"], surface["material"], points)
@@ -234,12 +276,13 @@ def main() -> None:
                     continue
                 canonical_role = max(role, 1)
                 obj = build_object(surface, part["name"], rotation, canonical_role)
-                shells = FittedShells(obj)
+                shells = FittedShells(obj, {"blend_source_boundaries": False, "flatten": .30,
+                                           "outer_surface_only": True, "max_lift": .042})
                 names = []
                 try:
                     authored = panels(role, set_id)
                     # CoM suits share one atlas/surface across torso and shoulders.
-                    if role == 1 and any(abs(p.x) > .31 and p.y > 1.05 for p in points):
+                    if set_id >= 22 and role == 1 and any(abs(p.x) > .40 and p.y > 1.05 for p in points):
                         authored += panels(2, set_id)
                     for name, outline, height, rear, crest in authored:
                         try:
@@ -260,10 +303,12 @@ def main() -> None:
                 bpy.data.objects.remove(obj, do_unlink=True)
             output[part["name"]] = surfaces
             reports[part["name"]] = report
+            state[part["name"]] = fingerprints
         print(f"ANGULAR_MESH_BUILT {set_id:02d} {entry['name']}", flush=True)
     WORK.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(output, separators=(",", ":")))
     report_path.write_text(json.dumps(reports, indent=2) + "\n")
+    state_path.write_text(json.dumps(state, indent=2) + "\n")
     print("ANGULAR_GEOMETRY_PASS", len(output), "parts", "source", hashlib.sha256((WORK / "sources.json").read_bytes()).hexdigest())
 
 
