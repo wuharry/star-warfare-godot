@@ -16,6 +16,10 @@ static func reworked_scene_path(visual_id: int) -> String:
 				return "res://assets/armors/thunder/thunder_prototype.scn"
 			if argument == "--thunder-helmet=sw2":
 				return "res://assets/armors/thunder/thunder_sw2.scn"
+	elif "--armor-style=legacy" not in OS.get_cmdline_user_args():
+		var angular_path := "res://assets/armors/angular/armor_%02d.scn" % visual_id
+		if ResourceLoader.exists(angular_path):
+			return angular_path
 	return str(REWORKED_SCENES.get(visual_id, "res://assets/equipment_refined/armors/armor_%02d.scn" % visual_id))
 
 
