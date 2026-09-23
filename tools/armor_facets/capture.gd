@@ -74,6 +74,8 @@ func _run() -> void:
 	await get_tree().process_frame
 	viewport.queue_free()
 	await get_tree().process_frame
+	if OS.get_cmdline_user_args().has("--gameplay") and not baseline:
+		await _capture_levels()
 	if _hash(real_save) != save_hash:
 		_fail("Real player save changed during capture")
 	var version := "baseline" if baseline else "current"
@@ -84,6 +86,9 @@ func _run() -> void:
 
 
 func _capture_set(id: int) -> void:
+	fixture.player._cancel_reload()
+	for debris: Node in get_tree().get_nodes_in_group("reload_debris"):
+		debris.free()
 	for index: int in 4:
 		GameState.equipped_armor[Catalog.PART_KEYS[index]] = Catalog.item_key(index, id)
 	fixture.player._apply_recovered_armor_visibility()
@@ -148,6 +153,43 @@ func _frame(bounds: AABB, view: String) -> void:
 	fixture.fill.position = center + Vector3(-2, 2, -3)
 
 
+func _capture_levels() -> void:
+	viewport = SubViewport.new()
+	viewport.size = Vector2i(1600, 900)
+	viewport.own_world_3d = true
+	viewport.msaa_3d = Viewport.MSAA_4X
+	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	add_child(viewport)
+	GameState.selected_game_mode = "singleplayer"
+	GameState.selected_weapon = "gun00"
+	GameState.battle_weapons.assign(["gun00"])
+	for sample: Array in [[0, 1], [9, 3], [21, 1], [28, 3]]:
+		var id: int = sample[0]
+		GameState.selected_level = int(sample[1])
+		for part: int in 4:
+			GameState.equipped_armor[Catalog.PART_KEYS[part]] = Catalog.item_key(part, id)
+		var world := (load("res://scenes/game.tscn") as PackedScene).instantiate() as WarfareGameWorld
+		viewport.add_child(world)
+		for frame: int in 15:
+			await get_tree().process_frame
+		world.player.set_process_unhandled_input(false)
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		await _save(id, "level_%d_game" % int(sample[1]), Visuals.reworked_scene_path(id))
+		world.player.set_physics_process(false)
+		var inspection := Camera3D.new()
+		inspection.fov = 48
+		world.add_child(inspection)
+		var center: Vector3 = world.player.global_position + Vector3(0, 1.1, 0)
+		inspection.global_position = center + world.player.model.global_basis * Vector3(2.2, .45, -3.4)
+		inspection.look_at(center)
+		inspection.current = true
+		await _save(id, "level_%d_inspection" % int(sample[1]), Visuals.reworked_scene_path(id))
+		world.queue_free()
+		await get_tree().process_frame
+	viewport.queue_free()
+	await get_tree().process_frame
+
+
 func _save(id: int, view: String, source_path: String) -> void:
 	# macOS may stop ordinary window presentation while Codex is foreground.
 	# Force the offscreen viewport instead of waiting for frame_post_draw.
@@ -161,7 +203,7 @@ func _save(id: int, view: String, source_path: String) -> void:
 	if image == null or image.is_empty() or image.save_png(ProjectSettings.globalize_path(path)) != OK:
 		_fail("Could not save " + path)
 		return
-	records.append({"id": id, "view": view, "image": path, "scene": source_path, "scene_sha256": _hash(source_path)})
+	records.append({"id": id, "view": view, "image": path, "size": [image.get_width(), image.get_height()], "scene": source_path, "scene_sha256": _hash(source_path)})
 
 
 func _posed_bounds(part: MeshInstance3D, skeleton: Skeleton3D) -> AABB:
