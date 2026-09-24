@@ -16,6 +16,9 @@ static func reworked_scene_path(visual_id: int) -> String:
 				return "res://assets/armors/thunder/thunder_prototype.scn"
 			if argument == "--thunder-helmet=sw2":
 				return "res://assets/armors/thunder/thunder_sw2.scn"
+			# The original SW1 helmet mesh wearing Viper's fitted panels.
+			if argument == "--thunder-helmet=original":
+				return "res://assets/armors/thunder/thunder_original.scn"
 	elif visual_id == 0 and "--armor-style=legacy" not in OS.get_cmdline_user_args():
 		var angular_path := "res://assets/armors/angular/armor_%02d.scn" % visual_id
 		if ResourceLoader.exists(angular_path):

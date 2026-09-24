@@ -9,9 +9,30 @@
 
 A 的後續修訂已將冠頂修圓，呼吸器縮薄並沿下巴斜面嵌入；遊戲材質的藍／深藍基色對齊身甲，金色面甲不調色。原始點陣貼圖不變，配色由 `helmet_detail.gdshader` 套用；Blender 檔提供最新幾何，實際遊戲配色以 HTML 擷取為準。
 
-`ArmorVisuals.reworked_scene_path(6)` 供遊戲與商店共用；啟動參數 `--thunder-helmet=prototype` 選 B，`--thunder-helmet=sw2` 選 A。省略參數使用 A，不把方案寫入存檔。商品縮圖使用預設 A。
+`ArmorVisuals.reworked_scene_path(6)` 供遊戲與商店共用；啟動參數 `--thunder-helmet=prototype` 選 B，`--thunder-helmet=sw2` 選 A，`--thunder-helmet=original` 選下面的 C。省略參數使用 A，不把方案寫入存檔。商品縮圖使用預設 A。
 
 [離線 HTML 對照](../../../docs/art/thunder_helmet_comparison_v5/index.html) 包含兩版各 30 張 Godot 實際擷取、概念圖、細節、換彈與關卡畫面；可點擊放大與切換角度。兩版使用相同燈光、姿勢與固定取景，未補畫或合成角色。概念圖自身的姿勢與光線不同，不宣稱像素級還原。
+
+## 方案 C：原始頭盔＋Viper 護片（授權評估分支）
+
+`--thunder-helmet=original` 選這一版。它不是重新建模，而是把 `player.gltf` 裡原封不動的 `ArmorHead_06`（196 三角形）丟進 Viper 的護片貼合流程，長出眉框、下巴片與後腦冠頂三塊倒角護片，共 804 三角形。原始 UV、原始貼圖 `09_head_1d5d05de7b53_2x.png` 與 28 根具名骨骼綁定都沒有動，灰階 tint 0.7906 與其他 20 套原始裝甲一致。身甲、手、腳沿用 v5 的 `thunder.scn`，所以這是混合套組，每個部位各自保留自己的 revision。
+
+| 項目 | 原始頭盔 | v5 方案 A | 本方案 C |
+| --- | --- | --- | --- |
+| 三角形 | 196 | 6284 | 804 |
+| 幾何來源 | `player.gltf` | Blender 手工重建 | 原始網格＋投影護片 |
+| revision | — | `thunder_helmet_v5_sw2` | `thunder_original_helmet_v1` |
+
+護片輪廓收在「表面法線仍朝向投影軸」的範圍內。Thunder 的殼比 Viper 更早轉向側面，輪廓只要越過那個轉折，護片的側牆就會被擠出輪廓外變成扁平碎片；`build_thunder_head.py` 的 `panels()` 註記了各高度帶的實測可及範圍。
+
+```powershell
+& 'C:/Program Files/Blender Foundation/Blender 5.1/blender.exe' --background --python-exit-code 1 --python tools/armor_facets/build_thunder_head.py
+& '.tools/godot-4.7.2/Godot_v4.7.2-stable_win64_console.exe' --headless --path . --script tools/armor_facets/compile.gd -- --thunder-original
+& '.tools/godot-4.7.2/Godot_v4.7.2-stable_win64_console.exe' --headless --path . res://tests/thunder_original_helmet_test.tscn -- --thunder-helmet=original
+& '.tools/godot-4.7.2/Godot_v4.7.2-stable_win64_console.exe' --path . --rendering-method gl_compatibility res://tools/thunder_helmet_comparison/capture.tscn -- --thunder-helmet=original
+```
+
+macOS 上把前兩行換成 `/Applications/Blender.app/Contents/MacOS/Blender` 與 `godot`，其餘參數相同。擷取輸出在 `test_output/thunder_helmet_comparison/original/`，30 張，與 A、B 同燈光同取景。
 
 ## 素材與可重建性
 
