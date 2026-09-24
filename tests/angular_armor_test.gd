@@ -35,8 +35,13 @@ func _run() -> void:
 	var skeleton := player.recovered_skeleton
 	var tested := 0
 	for id: int in Catalog.SET_NAMES.size():
-		if id == 6:
+		if id == 0:
 			continue
+		var selected := Visuals.reworked_scene_path(id)
+		_check(not selected.begins_with("res://assets/armors/angular/"), "Viper-only rollout replaced another armor %02d" % id)
+		if id != 6:
+			_check(selected == "res://assets/equipment_refined/armors/armor_%02d.scn" % id, "Accepted armor mapping changed for %02d" % id)
+	for id: int in [0]:
 		var path := "res://assets/armors/angular/armor_%02d.scn" % id
 		_check(ResourceLoader.exists(path), "Missing compiled armor %02d" % id)
 		_check(Visuals.reworked_scene_path(id) == path, "Loader did not select angular armor %02d" % id)
@@ -71,12 +76,19 @@ func _run() -> void:
 				_check(bone_name == old.skin.get_bind_name(bind) and part.skin.get_bind_pose(bind).is_equal_approx(old.skin.get_bind_pose(bind)), part_name + " changed original skin binding")
 			_check(part.mesh.get_surface_count() == old.mesh.get_surface_count(), part_name + " changed surface mapping")
 			_validate_mesh(part)
+			var geometry_changed := false
 			for surface: int in part.mesh.get_surface_count():
+				var generated_arrays := part.mesh.surface_get_arrays(surface)
+				var original_arrays := old.mesh.surface_get_arrays(surface)
+				geometry_changed = geometry_changed or generated_arrays[Mesh.ARRAY_VERTEX] != original_arrays[Mesh.ARRAY_VERTEX]
 				var material := part.get_active_material(surface)
 				_check(material != null and material == authored.get_active_material(surface), part_name + " lost authored material")
+				_check(material is ShaderMaterial and material.shader.resource_path == SHADER, part_name + " lacks the new dynamic surface shader")
 				if material is ShaderMaterial and material.shader.resource_path == SHADER:
 					_check(float(material.get_shader_parameter("readable_fill")) <= 0.25, part_name + " is dominated by emission")
-					_check(material.get_shader_parameter("albedo_texture") is Texture2D, part_name + " lost the original paint")
+					var original_material := old.get_active_material(surface) as ShaderMaterial
+					_check(material.get_shader_parameter("albedo_texture") is Texture2D and material.get_shader_parameter("albedo_texture") == original_material.get_shader_parameter("albedo_texture"), part_name + " lost the original paint")
+			_check(geometry_changed, part_name + " only changed material without rebuilding the mesh")
 		_validate_visible(avatar, expected)
 		_validate_animation(player, parts)
 		baseline.free()
@@ -99,6 +111,7 @@ func _run() -> void:
 		fixture.advance_to(fixture.duration * 0.5)
 		for part: MeshInstance3D in avatar.find_children("Armor*", "MeshInstance3D", true, false):
 			if part.visible:
+				_check((part.get_meta("armor_rework", "") == REVISION) == str(part.name).ends_with("_00"), str(part.name) + " has incorrect revision during mixed equip")
 				_validate_posed(part, skeleton, "mixed reload")
 		fixture.player._cancel_reload()
 	var child_count := skeleton.get_child_count()
@@ -109,7 +122,7 @@ func _run() -> void:
 	fixture.cleanup()
 	fixture.queue_free()
 	await get_tree().process_frame
-	_check(tested == Catalog.SET_NAMES.size() - 1, "Did not test all non-Thunder sets")
+	_check(tested == 1, "Did not test the Viper rollout")
 	_check(_hash(real_save) == save_hash, "Real player save changed")
 	print("ANGULAR_ARMOR_%s sets=%d triangles=%d mixed_equipment=true animated_skin=true store_customize=true save_unchanged=%s" % ["PASS" if failures.is_empty() else "FAIL", tested, triangle_count, str(_hash(real_save) == save_hash)])
 	get_tree().quit(0 if failures.is_empty() else 1)
@@ -196,7 +209,7 @@ func _validate_store_preview() -> void:
 	add_child(shell)
 	for mode: String in ["store", "customize"]:
 		shell.set_mode(mode, false)
-		for id: int in [0, 9, 21, 28]:
+		for id: int in [0]:
 			for index: int in 4:
 				shell._select_category(Catalog.PART_KEYS[index], false)
 				shell._select_item(Catalog.item_key(index, id), false)

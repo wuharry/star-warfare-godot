@@ -91,8 +91,48 @@ def mirror(points: list[tuple[float, float]], side: int) -> list[tuple[float, fl
     return [(x * side, y) for x, y in points]
 
 
+def viper_panels(role: int) -> list[tuple[str, list, float, bool, float]]:
+    """Viper's large shield plates follow its own bind-pose boundaries.
+
+    Keep the purple aperture, twin chest windows, black shoulder caps and
+    flexible joints. The starter suit has a single shoulder shell, not the
+    three stacked shells used by Thunder.
+    """
+    if role == 0:
+        return [
+            ("brow rim", [(-.232, 1.69), (.232, 1.69), (.229, 1.603), (-.229, 1.603)], .012, False, 0),
+            ("chin guard", [(-.186, 1.388), (.186, 1.388), (.17, 1.282), (0, 1.24), (-.17, 1.282)], .012, False, .003),
+            ("rear helmet", [(-.19, 1.79), (0, 1.87), (.19, 1.79), (.222, 1.55), (0, 1.46), (-.222, 1.55)], .012, True, .004),
+        ]
+    shapes = {
+        1: [
+            ("chest shield", [(.012, 1.357), (.11, 1.368), (.244, 1.325), (.258, 1.202), (.217, 1.087), (.11, 1.046), (.012, 1.085)], .032, False, .010),
+            ("outer thigh", [(.191, .797), (.265, .782), (.29, .623), (.258, .48), (.215, .493), (.199, .635)], .020, False, .006),
+            ("back plate", [(.018, 1.30), (.164, 1.316), (.25, 1.222), (.186, 1.086), (.018, 1.09)], .020, True, .005),
+        ],
+        2: [
+            ("shoulder shell", [(.267, 1.425), (.402, 1.425), (.557, 1.295), (.55, 1.138), (.407, 1.113), (.279, 1.15)], .031, False, .008),
+            ("shoulder rear", [(.267, 1.425), (.402, 1.425), (.557, 1.295), (.53, 1.15), (.285, 1.15)], .022, True, .005),
+        ],
+        3: [
+            ("forearm shield", [(.383, .951), (.489, .976), (.55, .886), (.537, .749), (.456, .721), (.411, .771), (.367, .886)], .030, False, .009),
+            ("forearm rear", [(.389, .944), (.494, .972), (.556, .876), (.538, .752), (.454, .729), (.405, .8)], .018, True, .004),
+        ],
+        4: [
+            ("knee shield", [(.125, .442), (.243, .477), (.28, .427), (.285, .362), (.225, .325), (.145, .338), (.12, .381)], .025, False, .005),
+            ("shin shell", [(.157, .326), (.28, .339), (.327, .246), (.332, .157), (.29, .127), (.194, .138), (.151, .22)], .029, False, .011),
+            ("calf shell", [(.136, .43), (.262, .454), (.326, .257), (.323, .166), (.194, .16), (.128, .30)], .018, True, .005),
+            ("toe cap", [(.185, .102), (.323, .112), (.361, .055), (.35, .006), (.193, .005), (.17, .053)], .014, False, .004),
+        ],
+    }[role]
+    return [(f"{side} {name}", mirror(outline, side), height, rear, crest)
+            for side in (-1, 1) for name, outline, height, rear, crest in shapes]
+
+
 def panels(role: int, set_id: int) -> list[tuple[str, list, float, bool, float]]:
     """Authored regions avoid visor, fingers, elbows, abdomen and inner thighs."""
+    if set_id == 0:
+        return viper_panels(role)
     result = []
     for side in (-1, 1):
         if role == 1:
@@ -277,7 +317,8 @@ def main() -> None:
                 canonical_role = max(role, 1)
                 obj = build_object(surface, part["name"], rotation, canonical_role)
                 shells = FittedShells(obj, {"blend_source_boundaries": False, "flatten": .30,
-                                           "outer_surface_only": True, "max_lift": .042})
+                                           "outer_surface_only": True, "max_lift": .042,
+                                           "largest_component_only": set_id == 0})
                 names = []
                 try:
                     authored = panels(role, set_id)
