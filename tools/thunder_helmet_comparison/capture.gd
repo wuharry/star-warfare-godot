@@ -38,8 +38,8 @@ func _ready() -> void:
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--thunder-helmet="):
 			stage = argument.trim_prefix("--thunder-helmet=")
-	if stage not in ["sw2", "prototype"]:
-		push_error("Helmet must be sw2 or prototype")
+	if stage not in ["sw2", "prototype", "original"]:
+		push_error("Helmet must be sw2, prototype or original")
 		get_tree().quit(1)
 		return
 	_run.call_deferred()
@@ -208,8 +208,12 @@ func _check_parts(player: WarfarePlayer, record: bool) -> void:
 		count += 1
 		if not str(part.name).ends_with("_06") or not str(part.get_meta("armor_rework", "")).begins_with("thunder"):
 			_fail("Unexpected runtime part: " + str(part.name))
-		if str(part.get_meta("armor_rework", "")) != "thunder_helmet_v5_" + stage:
-			_fail("Capture requires selected v5 helmet: " + str(part.name))
+		# The original stage is a mixed set: only the helmet leaves v5 behind.
+		var expected := "thunder_helmet_v5_sw2" if stage == "original" else "thunder_helmet_v5_" + stage
+		if stage == "original" and str(part.name) == "ArmorHead_06":
+			expected = "thunder_original_helmet_v1"
+		if str(part.get_meta("armor_rework", "")) != expected:
+			_fail("Capture requires the selected helmet: " + str(part.name))
 		if record:
 			parts.append({"name": str(part.name), "revision": str(part.get_meta("armor_rework", "")), "mesh": part.mesh.resource_path, "surfaces": part.mesh.get_surface_count()})
 			_record_resource(part.mesh)

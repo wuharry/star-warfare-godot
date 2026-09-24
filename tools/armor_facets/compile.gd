@@ -5,6 +5,10 @@ const WORK := "res://test_output/armor_facets/"
 const Catalog = preload("res://scripts/core/armor_catalog.gd")
 const PREFIXES := ["ArmorHead_", "ArmorBody_", "ArmorHand_", "ArmorFoot_"]
 const PAINT_SHADERS := ["res://assets/equipment_refined/painted_equipment.gdshader", "res://assets/armors/viper/painted_armor.gdshader"]
+const THUNDER_SOURCE := "res://assets/models/player/animated/player.gltf"
+const THUNDER_BASE := "res://assets/armors/thunder/thunder.scn"
+const THUNDER_OUT := "res://assets/armors/thunder/thunder_original.scn"
+const THUNDER_REVISION := "thunder_original_helmet_v1"
 var meshes: Dictionary
 var build_state: Dictionary
 
@@ -25,6 +29,9 @@ func _run() -> void:
 					_abort("Invalid armor id: " + value)
 					return
 				selected.append(int(value))
+	if "--thunder-original" in OS.get_cmdline_user_args():
+		_compile_thunder_original()
+		return
 	if not FileAccess.file_exists(input_path):
 		_abort("Generate meshes.json before compilation: " + input_path)
 		return
@@ -256,3 +263,75 @@ func _material(source: Material) -> Material:
 	material.set_shader_parameter("surface_roughness", 0.64)
 	material.set_shader_parameter("surface_specular", 0.28)
 	return material
+
+
+func _compile_thunder_original() -> void:
+	# Rebuild only ArmorHead_06 from the original glTF with Viper's panels.
+	# The hand-modelled v5 body, hands and feet are reused as they are, so this
+	# scene is a mixed set and each part keeps its own rework revision.
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(WORK + "thunder_head.json"))
+	if not parsed is Dictionary or not parsed.has("ArmorHead_06") or not parsed["ArmorHead_06"] is Array:
+		_abort("Build the original helmet geometry first: " + WORK + "thunder_head.json")
+		return
+	meshes = parsed
+	var original_scene := load(THUNDER_SOURCE) as PackedScene
+	var base_scene := load(THUNDER_BASE) as PackedScene
+	if original_scene == null or base_scene == null:
+		_abort("Cannot load the original glTF or the accepted Thunder scene")
+		return
+	var original := original_scene.instantiate()
+	var base := base_scene.instantiate()
+	var head := original.find_child("ArmorHead_06", true, false) as MeshInstance3D
+	if head == null or head.mesh == null or head.skin == null:
+		original.free()
+		base.free()
+		_abort("Missing the original ArmorHead_06 in " + THUNDER_SOURCE)
+		return
+	var valid: bool = meshes["ArmorHead_06"].size() == head.mesh.get_surface_count()
+	if not valid:
+		_invalid("Original helmet geometry has a changed surface count")
+	elif not _valid_surface(meshes["ArmorHead_06"][0], head.skin.get_bind_count(), "ArmorHead_06 surface 0"):
+		valid = false
+	if not valid:
+		original.free()
+		base.free()
+		quit(1)
+		return
+	var container := Node3D.new()
+	container.name = "ThunderOriginalHelmet"
+	var replacement := MeshInstance3D.new()
+	replacement.name = head.name
+	replacement.transform = head.transform
+	replacement.skin = head.skin
+	replacement.skeleton = NodePath("..")
+	replacement.extra_cull_margin = maxf(head.extra_cull_margin, 1.0)
+	replacement.mesh = _compile(head)
+	replacement.set_meta("armor_rework", THUNDER_REVISION)
+	container.add_child(replacement)
+	replacement.owner = container
+	var error := OK
+	for prefix: String in PREFIXES:
+		if prefix == "ArmorHead_":
+			continue
+		var part := base.find_child(prefix + "06", true, false) as MeshInstance3D
+		if part == null or not part.has_meta("armor_rework"):
+			error = ERR_FILE_CORRUPT
+			_invalid("Missing accepted Thunder part " + prefix + "06")
+			break
+		var kept := part.duplicate() as MeshInstance3D
+		kept.skeleton = NodePath("..")
+		container.add_child(kept)
+		kept.owner = container
+	if error == OK:
+		var packed := PackedScene.new()
+		error = packed.pack(container)
+		if error == OK:
+			error = ResourceSaver.save(packed, THUNDER_OUT)
+	container.free()
+	original.free()
+	base.free()
+	if error != OK:
+		_abort("Failed to save the original Thunder helmet: " + error_string(error))
+		return
+	print("THUNDER_ORIGINAL_COMPILE_PASS parts=4 revision=%s" % THUNDER_REVISION)
+	quit()
