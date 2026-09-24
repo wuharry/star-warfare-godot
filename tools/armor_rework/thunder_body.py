@@ -82,6 +82,7 @@ class _Shells:
         paint = material if cap_material is None else cap_material
         wall_material = 10 if 'abdomen rib' in name else DARK_NAVY
         patches = []
+        patch_faces = []
 
         def interpolate(a, b, t):
             weights = {group: a[2].get(group, 0) * (1 - t) + b[2].get(group, 0) * t
@@ -121,12 +122,41 @@ class _Shells:
                 clean.pop()
             if len(clean) >= 3:
                 patches.append(clean)
-                cut = (outline, direction)
-                cuts = self.cutouts.setdefault(triangle.polygon_index, [])
-                if cut not in cuts:
-                    cuts.append(cut)
+                patch_faces.append(triangle.polygon_index)
         if not patches:
             raise ValueError(f'Thunder panel has no fitted surface: {name}')
+
+        if self.fit_profile.get('largest_component_only', False):
+            # A front projection can catch a second disconnected surface on a
+            # bent cuff or calf. Keep the main shell before registering cutouts;
+            # the discarded island must retain its original painted geometry.
+            parents = list(range(len(patches)))
+
+            def root(index):
+                while parents[index] != index:
+                    parents[index] = parents[parents[index]]
+                    index = parents[index]
+                return index
+
+            for i, patch in enumerate(patches):
+                for j in range(i):
+                    if any((a[0] - b[0]).length_squared < 1e-12
+                           for a in patch for b in patches[j]):
+                        parents[root(i)] = root(j)
+            areas = Counter()
+            for i, patch in enumerate(patches):
+                origin = patch[0][0]
+                areas[root(i)] += sum((patch[k][0] - origin).cross(patch[k + 1][0] - origin).length
+                                     for k in range(1, len(patch) - 1)) * .5
+            largest = max(areas, key=areas.get)
+            kept = [i for i in range(len(patches)) if root(i) == largest]
+            patches = [patches[i] for i in kept]
+            patch_faces = [patch_faces[i] for i in kept]
+        for face_index in patch_faces:
+            cut = (outline, direction)
+            cuts = self.cutouts.setdefault(face_index, [])
+            if cut not in cuts:
+                cuts.append(cut)
 
         # Cut the source patches at the authored crest before lifting them.
         # A per-vertex bump on an arbitrary source triangle makes a lumpy cap;
