@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C-01 堤衛｜原創裝甲設計</title>
+<style>
+:root{color-scheme:dark;--bg:#121b1e;--card:#1b282c;--ink:#ede9dc;--muted:#a9b9ba;--line:#354549;--orange:#efa56b;--teal:#6bb9b7}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 system-ui,-apple-system,"Noto Sans TC",sans-serif}
+main{max-width:1440px;margin:auto;padding:44px 5vw 80px}a{color:var(--teal);text-underline-offset:4px}a:hover{color:var(--orange)}
+nav{display:flex;flex-wrap:wrap;gap:12px 25px;font-size:.9rem;margin-bottom:28px}
+.eyebrow{color:var(--orange);font-size:.8rem;letter-spacing:.18em;font-weight:700}h1{font-size:clamp(2.2rem,5vw,4.4rem);line-height:1.13;margin:12px 0 18px;letter-spacing:-.03em}h1 span{display:block;font-size:.44em;letter-spacing:.2em;margin-top:12px;color:var(--muted)}
+h2{font-size:1.55rem;margin:0 0 14px}h3{font-size:1.08rem;margin:0 0 10px}p{margin:0 0 16px}.lead{max-width:790px;color:var(--muted);font-size:1.08rem}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0 32px}.tag{padding:4px 12px;border:1px solid var(--line);border-radius:30px;font-size:.8rem;color:var(--muted)}
+.tag.active{color:var(--teal);border-color:#407d7c}.hero{display:grid;grid-template-columns:1.08fr 1fr;gap:30px;align-items:start}
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}figure img{display:block;width:100%;height:auto}figcaption{padding:15px 20px;color:var(--muted);font-size:.9rem}
+.card{background:var(--card);border:1px solid var(--line);padding:25px;border-radius:14px;margin-bottom:20px}.card ul{padding-left:21px;margin-bottom:0}.card li{margin:8px 0}
+.palette{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0}.swatch{height:48px;border-radius:6px;border:1px solid #ffffff20}.colorname{font-size:.8rem;color:var(--muted);line-height:1.5;margin-top:7px}
+section{margin-top:48px}.wide{margin-top:20px}.notice{padding:18px 22px;border-left:3px solid var(--orange);background:#283033;color:var(--muted);margin:22px 0}
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:.94rem}th,td{padding:12px 13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--teal);font-weight:600;white-space:nowrap}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;list-style:none;padding:0;counter-reset:stage}.flow li{counter-increment:stage;border:1px solid var(--line);border-radius:10px;padding:16px 12px;background:var(--card)}.flow li:before{content:"0" counter(stage);display:block;color:var(--orange);font-size:.8rem;margin-bottom:10px}.flow strong{display:block}.flow small{color:var(--muted);line-height:1.5;display:block;margin-top:6px}
+code{font: .88em ui-monospace,monospace;color:#b8d7d5;overflow-wrap:anywhere}.small{font-size:.88rem;color:var(--muted)}footer{margin-top:55px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}details{margin-top:14px}summary{cursor:pointer;color:var(--teal)}
+@media(max-width:850px){.hero,.grid2{grid-template-columns:1fr}.flow{grid-template-columns:repeat(3,1fr)}main{padding-top:25px}}
+@media(max-width:480px){.flow{grid-template-columns:repeat(2,1fr)}.card{padding:18px}th,td{padding:10px 8px;font-size:.85rem}}
+</style>
+</head>
+<body><main>
+<nav aria-label="頁面導覽"><a href="#art">美術稿</a><a href="#skills">裝甲與技能</a><a href="#production">如何變成遊戲素材</a><a href="#series">系列與 CoM 整理</a><a href="README.md">製作說明</a></nav>
+<header>
+<div class="eyebrow">ORIGINAL ARMOR PROGRAM · FIRST DESIGN · 2026.09.24</div>
+<h1>C-01 堤衛<span>BREAKWATER</span></h1>
+<p class="lead">把入門通用裝甲重新設計成殖民地搶修隊的防護服。封閉三鏡頭面甲、不對稱大左肩和斜向胸板建立新的辨識輪廓，保留厚甲切面與短壯手繪質感。</p>
+<div class="tags"><span class="tag active">原創方向｜待美術選定</span><span class="tag">概念與設計稿已生成</span><span class="tag">模型／UV／技能尚未實作</span><span class="tag">四個色系</span></div>
+</header>
+<div class="hero" id="art">
+<figure><a href="images/c01_concept.png"><img src="images/c01_concept.png" alt="堤衛完整概念圖：象牙白封閉面甲、三枚青色鏡頭、大左肩、青綠四肢甲片與橘色背包提把" width="1024" height="1536"></a><figcaption>01／概念圖。新造型的外觀主參考；點圖開啟原圖。</figcaption></figure>
+<div>
+<div class="card"><h2>用大甲片建立厚度</h2><p>堤衛的防護輪廓來自完整面甲、寬左肩與交疊胸板。手肘、手腕、髖部和膝後保留黑色活動間隙，後續由真正的模型厚度與倒角呈現光影。</p><ul><li><strong>頭盔：</strong>低平梯形封閉面甲，穿戴者右側三鏡頭、左下斜進氣柵。</li><li><strong>胸肩：</strong>左肩整塊寬甲，右肩兩片疊甲；胸口為斜向交疊的兩個色塊。</li><li><strong>腿與背包：</strong>方膝甲、寬脛甲、獨立後跟；矩形補給包以橘色提把識別。</li></ul></div>
+<div class="card"><h2>配色有分工</h2><p class="small">四個色系，明亮鏡頭屬青綠的發光變化。比例是建模／貼圖的目標，不是像素量測。</p>
+<div class="palette">
+<div><div class="swatch" style="background:#DDD7BF"></div><div class="colorname">象牙白 · 35%<br>#DDD7BF</div></div>
+<div><div class="swatch" style="background:#246268"></div><div class="colorname">青綠 · 35%<br>#246268</div></div>
+<div><div class="swatch" style="background:#232C32"></div><div class="colorname">炭黑 · 25%<br>#232C32</div></div>
+<div><div class="swatch" style="background:#D87A3D"></div><div class="colorname">橘 · 5%<br>#D87A3D</div></div>
+</div></div>
+<div class="card"><h2>角色定位：入門與守位</h2><p>原為殖民地搶修隊的量產防護服。左肩承受碎片、斜向護板方便更換，外置電池讓長時間巡防不必反覆卸甲。</p><p class="small">名稱、背景、外形與技能均為本輪提案。C-01 是設計代號，不會直接改寫現有存檔的裝備 ID。</p></div>
+</div></div>
+<section>
+<h2>三視設計稿補足側面與背面</h2><p class="lead">正面、穿戴者左側與背面使用同一套零件語彙；背包獨立拆裝，方便日後與其他裝甲混搭。</p>
+<figure class="wide"><a href="images/c01_turnaround.png"><img loading="lazy" src="images/c01_turnaround.png" alt="C-01 正面、左側與背面設計稿，附背包與四色色票" width="1536" height="1024"></a><figcaption>02／三視設計稿。視角帶有近正交透視，建模時仍須校正比例及小細節；不是精準工程尺寸圖。</figcaption></figure>
+</section>
+<section>
+<h2>結構草稿說明零件如何分開</h2><p class="lead">面甲、肩甲和背包先各自建立結構。黑色內襯與活動間隙需要保留，不能把所有零件做成一個不動的外殼。</p>
+<figure class="wide"><a href="images/c01_construction.png"><img loading="lazy" src="images/c01_construction.png" alt="堤衛結構草稿：面甲分解、左肩活動空間、背包固定座與板甲截面" width="1536" height="1024"></a><figcaption>03／結構草稿。轉軸與拆件是製作構想；最終以模型動作測試決定間隙。</figcaption></figure>
+</section>
+<section id="skills">
+<h2>技能讓入門裝甲有清楚用途</h2><p class="lead">以下是待平衡的設計值，尚未接入遊戲。基礎 HP／護盾以目前入門裝甲作比較，背包、人物等級與升級另外計算。</p>
+<div class="card table-wrap"><table><thead><tr><th>設定</th><th>提案</th><th>目的</th></tr></thead><tbody>
+<tr><td>每部位／四件合計</td><td>HP 300／1,200；盾 25／100</td><td>先維持入門基準，便於比較新技能</td></tr>
+<tr><td>常駐攻擊／移速</td><td>無額外修正</td><td>通用裝甲不偏向特定武器</td></tr>
+<tr><td>取得</td><td>初始裝甲</td><td>讓新手先掌握守位與回充</td></tr>
+</tbody></table></div>
+<div class="grid2">
+<article class="card"><div class="eyebrow">PASSIVE · PROPOSAL</div><h3>整備回充</h3><p>完整四件、存活且連續六秒未受傷後，每秒回復最大護盾的 20%，回到上限即停止。</p><ul><li>再次受傷便重設等待；卸下任一部件後停用。</li><li>不回生命、不提供無敵，也不和同名模組疊加。</li><li>沿用「離開交火才能回盾」的通用玩法，後續需改成適用原創裝甲的能力介面。</li></ul></article>
+<article class="card"><div class="eyebrow">OPTIONAL ACTIVE · PROPOSAL</div><h3>定步護屏</h3><p>後續解鎖的主動模組：三秒內，正前方 120 度的直接命中傷害降低 20%，同時移速降低 25%；啟動後開始十八秒冷卻。</p><ul><li>背後、地面酸液與持續傷害不減免；死亡或卸裝即終止。</li><li>射擊與換彈照常；左肩前傾、橘色安全扣閃亮提示狀態。</li><li>以移動代價換短暫容錯。需要新增方向判定、動畫與冷卻邏輯。</li></ul></article>
+</div>
+<p><a href="c01_breakwater.json">下載完整裝甲／技能資料 JSON</a></p>
+</section>
+<section id="production">
+<h2>概念圖會先變成新模型，再製作貼圖</h2><p class="lead">「把圖捲到模型上」描述的是 UV 貼圖階段。整張人物概念圖不能直接包上模型；外形、厚度與活動零件需要先做成 3D 網格。</p>
+<ol class="flow"><li><strong>概念定稿</strong><small>輪廓、四色、左右配置</small></li><li><strong>新模型</strong><small>實體甲片、倒角與接縫</small></li><li><strong>UV 展開</strong><small>為每塊表面配置平面位置</small></li><li><strong>專用貼圖</strong><small>底色與材質，依新 UV 製作</small></li><li><strong>骨架綁定</strong><small>權重、裝備與背包接點</small></li><li><strong>遊戲驗證</strong><small>混搭、射擊、換彈與場景光線</small></li></ol>
+<div class="notice">目前完成的是前三張<strong>製作參考圖</strong>。模型、UV、遊戲貼圖、骨架綁定和新技能尚未製作；不會把這些圖標成可直接匯入遊戲的成品。</div>
+</section>
+<section id="series">
+<h2>Call of Mini 的功能先合併，造型重新設計</h2><p class="lead">程式中的最後八套為 ID 21–28。目前真正接入的是 HP、護盾與完整套裝回盾；來源描述中的暴擊、閃避等效果並未實作，不能當作現成技能搬移。</p>
+<div class="card table-wrap"><table><thead><tr><th>合併方向</th><th>來源 ID</th><th>保留的玩法</th></tr></thead><tbody>
+<tr><td>均衡回充</td><td>22、26</td><td>平衡生命與護盾配置</td></tr>
+<tr><td>護盾偏重</td><td>21、23、24、25</td><td>較多護盾容量與較快回充啟動</td></tr>
+<tr><td>高容量</td><td>27、28</td><td>較高總承傷資源，可由升級／模組呈現</td></tr>
+</tbody></table></div>
+<p>建議以原創系列與回充模組承接功能，不為只有數值不同的套裝保留八個舊造型。全系列先列文字方向，本輪只生成 C-01；runtime 刪除與存檔遷移在替代素材完成後另外實作。</p>
+<p><a href="series_plan.md">全系列新名稱、定位與造型規劃</a> · <a href="com_consolidation.json">八套來源事實與合併資料</a></p>
+</section>
+<details><summary>分支、生成來源與權利界線</summary>
+<div class="card"><p>工作分支為 <code>codex/original-armor-design</code>，從 <code>main@8a4cf8f</code> 建立獨立工作目錄。<code>art/thunder-original-helmet</code> 與原工作目錄沒有變動。</p><p>首稿以文字生成；後續只參考本次新生成的 C-01。使用內建 image_gen，實際提示詞和成品 SHA256 保存在此目錄。</p><p>新造型方向不能視為法律清權結論。分支仍繼承原素材，尚不是可直接發行的未授權素材替代版本；模型、貼圖、動畫、音效與 UI 仍需逐項確認或替換。<a href="https://www.tipo.gov.tw/tw/copyright/692-14988.html">智慧財產局：思想與表達</a>、<a href="https://www.tipo.gov.tw/tw/copyright/692-16066.html">修改與改作</a>。</p><p><a href="manifest.json">成品來源與檢視紀錄</a> · <a href="prompts/c01_concept.txt">首稿提示詞</a> · <a href="prompts/c01_proportions.txt">比例修正</a> · <a href="prompts/c01_turnaround.txt">三視稿</a> · <a href="prompts/c01_construction.txt">結構稿</a></p></div>
+</details>
+<footer>原創裝甲工作稿 · C-01 FIRST DESIGN · 圖像顯示不需網路。商業名稱尚未定案，所有玩法數值均屬提案。</footer>
+</main></body>
+</html>
