@@ -19,9 +19,7 @@ func _ready() -> void:
 
 
 func _run() -> void:
-	var ids: Array[int] = []
-	for id: int in Catalog.SET_NAMES.size():
-		ids.append(id)
+	var ids: Array[int] = [0]
 	for argument: String in OS.get_cmdline_user_args():
 		if argument == "--baseline":
 			baseline = true
@@ -75,7 +73,7 @@ func _run() -> void:
 	viewport.queue_free()
 	await get_tree().process_frame
 	if OS.get_cmdline_user_args().has("--gameplay") and not baseline:
-		await _capture_levels()
+		await _capture_levels(ids)
 	if _hash(real_save) != save_hash:
 		_fail("Real player save changed during capture")
 	var version := "baseline" if baseline else "current"
@@ -133,6 +131,14 @@ func _capture_set(id: int) -> void:
 	for view: String in VIEWS:
 		_frame(bounds, view)
 		await _save(id, view, source_path)
+	fixture.player._play_recovered_animation("run_rifle", 0, true)
+	fixture.player.recovered_animation_player.seek(0.25, true)
+	fixture.player.recovered_skeleton.force_update_all_bone_transforms()
+	_frame(bounds, "three_quarter")
+	await _save(id, "run", source_path)
+	fixture.player._play_recovered_animation("idle_rifle", 0, true)
+	fixture.player.recovered_animation_player.advance(0)
+	fixture.player.recovered_skeleton.force_update_all_bone_transforms()
 	if id in [0, 6, 9, 21, 28]:
 		fixture.player.equip_weapon("gun00", false)
 		fixture.player.gun_socket.show()
@@ -153,7 +159,7 @@ func _frame(bounds: AABB, view: String) -> void:
 	fixture.fill.position = center + Vector3(-2, 2, -3)
 
 
-func _capture_levels() -> void:
+func _capture_levels(ids: Array[int]) -> void:
 	viewport = SubViewport.new()
 	viewport.size = Vector2i(1600, 900)
 	viewport.own_world_3d = true
@@ -163,7 +169,11 @@ func _capture_levels() -> void:
 	GameState.selected_game_mode = "singleplayer"
 	GameState.selected_weapon = "gun00"
 	GameState.battle_weapons.assign(["gun00"])
-	for sample: Array in [[0, 1], [9, 3], [21, 1], [28, 3]]:
+	var samples: Array[Array] = []
+	for id: int in ids:
+		for level: int in [1, 3]:
+			samples.append([id, level])
+	for sample: Array in samples:
 		var id: int = sample[0]
 		GameState.selected_level = int(sample[1])
 		for part: int in 4:
