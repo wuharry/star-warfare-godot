@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "design_id": "C-01",
+  "runtime_id": null,
+  "working_name_zh": "堤衛",
+  "working_name_en": "BREAKWATER",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {"legacy_visual_id": 0, "purpose": "取代入門通用裝甲的位置；不使用舊外形建模或轉描舊貼圖"},
+  "lore": "殖民地搶修隊使用的量產防護服。寬大的左肩能承受掩體碎片，胸前斜向護板方便單手更換；外置電池與背包把長時間巡防需要的補給留在伸手可及的位置。",
+  "role": "入門、通用、容錯；步槍與短距離守點",
+  "palette": [
+    {"family": "象牙白", "hex": "#DDD7BF", "target_percent": 35, "usage": "封閉面甲、左肩、上胸、護臂"},
+    {"family": "青綠", "hex": "#246268", "target_percent": 35, "usage": "右肩、下胸、腿甲；鏡頭採同色系亮色"},
+    {"family": "炭黑", "hex": "#232C32", "target_percent": 25, "usage": "內襯、關節、鏡頭框、背包"},
+    {"family": "橘", "hex": "#D87A3D", "target_percent": 5, "usage": "安全扣、提把、小型狀態標示"}
+  ],
+  "visual_identity": {
+    "proportion_target": "約 4.7 個頭盔高；最終由新模型統一校正",
+    "head": "低平梯形封閉面甲；穿戴者右側三鏡頭，左下斜進氣柵",
+    "torso": "象牙白上胸斜跨青綠下胸；單一偏置橘色安全扣",
+    "shoulders": "穿戴者左肩寬大整片；右肩兩片小型疊甲，不可鏡像混用",
+    "arms": "楔形護臂，腕肘留黑色活動間隙",
+    "legs": "外大腿分片、方形膝甲、寬脛甲與獨立後跟支架",
+    "pack": "矩形補給包、橘色提把與可拆青綠電池；獨立於身體裝甲"
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "沿用目前入門四件裝甲的總HP／盾作比較基準；不是人物最終總值，不含等級、背包或升級",
+    "per_part": {"hp": 300, "shield": 25},
+    "four_piece_total": {"hp": 1200, "shield": 100},
+    "movement_modifier": 0,
+    "damage_modifier": 0,
+    "unlock": "初始取得",
+    "purchase_currency": null
+  },
+  "proposed_abilities": [
+    {
+      "id": "c01_recharge",
+      "name": "整備回充",
+      "kind": "四件套被動提案",
+      "implemented": false,
+      "trigger": "穿著四件C-01，連續6秒未受到HP或護盾傷害，且角色存活",
+      "effect": "每秒回復最大護盾的20%，最多回到當前最大護盾",
+      "stop": "再次受到有效傷害便重設等待時間；拆掉任一部件後停止套裝被動",
+      "limits": "不回HP、不復活、不提供無敵；不和同名回充模組疊加",
+      "integration_note": "借用現有完整CoM套裝的回盾行為概念，但改成通用能力介面；不得以source_game=com作為C-01的實作捷徑"
+    },
+    {
+      "id": "c01_brace",
+      "name": "定步護屏",
+      "kind": "後續可解鎖主動模組提案",
+      "implemented": false,
+      "trigger": "玩家主動使用，需完整四件；啟動時開始18秒冷卻",
+      "duration_seconds": 3,
+      "effect": "正前方120度內的直接命中傷害降低20%，期間移動速度降低25%",
+      "limits": "背後、地面酸液及持續傷害不減免；不可重複疊加，卸裝或死亡立即結束；不阻止射擊或換彈",
+      "visual": "大左肩前傾鎖定，橘色安全扣閃一次；沿護甲外緣短亮，不召喚巨大透明盾",
+      "design_reason": "讓新手練習面向威脅與守位，以移動代價換取短暫容錯",
+      "integration_note": "新機制，需要傷害方向判斷、冷卻與動畫；本輪沒有改寫runtime"
+    }
+  ],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "approximate_views_pending_model_alignment",
+    "construction": "illustrative_joint_and_part_reference",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/c01_concept.png",
+    "turnaround": "images/c01_turnaround.png",
+    "construction": "images/c01_construction.png"
+  },
+  "modeling_authority": "概念圖定義外觀，三視圖補背面，文字規格定義穿戴者左右。若視圖出現透視或小細節不一致，建模時統一；不可直接把圖當尺寸或UV依據。",
+  "license_status": "original_design_direction_not_a_legal_clearance",
+  "generation": {"tool": "built-in image_gen", "date": "2026-09-24", "reference_policy": "首稿僅文字；後續僅參考本次生成的C-01；沒有送入舊遊戲模型截圖或貼圖作生成參考"}
+}

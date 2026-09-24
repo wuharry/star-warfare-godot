@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "date": "2026-09-24",
+  "design_id": "C-01",
+  "tool": "built-in image_gen",
+  "base_commit": "8a4cf8f",
+  "branch": "codex/original-armor-design",
+  "source_inputs": "text-only initial creation; subsequent generations reference only newly generated C-01",
+  "runtime_assets_ready": false,
+  "initial_iteration": {
+    "generated_filename": "exec-65167bb5-1136-4f93-b240-6c8b09e636be.png",
+    "prompt": "prompts/c01_concept.txt",
+    "status": "superseded_by_shorter_proportions"
+  },
+  "images": [
+    {
+      "kind": "concept",
+      "path": "images/c01_concept.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "sha256": "d440ba100a612505caa7b7b7dd9c382ee909d7382e7057c2b366497def26a123",
+      "generated_filename": "exec-7d2bc2b5-b19e-4d89-ad5c-6d5d0cb3e088.png",
+      "prompt": "prompts/c01_proportions.txt",
+      "postprocessing": "none",
+      "visual_review": "complete figure and identity checked; pending user art selection"
+    },
+    {
+      "kind": "turnaround",
+      "path": "images/c01_turnaround.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "sha256": "19929d79a2c5e107e225b2327a4607c2a1749d2b813281095db3979112fcbad6",
+      "generated_filename": "exec-9005b496-1715-48bc-bfa3-f97018fc3864.png",
+      "prompt": "prompts/c01_turnaround.txt",
+      "postprocessing": "none",
+      "visual_review": "complete figure and identity checked; pending user art selection"
+    },
+    {
+      "kind": "construction",
+      "path": "images/c01_construction.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "sha256": "2523bdf1e8514d8f58155584c5722ebecb6e4f54ecf537a50f83003a4a508c03",
+      "generated_filename": "exec-3db14a55-e1a5-43be-9f00-6e3755f5ed71.png",
+      "prompt": "prompts/c01_construction.txt",
+      "postprocessing": "none",
+      "visual_review": "complete figure and identity checked; pending user art selection"
+    }
+  ],
+  "review_notes": [
+    "Concept: compact silhouette, four color families, asymmetric shoulder and three-lens helmet retained.",
+    "Turnaround: front/left/rear roles and pack are readable; side remains slightly three-quarter and must be aligned in modeling.",
+    "Construction: illustrative exploded components; pack vents and mounting details require harmonization with turnaround during modeling.",
+    "No original game art supplied as generation references; this record is not legal clearance."
+  ]
+}
