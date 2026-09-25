@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "design_id": "C-03",
+  "runtime_id": null,
+  "working_name_zh": "岩樁",
+  "working_name_en": "CAIRN",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 2,
+    "legacy_set_name": "Tank",
+    "purpose": "指定未來外觀替换目標；能力、購買、升級和存檔 ID 本輪不變。"
+  },
+  "lore": "狹窄通道守備班的重防護服。厚領和短肩護住轉頭空間，固定姿態由靴底與身體姿態共同承擔。",
+  "role": "定點承壓、守住狹窄入口；用固定站位換取正面防護",
+  "palette": [
+    {
+      "family": "鋼藍",
+      "hex": "#567D9D",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "鼠尾草綠",
+      "hex": "#93AD84",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "橙玻璃",
+      "hex": "#DE9B46",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "黑棕",
+      "hex": "#302E2C",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    }
+  ],
+  "visual_identity": {
+    "status": "prompt_target_with_actual_reviews_below",
+    "proportion_target": "約6～6.5個頭盔高的厚實人體；屬 brief 目標，未作像素量測。",
+    "head": "低分節冠條、寬橙玻璃與 Grenadier 厚眉／下顎保護",
+    "torso": "鋼藍寬胸板，鼠尾草綠防爆護領；軟腹保留彎曲",
+    "shoulders": "厚藍肩加短上折綠護唇，降低外伸",
+    "arms": "正常五指手套、布衣肘窩與分件護臂。原版保留線索：寬大鋼藍簡潔護臂，外肘淺綠護片與黑手套。",
+    "legs": "人的髖膝踝位置、軟膝後和正常軍靴；尖片按融合 brief 收短。原版保留線索：淺綠邊包住大腿外前方藍色雙圓孔方板；多邊形藍膝甲；藍色 V 形護脛與寬平鞋頭。",
+    "pack": "背包為獨立装备。三視製作可示範搭配 B-03，不是原遊戲固定套裝或技能關聯；以 B 款獨立設計稿為準。",
+    "concept_prompt": "prompts/c03_concept.txt",
+    "full_fusion_brief_en": "Fuse Tank's steel-blue and sage-green armor, broad orange visor, segmented low crown strip and short upturned green shoulder lips with Halo Reach Grenadier's thick protective brow, deep cheek-and-chin enclosure and layered blast-collar construction. Replace the donor's specific forehead mount with a simpler segmented crown that echoes Tank. Build substantial shoulder and shin thickness around an athletic human rather than inflating every limb into a block. Retain the green edging around blue thigh plates and the green collar ring. Borrow Grenadier's heavy collar and practical soft abdomen, but omit Jorge's number, personal paint, exact asymmetrical shoulder marking and ammunition props. No rear donor has been observed; retain backpack independence and use the actual original-game pack reference to complete the back.",
+    "actual_reviews": {
+      "concept": "已目視：Tank藍/鼠尾草綠與橙面罩、節冠、短上翹肩片保留；Grenadier厚眉、厚頰與耳盤、爆震領圈外形可讀。正常人類手套與頸肩、全身未裁、無武器及背包。",
+      "construction": "已逐圖目視：A 區保留 Tank 三段低冠、橘金單片面罩、圓耳與厚下頜，拆出殼／玻璃／軟內襯。B 區顯示鼠尾草綠上翻肩緣與藍色主蓋的分層，C 區胸甲與軟衣接扣分離。D 區 B03 保持銀白主體、兩藍側板與高處 U 形缺口、上橋藍線，雙接軌清楚。未驗證實際裝配尺寸。",
+      "turnaround": "三視已目視：Tank橙面罩、低分節冠、厚頰圓耳、短上翹綠肩和腿綠框一致；三欄同地線；B03白銀雙肩外殼/藍窗/中央U槽橋保留，側厚度合理。 仍是建模概念參考，未證明尺寸/機構可製作。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "以 C-01 的 1200 HP／100 盾為比較點增加生命，先以站位限制承擔防護代價；不是 Tank 的現有數值或實測平衡；四件合計不含人物等級、背包或裝備升級",
+    "per_part": {
+      "hp": 400,
+      "shield": 25
+    },
+    "four_piece_total": {
+      "hp": 1600,
+      "shield": 100
+    },
+    "movement_modifier": 0,
+    "damage_modifier": 0,
+    "unlock": "後續任務／製作解鎖提案，具體條件待定",
+    "purchase_currency": null
+  },
+  "proposed_abilities": [
+    {
+      "id": "c03_anchor_stance",
+      "name": "落樁固守",
+      "kind": "四件套主動提案",
+      "implemented": false,
+      "trigger": "存活且完整四件，站在穩定地面、未處於位移技能；主動啟動後開始20秒冷卻，面向鎖定為啟動方向",
+      "duration_seconds": 4,
+      "effect": "最多4秒停止行走與轉身；鎖定方向正前方100度內的直接命中傷害降低30%，同方向擊退距離減少60%；允許射擊與換彈",
+      "stop": "再次按技能立即解除；死亡、卸裝、離地或支撐地面消失立即解除；解除後恢復正常移動，不退還冷卻",
+      "limits": "側後方、地面區域傷害及持續傷害不減免；不是無敵，也不免疫抓取或劇情強制位移；和其他姿態型減傷模組互斥，不能疊上 C-01 定步護屏",
+      "visual": "穿戴者壓低重心、靴底固定片短移；綠色護領與橙面窗不變。",
+      "design_reason": "要求玩家先選面向與守點位置，提前解除保留避開地面危險的選擇",
+      "integration_note": "需新姿態狀態、受擊方向與擊退計算、地面有效性與取消流程；本輪未修改玩家控制",
+      "status": "proposal_only",
+      "equipment_dependency": "完整C裝甲四件；不要求同序B背包，不改B背包現有屬性。"
+    }
+  ],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/c03_concept.png",
+    "turnaround": "images/c03_turnaround.png",
+    "construction": "images/c03_construction.png"
+  },
+  "modeling_authority": "本輪概念圖及逐張目視紀錄定義採用外觀；三視與拆解為建模參考。少量透視、遮擋或跨視細節須在模型統一，不可當精確尺寸、UV或已完工資產。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "concept": {
+        "design_id": "C-03",
+        "kind": "concept",
+        "path": "images/c03_concept.png",
+        "prompt": "prompts/c03_concept.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-cb16c803-f0ff-4b59-90a2-de3c4c9a435c.png",
+        "date": "2026-09-25",
+        "reference_images": [
+          "references/legacy/c03_front.png",
+          "references/legacy/c03_side.png",
+          "references/halo/c03_grenadier_reach_helmet_concept.jpg",
+          "references/halo/c03_grenadier_reach_jorge_concept.png"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已目視：Tank藍/鼠尾草綠與橙面罩、節冠、短上翹肩片保留；Grenadier厚眉、厚頰與耳盤、爆震領圈外形可讀。正常人類手套與頸肩、全身未裁、無武器及背包。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c03_concept.json"
+      },
+      "construction": {
+        "design_id": "C-03",
+        "kind": "construction",
+        "path": "images/c03_construction.png",
+        "prompt": "prompts/c03_construction.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-881044cd-b95b-4220-a59c-529dc53a2dbe.png",
+        "date": "2026-09-25",
+        "reference_images": [
+          "images/c03_concept.png",
+          "images/c03_turnaround.png",
+          "images/b03_design_sheet.png"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已逐圖目視：A 區保留 Tank 三段低冠、橘金單片面罩、圓耳與厚下頜，拆出殼／玻璃／軟內襯。B 區顯示鼠尾草綠上翻肩緣與藍色主蓋的分層，C 區胸甲與軟衣接扣分離。D 區 B03 保持銀白主體、兩藍側板與高處 U 形缺口、上橋藍線，雙接軌清楚。未驗證實際裝配尺寸。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c03_construction.json"
+      },
+      "turnaround": {
+        "design_id": "C-03",
+        "kind": "turnaround",
+        "path": "images/c03_turnaround.png",
+        "prompt": "prompts/c03_turnaround.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-89917993-aa07-4b67-b644-df26670cc0de.png",
+        "date": "2026-09-25",
+        "reference_images": [
+          "images/c03_concept.png",
+          "images/b03_design_sheet.png"
+        ],
+        "postprocessing": "none",
+        "visual_review": "三視已目視：Tank橙面罩、低分節冠、厚頰圓耳、短上翹綠肩和腿綠框一致；三欄同地線；B03白銀雙肩外殼/藍窗/中央U槽橋保留，側厚度合理。 仍是建模概念參考，未證明尺寸/機構可製作。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c03_turnaround.json"
+      }
+    },
+    "unselected_records": []
+  },
+  "equipment_type": "armor",
+  "proposal_only": true,
+  "source_references": {
+    "legacy": {
+      "name": "Tank",
+      "runtime_id": 2,
+      "kind": "restored_original_game_model_capture",
+      "images": [
+        "references/legacy/c03_front.png",
+        "references/legacy/c03_side.png",
+        "references/legacy/c03_rear.png"
+      ],
+      "audit": "sources/legacy_armor_audit.json"
+    },
+    "halo": {
+      "name": "Grenadier / Jorge-052 heavy armor, without character markings",
+      "game": "Halo: Reach",
+      "master_chief": false,
+      "images": [
+        {
+          "local_path": "references/halo/c03_grenadier_reach_helmet_concept.jpg",
+          "image_url": "https://halo.wiki.gallery/images/e/ea/HR_GrenadierHelmet_Concept.jpg",
+          "source_page_url": "https://www.halopedia.org/File:HR_GrenadierHelmet_Concept.jpg",
+          "role": "主頭盔參考：正面、側面及冠頂附件",
+          "source_kind": "Bungie 遊戲開發概念稿",
+          "artist": "Isaac Hannaford",
+          "visually_inspected": true,
+          "sha256": "425b923003d6f04572ebfac5703f603709d28b1c28f1735779707595ba995854",
+          "dimensions": [
+            1920,
+            1080
+          ],
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        },
+        {
+          "local_path": "references/halo/c03_grenadier_reach_jorge_concept.png",
+          "image_url": "https://halo.wiki.gallery/images/2/22/HR_Jorge-052_Concept.png",
+          "source_page_url": "https://www.halopedia.org/File:HR_Jorge-052_Concept.png",
+          "role": "主全身參考：厚領、分層肩、人形與野戰裝具",
+          "source_kind": "Bungie 遊戲開發概念稿",
+          "artist": "Isaac Hannaford",
+          "visually_inspected": true,
+          "sha256": "bdf56474270ac53232a306d5742a5a9af1057307c0f042220a7dc580e97f64a1",
+          "dimensions": [
+            1042,
+            1018
+          ],
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        },
+        {
+          "local_path": "references/halo/c03_grenadier_reach_armor.jpg",
+          "image_url": "https://halo.wiki.gallery/images/1/1c/Armour_-_Grenadier.jpg",
+          "source_page_url": "https://www.halopedia.org/File:Armour_-_Grenadier.jpg",
+          "role": "補充：Armory 中 Grenadier 部件",
+          "source_kind": "Halo: Reach Armory 遊戲截圖，尺寸小只做款式確認",
+          "artist": null,
+          "visually_inspected": true,
+          "sha256": "a5dffdb852947e9b2b69a9b346752d2c7a7a888bad2a66a3452724950a7a1df5",
+          "dimensions": [
+            801,
+            139
+          ],
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "observed": {
+        "helmet": "非常厚的水平眉甲、大橙金面罩、中央下沿小凸口；圓耳護與厚下頰；冠頂可裝折疊/裝甲模組。",
+        "torso": "很厚且不對稱的護頸、胸口硬框與腹部軟袋；圓大肩甲分層包在上臂外；胯、肘与膝有清楚人類活動區。",
+        "back": "全身圖僅前角，可見後領高度；完整背部及獨立背包未見。",
+        "back_status": "not_observed"
+      },
+      "role": "selected_design_donor"
+    }
+  },
+  "fusion_recipe": {
+    "retained": [
+      "厚眉遮沿、橙色大面罩與分節冠脊",
+      "短上翹肩片與厚領圈",
+      "綠色邊框搭藍色重甲"
+    ],
+    "borrowed": {
+      "helmet": "非常厚的水平眉甲、大橙金面罩、中央下沿小凸口；圓耳護與厚下頰；冠頂可裝折疊/裝甲模組。",
+      "torso": "很厚且不對稱的護頸、胸口硬框與腹部軟袋；圓大肩甲分層包在上臂外；胯、肘与膝有清楚人類活動區。",
+      "back": "全身圖僅前角，可見後領高度；完整背部及獨立背包未見。",
+      "back_status": "not_observed"
+    },
+    "optimized": "Halo 配對應偏重防護；提升肩、胸、脛的實際厚度但保留正常人的上臂、肘與腰比例。",
+    "optimization_common": "胸腰按人體分件、露出織物關節、短化易勾掛尖片；避免單眼機械臉與巨型四肢。"
+  }
+}

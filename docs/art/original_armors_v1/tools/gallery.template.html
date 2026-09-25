@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>原裝甲 × Halo｜融合設計圖集</title>
+<style>
+:root{--bg:#101519;--panel:#171e23;--panel2:#1c252b;--line:#35434c;--text:#e5ecee;--muted:#a7b6bd;--accent:#81d1be;--warm:#e1b27a;--selected:#223b3b;--radius:14px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI","Microsoft JhengHei",sans-serif}
+button,input,a{-webkit-tap-highlight-color:transparent}
+button,input{font:inherit}
+button{color:inherit;cursor:pointer}
+a{color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+button:disabled{cursor:default}
+[hidden]{display:none!important}
+.skip-link{position:fixed;left:12px;top:-70px;background:var(--text);color:var(--bg);z-index:20;padding:10px 18px}
+.skip-link:focus{top:12px}
+header{max-width:1800px;margin:auto;padding:30px 32px 24px;border-bottom:1px solid var(--line)}
+.eyebrow{margin:0 0 8px;color:var(--accent);font-size:.76rem;letter-spacing:.13em;text-transform:uppercase}
+h1,h2,h3,p{margin-top:0}
+h1{margin-bottom:8px;font-size:clamp(1.45rem,2.9vw,2.25rem);letter-spacing:.01em;line-height:1.3}
+.intro{color:var(--muted);max-width:72ch;margin:0}
+.header-row{display:flex;gap:24px;justify-content:space-between;align-items:flex-start}
+.summary-count{flex:0 0 auto;padding:8px 12px;border:1px solid var(--line);border-radius:9px;color:var(--muted);font-size:.82rem;white-space:nowrap}
+.workspace{max-width:1800px;margin:auto;display:grid;grid-template-columns:285px minmax(0,1fr);gap:26px;padding:26px 32px 48px}
+.library{min-width:0}
+.library-inner{position:sticky;top:18px}
+.library h2{font-size:1rem;margin-bottom:12px}
+.filters{display:flex;gap:6px;margin-bottom:12px}
+.filter,.view-tab{padding:7px 12px;border:1px solid var(--line);border-radius:8px;background:transparent;font-size:.86rem}
+.filter[aria-pressed="true"],.view-tab[aria-selected="true"]{border-color:var(--accent);background:var(--selected);color:var(--accent)}
+.search-label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:5px}
+#search{width:100%;border:1px solid var(--line);border-radius:8px;background:#0d1216;color:var(--text);padding:9px 11px;min-width:0}
+.result-line{margin:9px 0;color:var(--muted);font-size:.78rem;min-height:1.6em}
+.catalog-list{display:grid;gap:7px;max-height:calc(100vh - 255px);overflow:auto;padding:3px 6px 8px 3px;scrollbar-color:var(--line) transparent}
+.catalog-card{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:center;gap:10px;width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--panel);text-align:left;min-width:0}
+.catalog-card:hover{background:var(--panel2)}
+.catalog-card[aria-pressed="true"]{border-color:var(--accent);background:var(--selected)}
+.catalog-card .code{font-size:.72rem;font-weight:700;color:var(--accent);text-align:center}
+.catalog-copy{min-width:0}
+.catalog-name{display:block;font-size:.9rem;font-weight:650;overflow-wrap:anywhere}
+.catalog-sub{display:block;color:var(--muted);font-size:.73rem;line-height:1.45;margin-top:3px;overflow-wrap:anywhere}
+.no-results{color:var(--muted);border:1px dashed var(--line);border-radius:10px;padding:18px 12px;font-size:.9rem}
+main{min-width:0}
+.selection-heading{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:17px}
+.mapping{margin:0 0 7px;color:var(--accent);font-size:.85rem;overflow-wrap:anywhere}
+h2#design-title{font-size:clamp(1.4rem,2.5vw,2rem);margin:0;line-height:1.35;overflow-wrap:anywhere}
+.english-name{color:var(--muted);font-weight:400;font-size:.72em;margin-left:.35em}
+.selection-meta{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:10px}
+.tag{display:inline-flex;padding:3px 9px;border-radius:6px;border:1px solid var(--line);font-size:.75rem;color:var(--muted)}
+.tag.ready{color:var(--accent);border-color:#39615a}
+.tag.pending{color:var(--warm);border-color:#65543e}
+.detail-link{font-size:.8rem;flex:0 0 auto;padding-top:5px}
+.halo-line{padding:12px 15px;background:var(--panel);border:1px solid var(--line);border-radius:10px;margin-bottom:20px;font-size:.9rem}
+.halo-line span{color:var(--muted)}
+.compare-heading{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-bottom:10px}
+.compare-heading h3{font-size:1rem;margin:0}
+.compare-hint{font-size:.76rem;color:var(--muted);margin:0}
+.comparison{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.figure-card{margin:0;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+.figure-card.result{border-color:#486b63}
+.figure-title{padding:12px 13px 10px;border-bottom:1px solid var(--line)}
+.figure-title strong{display:block;font-size:.85rem}
+.figure-title span{display:block;color:var(--muted);font-size:.72rem;min-height:1.6em;overflow-wrap:anywhere}
+.image-button{position:relative;border:0;background:#11171b;display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:3/4;padding:12px}
+.image-button img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;display:block}
+.image-button:hover:not(:disabled){background:#19232a}
+.empty-art{color:var(--muted);font-size:.84rem;max-width:22ch;text-align:center;margin:0;line-height:1.8}
+.empty-art strong{display:block;color:var(--warm);font-weight:500;margin-bottom:8px}
+.figure-controls{padding:10px 12px 12px;margin-top:auto;min-height:69px;display:flex;flex-direction:column;gap:7px}
+.reference-options,.view-tabs{display:flex;flex-wrap:wrap;gap:5px;align-items:flex-start}
+.reference-option{border:1px solid var(--line);border-radius:6px;background:transparent;padding:4px 8px;font-size:.72rem;line-height:1.5;overflow-wrap:anywhere;max-width:100%}
+.reference-option[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:var(--selected)}
+.view-tab{font-size:.72rem;padding:4px 8px}
+.figure-note{color:var(--muted);font-size:.72rem;margin:0;overflow-wrap:anywhere}
+.panel{margin-top:20px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{font-size:1rem;margin-bottom:13px}
+.fusion-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.fusion-grid h4{font-size:.85rem;margin:0 0 8px;color:var(--accent)}
+.fusion-grid ul{margin:0;padding-left:1.2em;color:var(--muted);font-size:.86rem}
+.fusion-grid li+li{margin-top:7px}
+.fusion-grid p{color:var(--muted);font-size:.85rem;margin:0}
+.design-details{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.design-details .panel{min-width:0}
+.role-text{color:var(--muted);font-size:.9rem;margin-bottom:0;white-space:pre-line;overflow-wrap:anywhere}
+.stats-table{border-collapse:collapse;width:100%;font-size:.82rem;margin-top:14px}
+.stats-table th,.stats-table td{padding:8px 0;border-top:1px solid var(--line);vertical-align:top;text-align:left;overflow-wrap:anywhere}
+.stats-table th{font-weight:500;color:var(--muted);padding-right:16px;width:44%}
+.ability{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
+.ability:first-child{border:0;margin-top:0;padding-top:0}
+.ability h4{font-size:.9rem;margin:0 0 6px}
+.ability p{font-size:.83rem;color:var(--muted);margin:0;white-space:pre-line;overflow-wrap:anywhere}
+.secondary-note{color:var(--muted);font-size:.77rem;margin:13px 0 0}
+details.production{margin-top:20px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:.82rem}
+details.production summary{cursor:pointer;display:list-item}
+details.production p{max-width:85ch;margin:12px 0 0}
+.provenance{margin-top:13px;display:flex;flex-wrap:wrap;gap:10px 18px;font-size:.78rem}
+#asset-review{margin-top:12px;color:var(--muted);font-size:.8rem;white-space:pre-line}
+footer{max-width:1800px;margin:auto;padding:0 32px 28px;color:var(--muted);font-size:.75rem}
+dialog{background:#10171c;border:1px solid var(--line);border-radius:12px;color:var(--text);width:min(96vw,1500px);max-width:96vw;height:min(94vh,1200px);max-height:94vh;padding:16px}
+dialog::backdrop{background:rgba(0,0,0,.86)}
+.dialog-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}
+.dialog-top p{margin:0;font-size:.88rem;overflow-wrap:anywhere}
+.close-dialog{padding:5px 12px;border:1px solid var(--line);border-radius:6px;background:var(--panel2)}
+#full-image{display:block;max-width:100%;width:100%;height:calc(100% - 60px);object-fit:contain}
+@media(min-width:1700px){.workspace{grid-template-columns:310px minmax(0,1fr)}.image-button{aspect-ratio:4/5}}
+@media(max-width:1120px){.workspace{grid-template-columns:230px minmax(0,1fr);gap:18px;padding:22px}.comparison{gap:8px}.figure-title{padding:10px}.image-button{padding:7px}.figure-controls{padding:9px}.fusion-grid{gap:13px}.fusion-grid ul{font-size:.81rem}}
+@media(max-width:900px){header{padding:23px 20px}.workspace{display:block;padding:20px}.library-inner{position:static}.library h2{margin-bottom:9px}.search-row{display:grid;grid-template-columns:230px minmax(0,1fr);gap:14px;align-items:end}.filters{margin:0 0 2px}.catalog-list{grid-template-columns:repeat(3,minmax(0,1fr));max-height:220px;margin-bottom:25px;padding-right:4px}.catalog-card{padding:8px;grid-template-columns:35px minmax(0,1fr);gap:6px}.catalog-name{font-size:.82rem}.catalog-sub{font-size:.7rem}.selection-heading{margin-top:3px}.fusion-grid{gap:18px}.summary-count{white-space:normal;max-width:160px}.image-button{aspect-ratio:3/4}}
+@media(max-width:620px){body{font-size:15px}.header-row{display:block}.summary-count{display:inline-block;max-width:none;margin-top:14px}.workspace{padding:18px 14px 28px}header{padding:22px 16px}.search-row{display:block}.filters{margin-bottom:12px}.catalog-list{grid-template-columns:repeat(2,minmax(0,1fr));max-height:206px}.catalog-sub{font-size:.67rem}.catalog-card{min-height:73px}.selection-heading{display:block}.detail-link{display:inline-block;margin-top:8px}.comparison{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.figure-card.result{grid-column:1/-1}.figure-card.result .image-button{aspect-ratio:auto;height:490px;max-height:68vh}.figure-card:not(.result) .image-button{aspect-ratio:3/4}.figure-title strong{font-size:.8rem}.figure-title span{font-size:.68rem}.compare-heading{align-items:flex-start}.compare-hint{max-width:19ch;font-size:.68rem;text-align:right}.fusion-grid{grid-template-columns:1fr;gap:18px}.design-details{grid-template-columns:1fr;gap:0}.panel{padding:16px}.halo-line{font-size:.82rem;padding:11px}.figure-controls{min-height:64px}.image-button{padding:7px}.figure-card.result .figure-controls{min-height:0}.figure-card.result .figure-title{display:flex;gap:8px;align-items:center;justify-content:space-between}.view-tabs{gap:7px}.view-tab{font-size:.8rem;padding:6px 10px}footer{padding:0 16px 24px}dialog{padding:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到設計比較</a>
+<header>
+  <div class="header-row">
+    <div>
+      <p class="eyebrow">Star Warfare · Armor Fusion Study</p>
+      <h1>原裝甲 × Halo｜融合設計圖集</h1>
+      <p class="intro">每套從對應的原遊戲裝備出發，結合相近的 Halo 非士官長款式，重新整理頭盔、護甲與背包的穿戴結構。</p>
+    </div>
+    <div id="summary-count" class="summary-count" aria-label="圖集完成進度"></div>
+  </div>
+</header>
+<div class="workspace">
+  <aside class="library" aria-label="裝備目錄">
+    <div class="library-inner">
+      <h2>選擇對應裝備</h2>
+      <div class="search-row">
+        <div class="filters" role="group" aria-label="裝備分類">
+          <button class="filter" data-kind="all" aria-pressed="true" type="button">全部</button>
+          <button class="filter" data-kind="armor" aria-pressed="false" type="button">裝甲</button>
+          <button class="filter" data-kind="backpack" aria-pressed="false" type="button">背包</button>
+        </div>
+        <div>
+          <label class="search-label" for="search">搜尋原名、設計編號或 Halo 款式</label>
+          <input id="search" type="search" placeholder="例如 Viper、B-01、ODST" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+      <p id="result-count" class="result-line" aria-live="polite"></p>
+      <nav id="catalog-list" class="catalog-list" aria-label="設計項目"></nav>
+      <p id="no-results" class="no-results" hidden>沒有符合的項目。可以清除搜尋或切換分類。</p>
+    </div>
+  </aside>
+  <main id="main" tabindex="-1">
+    <div id="empty-catalog" class="panel" hidden>圖集資料尚未加入。</div>
+    <div id="design-panel">
+      <div class="selection-heading">
+        <div>
+          <p id="mapping" class="mapping" aria-live="polite"></p>
+          <h2 id="design-title"><span id="name-zh"></span><span id="name-en" class="english-name"></span></h2>
+          <div class="selection-meta">
+            <span id="design-code" class="tag"></span>
+            <span id="image-status" class="tag"></span>
+            <span class="tag">外觀提案 · 尚未接入遊戲</span>
+          </div>
+        </div>
+        <a id="source-file" class="detail-link">完整設計資料 ↗</a>
+      </div>
+      <div class="halo-line"><span>融合參考：</span><strong id="halo-variant"></strong><span id="halo-game"></span> <a id="halo-source" target="_blank" rel="noopener noreferrer">查看來源 ↗</a></div>
+      <div class="compare-heading"><h3>原圖、Halo 參考與新稿對照</h3><p class="compare-hint">點圖片放大；切換下方按鈕看不同視角。</p></div>
+      <section class="comparison" aria-label="三方美術比較">
+        <figure class="figure-card" id="legacy-card">
+          <figcaption class="figure-title"><strong>01 · 原遊戲裝備</strong><span id="legacy-caption"></span></figcaption>
+          <button class="image-button" id="legacy-image-button" type="button" aria-label="放大原遊戲參考圖">
+            <img id="legacy-image" alt="" hidden><p class="empty-art" id="legacy-empty">原裝備參考圖待補。</p>
+          </button>
+          <div class="figure-controls"><div class="reference-options" id="legacy-options" role="group" aria-label="原裝備參考視角"></div><p class="figure-note" id="legacy-view-note"></p></div>
+        </figure>
+        <figure class="figure-card" id="halo-card">
+          <figcaption class="figure-title"><strong>02 · Halo 款式參考</strong><span id="halo-caption"></span></figcaption>
+          <button class="image-button" id="halo-image-button" type="button" aria-label="放大 Halo 參考圖">
+            <img id="halo-image" alt="" hidden><p class="empty-art" id="halo-empty">Halo 參考圖待補。</p>
+          </button>
+          <div class="figure-controls"><div class="reference-options" id="halo-options" role="group" aria-label="Halo 參考視角"></div><p class="figure-note" id="halo-view-note"></p></div>
+        </figure>
+        <figure class="figure-card result" id="result-card">
+          <figcaption class="figure-title"><strong>03 · 融合後的新設計</strong><span id="result-caption"></span></figcaption>
+          <div id="result-image-panel">
+          <button class="image-button" id="result-image-button" type="button" aria-label="放大新設計圖" aria-describedby="result-caption">
+            <img id="result-image" alt="" hidden><p class="empty-art" id="result-empty"><strong>新稿尚未完成</strong>先查看原裝備、Halo 參考與下方融合方案。</p>
+          </button>
+          </div>
+          <div class="figure-controls"><div class="view-tabs" id="view-tabs" role="tablist" aria-label="新設計視圖"></div><p class="figure-note" id="result-view-note"></p></div>
+        </figure>
+      </section>
+      <section class="panel" aria-labelledby="fusion-heading">
+        <h3 id="fusion-heading">這套如何結合與優化</h3>
+        <div class="fusion-grid">
+          <div><h4>保留原裝備的辨識點</h4><div id="fusion-retained"></div></div>
+          <div><h4>結合 Halo 的結構</h4><div id="fusion-borrowed"></div></div>
+          <div><h4>重新整理與優化</h4><div id="fusion-optimized"></div></div>
+        </div>
+      </section>
+      <div class="design-details">
+        <section id="role-panel" class="panel" aria-labelledby="role-heading"><h3 id="role-heading">定位與資料</h3><p id="role-text" class="role-text"></p><table id="stats-table" class="stats-table" aria-label="設計數值"><tbody></tbody></table></section>
+        <section id="abilities-panel" class="panel" aria-labelledby="abilities-heading"><h3 id="abilities-heading">技能提案</h3><div id="abilities"></div><p class="secondary-note">這些技能尚未實作；效果與數值仍可調整。</p></section>
+      </div>
+      <details class="production">
+        <summary>從美術圖到遊戲素材</summary>
+        <p>概念圖／三視參考 → 建立模型 → 展開 UV 與專用貼圖 → 綁骨架 → 遊戲內裝備和動作測試。這裡的圖片是製作參考；整張人物概念圖不能直接當作模型貼圖。</p>
+        <div class="provenance"><a id="original-image">開啟目前新稿原圖 ↗</a><a id="actual-prompt">查看這張圖的提示詞 ↗</a></div>
+        <p id="asset-review"></p>
+      </details>
+    </div>
+  </main>
+</div>
+<footer>裝甲 C 編號與背包 B 編號各自對應原遊戲 ID；背包是獨立裝備。參考款式不包含士官長主盔。</footer>
+<dialog id="image-dialog" aria-labelledby="dialog-title">
+  <div class="dialog-top"><p id="dialog-title"></p><button id="close-dialog" class="close-dialog" type="button" autofocus>關閉 ×</button></div>
+  <img id="full-image" alt="">
+</dialog>
+<script id="catalog" type="application/json">__CATALOG_JSON__</script>
+<script>
+'use strict';
+const catalog = JSON.parse(document.getElementById('catalog').textContent);
+const byId = new Map(catalog.map(item => [item.design_id, item]));
+const viewLabels = {concept:'全身概念',turnaround:'三視圖',construction:'結構拆解',design_sheet:'背包設計稿'};
+const viewOrder = ['concept','turnaround','construction','design_sheet'];
+let initialHash='';try{initialHash=decodeURIComponent(location.hash.slice(1))}catch{}
+const state = {kind:'all',query:'',id:byId.has(initialHash)?initialHash:(byId.has('C-01')?'C-01':catalog[0]?.design_id),view:null};
+const element = id => document.getElementById(id);
+const text = (id,value) => {element(id).textContent=value == null?'':String(value)};
+const kindLabel = kind => kind==='backpack'?'背包':'裝甲';
+const cleanPath = value => typeof value==='string'&&value.trim()&&!/^(javascript|data|vbscript):/i.test(value.trim())?value.trim():'';
+const availableViews = item => viewOrder.filter(key=>cleanPath(item.images?.[key]));
+const asArray = value => Array.isArray(value)?value:[];
+const plain = value => {
+  if(value==null)return '';
+  if(typeof value==='string'||typeof value==='number')return String(value);
+  if(typeof value==='boolean')return value?'是':'否';
+  if(Array.isArray(value))return value.map(plain).filter(Boolean).join('；');
+  return Object.entries(value).map(([key,item])=>labelFor(key)+'：'+plain(item)).join('；');
+};
+const labels = {hp:'生命值',health:'生命值',shield:'護盾',defense:'防禦',speed:'移動速度',weight:'重量',role:'定位',description:'說明',full_set:'全套',per_piece:'單件',per_part:'單件提案',four_piece_total:'四件提案合計',movement_modifier:'移動速度加成',damage_modifier:'傷害加成',unlock:'取得方式',base_hp:'基礎生命值',base_shield:'基礎護盾',cooldown_seconds:'冷卻秒數',duration_seconds:'持續秒數',capacity:'容量',basis:'數值依據',proposed_full_set_totals:'全套提案總值',hp_per_piece:'單件生命值',shield_per_piece:'單件護盾'};
+function labelFor(key){return labels[key]||String(key).replaceAll('_',' ')}
+function link(id,path){const node=element(id),url=cleanPath(path);node.hidden=!url;if(url)node.setAttribute('href',url);else node.removeAttribute('href')}
+function filteredItems(){
+  const query=state.query.toLocaleLowerCase().trim();
+  return catalog.filter(item=>(state.kind==='all'||item.kind===state.kind)&&(!query||[item.design_id,item.legacy_name,item.legacy_id,item.working_name_zh,item.working_name_en,item.halo?.variant,item.halo?.game].map(plain).join(' ').toLocaleLowerCase().includes(query)));
+}
+function renderList(){
+  const list=element('catalog-list'),items=filteredItems();list.replaceChildren();
+  text('result-count','顯示 '+items.length+' / '+catalog.length+' 項');
+  element('no-results').hidden=items.length>0;
+  for(const item of items){
+    const button=document.createElement('button');button.type='button';button.className='catalog-card';button.dataset.id=item.design_id;button.setAttribute('aria-pressed',String(item.design_id===state.id));button.setAttribute('aria-label',item.design_id+'，'+item.legacy_name+'，'+kindLabel(item.kind)+' ID '+item.legacy_id);
+    const code=document.createElement('span');code.className='code';code.textContent=item.design_id;
+    const copy=document.createElement('span');copy.className='catalog-copy';
+    const name=document.createElement('span');name.className='catalog-name';name.textContent=item.legacy_name||item.working_name_zh||item.design_id;
+    const sub=document.createElement('span');sub.className='catalog-sub';sub.textContent=kindLabel(item.kind)+' ID '+item.legacy_id+' · '+(availableViews(item).length?'已有新稿':'待生成');
+    copy.append(name,sub);button.append(code,copy);button.addEventListener('click',()=>selectDesign(item.design_id));list.append(button);
+  }
+  for(const button of document.querySelectorAll('.filter'))button.setAttribute('aria-pressed',String(button.dataset.kind===state.kind));
+}
+function openImage(imageNode,title){
+  if(imageNode.hidden||!imageNode.getAttribute('src'))return;
+  const dialog=element('image-dialog');element('full-image').src=imageNode.src;element('full-image').alt=imageNode.alt;text('dialog-title',title);dialog.showModal();
+}
+function setImage(prefix,path,alt,pendingText){
+  const imageNode=element(prefix+'-image'),button=element(prefix+'-image-button'),empty=element(prefix+'-empty'),url=cleanPath(path);
+  button.disabled=!url;imageNode.hidden=!url;empty.hidden=!!url;
+  if(pendingText&&!url)empty.textContent=pendingText;
+  imageNode.onload=()=>{imageNode.hidden=false;empty.hidden=true;button.disabled=false};
+  imageNode.onerror=()=>{imageNode.hidden=true;empty.hidden=false;empty.textContent='此圖片目前無法讀取，請查看來源或設計資料。';button.disabled=true};
+  if(url){imageNode.alt=alt;imageNode.src=url;button.onclick=()=>openImage(imageNode,alt)}else{imageNode.removeAttribute('src');imageNode.alt='';button.onclick=null}
+}
+function renderReferences(prefix,references,title,note=''){
+  const valid=asArray(references).filter(item=>cleanPath(item?.path)),options=element(prefix+'-options');options.replaceChildren();
+  const choose=index=>{
+    const ref=valid[index];setImage(prefix,ref?.path,title+'｜'+(ref?.label||'參考圖'),note||title+'參考圖待補。');text(prefix+'-view-note',(ref?.label||'')+(note?'｜'+note:''));
+    [...options.children].forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+  };
+  valid.forEach((ref,index)=>{
+    const button=document.createElement('button');button.className='reference-option';button.type='button';button.textContent=ref.label||'參考 '+(index+1);button.setAttribute('aria-pressed',String(index===0));button.addEventListener('click',()=>choose(index));options.append(button);
+  });
+  choose(0);
+}
+function renderFusion(id,items){
+  const container=element(id),values=asArray(items).filter(Boolean);container.replaceChildren();
+  if(!values.length){const note=document.createElement('p');note.textContent='此項規格待補。';container.append(note);return}
+  const list=document.createElement('ul');
+  for(const value of values){const item=document.createElement('li');item.textContent=plain(value);list.append(item)}
+  container.append(list);
+}
+function renderStats(item){
+  const role=plain(item.role),stats=item.stats&&typeof item.stats==='object'?Object.entries(item.stats):[];
+  text('role-text',role||'定位資料待補。');element('role-panel').hidden=!role&&!stats.length;
+  const body=element('stats-table').querySelector('tbody');body.replaceChildren();element('stats-table').hidden=!stats.length;
+  for(const [key,value]of stats){if(value==null)continue;const row=document.createElement('tr'),heading=document.createElement('th'),cell=document.createElement('td');heading.scope='row';heading.textContent=labelFor(key);cell.textContent=plain(value);row.append(heading,cell);body.append(row)}
+  const abilities=asArray(item.abilities);element('abilities-panel').hidden=!abilities.length;const output=element('abilities');output.replaceChildren();
+  for(const [index,ability]of abilities.entries()){
+    const card=document.createElement('article');card.className='ability';const heading=document.createElement('h4'),body=document.createElement('p');
+    heading.textContent=typeof ability==='string'?'技能 '+(index+1):(ability.name_zh||ability.name||ability.working_name_zh||ability.title||'技能 '+(index+1));
+    body.textContent=typeof ability==='string'?ability:[ability.trigger?'觸發：'+plain(ability.trigger):'',plain(ability.effect||ability.description||ability.summary||ability.proposed_effect||ability.design_reason||'技能說明待補。'),ability.limits?'限制：'+plain(ability.limits):''].filter(Boolean).join('\n');card.append(heading,body);output.append(card);
+  }
+}
+function selectView(key,{focus=false}={}){
+  const item=byId.get(state.id),views=availableViews(item);state.view=views.includes(key)?key:views[0]||null;
+  const tabs=element('view-tabs');tabs.replaceChildren();
+  for(const view of views){const button=document.createElement('button');button.type='button';button.className='view-tab';button.dataset.view=view;button.id='view-'+view;button.setAttribute('role','tab');button.setAttribute('aria-selected',String(view===state.view));button.setAttribute('aria-controls','result-image-panel');button.tabIndex=view===state.view?0:-1;button.textContent=viewLabels[view]||view;button.addEventListener('click',()=>selectView(view,{focus:true}));button.addEventListener('keydown',event=>{
+      const current=views.indexOf(view);let next=current;
+      if(event.key==='ArrowRight')next=(current+1)%views.length;else if(event.key==='ArrowLeft')next=(current+views.length-1)%views.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=views.length-1;else return;
+      event.preventDefault();selectView(views[next],{focus:true});
+    });tabs.append(button)}
+  const path=state.view?item.images[state.view]:'',asset=asArray(item._assets).find(entry=>entry.path===path||entry.kind===state.view);
+  const name=item.working_name_zh||item.legacy_name;
+  setImage('result',path,name+'｜'+(viewLabels[state.view]||'新設計'));
+  if(!path)element('result-empty').innerHTML='<strong>新稿尚未完成</strong>先查看原裝備、Halo 參考與下方融合方案。';
+  text('result-caption',state.view?viewLabels[state.view]:'尚未生成');
+  text('result-view-note',path?'概念參考，尚非遊戲模型或 UV 貼圖。':'完成後會在此顯示新稿。');
+  if(views.length)element('result-image-panel').setAttribute('role','tabpanel');else element('result-image-panel').removeAttribute('role');
+  if(state.view)element('result-image-panel').setAttribute('aria-labelledby','view-'+state.view);else element('result-image-panel').removeAttribute('aria-labelledby');
+  link('original-image',path);link('actual-prompt',asset?.prompt);text('asset-review',asset?.visual_review?'本稿檢視：'+plain(asset.visual_review):'');
+  if(focus)element('view-'+state.view)?.focus();
+}
+function selectDesign(id,{updateHash=true}={}){
+  const item=byId.get(id);if(!item)return;
+  const previousView=state.view;state.id=id;
+  if(updateHash&&location.hash!=='#'+id)history.replaceState(null,'','#'+encodeURIComponent(id));
+  text('mapping',item.legacy_name+' · '+kindLabel(item.kind)+' ID '+item.legacy_id+' → '+item.design_id);
+  text('name-zh',item.working_name_zh||item.legacy_name);text('name-en',item.working_name_en||'');text('design-code',item.design_id+' · '+kindLabel(item.kind));
+  const views=availableViews(item),expected=item.kind==='backpack'?1:3;
+  const status=element('image-status');status.className='tag '+(views.length?'ready':'pending');status.textContent=views.length?'新稿 '+views.length+' / '+expected+' 張':'待重新生成';
+  text('halo-variant',item.halo?.variant||'Halo 款式待補');text('halo-game',item.halo?.game?' · '+item.halo.game:'');link('halo-source',item.halo?.url);link('source-file',item.source_file);
+  text('legacy-caption',item.legacy_name+' · ID '+item.legacy_id);text('halo-caption',(item.halo?.game?item.halo.game+' · ':'')+(item.halo?.variant||'待補'));
+  renderReferences('legacy',item.legacy_refs,item.legacy_name+' 原遊戲');
+  renderReferences('halo',item.halo?.reference_images,item.halo?.variant||'Halo',item.halo?.reference_note||'');
+  renderFusion('fusion-retained',item.fusion?.retained);renderFusion('fusion-borrowed',item.fusion?.borrowed);renderFusion('fusion-optimized',item.fusion?.optimized);
+  renderStats(item);selectView(previousView);
+  for(const card of document.querySelectorAll('.catalog-card'))card.setAttribute('aria-pressed',String(card.dataset.id===id));
+}
+for(const button of document.querySelectorAll('.filter'))button.addEventListener('click',()=>{
+  state.kind=button.dataset.kind;renderList();const items=filteredItems();if(items.length&&!items.some(item=>item.design_id===state.id))selectDesign(items[0].design_id);
+});
+element('search').addEventListener('input',event=>{
+  state.query=event.target.value;renderList();const items=filteredItems();if(items.length&&!items.some(item=>item.design_id===state.id))selectDesign(items[0].design_id);
+});
+window.addEventListener('hashchange',()=>{let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{return}if(byId.has(id))selectDesign(id,{updateHash:false})});
+element('close-dialog').addEventListener('click',()=>element('image-dialog').close());
+element('image-dialog').addEventListener('click',event=>{if(event.target===element('image-dialog')){const box=element('image-dialog').getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)element('image-dialog').close()}});
+const armorCount=catalog.filter(item=>item.kind==='armor').length,bagCount=catalog.filter(item=>item.kind==='backpack').length,ready=catalog.filter(item=>availableViews(item).length).length;
+text('summary-count',armorCount+' 套裝甲 · '+bagCount+' 個背包｜'+ready+' 項已有新稿');
+renderList();
+if(catalog.length){selectDesign(state.id,{updateHash:false})}else{element('design-panel').hidden=true;element('empty-catalog').hidden=false}
+</script>
+</body>
+</html>

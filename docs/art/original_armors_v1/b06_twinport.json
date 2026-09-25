@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "design_id": "B-06",
+  "runtime_id": null,
+  "working_name_zh": "雙瞳",
+  "working_name_en": "TWINPORT",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 5,
+    "legacy_name": "VP-22-VII",
+    "purpose": "取代對應獨立bag裝備的美術；不與同序C套裝綁定。"
+  },
+  "lore": "配裝系統中的獨立背負設備，暫名「雙瞳」。外殼承接 VP-22-VII 的少量識別，內側加入可更換支架與穿戴固定點。",
+  "role": "獨立背包；承接 VP-22-VII 的裝備位置。現有容量為 4 格，本輪未修改。",
+  "palette": [
+    {
+      "family": "紫紅",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "暗灰",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "青綠",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    }
+  ],
+  "visual_identity": {
+    "proportion_target": "人體背部可穿戴的獨立設備；以獨立設計稿各視圖確認外形，非精確尺寸。",
+    "head": null,
+    "torso": null,
+    "shoulders": null,
+    "arms": null,
+    "legs": null,
+    "pack": "Retain VP-22-VII's plum-red wide shell, two turquoise upper status disks and triangular lower center inset. Integrate War Master's paired sloping rear housings, recessed spinal service fitting and curved lower support. Break the broad shell into repairable panels with clear fasteners. The central triangle stays as this pack's own identity; do not reproduce the donor's entire rear armor.",
+    "legacy_silhouette": "紫紅寬體近 U 形，上端兩個斜切角，底部連成外框。",
+    "legacy_devices": "雙上角各一個青綠圓點；中央下半部是灰青色倒 V 外框與紅色三角核心。",
+    "actual_reviews": {
+      "design_sheet": "已目視：紫紅U形雙高角、兩個青綠圓窗與下方三角面保留，兩側增加WarMaster式斜長護框及通風層。四個完成視圖與單個維修模組拆解一致，內面掛帶和襯墊清楚。小限制：外殼分離方向僅示意，側扣及曲線護框的機械間隙需建模確認。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "背包原有HP、增益、技能與容量均由runtime原資料決定；本稿只替換美術，不增設飛行、護盾或醫療效果。",
+    "per_part": {
+      "hp": null,
+      "shield": null
+    },
+    "four_piece_total": {
+      "hp": null,
+      "shield": null
+    },
+    "movement_modifier": null,
+    "damage_modifier": null,
+    "unlock": "待玩法驗證後決定",
+    "purchase_currency": null,
+    "current_bag_slots_reference": 4
+  },
+  "proposed_abilities": [],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "design_sheet": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/b06_design_sheet.png",
+    "turnaround": "images/b06_design_sheet.png",
+    "construction": "images/b06_design_sheet.png",
+    "design_sheet": "images/b06_design_sheet.png"
+  },
+  "modeling_authority": "一張獨立設計稿包含主3/4視、向外面、側面、貼背面及維修拆解；圖內視角和機構可能需建模校正。不可直接當UV或遊戲貼圖。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "design_sheet": {
+        "design_id": "B-06",
+        "kind": "design_sheet",
+        "path": "images/b06_design_sheet.png",
+        "prompt": "prompts/b06_design_sheet.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-e8b88062-107b-4019-bd10-fbd9e2c5c3d1.png",
+        "date": "2026-09-25",
+        "reference_images": [
+          "references/legacy/bag_05_original_threequarter.png",
+          "references/legacy/bag_05_original_outward.png",
+          "references/halo/c07_warmaster_halo4_concept.jpg"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已目視：紫紅U形雙高角、兩個青綠圓窗與下方三角面保留，兩側增加WarMaster式斜長護框及通風層。四個完成視圖與單個維修模組拆解一致，內面掛帶和襯墊清楚。小限制：外殼分離方向僅示意，側扣及曲線護框的機械間隙需建模確認。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/b06_design_sheet.json"
+      }
+    },
+    "unselected_records": []
+  },
+  "equipment_type": "backpack",
+  "proposal_only": true,
+  "fusion_recipe": {
+    "retained": "雙上角圓燈與底部三角面，不必沿用整個 U 形輪廓。",
+    "borrowed": "官方三視原画後視：一對斜縱向圓楔形外殼包住中央圓形接點，下方曲折護框，脊部軟衣與腰後另分開。",
+    "optimized": "新增貼背軟墊、支架與掛點，整理維修開口及部件層次；每款保留其雙筒、圓盤、翼或多艙身份。"
+  },
+  "source_references": {
+    "legacy": {
+      "name": "VP-22-VII",
+      "runtime_id": 5,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_05/ArmorBag_05.obj",
+      "kind": "recovered_original_mesh_and_mtl_texture",
+      "audit": "sources/legacy_backpacks.json",
+      "images": [
+        "references/legacy/bag_05_original_threequarter.png",
+        "references/legacy/bag_05_original_outward.png",
+        "references/legacy/bag_05_original_side.png"
+      ]
+    },
+    "halo": {
+      "name": "WAR MASTER-class Mjolnir rear frame",
+      "game": "Halo 4",
+      "donor_kind": "integrated_armor_back_structure",
+      "source_page_url": "https://www.halopedia.org/File:H4_War_Master_Concept_Art.jpg",
+      "images": [
+        {
+          "key": "c07_warmaster_halo4_concept",
+          "source_page_url": "https://www.halopedia.org/File:H4_War_Master_Concept_Art.jpg",
+          "image_url": "https://halo.wiki.gallery/images/f/fe/H4_War_Master_Concept_Art.jpg",
+          "local_path": "references/halo/c07_warmaster_halo4_concept.jpg",
+          "sha256": "101a851427e8a8d709599dcc4a144b0808453704012421231a326abb16ab9cd1",
+          "width": 1600,
+          "height": 923,
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "master_chief": false,
+      "integration_note": "整合式背甲只供結構參考，不能稱為原遊戲的獨立背包。"
+    }
+  },
+  "runtime_target": {
+    "item_key": "armor_bag_05",
+    "part_key": "bag",
+    "legacy_item_id": 5,
+    "attachment_bone": "fly_bag",
+    "current_bag_slots": 4,
+    "inherits_armor_abilities": false,
+    "original_stats_unchanged": true
+  }
+}

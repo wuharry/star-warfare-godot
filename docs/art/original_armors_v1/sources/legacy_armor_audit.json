@@ -1,0 +1,498 @@
+{
+  "schema_version": 1,
+  "audited_at": "2026-09-25",
+  "scope": "C-01–C-10 對應 Star Warfare 原版視覺 ID 0–9",
+  "mapping_authority": "scripts/core/armor_catalog.gd::SET_NAMES",
+  "source_kind": "本 repo 由原遊戲恢復之 player.gltf mesh/skin/texture 的 Godot 截圖；並非原版行銷圖，未使用新生成設計圖或重製 mesh。",
+  "source_model": "assets/models/player/animated/player.gltf",
+  "provenance": [
+    {
+      "path": "tests/viper_art_capture.gd",
+      "lines": "40–58",
+      "evidence": "載入原 player.gltf，version original 換回原 mesh/skin/material，24向截圖。"
+    },
+    {
+      "path": "tests/equipment_refinement_capture.gd",
+      "lines": "30–59",
+      "evidence": "載入原 player.gltf；ID 1–20 使用原source；version original 分支把四部件 mesh/skin/transform/material 換回原版。"
+    },
+    {
+      "path": "test_output/equipment_refinement/preview/captures.json",
+      "evidence": "逐項 armor_01–armor_09 名稱與 ArmorCatalog ID 核對一致。"
+    }
+  ],
+  "limitations": [
+    "圖中幾何是原遊戲恢復模型；相機、光照及展示姿勢由 Godot fixture 提供。",
+    "Viper 用原始bind pose；ID1–9 用 idle_rifle 持槍姿勢，但隱藏武器及背包，前臂可能遮住胸甲。",
+    "equipment_refinement 的 front/side/rear 是檔名與相機方向，不是嚴格正交三視；實際觀看為前三分之四與兩側斜角。",
+    "背包為獨立裝備，以上截圖已隱藏背包；不得從背甲推論原背包設計。",
+    "顏色名稱為圖片視覺觀察，未量測原貼圖 RGB。"
+  ],
+  "rejected_shortcuts": [
+    {
+      "path": "docs/art/armor_concepts_thunder_style_v1/references/00_original.png",
+      "reason": "相應 armor_00.json reference_kind 為 accepted_current，不能直接聲稱原遊戲模型。"
+    },
+    {
+      "path": "docs/art/thunder_mk_comparison_v1/references/mk1_current_front.png",
+      "reason": "Thunder 重製 current 圖，不作原版身份依據。"
+    },
+    {
+      "path": "docs/art/thunder_helmet_comparison_v5/reference.png",
+      "reason": "既有重製概念圖，不能作原遊戲模型來源。"
+    }
+  ],
+  "armors": [
+    {
+      "design_id": "C-01",
+      "runtime_armor_id": 0,
+      "runtime_name": "Viper",
+      "original_game_mesh": true,
+      "viewed_with": "tools.view_image，逐張觀看 front/side/rear 共三張",
+      "source_front": "references/legacy/c01_front.png",
+      "source_side": "references/legacy/c01_side.png",
+      "source_rear": "references/legacy/c01_rear.png",
+      "reference_copies": {
+        "front": "references/legacy/c01_front.png",
+        "side": "references/legacy/c01_side.png",
+        "rear": "references/legacy/c01_rear.png"
+      },
+      "features": {
+        "helmet": "鋼藍圓頂外殼，冠頂中央一條黑色長槽；平直寬眉甲；大片紫色梯形面罩；黑色頰側內凹與包覆下巴。",
+        "chest_shoulders": "左右兩塊胸板各有向內傾斜的黑色長窗；肩頂黑色、肩外下緣鋼藍；腹甲逐段收窄。",
+        "forearms": "平滑鋼藍護臂，黑色肘部及手套，沒有發光圓點。",
+        "legs": "藍色包覆大腿與寬小腿，正面大腿內側黑色斜塊，黑膝/鞋尖與藍色護邊。",
+        "colors": [
+          "鋼藍",
+          "黑色",
+          "紫面罩"
+        ]
+      },
+      "retain_in_fusion": [
+        "紫色寬面罩與黑色頰側",
+        "中央黑色冠槽、黑色肩頂的藍黑大色塊",
+        "成對內傾胸甲黑窗"
+      ],
+      "optimization_direction": "保留入門兵裝的乾淨胸肩結構；Halo 融合可改善人類頸部、肩關節、可動布衣、護甲厚度，切勿再用單眼鏡頭或機械關節替代面罩。",
+      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
+      "source_sha256": {
+        "front": "8ed6513805001b7e56ae0c53c020ecfc4eb4150a16f46848951b2d67484d1aad",
+        "side": "e5333935b307fb87a7baece8568790821a55fdab7e0d860777ad78529c884809",
+        "rear": "7a131111f44e74eb78ecf1fb61c147888a79f63d85021839a3d7fb88dafae0e6"
+      }
+    },
+    {
+      "design_id": "C-02",
+      "runtime_armor_id": 1,
+      "runtime_name": "Fortune",
+      "original_game_mesh": true,
+      "viewed_with": "tools.view_image，逐張觀看 front/side/rear 共三張",
+      "source_front": "references/legacy/c02_front.png",
+      "source_side": "references/legacy/c02_side.png",
+      "source_rear": "references/legacy/c02_rear.png",
+      "reference_copies": {
+        "front": "references/legacy/c02_front.png",
+        "side": "references/legacy/c02_side.png",
+        "rear": "references/legacy/c02_rear.png"
+      },
+      "features": {
+        "helmet": "暗綠分面圓頂搭鋼藍寬眉帶；前額中央黑色倒梯形槽；暗紫窄寬面罩，下方中央鼻部鼓起、方正下巴與兩側寬頰護。",
+        "chest_shoulders": "綠色胸心外是一圈鋼藍/銀色 U 形框，框下端形成長方形垂片；圓頂藍肩有綠色下緣；黑棕布衣露出肩下與腹腰。",
+        "forearms": "鋼藍短厚前臂，靠腕處有斜切白亮邊與深綠片，黑色手套。",
+        "legs": "綠藍相間大腿；膝與護脛為斜切藍板，綠色脛前和鞋頭，腿彎保留黑棕布。",
+        "colors": [
+          "深綠",
+          "鋼藍/淡銀藍",
+          "深紫面罩",
+          "黑棕內襯"
+        ]
+      },
+      "retain_in_fusion": [
+        "寬頰護與方下巴包住深色寬面罩",
+        "淡色 U 形胸框下端方垂片",
+        "深綠與藍灰的區塊分配"
+      ],
+      "optimization_direction": "Halo 配對應偏野戰/偵察後勤；補加腰側軟袋和可穿戴連接，保留原版沉穩綠藍輪廓，不延續前一版象牙白補給機械人。",
+      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
+      "source_sha256": {
+        "front": "57d38ff2a484a51dc0407af4debcb574e3902156269f95f30d2708cb715da784",
+        "side": "bbd07660981c67c791c003fc6d30c440036653919e506e41223ebcf985cc256e",
+        "rear": "56734df86a669faf287f183518104964954a384df54bae85d851e30a65dfb728"
+      }
+    },
+    {
+      "design_id": "C-03",
+      "runtime_armor_id": 2,
+      "runtime_name": "Tank",
+      "original_game_mesh": true,
+      "viewed_with": "tools.view_image，逐張觀看 front/side/rear 共三張",
+      "source_front": "references/legacy/c03_front.png",
+      "source_side": "references/legacy/c03_side.png",
+      "source_rear": "references/legacy/c03_rear.png",
+      "reference_copies": {
+        "front": "references/legacy/c03_front.png",
+        "side": "references/legacy/c03_side.png",
+        "rear": "references/legacy/c03_rear.png"
+      },
+      "features": {
+        "helmet": "鈍圓盔頂有一列分節鋼藍冠脊，兩旁為綠色帶；寬橙色面罩；厚前額遮沿；中央下巴上延成尖頭/倒 U 呼吸護板；大塊耳護。",
+        "chest_shoulders": "淺綠厚領圈，下接鋼藍胸板；肩有明顯向上折起的綠色短外片，下層是帶折線的藍肩；黑棕布衣較大面积露出。",
+        "forearms": "寬大鋼藍簡潔護臂，外肘淺綠護片與黑手套。",
+        "legs": "淺綠邊包住大腿外前方藍色雙圓孔方板；多邊形藍膝甲；藍色 V 形護脛與寬平鞋頭。",
+        "colors": [
+          "鋼藍",
+          "鼠尾草淺綠",
+          "橙面罩",
+          "黑棕內襯"
+        ]
+      },
+      "retain_in_fusion": [
+        "厚眉遮沿、橙色大面罩與分節冠脊",
+        "短上翹肩片與厚領圈",
+        "綠色邊框搭藍色重甲"
+      ],
+      "optimization_direction": "Halo 配對應偏重防護；提升肩、胸、脛的實際厚度但保留正常人的上臂、肘與腰比例。",
+      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
+      "source_sha256": {
+        "front": "d07b0cf89a97e5dd37b93161d5f28d70e9ab5cd80c70b43479182a55ea006d34",
+        "side": "a8622eec89c3a3d4be93cc9b9b475ac5a0044fb47335f80ab4707cd87ca02aa9",
+        "rear": "37157780bab750a6c4668e4d7b2124daf71bafd2f74ea7d7e72b1fbe4d529aab"
+      }
+    },
+    {
+      "design_id": "C-04",
+      "runtime_armor_id": 3,
+      "runtime_name": "Hydra",
+      "original_game_mesh": true,
+      "viewed_with": "tools.view_image，逐張觀看 front/side/rear 共三張",
+      "source_front": "references/legacy/c04_front.png",
+      "source_side": "references/legacy/c04_side.png",
+      "source_rear": "references/legacy/c04_rear.png",
+      "reference_copies": {
+        "front": "references/legacy/c04_front.png",
+        "side": "references/legacy/c04_side.png",
+        "rear": "references/legacy/c04_rear.png"
+      },
+      "features": {
+        "helmet": "低圓藍盔頂有短分節深色冠帶；額頭中央是淺綠框包藍色方塊；黃綠大面罩中央下沿 V 形切口，下巴方形分片。",
+        "chest_shoulders": "中央胸心為藍色小盾片，周圍弧線層疊/浅綠邊框；兩側淺綠肩上片向外伸出短尖，下面藍肩較小。",
+        "forearms": "藍色斜切前臂，靠腕淺綠色塊，黑色手部與肘內側。",
+        "legs": "藍色大腿、黑內膝區；綠邊多段藍護脛、綠鞋尖與腳面。",
+        "colors": [
+          "中深藍",
+          "黃綠/鼠尾草綠",
+          "黃綠面罩",
+          "黑棕內襯"
+        ]
+      },
+      "retain_in_fusion": [
+        "額頭綠框方塊與黃綠面罩",
+        "短外張綠肩片",
+        "藍綠胸領弧線與輕於 Tank 的肩輪廓"
+      ],
+      "optimization_direction": "Halo 配對應偏高速偵察；用可動胸腹與修長但有肌肉的人形輪廓，原版沒有單側天線，若加感測器須標明融合新增。",
+      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
+      "source_sha256": {
+        "front": "598d277334ea8d3a16f23cb85c65433378e953222aa6b06fb6920f83ad111b7d",
+        "side": "336b5f3cc1ed80068735111be4a8dd277f4bf68433d80bd0eda3985be052e096",
+        "rear": "790d967e8936121f317a9aebbaf04788c32325d99f0759d0646f9833d63088e8"
+      }
+    },
+    {
+      "design_id": "C-05",
+      "runtime_armor_id": 4,
+      "runtime_name": "Strike",
+      "original_game_mesh": true,
+      "viewed_with": "tools.view_image，逐張觀看 front/side/rear 共三張",
+      "source_front": "references/legacy/c05_front.png",
+      "source_side": "references/legacy/c05_side.png",
+      "source_rear": "references/legacy/c05_rear.png",
+      "reference_copies": {
+        "front": "references/legacy/c05_front.png",
+        "side": "references/legacy/c05_side.png",
+        "rear": "references/legacy/c05_rear.png"
+      },
+      "features": {
+        "helmet": "鋼藍多面盔；寬金黃面罩下緣呈 W/中尖；額頂縱向板上有青色圓/六角節點；眉前側有四條短黑通風槽，頰側青色矩形燈。",
+        "chest_shoulders": "藍色分面雙胸板、中央小金色盾狀片；寬圓肩上青色環形節點與線條，肩下有短青燈列。",
+        "forearms": "雙前臂藍色長切面甲，各有青色環形燈點，深色手套；腕段造型簡單。",
+        "legs": "長藍色腿甲；髖側大青色環，膝有三條青色橫燈，鞋後/腳底有短青線；深棕布衣留在關節。",
+        "colors": [
+          "鋼藍",
+          "青色發光節點",
+          "金黃面罩",
+          "黑棕內襯"
+        ]
+      },
+      "retain_in_fusion": [
+        "金黃大面罩与額頂青色節點",
+        "少量青色圓/六角電路節點",
+        "有眉槽與頰側方燈的分面藍盔"
+      ],
+      "optimization_direction": "Halo 配對應偏電子/突擊；簡化全身散佈發光紋，集中眉/肩/前臂，保留原版科技感而不只留兩個不相干圓點。",
+      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
+      "source_sha256": {
+        "front": "b2816c4d17e9585aa405dd4607636e6106d8a7ffc4de30b6af0d8686a3c26e9c",
+        "side": "c86ebe1d1c47c365726feeec4f21207686695a7db4d5951d9f6ba1e19601f8e6",
+        "rear": "71151bbd5abc0d410756e457e72dffb6c0a8f12083accde444a1fe5814864194"
+      }
+    },
+    {
+      "design_id": "C-06",
+      "runtime_armor_id": 5,
+      "runtime_name": "Titan",
+      "original_game_mesh": true,
+      "viewed_with": "tools.view_image，逐張觀看 front/side/rear 共三張",
+      "source_front": "references/legacy/c06_front.png",
+      "source_side": "references/legacy/c06_side.png",
+      "source_rear": "references/legacy/c06_rear.png",
+      "reference_copies": {
+        "front": "references/legacy/c06_front.png",
+        "side": "references/legacy/c06_side.png",
+        "rear": "references/legacy/c06_rear.png"
+      },
+      "features": {
+        "helmet": "大面積金黃色面罩向下延成尖圓多邊形，佔臉部大半；鋼藍低圓頂與側頰框，額頂三條短黃橫條，兩側有橙色細長弧形条。",
+        "chest_shoulders": "厚鋼藍 U 形胸框，中央短橫槽；胸上两侧黄橙小三角；圓厚肩有頂部圓形扣/斑，外缘橙色細框和底部黃色橫帶。",
+        "forearms": "寬鋼藍前臂外面各有三個黃色小點，近腕一條黃標；黑手套。",
+        "legs": "長鋼藍外側大腿板，膝上細黃/橙橫帶；厚小腿外側有圓形橙點；寬藍鞋。",
+        "colors": [
+          "鋼藍",
+          "金黃面罩及條帶",
+          "橙色細框",
+          "黑色內襯"
+        ]
+      },
+      "retain_in_fusion": [
+        "延伸至下臉的大金色面罩",
+        "前臂三點模組",
+        "圓厚肩的橙細框與黃橫帶"
+      ],
+      "optimization_direction": "Halo 配對可借 EVA 大視野面罩/圓殼重裝的人形穿戴邏輯；面罩仍需原創外輪廓與真實頰部空間。",
+      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
+      "source_sha256": {
+        "front": "081229600f786fa5f32183bb7c75d293298b2dccea91fa27d3b8d6e9116deae6",
+        "side": "afdfd272a54d28ce0408feef87ece4584f5aca19de57c830c42dad443bbd3a5b",
+        "rear": "e504352e7d4f40aeb02d598bc0757e9c37fd93234dcb52e7492083fafd72036f"
+      }
+    },
+    {
+      "design_id": "C-07",
+      "runtime_armor_id": 6,
+      "runtime_name": "Thunder",
+      "original_game_mesh": true,
+      "viewed_with": "tools.view_image，逐張觀看 front/side/rear 共三張",
+      "source_front": "references/legacy/c07_front.png",
+      "source_side": "references/legacy/c07_side.png",
+      "source_rear": "references/legacy/c07_rear.png",
+      "reference_copies": {
+        "front": "references/legacy/c07_front.png",
+        "side": "references/legacy/c07_side.png",
+        "rear": "references/legacy/c07_rear.png"
+      },
+      "features": {
+        "helmet": "真正原版為中央一片很高、向後收斂的尖鰭冠；鋼藍盔殼；橙金面罩與尖收下巴；側耳圓盤，耳後金色折線包到後腦。",
+        "chest_shoulders": "鋼藍厚分片胸甲與圓頂分面肩；肩上螺槽狀圓扣、斜方金色嵌片；腹側大量黑棕有筋紋的內襯。",
+        "forearms": "厚藍前臂、斜向金色長條與 V 形標線，黑手套。",
+        "legs": "厚藍外側大腿带两条黃色橫片；膝/脛金色短窗，藍色多段護脛配黑膝後與黑鞋面。",
+        "colors": [
+          "鋼藍",
+          "金色節點/標線",
+          "橙金面罩",
+          "黑棕條紋內襯"
+        ]
+      },
+      "retain_in_fusion": [
+        "向後收的中央鰭冠辨識輪廓",
+        "橙金面罩、圓耳盤與金色後腦折線",
+        "分片肩與藍金大色塊"
+      ],
+      "optimization_direction": "Halo 融合可把尖鰭冠降成可穿戴的低冠導流板，但必須仍可辨出原 Thunder 冠形；不可把重製 Thunder 當原版依據。",
+      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
+      "source_sha256": {
+        "front": "a43239dfa7720cca97de8ed8af4b13aa3c93435670bce412ee25ca0e1a4dac8b",
+        "side": "c37a27d9b45e0ef8c5e590038653459190ae5697bcbd693c571c838f47253567",
+        "rear": "7d5016fe8a0d4bdfe6586150e74ff63663f84af2158133f398b6ab1bbf6cf2ab"
+      }
+    },
+    {
+      "design_id": "C-08",
+      "runtime_armor_id": 7,
+      "runtime_name": "Atom",
+      "original_game_mesh": true,
+      "viewed_with": "tools.view_image，逐張觀看 front/side/rear 共三張",
+      "source_front": "references/legacy/c08_front.png",
+      "source_side": "references/legacy/c08_side.png",
+      "source_rear": "references/legacy/c08_rear.png",
+      "reference_copies": {
+        "front": "references/legacy/c08_front.png",
+        "side": "references/legacy/c08_side.png",
+        "rear": "references/legacy/c08_rear.png"
+      },
+      "features": {
+        "helmet": "紫藍分色圓盔，青綠寬面罩與紫色尖收下巴；前額有中央偏上及左右眉側合計三個青色燈點（front 僅其中兩點完整露出，另一側由 rear 角度補看）；耳側有大青環。",
+        "chest_shoulders": "紫色肩外殼包黑色內面與青色圓燈；雙肩靠領處伸出很長、向上外後張的藍色細薄尖片；胸甲藍色帶紫色弧形頸圈。",
+        "forearms": "藍色多邊形護臂、外側小青點，尖紫色腕側片，黑手套。",
+        "legs": "紫藍分色大腿与多层膝脛；膝/髖有青圓點；藍鞋尖和紫腳面，腳跟也有青點。",
+        "colors": [
+          "紫色",
+          "鋼藍",
+          "青綠面罩與發光點",
+          "黑色內襯"
+        ]
+      },
+      "retain_in_fusion": [
+        "紫藍配色與青色面罩/額頭三點",
+        "成對向外後伸的薄肩領片",
+        "紫色尖收下巴与圓形光學模組"
+      ],
+      "optimization_direction": "Halo 配對應偏科技/光學；把大肩尖縮短為實際的感測/散熱翼，保留成對方向與紫青關係，不把身份完全改成淺色無翼套裝。",
+      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
+      "source_sha256": {
+        "front": "46609c0bf9c87f09a1eb4fa2b510bb58abf4ec90ad5763a4d3060fac96705378",
+        "side": "d3042620ba4e46e6f88d9cd30e1990da16ca986af4b76e782695a122787c3f46",
+        "rear": "1e06138931751ba44b600873ba9907cdb27a4efe300d2737ab2b47b584a721bb"
+      }
+    },
+    {
+      "design_id": "C-09",
+      "runtime_armor_id": 8,
+      "runtime_name": "Pegasus",
+      "original_game_mesh": true,
+      "viewed_with": "tools.view_image，逐張觀看 front/side/rear 共三張",
+      "source_front": "references/legacy/c09_front.png",
+      "source_side": "references/legacy/c09_side.png",
+      "source_rear": "references/legacy/c09_rear.png",
+      "reference_copies": {
+        "front": "references/legacy/c09_front.png",
+        "side": "references/legacy/c09_side.png",
+        "rear": "references/legacy/c09_rear.png"
+      },
+      "features": {
+        "helmet": "鮮紅硬角頭盔；左右額上緣成短尖，冠頂中央倒 V/箭頭板；深紅黑色 V 形窄面罩；前後多段斜切通風孔，尖收紅下巴。",
+        "chest_shoulders": "身體是白灰大面板，肩為宽白灰折面殼與小藍接縫；胸中央深藍黑色領口及電路般藍線；背脊中央有圓盤/放射分片。",
+        "forearms": "白灰折面寬臂甲配藍色腕條；手部/肘部深藍黑色，肩和臂板比例沉重。",
+        "legs": "白灰髖裙與膝脛，黑藍布衣大腿內面上有細藍紋；鞋头白灰配藍條。",
+        "colors": [
+          "鮮紅頭盔",
+          "白灰身甲",
+          "黑藍內襯",
+          "藍色接縫/電路紋"
+        ]
+      },
+      "retain_in_fusion": [
+        "紅盔與白身的強烈原版分色",
+        "窄 V 形深面罩與短雙額尖",
+        "寬白肩及藍色身體細紋"
+      ],
+      "optimization_direction": "Halo 配對可借折面戰術盔與肩甲層次；保留紅盔對白甲最關鍵識別，雙額尖可縮短成低眉角，不可全改白盔。",
+      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
+      "source_sha256": {
+        "front": "b2eb41d018c71542056bcde82a83913cfaadf7de5694a31895fdd76f18436084",
+        "side": "00c48f6cc2ded218f635c82ce74fa92514e356e1fccd466001675493668e389e",
+        "rear": "9b54f7c77d7fa6884171d856ad4c0c3b657cd16c53da8ee918281ce49accdb83"
+      }
+    },
+    {
+      "design_id": "C-10",
+      "runtime_armor_id": 9,
+      "runtime_name": "Draco",
+      "original_game_mesh": true,
+      "viewed_with": "tools.view_image，逐張觀看 front/side/rear 共三張",
+      "source_front": "references/legacy/c10_front.png",
+      "source_side": "references/legacy/c10_side.png",
+      "source_rear": "references/legacy/c10_rear.png",
+      "reference_copies": {
+        "front": "references/legacy/c10_front.png",
+        "side": "references/legacy/c10_side.png",
+        "rear": "references/legacy/c10_rear.png"
+      },
+      "features": {
+        "helmet": "全身煤灰/鐵灰；狹長黑色水平面罩與寬方下頰罩；冠頂中央凸起低稜後收，額側有兩三條斜短槽；側耳為水平橢圓凹面。",
+        "chest_shoulders": "深灰胸板、胸腹中央有黑色細密網紋；肩為明確向外折出的尖矩形灰板，下層黑色圓肩；肩小刻槽。",
+        "forearms": "大塊淺鐵灰斜切菱角護臂，中央/腕側黑色，沒有鮮明發光點。",
+        "legs": "灰色大腿殼、黑色內腿布衣；小六角膝甲、重疊斜片護脛與大鞋面；腿後網狀深色材質。",
+        "colors": [
+          "煤灰",
+          "鐵灰",
+          "黑面罩與黑內襯"
+        ]
+      },
+      "retain_in_fusion": [
+        "全灰黑低反光套裝與狹黑面罩",
+        "中央低冠稜與寬方頰罩",
+        "外張折角肩與粗大的菱角前臂"
+      ],
+      "optimization_direction": "Halo 配對應偏隱匿/近戰工裝；保留低調無燈大色塊，通過材質粗糙度、黑布和灰甲層次提高辨讀，不能隨意引入亮色改掉原身份。",
+      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
+      "source_sha256": {
+        "front": "b193e9a5f9ffd2b5966b9837ec746cc6514e93cee370438e4467e0fdeda40b4c",
+        "side": "6f44dcc3fb4083017eaf7daea7a0c1872148db2a71506bb774a86ed9f9b18b96",
+        "rear": "4af8dccb2fdddfdb0621f4c3548efff6c26c3d9e38ff49a717f54af3ce8b6676"
+      }
+    }
+  ],
+  "reference_path_base": "docs/art/original_armors_v1/",
+  "historical_reference_paths": {
+    "test_output/armor_fusion_reset/legacy_sources/c01_front.png": "references/legacy/c01_front.png",
+    "test_output/armor_fusion_reset/legacy_sources/c01_side.png": "references/legacy/c01_side.png",
+    "test_output/armor_fusion_reset/legacy_sources/c01_rear.png": "references/legacy/c01_rear.png",
+    "test_output/armor_fusion_reset/legacy_sources/c02_front.png": "references/legacy/c02_front.png",
+    "test_output/armor_fusion_reset/legacy_sources/c02_side.png": "references/legacy/c02_side.png",
+    "test_output/armor_fusion_reset/legacy_sources/c02_rear.png": "references/legacy/c02_rear.png",
+    "test_output/armor_fusion_reset/legacy_sources/c03_front.png": "references/legacy/c03_front.png",
+    "test_output/armor_fusion_reset/legacy_sources/c03_side.png": "references/legacy/c03_side.png",
+    "test_output/armor_fusion_reset/legacy_sources/c03_rear.png": "references/legacy/c03_rear.png",
+    "test_output/armor_fusion_reset/legacy_sources/c04_front.png": "references/legacy/c04_front.png",
+    "test_output/armor_fusion_reset/legacy_sources/c04_side.png": "references/legacy/c04_side.png",
+    "test_output/armor_fusion_reset/legacy_sources/c04_rear.png": "references/legacy/c04_rear.png",
+    "test_output/armor_fusion_reset/legacy_sources/c05_front.png": "references/legacy/c05_front.png",
+    "test_output/armor_fusion_reset/legacy_sources/c05_side.png": "references/legacy/c05_side.png",
+    "test_output/armor_fusion_reset/legacy_sources/c05_rear.png": "references/legacy/c05_rear.png",
+    "test_output/armor_fusion_reset/legacy_sources/c06_front.png": "references/legacy/c06_front.png",
+    "test_output/armor_fusion_reset/legacy_sources/c06_side.png": "references/legacy/c06_side.png",
+    "test_output/armor_fusion_reset/legacy_sources/c06_rear.png": "references/legacy/c06_rear.png",
+    "test_output/armor_fusion_reset/legacy_sources/c07_front.png": "references/legacy/c07_front.png",
+    "test_output/armor_fusion_reset/legacy_sources/c07_side.png": "references/legacy/c07_side.png",
+    "test_output/armor_fusion_reset/legacy_sources/c07_rear.png": "references/legacy/c07_rear.png",
+    "test_output/armor_fusion_reset/legacy_sources/c08_front.png": "references/legacy/c08_front.png",
+    "test_output/armor_fusion_reset/legacy_sources/c08_side.png": "references/legacy/c08_side.png",
+    "test_output/armor_fusion_reset/legacy_sources/c08_rear.png": "references/legacy/c08_rear.png",
+    "test_output/armor_fusion_reset/legacy_sources/c09_front.png": "references/legacy/c09_front.png",
+    "test_output/armor_fusion_reset/legacy_sources/c09_side.png": "references/legacy/c09_side.png",
+    "test_output/armor_fusion_reset/legacy_sources/c09_rear.png": "references/legacy/c09_rear.png",
+    "test_output/armor_fusion_reset/legacy_sources/c10_front.png": "references/legacy/c10_front.png",
+    "test_output/armor_fusion_reset/legacy_sources/c10_side.png": "references/legacy/c10_side.png",
+    "test_output/armor_fusion_reset/legacy_sources/c10_rear.png": "references/legacy/c10_rear.png",
+    "test_output/armor_rework/original_turn_00.png": "references/legacy/c01_front.png",
+    "test_output/armor_rework/original_turn_06.png": "references/legacy/c01_side.png",
+    "test_output/armor_rework/original_turn_12.png": "references/legacy/c01_rear.png",
+    "test_output/equipment_refinement/preview/armor_01_original_front.png": "references/legacy/c02_front.png",
+    "test_output/equipment_refinement/preview/armor_01_original_side.png": "references/legacy/c02_side.png",
+    "test_output/equipment_refinement/preview/armor_01_original_rear.png": "references/legacy/c02_rear.png",
+    "test_output/equipment_refinement/preview/armor_02_original_front.png": "references/legacy/c03_front.png",
+    "test_output/equipment_refinement/preview/armor_02_original_side.png": "references/legacy/c03_side.png",
+    "test_output/equipment_refinement/preview/armor_02_original_rear.png": "references/legacy/c03_rear.png",
+    "test_output/equipment_refinement/preview/armor_03_original_front.png": "references/legacy/c04_front.png",
+    "test_output/equipment_refinement/preview/armor_03_original_side.png": "references/legacy/c04_side.png",
+    "test_output/equipment_refinement/preview/armor_03_original_rear.png": "references/legacy/c04_rear.png",
+    "test_output/equipment_refinement/preview/armor_04_original_front.png": "references/legacy/c05_front.png",
+    "test_output/equipment_refinement/preview/armor_04_original_side.png": "references/legacy/c05_side.png",
+    "test_output/equipment_refinement/preview/armor_04_original_rear.png": "references/legacy/c05_rear.png",
+    "test_output/equipment_refinement/preview/armor_05_original_front.png": "references/legacy/c06_front.png",
+    "test_output/equipment_refinement/preview/armor_05_original_side.png": "references/legacy/c06_side.png",
+    "test_output/equipment_refinement/preview/armor_05_original_rear.png": "references/legacy/c06_rear.png",
+    "test_output/equipment_refinement/preview/armor_06_original_front.png": "references/legacy/c07_front.png",
+    "test_output/equipment_refinement/preview/armor_06_original_side.png": "references/legacy/c07_side.png",
+    "test_output/equipment_refinement/preview/armor_06_original_rear.png": "references/legacy/c07_rear.png",
+    "test_output/equipment_refinement/preview/armor_07_original_front.png": "references/legacy/c08_front.png",
+    "test_output/equipment_refinement/preview/armor_07_original_side.png": "references/legacy/c08_side.png",
+    "test_output/equipment_refinement/preview/armor_07_original_rear.png": "references/legacy/c08_rear.png",
+    "test_output/equipment_refinement/preview/armor_08_original_front.png": "references/legacy/c09_front.png",
+    "test_output/equipment_refinement/preview/armor_08_original_side.png": "references/legacy/c09_side.png",
+    "test_output/equipment_refinement/preview/armor_08_original_rear.png": "references/legacy/c09_rear.png",
+    "test_output/equipment_refinement/preview/armor_09_original_front.png": "references/legacy/c10_front.png",
+    "test_output/equipment_refinement/preview/armor_09_original_side.png": "references/legacy/c10_side.png",
+    "test_output/equipment_refinement/preview/armor_09_original_rear.png": "references/legacy/c10_rear.png"
+  }
+}

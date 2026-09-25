@@ -1,0 +1,75 @@
+{
+  "date": "2026-09-25",
+  "scope": {
+    "armor_designs": 21,
+    "backpack_designs": 25,
+    "selected_images": 88
+  },
+  "artifact_consistency": {
+    "result": "PASS",
+    "expected_designs": 46,
+    "mapped_designs": 46,
+    "expected_selected_images": 88,
+    "manifest_selected_images": 88,
+    "missing_pngs": [],
+    "missing_manifest_entries": [],
+    "error_count": 0,
+    "errors": [],
+    "limits": "Artifact consistency only; visual review is recorded by humans/agents. No runtime test, asset integration or legal clearance."
+  },
+  "browser": {
+    "status": "PASS",
+    "items": 46,
+    "armor": 21,
+    "backpack": 25,
+    "desktop_views": 88,
+    "mobile_views": 88,
+    "reference_images": 218,
+    "pending_placeholders": 0,
+    "local_links": 139,
+    "desktop": "1440x1100",
+    "mobile": "390x844",
+    "horizontal_overflow": false,
+    "browser_errors": [],
+    "post_browser_change": "Only prompt-file newline normalization and associated hashes changed; gallery UI and images are unchanged."
+  },
+  "visual_review": {
+    "result": "PASS_WITH_MODELING_LIMITS",
+    "selected_images_reviewed": 88,
+    "gallery_screenshots_reviewed": [
+      "desktop_1440x1100",
+      "mobile_390x844_top",
+      "mobile_390x844_comparison"
+    ],
+    "notes": [
+      "每張選用圖均有實際目視紀錄；使用者最終選稿仍待確認。",
+      "三視和拆解是建模參考，少量遮擋、透視、文字及接縫差異需在3D階段統一。"
+    ]
+  },
+  "repository_harness": {
+    "result": "FAIL",
+    "command": "python .harness/verify.py",
+    "preexisting_generated_snapshot_drift_count": 13,
+    "note": "既有 AGENTS/CLAUDE/.claude/.harness 生成快照漂移；這些檔案不在本次修改範圍。"
+  },
+  "runtime_integration": {
+    "result": "NOT RUN",
+    "reason": "本輪未改遊戲程式，也未交付模型、UV、貼圖或骨架。"
+  },
+  "commands": [
+    "python docs/art/original_armors_v1/tools/validate_delivery.py",
+    "node test_output/armor_fusion_reset/check_gallery.mjs --file docs/art/original_armors_v1/index.html --port 19526"
+  ],
+  "portability": {
+    "python_minimum": "3.9",
+    "requires": "git lfs pull",
+    "prompt_line_endings": "LF and one trailing newline; full prompt text preserved",
+    "game_source_hash_normalization": "LF",
+    "notes": "瀏覽器檢查使用本輪本機QA腳本；正式交付的Python驗證器不依賴scratch。"
+  },
+  "validated_files_sha256": {
+    "manifest.json": "874de282ebd57e3e615bdabc4b8acefedadab2ec4eb3ec99c92efc3bf2915628",
+    "index.html": "1065cffbf7de847518cb43d04e6b95b166e56571a69baf815011779d8f91237b",
+    "runtime_mapping.json": "fa08084821a3786505d479252dae250bdaf142206edfe895a7551c939d3da7d6"
+  }
+}

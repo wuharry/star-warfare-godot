@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "design_id": "C-21",
+  "runtime_id": null,
+  "working_name_zh": "繫錨",
+  "working_name_en": "ANCHORLINE",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 20,
+    "legacy_set_name": "Wrath",
+    "purpose": "指定未來外觀替换目標；能力、購買、升級和存檔 ID 本輪不變。"
+  },
+  "lore": "重物拖帶與單體牽制裝甲。短雙弧眉框和銀色疊肩保留辨識度，牽引裝置的受力路徑須另作工程設計。",
+  "role": "單體牽制",
+  "palette": [
+    {
+      "family": "鋼藍",
+      "hex": "#4C6D90",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "銀",
+      "hex": "#C4CFD8",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "深藍黑",
+      "hex": "#233446",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "金",
+      "hex": "#CDA94B",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "紅玻璃",
+      "hex": "#9D414C",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    }
+  ],
+  "visual_identity": {
+    "status": "prompt_target_with_actual_reviews_below",
+    "proportion_target": "約6～6.5個頭盔高的厚實人體；屬 brief 目標，未作像素量測。",
+    "head": "鋼藍圓冠、短雙弧眉護框、中央金菱形與連續紅煙玻璃；Yoroi 頰後層片",
+    "torso": "鋼藍胸板、錯位銀加固帶與小金菱形",
+    "shoulders": "各三片短銀色疊肩坐在藍肩殼上",
+    "arms": "正常五指手套、布衣肘窩與分件護臂。原版保留線索：鋼藍長護臂帶尖肘和紅色小圓盤，白銀線條描邊。",
+    "legs": "人的髖膝踝位置、軟膝後和正常軍靴；尖片按融合 brief 收短。原版保留線索：鋼藍厚腿甲，膝前金色菱形框，長脛甲有黑色小孔，黑色腳踝分層。",
+    "pack": "背包為獨立装备。三視製作可示範搭配 B-21，不是原遊戲固定套裝或技能關聯；以 B 款獨立設計稿為準。",
+    "concept_prompt": "prompts/c21_concept.txt",
+    "full_fusion_brief_en": "Preserve Wrath's steel-blue and silver armor, dark curved double brow horns, central gold diamond fitting, narrow red visor, layered silver shoulders and small gold knee frames. Fuse YOROI KABUTO's rounded human helmet dome, side cheek and nape lamellae, raised forehead ornament roots, and stacked shoulder structure. Transform Wrath's huge looping horns into two short curved thick brow rails growing from the gold central diamond; silhouette must still show the pair, each under a quarter helmet height. Use one narrow continuous red-smoked glass visor with simple closed blue/silver jaw, no oni face, teeth, eyes or beard. Replace original long shoulder leaves with three short silver overlapping plates seated on blue shoulder caps; keep a small round outer-arm connector. Steel-blue chest has two offset silver reinforcing bands and one small gold diamond, flexible black waist, no samurai cloth skirt, no katana. Normal human gloves, tapered shins and armored boots. Recompose panel layout and avoid copying Kabuto ornament outline or red/gold coating.",
+    "actual_reviews": {
+      "concept": "鋼藍銀甲、金菱與紅色玻璃、弧形雙角及金框膝甲保留；YOROI/KABUTO頰後層片及肩疊甲清楚。人體軟頸關節完整；額角仍超出brief的四分之一盔高目標，後續可收短。",
+      "construction": "已目視：頭盔拆出雙弧冠與金菱外殼、單片紅窗、軟襯、封閉藍銀頰顎和後頸層片；肩部三層銀片與藍底、獨立吊架、織物上臂之關係清楚。B-21 保留橘紅中殼與四個红金圓筒，分離金屬框、襯墊及雙肩帶，另有側面穿戴淨空圖。角色配色未污染獨立背包。文字 Fuel canister 屬生成示意標籤，未確認遊戲功能；側視兩個 Lower quick-release 標籤重複，建模需以掛架位置判讀。零件數與接口仍是概念參考，沒有精準工程尺寸。",
+      "turnaround": "已目視：正面、穿戴者左側與背面近似同高同地平線，鋼藍銀甲、雙弧冠、金菱與窄紅窗及肩部疊甲延续概念。B-21 保留橘紅中殼與上二下二四個紅金圓筒，側面可見独立背板與束帶，未染成裝甲藍色。人體頸、肘、腰、膝軟衣清楚。額冠仍採現有概念的較高雙角；疊片細節與背包遮住的背甲需後續模型統一，不屬精準工程三視。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "本輪未指定新HP／盾；現有 runtime 不變，不由外觀、Halo 或舊來源技能文字推算。",
+    "per_part": {
+      "hp": null,
+      "shield": null
+    },
+    "four_piece_total": {
+      "hp": null,
+      "shield": null
+    },
+    "movement_modifier": null,
+    "damage_modifier": null,
+    "unlock": "待玩法驗證後決定",
+    "purchase_currency": null
+  },
+  "proposed_abilities": [
+    {
+      "id": "c21_module",
+      "name": "短索繫錨",
+      "kind": "四件套模組提案",
+      "implemented": false,
+      "status": "proposal_only",
+      "trigger": "完整四件、存活，主動命中10公尺內可牽制的普通敵人",
+      "effect": "維持2秒短索，限制目標離穿戴者超過命中當下距離加2公尺，移速降低20%；18秒冷卻",
+      "limits": "不把目標拉穿牆、不影響隊友；超出12公尺、遮擋或死亡即断索；頭目免位移限制但可顯示命中；不實作布娃娃拖拽",
+      "stop": "死亡、卸下任何一件或離開關卡即停止；未結算承傷須按能力規格結清，不以卸裝取消代價。",
+      "integration_note": "新玩法，尚未接入runtime、多人同步或平衡；需先驗證觸發、取消、重複事件與邊界。",
+      "equipment_dependency": "完整C裝甲四件；B背包可獨立混搭，不繼承此能力。",
+      "visual": "技能顯示與收納裝置需後續另行設計，現有概念圖不代表機制已完成。"
+    }
+  ],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/c21_concept.png",
+    "turnaround": "images/c21_turnaround.png",
+    "construction": "images/c21_construction.png"
+  },
+  "modeling_authority": "本輪概念圖及逐張目視紀錄定義採用外觀；三視與拆解為建模參考。少量透視、遮擋或跨視細節須在模型統一，不可當精確尺寸、UV或已完工資產。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "concept": {
+        "design_id": "C-21",
+        "kind": "concept",
+        "path": "images/c21_concept.png",
+        "prompt": "prompts/c21_concept.txt",
+        "reference_images": [
+          "references/legacy/c21_front.png",
+          "references/halo/c21_yoroi_front.jpg",
+          "references/halo/c21_yoroi_angles.jpg"
+        ],
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f32e37ef-5dc3-4e36-8de9-3030bf8019ec.png",
+        "date": "2026-09-25",
+        "postprocessing": "none",
+        "visual_review": "鋼藍銀甲、金菱與紅色玻璃、弧形雙角及金框膝甲保留；YOROI/KABUTO頰後層片及肩疊甲清楚。人體軟頸關節完整；額角仍超出brief的四分之一盔高目標，後續可收短。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c21_concept.json"
+      },
+      "construction": {
+        "design_id": "C-21",
+        "kind": "construction",
+        "path": "images/c21_construction.png",
+        "prompt": "prompts/c21_construction.txt",
+        "reference_images": [
+          "images/c21_concept.png",
+          "images/c21_turnaround.png",
+          "images/b21_design_sheet.png"
+        ],
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-ed54accc-34e6-467c-b77c-9c6fc25a8243.png",
+        "date": "2026-09-25",
+        "postprocessing": "none",
+        "visual_review": "已目視：頭盔拆出雙弧冠與金菱外殼、單片紅窗、軟襯、封閉藍銀頰顎和後頸層片；肩部三層銀片與藍底、獨立吊架、織物上臂之關係清楚。B-21 保留橘紅中殼與四個红金圓筒，分離金屬框、襯墊及雙肩帶，另有側面穿戴淨空圖。角色配色未污染獨立背包。文字 Fuel canister 屬生成示意標籤，未確認遊戲功能；側視兩個 Lower quick-release 標籤重複，建模需以掛架位置判讀。零件數與接口仍是概念參考，沒有精準工程尺寸。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c21_construction.json"
+      },
+      "turnaround": {
+        "design_id": "C-21",
+        "kind": "turnaround",
+        "path": "images/c21_turnaround.png",
+        "prompt": "prompts/c21_turnaround.txt",
+        "reference_images": [
+          "images/c21_concept.png",
+          "images/b21_design_sheet.png"
+        ],
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-2b6d5b65-a3c1-4e28-b1ec-c2f42797aeb7.png",
+        "date": "2026-09-25",
+        "postprocessing": "none",
+        "visual_review": "已目視：正面、穿戴者左側與背面近似同高同地平線，鋼藍銀甲、雙弧冠、金菱與窄紅窗及肩部疊甲延续概念。B-21 保留橘紅中殼與上二下二四個紅金圓筒，側面可見独立背板與束帶，未染成裝甲藍色。人體頸、肘、腰、膝軟衣清楚。額冠仍採現有概念的較高雙角；疊片細節與背包遮住的背甲需後續模型統一，不屬精準工程三視。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c21_turnaround.json"
+      }
+    },
+    "unselected_records": []
+  },
+  "equipment_type": "armor",
+  "proposal_only": true,
+  "source_references": {
+    "legacy": {
+      "name": "Wrath",
+      "runtime_id": 20,
+      "kind": "restored_original_game_model_capture",
+      "images": [
+        "references/legacy/c21_front.png",
+        "references/legacy/c21_side.png",
+        "references/legacy/c21_rear.png"
+      ],
+      "audit": "sources/legacy_armor_later.json"
+    },
+    "halo": {
+      "name": "YOROI / KABUTO",
+      "game": "Halo Infinite",
+      "master_chief": false,
+      "images": [
+        {
+          "local_path": "references/halo/c21_yoroi_front.jpg",
+          "source_page_url": "https://www.halopedia.org/Yoroi",
+          "image_url": "https://halo.wiki.gallery/images/e/ee/HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00001.jpg",
+          "caption": "HINF - Yoroi armor core - Kyle Hefley - 00001.jpg",
+          "sha256": "cfb3891ba764e63605648ce5889cf916c052fb84250de920177883f0f3e1a081",
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        },
+        {
+          "local_path": "references/halo/c21_yoroi_angles.jpg",
+          "source_page_url": "https://www.halopedia.org/Yoroi",
+          "image_url": "https://halo.wiki.gallery/images/9/94/HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00003.jpg",
+          "caption": "HINF - Yoroi armor core - Kyle Hefley - 00003.jpg",
+          "sha256": "f01fa7cbf08216d4ea081b7e2b17094dd1c992eb4cc34f577290f4439f13db22",
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "observed": {
+        "helmet": "Kabuto圓冠、成對金色上彎額飾及中央小嵌件，分節頰後甲。",
+        "chest": "三層胸邊、分層肩甲與有軟內襯的人體。",
+        "back": "雙直立後肩殼與分節下背，後腰裙片分開。",
+        "back_evidence": "production_model_front_back"
+      },
+      "role": "selected_design_donor"
+    }
+  },
+  "fusion_recipe": {
+    "retained": [
+      "鋼藍＋銀＋少量金，配窄紅眼窗",
+      "雙弧冠框與中央菱形識別",
+      "分層肩甲和小圓盤"
+    ],
+    "borrowed": {
+      "helmet": "Kabuto圓冠、成對金色上彎額飾及中央小嵌件，分節頰後甲。",
+      "chest": "三層胸邊、分層肩甲與有軟內襯的人體。",
+      "back": "雙直立後肩殼與分節下背，後腰裙片分開。",
+      "back_evidence": "production_model_front_back"
+    },
+    "optimized": "雙弧冠压低为可戴的額部環形護框，長肩翼縮為多層活動肩片；紅眼改為有厚度的窄玻璃面窗；削減像骨骼的銀管線，保留金菱形作少量識別。",
+    "optimization_common": "胸腰按人體分件、露出織物關節、短化易勾掛尖片；避免單眼機械臉與巨型四肢。"
+  }
+}

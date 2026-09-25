@@ -1,0 +1,1338 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-25",
+  "scope": "B-01–B-25 原背包 × Halo 非士官長具名設備／後背結構",
+  "status": "visually_audited_matches_ready_for_fusion",
+  "rules": [
+    "每個 B 編號只對應原遊戲獨立 bag ID，不從同序 C 裝甲推定來源。",
+    "Halo 獨立背包／噴射包與整合式背甲明確分開；整合式背甲只供形體和結構參考，新背包的拆卸與掛點要重新設計。",
+    "全部配對依已看過的原遊戲／官方製作圖，不使用士官長、未確認的Rakshasa玩家加背包改模或cosplay成品。",
+    "保留原SW背包少量辨識特色與配色；結合Halo可穿戴結構、合理維修面、簡明接縫再優化；不是貼上Halo商標。",
+    "原背包技能與原Halo機能不自動轉移；文內說明屬造型提案，沒有更動 runtime。"
+  ],
+  "source_notes": {
+    "rakshasa": "未找到足夠原遊戲背包後視；搜尋結果多為把Marine背包裝到Rakshasa的玩家改模，故不採。",
+    "hazmat_fan": "已檢視 HINF_Concept_FanVent.jpg，但它是肩部附件，故不誤當背包參考。",
+    "rookie": "採官方343指南的Halopedia鏡像頁面縮圖，為官方原模型，不是cosplay手作照。",
+    "odst_comms": "原MCC選單圖只有256px；只借筒匣護架與扣帶，不編造背面。"
+  },
+  "donors": {
+    "rookie": {
+      "name": "Rookie Field Pack / M/LBE hard case",
+      "game": "Halo 3: ODST",
+      "kind": "independent_backpack",
+      "key": "rookie_guide_page32",
+      "secondary_keys": [
+        "rookie_guide_page33",
+        "rookie_guide_page30"
+      ],
+      "observation": "官方指南獨立六視：中央長方硬殼，左右兩條狹長側艙，頂部雙扣與短提橋，中央淺橫槽，內側肩帶與下腰固定點清楚。",
+      "references": [
+        {
+          "key": "rookie_guide_page32",
+          "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+          "image_url": "https://halo.wiki.gallery/images/thumb/d/d5/H3ODST_Cosplay_Guide.pdf/page32-1200px-H3ODST_Cosplay_Guide.pdf.jpg",
+          "local_path": "references/halo/rookie_guide_page32.jpg",
+          "bytes": 103448,
+          "sha256": "c2820562213907f5f14a7d884c961f1275353fc1826aa60cb1a4c04a3ba3789c",
+          "pdf_page_one_based": 32,
+          "note": "Server-rendered page of official 343 Rookie cosplay guide, mirrored on Halopedia; original studio game-model reference.",
+          "width": 1200,
+          "height": 675,
+          "visually_inspected": true
+        },
+        {
+          "key": "rookie_guide_page33",
+          "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+          "image_url": "https://halo.wiki.gallery/images/thumb/d/d5/H3ODST_Cosplay_Guide.pdf/page33-1200px-H3ODST_Cosplay_Guide.pdf.jpg",
+          "local_path": "references/halo/rookie_guide_page33.jpg",
+          "bytes": 130724,
+          "sha256": "2764bd77c837c0345621c5b6906c8137022767a6f7690b995b4f6a52151b8bfe",
+          "pdf_page_one_based": 33,
+          "note": "Server-rendered page of official 343 Rookie cosplay guide, mirrored on Halopedia; original studio game-model reference.",
+          "width": 1200,
+          "height": 675,
+          "visually_inspected": true
+        },
+        {
+          "key": "rookie_guide_page30",
+          "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+          "image_url": "https://halo.wiki.gallery/images/thumb/d/d5/H3ODST_Cosplay_Guide.pdf/page30-1200px-H3ODST_Cosplay_Guide.pdf.jpg",
+          "local_path": "references/halo/rookie_guide_page30.jpg",
+          "bytes": 100420,
+          "sha256": "ef8ed96010fc4f339b73503917c57216432cdf2818f2daa1227aa455c2cd54a3",
+          "pdf_page_one_based": 30,
+          "note": "Server-rendered page of official 343 Rookie cosplay guide, mirrored on Halopedia; original studio game-model reference.",
+          "width": 1200,
+          "height": 675,
+          "visually_inspected": true
+        }
+      ],
+      "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+      "local_path": "references/halo/rookie_guide_page32.jpg",
+      "ai_generated": false
+    },
+    "series8": {
+      "name": "Series 8 jetpack",
+      "game": "Halo: Reach",
+      "kind": "independent_jetpack",
+      "key": "reach_series8",
+      "secondary_keys": [
+        "reach_series8_concept"
+      ],
+      "observation": "正後方為雙縱向長設備殼，左右上方擴出的短艙，中央上下兩個圓孔與短服務脊；原画補充穿戴深度、側向通風格柵及下方雙導軌。",
+      "references": [
+        {
+          "key": "reach_series8",
+          "source_page_url": "https://www.halopedia.org/File:HReach-Jetpack-Inactive.png",
+          "image_url": "https://www.halopedia.org/images/4/44/HReach-Jetpack-Inactive.png?b9b90",
+          "local_path": "references/halo/reach_series8.png",
+          "bytes": 426494,
+          "sha256": "45fc007a31754094153acfe8eea0a8ad5ab7ad81e9350e23852fa73b01fe09bf",
+          "width": 600,
+          "height": 700,
+          "visually_inspected": true
+        },
+        {
+          "key": "reach_series8_concept",
+          "source_page_url": "https://www.halopedia.org/File:HR_UNSCJetPack_Concept_1.jpg",
+          "image_url": "https://www.halopedia.org/images/4/46/HR_UNSCJetPack_Concept_1.jpg?b06ec",
+          "local_path": "references/halo/reach_series8_concept.jpg",
+          "bytes": 352496,
+          "sha256": "c5f78151733d163dcb1b093681b31bd516bf00d065b49d29c8a906a701096f9f",
+          "width": 1500,
+          "height": 809,
+          "visually_inspected": true
+        }
+      ],
+      "source_page_url": "https://www.halopedia.org/File:HReach-Jetpack-Inactive.png",
+      "local_path": "references/halo/reach_series8.png",
+      "ai_generated": false
+    },
+    "series12": {
+      "name": "Series 12 Single Operator Lift Apparatus",
+      "game": "Halo 4",
+      "kind": "independent_jetpack",
+      "key": "halo4_series12",
+      "secondary_keys": [],
+      "observation": "上半部圓潤寬殼，中間凹入服務面，兩侧小格柵；下半部双外張短長支臂，中間大多邊形開口及低位掛架。",
+      "references": [
+        {
+          "key": "halo4_series12",
+          "source_page_url": "https://www.halopedia.org/File:H4-S12SOLA-Jetpack.png",
+          "image_url": "https://www.halopedia.org/images/9/96/H4-S12SOLA-Jetpack.png?1c692",
+          "local_path": "references/halo/halo4_series12.png",
+          "bytes": 1458434,
+          "sha256": "aa2825d7315153cb510b37871fb080bf127a7729abc12516b379bee4d0cf1d72",
+          "width": 1080,
+          "height": 1320,
+          "visually_inspected": true
+        }
+      ],
+      "source_page_url": "https://www.halopedia.org/File:H4-S12SOLA-Jetpack.png",
+      "local_path": "references/halo/halo4_series12.png",
+      "ai_generated": false
+    },
+    "hazmat": {
+      "name": "OSTEO / Hazmat rear life-support canister frame",
+      "game": "Halo Infinite",
+      "kind": "integrated_suit_back_structure",
+      "key": "hazmat_concept",
+      "secondary_keys": [],
+      "observation": "官方正後視原画：一根高而圓的背部瓶體置於U形護框，中段固定件，下端金屬橫接頭連向兩側包覆軟管；不是已確認可獨立裝備的背包。",
+      "references": [
+        {
+          "key": "hazmat_concept",
+          "source_page_url": "https://www.halopedia.org/File:HINF_Concept_OSTEO1.jpg",
+          "image_url": "https://www.halopedia.org/images/2/22/HINF_Concept_OSTEO1.jpg?b9706",
+          "local_path": "references/halo/hazmat_concept.jpg",
+          "bytes": 919149,
+          "sha256": "ccc8a9b36b7485a6e7f700809d3196082faa154cedc32936c388caedbcb1e48c",
+          "width": 3609,
+          "height": 2573,
+          "visually_inspected": true
+        }
+      ],
+      "source_page_url": "https://www.halopedia.org/File:HINF_Concept_OSTEO1.jpg",
+      "local_path": "references/halo/hazmat_concept.jpg",
+      "ai_generated": false
+    },
+    "yoroi": {
+      "name": "Yoroi rear housings and segmented back armor",
+      "game": "Halo Infinite",
+      "kind": "integrated_armor_back_structure",
+      "key": "yoroi_hefley2",
+      "secondary_keys": [
+        "yoroi_tworek2"
+      ],
+      "observation": "原製作模型後視：上背三根圓頂短長殼集中呈束，外側兩根較高；下方圓形脊部接點，腰部留軟衣，臀後V層片另成段。這是背甲結構，不稱Halo獨立背包。",
+      "references": [
+        {
+          "key": "yoroi_hefley2",
+          "source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg",
+          "image_url": "https://www.halopedia.org/images/0/01/HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg?ad403",
+          "local_path": "references/halo/yoroi_hefley2.jpg",
+          "bytes": 315611,
+          "sha256": "d3437e6b1897246e1aa96878f6d6fa075f59da621c28928bb7b99f0adb4b464a",
+          "width": 1920,
+          "height": 1167,
+          "visually_inspected": true
+        },
+        {
+          "key": "yoroi_tworek2",
+          "source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Lyaksandr_Prelle-Tworek_-_00002.jpg",
+          "image_url": "https://www.halopedia.org/images/7/7d/HINF_-_Yoroi_armor_core_-_Lyaksandr_Prelle-Tworek_-_00002.jpg?b965c",
+          "local_path": "references/halo/yoroi_tworek2.jpg",
+          "bytes": 678293,
+          "sha256": "3abdea5e85fb7742d7553d5f31bd489210b12748f818ad38b598d7a717c339e9",
+          "width": 1828,
+          "height": 1922,
+          "visually_inspected": true
+        }
+      ],
+      "source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg",
+      "local_path": "references/halo/yoroi_hefley2.jpg",
+      "ai_generated": false
+    },
+    "hunter": {
+      "name": "HUNTER-class Mjolnir rear assembly / Jameson Locke",
+      "game": "Halo 5: Guardians",
+      "kind": "integrated_armor_back_structure",
+      "key": "hunter_turnaround",
+      "secondary_keys": [],
+      "observation": "官方模型後視：兩根向下收尖的後肩長殼，夾住窄中央服務脊；橘色小接點和細管／鎖扣，側殼未延伸到下腰，腰甲另行分離。",
+      "references": [
+        {
+          "key": "hunter_turnaround",
+          "source_page_url": "https://www.halopedia.org/File:Halo_5_-_Locke_Hunter_renders.jpg",
+          "image_url": "https://www.halopedia.org/images/4/49/Halo_5_-_Locke_Hunter_renders.jpg?9f2c7",
+          "local_path": "references/halo/hunter_turnaround.jpg",
+          "bytes": 336362,
+          "sha256": "f15cdf889cd95ecb6e2f8af3d555c9f4731570e4102e7115e6c001a8d45060e1",
+          "width": 1920,
+          "height": 960,
+          "visually_inspected": true
+        }
+      ],
+      "source_page_url": "https://www.halopedia.org/File:Halo_5_-_Locke_Hunter_renders.jpg",
+      "local_path": "references/halo/hunter_turnaround.jpg",
+      "ai_generated": false
+    },
+    "odst_comms": {
+      "name": "ODST/COMM Communications backpack",
+      "game": "Halo 3 in Halo: The Master Chief Collection",
+      "kind": "independent_backpack",
+      "key": "odst_comms",
+      "secondary_keys": [],
+      "observation": "原遊戲256px選單圖：上方雙扣、橘棕矩形護架，中間並列三根圓筒，左緣小狀態格，下方掛袋。僅有小圖，背面細節與天線未確認。",
+      "references": [
+        {
+          "key": "odst_comms",
+          "source_page_url": "https://www.halopedia.org/File:HTMCC_H3_Communications_Backpack_Icon.png",
+          "image_url": "https://www.halopedia.org/images/9/9f/HTMCC_H3_Communications_Backpack_Icon.png?a2800",
+          "local_path": "references/halo/odst_comms.png",
+          "bytes": 75762,
+          "sha256": "fc0be2d82241834fa6841cfeda3971eaea08955a959100064d90b21f69b5ade9",
+          "width": 256,
+          "height": 256,
+          "visually_inspected": true
+        }
+      ],
+      "source_page_url": "https://www.halopedia.org/File:HTMCC_H3_Communications_Backpack_Icon.png",
+      "local_path": "references/halo/odst_comms.png",
+      "ai_generated": false
+    },
+    "oceanic": {
+      "name": "OCEANIC-class Mjolnir rear carrier",
+      "game": "Halo 4",
+      "kind": "integrated_armor_back_structure",
+      "key": "c13_oceanic_hipoly",
+      "secondary_keys": [],
+      "observation": "原製作高模後視：兩條平行長後肩殼，中間服務蓋，下緣共用圓弧支架；上端短護鰭，並有獨立腰背軟衣。高模無最終配色。",
+      "references": [
+        {
+          "key": "c13_oceanic_hipoly",
+          "source_page_url": "https://www.halopedia.org/File:H4_Oceanic_HiPoly_Render_2.jpg",
+          "image_url": "https://www.halopedia.org/images/6/64/H4_Oceanic_HiPoly_Render_2.jpg?49d9c",
+          "local_path": "references/halo/c13_oceanic_hipoly.jpg",
+          "bytes": 403347,
+          "sha256": "25a843dacaa80ab7ad676c08fa984eeb18fc2cc8450a64f9274bd4b503d8a7f2",
+          "visually_inspected": true,
+          "width": 1100,
+          "height": 825
+        }
+      ],
+      "source_page_url": "https://www.halopedia.org/File:H4_Oceanic_HiPoly_Render_2.jpg",
+      "local_path": "references/halo/c13_oceanic_hipoly.jpg",
+      "ai_generated": false
+    },
+    "recruit": {
+      "name": "RECRUIT-class Mjolnir rear assembly",
+      "game": "Halo 4",
+      "kind": "integrated_armor_back_structure",
+      "key": "c05_recruit_halo4_model",
+      "secondary_keys": [],
+      "observation": "原模型三角視圖中的後視：兩條靠脊側的長背殼，中間一串小服務面與青色短窗，上肩高而下端縮短，腰甲分離。",
+      "references": [
+        {
+          "key": "c05_recruit_halo4_model",
+          "source_page_url": "https://www.halopedia.org/File:H4_Recruit_3d_model.jpg",
+          "image_url": "https://halo.wiki.gallery/images/0/0a/H4_Recruit_3d_model.jpg",
+          "local_path": "references/halo/c05_recruit_halo4_model.jpg",
+          "sha256": "b0089c49914eaeb01706329763a7a6a751732fa50a3c1fb362b2d16b6a6fdc55",
+          "width": 960,
+          "height": 540,
+          "visually_inspected": true
+        }
+      ],
+      "source_page_url": "https://www.halopedia.org/File:H4_Recruit_3d_model.jpg",
+      "local_path": "references/halo/c05_recruit_halo4_model.jpg",
+      "ai_generated": false
+    },
+    "warmaster": {
+      "name": "WAR MASTER-class Mjolnir rear frame",
+      "game": "Halo 4",
+      "kind": "integrated_armor_back_structure",
+      "key": "c07_warmaster_halo4_concept",
+      "secondary_keys": [],
+      "observation": "官方三視原画後視：一對斜縱向圓楔形外殼包住中央圓形接點，下方曲折護框，脊部軟衣與腰後另分開。",
+      "references": [
+        {
+          "key": "c07_warmaster_halo4_concept",
+          "source_page_url": "https://www.halopedia.org/File:H4_War_Master_Concept_Art.jpg",
+          "image_url": "https://halo.wiki.gallery/images/f/fe/H4_War_Master_Concept_Art.jpg",
+          "local_path": "references/halo/c07_warmaster_halo4_concept.jpg",
+          "sha256": "101a851427e8a8d709599dcc4a144b0808453704012421231a326abb16ab9cd1",
+          "width": 1600,
+          "height": 923,
+          "visually_inspected": true
+        }
+      ],
+      "source_page_url": "https://www.halopedia.org/File:H4_War_Master_Concept_Art.jpg",
+      "local_path": "references/halo/c07_warmaster_halo4_concept.jpg",
+      "ai_generated": false
+    },
+    "helioskrill": {
+      "name": "HELIOSKRILL-class Mjolnir rear plates",
+      "game": "Halo 5: Guardians",
+      "kind": "integrated_armor_back_structure",
+      "key": "c09_helioskrill_concept",
+      "secondary_keys": [],
+      "observation": "原製作三視後視：中央尖長盾形殼，外側長護框，中下背層疊V板，腰後U形短板獨立。",
+      "references": [
+        {
+          "key": "c09_helioskrill_concept",
+          "source_page_url": "https://www.halopedia.org/File:H5G-Helioskrill_concept.jpg",
+          "image_url": "https://www.halopedia.org/images/1/1e/H5G-Helioskrill_concept.jpg?65b07",
+          "local_path": "references/halo/c09_helioskrill_concept.jpg",
+          "bytes": 331389,
+          "sha256": "9e263705ad081a2fcdddd6b69d64ffc08d9c6f6745d634446d86f5742666e1d0",
+          "visually_inspected": true,
+          "width": 1920,
+          "height": 938
+        }
+      ],
+      "source_page_url": "https://www.halopedia.org/File:H5G-Helioskrill_concept.jpg",
+      "local_path": "references/halo/c09_helioskrill_concept.jpg",
+      "ai_generated": false
+    },
+    "valkyrie": {
+      "name": "VALKYRIE-class Mjolnir rear housings",
+      "game": "Halo 5: Guardians",
+      "kind": "integrated_armor_back_structure",
+      "key": "c12_valkyrie_concept",
+      "secondary_keys": [],
+      "observation": "原製作分解三視：後肩成對高短殼向外展，中間深色水滴形小蓋，下端斜收，背腰分離。",
+      "references": [
+        {
+          "key": "c12_valkyrie_concept",
+          "source_page_url": "https://www.halopedia.org/File:H5GC-Valkyrie.jpg",
+          "image_url": "https://www.halopedia.org/images/0/0a/H5GC-Valkyrie.jpg?c2b0a",
+          "local_path": "references/halo/c12_valkyrie_concept.jpg",
+          "bytes": 139983,
+          "sha256": "3a0726263de5e0e1b076bc6d534861ea6b01007caa701905681dca9f05b3ad55",
+          "visually_inspected": true,
+          "width": 1280,
+          "height": 627
+        }
+      ],
+      "source_page_url": "https://www.halopedia.org/File:H5GC-Valkyrie.jpg",
+      "local_path": "references/halo/c12_valkyrie_concept.jpg",
+      "ai_generated": false
+    }
+  },
+  "matches": [
+    {
+      "design_id": "B-01",
+      "legacy_bag_id": 0,
+      "donor_id": "rookie",
+      "visual_family": "方形硬殼",
+      "similarity_reason": "原VB-03-II也是上寬下窄、左右側艙包中央蓋；Rookie 的側條、肩扣和腰固定能補上可穿戴結構。",
+      "integration_en": "Keep VB-03-II's silver-gray three-lobed shell, dark burgundy vertical recess and small square lower window. Fuse the Rookie field pack's two armored side rails, top carry bridge, restrained buckles and waist stabilization into that silhouette. Rebuild the center hatch and seams rather than copying the ODST pack. Make one compact independent backpack with a padded inward face and clear mounting points.",
+      "halo_name": "Rookie Field Pack / M/LBE hard case",
+      "halo_game": "Halo 3: ODST",
+      "donor_kind": "independent_backpack",
+      "observed_back_cue": "官方指南獨立六視：中央長方硬殼，左右兩條狹長側艙，頂部雙扣與短提橋，中央淺橫槽，內側肩帶與下腰固定點清楚。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "VB-03-II",
+      "legacy_reference_image": "references/legacy/bag_00_original_threequarter.png",
+      "halo_source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+      "halo_reference_image": "references/halo/rookie_guide_page32.jpg",
+      "halo_reference_sha256": "c2820562213907f5f14a7d884c961f1275353fc1826aa60cb1a4c04a3ba3789c",
+      "references": [
+        {
+          "key": "rookie_guide_page32",
+          "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+          "image_url": "https://halo.wiki.gallery/images/thumb/d/d5/H3ODST_Cosplay_Guide.pdf/page32-1200px-H3ODST_Cosplay_Guide.pdf.jpg",
+          "local_path": "references/halo/rookie_guide_page32.jpg",
+          "bytes": 103448,
+          "sha256": "c2820562213907f5f14a7d884c961f1275353fc1826aa60cb1a4c04a3ba3789c",
+          "pdf_page_one_based": 32,
+          "note": "Server-rendered page of official 343 Rookie cosplay guide, mirrored on Halopedia; original studio game-model reference.",
+          "width": 1200,
+          "height": 675,
+          "visually_inspected": true
+        },
+        {
+          "key": "rookie_guide_page33",
+          "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+          "image_url": "https://halo.wiki.gallery/images/thumb/d/d5/H3ODST_Cosplay_Guide.pdf/page33-1200px-H3ODST_Cosplay_Guide.pdf.jpg",
+          "local_path": "references/halo/rookie_guide_page33.jpg",
+          "bytes": 130724,
+          "sha256": "2764bd77c837c0345621c5b6906c8137022767a6f7690b995b4f6a52151b8bfe",
+          "pdf_page_one_based": 33,
+          "note": "Server-rendered page of official 343 Rookie cosplay guide, mirrored on Halopedia; original studio game-model reference.",
+          "width": 1200,
+          "height": 675,
+          "visually_inspected": true
+        },
+        {
+          "key": "rookie_guide_page30",
+          "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+          "image_url": "https://halo.wiki.gallery/images/thumb/d/d5/H3ODST_Cosplay_Guide.pdf/page30-1200px-H3ODST_Cosplay_Guide.pdf.jpg",
+          "local_path": "references/halo/rookie_guide_page30.jpg",
+          "bytes": 100420,
+          "sha256": "ef8ed96010fc4f339b73503917c57216432cdf2818f2daa1227aa455c2cd54a3",
+          "pdf_page_one_based": 30,
+          "note": "Server-rendered page of official 343 Rookie cosplay guide, mirrored on Halopedia; original studio game-model reference.",
+          "width": 1200,
+          "height": 675,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-02",
+      "legacy_bag_id": 1,
+      "donor_id": "rookie",
+      "visual_family": "方形硬殼",
+      "similarity_reason": "VB-03-III的雙高肩與中央三槽，對得上Rookie兩條長側殼與中央分段面；轉成較修長的補給包。",
+      "integration_en": "Preserve VB-03-III's pale icy-blue tapered center, paired raised shoulders, three shallow horizontal marks and thin yellow-gold paths. Borrow the Rookie pack's long side access rails, practical lid closure and load-transfer straps. Keep the pack slender with a narrower lower end. Redesign the panel boundaries and attach points as one original military science-fiction field pack.",
+      "halo_name": "Rookie Field Pack / M/LBE hard case",
+      "halo_game": "Halo 3: ODST",
+      "donor_kind": "independent_backpack",
+      "observed_back_cue": "官方指南獨立六視：中央長方硬殼，左右兩條狹長側艙，頂部雙扣與短提橋，中央淺橫槽，內側肩帶與下腰固定點清楚。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "VB-03-III",
+      "legacy_reference_image": "references/legacy/bag_01_original_threequarter.png",
+      "halo_source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+      "halo_reference_image": "references/halo/rookie_guide_page32.jpg",
+      "halo_reference_sha256": "c2820562213907f5f14a7d884c961f1275353fc1826aa60cb1a4c04a3ba3789c",
+      "references": [
+        {
+          "key": "rookie_guide_page32",
+          "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+          "image_url": "https://halo.wiki.gallery/images/thumb/d/d5/H3ODST_Cosplay_Guide.pdf/page32-1200px-H3ODST_Cosplay_Guide.pdf.jpg",
+          "local_path": "references/halo/rookie_guide_page32.jpg",
+          "bytes": 103448,
+          "sha256": "c2820562213907f5f14a7d884c961f1275353fc1826aa60cb1a4c04a3ba3789c",
+          "pdf_page_one_based": 32,
+          "note": "Server-rendered page of official 343 Rookie cosplay guide, mirrored on Halopedia; original studio game-model reference.",
+          "width": 1200,
+          "height": 675,
+          "visually_inspected": true
+        },
+        {
+          "key": "rookie_guide_page33",
+          "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+          "image_url": "https://halo.wiki.gallery/images/thumb/d/d5/H3ODST_Cosplay_Guide.pdf/page33-1200px-H3ODST_Cosplay_Guide.pdf.jpg",
+          "local_path": "references/halo/rookie_guide_page33.jpg",
+          "bytes": 130724,
+          "sha256": "2764bd77c837c0345621c5b6906c8137022767a6f7690b995b4f6a52151b8bfe",
+          "pdf_page_one_based": 33,
+          "note": "Server-rendered page of official 343 Rookie cosplay guide, mirrored on Halopedia; original studio game-model reference.",
+          "width": 1200,
+          "height": 675,
+          "visually_inspected": true
+        },
+        {
+          "key": "rookie_guide_page30",
+          "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+          "image_url": "https://halo.wiki.gallery/images/thumb/d/d5/H3ODST_Cosplay_Guide.pdf/page30-1200px-H3ODST_Cosplay_Guide.pdf.jpg",
+          "local_path": "references/halo/rookie_guide_page30.jpg",
+          "bytes": 100420,
+          "sha256": "ef8ed96010fc4f339b73503917c57216432cdf2818f2daa1227aa455c2cd54a3",
+          "pdf_page_one_based": 30,
+          "note": "Server-rendered page of official 343 Rookie cosplay guide, mirrored on Halopedia; original studio game-model reference.",
+          "width": 1200,
+          "height": 675,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-03",
+      "legacy_bag_id": 2,
+      "donor_id": "oceanic",
+      "visual_family": "U形護框",
+      "similarity_reason": "SP-04-IV 上方U形凹口、左右大嵌板和寬圓底，與Oceanic後肩雙長殼包中央服務蓋相近。",
+      "integration_en": "Retain SP-04-IV's pale-gray U-shaped open crown, deep blue-green side inserts and broad rounded lower case. Fuse Oceanic's two parallel rear-shoulder housings, recessed center service cover and shared lower curved brace. Convert that integrated armor arrangement into a detachable backpack with independent padded harness. Keep the open crown as a protected recess, not a neck opening.",
+      "halo_name": "OCEANIC-class Mjolnir rear carrier",
+      "halo_game": "Halo 4",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "原製作高模後視：兩條平行長後肩殼，中間服務蓋，下緣共用圓弧支架；上端短護鰭，並有獨立腰背軟衣。高模無最終配色。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "SP-04-IV",
+      "legacy_reference_image": "references/legacy/bag_02_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:H4_Oceanic_HiPoly_Render_2.jpg",
+      "halo_reference_image": "references/halo/c13_oceanic_hipoly.jpg",
+      "halo_reference_sha256": "25a843dacaa80ab7ad676c08fa984eeb18fc2cc8450a64f9274bd4b503d8a7f2",
+      "references": [
+        {
+          "key": "c13_oceanic_hipoly",
+          "source_page_url": "https://www.halopedia.org/File:H4_Oceanic_HiPoly_Render_2.jpg",
+          "image_url": "https://www.halopedia.org/images/6/64/H4_Oceanic_HiPoly_Render_2.jpg?49d9c",
+          "local_path": "references/halo/c13_oceanic_hipoly.jpg",
+          "bytes": 403347,
+          "sha256": "25a843dacaa80ab7ad676c08fa984eeb18fc2cc8450a64f9274bd4b503d8a7f2",
+          "visually_inspected": true,
+          "width": 1100,
+          "height": 825
+        }
+      ]
+    },
+    {
+      "design_id": "B-04",
+      "legacy_bag_id": 3,
+      "donor_id": "series8",
+      "visual_family": "成對推進艙",
+      "similarity_reason": "SP-11-V兩根高尖艙加中脊，與Series8雙縱向設備／推進構造最接近；優化成較短鈍可背負的結構。",
+      "integration_en": "Keep SP-11-V's two long royal-blue pods, silver stepped center spine and dark end caps. Fuse the Reach Series 8 jetpack's twin longitudinal equipment rails, protected vents and compact central mount. Blunt the original sharp tips into believable maintenance caps and nozzles. Preserve the split silhouette while keeping both pods inside a practical wearable width.",
+      "halo_name": "Series 8 jetpack",
+      "halo_game": "Halo: Reach",
+      "donor_kind": "independent_jetpack",
+      "observed_back_cue": "正後方為雙縱向長設備殼，左右上方擴出的短艙，中央上下兩個圓孔與短服務脊；原画補充穿戴深度、側向通風格柵及下方雙導軌。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "SP-11-V",
+      "legacy_reference_image": "references/legacy/bag_03_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:HReach-Jetpack-Inactive.png",
+      "halo_reference_image": "references/halo/reach_series8.png",
+      "halo_reference_sha256": "45fc007a31754094153acfe8eea0a8ad5ab7ad81e9350e23852fa73b01fe09bf",
+      "references": [
+        {
+          "key": "reach_series8",
+          "source_page_url": "https://www.halopedia.org/File:HReach-Jetpack-Inactive.png",
+          "image_url": "https://www.halopedia.org/images/4/44/HReach-Jetpack-Inactive.png?b9b90",
+          "local_path": "references/halo/reach_series8.png",
+          "bytes": 426494,
+          "sha256": "45fc007a31754094153acfe8eea0a8ad5ab7ad81e9350e23852fa73b01fe09bf",
+          "width": 600,
+          "height": 700,
+          "visually_inspected": true
+        },
+        {
+          "key": "reach_series8_concept",
+          "source_page_url": "https://www.halopedia.org/File:HR_UNSCJetPack_Concept_1.jpg",
+          "image_url": "https://www.halopedia.org/images/4/46/HR_UNSCJetPack_Concept_1.jpg?b06ec",
+          "local_path": "references/halo/reach_series8_concept.jpg",
+          "bytes": 352496,
+          "sha256": "c5f78151733d163dcb1b093681b31bd516bf00d065b49d29c8a906a701096f9f",
+          "width": 1500,
+          "height": 809,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-05",
+      "legacy_bag_id": 4,
+      "donor_id": "recruit",
+      "visual_family": "双縱向背殼",
+      "similarity_reason": "KP-101-X有兩個高肩灰殼夾三個藍槽，Recruit雙長背殼与中央小接點能維持同樣分區。",
+      "integration_en": "Preserve KP-101-X's broad gray shoulder-like cases, three small blue horizontal center windows and blue lower notch. Borrow Halo 4 Recruit's paired long rear shells, narrow central connector strip and chamfered access panels. Build a compact removable carrier around those three center windows, leaving a padded mounting surface behind. Use gray and blue rather than the orange donor coating.",
+      "halo_name": "RECRUIT-class Mjolnir rear assembly",
+      "halo_game": "Halo 4",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "原模型三角視圖中的後視：兩條靠脊側的長背殼，中間一串小服務面與青色短窗，上肩高而下端縮短，腰甲分離。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "KP-101-X",
+      "legacy_reference_image": "references/legacy/bag_04_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:H4_Recruit_3d_model.jpg",
+      "halo_reference_image": "references/halo/c05_recruit_halo4_model.jpg",
+      "halo_reference_sha256": "b0089c49914eaeb01706329763a7a6a751732fa50a3c1fb362b2d16b6a6fdc55",
+      "references": [
+        {
+          "key": "c05_recruit_halo4_model",
+          "source_page_url": "https://www.halopedia.org/File:H4_Recruit_3d_model.jpg",
+          "image_url": "https://halo.wiki.gallery/images/0/0a/H4_Recruit_3d_model.jpg",
+          "local_path": "references/halo/c05_recruit_halo4_model.jpg",
+          "sha256": "b0089c49914eaeb01706329763a7a6a751732fa50a3c1fb362b2d16b6a6fdc55",
+          "width": 960,
+          "height": 540,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-06",
+      "legacy_bag_id": 5,
+      "donor_id": "warmaster",
+      "visual_family": "護框與中央模組",
+      "similarity_reason": "VP-22-VII的雙上角和底部三角面，能與WarMaster雙斜長背殼及脊中服務件融合。",
+      "integration_en": "Retain VP-22-VII's plum-red wide shell, two turquoise upper status disks and triangular lower center inset. Integrate War Master's paired sloping rear housings, recessed spinal service fitting and curved lower support. Break the broad shell into repairable panels with clear fasteners. The central triangle stays as this pack's own identity; do not reproduce the donor's entire rear armor.",
+      "halo_name": "WAR MASTER-class Mjolnir rear frame",
+      "halo_game": "Halo 4",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "官方三視原画後視：一對斜縱向圓楔形外殼包住中央圓形接點，下方曲折護框，脊部軟衣與腰後另分開。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "VP-22-VII",
+      "legacy_reference_image": "references/legacy/bag_05_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:H4_War_Master_Concept_Art.jpg",
+      "halo_reference_image": "references/halo/c07_warmaster_halo4_concept.jpg",
+      "halo_reference_sha256": "101a851427e8a8d709599dcc4a144b0808453704012421231a326abb16ab9cd1",
+      "references": [
+        {
+          "key": "c07_warmaster_halo4_concept",
+          "source_page_url": "https://www.halopedia.org/File:H4_War_Master_Concept_Art.jpg",
+          "image_url": "https://halo.wiki.gallery/images/f/fe/H4_War_Master_Concept_Art.jpg",
+          "local_path": "references/halo/c07_warmaster_halo4_concept.jpg",
+          "sha256": "101a851427e8a8d709599dcc4a144b0808453704012421231a326abb16ab9cd1",
+          "width": 1600,
+          "height": 923,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-07",
+      "legacy_bag_id": 6,
+      "donor_id": "hunter",
+      "visual_family": "縱长中央殼",
+      "similarity_reason": "SPD-005-a酒紅長芯與銀色厚框，對得上Hunter窄中央背脊及兩側長殼；可把整塊硬殼分出維修層次。",
+      "integration_en": "Keep SPD-005-a's long burgundy center insert, thick silver-gray shield frame, small cyan top window and three red side indicators. Fuse Locke's Hunter rear architecture: slim spine service channel, two protective tapering rails and orange-sized mechanical latch details. Rework those details in the source palette. Make a lean armored pack with a distinct central access panel.",
+      "halo_name": "HUNTER-class Mjolnir rear assembly / Jameson Locke",
+      "halo_game": "Halo 5: Guardians",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "官方模型後視：兩根向下收尖的後肩長殼，夾住窄中央服務脊；橘色小接點和細管／鎖扣，側殼未延伸到下腰，腰甲另行分離。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "SPD-005-a",
+      "legacy_reference_image": "references/legacy/bag_06_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:Halo_5_-_Locke_Hunter_renders.jpg",
+      "halo_reference_image": "references/halo/hunter_turnaround.jpg",
+      "halo_reference_sha256": "f15cdf889cd95ecb6e2f8af3d555c9f4731570e4102e7115e6c001a8d45060e1",
+      "references": [
+        {
+          "key": "hunter_turnaround",
+          "source_page_url": "https://www.halopedia.org/File:Halo_5_-_Locke_Hunter_renders.jpg",
+          "image_url": "https://www.halopedia.org/images/4/49/Halo_5_-_Locke_Hunter_renders.jpg?9f2c7",
+          "local_path": "references/halo/hunter_turnaround.jpg",
+          "bytes": 336362,
+          "sha256": "f15cdf889cd95ecb6e2f8af3d555c9f4731570e4102e7115e6c001a8d45060e1",
+          "width": 1920,
+          "height": 960,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-08",
+      "legacy_bag_id": 7,
+      "donor_id": "valkyrie",
+      "visual_family": "雙葉折板",
+      "similarity_reason": "ECO-03-VI左右深凹折板，與Valkyrie左右後肩短翼殼包住小中央板相近。",
+      "integration_en": "Preserve ECO-03-VI's paired blue folded-shell lobes, deep triangular recesses and restrained yellow alignment lines. Fuse Valkyrie's short outward rear housings and compact center cover, including its separated layered armor logic. Turn the triangular hollows into protected vent cavities. Reduce edge sharpness and add a hidden inner mounting plate without filling in the characteristic split silhouette.",
+      "halo_name": "VALKYRIE-class Mjolnir rear housings",
+      "halo_game": "Halo 5: Guardians",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "原製作分解三視：後肩成對高短殼向外展，中間深色水滴形小蓋，下端斜收，背腰分離。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "ECO-03-VI",
+      "legacy_reference_image": "references/legacy/bag_07_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:H5GC-Valkyrie.jpg",
+      "halo_reference_image": "references/halo/c12_valkyrie_concept.jpg",
+      "halo_reference_sha256": "3a0726263de5e0e1b076bc6d534861ea6b01007caa701905681dca9f05b3ad55",
+      "references": [
+        {
+          "key": "c12_valkyrie_concept",
+          "source_page_url": "https://www.halopedia.org/File:H5GC-Valkyrie.jpg",
+          "image_url": "https://www.halopedia.org/images/0/0a/H5GC-Valkyrie.jpg?c2b0a",
+          "local_path": "references/halo/c12_valkyrie_concept.jpg",
+          "bytes": 139983,
+          "sha256": "3a0726263de5e0e1b076bc6d534861ea6b01007caa701905681dca9f05b3ad55",
+          "visually_inspected": true,
+          "width": 1280,
+          "height": 627
+        }
+      ]
+    },
+    {
+      "design_id": "B-09",
+      "legacy_bag_id": 8,
+      "donor_id": "warmaster",
+      "visual_family": "中央圓形設備",
+      "similarity_reason": "TT-05-b底部同心圓模組與雙高艙，對得上WarMaster雙側背殼及中央圓服務件。",
+      "integration_en": "Retain TT-05-b's teal-blue twin high pods, two tiny cyan triangular lights and low central concentric circular module. Borrow War Master's rounded twin housing supports and central service-node framing. Keep the circle low in the composition and make it visibly replaceable under a protective ring. Add practical seams and a compact lower brace while keeping the source's blue-white identity.",
+      "halo_name": "WAR MASTER-class Mjolnir rear frame",
+      "halo_game": "Halo 4",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "官方三視原画後視：一對斜縱向圓楔形外殼包住中央圓形接點，下方曲折護框，脊部軟衣與腰後另分開。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "TT-05-b",
+      "legacy_reference_image": "references/legacy/bag_08_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:H4_War_Master_Concept_Art.jpg",
+      "halo_reference_image": "references/halo/c07_warmaster_halo4_concept.jpg",
+      "halo_reference_sha256": "101a851427e8a8d709599dcc4a144b0808453704012421231a326abb16ab9cd1",
+      "references": [
+        {
+          "key": "c07_warmaster_halo4_concept",
+          "source_page_url": "https://www.halopedia.org/File:H4_War_Master_Concept_Art.jpg",
+          "image_url": "https://halo.wiki.gallery/images/f/fe/H4_War_Master_Concept_Art.jpg",
+          "local_path": "references/halo/c07_warmaster_halo4_concept.jpg",
+          "sha256": "101a851427e8a8d709599dcc4a144b0808453704012421231a326abb16ab9cd1",
+          "width": 1600,
+          "height": 923,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-10",
+      "legacy_bag_id": 9,
+      "donor_id": "helioskrill",
+      "visual_family": "分層盾殼",
+      "similarity_reason": "SAM-005-I盾面與側邊短刺，能用Helioskrill中央尖盾、後肩框和V層片來整理。",
+      "integration_en": "Keep SAM-005-I's steel-blue shield face, muted violet-gray border and thin orange-gold U-shaped path. Fuse Helioskrill's tapered central rear shield, surrounding shoulder-frame shapes and overlapping V-shaped armor segments. Turn side spikes into short protective tabs with blunt corners. Design a compact layered defensive pack, preserving the U-shaped stripe as an identifier.",
+      "halo_name": "HELIOSKRILL-class Mjolnir rear plates",
+      "halo_game": "Halo 5: Guardians",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "原製作三視後視：中央尖長盾形殼，外側長護框，中下背層疊V板，腰後U形短板獨立。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "SAM-005-I",
+      "legacy_reference_image": "references/legacy/bag_09_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:H5G-Helioskrill_concept.jpg",
+      "halo_reference_image": "references/halo/c09_helioskrill_concept.jpg",
+      "halo_reference_sha256": "9e263705ad081a2fcdddd6b69d64ffc08d9c6f6745d634446d86f5742666e1d0",
+      "references": [
+        {
+          "key": "c09_helioskrill_concept",
+          "source_page_url": "https://www.halopedia.org/File:H5G-Helioskrill_concept.jpg",
+          "image_url": "https://www.halopedia.org/images/1/1e/H5G-Helioskrill_concept.jpg?65b07",
+          "local_path": "references/halo/c09_helioskrill_concept.jpg",
+          "bytes": 331389,
+          "sha256": "9e263705ad081a2fcdddd6b69d64ffc08d9c6f6745d634446d86f5742666e1d0",
+          "visually_inspected": true,
+          "width": 1920,
+          "height": 938
+        }
+      ]
+    },
+    {
+      "design_id": "B-11",
+      "legacy_bag_id": 10,
+      "donor_id": "series8",
+      "visual_family": "雙筒通風模組",
+      "similarity_reason": "STK-06-ZZ雙上置圓筒和中間通風井，與Series8成對設備艙和散熱格柵相近。",
+      "integration_en": "Preserve STK-06-ZZ's two upper short cylinders with pale round ends, narrow central vent well and dark blue-gray lower case. Fuse Series 8's serviceable twin-module frame, recessed grilles and reinforced lower spine. Redesign the cylinders as protected equipment cartridges rather than exposed spikes. Keep the small pink and warm-metal accents and shorten the thin lower fins into guards.",
+      "halo_name": "Series 8 jetpack",
+      "halo_game": "Halo: Reach",
+      "donor_kind": "independent_jetpack",
+      "observed_back_cue": "正後方為雙縱向長設備殼，左右上方擴出的短艙，中央上下兩個圓孔與短服務脊；原画補充穿戴深度、側向通風格柵及下方雙導軌。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "STK-06-ZZ",
+      "legacy_reference_image": "references/legacy/bag_10_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:HReach-Jetpack-Inactive.png",
+      "halo_reference_image": "references/halo/reach_series8.png",
+      "halo_reference_sha256": "45fc007a31754094153acfe8eea0a8ad5ab7ad81e9350e23852fa73b01fe09bf",
+      "references": [
+        {
+          "key": "reach_series8",
+          "source_page_url": "https://www.halopedia.org/File:HReach-Jetpack-Inactive.png",
+          "image_url": "https://www.halopedia.org/images/4/44/HReach-Jetpack-Inactive.png?b9b90",
+          "local_path": "references/halo/reach_series8.png",
+          "bytes": 426494,
+          "sha256": "45fc007a31754094153acfe8eea0a8ad5ab7ad81e9350e23852fa73b01fe09bf",
+          "width": 600,
+          "height": 700,
+          "visually_inspected": true
+        },
+        {
+          "key": "reach_series8_concept",
+          "source_page_url": "https://www.halopedia.org/File:HR_UNSCJetPack_Concept_1.jpg",
+          "image_url": "https://www.halopedia.org/images/4/46/HR_UNSCJetPack_Concept_1.jpg?b06ec",
+          "local_path": "references/halo/reach_series8_concept.jpg",
+          "bytes": 352496,
+          "sha256": "c5f78151733d163dcb1b093681b31bd516bf00d065b49d29c8a906a701096f9f",
+          "width": 1500,
+          "height": 809,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-12",
+      "legacy_bag_id": 11,
+      "donor_id": "hazmat",
+      "visual_family": "單艙生命維持結構",
+      "similarity_reason": "HYD-00-IX單一直立白殼與頂部藍蓋，適合結合OSTEO單瓶護框和下端橫接頭。",
+      "integration_en": "Keep HYD-00-IX's ivory shield-shaped body, paired vertical orange stripes, blue top cap and small lower side guards. Fuse the OSTEO suit's vertically retained rear canister, protective outer arch and lower crosswise hose coupling. Make the canister sit inside the source's shield case, with a service door and restrained quick-connect fittings. Preserve the source colors rather than adopting the full yellow suit.",
+      "halo_name": "OSTEO / Hazmat rear life-support canister frame",
+      "halo_game": "Halo Infinite",
+      "donor_kind": "integrated_suit_back_structure",
+      "observed_back_cue": "官方正後視原画：一根高而圓的背部瓶體置於U形護框，中段固定件，下端金屬橫接頭連向兩側包覆軟管；不是已確認可獨立裝備的背包。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "HYD-00-IX",
+      "legacy_reference_image": "references/legacy/bag_11_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:HINF_Concept_OSTEO1.jpg",
+      "halo_reference_image": "references/halo/hazmat_concept.jpg",
+      "halo_reference_sha256": "ccc8a9b36b7485a6e7f700809d3196082faa154cedc32936c388caedbcb1e48c",
+      "references": [
+        {
+          "key": "hazmat_concept",
+          "source_page_url": "https://www.halopedia.org/File:HINF_Concept_OSTEO1.jpg",
+          "image_url": "https://www.halopedia.org/images/2/22/HINF_Concept_OSTEO1.jpg?b9706",
+          "local_path": "references/halo/hazmat_concept.jpg",
+          "bytes": 919149,
+          "sha256": "ccc8a9b36b7485a6e7f700809d3196082faa154cedc32936c388caedbcb1e48c",
+          "width": 3609,
+          "height": 2573,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-13",
+      "legacy_bag_id": 12,
+      "donor_id": "yoroi",
+      "visual_family": "三點設備護殼",
+      "similarity_reason": "H.F-V-03一上二下三筒，與Yoroi三根背部殼集中在上背的配置可互相整合，保留原三點布局。",
+      "integration_en": "Preserve H.F-V-03's three orange-gold cartridges in one-upper, two-lower arrangement, gray-purple casing and burgundy central face. Borrow Yoroi's three protected rear housings, rounded armor lips and layered lower support. Keep the source cartridge placement but redesign the bracket structure into a compact wearable triangular assembly. Avoid decorative face masks or oversized samurai ornaments.",
+      "halo_name": "Yoroi rear housings and segmented back armor",
+      "halo_game": "Halo Infinite",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "原製作模型後視：上背三根圓頂短長殼集中呈束，外側兩根較高；下方圓形脊部接點，腰部留軟衣，臀後V層片另成段。這是背甲結構，不稱Halo獨立背包。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "H.F-V-03",
+      "legacy_reference_image": "references/legacy/bag_12_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg",
+      "halo_reference_image": "references/halo/yoroi_hefley2.jpg",
+      "halo_reference_sha256": "d3437e6b1897246e1aa96878f6d6fa075f59da621c28928bb7b99f0adb4b464a",
+      "references": [
+        {
+          "key": "yoroi_hefley2",
+          "source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg",
+          "image_url": "https://www.halopedia.org/images/0/01/HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg?ad403",
+          "local_path": "references/halo/yoroi_hefley2.jpg",
+          "bytes": 315611,
+          "sha256": "d3437e6b1897246e1aa96878f6d6fa075f59da621c28928bb7b99f0adb4b464a",
+          "width": 1920,
+          "height": 1167,
+          "visually_inspected": true
+        },
+        {
+          "key": "yoroi_tworek2",
+          "source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Lyaksandr_Prelle-Tworek_-_00002.jpg",
+          "image_url": "https://www.halopedia.org/images/7/7d/HINF_-_Yoroi_armor_core_-_Lyaksandr_Prelle-Tworek_-_00002.jpg?b965c",
+          "local_path": "references/halo/yoroi_tworek2.jpg",
+          "bytes": 678293,
+          "sha256": "3abdea5e85fb7742d7553d5f31bd489210b12748f818ad38b598d7a717c339e9",
+          "width": 1828,
+          "height": 1922,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-14",
+      "legacy_bag_id": 13,
+      "donor_id": "series8",
+      "visual_family": "雙筒與散熱楔",
+      "similarity_reason": "STK.F-VI-00雙平行粗筒配下方散熱楔，與Series8双縱向機構加中央通風脊相近。",
+      "integration_en": "Keep STK.F-VI-00's two parallel silver cylinders, dark red-orange cartridge sides, slotted caps and wedge-shaped vented lower body. Integrate Series 8's vertical carrier rails, short hinged access covers and protected exhaust-like openings. Shorten the cylinders and nest them in a stronger central support. Make the lower wedge clearly a removable service enclosure with broad readable surfaces.",
+      "halo_name": "Series 8 jetpack",
+      "halo_game": "Halo: Reach",
+      "donor_kind": "independent_jetpack",
+      "observed_back_cue": "正後方為雙縱向長設備殼，左右上方擴出的短艙，中央上下兩個圓孔與短服務脊；原画補充穿戴深度、側向通風格柵及下方雙導軌。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "STK.F-VI-00",
+      "legacy_reference_image": "references/legacy/bag_13_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:HReach-Jetpack-Inactive.png",
+      "halo_reference_image": "references/halo/reach_series8.png",
+      "halo_reference_sha256": "45fc007a31754094153acfe8eea0a8ad5ab7ad81e9350e23852fa73b01fe09bf",
+      "references": [
+        {
+          "key": "reach_series8",
+          "source_page_url": "https://www.halopedia.org/File:HReach-Jetpack-Inactive.png",
+          "image_url": "https://www.halopedia.org/images/4/44/HReach-Jetpack-Inactive.png?b9b90",
+          "local_path": "references/halo/reach_series8.png",
+          "bytes": 426494,
+          "sha256": "45fc007a31754094153acfe8eea0a8ad5ab7ad81e9350e23852fa73b01fe09bf",
+          "width": 600,
+          "height": 700,
+          "visually_inspected": true
+        },
+        {
+          "key": "reach_series8_concept",
+          "source_page_url": "https://www.halopedia.org/File:HR_UNSCJetPack_Concept_1.jpg",
+          "image_url": "https://www.halopedia.org/images/4/46/HR_UNSCJetPack_Concept_1.jpg?b06ec",
+          "local_path": "references/halo/reach_series8_concept.jpg",
+          "bytes": 352496,
+          "sha256": "c5f78151733d163dcb1b093681b31bd516bf00d065b49d29c8a906a701096f9f",
+          "width": 1500,
+          "height": 809,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-15",
+      "legacy_bag_id": 14,
+      "donor_id": "series12",
+      "visual_family": "圓盤設備",
+      "similarity_reason": "X02B-FREEDOM圓盤外殼與雙短翼，可借Series12圓潤上艙、中央開口及外側護框來安排厚度與支架。",
+      "integration_en": "Retain X02B-FREEDOM's circular segmented disk, gold-orange center and ring, white outer cradle and two short lateral tabs. Fuse the rounded upper equipment shell, protected central opening and lower mounting frame visible on Halo 4 Series 12. Keep the circle as the main identity instead of copying the donor's overall outline. Add sensible depth, removable sectors and a padded rear bracket.",
+      "halo_name": "Series 12 Single Operator Lift Apparatus",
+      "halo_game": "Halo 4",
+      "donor_kind": "independent_jetpack",
+      "observed_back_cue": "上半部圓潤寬殼，中間凹入服務面，兩侧小格柵；下半部双外張短長支臂，中間大多邊形開口及低位掛架。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "X02B-FREEDOM",
+      "legacy_reference_image": "references/legacy/bag_14_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:H4-S12SOLA-Jetpack.png",
+      "halo_reference_image": "references/halo/halo4_series12.png",
+      "halo_reference_sha256": "aa2825d7315153cb510b37871fb080bf127a7729abc12516b379bee4d0cf1d72",
+      "references": [
+        {
+          "key": "halo4_series12",
+          "source_page_url": "https://www.halopedia.org/File:H4-S12SOLA-Jetpack.png",
+          "image_url": "https://www.halopedia.org/images/9/96/H4-S12SOLA-Jetpack.png?1c692",
+          "local_path": "references/halo/halo4_series12.png",
+          "bytes": 1458434,
+          "sha256": "aa2825d7315153cb510b37871fb080bf127a7729abc12516b379bee4d0cf1d72",
+          "width": 1080,
+          "height": 1320,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-16",
+      "legacy_bag_id": 15,
+      "donor_id": "series12",
+      "visual_family": "分叉長推進臂",
+      "similarity_reason": "F.L.O.A.T白綠雙長臂，與Series12向下張开的雙推進支臂及下方橫架接近。",
+      "integration_en": "Preserve F.L.O.A.T's white twin long downward arms, charcoal tips, green vent panels and compact upper bridge. Fuse the Series 12 jetpack's angled lower thruster supports and central rigid mounting framework. Articulate the arms at protected hinges so they can fold inward for storage. Keep both long arms visibly distinct and omit original effect planes or glowing flame sheets.",
+      "halo_name": "Series 12 Single Operator Lift Apparatus",
+      "halo_game": "Halo 4",
+      "donor_kind": "independent_jetpack",
+      "observed_back_cue": "上半部圓潤寬殼，中間凹入服務面，兩侧小格柵；下半部双外張短長支臂，中間大多邊形開口及低位掛架。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "F.L.O.A.T",
+      "legacy_reference_image": "references/legacy/bag_15_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:H4-S12SOLA-Jetpack.png",
+      "halo_reference_image": "references/halo/halo4_series12.png",
+      "halo_reference_sha256": "aa2825d7315153cb510b37871fb080bf127a7729abc12516b379bee4d0cf1d72",
+      "references": [
+        {
+          "key": "halo4_series12",
+          "source_page_url": "https://www.halopedia.org/File:H4-S12SOLA-Jetpack.png",
+          "image_url": "https://www.halopedia.org/images/9/96/H4-S12SOLA-Jetpack.png?1c692",
+          "local_path": "references/halo/halo4_series12.png",
+          "bytes": 1458434,
+          "sha256": "aa2825d7315153cb510b37871fb080bf127a7729abc12516b379bee4d0cf1d72",
+          "width": 1080,
+          "height": 1320,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-17",
+      "legacy_bag_id": 16,
+      "donor_id": "yoroi",
+      "visual_family": "分層後甲",
+      "similarity_reason": "Visnu的橫向節片及高雙白殼，與Yoroi上背三殼、腰背分節能形成一致的分層機構。",
+      "integration_en": "Keep Visnu's tall white-gray upper rails, dark green-gray body and repeating cyan rectangular windows across the horizontal lower segments. Borrow Yoroi's compact grouped rear housings, separated spine section and overlapping lower armor rhythm. Build each horizontal band as a replaceable guard over one coherent pack frame. Keep the lower end short enough to clear the wearer's waist.",
+      "halo_name": "Yoroi rear housings and segmented back armor",
+      "halo_game": "Halo Infinite",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "原製作模型後視：上背三根圓頂短長殼集中呈束，外側兩根較高；下方圓形脊部接點，腰部留軟衣，臀後V層片另成段。這是背甲結構，不稱Halo獨立背包。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "Visnu",
+      "legacy_reference_image": "references/legacy/bag_16_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg",
+      "halo_reference_image": "references/halo/yoroi_hefley2.jpg",
+      "halo_reference_sha256": "d3437e6b1897246e1aa96878f6d6fa075f59da621c28928bb7b99f0adb4b464a",
+      "references": [
+        {
+          "key": "yoroi_hefley2",
+          "source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg",
+          "image_url": "https://www.halopedia.org/images/0/01/HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg?ad403",
+          "local_path": "references/halo/yoroi_hefley2.jpg",
+          "bytes": 315611,
+          "sha256": "d3437e6b1897246e1aa96878f6d6fa075f59da621c28928bb7b99f0adb4b464a",
+          "width": 1920,
+          "height": 1167,
+          "visually_inspected": true
+        },
+        {
+          "key": "yoroi_tworek2",
+          "source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Lyaksandr_Prelle-Tworek_-_00002.jpg",
+          "image_url": "https://www.halopedia.org/images/7/7d/HINF_-_Yoroi_armor_core_-_Lyaksandr_Prelle-Tworek_-_00002.jpg?b965c",
+          "local_path": "references/halo/yoroi_tworek2.jpg",
+          "bytes": 678293,
+          "sha256": "3abdea5e85fb7742d7553d5f31bd489210b12748f818ad38b598d7a717c339e9",
+          "width": 1828,
+          "height": 1922,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-18",
+      "legacy_bag_id": 17,
+      "donor_id": "hunter",
+      "visual_family": "蜂巢長殼",
+      "similarity_reason": "TRI-0-AVATAR的長形中央面和側鼓艙，能結合Hunter中央窄脊與成對長背殼，蜂巢面保留為原特色。",
+      "integration_en": "Retain TRI-0-AVATAR's dark plum honeycomb center, violet-gray frame, magenta round indicators and copper-orange side housings. Fuse Hunter's narrow spine service channel, paired long outer shells and restrained mechanical latch geometry. Keep the honeycomb panel behind a protective recessed border. Make the side modules shorter and mechanically attached, with broad calm armor surfaces between the illuminated details.",
+      "halo_name": "HUNTER-class Mjolnir rear assembly / Jameson Locke",
+      "halo_game": "Halo 5: Guardians",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "官方模型後視：兩根向下收尖的後肩長殼，夾住窄中央服務脊；橘色小接點和細管／鎖扣，側殼未延伸到下腰，腰甲另行分離。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "TRI-0-AVATAR",
+      "legacy_reference_image": "references/legacy/bag_17_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:Halo_5_-_Locke_Hunter_renders.jpg",
+      "halo_reference_image": "references/halo/hunter_turnaround.jpg",
+      "halo_reference_sha256": "f15cdf889cd95ecb6e2f8af3d555c9f4731570e4102e7115e6c001a8d45060e1",
+      "references": [
+        {
+          "key": "hunter_turnaround",
+          "source_page_url": "https://www.halopedia.org/File:Halo_5_-_Locke_Hunter_renders.jpg",
+          "image_url": "https://www.halopedia.org/images/4/49/Halo_5_-_Locke_Hunter_renders.jpg?9f2c7",
+          "local_path": "references/halo/hunter_turnaround.jpg",
+          "bytes": 336362,
+          "sha256": "f15cdf889cd95ecb6e2f8af3d555c9f4731570e4102e7115e6c001a8d45060e1",
+          "width": 1920,
+          "height": 960,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-19",
+      "legacy_bag_id": 18,
+      "donor_id": "oceanic",
+      "visual_family": "雙翼護架",
+      "similarity_reason": "BLADE-MASTER高雙翼片和側弧艙，與Oceanic後肩雙長殼及下方共用框架近似。",
+      "integration_en": "Preserve BLADE-MASTER's two tall blue-lined blade-like panels, purple-gray body and paired circular accents on the side cases. Fuse Oceanic's parallel rear housings, shared lower curved brace and recessed central service cover. Reduce the blades into broad blunt protective rails with a slight outward flare. Keep the electric-blue routes sparse and purposeful on an independently wearable support frame.",
+      "halo_name": "OCEANIC-class Mjolnir rear carrier",
+      "halo_game": "Halo 4",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "原製作高模後視：兩條平行長後肩殼，中間服務蓋，下緣共用圓弧支架；上端短護鰭，並有獨立腰背軟衣。高模無最終配色。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "BLADE-MASTER",
+      "legacy_reference_image": "references/legacy/bag_18_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:H4_Oceanic_HiPoly_Render_2.jpg",
+      "halo_reference_image": "references/halo/c13_oceanic_hipoly.jpg",
+      "halo_reference_sha256": "25a843dacaa80ab7ad676c08fa984eeb18fc2cc8450a64f9274bd4b503d8a7f2",
+      "references": [
+        {
+          "key": "c13_oceanic_hipoly",
+          "source_page_url": "https://www.halopedia.org/File:H4_Oceanic_HiPoly_Render_2.jpg",
+          "image_url": "https://www.halopedia.org/images/6/64/H4_Oceanic_HiPoly_Render_2.jpg?49d9c",
+          "local_path": "references/halo/c13_oceanic_hipoly.jpg",
+          "bytes": 403347,
+          "sha256": "25a843dacaa80ab7ad676c08fa984eeb18fc2cc8450a64f9274bd4b503d8a7f2",
+          "visually_inspected": true,
+          "width": 1100,
+          "height": 825
+        }
+      ]
+    },
+    {
+      "design_id": "B-20",
+      "legacy_bag_id": 19,
+      "donor_id": "hazmat",
+      "visual_family": "管路與接頭",
+      "similarity_reason": "TOUCH AND GO银盾上蓋、双側接頭和硬管，與OSTEO背瓶下端横接頭及包覆軟管直接相近。",
+      "integration_en": "Keep TOUCH AND GO's broad silver shield cover, copper-orange side pipes, red-orange circular joints and dark teal inner layer. Fuse the OSTEO rear canister's retaining bridge, lower cross-coupler and insulated hose interfaces. Route both pipes tightly inside protective side channels. Give the shield cover a believable removable latch system and maintain the source's white-metal and warm-copper contrast.",
+      "halo_name": "OSTEO / Hazmat rear life-support canister frame",
+      "halo_game": "Halo Infinite",
+      "donor_kind": "integrated_suit_back_structure",
+      "observed_back_cue": "官方正後視原画：一根高而圓的背部瓶體置於U形護框，中段固定件，下端金屬橫接頭連向兩側包覆軟管；不是已確認可獨立裝備的背包。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "TOUCH AND GO",
+      "legacy_reference_image": "references/legacy/bag_19_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:HINF_Concept_OSTEO1.jpg",
+      "halo_reference_image": "references/halo/hazmat_concept.jpg",
+      "halo_reference_sha256": "ccc8a9b36b7485a6e7f700809d3196082faa154cedc32936c388caedbcb1e48c",
+      "references": [
+        {
+          "key": "hazmat_concept",
+          "source_page_url": "https://www.halopedia.org/File:HINF_Concept_OSTEO1.jpg",
+          "image_url": "https://www.halopedia.org/images/2/22/HINF_Concept_OSTEO1.jpg?b9706",
+          "local_path": "references/halo/hazmat_concept.jpg",
+          "bytes": 919149,
+          "sha256": "ccc8a9b36b7485a6e7f700809d3196082faa154cedc32936c388caedbcb1e48c",
+          "width": 3609,
+          "height": 2573,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-21",
+      "legacy_bag_id": 20,
+      "donor_id": "odst_comms",
+      "visual_family": "模組筒匣",
+      "similarity_reason": "DRACULA四根外張圓筒，可借ODST/COMM並列筒匣、保護箱和底部掛袋，整理成可靠的供給設備。",
+      "integration_en": "Retain DRACULA's narrow red-orange center and four red-and-gold cylinders, arranged two high and two low. Borrow the ODST Communications backpack's protected cartridge rack, reinforced case edge, visible retaining straps and secondary lower compartments. Keep four cylinders but pull them closer to the central frame and blunt the caps. Design equipment modules, not guns, and preserve the source color identity.",
+      "halo_name": "ODST/COMM Communications backpack",
+      "halo_game": "Halo 3 in Halo: The Master Chief Collection",
+      "donor_kind": "independent_backpack",
+      "observed_back_cue": "原遊戲256px選單圖：上方雙扣、橘棕矩形護架，中間並列三根圓筒，左緣小狀態格，下方掛袋。僅有小圖，背面細節與天線未確認。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "DRACULA",
+      "legacy_reference_image": "references/legacy/bag_20_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:HTMCC_H3_Communications_Backpack_Icon.png",
+      "halo_reference_image": "references/halo/odst_comms.png",
+      "halo_reference_sha256": "fc0be2d82241834fa6841cfeda3971eaea08955a959100064d90b21f69b5ade9",
+      "references": [
+        {
+          "key": "odst_comms",
+          "source_page_url": "https://www.halopedia.org/File:HTMCC_H3_Communications_Backpack_Icon.png",
+          "image_url": "https://www.halopedia.org/images/9/9f/HTMCC_H3_Communications_Backpack_Icon.png?a2800",
+          "local_path": "references/halo/odst_comms.png",
+          "bytes": 75762,
+          "sha256": "fc0be2d82241834fa6841cfeda3971eaea08955a959100064d90b21f69b5ade9",
+          "width": 256,
+          "height": 256,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-22",
+      "legacy_bag_id": 21,
+      "donor_id": "hazmat",
+      "visual_family": "長桿單筒工具",
+      "similarity_reason": "JIN.JINGLE長桿單鼓艙與OSTEO中央氣瓶、下端快速接頭有可用的結構相似；把長桿折回背負，不抹掉原款特殊輪廓。",
+      "integration_en": "Preserve JIN.JINGLE's single white drum, green cap, red securing band, long brown-toned rod and small green-yellow end fin. Fuse OSTEO's protected single-canister cradle and lower quick-connect coupling. Rebuild the rod as a foldable attached tool or antenna arm alongside a compact backplate, keeping the drum-and-rod identity recognizable. This folding assembly is a new design, not claimed as Halo equipment behavior.",
+      "halo_name": "OSTEO / Hazmat rear life-support canister frame",
+      "halo_game": "Halo Infinite",
+      "donor_kind": "integrated_suit_back_structure",
+      "observed_back_cue": "官方正後視原画：一根高而圓的背部瓶體置於U形護框，中段固定件，下端金屬橫接頭連向兩側包覆軟管；不是已確認可獨立裝備的背包。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "JIN.JINGLE",
+      "legacy_reference_image": "references/legacy/bag_21_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:HINF_Concept_OSTEO1.jpg",
+      "halo_reference_image": "references/halo/hazmat_concept.jpg",
+      "halo_reference_sha256": "ccc8a9b36b7485a6e7f700809d3196082faa154cedc32936c388caedbcb1e48c",
+      "references": [
+        {
+          "key": "hazmat_concept",
+          "source_page_url": "https://www.halopedia.org/File:HINF_Concept_OSTEO1.jpg",
+          "image_url": "https://www.halopedia.org/images/2/22/HINF_Concept_OSTEO1.jpg?b9706",
+          "local_path": "references/halo/hazmat_concept.jpg",
+          "bytes": 919149,
+          "sha256": "ccc8a9b36b7485a6e7f700809d3196082faa154cedc32936c388caedbcb1e48c",
+          "width": 3609,
+          "height": 2573,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-23",
+      "legacy_bag_id": 22,
+      "donor_id": "helioskrill",
+      "visual_family": "三層V護板",
+      "similarity_reason": "S.H.I.E.L.D的三層V板和層間綠縫，與Helioskrill中央V盾和後背疊甲直接接近。",
+      "integration_en": "Preserve S.H.I.E.L.D's three overlapping downward V-shaped plates, blue-gray armor and narrow lime-green seams. Borrow Helioskrill's tapered central rear shield, surrounding short support frame and independent lower plate. Organize the three V plates over one compact carrier with clear gaps for maintenance, keeping their layered protective identity. Avoid turning the green seams into large glowing wings.",
+      "halo_name": "HELIOSKRILL-class Mjolnir rear plates",
+      "halo_game": "Halo 5: Guardians",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "原製作三視後視：中央尖長盾形殼，外側長護框，中下背層疊V板，腰後U形短板獨立。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "S.H.I.E.L.D",
+      "legacy_reference_image": "references/legacy/bag_22_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:H5G-Helioskrill_concept.jpg",
+      "halo_reference_image": "references/halo/c09_helioskrill_concept.jpg",
+      "halo_reference_sha256": "9e263705ad081a2fcdddd6b69d64ffc08d9c6f6745d634446d86f5742666e1d0",
+      "references": [
+        {
+          "key": "c09_helioskrill_concept",
+          "source_page_url": "https://www.halopedia.org/File:H5G-Helioskrill_concept.jpg",
+          "image_url": "https://www.halopedia.org/images/1/1e/H5G-Helioskrill_concept.jpg?65b07",
+          "local_path": "references/halo/c09_helioskrill_concept.jpg",
+          "bytes": 331389,
+          "sha256": "9e263705ad081a2fcdddd6b69d64ffc08d9c6f6745d634446d86f5742666e1d0",
+          "visually_inspected": true,
+          "width": 1920,
+          "height": 938
+        }
+      ]
+    },
+    {
+      "design_id": "B-24",
+      "legacy_bag_id": 23,
+      "donor_id": "series12",
+      "visual_family": "分節雙推進臂",
+      "similarity_reason": "D-WINGS白紅分叉長臂，與Series12雙外張推進支臂及中央掛架最接近。",
+      "integration_en": "Keep D-WINGS' white-and-red split upper bridge and two long segmented downward arms with dark inner faces. Fuse Series 12's angled twin thruster supports, reinforced central mount and compact lower hardware. Introduce protected joints that let the arms fold closer to the wearer. Keep the source's sharp graphic red blocks but soften exposed edges, and show solid hardware without blue effect planes.",
+      "halo_name": "Series 12 Single Operator Lift Apparatus",
+      "halo_game": "Halo 4",
+      "donor_kind": "independent_jetpack",
+      "observed_back_cue": "上半部圓潤寬殼，中間凹入服務面，兩侧小格柵；下半部双外張短長支臂，中間大多邊形開口及低位掛架。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "D-WINGS",
+      "legacy_reference_image": "references/legacy/bag_23_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:H4-S12SOLA-Jetpack.png",
+      "halo_reference_image": "references/halo/halo4_series12.png",
+      "halo_reference_sha256": "aa2825d7315153cb510b37871fb080bf127a7729abc12516b379bee4d0cf1d72",
+      "references": [
+        {
+          "key": "halo4_series12",
+          "source_page_url": "https://www.halopedia.org/File:H4-S12SOLA-Jetpack.png",
+          "image_url": "https://www.halopedia.org/images/9/96/H4-S12SOLA-Jetpack.png?1c692",
+          "local_path": "references/halo/halo4_series12.png",
+          "bytes": 1458434,
+          "sha256": "aa2825d7315153cb510b37871fb080bf127a7729abc12516b379bee4d0cf1d72",
+          "width": 1080,
+          "height": 1320,
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "B-25",
+      "legacy_bag_id": 24,
+      "donor_id": "yoroi",
+      "visual_family": "尖冠與雙護翼",
+      "similarity_reason": "Spectre中央尖頂及成對金邊護翼，可融合Yoroi三根集中後殼與頸腰分層；把臉形紋樣整理成通風護甲。",
+      "integration_en": "Retain Spectre's ice-blue pointed center crown, dark burgundy inset, small gold diamond and two dark blue-black gold-edged side wings. Fuse Yoroi's grouped rear protective housings, rounded armor lips and compact layered lower support. Replace the literal face-like decoration with a functional vent and service cover while preserving the pointed center and flanking wings. Make the assembly detach as a complete backpack.",
+      "halo_name": "Yoroi rear housings and segmented back armor",
+      "halo_game": "Halo Infinite",
+      "donor_kind": "integrated_armor_back_structure",
+      "observed_back_cue": "原製作模型後視：上背三根圓頂短長殼集中呈束，外側兩根較高；下方圓形脊部接點，腰部留軟衣，臀後V層片另成段。這是背甲結構，不稱Halo獨立背包。",
+      "master_chief": false,
+      "visually_inspected": true,
+      "legacy_name": "Spectre",
+      "legacy_reference_image": "references/legacy/bag_24_original_threequarter.png",
+      "halo_source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg",
+      "halo_reference_image": "references/halo/yoroi_hefley2.jpg",
+      "halo_reference_sha256": "d3437e6b1897246e1aa96878f6d6fa075f59da621c28928bb7b99f0adb4b464a",
+      "references": [
+        {
+          "key": "yoroi_hefley2",
+          "source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg",
+          "image_url": "https://www.halopedia.org/images/0/01/HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg?ad403",
+          "local_path": "references/halo/yoroi_hefley2.jpg",
+          "bytes": 315611,
+          "sha256": "d3437e6b1897246e1aa96878f6d6fa075f59da621c28928bb7b99f0adb4b464a",
+          "width": 1920,
+          "height": 1167,
+          "visually_inspected": true
+        },
+        {
+          "key": "yoroi_tworek2",
+          "source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Lyaksandr_Prelle-Tworek_-_00002.jpg",
+          "image_url": "https://www.halopedia.org/images/7/7d/HINF_-_Yoroi_armor_core_-_Lyaksandr_Prelle-Tworek_-_00002.jpg?b965c",
+          "local_path": "references/halo/yoroi_tworek2.jpg",
+          "bytes": 678293,
+          "sha256": "3abdea5e85fb7742d7553d5f31bd489210b12748f818ad38b598d7a717c339e9",
+          "width": 1828,
+          "height": 1922,
+          "visually_inspected": true
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "unique_backpack_ids": 25,
+    "concrete_non_chief_donors": 12,
+    "unique_references_decoded_and_hashed": 16,
+    "visually_reviewed": true,
+    "runtime_changed": false,
+    "formal_docs_changed": false
+  },
+  "reference_path_base": "docs/art/original_armors_v1/",
+  "historical_reference_paths": {
+    "test_output/armor_fusion_reset/halo_backpack_refs/rookie_guide_page32.jpg": "references/halo/rookie_guide_page32.jpg",
+    "test_output/armor_fusion_reset/halo_backpack_refs/rookie_guide_page33.jpg": "references/halo/rookie_guide_page33.jpg",
+    "test_output/armor_fusion_reset/halo_backpack_refs/rookie_guide_page30.jpg": "references/halo/rookie_guide_page30.jpg",
+    "test_output/armor_fusion_reset/halo_backpack_refs/reach_series8.png": "references/halo/reach_series8.png",
+    "test_output/armor_fusion_reset/halo_backpack_refs/reach_series8_concept.jpg": "references/halo/reach_series8_concept.jpg",
+    "test_output/armor_fusion_reset/halo_backpack_refs/halo4_series12.png": "references/halo/halo4_series12.png",
+    "test_output/armor_fusion_reset/halo_backpack_refs/hazmat_concept.jpg": "references/halo/hazmat_concept.jpg",
+    "test_output/armor_fusion_reset/halo_backpack_refs/yoroi_hefley2.jpg": "references/halo/yoroi_hefley2.jpg",
+    "test_output/armor_fusion_reset/halo_backpack_refs/yoroi_tworek2.jpg": "references/halo/yoroi_tworek2.jpg",
+    "test_output/armor_fusion_reset/halo_backpack_refs/hunter_turnaround.jpg": "references/halo/hunter_turnaround.jpg",
+    "test_output/armor_fusion_reset/halo_backpack_refs/odst_comms.png": "references/halo/odst_comms.png",
+    "test_output/armor_fusion_reset/halo_refs/c13_oceanic_hipoly.jpg": "references/halo/c13_oceanic_hipoly.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c05_recruit_halo4_model.jpg": "references/halo/c05_recruit_halo4_model.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c07_warmaster_halo4_concept.jpg": "references/halo/c07_warmaster_halo4_concept.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c09_helioskrill_concept.jpg": "references/halo/c09_helioskrill_concept.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c12_valkyrie_concept.jpg": "references/halo/c12_valkyrie_concept.jpg",
+    "test_output/armor_fusion_reset/backpack_references/bag_00_original_threequarter.png": "references/legacy/bag_00_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_01_original_threequarter.png": "references/legacy/bag_01_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_02_original_threequarter.png": "references/legacy/bag_02_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_03_original_threequarter.png": "references/legacy/bag_03_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_04_original_threequarter.png": "references/legacy/bag_04_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_05_original_threequarter.png": "references/legacy/bag_05_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_06_original_threequarter.png": "references/legacy/bag_06_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_07_original_threequarter.png": "references/legacy/bag_07_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_08_original_threequarter.png": "references/legacy/bag_08_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_09_original_threequarter.png": "references/legacy/bag_09_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_10_original_threequarter.png": "references/legacy/bag_10_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_11_original_threequarter.png": "references/legacy/bag_11_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_12_original_threequarter.png": "references/legacy/bag_12_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_13_original_threequarter.png": "references/legacy/bag_13_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_14_original_threequarter.png": "references/legacy/bag_14_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_15_original_threequarter.png": "references/legacy/bag_15_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_16_original_threequarter.png": "references/legacy/bag_16_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_17_original_threequarter.png": "references/legacy/bag_17_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_18_original_threequarter.png": "references/legacy/bag_18_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_19_original_threequarter.png": "references/legacy/bag_19_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_20_original_threequarter.png": "references/legacy/bag_20_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_21_original_threequarter.png": "references/legacy/bag_21_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_22_original_threequarter.png": "references/legacy/bag_22_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_23_original_threequarter.png": "references/legacy/bag_23_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_24_original_threequarter.png": "references/legacy/bag_24_original_threequarter.png"
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "design_id": "B-21",
+  "runtime_id": null,
+  "working_name_zh": "四筒",
+  "working_name_en": "QUADCAN",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 20,
+    "legacy_name": "DRACULA",
+    "purpose": "取代對應獨立bag裝備的美術；不與同序C套裝綁定。"
+  },
+  "lore": "配裝系統中的獨立背負設備，暫名「四筒」。外殼承接 DRACULA 的少量識別，內側加入可更換支架與穿戴固定點。",
+  "role": "獨立背包；承接 DRACULA 的裝備位置。現有容量為 6 格，本輪未修改。",
+  "palette": [
+    {
+      "family": "紅橘",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "暗紅",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "金",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "白",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    }
+  ],
+  "visual_identity": {
+    "proportion_target": "人體背部可穿戴的獨立設備；以獨立設計稿各視圖確認外形，非精確尺寸。",
+    "head": null,
+    "torso": null,
+    "shoulders": null,
+    "arms": null,
+    "legs": null,
+    "pack": "Retain DRACULA's narrow red-orange center and four red-and-gold cylinders, arranged two high and two low. Borrow the ODST Communications backpack's protected cartridge rack, reinforced case edge, visible retaining straps and secondary lower compartments. Keep four cylinders but pull them closer to the central frame and blunt the caps. Design equipment modules, not guns, and preserve the source color identity.",
+    "legacy_silhouette": "中央窄長直艙，四個大圓筒向兩側張開，上二下二。",
+    "legacy_devices": "中央紅橘上蓋配白色外框，四筒金色邊緣與深紅分段側壁，細橘色接管。",
+    "actual_reviews": {
+      "design_sheet": "已目視：主視與 outward 清楚顯示四個紅金封口筒，中央紅橙箱保留；ODST/COMM 綁帶筒架、加固邊框與次要儲物盒融入。五視區完整，assembly 為單側筒組示意，量產建模仍須鏡像另一側。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "背包原有HP、增益、技能與容量均由runtime原資料決定；本稿只替換美術，不增設飛行、護盾或醫療效果。",
+    "per_part": {
+      "hp": null,
+      "shield": null
+    },
+    "four_piece_total": {
+      "hp": null,
+      "shield": null
+    },
+    "movement_modifier": null,
+    "damage_modifier": null,
+    "unlock": "待玩法驗證後決定",
+    "purchase_currency": null,
+    "current_bag_slots_reference": 6
+  },
+  "proposed_abilities": [],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "design_sheet": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/b21_design_sheet.png",
+    "turnaround": "images/b21_design_sheet.png",
+    "construction": "images/b21_design_sheet.png",
+    "design_sheet": "images/b21_design_sheet.png"
+  },
+  "modeling_authority": "一張獨立設計稿包含主3/4視、向外面、側面、貼背面及維修拆解；圖內視角和機構可能需建模校正。不可直接當UV或遊戲貼圖。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "design_sheet": {
+        "design_id": "B-21",
+        "kind": "design_sheet",
+        "path": "images/b21_design_sheet.png",
+        "prompt": "prompts/b21_design_sheet.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b8-db09-7271-a1a5-5b4ce0c05eb2\\exec-6a1df95d-0e9a-4b12-bc8c-8c01a8b5b21c.png",
+        "date": "2026-09-25",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "reference_images": [
+          "references/legacy/bag_20_original_threequarter.png",
+          "references/legacy/bag_20_original_outward.png",
+          "references/halo/odst_comms.png"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已目視：主視與 outward 清楚顯示四個紅金封口筒，中央紅橙箱保留；ODST/COMM 綁帶筒架、加固邊框與次要儲物盒融入。五視區完整，assembly 為單側筒組示意，量產建模仍須鏡像另一側。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/b21_design_sheet.json"
+      }
+    },
+    "unselected_records": []
+  },
+  "equipment_type": "backpack",
+  "proposal_only": true,
+  "fusion_recipe": {
+    "retained": "四筒交叉布局與中央窄艙，將突出的筒縮短並加入安全固定架。",
+    "borrowed": "原遊戲256px選單圖：上方雙扣、橘棕矩形護架，中間並列三根圓筒，左緣小狀態格，下方掛袋。僅有小圖，背面細節與天線未確認。",
+    "optimized": "新增貼背軟墊、支架與掛點，整理維修開口及部件層次；每款保留其雙筒、圓盤、翼或多艙身份。"
+  },
+  "source_references": {
+    "legacy": {
+      "name": "DRACULA",
+      "runtime_id": 20,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_20/ArmorBag_20.obj",
+      "kind": "recovered_original_mesh_and_mtl_texture",
+      "audit": "sources/legacy_backpacks.json",
+      "images": [
+        "references/legacy/bag_20_original_threequarter.png",
+        "references/legacy/bag_20_original_outward.png",
+        "references/legacy/bag_20_original_side.png"
+      ]
+    },
+    "halo": {
+      "name": "ODST/COMM Communications backpack",
+      "game": "Halo 3 in Halo: The Master Chief Collection",
+      "donor_kind": "independent_backpack",
+      "source_page_url": "https://www.halopedia.org/File:HTMCC_H3_Communications_Backpack_Icon.png",
+      "images": [
+        {
+          "key": "odst_comms",
+          "source_page_url": "https://www.halopedia.org/File:HTMCC_H3_Communications_Backpack_Icon.png",
+          "image_url": "https://www.halopedia.org/images/9/9f/HTMCC_H3_Communications_Backpack_Icon.png?a2800",
+          "local_path": "references/halo/odst_comms.png",
+          "bytes": 75762,
+          "sha256": "fc0be2d82241834fa6841cfeda3971eaea08955a959100064d90b21f69b5ade9",
+          "width": 256,
+          "height": 256,
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "master_chief": false,
+      "integration_note": "整合式背甲只供結構參考，不能稱為原遊戲的獨立背包。"
+    }
+  },
+  "runtime_target": {
+    "item_key": "armor_bag_20",
+    "part_key": "bag",
+    "legacy_item_id": 20,
+    "attachment_bone": "fly_bag",
+    "current_bag_slots": 6,
+    "inherits_armor_abilities": false,
+    "original_stats_unchanged": true
+  }
+}

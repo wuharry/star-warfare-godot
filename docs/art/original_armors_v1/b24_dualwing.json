@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "design_id": "B-24",
+  "runtime_id": null,
+  "working_name_zh": "雙翼架",
+  "working_name_en": "DUALWING",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 23,
+    "legacy_name": "D-WINGS",
+    "purpose": "取代對應獨立bag裝備的美術；不與同序C套裝綁定。"
+  },
+  "lore": "配裝系統中的獨立背負設備，暫名「雙翼架」。外殼承接 D-WINGS 的少量識別，內側加入可更換支架與穿戴固定點。",
+  "role": "獨立背包；承接 D-WINGS 的裝備位置。現有容量為 6 格，本輪未修改。",
+  "palette": [
+    {
+      "family": "白",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "紅",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "深灰",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    }
+  ],
+  "visual_identity": {
+    "proportion_target": "人體背部可穿戴的獨立設備；以獨立設計稿各視圖確認外形，非精確尺寸。",
+    "head": null,
+    "torso": null,
+    "shoulders": null,
+    "arms": null,
+    "legs": null,
+    "pack": "Keep D-WINGS' white-and-red split upper bridge and two long segmented downward arms with dark inner faces. Fuse Series 12's angled twin thruster supports, reinforced central mount and compact lower hardware. Introduce protected joints that let the arms fold closer to the wearer. Keep the source's sharp graphic red blocks but soften exposed edges, and show solid hardware without blue effect planes.",
+    "legacy_silhouette": "頂部短殼連接兩根長而向下張开的分節支臂，整體倒 U 形。",
+    "legacy_devices": "白紅分塊、深灰內面，手指般細長推進臂；原模型另含藍色噴射平面。",
+    "actual_reviews": {
+      "design_sheet": "已目視：紅白分割雙長臂和開口 U 輪廓保留；Series 12 中央圓角殼、傾斜支架和受保護鉸鏈融入。五視區完整，沒有原版藍色特效平面；後續需用模型驗證長臂折收角度。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "背包原有HP、增益、技能與容量均由runtime原資料決定；本稿只替換美術，不增設飛行、護盾或醫療效果。",
+    "per_part": {
+      "hp": null,
+      "shield": null
+    },
+    "four_piece_total": {
+      "hp": null,
+      "shield": null
+    },
+    "movement_modifier": null,
+    "damage_modifier": null,
+    "unlock": "待玩法驗證後決定",
+    "purchase_currency": null,
+    "current_bag_slots_reference": 6
+  },
+  "proposed_abilities": [],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "design_sheet": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/b24_design_sheet.png",
+    "turnaround": "images/b24_design_sheet.png",
+    "construction": "images/b24_design_sheet.png",
+    "design_sheet": "images/b24_design_sheet.png"
+  },
+  "modeling_authority": "一張獨立設計稿包含主3/4視、向外面、側面、貼背面及維修拆解；圖內視角和機構可能需建模校正。不可直接當UV或遊戲貼圖。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "design_sheet": {
+        "design_id": "B-24",
+        "kind": "design_sheet",
+        "path": "images/b24_design_sheet.png",
+        "prompt": "prompts/b24_design_sheet.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b8-db09-7271-a1a5-5b4ce0c05eb2\\exec-3b5f04ce-5eb3-487a-8d67-fcad515ca7aa.png",
+        "date": "2026-09-25",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "reference_images": [
+          "references/legacy/bag_23_original_threequarter.png",
+          "references/legacy/bag_23_original_outward.png",
+          "references/halo/halo4_series12.png"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已目視：紅白分割雙長臂和開口 U 輪廓保留；Series 12 中央圓角殼、傾斜支架和受保護鉸鏈融入。五視區完整，沒有原版藍色特效平面；後續需用模型驗證長臂折收角度。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/b24_design_sheet.json"
+      }
+    },
+    "unselected_records": []
+  },
+  "equipment_type": "backpack",
+  "proposal_only": true,
+  "fusion_recipe": {
+    "retained": "雙長分節推進臂與白紅分塊，優化為能收折的背部設備。",
+    "borrowed": "上半部圓潤寬殼，中間凹入服務面，兩侧小格柵；下半部双外張短長支臂，中間大多邊形開口及低位掛架。",
+    "optimized": "新增貼背軟墊、支架與掛點，整理維修開口及部件層次；每款保留其雙筒、圓盤、翼或多艙身份。"
+  },
+  "source_references": {
+    "legacy": {
+      "name": "D-WINGS",
+      "runtime_id": 23,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_23/ArmorBag_23.obj",
+      "kind": "recovered_original_mesh_and_mtl_texture",
+      "audit": "sources/legacy_backpacks.json",
+      "images": [
+        "references/legacy/bag_23_original_threequarter.png",
+        "references/legacy/bag_23_original_outward.png",
+        "references/legacy/bag_23_original_side.png"
+      ]
+    },
+    "halo": {
+      "name": "Series 12 Single Operator Lift Apparatus",
+      "game": "Halo 4",
+      "donor_kind": "independent_jetpack",
+      "source_page_url": "https://www.halopedia.org/File:H4-S12SOLA-Jetpack.png",
+      "images": [
+        {
+          "key": "halo4_series12",
+          "source_page_url": "https://www.halopedia.org/File:H4-S12SOLA-Jetpack.png",
+          "image_url": "https://www.halopedia.org/images/9/96/H4-S12SOLA-Jetpack.png?1c692",
+          "local_path": "references/halo/halo4_series12.png",
+          "bytes": 1458434,
+          "sha256": "aa2825d7315153cb510b37871fb080bf127a7729abc12516b379bee4d0cf1d72",
+          "width": 1080,
+          "height": 1320,
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "master_chief": false,
+      "integration_note": "整合式背甲只供結構參考，不能稱為原遊戲的獨立背包。"
+    }
+  },
+  "runtime_target": {
+    "item_key": "armor_bag_23",
+    "part_key": "bag",
+    "legacy_item_id": 23,
+    "attachment_bone": "fly_bag",
+    "current_bag_slots": 6,
+    "inherits_armor_abilities": false,
+    "original_stats_unchanged": true
+  }
+}

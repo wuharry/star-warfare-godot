@@ -1,0 +1,487 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-25",
+  "objective": "為 C-11～C-21 逐套保留原裝甲身份，提供與 Halo 非士官長裝甲融合前的來源稽核。",
+  "ownership": "Only this scratch JSON. No runtime/art-gallery mutation.",
+  "source_policy": {
+    "canonical_catalog": "scripts/core/armor_catalog.gd SET_NAMES, legacy ID 10–20",
+    "capture_script": "tests/equipment_refinement_capture.gd",
+    "original_model": "assets/models/player/animated/player.gltf",
+    "material_restoration": "capture script instantiates original player.gltf and calls Visuals._restore_original_materials(original); the original pass copies those original meshes/materials, not assets/equipment_refined.",
+    "capture_size": [
+      800,
+      900
+    ],
+    "screenshot_kind": "既有 Godot 3D 檢視器使用還原的原模型／原材質的畫面；不是生成美術，也不是原發行版程式的歷史截圖。",
+    "display_limitations": "既有 front、side、rear 檔名標示相機角度；模型仍在持槍待機轉身姿態，所以 rear 圖實際偏側面、side 圖更偏背側；不能宣稱正交三視定稿。光照會影響觀察色。",
+    "no_backpack_inference": "capture script explicitly hides backpack_socket. These armor images do not define any original backpack; backpacks must use independent bag references.",
+    "prior_generated_excluded": "docs/art/armor_concepts_v2/images、armor_concepts_thunder_style_v1/images、original_armors_v1/images 均未作原遊戲素材來源。"
+  },
+  "acceptance": {
+    "entries": 11,
+    "original_front_visually_inspected": 11,
+    "original_supplementary_oblique_visually_inspected": 11,
+    "original_third_views_visually_inspected": 3,
+    "runtime_modified": false
+  },
+  "entries": [
+    {
+      "legacy_id": 10,
+      "legacy_name": "Phoenix",
+      "design_id": "C-11",
+      "observed_palette": [
+        "深炭藍紫外甲",
+        "黑色面罩與內襯",
+        "電藍線路和青色嵌件",
+        "前臂暗酒紅細片"
+      ],
+      "helmet": "兩側向外上方拉長的翼尖冠；中央尖額甲；黑面罩內有青色眼角與電藍折線，短厚下顎框。",
+      "chest_shoulders": "胸甲為左右分裂的垂直稜線板；肩頂小尖翼片、上臂外側青色狹長嵌件，肩上緣亮青。",
+      "forearms": "向肘端拉長的尖角護臂，外侧暗酒紅長三角片，電藍線向前臂集中。",
+      "legs": "尖頂長脛甲、寬腳背，電藍折線沿脛甲與腳背連續；腿根深色軟內襯。",
+      "retained_cues": [
+        "深炭藍紫＋青藍細線，保留明暗層次",
+        "外展雙翼尖冠與黑色寬面罩的組合",
+        "肩上緣青色嵌件，脛甲縱向折線"
+      ],
+      "optimization": "把翼尖收成較短、後掠的頭盔附加護片；以穿戴式眉甲、護頰與軟頸封襯重組面部；青藍細線集中在少數散熱或感測區，避免滿身電路形成機器人。",
+      "references": {
+        "primary": "references/legacy/c11_front.png",
+        "supplementary_oblique": "references/legacy/c11_side.png",
+        "third_view_exists": "references/legacy/c11_rear.png"
+      },
+      "visually_inspected_views": [
+        "front_filename",
+        "rear_filename_actual_side_oblique",
+        "side_filename_actual_back_oblique"
+      ],
+      "source_reliability": "high_for_recovered_original_assets; not_a_historical_release_screenshot",
+      "halo_match_status": "assigned_to_parent_research",
+      "note": "本段只記原版觀察；Halo 型號與融合比例由主代理根據實際參考圖決定，不能把本文視為已完成新圖。",
+      "reference_sha256": {
+        "primary": "c0a469d6e9d4ebd25674254c5d3d8794637f0e218550e6f3d3af94083e4a768c",
+        "supplementary_oblique": "fa231b7a24279795f5b0f92d3e1f93cc9226536a3ce0118bd3280948fcb34b8b",
+        "third_view_exists": "9840375d5c36bb36e43a54c693772bac7e17cabeb0d190c403bd676b7544d272"
+      }
+    },
+    {
+      "legacy_id": 11,
+      "legacy_name": "Cygni",
+      "design_id": "C-12",
+      "observed_palette": [
+        "淺灰白胸肩四肢",
+        "深森林綠內板與內襯",
+        "粉珊瑚紅／暗粉頭盔",
+        "銅橙面罩框和少量嵌片",
+        "暗紫面罩"
+      ],
+      "helmet": "高額冠向後拉長，頭盔側後各兩片短翼；深紫面罩被銅橙U形長頰框包住，粉紅下顎與圓形耳件。",
+      "chest_shoulders": "白色對稱分片胸甲，中央銅橙三角楔與黑色縱縫；肩頂白色細翼片向外上方伸出，深綠肩板由白框包圍。",
+      "forearms": "白色護臂外殼包住深綠面板，銅色短線與小矩形嵌件；護肘尖端明顯。",
+      "legs": "白色大腿前片与脛甲，深綠內分區；踝後各有短白翼，銅橙小盾牌樣標記。",
+      "retained_cues": [
+        "粉珊瑚頭盔對白灰／深綠身甲的顏色反差",
+        "短側翼頭盔與白色肩翼呼應",
+        "銅橙U形護頰框和少量胸部楔形嵌片"
+      ],
+      "optimization": "保留分色身份；把肩翼、踝翼轉成短型通訊或散熱護片，減少裸尖角；縮短面罩下框，加入清楚的頸圈與胸腰軟接縫。",
+      "references": {
+        "primary": "references/legacy/c12_front.png",
+        "supplementary_oblique": "references/legacy/c12_side.png",
+        "third_view_exists": "references/legacy/c12_rear.png"
+      },
+      "visually_inspected_views": [
+        "front_filename",
+        "rear_filename_actual_side_oblique"
+      ],
+      "source_reliability": "high_for_recovered_original_assets; not_a_historical_release_screenshot",
+      "halo_match_status": "assigned_to_parent_research",
+      "note": "本段只記原版觀察；Halo 型號與融合比例由主代理根據實際參考圖決定，不能把本文視為已完成新圖。",
+      "reference_sha256": {
+        "primary": "d8d16da0224425faf7bda6090ecaadd1563985370469477fedadc14d3ccf69d1",
+        "supplementary_oblique": "ed85454452c964f520d757a4636d6cc930e084a4fded11619a55d7990e461c40",
+        "third_view_exists": "0a42bbacc07e2be0272a07d21e742722fc3ad2f8e18bc7d63cc63ba0f0549d56"
+      }
+    },
+    {
+      "legacy_id": 12,
+      "legacy_name": "Andromedae",
+      "design_id": "C-13",
+      "observed_palette": [
+        "鋼藍外甲",
+        "深海軍藍接縫和內襯",
+        "青綠／冰青發光環與面罩線",
+        "少量灰紫連接片"
+      ],
+      "helmet": "較圓的全罩式冠殼；中央黑色分節冠槽；額頂有四周分布的六角圖符片；全覆藍灰面罩上畫青色T形／Y形輪廓線，兩側寬耳罩。",
+      "chest_shoulders": "大面積平直對開胸甲、中央垂直縫；五角肩殼有明顯青色分段圓環；胸腹間有一個大圓環。",
+      "forearms": "塊狀鋼藍護臂，上有青色圈／切線圓盤；小黑色圓孔。",
+      "legs": "幾何大腿護片、短方膝塊、寬直脛甲；小腿兩側青色圓形嵌件；內側深色肋紋。",
+      "retained_cues": [
+        "鋼藍大面板和青色分段圓環",
+        "圓冠＋中央分節冠槽",
+        "寬面罩上單一青色T形／Y形窗線"
+      ],
+      "optimization": "將假面式實心臉改為可辨識的寬玻璃面窗，保留青色窗框；圓環集中於肩與一處前臂，減少重複圖符；胸甲按胸廓和腰部動作切開。",
+      "references": {
+        "primary": "references/legacy/c13_front.png",
+        "supplementary_oblique": "references/legacy/c13_side.png",
+        "third_view_exists": "references/legacy/c13_rear.png"
+      },
+      "visually_inspected_views": [
+        "front_filename",
+        "rear_filename_actual_side_oblique"
+      ],
+      "source_reliability": "high_for_recovered_original_assets; not_a_historical_release_screenshot",
+      "halo_match_status": "assigned_to_parent_research",
+      "note": "本段只記原版觀察；Halo 型號與融合比例由主代理根據實際參考圖決定，不能把本文視為已完成新圖。",
+      "reference_sha256": {
+        "primary": "72c9c7192e4198ff94a818446145785897e3c7de38269d9648322274efd94007",
+        "supplementary_oblique": "a5f0dd6d3192ebc014b2bd720f91b3169730738fa4d0c2ab79ca6246ac0b9d49",
+        "third_view_exists": "370910f096ba79b8b53b8717e1f0c6886247739d764a7526d9828598f53b9dec"
+      }
+    },
+    {
+      "legacy_id": 13,
+      "legacy_name": "Perseus",
+      "design_id": "C-14",
+      "observed_palette": [
+        "深墨綠／煤灰外甲",
+        "近黑面罩與內襯",
+        "鏽橙嵌邊及額頂條",
+        "灰白分叉面罩線"
+      ],
+      "helmet": "高而狹長的封閉式面罩；中央深黑直槽和灰白向外分叉細線；圍臉下框有小孔與兩側圓形濾器；冠頂有鏽橙長條。",
+      "chest_shoulders": "胸甲低調、對開厚板；肩甲非常高寬，層層向外上方堆疊的板片，邊緣多條鏽橙細帶。",
+      "forearms": "方形厚护臂、深色手套；外側鏽橙十字／平行折線識別紋。",
+      "legs": "大腿外側圓形網孔護片，短方膝塊與厚脛甲；靴邊有小方齒，前側少量鏽橙折線。",
+      "retained_cues": [
+        "墨綠煤灰與鏽橙邊線",
+        "層疊高肩甲的重量感",
+        "狹長封閉頭盔和兩側圓形濾器"
+      ],
+      "optimization": "把肩高降到不阻礙轉頭，保留多層板片；額面分叉紋縮成小面窗／觀測條兩側的框線；人體腰側、腋下、肘後要露出軟材質。",
+      "references": {
+        "primary": "references/legacy/c14_front.png",
+        "supplementary_oblique": "references/legacy/c14_side.png",
+        "third_view_exists": "references/legacy/c14_rear.png"
+      },
+      "visually_inspected_views": [
+        "front_filename",
+        "rear_filename_actual_side_oblique"
+      ],
+      "source_reliability": "high_for_recovered_original_assets; not_a_historical_release_screenshot",
+      "halo_match_status": "assigned_to_parent_research",
+      "note": "本段只記原版觀察；Halo 型號與融合比例由主代理根據實際參考圖決定，不能把本文視為已完成新圖。",
+      "reference_sha256": {
+        "primary": "62e9cdc28bbb81f19355eedec6adedb058c9d58981aa66c94f50b045fb150588",
+        "supplementary_oblique": "20aedc2747f78d54d337ba891954e9f30c94df365837434e74c67c73a970594a",
+        "third_view_exists": "3e499df1ac4e64040b9b931f9dd64d8b8a2e3281d6cb5b7ffc740ac0ce114b94"
+      }
+    },
+    {
+      "legacy_id": 14,
+      "legacy_name": "Chaos",
+      "design_id": "C-15",
+      "observed_palette": [
+        "灼紅／暗紅硬甲",
+        "黃金色高亮裂線",
+        "黑色內襯",
+        "深紫黑大角和手脚"
+      ],
+      "helmet": "狹長尖下顎面殼，沒有寬玻璃窗；兩支高而彎曲外張的深色角，末端刃片；面部由亮黃分叉線形成眼眉與中央直線。",
+      "chest_shoulders": "紅色胸甲中央黃金色分叉紋一路連至腹部；兩肩另有向外彎曲的角，側部深色條紋。",
+      "forearms": "黑色／深紫幾何護臂，手部呈尖棱块状。",
+      "legs": "紅色大腿護板，亮黃閃電線；膝以下黑色甲與窄尖靴，分節與角尖突出。",
+      "retained_cues": [
+        "灼紅＋黑＋少量熔金色分叉線",
+        "頭盔雙角及肩端外展的威嚇輪廓",
+        "胸中央縱向分叉紋"
+      ],
+      "optimization": "高角轉成短弧形外掛防撞鰭，肩角轉成貼身外掀甲緣；頭部重建眉甲、玻璃眼窗、下巴護殼與軟頸封，保留紅黑與熔金訊號；不能照原圖保留超高角後仍聲稱不機械／不怪物。",
+      "references": {
+        "primary": "references/legacy/c15_front.png",
+        "supplementary_oblique": "references/legacy/c15_side.png",
+        "third_view_exists": "references/legacy/c15_rear.png"
+      },
+      "visually_inspected_views": [
+        "front_filename",
+        "rear_filename_actual_side_oblique"
+      ],
+      "source_reliability": "high_for_recovered_original_assets; not_a_historical_release_screenshot",
+      "halo_match_status": "assigned_to_parent_research",
+      "note": "本段只記原版觀察；Halo 型號與融合比例由主代理根據實際參考圖決定，不能把本文視為已完成新圖。",
+      "reference_sha256": {
+        "primary": "394b8274047be5daacc656d35c0e7def243c008e8abd82ed4665ca8f9a2a584d",
+        "supplementary_oblique": "953328481844c95389c8b7de799769fcd014d8f1cb53a8d4c665cf79c886b3f3",
+        "third_view_exists": "3b39ef98fcfd8ff0cc6f7a1e35ec0ac716d4fe6374454f3ba877da9a88762749"
+      }
+    },
+    {
+      "legacy_id": 15,
+      "legacy_name": "DEC.24",
+      "design_id": "C-16",
+      "observed_palette": [
+        "節慶暗紅主甲",
+        "白色面框、前臂和靴口",
+        "淡黃綠窄面窗",
+        "微量青綠指示條",
+        "棕褐靴尖"
+      ],
+      "helmet": "紅色圓頂前额，冠殼向後下方延伸為帽尾，末端白色小球；白色雙層眉框，窄黃綠面窗；白色前突下顎罩，前端雙矩形呼吸口。",
+      "chest_shoulders": "紅色飽滿肩殼与圓弧胸板，胸上兩處黃綠斜三角窗；腰腹有白色邊飾，少量白色磨損狀花紋。",
+      "forearms": "前臂白色長菱形護片，紅色外框，靠近手腕有綠色小條；手套深色。",
+      "legs": "紅色大腿和膝甲，白色靴口V形飾邊，棕色腳尖帶白星／白點紋。",
+      "retained_cues": [
+        "紅白主色和淡黃綠窄面窗",
+        "白色下顎雙呼吸口",
+        "冠殼後垂短尾與白色端部的節慶提示"
+      ],
+      "optimization": "節慶尾部縮成可拆後頸罩與小白鎖扣，避免直接聖誕帽；白色雙呼吸口整合成較短的防寒濾器；將白色裝飾節制在護臂和靴邊，保留實用穿戴感。",
+      "references": {
+        "primary": "references/legacy/c16_front.png",
+        "supplementary_oblique": "references/legacy/c16_side.png",
+        "third_view_exists": "references/legacy/c16_rear.png"
+      },
+      "visually_inspected_views": [
+        "front_filename",
+        "rear_filename_actual_side_oblique",
+        "side_filename_actual_back_oblique"
+      ],
+      "source_reliability": "high_for_recovered_original_assets; not_a_historical_release_screenshot",
+      "halo_match_status": "assigned_to_parent_research",
+      "note": "本段只記原版觀察；Halo 型號與融合比例由主代理根據實際參考圖決定，不能把本文視為已完成新圖。",
+      "reference_sha256": {
+        "primary": "a66bba394b00c49ea049048def308a3e33598d762b13f7f9354c43d3a7892dbe",
+        "supplementary_oblique": "b19e1dff6983780d85289dc9f70167dcb19c0369e922768d75047fad15daf30f",
+        "third_view_exists": "fe4e509230f594d0dff0d95b696d60dc7c249a60878810349077a1a4be1e8dba"
+      }
+    },
+    {
+      "legacy_id": 16,
+      "legacy_name": "Knight",
+      "design_id": "C-17",
+      "observed_palette": [
+        "暗鋼藍／煤灰外甲",
+        "亮酸綠面窗與嵌條",
+        "橙色頸口內襯",
+        "黑色關節"
+      ],
+      "helmet": "暗鋼藍高中央脊，頭頂兩小尖刺；眉緣為非常寬的外展框，绿色分段面窗；下顎尖而封閉，側面綠小窗。",
+      "chest_shoulders": "肩甲尖刺、綠色亮邊；高胸甲有綠色箭頭／分叉紋，領口露出橙色三角軟片，外殼呈多邊形騎士式層次。",
+      "forearms": "前臂呈厚方盾片，外側有两條黑長槽；細綠護邊。",
+      "legs": "暗藍大腿與多片膝甲，踝部與腳背大片綠色連接帶；靴尖和脛甲有小尖角。",
+      "retained_cues": [
+        "暗鋼藍＋酸綠大面窗／肩邊",
+        "外展寬眉框和較低雙尖冠",
+        "橙色頸口的一小塊對比色"
+      ],
+      "optimization": "保留騎士感但降低角刺與外展眉框寬度；用軟頸圈承接橙色領口、綠色面窗改成連續玻璃；前臂雙槽轉為通風與維修口，關節回到人的比例。",
+      "references": {
+        "primary": "references/legacy/c17_front.png",
+        "supplementary_oblique": "references/legacy/c17_side.png",
+        "third_view_exists": "references/legacy/c17_rear.png"
+      },
+      "visually_inspected_views": [
+        "front_filename",
+        "rear_filename_actual_side_oblique"
+      ],
+      "source_reliability": "high_for_recovered_original_assets; not_a_historical_release_screenshot",
+      "halo_match_status": "assigned_to_parent_research",
+      "note": "本段只記原版觀察；Halo 型號與融合比例由主代理根據實際參考圖決定，不能把本文視為已完成新圖。",
+      "reference_sha256": {
+        "primary": "47b894f05c8b7a3b3256555f5232ffdf030da27520b5c9c4040965f6d5897f68",
+        "supplementary_oblique": "40604a4b5f4a948c170ff17907a20c91b4d0715a092c560cda7cc8758bd798a4",
+        "third_view_exists": "2c45fa367c1b17020a737752ed534ba5b2d8edcf1cf8e726c2c685eb82fbdfea"
+      }
+    },
+    {
+      "legacy_id": 17,
+      "legacy_name": "R.O.M.E",
+      "design_id": "C-18",
+      "observed_palette": [
+        "鮮深紅主甲",
+        "銀白額頂和護臂",
+        "煙灰金面窗",
+        "黑色接縫"
+      ],
+      "helmet": "由前向後延伸的紅色高扇形冠脊；下面銀色圓冠帽；寬水平煙金面窗、紅色垂直護頰和小下巴，整體古羅馬頭盔感。",
+      "chest_shoulders": "紅色厚斜胸甲，胸中央小銀圓章；红肩殼帶白銀圓盤，肩面多層折線；腹部黑紅層疊。",
+      "forearms": "一眼可認的寬銀白箭頭／折角護臂片，红色底殼和深色手套。",
+      "legs": "大面積紅色大腿與脛甲，膝上方黑色斜分区；大腿側面銀圓片，靴前為红色尖切面。",
+      "retained_cues": [
+        "紅色縱向冠脊與銀白冠底",
+        "紅甲＋銀白箭形護臂",
+        "肩與胸的少量圓章位置"
+      ],
+      "optimization": "冠脊減高並分段，作為可更換通訊護脊；古羅馬樣式的臉框結合人類面窗和頸圈；銀色護臂保留但收窄，手腕自由活動。",
+      "references": {
+        "primary": "references/legacy/c18_front.png",
+        "supplementary_oblique": "references/legacy/c18_side.png",
+        "third_view_exists": "references/legacy/c18_rear.png"
+      },
+      "visually_inspected_views": [
+        "front_filename",
+        "rear_filename_actual_side_oblique"
+      ],
+      "source_reliability": "high_for_recovered_original_assets; not_a_historical_release_screenshot",
+      "halo_match_status": "assigned_to_parent_research",
+      "note": "本段只記原版觀察；Halo 型號與融合比例由主代理根據實際參考圖決定，不能把本文視為已完成新圖。",
+      "reference_sha256": {
+        "primary": "4bba4b9ca8f18429b3cd65a05f383815acb25e21101499dcf65c69ce62c16983",
+        "supplementary_oblique": "e92804aca90257ef4536c35d9b92909bea21961635d826fc690c126bf7ffa3f2",
+        "third_view_exists": "bd0ecb5e43498e32c1608065af8a0a8ad34eeb7634ee3503d999b927ed670c85"
+      }
+    },
+    {
+      "legacy_id": 18,
+      "legacy_name": "Black Hole",
+      "design_id": "C-19",
+      "observed_palette": [
+        "近黑／炭灰主甲",
+        "極暗藍接縫",
+        "少量暗青藍眼窗和嵌件"
+      ],
+      "helmet": "多稜面封閉冠殼，額頂和後方有短鳍；窄青藍眼窗斜向兩側，中央下顎拉尖；没有明顯金屬呼吸器。",
+      "chest_shoulders": "胸甲像緊湊肌肉／甲殼輪廓，頸下小青藍倒三角；圆棱肩殼上各有幾個青邊短方柱。",
+      "forearms": "深灰矩形窗式护臂，青藍窄邊，手套黑色；護腕較厚。",
+      "legs": "大腿外面覆蓋鱗片狀重疊小板；菱形膝甲、稜面長脛甲，少量青藍小方突塊。",
+      "retained_cues": [
+        "近黑主甲和低亮度青藍細窗",
+        "窄斜面窗與短頭頂／後頸鰭",
+        "大腿鱗片板和矩形護臂的對比"
+      ],
+      "optimization": "將異形甲殼感转成人類戰術緊身衣外的分片護甲；保留局部鱗片紋而不覆蓋全部四肢；提高黑甲明暗分層，使關節和板厚可讀。",
+      "references": {
+        "primary": "references/legacy/c19_front.png",
+        "supplementary_oblique": "references/legacy/c19_side.png",
+        "third_view_exists": "references/legacy/c19_rear.png"
+      },
+      "visually_inspected_views": [
+        "front_filename",
+        "rear_filename_actual_side_oblique"
+      ],
+      "source_reliability": "high_for_recovered_original_assets; not_a_historical_release_screenshot",
+      "halo_match_status": "assigned_to_parent_research",
+      "note": "本段只記原版觀察；Halo 型號與融合比例由主代理根據實際參考圖決定，不能把本文視為已完成新圖。",
+      "reference_sha256": {
+        "primary": "27394fd81a7cbd2700cdfc902de226e8963677f1e2e6aca9e8460334afaef466",
+        "supplementary_oblique": "2d460405933410538d25c663854352c980e2eff0dc6de850489396fe7c664c80",
+        "third_view_exists": "a581f0af41a65b876907a261ff629372743b44b78a501de1bed7951a7ef173d5"
+      }
+    },
+    {
+      "legacy_id": 19,
+      "legacy_name": "X-Field",
+      "design_id": "C-20",
+      "observed_palette": [
+        "暗珊瑚紅／磚紅外甲",
+        "青綠機構與邊框",
+        "冰藍／青藍六角肩面和面窗",
+        "黑色腰腿接縫"
+      ],
+      "helmet": "寬平頂並向後延伸的紅殼，額中央小黑孔與青色圓點；面窗側面青藍、中央淺青下延，額上粗红框；側耳圆黑片青綠包邊。",
+      "chest_shoulders": "最突出的是左右肩的冰藍六角蜂巢面板，被紅殼包圍，上端有青綠短片；胸口青綠弧形小件與中央深色縱縫。",
+      "forearms": "紅色方塊護臂，青綠小嵌片與深色手套。",
+      "legs": "紅色大腿前片，深色斜向膝帶，紅色長脛甲，腳背有灰色小矩形。",
+      "retained_cues": [
+        "磚紅＋青綠／冰藍配色",
+        "左右肩的六角蜂巢護板",
+        "後延平頂頭盔與青色耳框"
+      ],
+      "optimization": "蜂巢縮成可替換的實體肩面板，低亮度，不直接畫成力場；頭盔加入明確玻璃面窗邊與短呼吸罩；紅胸甲按照肋骨和腰部細分，避免大一體殼。",
+      "references": {
+        "primary": "references/legacy/c20_front.png",
+        "supplementary_oblique": "references/legacy/c20_side.png",
+        "third_view_exists": "references/legacy/c20_rear.png"
+      },
+      "visually_inspected_views": [
+        "front_filename",
+        "rear_filename_actual_side_oblique"
+      ],
+      "source_reliability": "high_for_recovered_original_assets; not_a_historical_release_screenshot",
+      "halo_match_status": "assigned_to_parent_research",
+      "note": "本段只記原版觀察；Halo 型號與融合比例由主代理根據實際參考圖決定，不能把本文視為已完成新圖。",
+      "reference_sha256": {
+        "primary": "2148879ee0c76a875cdc7c80718704d0555aeffa91a1b65bada7d4c4d5cb3467",
+        "supplementary_oblique": "8e97e8db29b572184eb223d675c00853a0a278ee3fad7a944d2cc67e9764e120",
+        "third_view_exists": "1da9aa9db7f65f4b0b4a38fa8eb3e55f7f2492c70debaba18dae591a0e957b9e"
+      }
+    },
+    {
+      "legacy_id": 20,
+      "legacy_name": "Wrath",
+      "design_id": "C-21",
+      "observed_palette": [
+        "鋼藍外甲",
+        "深藍黑角冠與內襯",
+        "銀白肩層與線條",
+        "金色菱形額章／胸膝嵌框",
+        "紅色細眼窗"
+      ],
+      "helmet": "高雙彎角從額前外框向上抬起，中間金色菱形；藍色面殼帶銀色管狀紋，窄紅眼窗，尖長面罩下緣。",
+      "chest_shoulders": "銀色多層肩底，上面伸出長藍色葉狀護片，中央圓形盤；胸部金色邊框和銀白中央菱形。",
+      "forearms": "鋼藍長護臂帶尖肘和紅色小圓盤，白銀線條描邊。",
+      "legs": "鋼藍厚腿甲，膝前金色菱形框，長脛甲有黑色小孔，黑色腳踝分層。",
+      "retained_cues": [
+        "鋼藍＋銀＋少量金，配窄紅眼窗",
+        "雙弧冠框與中央菱形識別",
+        "分層肩甲和小圓盤"
+      ],
+      "optimization": "雙弧冠压低为可戴的額部環形護框，長肩翼縮為多層活動肩片；紅眼改為有厚度的窄玻璃面窗；削減像骨骼的銀管線，保留金菱形作少量識別。",
+      "references": {
+        "primary": "references/legacy/c21_front.png",
+        "supplementary_oblique": "references/legacy/c21_side.png",
+        "third_view_exists": "references/legacy/c21_rear.png"
+      },
+      "visually_inspected_views": [
+        "front_filename",
+        "rear_filename_actual_side_oblique",
+        "side_filename_actual_back_oblique"
+      ],
+      "source_reliability": "high_for_recovered_original_assets; not_a_historical_release_screenshot",
+      "halo_match_status": "assigned_to_parent_research",
+      "note": "本段只記原版觀察；Halo 型號與融合比例由主代理根據實際參考圖決定，不能把本文視為已完成新圖。",
+      "reference_sha256": {
+        "primary": "9736bf7a031addd4172f4a3224d8e2574f94d761bc09b933adb26ef555c87dae",
+        "supplementary_oblique": "989047bf064abba2ddfe668bd9cf3521b5e66cae32a601b3fcd5e2dc667b2b39",
+        "third_view_exists": "03474dec8c7619c9de1497c7286f0211240691f545d9796b0e0dae9dacdf3543"
+      }
+    }
+  ],
+  "historical_reference_paths": {
+    "test_output/equipment_refinement/preview/armor_10_original_front.png": "references/legacy/c11_front.png",
+    "test_output/equipment_refinement/preview/armor_10_original_rear.png": "references/legacy/c11_side.png",
+    "test_output/equipment_refinement/preview/armor_10_original_side.png": "references/legacy/c11_rear.png",
+    "test_output/equipment_refinement/preview/armor_11_original_front.png": "references/legacy/c12_front.png",
+    "test_output/equipment_refinement/preview/armor_11_original_rear.png": "references/legacy/c12_side.png",
+    "test_output/equipment_refinement/preview/armor_11_original_side.png": "references/legacy/c12_rear.png",
+    "test_output/equipment_refinement/preview/armor_12_original_front.png": "references/legacy/c13_front.png",
+    "test_output/equipment_refinement/preview/armor_12_original_rear.png": "references/legacy/c13_side.png",
+    "test_output/equipment_refinement/preview/armor_12_original_side.png": "references/legacy/c13_rear.png",
+    "test_output/equipment_refinement/preview/armor_13_original_front.png": "references/legacy/c14_front.png",
+    "test_output/equipment_refinement/preview/armor_13_original_rear.png": "references/legacy/c14_side.png",
+    "test_output/equipment_refinement/preview/armor_13_original_side.png": "references/legacy/c14_rear.png",
+    "test_output/equipment_refinement/preview/armor_14_original_front.png": "references/legacy/c15_front.png",
+    "test_output/equipment_refinement/preview/armor_14_original_rear.png": "references/legacy/c15_side.png",
+    "test_output/equipment_refinement/preview/armor_14_original_side.png": "references/legacy/c15_rear.png",
+    "test_output/equipment_refinement/preview/armor_15_original_front.png": "references/legacy/c16_front.png",
+    "test_output/equipment_refinement/preview/armor_15_original_rear.png": "references/legacy/c16_side.png",
+    "test_output/equipment_refinement/preview/armor_15_original_side.png": "references/legacy/c16_rear.png",
+    "test_output/equipment_refinement/preview/armor_16_original_front.png": "references/legacy/c17_front.png",
+    "test_output/equipment_refinement/preview/armor_16_original_rear.png": "references/legacy/c17_side.png",
+    "test_output/equipment_refinement/preview/armor_16_original_side.png": "references/legacy/c17_rear.png",
+    "test_output/equipment_refinement/preview/armor_17_original_front.png": "references/legacy/c18_front.png",
+    "test_output/equipment_refinement/preview/armor_17_original_rear.png": "references/legacy/c18_side.png",
+    "test_output/equipment_refinement/preview/armor_17_original_side.png": "references/legacy/c18_rear.png",
+    "test_output/equipment_refinement/preview/armor_18_original_front.png": "references/legacy/c19_front.png",
+    "test_output/equipment_refinement/preview/armor_18_original_rear.png": "references/legacy/c19_side.png",
+    "test_output/equipment_refinement/preview/armor_18_original_side.png": "references/legacy/c19_rear.png",
+    "test_output/equipment_refinement/preview/armor_19_original_front.png": "references/legacy/c20_front.png",
+    "test_output/equipment_refinement/preview/armor_19_original_rear.png": "references/legacy/c20_side.png",
+    "test_output/equipment_refinement/preview/armor_19_original_side.png": "references/legacy/c20_rear.png",
+    "test_output/equipment_refinement/preview/armor_20_original_front.png": "references/legacy/c21_front.png",
+    "test_output/equipment_refinement/preview/armor_20_original_rear.png": "references/legacy/c21_side.png",
+    "test_output/equipment_refinement/preview/armor_20_original_side.png": "references/legacy/c21_rear.png"
+  }
+}

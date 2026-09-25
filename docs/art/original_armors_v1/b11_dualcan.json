@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "design_id": "B-11",
+  "runtime_id": null,
+  "working_name_zh": "雙罐",
+  "working_name_en": "DUALCAN",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 10,
+    "legacy_name": "STK-06-ZZ",
+    "purpose": "取代對應獨立bag裝備的美術；不與同序C套裝綁定。"
+  },
+  "lore": "配裝系統中的獨立背負設備，暫名「雙罐」。外殼承接 STK-06-ZZ 的少量識別，內側加入可更換支架與穿戴固定點。",
+  "role": "獨立背包；承接 STK-06-ZZ 的裝備位置。現有容量為 6 格，本輪未修改。",
+  "palette": [
+    {
+      "family": "鋼灰",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "深紫藍",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "粉紅",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "暗金",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    }
+  ],
+  "visual_identity": {
+    "proportion_target": "人體背部可穿戴的獨立設備；以獨立設計稿各視圖確認外形，非精確尺寸。",
+    "head": null,
+    "torso": null,
+    "shoulders": null,
+    "arms": null,
+    "legs": null,
+    "pack": "Preserve STK-06-ZZ's two upper short cylinders with pale round ends, narrow central vent well and dark blue-gray lower case. Fuse Series 8's serviceable twin-module frame, recessed grilles and reinforced lower spine. Redesign the cylinders as protected equipment cartridges rather than exposed spikes. Keep the small pink and warm-metal accents and shorten the thin lower fins into guards.",
+    "legacy_silhouette": "雙上置短圓筒橫向凸出，下方寬方艙收成尖底。",
+    "legacy_devices": "兩筒端面是淡粉圓窗及金環，中央五邊形通風井，底部紅色直列窗；底側有薄尖片。",
+    "actual_reviews": {
+      "design_sheet": "已實際目視：主視、OUTWARD、SIDE、INWARD 及維修拆解皆完整；保留 STK-06-ZZ 上方雙短筒的粉紅圓面、金色環與中央五角通風槽，融合 Series 8 的雙側裝置護架、進排氣與可拆中芯，深藍灰主色一致。下端薄鰭已縮為護片。SIDE 的局部仍有輕微透視，掛帶長度與中央模組拆卸間隙須在建模時確認。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "背包原有HP、增益、技能與容量均由runtime原資料決定；本稿只替換美術，不增設飛行、護盾或醫療效果。",
+    "per_part": {
+      "hp": null,
+      "shield": null
+    },
+    "four_piece_total": {
+      "hp": null,
+      "shield": null
+    },
+    "movement_modifier": null,
+    "damage_modifier": null,
+    "unlock": "待玩法驗證後決定",
+    "purchase_currency": null,
+    "current_bag_slots_reference": 6
+  },
+  "proposed_abilities": [],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "design_sheet": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/b11_design_sheet.png",
+    "turnaround": "images/b11_design_sheet.png",
+    "construction": "images/b11_design_sheet.png",
+    "design_sheet": "images/b11_design_sheet.png"
+  },
+  "modeling_authority": "一張獨立設計稿包含主3/4視、向外面、側面、貼背面及維修拆解；圖內視角和機構可能需建模校正。不可直接當UV或遊戲貼圖。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "design_sheet": {
+        "design_id": "B-11",
+        "kind": "design_sheet",
+        "path": "images/b11_design_sheet.png",
+        "prompt": "prompts/b11_design_sheet.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-eb755726-c86f-4458-a363-847c97eecd9a.png",
+        "date": "2026-09-25",
+        "reference_images": [
+          "references/legacy/bag_10_original_threequarter.png",
+          "references/legacy/bag_10_original_outward.png",
+          "references/halo/reach_series8.png",
+          "references/halo/reach_series8_concept.jpg"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已實際目視：主視、OUTWARD、SIDE、INWARD 及維修拆解皆完整；保留 STK-06-ZZ 上方雙短筒的粉紅圓面、金色環與中央五角通風槽，融合 Series 8 的雙側裝置護架、進排氣與可拆中芯，深藍灰主色一致。下端薄鰭已縮為護片。SIDE 的局部仍有輕微透視，掛帶長度與中央模組拆卸間隙須在建模時確認。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/b11_design_sheet.json"
+      }
+    },
+    "unselected_records": []
+  },
+  "equipment_type": "backpack",
+  "proposal_only": true,
+  "fusion_recipe": {
+    "retained": "雙上置圓筒端面與中央通風井，尖片縮為防護鰭。",
+    "borrowed": "正後方為雙縱向長設備殼，左右上方擴出的短艙，中央上下兩個圓孔與短服務脊；原画補充穿戴深度、側向通風格柵及下方雙導軌。",
+    "optimized": "新增貼背軟墊、支架與掛點，整理維修開口及部件層次；每款保留其雙筒、圓盤、翼或多艙身份。"
+  },
+  "source_references": {
+    "legacy": {
+      "name": "STK-06-ZZ",
+      "runtime_id": 10,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_10/ArmorBag_10.obj",
+      "kind": "recovered_original_mesh_and_mtl_texture",
+      "audit": "sources/legacy_backpacks.json",
+      "images": [
+        "references/legacy/bag_10_original_threequarter.png",
+        "references/legacy/bag_10_original_outward.png",
+        "references/legacy/bag_10_original_side.png"
+      ]
+    },
+    "halo": {
+      "name": "Series 8 jetpack",
+      "game": "Halo: Reach",
+      "donor_kind": "independent_jetpack",
+      "source_page_url": "https://www.halopedia.org/File:HReach-Jetpack-Inactive.png",
+      "images": [
+        {
+          "key": "reach_series8",
+          "source_page_url": "https://www.halopedia.org/File:HReach-Jetpack-Inactive.png",
+          "image_url": "https://www.halopedia.org/images/4/44/HReach-Jetpack-Inactive.png?b9b90",
+          "local_path": "references/halo/reach_series8.png",
+          "bytes": 426494,
+          "sha256": "45fc007a31754094153acfe8eea0a8ad5ab7ad81e9350e23852fa73b01fe09bf",
+          "width": 600,
+          "height": 700,
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        },
+        {
+          "key": "reach_series8_concept",
+          "source_page_url": "https://www.halopedia.org/File:HR_UNSCJetPack_Concept_1.jpg",
+          "image_url": "https://www.halopedia.org/images/4/46/HR_UNSCJetPack_Concept_1.jpg?b06ec",
+          "local_path": "references/halo/reach_series8_concept.jpg",
+          "bytes": 352496,
+          "sha256": "c5f78151733d163dcb1b093681b31bd516bf00d065b49d29c8a906a701096f9f",
+          "width": 1500,
+          "height": 809,
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "master_chief": false,
+      "integration_note": "整合式背甲只供結構參考，不能稱為原遊戲的獨立背包。"
+    }
+  },
+  "runtime_target": {
+    "item_key": "armor_bag_10",
+    "part_key": "bag",
+    "legacy_item_id": 10,
+    "attachment_bone": "fly_bag",
+    "current_bag_slots": 6,
+    "inherits_armor_abilities": false,
+    "original_stats_unchanged": true
+  }
+}
