@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "design_id": "B-19",
+  "runtime_id": null,
+  "working_name_zh": "刃匣",
+  "working_name_en": "BLADECASE",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 18,
+    "legacy_name": "BLADE-MASTER",
+    "purpose": "取代對應獨立bag裝備的美術；不與同序C套裝綁定。"
+  },
+  "lore": "配裝系統中的獨立背負設備，暫名「刃匣」。外殼承接 BLADE-MASTER 的少量識別，內側加入可更換支架與穿戴固定點。",
+  "role": "獨立背包；承接 BLADE-MASTER 的裝備位置。現有容量為 4 格，本輪未修改。",
+  "palette": [
+    {
+      "family": "紫灰",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "黑",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "亮藍",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    }
+  ],
+  "visual_identity": {
+    "proportion_target": "人體背部可穿戴的獨立設備；以獨立設計稿各視圖確認外形，非精確尺寸。",
+    "head": null,
+    "torso": null,
+    "shoulders": null,
+    "arms": null,
+    "legs": null,
+    "pack": "Preserve BLADE-MASTER's two tall blue-lined blade-like panels, purple-gray body and paired circular accents on the side cases. Fuse Oceanic's parallel rear housings, shared lower curved brace and recessed central service cover. Reduce the blades into broad blunt protective rails with a slight outward flare. Keep the electric-blue routes sparse and purposeful on an independently wearable support frame.",
+    "legacy_silhouette": "高雙翼片從中央脊向上張开，主體底部尖收，左右短圓弧艙。",
+    "legacy_devices": "深紫灰板上藍色直線與轉折導光紋，側艙各有兩個藍色圓環，下方分段藍窗。",
+    "actual_reviews": {
+      "design_sheet": "已目視：灰紫分叉護板、藍線與側殼圓環保留；Oceanic 並列背殼與共用下框轉化為實體載架，尖端已鈍化。五視區完整；拆解僅示意主要模組，建模須檢查中央護板與腰部活動距離。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "背包原有HP、增益、技能與容量均由runtime原資料決定；本稿只替換美術，不增設飛行、護盾或醫療效果。",
+    "per_part": {
+      "hp": null,
+      "shield": null
+    },
+    "four_piece_total": {
+      "hp": null,
+      "shield": null
+    },
+    "movement_modifier": null,
+    "damage_modifier": null,
+    "unlock": "待玩法驗證後決定",
+    "purchase_currency": null,
+    "current_bag_slots_reference": 4
+  },
+  "proposed_abilities": [],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "design_sheet": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/b19_design_sheet.png",
+    "turnaround": "images/b19_design_sheet.png",
+    "construction": "images/b19_design_sheet.png",
+    "design_sheet": "images/b19_design_sheet.png"
+  },
+  "modeling_authority": "一張獨立設計稿包含主3/4視、向外面、側面、貼背面及維修拆解；圖內視角和機構可能需建模校正。不可直接當UV或遊戲貼圖。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "design_sheet": {
+        "design_id": "B-19",
+        "kind": "design_sheet",
+        "path": "images/b19_design_sheet.png",
+        "prompt": "prompts/b19_design_sheet.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b8-db09-7271-a1a5-5b4ce0c05eb2\\exec-e2f44d74-bba7-414c-8741-eb8cd59919d8.png",
+        "date": "2026-09-25",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "reference_images": [
+          "references/legacy/bag_18_original_threequarter.png",
+          "references/legacy/bag_18_original_outward.png",
+          "references/halo/c13_oceanic_hipoly.jpg"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已目視：灰紫分叉護板、藍線與側殼圓環保留；Oceanic 並列背殼與共用下框轉化為實體載架，尖端已鈍化。五視區完整；拆解僅示意主要模組，建模須檢查中央護板與腰部活動距離。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/b19_design_sheet.json"
+      }
+    },
+    "unselected_records": []
+  },
+  "equipment_type": "backpack",
+  "proposal_only": true,
+  "fusion_recipe": {
+    "retained": "高雙片與側艙藍色圓環；重新整合為背負框架。",
+    "borrowed": "原製作高模後視：兩條平行長後肩殼，中間服務蓋，下緣共用圓弧支架；上端短護鰭，並有獨立腰背軟衣。高模無最終配色。",
+    "optimized": "新增貼背軟墊、支架與掛點，整理維修開口及部件層次；每款保留其雙筒、圓盤、翼或多艙身份。"
+  },
+  "source_references": {
+    "legacy": {
+      "name": "BLADE-MASTER",
+      "runtime_id": 18,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_18/ArmorBag_18.obj",
+      "kind": "recovered_original_mesh_and_mtl_texture",
+      "audit": "sources/legacy_backpacks.json",
+      "images": [
+        "references/legacy/bag_18_original_threequarter.png",
+        "references/legacy/bag_18_original_outward.png",
+        "references/legacy/bag_18_original_side.png"
+      ]
+    },
+    "halo": {
+      "name": "OCEANIC-class Mjolnir rear carrier",
+      "game": "Halo 4",
+      "donor_kind": "integrated_armor_back_structure",
+      "source_page_url": "https://www.halopedia.org/File:H4_Oceanic_HiPoly_Render_2.jpg",
+      "images": [
+        {
+          "key": "c13_oceanic_hipoly",
+          "source_page_url": "https://www.halopedia.org/File:H4_Oceanic_HiPoly_Render_2.jpg",
+          "image_url": "https://www.halopedia.org/images/6/64/H4_Oceanic_HiPoly_Render_2.jpg?49d9c",
+          "local_path": "references/halo/c13_oceanic_hipoly.jpg",
+          "bytes": 403347,
+          "sha256": "25a843dacaa80ab7ad676c08fa984eeb18fc2cc8450a64f9274bd4b503d8a7f2",
+          "visually_inspected": true,
+          "width": 1100,
+          "height": 825,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "master_chief": false,
+      "integration_note": "整合式背甲只供結構參考，不能稱為原遊戲的獨立背包。"
+    }
+  },
+  "runtime_target": {
+    "item_key": "armor_bag_18",
+    "part_key": "bag",
+    "legacy_item_id": 18,
+    "attachment_bone": "fly_bag",
+    "current_bag_slots": 4,
+    "inherits_armor_abilities": false,
+    "original_stats_unchanged": true
+  }
+}

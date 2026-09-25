@@ -1,0 +1,1210 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-25",
+  "objective": "供21裝甲與25獨立背包重生設計使用的原背包視覺對照，不含AI重製圖。",
+  "owned_paths": [
+    "test_output/armor_fusion_reset/legacy_backpacks.json",
+    "test_output/armor_fusion_reset/backpack_references/",
+    "test_output/armor_fusion_reset/capture_legacy_backpacks.gd"
+  ],
+  "source_policy": {
+    "geometry": "全部來自 assets/models/player/animated/bags/ArmorBag_NN/ArmorBag_NN.obj，由原 Unity 模型回收；未載入 equipment_refined 或 original_armors_v1 美術。",
+    "display": "Godot gl_compatibility，768×768，正交相機，Unshaded 顯示原 RGB 貼圖；這是便於觀察的來源渲染，不保證與原遊戲光照／動態 Shader 相同。",
+    "alpha": "實體表面讀原 PNG RGB 以免材質資料 alpha 被當透明；背包 15／23 的原噴射特效平面透明隱藏，只呈現硬體。",
+    "special_materials": "背包 14／24 使用原 MTL 的 map_Kd 路徑補足匯入材質失去的貼圖綁定。",
+    "bag_17": "背包17原 runtime bag_18.png RGB 可見雜色損壞；本 capture 改採原 SW1 3.01 XAPK 既有解析出的 Texture2D bag_18，來源 docs/reconstruction_v1/sw1/inventory.json，file 691852abf28a476449486d0f607b9a12，path_id 1。沒有修改 runtime 檔案。",
+    "interpretation": "圓筒、窗口、散熱孔等為外觀描述；沒有宣稱其遊戲能力。融合方向是設計建議，不是原遊戲既有功能。"
+  },
+  "capture_validation": {
+    "status": "PASS",
+    "count": 75,
+    "per_bag_views": [
+      "threequarter",
+      "outward",
+      "side"
+    ],
+    "visually_reviewed": "25 張 threequarter 均由本 agent 親自 view_image；修正特殊材質後再看14、15、17、23、24。",
+    "limits": "Godot sandbox 出現 user:// logs／shader cache／certificate 寫入錯誤與 Image.load_from_file 非匯出警告；75 PNG 全部產生，未改正式 Godot 素材，後續逐圖尺寸與 hash 校驗記於本檔。",
+    "decoded_png_count": 75
+  },
+  "backpacks": [
+    {
+      "design_id": "B-01",
+      "legacy_visual_id": 0,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_00/ArmorBag_00.obj",
+      "reference_image": "references/legacy/bag_00_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_00_original_threequarter.png",
+        "outward": "references/legacy/bag_00_original_outward.png",
+        "side": "references/legacy/bag_00_original_side.png"
+      },
+      "observed_silhouette": "寬肩狀三瓣硬殼，上寬下窄，下端帶短方形延伸。",
+      "observed_devices": "中央深紅直槽、槽下黑色通風柵、下方紅色方窗；左右寬艙各有暗紅矩形。",
+      "observed_palette": "銀灰／暗紅／黑",
+      "retain_for_fusion": "中央直槽與左右寬肩艙，保留上寬下窄比例。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "VB-03-II",
+      "legacy_item_id": 0,
+      "item_key": "armor_bag_00",
+      "current_bag_slots": 3,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "651ea4f3731211deee5261cd6908dbd1062237e46f3af9249b5a9b1c69ca95c1",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_00_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "17d977f6e90a7ad7f3d6ad7120a2ed45623639c651a8fa94aaa7f0d0e5aea2fe"
+        },
+        "outward": {
+          "path": "references/legacy/bag_00_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "abc9a0fead31e2b40537cffa4548c12cfc50c29204b447caad822967a55b3fb3"
+        },
+        "side": {
+          "path": "references/legacy/bag_00_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "53fa2463bfeda8d805b977707beb53ccadf74b44e43ad33841e3825c9d89eaf9"
+        }
+      }
+    },
+    {
+      "design_id": "B-02",
+      "legacy_visual_id": 1,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_01/ArmorBag_01.obj",
+      "reference_image": "references/legacy/bag_01_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_01_original_threequarter.png",
+        "outward": "references/legacy/bag_01_original_outward.png",
+        "side": "references/legacy/bag_01_original_side.png"
+      },
+      "observed_silhouette": "長形倒梯形艙體，上端兩個斜切高肩，中間凹口。",
+      "observed_devices": "中央三道淺橫槽，側艙小長方形標記，金色線條沿正面下收。",
+      "observed_palette": "冰藍／深藍／黃金細線",
+      "retain_for_fusion": "雙高肩夾中央長艙，以及沿艙向下收束的金色線。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "VB-03-III",
+      "legacy_item_id": 1,
+      "item_key": "armor_bag_01",
+      "current_bag_slots": 3,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "391f78f322b8b35cd222f1c898f96289b29a64210e9cf3a84523453469118a59",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_01_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "970c8aaf144e7eb28a12c5470e2c0880d4e3fe02fad4f2c2d3b06362ffdf10d5"
+        },
+        "outward": {
+          "path": "references/legacy/bag_01_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "d4626237e5e88911a21db66d85d68afad310f1b7c432485bfbcfed69294d874d"
+        },
+        "side": {
+          "path": "references/legacy/bag_01_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "90015c17f2e69bd76915d47eb66080d1fd65470d95240d5d9dc0810fd2e7b15d"
+        }
+      }
+    },
+    {
+      "design_id": "B-03",
+      "legacy_visual_id": 2,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_02/ArmorBag_02.obj",
+      "reference_image": "references/legacy/bag_02_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_02_original_threequarter.png",
+        "outward": "references/legacy/bag_02_original_outward.png",
+        "side": "references/legacy/bag_02_original_side.png"
+      },
+      "observed_silhouette": "圓角寬底殼，上端雙向上角柱與開放凹口，左右各有大斜面。",
+      "observed_devices": "雙側深青藍內嵌面板；上端橫橋，中下方小藍梯形窗。",
+      "observed_palette": "珍珠灰／白／青藍",
+      "retain_for_fusion": "上端開口的 U 形框與大面積側嵌板。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "SP-04-IV",
+      "legacy_item_id": 2,
+      "item_key": "armor_bag_02",
+      "current_bag_slots": 4,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "fd5f9ae031f03c449ee7593029ca9b29895d5b097bad2341e937ac467dd7b4b2",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_02_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "89ba0c3f13a4c2e073c2a6dcb34021df531391b12cf862f7c4f281bf55f9c622"
+        },
+        "outward": {
+          "path": "references/legacy/bag_02_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "ebf7de07c11cd4aa069930e79c341b29b2f7dd6ba9ed73ff177fe0d1e9cdbc10"
+        },
+        "side": {
+          "path": "references/legacy/bag_02_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "7d6985cb9a0904fb61b85e7194cf91ebd0e87456be7c86ad1991600a88891512"
+        }
+      }
+    },
+    {
+      "design_id": "B-04",
+      "legacy_visual_id": 3,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_03/ArmorBag_03.obj",
+      "reference_image": "references/legacy/bag_03_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_03_original_threequarter.png",
+        "outward": "references/legacy/bag_03_original_outward.png",
+        "side": "references/legacy/bag_03_original_side.png"
+      },
+      "observed_silhouette": "兩根明顯向上延伸的尖端側艙，中央低而窄，底部收成 V 形。",
+      "observed_devices": "雙藍色長艙黑色尖端，中央銀色分段脊條，黑色下端護面。",
+      "observed_palette": "皇家藍／銀白／黑",
+      "retain_for_fusion": "雙長側艙和中央分段脊條，重新做實用推進設備。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "SP-11-V",
+      "legacy_item_id": 3,
+      "item_key": "armor_bag_03",
+      "current_bag_slots": 3,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "d03de4fea60890e76a64b74b3f962932f7be26b86f5f3dc68cbda2ff4e83b49f",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_03_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "fb67373a8a20747bfe487bb2d34b37c233f65a4027f9099b5b4ed6a5e01807fc"
+        },
+        "outward": {
+          "path": "references/legacy/bag_03_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "28184a4c5e8eaa17d6b16dfad5ffa99ea5128c6c7d5b0c8a10effc7f6f4ffa4b"
+        },
+        "side": {
+          "path": "references/legacy/bag_03_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "b3c380f3bcf949b17b40fefeee9ab3c746e3512b2c5976a9537cda685b1e80db"
+        }
+      }
+    },
+    {
+      "design_id": "B-05",
+      "legacy_visual_id": 4,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_04/ArmorBag_04.obj",
+      "reference_image": "references/legacy/bag_04_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_04_original_threequarter.png",
+        "outward": "references/legacy/bag_04_original_outward.png",
+        "side": "references/legacy/bag_04_original_side.png"
+      },
+      "observed_silhouette": "左右短梯形寬艙高於中艙，底部是連成一體的盾形殼。",
+      "observed_devices": "中央藍面有三個橫向發光槽，兩側大斜面灰殼，底部小藍角窗。",
+      "observed_palette": "灰白／灰藍／電藍",
+      "retain_for_fusion": "中央三槽與左右高肩硬殼。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "KP-101-X",
+      "legacy_item_id": 4,
+      "item_key": "armor_bag_04",
+      "current_bag_slots": 4,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "8fe41681a58af6c95f8be715efd0ac87412220895b5349297ed5a07b2403fb59",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_04_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "cf932271da29c6323fa3c013e352832f7c09f19f5f3d3e4c9bb9692aa4179984"
+        },
+        "outward": {
+          "path": "references/legacy/bag_04_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "e24e9e4f091024edfa595e970310963290a56c68c8309dbf5d9dc085d08b5119"
+        },
+        "side": {
+          "path": "references/legacy/bag_04_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "cff04bbe763335b243664f4fc59031ecc967aa9278f1e12394a09af3deb6d511"
+        }
+      }
+    },
+    {
+      "design_id": "B-06",
+      "legacy_visual_id": 5,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_05/ArmorBag_05.obj",
+      "reference_image": "references/legacy/bag_05_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_05_original_threequarter.png",
+        "outward": "references/legacy/bag_05_original_outward.png",
+        "side": "references/legacy/bag_05_original_side.png"
+      },
+      "observed_silhouette": "紫紅寬體近 U 形，上端兩個斜切角，底部連成外框。",
+      "observed_devices": "雙上角各一個青綠圓點；中央下半部是灰青色倒 V 外框與紅色三角核心。",
+      "observed_palette": "紫紅／暗灰／青綠",
+      "retain_for_fusion": "雙上角圓燈與底部三角面，不必沿用整個 U 形輪廓。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "VP-22-VII",
+      "legacy_item_id": 5,
+      "item_key": "armor_bag_05",
+      "current_bag_slots": 4,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "2c877ff77d297a76c561eb8550606923ecb10bce732fa7e9e5f10c48f661489b",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_05_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "769eac9b7783c7d0ba761b1f34683f121d754c0d90241bee76d309c7d8868567"
+        },
+        "outward": {
+          "path": "references/legacy/bag_05_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "c46980f85f50009530178a093becbf15a2975dfff6fea90a109c8f282f71707d"
+        },
+        "side": {
+          "path": "references/legacy/bag_05_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "83a9ce4dc054787aaec77803a2078bf82e92ac61395a678b7b948250edbacf46"
+        }
+      }
+    },
+    {
+      "design_id": "B-07",
+      "legacy_visual_id": 6,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_06/ArmorBag_06.obj",
+      "reference_image": "references/legacy/bag_06_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_06_original_threequarter.png",
+        "outward": "references/legacy/bag_06_original_outward.png",
+        "side": "references/legacy/bag_06_original_side.png"
+      },
+      "observed_silhouette": "縱長、上寬下尖的單一盾形外殼，兩側厚而中面凹。",
+      "observed_devices": "中央酒紅長面嵌在銀灰框內，頂部小青藍窗，側邊可見三個紅色圓窗。",
+      "observed_palette": "銀灰／酒紅／深紫／青藍",
+      "retain_for_fusion": "長紅色中央面與厚銀灰包邊，保留側面三圓窗的裝置語言。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "SPD-005-a",
+      "legacy_item_id": 6,
+      "item_key": "armor_bag_06",
+      "current_bag_slots": 5,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "8ffdd031ff9af14f70bc33fab477a21a599752c2aecf387921ae6d62d8fe8c9d",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_06_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "5d5aeea2158cf76bf695edac1f5c308391687427f1c575a6c191403c8cb9dbcf"
+        },
+        "outward": {
+          "path": "references/legacy/bag_06_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "222fe865cbdce24746cb7acacfa15e96f4c21b8689bcea42d7580bdb689de0cc"
+        },
+        "side": {
+          "path": "references/legacy/bag_06_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "4bb84bf3dc56b1a46fcbc7d229946c1510382de1a3288ffe915a02da2a0237c6"
+        }
+      }
+    },
+    {
+      "design_id": "B-08",
+      "legacy_visual_id": 7,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_07/ArmorBag_07.obj",
+      "reference_image": "references/legacy/bag_07_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_07_original_threequarter.png",
+        "outward": "references/legacy/bag_07_original_outward.png",
+        "side": "references/legacy/bag_07_original_side.png"
+      },
+      "observed_silhouette": "左右各一個大型折板艙，中央狹窄，整體雙葉分岔。",
+      "observed_devices": "外殼有黃色折線，側板形成三角深凹，內側圓形機械點，中央短分段脊。",
+      "observed_palette": "鋼藍／深藍／黃色",
+      "retain_for_fusion": "成對深凹折板艙，配少量黄色導向線。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "ECO-03-VI",
+      "legacy_item_id": 7,
+      "item_key": "armor_bag_07",
+      "current_bag_slots": 3,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "8e08ab4c000c128435f5509de095bfabd27f9f6e4103ec50998720af493f6148",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_07_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "6b5525515172f2fbc5a65c082ef1255378d1f0de2b3ecd9d091717efd9d62304"
+        },
+        "outward": {
+          "path": "references/legacy/bag_07_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "53c9f3068779ffabf1adc7efc8bbde0415ae02628b724dd2a8fdc9a626c99ffa"
+        },
+        "side": {
+          "path": "references/legacy/bag_07_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "665621ad3016ad3bc0221381a9a632ed4a14e8e47cdd6e62d26a36e7ffe97fb4"
+        }
+      }
+    },
+    {
+      "design_id": "B-09",
+      "legacy_visual_id": 8,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_08/ArmorBag_08.obj",
+      "reference_image": "references/legacy/bag_08_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_08_original_threequarter.png",
+        "outward": "references/legacy/bag_08_original_outward.png",
+        "side": "references/legacy/bag_08_original_side.png"
+      },
+      "observed_silhouette": "雙高側艙與中間低面板，底部左右分瓣。",
+      "observed_devices": "兩個側艙各有青色小倒三角燈，中央底部大同心圓模組，上方短折線白面。",
+      "observed_palette": "青藍／銀白／青色",
+      "retain_for_fusion": "中央低位圓形模組與左右雙三角指示點。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "TT-05-b",
+      "legacy_item_id": 8,
+      "item_key": "armor_bag_08",
+      "current_bag_slots": 5,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "35b769e34e3a6a8aa05f83fa48efd00e07bc389c69880ccc484355ee17284368",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_08_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "0f8ef76c6d167b1ec3b275893fb36d4432522978af06f6674bdb6fdc02519069"
+        },
+        "outward": {
+          "path": "references/legacy/bag_08_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "7e1aa6a37fbbdf9a1b5eb70c31cbf8ae5c41cb67e863578909d76cb40086fad4"
+        },
+        "side": {
+          "path": "references/legacy/bag_08_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "1023edf8ee4b0682b7cc08540acd71a0b19a6af7b444e78e40e2a5b684b80d20"
+        }
+      }
+    },
+    {
+      "design_id": "B-10",
+      "legacy_visual_id": 9,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_09/ArmorBag_09.obj",
+      "reference_image": "references/legacy/bag_09_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_09_original_threequarter.png",
+        "outward": "references/legacy/bag_09_original_outward.png",
+        "side": "references/legacy/bag_09_original_side.png"
+      },
+      "observed_silhouette": "寬厚短盾形，上圓下收，左右各伸出兩個短三角突起。",
+      "observed_devices": "中央大藍盾面，細橘黃 U 形線向下延伸，灰紫色外框包住中央。",
+      "observed_palette": "灰紫／深藍／橘黃",
+      "retain_for_fusion": "藍色盾面与 U 形金橘線；外側刺改為短護板。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "SAM-005-I",
+      "legacy_item_id": 9,
+      "item_key": "armor_bag_09",
+      "current_bag_slots": 5,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "7e9792aff5ea97a00b6f2f24a9e04c6e4baf796ec67ead65387f7f66da149c79",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_09_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "972ba80a130227e0bddacba4dad51ca1449072ad8d7b9b4051c3c199c96105b1"
+        },
+        "outward": {
+          "path": "references/legacy/bag_09_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "38f7c5ba0c8ed5fb8ac42d95a8f776113d25ad0779fc0b1ccb8d213f690dea09"
+        },
+        "side": {
+          "path": "references/legacy/bag_09_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "47d5f9f5102b5b88943c1ffa860229bbf9742e98fcd5425f7ac7a8bcda793d0e"
+        }
+      }
+    },
+    {
+      "design_id": "B-11",
+      "legacy_visual_id": 10,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_10/ArmorBag_10.obj",
+      "reference_image": "references/legacy/bag_10_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_10_original_threequarter.png",
+        "outward": "references/legacy/bag_10_original_outward.png",
+        "side": "references/legacy/bag_10_original_side.png"
+      },
+      "observed_silhouette": "雙上置短圓筒橫向凸出，下方寬方艙收成尖底。",
+      "observed_devices": "兩筒端面是淡粉圓窗及金環，中央五邊形通風井，底部紅色直列窗；底側有薄尖片。",
+      "observed_palette": "鋼灰／深紫藍／粉紅／暗金",
+      "retain_for_fusion": "雙上置圓筒端面與中央通風井，尖片縮為防護鰭。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "STK-06-ZZ",
+      "legacy_item_id": 10,
+      "item_key": "armor_bag_10",
+      "current_bag_slots": 6,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "ab349c80c2f7419742872014edb280851248626f62942afee4a3f084342cbd7e",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_10_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "bb50bd7f9c8f3ad200afdde04b005cbcb402cd95251db90f78621a20a0675834"
+        },
+        "outward": {
+          "path": "references/legacy/bag_10_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "3c4af3df7a2510f4a53c2647dbb78c40644e561f55ca96510d6e8e54a4164439"
+        },
+        "side": {
+          "path": "references/legacy/bag_10_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "2f746cf845e6e4996ed5ba8fddcb8ca0e747429d8c06560efe7bfefb2be97fdb"
+        }
+      }
+    },
+    {
+      "design_id": "B-12",
+      "legacy_visual_id": 11,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_11/ArmorBag_11.obj",
+      "reference_image": "references/legacy/bag_11_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_11_original_threequarter.png",
+        "outward": "references/legacy/bag_11_original_outward.png",
+        "side": "references/legacy/bag_11_original_side.png"
+      },
+      "observed_silhouette": "豎向厚盾形，頭窄身寬，下半部收成尖底。",
+      "observed_devices": "白殼中央兩道橘色直條，頂部藍蓋，肩側橘色圓窗，底側各一尖護角。",
+      "observed_palette": "白／銀灰／橘／藍",
+      "retain_for_fusion": "白殼橘色雙直條與頂部藍盖，保留一對小護角。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "HYD-00-IX",
+      "legacy_item_id": 11,
+      "item_key": "armor_bag_11",
+      "current_bag_slots": 5,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "f6ff8715bdd182eb2869505327f55e859b8e7ba8df09e935c29c77c0ab156d45",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_11_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "10fa0e4c1aba29bca1323508747a9f1baa452493d60ec5b9aedbb2c307e5f908"
+        },
+        "outward": {
+          "path": "references/legacy/bag_11_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "569e8743510d025b7696a166f10aa6910c9664d852d9644e9cb5a7a9bd41f129"
+        },
+        "side": {
+          "path": "references/legacy/bag_11_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "a9d6325114ce31ea05a59d407d95c4c1a5ddc47c8807784d1cd6d7f17e0c0f65"
+        }
+      }
+    },
+    {
+      "design_id": "B-13",
+      "legacy_visual_id": 12,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_12/ArmorBag_12.obj",
+      "reference_image": "references/legacy/bag_12_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_12_original_threequarter.png",
+        "outward": "references/legacy/bag_12_original_outward.png",
+        "side": "references/legacy/bag_12_original_side.png"
+      },
+      "observed_silhouette": "三個短粗圓柱從中央殼伸出，一上二下呈三點布局。",
+      "observed_devices": "三筒金橘色側壁與銀灰螺槽端蓋，中央紅色面、紫灰外殼和橘色狹長側線。",
+      "observed_palette": "紫灰／酒紅／金橘／銀",
+      "retain_for_fusion": "一上二下三筒配置，重新設計固定架和操作接縫。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "H.F-V-03",
+      "legacy_item_id": 12,
+      "item_key": "armor_bag_12",
+      "current_bag_slots": 6,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "46ff9392df325e5082686d621242c3c1d9c2f9e1239eed22baac6e1be357a0db",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_12_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "14a1829e01ec0e61529d097710cfbc606c7057e90781a6f3ac0eec1f71311059"
+        },
+        "outward": {
+          "path": "references/legacy/bag_12_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "43f7e62f08b68316292f885d19401defa70edd36ca75b7a9b76458c2860a60d4"
+        },
+        "side": {
+          "path": "references/legacy/bag_12_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "028db740cca13f0335e1d45de24e748d23431ced074a9063e007a1dbb1425606"
+        }
+      }
+    },
+    {
+      "design_id": "B-14",
+      "legacy_visual_id": 13,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_13/ArmorBag_13.obj",
+      "reference_image": "references/legacy/bag_13_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_13_original_threequarter.png",
+        "outward": "references/legacy/bag_13_original_outward.png",
+        "side": "references/legacy/bag_13_original_side.png"
+      },
+      "observed_silhouette": "兩根粗長平行圓筒位於上半部，下方單一楔形機殼。",
+      "observed_devices": "圓筒端面有直槽，筒身暗紅橘面；中央下方是多道黑色散熱格柵。",
+      "observed_palette": "銀灰／炭灰／暗紅橘",
+      "retain_for_fusion": "雙粗筒加單一下方散熱楔，保持設備辨識。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "STK.F-VI-00",
+      "legacy_item_id": 13,
+      "item_key": "armor_bag_13",
+      "current_bag_slots": 6,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "084511c4a3796d7c6f53e26fb404ad10426fa5736f10e86488f4f66d8eb211d2",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_13_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "d0dea702fd4186a6a6e13e5aec676a8af56052e0401135f9469aaf17d97dd833"
+        },
+        "outward": {
+          "path": "references/legacy/bag_13_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "8d27424d7ac47a187d7dcb7683012e6687132dc35920c72085425543dfe950c8"
+        },
+        "side": {
+          "path": "references/legacy/bag_13_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "324161860074f3f573138297a81a26ea4741586b43c0b93bf32f0f7b1b195660"
+        }
+      }
+    },
+    {
+      "design_id": "B-15",
+      "legacy_visual_id": 14,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_14/ArmorBag_14.obj",
+      "reference_image": "references/legacy/bag_14_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_14_original_threequarter.png",
+        "outward": "references/legacy/bag_14_original_outward.png",
+        "side": "references/legacy/bag_14_original_side.png"
+      },
+      "observed_silhouette": "大型扁圓盤為主體，背面白色支架，上左右各伸一個短平板。",
+      "observed_devices": "圓盤同心環分塊、金橘環帶與核心，外圈暗灰電路紋；白短翼／支架。",
+      "observed_palette": "白／暗灰／金橘",
+      "retain_for_fusion": "中央圓盤、同心分塊與短翼支架；縮減電路細線。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "X02B-FREEDOM",
+      "legacy_item_id": 14,
+      "item_key": "armor_bag_14",
+      "current_bag_slots": 6,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "989e9b848a62aa1462eabaef3839948410a59821d3ef0d1c45cb75953fae750b",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_14_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "ad8c9737995ae5e0a44f2dd6b9c93e455221ce9342855c08c55fc633b224c3b3"
+        },
+        "outward": {
+          "path": "references/legacy/bag_14_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "3a6e12fcc422b3157e5ab704c5191453927c086c18f72f791d04fcc03272459a"
+        },
+        "side": {
+          "path": "references/legacy/bag_14_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "984318bbe273d3ccb9e4720a7b1df26f645eda7c53552fde66134480c31561f4"
+        }
+      }
+    },
+    {
+      "design_id": "B-16",
+      "legacy_visual_id": 15,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_15/ArmorBag_15.obj",
+      "reference_image": "references/legacy/bag_15_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_15_original_threequarter.png",
+        "outward": "references/legacy/bag_15_original_outward.png",
+        "side": "references/legacy/bag_15_original_side.png"
+      },
+      "observed_silhouette": "背上是橫向雙短方艙，向下伸出兩根長白臂與數片小活動片。",
+      "observed_devices": "白長臂末端深灰，螢綠格柵與内凹機械面；原模型另含青色噴射特效平面。",
+      "observed_palette": "白／灰黑／螢綠",
+      "retain_for_fusion": "雙長推進臂、上方方艙與綠色通風區；原特效平面不是硬體。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "F.L.O.A.T",
+      "legacy_item_id": 15,
+      "item_key": "armor_bag_15",
+      "current_bag_slots": 6,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "05e8cc4360d72a2cf898fe7f88de11691af0e27ef12338b431dc19aa08b3e989",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_15_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "fac99cffec9ed3961968a514da4b1c2d135762b03a44388ec0b312310bb1bbe0"
+        },
+        "outward": {
+          "path": "references/legacy/bag_15_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "3062ba08e086ffc953b824e1d67c347d77fe2bd911a4a9e16a27b300ab72cb35"
+        },
+        "side": {
+          "path": "references/legacy/bag_15_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "fde60637356edcba8c30af6486fde8624a4729b15f995454bc2bf43103d43951"
+        }
+      }
+    },
+    {
+      "design_id": "B-17",
+      "legacy_visual_id": 16,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_16/ArmorBag_16.obj",
+      "reference_image": "references/legacy/bag_16_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_16_original_threequarter.png",
+        "outward": "references/legacy/bag_16_original_outward.png",
+        "side": "references/legacy/bag_16_original_side.png"
+      },
+      "observed_silhouette": "縱長分層中央殼，頂部雙白色上角，中下方多層橫向節片。",
+      "observed_devices": "青色矩形窗沿中央與邊緣分佈，側面多道黑色橫柵，白上蓋配深灰綠主殼。",
+      "observed_palette": "白灰／深灰綠／青色",
+      "retain_for_fusion": "多層橫向節片與青色矩形窗口，不要整個只做普通方包。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "Visnu",
+      "legacy_item_id": 16,
+      "item_key": "armor_bag_16",
+      "current_bag_slots": 6,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "8c10ca8e89bb4d9c43698c49e61c27a153370ce99fd93b39cca3884203178d38",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_16_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "19d3a945f2122ee3a4fda6efc65a089608d5b188f1ba5e1ebb78c82e4e91bfe0"
+        },
+        "outward": {
+          "path": "references/legacy/bag_16_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "5a9dffd6627d6146d36251f45ea545dedcc8a6455fdda97c294e0c0b2e31ffd7"
+        },
+        "side": {
+          "path": "references/legacy/bag_16_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "fbf54b1f63d9ec5dfaa96b04c07a93e8aa507f25039a3c4fd2124863c5e0e4fa"
+        }
+      }
+    },
+    {
+      "design_id": "B-18",
+      "legacy_visual_id": 17,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_17/ArmorBag_17.obj",
+      "reference_image": "references/legacy/bag_17_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_17_original_threequarter.png",
+        "outward": "references/legacy/bag_17_original_outward.png",
+        "side": "references/legacy/bag_17_original_side.png"
+      },
+      "observed_silhouette": "長形鼓起中央殼，上方雙短盒、腰部左右雙鼓艙。",
+      "observed_devices": "中央暗面有淺色六角蜂巢線，紫灰邊框、品紅圓點與直條，側上盒的橙銅殼。",
+      "observed_palette": "暗紫／紫灰／品紅／銅橙／淺黃綠",
+      "retain_for_fusion": "蜂巢中央面、雙侧鼓艙與品紅狀態點，改為受護罩保護的設備。",
+      "source_type": "recovered_original_mesh_with_documented_original_apk_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "TRI-0-AVATAR",
+      "legacy_item_id": 17,
+      "item_key": "armor_bag_17",
+      "current_bag_slots": 6,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "9c2f3a61bf1f1dab04c2db8939328b66b2a0a20b2fbf1b9d92914e234bd4b118",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_17_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "62891b91677a4b47c7eb31c0230b9d1e1e0e9b476b84a90a93a3cb0f77a2c4f3"
+        },
+        "outward": {
+          "path": "references/legacy/bag_17_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "63f49c4a1693b9fdbf5393f214e5f2e6e437d439ed43c1349c01c0bdf0d70a66"
+        },
+        "side": {
+          "path": "references/legacy/bag_17_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "c64c43599e1db1271b0267a4d985a1c0fc788a1afdadf8c1323184cb0f42a3c6"
+        }
+      }
+    },
+    {
+      "design_id": "B-19",
+      "legacy_visual_id": 18,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_18/ArmorBag_18.obj",
+      "reference_image": "references/legacy/bag_18_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_18_original_threequarter.png",
+        "outward": "references/legacy/bag_18_original_outward.png",
+        "side": "references/legacy/bag_18_original_side.png"
+      },
+      "observed_silhouette": "高雙翼片從中央脊向上張开，主體底部尖收，左右短圓弧艙。",
+      "observed_devices": "深紫灰板上藍色直線與轉折導光紋，側艙各有兩個藍色圓環，下方分段藍窗。",
+      "observed_palette": "紫灰／黑／亮藍",
+      "retain_for_fusion": "高雙片與側艙藍色圓環；重新整合為背負框架。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "BLADE-MASTER",
+      "legacy_item_id": 18,
+      "item_key": "armor_bag_18",
+      "current_bag_slots": 4,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "b83a2030133228a58c13f4a786b18c4bb4c2da278a15b9f9ba009a0620596fec",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_18_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "6f1427b4644a6db9162eb7e13e133a7316c01d347c0d3910d62d4c6ea47f86a2"
+        },
+        "outward": {
+          "path": "references/legacy/bag_18_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "61cc1fe5b262492dbe57fcc8c8320ab066eef5b44c3e5cff296f341e13553349"
+        },
+        "side": {
+          "path": "references/legacy/bag_18_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "cc65f617096fb042cae5a2c692e9cb5ea066d21779b8608358284ac981609cf0"
+        }
+      }
+    },
+    {
+      "design_id": "B-20",
+      "legacy_visual_id": 19,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_19/ArmorBag_19.obj",
+      "reference_image": "references/legacy/bag_19_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_19_original_threequarter.png",
+        "outward": "references/legacy/bag_19_original_outward.png",
+        "side": "references/legacy/bag_19_original_side.png"
+      },
+      "observed_silhouette": "寬上窄下、上下分段的厚甲背殼，左右有外露彎折硬管。",
+      "observed_devices": "銀白盾形上蓋，兩側橙紅圓形接頭與銅橙管路，深青內部，底部白色護片。",
+      "observed_palette": "銀白／青黑／銅橙／橙紅",
+      "retain_for_fusion": "雙側圓形接頭與彎折管路、盾形主殼。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "TOUCH AND GO",
+      "legacy_item_id": 19,
+      "item_key": "armor_bag_19",
+      "current_bag_slots": 5,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "1bbc238667f6da7b286df87defdb54ae409c1370a5434e5a121c2017d5180c2a",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_19_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "5ff5f858454048f15a475fd007369d152694e0d4f6f460a26ebc93bd7c169d82"
+        },
+        "outward": {
+          "path": "references/legacy/bag_19_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "256720b2005faf32eb4d515986f82a2565339e9a9887f07956a620c743f6c016"
+        },
+        "side": {
+          "path": "references/legacy/bag_19_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "f4a66f1541f747c0c1bce34d05be7d3ec8ab907343171eb6d1d4abff6ddf8493"
+        }
+      }
+    },
+    {
+      "design_id": "B-21",
+      "legacy_visual_id": 20,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_20/ArmorBag_20.obj",
+      "reference_image": "references/legacy/bag_20_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_20_original_threequarter.png",
+        "outward": "references/legacy/bag_20_original_outward.png",
+        "side": "references/legacy/bag_20_original_side.png"
+      },
+      "observed_silhouette": "中央窄長直艙，四個大圓筒向兩側張開，上二下二。",
+      "observed_devices": "中央紅橘上蓋配白色外框，四筒金色邊緣與深紅分段側壁，細橘色接管。",
+      "observed_palette": "紅橘／暗紅／金／白",
+      "retain_for_fusion": "四筒交叉布局與中央窄艙，將突出的筒縮短並加入安全固定架。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "DRACULA",
+      "legacy_item_id": 20,
+      "item_key": "armor_bag_20",
+      "current_bag_slots": 6,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "b0f9a6bcdeb3e9a2eb81e62d5573c135460f0394f4549fdba63d232a341fab3e",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_20_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "36dbd6d3e397fe35cf36787dc12bf72638b2dbe3500260c602e35deb9971b614"
+        },
+        "outward": {
+          "path": "references/legacy/bag_20_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "0d7db279e1bc767ee95cfc91c558f37367c466c261a9a90bbcc5384507532345"
+        },
+        "side": {
+          "path": "references/legacy/bag_20_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "657f050a9bd348193431b2e694678637ef831ca9534a6a6be428da465a5e8985"
+        }
+      }
+    },
+    {
+      "design_id": "B-22",
+      "legacy_visual_id": 21,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_21/ArmorBag_21.obj",
+      "reference_image": "references/legacy/bag_21_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_21_original_threequarter.png",
+        "outward": "references/legacy/bag_21_original_outward.png",
+        "side": "references/legacy/bag_21_original_side.png"
+      },
+      "observed_silhouette": "長桿一端有鼓形罐、另一端有小三角尾翼；原模型幾乎横向。",
+      "observed_devices": "銀白鼓罐配綠頂、紅色束帶，棕色長桿，綠黃尾翼，節慶紅綠配色。",
+      "observed_palette": "銀白／紅／綠／棕／黄",
+      "retain_for_fusion": "長桿＋單鼓艙的特殊輪廓；融合時可折疊成背負天線／工具，不憑名字改成普通禮物袋。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "JIN.JINGLE",
+      "legacy_item_id": 21,
+      "item_key": "armor_bag_21",
+      "current_bag_slots": 6,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "45f583a76ef82e52a32dcddd8556ce1149f7d8d3c341883f722677c91facbad2",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_21_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "bc336b5fd4ec04aeb6b651f1e1b02c19ba9e619435601efaf510e5cc4ddba78f"
+        },
+        "outward": {
+          "path": "references/legacy/bag_21_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "609ccd867d938f249564ce8d235f885287c6baf89040af734b0c59b16e947a5a"
+        },
+        "side": {
+          "path": "references/legacy/bag_21_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "3908736fd6a7f8ac106f37ebd72e8bb97740b8ed591a79d52c59f56c186386df"
+        }
+      }
+    },
+    {
+      "design_id": "B-23",
+      "legacy_visual_id": 22,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_22/ArmorBag_22.obj",
+      "reference_image": "references/legacy/bag_22_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_22_original_threequarter.png",
+        "outward": "references/legacy/bag_22_original_outward.png",
+        "side": "references/legacy/bag_22_original_side.png"
+      },
+      "observed_silhouette": "縱長分層護盾殼，三層大 V 形板向下疊出。",
+      "observed_devices": "藍灰硬殼與螢綠折線發光縫，底部有較窄向前折的小節片。",
+      "observed_palette": "藍灰／深灰／螢綠",
+      "retain_for_fusion": "三層 V 形護板與綠色層間細縫，保留分層感。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "S.H.I.E.L.D",
+      "legacy_item_id": 22,
+      "item_key": "armor_bag_22",
+      "current_bag_slots": 6,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "d622c85427a0462ee7a7d4e3b92308f8df26bde57a5773b237e2b829fff3a729",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_22_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "7e3615d10acb103f47be9eda28c10f1e2dabd1b655a7b6754ea154e1f2589778"
+        },
+        "outward": {
+          "path": "references/legacy/bag_22_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "7d4365d438878b4da81723a62d10d386f004dab108c1bde2324e13433da189f9"
+        },
+        "side": {
+          "path": "references/legacy/bag_22_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "87788d2ae4f1fa3363baa224764f44627f2d2addd665fe3da23b706e204084df"
+        }
+      }
+    },
+    {
+      "design_id": "B-24",
+      "legacy_visual_id": 23,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_23/ArmorBag_23.obj",
+      "reference_image": "references/legacy/bag_23_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_23_original_threequarter.png",
+        "outward": "references/legacy/bag_23_original_outward.png",
+        "side": "references/legacy/bag_23_original_side.png"
+      },
+      "observed_silhouette": "頂部短殼連接兩根長而向下張开的分節支臂，整體倒 U 形。",
+      "observed_devices": "白紅分塊、深灰內面，手指般細長推進臂；原模型另含藍色噴射平面。",
+      "observed_palette": "白／紅／深灰",
+      "retain_for_fusion": "雙長分節推進臂與白紅分塊，優化為能收折的背部設備。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "D-WINGS",
+      "legacy_item_id": 23,
+      "item_key": "armor_bag_23",
+      "current_bag_slots": 6,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "ea5c7fb8f2292886a45188c53219b277cb30a307ed0150cb7e46493580c2ab99",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_23_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "97c864db66e91cb1649db26d3e5482641d49ccf33423abc0b63ade341e5a0e01"
+        },
+        "outward": {
+          "path": "references/legacy/bag_23_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "64f1e07307300cacd58c106b5aa0842c5d0060b387d6e995d9c065379080015a"
+        },
+        "side": {
+          "path": "references/legacy/bag_23_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "8c55213b81a9f2246b11170bcfde4945fbc9842946b2f16119b24bf1a488f8d0"
+        }
+      }
+    },
+    {
+      "design_id": "B-25",
+      "legacy_visual_id": 24,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_24/ArmorBag_24.obj",
+      "reference_image": "references/legacy/bag_24_original_threequarter.png",
+      "reference_views": {
+        "threequarter": "references/legacy/bag_24_original_threequarter.png",
+        "outward": "references/legacy/bag_24_original_outward.png",
+        "side": "references/legacy/bag_24_original_side.png"
+      },
+      "observed_silhouette": "中間尖頂面具般殼体，兩側分離的尖護翼向外上張。",
+      "observed_devices": "中央淺藍尖冠、暗紅面、小金色菱形；側翼深藍黑并有金色邊帶。",
+      "observed_palette": "冰藍／暗紅／黑藍／金",
+      "retain_for_fusion": "中央尖頂＋成對外張護翼，簡化面具圖樣並做成散熱／傳感器硬體。",
+      "source_type": "recovered_original_mesh_and_mtl_texture",
+      "ai_generated": false,
+      "review_status": "visually_inspected",
+      "legacy_name": "Spectre",
+      "legacy_item_id": 24,
+      "item_key": "armor_bag_24",
+      "current_bag_slots": 6,
+      "attachment_bone": "fly_bag",
+      "source_model_sha256": "55cb9bde9b5087d6fc65cd2198d5138078940a63d49d10bcf78e4726833fc8ef",
+      "reference_manifest": {
+        "threequarter": {
+          "path": "references/legacy/bag_24_original_threequarter.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "d78369041d4f525286b1eca6ad6ac1cfcbc4b947c4510a60e53b223152505ca3"
+        },
+        "outward": {
+          "path": "references/legacy/bag_24_original_outward.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "bf926d54dcce81bac4415fb69994cc5f42a6a0605ce60529f71846fd71f70985"
+        },
+        "side": {
+          "path": "references/legacy/bag_24_original_side.png",
+          "width": 768,
+          "height": 768,
+          "sha256": "460b5260d67a80fe4598b6d75e64fc135f96b5fd4e190f9749a8c6efbaed488c"
+        }
+      }
+    }
+  ],
+  "reference_path_base": "docs/art/original_armors_v1/",
+  "historical_reference_paths": {
+    "test_output/armor_fusion_reset/backpack_references/bag_00_original_threequarter.png": "references/legacy/bag_00_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_00_original_outward.png": "references/legacy/bag_00_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_00_original_side.png": "references/legacy/bag_00_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_01_original_threequarter.png": "references/legacy/bag_01_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_01_original_outward.png": "references/legacy/bag_01_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_01_original_side.png": "references/legacy/bag_01_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_02_original_threequarter.png": "references/legacy/bag_02_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_02_original_outward.png": "references/legacy/bag_02_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_02_original_side.png": "references/legacy/bag_02_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_03_original_threequarter.png": "references/legacy/bag_03_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_03_original_outward.png": "references/legacy/bag_03_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_03_original_side.png": "references/legacy/bag_03_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_04_original_threequarter.png": "references/legacy/bag_04_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_04_original_outward.png": "references/legacy/bag_04_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_04_original_side.png": "references/legacy/bag_04_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_05_original_threequarter.png": "references/legacy/bag_05_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_05_original_outward.png": "references/legacy/bag_05_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_05_original_side.png": "references/legacy/bag_05_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_06_original_threequarter.png": "references/legacy/bag_06_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_06_original_outward.png": "references/legacy/bag_06_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_06_original_side.png": "references/legacy/bag_06_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_07_original_threequarter.png": "references/legacy/bag_07_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_07_original_outward.png": "references/legacy/bag_07_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_07_original_side.png": "references/legacy/bag_07_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_08_original_threequarter.png": "references/legacy/bag_08_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_08_original_outward.png": "references/legacy/bag_08_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_08_original_side.png": "references/legacy/bag_08_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_09_original_threequarter.png": "references/legacy/bag_09_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_09_original_outward.png": "references/legacy/bag_09_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_09_original_side.png": "references/legacy/bag_09_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_10_original_threequarter.png": "references/legacy/bag_10_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_10_original_outward.png": "references/legacy/bag_10_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_10_original_side.png": "references/legacy/bag_10_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_11_original_threequarter.png": "references/legacy/bag_11_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_11_original_outward.png": "references/legacy/bag_11_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_11_original_side.png": "references/legacy/bag_11_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_12_original_threequarter.png": "references/legacy/bag_12_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_12_original_outward.png": "references/legacy/bag_12_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_12_original_side.png": "references/legacy/bag_12_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_13_original_threequarter.png": "references/legacy/bag_13_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_13_original_outward.png": "references/legacy/bag_13_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_13_original_side.png": "references/legacy/bag_13_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_14_original_threequarter.png": "references/legacy/bag_14_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_14_original_outward.png": "references/legacy/bag_14_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_14_original_side.png": "references/legacy/bag_14_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_15_original_threequarter.png": "references/legacy/bag_15_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_15_original_outward.png": "references/legacy/bag_15_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_15_original_side.png": "references/legacy/bag_15_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_16_original_threequarter.png": "references/legacy/bag_16_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_16_original_outward.png": "references/legacy/bag_16_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_16_original_side.png": "references/legacy/bag_16_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_17_original_threequarter.png": "references/legacy/bag_17_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_17_original_outward.png": "references/legacy/bag_17_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_17_original_side.png": "references/legacy/bag_17_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_18_original_threequarter.png": "references/legacy/bag_18_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_18_original_outward.png": "references/legacy/bag_18_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_18_original_side.png": "references/legacy/bag_18_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_19_original_threequarter.png": "references/legacy/bag_19_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_19_original_outward.png": "references/legacy/bag_19_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_19_original_side.png": "references/legacy/bag_19_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_20_original_threequarter.png": "references/legacy/bag_20_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_20_original_outward.png": "references/legacy/bag_20_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_20_original_side.png": "references/legacy/bag_20_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_21_original_threequarter.png": "references/legacy/bag_21_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_21_original_outward.png": "references/legacy/bag_21_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_21_original_side.png": "references/legacy/bag_21_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_22_original_threequarter.png": "references/legacy/bag_22_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_22_original_outward.png": "references/legacy/bag_22_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_22_original_side.png": "references/legacy/bag_22_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_23_original_threequarter.png": "references/legacy/bag_23_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_23_original_outward.png": "references/legacy/bag_23_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_23_original_side.png": "references/legacy/bag_23_original_side.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_24_original_threequarter.png": "references/legacy/bag_24_original_threequarter.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_24_original_outward.png": "references/legacy/bag_24_original_outward.png",
+    "test_output/armor_fusion_reset/backpack_references/bag_24_original_side.png": "references/legacy/bag_24_original_side.png"
+  }
+}

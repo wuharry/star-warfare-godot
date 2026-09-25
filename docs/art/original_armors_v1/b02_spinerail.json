@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "design_id": "B-02",
+  "runtime_id": null,
+  "working_name_zh": "長脊",
+  "working_name_en": "SPINERAIL",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 1,
+    "legacy_name": "VB-03-III",
+    "purpose": "取代對應獨立bag裝備的美術；不與同序C套裝綁定。"
+  },
+  "lore": "配裝系統中的獨立背負設備，暫名「長脊」。外殼承接 VB-03-III 的少量識別，內側加入可更換支架與穿戴固定點。",
+  "role": "獨立背包；承接 VB-03-III 的裝備位置。現有容量為 3 格，本輪未修改。",
+  "palette": [
+    {
+      "family": "冰藍",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "深藍",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "黃金細線",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    }
+  ],
+  "visual_identity": {
+    "proportion_target": "人體背部可穿戴的獨立設備；以獨立設計稿各視圖確認外形，非精確尺寸。",
+    "head": null,
+    "torso": null,
+    "shoulders": null,
+    "arms": null,
+    "legs": null,
+    "pack": "Preserve VB-03-III's pale icy-blue tapered center, paired raised shoulders, three shallow horizontal marks and thin yellow-gold paths. Borrow the Rookie pack's long side access rails, practical lid closure and load-transfer straps. Keep the pack slender with a narrower lower end. Redesign the panel boundaries and attach points as one original military science-fiction field pack.",
+    "legacy_silhouette": "長形倒梯形艙體，上端兩個斜切高肩，中間凹口。",
+    "legacy_devices": "中央三道淺橫槽，側艙小長方形標記，金色線條沿正面下收。",
+    "actual_reviews": {
+      "design_sheet": "已目視：冰藍雙高肩、中央橫槽和金色下收線保留；加入ODST側向硬殼導軌、扣帶與模組化內襯。四個完成視角及可拆外殼／內模組／承載框完整，三張小視圖大致同尺度。小限制：精確掛帶長度與人體貼合仍需模型驗證，圖面不含尺寸數值。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "背包原有HP、增益、技能與容量均由runtime原資料決定；本稿只替換美術，不增設飛行、護盾或醫療效果。",
+    "per_part": {
+      "hp": null,
+      "shield": null
+    },
+    "four_piece_total": {
+      "hp": null,
+      "shield": null
+    },
+    "movement_modifier": null,
+    "damage_modifier": null,
+    "unlock": "待玩法驗證後決定",
+    "purchase_currency": null,
+    "current_bag_slots_reference": 3
+  },
+  "proposed_abilities": [],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "design_sheet": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/b02_design_sheet.png",
+    "turnaround": "images/b02_design_sheet.png",
+    "construction": "images/b02_design_sheet.png",
+    "design_sheet": "images/b02_design_sheet.png"
+  },
+  "modeling_authority": "一張獨立設計稿包含主3/4視、向外面、側面、貼背面及維修拆解；圖內視角和機構可能需建模校正。不可直接當UV或遊戲貼圖。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "design_sheet": {
+        "design_id": "B-02",
+        "kind": "design_sheet",
+        "path": "images/b02_design_sheet.png",
+        "prompt": "prompts/b02_design_sheet.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-f5574583-01d4-418c-8d63-806558b78d5d.png",
+        "date": "2026-09-25",
+        "reference_images": [
+          "references/legacy/bag_01_original_threequarter.png",
+          "references/legacy/bag_01_original_outward.png",
+          "references/halo/rookie_guide_page32.jpg",
+          "references/halo/rookie_guide_page33.jpg"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已目視：冰藍雙高肩、中央橫槽和金色下收線保留；加入ODST側向硬殼導軌、扣帶與模組化內襯。四個完成視角及可拆外殼／內模組／承載框完整，三張小視圖大致同尺度。小限制：精確掛帶長度與人體貼合仍需模型驗證，圖面不含尺寸數值。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/b02_design_sheet.json"
+      }
+    },
+    "unselected_records": []
+  },
+  "equipment_type": "backpack",
+  "proposal_only": true,
+  "fusion_recipe": {
+    "retained": "雙高肩夾中央長艙，以及沿艙向下收束的金色線。",
+    "borrowed": "官方指南獨立六視：中央長方硬殼，左右兩條狹長側艙，頂部雙扣與短提橋，中央淺橫槽，內側肩帶與下腰固定點清楚。",
+    "optimized": "新增貼背軟墊、支架與掛點，整理維修開口及部件層次；每款保留其雙筒、圓盤、翼或多艙身份。"
+  },
+  "source_references": {
+    "legacy": {
+      "name": "VB-03-III",
+      "runtime_id": 1,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_01/ArmorBag_01.obj",
+      "kind": "recovered_original_mesh_and_mtl_texture",
+      "audit": "sources/legacy_backpacks.json",
+      "images": [
+        "references/legacy/bag_01_original_threequarter.png",
+        "references/legacy/bag_01_original_outward.png",
+        "references/legacy/bag_01_original_side.png"
+      ]
+    },
+    "halo": {
+      "name": "Rookie Field Pack / M/LBE hard case",
+      "game": "Halo 3: ODST",
+      "donor_kind": "independent_backpack",
+      "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+      "images": [
+        {
+          "key": "rookie_guide_page32",
+          "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+          "image_url": "https://halo.wiki.gallery/images/thumb/d/d5/H3ODST_Cosplay_Guide.pdf/page32-1200px-H3ODST_Cosplay_Guide.pdf.jpg",
+          "local_path": "references/halo/rookie_guide_page32.jpg",
+          "bytes": 103448,
+          "sha256": "c2820562213907f5f14a7d884c961f1275353fc1826aa60cb1a4c04a3ba3789c",
+          "pdf_page_one_based": 32,
+          "note": "Server-rendered page of official 343 Rookie cosplay guide, mirrored on Halopedia; original studio game-model reference.",
+          "width": 1200,
+          "height": 675,
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        },
+        {
+          "key": "rookie_guide_page33",
+          "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+          "image_url": "https://halo.wiki.gallery/images/thumb/d/d5/H3ODST_Cosplay_Guide.pdf/page33-1200px-H3ODST_Cosplay_Guide.pdf.jpg",
+          "local_path": "references/halo/rookie_guide_page33.jpg",
+          "bytes": 130724,
+          "sha256": "2764bd77c837c0345621c5b6906c8137022767a6f7690b995b4f6a52151b8bfe",
+          "pdf_page_one_based": 33,
+          "note": "Server-rendered page of official 343 Rookie cosplay guide, mirrored on Halopedia; original studio game-model reference.",
+          "width": 1200,
+          "height": 675,
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        },
+        {
+          "key": "rookie_guide_page30",
+          "source_page_url": "https://www.halowaypoint.com/news/official-cosplay-guide-the-rookie",
+          "image_url": "https://halo.wiki.gallery/images/thumb/d/d5/H3ODST_Cosplay_Guide.pdf/page30-1200px-H3ODST_Cosplay_Guide.pdf.jpg",
+          "local_path": "references/halo/rookie_guide_page30.jpg",
+          "bytes": 100420,
+          "sha256": "ef8ed96010fc4f339b73503917c57216432cdf2818f2daa1227aa455c2cd54a3",
+          "pdf_page_one_based": 30,
+          "note": "Server-rendered page of official 343 Rookie cosplay guide, mirrored on Halopedia; original studio game-model reference.",
+          "width": 1200,
+          "height": 675,
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "master_chief": false,
+      "integration_note": "整合式背甲只供結構參考，不能稱為原遊戲的獨立背包。"
+    }
+  },
+  "runtime_target": {
+    "item_key": "armor_bag_01",
+    "part_key": "bag",
+    "legacy_item_id": 1,
+    "attachment_bone": "fly_bag",
+    "current_bag_slots": 3,
+    "inherits_armor_abilities": false,
+    "original_stats_unchanged": true
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "design_id": "B-07",
+  "runtime_id": null,
+  "working_name_zh": "線衛",
+  "working_name_en": "RAILGUARD",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 6,
+    "legacy_name": "SPD-005-a",
+    "purpose": "取代對應獨立bag裝備的美術；不與同序C套裝綁定。"
+  },
+  "lore": "配裝系統中的獨立背負設備，暫名「線衛」。外殼承接 SPD-005-a 的少量識別，內側加入可更換支架與穿戴固定點。",
+  "role": "獨立背包；承接 SPD-005-a 的裝備位置。現有容量為 5 格，本輪未修改。",
+  "palette": [
+    {
+      "family": "銀灰",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "酒紅",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "深紫",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "青藍",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    }
+  ],
+  "visual_identity": {
+    "proportion_target": "人體背部可穿戴的獨立設備；以獨立設計稿各視圖確認外形，非精確尺寸。",
+    "head": null,
+    "torso": null,
+    "shoulders": null,
+    "arms": null,
+    "legs": null,
+    "pack": "Keep SPD-005-a's long burgundy center insert, thick silver-gray shield frame, small cyan top window and three red side indicators. Fuse Locke's Hunter rear architecture: slim spine service channel, two protective tapering rails and orange-sized mechanical latch details. Rework those details in the source palette. Make a lean armored pack with a distinct central access panel.",
+    "legacy_silhouette": "縱長、上寬下尖的單一盾形外殼，兩側厚而中面凹。",
+    "legacy_devices": "中央酒紅長面嵌在銀灰框內，頂部小青藍窗，側邊可見三個紅色圓窗。",
+    "actual_reviews": {
+      "design_sheet": "已目視：銀框酒紅長芯、青色頂窗、側邊三點保留；增加Hunter式兩條護脊與橘色小鎖扣，內面已獨立成承載框。完成四視、中央模組及外蓋拆解齊全，輪廓一致。小限制：側燈與框架間的維修間隙需建模確認，圖面不能直接當UV貼圖。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "背包原有HP、增益、技能與容量均由runtime原資料決定；本稿只替換美術，不增設飛行、護盾或醫療效果。",
+    "per_part": {
+      "hp": null,
+      "shield": null
+    },
+    "four_piece_total": {
+      "hp": null,
+      "shield": null
+    },
+    "movement_modifier": null,
+    "damage_modifier": null,
+    "unlock": "待玩法驗證後決定",
+    "purchase_currency": null,
+    "current_bag_slots_reference": 5
+  },
+  "proposed_abilities": [],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "design_sheet": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/b07_design_sheet.png",
+    "turnaround": "images/b07_design_sheet.png",
+    "construction": "images/b07_design_sheet.png",
+    "design_sheet": "images/b07_design_sheet.png"
+  },
+  "modeling_authority": "一張獨立設計稿包含主3/4視、向外面、側面、貼背面及維修拆解；圖內視角和機構可能需建模校正。不可直接當UV或遊戲貼圖。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "design_sheet": {
+        "design_id": "B-07",
+        "kind": "design_sheet",
+        "path": "images/b07_design_sheet.png",
+        "prompt": "prompts/b07_design_sheet.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-92db87fb-5b3e-42c1-a0de-372c340895c5.png",
+        "date": "2026-09-25",
+        "reference_images": [
+          "references/legacy/bag_06_original_threequarter.png",
+          "references/legacy/bag_06_original_outward.png",
+          "references/halo/hunter_turnaround.jpg"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已目視：銀框酒紅長芯、青色頂窗、側邊三點保留；增加Hunter式兩條護脊與橘色小鎖扣，內面已獨立成承載框。完成四視、中央模組及外蓋拆解齊全，輪廓一致。小限制：側燈與框架間的維修間隙需建模確認，圖面不能直接當UV貼圖。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/b07_design_sheet.json"
+      }
+    },
+    "unselected_records": []
+  },
+  "equipment_type": "backpack",
+  "proposal_only": true,
+  "fusion_recipe": {
+    "retained": "長紅色中央面與厚銀灰包邊，保留側面三圓窗的裝置語言。",
+    "borrowed": "官方模型後視：兩根向下收尖的後肩長殼，夾住窄中央服務脊；橘色小接點和細管／鎖扣，側殼未延伸到下腰，腰甲另行分離。",
+    "optimized": "新增貼背軟墊、支架與掛點，整理維修開口及部件層次；每款保留其雙筒、圓盤、翼或多艙身份。"
+  },
+  "source_references": {
+    "legacy": {
+      "name": "SPD-005-a",
+      "runtime_id": 6,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_06/ArmorBag_06.obj",
+      "kind": "recovered_original_mesh_and_mtl_texture",
+      "audit": "sources/legacy_backpacks.json",
+      "images": [
+        "references/legacy/bag_06_original_threequarter.png",
+        "references/legacy/bag_06_original_outward.png",
+        "references/legacy/bag_06_original_side.png"
+      ]
+    },
+    "halo": {
+      "name": "HUNTER-class Mjolnir rear assembly / Jameson Locke",
+      "game": "Halo 5: Guardians",
+      "donor_kind": "integrated_armor_back_structure",
+      "source_page_url": "https://www.halopedia.org/File:Halo_5_-_Locke_Hunter_renders.jpg",
+      "images": [
+        {
+          "key": "hunter_turnaround",
+          "source_page_url": "https://www.halopedia.org/File:Halo_5_-_Locke_Hunter_renders.jpg",
+          "image_url": "https://www.halopedia.org/images/4/49/Halo_5_-_Locke_Hunter_renders.jpg?9f2c7",
+          "local_path": "references/halo/hunter_turnaround.jpg",
+          "bytes": 336362,
+          "sha256": "f15cdf889cd95ecb6e2f8af3d555c9f4731570e4102e7115e6c001a8d45060e1",
+          "width": 1920,
+          "height": 960,
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "master_chief": false,
+      "integration_note": "整合式背甲只供結構參考，不能稱為原遊戲的獨立背包。"
+    }
+  },
+  "runtime_target": {
+    "item_key": "armor_bag_06",
+    "part_key": "bag",
+    "legacy_item_id": 6,
+    "attachment_bone": "fly_bag",
+    "current_bag_slots": 5,
+    "inherits_armor_abilities": false,
+    "original_stats_unchanged": true
+  }
+}

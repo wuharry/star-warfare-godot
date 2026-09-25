@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "design_id": "B-25",
+  "runtime_id": null,
+  "working_name_zh": "影匣",
+  "working_name_en": "SHADECASE",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 24,
+    "legacy_name": "Spectre",
+    "purpose": "取代對應獨立bag裝備的美術；不與同序C套裝綁定。"
+  },
+  "lore": "配裝系統中的獨立背負設備，暫名「影匣」。外殼承接 Spectre 的少量識別，內側加入可更換支架與穿戴固定點。",
+  "role": "獨立背包；承接 Spectre 的裝備位置。現有容量為 6 格，本輪未修改。",
+  "palette": [
+    {
+      "family": "冰藍",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "暗紅",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "黑藍",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "金",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    }
+  ],
+  "visual_identity": {
+    "proportion_target": "人體背部可穿戴的獨立設備；以獨立設計稿各視圖確認外形，非精確尺寸。",
+    "head": null,
+    "torso": null,
+    "shoulders": null,
+    "arms": null,
+    "legs": null,
+    "pack": "Retain Spectre's ice-blue pointed center crown, dark burgundy inset, small gold diamond and two dark blue-black gold-edged side wings. Fuse Yoroi's grouped rear protective housings, rounded armor lips and compact layered lower support. Replace the literal face-like decoration with a functional vent and service cover while preserving the pointed center and flanking wings. Make the assembly detach as a complete backpack.",
+    "legacy_silhouette": "中間尖頂面具般殼体，兩側分離的尖護翼向外上張。",
+    "legacy_devices": "中央淺藍尖冠、暗紅面、小金色菱形；側翼深藍黑并有金色邊帶。",
+    "actual_reviews": {
+      "design_sheet": "已目視 v2：消除首稿面具眼窩和下顎造型，以冰藍中央設備罩、酒紅矩形通風蓋、金色菱形扣和深藍金邊側殼保留原色識別；Yoroi 三組背殼、分離脊柱與下方分節承架融合明確。五視區完整，三個設備罩與獨立背帶載架一致可讀。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "背包原有HP、增益、技能與容量均由runtime原資料決定；本稿只替換美術，不增設飛行、護盾或醫療效果。",
+    "per_part": {
+      "hp": null,
+      "shield": null
+    },
+    "four_piece_total": {
+      "hp": null,
+      "shield": null
+    },
+    "movement_modifier": null,
+    "damage_modifier": null,
+    "unlock": "待玩法驗證後決定",
+    "purchase_currency": null,
+    "current_bag_slots_reference": 6
+  },
+  "proposed_abilities": [],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "design_sheet": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/b25_design_sheet.png",
+    "turnaround": "images/b25_design_sheet.png",
+    "construction": "images/b25_design_sheet.png",
+    "design_sheet": "images/b25_design_sheet.png"
+  },
+  "modeling_authority": "一張獨立設計稿包含主3/4視、向外面、側面、貼背面及維修拆解；圖內視角和機構可能需建模校正。不可直接當UV或遊戲貼圖。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "design_sheet": {
+        "design_id": "B-25",
+        "kind": "design_sheet",
+        "path": "images/b25_design_sheet.png",
+        "prompt": "prompts/b25_design_sheet.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b8-db09-7271-a1a5-5b4ce0c05eb2\\exec-3f4b1ac7-adab-401f-a7b1-230131c7c1c0.png",
+        "date": "2026-09-25",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "reference_images": [
+          "references/legacy/bag_24_original_threequarter.png",
+          "references/legacy/bag_24_original_outward.png",
+          "references/halo/yoroi_hefley2.jpg"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已目視 v2：消除首稿面具眼窩和下顎造型，以冰藍中央設備罩、酒紅矩形通風蓋、金色菱形扣和深藍金邊側殼保留原色識別；Yoroi 三組背殼、分離脊柱與下方分節承架融合明確。五視區完整，三個設備罩與獨立背帶載架一致可讀。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/b25_design_sheet.json"
+      }
+    },
+    "unselected_records": [
+      {
+        "design_id": "B-25",
+        "kind": "design_sheet",
+        "path": "images/b25_design_sheet_v1.png",
+        "prompt": "prompts/b25_design_sheet_v1.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b8-db09-7271-a1a5-5b4ce0c05eb2\\exec-88ca75ad-b9c7-47cc-8c3f-e387c8941fdc.png",
+        "date": "2026-09-25",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "reference_images": [
+          "references/legacy/bag_24_original_threequarter.png",
+          "references/legacy/bag_24_original_outward.png",
+          "references/halo/yoroi_hefley2.jpg"
+        ],
+        "postprocessing": "none",
+        "visual_review": "未採用：五視區完整，但原版面具眼窩與長鼻／下顎式中央板保留過強，Yoroi 分組後背殼融合不足；改做 v2。",
+        "status": "not_selected_revision_needed",
+        "record_file": "docs/art/original_armors_v1/generation_records/b25_design_sheet_v1.json"
+      }
+    ]
+  },
+  "equipment_type": "backpack",
+  "proposal_only": true,
+  "fusion_recipe": {
+    "retained": "中央尖頂＋成對外張護翼，簡化面具圖樣並做成散熱／傳感器硬體。",
+    "borrowed": "原製作模型後視：上背三根圓頂短長殼集中呈束，外側兩根較高；下方圓形脊部接點，腰部留軟衣，臀後V層片另成段。這是背甲結構，不稱Halo獨立背包。",
+    "optimized": "新增貼背軟墊、支架與掛點，整理維修開口及部件層次；每款保留其雙筒、圓盤、翼或多艙身份。"
+  },
+  "source_references": {
+    "legacy": {
+      "name": "Spectre",
+      "runtime_id": 24,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_24/ArmorBag_24.obj",
+      "kind": "recovered_original_mesh_and_mtl_texture",
+      "audit": "sources/legacy_backpacks.json",
+      "images": [
+        "references/legacy/bag_24_original_threequarter.png",
+        "references/legacy/bag_24_original_outward.png",
+        "references/legacy/bag_24_original_side.png"
+      ]
+    },
+    "halo": {
+      "name": "Yoroi rear housings and segmented back armor",
+      "game": "Halo Infinite",
+      "donor_kind": "integrated_armor_back_structure",
+      "source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg",
+      "images": [
+        {
+          "key": "yoroi_hefley2",
+          "source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg",
+          "image_url": "https://www.halopedia.org/images/0/01/HINF_-_Yoroi_armor_core_-_Kyle_Hefley_-_00002.jpg?ad403",
+          "local_path": "references/halo/yoroi_hefley2.jpg",
+          "bytes": 315611,
+          "sha256": "d3437e6b1897246e1aa96878f6d6fa075f59da621c28928bb7b99f0adb4b464a",
+          "width": 1920,
+          "height": 1167,
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        },
+        {
+          "key": "yoroi_tworek2",
+          "source_page_url": "https://www.halopedia.org/File:HINF_-_Yoroi_armor_core_-_Lyaksandr_Prelle-Tworek_-_00002.jpg",
+          "image_url": "https://www.halopedia.org/images/7/7d/HINF_-_Yoroi_armor_core_-_Lyaksandr_Prelle-Tworek_-_00002.jpg?b965c",
+          "local_path": "references/halo/yoroi_tworek2.jpg",
+          "bytes": 678293,
+          "sha256": "3abdea5e85fb7742d7553d5f31bd489210b12748f818ad38b598d7a717c339e9",
+          "width": 1828,
+          "height": 1922,
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "master_chief": false,
+      "integration_note": "整合式背甲只供結構參考，不能稱為原遊戲的獨立背包。"
+    }
+  },
+  "runtime_target": {
+    "item_key": "armor_bag_24",
+    "part_key": "bag",
+    "legacy_item_id": 24,
+    "attachment_bone": "fly_bag",
+    "current_bag_slots": 6,
+    "inherits_armor_abilities": false,
+    "original_stats_unchanged": true
+  }
+}

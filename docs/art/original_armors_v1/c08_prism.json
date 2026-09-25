@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "design_id": "C-08",
+  "runtime_id": null,
+  "working_name_zh": "折光",
+  "working_name_en": "PRISM",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 7,
+    "legacy_set_name": "Atom",
+    "purpose": "指定未來外觀替换目標；能力、購買、升級和存檔 ID 本輪不變。"
+  },
+  "lore": "狹窄設施中的光學支援服。紫藍護甲上的眉側三點用於校準提示，折向器的收納屬後續技能模組設計。",
+  "role": "部署一次性折向板，改變自己下一發能量射線方向",
+  "palette": [
+    {
+      "family": "紫",
+      "hex": "#66507F",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "鋼藍",
+      "hex": "#487098",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "青",
+      "hex": "#58CDD0",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "黑",
+      "hex": "#242632",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    }
+  ],
+  "visual_identity": {
+    "status": "prompt_target_with_actual_reviews_below",
+    "proportion_target": "約6～6.5個頭盔高的厚實人體；屬 brief 目標，未作像素量測。",
+    "head": "紫藍圓冠、青色寬玻璃與眉上三小點；Engineer 感測器移到眉側",
+    "torso": "分節工程護領和可檢修胸匣，胸腰清楚分離",
+    "shoulders": "後掠雙尖片縮短為感測護片",
+    "arms": "正常五指手套、布衣肘窩與分件護臂。原版保留線索：藍色多邊形護臂、外側小青點，尖紫色腕側片，黑手套。",
+    "legs": "人的髖膝踝位置、軟膝後和正常軍靴；尖片按融合 brief 收短。原版保留線索：紫藍分色大腿与多层膝脛；膝/髖有青圓點；藍鞋尖和紫腳面，腳跟也有青點。",
+    "pack": "背包為獨立装备。三視製作可示範搭配 B-08，不是原遊戲固定套裝或技能關聯；以 B 款獨立設計稿為準。",
+    "concept_prompt": "prompts/c08_concept.txt",
+    "full_fusion_brief_en": "Fuse original Star Warfare Atom with the observed Halo 4 Engineer construction. Keep Atom's violet and steel-blue armor, cyan glass visor, exactly three small cyan status points above and beside the brow, and paired rear-swept shoulder fins. Borrow Engineer's segmented engineering collar, serviceable chest cartridge, round side sensor fittings, and visible woven undersuit. Do not replace the visor with Engineer's four camera-like eyes: move the sensor language onto the brow and temple housings around one real human visor. Shorten Atom's shoulder fins into paired sensor guards connected to the rear carrier. Make the chest and hips follow a human torso with normal neck, elbows, knees and five-finger gloves. Rear carrier side pods may take Engineer's vented rectangular profile, but its unseen center-back details must be newly designed and identified as original. Retain Atom's purple-blue-cyan palette instead of the orange reference coating; change plate seams and module layout so the result is a new coherent suit.",
+    "actual_reviews": {
+      "concept": "紫藍甲、連續青色面罩與額頭三點、成對短肩鰭保留；ENGINEER的圓耳接點、分節頸架與胸前維修盒可辨識。人體關節清楚，機械眼已換成玻璃；多處青色指示燈可在後续減量。",
+      "construction": "修正版已逐圖目視：A 區完整頭盔及爆炸圖外殼各有正確三顆青色額冠點，已刪掉重複額帶；爆炸圖為外殼／單片青玻璃／軟內襯三組。紫藍配色、圓耳、肩感測護片、胸部直青窗一致。D 區僅黑色背墊雙接軌，独立 B08 藍黃雙艙與黃三角下端完整。接點尺寸未驗證。",
+      "turnaround": "已逐圖目視：FRONT／LEFT／BACK 三人等高同地線，左視鼻朝畫面左、背視無面罩。Atom 紫／鋼藍配色、額上三顆青點、青色單片玻璃、短肩護鰭、中央直青窗皆保留。B08 獨立藍黃雙艙與中央分節脊、下端黃三角一致，穿戴於腰上且沒有把背包色改成裝甲紫色。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "以 C-01 為比較點的未平衡提案，不是 Atom 現有數值；四件合計不含等級、背包與裝備升級；護盾容量不代表已具備回充功能",
+    "per_part": {
+      "hp": 250,
+      "shield": 50
+    },
+    "four_piece_total": {
+      "hp": 1000,
+      "shield": 200
+    },
+    "movement_modifier": 0,
+    "damage_modifier": 0,
+    "unlock": "後續任務／製作解鎖提案，具體條件待定",
+    "purchase_currency": null
+  },
+  "proposed_abilities": [
+    {
+      "id": "c08_refractor",
+      "name": "單次折向",
+      "kind": "四件套部署主動提案",
+      "implemented": false,
+      "trigger": "完整四件、存活，在身邊2公尺內選擇合法位置與板面角度；確認預覽後部署並開始16秒冷卻",
+      "effect": "折向板存在3秒；第一發由自己射出、從板正面入射的合格單發能量射線，依板面法線反射一次後消耗板；部署預覽顯示入射和出射方向",
+      "stop": "觸發、3秒到期、死亡、卸裝或離開場景即移除；放下後不能移動或調整",
+      "limits": "每人同時一片；每發射線全程最多折向一次，不能借多片循環。保留原總射程與傷害，不複製、不自動鎖敵、不穿掩體；僅限自有能量射線，不影響隊友、敵彈、實體子彈或爆炸",
+      "visual": "眉上三點表示校準階段；折向板為獨立技能物件，收納位置待定，不從 B-08 抽出。",
+      "design_reason": "以事先安排射線路徑提供角度選擇；工作名為折光，但本提案明確採單次反射規則",
+      "integration_note": "合格武器清單尚未核實，需未來盤點射線武器、碰撞與預覽接口；本輪僅為玩法規格，不宣稱現有武器支援",
+      "status": "proposal_only",
+      "equipment_dependency": "完整C裝甲四件；不要求同序B背包，不改B背包現有屬性。"
+    }
+  ],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/c08_concept.png",
+    "turnaround": "images/c08_turnaround.png",
+    "construction": "images/c08_construction.png"
+  },
+  "modeling_authority": "本輪概念圖及逐張目視紀錄定義採用外觀；三視與拆解為建模參考。少量透視、遮擋或跨視細節須在模型統一，不可當精確尺寸、UV或已完工資產。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "concept": {
+        "design_id": "C-08",
+        "kind": "concept",
+        "path": "images/c08_concept.png",
+        "prompt": "prompts/c08_concept.txt",
+        "reference_images": [
+          "references/legacy/c08_front.png",
+          "references/halo/c08_engineer_front.png"
+        ],
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-21c513a4-0708-4d31-adf9-7f9e02c759ca.png",
+        "date": "2026-09-25",
+        "postprocessing": "none",
+        "visual_review": "紫藍甲、連續青色面罩與額頭三點、成對短肩鰭保留；ENGINEER的圓耳接點、分節頸架與胸前維修盒可辨識。人體關節清楚，機械眼已換成玻璃；多處青色指示燈可在後续減量。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c08_concept.json"
+      },
+      "construction": {
+        "design_id": "C-08",
+        "kind": "construction",
+        "path": "images/c08_construction.png",
+        "prompt": "prompts/c08_construction.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-fae4247a-8994-4197-95ca-3186f610649a.png",
+        "date": "2026-09-25",
+        "reference_images": [
+          "images/c08_concept.png",
+          "images/c08_turnaround.png",
+          "images/b08_design_sheet.png"
+        ],
+        "postprocessing": "none",
+        "visual_review": "修正版已逐圖目視：A 區完整頭盔及爆炸圖外殼各有正確三顆青色額冠點，已刪掉重複額帶；爆炸圖為外殼／單片青玻璃／軟內襯三組。紫藍配色、圓耳、肩感測護片、胸部直青窗一致。D 區僅黑色背墊雙接軌，独立 B08 藍黃雙艙與黃三角下端完整。接點尺寸未驗證。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c08_construction.json"
+      },
+      "turnaround": {
+        "design_id": "C-08",
+        "kind": "turnaround",
+        "path": "images/c08_turnaround.png",
+        "prompt": "prompts/c08_turnaround.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-16c97566-35f3-4f16-ab9f-44cdfbac64e8.png",
+        "date": "2026-09-25",
+        "reference_images": [
+          "images/c08_concept.png",
+          "images/b08_design_sheet.png"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已逐圖目視：FRONT／LEFT／BACK 三人等高同地線，左視鼻朝畫面左、背視無面罩。Atom 紫／鋼藍配色、額上三顆青點、青色單片玻璃、短肩護鰭、中央直青窗皆保留。B08 獨立藍黃雙艙與中央分節脊、下端黃三角一致，穿戴於腰上且沒有把背包色改成裝甲紫色。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c08_turnaround.json"
+      }
+    },
+    "unselected_records": [
+      {
+        "design_id": "C-08",
+        "kind": "construction",
+        "path": "images/c08_construction_v1.png",
+        "prompt": "prompts/c08_construction_v1.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-41606a30-a45d-4510-82ba-430de57ce0fc.png",
+        "date": "2026-09-25",
+        "reference_images": [
+          "images/c08_concept.png",
+          "images/c08_turnaround.png",
+          "images/b08_design_sheet.png"
+        ],
+        "postprocessing": "none",
+        "visual_review": "A 區完整頭盔三顆青點正確，但小型爆炸圖在已有三點的外殼下多畫一個帶兩點的額帶，造成重複零件／點數。此稿不採用，修正版限外殼（含唯一三點）／玻璃／內襯三件。其餘背包獨立和配色正確。",
+        "status": "rejected_visual_inconsistency",
+        "record_file": "docs/art/original_armors_v1/generation_records/c08_construction_v1.json"
+      }
+    ]
+  },
+  "equipment_type": "armor",
+  "proposal_only": true,
+  "source_references": {
+    "legacy": {
+      "name": "Atom",
+      "runtime_id": 7,
+      "kind": "restored_original_game_model_capture",
+      "images": [
+        "references/legacy/c08_front.png",
+        "references/legacy/c08_side.png",
+        "references/legacy/c08_rear.png"
+      ],
+      "audit": "sources/legacy_armor_audit.json"
+    },
+    "halo": {
+      "name": "ENGINEER-class Mjolnir (GEN2)",
+      "game": "Halo 4",
+      "master_chief": false,
+      "images": [
+        {
+          "key": "c08_engineer_front",
+          "source_page_url": "https://www.halopedia.org/File:H4_MJOLNIR_Engineer.png",
+          "image_url": "https://www.halopedia.org/images/1/12/H4_MJOLNIR_Engineer.png?8e2b5",
+          "local_path": "references/halo/c08_engineer_front.png",
+          "bytes": 1280234,
+          "sha256": "59852ed20aa835bb5ba49a81107141d79e120bb06f00e193701e0d85adfc0e2a",
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        },
+        {
+          "key": "c08_engineer_guide",
+          "source_page_url": "https://www.halopedia.org/File:H4IG_ENGINEER.jpg",
+          "image_url": "https://www.halopedia.org/images/e/e1/H4IG_ENGINEER.jpg?f2e1c",
+          "local_path": "references/halo/c08_engineer_guide.jpg",
+          "bytes": 153130,
+          "sha256": "5567e8f997f7e71742a2c0a46595e66edd48b118713008dfeb9281d30432a953",
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        },
+        {
+          "key": "c08_engineer_game3_preview",
+          "source_page_url": "https://www.halopedia.org/File:HTMCC-H4_Engineer_3.png",
+          "image_url": "https://halo.wiki.gallery/images/thumb/0/06/HTMCC-H4_Engineer_3.png/800px-HTMCC-H4_Engineer_3.png?20250420194221",
+          "local_path": "references/halo/c08_engineer_game3_preview.png",
+          "bytes": 506652,
+          "sha256": "4731b88799bc321a00e2eec4f785dde5f57090e7ef9aa5b4dd0ede19d4454285",
+          "note": "Public server thumbnail; original downloaded separately; no local image modification.",
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "observed": {
+        "helmet": "圓冠中間寬槽；正面四個獨立圓形光譜節點、兩側機構框，下面連續環形下顎管。原款沒有普通寬面罩，融合時應主動保留 Atom 的玻璃面窗。",
+        "chest": "兩根向肩頸延伸的厚長胸帶，胸前一個集中維修模組，下胸收窄；肩殼低，胸帶、前臂、腹部之间露出蜂巢紋軟衣。",
+        "back": "主圖和遊戲側視看得到高於肩後的方長模組，外側有 U 形長槽與頂端網狀通風面；沒有取得正後方圖，不能描述背面中線。",
+        "back_evidence": "partial_side_only",
+        "match_reason": "Atom 的額頭多點感測與 Engineer 分散光學節點直接對應；胸帶／後肩模組能把 Atom 長肩領片轉成有用途的感測器護架。"
+      },
+      "role": "selected_design_donor"
+    }
+  },
+  "fusion_recipe": {
+    "retained": [
+      "紫藍配色與青色面罩/額頭三點",
+      "成對向外後伸的薄肩領片",
+      "紫色尖收下巴与圓形光學模組"
+    ],
+    "borrowed": {
+      "helmet": "圓冠中間寬槽；正面四個獨立圓形光譜節點、兩側機構框，下面連續環形下顎管。原款沒有普通寬面罩，融合時應主動保留 Atom 的玻璃面窗。",
+      "chest": "兩根向肩頸延伸的厚長胸帶，胸前一個集中維修模組，下胸收窄；肩殼低，胸帶、前臂、腹部之间露出蜂巢紋軟衣。",
+      "back": "主圖和遊戲側視看得到高於肩後的方長模組，外側有 U 形長槽與頂端網狀通風面；沒有取得正後方圖，不能描述背面中線。",
+      "back_evidence": "partial_side_only",
+      "match_reason": "Atom 的額頭多點感測與 Engineer 分散光學節點直接對應；胸帶／後肩模組能把 Atom 長肩領片轉成有用途的感測器護架。"
+    },
+    "optimized": "Halo 配對應偏科技/光學；把大肩尖縮短為實際的感測/散熱翼，保留成對方向與紫青關係，不把身份完全改成淺色無翼套裝。",
+    "optimization_common": "胸腰按人體分件、露出織物關節、短化易勾掛尖片；避免單眼機械臉與巨型四肢。"
+  }
+}

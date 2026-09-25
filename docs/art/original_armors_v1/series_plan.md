@@ -1,95 +1,69 @@
-# 原創裝甲系列提案 v1
+# 全系列製作對照
 
-這份文件規劃 21 套全新原創裝甲；所有新名稱、外形與技能方向都屬設計提案，尚未成為遊戲功能。
+本輪涵蓋原遊戲 armor ID 0～20 和 bag ID 0～24。C／B 是設計追蹤編號，不是新存檔 ID；下列全部技能為未實作提案，外觀特徵以本輪 prompt 和目視紀錄為準。
 
-- `C01`–`C21` 是概念稿編號，不是新的存檔 ID。表中的舊 ID 僅標示預計承接的位置，不代表保留舊角色造型。
-- 本輪先製作 C01「堤衛 BREAKWATER」的概念、美術拆解及比例稿；其他款僅建立彼此可區分的方向。
-- 目前分支仍含既有來源素材與其引用，**不是已完成原創素材替換的可發布版本**。本文件不代表任何來源素材已完成權利或發布審查。
-- 本輪不移除 runtime 裝甲、不重編 ID、不改能力值，也不修改或遷移玩家存檔。
+## 21 套裝甲
 
-## 共用製作方向
+每套保留原版配色與少量頭盔／肩胸辨識特徵，結合表列 Halo 供體的穿戴結構。C-06 以使用者附件優先，不把先前 EVA 候選冒充實際輸入。
 
-系列以真正有厚度的硬質甲片建立立體感，靠輪廓、板件交疊、倒角與光照呈現結構。
-
-- 四個交換部位仍按頭、身體、手臂、腿規劃，接縫須能支援混搭；武器、背包另外保留清楚的裝配空間。
-- 每款使用四個色系。亮面、暗面、污損和燈光均是這四個色系的明暗變化；光學鏡頭也沿用其中一系，不另加第五種發光顏色。
-- 跨款可以共享材質做法，但不能只換色。每款至少以頭盔正面、肩線、胸甲大形、下腿輪廓四項中的三項建立區別。
-- 概念稿上的溝槽、螺絲與彩色面板不能代替模型輪廓。頭盔、肩甲、胸甲和脛甲先做可從側面辨認的體積，再處理細節。
-- 以下技能只用來協助視覺分工，尚未決定數值、冷卻、解鎖、購買價格或平衡；不得在遊戲 UI 宣稱已可使用。
-
-## 舊位置與全新提案
-
-每個位置都有新的名稱、輪廓和功能方向；舊名稱只作核對索引，不作造型參考。
-
-四個色碼的順序是主甲、次甲、關節／深色結構、辨識色；這是配色提案，不是現有模型材質。
-
-| 概念／舊 ID／舊名 | 全新暫名 | 新玩法方向（未實作） | 新輪廓重點 | 四色系提案 |
+| 設計資料 | 遊戲 ID／原名 | 暫名 | Halo 設計參考 | 技能提案 |
 |---|---|---|---|---|
-| C01／0／Viper | **堤衛 BREAKWATER** | 入門全能；操作直觀，不要求觸發連鎖技能。可試用「均衡回充」模組教學。 | 封閉、平頂梯形頭盔；佩戴者右上三鏡頭、左下斜呼吸格柵。左大右小肩甲、斜向疊合胸板、短厚楔形脛甲。 | 象牙白 `#DDD7BF`／青綠 `#246268`／炭黑 `#232C32`／橘 `#D87A3D` |
-| C02／1／Fortune | 行囊 WAYFARER | 探索補給；回收場上物資，換取一份可主動放置的補給包。 | 窄直箱形頭盔、單片遮雨眉；低肩、前短後長胸甲、腰側斜置收納匣、細長下腿。 | 沙白 `#D8C9A2`／藍灰 `#4B6875`／焦褐 `#403A32`／芥黃 `#D3A640` |
-| C03／2／Tank | 岩樁 CAIRN | 定點承壓；短時固定姿態，換取正面抗推與防護，解除後恢復移動。 | 頭盔沉入水平高領；兩肩是向下收窄的石楔，胸甲寬而扁，靴底外展，膝甲低位。 | 岩灰 `#A4AAA3`／橄欖 `#606B42`／煤黑 `#262C29`／磚紅 `#B9563D` |
-| C04／3／Hydra | 躍浪 SKIPJACK | 位移；短距離側躍後獲得一次穩定落地射擊窗口，不增加常駐傷害。 | 前低後高的滑板形頭盔、單側短感測桿；小肩、腰身內收、前後分離的脛甲與外露踝節。 | 淺灰 `#D6DAD6`／湖藍 `#297D9C`／深綠灰 `#283E41`／萊姆 `#B7C862` |
-| C05／4／Strike | 破線 BREACHLINE | 推進壓制；前進射擊時逐步穩定槍口，急停或轉向則清除累積。 | 斜切單窗頭盔、前傾上胸楔板、向前伸出的短肩護翼，護臂與脛甲採相同斜刀口。 | 淺砂 `#CEBCA0`／酒紅 `#813D46`／墨灰 `#272E35`／杏黃 `#DFBA58` |
-| C06／5／Titan | 補綴 PATCHWORK | 修復消耗品；把自用修復包拆成可分享的小份，選擇立即自救或留給隊友。 | 寬圓角箱形頭盔但面板保持平面；左右肩高度接近、胸口一個偏置翻蓋匣、前臂工具槽、短矩形護膝。 | 瓷白 `#DADFD4`／鼠尾草綠 `#78957D`／煙灰 `#363C3D`／赭橘 `#BE744D` |
-| C07／6／Thunder | 熾限 REDLINE | 武器過載；短時強化輸出並累積熱量，須在過熱前主動退出。 | 側向窄縫感測器、後頸雙層平排散熱片；肩甲向後切退，胸前單條偏心散熱脊，長方形重護臂。 | 深紅 `#9F463D`／暖白 `#D8D0BC`／石墨 `#2E333A`／琥珀 `#E3AC4A` |
-| C08／7／Atom | 折光 PRISM | 能量路徑；部署單片短效折射器，改變一束能量射擊的方向，需自行瞄準。 | 五邊形截角頭盔、側置窄鏡槽；三塊錯層胸板、薄而寬的肩甲、菱形外護臂、直筒小腿。 | 淡紫灰 `#C9C4D5`／靛紫 `#60518A`／深墨 `#282B37`／冰青 `#73C9C3` |
-| C09／8／Pegasus | 拒壁 BULWARK | 時機防禦；展開短效前臂防板，成功接住正面攻擊才縮短下次使用等待。 | 平頂短頸頭盔、中央小型橫視窗；左前臂大板、右臂精簡，胸甲矩形框架與窄腰形成反差。 | 霧白 `#CDD5D2`／深藍 `#33526C`／鐵灰 `#343A42`／橘紅 `#C86844` |
-| C10／9／Draco | 蓄鐵 LODESTONE | 蓄能反擊；把部分正面衝擊存成一次可選擇釋放的反擊脈衝，不自動反傷。 | 沒有大面罩的低矮多面頭殼；肩部內縮、胸口一個橫向厚蓄能盒，肘部外擴、膝下粗壯。 | 礦綠 `#7C9990`／深棕 `#695549`／炭黑 `#252D30`／銅 `#C28A52` |
-| C11／10／Phoenix | 芽庫 SEEDVAULT | 小隊續戰；參與擊倒後取得修復份額，可選自用或投放在地上分享。 | 前額平直、口部窄長的密閉頭盔；短而圓角的梯形肩板，胸前縱向分裝匣，手掌外側護罩較大。 | 米白 `#DDD7BF`／苔綠 `#78834A`／土灰 `#45463D`／珊瑚 `#D18567` |
-| C12／11／Cygni | 支點 SPUR | 爆破武器支援；架穩射姿後提供清晰落點預覽，犧牲一部分移動自由。 | 前窄後寬的箱式瞄準頭盔；低平肩甲、右腰支架座、外擴大腿護板、後跟明顯支撐爪。 | 赭黃 `#B89859`／石藍 `#5A7589`／鐵黑 `#2B3337`／奶白 `#DFD9C6` |
-| C13／12／Andromedae | 縫光 STITCH | 主動救援；向指定隊友發射短距離修復束，自己須保持路徑與站位。 | 左右分高低的額部燈槽；肩線窄、胸甲下緣呈開口叉形，雙前臂寬而扁，足踝輕巧。 | 月白 `#D8DDD5`／墨綠 `#376F66`／冷灰 `#3B4853`／金黃 `#C6AD57` |
-| C14／13／Perseus | 截岸 CUTBANK | 近距攔截；短時標定面前區域，攔下第一個闖入的近戰攻擊並製造撤離空間。 | 無冠脊的扁平梯形頭盔；肩甲斜向外下方伸展、胸甲左右分葉、外護臂形成長直切面。 | 灰藍 `#8CA7B4`／陶褐 `#9B6753`／岩黑 `#2D343B`／骨白 `#D8CFBB` |
-| C15／14／Chaos | 環界 RINGFENCE | 區域控制；放置兩個小型接點，在兩點之間形成短效緩速帶。 | 頭盔側面是明顯後掠直角殼；肩頭各一個扁平部署匣，窄胸寬腰、外側腿甲分成三階。 | 淺卡其 `#C9C0A0`／莓紫 `#875773`／深灰 `#313039`／青綠 `#59A9A1` |
-| C16／15／DEC.24 | 引燈 LANTERN | 情境支援；朝指定方向投放照明標記，幫助小隊辨認遠處目標與路線。 | 方形燈箱額部與封閉短面甲；一高一低的短肩殼、胸前橫向提把、前寬後窄的護脛。 | 蜜黃 `#D4AF63`／深綠 `#4A6F67`／褐黑 `#38342C`／暖白 `#E0D8C4` |
-| C17／16／Knight | 衡時 CLOCKWORK | 規律射擊；按穩定間隔射擊可減少後座，連續亂射會失去這項優勢。 | 額頭單一偏心測距孔、下巴向內收；雙肩呈反向階梯，胸甲採三條寬橫板，腕部厚而踝部窄。 | 鋼白 `#BDC9CD`／油藍 `#3F6177`／炭灰 `#31363E`／硃紅 `#B85B4E` |
-| C18／17／R.O.M.E | 驟雨 MONSOON | 投射物控制；選擇一次彈跳或落地啟動的投擲模式，以落點選擇換取戰術彈性。 | 扁寬斜眉頭盔、單側多面護頰；肩部下壓、胸口低位斜匣，髖甲與厚靴形成穩固下盤。 | 淺橄欖 `#B8BD8D`／暗青 `#3B6F78`／泥灰 `#42443B`／鏽橘 `#BC7147` |
-| C19／18／Black Hole | 遠標 FARLINE | 遠距情報；主動掃描一條狹窄視線，標定單一目標並提示其移動方向。 | 極窄橫向感測頭盔、側面一個內嵌長鏡匣；小肩與寬背板、斜收胸甲、窄長護脛。 | 淡灰 `#CAD1CD`／暗紫 `#605F79`／墨黑 `#252B33`／黃綠 `#B8C675` |
-| C20／19／X-Field | 迴蓄 TURNCOIL | 傷害緩衝；把部分承傷延後結算，玩家須利用短窗口撤離並消耗緩衝值。 | 上窄下寬的封閉頭盔、左右錯位小鏡窗；胸甲有偏置矩形環槽、平肩、雙層護膝與內凹踝部。 | 陶白 `#D9CEC1`／鏽紫 `#895F6D`／深海灰 `#30404A`／薄荷 `#87BAA7` |
-| C21／20／Wrath | 繫錨 ANCHORLINE | 單體牽制；射出機械牽引索，短時限制一個目標的位移，牽引方向由站位決定。 | 低矮楔形頭盔、右側封閉圓形感測蓋；左肩是直角絞盤罩、胸甲斜向受力梁，左護臂更長。 | 沙灰 `#BCB8A4`／氧化紅 `#8C5147`／鐵灰 `#303D42`／淡青 `#87B7BC` |
+| [C-01](c01_breakwater.json) | 0 / Viper | 堤衛 BREAKWATER | Rookie / standard ODST battle armor | 整備回充、定步護屏 |
+| [C-02](c02_wayfarer.json) | 1 / Fortune | 行囊 WAYFARER | Recon helmet with UA/HUL[3] option; Recon-equipped Spartan upper body | 沿途整備、落點補給 |
+| [C-03](c03_cairn.json) | 2 / Tank | 岩樁 CAIRN | Grenadier / Jorge-052 heavy armor, without character markings | 落樁固守 |
+| [C-04](c04_skipjack.json) | 3 / Hydra | 躍浪 SKIPJACK | Operator helmet and Operator shoulder configuration | 側躍定準 |
+| [C-05](c05_breachline.json) | 4 / Strike | 破線 BREACHLINE | Recruit (GEN2), official game model and Waypoint render | 推線穩架 |
+| [C-06](c06_patchwork.json) | 5 / Titan | 補綴 PATCHWORK | 使用者兩張Halo頭盔附件（型號未核實） | 分裝修補 |
+| [C-07](c07_redline.json) | 6 / Thunder | 熾限 REDLINE | War Master (GEN2), official armor turnaround | 熱限過載 |
+| [C-08](c08_prism.json) | 7 / Atom | 折光 PRISM | ENGINEER-class Mjolnir (GEN2) | 單次折向 |
+| [C-09](c09_bulwark.json) | 8 / Pegasus | 拒壁 BULWARK | HELIOSKRILL-class Mjolnir (GEN2) | 迎擊防板 |
+| [C-10](c10_lodestone.json) | 9 / Draco | 蓄鐵 LODESTONE | CQC helmet and shoulder configuration | 蓄鐵脈衝 |
+| [C-11](c11_seedvault.json) | 10 / Phoenix | 芽庫 SEEDVAULT | VENATOR-class Mjolnir (GEN2) | 共用修復份額 |
+| [C-12](c12_spur.json) | 11 / Cygni | 支點 SPUR | VALKYRIE-class Mjolnir (GEN2) | 穩架測距 |
+| [C-13](c13_stitch.json) | 12 / Andromedae | 縫光 STITCH | OCEANIC-class Mjolnir (GEN2) | 縫合光束 |
+| [C-14](c14_cutbank.json) | 13 / Perseus | 截岸 CUTBANK | EOD-class Mjolnir, Halo 3 helmet/chest/shoulder configuration（身甲結構；原版盔優先） | 截步護區 |
+| [C-15](c15_ringfence.json) | 14 / Chaos | 環界 RINGFENCE | HAYABUSA | 雙點界線 |
+| [C-16](c16_lantern.json) | 15 / DEC.24 | 引燈 LANTERN | HAZOP | 引路標記 |
+| [C-17](c17_clockwork.json) | 16 / Knight | 衡時 CLOCKWORK | PREFECT（身甲結構；原版盔優先） | 等拍穩定 |
+| [C-18](c18_monsoon.json) | 17 / R.O.M.E | 驟雨 MONSOON | ACHILLES | 落點模式 |
+| [C-19](c19_farline.json) | 18 / Black Hole | 遠標 FARLINE | LOCUS / Edge | 窄線測標 |
+| [C-20](c20_turncoil.json) | 19 / X-Field | 迴蓄 TURNCOIL | PROTECTOR | 迴流緩衝 |
+| [C-21](c21_anchorline.json) | 20 / Wrath | 繫錨 ANCHORLINE | YOROI / KABUTO | 短索繫錨 |
 
-## C01 製作邊界
+## 25 個獨立背包
 
-C01 承接 Viper 的入門位置，並吸收 Combat／Training「容易上手」的產品定位；它不沿用這三款的舊外形，也不宣稱繼承未實作技能。
+每個背包有自己的原模型與 Halo 背部裝置參考；整合式背甲只提供結構，另設計成獨立背包。圖上噴口、圓盤、光窗或生命維持筒不會自動新增飛行、護盾、醫療技能；表內容量是目前程式原值，不是改版數值。
 
-- 頭部必須是封閉、平頂、截角梯形甲殼。三個小鏡頭在**佩戴者右上**呈三角排列；左下是斜呼吸格柵，不使用橫跨全臉的大面罩。
-- 左肩較大且外緣斜向下，右肩為小型雙層護蓋。胸甲由象牙白左上板疊在青綠右下板上，偏左有一個小型橘色內嵌扣件。
-- 四色分配起點為象牙白約 35%、青綠約 35%、炭黑約 25%、橘約 5%；鏡頭發光是青綠色系的亮部。
-- 手臂與小腿用短厚、寬倒角的盒楔形板件；膝甲是分離矩形板，腳踝保留可見活動空隙。
-- 入門定位不自動變更 Viper 現有數值。均衡回充模組是後續可評估的新方案，尚未套用。
+| 設計資料 | bag ID／原名 | 暫名 | Halo 背部參考 | 原容量 |
+|---|---|---|---|---:|
+| [B-01](b01_trilobe.json) | 0 / VB-03-II | 三瓣匣 TRILOBE | Rookie Field Pack / M/LBE hard case | 3 |
+| [B-02](b02_spinerail.json) | 1 / VB-03-III | 長脊 SPINERAIL | Rookie Field Pack / M/LBE hard case | 3 |
+| [B-03](b03_loopcase.json) | 2 / SP-04-IV | 環艙 LOOPCASE | OCEANIC-class Mjolnir rear carrier | 4 |
+| [B-04](b04_twinpost.json) | 3 / SP-11-V | 雙柱 TWINPOST | Series 8 jetpack | 3 |
+| [B-05](b05_stepcase.json) | 4 / KP-101-X | 階匣 STEPCASE | RECRUIT-class Mjolnir rear assembly | 4 |
+| [B-06](b06_twinport.json) | 5 / VP-22-VII | 雙瞳 TWINPORT | WAR MASTER-class Mjolnir rear frame | 4 |
+| [B-07](b07_railguard.json) | 6 / SPD-005-a | 線衛 RAILGUARD | HUNTER-class Mjolnir rear assembly / Jameson Locke | 5 |
+| [B-08](b08_foldwing.json) | 7 / ECO-03-VI | 折翼 FOLDWING | VALKYRIE-class Mjolnir rear housings | 3 |
+| [B-09](b09_ringcore.json) | 8 / TT-05-b | 環核 RINGCORE | WAR MASTER-class Mjolnir rear frame | 5 |
+| [B-10](b10_goldbrace.json) | 9 / SAM-005-I | 金環 GOLDBRACE | HELIOSKRILL-class Mjolnir rear plates | 5 |
+| [B-11](b11_dualcan.json) | 10 / STK-06-ZZ | 雙罐 DUALCAN | Series 8 jetpack | 6 |
+| [B-12](b12_canister.json) | 11 / HYD-00-IX | 護筒 CANISTER | OSTEO / Hazmat rear life-support canister frame | 5 |
+| [B-13](b13_tricore.json) | 12 / H.F-V-03 | 三芯 TRICORE | Yoroi rear housings and segmented back armor | 6 |
+| [B-14](b14_twinfurnace.json) | 13 / STK.F-VI-00 | 雙爐 TWINFURNACE | Series 8 jetpack | 6 |
+| [B-15](b15_orbitcase.json) | 14 / X02B-FREEDOM | 巡盤 ORBITCASE | Series 12 Single Operator Lift Apparatus | 6 |
+| [B-16](b16_hoverframe.json) | 15 / F.L.O.A.T | 浮架 HOVERFRAME | Series 12 Single Operator Lift Apparatus | 6 |
+| [B-17](b17_stackspine.json) | 16 / Visnu | 層脊 STACKSPINE | Yoroi rear housings and segmented back armor | 6 |
+| [B-18](b18_hexcase.json) | 17 / TRI-0-AVATAR | 蜂艙 HEXCASE | HUNTER-class Mjolnir rear assembly / Jameson Locke | 6 |
+| [B-19](b19_bladecase.json) | 18 / BLADE-MASTER | 刃匣 BLADECASE | OCEANIC-class Mjolnir rear carrier | 4 |
+| [B-20](b20_touchpoint.json) | 19 / TOUCH AND GO | 觸航 TOUCHPOINT | OSTEO / Hazmat rear life-support canister frame | 5 |
+| [B-21](b21_quadcan.json) | 20 / DRACULA | 四筒 QUADCAN | ODST/COMM Communications backpack | 6 |
+| [B-22](b22_festalrod.json) | 21 / JIN.JINGLE | 節杖 FESTALROD | OSTEO / Hazmat rear life-support canister frame | 6 |
+| [B-23](b23_ringward.json) | 22 / S.H.I.E.L.D | 環屏 RINGWARD | HELIOSKRILL-class Mjolnir rear plates | 6 |
+| [B-24](b24_dualwing.json) | 23 / D-WINGS | 雙翼架 DUALWING | Series 12 Single Operator Lift Apparatus | 6 |
+| [B-25](b25_shadecase.json) | 24 / Spectre | 影匣 SHADECASE | Yoroi rear housings and segmented back armor | 6 |
 
-## CoM 八套的來源事實
+## 後續製作與 CoM
 
-八套目前共有的特殊玩法是「完整套裝護盾自回」，沒有八套各自的暴擊、閃避、反傷或武器專精。
+先選稿及修正跨視差異，再製作新模型、UV、貼圖和骨架。裝甲各四部件及獨立背包必須驗證混搭、轉頭、抬臂、跑步、換彈與武器避讓；目前尚未執行這些遊戲素材驗收。
 
-| 舊 ID／名稱 | 基礎整套 HP | 基礎整套盾 | 未受傷等待 | 解鎖人物等級 | 整套價格 |
-|---|---:|---:|---:|---:|---:|
-| 21 Assault Armor | 130 | 250 | 6 秒 | 7 | 8,000 credits |
-| 22 Combat Suit | 200 | 150 | 6 秒 | 0 | 免費 |
-| 23 Drillmaster | 150 | 300 | 5 秒 | 15 | 35,000 credits |
-| 24 Heavy Battlesuit | 120 | 300 | 6 秒 | 9 | 15,000 credits |
-| 25 Mark-6 117R | 155 | 255 | 5 秒 | 12 | 25,000 credits |
-| 26 Recon Suit | 150 | 200 | 6 秒 | 4 | 3,000 credits |
-| 27 Sanguine Chaos | 300 | 400 | 5.5 秒 | 0 | 349 mithril |
-| 28 Training Suit | 250 | 300 | 6 秒 | 0 | 100 mithril |
-
-- HP／盾是未升級的四件合計，未含背包和人物等級。每部件提供整套的 25%。完整套裝另外增加 `1 + (人物等級 - 1) × 5` HP。
-- 裝備 LV1–7 的 HP／盾倍率是 `1 / 1.2 / 1.4 / 1.6 / 1.8 / 2.1 / 2.5`。升級不啟用來源文字中的特殊技能。
-- 四件同套時，等待結束後每秒恢復最大盾的 20%；再次受傷會重新計時。混搭失去此回盾被動，但保留部件 HP／盾貢獻。
-- `armor_catalog.gd` 為八套填入空的 `special_skill_ids` 和全零套裝技能；`level_description_source`、`weakness_source` 僅保留來源文字。完整原文及逐套狀態見 [com_consolidation.json](com_consolidation.json)。
-- 可核對 [armor_catalog.gd](../../../scripts/core/armor_catalog.gd)、[recovered_com_data.gd](../../../scripts/core/recovered_com_data.gd)、[game_state.gd](../../../scripts/core/game_state.gd)、[equipment_upgrade_rules.gd](../../../scripts/core/equipment_upgrade_rules.gd) 及 [player.gd](../../../scripts/game/player.gd)。
-
-## 回充模組與數量縮減提案
-
-建議將八套共有的回充能力整理成可選模組，避免為相同功能保留八個獨立原創角色。
-
-| 模組暫名 | 參考的舊數值組別 | 新提案要保留的選擇 | 尚待設計 |
-|---|---|---|---|
-| 均衡回充 | 22、26 | HP 與盾分配接近，作為初學者的入門選項。 | 模組容量、回充等待、裝配成本與是否有代價。 |
-| 護盾偏重回充 | 21、23、24、25 | 把較多生存資源放在可回復護盾上。 | 重新平衡容量／等待，不能直接堆上前 21 套的大額 HP。 |
-| 高容量回充 | 27、28 | 提供更高容量，但須重新設計取得途徑及使用代價。 | 不沿用舊付費價格，也不預設比其他模組全面更強。 |
-
-- 模組尚未存在於 runtime；目前程式仍要求完整 CoM 套裝。改成模組會是新的玩法實作，不是單純換名稱。
-- 精準、偵察、重武器、擊殺回復、近戰、訓練增益等來源描述，若被選入新系列，必須另立「新技能提案」、規格與驗收，不能標示為已完成的原功能移植。
-- **29 套減到 21 套只是提案。** 現階段舊 ID 0–28、購買記錄、裝備升級及玩家配裝全部保留。
-- 未來存檔遷移的具體映射尚未決定；需先決定八套持有權、各部位混搭、升級投入、貨幣支出及預設配裝如何轉換，再產生可驗證且可還原的遷移規格。
-- `C01`–`C21` 與舊 ID 的本頁對照僅供美術排程，不可直接用作存檔遷移表。
+CoM 的 8 套仍在 ID 21～28，來源數值與共通完整套裝回盾規則見 [com_consolidation.json](com_consolidation.json)。均衡、盾偏重、高容量回充均為新模組方向；沒有刪除原模型、改寫存檔或聲稱來源文案中的進階技能已實作。

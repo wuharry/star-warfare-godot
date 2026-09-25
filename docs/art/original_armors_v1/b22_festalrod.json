@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "design_id": "B-22",
+  "runtime_id": null,
+  "working_name_zh": "節杖",
+  "working_name_en": "FESTALROD",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 21,
+    "legacy_name": "JIN.JINGLE",
+    "purpose": "取代對應獨立bag裝備的美術；不與同序C套裝綁定。"
+  },
+  "lore": "配裝系統中的獨立背負設備，暫名「節杖」。外殼承接 JIN.JINGLE 的少量識別，內側加入可更換支架與穿戴固定點。",
+  "role": "獨立背包；承接 JIN.JINGLE 的裝備位置。現有容量為 6 格，本輪未修改。",
+  "palette": [
+    {
+      "family": "銀白",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "紅",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "綠",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "棕",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    },
+    {
+      "family": "黄",
+      "hex": null,
+      "target_percent": null,
+      "usage": "保留原背包配色身份；精確貼圖色值待製作。"
+    }
+  ],
+  "visual_identity": {
+    "proportion_target": "人體背部可穿戴的獨立設備；以獨立設計稿各視圖確認外形，非精確尺寸。",
+    "head": null,
+    "torso": null,
+    "shoulders": null,
+    "arms": null,
+    "legs": null,
+    "pack": "Preserve JIN.JINGLE's single white drum, green cap, red securing band, long brown-toned rod and small green-yellow end fin. Fuse OSTEO's protected single-canister cradle and lower quick-connect coupling. Rebuild the rod as a foldable attached tool or antenna arm alongside a compact backplate, keeping the drum-and-rod identity recognizable. This folding assembly is a new design, not claimed as Halo equipment behavior.",
+    "legacy_silhouette": "長桿一端有鼓形罐、另一端有小三角尾翼；原模型幾乎横向。",
+    "legacy_devices": "銀白鼓罐配綠頂、紅色束帶，棕色長桿，綠黃尾翼，節慶紅綠配色。",
+    "actual_reviews": {
+      "design_sheet": "已目視：白色單筒、綠蓋、紅束帶與棕長桿綠黃尾片保留；由原側向長桿調整為背包旁可折桅桿，OSTEO 單筒抱架與快拆接頭可見。五視區完整，主視桿尖接近上緣但無裁切。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "背包原有HP、增益、技能與容量均由runtime原資料決定；本稿只替換美術，不增設飛行、護盾或醫療效果。",
+    "per_part": {
+      "hp": null,
+      "shield": null
+    },
+    "four_piece_total": {
+      "hp": null,
+      "shield": null
+    },
+    "movement_modifier": null,
+    "damage_modifier": null,
+    "unlock": "待玩法驗證後決定",
+    "purchase_currency": null,
+    "current_bag_slots_reference": 6
+  },
+  "proposed_abilities": [],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "design_sheet": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/b22_design_sheet.png",
+    "turnaround": "images/b22_design_sheet.png",
+    "construction": "images/b22_design_sheet.png",
+    "design_sheet": "images/b22_design_sheet.png"
+  },
+  "modeling_authority": "一張獨立設計稿包含主3/4視、向外面、側面、貼背面及維修拆解；圖內視角和機構可能需建模校正。不可直接當UV或遊戲貼圖。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "design_sheet": {
+        "design_id": "B-22",
+        "kind": "design_sheet",
+        "path": "images/b22_design_sheet.png",
+        "prompt": "prompts/b22_design_sheet.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b8-db09-7271-a1a5-5b4ce0c05eb2\\exec-5170bd34-89e8-40b0-98aa-0e537ea5ff73.png",
+        "date": "2026-09-25",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "reference_images": [
+          "references/legacy/bag_21_original_threequarter.png",
+          "references/legacy/bag_21_original_outward.png",
+          "references/halo/hazmat_concept.jpg"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已目視：白色單筒、綠蓋、紅束帶與棕長桿綠黃尾片保留；由原側向長桿調整為背包旁可折桅桿，OSTEO 單筒抱架與快拆接頭可見。五視區完整，主視桿尖接近上緣但無裁切。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/b22_design_sheet.json"
+      }
+    },
+    "unselected_records": []
+  },
+  "equipment_type": "backpack",
+  "proposal_only": true,
+  "fusion_recipe": {
+    "retained": "長桿＋單鼓艙的特殊輪廓；融合時可折疊成背負天線／工具，不憑名字改成普通禮物袋。",
+    "borrowed": "官方正後視原画：一根高而圓的背部瓶體置於U形護框，中段固定件，下端金屬橫接頭連向兩側包覆軟管；不是已確認可獨立裝備的背包。",
+    "optimized": "新增貼背軟墊、支架與掛點，整理維修開口及部件層次；每款保留其雙筒、圓盤、翼或多艙身份。"
+  },
+  "source_references": {
+    "legacy": {
+      "name": "JIN.JINGLE",
+      "runtime_id": 21,
+      "source_model": "assets/models/player/animated/bags/ArmorBag_21/ArmorBag_21.obj",
+      "kind": "recovered_original_mesh_and_mtl_texture",
+      "audit": "sources/legacy_backpacks.json",
+      "images": [
+        "references/legacy/bag_21_original_threequarter.png",
+        "references/legacy/bag_21_original_outward.png",
+        "references/legacy/bag_21_original_side.png"
+      ]
+    },
+    "halo": {
+      "name": "OSTEO / Hazmat rear life-support canister frame",
+      "game": "Halo Infinite",
+      "donor_kind": "integrated_suit_back_structure",
+      "source_page_url": "https://www.halopedia.org/File:HINF_Concept_OSTEO1.jpg",
+      "images": [
+        {
+          "key": "hazmat_concept",
+          "source_page_url": "https://www.halopedia.org/File:HINF_Concept_OSTEO1.jpg",
+          "image_url": "https://www.halopedia.org/images/2/22/HINF_Concept_OSTEO1.jpg?b9706",
+          "local_path": "references/halo/hazmat_concept.jpg",
+          "bytes": 919149,
+          "sha256": "ccc8a9b36b7485a6e7f700809d3196082faa154cedc32936c388caedbcb1e48c",
+          "width": 3609,
+          "height": 2573,
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "master_chief": false,
+      "integration_note": "整合式背甲只供結構參考，不能稱為原遊戲的獨立背包。"
+    }
+  },
+  "runtime_target": {
+    "item_key": "armor_bag_21",
+    "part_key": "bag",
+    "legacy_item_id": 21,
+    "attachment_bone": "fly_bag",
+    "current_bag_slots": 6,
+    "inherits_armor_abilities": false,
+    "original_stats_unchanged": true
+  }
+}

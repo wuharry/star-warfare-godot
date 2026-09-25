@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "design_id": "C-16",
+  "runtime_id": null,
+  "working_name_zh": "引燈",
+  "working_name_en": "LANTERN",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 15,
+    "legacy_set_name": "DEC.24",
+    "purpose": "指定未來外觀替换目標；能力、購買、升級和存檔 ID 本輪不變。"
+  },
+  "lore": "寒地搜索隊的引導服。紅白殼體、短濾器和可拆頸罩應對低溫，照明標記協助小隊找到共同路線。",
+  "role": "情境支援",
+  "palette": [
+    {
+      "family": "暗紅",
+      "hex": "#A8434A",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "白",
+      "hex": "#E1E0D6",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "淡綠金玻璃",
+      "hex": "#B6BE79",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "暗棕",
+      "hex": "#483A32",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    }
+  ],
+  "visual_identity": {
+    "status": "prompt_target_with_actual_reviews_below",
+    "proportion_target": "約6～6.5個頭盔高的厚實人體；屬 brief 目標，未作像素量測。",
+    "head": "暗紅低圓冠、淡綠金玻璃；HAZOP 白色短濾器及封閉中央下顎",
+    "torso": "紅色胸甲、小暖黃狀態窗與白邊短肩帶",
+    "shoulders": "方短肩殼；後頸節慶尾改可拆短天候罩",
+    "arms": "正常五指手套、布衣肘窩與分件護臂。原版保留線索：前臂白色長菱形護片，紅色外框，靠近手腕有綠色小條；手套深色。",
+    "legs": "人的髖膝踝位置、軟膝後和正常軍靴；尖片按融合 brief 收短。原版保留線索：紅色大腿和膝甲，白色靴口V形飾邊，棕色腳尖帶白星／白點紋。",
+    "pack": "背包為獨立装备。三視製作可示範搭配 B-16，不是原遊戲固定套裝或技能關聯；以 B 款獨立設計稿為準。",
+    "concept_prompt": "prompts/c16_concept.txt",
+    "full_fusion_brief_en": "Preserve DEC.24's cherry-red armor, white brow and jaw frame, white forearm faces and boot edge trim, pale green-gold glass, and the small warm yellow chest insets. Fuse HAZOP's clear wraparound human visor, rounded low crown, enclosed breathing jaw and compact side filters. Rebuild the white jaw into two small rectangular filters flanking one central closed mouth cover; no exposed face, no robot eyes. Keep the red helmet cap smooth and low. Chest consists of red upper panels around two small yellow status windows, sloped white-edged support straps and an articulated red abdomen. A short detachable red weather hood folded at the nape with a small white closure recalls the original festive tail, no floppy Santa hat. Dark woven joints, compact squared shoulder caps, normal human gloves. New seam arrangement; no camouflage or UNSC logos.",
+    "actual_reviews": {
+      "concept": "紅盔白顎、淡金綠面罩、紅白全身與短雙濾器保留。HAZOP連續玻璃、圓冠及呼吸裝置已融入；軟衣與正常四肢清楚，頸後短紅天候罩可見。",
+      "construction": "已目視：頭盔冠殼、連續玻璃、白色雙濾器下顎與软內襯拆開；紅肩片、固定座、腋下軟衣與背部安裝點清楚。B-16 維持白綠，圖中長臂零件為分段示意，最終臂長與完整模組以獨立 B-16 sheet 核對。",
+      "turnaround": "已目視：三個全身正／穿戴者左側／背面並列，腳底基線一致；紅白裝甲、淡金綠面窗及白色雙濾器與 concept 相符。B-16 獨立維持白／綠／灰，雙長臂與背部接合清楚；後續須在模型驗證手臂活動及折收空間。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "本輪未指定新HP／盾；現有 runtime 不變，不由外觀、Halo 或舊來源技能文字推算。",
+    "per_part": {
+      "hp": null,
+      "shield": null
+    },
+    "four_piece_total": {
+      "hp": null,
+      "shield": null
+    },
+    "movement_modifier": null,
+    "damage_modifier": null,
+    "unlock": "待玩法驗證後決定",
+    "purchase_currency": null
+  },
+  "proposed_abilities": [
+    {
+      "id": "c16_module",
+      "name": "引路標記",
+      "kind": "四件套模組提案",
+      "implemented": false,
+      "status": "proposal_only",
+      "trigger": "完整四件、存活，主動指定20公尺內可見表面",
+      "effect": "投放持續8秒的照明與隊伍路線標記，12秒冷卻；提示可見目標輪廓但不增加傷害",
+      "limits": "不能透牆顯示敵人、不等於自動瞄準；照明不得隱藏原有危險地形顏色；多人標記歸屬待實作",
+      "stop": "死亡、卸下任何一件或離開關卡即停止；未結算承傷須按能力規格結清，不以卸裝取消代價。",
+      "integration_note": "新玩法，尚未接入runtime、多人同步或平衡；需先驗證觸發、取消、重複事件與邊界。",
+      "equipment_dependency": "完整C裝甲四件；B背包可獨立混搭，不繼承此能力。",
+      "visual": "技能顯示與收納裝置需後續另行設計，現有概念圖不代表機制已完成。"
+    }
+  ],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/c16_concept.png",
+    "turnaround": "images/c16_turnaround.png",
+    "construction": "images/c16_construction.png"
+  },
+  "modeling_authority": "本輪概念圖及逐張目視紀錄定義採用外觀；三視與拆解為建模參考。少量透視、遮擋或跨視細節須在模型統一，不可當精確尺寸、UV或已完工資產。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "concept": {
+        "design_id": "C-16",
+        "kind": "concept",
+        "path": "images/c16_concept.png",
+        "prompt": "prompts/c16_concept.txt",
+        "reference_images": [
+          "references/legacy/c16_front.png",
+          "references/halo/c16_hazop_front.png",
+          "references/halo/c16_hazop_helmet.jpg"
+        ],
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-d21a6f84-b109-4df1-ae3a-c88b00749b85.png",
+        "date": "2026-09-25",
+        "postprocessing": "none",
+        "visual_review": "紅盔白顎、淡金綠面罩、紅白全身與短雙濾器保留。HAZOP連續玻璃、圓冠及呼吸裝置已融入；軟衣與正常四肢清楚，頸後短紅天候罩可見。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c16_concept.json"
+      },
+      "construction": {
+        "design_id": "C-16",
+        "kind": "construction",
+        "path": "images/c16_construction.png",
+        "prompt": "prompts/c16_construction.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b8-db09-7271-a1a5-5b4ce0c05eb2\\exec-46642a3b-351c-40a9-b7cc-67435692489a.png",
+        "date": "2026-09-25",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "reference_images": [
+          "images/c16_concept.png",
+          "images/c16_turnaround.png",
+          "images/b16_design_sheet.png"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已目視：頭盔冠殼、連續玻璃、白色雙濾器下顎與软內襯拆開；紅肩片、固定座、腋下軟衣與背部安裝點清楚。B-16 維持白綠，圖中長臂零件為分段示意，最終臂長與完整模組以獨立 B-16 sheet 核對。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c16_construction.json"
+      },
+      "turnaround": {
+        "design_id": "C-16",
+        "kind": "turnaround",
+        "path": "images/c16_turnaround.png",
+        "prompt": "prompts/c16_turnaround.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b8-db09-7271-a1a5-5b4ce0c05eb2\\exec-50ccf6a6-db8f-47b4-9027-8c98c9d6b208.png",
+        "date": "2026-09-25",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "reference_images": [
+          "images/c16_concept.png",
+          "images/b16_design_sheet.png"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已目視：三個全身正／穿戴者左側／背面並列，腳底基線一致；紅白裝甲、淡金綠面窗及白色雙濾器與 concept 相符。B-16 獨立維持白／綠／灰，雙長臂與背部接合清楚；後續須在模型驗證手臂活動及折收空間。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c16_turnaround.json"
+      }
+    },
+    "unselected_records": []
+  },
+  "equipment_type": "armor",
+  "proposal_only": true,
+  "source_references": {
+    "legacy": {
+      "name": "DEC.24",
+      "runtime_id": 15,
+      "kind": "restored_original_game_model_capture",
+      "images": [
+        "references/legacy/c16_front.png",
+        "references/legacy/c16_side.png",
+        "references/legacy/c16_rear.png"
+      ],
+      "audit": "sources/legacy_armor_later.json"
+    },
+    "halo": {
+      "name": "HAZOP",
+      "game": "Halo: Reach",
+      "master_chief": false,
+      "images": [
+        {
+          "local_path": "references/halo/c16_hazop_front.png",
+          "source_page_url": "https://www.halopedia.org/HAZOP-class_Mjolnir",
+          "image_url": "https://halo.wiki.gallery/images/5/51/HTMCC_HR_Spartan_HAZOP.png",
+          "caption": "HAZOP-class Mjolnir from Halo: Reach armor permutation in Halo: The Master Chief Collection menu.",
+          "sha256": "eee6d1fa6c690dcec66b40498ad0589fa81a059daa0c46c0f6b9e3dfafbdd0cb",
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        },
+        {
+          "local_path": "references/halo/c16_hazop_helmet.jpg",
+          "source_page_url": "https://www.halopedia.org/HAZOP-class_Mjolnir",
+          "image_url": "https://halo.wiki.gallery/images/b/bc/David-stammel-reach-hazop-helmet.jpg",
+          "caption": "HAZOP helmet with re-breathers render.",
+          "sha256": "d9e69f27a6540bae3727d8109e31d776c608fb6e1757678940342466dd0cb023",
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "observed": {
+        "helmet": "圓冠、連續大玻璃窗、下頰短濾器及中央呼吸蓋。",
+        "chest": "寬斜胸帶與獨立腹甲，短方肩殼。",
+        "back": "本組參考未見完整後背。",
+        "back_evidence": "not_observed"
+      },
+      "role": "selected_design_donor"
+    }
+  },
+  "fusion_recipe": {
+    "retained": [
+      "紅白主色和淡黃綠窄面窗",
+      "白色下顎雙呼吸口",
+      "冠殼後垂短尾與白色端部的節慶提示"
+    ],
+    "borrowed": {
+      "helmet": "圓冠、連續大玻璃窗、下頰短濾器及中央呼吸蓋。",
+      "chest": "寬斜胸帶與獨立腹甲，短方肩殼。",
+      "back": "本組參考未見完整後背。",
+      "back_evidence": "not_observed"
+    },
+    "optimized": "節慶尾部縮成可拆後頸罩與小白鎖扣，避免直接聖誕帽；白色雙呼吸口整合成較短的防寒濾器；將白色裝飾節制在護臂和靴邊，保留實用穿戴感。",
+    "optimization_common": "胸腰按人體分件、露出織物關節、短化易勾掛尖片；避免單眼機械臉與巨型四肢。"
+  }
+}

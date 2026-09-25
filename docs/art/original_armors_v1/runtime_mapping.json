@@ -1,0 +1,1906 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-25",
+  "status": "verified_production_target_mapping_no_runtime_changes",
+  "runtime_changed": false,
+  "numbering": {
+    "armor": "C-01–C-21 對應原裝甲 ID 0–20；每套頭、身、手、腿四件。",
+    "backpack": "B-01–B-25 對應獨立 bag ID 0–24，已逐款核對原模型、名称和容量。",
+    "pairing": "C-01–C-21 三視可選用同序 B-01–B-21 示範配裝；這是圖稿搭配，不是固定套裝關係。B-22–B-25同樣獨立製作。",
+    "independence": "任意C與B可混搭；C套裝能力不自動成為B背包能力。",
+    "visual_scope": "21套人體科幻裝甲（每套概念／三視／拆解），25個独立背包（每個多視設計稿）。實際完成度由各款images和production_status判斷。"
+  },
+  "source_evidence": [
+    {
+      "path": "scripts/core/armor_catalog.gd",
+      "symbols": [
+        "SET_NAMES",
+        "PART_KEYS",
+        "item_key",
+        "build_items"
+      ],
+      "sha256": "010e2f4104f14138154f1587c822bf7fce5c9ba536b70206a7b1f98187e70884",
+      "hash_normalization": "lf"
+    },
+    {
+      "path": "scripts/core/recovered_game_data.gd",
+      "symbols": [
+        "ARMOR_ROWS"
+      ],
+      "sha256": "e7c82bcc7df0320aa316d05a8718939a5f579ad6f3aaf8e657d9b7881151b626",
+      "hash_normalization": "lf"
+    },
+    {
+      "path": "scripts/core/game_state.gd",
+      "symbols": [
+        "equip_armor",
+        "get_bag_capacity"
+      ],
+      "hash_normalization": "lf",
+      "sha256": "5d3bbc2a1c8fba212ef8b7c3c0c395b3dae7afba85d57658321e4e1da369c1ce"
+    },
+    {
+      "path": "scripts/game/player.gd",
+      "symbols": [
+        "_add_recovered_backpack"
+      ],
+      "hash_normalization": "lf",
+      "sha256": "98aaebe3ad4d668da68c54c34758378c201ec16366e4ab5230b53852692f26fe"
+    },
+    {
+      "path": "scripts/game/armor_visuals.gd",
+      "symbols": [
+        "reworked_scene_path",
+        "ensure_parts"
+      ],
+      "hash_normalization": "lf",
+      "sha256": "257cc3cb38491a2db477a43cf74cda19322ac3a952d19033032d421ce7b46e11"
+    }
+  ],
+  "armor_mappings": [
+    {
+      "design_id": "C-01",
+      "working_name_zh": "堤衛",
+      "working_name_en": "BREAKWATER",
+      "legacy_set_name": "Viper",
+      "legacy_visual_id": 0,
+      "legacy_set_id": 0,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_00",
+          "source_name": "Viper Head",
+          "source_row": 0,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_00",
+          "source_name": "Viper Chest",
+          "source_row": 1,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_00",
+          "source_name": "Viper Hands",
+          "source_row": 2,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_00",
+          "source_name": "Viper Legs",
+          "source_row": 3,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_00",
+        "body": "ArmorBody_00",
+        "arms": "ArmorHand_00",
+        "legs": "ArmorFoot_00"
+      },
+      "data_file": "c01_breakwater.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-01",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c01_concept.png",
+        "turnaround": "images/c01_turnaround.png",
+        "construction": "images/c01_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Rookie / standard ODST battle armor"
+    },
+    {
+      "design_id": "C-02",
+      "working_name_zh": "行囊",
+      "working_name_en": "WAYFARER",
+      "legacy_set_name": "Fortune",
+      "legacy_visual_id": 1,
+      "legacy_set_id": 1,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_01",
+          "source_name": "Fortune Head",
+          "source_row": 4,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_01",
+          "source_name": "Fortune Chest",
+          "source_row": 5,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_01",
+          "source_name": "Fortune Hands",
+          "source_row": 6,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_01",
+          "source_name": "Fortune Legs",
+          "source_row": 7,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_01",
+        "body": "ArmorBody_01",
+        "arms": "ArmorHand_01",
+        "legs": "ArmorFoot_01"
+      },
+      "data_file": "c02_wayfarer.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-02",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c02_concept.png",
+        "turnaround": "images/c02_turnaround.png",
+        "construction": "images/c02_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Recon helmet with UA/HUL[3] option; Recon-equipped Spartan upper body"
+    },
+    {
+      "design_id": "C-03",
+      "working_name_zh": "岩樁",
+      "working_name_en": "CAIRN",
+      "legacy_set_name": "Tank",
+      "legacy_visual_id": 2,
+      "legacy_set_id": 2,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_02",
+          "source_name": "Tank Head",
+          "source_row": 8,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_02",
+          "source_name": "Tank Chest",
+          "source_row": 9,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_02",
+          "source_name": "Tank Hands",
+          "source_row": 10,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_02",
+          "source_name": "Tank Legs",
+          "source_row": 11,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_02",
+        "body": "ArmorBody_02",
+        "arms": "ArmorHand_02",
+        "legs": "ArmorFoot_02"
+      },
+      "data_file": "c03_cairn.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-03",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c03_concept.png",
+        "turnaround": "images/c03_turnaround.png",
+        "construction": "images/c03_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Grenadier / Jorge-052 heavy armor, without character markings"
+    },
+    {
+      "design_id": "C-04",
+      "working_name_zh": "躍浪",
+      "working_name_en": "SKIPJACK",
+      "legacy_set_name": "Hydra",
+      "legacy_visual_id": 3,
+      "legacy_set_id": 3,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_03",
+          "source_name": "Hydra Head",
+          "source_row": 12,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_03",
+          "source_name": "Hydra Chest",
+          "source_row": 13,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_03",
+          "source_name": "Hydra Hands",
+          "source_row": 14,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_03",
+          "source_name": "Hydra Legs",
+          "source_row": 15,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_03",
+        "body": "ArmorBody_03",
+        "arms": "ArmorHand_03",
+        "legs": "ArmorFoot_03"
+      },
+      "data_file": "c04_skipjack.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-04",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c04_concept.png",
+        "turnaround": "images/c04_turnaround.png",
+        "construction": "images/c04_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Operator helmet and Operator shoulder configuration"
+    },
+    {
+      "design_id": "C-05",
+      "working_name_zh": "破線",
+      "working_name_en": "BREACHLINE",
+      "legacy_set_name": "Strike",
+      "legacy_visual_id": 4,
+      "legacy_set_id": 4,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_04",
+          "source_name": "Strike Head",
+          "source_row": 16,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_04",
+          "source_name": "Strike Chest",
+          "source_row": 17,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_04",
+          "source_name": "Strike Hands",
+          "source_row": 18,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_04",
+          "source_name": "Strike Legs",
+          "source_row": 19,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_04",
+        "body": "ArmorBody_04",
+        "arms": "ArmorHand_04",
+        "legs": "ArmorFoot_04"
+      },
+      "data_file": "c05_breachline.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-05",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c05_concept.png",
+        "turnaround": "images/c05_turnaround.png",
+        "construction": "images/c05_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Recruit (GEN2), official game model and Waypoint render"
+    },
+    {
+      "design_id": "C-06",
+      "working_name_zh": "補綴",
+      "working_name_en": "PATCHWORK",
+      "legacy_set_name": "Titan",
+      "legacy_visual_id": 5,
+      "legacy_set_id": 5,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_05",
+          "source_name": "Titan Head",
+          "source_row": 20,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_05",
+          "source_name": "Titan Chest",
+          "source_row": 21,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_05",
+          "source_name": "Titan Hands",
+          "source_row": 22,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_05",
+          "source_name": "Titan Legs",
+          "source_row": 23,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_05",
+        "body": "ArmorBody_05",
+        "arms": "ArmorHand_05",
+        "legs": "ArmorFoot_05"
+      },
+      "data_file": "c06_patchwork.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-06",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c06_concept.png",
+        "turnaround": "images/c06_turnaround.png",
+        "construction": "images/c06_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "使用者兩張Halo頭盔附件（型號未核實）"
+    },
+    {
+      "design_id": "C-07",
+      "working_name_zh": "熾限",
+      "working_name_en": "REDLINE",
+      "legacy_set_name": "Thunder",
+      "legacy_visual_id": 6,
+      "legacy_set_id": 6,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_06",
+          "source_name": "Thunder Head",
+          "source_row": 24,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_06",
+          "source_name": "Thunder Chest",
+          "source_row": 25,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_06",
+          "source_name": "Thunder Hands",
+          "source_row": 26,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_06",
+          "source_name": "Thunder Legs",
+          "source_row": 27,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_06",
+        "body": "ArmorBody_06",
+        "arms": "ArmorHand_06",
+        "legs": "ArmorFoot_06"
+      },
+      "data_file": "c07_redline.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-07",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c07_concept.png",
+        "turnaround": "images/c07_turnaround.png",
+        "construction": "images/c07_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "War Master (GEN2), official armor turnaround"
+    },
+    {
+      "design_id": "C-08",
+      "working_name_zh": "折光",
+      "working_name_en": "PRISM",
+      "legacy_set_name": "Atom",
+      "legacy_visual_id": 7,
+      "legacy_set_id": 7,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_07",
+          "source_name": "Atom Head",
+          "source_row": 28,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_07",
+          "source_name": "Atom Chest",
+          "source_row": 29,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_07",
+          "source_name": "Atom Hands",
+          "source_row": 30,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_07",
+          "source_name": "Atom Legs",
+          "source_row": 31,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_07",
+        "body": "ArmorBody_07",
+        "arms": "ArmorHand_07",
+        "legs": "ArmorFoot_07"
+      },
+      "data_file": "c08_prism.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-08",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c08_concept.png",
+        "turnaround": "images/c08_turnaround.png",
+        "construction": "images/c08_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "ENGINEER-class Mjolnir (GEN2)"
+    },
+    {
+      "design_id": "C-09",
+      "working_name_zh": "拒壁",
+      "working_name_en": "BULWARK",
+      "legacy_set_name": "Pegasus",
+      "legacy_visual_id": 8,
+      "legacy_set_id": 8,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_08",
+          "source_name": "Pegasus Head",
+          "source_row": 32,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_08",
+          "source_name": "Pegasus Chest",
+          "source_row": 33,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_08",
+          "source_name": "Pegasus Hands",
+          "source_row": 34,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_08",
+          "source_name": "Pegasus Legs",
+          "source_row": 35,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_08",
+        "body": "ArmorBody_08",
+        "arms": "ArmorHand_08",
+        "legs": "ArmorFoot_08"
+      },
+      "data_file": "c09_bulwark.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-09",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c09_concept.png",
+        "turnaround": "images/c09_turnaround.png",
+        "construction": "images/c09_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "HELIOSKRILL-class Mjolnir (GEN2)"
+    },
+    {
+      "design_id": "C-10",
+      "working_name_zh": "蓄鐵",
+      "working_name_en": "LODESTONE",
+      "legacy_set_name": "Draco",
+      "legacy_visual_id": 9,
+      "legacy_set_id": 9,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_09",
+          "source_name": "Draco Head",
+          "source_row": 36,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_09",
+          "source_name": "Draco Chest",
+          "source_row": 37,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_09",
+          "source_name": "Draco Hands",
+          "source_row": 38,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_09",
+          "source_name": "Draco Legs",
+          "source_row": 39,
+          "runtime_part": 3,
+          "source_authored_type": 0
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_09",
+        "body": "ArmorBody_09",
+        "arms": "ArmorHand_09",
+        "legs": "ArmorFoot_09"
+      },
+      "data_file": "c10_lodestone.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-10",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c10_concept.png",
+        "turnaround": "images/c10_turnaround.png",
+        "construction": "images/c10_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "CQC helmet and shoulder configuration"
+    },
+    {
+      "design_id": "C-11",
+      "working_name_zh": "芽庫",
+      "working_name_en": "SEEDVAULT",
+      "legacy_set_name": "Phoenix",
+      "legacy_visual_id": 10,
+      "legacy_set_id": 10,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_10",
+          "source_name": "Phoenix Head",
+          "source_row": 40,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_10",
+          "source_name": "Phoenix Chest",
+          "source_row": 41,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_10",
+          "source_name": "Phoenix Hands",
+          "source_row": 42,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_10",
+          "source_name": "Phoenix Legs",
+          "source_row": 43,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_10",
+        "body": "ArmorBody_10",
+        "arms": "ArmorHand_10",
+        "legs": "ArmorFoot_10"
+      },
+      "data_file": "c11_seedvault.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-11",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c11_concept.png",
+        "turnaround": "images/c11_turnaround.png",
+        "construction": "images/c11_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "VENATOR-class Mjolnir (GEN2)"
+    },
+    {
+      "design_id": "C-12",
+      "working_name_zh": "支點",
+      "working_name_en": "SPUR",
+      "legacy_set_name": "Cygni",
+      "legacy_visual_id": 11,
+      "legacy_set_id": 11,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_11",
+          "source_name": "Cygni Head",
+          "source_row": 44,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_11",
+          "source_name": "Cygni Chest",
+          "source_row": 45,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_11",
+          "source_name": "Cygni Hands",
+          "source_row": 46,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_11",
+          "source_name": "Cygni Legs",
+          "source_row": 47,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_11",
+        "body": "ArmorBody_11",
+        "arms": "ArmorHand_11",
+        "legs": "ArmorFoot_11"
+      },
+      "data_file": "c12_spur.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-12",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c12_concept.png",
+        "turnaround": "images/c12_turnaround.png",
+        "construction": "images/c12_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "VALKYRIE-class Mjolnir (GEN2)"
+    },
+    {
+      "design_id": "C-13",
+      "working_name_zh": "縫光",
+      "working_name_en": "STITCH",
+      "legacy_set_name": "Andromedae",
+      "legacy_visual_id": 12,
+      "legacy_set_id": 12,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_12",
+          "source_name": "Andromedae Head",
+          "source_row": 48,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_12",
+          "source_name": "Andromedae Chest",
+          "source_row": 49,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_12",
+          "source_name": "Andromedae Hands",
+          "source_row": 50,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_12",
+          "source_name": "Andromedae Legs",
+          "source_row": 51,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_12",
+        "body": "ArmorBody_12",
+        "arms": "ArmorHand_12",
+        "legs": "ArmorFoot_12"
+      },
+      "data_file": "c13_stitch.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-13",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c13_concept.png",
+        "turnaround": "images/c13_turnaround.png",
+        "construction": "images/c13_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "OCEANIC-class Mjolnir (GEN2)"
+    },
+    {
+      "design_id": "C-14",
+      "working_name_zh": "截岸",
+      "working_name_en": "CUTBANK",
+      "legacy_set_name": "Perseus",
+      "legacy_visual_id": 13,
+      "legacy_set_id": 13,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_13",
+          "source_name": "Perseus Head",
+          "source_row": 52,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_13",
+          "source_name": "Perseus Chest",
+          "source_row": 53,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_13",
+          "source_name": "Perseus Hands",
+          "source_row": 54,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_13",
+          "source_name": "Perseus Legs",
+          "source_row": 55,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_13",
+        "body": "ArmorBody_13",
+        "arms": "ArmorHand_13",
+        "legs": "ArmorFoot_13"
+      },
+      "data_file": "c14_cutbank.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-14",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c14_concept.png",
+        "turnaround": "images/c14_turnaround.png",
+        "construction": "images/c14_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "EOD-class Mjolnir, Halo 3 helmet/chest/shoulder configuration（身甲結構；原版盔優先）"
+    },
+    {
+      "design_id": "C-15",
+      "working_name_zh": "環界",
+      "working_name_en": "RINGFENCE",
+      "legacy_set_name": "Chaos",
+      "legacy_visual_id": 14,
+      "legacy_set_id": 14,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_14",
+          "source_name": "Chaos Head",
+          "source_row": 56,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_14",
+          "source_name": "Chaos Chest",
+          "source_row": 57,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_14",
+          "source_name": "Chaos Hands",
+          "source_row": 58,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_14",
+          "source_name": "Chaos Legs",
+          "source_row": 59,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_14",
+        "body": "ArmorBody_14",
+        "arms": "ArmorHand_14",
+        "legs": "ArmorFoot_14"
+      },
+      "data_file": "c15_ringfence.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-15",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c15_concept.png",
+        "turnaround": "images/c15_turnaround.png",
+        "construction": "images/c15_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "HAYABUSA"
+    },
+    {
+      "design_id": "C-16",
+      "working_name_zh": "引燈",
+      "working_name_en": "LANTERN",
+      "legacy_set_name": "DEC.24",
+      "legacy_visual_id": 15,
+      "legacy_set_id": 15,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_15",
+          "source_name": "DEC.24 Head",
+          "source_row": 60,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_15",
+          "source_name": "DEC.24 Chest",
+          "source_row": 61,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_15",
+          "source_name": "DEC.24 Hands",
+          "source_row": 62,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_15",
+          "source_name": "DEC.24 Legs",
+          "source_row": 63,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_15",
+        "body": "ArmorBody_15",
+        "arms": "ArmorHand_15",
+        "legs": "ArmorFoot_15"
+      },
+      "data_file": "c16_lantern.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-16",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c16_concept.png",
+        "turnaround": "images/c16_turnaround.png",
+        "construction": "images/c16_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "HAZOP"
+    },
+    {
+      "design_id": "C-17",
+      "working_name_zh": "衡時",
+      "working_name_en": "CLOCKWORK",
+      "legacy_set_name": "Knight",
+      "legacy_visual_id": 16,
+      "legacy_set_id": 16,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_16",
+          "source_name": "Knight Head",
+          "source_row": 64,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_16",
+          "source_name": "Knight Chest",
+          "source_row": 65,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_16",
+          "source_name": "Knight Hands",
+          "source_row": 66,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_16",
+          "source_name": "Knight Legs",
+          "source_row": 67,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_16",
+        "body": "ArmorBody_16",
+        "arms": "ArmorHand_16",
+        "legs": "ArmorFoot_16"
+      },
+      "data_file": "c17_clockwork.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-17",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c17_concept.png",
+        "turnaround": "images/c17_turnaround.png",
+        "construction": "images/c17_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "PREFECT（身甲結構；原版盔優先）"
+    },
+    {
+      "design_id": "C-18",
+      "working_name_zh": "驟雨",
+      "working_name_en": "MONSOON",
+      "legacy_set_name": "R.O.M.E",
+      "legacy_visual_id": 17,
+      "legacy_set_id": 17,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_17",
+          "source_name": "R.O.M.E Head",
+          "source_row": 68,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_17",
+          "source_name": "R.O.M.E Chest",
+          "source_row": 69,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_17",
+          "source_name": "R.O.M.E Hands",
+          "source_row": 70,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_17",
+          "source_name": "R.O.M.E Legs",
+          "source_row": 71,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_17",
+        "body": "ArmorBody_17",
+        "arms": "ArmorHand_17",
+        "legs": "ArmorFoot_17"
+      },
+      "data_file": "c18_monsoon.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-18",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c18_concept.png",
+        "turnaround": "images/c18_turnaround.png",
+        "construction": "images/c18_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "ACHILLES"
+    },
+    {
+      "design_id": "C-19",
+      "working_name_zh": "遠標",
+      "working_name_en": "FARLINE",
+      "legacy_set_name": "Black Hole",
+      "legacy_visual_id": 18,
+      "legacy_set_id": 18,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_18",
+          "source_name": "Black Hole Head",
+          "source_row": 72,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_18",
+          "source_name": "Black Hole Chest",
+          "source_row": 73,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_18",
+          "source_name": "Black Hole Hands",
+          "source_row": 74,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_18",
+          "source_name": "Black Hole Legs",
+          "source_row": 75,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_18",
+        "body": "ArmorBody_18",
+        "arms": "ArmorHand_18",
+        "legs": "ArmorFoot_18"
+      },
+      "data_file": "c19_farline.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-19",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c19_concept.png",
+        "turnaround": "images/c19_turnaround.png",
+        "construction": "images/c19_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "LOCUS / Edge"
+    },
+    {
+      "design_id": "C-20",
+      "working_name_zh": "迴蓄",
+      "working_name_en": "TURNCOIL",
+      "legacy_set_name": "X-Field",
+      "legacy_visual_id": 19,
+      "legacy_set_id": 19,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_19",
+          "source_name": "X-Field Head",
+          "source_row": 76,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_19",
+          "source_name": "X-Field Chest",
+          "source_row": 77,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_19",
+          "source_name": "X-Field Hands",
+          "source_row": 78,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_19",
+          "source_name": "X-Field Legs",
+          "source_row": 79,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_19",
+        "body": "ArmorBody_19",
+        "arms": "ArmorHand_19",
+        "legs": "ArmorFoot_19"
+      },
+      "data_file": "c20_turncoil.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-20",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c20_concept.png",
+        "turnaround": "images/c20_turnaround.png",
+        "construction": "images/c20_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "PROTECTOR"
+    },
+    {
+      "design_id": "C-21",
+      "working_name_zh": "繫錨",
+      "working_name_en": "ANCHORLINE",
+      "legacy_set_name": "Wrath",
+      "legacy_visual_id": 20,
+      "legacy_set_id": 20,
+      "parts": {
+        "head": {
+          "item_key": "armor_head_20",
+          "source_name": "Wrath Head",
+          "source_row": 80,
+          "runtime_part": 0,
+          "source_authored_type": 0
+        },
+        "body": {
+          "item_key": "armor_body_20",
+          "source_name": "Wrath Chest",
+          "source_row": 81,
+          "runtime_part": 1,
+          "source_authored_type": 1
+        },
+        "arms": {
+          "item_key": "armor_arms_20",
+          "source_name": "Wrath Hands",
+          "source_row": 82,
+          "runtime_part": 2,
+          "source_authored_type": 2
+        },
+        "legs": {
+          "item_key": "armor_legs_20",
+          "source_name": "Wrath Legs",
+          "source_row": 83,
+          "runtime_part": 3,
+          "source_authored_type": 3
+        }
+      },
+      "legacy_mesh_nodes": {
+        "head": "ArmorHead_20",
+        "body": "ArmorBody_20",
+        "arms": "ArmorHand_20",
+        "legs": "ArmorFoot_20"
+      },
+      "data_file": "c21_anchorline.json",
+      "art_status": "concept_ready_for_user_review",
+      "display_backpack_design_id": "B-21",
+      "mapping_basis": "既有 series_plan 的承接位置，已核對遊戲 SET_NAMES 與四件物品來源。",
+      "runtime_replacement": "not_started",
+      "images": {
+        "concept": "images/c21_concept.png",
+        "turnaround": "images/c21_turnaround.png",
+        "construction": "images/c21_construction.png"
+      },
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "YOROI / KABUTO"
+    }
+  ],
+  "backpack_mappings": [
+    {
+      "design_id": "B-01",
+      "working_name_zh": "三瓣匣",
+      "legacy_name": "VB-03-II",
+      "legacy_visual_id": 0,
+      "legacy_item_id": 0,
+      "item_key": "armor_bag_00",
+      "part_key": "bag",
+      "source_row": 84,
+      "current_bag_slots": 3,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_00/ArmorBag_00.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-01",
+      "art_references": {
+        "design_sheet": "images/b01_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "TRILOBE",
+      "data_file": "b01_trilobe.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Rookie Field Pack / M/LBE hard case",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-02",
+      "working_name_zh": "長脊",
+      "legacy_name": "VB-03-III",
+      "legacy_visual_id": 1,
+      "legacy_item_id": 1,
+      "item_key": "armor_bag_01",
+      "part_key": "bag",
+      "source_row": 85,
+      "current_bag_slots": 3,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_01/ArmorBag_01.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-02",
+      "art_references": {
+        "design_sheet": "images/b02_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "SPINERAIL",
+      "data_file": "b02_spinerail.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Rookie Field Pack / M/LBE hard case",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-03",
+      "working_name_zh": "環艙",
+      "legacy_name": "SP-04-IV",
+      "legacy_visual_id": 2,
+      "legacy_item_id": 2,
+      "item_key": "armor_bag_02",
+      "part_key": "bag",
+      "source_row": 86,
+      "current_bag_slots": 4,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_02/ArmorBag_02.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-03",
+      "art_references": {
+        "design_sheet": "images/b03_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "LOOPCASE",
+      "data_file": "b03_loopcase.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "OCEANIC-class Mjolnir rear carrier",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-04",
+      "working_name_zh": "雙柱",
+      "legacy_name": "SP-11-V",
+      "legacy_visual_id": 3,
+      "legacy_item_id": 3,
+      "item_key": "armor_bag_03",
+      "part_key": "bag",
+      "source_row": 87,
+      "current_bag_slots": 3,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_03/ArmorBag_03.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-04",
+      "art_references": {
+        "design_sheet": "images/b04_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "TWINPOST",
+      "data_file": "b04_twinpost.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Series 8 jetpack",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-05",
+      "working_name_zh": "階匣",
+      "legacy_name": "KP-101-X",
+      "legacy_visual_id": 4,
+      "legacy_item_id": 4,
+      "item_key": "armor_bag_04",
+      "part_key": "bag",
+      "source_row": 88,
+      "current_bag_slots": 4,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_04/ArmorBag_04.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-05",
+      "art_references": {
+        "design_sheet": "images/b05_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "STEPCASE",
+      "data_file": "b05_stepcase.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "RECRUIT-class Mjolnir rear assembly",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-06",
+      "working_name_zh": "雙瞳",
+      "legacy_name": "VP-22-VII",
+      "legacy_visual_id": 5,
+      "legacy_item_id": 5,
+      "item_key": "armor_bag_05",
+      "part_key": "bag",
+      "source_row": 89,
+      "current_bag_slots": 4,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_05/ArmorBag_05.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-06",
+      "art_references": {
+        "design_sheet": "images/b06_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "TWINPORT",
+      "data_file": "b06_twinport.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "WAR MASTER-class Mjolnir rear frame",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-07",
+      "working_name_zh": "線衛",
+      "legacy_name": "SPD-005-a",
+      "legacy_visual_id": 6,
+      "legacy_item_id": 6,
+      "item_key": "armor_bag_06",
+      "part_key": "bag",
+      "source_row": 90,
+      "current_bag_slots": 5,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_06/ArmorBag_06.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-07",
+      "art_references": {
+        "design_sheet": "images/b07_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "RAILGUARD",
+      "data_file": "b07_railguard.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "HUNTER-class Mjolnir rear assembly / Jameson Locke",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-08",
+      "working_name_zh": "折翼",
+      "legacy_name": "ECO-03-VI",
+      "legacy_visual_id": 7,
+      "legacy_item_id": 7,
+      "item_key": "armor_bag_07",
+      "part_key": "bag",
+      "source_row": 91,
+      "current_bag_slots": 3,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_07/ArmorBag_07.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-08",
+      "art_references": {
+        "design_sheet": "images/b08_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "FOLDWING",
+      "data_file": "b08_foldwing.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "VALKYRIE-class Mjolnir rear housings",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-09",
+      "working_name_zh": "環核",
+      "legacy_name": "TT-05-b",
+      "legacy_visual_id": 8,
+      "legacy_item_id": 8,
+      "item_key": "armor_bag_08",
+      "part_key": "bag",
+      "source_row": 92,
+      "current_bag_slots": 5,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_08/ArmorBag_08.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-09",
+      "art_references": {
+        "design_sheet": "images/b09_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "RINGCORE",
+      "data_file": "b09_ringcore.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "WAR MASTER-class Mjolnir rear frame",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-10",
+      "working_name_zh": "金環",
+      "legacy_name": "SAM-005-I",
+      "legacy_visual_id": 9,
+      "legacy_item_id": 9,
+      "item_key": "armor_bag_09",
+      "part_key": "bag",
+      "source_row": 93,
+      "current_bag_slots": 5,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_09/ArmorBag_09.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-10",
+      "art_references": {
+        "design_sheet": "images/b10_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "GOLDBRACE",
+      "data_file": "b10_goldbrace.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "HELIOSKRILL-class Mjolnir rear plates",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-11",
+      "working_name_zh": "雙罐",
+      "legacy_name": "STK-06-ZZ",
+      "legacy_visual_id": 10,
+      "legacy_item_id": 10,
+      "item_key": "armor_bag_10",
+      "part_key": "bag",
+      "source_row": 94,
+      "current_bag_slots": 6,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_10/ArmorBag_10.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-11",
+      "art_references": {
+        "design_sheet": "images/b11_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "DUALCAN",
+      "data_file": "b11_dualcan.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Series 8 jetpack",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-12",
+      "working_name_zh": "護筒",
+      "legacy_name": "HYD-00-IX",
+      "legacy_visual_id": 11,
+      "legacy_item_id": 11,
+      "item_key": "armor_bag_11",
+      "part_key": "bag",
+      "source_row": 95,
+      "current_bag_slots": 5,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_11/ArmorBag_11.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-12",
+      "art_references": {
+        "design_sheet": "images/b12_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "CANISTER",
+      "data_file": "b12_canister.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "OSTEO / Hazmat rear life-support canister frame",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-13",
+      "working_name_zh": "三芯",
+      "legacy_name": "H.F-V-03",
+      "legacy_visual_id": 12,
+      "legacy_item_id": 12,
+      "item_key": "armor_bag_12",
+      "part_key": "bag",
+      "source_row": 96,
+      "current_bag_slots": 6,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_12/ArmorBag_12.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-13",
+      "art_references": {
+        "design_sheet": "images/b13_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "TRICORE",
+      "data_file": "b13_tricore.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Yoroi rear housings and segmented back armor",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-14",
+      "working_name_zh": "雙爐",
+      "legacy_name": "STK.F-VI-00",
+      "legacy_visual_id": 13,
+      "legacy_item_id": 13,
+      "item_key": "armor_bag_13",
+      "part_key": "bag",
+      "source_row": 97,
+      "current_bag_slots": 6,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_13/ArmorBag_13.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-14",
+      "art_references": {
+        "design_sheet": "images/b14_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "TWINFURNACE",
+      "data_file": "b14_twinfurnace.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Series 8 jetpack",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-15",
+      "working_name_zh": "巡盤",
+      "legacy_name": "X02B-FREEDOM",
+      "legacy_visual_id": 14,
+      "legacy_item_id": 14,
+      "item_key": "armor_bag_14",
+      "part_key": "bag",
+      "source_row": 98,
+      "current_bag_slots": 6,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_14/ArmorBag_14.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-15",
+      "art_references": {
+        "design_sheet": "images/b15_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "ORBITCASE",
+      "data_file": "b15_orbitcase.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Series 12 Single Operator Lift Apparatus",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-16",
+      "working_name_zh": "浮架",
+      "legacy_name": "F.L.O.A.T",
+      "legacy_visual_id": 15,
+      "legacy_item_id": 15,
+      "item_key": "armor_bag_15",
+      "part_key": "bag",
+      "source_row": 99,
+      "current_bag_slots": 6,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_15/ArmorBag_15.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-16",
+      "art_references": {
+        "design_sheet": "images/b16_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "HOVERFRAME",
+      "data_file": "b16_hoverframe.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Series 12 Single Operator Lift Apparatus",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-17",
+      "working_name_zh": "層脊",
+      "legacy_name": "Visnu",
+      "legacy_visual_id": 16,
+      "legacy_item_id": 16,
+      "item_key": "armor_bag_16",
+      "part_key": "bag",
+      "source_row": 100,
+      "current_bag_slots": 6,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_16/ArmorBag_16.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-17",
+      "art_references": {
+        "design_sheet": "images/b17_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "STACKSPINE",
+      "data_file": "b17_stackspine.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Yoroi rear housings and segmented back armor",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-18",
+      "working_name_zh": "蜂艙",
+      "legacy_name": "TRI-0-AVATAR",
+      "legacy_visual_id": 17,
+      "legacy_item_id": 17,
+      "item_key": "armor_bag_17",
+      "part_key": "bag",
+      "source_row": 101,
+      "current_bag_slots": 6,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_17/ArmorBag_17.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-18",
+      "art_references": {
+        "design_sheet": "images/b18_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "HEXCASE",
+      "data_file": "b18_hexcase.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "HUNTER-class Mjolnir rear assembly / Jameson Locke",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-19",
+      "working_name_zh": "刃匣",
+      "legacy_name": "BLADE-MASTER",
+      "legacy_visual_id": 18,
+      "legacy_item_id": 18,
+      "item_key": "armor_bag_18",
+      "part_key": "bag",
+      "source_row": 102,
+      "current_bag_slots": 4,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_18/ArmorBag_18.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-19",
+      "art_references": {
+        "design_sheet": "images/b19_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "BLADECASE",
+      "data_file": "b19_bladecase.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "OCEANIC-class Mjolnir rear carrier",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-20",
+      "working_name_zh": "觸航",
+      "legacy_name": "TOUCH AND GO",
+      "legacy_visual_id": 19,
+      "legacy_item_id": 19,
+      "item_key": "armor_bag_19",
+      "part_key": "bag",
+      "source_row": 103,
+      "current_bag_slots": 5,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_19/ArmorBag_19.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-20",
+      "art_references": {
+        "design_sheet": "images/b20_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "TOUCHPOINT",
+      "data_file": "b20_touchpoint.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "OSTEO / Hazmat rear life-support canister frame",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-21",
+      "working_name_zh": "四筒",
+      "legacy_name": "DRACULA",
+      "legacy_visual_id": 20,
+      "legacy_item_id": 20,
+      "item_key": "armor_bag_20",
+      "part_key": "bag",
+      "source_row": 104,
+      "current_bag_slots": 6,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_20/ArmorBag_20.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": "C-21",
+      "art_references": {
+        "design_sheet": "images/b21_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "QUADCAN",
+      "data_file": "b21_quadcan.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "ODST/COMM Communications backpack",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-22",
+      "working_name_zh": "節杖",
+      "legacy_name": "JIN.JINGLE",
+      "legacy_visual_id": 21,
+      "legacy_item_id": 21,
+      "item_key": "armor_bag_21",
+      "part_key": "bag",
+      "source_row": 105,
+      "current_bag_slots": 6,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_21/ArmorBag_21.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": null,
+      "art_references": {
+        "design_sheet": "images/b22_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "FESTALROD",
+      "data_file": "b22_festalrod.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "OSTEO / Hazmat rear life-support canister frame",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-23",
+      "working_name_zh": "環屏",
+      "legacy_name": "S.H.I.E.L.D",
+      "legacy_visual_id": 22,
+      "legacy_item_id": 22,
+      "item_key": "armor_bag_22",
+      "part_key": "bag",
+      "source_row": 106,
+      "current_bag_slots": 6,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_22/ArmorBag_22.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": null,
+      "art_references": {
+        "design_sheet": "images/b23_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "RINGWARD",
+      "data_file": "b23_ringward.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "HELIOSKRILL-class Mjolnir rear plates",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-24",
+      "working_name_zh": "雙翼架",
+      "legacy_name": "D-WINGS",
+      "legacy_visual_id": 23,
+      "legacy_item_id": 23,
+      "item_key": "armor_bag_23",
+      "part_key": "bag",
+      "source_row": 107,
+      "current_bag_slots": 6,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_23/ArmorBag_23.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": null,
+      "art_references": {
+        "design_sheet": "images/b24_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "DUALWING",
+      "data_file": "b24_dualwing.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Series 12 Single Operator Lift Apparatus",
+      "inherits_armor_abilities": false
+    },
+    {
+      "design_id": "B-25",
+      "working_name_zh": "影匣",
+      "legacy_name": "Spectre",
+      "legacy_visual_id": 24,
+      "legacy_item_id": 24,
+      "item_key": "armor_bag_24",
+      "part_key": "bag",
+      "source_row": 108,
+      "current_bag_slots": 6,
+      "current_model_path": "assets/models/player/animated/bags/ArmorBag_24/ArmorBag_24.obj",
+      "attachment_bone": "fly_bag",
+      "display_armor_design_id": null,
+      "art_references": {
+        "design_sheet": "images/b25_design_sheet.png"
+      },
+      "art_status": "concept_ready_for_user_review",
+      "legacy_visual_cue_review": "audited_from_actual_original_model",
+      "mapping_basis": "本輪按背包清單順序指定替換目標；不是由裝甲套裝 ID 推定的原遊戲配對。",
+      "runtime_replacement": "not_started",
+      "working_name_en": "SHADECASE",
+      "data_file": "b25_shadecase.json",
+      "pairing_status": "optional_reference_sheet_styling_only",
+      "halo_design_donor": "Yoroi rear housings and segmented back armor",
+      "inherits_armor_abilities": false
+    }
+  ],
+  "callofmini": {
+    "legacy_ids": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "status": "unchanged_pending_consolidation_decision",
+    "design_id": null,
+    "note": "CoM 尚未指定獨立原創外觀替換；保留現有 ID，另見 com_consolidation.json。"
+  },
+  "integration_boundary": "本表給後續模型／UV／貼圖製作查找目標；不是已執行的素材替換、技能移植或存檔遷移。現有購買、升級、容量、屬性與混搭規則未改。"
+}
