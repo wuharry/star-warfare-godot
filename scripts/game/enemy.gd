@@ -33,6 +33,9 @@ const HULL_FAR_DISTANCE := 32.0
 
 var target: WarfarePlayer
 var enemy_kind := "crawler"
+# Set before adding the enemy to the tree to compare against recovered art.
+# Live enemies use the concept scene when one is available for their kind.
+var use_concept_visuals := true
 var max_health := 60.0
 var health := 60.0
 var speed := 4.1
@@ -253,13 +256,14 @@ func _build_visual() -> void:
 
 	var scale_factor := 2.35 if enemy_kind == "boss" else (1.42 if enemy_kind == "brute" else 1.0)
 	var animated_name: String = str(MonsterCatalog.RUNTIME_MODELS.get(enemy_kind, "bug01"))
-	var animated_path := "res://assets/models/enemies/animated/%s/%s.gltf" % [animated_name, animated_name]
+	var animated_path := MonsterCatalog.visual_scene_path(enemy_kind, use_concept_visuals)
 	if ResourceLoader.exists(animated_path):
 		var packed := load(animated_path) as PackedScene
 		if packed:
 			recovered_enemy = packed.instantiate() as Node3D
 			if recovered_enemy:
-				recovered_enemy.name = "RecoveredAnimated_%s" % animated_name
+				var visual_prefix := "ConceptAnimated" if animated_path == str(MonsterCatalog.CONCEPT_SCENES.get(enemy_kind, "")) else "RecoveredAnimated"
+				recovered_enemy.name = "%s_%s" % [visual_prefix, animated_name]
 				model.add_child(recovered_enemy)
 				recovered_animation_player = _find_animation_player(recovered_enemy)
 				_normalize_recovered_enemy()

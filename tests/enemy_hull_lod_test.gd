@@ -100,9 +100,15 @@ func _run() -> void:
 	await get_tree().process_frame
 	await _test_visible_torso(world)
 
-	world.free()
+	for audio in world.find_children("*", "AudioStreamPlayer", true, false):
+		audio.stop()
+	for audio in world.find_children("*", "AudioStreamPlayer3D", true, false):
+		audio.stop()
+	world.queue_free()
 	AudioDirector.stop_all_sfx()
 	await get_tree().process_frame
+	# Let the audio mixer release playback references before engine shutdown.
+	await get_tree().create_timer(0.15).timeout
 	if failures.is_empty():
 		print("ENEMY_HULL_LOD_TEST_PASS checks=%d" % checks)
 	get_tree().quit(0 if failures.is_empty() else 1)

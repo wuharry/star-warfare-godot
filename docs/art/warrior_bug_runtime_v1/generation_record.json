@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-25",
+  "tool": "built-in image_gen",
+  "kind": "diffuse_texture_atlas",
+  "runtime_target": {
+    "kind": "crawler",
+    "source_monster_id": 0,
+    "source_model": "bug01"
+  },
+  "path": "assets/models/enemies/concept/warrior/warrior_albedo.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "sha256": "880ddfc6c7b2460fdfa1bc571189b6e506ea63c6173e21c5aefe30eb52504fe6",
+  "prompt": "docs/art/warrior_bug_runtime_v1/prompts/warrior_albedo_v1.txt",
+  "reference_images": [
+    "docs/art/warrior_bug_concept/images/original_texture.png",
+    "docs/art/warrior_bug_concept/images/01_mantis_turnaround.jpg"
+  ],
+  "reference_sha256": {
+    "docs/art/warrior_bug_concept/images/original_texture.png": "40dc098f5270f87a13464762f679469bac6e87ef3762b26e09b12aec4b715b23",
+    "docs/art/warrior_bug_concept/images/01_mantis_turnaround.jpg": "4767380f84f9e8ed3cc0a1e143fac24c54463e2a9701c246bebde868f221a22a"
+  },
+  "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-b07e5fa4-4962-4fbc-9228-c8aec7b29593.png",
+  "postprocessing": "none",
+  "visual_review": "已檢視 Godot 正面、側面、跑步、攻擊、死亡與第一關實際場景。新網格重新指派 UV；精簡甲殼取樣區域後，已改善初稿重複關節紋與條紋。仍屬可再修形的低面數原型。",
+  "status": "applied_to_crawler_runtime_prototype",
+  "size_note": "提示詞要求1024x1024；工具實際輸出1254x1254，保留原輸出並據實記錄。",
+  "prompt_sha256": "f09af2ec3e33d47bae989e21924c3a06bfce72656e6aa9c2d16dc786540974fe",
+  "model_note": "新建網格；保留原22骨/8段動畫，新增6鐮臂骨與2大顎骨。不宣稱保留原網格頂點或精確原UV。"
+}
