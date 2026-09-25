@@ -1,0 +1,85 @@
+{
+  "date": "2026-09-26",
+  "branch": "codex/original-armor-design",
+  "scope": "crawler / source monster ID 0 / warrior visual prototype",
+  "checks": [
+    {
+      "name": "enemy_concept_test",
+      "status": "PASS",
+      "summary": "ENEMY_CONCEPT_TEST_PASS checks=126 rays=27 extra_bones=8 original_bones=22 texture=true baseline=true",
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "name": "enemy_animation_test",
+      "status": "PASS",
+      "summary": "ENEMY_ANIMATION_TEST_PASS enemies=4",
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "name": "enemy_hull_lod_test",
+      "status": "PASS",
+      "summary": "ENEMY_HULL_LOD_TEST_PASS checks=209",
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "name": "enemy_hitbox_audio_test",
+      "status": "PASS",
+      "summary": "ENEMY_HITBOX_AUDIO_TEST_PASS enemies=4 animated_shapes=true local_hit_light=true hud_kill_heavy=true no_duplicate_audio=true reload_assets=true",
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "name": "smoke_test",
+      "status": "PASS",
+      "summary": "SMOKE_TEST_PASS",
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "name": "Godot viewport capture",
+      "status": "PASS",
+      "frames": 18,
+      "viewport": [
+        1280,
+        720
+      ],
+      "renderer": "gl_compatibility",
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "name": "review page browser",
+      "status": "PASS",
+      "pose_pairs": 8,
+      "desktop_width": 1280,
+      "mobile_width": 390,
+      "horizontal_overflow": false,
+      "javascript_errors": 0,
+      "local_links": 15
+    },
+    {
+      "name": "harness generated snapshot",
+      "status": "FAIL",
+      "details": "13 pre-existing generated drift entries; no harness files changed",
+      "log": "harness.log"
+    },
+    {
+      "name": "large-wave performance benchmark",
+      "status": "NOT RUN"
+    }
+  ],
+  "artifacts": {
+    "assets/models/enemies/concept/warrior/warrior.gltf": "08875e199ea33252d7d3e707462f6b575ea2d9f995a7b070ae49c1d67d5b914e",
+    "assets/models/enemies/concept/warrior/warrior.bin": "7f9a33c273fd45d78276756b56920bc99e2d950b4eadb9103f03e353a3ed7d60",
+    "assets/models/enemies/concept/warrior/warrior_albedo.png": "880ddfc6c7b2460fdfa1bc571189b6e506ea63c6173e21c5aefe30eb52504fe6",
+    "tools/enemy_concept/build_warrior.py": "fdbe3027998ca6e1985e5d90bd2431c1dddafb7eb79822367e30e4cc4e978e9b"
+  },
+  "limitations": [
+    "新網格沿用復原骨架與動畫，並非完整原創來源替換。",
+    "體型、步足銜接與動作質感仍可依正式遊戲鏡頭精修。",
+    "未跑大量敵人效能基準測試。"
+  ]
+}

@@ -527,8 +527,8 @@ func _build_pause_overlay() -> void:
 	var restart := _modal_button(tr("RESTART ARENA") if bool(level_data.get("pvp", false)) else tr("RESTART SECTOR"))
 	restart.pressed.connect(_restart)
 	box.add_child(restart)
-	var options := _modal_button(tr("TOGGLE TOUCH CONTROLS"))
 	if is_instance_valid(touch_root):
+		var options := _modal_button(tr("TOGGLE TOUCH CONTROLS"))
 		options.pressed.connect(func():
 			GameState.set_setting("show_touch_controls", not bool(GameState.settings.show_touch_controls))
 			touch_root.visible = bool(GameState.settings.show_touch_controls)
