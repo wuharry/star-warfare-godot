@@ -153,642 +153,918 @@
     "Mandible_R"
   ],
   "bone_count": 30,
-  "vertex_count": 2288,
-  "triangle_count": 3224,
+  "vertex_count": 6554,
+  "triangle_count": 10912,
   "mesh_count": 1,
   "parts": {
     "thorax": {
       "vertex_start": 0,
-      "vertex_count": 60,
+      "vertex_count": 84,
       "bone": "Bone",
-      "triangle_count": 80
+      "triangle_count": 120
     },
     "abdomen": {
-      "vertex_start": 60,
-      "vertex_count": 60,
+      "vertex_start": 84,
+      "vertex_count": 84,
       "bone": "Bone",
-      "triangle_count": 80
+      "triangle_count": 120
+    },
+    "thorax_side_carapace_-1": {
+      "vertex_start": 168,
+      "vertex_count": 84,
+      "bone": "Bone",
+      "triangle_count": 120
+    },
+    "thorax_side_carapace_1": {
+      "vertex_start": 252,
+      "vertex_count": 84,
+      "bone": "Bone",
+      "triangle_count": 120
     },
     "abdomen_plate_0": {
-      "vertex_start": 120,
-      "vertex_count": 40,
+      "vertex_start": 336,
+      "vertex_count": 104,
       "bone": "Bone",
-      "triangle_count": 48
+      "triangle_count": 204
     },
     "abdomen_glow_0": {
-      "vertex_start": 160,
-      "vertex_count": 12,
+      "vertex_start": 440,
+      "vertex_count": 54,
       "bone": "Bone",
-      "triangle_count": 20
+      "triangle_count": 104
     },
     "dorsal_spine_0": {
-      "vertex_start": 172,
+      "vertex_start": 494,
       "vertex_count": 8,
       "bone": "Bone",
       "triangle_count": 12
     },
     "abdomen_plate_1": {
-      "vertex_start": 180,
-      "vertex_count": 40,
+      "vertex_start": 502,
+      "vertex_count": 104,
       "bone": "Bone",
-      "triangle_count": 48
+      "triangle_count": 204
     },
     "abdomen_glow_1": {
-      "vertex_start": 220,
-      "vertex_count": 12,
+      "vertex_start": 606,
+      "vertex_count": 54,
       "bone": "Bone",
-      "triangle_count": 20
+      "triangle_count": 104
     },
     "dorsal_spine_1": {
-      "vertex_start": 232,
+      "vertex_start": 660,
       "vertex_count": 8,
       "bone": "Bone",
       "triangle_count": 12
     },
     "abdomen_plate_2": {
-      "vertex_start": 240,
-      "vertex_count": 40,
+      "vertex_start": 668,
+      "vertex_count": 104,
       "bone": "Bone",
-      "triangle_count": 48
+      "triangle_count": 204
     },
     "abdomen_glow_2": {
-      "vertex_start": 280,
-      "vertex_count": 12,
+      "vertex_start": 772,
+      "vertex_count": 54,
       "bone": "Bone",
-      "triangle_count": 20
+      "triangle_count": 104
     },
     "dorsal_spine_2": {
-      "vertex_start": 292,
+      "vertex_start": 826,
       "vertex_count": 8,
       "bone": "Bone",
       "triangle_count": 12
     },
     "abdomen_plate_3": {
-      "vertex_start": 300,
-      "vertex_count": 40,
+      "vertex_start": 834,
+      "vertex_count": 104,
       "bone": "Bone",
-      "triangle_count": 48
+      "triangle_count": 204
     },
     "abdomen_glow_3": {
-      "vertex_start": 340,
-      "vertex_count": 12,
+      "vertex_start": 938,
+      "vertex_count": 54,
       "bone": "Bone",
-      "triangle_count": 20
+      "triangle_count": 104
     },
     "dorsal_spine_3": {
-      "vertex_start": 352,
+      "vertex_start": 992,
       "vertex_count": 8,
       "bone": "Bone",
       "triangle_count": 12
     },
     "abdomen_plate_4": {
-      "vertex_start": 360,
-      "vertex_count": 40,
+      "vertex_start": 1000,
+      "vertex_count": 104,
       "bone": "Bone",
-      "triangle_count": 48
+      "triangle_count": 204
     },
     "abdomen_glow_4": {
-      "vertex_start": 400,
-      "vertex_count": 12,
+      "vertex_start": 1104,
+      "vertex_count": 54,
       "bone": "Bone",
-      "triangle_count": 20
+      "triangle_count": 104
     },
     "dorsal_spine_4": {
-      "vertex_start": 412,
+      "vertex_start": 1158,
       "vertex_count": 8,
       "bone": "Bone",
       "triangle_count": 12
     },
     "tail": {
-      "vertex_start": 420,
+      "vertex_start": 1166,
       "vertex_count": 8,
       "bone": "Bone",
       "triangle_count": 12
     },
     "walking_l_f_0": {
-      "vertex_start": 428,
-      "vertex_count": 18,
+      "vertex_start": 1174,
+      "vertex_count": 40,
       "bone": "Bone l leg f01",
-      "triangle_count": 32
+      "triangle_count": 76
     },
     "walking_l_f_1": {
-      "vertex_start": 446,
-      "vertex_count": 18,
+      "vertex_start": 1214,
+      "vertex_count": 40,
       "bone": "Bone l leg f02",
-      "triangle_count": 32
+      "triangle_count": 76
     },
     "leg_spine_l_f_1": {
-      "vertex_start": 464,
+      "vertex_start": 1254,
       "vertex_count": 8,
       "bone": "Bone l leg f02",
       "triangle_count": 12
     },
     "leg_glow_l_f_1": {
-      "vertex_start": 472,
+      "vertex_start": 1262,
       "vertex_count": 8,
       "bone": "Bone l leg f02",
       "triangle_count": 12
     },
     "walking_l_f_2": {
-      "vertex_start": 480,
-      "vertex_count": 18,
+      "vertex_start": 1270,
+      "vertex_count": 40,
       "bone": "Bone l leg f03",
-      "triangle_count": 32
+      "triangle_count": 76
     },
     "leg_spine_l_f_2": {
-      "vertex_start": 498,
+      "vertex_start": 1310,
       "vertex_count": 8,
       "bone": "Bone l leg f03",
       "triangle_count": 12
     },
     "leg_glow_l_f_2": {
-      "vertex_start": 506,
+      "vertex_start": 1318,
       "vertex_count": 8,
       "bone": "Bone l leg f03",
       "triangle_count": 12
     },
     "leg_joint_l_f": {
-      "vertex_start": 514,
-      "vertex_count": 40,
+      "vertex_start": 1326,
+      "vertex_count": 84,
       "bone": "Bone l leg f03",
-      "triangle_count": 48
+      "triangle_count": 120
     },
     "walking_l_b_0": {
-      "vertex_start": 554,
-      "vertex_count": 18,
+      "vertex_start": 1410,
+      "vertex_count": 40,
       "bone": "Bone l leg b01",
-      "triangle_count": 32
+      "triangle_count": 76
     },
     "walking_l_b_1": {
-      "vertex_start": 572,
-      "vertex_count": 18,
+      "vertex_start": 1450,
+      "vertex_count": 40,
       "bone": "Bone l leg b02",
-      "triangle_count": 32
+      "triangle_count": 76
     },
     "leg_spine_l_b_1": {
-      "vertex_start": 590,
+      "vertex_start": 1490,
       "vertex_count": 8,
       "bone": "Bone l leg b02",
       "triangle_count": 12
     },
     "leg_glow_l_b_1": {
-      "vertex_start": 598,
+      "vertex_start": 1498,
       "vertex_count": 8,
       "bone": "Bone l leg b02",
       "triangle_count": 12
     },
     "walking_l_b_2": {
-      "vertex_start": 606,
-      "vertex_count": 18,
+      "vertex_start": 1506,
+      "vertex_count": 40,
       "bone": "Bone l leg b03",
-      "triangle_count": 32
+      "triangle_count": 76
     },
     "leg_spine_l_b_2": {
-      "vertex_start": 624,
+      "vertex_start": 1546,
       "vertex_count": 8,
       "bone": "Bone l leg b03",
       "triangle_count": 12
     },
     "leg_glow_l_b_2": {
-      "vertex_start": 632,
+      "vertex_start": 1554,
       "vertex_count": 8,
       "bone": "Bone l leg b03",
       "triangle_count": 12
     },
     "leg_joint_l_b": {
-      "vertex_start": 640,
-      "vertex_count": 40,
+      "vertex_start": 1562,
+      "vertex_count": 84,
       "bone": "Bone l leg b03",
-      "triangle_count": 48
+      "triangle_count": 120
     },
     "walking_r_f_0": {
-      "vertex_start": 680,
-      "vertex_count": 18,
+      "vertex_start": 1646,
+      "vertex_count": 40,
       "bone": "Bone r leg f01",
-      "triangle_count": 32
+      "triangle_count": 76
     },
     "walking_r_f_1": {
-      "vertex_start": 698,
-      "vertex_count": 18,
+      "vertex_start": 1686,
+      "vertex_count": 40,
       "bone": "Bone r leg f02",
-      "triangle_count": 32
+      "triangle_count": 76
     },
     "leg_spine_r_f_1": {
-      "vertex_start": 716,
+      "vertex_start": 1726,
       "vertex_count": 8,
       "bone": "Bone r leg f02",
       "triangle_count": 12
     },
     "leg_glow_r_f_1": {
-      "vertex_start": 724,
+      "vertex_start": 1734,
       "vertex_count": 8,
       "bone": "Bone r leg f02",
       "triangle_count": 12
     },
     "walking_r_f_2": {
-      "vertex_start": 732,
-      "vertex_count": 18,
+      "vertex_start": 1742,
+      "vertex_count": 40,
       "bone": "Bone r leg f03",
-      "triangle_count": 32
+      "triangle_count": 76
     },
     "leg_spine_r_f_2": {
-      "vertex_start": 750,
+      "vertex_start": 1782,
       "vertex_count": 8,
       "bone": "Bone r leg f03",
       "triangle_count": 12
     },
     "leg_glow_r_f_2": {
-      "vertex_start": 758,
+      "vertex_start": 1790,
       "vertex_count": 8,
       "bone": "Bone r leg f03",
       "triangle_count": 12
     },
     "leg_joint_r_f": {
-      "vertex_start": 766,
-      "vertex_count": 40,
+      "vertex_start": 1798,
+      "vertex_count": 84,
       "bone": "Bone r leg f03",
-      "triangle_count": 48
+      "triangle_count": 120
     },
     "walking_r_b_0": {
-      "vertex_start": 806,
-      "vertex_count": 18,
+      "vertex_start": 1882,
+      "vertex_count": 40,
       "bone": "Bone r leg b01",
-      "triangle_count": 32
+      "triangle_count": 76
     },
     "walking_r_b_1": {
-      "vertex_start": 824,
-      "vertex_count": 18,
+      "vertex_start": 1922,
+      "vertex_count": 40,
       "bone": "Bone r leg b02",
-      "triangle_count": 32
+      "triangle_count": 76
     },
     "leg_spine_r_b_1": {
-      "vertex_start": 842,
+      "vertex_start": 1962,
       "vertex_count": 8,
       "bone": "Bone r leg b02",
       "triangle_count": 12
     },
     "leg_glow_r_b_1": {
-      "vertex_start": 850,
+      "vertex_start": 1970,
       "vertex_count": 8,
       "bone": "Bone r leg b02",
       "triangle_count": 12
     },
     "walking_r_b_2": {
-      "vertex_start": 858,
-      "vertex_count": 18,
+      "vertex_start": 1978,
+      "vertex_count": 40,
       "bone": "Bone r leg b03",
-      "triangle_count": 32
+      "triangle_count": 76
     },
     "leg_spine_r_b_2": {
-      "vertex_start": 876,
+      "vertex_start": 2018,
       "vertex_count": 8,
       "bone": "Bone r leg b03",
       "triangle_count": 12
     },
     "leg_glow_r_b_2": {
-      "vertex_start": 884,
+      "vertex_start": 2026,
       "vertex_count": 8,
       "bone": "Bone r leg b03",
       "triangle_count": 12
     },
     "leg_joint_r_b": {
-      "vertex_start": 892,
-      "vertex_count": 40,
+      "vertex_start": 2034,
+      "vertex_count": 84,
       "bone": "Bone r leg b03",
-      "triangle_count": 48
+      "triangle_count": 120
     },
-    "triangular_hood": {
-      "vertex_start": 932,
-      "vertex_count": 32,
+    "arched_hood_shell": {
+      "vertex_start": 2118,
+      "vertex_count": 858,
       "bone": "Bone head01",
-      "triangle_count": 60
+      "triangle_count": 1712
     },
-    "hood_ridge_L": {
-      "vertex_start": 964,
-      "vertex_count": 16,
+    "brow_bevel_0": {
+      "vertex_start": 2976,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 28
+      "triangle_count": 2
     },
-    "hood_fissure_L": {
-      "vertex_start": 980,
-      "vertex_count": 12,
+    "brow_bevel_1": {
+      "vertex_start": 2980,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 20
+      "triangle_count": 2
     },
-    "hood_ridge_R": {
-      "vertex_start": 992,
-      "vertex_count": 16,
+    "brow_bevel_2": {
+      "vertex_start": 2984,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 28
+      "triangle_count": 2
     },
-    "hood_fissure_R": {
-      "vertex_start": 1008,
-      "vertex_count": 12,
+    "brow_bevel_3": {
+      "vertex_start": 2988,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 20
+      "triangle_count": 2
     },
-    "face_recess": {
-      "vertex_start": 1020,
-      "vertex_count": 60,
+    "brow_bevel_4": {
+      "vertex_start": 2992,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 80
+      "triangle_count": 2
     },
-    "eye_socket_L_0": {
-      "vertex_start": 1080,
-      "vertex_count": 40,
+    "brow_bevel_5": {
+      "vertex_start": 2996,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 48
+      "triangle_count": 2
     },
-    "green_eye_L_0": {
-      "vertex_start": 1120,
-      "vertex_count": 40,
+    "brow_bevel_6": {
+      "vertex_start": 3000,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 48
+      "triangle_count": 2
     },
-    "eye_core_L_0": {
-      "vertex_start": 1160,
-      "vertex_count": 24,
+    "brow_bevel_7": {
+      "vertex_start": 3004,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 24
+      "triangle_count": 2
     },
-    "eye_socket_R_0": {
-      "vertex_start": 1184,
-      "vertex_count": 40,
+    "brow_bevel_8": {
+      "vertex_start": 3008,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 48
+      "triangle_count": 2
     },
-    "green_eye_R_0": {
-      "vertex_start": 1224,
-      "vertex_count": 40,
+    "brow_bevel_9": {
+      "vertex_start": 3012,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 48
+      "triangle_count": 2
     },
-    "eye_core_R_0": {
-      "vertex_start": 1264,
-      "vertex_count": 24,
+    "brow_bevel_10": {
+      "vertex_start": 3016,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 24
+      "triangle_count": 2
     },
-    "eye_socket_L_1": {
-      "vertex_start": 1288,
-      "vertex_count": 40,
+    "brow_bevel_11": {
+      "vertex_start": 3020,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 48
+      "triangle_count": 2
     },
-    "green_eye_L_1": {
-      "vertex_start": 1328,
-      "vertex_count": 40,
+    "brow_bevel_12": {
+      "vertex_start": 3024,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 48
+      "triangle_count": 2
     },
-    "eye_core_L_1": {
-      "vertex_start": 1368,
-      "vertex_count": 24,
+    "brow_bevel_13": {
+      "vertex_start": 3028,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 24
+      "triangle_count": 2
     },
-    "eye_socket_R_1": {
-      "vertex_start": 1392,
-      "vertex_count": 40,
+    "brow_bevel_14": {
+      "vertex_start": 3032,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 48
+      "triangle_count": 2
     },
-    "green_eye_R_1": {
-      "vertex_start": 1432,
-      "vertex_count": 40,
+    "brow_bevel_15": {
+      "vertex_start": 3036,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 48
+      "triangle_count": 2
     },
-    "eye_core_R_1": {
-      "vertex_start": 1472,
-      "vertex_count": 24,
+    "brow_bevel_16": {
+      "vertex_start": 3040,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 24
+      "triangle_count": 2
     },
-    "eye_socket_L_2": {
-      "vertex_start": 1496,
-      "vertex_count": 40,
+    "brow_bevel_17": {
+      "vertex_start": 3044,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 48
+      "triangle_count": 2
     },
-    "green_eye_L_2": {
-      "vertex_start": 1536,
-      "vertex_count": 40,
+    "brow_bevel_18": {
+      "vertex_start": 3048,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 48
+      "triangle_count": 2
     },
-    "eye_core_L_2": {
-      "vertex_start": 1576,
-      "vertex_count": 24,
+    "brow_bevel_19": {
+      "vertex_start": 3052,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 24
+      "triangle_count": 2
     },
-    "eye_socket_R_2": {
-      "vertex_start": 1600,
-      "vertex_count": 40,
+    "brow_bevel_20": {
+      "vertex_start": 3056,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 48
+      "triangle_count": 2
     },
-    "green_eye_R_2": {
-      "vertex_start": 1640,
-      "vertex_count": 40,
+    "brow_bevel_21": {
+      "vertex_start": 3060,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 48
+      "triangle_count": 2
     },
-    "eye_core_R_2": {
-      "vertex_start": 1680,
-      "vertex_count": 24,
+    "brow_bevel_22": {
+      "vertex_start": 3064,
+      "vertex_count": 4,
       "bone": "Bone head01",
-      "triangle_count": 24
+      "triangle_count": 2
     },
-    "scythe_arm_L_1": {
-      "vertex_start": 1704,
-      "vertex_count": 18,
-      "bone": "Scythe_L01",
+    "brow_bevel_23": {
+      "vertex_start": 3068,
+      "vertex_count": 4,
+      "bone": "Bone head01",
+      "triangle_count": 2
+    },
+    "brow_bevel_24": {
+      "vertex_start": 3072,
+      "vertex_count": 4,
+      "bone": "Bone head01",
+      "triangle_count": 2
+    },
+    "brow_bevel_25": {
+      "vertex_start": 3076,
+      "vertex_count": 4,
+      "bone": "Bone head01",
+      "triangle_count": 2
+    },
+    "brow_bevel_26": {
+      "vertex_start": 3080,
+      "vertex_count": 4,
+      "bone": "Bone head01",
+      "triangle_count": 2
+    },
+    "brow_bevel_27": {
+      "vertex_start": 3084,
+      "vertex_count": 4,
+      "bone": "Bone head01",
+      "triangle_count": 2
+    },
+    "brow_bevel_28": {
+      "vertex_start": 3088,
+      "vertex_count": 4,
+      "bone": "Bone head01",
+      "triangle_count": 2
+    },
+    "brow_bevel_29": {
+      "vertex_start": 3092,
+      "vertex_count": 4,
+      "bone": "Bone head01",
+      "triangle_count": 2
+    },
+    "brow_bevel_30": {
+      "vertex_start": 3096,
+      "vertex_count": 4,
+      "bone": "Bone head01",
+      "triangle_count": 2
+    },
+    "brow_bevel_31": {
+      "vertex_start": 3100,
+      "vertex_count": 4,
+      "bone": "Bone head01",
+      "triangle_count": 2
+    },
+    "hood_rear_mantle": {
+      "vertex_start": 3104,
+      "vertex_count": 11,
+      "bone": "Bone head01",
+      "triangle_count": 10
+    },
+    "neck_overlapping_plate_0": {
+      "vertex_start": 3115,
+      "vertex_count": 72,
+      "bone": "Bone",
+      "triangle_count": 96
+    },
+    "neck_overlapping_plate_1": {
+      "vertex_start": 3187,
+      "vertex_count": 72,
+      "bone": "Bone",
+      "triangle_count": 96
+    },
+    "neck_overlapping_plate_2": {
+      "vertex_start": 3259,
+      "vertex_count": 72,
+      "bone": "Bone",
+      "triangle_count": 96
+    },
+    "cheek_carapace_-1": {
+      "vertex_start": 3331,
+      "vertex_count": 7,
+      "bone": "Bone head01",
+      "triangle_count": 6
+    },
+    "cheek_carapace_1": {
+      "vertex_start": 3338,
+      "vertex_count": 7,
+      "bone": "Bone head01",
+      "triangle_count": 6
+    },
+    "hood_inset_1.3_recess": {
+      "vertex_start": 3345,
+      "vertex_count": 27,
+      "bone": "Bone head01",
       "triangle_count": 32
     },
+    "hood_inset_1.3_glow": {
+      "vertex_start": 3372,
+      "vertex_count": 27,
+      "bone": "Bone head01",
+      "triangle_count": 32
+    },
+    "hood_inset_2.6_recess": {
+      "vertex_start": 3399,
+      "vertex_count": 27,
+      "bone": "Bone head01",
+      "triangle_count": 32
+    },
+    "hood_inset_2.6_glow": {
+      "vertex_start": 3426,
+      "vertex_count": 27,
+      "bone": "Bone head01",
+      "triangle_count": 32
+    },
+    "hood_inset_5.4_recess": {
+      "vertex_start": 3453,
+      "vertex_count": 27,
+      "bone": "Bone head01",
+      "triangle_count": 32
+    },
+    "hood_inset_5.4_glow": {
+      "vertex_start": 3480,
+      "vertex_count": 27,
+      "bone": "Bone head01",
+      "triangle_count": 32
+    },
+    "hood_inset_6.7_recess": {
+      "vertex_start": 3507,
+      "vertex_count": 27,
+      "bone": "Bone head01",
+      "triangle_count": 32
+    },
+    "hood_inset_6.7_glow": {
+      "vertex_start": 3534,
+      "vertex_count": 27,
+      "bone": "Bone head01",
+      "triangle_count": 32
+    },
+    "tapered_insect_face": {
+      "vertex_start": 3561,
+      "vertex_count": 112,
+      "bone": "Bone head01",
+      "triangle_count": 220
+    },
+    "eye_socket_L_0": {
+      "vertex_start": 3673,
+      "vertex_count": 84,
+      "bone": "Bone head01",
+      "triangle_count": 120
+    },
+    "green_eye_L_0": {
+      "vertex_start": 3757,
+      "vertex_count": 144,
+      "bone": "Bone head01",
+      "triangle_count": 224
+    },
+    "eye_socket_R_0": {
+      "vertex_start": 3901,
+      "vertex_count": 84,
+      "bone": "Bone head01",
+      "triangle_count": 120
+    },
+    "green_eye_R_0": {
+      "vertex_start": 3985,
+      "vertex_count": 144,
+      "bone": "Bone head01",
+      "triangle_count": 224
+    },
+    "eye_socket_L_1": {
+      "vertex_start": 4129,
+      "vertex_count": 84,
+      "bone": "Bone head01",
+      "triangle_count": 120
+    },
+    "green_eye_L_1": {
+      "vertex_start": 4213,
+      "vertex_count": 144,
+      "bone": "Bone head01",
+      "triangle_count": 224
+    },
+    "eye_socket_R_1": {
+      "vertex_start": 4357,
+      "vertex_count": 84,
+      "bone": "Bone head01",
+      "triangle_count": 120
+    },
+    "green_eye_R_1": {
+      "vertex_start": 4441,
+      "vertex_count": 144,
+      "bone": "Bone head01",
+      "triangle_count": 224
+    },
+    "eye_socket_L_2": {
+      "vertex_start": 4585,
+      "vertex_count": 84,
+      "bone": "Bone head01",
+      "triangle_count": 120
+    },
+    "green_eye_L_2": {
+      "vertex_start": 4669,
+      "vertex_count": 144,
+      "bone": "Bone head01",
+      "triangle_count": 224
+    },
+    "eye_socket_R_2": {
+      "vertex_start": 4813,
+      "vertex_count": 84,
+      "bone": "Bone head01",
+      "triangle_count": 120
+    },
+    "green_eye_R_2": {
+      "vertex_start": 4897,
+      "vertex_count": 144,
+      "bone": "Bone head01",
+      "triangle_count": 224
+    },
+    "throat_scute_0": {
+      "vertex_start": 5041,
+      "vertex_count": 7,
+      "bone": "Bone head01",
+      "triangle_count": 6
+    },
+    "throat_scute_1": {
+      "vertex_start": 5048,
+      "vertex_count": 7,
+      "bone": "Bone head01",
+      "triangle_count": 6
+    },
+    "throat_scute_2": {
+      "vertex_start": 5055,
+      "vertex_count": 7,
+      "bone": "Bone head01",
+      "triangle_count": 6
+    },
+    "mouth_cavity": {
+      "vertex_start": 5062,
+      "vertex_count": 72,
+      "bone": "Bone head01",
+      "triangle_count": 96
+    },
+    "mouth_palp_-1": {
+      "vertex_start": 5134,
+      "vertex_count": 56,
+      "bone": "Bone head01",
+      "triangle_count": 108
+    },
+    "mouth_palp_1": {
+      "vertex_start": 5190,
+      "vertex_count": 56,
+      "bone": "Bone head01",
+      "triangle_count": 108
+    },
+    "scythe_arm_L_1": {
+      "vertex_start": 5246,
+      "vertex_count": 30,
+      "bone": "Scythe_L01",
+      "triangle_count": 56
+    },
     "scythe_joint_L_1": {
-      "vertex_start": 1722,
+      "vertex_start": 5276,
       "vertex_count": 40,
       "bone": "Scythe_L01",
       "triangle_count": 48
     },
     "arm_fissure_L_1": {
-      "vertex_start": 1762,
+      "vertex_start": 5316,
       "vertex_count": 8,
       "bone": "Scythe_L01",
       "triangle_count": 12
     },
     "scythe_arm_L_2": {
-      "vertex_start": 1770,
-      "vertex_count": 18,
+      "vertex_start": 5324,
+      "vertex_count": 30,
       "bone": "Scythe_L02",
-      "triangle_count": 32
+      "triangle_count": 56
     },
     "scythe_joint_L_2": {
-      "vertex_start": 1788,
+      "vertex_start": 5354,
       "vertex_count": 40,
       "bone": "Scythe_L02",
       "triangle_count": 48
     },
     "arm_fissure_L_2": {
-      "vertex_start": 1828,
+      "vertex_start": 5394,
       "vertex_count": 8,
       "bone": "Scythe_L02",
       "triangle_count": 12
     },
     "scythe_hook_L": {
-      "vertex_start": 1836,
-      "vertex_count": 48,
+      "vertex_start": 5402,
+      "vertex_count": 176,
       "bone": "Scythe_L03",
-      "triangle_count": 92
+      "triangle_count": 348
     },
     "scythe_glow_L": {
-      "vertex_start": 1884,
-      "vertex_count": 20,
+      "vertex_start": 5578,
+      "vertex_count": 30,
       "bone": "Scythe_L03",
-      "triangle_count": 36
+      "triangle_count": 56
     },
     "scythe_barb_L_1": {
-      "vertex_start": 1904,
+      "vertex_start": 5608,
       "vertex_count": 8,
       "bone": "Scythe_L03",
       "triangle_count": 12
     },
     "scythe_barb_L_2": {
-      "vertex_start": 1912,
+      "vertex_start": 5616,
       "vertex_count": 8,
       "bone": "Scythe_L03",
       "triangle_count": 12
     },
     "scythe_barb_L_3": {
-      "vertex_start": 1920,
+      "vertex_start": 5624,
       "vertex_count": 8,
       "bone": "Scythe_L03",
       "triangle_count": 12
     },
     "scythe_barb_L_4": {
-      "vertex_start": 1928,
+      "vertex_start": 5632,
       "vertex_count": 8,
       "bone": "Scythe_L03",
       "triangle_count": 12
     },
-    "mandible_L": {
-      "vertex_start": 1936,
-      "vertex_count": 36,
+    "jaw_root_L": {
+      "vertex_start": 5640,
+      "vertex_count": 84,
       "bone": "Mandible_L",
-      "triangle_count": 68
+      "triangle_count": 120
+    },
+    "mandible_L": {
+      "vertex_start": 5724,
+      "vertex_count": 152,
+      "bone": "Mandible_L",
+      "triangle_count": 300
     },
     "mandible_tooth_L_1": {
-      "vertex_start": 1972,
+      "vertex_start": 5876,
       "vertex_count": 8,
       "bone": "Mandible_L",
       "triangle_count": 12
     },
     "mandible_tooth_L_2": {
-      "vertex_start": 1980,
+      "vertex_start": 5884,
       "vertex_count": 8,
       "bone": "Mandible_L",
       "triangle_count": 12
     },
     "mandible_tooth_L_3": {
-      "vertex_start": 1988,
+      "vertex_start": 5892,
       "vertex_count": 8,
       "bone": "Mandible_L",
       "triangle_count": 12
     },
     "scythe_arm_R_1": {
-      "vertex_start": 1996,
-      "vertex_count": 18,
+      "vertex_start": 5900,
+      "vertex_count": 30,
       "bone": "Scythe_R01",
-      "triangle_count": 32
+      "triangle_count": 56
     },
     "scythe_joint_R_1": {
-      "vertex_start": 2014,
+      "vertex_start": 5930,
       "vertex_count": 40,
       "bone": "Scythe_R01",
       "triangle_count": 48
     },
     "arm_fissure_R_1": {
-      "vertex_start": 2054,
+      "vertex_start": 5970,
       "vertex_count": 8,
       "bone": "Scythe_R01",
       "triangle_count": 12
     },
     "scythe_arm_R_2": {
-      "vertex_start": 2062,
-      "vertex_count": 18,
+      "vertex_start": 5978,
+      "vertex_count": 30,
       "bone": "Scythe_R02",
-      "triangle_count": 32
+      "triangle_count": 56
     },
     "scythe_joint_R_2": {
-      "vertex_start": 2080,
+      "vertex_start": 6008,
       "vertex_count": 40,
       "bone": "Scythe_R02",
       "triangle_count": 48
     },
     "arm_fissure_R_2": {
-      "vertex_start": 2120,
+      "vertex_start": 6048,
       "vertex_count": 8,
       "bone": "Scythe_R02",
       "triangle_count": 12
     },
     "scythe_hook_R": {
-      "vertex_start": 2128,
-      "vertex_count": 48,
+      "vertex_start": 6056,
+      "vertex_count": 176,
       "bone": "Scythe_R03",
-      "triangle_count": 92
+      "triangle_count": 348
     },
     "scythe_glow_R": {
-      "vertex_start": 2176,
-      "vertex_count": 20,
+      "vertex_start": 6232,
+      "vertex_count": 30,
       "bone": "Scythe_R03",
-      "triangle_count": 36
+      "triangle_count": 56
     },
     "scythe_barb_R_1": {
-      "vertex_start": 2196,
+      "vertex_start": 6262,
       "vertex_count": 8,
       "bone": "Scythe_R03",
       "triangle_count": 12
     },
     "scythe_barb_R_2": {
-      "vertex_start": 2204,
+      "vertex_start": 6270,
       "vertex_count": 8,
       "bone": "Scythe_R03",
       "triangle_count": 12
     },
     "scythe_barb_R_3": {
-      "vertex_start": 2212,
+      "vertex_start": 6278,
       "vertex_count": 8,
       "bone": "Scythe_R03",
       "triangle_count": 12
     },
     "scythe_barb_R_4": {
-      "vertex_start": 2220,
+      "vertex_start": 6286,
       "vertex_count": 8,
       "bone": "Scythe_R03",
       "triangle_count": 12
     },
-    "mandible_R": {
-      "vertex_start": 2228,
-      "vertex_count": 36,
+    "jaw_root_R": {
+      "vertex_start": 6294,
+      "vertex_count": 84,
       "bone": "Mandible_R",
-      "triangle_count": 68
+      "triangle_count": 120
+    },
+    "mandible_R": {
+      "vertex_start": 6378,
+      "vertex_count": 152,
+      "bone": "Mandible_R",
+      "triangle_count": 300
     },
     "mandible_tooth_R_1": {
-      "vertex_start": 2264,
+      "vertex_start": 6530,
       "vertex_count": 8,
       "bone": "Mandible_R",
       "triangle_count": 12
     },
     "mandible_tooth_R_2": {
-      "vertex_start": 2272,
+      "vertex_start": 6538,
       "vertex_count": 8,
       "bone": "Mandible_R",
       "triangle_count": 12
     },
     "mandible_tooth_R_3": {
-      "vertex_start": 2280,
+      "vertex_start": 6546,
       "vertex_count": 8,
       "bone": "Mandible_R",
       "triangle_count": 12
@@ -933,7 +1209,8 @@
     "warrior_purple_fissure",
     "warrior_six_green_eyes"
   ],
-  "albedo_sha256": "880ddfc6c7b2460fdfa1bc571189b6e506ea63c6173e21c5aefe30eb52504fe6",
+  "albedo_path": "assets/models/enemies/concept/warrior/warrior_chitin_v2.png",
+  "albedo_sha256": "d72dfd1e154a3832d023185d4a6d69644f479c133273092c3dd99e31331f4277",
   "albedo_unchanged": true,
   "scope": "Runtime prototype; preserves recovered source rig/animations, no rights-clean claim."
 }

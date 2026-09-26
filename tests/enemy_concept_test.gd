@@ -3,7 +3,7 @@ extends Node3D
 const Catalog = preload("res://scripts/core/monster_catalog.gd")
 const CONCEPT_PATH := "res://assets/models/enemies/concept/warrior/warrior.gltf"
 const ORIGINAL_PATH := "res://assets/models/enemies/animated/bug01/bug01.gltf"
-const TEXTURE_PATH := "res://assets/models/enemies/concept/warrior/warrior_albedo.png"
+const TEXTURE_PATH := "res://assets/models/enemies/concept/warrior/warrior_chitin_v2.png"
 const REQUIRED_CLIPS := ["idle", "run", "run01", "run02", "attack", "attacked", "dead", "dead01"]
 
 var failures: Array[String] = []

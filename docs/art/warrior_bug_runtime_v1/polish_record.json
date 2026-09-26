@@ -1,0 +1,74 @@
+{
+  "date": "2026-09-26",
+  "revision": "warrior_polish_v2",
+  "runtime_target": {
+    "kind": "crawler",
+    "source_monster_id": 0,
+    "source_model": "bug01"
+  },
+  "baseline_revision": "5e7d011",
+  "reference_images": [
+    "docs/art/enemy_art/images/warrior_bug_concept__images__01_mantis_turnaround.jpg"
+  ],
+  "reference_sha256": {
+    "docs/art/enemy_art/images/warrior_bug_concept__images__01_mantis_turnaround.jpg": "4767380f84f9e8ed3cc0a1e143fac24c54463e2a9701c246bebde868f221a22a"
+  },
+  "changes": [
+    "Open, thick arched hood over a curved tapered face",
+    "Six eyes in two triangular groups, shallow sockets and no long black pupils",
+    "Short mouth palps and curved broad-root mandibles",
+    "Cheek/throat/thorax armor and closed overlapping abdominal plates",
+    "Continuous curved scythe blades and physical bevels",
+    "UVs mapped to a clean chitin swatch, with anatomical features modeled separately"
+  ],
+  "texture": {
+    "tool": "built-in image_gen",
+    "path": "assets/models/enemies/concept/warrior/warrior_chitin_v2.png",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "d72dfd1e154a3832d023185d4a6d69644f479c133273092c3dd99e31331f4277",
+    "postprocessing": "none; copied original output without resizing or pixel edits",
+    "attempts": [
+      {
+        "prompt": "prompts/warrior_chitin_v2.txt",
+        "prompt_sha256": "56e6482dc9c02501685ee01cea97c35792cb20ae0f89b77d9dc5da048a27b9a8",
+        "status": "not adopted: excessive scratches and grain at runtime",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-a3932009-a13b-4a06-b355-1ea422f123e4.png",
+        "sha256": "4f76a73de709ddb425032e6aa42846132b0c11dfc0cf34a2690f8970d87f27de",
+        "inputs": [
+          "concept reference"
+        ]
+      },
+      {
+        "prompt": "prompts/warrior_chitin_v2_refine.txt",
+        "prompt_sha256": "28d61b67294dd41ba8f78cbcbefb6f79f47b57d0c8295fdd21c1e243da80885a",
+        "status": "adopted",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-7122db4a-7aa0-45cf-b1ac-9cd6d28c985a.png",
+        "sha256": "d72dfd1e154a3832d023185d4a6d69644f479c133273092c3dd99e31331f4277",
+        "inputs": [
+          "first generated swatch",
+          "concept reference"
+        ]
+      }
+    ],
+    "size_note": "Requested 1024x1024; retained actual tool output."
+  },
+  "model": {
+    "path": "assets/models/enemies/concept/warrior/warrior.gltf",
+    "vertices": 6554,
+    "triangles": 10912,
+    "bones": 30,
+    "clips": 8,
+    "mesh_count": 1,
+    "materials": 5
+  },
+  "limitations": [
+    "Recovered source rig and original eight animations remain.",
+    "Leg proportions and animation finesse remain reviewable; not a pixel-exact recreation of the concept.",
+    "No large-wave performance benchmark.",
+    "Neutral capture lighting is brighter than the actual level; both are shown."
+  ],
+  "status": "applied_to_crawler_runtime; pending user art acceptance"
+}

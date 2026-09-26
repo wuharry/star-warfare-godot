@@ -25,7 +25,7 @@
   "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-b07e5fa4-4962-4fbc-9228-c8aec7b29593.png",
   "postprocessing": "none",
   "visual_review": "已檢視 Godot 正面、側面、跑步、攻擊、死亡與第一關實際場景。新網格重新指派 UV；精簡甲殼取樣區域後，已改善初稿重複關節紋與條紋。仍屬可再修形的低面數原型。",
-  "status": "applied_to_crawler_runtime_prototype",
+  "status": "historical_v1_texture_superseded_by_polish_v2",
   "size_note": "提示詞要求1024x1024；工具實際輸出1254x1254，保留原輸出並據實記錄。",
   "prompt_sha256": "f09af2ec3e33d47bae989e21924c3a06bfce72656e6aa9c2d16dc786540974fe",
   "model_note": "新建網格；保留原22骨/8段動畫，新增6鐮臂骨與2大顎骨。不宣稱保留原網格頂點或精確原UV。",
@@ -33,5 +33,6 @@
     "docs/art/warrior_bug_concept/images/original_texture.png",
     "docs/art/warrior_bug_concept/images/01_mantis_turnaround.jpg"
   ],
-  "reference_relocation_note": "2026-09-26 合併 main 後，參考圖移至 enemy_art；內容 SHA256 不變，原生成路徑保留於 reference_images_at_generation。"
+  "reference_relocation_note": "2026-09-26 合併 main 後，參考圖移至 enemy_art；內容 SHA256 不變，原生成路徑保留於 reference_images_at_generation。",
+  "superseded_by": "polish_record.json"
 }

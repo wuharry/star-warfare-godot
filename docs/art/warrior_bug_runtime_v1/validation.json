@@ -1,7 +1,7 @@
 {
   "date": "2026-09-26",
   "branch": "codex/original-armor-design",
-  "scope": "crawler / source monster ID 0 / warrior visual prototype",
+  "scope": "crawler / warrior head and carapace polish v2",
   "checks": [
     {
       "name": "enemy_concept_test",
@@ -12,10 +12,16 @@
     },
     {
       "name": "enemy_animation_test",
-      "status": "PASS",
+      "status": "PASS_ASSERTIONS_EXIT_WARNING",
       "summary": "ENEMY_ANIMATION_TEST_PASS enemies=4",
-      "warnings": 0,
-      "errors": 0
+      "warnings": 1,
+      "errors": 1,
+      "isolated_verbose_repeat": {
+        "status": "PASS",
+        "warnings": 0,
+        "errors": 0
+      },
+      "note": "First run overlapped viewport capture and reported 8 ObjectDB / 2 resource leaks at exit. Isolated verbose repeat did not reproduce. Cause not established; not claimed fixed."
     },
     {
       "name": "enemy_hull_lod_test",
@@ -39,9 +45,15 @@
       "errors": 0
     },
     {
+      "name": "Blender model build",
+      "status": "PASS",
+      "version": "5.1.0",
+      "note": "Exporter reports one Blender Material.use_nodes deprecation warning; eight clip names/durations and input texture SHA256 verified."
+    },
+    {
       "name": "Godot viewport capture",
       "status": "PASS",
-      "frames": 18,
+      "frames": 21,
       "viewport": [
         1280,
         720
@@ -51,14 +63,16 @@
       "errors": 0
     },
     {
-      "name": "review page browser",
+      "name": "review page local references",
       "status": "PASS",
+      "unique_paths": 31,
       "pose_pairs": 8,
-      "desktop_width": 1280,
-      "mobile_width": 390,
-      "horizontal_overflow": false,
-      "javascript_errors": 0,
-      "local_links": 15
+      "head_pairs": 3
+    },
+    {
+      "name": "review page browser visual and click verification",
+      "status": "NOT RUN",
+      "reason": "Browser automation launch rejected by automatic approval review (blocked by policy); computer-use inventory has no available browsers, including iab."
     },
     {
       "name": "harness generated snapshot",
@@ -69,17 +83,23 @@
     {
       "name": "large-wave performance benchmark",
       "status": "NOT RUN"
+    },
+    {
+      "name": "review page inline JavaScript syntax",
+      "status": "PASS",
+      "command": "node --check test_output/enemy_concept_runtime/review_script.js"
     }
   ],
   "artifacts": {
-    "assets/models/enemies/concept/warrior/warrior.gltf": "08875e199ea33252d7d3e707462f6b575ea2d9f995a7b070ae49c1d67d5b914e",
-    "assets/models/enemies/concept/warrior/warrior.bin": "7f9a33c273fd45d78276756b56920bc99e2d950b4eadb9103f03e353a3ed7d60",
-    "assets/models/enemies/concept/warrior/warrior_albedo.png": "880ddfc6c7b2460fdfa1bc571189b6e506ea63c6173e21c5aefe30eb52504fe6",
-    "tools/enemy_concept/build_warrior.py": "fdbe3027998ca6e1985e5d90bd2431c1dddafb7eb79822367e30e4cc4e978e9b"
+    "assets/models/enemies/concept/warrior/warrior.gltf": "34d8cc45420fb8b260eb8a556e979eb36fececd343d735b47954486cea286b1a",
+    "assets/models/enemies/concept/warrior/warrior.bin": "c7d29ffc9f030d5f8f4aa83a33e36b4db99c39989be83099ccd6e80192160269",
+    "assets/models/enemies/concept/warrior/warrior_chitin_v2.png": "d72dfd1e154a3832d023185d4a6d69644f479c133273092c3dd99e31331f4277",
+    "tools/enemy_concept/build_warrior.py": "6388def383cf72db55d5c5ac94db74dc302fdc09fc2d83bef233f121630f0ffa",
+    "tests/enemy_concept_visual_capture.gd": "9bd16744ba7d3ecfc4e542632952f7a7600aa335493e90929438e7de3b10ddc5"
   },
   "limitations": [
-    "新網格沿用復原骨架與動畫，並非完整原創來源替換。",
-    "體型、步足銜接與動作質感仍可依正式遊戲鏡頭精修。",
-    "未跑大量敵人效能基準測試。"
+    "美術仍待使用者確認。",
+    "保留復原骨架與原動畫，未跑大量敵人效能基準。",
+    "動畫測試首次退出有資源釋放訊息，單獨複驗未重現；未宣稱已修復。"
   ]
 }
