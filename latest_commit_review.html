@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commit d109a15 改動詳解 - 裝甲重建管線 (Armor Facets Rework)</title>
+  <style>
+    :root {
+      --bg: #0f141c;
+      --card-bg: #18202c;
+      --card-border: #263345;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --success: #34d399;
+      --warning: #fbbf24;
+      --danger: #f87171;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --diff-add-bg: rgba(52, 211, 153, 0.12);
+      --diff-add-border: #059669;
+      --diff-del-bg: rgba(248, 113, 113, 0.12);
+      --diff-del-border: #dc2626;
+      --code-bg: #0b0f16;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-git { background: #3b82f6; color: white; }
+    .badge-wip { background: #d97706; color: white; margin-left: 0.5rem; }
+    h1 { font-size: 1.8rem; margin: 0.8rem 0 0.4rem 0; color: #f8fafc; }
+    .meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+    /* Summary Card */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.8rem;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Pipeline Diagram */
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .pipeline-step {
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1rem;
+      position: relative;
+    }
+    .pipeline-step::after {
+      content: "➔";
+      position: absolute;
+      right: -0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+    .pipeline-step:last-child::after { display: none; }
+    .step-num { color: var(--accent); font-size: 0.75rem; font-weight: bold; }
+    .step-name { font-weight: 600; margin: 0.25rem 0; color: #fff; }
+    .step-desc { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* Highlights Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 1.2rem;
+    }
+    .highlight-box {
+      background: #131a24;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.2rem;
+    }
+    .highlight-box.green { border-left-color: var(--success); }
+    .highlight-box.yellow { border-left-color: var(--warning); }
+    .highlight-box.red { border-left-color: var(--danger); }
+    .highlight-title { font-weight: bold; color: #f1f5f9; margin-bottom: 0.4rem; }
+    .highlight-text { font-size: 0.875rem; color: #cbd5e1; }
+
+    /* Comparison Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.8rem;
+      font-size: 0.875rem;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+    th {
+      background: var(--code-bg);
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    tr:hover { background: rgba(255,255,255,0.02); }
+    .size-down { color: var(--success); font-weight: 700; }
+
+    /* Code Diff block */
+    .diff-block {
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 1rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.8rem;
+    }
+    .diff-header {
+      background: #141b26;
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+    }
+    .diff-content { padding: 0.8rem 0; overflow-x: auto; }
+    .diff-line {
+      display: flex;
+      padding: 0.15rem 1rem;
+      white-space: pre;
+    }
+    .diff-line.add { background: var(--diff-add-bg); border-left: 3px solid var(--diff-add-border); color: #a7f3d0; }
+    .diff-line.del { background: var(--diff-del-bg); border-left: 3px solid var(--diff-del-border); color: #fecaca; }
+    .diff-line.context { color: #94a3b8; }
+
+    /* Collapsible */
+    details { margin-bottom: 1rem; }
+    summary {
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+      background: #141b26;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      font-weight: 600;
+      color: #f1f5f9;
+      user-select: none;
+    }
+    summary:hover { background: #1a2332; }
+    details[open] summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+    details .diff-block { margin-top: 0; border-top-left-radius: 0; border-top-right-radius: 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div>
+        <span class="badge badge-git">Commit d109a15</span>
+        <span class="badge badge-wip">test: 轉移進度</span>
+      </div>
+      <h1>裝甲多邊形重建 (Armor Facets) 管線升級報告</h1>
+      <div class="meta">
+        <span>👤 提交者：<strong>wuharry</strong></span>
+        <span>🕒 時間：2026-09-23 22:19:59 (+08:00)</span>
+        <span>📁 變更檔案：13 個</span>
+        <span>➕ 增加行數：136 行 / ➖ 刪除：9 行</span>
+      </div>
+    </header>
+
+    <!-- 1. 核心結論摘要 -->
+    <div class="card">
+      <div class="card-title">💡 一眼看懂：這個 Commit 改了什麼？</div>
+      <p style="font-size: 1rem; margin-bottom: 1rem;">
+        這是一個<strong>「裝甲幾何品質防呆與防破面升級」</strong>的進度提交。它解決了先前模型重製時「內部生成多餘廢面導致破面穿幫」、「法線頂點色走樣」與「改了腳本卻忘了重算模型」的三大痛點，並將 <strong>00 與 09 兩套裝甲的模型體積精簡了超過 50%</strong>。
+      </p>
+
+      <div class="pipeline">
+        <div class="pipeline-step">
+          <div class="step-num">STEP 1</div>
+          <div class="step-name">匯出 Raw 拓撲</div>
+          <div class="step-desc">export.gd 保留未倒角的乾淨表面，避免碎面。</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num">STEP 2</div>
+          <div class="step-name">BVH 射線過濾</div>
+          <div class="step-desc">thunder_body.py 只外推朝外裝甲，消除內部破面。</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num">STEP 3</div>
+          <div class="step-name">雜湊指紋防呆</div>
+          <div class="step-desc">compile.gd 檢查 build_state.json，拒絕過期模型。</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num">STEP 4</div>
+          <div class="step-name">產出輕量 .scn</div>
+          <div class="step-desc">00/09 套體積砍半，通過全套骨架動畫驗證。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 四大核心技術改動 -->
+    <div class="card">
+      <div class="card-title">⚙️ 4 大核心改動技術剖析</div>
+      <div class="grid-2">
+
+        <div class="highlight-box green">
+          <div class="highlight-title">1. BVH 射線判定（防止內層破面）</div>
+          <div class="highlight-text">
+            <strong>【問題】</strong> 舊演算法只要法線朝向大致向前就一律外推，連衣服或夾層背後的內面也被做成甲片，動作一跑就會破面。<br>
+            <strong>【解法】</strong> 建立 <code>BVHTree</code>，從物體外側往內打射線（Raycast）。只有直接暴露在外層、沒有被遮擋的三角形才會生成厚度外殼。
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <div class="highlight-title">2. 外推高度上限與邊界抑制（max_lift）</div>
+          <div class="highlight-text">
+            <strong>【問題】</strong> 弧度大的曲面上，外推會過度膨脹，讓原本俐落的輕甲看起來像浮空的塑膠殼。<br>
+            <strong>【解法】</strong> 引入 <code>fit_profile</code>，設定 <code>max_lift = 0.042</code> 與 <code>flatten = 0.30</code>，壓制高弧度區的暴衝高度，維持機械稜角感。
+          </div>
+        </div>
+
+        <div class="highlight-box yellow">
+          <div class="highlight-title">3. 精確頂點 UV 配對（保證法線與頂點色）</div>
+          <div class="highlight-text">
+            <strong>【問題】</strong> 舊版透過鄰近三角形重心內插計算法線與顏色，容易造成縫合處光影黑斑或貼圖顏色滲漏。<br>
+            <strong>【解法】</strong> 建立 <code>(point, uv)</code> 座標精確雜湊表。若能在原始模型找到完全一致的點與 UV，直接複製原始法線與顏色，零誤差還原。
+          </div>
+        </div>
+
+        <div class="highlight-box red">
+          <div class="highlight-title">4. 編譯前置指紋校驗（防過期與靜默失效）</div>
+          <div class="highlight-text">
+            <strong>【問題】</strong> 改了 Python 幾何演算法，但開發者忘了跑 Blender 重產 JSON 就直接編譯 Godot 場景，導致產出物不同步。<br>
+            <strong>【解法】</strong> <code>build_meshes.py</code> 計算來源程式碼的 SHA-256 並寫入 <code>build_state.json</code>。<code>compile.gd</code> 只要發現指紋不符直接中斷編譯報錯。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 3. 資產瘦身成效對比 -->
+    <div class="card">
+      <div class="card-title">📊 模型資產瘦身數據對照</div>
+      <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+        透過過濾塌陷的零面積無效三角形（Degenerate Triangles）與內層多餘幾何，二進位場景檔（.scn）容量大幅縮減：
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>裝甲編號</th>
+            <th>檔案路徑</th>
+            <th>改動前體積</th>
+            <th>改動後體積</th>
+            <th>瘦身幅度</th>
+            <th>品質驗收狀態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Armor 00 (毒蛇 Viper)</strong></td>
+            <td><code>assets/armors/angular/armor_00.scn</code></td>
+            <td>1,717,923 Bytes (1.64 MB)</td>
+            <td><strong>768,871 Bytes (750 KB)</strong></td>
+            <td class="size-down">-55.2% 🔻</td>
+            <td><span style="color: var(--success);">PASS</span> 骨架待機/奔跑全合規</td>
+          </tr>
+          <tr>
+            <td><strong>Armor 09</strong></td>
+            <td><code>assets/armors/angular/armor_09.scn</code></td>
+            <td>1,971,496 Bytes (1.88 MB)</td>
+            <td><strong>928,544 Bytes (906 KB)</strong></td>
+            <td class="size-down">-52.9% 🔻</td>
+            <td><span style="color: var(--success);">PASS</span> 骨架待機/奔跑全合規</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 4. 關鍵程式碼變更清單 -->
+    <div class="card">
+      <div class="card-title">🔍 核心檔案變更 Diff (點擊展開)</div>
+
+      <details open>
+        <summary>tools/armor_rework/thunder_body.py (BVH 射線過濾與外推上限)</summary>
+        <div class="diff-block">
+          <div class="diff-header">
+            <span>tools/armor_rework/thunder_body.py</span>
+            <span>+21 / -1</span>
+          </div>
+          <div class="diff-content">
+            <div class="diff-line context">@@ -64,6 +66,10 @@ def _Shells:</div>
+            <div class="diff-line add">+        outer_tree = None</div>
+            <div class="diff-line add">+        if self.fit_profile.get('outer_surface_only', False):</div>
+            <div class="diff-line add">+            outer_tree = BVHTree.FromPolygons(source.coords,</div>
+            <div class="diff-line add">+                [tuple(t.vertices) for t in source.triangles], all_triangles=True)</div>
+            <div class="diff-line context">         if 'abdomen rib' not in name:</div>
+            <div class="diff-line context">@@ -85,6 +91,12 @@ def _Shells:</div>
+            <div class="diff-line add">+            if outer_tree is not None:</div>
+            <div class="diff-line add">+                center = sum((source.coords[i] for i in triangle.vertices), Vector()) / 3</div>
+            <div class="diff-line add">+                ray_origin = center + Vector((0, 0, direction * 10))</div>
+            <div class="diff-line add">+                hit, _, _, _ = outer_tree.ray_cast(ray_origin, Vector((0, 0, -direction)), 20)</div>
+            <div class="diff-line add">+                if hit is None or abs(hit.z - center.z) > .0001:</div>
+            <div class="diff-line add">+                    continue  # 忽略內層被遮蔽面！</div>
+            <div class="diff-line context">@@ -264,6 +278,9 @@ def _Shells:</div>
+            <div class="diff-line add">+            lift_limit = self.fit_profile.get('max_lift', 0.0)</div>
+            <div class="diff-line add">+            if lift_limit > 0:</div>
+            <div class="diff-line add">+                cap_point.z = point.z + direction * max(0.0, min(lift_limit, direction * (cap_point.z - point.z)))</div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>tools/armor_facets/compile.gd (指紋過期校驗)</summary>
+        <div class="diff-block">
+          <div class="diff-header">
+            <span>tools/armor_facets/compile.gd</span>
+            <span>+12 / -0</span>
+          </div>
+          <div class="diff-content">
+            <div class="diff-line context">@@ -75,6 +81,9 @@ func _preflight(selected: Array[int]) -> bool:</div>
+            <div class="diff-line add">+	var fingerprints := {}</div>
+            <div class="diff-line add">+	for path: String in ["tools/armor_facets/build_meshes.py", "tools/armor_rework/thunder_body.py", "test_output/armor_facets/sources.json"]:</div>
+            <div class="diff-line add">+		fingerprints[path] = FileAccess.get_sha256("res://" + path)</div>
+            <div class="diff-line context"> 	for id: int in Catalog.SET_NAMES.size():</div>
+            <div class="diff-line context">@@ -85,6 +94,9 @@ func _preflight(selected: Array[int]) -> bool:</div>
+            <div class="diff-line add">+			if not build_state.has(key) or build_state[key] != fingerprints:</div>
+            <div class="diff-line add">+				baseline.free()</div>
+            <div class="diff-line add">+				return _invalid("Stale geometry; rebuild before compiling: " + key)</div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>tools/armor_facets/capture.gd (實戰關卡自動截圖驗收)</summary>
+        <div class="diff-block">
+          <div class="diff-header">
+            <span>tools/armor_facets/capture.gd</span>
+            <span>+44 / -2</span>
+          </div>
+          <div class="diff-content">
+            <div class="diff-line context">@@ -148,6 +153,43 @@ func _run() -> void:</div>
+            <div class="diff-line add">+func _capture_levels() -> void:</div>
+            <div class="diff-line add">+	# 建立獨立 SubViewport，自動進入第 1、3 關加載真實場景</div>
+            <div class="diff-line add">+	# 在戰鬥與檢查視角下分別截圖，供人眼比對光影、材質與貼圖正常度</div>
+            <div class="diff-line add">+	for sample: Array in [[0, 1], [9, 3], [21, 1], [28, 3]]:</div>
+            <div class="diff-line add">+		var world := (load("res://scenes/game.tscn") as PackedScene).instantiate()</div>
+            <div class="diff-line add">+		...</div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- 5. 測試現狀與修復路徑 -->
+    <div class="card" style="border-left: 4px solid var(--warning);">
+      <div class="card-title" style="color: var(--warning);">⚠️ 為什麼 angular_armor_test 目前會報錯？</div>
+      <p style="font-size: 0.9rem; margin-bottom: 0.8rem;">
+        因為本 commit 的目的是<strong>「轉移開發中的演算法進度」</strong>。測試腳本 <code>angular_armor_test.gd</code> 預設預期 32 套裝甲必須<strong>全部生成完成</strong>，且商店預覽寫死了檢查第 21 與 28 套。但目前硬碟中僅烘焙了 00 與 09 兩套。
+      </p>
+      <div class="highlight-box">
+        <strong>解法：</strong> 修改測試腳本，改為「只驗證目前已存在的套裝」（或傳入 <code>--ids=0,9</code>），這樣在推進新模型烘焙的過渡期內，測試就能立即轉為綠燈 PASS，同時持續守護已完成的套裝！
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
