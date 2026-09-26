@@ -1,0 +1,51 @@
+SFX PACK — 從零合成的遊戲音效
+==============================
+
+全部音效都是 generate_sfx.py 用程式從零合成的（噪音、正弦波、濾波器、殘響），
+沒有取樣任何現成錄音或遊戲音效。格式：WAV / 單聲道 / 44.1 kHz / 16-bit。
+單聲道是刻意的：引擎做 2D/3D 定位音效時，單聲道最好用。
+
+試聽：解壓縮後用瀏覽器打開 preview.html。
+
+對照表（檔名沿用你列的命名風格：名稱 + SFX）
+------------------------------------------------
+footstep_tile1SFX      -> footsteps/footstep_tile1SFX ~ footstep_tile6SFX   (6 個變體)
+crateHit3SFX           -> crates/crateHit1SFX ~ crateHit5SFX                (1 輕 ... 5 重)
+turretActivatedSFX     -> machines/turretActivatedSFX
+sonarSFX               -> alerts/sonarSFX
+warningSelfDestructSFX -> alerts/warningSelfDestructSFX                     (兩音警報，約 3 秒)
+shellCasing2SFX ...    -> casings/shellCasing1SFX ~ shellCasing10SFX
+                          1-4 手槍殼 / 5-8 步槍殼 / 9-10 霰彈殼
+武器                   -> weapons/<武器><動作>SFX
+                          武器：pistol smg rifle shotgun sniper
+                          動作：Fire1 Fire2 Fire3 (開火 3 個變體)
+                                Chamber (上膛 / 拉槍機 / 抽滑套 / 栓動)
+                                Reload  (換彈；shotgunReload 是「一發」子彈，依彈量重複播)
+                                Empty   (空槍撞針聲)
+
+同一類有多個編號的檔案是「變體」，遊戲裡每次隨機挑一個播，才不會聽起來像同一個聲音在重複。
+
+音量
+----
+每一類已經正規化到固定峰值（槍聲 -1 dB、木箱 -3 dB、槍械操作 -6 dB、腳步 -8 dB、彈殼 -10 dB），
+彼此的大小關係只是起點，實際混音請在引擎裡調。
+
+重新產生 / 調音色
+-----------------
+先安裝套件（一次就好）：
+  macOS:    pip3 install numpy scipy
+  Windows:  py -m pip install numpy scipy
+
+產生：
+  macOS:    python3 generate_sfx.py sfx_pack
+  Windows:  py generate_sfx.py sfx_pack
+
+檔名就是亂數種子，所以重跑會得到一模一樣的結果；想換一版就改檔名裡的編號。
+
+調音速查（都在 generate_sfx.py 裡）：
+  槍聲太悶     -> GUN_PARAMS 的 body_f1、crack_gain 調高
+  槍聲太尖     -> crack_gain、body_f0 調低
+  想更低沉有力 -> thump_gain 調高，或把 thump 的起始/結束頻率往下調
+  殘響太多/少  -> wet；房間大小 -> rt60
+  彈殼太亮     -> shell_casing() 裡 f0 的範圍往下調
+  腳步太脆     -> footstep_tile() 裡 click 的權重(0.5) 往下調
