@@ -2,7 +2,7 @@
 
 Run Blender 5.1 --background --python tools/enemy_concept/build_warrior.py.
 Only writes the concept warrior model and its scratch diagnostics; source assets
-and the supplied warrior_albedo.png are read-only inputs.
+and the supplied warrior_chitin_v2.png are read-only inputs.
 """
 import bpy
 import json
@@ -18,7 +18,7 @@ SCRATCH = ROOT / 'test_output/enemy_concept_runtime/model_build'
 DEST.mkdir(parents=True, exist_ok=True)
 SCRATCH.mkdir(parents=True, exist_ok=True)
 (SCRATCH / '.gdignore').write_text('')
-ALBEDO = DEST / 'warrior_albedo.png'
+ALBEDO = DEST / 'warrior_chitin_v2.png'
 albedo_hash_before = hashlib.sha256(ALBEDO.read_bytes()).hexdigest()
 doc = json.loads(SOURCE.read_text(encoding='utf-8'))
 for key in ('extensionsRequired', 'extensionsUsed'):
@@ -72,8 +72,8 @@ for side, sign in [('L', -1), ('R', 1)]:
         name = f'Scythe_{side}{i+1:02d}'
         new_specs[name] = {'head': points[i], 'tail': points[i+1],
                            'parent': 'Bone' if i == 0 else f'Scythe_{side}{i:02d}', 'old_parent': 'Bone'}
-    new_specs[f'Mandible_{side}'] = {'head': Vector((sign*.20, .94, 1.03)),
-        'tail': Vector((sign*.36, 1.29, .82)), 'parent': 'Bone head01', 'old_parent': 'Bone head01'}
+    new_specs[f'Mandible_{side}'] = {'head': Vector((sign*.245, 1.08, 1.04)),
+        'tail': Vector((sign*.45, 1.16, .78)), 'parent': 'Bone head01', 'old_parent': 'Bone head01'}
 bpy.context.view_layer.objects.active = rig
 rig.select_set(True)
 bpy.ops.object.mode_set(mode='EDIT')
@@ -113,9 +113,10 @@ shell.node_tree.links.new(tex.outputs['Color'], shell.node_tree.nodes['Principle
 shell.node_tree.links.new(tex.outputs['Color'], shell.node_tree.nodes['Principled BSDF'].inputs['Emission Color'])
 shell.node_tree.nodes['Principled BSDF'].inputs['Emission Strength'].default_value = .60
 dark = material('warrior_recess', (.035,.012,.02))
-gold = material('warrior_chitin_ridge', (.26,.105,.035))
-purple = material('warrior_purple_fissure', (.29,.018,.45), .40)
-green = material('warrior_six_green_eyes', (.08,.55,.018), .45)
+gold = material('warrior_chitin_ridge', (.12,.055,.028))
+purple = material('warrior_purple_fissure', (.23,.012,.36), .22)
+green = material('warrior_six_green_eyes', (.06,.48,.012), .60)
+green.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = .32
 materials = [shell, dark, gold, purple, green]
 
 verts, faces, weights, face_mats, uv_faces = [], [], [], [], []
@@ -134,7 +135,9 @@ def append_part(name, local_verts, local_faces, bone, mat=0, uv_mode='shell', uv
         else:
             # New pieces explicitly map into the clean large central chitin tile.
             coords = [(.36 + .18*(i % 7)/6, .36 + .18*((i//7) % 7)/6) for i in face]
-        uv_faces.append(coords)
+        # The v2 swatch contains material grain only. Spread the old tile-local
+        # coordinates across it; anatomical detail now belongs to the mesh.
+        uv_faces.append([(.06+.88*(u-.36)/.18, .06+.88*(v-.36)/.18) for u,v in coords])
     part_ranges[name] = {'vertex_start': start, 'vertex_count': len(local_verts), 'bone': bone,
                          'triangle_count': sum(len(f)-2 for f in local_faces)}
 
@@ -182,15 +185,78 @@ def tube(name, points, radii, bone, mat=0, sides=6, flatten=1.0):
 def spike(name, base, tip, radius, bone, mat=0):
     tube(name,[base,tip],[radius,.001],bone,mat,sides=4)
 
+def blade(name, points, widths, depths, bone, mat=0, steps=3):
+    """Continuous curved chitin, with a broad front and a bevelled cutting edge.
+
+    The section stays in the XZ blade plane rather than rolling with the curve.
+    Catmull-Rom stations round the contour without subdividing the whole rig.
+    """
+    p = [Vector(v) for v in points]
+    samples = []
+    for j in range(len(p)-1):
+        a,b,c,d = p[max(0,j-1)],p[j],p[j+1],p[min(j+2,len(p)-1)]
+        for k in range(steps):
+            t=k/steps
+            point=.5*((2*b)+(-a+c)*t+(2*a-5*b+4*c-d)*t*t+(-a+3*b-3*c+d)*t*t*t)
+            samples.append((point,widths[j]*(1-t)+widths[j+1]*t,depths[j]*(1-t)+depths[j+1]*t))
+    samples.append((p[-1], widths[-1], depths[-1]))
+    v,f,uv=[],[],[]
+    section=[(-1,0),(-.78,.65),(0,1),(.78,.65),(1,0),(.78,-.65),(0,-1),(-.78,-.65)]
+    for j,(point,width,depth) in enumerate(samples):
+        tangent=samples[min(j+1,len(samples)-1)][0]-samples[max(j-1,0)][0]
+        across=Vector((-tangent.z,0,tangent.x)).normalized()
+        for i,(x,y) in enumerate(section):
+            v.append(point+across*width*x+Vector((0,depth*y,0)))
+            uv.append((.36+.18*i/7,.36+.18*j/(len(samples)-1)))
+    bevel_start=len(face_mats)
+    for j in range(len(samples)-1):
+        for i in range(8):
+            f.append((j*8+i,j*8+(i+1)%8,(j+1)*8+(i+1)%8,(j+1)*8+i))
+    f += [tuple(reversed(range(8))),tuple((len(samples)-1)*8+i for i in range(8))]
+    append_part(name,v,f,bone,mat,uvs=uv)
+    if mat==0:
+        # Two narrow sides of the cross-section are actual cutting bevels.
+        # Give them a separate chitin tone instead of painting bright UV bands.
+        for j in range(len(samples)-1):
+            for i in (0,3,4,7):face_mats[bevel_start+j*8+i]=2
+
+def dorsal_plate(name, y, z, width, length, bone):
+    """An overlapping arched plate, not a bead sitting on the abdomen."""
+    v,f,uv=[],[],[]
+    for layer in range(2):
+        for j in range(4):
+            t=j/3
+            for i in range(13):
+                a=-2.0+4.0*i/12
+                inset=.018*layer
+                v.append(((width*(1-.10*t)-inset)*math.sin(a),
+                          y+length*(.5-t)-.045*abs(math.sin(a))**1.5*t,
+                          z-.20+(.37-inset)*math.cos(a)+.025*math.sin(t*math.pi)))
+                uv.append((.36+.18*i/12,.36+.18*t))
+    for layer in range(2):
+        for j in range(3):
+            for i in range(12):
+                a=layer*52+j*13+i
+                face=(a,a+13,a+14,a+1)
+                f.append(face if layer==0 else tuple(reversed(face)))
+    perimeter=list(range(13))+[j*13+12 for j in range(1,4)]+list(range(50,38,-1))+[26,13]
+    for i,a in enumerate(perimeter):
+        b=perimeter[(i+1)%len(perimeter)]
+        f.append((a,b,b+52,a+52))
+    append_part(name,v,f,bone,0,uvs=uv)
+
 # Thorax and segmented abdomen replace the old mammalian/dragon-face shell.
-ellipsoid('thorax',(0,.12,.91),(.38,.43,.36),'Bone',1,seg=10,rings=5)
-ellipsoid('abdomen',(0,-.67,.80),(.42,.76,.33),'Bone',1,seg=10,rings=5)
+ellipsoid('thorax',(0,.12,.91),(.33,.40,.29),'Bone',1,seg=12,rings=6)
+ellipsoid('abdomen',(0,-.67,.80),(.25,.69,.18),'Bone',1,seg=12,rings=6)
+for sign in (-1,1):
+    ellipsoid(f'thorax_side_carapace_{sign}',(sign*.25,.18,.87),(.15,.39,.26),'Bone',0,seg=12,rings=6)
 for i in range(5):
     y=-.10-i*.27
     width=.46-i*.045
     z=1.04-i*.043
-    ellipsoid(f'abdomen_plate_{i}',(0,y,z),(width,.25,.20),'Bone',0,seg=8,rings=4)
-    tube(f'abdomen_glow_{i}',[(-width*.8,y-.14,z+.10),(0,y-.21,z+.16),(width*.8,y-.14,z+.10)],[.017,.021,.017],'Bone',3,sides=4)
+    dorsal_plate(f'abdomen_plate_{i}',y,z,width,.39,'Bone')
+    arc=[-1.5+3*j/8 for j in range(9)]
+    tube(f'abdomen_glow_{i}',[(width*.904*math.sin(a),y-.1794-.0432*abs(math.sin(a))**1.5,z-.20+.373*math.cos(a)+.0031) for a in arc],[.004]*9,'Bone',3,sides=6)
     spike(f'dorsal_spine_{i}',(0,y,z+.14),(0,y-.14,z+.39),.07,'Bone',0)
 spike('tail',(0,-1.24,.78),(0,-1.72,.91),.16,'Bone',0)
 
@@ -203,56 +269,139 @@ for side, sign in [('l',-1),('r',1)]:
             a,b=points[j],points[j+1]
             mid=a.lerp(b,.5)
             radius=[.12,.145,.14][j]
-            tube(f'walking_{side}_{limb}_{j}',[a,mid,b],[radius*.62,radius,.025 if j==2 else radius*.55],chain[j],0,sides=6)
+            tube(f'walking_{side}_{limb}_{j}',[a,a.lerp(b,.25),mid,a.lerp(b,.8),b],[radius*.68,radius*.91,radius,radius*.65,.018 if j==2 else radius*.64],chain[j],0,sides=8)
             if j>0:
                 spike(f'leg_spine_{side}_{limb}_{j}',mid,mid+Vector((sign*.12,0,.24)),.065,chain[j],0)
                 tube(f'leg_glow_{side}_{limb}_{j}',[mid+Vector((0,.09,.01)),b.lerp(mid,.7)+Vector((0,.07,.01))],[.018,.012],chain[j],3,sides=4)
-        ellipsoid(f'leg_joint_{side}_{limb}',points[2],(.13,.12,.12),chain[2],1,seg=8,rings=4)
+        ellipsoid(f'leg_joint_{side}_{limb}',points[2],(.12,.11,.11),chain[2],1,seg=12,rings=6)
 
-# A tall faceted triangular hood with an actual recessed six-eye face below it.
+# A thick continuous hood wraps OVER an inset face. Its lower edge is an
+# actual arch, so the six-eye face is not a flat disc stuck onto a closed cone.
+hood_outer=[(-.44,.55,.99),(-.61,.42,1.23),(-.54,.20,1.62),(-.31,-.02,1.91),
+            (0,-.16,2.06),(.31,-.02,1.91),(.54,.20,1.62),(.61,.42,1.23),(.44,.55,.99)]
+hood_inner=[(-.29,1.05,.98),(-.35,1.14,1.14),(-.30,1.21,1.34),(-.16,1.25,1.48),
+            (0,1.26,1.53),(.16,1.25,1.48),(.30,1.21,1.34),(.35,1.14,1.14),(.29,1.05,.98)]
+def hood_point(index,t):
+    lo=max(0,min(7,int(index))); w=index-lo
+    outer=Vector(hood_outer[lo]).lerp(Vector(hood_outer[lo+1]),w)
+    inner=Vector(hood_inner[lo]).lerp(Vector(hood_inner[lo+1]),w)
+    return outer.lerp(inner,t)+Vector((0,.075*math.sin(math.pi*t),0))
 hood_v,hood_f,hood_uv=[],[],[]
-levels=[(1.02,.44,.38,.39),(1.44,.47,.54,.43),(1.78,.30,.28,.29),(2.00,.16,.025,.06)]
-for j,(z,cy,rx,ry) in enumerate(levels):
-    for i in range(8):
-        ang=2*math.pi*i/8
-        hood_v.append((rx*math.cos(ang),cy+ry*math.sin(ang),z))
-        hood_uv.append((.36+.18*i/7,.36+.18*j/3))
-for j in range(3):
-    for i in range(8): hood_f.append((j*8+i,j*8+(i+1)%8,(j+1)*8+(i+1)%8,(j+1)*8+i))
-hood_f.append(tuple(reversed(range(8))))
-hood_f.append(tuple(24+i for i in range(8)))
-append_part('triangular_hood',hood_v,hood_f,'Bone head01',0,uvs=hood_uv)
-for side,sign in [('L',-1),('R',1)]:
-    tube('hood_ridge_'+side,[(0,.23,1.99),(sign*.31,.58,1.70),(sign*.48,.71,1.30),(sign*.31,.80,1.03)],[.017,.032,.031,.02],'Bone head01',2,sides=4)
-    tube('hood_fissure_'+side,[(sign*.22,.72,1.61),(sign*.38,.78,1.41),(sign*.39,.78,1.26)],[.018,.021,.012],'Bone head01',3,sides=4)
-ellipsoid('face_recess',(0,.88,1.16),(.285,.185,.27),'Bone head01',1,seg=10,rings=5)
-for row,(x,z) in enumerate([(.115,1.33),(.17,1.19),(.10,1.065)]):
+hood_rows,hood_cols=13,33
+for layer in range(2):
+    for j in range(hood_rows):
+        t=j/(hood_rows-1)
+        for i in range(hood_cols):
+            point=hood_point(8*i/(hood_cols-1),t)
+            if layer:point+=Vector((0,-.055,-.018))
+            hood_v.append(point)
+            hood_uv.append((.36+.18*i/(hood_cols-1),.36+.18*t))
+stride=hood_rows*hood_cols
+for layer in range(2):
+    for j in range(hood_rows-1):
+        for i in range(hood_cols-1):
+            a=layer*stride+j*hood_cols+i; face=(a,a+1,a+hood_cols+1,a+hood_cols)
+            hood_f.append(face if layer==0 else tuple(reversed(face)))
+# Roll over the brow, crown and cheek edges rather than drawing gold pipes.
+for i in range(hood_cols-1):
+    a=(hood_rows-1)*hood_cols+i; hood_f.append((a,a+stride,a+stride+1,a+1))
+    hood_f.append((i,i+1,i+stride+1,i+stride))
+for j in range(hood_rows-1):
+    for i in (0,hood_cols-1):
+        a=j*hood_cols+i;hood_f.append((a,a+hood_cols,a+hood_cols+stride,a+stride))
+append_part('arched_hood_shell',hood_v,hood_f,'Bone head01',0,uvs=hood_uv)
+# A narrow bevel on the actual brow edge, not a separate pipe silhouette.
+for i in range(hood_cols-1):
+    a=hood_point(8*i/(hood_cols-1),.95)
+    b=hood_point(8*(i+1)/(hood_cols-1),.95)
+    c=hood_point(8*(i+1)/(hood_cols-1),1)
+    d=hood_point(8*i/(hood_cols-1),1)
+    append_part(f'brow_bevel_{i}',[p+Vector((0,.004,0)) for p in (a,b,c,d)],[(0,1,2,3)],'Bone head01',2)
+# Rear chitin sweeps down into the neck, concealing the old exposed ball.
+back_v=[Vector(p) for p in hood_outer]+[Vector((0,-.30,1.40)),Vector((0,.31,.90))]
+back_f=[(i,i+1,9) for i in range(8)]+[(0,9,10),(9,8,10)]
+append_part('hood_rear_mantle',back_v,back_f,'Bone head01',0)
+for i in range(3):
+    ellipsoid(f'neck_overlapping_plate_{i}',(0,.38-i*.16,1.02-i*.09),(.36-i*.025,.22,.16),'Bone',0,seg=12,rings=5)
+for sign in (-1,1):
+    cheek=[(sign*.31,1.045,1.08),(sign*.47,.78,1.02),(sign*.45,.50,.95),
+           (sign*.34,.63,.72),(sign*.23,.92,.81),(sign*.31,1.06,.94),
+           (sign*.40,.86,.95)]
+    append_part(f'cheek_carapace_{sign}',cheek,[(i,(i+1)%6,6) for i in range(6)],'Bone head01',0)
+# Flush, pointed sensory insets follow the same surface as the hood.
+for index in (1.3,2.6,5.4,6.7):
+    for suffix,spread,mat,offset in [('recess',.20,1,.003),('glow',.115,3,.007)]:
+        points,polys=[],[]
+        for j in range(9):
+            t=.24+.42*j/8
+            half=spread*(1-abs(j-4)/4)
+            for q in (-1,0,1):
+                i=index+q*half
+                di=hood_point(i+.001,t)-hood_point(i-.001,t)
+                dt=hood_point(i,t+.001)-hood_point(i,t-.001)
+                normal=di.cross(dt).normalized()
+                if normal.y<0:normal=-normal
+                points.append(hood_point(i,t)+normal*offset)
+        for j in range(8):
+            for k in range(2):polys.append((j*3+k,j*3+k+1,(j+1)*3+k+1,(j+1)*3+k))
+        append_part(f'hood_inset_{index}_{suffix}',points,polys,'Bone head01',mat)
+# A tapered insect face, curved in both axes and sloping back beneath the brow.
+face_levels=[(.83,.045,1.08,.94),(.94,.145,1.16,.86),(1.08,.245,1.20,.85),
+             (1.22,.28,1.205,.85),(1.36,.23,1.17,.88),(1.48,.105,1.12,.94),(1.52,.035,1.06,.99)]
+face_v,face_f,face_uv=[],[],[]
+for j,(z,width,front,back) in enumerate(face_levels):
+    for i in range(16):
+        a=2*math.pi*i/16
+        face_v.append((width*math.cos(a),(front+back)/2+(front-back)/2*math.sin(a),z))
+        face_uv.append((.36+.18*i/15,.36+.18*j/(len(face_levels)-1)))
+for j in range(len(face_levels)-1):
+    for i in range(16):face_f.append((j*16+i,j*16+(i+1)%16,(j+1)*16+(i+1)%16,(j+1)*16+i))
+face_f += [tuple(reversed(range(16))),tuple((len(face_levels)-1)*16+i for i in range(16))]
+append_part('tapered_insect_face',face_v,face_f,'Bone head01',0,uvs=face_uv)
+def face_surface_y(x,z):
+    for a,b in zip(face_levels,face_levels[1:]):
+        if a[0]<=z<=b[0]:
+            t=(z-a[0])/(b[0]-a[0]); width=a[1]*(1-t)+b[1]*t
+            front=a[2]*(1-t)+b[2]*t;back=a[3]*(1-t)+b[3]*t
+            return (front+back)/2+(front-back)/2*math.sqrt(max(0,1-(x/width)**2))
+    raise ValueError('Eye outside face surface')
+for row,(x,z) in enumerate([(.105,1.345),(.205,1.205),(.115,1.075)]):
     for side,sign in [('L',-1),('R',1)]:
-        center=(sign*x,1.028,z)
-        ellipsoid(f'eye_socket_{side}_{row}',center,(.079,.047,.08),'Bone head01',2,seg=8,rings=4)
-        ellipsoid(f'green_eye_{side}_{row}',(sign*x,1.069,z),(.052,.036,.055),'Bone head01',4,seg=8,rings=4)
-        ellipsoid(f'eye_core_{side}_{row}',(sign*x,1.102,z),(.019,.009,.024),'Bone head01',1,seg=6,rings=3)
+        y=face_surface_y(x,z)
+        ellipsoid(f'eye_socket_{side}_{row}',(sign*x,y-.002,z),(.061,.024,.069),'Bone head01',1,seg=12,rings=6)
+        ellipsoid(f'green_eye_{side}_{row}',(sign*x,y+.006,z),(.040,.024,.048),'Bone head01',4,seg=16,rings=8)
+# Overlapping throat scutes cover the thorax exposed below the mouth.
+for j,(z,y,width) in enumerate([(.79,.94,.27),(.66,.81,.24),(.56,.66,.20)]):
+    points=[(-width,y,z+.06),(0,y+.025,z+.11),(width,y,z+.06),
+            (width*.66,y+.025,z-.055),(0,y+.05,z-.09),(-width*.66,y+.025,z-.055),(0,y+.075,z+.005)]
+    append_part(f'throat_scute_{j}',points,[(i,(i+1)%6,6) for i in range(6)],'Bone head01',0)
+# Short central mouth with chitin palps; there is no bare spherical chin.
+ellipsoid('mouth_cavity',(0,1.135,.925),(.09,.02,.085),'Bone head01',1,seg=12,rings=5)
+for sign in (-1,1):
+    blade(f'mouth_palp_{sign}',[(sign*.072,1.157,1.01),(sign*.065,1.19,.945),(sign*.027,1.20,.88)],[.03,.023,.001],[.017,.014,.001],'Bone head01',2,steps=3)
 
 # Paired long hooked scythes: three real articulated bones per side.
 for side,sign in [('L',-1),('R',1)]:
     for j in (1,2):
         spec=new_specs[f'Scythe_{side}{j:02d}']
         a,b=spec['head'],spec['tail']
-        tube(f'scythe_arm_{side}_{j}',[a,a.lerp(b,.45),b],[.09,.145 if j==2 else .12,.085],f'Scythe_{side}{j:02d}',0,sides=6)
+        tube(f'scythe_arm_{side}_{j}',[a,a.lerp(b,.45),b],[.105,.145 if j==2 else .12,.095],f'Scythe_{side}{j:02d}',0,sides=10)
         ellipsoid(f'scythe_joint_{side}_{j}',a,(.12,.11,.11),f'Scythe_{side}{j:02d}',1,seg=8,rings=4)
         tube(f'arm_fissure_{side}_{j}',[a.lerp(b,.2)+Vector((0,.105,0)),a.lerp(b,.75)+Vector((0,.105,0))],[.018,.021],f'Scythe_{side}{j:02d}',3,sides=4)
     hook=[(sign*.96,.31,2.35),(sign*1.02,.37,2.55),(sign*.99,.55,2.77),
           (sign*.84,.77,2.91),(sign*.64,.98,2.92),(sign*.44,1.15,2.82),(sign*.31,1.27,2.64),(sign*.25,1.33,2.47)]
-    tube('scythe_hook_'+side,hook,[.15,.17,.19,.18,.15,.10,.055,.001],f'Scythe_{side}03',0,sides=6,flatten=.52)
-    tube('scythe_glow_'+side,[(x,y+.095,z) for x,y,z in hook[1:6]],[.016]*5,f'Scythe_{side}03',3,sides=4)
+    blade('scythe_hook_'+side,hook,[.15,.17,.19,.18,.15,.10,.055,.001],[.045,.05,.06,.058,.045,.035,.018,.001],f'Scythe_{side}03',0,steps=3)
+    tube('scythe_glow_'+side,[(x,y+.095,z) for x,y,z in hook[1:6]],[.008]*5,f'Scythe_{side}03',3,sides=6)
     for j in (1,2,3,4):
         p=Vector(hook[j])
         spike(f'scythe_barb_{side}_{j}',p,p+Vector((sign*.05,-.09,.16)),.049,f'Scythe_{side}03',0)
-    jaw=[(sign*.20,.94,1.03),(sign*.35,1.12,.98),(sign*.43,1.28,.83),(sign*.34,1.43,.67),(sign*.16,1.48,.64),(sign*.055,1.43,.76)]
-    tube('mandible_'+side,jaw,[.10,.105,.095,.075,.04,.001],f'Mandible_{side}',0,sides=6,flatten=.62)
+    jaw=[(sign*.245,1.08,1.04),(sign*.395,1.10,1.005),(sign*.49,1.14,.885),
+         (sign*.49,1.19,.72),(sign*.39,1.24,.595),(sign*.24,1.265,.535),(sign*.20,1.25,.63)]
+    ellipsoid('jaw_root_'+side,jaw[0],(.125,.10,.14),f'Mandible_{side}',0,seg=12,rings=6)
+    blade('mandible_'+side,jaw,[.09,.125,.125,.105,.073,.028,.001],[.061,.068,.066,.052,.036,.017,.001],f'Mandible_{side}',0,steps=3)
     for j in (1,2,3):
-        p=Vector(jaw[j])
-        spike(f'mandible_tooth_{side}_{j}',p,p+Vector((-sign*.13,.02,.055)),.031,f'Mandible_{side}',2)
+        p=Vector(jaw[j]); p.x-=sign*.07
+        spike(f'mandible_tooth_{side}_{j}',p,p+Vector((-sign*.12,.008,.005 if j==1 else .042)),.040,f'Mandible_{side}',2)
 
 mesh=bpy.data.meshes.new('warrior_concept_geometry')
 mesh.from_pydata(verts,[],faces)
@@ -331,7 +480,7 @@ bpy.ops.export_scene.gltf(**args)
 export_doc=json.loads((DEST/'warrior.gltf').read_text())
 for image in export_doc.get('images',[]):
     # Portable URI: supplied atlas already exists beside the model, never rewritten.
-    image['uri']='warrior_albedo.png'
+    image['uri']=ALBEDO.name
 assert len(export_doc.get('images', [])) == 1, 'Expected exactly one atlas image'
 assert export_doc['materials'][0]['pbrMetallicRoughness'].get('baseColorTexture'), 'Chitin texture was not exported'
 assert sorted(a['name'] for a in export_doc.get('animations', [])) == sorted(clip_names), 'Source animation names were lost'
@@ -348,7 +497,7 @@ report={'source':str(SOURCE.relative_to(ROOT)),'output':str((DEST/'warrior.gltf'
  'original_bones':original_bones,'added_bones':list(new_specs),'bone_count':len(rig.data.bones),
  'vertex_count':len(mesh.vertices),'triangle_count':len(mesh.loop_triangles),'mesh_count':1,
  'parts':part_ranges,'clips':animation_report,'export_clips':[a['name'] for a in export_doc.get('animations',[])],
- 'materials':[m.name for m in materials],'albedo_sha256':albedo_hash_before,
+ 'materials':[m.name for m in materials],'albedo_path':ALBEDO.relative_to(ROOT).as_posix(),'albedo_sha256':albedo_hash_before,
  'albedo_unchanged':hashlib.sha256(ALBEDO.read_bytes()).hexdigest()==albedo_hash_before,
  'scope':'Runtime prototype; preserves recovered source rig/animations, no rights-clean claim.'}
 (SCRATCH/'build_report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')

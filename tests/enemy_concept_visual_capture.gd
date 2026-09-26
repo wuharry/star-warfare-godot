@@ -82,7 +82,8 @@ func _release_scene(node: Node) -> void:
 	AudioDirector.stop_all_sfx()
 	await get_tree().process_frame
 	await get_tree().process_frame
-	await RenderingServer.frame_post_draw
+	# With the last camera freed, rendering may stop until the next stage exists.
+	# Waiting for a rendered frame here would strand the capture between stages.
 
 
 func _build_stage() -> void:
@@ -209,9 +210,23 @@ func _run() -> void:
 				camera.look_at(focus, Vector3.UP)
 				caption.text = "%s  |  crawler / warrior  |  %s %.0f%%  |  %s" % ["ORIGINAL BASELINE" if index == 0 else "CONCEPT PROTOTYPE", clip, fraction * 100.0, view.to_upper()]
 				await _save("%s_%s_%s.png" % [variant, clip, view], {"variant": variant, "clip": clip, "fraction": fraction, "view": view, "scene": enemy.recovered_enemy.scene_file_path, "orthographic_size": framing_size})
+	# A fixed close-up reveals the forehead/eye/jaw connection that full-body
+	# captures hide. Include the jaw tips in the refined version's framing.
+	for specimen in specimens:
+		specimen.visible = specimen == specimens[1]
+	_pose(specimens[1], "idle", 0.0)
+	var head_focus := Vector3(0.0, 0.94, -0.57)
+	camera.size = 1.40
+	for view: String in ["front", "side", "threequarter"]:
+		var offset: Vector3 = {"front": Vector3(0, 0.12, -6), "side": Vector3(6, 0.12, 0), "threequarter": Vector3(4.0, 0.65, -6.0)}[view]
+		camera.position = head_focus + offset
+		camera.look_at(head_focus, Vector3.UP)
+		caption.text = "WARRIOR HEAD DETAIL  |  idle  |  %s" % view.to_upper()
+		await _save("after_head_%s.png" % view, {"variant": "after", "clip": "idle", "view": "head_" + view, "scene": specimens[1].recovered_enemy.scene_file_path, "orthographic_size": camera.size})
 	specimens.clear()
 	await _release_scene(stage)
-	await _capture_gameplay()
+	if "--art-only" not in OS.get_cmdline_user_args():
+		await _capture_gameplay()
 	await get_tree().process_frame
 	_build_stage()
 	for index in range(specimens.size()):
