@@ -8,7 +8,7 @@
 | --- | --- |
 | 遊戲種類 | `crawler` |
 | 復原來源 | `Monster ID 0 / bug01 / Warrior` |
-| 概念依據 | [01_mantis_turnaround.jpg](../warrior_bug_concept/images/01_mantis_turnaround.jpg) |
+| 概念依據 | [01_mantis_turnaround.jpg](../enemy_art/images/warrior_bug_concept__images__01_mantis_turnaround.jpg) |
 | 原模型 | `assets/models/enemies/animated/bug01/bug01.gltf` |
 | 本版模型 | `assets/models/enemies/concept/warrior/warrior.gltf` |
 | 本版貼圖 | `assets/models/enemies/concept/warrior/warrior_albedo.png` |
