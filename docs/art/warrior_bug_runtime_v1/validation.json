@@ -1,27 +1,14 @@
 {
-  "date": "2026-09-26",
+  "date": "2026-09-27",
   "branch": "codex/original-armor-design",
-  "scope": "crawler / warrior head and carapace polish v2",
+  "scope": "warrior palette and head emphasis",
   "checks": [
     {
       "name": "enemy_concept_test",
       "status": "PASS",
-      "summary": "ENEMY_CONCEPT_TEST_PASS checks=126 rays=27 extra_bones=8 original_bones=22 texture=true baseline=true",
+      "summary": "ENEMY_CONCEPT_TEST_PASS checks=127 rays=27 extra_bones=8 original_bones=22 texture=true baseline=true",
       "warnings": 0,
       "errors": 0
-    },
-    {
-      "name": "enemy_animation_test",
-      "status": "PASS_ASSERTIONS_EXIT_WARNING",
-      "summary": "ENEMY_ANIMATION_TEST_PASS enemies=4",
-      "warnings": 1,
-      "errors": 1,
-      "isolated_verbose_repeat": {
-        "status": "PASS",
-        "warnings": 0,
-        "errors": 0
-      },
-      "note": "First run overlapped viewport capture and reported 8 ObjectDB / 2 resource leaks at exit. Isolated verbose repeat did not reproduce. Cause not established; not claimed fixed."
     },
     {
       "name": "enemy_hull_lod_test",
@@ -31,24 +18,20 @@
       "errors": 0
     },
     {
-      "name": "enemy_hitbox_audio_test",
+      "name": "enemy_animation_test",
       "status": "PASS",
-      "summary": "ENEMY_HITBOX_AUDIO_TEST_PASS enemies=4 animated_shapes=true local_hit_light=true hud_kill_heavy=true no_duplicate_audio=true reload_assets=true",
-      "warnings": 0,
-      "errors": 0
-    },
-    {
-      "name": "smoke_test",
-      "status": "PASS",
-      "summary": "SMOKE_TEST_PASS",
+      "summary": "ENEMY_ANIMATION_TEST_PASS enemies=4",
       "warnings": 0,
       "errors": 0
     },
     {
       "name": "Blender model build",
       "status": "PASS",
-      "version": "5.1.0",
-      "note": "Exporter reports one Blender Material.use_nodes deprecation warning; eight clip names/durations and input texture SHA256 verified."
+      "vertices": 6554,
+      "triangles": 10912,
+      "clips": 8,
+      "albedo_unchanged": true,
+      "note": "One Blender 6.0 Material.use_nodes deprecation warning."
     },
     {
       "name": "Godot viewport capture",
@@ -65,41 +48,52 @@
     {
       "name": "review page local references",
       "status": "PASS",
-      "unique_paths": 31,
+      "unique_paths": 32,
       "pose_pairs": 8,
       "head_pairs": 3
     },
     {
-      "name": "review page browser visual and click verification",
+      "name": "browser visual verification",
       "status": "NOT RUN",
-      "reason": "Browser automation launch rejected by automatic approval review (blocked by policy); computer-use inventory has no available browsers, including iab."
-    },
-    {
-      "name": "harness generated snapshot",
-      "status": "FAIL",
-      "details": "13 pre-existing generated drift entries; no harness files changed",
-      "log": "harness.log"
+      "reason": "No browser available through computer-use in this session; local references and JavaScript syntax checked separately."
     },
     {
       "name": "large-wave performance benchmark",
       "status": "NOT RUN"
     },
     {
-      "name": "review page inline JavaScript syntax",
+      "name": "Forward+ and Mobile visual verification",
+      "status": "NOT RUN"
+    },
+    {
+      "name": "review page JavaScript syntax",
       "status": "PASS",
       "command": "node --check test_output/enemy_concept_runtime/review_script.js"
+    },
+    {
+      "name": "owned-path whitespace check",
+      "status": "PASS",
+      "command": "git diff --check -- tools/enemy_concept tests/enemy_concept_test.gd assets/models/enemies/concept/warrior docs/art/warrior_bug_runtime_v1"
+    },
+    {
+      "name": "harness generated-file consistency",
+      "status": "FAIL",
+      "existing_drift_count": 13,
+      "note": "Same pre-existing generated-file drift; no harness files modified in this task.",
+      "log": "validation_logs/palette_harness.log"
     }
   ],
   "artifacts": {
-    "assets/models/enemies/concept/warrior/warrior.gltf": "34d8cc45420fb8b260eb8a556e979eb36fececd343d735b47954486cea286b1a",
-    "assets/models/enemies/concept/warrior/warrior.bin": "c7d29ffc9f030d5f8f4aa83a33e36b4db99c39989be83099ccd6e80192160269",
+    "assets/models/enemies/concept/warrior/warrior.gltf": "6a5d1591ec57dcd19ba219871fb467990406beae007e3fb5c02d646dad6df9de",
+    "assets/models/enemies/concept/warrior/warrior.bin": "ff9cf3094c4d623545384982e918f10a603345d25c4501805c7f1ef43926886b",
+    "assets/models/enemies/concept/warrior/warrior.gltf.import": "ced644e54d7fa61b2c7ac77944224ea3ac3f47caafc082f4a74216102d26d770",
+    "assets/models/enemies/concept/warrior/chitin_palette.gdshader": "420fef1235df40834f1b7395eeb7210742c73df5a5fe737dda6d023cacad54cf",
     "assets/models/enemies/concept/warrior/warrior_chitin_v2.png": "d72dfd1e154a3832d023185d4a6d69644f479c133273092c3dd99e31331f4277",
-    "tools/enemy_concept/build_warrior.py": "6388def383cf72db55d5c5ac94db74dc302fdc09fc2d83bef233f121630f0ffa",
-    "tests/enemy_concept_visual_capture.gd": "9bd16744ba7d3ecfc4e542632952f7a7600aa335493e90929438e7de3b10ddc5"
+    "tools/enemy_concept/build_warrior.py": "1e493c0cbf55c0781991366b959187b4c929de5a9c0ae9d4ab84e4806c426e82",
+    "tools/enemy_concept/import_warrior.gd": "0b3826e5ab0a8884590146b2e01546c1cd7f5e28207d04204c2b6be2b3321a13",
+    "tools/enemy_concept/configure_import.gd": "7fb19fa1f030c38f10270c09c0cc1ffaa5cf039280a03f0bee559843408e7f72",
+    "tests/enemy_concept_test.gd": "b3c26d5aa63a0150d256e49006c53d3a9ba76d63be666757ddbb041eb2bb9c11",
+    "assets/models/enemies/concept/warrior/warrior_chitin_v2.png.import": "e7660f89f9ed94fee97e387a3c131322cd69986d32e497aef9e0224fd45a361c"
   },
-  "limitations": [
-    "美術仍待使用者確認。",
-    "保留復原骨架與原動畫，未跑大量敵人效能基準。",
-    "動畫測試首次退出有資源釋放訊息，單獨複驗未重現；未宣稱已修復。"
-  ]
+  "prior_validation": "Historical 2026-09-26 logs retained in validation_logs; current palette_* logs apply to this revision."
 }

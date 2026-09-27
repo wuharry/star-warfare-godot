@@ -1203,7 +1203,7 @@
     "run02"
   ],
   "materials": [
-    "warrior_chitin_atlas",
+    "warrior_chitin_palette_v3",
     "warrior_recess",
     "warrior_chitin_ridge",
     "warrior_purple_fissure",
@@ -1212,5 +1212,32 @@
   "albedo_path": "assets/models/enemies/concept/warrior/warrior_chitin_v2.png",
   "albedo_sha256": "d72dfd1e154a3832d023185d4a6d69644f479c133273092c3dd99e31331f4277",
   "albedo_unchanged": true,
+  "palette": {
+    "revision": "concept_palette_v3",
+    "attribute": "COLOR_0",
+    "shell_emission": 0.12,
+    "specular_ior_level": 0.1,
+    "zones": [
+      "plum recesses",
+      "mahogany panels",
+      "amber ridge accents",
+      "violet seams",
+      "green eyes"
+    ]
+  },
+  "head_emphasis": {
+    "pivot": [
+      0,
+      0.58,
+      1.25
+    ],
+    "scale": [
+      1.14,
+      1.04,
+      1.12
+    ],
+    "forward_offset": 0.1,
+    "space": "Blender authoring idle pose"
+  },
   "scope": "Runtime prototype; preserves recovered source rig/animations, no rights-clean claim."
 }
