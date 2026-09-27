@@ -1,0 +1,137 @@
+{
+  "date": "2026-09-28",
+  "revision": "eyes_v5",
+  "baseline_revision": "be87a42",
+  "request": "找到問題了 眼睛",
+  "interpretation": "Reduce bead-like protrusion and uniform luminous green while preserving the six-eye concept. Follow-up preference question was not answered during implementation.",
+  "runtime_target": {
+    "kind": "crawler",
+    "source_monster_id": 0,
+    "source_model": "bug01"
+  },
+  "changes": [
+    "Replace protruding socket ellipsoids with thin rings sampled along the facial surface.",
+    "Replace full eyeballs with shallow face-conforming caps; preserve all six eye centres.",
+    "Use smaller upper/lower pairs and a darker outer rim with a small brighter centre.",
+    "Reduce green emission and sharp specular response, retaining one eye material.",
+    "Explicitly enable eye vertex colours during Godot import and test the live material."
+  ],
+  "eyes": {
+    "revision": "surface_eye_caps_v1",
+    "count": 6,
+    "centers_unchanged": true,
+    "geometry": "face-conforming annular sockets and shallow convex eye caps",
+    "coordinate_space": "Blender authoring idle pose, before prominent_head transform",
+    "positive_x_centers_xz": [
+      [
+        0.105,
+        1.345
+      ],
+      [
+        0.205,
+        1.205
+      ],
+      [
+        0.115,
+        1.075
+      ]
+    ],
+    "row_scales": [
+      0.86,
+      1.0,
+      0.82
+    ],
+    "socket_outer_radii_xz": [
+      0.055,
+      0.063
+    ],
+    "socket_inner_radii_xz": [
+      0.039,
+      0.047
+    ],
+    "socket_surface_offsets": [
+      0.003,
+      0.004
+    ],
+    "eye_radii_xz": [
+      0.037,
+      0.045
+    ],
+    "eye_surface_offsets": {
+      "edge": 0.002,
+      "center": 0.01
+    },
+    "segments": 24,
+    "material_index": 4,
+    "roughness": 0.62,
+    "emission_strength": 0.18,
+    "base_color_factor": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "vertex_color_attribute": "COLOR_0",
+    "palette_srgb_hex": {
+      "edge": "123c10",
+      "outer": "267017",
+      "middle": "348f1b",
+      "inner": "73bb2e",
+      "core": "91ca35"
+    },
+    "other_head_geometry_changed": false
+  },
+  "geometry": {
+    "vertex_count": 7056,
+    "triangle_count": 12256,
+    "bone_count": 30,
+    "mesh_count": 1,
+    "export_clips": [
+      "attack",
+      "attacked",
+      "dead",
+      "dead01",
+      "idle",
+      "run",
+      "run01",
+      "run02"
+    ]
+  },
+  "texture": {
+    "path": "assets/models/enemies/concept/warrior/warrior_anatomy_v4.png",
+    "sha256": "9c40ce2e837f0bc1eefb5690ba60e95f26858065b655c34002e1fc389dbc1325",
+    "new_generation": false,
+    "pixel_edits": false
+  },
+  "unchanged": [
+    "six eye centres",
+    "other body/head mesh definitions",
+    "skeleton and animation clips",
+    "gameplay stats and AI",
+    "arena and capture lighting"
+  ],
+  "visual_review": {
+    "status": "captured_and_inspected_pending_user_art_acceptance",
+    "renderer": "gl_compatibility",
+    "viewport": [
+      1280,
+      720
+    ],
+    "frames": 21
+  },
+  "limitations": [
+    "Art direction still awaits user feedback.",
+    "Original four-leg animation and crouched side stance retained.",
+    "No Forward+/Mobile visual check or large-wave performance measurement."
+  ],
+  "artifacts": {
+    "assets/models/enemies/concept/warrior/warrior.gltf": "41d790268d223b0801a1e2d7e480dcc6ee05e47d41aff51cf405ec34cb440c7d",
+    "assets/models/enemies/concept/warrior/warrior.bin": "4a8d22fd23dfd207686c7e43c586d2ed83ec2c758ca4a3fa0d9151810a52d325",
+    "assets/models/enemies/concept/warrior/warrior.gltf.import": "ced644e54d7fa61b2c7ac77944224ea3ac3f47caafc082f4a74216102d26d770",
+    "assets/models/enemies/concept/warrior/warrior_anatomy_v4.png": "9c40ce2e837f0bc1eefb5690ba60e95f26858065b655c34002e1fc389dbc1325",
+    "assets/models/enemies/concept/warrior/chitin_palette.gdshader": "e963e65354b97aa21fd88818509c3d0aae48ee9f2bfee25efff093950402bd49",
+    "tools/enemy_concept/build_warrior.py": "980017cd352738d0c55dda2190ac538ef17b626ce6d9a03415a0b1ddf9b7b5c7",
+    "tools/enemy_concept/import_warrior.gd": "d28fa2161f369df395065fd374af6e58a4b7d2f0f383527a64ea99301301ebe9",
+    "tests/enemy_concept_test.gd": "9324f5acff7393671f08c317fdab8f29c2e36a06d0a035c79fd5453b0b403836"
+  }
+}

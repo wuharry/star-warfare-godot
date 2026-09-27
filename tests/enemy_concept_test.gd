@@ -184,6 +184,7 @@ func _run() -> void:
 		return
 	var uses_texture := false
 	var uses_palette := false
+	var uses_eye_gradient := false
 	var atlas_tiles: Dictionary = {}
 	for node in enemy.model.find_children("*", "MeshInstance3D", true, false):
 		var mesh := node as MeshInstance3D
@@ -196,6 +197,13 @@ func _run() -> void:
 			var palette_enabled := false
 			if material is BaseMaterial3D:
 				texture = material.albedo_texture
+				if material.resource_name == "warrior_six_green_eyes" and material.vertex_color_use_as_albedo:
+					var eye_colors: PackedColorArray = mesh.mesh.surface_get_arrays(surface)[Mesh.ARRAY_COLOR]
+					if not eye_colors.is_empty():
+						for eye_color in eye_colors:
+							if absf(eye_color.g - eye_colors[0].g) > 0.1:
+								uses_eye_gradient = true
+								break
 			elif material is ShaderMaterial and material.shader.resource_path == "res://assets/models/enemies/concept/warrior/chitin_palette.gdshader":
 				texture = material.get_shader_parameter("chitin_texture") as Texture2D
 				palette_enabled = true
@@ -213,6 +221,7 @@ func _run() -> void:
 	_check(uses_texture, "no live mesh material uses the current concept texture")
 	_check(uses_palette, "live chitin material lost its non-uniform concept palette")
 	_check(atlas_tiles.size() == 6, "live painted materials do not sample all six anatomical atlas cells")
+	_check(uses_eye_gradient, "live eye material lost its dark rim and bright core vertex colours")
 	_pose(enemy, "idle", 0.0)
 	var sample := _skin_sample(enemy, added_names)
 	var bounds: AABB = sample.bounds

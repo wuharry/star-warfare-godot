@@ -131,8 +131,16 @@ joint_tex.image = tex.image
 dark.node_tree.links.new(joint_tex.outputs['Color'], dark.node_tree.nodes['Principled BSDF'].inputs['Base Color'])
 gold = material('warrior_chitin_ridge', (.15,.060,.015), .10)
 purple = material('warrior_purple_fissure', (.28,.012,.55), .55)
-green = material('warrior_six_green_eyes', (.10,.43,.014), .45)
-green.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = .32
+green = material('warrior_six_green_eyes', (.10,.43,.014), .18)
+green_shader=green.node_tree.nodes['Principled BSDF']
+green_shader.inputs['Base Color'].default_value = (1,1,1,1)
+green_shader.inputs['Roughness'].default_value = .62
+# The same eye material carries a painted dark rim and a small green centre.
+# Keep emission green, but let COLOR_0 supply the visible colour rather than
+# multiplying a green palette by another green base colour.
+green_vertex=green.node_tree.nodes.new('ShaderNodeVertexColor')
+green_vertex.layer_name='ConceptPalette'
+green.node_tree.links.new(green_vertex.outputs['Color'],green_shader.inputs['Base Color'])
 materials = [shell, dark, gold, purple, green]
 
 verts, faces, weights, face_mats, uv_faces = [], [], [], [], []
@@ -187,9 +195,11 @@ def chitin_tint(name,index,points,coords):
         return palette_mix(mahogany,amber,.20)
     return mahogany
 
-def append_part(name, local_verts, local_faces, bone, mat=0, uv_mode='shell', uvs=None):
+def append_part(name, local_verts, local_faces, bone, mat=0, uv_mode='shell', uvs=None, colors=None):
     start = len(verts)
     inv = inverse_deform[bone]
+    if colors is not None and len(colors)!=len(local_verts):
+        raise ValueError(f'Vertex colour count does not match {name}')
     if uvs is None:
         # Planar pieces need geometric coordinates, not vertex-index modulo
         # patterns (which folded unrelated painted features across triangles).
@@ -204,7 +214,8 @@ def append_part(name, local_verts, local_faces, bone, mat=0, uv_mode='shell', uv
     weights.extend([bone] * len(local_verts))
     for i in range(len(local_verts)):
         coord=uvs[i]
-        paint_colors.append(chitin_tint(name,i,local_verts,coord) if mat==0 else (1,1,1))
+        paint_colors.append(colors[i] if colors is not None else
+                            chitin_tint(name,i,local_verts,coord) if mat==0 else (1,1,1))
     for face in local_faces:
         faces.append(tuple(start+i for i in face))
         face_mats.append(mat)
@@ -498,11 +509,66 @@ def face_surface_y(x,z):
             front=a[2]*(1-t)+b[2]*t;back=a[3]*(1-t)+b[3]*t
             return (front+back)/2+(front-back)/2*math.sqrt(max(0,1-(x/width)**2))
     raise ValueError('Eye outside face surface')
-for row,(x,z) in enumerate([(.105,1.345),(.205,1.205),(.115,1.075)]):
+eye_centers_xz=[(.105,1.345),(.205,1.205),(.115,1.075)]
+eye_row_scales=[.86,1.0,.82]
+eye_socket_outer=(.055,.063)
+eye_socket_inner=(.039,.047)
+eye_radius=(.037,.045)
+eye_segments=24
+eye_palette={'edge':'123c10','outer':'267017','middle':'348f1b',
+             'inner':'73bb2e','core':'91ca35'}
+
+def inset_eye(side,row,x,z,scale):
+    """A thin annular socket and shallow eye cap following the facial surface.
+
+    Sampling the face at every vertex keeps the wide middle eyes attached to
+    the cheek slope; neither part is a separate forward-facing ellipsoid.
+    """
+    socket_v,socket_f,socket_uv=[],[],[]
+    for radii,offset in [(eye_socket_outer,.003),(eye_socket_inner,.004)]:
+        rx,rz=(r*scale for r in radii)
+        for i in range(eye_segments):
+            angle=2*math.pi*i/eye_segments
+            dx,dz=rx*math.cos(angle),rz*math.sin(angle)
+            socket_v.append((x+dx,face_surface_y(x+dx,z+dz)+offset,z+dz))
+            socket_uv.append((.45+.09*dx/(eye_socket_outer[0]*scale),
+                              .45+.09*dz/(eye_socket_outer[1]*scale)))
+    for i in range(eye_segments):
+        ni=(i+1)%eye_segments
+        socket_f.append((i,eye_segments+i,eye_segments+ni,ni))
+    append_part(f'eye_socket_{side}_{row}',socket_v,socket_f,'Bone head01',1,uvs=socket_uv)
+
+    # Colour transitions describe an insect eye without a separate bright ball
+    # or extra material. The brightest region occupies only the centre fifth.
+    eye_v=[(x,face_surface_y(x,z)+.010,z)]
+    eye_f=[]
+    eye_uv=[(.45,.45)]
+    eye_colors=[srgb_hex(eye_palette['core'])]
+    rings=[(.18,'inner'),(.48,'middle'),(.82,'outer'),(1.0,'edge')]
+    rx,rz=(r*scale for r in eye_radius)
+    for radius,shade in rings:
+        for i in range(eye_segments):
+            angle=2*math.pi*i/eye_segments
+            dx,dz=rx*radius*math.cos(angle),rz*radius*math.sin(angle)
+            offset=.002+.008*(1-radius*radius)
+            eye_v.append((x+dx,face_surface_y(x+dx,z+dz)+offset,z+dz))
+            eye_uv.append((.45+.09*radius*math.cos(angle),.45+.09*radius*math.sin(angle)))
+            eye_colors.append(srgb_hex(eye_palette[shade]))
+    for i in range(eye_segments):
+        ni=(i+1)%eye_segments
+        eye_f.append((0,1+ni,1+i))
+    for ring in range(len(rings)-1):
+        inner=1+ring*eye_segments
+        outer=inner+eye_segments
+        for i in range(eye_segments):
+            ni=(i+1)%eye_segments
+            eye_f.append((inner+i,inner+ni,outer+ni,outer+i))
+    append_part(f'green_eye_{side}_{row}',eye_v,eye_f,'Bone head01',4,
+                uvs=eye_uv,colors=eye_colors)
+
+for row,(x,z) in enumerate(eye_centers_xz):
     for side,sign in [('L',-1),('R',1)]:
-        y=face_surface_y(x,z)
-        ellipsoid(f'eye_socket_{side}_{row}',(sign*x,y-.002,z),(.061,.024,.069),'Bone head01',1,seg=12,rings=6)
-        ellipsoid(f'green_eye_{side}_{row}',(sign*x,y+.006,z),(.040,.024,.048),'Bone head01',4,seg=16,rings=8)
+        inset_eye(side,row,sign*x,z,eye_row_scales[row])
 # Overlapping throat scutes cover the thorax exposed below the mouth.
 for j,(z,y,width) in enumerate([(.79,.94,.27),(.66,.81,.24),(.56,.66,.20)]):
     points=[(-width,y,z+.06),(0,y+.025,z+.11),(width,y,z+.06),
@@ -551,7 +617,7 @@ for poly,mat,coords in zip(mesh.polygons,face_mats,uv_faces):
                            for name,part in part_ranges.items() if name.startswith('walking_'))
     for li,coord in zip(poly.loop_indices,coords):
         uv.data[li].uv=coord
-        color=paint_colors[mesh.loops[li].vertex_index] if mat==0 else (1,1,1)
+        color=paint_colors[mesh.loops[li].vertex_index] if mat in (0,4) else (1,1,1)
         paint.data[li].color=(*color,1)
 for name in original_bones+list(new_specs): obj.vertex_groups.new(name=name)
 for i,bone in enumerate(weights): obj.vertex_groups[bone].add([i],1.0,'REPLACE')
@@ -650,6 +716,16 @@ report={'source':str(SOURCE.relative_to(ROOT)),'output':str((DEST/'warrior.gltf'
  'atlas':{'grid':[2,3],'margin':.035,'tiles':['hood','abdomen','limb','blade','face','joint'],
           'source':'built-in imagegen','runtime_uses_full_color':True},
  'head_emphasis':{'pivot':[0,.58,1.25],'scale':[1.14,1.04,1.12],'forward_offset':.10,'space':'Blender authoring idle pose'},
+ 'eyes':{'revision':'surface_eye_caps_v1','count':6,'centers_unchanged':True,
+         'geometry':'face-conforming annular sockets and shallow convex eye caps',
+         'coordinate_space':'Blender authoring idle pose, before prominent_head transform',
+         'positive_x_centers_xz':eye_centers_xz,'row_scales':eye_row_scales,
+         'socket_outer_radii_xz':eye_socket_outer,'socket_inner_radii_xz':eye_socket_inner,
+         'socket_surface_offsets':[.003,.004],'eye_radii_xz':eye_radius,
+         'eye_surface_offsets':{'edge':.002,'center':.010},'segments':eye_segments,
+         'material_index':4,'roughness':.62,'emission_strength':.18,
+         'base_color_factor':[1,1,1,1],'vertex_color_attribute':'COLOR_0',
+         'palette_srgb_hex':eye_palette,'other_head_geometry_changed':False},
  'scope':'Runtime prototype; preserves recovered source rig/animations, no rights-clean claim.'}
 (SCRATCH/'build_report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
 bpy.ops.wm.save_as_mainfile(filepath=str(SCRATCH/'warrior_preview.blend'))

@@ -1,0 +1,98 @@
+{
+  "date": "2026-09-27",
+  "scope": "warrior anatomical painted atlas and armor detail",
+  "checks": [
+    {
+      "name": "enemy_concept_test",
+      "status": "PASS",
+      "summary": "ENEMY_CONCEPT_TEST_PASS checks=128 rays=27 extra_bones=8 original_bones=22 texture=true baseline=true",
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "name": "enemy_hull_lod_test",
+      "status": "PASS",
+      "summary": "ENEMY_HULL_LOD_TEST_PASS checks=209",
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "name": "enemy_animation_test",
+      "status": "PASS",
+      "summary": "ENEMY_ANIMATION_TEST_PASS enemies=4",
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "name": "Godot viewport capture",
+      "status": "PASS",
+      "summary": "ENEMY_CONCEPT_VISUAL_CAPTURE_PASS frames=21 directory=res://test_output/enemy_concept_runtime",
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "name": "Blender model build",
+      "status": "PASS",
+      "vertices": 7554,
+      "triangles": 13024,
+      "clips": 8,
+      "note": "One Material.use_nodes deprecation warning for Blender 6.0."
+    },
+    {
+      "name": "Godot editor project scan",
+      "status": "FAIL",
+      "exit_code": 0,
+      "errors": [
+        "ERROR: Cannot go into subdir 'audio-missing-archive-tfpon_0v'."
+      ],
+      "note": "Enemy assets loaded and rendered in separate passing checks. The inaccessible audio archive directory was not modified by this art task."
+    },
+    {
+      "name": "harness generated-file consistency",
+      "status": "FAIL",
+      "existing_drift_count": 13,
+      "note": "Same pre-existing drift; no harness files modified."
+    },
+    {
+      "name": "browser visual verification",
+      "status": "NOT RUN"
+    },
+    {
+      "name": "Forward+ and Mobile visual verification",
+      "status": "NOT RUN"
+    },
+    {
+      "name": "large-wave performance benchmark",
+      "status": "NOT RUN"
+    },
+    {
+      "name": "review page local references",
+      "status": "PASS",
+      "unique_paths": 35,
+      "pose_pairs": 8,
+      "head_pairs": 3
+    },
+    {
+      "name": "owned-path whitespace check",
+      "status": "PASS"
+    },
+    {
+      "name": "review page JavaScript syntax",
+      "status": "PASS",
+      "command": "node --check test_output/enemy_concept_runtime/detail_v4/review_script.js"
+    }
+  ],
+  "artifacts": {
+    "assets/models/enemies/concept/warrior/warrior.gltf": "d6349c3e3c8e1fa6cc6a3c1ac4121317fa741cd5cc1ab136f051b2df73f7867a",
+    "assets/models/enemies/concept/warrior/warrior.bin": "41b747a67ffe14c41c150dcb3510fbee83b7f01a87c8c9f1f43abb0a1aa52eff",
+    "assets/models/enemies/concept/warrior/warrior.gltf.import": "ced644e54d7fa61b2c7ac77944224ea3ac3f47caafc082f4a74216102d26d770",
+    "assets/models/enemies/concept/warrior/warrior_anatomy_v4.png": "9c40ce2e837f0bc1eefb5690ba60e95f26858065b655c34002e1fc389dbc1325",
+    "assets/models/enemies/concept/warrior/warrior_anatomy_v4.png.import": "4917319c4208ac001389038e4fa0891cc4add6438e60be86d99bfb0fd3b4d5cf",
+    "assets/models/enemies/concept/warrior/chitin_palette.gdshader": "e963e65354b97aa21fd88818509c3d0aae48ee9f2bfee25efff093950402bd49",
+    "tools/enemy_concept/build_warrior.py": "3257d3c24a7225dcb59c20463e5c37ccd10e8002540fc7578531edd3f138d22a",
+    "tools/enemy_concept/import_warrior.gd": "dd4e8b56f6c58c684965d09cbcc6ae7707db145724105040aa635c886928cd77",
+    "tools/enemy_concept/configure_import.gd": "ee6c06429ab0fd26c751a03c84fc669342541f79ea27fb4dd21544bad2aaa942",
+    "tests/enemy_concept_test.gd": "898cdeb265a94563e8807e1756cd1d1247000e55154ba258f0c75e523195b024"
+  },
+  "prior_validation": "validation_palette_v3.json and older logs retained as historical results."
+}

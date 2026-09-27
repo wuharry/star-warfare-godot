@@ -8,6 +8,10 @@ func _post_import(scene: Node) -> Object:
 		var mesh := node as MeshInstance3D
 		for surface in range(mesh.mesh.get_surface_count()):
 			var source := mesh.mesh.surface_get_material(surface) as BaseMaterial3D
+			if source and source.resource_name == "warrior_six_green_eyes":
+				# Eye rings carry their dark rim / green core in COLOR_0.
+				source.vertex_color_use_as_albedo = true
+				continue
 			if source == null or source.resource_name not in ["warrior_chitin_painted_v4", "warrior_recess"]:
 				continue
 			var painted := ShaderMaterial.new()
