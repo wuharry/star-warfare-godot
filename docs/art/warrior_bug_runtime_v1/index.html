@@ -11,24 +11,24 @@
 </head>
 <body><main>
 <div class="eyebrow">STAR WARFARE · IN-GAME ART PROTOTYPE</div>
-<h1>兵蟲：補足甲片結構與手繪細節</h1>
-<p><strong>Warrior／兵蟲</strong> 對應遊戲的 <code>crawler → Monster ID 0 → bug01</code>。上一版與原版的精細度仍有明顯落差：甲殼缺少有結構的明暗，腿部像光滑管件。本輪改用六區域手繪貼圖，重做互相覆蓋的尖形腿甲，並補強頭罩折面。以下保留上一版、這一版與原版模型，方便直接判斷改善程度。</p>
-<div class="tags"><span class="tag">六區域手繪貼圖</span><span class="tag">尖形覆蓋式腿甲</span><span class="tag">原有四足動畫</span><span class="tag">可動鐮臂與大顎</span></div>
-<p class="flow">概念圖 → 調整模型與骨骼 → UV 對應貼圖 → 載入遊戲 → 檢查動作、尺寸與命中</p>
+<h1>兵蟲：讓六眼貼合臉部</h1>
+<p><strong>Warrior／兵蟲</strong> 對應遊戲的 <code>crawler → Monster ID 0 → bug01</code>。這輪保留六顆眼睛的位置，將凸出的橢球眼窩改成貼臉薄環，綠眼改為低凸眼面，加入暗外圈與小亮中心，並減弱發光。頭罩、甲片和其餘造型沿用上一版。</p>
+<div class="tags"><span class="tag">保留六眼位置</span><span class="tag">貼臉薄環眼窩</span><span class="tag">低凸眼面</span><span class="tag">較弱發光</span></div>
+<p class="flow">先看正面的眼睛排列，再切到側面或斜角，檢查眼面是否仍像外掛的圓珠。</p>
 
-<h2>上一版與這一版：側面看甲片結構</h2>
-<p class="muted">先看遊戲距離仍能辨識的部位：腿甲的中央稜線與覆蓋關係、腹甲明暗、頭罩折面，以及刀刃的深淺區分。新增貼圖細節不代表已達到原版品質；四足仍沿用原動畫。</p>
-<div class="grid">
-<figure><a href="images/detail_v3_idle_side.png"><img src="images/detail_v3_idle_side.png" alt="上一版兵蟲待機側面：光滑管狀腿部及較均勻的甲殼"></a><figcaption><strong>上一版原型</strong> · 以分區漸層與通用細紋為主，腿部形體過於簡單。</figcaption></figure>
-<figure><a href="images/after_idle_side.png"><img src="images/after_idle_side.png" alt="本輪兵蟲待機側面：分區手繪貼圖與覆蓋式尖形腿甲"></a><figcaption><strong>這一版</strong> · 增加甲片明暗、尖形腿甲、中央稜線與較窄的關節。</figcaption></figure>
+<h2>這輪眼部修正：同一光線與鏡頭</h2>
+<p class="muted">左邊是完成甲片重製、尚未修改眼睛的版本；右邊只更新眼部。檢查眼窩是否貼合臉面、明暗是否集中，以及六眼在較弱發光下是否仍清楚。兩側使用同一近景尺度，沒有重新打光或修圖。</p>
+<div class="controls" aria-label="頭部觀察方向"><span>近景</span><button type="button" data-head-view="front" aria-pressed="true">正面</button><button type="button" data-head-view="side" aria-pressed="false">側面</button><button type="button" data-head-view="threequarter" aria-pressed="false">斜角</button></div>
+<div class="grid" aria-live="polite">
+<figure><a id="head-before-link" href="images/eyes_v4_head_front.png"><img id="head-before" src="images/eyes_v4_head_front.png" alt="眼部修改前：凸出的橢球眼窩與綠眼，正面近景"></a><figcaption><strong>眼部修改前</strong> · 眼窩與眼睛由凸出的橢球組成，發光較均勻。</figcaption></figure>
+<figure><a id="head-after-link" href="images/after_head_front.png"><img id="head-after" src="images/after_head_front.png" alt="眼部修改後：貼臉薄環、低凸綠眼與較弱發光，正面近景"></a><figcaption><strong>眼部修改後</strong> · 薄環貼合臉面，綠眼由暗外圈過渡到小亮中心。</figcaption></figure>
 </div>
 
-<h2>同一光線與鏡頭，對照頭部細節</h2>
-<p class="muted">檢查頭罩的大面是否有清楚折面、邊緣亮線與凹處陰影，以及六眼和口器是否仍可辨識。保留上一輪已調整的頭部比例；兩側使用同一近景尺度，沒有重新打光或修圖。</p>
-<div class="controls" aria-label="頭部觀察方向"><span>近景</span><button type="button" data-head-view="front" aria-pressed="false">正面</button><button type="button" data-head-view="side" aria-pressed="false">側面</button><button type="button" data-head-view="threequarter" aria-pressed="true">斜角</button></div>
-<div class="grid" aria-live="polite">
-<figure><a id="head-before-link" href="images/detail_v3_head_threequarter.png"><img id="head-before" src="images/detail_v3_head_threequarter.png" alt="上一版兵蟲頭部斜角近景"></a><figcaption><strong>上一版頭部</strong> · 比例已調整，甲殼仍以漸層色塊為主。</figcaption></figure>
-<figure><a id="head-after-link" href="images/after_head_threequarter.png"><img id="head-after" src="images/after_head_threequarter.png" alt="本輪兵蟲頭部斜角近景"></a><figcaption><strong>這一版頭部</strong> · 專用頭罩貼圖、折面與邊緣明暗。</figcaption></figure>
+<h2>甲片重製歷史對照（右邊包含最新眼部）</h2>
+<p class="muted">這組回顧上一輪的甲片與貼圖重製：腿甲的中央稜線與覆蓋關係、腹甲明暗、頭罩折面，以及刀刃的深淺區分。右側為最新模型，包含本輪眼部修正；此處並非只比較眼睛。</p>
+<div class="grid">
+<figure><a href="images/detail_v3_idle_side.png"><img src="images/detail_v3_idle_side.png" alt="甲片重製前的歷史原型側面：光滑管狀腿部與較均勻的甲殼"></a><figcaption><strong>甲片重製前</strong> · 分區漸層與通用細紋，腿部形體較簡單。</figcaption></figure>
+<figure><a href="images/after_idle_side.png"><img src="images/after_idle_side.png" alt="最新兵蟲側面：沿用分區手繪貼圖與尖形腿甲，包含本輪眼部修正"></a><figcaption><strong>甲片重製後＋最新眼部</strong> · 尖形腿甲、中央稜線、較窄關節及貼臉六眼。</figcaption></figure>
 </div>
 
 <h2>原版與這一版：對照完整姿勢</h2>
@@ -47,12 +47,12 @@
 <h2>設計依據與實際貼圖</h2>
 <div class="grid source">
 <figure><a href="../enemy_art/images/warrior_bug_concept__images__01_mantis_turnaround.jpg"><img loading="lazy" src="../enemy_art/images/warrior_bug_concept__images__01_mantis_turnaround.jpg" alt="原先生成的兵蟲三視概念圖"></a><figcaption><strong>概念圖</strong> · 提供外形與材質方向。</figcaption></figure>
-<figure><a href="../../../assets/models/enemies/concept/warrior/warrior_anatomy_v4.png"><img loading="lazy" src="../../../assets/models/enemies/concept/warrior/warrior_anatomy_v4.png" alt="六區域手繪貼圖：頭罩、腹甲、腿甲、刀刃、臉甲及關節"></a><figcaption><strong>本輪六區域手繪貼圖</strong> · 頭罩、腹甲、腿甲、刀刃、臉甲、關節分別取用對應區域，保留邊緣高光與接縫陰影。</figcaption></figure>
+<figure><a href="../../../assets/models/enemies/concept/warrior/warrior_anatomy_v4.png"><img loading="lazy" src="../../../assets/models/enemies/concept/warrior/warrior_anatomy_v4.png" alt="沿用的六區域手繪貼圖：頭罩、腹甲、腿甲、刀刃、臉甲及關節"></a><figcaption><strong>沿用的六區域手繪貼圖</strong> · 來自上一輪甲片重製。本輪沒有生成新圖片或改動這張 PNG。</figcaption></figure>
 </div>
 
 <h2>這一版的交付範圍</h2>
-<p class="note">這是第一隻敵人的美術迭代，仍需與原版及概念圖一起驗收。這輪補上有結構的手繪明暗與尖形腿甲，不把增加面數或通過程式測試當作已達原版精細度。兵蟲的數值、AI、原四足動作及既有骨架保留；腿部動作、貼圖對位與整體風格仍有後續調整空間。</p>
-<div class="links"><a href="README.md">製作與驗證紀錄</a><a href="detail_record.json">本輪精細度修正</a><a href="validation.json">本輪檢查結果</a><a href="prompts/warrior_anatomy_v4.txt">本輪貼圖生成提示詞</a><a href="palette_record.json">歷史：配色與比例</a><a href="polish_record.json">歷史：結構精修</a><a href="generation_record.json">歷史：第一版貼圖</a><a href="../../../tests/enemy_concept_visual_capture.tscn">遊戲比較場景</a><a href="../../../assets/models/enemies/concept/warrior/warrior.gltf">遊戲模型</a></div>
+<p class="note">本輪只調整眼部形狀、上色與發光，保留六眼中心位置。其餘頭部、甲片、骨架、四足動作和遊戲數值沿用既有版本。這仍是待美術驗收的原型；可用近景判斷眼睛是否自然，再以完整姿勢和第一關畫面確認遊戲距離的效果。</p>
+<div class="links"><a href="README.md">製作與驗證紀錄</a><a href="eyes_record.json">本輪眼部修正</a><a href="validation.json">本輪檢查結果</a><a href="detail_record.json">歷史：甲片與貼圖重製</a><a href="validation_detail_v4.json">歷史：甲片重製驗證</a><a href="prompts/warrior_anatomy_v4.txt">沿用貼圖的生成提示詞</a><a href="palette_record.json">歷史：配色與比例</a><a href="polish_record.json">歷史：結構精修</a><a href="generation_record.json">歷史：第一版貼圖</a><a href="../../../tests/enemy_concept_visual_capture.tscn">遊戲比較場景</a><a href="../../../assets/models/enemies/concept/warrior/warrior.gltf">遊戲模型</a></div>
 <footer>截圖規格：1280 × 720 · Godot GL Compatibility · 直接擷取 viewport，未修圖。</footer>
 </main>
 <script>
@@ -60,5 +60,5 @@ let clip='idle',view='side';
 const clips={idle:'待機',run:'跑步',attack:'攻擊',dead:'死亡'},views={front:'正面',side:'側面'};
 function update(){for(const variant of ['before','after']){const path=`images/${variant}_${clip}_${view}.png`;document.getElementById(variant).src=path;document.getElementById(`${variant}-link`).href=path;document.getElementById(variant).alt=`${variant==='before'?'原版兵蟲':'概念圖改造兵蟲'}，${clips[clip]}${views[view]}`;}document.querySelectorAll('[data-clip]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.clip===clip)));document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));document.getElementById('pose-note').textContent=`${clips[clip]} · ${views[view]}。靜態截圖用來檢查輪廓；完整動畫可由下方測試場景播放。`;}
 document.querySelectorAll('[data-clip]').forEach(b=>b.addEventListener('click',()=>{clip=b.dataset.clip;update();}));document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{view=b.dataset.view;update();}));
-document.querySelectorAll('[data-head-view]').forEach(button=>button.addEventListener('click',()=>{const direction=button.dataset.headView;for(const variant of ['before','after']){const path=`images/${variant==='before'?'detail_v3_head':'after_head'}_${direction}.png`;document.getElementById(`head-${variant}`).src=path;document.getElementById(`head-${variant}-link`).href=path;document.getElementById(`head-${variant}`).alt=`${variant==='before'?'上一版':'這一版'}兵蟲頭部${{front:'正面',side:'側面',threequarter:'斜角'}[direction]}近景`;}document.querySelectorAll('[data-head-view]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));}));
+document.querySelectorAll('[data-head-view]').forEach(button=>button.addEventListener('click',()=>{const direction=button.dataset.headView;for(const variant of ['before','after']){const path=`images/${variant==='before'?'eyes_v4_head':'after_head'}_${direction}.png`;document.getElementById(`head-${variant}`).src=path;document.getElementById(`head-${variant}-link`).href=path;document.getElementById(`head-${variant}`).alt=`${variant==='before'?'眼部修改前':'眼部修改後'}兵蟲頭部${{front:'正面',side:'側面',threequarter:'斜角'}[direction]}近景`;}document.querySelectorAll('[data-head-view]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));}));
 </script></body></html>
