@@ -1,12 +1,11 @@
 {
   "date": "2026-09-27",
-  "branch": "codex/original-armor-design",
-  "scope": "warrior palette and head emphasis",
+  "scope": "warrior anatomical painted atlas and armor detail",
   "checks": [
     {
       "name": "enemy_concept_test",
       "status": "PASS",
-      "summary": "ENEMY_CONCEPT_TEST_PASS checks=127 rays=27 extra_bones=8 original_bones=22 texture=true baseline=true",
+      "summary": "ENEMY_CONCEPT_TEST_PASS checks=128 rays=27 extra_bones=8 original_bones=22 texture=true baseline=true",
       "warnings": 0,
       "errors": 0
     },
@@ -25,40 +24,37 @@
       "errors": 0
     },
     {
-      "name": "Blender model build",
-      "status": "PASS",
-      "vertices": 6554,
-      "triangles": 10912,
-      "clips": 8,
-      "albedo_unchanged": true,
-      "note": "One Blender 6.0 Material.use_nodes deprecation warning."
-    },
-    {
       "name": "Godot viewport capture",
       "status": "PASS",
-      "frames": 21,
-      "viewport": [
-        1280,
-        720
-      ],
-      "renderer": "gl_compatibility",
+      "summary": "ENEMY_CONCEPT_VISUAL_CAPTURE_PASS frames=21 directory=res://test_output/enemy_concept_runtime",
       "warnings": 0,
       "errors": 0
     },
     {
-      "name": "review page local references",
+      "name": "Blender model build",
       "status": "PASS",
-      "unique_paths": 32,
-      "pose_pairs": 8,
-      "head_pairs": 3
+      "vertices": 7554,
+      "triangles": 13024,
+      "clips": 8,
+      "note": "One Material.use_nodes deprecation warning for Blender 6.0."
+    },
+    {
+      "name": "Godot editor project scan",
+      "status": "FAIL",
+      "exit_code": 0,
+      "errors": [
+        "ERROR: Cannot go into subdir 'audio-missing-archive-tfpon_0v'."
+      ],
+      "note": "Enemy assets loaded and rendered in separate passing checks. The inaccessible audio archive directory was not modified by this art task."
+    },
+    {
+      "name": "harness generated-file consistency",
+      "status": "FAIL",
+      "existing_drift_count": 13,
+      "note": "Same pre-existing drift; no harness files modified."
     },
     {
       "name": "browser visual verification",
-      "status": "NOT RUN",
-      "reason": "No browser available through computer-use in this session; local references and JavaScript syntax checked separately."
-    },
-    {
-      "name": "large-wave performance benchmark",
       "status": "NOT RUN"
     },
     {
@@ -66,34 +62,37 @@
       "status": "NOT RUN"
     },
     {
-      "name": "review page JavaScript syntax",
+      "name": "large-wave performance benchmark",
+      "status": "NOT RUN"
+    },
+    {
+      "name": "review page local references",
       "status": "PASS",
-      "command": "node --check test_output/enemy_concept_runtime/review_script.js"
+      "unique_paths": 35,
+      "pose_pairs": 8,
+      "head_pairs": 3
     },
     {
       "name": "owned-path whitespace check",
-      "status": "PASS",
-      "command": "git diff --check -- tools/enemy_concept tests/enemy_concept_test.gd assets/models/enemies/concept/warrior docs/art/warrior_bug_runtime_v1"
+      "status": "PASS"
     },
     {
-      "name": "harness generated-file consistency",
-      "status": "FAIL",
-      "existing_drift_count": 13,
-      "note": "Same pre-existing generated-file drift; no harness files modified in this task.",
-      "log": "validation_logs/palette_harness.log"
+      "name": "review page JavaScript syntax",
+      "status": "PASS",
+      "command": "node --check test_output/enemy_concept_runtime/detail_v4/review_script.js"
     }
   ],
   "artifacts": {
-    "assets/models/enemies/concept/warrior/warrior.gltf": "6a5d1591ec57dcd19ba219871fb467990406beae007e3fb5c02d646dad6df9de",
-    "assets/models/enemies/concept/warrior/warrior.bin": "ff9cf3094c4d623545384982e918f10a603345d25c4501805c7f1ef43926886b",
+    "assets/models/enemies/concept/warrior/warrior.gltf": "d6349c3e3c8e1fa6cc6a3c1ac4121317fa741cd5cc1ab136f051b2df73f7867a",
+    "assets/models/enemies/concept/warrior/warrior.bin": "41b747a67ffe14c41c150dcb3510fbee83b7f01a87c8c9f1f43abb0a1aa52eff",
     "assets/models/enemies/concept/warrior/warrior.gltf.import": "ced644e54d7fa61b2c7ac77944224ea3ac3f47caafc082f4a74216102d26d770",
-    "assets/models/enemies/concept/warrior/chitin_palette.gdshader": "420fef1235df40834f1b7395eeb7210742c73df5a5fe737dda6d023cacad54cf",
-    "assets/models/enemies/concept/warrior/warrior_chitin_v2.png": "d72dfd1e154a3832d023185d4a6d69644f479c133273092c3dd99e31331f4277",
-    "tools/enemy_concept/build_warrior.py": "1e493c0cbf55c0781991366b959187b4c929de5a9c0ae9d4ab84e4806c426e82",
-    "tools/enemy_concept/import_warrior.gd": "0b3826e5ab0a8884590146b2e01546c1cd7f5e28207d04204c2b6be2b3321a13",
-    "tools/enemy_concept/configure_import.gd": "7fb19fa1f030c38f10270c09c0cc1ffaa5cf039280a03f0bee559843408e7f72",
-    "tests/enemy_concept_test.gd": "b3c26d5aa63a0150d256e49006c53d3a9ba76d63be666757ddbb041eb2bb9c11",
-    "assets/models/enemies/concept/warrior/warrior_chitin_v2.png.import": "e7660f89f9ed94fee97e387a3c131322cd69986d32e497aef9e0224fd45a361c"
+    "assets/models/enemies/concept/warrior/warrior_anatomy_v4.png": "9c40ce2e837f0bc1eefb5690ba60e95f26858065b655c34002e1fc389dbc1325",
+    "assets/models/enemies/concept/warrior/warrior_anatomy_v4.png.import": "4917319c4208ac001389038e4fa0891cc4add6438e60be86d99bfb0fd3b4d5cf",
+    "assets/models/enemies/concept/warrior/chitin_palette.gdshader": "e963e65354b97aa21fd88818509c3d0aae48ee9f2bfee25efff093950402bd49",
+    "tools/enemy_concept/build_warrior.py": "3257d3c24a7225dcb59c20463e5c37ccd10e8002540fc7578531edd3f138d22a",
+    "tools/enemy_concept/import_warrior.gd": "dd4e8b56f6c58c684965d09cbcc6ae7707db145724105040aa635c886928cd77",
+    "tools/enemy_concept/configure_import.gd": "ee6c06429ab0fd26c751a03c84fc669342541f79ea27fb4dd21544bad2aaa942",
+    "tests/enemy_concept_test.gd": "898cdeb265a94563e8807e1756cd1d1247000e55154ba258f0c75e523195b024"
   },
-  "prior_validation": "Historical 2026-09-26 logs retained in validation_logs; current palette_* logs apply to this revision."
+  "prior_validation": "validation_palette_v3.json and older logs retained as historical results."
 }

@@ -1,0 +1,101 @@
+{
+  "date": "2026-09-27",
+  "revision": "anatomy_atlas_v4",
+  "baseline_revision": "46ffa6c",
+  "request": "你不覺得兩者的精細度差太多了嗎",
+  "runtime_target": {
+    "kind": "crawler",
+    "source_monster_id": 0,
+    "source_model": "bug01"
+  },
+  "diagnosis": [
+    "Shared low-contrast brown swatch on every anatomical region.",
+    "Shader reduced texture to a weak grayscale multiplier.",
+    "Smooth tubular legs lacked armor overlaps and readable ridges."
+  ],
+  "image_generation": {
+    "tool": "built-in image_gen",
+    "prompt": "prompts/warrior_anatomy_v4.txt",
+    "reference": "docs/art/enemy_art/images/warrior_bug_concept__images__01_mantis_turnaround.jpg",
+    "reference_sha256": "4767380f84f9e8ed3cc0a1e143fac24c54463e2a9701c246bebde868f221a22a",
+    "source_output": "C:/Users/whw88/.codex/generated_images/01a0d34a-7c78-72d0-b7ae-7c134c979b6f/exec-e24b3439-6460-463d-89d5-aa7f40c03269.png",
+    "asset": "assets/models/enemies/concept/warrior/warrior_anatomy_v4.png",
+    "sha256": "9c40ce2e837f0bc1eefb5690ba60e95f26858065b655c34002e1fc389dbc1325",
+    "size": [
+      1024,
+      1536
+    ],
+    "pixel_edits": false,
+    "grid": [
+      2,
+      3
+    ],
+    "row_major_cells": [
+      "hood",
+      "abdomen",
+      "limb",
+      "blade",
+      "face",
+      "joint"
+    ]
+  },
+  "changes": [
+    "Anatomical atlas replaces the common material swatch.",
+    "Full painted RGB and crease shadows survive in the runtime shader.",
+    "Overlapping pointed leg armor with faceted ridges replaces smooth tubes.",
+    "Hood gains shallow sculpted crests; abdomen plates gain swept rear corners.",
+    "Planar UVs replace vertex-index patterns on small panels; face painting is centered in front.",
+    "Existing head enlargement retained; bones, source clips, stats, arena lighting unchanged."
+  ],
+  "geometry": {
+    "vertex_count": 7554,
+    "triangle_count": 13024,
+    "bone_count": 30,
+    "mesh_count": 1,
+    "export_clips": [
+      "attack",
+      "attacked",
+      "dead",
+      "dead01",
+      "idle",
+      "run",
+      "run01",
+      "run02"
+    ]
+  },
+  "shader": {
+    "shell_palette_weight": 0.06,
+    "shell_fill": 0.45,
+    "joint_palette_weight": 0,
+    "joint_fill": 0.3,
+    "diffuse_weight": 0.4
+  },
+  "texture_import": "Godot ConfigFile API enables mipmaps and 3D compression; no manual metadata edit.",
+  "visual_review": {
+    "status": "captured_and_inspected_pending_user_art_acceptance",
+    "renderer": "gl_compatibility",
+    "viewport": [
+      1280,
+      720
+    ],
+    "frames": 21
+  },
+  "limitations": [
+    "Still a runtime art revision, not user-approved final art.",
+    "Original four-leg animation and crouched side stance retained.",
+    "UVs reuse six anatomical patches rather than a unique painted surface for every part.",
+    "No Forward+/Mobile visual check or large-wave performance measurement."
+  ],
+  "artifacts": {
+    "assets/models/enemies/concept/warrior/warrior.gltf": "d6349c3e3c8e1fa6cc6a3c1ac4121317fa741cd5cc1ab136f051b2df73f7867a",
+    "assets/models/enemies/concept/warrior/warrior.bin": "41b747a67ffe14c41c150dcb3510fbee83b7f01a87c8c9f1f43abb0a1aa52eff",
+    "assets/models/enemies/concept/warrior/warrior.gltf.import": "ced644e54d7fa61b2c7ac77944224ea3ac3f47caafc082f4a74216102d26d770",
+    "assets/models/enemies/concept/warrior/warrior_anatomy_v4.png": "9c40ce2e837f0bc1eefb5690ba60e95f26858065b655c34002e1fc389dbc1325",
+    "assets/models/enemies/concept/warrior/warrior_anatomy_v4.png.import": "4917319c4208ac001389038e4fa0891cc4add6438e60be86d99bfb0fd3b4d5cf",
+    "assets/models/enemies/concept/warrior/chitin_palette.gdshader": "e963e65354b97aa21fd88818509c3d0aae48ee9f2bfee25efff093950402bd49",
+    "tools/enemy_concept/build_warrior.py": "3257d3c24a7225dcb59c20463e5c37ccd10e8002540fc7578531edd3f138d22a",
+    "tools/enemy_concept/import_warrior.gd": "dd4e8b56f6c58c684965d09cbcc6ae7707db145724105040aa635c886928cd77",
+    "tools/enemy_concept/configure_import.gd": "ee6c06429ab0fd26c751a03c84fc669342541f79ea27fb4dd21544bad2aaa942",
+    "tests/enemy_concept_test.gd": "898cdeb265a94563e8807e1756cd1d1247000e55154ba258f0c75e523195b024"
+  }
+}
