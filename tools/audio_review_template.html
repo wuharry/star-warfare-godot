@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>非原生音效篩選與動作解析 — Star Warfare</title>
+  <title>槍械與回饋音效篩選 — Star Warfare</title>
   <style>
     :root {
       --bg-body: #080d14;
@@ -369,7 +369,7 @@
       border-color: var(--cyan);
     }
 
-    /* 檢視切換與分頁設定 */
+    /* 檢視切換 */
     .view-toggles {
       display: inline-flex;
       background: var(--bg-body);
@@ -666,21 +666,12 @@
       opacity: 0.8;
     }
 
-    /* 分頁控制 */
-    .pager-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    /* 長列表導覽 */
+    .list-footer {
+      text-align: right;
       margin-top: 24px;
-      flex-wrap: wrap;
-      gap: 12px;
     }
-    .pager-btns {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .btn-page {
+    .btn-top {
       background: var(--bg-card);
       border: 1px solid var(--border);
       color: var(--text);
@@ -689,13 +680,9 @@
       cursor: pointer;
       font-size: 0.85rem;
     }
-    .btn-page:hover:not(:disabled) {
+    .btn-top:hover {
       border-color: var(--cyan);
       color: var(--text-bright);
-    }
-    .btn-page:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
     }
 
     /* 來源細節折疊區 */
@@ -783,10 +770,10 @@
     <!-- 看板 -->
     <div class="hero-banner">
       <div class="hero-title">
-        <h1>非原生音效篩選與動作解析</h1>
+        <h1>槍械與回饋音效篩選</h1>
       </div>
       <div class="hero-desc">
-        本工作台收錄專案中所有外加素材（包括 <strong>sfx_pack 合成音效</strong>、<strong>Sonniss 擬真錄音</strong>、<strong>Lentikula CC0 雷射音效</strong> 與 <strong>遊戲現用剪輯</strong>）。系統自動解析每一段音效對應的<strong>槍械類別</strong>與<strong>具體動作部位（上膛／插拔彈匣／開火／持續光束／拋殼／著彈）</strong>，並標示來源與是否為合成音，方便批次決策保留或刪除。
+        本工作台已精簡為<strong>槍械、換彈、彈殼、爆炸、命中／受擊與介面提示</strong>，並保留你在 JSON 中明確選定的素材。來源包括 <strong>sfx_pack</strong>、<strong>Sonniss</strong>、<strong>Lentikula</strong> 與<strong>遊戲現用剪輯</strong>。全部音效在同一頁顯示，可依用途搜尋、篩選與試聽。
       </div>
     </div>
 
@@ -795,7 +782,7 @@
       <div class="stat-pill-group">
         <div class="stat-pill total">總數: <span id="cntTotal">0</span></div>
         <div class="stat-pill keep">🟢 已保留: <span id="cntKeep">0</span></div>
-        <div class="stat-pill delete">🔴 已刪除: <span id="cntDelete">0</span></div>
+        <div class="stat-pill delete">🔴 標記刪除: <span id="cntDelete">0</span></div>
         <div class="stat-pill pending">⚪ 待定: <span id="cntPending">0</span></div>
         <div class="stat-pill matched">🔍 符合條件: <span id="cntMatched">0</span></div>
       </div>
@@ -855,15 +842,7 @@
           </label>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 8px; font-size: 0.84rem;">
-          <span>每頁顯示:</span>
-          <select id="selPageSize" style="padding: 4px 8px;">
-            <option value="30">30 筆</option>
-            <option value="60">60 筆</option>
-            <option value="120">120 筆</option>
-            <option value="999999">全部顯示</option>
-          </select>
-        </div>
+        <span style="font-size: 0.84rem; color: var(--text-muted);">單頁瀏覽：全部符合條件的音效都顯示在下方</span>
       </div>
     </div>
 
@@ -890,15 +869,8 @@
       </table>
     </div>
 
-    <!-- 分頁控制 Bar -->
-    <div class="pager-bar">
-      <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
-        頁次: <span id="pageInfo" style="color: var(--text-bright); font-weight: 700;">1 / 1</span>
-      </div>
-      <div class="pager-btns">
-        <button class="btn-page" id="btnPagePrev">◀ 上一頁</button>
-        <button class="btn-page" id="btnPageNext">下一頁 ▶</button>
-      </div>
+    <div class="list-footer">
+      <button class="btn-top" id="btnBackToTop">↑ 回到搜尋與篩選</button>
     </div>
 
     <!-- 來源、授權與說明折疊 -->
@@ -918,8 +890,6 @@
     const labels = { pending: '待定', keep: '保留', delete: '刪除' };
 
     let choices = {};
-    let page = 0;
-    let pageSize = 30;
     let currentId = null;
     let visibleItems = [];
     let activeView = 'cards'; // 'cards' | 'table'
@@ -1222,7 +1192,6 @@
         return true;
       });
 
-      page = Math.max(0, Math.min(page, Math.ceil(visibleItems.length / pageSize) - 1));
       updateCounters();
       renderList();
     }
@@ -1351,20 +1320,12 @@
       return tr;
     }
 
-    // 渲染當前頁內容
+    // 一次顯示全部篩選結果，共用播放器只在試聽時載入音檔。
     function renderList() {
       const listCards = document.getElementById('listCards');
       const tableBody = document.getElementById('tableBody');
       listCards.replaceChildren();
       tableBody.replaceChildren();
-
-      const totalPages = Math.ceil(visibleItems.length / pageSize) || 1;
-      const startIdx = page * pageSize;
-      const pageSlice = visibleItems.slice(startIdx, startIdx + pageSize);
-
-      document.getElementById('pageInfo').textContent = `${visibleItems.length === 0 ? 0 : page + 1} / ${totalPages} 頁 (每頁 ${pageSize > 9999 ? '全部' : pageSize} 筆)`;
-      document.getElementById('btnPagePrev').disabled = (page === 0);
-      document.getElementById('btnPageNext').disabled = ((page + 1) * pageSize >= visibleItems.length);
 
       if (visibleItems.length === 0) {
         listCards.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted); background: var(--bg-panel); border: 1px dashed var(--border); border-radius: 8px;">沒有符合目前篩選條件的音效檔案。</div>';
@@ -1372,24 +1333,18 @@
         return;
       }
 
-      for (const r of pageSlice) {
-        if (activeView === 'cards') {
-          listCards.appendChild(renderCard(r));
-        } else {
-          tableBody.appendChild(renderTableRow(r));
-        }
+      const fragment = document.createDocumentFragment();
+      for (const r of visibleItems) {
+        fragment.appendChild(activeView === 'cards' ? renderCard(r) : renderTableRow(r));
       }
+      (activeView === 'cards' ? listCards : tableBody).appendChild(fragment);
 
       updateActiveUI();
     }
 
-    // 分頁切換
-    document.getElementById('btnPagePrev').onclick = () => { if (page > 0) { page--; renderList(); window.scrollTo({ top: 220, behavior: 'smooth' }); } };
-    document.getElementById('btnPageNext').onclick = () => { if ((page + 1) * pageSize < visibleItems.length) { page++; renderList(); window.scrollTo({ top: 220, behavior: 'smooth' }); } };
-    document.getElementById('selPageSize').onchange = (e) => {
-      pageSize = parseInt(e.target.value, 10);
-      page = 0;
-      renderList();
+    document.getElementById('btnBackToTop').onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('searchInput').focus({ preventScroll: true });
     };
 
     // 檢視模式切換
@@ -1418,7 +1373,6 @@
     // 篩選輸入事件
     ['searchInput', 'selSource', 'selKind', 'selCategory', 'selState', 'chkUsed'].forEach(id => {
       document.getElementById(id).addEventListener('input', () => {
-        page = 0;
         filterItems();
       });
     });

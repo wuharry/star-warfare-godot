@@ -42,14 +42,22 @@ def wav_info(path):
 
 
 def category(name):
-    name = name.lower()
+    original = name.lower()
+    name = Path(name).name.lower()
+    name = re.sub(r'\bshotgun mic(?:rophone)?(?=\W|_|$)', 'microphone', name)
+    # Classify the sound itself; collection names such as "Chamber of Shadows"
+    # must not turn room ambience into a gun reload.
+    if '/weapon_shots/' in '/' + original:
+        return '武器／爆炸'
     for label, pattern in [
-        ('換彈／槍械操作', r'reload|chamber|empty|magazine'),
-        ('彈殼', r'casing'), ('腳步', r'footstep|flip flop'),
-        ('受擊／碰撞', r'hit|impact|gore|splat|crate'),
-        ('武器／爆炸', r'laser|rifle|pistol|shotgun|sniper|smg|gun|weapon|explo|firework'),
+        ('彈殼', r'casing|shell ejection'),
+        ('換彈／槍械操作', r'reload|chamber|empty|magazine|gunmech|racking|loading gun|cock uncock|revovler|revolver|grabs with gloves|weapon_mechanism|var sfx.*pump action'),
+        ('腳步', r'footstep'),
+        ('機械／介面', r'^ui|interface|retrofuturistic_computer|powerup'),
+        ('受擊／碰撞', r'hit|impact|impt|gore|splat|crate|ricochet|punch|debris|woodbrk|woodcrsh|metlcrsh|glasbrk|ice.*crack|ice.*snapp|electri.*discharge|\bpain\b|\bdying\b'),
+        ('武器／爆炸', r'laser|rifle|pistol|shotgun|sniper|smg|gun|weapon|explo|firing|whoosh|swing'),
         ('生物／人聲', r'creature|monster|orc|beast|voice|vox|crowd|walla'),
-        ('機械／介面', r'mech|machine|turret|sonar|warning|button|radio|beep'),
+        ('機械／介面', r'mech|machine|turret|sonar|warning|button|radio|beep|robtmvmt'),
         ('環境／其他', r'.'),
     ]:
         if re.search(pattern, name):
@@ -57,8 +65,20 @@ def category(name):
 
 
 def build():
+    catalogue = OUT / 'catalog.json'
+    if catalogue.exists():
+        previous = json.loads(catalogue.read_text(encoding='utf-8'))
+        missing = [source['archive'] for source in previous['sources']
+                   if not (ROOT / source['archive']).is_file()]
+        if missing:
+            raise FileNotFoundError('重建需要本地來源 ZIP；現有清單未變更：' + ', '.join(missing))
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / '.gdignore').touch()
+    exclusion_file = OUT / 'excluded_audio.json'
+    excluded = set()
+    if exclusion_file.exists():
+        exclusions = json.loads(exclusion_file.read_text(encoding='utf-8'))
+        excluded = {(row['source'], row['original']) for row in exclusions['items']}
     sources, rows = [], []
     code = [(p.relative_to(ROOT).as_posix(), p.read_text(encoding='utf-8'))
             for p in (ROOT / 'scripts').rglob('*.gd')]
@@ -91,6 +111,9 @@ def build():
                 extension = Path(member.filename).suffix.lower()
                 if member.is_dir() or extension not in {'.wav', '.txt', '.pdf', '.xlsx'}:
                     continue
+                # Skip before extraction so a rebuild cannot restore rejected audio.
+                if extension == '.wav' and (pack, member.filename) in excluded:
+                    continue
                 # A flat, hashed filename avoids traversal and Windows long paths.
                 key = hashlib.sha256(member.filename.encode()).hexdigest()[:20]
                 target = destination / (key + extension)
@@ -108,7 +131,10 @@ def build():
         print(f'{pack}: {count} audio files', flush=True)
     for directory, source in [('docs/audio/lentikula_sfx', 'Lentikula'), ('assets/audio/non_original', '遊戲現用／原版剪輯')]:
         for path in sorted((ROOT / directory).rglob('*.wav')):
-            add(path, source, path.relative_to(ROOT / directory).as_posix(),
+            original = path.relative_to(ROOT / directory).as_posix()
+            if (source, original) in excluded:
+                continue
+            add(path, source, original,
                 '原版錄音剪輯' if 'weapon_shots' in path.parts else ('合成音效' if source == 'Lentikula' else '外加音效'))
     groups = {}
     for row in rows:
@@ -122,7 +148,7 @@ def build():
     template = Path(__file__).with_name('audio_review_template.html').read_text(encoding='utf-8')
     (OUT / 'index.html').write_text(template.replace('__CATALOG__', json.dumps(data, ensure_ascii=False).replace('</', '<\\/')), encoding='utf-8')
 
-    # 同步輸出至 docs/audio/lentikula_sfx/index.html，讓開啟任一工作區 HTML 皆可檢視全部 756 首音效
+    # 同步輸出至 docs/audio/lentikula_sfx/index.html，讓兩個頁面顯示相同的音效清單。
     lentikula_dir = ROOT / 'docs/audio/lentikula_sfx'
     lentikula_data = json.loads(json.dumps(data))
     for r in lentikula_data['items']:
