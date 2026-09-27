@@ -2,7 +2,7 @@
 
 Run Blender 5.1 --background --python tools/enemy_concept/build_warrior.py.
 Only writes the concept warrior model and its scratch diagnostics; source assets
-and the supplied warrior_chitin_v2.png are read-only inputs.
+and the supplied warrior_anatomy_v4.png are read-only inputs.
 """
 import bpy
 import json
@@ -18,7 +18,7 @@ SCRATCH = ROOT / 'test_output/enemy_concept_runtime/model_build'
 DEST.mkdir(parents=True, exist_ok=True)
 SCRATCH.mkdir(parents=True, exist_ok=True)
 (SCRATCH / '.gdignore').write_text('')
-ALBEDO = DEST / 'warrior_chitin_v2.png'
+ALBEDO = DEST / 'warrior_anatomy_v4.png'
 albedo_hash_before = hashlib.sha256(ALBEDO.read_bytes()).hexdigest()
 doc = json.loads(SOURCE.read_text(encoding='utf-8'))
 for key in ('extensionsRequired', 'extensionsUsed'):
@@ -108,7 +108,7 @@ def material(name, color, emission=0):
         shader.inputs['Emission Strength'].default_value = emission
     return mat
 
-shell = material('warrior_chitin_palette_v3', (.34,.095,.055))
+shell = material('warrior_chitin_painted_v4', (.34,.095,.055))
 tex = shell.node_tree.nodes.new('ShaderNodeTexImage')
 tex.image = bpy.data.images.load(str(ALBEDO), check_existing=True)
 tex.interpolation = 'Linear'
@@ -126,6 +126,9 @@ shell.node_tree.links.new(paint_mix.outputs['Color'], shell.node_tree.nodes['Pri
 shell.node_tree.links.new(tex.outputs['Color'], shell.node_tree.nodes['Principled BSDF'].inputs['Emission Color'])
 shell.node_tree.nodes['Principled BSDF'].inputs['Emission Strength'].default_value = .12
 dark = material('warrior_recess', (.014,.007,.022), .14)
+joint_tex = dark.node_tree.nodes.new('ShaderNodeTexImage')
+joint_tex.image = tex.image
+dark.node_tree.links.new(joint_tex.outputs['Color'], dark.node_tree.nodes['Principled BSDF'].inputs['Base Color'])
 gold = material('warrior_chitin_ridge', (.15,.060,.015), .10)
 purple = material('warrior_purple_fissure', (.28,.012,.55), .55)
 green = material('warrior_six_green_eyes', (.10,.43,.014), .45)
@@ -148,7 +151,7 @@ def chitin_tint(name,index,points,coords):
     """Hand-painted colour zones tied to each plate, not world lighting.
 
     Linear RGB colours separate plum recesses, mahogany panels, and amber
-    ridges. The Godot chitin shader uses the old texture for fine grain only.
+    ridges. The runtime shader blends a small amount into the painted atlas.
     """
     plum=srgb_hex('302433')
     mahogany=srgb_hex('6b4031')
@@ -187,25 +190,42 @@ def chitin_tint(name,index,points,coords):
 def append_part(name, local_verts, local_faces, bone, mat=0, uv_mode='shell', uvs=None):
     start = len(verts)
     inv = inverse_deform[bone]
+    if uvs is None:
+        # Planar pieces need geometric coordinates, not vertex-index modulo
+        # patterns (which folded unrelated painted features across triangles).
+        spans=[max(p[axis] for p in local_verts)-min(p[axis] for p in local_verts) for axis in range(3)]
+        vertical,horizontal=sorted(range(3),key=lambda axis:spans[axis],reverse=True)[:2]
+        low_u=min(p[horizontal] for p in local_verts)
+        low_v=min(p[vertical] for p in local_verts)
+        uvs=[(.36+.18*(p[horizontal]-low_u)/max(spans[horizontal],1e-6),
+              .36+.18*(p[vertical]-low_v)/max(spans[vertical],1e-6)) for p in local_verts]
     is_head=bone=='Bone head01' or bone.startswith('Mandible_')
     verts.extend([inv @ (prominent_head(p) if is_head else Vector(p)) for p in local_verts])
     weights.extend([bone] * len(local_verts))
     for i in range(len(local_verts)):
-        coord=uvs[i] if uvs else (.36+.18*(i%7)/6,.36+.18*((i//7)%7)/6)
+        coord=uvs[i]
         paint_colors.append(chitin_tint(name,i,local_verts,coord) if mat==0 else (1,1,1))
     for face in local_faces:
         faces.append(tuple(start+i for i in face))
         face_mats.append(mat)
-        if uvs:
-            coords = [uvs[i] for i in face]
-        else:
-            # New pieces explicitly map into the clean large central chitin tile.
-            coords = [(.36 + .18*(i % 7)/6, .36 + .18*((i//7) % 7)/6) for i in face]
-        # The v2 swatch contains material grain only. Spread the old tile-local
-        # coordinates across it; anatomical detail now belongs to the mesh.
-        uv_faces.append([(.06+.88*(u-.36)/.18, .06+.88*(v-.36)/.18) for u,v in coords])
+        coords = [uvs[i] for i in face]
+        # Each anatomical family samples its own painted patch. Keep a margin
+        # inside the cell to stop adjacent patches bleeding into mipmaps.
+        column, row = atlas_cell(name, mat)
+        uv_faces.append([((column+.035+.93*(u-.36)/.18)/2,
+                          (2-row+.035+.93*(1-(v-.36)/.18))/3) for u,v in coords])
     part_ranges[name] = {'vertex_start': start, 'vertex_count': len(local_verts), 'bone': bone,
-                         'triangle_count': sum(len(f)-2 for f in local_faces)}
+                         'triangle_count': sum(len(f)-2 for f in local_faces),
+                         'atlas_cell': list(atlas_cell(name,mat))}
+
+def atlas_cell(name, mat):
+    """Columns/rows counted from the top-left of the generated 2 x 3 atlas."""
+    if mat==1:return (1,2)
+    if name.startswith(('arched_hood','hood_rear','hood_inset','brow_')):return (0,0)
+    if name.startswith(('abdomen_plate','dorsal_spine','tail')):return (1,0)
+    if name.startswith(('walking_','leg_','scythe_arm_')):return (0,1)
+    if name.startswith(('scythe_hook','mandible_','scythe_barb')):return (1,1)
+    return (0,2)
 
 def ellipsoid(name, center, radius, bone, mat=0, seg=10, rings=5):
     v, f, uv = [], [], []
@@ -285,9 +305,9 @@ def blade(name, points, widths, depths, bone, mat=0, steps=3):
         # Give them a separate chitin tone instead of painting bright UV bands.
         for j in range(len(samples)-1):
             ridge_sides=(3,4) if name.endswith('_R') else (0,7)
-            shadow_sides=(0,7) if name.endswith('_R') else (3,4)
             for i in ridge_sides:face_mats[bevel_start+j*8+i]=2
-            for i in shadow_sides:face_mats[bevel_start+j*8+i]=1
+            # Keep the blade's painted dark face on its own atlas cell; joint
+            # membrane is a different material and must not replace it.
 
 def dorsal_plate(name, y, z, width, length, bone):
     """An overlapping arched plate, not a bead sitting on the abdomen."""
@@ -299,8 +319,8 @@ def dorsal_plate(name, y, z, width, length, bone):
                 a=-2.0+4.0*i/12
                 inset=.018*layer
                 v.append(((width*(1-.10*t)-inset)*math.sin(a),
-                          y+length*(.5-t)-.045*abs(math.sin(a))**1.5*t,
-                          z-.20+(.37-inset)*math.cos(a)+.025*math.sin(t*math.pi)))
+                          y+length*(.5-t)-.15*abs(math.sin(a))**3*t*t,
+                          z-.20+(.37-inset)*math.cos(a)+.025*math.sin(t*math.pi)-.06*abs(math.sin(a))**3*t*t))
                 uv.append((.36+.18*i/12,.36+.18*t))
     for layer in range(2):
         for j in range(3):
@@ -329,6 +349,35 @@ for i in range(5):
     spike(f'dorsal_spine_{i}',(0,y,z+.14),(0,y-.14,z+.39),.07,'Bone',0)
 spike('tail',(0,-1.24,.78),(0,-1.72,.91),.16,'Bone',0)
 
+# Broad, pointed leg scutes have an outward ridge and a thin return underneath.
+# Each segment keeps the recovered bone endpoints; only its shell is replaced.
+def walking_carapace(name, a, b, width, depth, bone, sign):
+    a,b=Vector(a),Vector(b)
+    along=(b-a).normalized()
+    outward=Vector((sign,0,.18))
+    outward=(outward-along*outward.dot(along)).normalized()
+    across=along.cross(outward).normalized()
+    section=[(-1,0),(-.64,.48),(0,1),(.64,.48),
+             (1,0),(.62,-.20),(0,-.29),(-.62,-.20)]
+    stations=[(0,.40,.42),(.13,.91,.82),(.34,1,1),
+              (.62,.77,.80),(.84,.43,.48)]
+    v,f,uv=[],[],[]
+    for t,w,d in stations:
+        center=a.lerp(b,t)
+        for i,(x,y) in enumerate(section):
+            v.append(center+across*(x*width*w)+outward*(y*depth*d))
+            uv.append((.36+.18*i/7,.36+.18*t))
+    for j in range(len(stations)-1):
+        for i in range(8):
+            f.append((j*8+i,j*8+(i+1)%8,(j+1)*8+(i+1)%8,(j+1)*8+i))
+    tip=len(v)
+    v.append(b)
+    uv.append((.45,.54))
+    last=(len(stations)-1)*8
+    f.extend((last+i,last+(i+1)%8,tip) for i in range(8))
+    f.append(tuple(reversed(range(8))))
+    append_part(name,v,f,bone,0,uvs=uv)
+
 # Four existing walking-leg chains retain all legacy joint names and motion.
 for side, sign in [('l',-1),('r',1)]:
     for limb in ('f','b'):
@@ -336,13 +385,24 @@ for side, sign in [('l',-1),('r',1)]:
         points=[idle_heads[n] for n in chain]
         for j in range(3):
             a,b=points[j],points[j+1]
-            mid=a.lerp(b,.5)
-            radius=[.12,.145,.14][j]
-            tube(f'walking_{side}_{limb}_{j}',[a,a.lerp(b,.25),mid,a.lerp(b,.8),b],[radius*.68,radius*.91,radius,radius*.65,.018 if j==2 else radius*.64],chain[j],0,sides=8)
-            if j>0:
-                spike(f'leg_spine_{side}_{limb}_{j}',mid,mid+Vector((sign*.12,0,.24)),.065,chain[j],0)
-                tube(f'leg_glow_{side}_{limb}_{j}',[mid+Vector((0,.09,.01)),b.lerp(mid,.7)+Vector((0,.07,.01))],[.018,.012],chain[j],3,sides=4)
-        ellipsoid(f'leg_joint_{side}_{limb}',points[2],(.12,.11,.11),chain[2],1,seg=12,rings=6)
+            # Dark inner tissue is deliberately narrower than the armour;
+            # short accordion folds remain visible beside the overlapping lip.
+            tube(f'leg_inner_{side}_{limb}_{j}',
+                 [a,a.lerp(b,.22),a.lerp(b,.70),b],
+                 [.045,.052,.044,.001 if j==2 else .045],chain[j],1,sides=8)
+            fold_t=[0,.035,.065,.10,.13,.17]
+            tube(f'leg_joint_folds_{side}_{limb}_{j}',[a.lerp(b,t) for t in fold_t],
+                 [.050,.065,.047,.063,.047,.052],chain[j],1,sides=8)
+            width=[.115,.165,.155][j]
+            depth=[.090,.115,.110][j]
+            # Build the lower scute first. The upper scute overlaps its root
+            # and ends in a single broad point instead of a row of tiny spikes.
+            walking_carapace(f'walking_{side}_{limb}_{j}_tip',
+                             a.lerp(b,.50),b if j==2 else a.lerp(b,.92),
+                             width*.70,depth*.67,chain[j],sign)
+            walking_carapace(f'walking_{side}_{limb}_{j}_carapace',
+                             a.lerp(b,.14),a.lerp(b,.78),
+                             width,depth,chain[j],sign)
 
 # A thick continuous hood wraps OVER an inset face. Its lower edge is an
 # actual arch, so the six-eye face is not a flat disc stuck onto a closed cone.
@@ -354,7 +414,11 @@ def hood_point(index,t):
     lo=max(0,min(7,int(index))); w=index-lo
     outer=Vector(hood_outer[lo]).lerp(Vector(hood_outer[lo+1]),w)
     inner=Vector(hood_inner[lo]).lerp(Vector(hood_inner[lo+1]),w)
-    return outer.lerp(inner,t)+Vector((0,.075*math.sin(math.pi*t),0))
+    ridge=.060*math.exp(-((index-4)/.38)**2)
+    ridge+=.045*(math.exp(-((index-2)/.42)**2)+math.exp(-((index-6)/.42)**2))
+    ridge-=.025*(math.exp(-((index-3)/.35)**2)+math.exp(-((index-5)/.35)**2))
+    relief=math.sin(math.pi*t)*ridge
+    return outer.lerp(inner,t)+Vector((0,.075*math.sin(math.pi*t)+relief,relief*.65))
 hood_v,hood_f,hood_uv=[],[],[]
 hood_rows,hood_cols=13,33
 for layer in range(2):
@@ -422,7 +486,7 @@ for j,(z,width,front,back) in enumerate(face_levels):
     for i in range(16):
         a=2*math.pi*i/16
         face_v.append((width*math.cos(a),(front+back)/2+(front-back)/2*math.sin(a),z))
-        face_uv.append((.36+.18*i/15,.36+.18*j/(len(face_levels)-1)))
+        face_uv.append((.36+.18*(math.cos(a)+1)/2,.36+.18*(1-j/(len(face_levels)-1))))
 for j in range(len(face_levels)-1):
     for i in range(16):face_f.append((j*16+i,j*16+(i+1)%16,(j+1)*16+(i+1)%16,(j+1)*16+i))
 face_f += [tuple(reversed(range(16))),tuple((len(face_levels)-1)*16+i for i in range(16))]
@@ -482,7 +546,9 @@ uv=mesh.uv_layers.new(name='UVMap')
 paint=mesh.color_attributes.new(name='ConceptPalette',type='FLOAT_COLOR',domain='CORNER')
 for poly,mat,coords in zip(mesh.polygons,face_mats,uv_faces):
     poly.material_index=mat
-    poly.use_smooth=True
+    # The broad flat facets on the leg plates should meet at a real crease.
+    poly.use_smooth=not any(part['vertex_start']<=poly.vertices[0]<part['vertex_start']+part['vertex_count']
+                           for name,part in part_ranges.items() if name.startswith('walking_'))
     for li,coord in zip(poly.loop_indices,coords):
         uv.data[li].uv=coord
         color=paint_colors[mesh.loops[li].vertex_index] if mat==0 else (1,1,1)
@@ -553,8 +619,8 @@ args={key:value for key,value in requested.items() if key in props}
 bpy.ops.export_scene.gltf(**args)
 export_doc=json.loads((DEST/'warrior.gltf').read_text())
 # The bundled Godot 4.7.2 import left vertex colouring disabled on the first
-# primitive while enabling subsequent ones. Put the uniform dark surface first;
-# it needs no tint. Keep the non-uniform chitin after it and verify in Godot.
+# primitive while enabling subsequent ones. Put the joint surface first;
+# its atlas needs no vertex tint. Verify the tinted chitin surfaces in Godot.
 for exported_mesh in export_doc.get('meshes',[]):
     exported_mesh['primitives'].sort(key=lambda p:0 if p['material']==1 else 1)
 for image in export_doc.get('images',[]):
@@ -579,8 +645,10 @@ report={'source':str(SOURCE.relative_to(ROOT)),'output':str((DEST/'warrior.gltf'
  'parts':part_ranges,'clips':animation_report,'export_clips':[a['name'] for a in export_doc.get('animations',[])],
  'materials':[m.name for m in materials],'albedo_path':ALBEDO.relative_to(ROOT).as_posix(),'albedo_sha256':albedo_hash_before,
  'albedo_unchanged':hashlib.sha256(ALBEDO.read_bytes()).hexdigest()==albedo_hash_before,
- 'palette':{'revision':'concept_palette_v3','attribute':'COLOR_0','shell_emission':.12,'specular_ior_level':.10,
+ 'palette':{'revision':'anatomy_atlas_v4','attribute':'COLOR_0','shell_emission':.12,'specular_ior_level':.10,
             'zones':['plum recesses','mahogany panels','amber ridge accents','violet seams','green eyes']},
+ 'atlas':{'grid':[2,3],'margin':.035,'tiles':['hood','abdomen','limb','blade','face','joint'],
+          'source':'built-in imagegen','runtime_uses_full_color':True},
  'head_emphasis':{'pivot':[0,.58,1.25],'scale':[1.14,1.04,1.12],'forward_offset':.10,'space':'Blender authoring idle pose'},
  'scope':'Runtime prototype; preserves recovered source rig/animations, no rights-clean claim.'}
 (SCRATCH/'build_report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')

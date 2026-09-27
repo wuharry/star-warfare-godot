@@ -3,7 +3,7 @@ extends Node3D
 const Catalog = preload("res://scripts/core/monster_catalog.gd")
 const CONCEPT_PATH := "res://assets/models/enemies/concept/warrior/warrior.gltf"
 const ORIGINAL_PATH := "res://assets/models/enemies/animated/bug01/bug01.gltf"
-const TEXTURE_PATH := "res://assets/models/enemies/concept/warrior/warrior_chitin_v2.png"
+const TEXTURE_PATH := "res://assets/models/enemies/concept/warrior/warrior_anatomy_v4.png"
 const REQUIRED_CLIPS := ["idle", "run", "run01", "run02", "attack", "attacked", "dead", "dead01"]
 
 var failures: Array[String] = []
@@ -184,6 +184,7 @@ func _run() -> void:
 		return
 	var uses_texture := false
 	var uses_palette := false
+	var atlas_tiles: Dictionary = {}
 	for node in enemy.model.find_children("*", "MeshInstance3D", true, false):
 		var mesh := node as MeshInstance3D
 		if mesh.mesh == null:
@@ -200,6 +201,9 @@ func _run() -> void:
 				palette_enabled = true
 			if texture and texture.resource_path == TEXTURE_PATH:
 				uses_texture = true
+				var coordinates: PackedVector2Array = mesh.mesh.surface_get_arrays(surface)[Mesh.ARRAY_TEX_UV]
+				for coordinate in coordinates:
+					atlas_tiles[Vector2i(floori(coordinate.x * 2.0), floori(coordinate.y * 3.0))] = true
 				var colors: PackedColorArray = mesh.mesh.surface_get_arrays(surface)[Mesh.ARRAY_COLOR]
 				if palette_enabled and not colors.is_empty():
 					for color in colors:
@@ -208,6 +212,7 @@ func _run() -> void:
 							break
 	_check(uses_texture, "no live mesh material uses the current concept texture")
 	_check(uses_palette, "live chitin material lost its non-uniform concept palette")
+	_check(atlas_tiles.size() == 6, "live painted materials do not sample all six anatomical atlas cells")
 	_pose(enemy, "idle", 0.0)
 	var sample := _skin_sample(enemy, added_names)
 	var bounds: AABB = sample.bounds
