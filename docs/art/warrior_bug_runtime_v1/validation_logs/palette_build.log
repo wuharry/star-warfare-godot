@@ -1,0 +1,16 @@
+08:51:40 | INFO: Data are loaded, start creating Blender stuff
+08:51:40 | INFO: Blender create Mesh node bug01
+08:51:41 | INFO: glTF import finished in 0.09s
+E:\Star-Warfare-Godot-Restoration\tools\enemy_concept\build_warrior.py:101: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+INFO Draco mesh compression is available, use library at C:\Program Files\Blender Foundation\Blender 5.1\5.1\scripts\addons_core\io_scene_gltf2\extern_draco.dll
+08:51:49 | INFO: Starting glTF 2.0 export
+08:51:49 | INFO: Extracting primitive: warrior_concept_geometry
+08:51:49 | INFO: Primitives created: 5
+08:51:51 | INFO: Finished glTF 2.0 export in 1.397836685180664 s
+
+Info: Saved as "warrior_preview.blend"
+WARRIOR_BUILD_PASS {"bone_count": 30, "vertex_count": 6554, "triangle_count": 10912, "mesh_count": 1, "export_clips": ["attack", "attacked", "dead", "dead01", "idle", "run", "run01", "run02"], "albedo_unchanged": true}
+Blender 5.1.0 (hash adfe2921d5f3 built 2026-03-17 01:37:32)
+
+Blender quit

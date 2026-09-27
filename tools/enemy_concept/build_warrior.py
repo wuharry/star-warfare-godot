@@ -64,6 +64,11 @@ reference_pose = {'action': 'idle', 'frame': 0, 'heads': {k: list(v) for k,v in 
 
 # New bones are positioned in idle space, then mapped through parent skinning
 # back into rest space. The old recovered rest is intentionally not normalized.
+def prominent_head(point):
+    pivot=Vector((0,.58,1.25))
+    delta=Vector(point)-pivot
+    return pivot+Vector((delta.x*1.14,delta.y*1.04+.10,delta.z*1.12))
+
 new_specs = {}
 for side, sign in [('L', -1), ('R', 1)]:
     points = [Vector((sign*.43, .20, 1.21)), Vector((sign*.76, .18, 1.69)),
@@ -72,8 +77,8 @@ for side, sign in [('L', -1), ('R', 1)]:
         name = f'Scythe_{side}{i+1:02d}'
         new_specs[name] = {'head': points[i], 'tail': points[i+1],
                            'parent': 'Bone' if i == 0 else f'Scythe_{side}{i:02d}', 'old_parent': 'Bone'}
-    new_specs[f'Mandible_{side}'] = {'head': Vector((sign*.245, 1.08, 1.04)),
-        'tail': Vector((sign*.45, 1.16, .78)), 'parent': 'Bone head01', 'old_parent': 'Bone head01'}
+    new_specs[f'Mandible_{side}'] = {'head': prominent_head((sign*.245, 1.08, 1.04)),
+        'tail': prominent_head((sign*.45, 1.16, .78)), 'parent': 'Bone head01', 'old_parent': 'Bone head01'}
 bpy.context.view_layer.objects.active = rig
 rig.select_set(True)
 bpy.ops.object.mode_set(mode='EDIT')
@@ -96,37 +101,98 @@ def material(name, color, emission=0):
     mat.use_nodes = True
     shader = mat.node_tree.nodes.get('Principled BSDF')
     shader.inputs['Base Color'].default_value = (*color, 1)
-    shader.inputs['Roughness'].default_value = .88
+    shader.inputs['Roughness'].default_value = .92
+    shader.inputs['Specular IOR Level'].default_value = .10
     if emission:
         shader.inputs['Emission Color'].default_value = (*color, 1)
         shader.inputs['Emission Strength'].default_value = emission
     return mat
 
-shell = material('warrior_chitin_atlas', (.34,.095,.055))
+shell = material('warrior_chitin_palette_v3', (.34,.095,.055))
 tex = shell.node_tree.nodes.new('ShaderNodeTexImage')
 tex.image = bpy.data.images.load(str(ALBEDO), check_existing=True)
 tex.interpolation = 'Linear'
-shell.node_tree.links.new(tex.outputs['Color'], shell.node_tree.nodes['Principled BSDF'].inputs['Base Color'])
+vertex_tint=shell.node_tree.nodes.new('ShaderNodeVertexColor')
+vertex_tint.layer_name='ConceptPalette'
+paint_mix=shell.node_tree.nodes.new('ShaderNodeMixRGB')
+paint_mix.blend_type='MULTIPLY'
+paint_mix.inputs[0].default_value=1
+shell.node_tree.links.new(tex.outputs['Color'],paint_mix.inputs[1])
+shell.node_tree.links.new(vertex_tint.outputs['Color'],paint_mix.inputs[2])
+shell.node_tree.links.new(paint_mix.outputs['Color'], shell.node_tree.nodes['Principled BSDF'].inputs['Base Color'])
 # Recovered arenas use baked environment textures with little dynamic fill.
 # A restrained texture-coloured contribution keeps chitin readable there while
 # retaining normal lighting/shadows; eyes and sensory seams remain brighter.
 shell.node_tree.links.new(tex.outputs['Color'], shell.node_tree.nodes['Principled BSDF'].inputs['Emission Color'])
-shell.node_tree.nodes['Principled BSDF'].inputs['Emission Strength'].default_value = .60
-dark = material('warrior_recess', (.035,.012,.02))
-gold = material('warrior_chitin_ridge', (.12,.055,.028))
-purple = material('warrior_purple_fissure', (.23,.012,.36), .22)
-green = material('warrior_six_green_eyes', (.06,.48,.012), .60)
+shell.node_tree.nodes['Principled BSDF'].inputs['Emission Strength'].default_value = .12
+dark = material('warrior_recess', (.014,.007,.022), .14)
+gold = material('warrior_chitin_ridge', (.15,.060,.015), .10)
+purple = material('warrior_purple_fissure', (.28,.012,.55), .55)
+green = material('warrior_six_green_eyes', (.10,.43,.014), .45)
 green.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = .32
 materials = [shell, dark, gold, purple, green]
 
 verts, faces, weights, face_mats, uv_faces = [], [], [], [], []
+paint_colors = []
 part_ranges = {}
+
+def palette_mix(a,b,t):
+    t=max(0,min(1,t))
+    return tuple(x*(1-t)+y*t for x,y in zip(a,b))
+
+def srgb_hex(value):
+    rgb=[int(value[i:i+2],16)/255 for i in (0,2,4)]
+    return tuple(x/12.92 if x<=.04045 else ((x+.055)/1.055)**2.4 for x in rgb)
+
+def chitin_tint(name,index,points,coords):
+    """Hand-painted colour zones tied to each plate, not world lighting.
+
+    Linear RGB colours separate plum recesses, mahogany panels, and amber
+    ridges. The Godot chitin shader uses the old texture for fine grain only.
+    """
+    plum=srgb_hex('302433')
+    mahogany=srgb_hex('6b4031')
+    amber=srgb_hex('af763e')
+    u,v=coords
+    s,t=(u-.36)/.18,(v-.36)/.18
+    if name=='arched_hood_shell':
+        if index>=13*33:return plum
+        centre=math.exp(-((s-.5)/.055)**2)
+        panels=max(math.exp(-((s-.31)/.075)**2),math.exp(-((s-.69)/.075)**2))
+        base=palette_mix(plum,mahogany,.22+.78*panels)
+        base=palette_mix(base,amber,.80*centre)
+        return palette_mix(plum,base,min(1,t*5)*min(1,(1-t)*7+.18))
+    if name.startswith(('scythe_hook_','mandible_')):
+        station=index//8
+        total=max(1,len(points)//8-1)
+        progress=station/total
+        return palette_mix(mahogany,plum,.25+.70*progress)
+    if name.startswith('abdomen_plate_'):
+        column=index%13;row=(index//13)%4
+        if index>=52:return plum
+        arch=math.sin(math.pi*column/12)**2
+        return palette_mix(plum,palette_mix(mahogany,amber,.25*arch),arch*(.40+.60*row/3))
+    if name=='tapered_insect_face':
+        x,y,z=points[index]
+        centre=math.exp(-(x/.095)**2)
+        return palette_mix(plum,palette_mix(mahogany,amber,.65*centre),.85)
+    if name.startswith(('throat_','cheek_','neck_','thorax_','hood_rear')):
+        return palette_mix(plum,mahogany,.20)
+    if name.startswith(('walking_','scythe_arm_')):
+        return palette_mix(plum,mahogany,math.sin(math.pi*max(0,min(1,s)))**2*.90)
+    if name.startswith(('jaw_root_','leg_spine_','dorsal_spine_')):
+        return palette_mix(mahogany,amber,.20)
+    return mahogany
 
 def append_part(name, local_verts, local_faces, bone, mat=0, uv_mode='shell', uvs=None):
     start = len(verts)
     inv = inverse_deform[bone]
-    verts.extend([inv @ Vector(p) for p in local_verts])
+    is_head=bone=='Bone head01' or bone.startswith('Mandible_')
+    verts.extend([inv @ (prominent_head(p) if is_head else Vector(p)) for p in local_verts])
     weights.extend([bone] * len(local_verts))
+    for i in range(len(local_verts)):
+        coord=uvs[i] if uvs else (.36+.18*(i%7)/6,.36+.18*((i//7)%7)/6)
+        paint_colors.append(chitin_tint(name,i,local_verts,coord) if mat==0 else (1,1,1))
     for face in local_faces:
         faces.append(tuple(start+i for i in face))
         face_mats.append(mat)
@@ -218,7 +284,10 @@ def blade(name, points, widths, depths, bone, mat=0, steps=3):
         # Two narrow sides of the cross-section are actual cutting bevels.
         # Give them a separate chitin tone instead of painting bright UV bands.
         for j in range(len(samples)-1):
-            for i in (0,3,4,7):face_mats[bevel_start+j*8+i]=2
+            ridge_sides=(3,4) if name.endswith('_R') else (0,7)
+            shadow_sides=(0,7) if name.endswith('_R') else (3,4)
+            for i in ridge_sides:face_mats[bevel_start+j*8+i]=2
+            for i in shadow_sides:face_mats[bevel_start+j*8+i]=1
 
 def dorsal_plate(name, y, z, width, length, bone):
     """An overlapping arched plate, not a bead sitting on the abdomen."""
@@ -410,10 +479,14 @@ obj=bpy.data.objects.new('warrior_Skinned',mesh)
 bpy.context.collection.objects.link(obj)
 for mat in materials: mesh.materials.append(mat)
 uv=mesh.uv_layers.new(name='UVMap')
+paint=mesh.color_attributes.new(name='ConceptPalette',type='FLOAT_COLOR',domain='CORNER')
 for poly,mat,coords in zip(mesh.polygons,face_mats,uv_faces):
     poly.material_index=mat
     poly.use_smooth=True
-    for li,coord in zip(poly.loop_indices,coords): uv.data[li].uv=coord
+    for li,coord in zip(poly.loop_indices,coords):
+        uv.data[li].uv=coord
+        color=paint_colors[mesh.loops[li].vertex_index] if mat==0 else (1,1,1)
+        paint.data[li].color=(*color,1)
 for name in original_bones+list(new_specs): obj.vertex_groups.new(name=name)
 for i,bone in enumerate(weights): obj.vertex_groups[bone].add([i],1.0,'REPLACE')
 mod=obj.modifiers.new('Shared recovered skeleton','ARMATURE')
@@ -474,15 +547,22 @@ requested={'filepath':str(DEST/'warrior.gltf'),'export_format':'GLTF_SEPARATE','
  'export_animations':True,'export_animation_mode':'ACTIONS','export_force_sampling':True,
  'export_frame_range':False,'export_def_bones':False,'export_skins':True,'export_materials':'EXPORT',
  'export_image_format':'AUTO','export_keep_originals':True,'export_texture_dir':'.','export_yup':True,'export_anim_single_armature':True,
- 'export_optimize_animation_size':False,'export_lights':False,'export_cameras':False}
+ 'export_optimize_animation_size':False,'export_lights':False,'export_cameras':False,
+ 'export_vertex_color':'NAME','export_vertex_color_name':'ConceptPalette'}
 args={key:value for key,value in requested.items() if key in props}
 bpy.ops.export_scene.gltf(**args)
 export_doc=json.loads((DEST/'warrior.gltf').read_text())
+# The bundled Godot 4.7.2 import left vertex colouring disabled on the first
+# primitive while enabling subsequent ones. Put the uniform dark surface first;
+# it needs no tint. Keep the non-uniform chitin after it and verify in Godot.
+for exported_mesh in export_doc.get('meshes',[]):
+    exported_mesh['primitives'].sort(key=lambda p:0 if p['material']==1 else 1)
 for image in export_doc.get('images',[]):
     # Portable URI: supplied atlas already exists beside the model, never rewritten.
     image['uri']=ALBEDO.name
 assert len(export_doc.get('images', [])) == 1, 'Expected exactly one atlas image'
 assert export_doc['materials'][0]['pbrMetallicRoughness'].get('baseColorTexture'), 'Chitin texture was not exported'
+assert all('COLOR_0' in p['attributes'] for m in export_doc['meshes'] for p in m['primitives']), 'Concept palette vertex colors were lost'
 assert sorted(a['name'] for a in export_doc.get('animations', [])) == sorted(clip_names), 'Source animation names were lost'
 for source_clip in doc['animations']:
     source_end = max(doc['accessors'][s['input']]['max'][0] for s in source_clip['samplers'])
@@ -499,6 +579,9 @@ report={'source':str(SOURCE.relative_to(ROOT)),'output':str((DEST/'warrior.gltf'
  'parts':part_ranges,'clips':animation_report,'export_clips':[a['name'] for a in export_doc.get('animations',[])],
  'materials':[m.name for m in materials],'albedo_path':ALBEDO.relative_to(ROOT).as_posix(),'albedo_sha256':albedo_hash_before,
  'albedo_unchanged':hashlib.sha256(ALBEDO.read_bytes()).hexdigest()==albedo_hash_before,
+ 'palette':{'revision':'concept_palette_v3','attribute':'COLOR_0','shell_emission':.12,'specular_ior_level':.10,
+            'zones':['plum recesses','mahogany panels','amber ridge accents','violet seams','green eyes']},
+ 'head_emphasis':{'pivot':[0,.58,1.25],'scale':[1.14,1.04,1.12],'forward_offset':.10,'space':'Blender authoring idle pose'},
  'scope':'Runtime prototype; preserves recovered source rig/animations, no rights-clean claim.'}
 (SCRATCH/'build_report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
 bpy.ops.wm.save_as_mainfile(filepath=str(SCRATCH/'warrior_preview.blend'))

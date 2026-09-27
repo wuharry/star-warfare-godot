@@ -1,0 +1,90 @@
+{
+  "date": "2026-09-27",
+  "revision": "concept_palette_v3_head_emphasis",
+  "baseline_revision": "815fcaf",
+  "requests": [
+    "配色風格不對",
+    "頭部要更加突出一點"
+  ],
+  "runtime_target": {
+    "kind": "crawler",
+    "source_monster_id": 0,
+    "source_model": "bug01"
+  },
+  "reference": {
+    "path": "docs/art/enemy_art/images/warrior_bug_concept__images__01_mantis_turnaround.jpg",
+    "sha256": "4767380f84f9e8ed3cc0a1e143fac24c54463e2a9701c246bebde868f221a22a"
+  },
+  "texture": {
+    "path": "assets/models/enemies/concept/warrior/warrior_chitin_v2.png",
+    "sha256": "d72dfd1e154a3832d023185d4a6d69644f479c133273092c3dd99e31331f4277",
+    "new_generation": false,
+    "pixel_edits": false,
+    "role": "Existing material grain; hue supplied by vertex palette."
+  },
+  "palette_srgb": {
+    "recess": "#302433",
+    "panel": "#6b4031",
+    "ridge": "#af763e"
+  },
+  "head_emphasis": {
+    "pivot": [
+      0,
+      0.58,
+      1.25
+    ],
+    "scale": [
+      1.14,
+      1.04,
+      1.12
+    ],
+    "forward_offset": 0.1,
+    "space": "Blender authoring idle pose",
+    "mandible_pivots_updated": true
+  },
+  "geometry": {
+    "vertices": 6554,
+    "triangles": 10912,
+    "bones": 30,
+    "clips": 8,
+    "mesh_count": 1,
+    "materials": 5
+  },
+  "material_pipeline": {
+    "vertex_attribute": "COLOR_0",
+    "shader": "assets/models/enemies/concept/warrior/chitin_palette.gdshader",
+    "post_import": "tools/enemy_concept/import_warrior.gd",
+    "configuration_tool": "tools/enemy_concept/configure_import.gd",
+    "painted_fill": 0.45,
+    "diffuse_weight": 0.4,
+    "white_specular": false,
+    "compatibility_color_conversion": true
+  },
+  "technical_reference": {
+    "Godot spatial shader OUTPUT_IS_SRGB": "https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/spatial_shader.html#global-built-ins"
+  },
+  "notes": [
+    "Godot 4.7.2 initial import probe left first primitive vertex colouring disabled; uniform surface exported first, custom chitin shader explicitly consumes COLOR_0.",
+    "Import settings changed through Godot ConfigFile API, no hand-edit of engine metadata.",
+    "No gameplay statistics, AI, source clips or arena lighting changes.",
+    "Godot automatically enabled 3D texture compression and mipmaps for the existing grain texture; image pixels unchanged."
+  ],
+  "status": "applied_to_runtime_pending_user_art_acceptance",
+  "limitations": [
+    "Only GL Compatibility received visual capture; Forward+ and Mobile not visually verified.",
+    "Leg form and fine surface painting remain candidates for later art refinement.",
+    "No large-wave performance benchmark."
+  ],
+  "artifacts": {
+    "assets/models/enemies/concept/warrior/warrior.gltf": "6a5d1591ec57dcd19ba219871fb467990406beae007e3fb5c02d646dad6df9de",
+    "assets/models/enemies/concept/warrior/warrior.bin": "ff9cf3094c4d623545384982e918f10a603345d25c4501805c7f1ef43926886b",
+    "assets/models/enemies/concept/warrior/warrior.gltf.import": "ced644e54d7fa61b2c7ac77944224ea3ac3f47caafc082f4a74216102d26d770",
+    "assets/models/enemies/concept/warrior/chitin_palette.gdshader": "420fef1235df40834f1b7395eeb7210742c73df5a5fe737dda6d023cacad54cf",
+    "assets/models/enemies/concept/warrior/warrior_chitin_v2.png": "d72dfd1e154a3832d023185d4a6d69644f479c133273092c3dd99e31331f4277",
+    "tools/enemy_concept/build_warrior.py": "1e493c0cbf55c0781991366b959187b4c929de5a9c0ae9d4ab84e4806c426e82",
+    "tools/enemy_concept/import_warrior.gd": "0b3826e5ab0a8884590146b2e01546c1cd7f5e28207d04204c2b6be2b3321a13",
+    "tools/enemy_concept/configure_import.gd": "7fb19fa1f030c38f10270c09c0cc1ffaa5cf039280a03f0bee559843408e7f72",
+    "tests/enemy_concept_test.gd": "b3c26d5aa63a0150d256e49006c53d3a9ba76d63be666757ddbb041eb2bb9c11",
+    "assets/models/enemies/concept/warrior/warrior_chitin_v2.png.import": "e7660f89f9ed94fee97e387a3c131322cd69986d32e497aef9e0224fd45a361c"
+  }
+}

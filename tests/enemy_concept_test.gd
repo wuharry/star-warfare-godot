@@ -183,16 +183,31 @@ func _run() -> void:
 		get_tree().quit(1)
 		return
 	var uses_texture := false
+	var uses_palette := false
 	for node in enemy.model.find_children("*", "MeshInstance3D", true, false):
 		var mesh := node as MeshInstance3D
 		if mesh.mesh == null:
 			_check(false, "concept contains a MeshInstance3D with no mesh")
 			continue
 		for surface in range(mesh.mesh.get_surface_count()):
-			var material := mesh.get_active_material(surface) as BaseMaterial3D
-			if material and material.albedo_texture and material.albedo_texture.resource_path == TEXTURE_PATH:
+			var material := mesh.get_active_material(surface)
+			var texture: Texture2D
+			var palette_enabled := false
+			if material is BaseMaterial3D:
+				texture = material.albedo_texture
+			elif material is ShaderMaterial and material.shader.resource_path == "res://assets/models/enemies/concept/warrior/chitin_palette.gdshader":
+				texture = material.get_shader_parameter("chitin_texture") as Texture2D
+				palette_enabled = true
+			if texture and texture.resource_path == TEXTURE_PATH:
 				uses_texture = true
-	_check(uses_texture, "no live mesh material uses warrior_albedo.png")
+				var colors: PackedColorArray = mesh.mesh.surface_get_arrays(surface)[Mesh.ARRAY_COLOR]
+				if palette_enabled and not colors.is_empty():
+					for color in colors:
+						if Vector3(color.r-colors[0].r, color.g-colors[0].g, color.b-colors[0].b).length_squared() > 0.01:
+							uses_palette = true
+							break
+	_check(uses_texture, "no live mesh material uses the current concept texture")
+	_check(uses_palette, "live chitin material lost its non-uniform concept palette")
 	_pose(enemy, "idle", 0.0)
 	var sample := _skin_sample(enemy, added_names)
 	var bounds: AABB = sample.bounds
