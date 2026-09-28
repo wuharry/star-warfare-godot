@@ -42,18 +42,18 @@
   "visual_identity": {
     "status": "prompt_target_with_actual_reviews_below",
     "proportion_target": "約6～6.5個頭盔高的厚實人體；屬 brief 目標，未作像素量測。",
-    "head": "保留原大面積橙金玻璃及中央下緣尖折、低分節藍冠條、雙鼠尾草綠冠條、厚眉和圓耳罩。中央向上尖起的護片改成實心鋼藍切面與底部短橫進氣口；兩側以斜向分件護頰覆在深色下顎軌上，維持 Tank 厚重且緊湊的臉部輪廓。",
+    "head": "保留低分節藍冠條、雙鼠尾草綠冠條、厚眉與圓耳罩；橙玻璃改成下緣完整的較低全景面窗。下方改為橫向鋼藍護板、外頰通風口與底部小綠嵌片，取消原中央尖口呼吸器及直條黑槽。",
     "torso": "鋼藍寬胸板，鼠尾草綠防爆護領；軟腹保留彎曲",
     "shoulders": "厚藍肩加短上折綠護唇，降低外伸",
     "arms": "正常五指手套、布衣肘窩與分件護臂。原版保留線索：寬大鋼藍簡潔護臂，外肘淺綠護片與黑手套。",
     "legs": "人的髖膝踝位置、軟膝後和正常軍靴；尖片按融合 brief 收短。原版保留線索：淺綠邊包住大腿外前方藍色雙圓孔方板；多邊形藍膝甲；藍色 V 形護脛與寬平鞋頭。",
     "pack": "背包為獨立装备。三視製作可示範搭配 B-03，不是原遊戲固定套裝或技能關聯；以 B 款獨立設計稿為準。",
     "concept_prompt": "prompts/c03_concept.txt",
-    "full_fusion_brief_en": "Preserve the established Tank large amber visor, its full window proportions and pointed central lower notch, plus the segmented blue crown, paired sage rails, thick brow and circular ears. Restrict changes to the lower protective assembly: keep the upward central form fitting the visor notch, replace its long vertical black opening with a solid chamfered steel-blue wedge and a small short horizontal lower intake, and add restrained sloping layered cheek plates over the dark jaw rail. The reduced straight-bottom visor and broad flat blue chin version were rejected by the user. Preserve the body, blast collar, green shoulder lips and independent B-03 design; Grenadier remains a heavy-protection structural influence.",
+    "full_fusion_brief_en": "Retain the established Tank upper helmet: segmented blue crown, paired sage rails, thick brow, dark crown panels and circular ear housings. User revision is limited to glass and lower face: continuous panoramic amber pane with a nearly horizontal central lower edge, no nose notch; broad flush steel-blue jaw shield with peripheral vents, closed low rim and a small sage chin-edge inset. Delete the pointed projecting central respirator and long vertical black slot. Preserve the original concept body, blast collar, shoulder lips, proportions and independent B-03 design; Grenadier remains a structural influence for heavy protection.",
     "actual_reviews": {
-      "concept": "2026-09-28 已目視：恢復原來的大面積橙金面罩及中央下緣尖折，保留藍綠分節頭冠、厚眉和圓耳罩。中央護片維持向上尖起，改成實心鋼藍切面與底部短橫進氣口；兩側新增斜向分件護頰。原身甲設計與全身構圖延續，磨損及局部繪製有生成差異，不宣稱逐像素保留。",
-      "turnaround": "2026-09-28 已目視：正面與左側保留大橙金面窗和中央尖折，中央實心藍護片、底部短橫進氣口與斜向護頰已同步；上半頭冠、耳罩及後殼延續。三視同尺度和共同地線，身甲與獨立 B-03 白銀藍背包保留原設計。小倒角與透視細節仍須在建模時統一，未驗工程尺寸。",
-      "construction": "2026-09-28 已目視：A 區組裝頭盔及分離橙玻璃均保留原大面罩的中央尖折，下護件顯示實心中央楔形護片、底部短橫進氣口及斜向護頰；B 區右上角頭盔片段亦同步。肩甲、胸領、B-03 背包及接軌保留原設計方向，局部繪製有生成差異。此為建模概念，未驗裝配尺寸。"
+      "concept": "2026-09-28 已目視：橙色面罩高度略收，中央下緣不再被尖口呼吸器切開；改為橫向鋼藍下顎護板、外頰通風口及底部小片鼠尾草綠嵌片。低分節頭冠、綠冠條、厚眉、圓耳罩與原身甲設計延續，全身構圖完整。局部繪製／磨損有生成差異，不宣稱保留區逐像素不變。",
+      "construction": "2026-09-28 已目視：A 區頭盔與新概念一致，拆出保留的冠耳上殼、無中央缺口的橙玻璃、新橫向藍下顎護板及黑內襯；B 區右上角露出的面罩下方也已同步。B/C/D 肩甲、胸領與 B-03 接軌設計延續，局部細線／磨損有重繪差異。分件是建模概念，尚未驗證裝配尺寸。",
+      "turnaround": "2026-09-28 已目視：正與左側同步採完整橙色面窗、寬藍下顎與小綠下緣，已移除舊尖口直條呼吸器；冠頂、耳罩與後殼延續，背面沒有面罩。三視同尺度、共同地線；身甲及独立 B-03 白銀藍背包保留原設計方向。面罩邊緣倒角需建模時統一，未驗工程尺寸。"
     }
   },
   "proposed_stats": {
@@ -117,16 +117,16 @@
         "kind": "concept",
         "path": "images/c03_concept.png",
         "prompt": "prompts/c03_concept.txt",
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-c820fc28-3577-4e47-82c6-3620d4b7b9b6.png",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-9005c777-d47d-441d-b024-d4512c259731.png",
         "date": "2026-09-28",
         "reference_images": [
           "revisions/c03_previous_helmet_20260928/images/c03_concept.png"
         ],
         "postprocessing": "none",
-        "visual_review": "2026-09-28 已目視：恢復原來的大面積橙金面罩及中央下緣尖折，保留藍綠分節頭冠、厚眉和圓耳罩。中央護片維持向上尖起，改成實心鋼藍切面與底部短橫進氣口；兩側新增斜向分件護頰。原身甲設計與全身構圖延續，磨損及局部繪製有生成差異，不宣稱逐像素保留。",
+        "visual_review": "2026-09-28 已目視：橙色面罩高度略收，中央下緣不再被尖口呼吸器切開；改為橫向鋼藍下顎護板、外頰通風口及底部小片鼠尾草綠嵌片。低分節頭冠、綠冠條、厚眉、圓耳罩與原身甲設計延續，全身構圖完整。局部繪製／磨損有生成差異，不宣稱保留區逐像素不變。",
         "status": "visually_reviewed_pending_user_selection",
-        "supersedes": "revisions/c03_flat_visor_rejected_20260928/generation_records/c03_concept.json",
-        "edit_scope": "lower_helmet_guards_preserve_original_large_notched_visor_upper_helmet_and_body_design",
+        "supersedes": "revisions/c03_previous_helmet_20260928/generation_records/c03_concept.json",
+        "edit_scope": "visor_and_lower_face_preserve_upper_helmet_and_body_design",
         "record_file": "docs/art/original_armors_v1/generation_records/c03_concept.json"
       },
       "construction": {
@@ -134,17 +134,17 @@
         "kind": "construction",
         "path": "images/c03_construction.png",
         "prompt": "prompts/c03_construction.txt",
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-167e9704-452f-4977-b19f-80bacfa9395a.png",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-e6457dc8-3b79-45cc-929b-656ff946d5aa.png",
         "date": "2026-09-28",
         "reference_images": [
           "revisions/c03_previous_helmet_20260928/images/c03_construction.png",
           "images/c03_concept.png"
         ],
         "postprocessing": "none",
-        "visual_review": "2026-09-28 已目視：A 區組裝頭盔及分離橙玻璃均保留原大面罩的中央尖折，下護件顯示實心中央楔形護片、底部短橫進氣口及斜向護頰；B 區右上角頭盔片段亦同步。肩甲、胸領、B-03 背包及接軌保留原設計方向，局部繪製有生成差異。此為建模概念，未驗裝配尺寸。",
+        "visual_review": "2026-09-28 已目視：A 區頭盔與新概念一致，拆出保留的冠耳上殼、無中央缺口的橙玻璃、新橫向藍下顎護板及黑內襯；B 區右上角露出的面罩下方也已同步。B/C/D 肩甲、胸領與 B-03 接軌設計延續，局部細線／磨損有重繪差異。分件是建模概念，尚未驗證裝配尺寸。",
         "status": "visually_reviewed_pending_user_selection",
-        "supersedes": "revisions/c03_flat_visor_rejected_20260928/generation_records/c03_construction.json",
-        "edit_scope": "lower_helmet_guards_preserve_original_large_notched_visor_upper_helmet_and_body_design",
+        "supersedes": "revisions/c03_previous_helmet_20260928/generation_records/c03_construction.json",
+        "edit_scope": "visor_and_lower_face_preserve_upper_helmet_and_body_design",
         "record_file": "docs/art/original_armors_v1/generation_records/c03_construction.json"
       },
       "turnaround": {
@@ -152,17 +152,17 @@
         "kind": "turnaround",
         "path": "images/c03_turnaround.png",
         "prompt": "prompts/c03_turnaround.txt",
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-776ddf43-7526-406b-ae51-0da5c1fb463e.png",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-7825d418-70df-4adc-8e24-d004240c44ad.png",
         "date": "2026-09-28",
         "reference_images": [
           "revisions/c03_previous_helmet_20260928/images/c03_turnaround.png",
           "images/c03_concept.png"
         ],
         "postprocessing": "none",
-        "visual_review": "2026-09-28 已目視：正面與左側保留大橙金面窗和中央尖折，中央實心藍護片、底部短橫進氣口與斜向護頰已同步；上半頭冠、耳罩及後殼延續。三視同尺度和共同地線，身甲與獨立 B-03 白銀藍背包保留原設計。小倒角與透視細節仍須在建模時統一，未驗工程尺寸。",
+        "visual_review": "2026-09-28 已目視：正與左側同步採完整橙色面窗、寬藍下顎與小綠下緣，已移除舊尖口直條呼吸器；冠頂、耳罩與後殼延續，背面沒有面罩。三視同尺度、共同地線；身甲及独立 B-03 白銀藍背包保留原設計方向。面罩邊緣倒角需建模時統一，未驗工程尺寸。",
         "status": "visually_reviewed_pending_user_selection",
-        "supersedes": "revisions/c03_flat_visor_rejected_20260928/generation_records/c03_turnaround.json",
-        "edit_scope": "lower_helmet_guards_preserve_original_large_notched_visor_upper_helmet_and_body_design",
+        "supersedes": "revisions/c03_previous_helmet_20260928/generation_records/c03_turnaround.json",
+        "edit_scope": "visor_and_lower_face_preserve_upper_helmet_and_body_design",
         "record_file": "docs/art/original_armors_v1/generation_records/c03_turnaround.json"
       }
     },
@@ -244,33 +244,32 @@
     "user_helmet_direction": {
       "date": "2026-09-28",
       "priority": "highest",
-      "instruction": "使用者認為縮小面罩及平下顎的改稿失去原版 Tank 強烈風格，最新要求「護目鏡或是面罩保持原本的話勒」。保留原大橙金面罩及中央尖折，僅微調下方護頰與呼吸器分件；上半頭冠及身甲方向延續。",
-      "scope": "lower_helmet_guards_with_original_visor_preserved_concept_turnaround_construction",
-      "reference_policy": "本次用修改前原圖作編輯目標，修正後概念作三視／拆解的下護件依據；未重新送入原版或 Halo 圖。各次實際輸入與未採用稿均另存。"
+      "instruction": "Tank 頭盔也與原版太像；使用者希望修改面罩和下半部即可，保留頭冠及身甲方向。",
+      "scope": "visor_and_lower_face_concept_turnaround_construction",
+      "reference_policy": "修改前各張圖為編輯目標，新概念作三視／拆解的面罩與下顎依據；本次未重新送入原版或 Halo 圖。"
     }
   },
   "fusion_recipe": {
     "retained": [
-      "原大面積橙金玻璃及中央下緣尖折；中央護片仍向上尖起",
       "厚眉遮沿、分節藍冠脊、雙綠冠條與圓耳罩",
       "短上翹肩片與厚領圈",
-      "綠色邊框搭藍色重甲及黑棕內襯配色"
+      "綠色邊框搭藍色重甲及橙金玻璃配色"
     ],
     "borrowed": {
-      "helmet": "保留 Grenadier 的厚眉、圓耳罩和厚頰防護結構；依使用者最新要求保留 Tank 大橙金面罩與中央尖折，只重新分件下方護頰及中央呼吸器。",
+      "helmet": "保留 Grenadier 厚眉、圓耳罩和厚頰防護結構；具體玻璃與下顎以本次橫向護板修訂為準，不保留原中央尖口。",
       "torso": "很厚且不對稱的護頸、胸口硬框與腹部軟袋；圓大肩甲分層包在上臂外；胯、肘与膝有清楚人類活動區。",
       "back": "全身圖僅前角，可見後領高度；完整背部及獨立背包未見。",
       "back_status": "not_observed"
     },
-    "optimized": "恢復原大橙金面罩與尖折輪廓；中央向上尖起的護片改成實心切面和底部短橫進氣口，兩側以斜向分層護頰維持厚重感。上半頭冠、耳罩與身甲設計延續；縮小面罩和寬平下顎的上一稿已被使用者否定並封存。",
+    "optimized": "將橙色玻璃收成下緣完整的全景面窗，取消尖口直條呼吸器；下半部改為寬而貼臉的橫向鋼藍護板，外頰通風口與小綠下緣維持重型防護感。頭冠、耳罩及身甲設計延續。",
     "optimization_common": "胸腰按人體分件、露出織物關節、短化易勾掛尖片；避免單眼機械臉與巨型四肢。"
   },
   "user_review": {
-    "status": "keep_current_design",
+    "status": "helmet_revision_pending_user_review",
     "date": "2026-09-28",
-    "feedback": "ok；不錯",
-    "scope": "lower_helmet_visual_design_preserve_original_visor",
-    "action": "使用者已確認保留本次 Tank 改稿：原大橙金面罩與中央尖折，搭配實心中央護片、底部短橫進氣口與斜向護頰；上半頭盔及身甲設計延續。",
+    "feedback": "Tank 裝甲的頭盔也是，不過我在想改面罩跟下面的部分應該就可以了。",
+    "scope": "visor_and_lower_helmet_visual_design",
+    "action": "Tank 面罩與下半部已改稿：取消中央尖口呼吸器，改為完整橙色面窗和寬藍下顎護板；保留頭冠、耳罩與身甲方向，待你評價。",
     "previous_revision": {
       "images": {
         "concept": "revisions/c03_previous_helmet_20260928/images/c03_concept.png",
@@ -283,14 +282,6 @@
         "construction": "revisions/c03_previous_helmet_20260928/prompts/c03_construction.txt"
       }
     },
-    "runtime_implemented": false,
-    "revision_request": "Tank 裝甲的頭盔也是，不過我在想改面罩跟下面的部分應該就可以了。",
-    "rejected_revision": {
-      "status": "rejected_by_user_lost_tank_identity",
-      "reason": "使用者認為縮小面罩與橫向平下顎失去原版 Tank 的強烈風格。",
-      "archive": "revisions/c03_flat_visor_rejected_20260928/",
-      "design_snapshot": "revisions/c03_flat_visor_rejected_20260928/design_rejected.json"
-    },
-    "revision_direction": "沒有之前原版的 tank 的那種強烈的風格；護目鏡或是面罩保持原本的話勒。"
+    "runtime_implemented": false
   }
 }
