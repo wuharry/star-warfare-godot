@@ -290,6 +290,13 @@ class Validator:
                 self.check(entry.get(field) == d.get(field), 'catalog_metadata', f'{did}/{field}', 'Catalog is stale')
             review = d.get('user_review')
             self.check(entry.get('user_review') == review, 'catalog_user_review', did, 'Gallery must preserve user selection')
+            if review and review.get('previous_revision'):
+                before = review['previous_revision']
+                self.check(set(before.get('images', {})) == set(before.get('prompts', {})), 'previous_art_pairs', did, 'Every previous image needs its actual prompt')
+                for kind, relative in before.get('images', {}).items():
+                    self.local(relative, f'{did}/{kind}/previous image')
+                    self.local(before.get('prompts', {}).get(kind), f'{did}/{kind}/previous prompt')
+                    self.check(relative != d.get('images', {}).get(kind), 'previous_art_overwritten', did, 'Previous and current art must remain separate files')
             if review and review.get('preferred_art'):
                 preferred = review['preferred_art']
                 for key in ('path', 'prompt', 'provenance'):

@@ -42,18 +42,18 @@
   "visual_identity": {
     "status": "prompt_target_with_actual_reviews_below",
     "proportion_target": "約6～6.5個頭盔高的厚實人體；屬 brief 目標，未作像素量測。",
-    "head": "暗綠低圓冠、連續鋼藍眉框與低位深紫面窗；寬斜切鋼藍護頰、側頰斜通風口、中央綠色護片與封閉短下顎。取消額前中央黑徽槽、鼻部凸塊和原方下巴 U 形缺口。",
+    "head": "暗綠低圓冠、鋼藍眉框與深紫連續面罩；Recon 斜頰及短額座",
     "torso": "淺銀藍 U 形胸框與向下矩形短片，綠色中央胸板",
     "shoulders": "低圓鋼藍肩殼配綠色下緣",
     "arms": "正常五指手套、布衣肘窩與分件護臂。原版保留線索：鋼藍短厚前臂，靠腕處有斜切白亮邊與深綠片，黑色手套。",
     "legs": "人的髖膝踝位置、軟膝後和正常軍靴；尖片按融合 brief 收短。原版保留線索：綠藍相間大腿；膝與護脛為斜切藍板，綠色脛前和鞋頭，腿彎保留黑棕布。",
     "pack": "背包為獨立装备。三視製作可示範搭配 B-02，不是原遊戲固定套裝或技能關聯；以 B 款獨立設計稿為準。",
     "concept_prompt": "prompts/c02_concept.txt",
-    "full_fusion_brief_en": "Preserve the established Fortune green/blue-gray body, U-shaped chest frame, proportions and dark-plum glass identity. Following user feedback, distinguish the helmet from the original: continuous low blue brow, lower-height angular purple visor, broad slanted blue-gray cheeks with recessed side vents and a narrow green central keel ending in a closed short chin rim. Remove the old forehead badge, projecting nose button and square notched chin bracket. Recon remains a structural influence; the revised face assembly is authoritative.",
+    "full_fusion_brief_en": "Fuse Fortune's dark-green and blue-gray armor, deep plum visor, broad cheek guards and pale U-shaped chest border with the Halo Reach Recon helmet's low rounded crown, protected narrow-wide visor and slanting chin frame. Use a compact, redesigned brow equipment mount rather than copying Recon's attachment silhouette. Borrow the shoulder harness, protected collar opening and ribbed abdomen from the Recon-equipped reference, then simplify them to Fortune's broad readable panels. Keep a visible human neck, black-brown flexible suit and layered modest pauldrons. Retain Fortune's pale rectangular downward chest tab as the principal chest cue. The donor references do not establish a rear pack, so design the rear connection against the separately audited original game backpack instead of inventing a canonical Recon backpack.",
     "actual_reviews": {
-      "concept": "2026-09-28 已目視：額前中央黑徽槽、鼻部凸塊與方下巴 U 形缺口已移除；改成連續鋼藍眉框、較低的紫色面罩、寬斜切鋼藍護頰及中央綠色護片，側頰有斜通風口。整體身甲、U 形胸框、站姿與綠藍配色延續，局部磨損／繪製細節有生成差異，不宣稱頸下逐像素不變。無新增武器或背包。",
-      "construction": "2026-09-28 已目視：A 區組裝頭盔與新版概念一致，拆解包含綠冠、連續藍眉框、紫玻璃、藍頰片、中央綠色下顎護片及黑內襯，未復原舊鼻凸塊／方形下巴缺口。B/C/D 保留原肩甲、U 胸框與 B-02 背包接軌方向，局部線條／磨損有生成差異；分件與接點仍是概念示意，未驗裝配尺寸。",
-      "turnaround": "2026-09-28 已目視：正／左／背三視維持共同地線，正側頭盔同步取消鼻部凸塊與方下巴缺口，連續藍眉、紫色面窗、藍頰與中央綠片符合新版概念；背視沒有面罩。原身甲、U 胸框與獨立 B-02 藍黃背包設計延續。側額孔與小倒角仍需建模時統一，並非尺寸圖。"
+      "concept": "已目視：深綠/藍灰原配色、暗紫寬面罩、厚頰方下巴、U形胸框下垂片清楚；Recon低冠/斜頰/分層肩帶轉譯為人穿厚甲。全身無裁切、手套可讀、無武器與独立背包。",
+      "construction": "已逐圖目視：四區頭盔、肩甲、胸層、背包接點清楚。綠／藍頭盔保留紫色面罩與厚頰，面罩、內襯、下頜分件；肩甲為藍蓋綠下緣。淺色 U 形胸框與下伸中央片獨立於軟內襯。D 區依 B02 保留藍色主體、黃色側框與中央三道短槽，背包與雙接軌分開。屬建模參考草稿，接點未經工程尺寸驗證。",
+      "turnaround": "三視已目視：同尺度同地線，Fortune綠藍色塊、紫面罩、U胸框一致；左側profile顯示低冠厚頰，背視沒有臉；B02藍底黃邊背包及兩側黑軌保持獨立配色與Bsheet輪廓。 仍是建模概念參考，未證明尺寸/機構可製作。"
     }
   },
   "proposed_stats": {
@@ -122,7 +122,7 @@
   "license_status": "reference_fusion_concept_not_a_legal_clearance",
   "generation": {
     "tool": "built-in image_gen",
-    "date": "2026-09-28",
+    "date": "2026-09-25",
     "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
     "records": {
       "concept": {
@@ -130,16 +130,17 @@
         "kind": "concept",
         "path": "images/c02_concept.png",
         "prompt": "prompts/c02_concept.txt",
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-b297e05c-3b17-4a8d-b090-767b49e245a8.png",
-        "date": "2026-09-28",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-75ef83cb-0fcd-485f-bd28-b7c1a091611a.png",
+        "date": "2026-09-25",
         "reference_images": [
-          "revisions/c02_previous_helmet_20260928/images/c02_concept.png"
+          "references/legacy/c02_front.png",
+          "references/legacy/c02_side.png",
+          "references/halo/c02_recon_reach_helmet_concept.jpg",
+          "references/halo/c02_recon_reach_render.png"
         ],
         "postprocessing": "none",
-        "visual_review": "2026-09-28 已目視：額前中央黑徽槽、鼻部凸塊與方下巴 U 形缺口已移除；改成連續鋼藍眉框、較低的紫色面罩、寬斜切鋼藍護頰及中央綠色護片，側頰有斜通風口。整體身甲、U 形胸框、站姿與綠藍配色延續，局部磨損／繪製細節有生成差異，不宣稱頸下逐像素不變。無新增武器或背包。",
+        "visual_review": "已目視：深綠/藍灰原配色、暗紫寬面罩、厚頰方下巴、U形胸框下垂片清楚；Recon低冠/斜頰/分層肩帶轉譯為人穿厚甲。全身無裁切、手套可讀、無武器與独立背包。",
         "status": "visually_reviewed_pending_user_selection",
-        "supersedes": "revisions/c02_previous_helmet_20260928/generation_records/c02_concept.json",
-        "edit_scope": "helmet_only_preserve_existing_body_design",
         "record_file": "docs/art/original_armors_v1/generation_records/c02_concept.json"
       },
       "construction": {
@@ -147,17 +148,16 @@
         "kind": "construction",
         "path": "images/c02_construction.png",
         "prompt": "prompts/c02_construction.txt",
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-82ed57ec-5335-4446-85bc-25a1bf691ae1.png",
-        "date": "2026-09-28",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-f6a5285d-3df0-4998-a2d8-acc9f0d65a8e.png",
+        "date": "2026-09-25",
         "reference_images": [
-          "revisions/c02_previous_helmet_20260928/images/c02_construction.png",
-          "images/c02_concept.png"
+          "images/c02_concept.png",
+          "images/c02_turnaround.png",
+          "images/b02_design_sheet.png"
         ],
         "postprocessing": "none",
-        "visual_review": "2026-09-28 已目視：A 區組裝頭盔與新版概念一致，拆解包含綠冠、連續藍眉框、紫玻璃、藍頰片、中央綠色下顎護片及黑內襯，未復原舊鼻凸塊／方形下巴缺口。B/C/D 保留原肩甲、U 胸框與 B-02 背包接軌方向，局部線條／磨損有生成差異；分件與接點仍是概念示意，未驗裝配尺寸。",
+        "visual_review": "已逐圖目視：四區頭盔、肩甲、胸層、背包接點清楚。綠／藍頭盔保留紫色面罩與厚頰，面罩、內襯、下頜分件；肩甲為藍蓋綠下緣。淺色 U 形胸框與下伸中央片獨立於軟內襯。D 區依 B02 保留藍色主體、黃色側框與中央三道短槽，背包與雙接軌分開。屬建模參考草稿，接點未經工程尺寸驗證。",
         "status": "visually_reviewed_pending_user_selection",
-        "supersedes": "revisions/c02_previous_helmet_20260928/generation_records/c02_construction.json",
-        "edit_scope": "helmet_only_preserve_existing_body_design",
         "record_file": "docs/art/original_armors_v1/generation_records/c02_construction.json"
       },
       "turnaround": {
@@ -165,17 +165,15 @@
         "kind": "turnaround",
         "path": "images/c02_turnaround.png",
         "prompt": "prompts/c02_turnaround.txt",
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-ca6eefc8-210a-49e2-b4fd-ea48a18f5ee2.png",
-        "date": "2026-09-28",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-ba23d358-52c2-44a3-8419-5c6d67dd8204.png",
+        "date": "2026-09-25",
         "reference_images": [
-          "revisions/c02_previous_helmet_20260928/images/c02_turnaround.png",
-          "images/c02_concept.png"
+          "images/c02_concept.png",
+          "images/b02_design_sheet.png"
         ],
         "postprocessing": "none",
-        "visual_review": "2026-09-28 已目視：正／左／背三視維持共同地線，正側頭盔同步取消鼻部凸塊與方下巴缺口，連續藍眉、紫色面窗、藍頰與中央綠片符合新版概念；背視沒有面罩。原身甲、U 胸框與獨立 B-02 藍黃背包設計延續。側額孔與小倒角仍需建模時統一，並非尺寸圖。",
+        "visual_review": "三視已目視：同尺度同地線，Fortune綠藍色塊、紫面罩、U胸框一致；左側profile顯示低冠厚頰，背視沒有臉；B02藍底黃邊背包及兩側黑軌保持獨立配色與Bsheet輪廓。 仍是建模概念參考，未證明尺寸/機構可製作。",
         "status": "visually_reviewed_pending_user_selection",
-        "supersedes": "revisions/c02_previous_helmet_20260928/generation_records/c02_turnaround.json",
-        "edit_scope": "helmet_only_preserve_existing_body_design",
         "record_file": "docs/art/original_armors_v1/generation_records/c02_turnaround.json"
       }
     },
@@ -238,48 +236,21 @@
         "back_status": "not_observed"
       },
       "role": "selected_design_donor"
-    },
-    "user_helmet_direction": {
-      "date": "2026-09-28",
-      "priority": "highest",
-      "instruction": "Fortune 整體好，但頭盔與原版太像；修改下巴、面罩等輪廓，保留身甲方向。",
-      "scope": "helmet_concept_turnaround_construction",
-      "reference_policy": "本次以修改前各張圖為編輯目標、以新版概念同步三視與拆解；未重新送入原版或 Halo 圖。"
     }
   },
   "fusion_recipe": {
     "retained": [
-      "深綠與藍灰配色、深紫玻璃及緊湊人穿裝甲比例",
-      "淡色 U 形胸框與下端方垂片",
-      "原概念的身甲、肩甲、四肢與獨立背包搭配"
+      "寬頰護與方下巴包住深色寬面罩",
+      "淡色 U 形胸框下端方垂片",
+      "深綠與藍灰的區塊分配"
     ],
     "borrowed": {
-      "helmet": "保留低圓冠、低眉防護與斜向護頰的結構方向；具體面罩與下顎以 2026-09-28 改稿為準。",
+      "helmet": "寬而較扁的琥珀面罩；周圍寬下巴框與黑色面部內層；圓滑低冠配额前低支架，頰側斜長連續框。",
       "torso": "胸前大 U 形硬甲框留出頸胸布衣；下方腹片逐段縮窄；附圖左肩比右肩厚，肩帶/胸口工具袋可見。",
       "back": "未取得該套完整背視；正面上肩後的小外殼不作背包輪廓證據。",
       "back_status": "not_observed"
     },
-    "optimized": "使用者要求頭盔與原版拉開差異：移除中央黑徽槽、鼻部凸塊、方下巴 U 缺口，重排為連續藍眉、較低的紫色面窗、斜切寬頰及封閉綠色下顎護片；身甲方向延續。",
+    "optimized": "Halo 配對應偏野戰/偵察後勤；補加腰側軟袋和可穿戴連接，保留原版沉穩綠藍輪廓，不延續前一版象牙白補給機械人。",
     "optimization_common": "胸腰按人體分件、露出織物關節、短化易勾掛尖片；避免單眼機械臉與巨型四肢。"
-  },
-  "user_review": {
-    "status": "helmet_revision_pending_user_review",
-    "date": "2026-09-28",
-    "feedback": "Fortune 雖然很好，但頭盔跟原版太像，希望修改下巴或面罩等部位。",
-    "scope": "helmet_visual_design",
-    "action": "頭盔已改稿：收窄紫色面罩，移除鼻部凸塊與方下巴缺口，改為斜切護頰和封閉下顎；概念、三視與拆解已同步，待你評價。",
-    "previous_revision": {
-      "images": {
-        "concept": "revisions/c02_previous_helmet_20260928/images/c02_concept.png",
-        "turnaround": "revisions/c02_previous_helmet_20260928/images/c02_turnaround.png",
-        "construction": "revisions/c02_previous_helmet_20260928/images/c02_construction.png"
-      },
-      "prompts": {
-        "concept": "revisions/c02_previous_helmet_20260928/prompts/c02_concept.txt",
-        "turnaround": "revisions/c02_previous_helmet_20260928/prompts/c02_turnaround.txt",
-        "construction": "revisions/c02_previous_helmet_20260928/prompts/c02_construction.txt"
-      }
-    },
-    "runtime_implemented": false
   }
 }
