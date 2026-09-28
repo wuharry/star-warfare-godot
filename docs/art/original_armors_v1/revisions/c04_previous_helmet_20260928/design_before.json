@@ -42,18 +42,18 @@
   "visual_identity": {
     "status": "prompt_target_with_actual_reviews_below",
     "proportion_target": "約6～6.5個頭盔高的厚實人體；屬 brief 目標，未作像素量測。",
-    "head": "保留藍綠圓冠、低分節冠條及綠框單方額頭裝置；黃綠連續面罩向下延伸並擴大，兩側下角收斜，下方改成短窄藍色護邊與貼合的小中央護片。",
+    "head": "藍綠圓盔、黃綠面罩，額頭綠框小方件融合 Operator 低型設備座",
     "torso": "小盾形胸心、弧形短領與清楚胸腰分件",
     "shoulders": "小型藍肩和短外展綠片",
     "arms": "正常五指手套、布衣肘窩與分件護臂。原版保留線索：藍色斜切前臂，靠腕淺綠色塊，黑色手部與肘內側。",
     "legs": "人的髖膝踝位置、軟膝後和正常軍靴；尖片按融合 brief 收短。原版保留線索：藍色大腿、黑內膝區；綠邊多段藍護脛、綠鞋尖與腳面。",
     "pack": "背包為獨立装备。三視製作可示範搭配 B-04，不是原遊戲固定套裝或技能關聯；以 B 款獨立設計稿為準。",
     "concept_prompt": "prompts/c04_concept.txt",
-    "full_fusion_brief_en": "Retain Hydra's blue-green round shell, low dark crown segments, single green-framed forehead optic above the glass, and short outward green shoulder tips. Following the user's approved revision, borrow the Reach Operator large continuous full-face visor proportions: extend Hydra's yellow-green glass much farther downward with tapered lower corners, and reduce lower cheek/chin armor to a short narrow blue rim with a small flush center fitting. Remove the old high central nose/chin block. Preserve the body design, lighter-than-Tank silhouette and independent B-04 pack. The Operator photo is a visor-proportion reference, not a direction to add its night-vision bank or copy its body.",
+    "full_fusion_brief_en": "Fuse Hydra's blue-green shell, yellow-green continuous visor, small green-framed forehead block, short segmented crown and short flared green shoulder blades with Halo Reach Operator's compact optical-equipment mounting and articulated shoulder construction. Translate the three-lens night-vision bar into ONE small low-profile rectangular brow module integrated with Hydra's original block; keep the visor fully visible so the character reads as a human wearing armor. Borrow Operator's protected chin, flexible black neck, sloping shoulder strap and slim forearm plating, but reduce accessory clutter and remove the donor's checker markings. Preserve Hydra's lighter silhouette compared with Tank. The back is not observed in this donor; pair it only with the separately selected original-game backpack, with a newly designed compact harness.",
     "actual_reviews": {
-      "concept": "2026-09-28 已目視：黃綠連續面罩明顯向下延伸，原高中央下巴與厚護頰收為短窄藍護邊和小中央護片；圓冠、深色冠條、綠框單方額頭裝置與身甲設計延續。全身構圖完整，身甲磨損及局部繪製可能有生成差異，不宣稱逐像素不變。使用者看到本圖後確認「可以」。",
-      "turnaround": "2026-09-28 已目視：正面與左側均改為加高的連續黃綠大面窗及短窄藍下護邊；中央護片收小，額頭單方裝置和頭冠延續。背面沒有面罩，三視同尺度與共同地線，身甲及 B-04 雙藍上艙、銀色中脊、兩根黑色下軌保留原設計。細部倒角及跨視尺寸須於建模統一。",
-      "construction": "2026-09-28 已目視：A 區組裝頭盔及分離玻璃都呈現向下延伸的大面罩，短藍下護邊另列為對應零件；圓冠、綠框額頭裝置及內襯延續。B/C/D 肩甲、胸板與 B-04 背包接軌保留原設計。此為概念分件示意，未驗證裝配尺寸。"
+      "concept": "已目視：Hydra黃綠面罩、綠框額塊與短翼肩保留；Operator額前光學裝置縮成一個低方模組，位於玻璃面罩之上，沒有取代人臉成為機器人眼。頸、肘與手套可讀，全身未裁切。",
+      "construction": "已逐圖目視：A 區保留藍綠低冠、額頭單一方型鏡頭、黃綠完整面罩與包覆下頜，符合人體頭盔。B 區短綠翼肩片與藍色肩蓋可拆，C 區胸板分離可見軟內襯。D 區 B04 保留雙藍上艙、黑色尖端、銀色階梯中脊與兩根黑色長下軌。背包仍為獨立件；未驗證實際裝配尺寸。",
+      "turnaround": "三視已目視：Hydra額前單方模組、黃綠面罩、雙短綠肩保持；左側朝左、背面無面罩且比例一致；B04蓝双尖端上艙、銀色脊條和两條長下軌与Bsheet一致，未融合入胸甲。 仍是建模概念參考，未證明尺寸/機構可製作。"
     }
   },
   "proposed_stats": {
@@ -109,7 +109,7 @@
   "license_status": "reference_fusion_concept_not_a_legal_clearance",
   "generation": {
     "tool": "built-in image_gen",
-    "date": "2026-09-28",
+    "date": "2026-09-25",
     "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
     "records": {
       "concept": {
@@ -117,17 +117,17 @@
         "kind": "concept",
         "path": "images/c04_concept.png",
         "prompt": "prompts/c04_concept.txt",
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-bb954b55-8063-4c58-8ea0-2de889bb4ae9.png",
-        "date": "2026-09-28",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-6533ea4e-52bf-4b39-a035-369565a3f67c.png",
+        "date": "2026-09-25",
         "reference_images": [
-          "revisions/c04_previous_helmet_20260928/images/c04_concept.png",
+          "references/legacy/c04_front.png",
+          "references/legacy/c04_side.png",
+          "references/halo/c04_operator_reach_armor.png",
           "references/halo/c04_operator_reach_body.png"
         ],
         "postprocessing": "none",
-        "visual_review": "2026-09-28 已目視：黃綠連續面罩明顯向下延伸，原高中央下巴與厚護頰收為短窄藍護邊和小中央護片；圓冠、深色冠條、綠框單方額頭裝置與身甲設計延續。全身構圖完整，身甲磨損及局部繪製可能有生成差異，不宣稱逐像素不變。使用者看到本圖後確認「可以」。",
+        "visual_review": "已目視：Hydra黃綠面罩、綠框額塊與短翼肩保留；Operator額前光學裝置縮成一個低方模組，位於玻璃面罩之上，沒有取代人臉成為機器人眼。頸、肘與手套可讀，全身未裁切。",
         "status": "visually_reviewed_pending_user_selection",
-        "supersedes": "revisions/c04_previous_helmet_20260928/generation_records/c04_concept.json",
-        "edit_scope": "larger_continuous_visor_shorter_lower_guard_preserve_crown_forehead_optic_and_body_design",
         "record_file": "docs/art/original_armors_v1/generation_records/c04_concept.json"
       },
       "construction": {
@@ -135,17 +135,16 @@
         "kind": "construction",
         "path": "images/c04_construction.png",
         "prompt": "prompts/c04_construction.txt",
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-15f82d32-2d37-4376-92e2-8094e3db9248.png",
-        "date": "2026-09-28",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-e9a5aca3-be72-488d-9b30-5f9608da2e01.png",
+        "date": "2026-09-25",
         "reference_images": [
-          "revisions/c04_previous_helmet_20260928/images/c04_construction.png",
-          "images/c04_concept.png"
+          "images/c04_concept.png",
+          "images/c04_turnaround.png",
+          "images/b04_design_sheet.png"
         ],
         "postprocessing": "none",
-        "visual_review": "2026-09-28 已目視：A 區組裝頭盔及分離玻璃都呈現向下延伸的大面罩，短藍下護邊另列為對應零件；圓冠、綠框額頭裝置及內襯延續。B/C/D 肩甲、胸板與 B-04 背包接軌保留原設計。此為概念分件示意，未驗證裝配尺寸。",
+        "visual_review": "已逐圖目視：A 區保留藍綠低冠、額頭單一方型鏡頭、黃綠完整面罩與包覆下頜，符合人體頭盔。B 區短綠翼肩片與藍色肩蓋可拆，C 區胸板分離可見軟內襯。D 區 B04 保留雙藍上艙、黑色尖端、銀色階梯中脊與兩根黑色長下軌。背包仍為獨立件；未驗證實際裝配尺寸。",
         "status": "visually_reviewed_pending_user_selection",
-        "supersedes": "revisions/c04_previous_helmet_20260928/generation_records/c04_construction.json",
-        "edit_scope": "larger_continuous_visor_shorter_lower_guard_preserve_crown_forehead_optic_and_body_design",
         "record_file": "docs/art/original_armors_v1/generation_records/c04_construction.json"
       },
       "turnaround": {
@@ -153,17 +152,15 @@
         "kind": "turnaround",
         "path": "images/c04_turnaround.png",
         "prompt": "prompts/c04_turnaround.txt",
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-fdcf0b47-6585-4422-918e-017796e90cc0.png",
-        "date": "2026-09-28",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-e0d5aa3a-ff80-403e-b350-e731fa6172df.png",
+        "date": "2026-09-25",
         "reference_images": [
-          "revisions/c04_previous_helmet_20260928/images/c04_turnaround.png",
-          "images/c04_concept.png"
+          "images/c04_concept.png",
+          "images/b04_design_sheet.png"
         ],
         "postprocessing": "none",
-        "visual_review": "2026-09-28 已目視：正面與左側均改為加高的連續黃綠大面窗及短窄藍下護邊；中央護片收小，額頭單方裝置和頭冠延續。背面沒有面罩，三視同尺度與共同地線，身甲及 B-04 雙藍上艙、銀色中脊、兩根黑色下軌保留原設計。細部倒角及跨視尺寸須於建模統一。",
+        "visual_review": "三視已目視：Hydra額前單方模組、黃綠面罩、雙短綠肩保持；左側朝左、背面無面罩且比例一致；B04蓝双尖端上艙、銀色脊條和两條長下軌与Bsheet一致，未融合入胸甲。 仍是建模概念參考，未證明尺寸/機構可製作。",
         "status": "visually_reviewed_pending_user_selection",
-        "supersedes": "revisions/c04_previous_helmet_20260928/generation_records/c04_turnaround.json",
-        "edit_scope": "larger_continuous_visor_shorter_lower_guard_preserve_crown_forehead_optic_and_body_design",
         "record_file": "docs/art/original_armors_v1/generation_records/c04_turnaround.json"
       }
     },
@@ -226,51 +223,21 @@
         "back_status": "not_observed"
       },
       "role": "selected_design_donor"
-    },
-    "user_helmet_direction": {
-      "date": "2026-09-28",
-      "priority": "highest",
-      "instruction": "Hydra 採 Halo: Reach Operator 大面積連續面罩，縮小下方護臉比例；使用者看到新版概念後確認「可以」。",
-      "scope": "larger_visor_and_shorter_lower_helmet_concept_turnaround_construction",
-      "reference_policy": "概念編輯直接使用前版 Hydra 概念及已保存的 Operator 近照；三視／拆解使用各自前版圖與新概念。額頭裝置、身甲及獨立背包保留既有設計。"
     }
   },
   "fusion_recipe": {
     "retained": [
-      "額頭綠框單方裝置、藍色圓冠與低深色分節冠條",
-      "黃綠玻璃與藍綠裝甲配色",
+      "額頭綠框方塊與黃綠面罩",
       "短外張綠肩片",
       "藍綠胸領弧線與輕於 Tank 的肩輪廓"
     ],
     "borrowed": {
-      "helmet": "採 Operator 大面積連續面罩與向下延伸的玻璃比例，轉為 Hydra 黃綠玻璃；下護臉收短。保留 Hydra 單方額頭裝置，不新增三鏡頭夜視器。",
+      "helmet": "大連續金色面罩、圓冠，額頭前端懸掛三鏡头夜視模組；下巴是有垂直窄槽的方形護板，兩側有獨立耳護。",
       "torso": "斜長胸肩帶與頸口留有黑布；肩前缘短平板与向下包覆的立體肩殼；前臂長護板下仍可見手腕與手套。",
       "back": "參考只含前方與上側，未見後背；不能把前肩殼當背包。",
       "back_status": "not_observed"
     },
-    "optimized": "將黃綠面罩向下延伸、兩側下角收斜，縮短原本偏高的藍色護頰與中央下巴，改成短窄護邊與小中央護片；原身甲、額頭裝置及短翼肩設計延續。",
+    "optimized": "Halo 配對應偏高速偵察；用可動胸腹與修長但有肌肉的人形輪廓，原版沒有單側天線，若加感測器須標明融合新增。",
     "optimization_common": "胸腰按人體分件、露出織物關節、短化易勾掛尖片；避免單眼機械臉與巨型四肢。"
-  },
-  "user_review": {
-    "status": "keep_current_design",
-    "date": "2026-09-28",
-    "feedback": "可以",
-    "revision_request": "Hydra 如果能夠讓 Halo: Reach · Operator helmet 的面罩那種大面積的面罩，將下面的比例縮小的話看可不可以。",
-    "scope": "larger_visor_and_shorter_lower_helmet_visual_design",
-    "action": "使用者已確認保留新版 Hydra 概念：黃綠連續大面罩向下延伸，下方改成短窄藍護邊及小中央護片；保留綠框額頭裝置、頭冠與身甲方向。",
-    "acceptance_basis": "使用者在新版單人全身概念圖生成後回覆「可以」；三視與拆解依此方向同步，另由助理目視核對。",
-    "previous_revision": {
-      "images": {
-        "concept": "revisions/c04_previous_helmet_20260928/images/c04_concept.png",
-        "turnaround": "revisions/c04_previous_helmet_20260928/images/c04_turnaround.png",
-        "construction": "revisions/c04_previous_helmet_20260928/images/c04_construction.png"
-      },
-      "prompts": {
-        "concept": "revisions/c04_previous_helmet_20260928/prompts/c04_concept.txt",
-        "turnaround": "revisions/c04_previous_helmet_20260928/prompts/c04_turnaround.txt",
-        "construction": "revisions/c04_previous_helmet_20260928/prompts/c04_construction.txt"
-      }
-    },
-    "runtime_implemented": false
   }
 }
