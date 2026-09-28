@@ -4015,7 +4015,8 @@
     "選用圖是概念／建模參考，非UV貼圖或遊戲模型。",
     "三視近似正交；比例、固定位置與微小接縫須在3D階段統一。",
     "Halo和原遊戲圖是來源參考，來源權利不因融合生成而消失；未聲稱法律授權。",
-    "B編號對應獨立背包ID，與同序C同框僅為本轮展示搭配。"
+    "B編號對應獨立背包ID，與同序C同框僅為本轮展示搭配。",
+    "assets 保留本批生成圖的交付紀錄；目前採用方向以 user_reviews 為優先。Thunder 恢復舊 B 概念，原 C-07 三張圖列為未採用歷史，非舊稿配套三視。"
   ],
   "prompt_files": [
     {
@@ -4394,5 +4395,37 @@
       "path": "prompts/c21_turnaround.txt",
       "sha256": "31a83767a9e84bcabc0775647d21d9e0896979ce688a37a9f29b68ac83ad504d"
     }
-  ]
+  ],
+  "user_reviews": {
+    "C-01": {
+      "status": "keep_current_design",
+      "date": "2026-09-28",
+      "feedback": "Viper沒有問題",
+      "scope": "armor_visual_design",
+      "action": "保留目前頭盔與身甲設計。"
+    },
+    "C-07": {
+      "status": "use_previous_design",
+      "date": "2026-09-28",
+      "feedback": "Thunder 保留之前產生的美術圖，不是目前這張；目前護目鏡兩道深黃色凹槽看起來很怪。",
+      "scope": "armor_visual_design_and_runtime_visor",
+      "action": "恢復 B 新頭盔舊稿為外觀方向；遊戲面罩改成連續金橙玻璃，移除兩道深色弧形刻槽。",
+      "selection_basis": "依 2026-09-14 manifest/README 已核准的 B 新頭盔紀錄辨認舊稿；2026-09-28 的具體檔名確認仍待回覆。",
+      "preferred_art": {
+        "path": "../thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png",
+        "label": "保留舊稿：B 新頭盔",
+        "prompt": "../thunder_mk_comparison_v1/prompts/b_mk1_reference_helmet_v2.txt",
+        "provenance": "../thunder_mk_comparison_v1/manifest.json",
+        "sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
+        "note": "此舊稿只有全身概念；目前三視與拆解屬未採用的 C-07 融合版本，不視為舊稿的配套圖。"
+      },
+      "runtime_preview": "../thunder_helmet_comparison_v5/index.html",
+      "runtime_visual_acceptance": "pending_user_review",
+      "superseded_images": [
+        "concept",
+        "turnaround",
+        "construction"
+      ]
+    }
+  }
 }

@@ -288,6 +288,18 @@ class Validator:
             self.check(entry.get('legacy_id') == m.get('legacy_visual_id'), 'catalog_game_id', did, 'Game ID differs from mapping')
             for field in ('status', 'working_name_zh', 'working_name_en'):
                 self.check(entry.get(field) == d.get(field), 'catalog_metadata', f'{did}/{field}', 'Catalog is stale')
+            review = d.get('user_review')
+            self.check(entry.get('user_review') == review, 'catalog_user_review', did, 'Gallery must preserve user selection')
+            if review and review.get('preferred_art'):
+                preferred = review['preferred_art']
+                for key in ('path', 'prompt', 'provenance'):
+                    path = (ART / preferred[key]).resolve()
+                    valid = path.is_relative_to(ROOT.resolve()) and path.is_file()
+                    self.check(valid, 'preferred_art_source', f'{did}/{key}', 'Selected historical reference must exist within the repository')
+                    if valid and key == 'path':
+                        self.check(self.digest(path) == preferred.get('sha256'), 'preferred_art_hash', did, 'Selected historical artwork changed')
+                preview = (ART / review.get('runtime_preview', '')).resolve()
+                self.check(preview.is_relative_to(ROOT.resolve()) and preview.is_file(), 'review_runtime_preview', did, 'Runtime comparison link is missing')
             kinds = ARMOR_KINDS if str(did).startswith('C-') else ('design_sheet',)
             expected_images = {k: self.expected.get((did, k)) for k in kinds}
             self.check(entry.get('images') == expected_images, 'catalog_images', did, 'Catalog image set differs from selected delivery')

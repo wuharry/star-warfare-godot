@@ -6,22 +6,33 @@
 </style>
 <main>
 <small>THUNDER / HELMET STUDIES V5</small>
-<h1>藍色頰甲向內收，面罩下端變窄</h1>
-<p>依照圈選的概念圖，修正面罩與眉甲的輪廓。A 從 SW2 連續網格調整；B 保留早期雛形的圓頂與中央脊甲，重做梯形面罩和包覆頰甲。兩版使用相同身甲、姿勢、燈光與取景，圖片直接由 Godot 的遊戲角色擷取。</p>
+<h1>Thunder：保留舊稿，修正面罩深色凹槽</h1>
+<p>2026-09-28 修訂：移除金色護目鏡兩側的深黃色弧形刻槽，改用連續金橙漸層，保留現有面罩曲面與頭盔輪廓。下方直接比較同角度的遊戲擷取；造型方向保留先前的 B 新頭盔概念，美術效果仍待評價。</p>
+<section aria-labelledby="visor-heading">
+<h2 id="visor-heading">護目鏡修改前後</h2>
+<nav aria-label="護目鏡修改比較"><label>模型 <select id="visor-variant"><option value="sw2">A · SW2（遊戲預設）</option><option value="prototype">B · 雛形</option></select></label><label>畫面 <select id="visor-view"><option value="detail_visor.png">面罩近照</option><option value="helmet_three_quarter.png">頭盔前側</option><option value="full_three_quarter.png">全身前側</option></select></label></nav>
+<div class="comparison" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))">
+<figure><figcaption><strong>修改前</strong>金色底圖與凹凸貼圖都帶有深色弧槽。</figcaption><img id="visor-before" class="frame" alt="Thunder 護目鏡修改前的 Godot 擷取"></figure>
+<figure><figcaption><strong>修改後</strong>連續金橙玻璃，表面明暗跟隨曲面與光線。</figcaption><img id="visor-after" class="frame" alt="Thunder 護目鏡修改後的 Godot 擷取"></figure>
+</div>
+<p class="hint">原始擷取直接保留，沒有補畫或合成；<a href="visor_before_20260928/manifest.json">修改前來源與雜湊</a>。<a href="../original_armors_v1/index.html#C-07">返回裝甲評價圖集</a>。</p>
+</section>
+<h2>A／B 兩種模型與舊概念</h2>
+<p>A 從 SW2 連續網格調整；B 保留早期雛形的圓頂與中央脊甲。兩版使用相同身甲、姿勢、燈光與取景，均已套用本次面罩修正。</p>
 <nav aria-label="對照控制"><label>範圍 <select id="scope"><option value="helmet">頭盔</option><option value="detail">細節</option><option value="full">全身</option><option value="motion">換彈中</option><option value="game">遊戲場景</option></select></label><label>畫面 <select id="view"></select></label><button id="reset">重設視角</button></nav>
 <div class="comparison">
-<figure id="sw2-card"><figcaption><strong>A · SW2 修訂</strong>呼吸器沿下巴斜面嵌入，藍／深藍外殼對齊身甲；保留圓頂與金色面甲刻紋。<br><small>目前遊戲預設版本</small></figcaption><img class="frame" id="sw2-image" alt="A SW2 修訂版的 Godot 實際畫面"></figure>
+<figure id="sw2-card"><figcaption><strong>A · SW2 修訂</strong>呼吸器沿下巴斜面嵌入，藍／深藍外殼對齊身甲；圓頂搭配連續金色面罩。<br><small>目前遊戲預設版本</small></figcaption><img class="frame" id="sw2-image" alt="A SW2 修訂版的 Godot 實際畫面"></figure>
 <figure class="reference"><div class="reference-crop"><img src="reference.png" alt="使用者提供的 Thunder 概念參考"></div><figcaption><strong>造型參考</strong>斜切眉甲、中央下垂的脊甲；藍色頰甲逐漸向內包覆，金色面罩下邊窄。<a class="reference-link" href="annotated.png">查看紅圈標註</a><small>概念圖的姿勢與光線不同；本頁 A、B 互相比較時使用同一取景。</small></figcaption></figure>
-<figure id="prototype-card"><figcaption><strong>B · 雛形修訂</strong>保留圓頂與寬脊甲，新增向內包覆的頰甲、梯形面罩與弧形刻紋。<br><small>可在遊戲啟動時切換</small></figcaption><img class="frame" id="prototype-image" alt="B 雛形修訂版的 Godot 實際畫面"></figure>
+<figure id="prototype-card"><figcaption><strong>B · 雛形修訂</strong>保留圓頂與寬脊甲、向內包覆的頰甲，梯形面罩已移除深色刻槽。<br><small>可在遊戲啟動時切換</small></figcaption><img class="frame" id="prototype-image" alt="B 雛形修訂版的 Godot 實際畫面"></figure>
 </div>
-<p class="hint">點圖片可放大。面罩刻紋沿用配對素材；新增的頰甲、眉甲厚度與收窄輪廓都是模型幾何。</p>
+<p class="hint">點圖片可放大。身甲與頭盔外殼沿用既有細節，僅面罩玻璃換成乾淨金橙材質；頰甲、眉甲厚度與收窄輪廓都是模型幾何。</p>
 <div id="status" class="status"></div>
 <details open><summary>兩版改動與遊戲切換</summary>
 <table><thead><tr><th>部位</th><th>A · SW2</th><th>B · 雛形</th></tr></thead><tbody>
 <tr><td>頭盔外殼</td><td>保留 SW2 分件、耳部與板線；頂部改為連續圓弧，已確認的面甲保持不變。</td><td>保留原雛形圓頂、寬脊甲、側面板線及後腦。</td></tr>
-<tr><td>金色面罩</td><td>變形原連續網格，讓下半部向中央收窄，保留原 UV 與弧形紋路。</td><td>新建上寬下窄曲面，配對金色紋路與法線；藍色頰甲包住兩側。</td></tr>
+<tr><td>金色面罩</td><td>保留收窄的連續網格與 UV，改用乾淨金橙貼圖，取消玻璃刻槽法線。</td><td>保留上寬下窄曲面與兩側頰甲，同步採用乾淨金橙貼圖。</td></tr>
 <tr><td>呼吸器</td><td>縮薄、沿下巴斜面嵌入；移除額外側接片並收進原模型底座，保留凹入通氣口。</td><td>保留既有凹入通氣口與斜面外殼。</td></tr>
-<tr><td>藍色配色</td><td>外殼採身甲相同的藍／深藍基色，保留貼圖板線與磨損；金色面甲不調色。</td><td>保留既有配色。</td></tr>
+<tr><td>藍色配色</td><td>外殼採身甲相同的藍／深藍基色，保留貼圖板線與磨損。</td><td>保留既有外殼配色。</td></tr>
 <tr><td>整套模型三角形</td><td>12,662</td><td>39,238（包含原雛形的圓頂細分；此數字不是效能量測）</td></tr>
 <tr><td>身甲／動畫</td><td colspan="2">沿用現有 Thunder 身甲與原角色骨架；兩版均由遊戲及商店共用的裝甲載入器套用。</td></tr>
 </tbody></table>
@@ -35,7 +46,7 @@
 <dialog id="zoom"><button id="close">關閉</button><img id="zoom-image" alt="放大檢視"></dialog>
 <script>
 const captures=__CAPTURES__;
-const names={front:'正面',three_quarter:'前側',side:'側面',rear:'後側',low_front:'低角度',crown:'冠頂與眉甲',visor:'面罩刻紋',respirator:'呼吸器',chest:'胸甲',shoulder:'肩甲',forearm:'前臂',legs:'腿甲',game_level_1:'關卡 1',game_level_3:'關卡 3',game_level_3_low_front:'關卡 3 · 低角度'};
+const names={front:'正面',three_quarter:'前側',side:'側面',rear:'後側',low_front:'低角度',crown:'冠頂與眉甲',visor:'金色面罩',respirator:'呼吸器',chest:'胸甲',shoulder:'肩甲',forearm:'前臂',legs:'腿甲',game_level_1:'關卡 1',game_level_3:'關卡 3',game_level_3_low_front:'關卡 3 · 低角度'};
 const $=id=>document.getElementById(id);
 function frames(){const scope=$('scope').value;return captures.sw2.frames.filter(f=>f.category==={full:'studio',helmet:'helmet',detail:'detail',motion:'motion',game:'game'}[scope])}
 function choices(){const prev=$('view').value;$('view').replaceChildren(...frames().map(f=>{const option=document.createElement('option');option.value=f.file;option.textContent=names[f.view]||names[f.file.replace('.png','')]||f.file.replace('.png','').replaceAll('_',' ');if(f.category==='game')option.textContent=names[f.file.replace('.png','')];if(f.category==='motion')option.textContent=f.file==='armed_idle.png'?'持槍站立':`${names[f.view]} · 換彈 ${f.file.split('_')[1]}%`;return option}));if([...$('view').options].some(o=>o.value===prev))$('view').value=prev;else if($('scope').value==='helmet')$('view').value='helmet_three_quarter.png';refresh()}
@@ -43,5 +54,7 @@ function refresh(){for(const stage of ['sw2','prototype'])$(stage+'-image').src=
 $('scope').onchange=choices;$('view').onchange=refresh;$('reset').onclick=()=>{$('scope').value='helmet';choices();$('view').value='helmet_three_quarter.png';refresh()};
 document.querySelectorAll('figure img').forEach(img=>img.onclick=()=>{$('zoom-image').src=img.src;$('zoom').showModal()});$('close').onclick=()=>$('zoom').close();$('zoom').onclick=e=>{if(e.target===$('zoom'))$('zoom').close()};
 document.querySelectorAll('[data-copy]').forEach(button=>button.onclick=async()=>{const command=`powershell -ExecutionPolicy Bypass -File tools/thunder_helmet_comparison/launch.ps1 -Helmet ${button.dataset.copy}`;$('command').textContent=command;try{await navigator.clipboard.writeText(command);button.textContent='已複製'}catch{$('command').focus()}});
+function refreshVisorComparison(){const variant=$('visor-variant').value,view=$('visor-view').value;$('visor-before').src='visor_before_20260928/'+variant+'/'+view;$('visor-after').src=variant+'/'+view}
+$('visor-variant').onchange=refreshVisorComparison;$('visor-view').onchange=refreshVisorComparison;refreshVisorComparison();
 choices();
 </script></html>

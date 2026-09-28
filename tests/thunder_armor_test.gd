@@ -136,6 +136,13 @@ func _validate_mesh(part: MeshInstance3D) -> int:
 
 
 func _validate_helmet_detail(part: MeshInstance3D, surface: int, finish: ShaderMaterial) -> void:
+	var continuous: Variant = finish.get_shader_parameter("continuous_visor")
+	if finish.resource_name == "Thunder_EngravedVisor":
+		_check(continuous != null and is_equal_approx(float(continuous), 1.0), "Thunder visor still uses the rejected engraved channels")
+		var clean_paint := finish.get_shader_parameter("visor_paint_texture") as Texture2D
+		_check(clean_paint != null and clean_paint.resource_path == "res://assets/armors/thunder/textures/amber_visor_paint.png", "Thunder visor is missing the continuous amber paint")
+	else:
+		_check(continuous == null or is_zero_approx(float(continuous)), "visor finish leaked onto the blue helmet shell")
 	var palette: Variant = finish.get_shader_parameter("shell_palette_strength")
 	if finish.resource_name == "Thunder_PairedHelmet" and revision.ends_with("sw2"):
 		_check(palette != null and is_equal_approx(float(palette), 1.0), "SW2 helmet body palette is disabled")

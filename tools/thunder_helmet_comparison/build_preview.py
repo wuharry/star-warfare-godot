@@ -46,6 +46,11 @@ def main():
     if args.annotation:
         shutil.copyfile(args.annotation, DEST / 'annotated.png')
     assert (DEST / 'annotated.png').is_file(), 'Provide --annotation on first publication'
+    before = json.loads((DEST / 'visor_before_20260928/manifest.json').read_text(encoding='utf-8'))
+    for variant, record in before['variants'].items():
+        assert set(record['frames']) == {'detail_visor.png', 'helmet_three_quarter.png', 'full_three_quarter.png'}
+        for name, expected in record['frames'].items():
+            assert sha(DEST / 'visor_before_20260928' / variant / name) == expected, f'Changed before capture: {variant}/{name}'
     html = (HERE / 'preview.html').read_text(encoding='utf-8').replace('__CAPTURES__', json.dumps(captures, ensure_ascii=False))
     (DEST / 'index.html').write_text(html, encoding='utf-8')
     checks = {}
@@ -64,8 +69,9 @@ def main():
     (DEST / 'verification.json').write_text(json.dumps({
         'status': 'ENGINE_CHECKS_PASS', 'checks': checks, 'variants': records,
         'reference_sha256': sha(reference), 'image_processing': 'none; byte-identical native Godot PNGs',
-        'visual_review': 'Inspected front, three-quarter, side, rear, low-front, visor, respirator and level captures. Artistic preference remains for user comparison.',
-        'known_warning': 'Existing game/fixture font and CanvasItem resource cleanup warnings at capture process exit.',
+        'visual_review': '2026-09-28: inspected both helmet three-quarter views, SW2 visor close-up/full three-quarter and level 3 low-front. The two engraved amber channels are removed; artistic acceptance remains pending.',
+        'browser_qa': 'NOT RUN: computer-use inventory has no available browsers; HTML/JavaScript checked statically.',
+        'known_warning': 'Equipment regression reports existing gun05/gun18 texture UID fallbacks to valid paths; tests pass. Current capture processes exited without errors.',
     }, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(f'THUNDER_HELMET_PREVIEW_PASS images=60 output={DEST / "index.html"}')
 
