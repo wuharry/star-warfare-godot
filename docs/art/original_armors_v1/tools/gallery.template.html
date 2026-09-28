@@ -156,6 +156,7 @@ dialog::backdrop{background:rgba(0,0,0,.86)}
           <div class="selection-meta">
             <span id="design-code" class="tag"></span>
             <span id="image-status" class="tag"></span>
+            <span id="user-review-status" class="tag ready" hidden></span>
             <span class="tag">外觀提案 · 尚未接入遊戲</span>
           </div>
         </div>
@@ -252,7 +253,7 @@ function renderList(){
     const code=document.createElement('span');code.className='code';code.textContent=item.design_id;
     const copy=document.createElement('span');copy.className='catalog-copy';
     const name=document.createElement('span');name.className='catalog-name';name.textContent=item.legacy_name||item.working_name_zh||item.design_id;
-    const sub=document.createElement('span');sub.className='catalog-sub';sub.textContent=kindLabel(item.kind)+' ID '+item.legacy_id+' · '+(availableViews(item).length?'已有新稿':'待生成');
+    const sub=document.createElement('span');sub.className='catalog-sub';sub.textContent=kindLabel(item.kind)+' ID '+item.legacy_id+' · '+(item.user_review?.status==='keep_current_design'?'已評價：保留':availableViews(item).length?'已有新稿':'待生成');
     copy.append(name,sub);button.append(code,copy);button.addEventListener('click',()=>selectDesign(item.design_id));list.append(button);
   }
   for(const button of document.querySelectorAll('.filter'))button.setAttribute('aria-pressed',String(button.dataset.kind===state.kind));
@@ -326,6 +327,7 @@ function selectDesign(id,{updateHash=true}={}){
   text('name-zh',item.working_name_zh||item.legacy_name);text('name-en',item.working_name_en||'');text('design-code',item.design_id+' · '+kindLabel(item.kind));
   const views=availableViews(item),expected=item.kind==='backpack'?1:3;
   const status=element('image-status');status.className='tag '+(views.length?'ready':'pending');status.textContent=views.length?'新稿 '+views.length+' / '+expected+' 張':'待重新生成';
+  const review=element('user-review-status'),keep=item.user_review?.status==='keep_current_design';review.hidden=!keep;review.textContent=keep?'已評價：保留目前設計':'';review.title=keep?item.user_review.feedback||'':'';
   text('halo-variant',item.halo?.variant||'Halo 款式待補');text('halo-game',item.halo?.game?' · '+item.halo.game:'');link('halo-source',item.halo?.url);link('source-file',item.source_file);
   text('legacy-caption',item.legacy_name+' · ID '+item.legacy_id);text('halo-caption',(item.halo?.game?item.halo.game+' · ':'')+(item.halo?.variant||'待補'));
   renderReferences('legacy',item.legacy_refs,item.legacy_name+' 原遊戲');
