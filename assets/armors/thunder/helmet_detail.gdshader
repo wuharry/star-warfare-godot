@@ -5,6 +5,8 @@ uniform sampler2D albedo_texture : source_color, filter_linear, repeat_disable;
 uniform sampler2D source_albedo_texture : source_color, filter_linear, repeat_disable;
 uniform sampler2D normal_texture : hint_normal, filter_linear, repeat_disable;
 uniform sampler2D emission_texture : source_color, filter_linear, repeat_disable;
+uniform sampler2D visor_paint_texture : source_color, filter_linear, repeat_disable;
+uniform float continuous_visor : hint_range(0.0, 1.0) = 0.0;
 uniform float normal_strength : hint_range(0.0, 2.0) = 0.85;
 uniform float shell_palette_strength : hint_range(0.0, 1.0) = 0.0;
 uniform vec4 shell_blue : source_color = vec4(0.208, 0.373, 0.533, 1.0);
@@ -29,11 +31,23 @@ void fragment() {
 	float detail = clamp(tone / 0.30, 0.40, 1.40);
 	palette *= OUTPUT_IS_SRGB ? detail : pow(detail, 2.2);
 	surface = mix(surface, palette, blue * (1.0 - amber) * shell_palette_strength);
+	// Material 14 also includes a small blue latch: mask glass by source color
+	// so its blue frame keeps the paired atlas. The old amber island contains
+	// baked dark channels as well as engraved normals; replace both together.
+	float glass = continuous_visor * amber;
+	// Both helmets share the mirrored SW2 glass island. Map each half to one
+	// half of the clean swatch, so lighting/color stays attached during poses.
+	float glass_v = clamp((UV.y - 0.633) / 0.316, 0.0, 1.0);
+	float center_u = mix(0.848, 0.790, smoothstep(0.0, 0.82, glass_v));
+	float edge_u = mix(0.967, 0.821, glass_v * glass_v);
+	float glass_u = clamp((UV.x - center_u) / (edge_u - center_u), 0.0, 1.0);
+	vec2 glass_uv = vec2(0.5 + glass_u * 0.5, 0.15 + glass_v * 0.7);
+	surface = mix(surface, texture(visor_paint_texture, glass_uv).rgb, glass);
 	ALBEDO = surface * 0.72;
-	EMISSION = surface * (0.28 + amber * 0.13) + emitted * 0.025;
+	EMISSION = surface * mix(0.28 + amber * 0.13, 0.40, glass) + emitted * 0.025 * (1.0 - glass);
 	NORMAL_MAP = texture(normal_texture, UV).rgb;
-	NORMAL_MAP_DEPTH = normal_strength;
-	ROUGHNESS = mix(0.72, 0.48, amber);
-	METALLIC = 0.06;
-	SPECULAR = 0.18;
+	NORMAL_MAP_DEPTH = normal_strength * (1.0 - glass);
+	ROUGHNESS = mix(mix(0.72, 0.48, amber), 0.30, glass);
+	METALLIC = mix(0.06, 0.12, glass);
+	SPECULAR = mix(0.18, 0.5, glass);
 }

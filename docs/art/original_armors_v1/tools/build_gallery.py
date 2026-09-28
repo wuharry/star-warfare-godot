@@ -86,6 +86,8 @@ expected_keys={(f'C-{i:02d}',kind) for i in range(1,22) for kind in ('concept','
 complete=len(assets)==88 and {(a['design_id'],a['kind']) for a in assets}==expected_keys
 manifest=dict(schema_version=2,date='2026-09-25',scope={'armors':21,'backpacks':25,'expected_selected_images':88},status='complete_pending_user_review' if complete else 'generation_in_progress',runtime_changed=False,tool='built-in image_gen',postprocessing='none',reference_entrypoint='https://www.halopedia.org/Armor_customization',assets=assets,reference_assets=sources,rejected_iterations=archived,previous_delivery_reset={'previous_generated_art_removed':True,'note':'舊交付已重新生成；本輪未採用及使用者修訂前稿另存於 revisions/ 或 v1 圖與紀錄。'},notes=['選用圖是概念／建模參考，非UV貼圖或遊戲模型。','三視近似正交；比例、固定位置與微小接縫須在3D階段統一。','Halo和原遊戲圖是來源參考，來源權利不因融合生成而消失；未聲稱法律授權。','B編號對應獨立背包ID，與同序C同框僅為本轮展示搭配。'])
 manifest['prompt_files']=[dict(path=p.relative_to(ART).as_posix(),sha256=sha(p)) for p in sorted((ART/'prompts').glob('*.txt'))]
+manifest['user_reviews']={item['design_id']:item['user_review'] for item in catalog if item.get('user_review')}
+manifest['notes'].append('assets 保留本批生成圖的交付紀錄；目前採用方向以 user_reviews 為優先。Thunder 恢復舊 B 概念，原 C-07 三張圖列為未採用歷史，非舊稿配套三視。')
 (ART/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
 
 print(json.dumps({'catalog':len(catalog),'selected_images':len(assets),'references':len(sources),'status':manifest['status']}))

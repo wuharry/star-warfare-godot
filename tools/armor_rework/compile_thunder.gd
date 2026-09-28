@@ -259,7 +259,10 @@ func _materials() -> Array[ShaderMaterial]:
 		result.append(material)
 	var visor := helmet.duplicate() as ShaderMaterial
 	visor.resource_name = "Thunder_EngravedVisor"
-	# The visor keeps the original shader settings and all amber channels.
+	# Retain the surface identifier/UVs, but replace the two baked dark channels
+	# with the clean amber paint. Only the visor surface enables this finish.
+	visor.set_shader_parameter("continuous_visor", 1.0)
+	visor.set_shader_parameter("visor_paint_texture", visor_paint)
 	# Only SW2's blue shell adopts the same two paints used by body panels.
 	if variant == "sw2":
 		helmet.set_shader_parameter("shell_palette_strength", 1.0)

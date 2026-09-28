@@ -1,0 +1,55 @@
+{
+  "reason": "User requested removal of two dark yellow visor channels",
+  "source_commit": "e954c32",
+  "image_processing": "none; byte-identical historical Godot captures",
+  "variants": {
+    "sw2": {
+      "runtime_scene_sha256": "81c43cffc6896c56cf7bf3cef7027db5665a376155106492cea753a2f6b5e0be",
+      "runtime_resource_sha256": {
+        "res://assets/armors/thunder/hard_surface.gdshader": "95c02feec2750e25b84dd41ea3b1f92ea1adcf3aee7e49be15cd643da5315f4d",
+        "res://assets/armors/thunder/helmet_detail.gdshader": "6da83996c5a62707788a8bdbb5e1e39af5c0ef61a6dcd8878cf00ced3a82ec42",
+        "res://assets/armors/thunder/painted_armor.gdshader": "c53de3a560ad3c01465805e9fac6e957ce545629ae39d608fc5a74b924308a7d",
+        "res://assets/armors/thunder/textures/14ceb45bf36d.png": "d0868b7e939df0aeebdf303b488b6b3ca127158028acba9d743fea9fc63b50a4",
+        "res://assets/armors/thunder/textures/amber_visor_paint.png": "bfb941bd6bbb5abcd0d3e59f00c55a9b5dccce5881c8861006a53edba6123fb2",
+        "res://assets/armors/thunder/textures/blue_shell_paint.png": "132e9dd5547c570079e8747324662f3072401083e8500845cfd069be0a656b99",
+        "res://assets/armors/thunder/textures/d6da6925f6b4.png": "0c17892c2a354118a7c7fe2688d48c5a38cf5f16a55b3c0f11c6e0a19add3949",
+        "res://assets/armors/thunder/textures/dce7a1446714.png": "436b752b94895b8a7bb5df6cc283db3457a0d518eaefa6862b061aadae1f2e4d",
+        "res://assets/armors/thunder/textures/df2d0a0b46da.png": "32cfab203a11e94fd0bf80c42e4f36f5b1475c8739e97dca0b527a685d539989",
+        "res://assets/armors/thunder/textures/helmet_detail_albedo.res": "83a86b7a0572440e79ced2cce5d6ff9c8a8085ab9eca10634f35ee1a545277de",
+        "res://assets/armors/thunder/textures/helmet_detail_emission.res": "cda178d14ed02dbc9e42070b22670d5e79312579516040480cedbd267ce8cefa",
+        "res://assets/armors/thunder/textures/helmet_detail_normal.res": "33bfc513732b3be40bd0a43d7a6c1458dc1e9527dab09a24c6181123818a1936",
+        "res://assets/armors/thunder/textures/helmet_source_albedo.res": "504c09d94363ca8215906f8a103ba028d55affb53b6e87e906089d29920abb35",
+        "res://assets/armors/thunder/thunder_sw2.scn": "81c43cffc6896c56cf7bf3cef7027db5665a376155106492cea753a2f6b5e0be"
+      },
+      "frames": {
+        "detail_visor.png": "36ac6e27654ea55c47aab10755603a9cce23f244e8e7b1a9ca2eebbcd751c2c4",
+        "full_three_quarter.png": "12365d7c399db0c1498fb2d0855d2c553403a79cb82d8e8a7745b1996b447629",
+        "helmet_three_quarter.png": "bb95934f20c12491c98cf57c8e8cfb06c2369e9ae3d795a847d87bff86bb9646"
+      }
+    },
+    "prototype": {
+      "runtime_scene_sha256": "e0c038908e232f1cc19db6b82858c11bbbd8b3abfe64d33789aef3a13cb30752",
+      "runtime_resource_sha256": {
+        "res://assets/armors/thunder/hard_surface.gdshader": "95c02feec2750e25b84dd41ea3b1f92ea1adcf3aee7e49be15cd643da5315f4d",
+        "res://assets/armors/thunder/helmet_detail.gdshader": "6da83996c5a62707788a8bdbb5e1e39af5c0ef61a6dcd8878cf00ced3a82ec42",
+        "res://assets/armors/thunder/painted_armor.gdshader": "c53de3a560ad3c01465805e9fac6e957ce545629ae39d608fc5a74b924308a7d",
+        "res://assets/armors/thunder/textures/14ceb45bf36d.png": "d0868b7e939df0aeebdf303b488b6b3ca127158028acba9d743fea9fc63b50a4",
+        "res://assets/armors/thunder/textures/amber_visor_paint.png": "bfb941bd6bbb5abcd0d3e59f00c55a9b5dccce5881c8861006a53edba6123fb2",
+        "res://assets/armors/thunder/textures/blue_shell_paint.png": "132e9dd5547c570079e8747324662f3072401083e8500845cfd069be0a656b99",
+        "res://assets/armors/thunder/textures/d6da6925f6b4.png": "0c17892c2a354118a7c7fe2688d48c5a38cf5f16a55b3c0f11c6e0a19add3949",
+        "res://assets/armors/thunder/textures/dce7a1446714.png": "436b752b94895b8a7bb5df6cc283db3457a0d518eaefa6862b061aadae1f2e4d",
+        "res://assets/armors/thunder/textures/df2d0a0b46da.png": "32cfab203a11e94fd0bf80c42e4f36f5b1475c8739e97dca0b527a685d539989",
+        "res://assets/armors/thunder/textures/helmet_detail_albedo.res": "83a86b7a0572440e79ced2cce5d6ff9c8a8085ab9eca10634f35ee1a545277de",
+        "res://assets/armors/thunder/textures/helmet_detail_emission.res": "cda178d14ed02dbc9e42070b22670d5e79312579516040480cedbd267ce8cefa",
+        "res://assets/armors/thunder/textures/helmet_detail_normal.res": "33bfc513732b3be40bd0a43d7a6c1458dc1e9527dab09a24c6181123818a1936",
+        "res://assets/armors/thunder/textures/helmet_source_albedo.res": "504c09d94363ca8215906f8a103ba028d55affb53b6e87e906089d29920abb35",
+        "res://assets/armors/thunder/thunder_prototype.scn": "e0c038908e232f1cc19db6b82858c11bbbd8b3abfe64d33789aef3a13cb30752"
+      },
+      "frames": {
+        "detail_visor.png": "80f27ec07cf6c9e9f7107b17762d9fa1ed7adec03b05c4893da74b63fb91608e",
+        "full_three_quarter.png": "ef77c1d34f67561a6f5aa7c19be70a1c70fa7f3516a29e75aab81f9d43393f58",
+        "helmet_three_quarter.png": "8410850ff8139bc506e82490c79ffcbd6333d4eaa1e8e0d2f4790e1f64837e03"
+      }
+    }
+  }
+}

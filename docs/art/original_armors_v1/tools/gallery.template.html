@@ -206,6 +206,8 @@ dialog::backdrop{background:rgba(0,0,0,.86)}
         <p>概念圖／三視參考 → 建立模型 → 展開 UV 與專用貼圖 → 綁骨架 → 遊戲內裝備和動作測試。這裡的圖片是製作參考；整張人物概念圖不能直接當作模型貼圖。</p>
         <div class="provenance"><a id="original-image">開啟目前新稿原圖 ↗</a><a id="actual-prompt">查看這張圖的提示詞 ↗</a></div>
         <p id="asset-review"></p>
+        <p id="preferred-art-note" hidden></p>
+        <div class="provenance"><a id="preferred-art-source" hidden>舊稿生成來源 ↗</a><a id="runtime-preview" hidden>遊戲頭盔與護目鏡前後對照 ↗</a></div>
       </details>
     </div>
   </main>
@@ -220,15 +222,18 @@ dialog::backdrop{background:rgba(0,0,0,.86)}
 'use strict';
 const catalog = JSON.parse(document.getElementById('catalog').textContent);
 const byId = new Map(catalog.map(item => [item.design_id, item]));
-const viewLabels = {concept:'全身概念',turnaround:'三視圖',construction:'結構拆解',design_sheet:'背包設計稿'};
-const viewOrder = ['concept','turnaround','construction','design_sheet'];
+const viewLabels = {preferred_concept:'保留的舊概念',concept:'全身概念',turnaround:'三視圖',construction:'結構拆解',design_sheet:'背包設計稿'};
+const viewOrder = ['preferred_concept','concept','turnaround','construction','design_sheet'];
 let initialHash='';try{initialHash=decodeURIComponent(location.hash.slice(1))}catch{}
 const state = {kind:'all',query:'',id:byId.has(initialHash)?initialHash:(byId.has('C-01')?'C-01':catalog[0]?.design_id),view:null};
 const element = id => document.getElementById(id);
 const text = (id,value) => {element(id).textContent=value == null?'':String(value)};
 const kindLabel = kind => kind==='backpack'?'背包':'裝甲';
 const cleanPath = value => typeof value==='string'&&value.trim()&&!/^(javascript|data|vbscript):/i.test(value.trim())?value.trim():'';
-const availableViews = item => viewOrder.filter(key=>cleanPath(item.images?.[key]));
+const preferredArt = item => item.user_review?.preferred_art;
+const displayImages = item => preferredArt(item)?{preferred_concept:preferredArt(item).path,...item.images}:item.images;
+const availableViews = item => viewOrder.filter(key=>cleanPath(displayImages(item)?.[key]));
+const viewLabel = (item,key) => (preferredArt(item)&&key!=='preferred_concept'?'未採用版本 · ':'')+(viewLabels[key]||key);
 const asArray = value => Array.isArray(value)?value:[];
 const plain = value => {
   if(value==null)return '';
@@ -253,7 +258,7 @@ function renderList(){
     const code=document.createElement('span');code.className='code';code.textContent=item.design_id;
     const copy=document.createElement('span');copy.className='catalog-copy';
     const name=document.createElement('span');name.className='catalog-name';name.textContent=item.legacy_name||item.working_name_zh||item.design_id;
-    const sub=document.createElement('span');sub.className='catalog-sub';sub.textContent=kindLabel(item.kind)+' ID '+item.legacy_id+' · '+(item.user_review?.status==='keep_current_design'?'已評價：保留':availableViews(item).length?'已有新稿':'待生成');
+    const sub=document.createElement('span');sub.className='catalog-sub';sub.textContent=kindLabel(item.kind)+' ID '+item.legacy_id+' · '+(preferredArt(item)?'已評價：改用舊稿':item.user_review?.status==='keep_current_design'?'已評價：保留':availableViews(item).length?'已有新稿':'待生成');
     copy.append(name,sub);button.append(code,copy);button.addEventListener('click',()=>selectDesign(item.design_id));list.append(button);
   }
   for(const button of document.querySelectorAll('.filter'))button.setAttribute('aria-pressed',String(button.dataset.kind===state.kind));
@@ -303,17 +308,17 @@ function renderStats(item){
 function selectView(key,{focus=false}={}){
   const item=byId.get(state.id),views=availableViews(item);state.view=views.includes(key)?key:views[0]||null;
   const tabs=element('view-tabs');tabs.replaceChildren();
-  for(const view of views){const button=document.createElement('button');button.type='button';button.className='view-tab';button.dataset.view=view;button.id='view-'+view;button.setAttribute('role','tab');button.setAttribute('aria-selected',String(view===state.view));button.setAttribute('aria-controls','result-image-panel');button.tabIndex=view===state.view?0:-1;button.textContent=viewLabels[view]||view;button.addEventListener('click',()=>selectView(view,{focus:true}));button.addEventListener('keydown',event=>{
+  for(const view of views){const button=document.createElement('button');button.type='button';button.className='view-tab';button.dataset.view=view;button.id='view-'+view;button.setAttribute('role','tab');button.setAttribute('aria-selected',String(view===state.view));button.setAttribute('aria-controls','result-image-panel');button.tabIndex=view===state.view?0:-1;button.textContent=viewLabel(item,view);button.addEventListener('click',()=>selectView(view,{focus:true}));button.addEventListener('keydown',event=>{
       const current=views.indexOf(view);let next=current;
       if(event.key==='ArrowRight')next=(current+1)%views.length;else if(event.key==='ArrowLeft')next=(current+views.length-1)%views.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=views.length-1;else return;
       event.preventDefault();selectView(views[next],{focus:true});
     });tabs.append(button)}
-  const path=state.view?item.images[state.view]:'',asset=asArray(item._assets).find(entry=>entry.path===path||entry.kind===state.view);
+  const path=state.view?displayImages(item)[state.view]:'',asset=state.view==='preferred_concept'?preferredArt(item):asArray(item._assets).find(entry=>entry.path===path||entry.kind===state.view);
   const name=item.working_name_zh||item.legacy_name;
-  setImage('result',path,name+'｜'+(viewLabels[state.view]||'新設計'));
+  setImage('result',path,name+'｜'+(state.view?viewLabel(item,state.view):'新設計'));
   if(!path)element('result-empty').innerHTML='<strong>新稿尚未完成</strong>先查看原裝備、Halo 參考與下方融合方案。';
-  text('result-caption',state.view?viewLabels[state.view]:'尚未生成');
-  text('result-view-note',path?'概念參考，尚非遊戲模型或 UV 貼圖。':'完成後會在此顯示新稿。');
+  text('result-caption',state.view?viewLabel(item,state.view):'尚未生成');
+  text('result-view-note',preferredArt(item)?(state.view==='preferred_concept'?preferredArt(item).note:'此圖屬未採用的 C-07 融合方案，保留作歷史比較。'):path?'概念參考，尚非遊戲模型或 UV 貼圖。':'完成後會在此顯示新稿。');
   if(views.length)element('result-image-panel').setAttribute('role','tabpanel');else element('result-image-panel').removeAttribute('role');
   if(state.view)element('result-image-panel').setAttribute('aria-labelledby','view-'+state.view);else element('result-image-panel').removeAttribute('aria-labelledby');
   link('original-image',path);link('actual-prompt',asset?.prompt);text('asset-review',asset?.visual_review?'本稿檢視：'+plain(asset.visual_review):'');
@@ -321,18 +326,20 @@ function selectView(key,{focus=false}={}){
 }
 function selectDesign(id,{updateHash=true}={}){
   const item=byId.get(id);if(!item)return;
-  const previousView=state.view;state.id=id;
+  const previousView=state.id!==id&&preferredArt(item)?'preferred_concept':state.view;state.id=id;
   if(updateHash&&location.hash!=='#'+id)history.replaceState(null,'','#'+encodeURIComponent(id));
   text('mapping',item.legacy_name+' · '+kindLabel(item.kind)+' ID '+item.legacy_id+' → '+item.design_id);
   text('name-zh',item.working_name_zh||item.legacy_name);text('name-en',item.working_name_en||'');text('design-code',item.design_id+' · '+kindLabel(item.kind));
   const views=availableViews(item),expected=item.kind==='backpack'?1:3;
-  const status=element('image-status');status.className='tag '+(views.length?'ready':'pending');status.textContent=views.length?'新稿 '+views.length+' / '+expected+' 張':'待重新生成';
-  const review=element('user-review-status'),keep=item.user_review?.status==='keep_current_design';review.hidden=!keep;review.textContent=keep?'已評價：保留目前設計':'';review.title=keep?item.user_review.feedback||'':'';
+  const status=element('image-status');status.className='tag '+(views.length?'ready':'pending');status.textContent=preferredArt(item)?'舊概念已恢復 · 配套三視待同步':views.length?'新稿 '+views.length+' / '+expected+' 張':'待重新生成';
+  const review=element('user-review-status'),keep=item.user_review?.status==='keep_current_design';review.hidden=!item.user_review;review.textContent=preferredArt(item)?'已評價：保留舊稿':keep?'已評價：保留目前設計':'';review.title=item.user_review?.feedback||'';
   text('halo-variant',item.halo?.variant||'Halo 款式待補');text('halo-game',item.halo?.game?' · '+item.halo.game:'');link('halo-source',item.halo?.url);link('source-file',item.source_file);
   text('legacy-caption',item.legacy_name+' · ID '+item.legacy_id);text('halo-caption',(item.halo?.game?item.halo.game+' · ':'')+(item.halo?.variant||'待補'));
   renderReferences('legacy',item.legacy_refs,item.legacy_name+' 原遊戲');
-  renderReferences('halo',item.halo?.reference_images,item.halo?.variant||'Halo',item.halo?.reference_note||'');
+  renderReferences('halo',item.halo?.reference_images,item.halo?.variant||'Halo',preferredArt(item)?'未採用融合稿的歷史參考；目前以保留舊稿為準。':item.halo?.reference_note||'');
   renderFusion('fusion-retained',item.fusion?.retained);renderFusion('fusion-borrowed',item.fusion?.borrowed);renderFusion('fusion-optimized',item.fusion?.optimized);
+  const preferred=preferredArt(item);link('preferred-art-source',preferred?.provenance);link('runtime-preview',item.user_review?.runtime_preview);element('preferred-art-note').hidden=!preferred;text('preferred-art-note',preferred?.note||'');
+  element('fusion-heading').closest('section').hidden=!!preferred;
   renderStats(item);selectView(previousView);
   for(const card of document.querySelectorAll('.catalog-card'))card.setAttribute('aria-pressed',String(card.dataset.id===id));
 }
