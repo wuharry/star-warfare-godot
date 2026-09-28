@@ -66,6 +66,8 @@ for kind,entries in [('armor',mapping['armor_mappings']),('backpack',mapping['ba
         if kind=='backpack':item['stats']={'capacity':o['current_bag_slots'],'basis':'目前遊戲背包欄位；新造型與技能尚未接入'}
         else:
             stats=metadata.get('proposed_stats',{});item['stats']={k:v for k,v in stats.items() if k in ['basis','per_part','four_piece_total','movement_modifier','damage_modifier','unlock']}
+        if metadata.get('user_review'):
+            item['user_review']=metadata['user_review']
         catalog.append(item)
 template=(ART/'tools/gallery.template.html').read_text(encoding='utf-8')
 assert template.count('__CATALOG_JSON__')==1
