@@ -4,21 +4,27 @@
   "runtime_id": null,
   "working_name_zh": "支點",
   "working_name_en": "SPUR",
-  "status": "helmet_color_corrected_pending_user_review",
+  "status": "concept_ready_for_user_review",
   "runtime_implemented": false,
   "proposed_role_replacement": {
     "legacy_visual_id": 11,
     "legacy_set_name": "Cygni",
     "purpose": "指定未來外觀替换目標；能力、購買、升級和存檔 ID 本輪不變。"
   },
-  "lore": "重裝火力觀測員的支援服。白灰頭盔與身甲採一致塗裝，深綠內板與銅橙細節標示結構；短翼保護通訊與校準元件。",
+  "lore": "重裝火力觀測員的支援服。粉珊瑚頭盔與白灰身甲區分觀測角色，短翼保護通訊與校準元件。",
   "role": "爆破武器支援",
   "palette": [
+    {
+      "family": "粉珊瑚",
+      "hex": "#CE808A",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
     {
       "family": "白灰",
       "hex": "#D8DCDA",
       "target_percent": null,
-      "usage": "依使用者更正，頭盔外殼、側翼與身甲共用白灰主色；美術近似色票，非圖像取樣或 UV 材質值。"
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
     },
     {
       "family": "深綠",
@@ -42,18 +48,18 @@
   "visual_identity": {
     "status": "prompt_target_with_actual_reviews_below",
     "proportion_target": "約6～6.5個頭盔高的厚實人體；屬 brief 目標，未作像素量測。",
-    "head": "白灰低盔與身甲同色、暗紫玻璃和銅橙 U 形下框；Valkyrie 收頰短呼吸蓋；保留既有雙側短疊片與短下巴。",
+    "head": "粉珊瑚低盔、暗紫玻璃和銅橙 U 形下框；Valkyrie 收頰短呼吸蓋；本輪實際概念與三視採雙側短疊片，以圖上片數為準。",
     "torso": "白灰胸甲、深綠內板與寬短胸帶",
     "shoulders": "雙肩各一短鈍翼，呼應頭盔側翼",
     "arms": "正常五指手套、布衣肘窩與分件護臂。原版保留線索：白色護臂外殼包住深綠面板，銅色短線與小矩形嵌件；護肘尖端明顯。",
     "legs": "人的髖膝踝位置、軟膝後和正常軍靴；尖片按融合 brief 收短。原版保留線索：白色大腿前片与脛甲，深綠內分區；踝後各有短白翼，銅橙小盾牌樣標記。",
     "pack": "背包為獨立装备。三視製作可示範搭配 B-12，不是原遊戲固定套裝或技能關聯；以 B 款獨立設計稿為準。",
     "concept_prompt": "prompts/c12_concept.txt",
-    "full_fusion_brief_en": "Fuse original Star Warfare Cygni with the observed Halo 5 Valkyrie collar, respirator and winged shoulder structure. Keep the helmet hard shell and its stacked side fins the same white-gray as the body armor. Preserve the deep forest-green body panels, dark violet visor, restrained copper-orange lower frame and existing short helmet/shoulder fins. No coral-pink helmet paint remains. Borrow Valkyrie's low brow shell, inward-sloping cheek plates, compact central breathing cover, broad upper chest straps and short wing-ended shoulders. Reshape the mask into Cygni's shallow copper U-frame with a shorter lower chin piece rather than copying Valkyrie's complete triangular beak. Consolidate the many original spikes into one short swept fin at each helmet side and one blunt shoulder wing on each side. Use the observed twin upper-back housings as inspiration for two small angled rear stabilizer cases connected to a newly designed central cover. Preserve black woven neck and joints, human gloves and proportional boots. Avoid the reference purple-yellow coating and all franchise symbols.",
+    "full_fusion_brief_en": "Fuse original Star Warfare Cygni with the observed Halo 5 Valkyrie collar, respirator and winged shoulder structure. Keep the coral-pink helmet distinct from the white-gray and deep forest-green body, the dark violet visor with a restrained copper-orange lower frame, and the paired short helmet/shoulder fins. Borrow Valkyrie's low brow shell, inward-sloping cheek plates, compact central breathing cover, broad upper chest straps and short wing-ended shoulders. Reshape the mask into Cygni's shallow copper U-frame with a shorter lower chin piece rather than copying Valkyrie's complete triangular beak. Consolidate the many original spikes into one short swept fin at each helmet side and one blunt shoulder wing on each side. Use the observed twin upper-back housings as inspiration for two small angled rear stabilizer cases connected to a newly designed central cover. Preserve black woven neck and joints, human gloves and proportional boots. Avoid the reference purple-yellow coating and all franchise symbols.",
     "actual_reviews": {
-      "concept": "已目視：冠殼、額甲、頰殼、下巴、圓形接點與短疊側翼均改成與身甲一致的白灰；暗紫面罩、銅橙 U 框與小嵌片、身甲深綠分區及全身輪廓保留，雙腳完整。",
-      "turnaround": "已目視：FRONT／LEFT SIDE／BACK 的頭盔外殼、側翼及後腦均為白灰，沒有粉色大色塊；暗紫玻璃與銅橙框保留。B-12 仍為白橘盾殼、藍頂、中央金屬筒與下方橫接頭，三視完整。",
-      "construction": "已目視：組裝頭盔、拆開冠殼與頰殼、背視小圖及肩部小圖邊緣均為白灰；玻璃仍為暗紫，面框保有銅橙色。拆件右側銅橙邊較組裝示意窄，色塊邊界需建模統一。肩、軟關節及獨立 B-12 配色延續；本圖不是精確材質分區或尺寸圖。"
+      "concept": "粉紅頭盔、紫面窗銅色U框、白灰深綠身體與短肩翼成立；VALKYRIE內收頰框與寬胸帶可讀。原版的成對側鰭仍偏突出，後續建模需檢查轉頭間隙。",
+      "construction": "已目視：粉盔外殼、紫玻璃與銅U下框拆件清楚，保留短疊側翼；白肩與深綠下層、短外翼和軟上臂符合概念。B-12 白橘盾形、藍頂及單筒橫接頭完整，內架與肩帶可辨；肘膝布褶及人手成立。部分隱藏鎖點為近似裝配提案，仍須模型驗證肩翼及背包下尖的活動間隙。",
+      "turnaround": "已目視：粉珊瑚盔、紫玻璃銅U框、雙側短疊翼及白灰／深綠人體裝甲與概念一致；三視皆完整且同地平線。B-12 保留藍頂、白橘盾殼及單筒橫接頭，在背面和側面可辨。背包下尖接近後腰板，穿戴碰撞與實際鎖點需模型階段修正；本圖只示範獨立裝備搭配。"
     }
   },
   "proposed_stats": {
@@ -107,7 +113,7 @@
   "license_status": "reference_fusion_concept_not_a_legal_clearance",
   "generation": {
     "tool": "built-in image_gen",
-    "date": "2026-09-29",
+    "date": "2026-09-25",
     "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
     "records": {
       "concept": {
@@ -115,88 +121,52 @@
         "kind": "concept",
         "path": "images/c12_concept.png",
         "prompt": "prompts/c12_concept.txt",
-        "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-84ba03f2-7fcd-44a9-9501-76320590b580.png",
-        "date": "2026-09-29",
         "reference_images": [
-          "revisions/c12_before_color_fix_20260929/images/c12_concept.png"
+          "references/legacy/c12_front.png",
+          "references/halo/c12_valkyrie_front.png"
         ],
-        "reference_sha256": {
-          "revisions/c12_before_color_fix_20260929/images/c12_concept.png": "aab35be5a07f51a2c3c6cf92249936b0f7ab97ce2ae2aec845968e1d0cb995d6"
-        },
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-a1a0a1ab-f152-4a33-a587-205d9c78df73.png",
+        "date": "2026-09-25",
         "postprocessing": "none",
-        "edit_scope": "helmet_shell_color_only",
-        "visual_review": "已目視：冠殼、額甲、頰殼、下巴、圓形接點與短疊側翼均改成與身甲一致的白灰；暗紫面罩、銅橙 U 框與小嵌片、身甲深綠分區及全身輪廓保留，雙腳完整。",
-        "status": "visually_checked_color_correction_pending_user_review",
-        "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_concept.json",
-        "prompt_sha256": "e58c193036943993b4d1fcd560436700a4e0674c0d91321dace10b4e7accd86f",
-        "sha256": "2c514a713a0b00ac7afec173b739af7eed83f350db74e63213d22bf06e2ed046",
-        "dimensions": [
-          1024,
-          1536
-        ],
-        "bytes": 1915858,
+        "visual_review": "粉紅頭盔、紫面窗銅色U框、白灰深綠身體與短肩翼成立；VALKYRIE內收頰框與寬胸帶可讀。原版的成對側鰭仍偏突出，後續建模需檢查轉頭間隙。",
+        "status": "visually_reviewed_pending_user_selection",
         "record_file": "docs/art/original_armors_v1/generation_records/c12_concept.json"
-      },
-      "turnaround": {
-        "design_id": "C-12",
-        "kind": "turnaround",
-        "path": "images/c12_turnaround.png",
-        "prompt": "prompts/c12_turnaround.txt",
-        "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-3560c903-68f8-40f9-8479-33977fea5c2d.png",
-        "date": "2026-09-29",
-        "reference_images": [
-          "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png"
-        ],
-        "reference_sha256": {
-          "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png": "a33f7a6be823fce41ed8527306309c7c428f21c1b0be74b69b0bfa862b863e08"
-        },
-        "postprocessing": "none",
-        "edit_scope": "helmet_shell_color_only",
-        "visual_review": "已目視：FRONT／LEFT SIDE／BACK 的頭盔外殼、側翼及後腦均為白灰，沒有粉色大色塊；暗紫玻璃與銅橙框保留。B-12 仍為白橘盾殼、藍頂、中央金屬筒與下方橫接頭，三視完整。",
-        "status": "visually_checked_color_correction_pending_user_review",
-        "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_turnaround.json",
-        "prompt_sha256": "5ef180b2e3b5149128967404fdf1cbf2e831683c4292dcc20d2c04fab44030d5",
-        "sha256": "f401318b50face740e148d48aee649b26e476add543cf44521ce9eee2aff0c3e",
-        "dimensions": [
-          1536,
-          1024
-        ],
-        "bytes": 2089188,
-        "record_file": "docs/art/original_armors_v1/generation_records/c12_turnaround.json"
       },
       "construction": {
         "design_id": "C-12",
         "kind": "construction",
         "path": "images/c12_construction.png",
         "prompt": "prompts/c12_construction.txt",
-        "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-cc70b1be-0625-4a33-aa24-74dacf1c5a25.png",
-        "date": "2026-09-29",
         "reference_images": [
-          "revisions/c12_before_color_fix_20260929/construction_initial.png",
-          "revisions/c12_before_color_fix_20260929/images/c12_construction.png"
+          "images/c12_concept.png",
+          "images/c12_turnaround.png",
+          "images/b12_design_sheet.png"
         ],
-        "reference_sha256": {
-          "revisions/c12_before_color_fix_20260929/construction_initial.png": "fb84cf07f1e7a3c445f731c4822b07e5455fcefd652b77c2bb7213845cf4bb22",
-          "revisions/c12_before_color_fix_20260929/images/c12_construction.png": "8cc2dd4136b62656b0900c3736e3cadbf3803f503299529f2c3de9300124a629"
-        },
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-6fb00bb8-40a7-47a5-a998-f07c93ed0ef0.png",
+        "date": "2026-09-25",
         "postprocessing": "none",
-        "edit_scope": "helmet_shell_color_only",
-        "visual_review": "已目視：組裝頭盔、拆開冠殼與頰殼、背視小圖及肩部小圖邊緣均為白灰；玻璃仍為暗紫，面框保有銅橙色。拆件右側銅橙邊較組裝示意窄，色塊邊界需建模統一。肩、軟關節及獨立 B-12 配色延續；本圖不是精確材質分區或尺寸圖。",
-        "status": "visually_checked_color_correction_pending_user_review",
-        "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_construction.json",
-        "prompt_sha256": "c60814daaf9fe59948e9b070d280086166d4a26c075cc751ac141be8d923c56a",
-        "sha256": "96809c8d8077f7a3f89b0e5397e98720386cdaecd2c5f0a9038ff309c6679351",
-        "dimensions": [
-          1536,
-          1024
-        ],
-        "bytes": 2269873,
+        "visual_review": "已目視：粉盔外殼、紫玻璃與銅U下框拆件清楚，保留短疊側翼；白肩與深綠下層、短外翼和軟上臂符合概念。B-12 白橘盾形、藍頂及單筒橫接頭完整，內架與肩帶可辨；肘膝布褶及人手成立。部分隱藏鎖點為近似裝配提案，仍須模型驗證肩翼及背包下尖的活動間隙。",
+        "status": "visually_reviewed_pending_user_selection",
         "record_file": "docs/art/original_armors_v1/generation_records/c12_construction.json"
+      },
+      "turnaround": {
+        "design_id": "C-12",
+        "kind": "turnaround",
+        "path": "images/c12_turnaround.png",
+        "prompt": "prompts/c12_turnaround.txt",
+        "reference_images": [
+          "images/c12_concept.png",
+          "images/b12_design_sheet.png"
+        ],
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-7ad02d6d-e3c3-4f6f-889c-ad9cc3c4b84c.png",
+        "date": "2026-09-25",
+        "postprocessing": "none",
+        "visual_review": "已目視：粉珊瑚盔、紫玻璃銅U框、雙側短疊翼及白灰／深綠人體裝甲與概念一致；三視皆完整且同地平線。B-12 保留藍頂、白橘盾殼及單筒橫接頭，在背面和側面可辨。背包下尖接近後腰板，穿戴碰撞與實際鎖點需模型階段修正；本圖只示範獨立裝備搭配。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c12_turnaround.json"
       }
     },
-    "unselected_records": [
-      "revisions/c12_before_color_fix_20260929/construction_initial_record.json"
-    ]
+    "unselected_records": []
   },
   "equipment_type": "armor",
   "proposal_only": true,
@@ -210,14 +180,7 @@
         "references/legacy/c12_side.png",
         "references/legacy/c12_rear.png"
       ],
-      "audit": "sources/legacy_armor_later.json",
-      "helmet_correction": {
-        "date": "2026-09-29",
-        "feedback": "Cygni 也是頭盔跟身體顏色應該一致",
-        "authority": "explicit_user_color_correction",
-        "rule": "頭盔粉色硬殼改為與身甲相同的白灰；暗紫玻璃、銅橙細節、黑色內襯及原造型保留。",
-        "note": "原擷取圖只作輪廓參考；粉盔不是本次有效配色依據，未重新驗證原遊戲材質。"
-      }
+      "audit": "sources/legacy_armor_later.json"
     },
     "halo": {
       "name": "VALKYRIE-class Mjolnir (GEN2)",
@@ -257,7 +220,7 @@
   },
   "fusion_recipe": {
     "retained": [
-      "頭盔外殼與白灰身甲同色，保留深綠身體分區",
+      "粉珊瑚頭盔對白灰／深綠身甲的顏色反差",
       "短側翼頭盔與白色肩翼呼應",
       "銅橙U形護頰框和少量胸部楔形嵌片"
     ],
@@ -268,28 +231,7 @@
       "back_evidence": "production_concept_rear_and_side_view",
       "match_reason": "Cygni 的側翼、肩翼與U形護頰可結合 Valkyrie 的短外展肩片、內收面罩框和兩側高領；Valkyrie 的成對機翼感比已比較的 Air Assault 更接近原款。"
     },
-    "optimized": "頭盔外殼、側翼與身甲統一白灰；保留紫面罩、銅橙 U 框、既有短側翼與肩翼輪廓。取消粉盔分色要求；頸圈與胸腰軟接縫延續。",
+    "optimized": "保留分色身份；把肩翼、踝翼轉成短型通訊或散熱護片，減少裸尖角；縮短面罩下框，加入清楚的頸圈與胸腰軟接縫。",
     "optimization_common": "胸腰按人體分件、露出織物關節、短化易勾掛尖片；避免單眼機械臉與巨型四肢。"
-  },
-  "user_review": {
-    "status": "helmet_color_corrected",
-    "date": "2026-09-29",
-    "feedback": "Cygni 也是頭盔跟身體顏色應該一致",
-    "scope": "helmet_shell_color_only",
-    "action": "Cygni 頭盔外殼、側翼及後腦改為與身甲一致的白灰，保留紫面罩、銅橙 U 框及原造型；概念、三視與拆解同步更正。",
-    "acceptance_basis": "使用者明確更正配色；本次輸出由助理目視核對，尚未逐張獲使用者確認。",
-    "previous_revision": {
-      "images": {
-        "concept": "revisions/c12_before_color_fix_20260929/images/c12_concept.png",
-        "turnaround": "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png",
-        "construction": "revisions/c12_before_color_fix_20260929/images/c12_construction.png"
-      },
-      "prompts": {
-        "concept": "revisions/c12_before_color_fix_20260929/prompts/c12_concept.txt",
-        "turnaround": "revisions/c12_before_color_fix_20260929/prompts/c12_turnaround.txt",
-        "construction": "revisions/c12_before_color_fix_20260929/prompts/c12_construction.txt"
-      }
-    },
-    "runtime_implemented": false
   }
 }
