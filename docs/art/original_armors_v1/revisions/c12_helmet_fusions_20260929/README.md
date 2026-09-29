@@ -1,6 +1,6 @@
 # Cygni 頭盔融合試稿 · 2026-09-29
 
-使用者喜歡金色大面罩並要求保留，另做略偏 T 字版供比較；最新圖為 `images/anubis_gold_t.png`，兩種面罩形狀尚未選定正式版。
+使用者以「好偏T字這種」選定 `images/anubis_gold_t.png` 為正式頭盔方向；主圖採用同一張原圖，三視與拆解已同步。較寬的金色大面罩原圖保留。
 
 [開啟前後比較](index.html) · [完整來源與逐圖生成紀錄](study.json)
 
@@ -11,7 +11,7 @@
 | [baseline.png](images/baseline.png) | 原稿快照 | 白灰殼、紫面罩、銅橙 U 框、圓形頰接點。 |
 | [anubis.png](images/anubis.png) | A 初稿；使用者偏好方向 | 分層眉甲與斜收頰板，仍是紫面罩，白色中央下巴較高。 |
 | [anubis_gold.png](images/anubis_gold.png) | 使用者喜歡並要求保留 | 金色反光玻璃向兩側和下頰延伸，頰框及中央下巴縮小；原圖未再更動。 |
-| [anubis_gold_t.png](images/anubis_gold_t.png) | 最新 T 字比較稿；待選 | 上眼帶維持寬度，頰板輕微內收，下半部金色玻璃較集中於中央。 |
+| [anubis_gold_t.png](images/anubis_gold_t.png) | 使用者已選定並採用 | 上眼帶維持寬度，頰板輕微內收，下半部金色玻璃較集中於中央。 |
 | [moonfang.png](images/moonfang.png) | B 比較稿；未採用 | 中央額脊、冠槽，紫面罩向下收尖，形成較長 V 形。 |
 
 各稿延續白灰頭盔與身甲、深綠內板、銅橙細節、後掠短翼與站姿。這些是概念圖，表面紋理會重繪；不是精確尺寸圖或遊戲模型。
@@ -33,9 +33,9 @@
 | A 金色修訂 | A 初稿 | [anubis_gold.txt](prompts/anubis_gold.txt) |
 | 略偏 T 字版 | A 金色修訂 | [anubis_gold_t.txt](prompts/anubis_gold_t.txt) |
 
-目前圖集主稿及既有三視／拆解保留，C-12 入口連至大面罩／T 字比較頁。這次未製作新三視或拆解，也未接入 runtime。大面罩版已獲保留要求，T 字版待比較；[前一輪對照頁](index_before_t.html) 留作歷史參考。
+正式圖集已採用 T 字概念原圖，並依此同步三視／拆解；[採用紀錄與舊稿](../c12_before_t_adoption_20260929/README.md)可回看。大面罩及[前一輪對照頁](index_before_t.html)留作歷史參考，未接入 runtime。
 
-## 檢查
+## 試稿階段檢查（正式採用前）
 
 - PASS：輸出、提示詞及實際輸入 SHA-256 一致；頁面本地連結都有對應檔案。
 - PASS：既有 C-12 概念／三視／拆解內容未變，其餘圖集項目資料未變。

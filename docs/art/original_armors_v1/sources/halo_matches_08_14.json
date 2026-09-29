@@ -251,17 +251,17 @@
       "runtime_armor_id": 11,
       "runtime_name": "Cygni",
       "game": "Halo 5: Guardians",
-      "variant": "VALKYRIE-class Mjolnir (GEN2)",
-      "article_url": "https://www.halopedia.org/VALKYRIE-class_Mjolnir",
-      "source_kind": "Official Halo Waypoint customization renderer and Paul Richards production concept.",
-      "creator": "Paul Richards",
-      "creator_source_url": "https://thepaulrichards.tumblr.com/post/131979521164/for-freelance-inquiries-contact-paul-richards-at",
+      "variant": "Anubis 頭盔融合 / Valkyrie 身甲",
+      "article_url": "https://www.halopedia.org/ANUBIS-class_Mjolnir",
+      "source_kind": "Anubis production render for helmet; existing Valkyrie references for body.",
+      "creator": "Pablo Vicentini (Anubis helmet); Paul Richards (Valkyrie body concept)",
+      "creator_source_url": "https://www.halopedia.org/File:Anubis-armor-render-02.jpg",
       "observed": {
-        "helmet": "低圓冠與下压眉甲；連續面窗下緣呈折角；護頰斜向內收至中間短三角呼吸罩，小圓接點分置两側。",
+        "helmet": "分層前突眉甲、斜向內收護頰、小型中央呼吸護塊；不採用原作身甲或配色。",
         "chest": "胸口上方兩塊高厚頸側板，下方黑色中央胸板；肩外端短翼片向外平展，前臂為緊貼手臂的長楔形。",
         "back": "Paul Richards 多視原畫含後视與側面：左右後肩各一塊高短模組包圍中央深色水滴形小板，背腰分開，中下背留有軟衣空間。",
         "back_evidence": "production_concept_rear_and_side_view",
-        "match_reason": "Cygni 的側翼、肩翼與U形護頰可結合 Valkyrie 的短外展肩片、內收面罩框和兩側高領；Valkyrie 的成對機翼感比已比較的 Air Assault 更接近原款。"
+        "match_reason": "Anubis 提供分層眉甲和斜收護頰；Cygni 短側翼及既有 Valkyrie 胸肩設計延續。金色微 T 玻璃由使用者選定融合稿定義。"
       },
       "rejected_alternative": {
         "variant": "Halo 4/5 AIR ASSAULT",
@@ -285,13 +285,23 @@
           }
         ]
       },
-      "integration_en": "Fuse original Star Warfare Cygni with the observed Halo 5 Valkyrie collar, respirator and winged shoulder structure. Keep the helmet hard shell and its stacked side fins the same white-gray as the body armor. Preserve the deep forest-green body panels, dark violet visor, restrained copper-orange lower frame and existing short helmet/shoulder fins. No coral-pink helmet paint remains. Borrow Valkyrie's low brow shell, inward-sloping cheek plates, compact central breathing cover, broad upper chest straps and short wing-ended shoulders. Reshape the mask into Cygni's shallow copper U-frame with a shorter lower chin piece rather than copying Valkyrie's complete triangular beak. Consolidate the many original spikes into one short swept fin at each helmet side and one blunt shoulder wing on each side. Use the observed twin upper-back housings as inspiration for two small angled rear stabilizer cases connected to a newly designed central cover. Preserve black woven neck and joints, human gloves and proportional boots. Avoid the reference purple-yellow coating and all franchise symbols.",
-      "source_page_url": "https://www.halopedia.org/File:H5-Waypoint-Valkyrie.png",
-      "image_url": "https://www.halopedia.org/images/a/ac/H5-Waypoint-Valkyrie.png?be213",
-      "local_path": "references/halo/c12_valkyrie_front.png",
-      "sha256": "2f68796373cd4123ba4f73bdb8b6e67d2d6260a0cdbc83bb4798d7a338d5bedd",
+      "integration_en": "Retain the existing white-gray/forest-green/copper Cygni body armor, shoulder wings and Valkyrie-derived chest construction. Adopt the user-selected Anubis-inspired stepped brow and inward angular cheeks, reflective GOLD subtly T-shaped visor with broad eye band and medium-width central stem, compact chin and paired short rear-swept temple fins. Helmet shell matches the white-gray body. Remove the earlier purple visor, thick copper U frame and round cheek knobs; copper remains restrained trim. The selected concept is the helmet authority; supporting sheets must follow it.",
+      "source_page_url": "https://www.halopedia.org/File:Anubis-armor-render-02.jpg",
+      "image_url": "https://www.halopedia.org/images/d/de/Anubis-armor-render-02.jpg?2969c",
+      "local_path": "references/halo/c12_anubis_production.jpg",
+      "sha256": "4272212667d3eb489c9f92a5efd5937bba0f382b12775a812e370214ba5a3db5",
       "visually_inspected": true,
       "references": [
+        {
+          "key": "c12_anubis_production",
+          "source_page_url": "https://www.halopedia.org/File:Anubis-armor-render-02.jpg",
+          "image_url": "https://www.halopedia.org/images/d/de/Anubis-armor-render-02.jpg?2969c",
+          "local_path": "references/halo/c12_anubis_production.jpg",
+          "bytes": 376911,
+          "sha256": "4272212667d3eb489c9f92a5efd5937bba0f382b12775a812e370214ba5a3db5",
+          "visually_inspected": true,
+          "reference_role": "helmet_donor_used_for_initial_anubis_study"
+        },
         {
           "key": "c12_valkyrie_front",
           "source_page_url": "https://www.halopedia.org/File:H5-Waypoint-Valkyrie.png",
@@ -316,7 +326,18 @@
         "feedback": "Cygni 也是頭盔跟身體顏色應該一致",
         "authority": "explicit_user_color_correction",
         "rule": "頭盔粉色硬殼改為與身甲相同的白灰；暗紫玻璃、銅橙細節、黑色內襯及原造型保留。",
-        "note": "原擷取圖只作輪廓參考；粉盔不是本次有效配色依據，未重新驗證原遊戲材質。"
+        "note": "原擷取圖只作輪廓參考；粉盔不是本次有效配色依據，未重新驗證原遊戲材質。",
+        "superseded_for_visor_by": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png"
+      },
+      "part_assignment": {
+        "helmet": "Anubis + user-selected gold T fusion study",
+        "body": "existing Valkyrie-derived Cygni body retained"
+      },
+      "user_selection": {
+        "date": "2026-09-29",
+        "feedback": "好偏T字這種",
+        "selected_concept": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png",
+        "authority": "explicit_user_concept_selection"
       }
     },
     {
