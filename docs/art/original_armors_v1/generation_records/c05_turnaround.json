@@ -3,13 +3,26 @@
   "kind": "turnaround",
   "path": "images/c05_turnaround.png",
   "prompt": "prompts/c05_turnaround.txt",
-  "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-e749640e-59ec-4e6c-b201-cfa8fea5854d.png",
-  "date": "2026-09-25",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-a0dd4ba9-d0ad-4248-b037-723e581e001e.png",
+  "date": "2026-09-29",
   "reference_images": [
-    "images/c05_concept.png",
-    "images/b05_design_sheet.png"
+    "revisions/c05_before_helmet_swap_20260929/images/c05_turnaround.png",
+    "images/c05_concept.png"
   ],
+  "reference_sha256": {
+    "revisions/c05_before_helmet_swap_20260929/images/c05_turnaround.png": "8ee30c2484ab0d56a9c03ffbd7c9f4e8b907bb43272073d47924611e05ba4981",
+    "images/c05_concept.png": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1"
+  },
   "postprocessing": "none",
-  "visual_review": "三視已目視：Strike雙額青點、金面罩、青肩前臂節點及三條膝燈一致；站高與地線一致；B05灰白雙殼、藍色中艙三青横窗及下方藍長窗符合Bsheet，背包保持獨立。 仍是建模概念參考，未證明尺寸/機構可製作。",
-  "status": "visually_reviewed_pending_user_selection"
+  "edit_scope": "helmet_only_edit_intent_existing_body_retained",
+  "visual_review": "已目視：正／左／背視的藍色分片圓冠、雙青色冠環與青玻璃方向一致，背視無面罩；身甲及獨立 B05 灰白雙殼與藍色中艙保留。跨視接縫與尺寸仍須建模時統一。",
+  "status": "visually_checked_from_adopted_helmet_direction",
+  "supersedes": "revisions/c05_before_helmet_swap_20260929/generation_records/c05_turnaround.json",
+  "prompt_sha256": "a4a3b979eacdfd53a1cfc371a9d7fe3f228817aa0416a1a39dc66ebd0d50f9b3",
+  "sha256": "fa6a7be3696d421e7d6ed8fa3a9491b344e9f7f847314c6185cc00af94e0ff8d",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "bytes": 2102628
 }

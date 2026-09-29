@@ -12,10 +12,10 @@
 | [C-02](c02_wayfarer.json) | 1 / Fortune | 行囊 WAYFARER | Recon helmet with UA/HUL[3] option; Recon-equipped Spartan upper body | 沿途整備、落點補給 |
 | [C-03](c03_cairn.json) | 2 / Tank | 岩樁 CAIRN | Grenadier / Jorge-052 heavy armor, without character markings | 落樁固守 |
 | [C-04](c04_skipjack.json) | 3 / Hydra | 躍浪 SKIPJACK | Operator helmet and Operator shoulder configuration | 側躍定準 |
-| [C-05](c05_breachline.json) | 4 / Strike | 破線 BREACHLINE | Recruit (GEN2), official game model and Waypoint render | 推線穩架 |
+| [C-05](c05_breachline.json) | 4 / Strike | 破線 BREACHLINE | Recruit (GEN2)＋Atom 青色收口面罩 | 推線穩架 |
 | [C-06](c06_patchwork.json) | 5 / Titan | 補綴 PATCHWORK | 使用者兩張Halo頭盔附件（型號未核實） | 分裝修補 |
 | [C-07](c07_redline.json) | 6 / Thunder | 熾限 REDLINE | War Master (GEN2), official armor turnaround | 熱限過載 |
-| [C-08](c08_prism.json) | 7 / Atom | 折光 PRISM | ENGINEER-class Mjolnir (GEN2) | 單次折向 |
+| [C-08](c08_prism.json) | 7 / Atom | 折光 PRISM | ENGINEER 身甲＋B／Recruit 窄面罩 | 單次折向 |
 | [C-09](c09_bulwark.json) | 8 / Pegasus | 拒壁 BULWARK | HELIOSKRILL-class Mjolnir (GEN2) | 迎擊防板 |
 | [C-10](c10_lodestone.json) | 9 / Draco | 蓄鐵 LODESTONE | CQC helmet and shoulder configuration | 蓄鐵脈衝 |
 | [C-11](c11_seedvault.json) | 10 / Phoenix | 芽庫 SEEDVAULT | VENATOR-class Mjolnir (GEN2) | 共用修復份額 |
@@ -29,6 +29,10 @@
 | [C-19](c19_farline.json) | 18 / Black Hole | 遠標 FARLINE | LOCUS / Edge | 窄線測標 |
 | [C-20](c20_turncoil.json) | 19 / X-Field | 迴蓄 TURNCOIL | PROTECTOR | 迴流緩衝 |
 | [C-21](c21_anchorline.json) | 20 / Wrath | 繫錨 ANCHORLINE | YOROI / KABUTO | 短索繫錨 |
+
+### 2026-09-29 頭盔方向採用
+
+Strike 正式採 Atom＋Recruit 青色收口面罩；Atom 採 B＋Recruit 的圓冠、淺 V 窄窗與短下巴，保留紫藍配色、三顆額燈及圓耳。兩套都沿用既有全身比例，概念、三視與拆解已同步；[採用紀錄](revisions/c05_helmet_assignment_20260929/README.md)保留選案、修改前與生成來源。此決定僅確認美術方向，尚未製作遊戲模型。
 
 ## 25 個獨立背包
 

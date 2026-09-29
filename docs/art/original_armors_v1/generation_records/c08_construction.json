@@ -3,14 +3,26 @@
   "kind": "construction",
   "path": "images/c08_construction.png",
   "prompt": "prompts/c08_construction.txt",
-  "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-fae4247a-8994-4197-95ca-3186f610649a.png",
-  "date": "2026-09-25",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-3866185b-db40-4e5f-a803-c95b69de4f0c.png",
+  "date": "2026-09-29",
   "reference_images": [
-    "images/c08_concept.png",
-    "images/c08_turnaround.png",
-    "images/b08_design_sheet.png"
+    "revisions/c08_before_helmet_swap_20260929/images/c08_construction.png",
+    "images/c08_concept.png"
   ],
+  "reference_sha256": {
+    "revisions/c08_before_helmet_swap_20260929/images/c08_construction.png": "f6599943c8a66dfed73a74da7357ebdbffa6ce0b640628940610c6cf9b596c1c",
+    "images/c08_concept.png": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d"
+  },
   "postprocessing": "none",
-  "visual_review": "修正版已逐圖目視：A 區完整頭盔及爆炸圖外殼各有正確三顆青色額冠點，已刪掉重複額帶；爆炸圖為外殼／單片青玻璃／軟內襯三組。紫藍配色、圓耳、肩感測護片、胸部直青窗一致。D 區僅黑色背墊雙接軌，独立 B08 藍黃雙艙與黃三角下端完整。接點尺寸未驗證。",
-  "status": "visually_reviewed_pending_user_selection"
+  "edit_scope": "helmet_only_edit_intent_existing_body_retained",
+  "visual_review": "已目視：A 保留紫藍殼、圓耳及三顆額冠青燈，淺 V 青玻璃與短下緣護框分件，黑色內襯獨立；沒有重複額帶。B/C 保留肩護片與胸部直青窗；D 只有黑背墊雙接軌與旁側獨立 B08 背包。接點尺寸未驗證。",
+  "status": "visually_checked_from_adopted_helmet_direction",
+  "supersedes": "revisions/c08_before_helmet_swap_20260929/generation_records/c08_construction.json",
+  "prompt_sha256": "dc178c205105e25f6e30e770f1ac2992781556acbb3941c3503a4bc28f8c081c",
+  "sha256": "474424beba7d2d5a8f72f91051c2d0bb0a339b6c20ec2dc6d6f9d513d16b9539",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "bytes": 2649321
 }

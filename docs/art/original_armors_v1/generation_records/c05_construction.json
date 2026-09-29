@@ -3,14 +3,26 @@
   "kind": "construction",
   "path": "images/c05_construction.png",
   "prompt": "prompts/c05_construction.txt",
-  "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-2b418d9b-113b-42b0-9dd5-b4b1cc72324e.png",
-  "date": "2026-09-25",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-fb941495-eb7b-4c8b-9461-10875dca4bfa.png",
+  "date": "2026-09-29",
   "reference_images": [
-    "images/c05_concept.png",
-    "images/c05_turnaround.png",
-    "images/b05_design_sheet.png"
+    "revisions/c05_helmet_assignment_20260929/construction_initial.png",
+    "images/c05_concept.png"
   ],
+  "reference_sha256": {
+    "revisions/c05_helmet_assignment_20260929/construction_initial.png": "81a1741919c15563a9288993368717cba6bc94b734ee6f06286aa6123834f99d",
+    "images/c05_concept.png": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1"
+  },
   "postprocessing": "none",
-  "visual_review": "修正版逐圖目視通過：A 保留藍殼、雙青色冠點、金面罩與軟頭襯；B/C 肩胸拆件與概念一致。D 區角色背部已改成純黑軟墊及雙灰接軌，沒有複製背包三條青光或白色底板；完整 B05 外殼與三條青光只出現在旁邊獨立背包一次。未驗證接點實際尺寸。",
-  "status": "visually_reviewed_pending_user_selection"
+  "edit_scope": "helmet_only_edit_intent_existing_body_retained",
+  "visual_review": "已目視：A 組裝與拆件皆為雙青色冠環、青色收口玻璃及短下巴；舊額前方形燈已填回不發光藍甲，眉側通風槽已簡化。B/C 肩胸沿用原設計；D 為黑色背墊與双接軌，完整 B05 外殼只在獨立背包上。未驗證實際接點尺寸。",
+  "status": "visually_checked_from_adopted_helmet_direction",
+  "supersedes": "revisions/c05_before_helmet_swap_20260929/generation_records/c05_construction.json",
+  "prompt_sha256": "13dbc86626d6958c045da7b40be56f21649ce8ec8a2e7b0f7ff8ff8aba1bfdbc",
+  "sha256": "1fbcc9fe53b82aa550efa6c23073bbea310a6d51eacd376ce7cc7582e1b5344f",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "bytes": 2394877
 }
