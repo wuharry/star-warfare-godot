@@ -504,7 +504,6 @@ func _show_options() -> void:
 	body.add_child(_slider_row(tr("SOUND VOLUME"), "sfx", 0.0, 1.0, 0.05))
 	body.add_child(_slider_row(tr("MUSIC VOLUME"), "music", 0.0, 1.0, 0.05))
 	body.add_child(_slider_row(tr("LOOK SENSITIVITY"), "look_sensitivity", 0.08, 0.65, 0.01))
-	body.add_child(_difficulty_row())
 	body.add_child(_quality_row())
 	body.add_child(_language_row())
 	var invert := CheckButton.new()
@@ -519,17 +518,6 @@ func _show_options() -> void:
 		touch.toggled.connect(func(value): GameState.set_setting("show_touch_controls", value))
 		body.add_child(touch)
 	_show_modal(body, Vector2(650, 570))
-
-
-func _difficulty_row() -> Control:
-	var labels := {"recruit": tr("RECRUIT"), "veteran": tr("VETERAN"), "elite": tr("ELITE")}
-	var options: Array[String] = []
-	for key: String in GameState.DIFFICULTY_ORDER:
-		options.append(str(labels.get(key, key)))
-	var current := GameState.DIFFICULTY_ORDER.find(str(GameState.settings.difficulty))
-	return _option_row(tr("COMBAT DIFFICULTY"), options, maxi(0, current), func(index: int):
-		GameState.set_setting("difficulty", GameState.DIFFICULTY_ORDER[index])
-	)
 
 
 func _quality_row() -> Control:

@@ -194,6 +194,7 @@ func _test_world() -> void:
 	add_child(world)
 	await get_tree().process_frame
 
+	_check(world.max_attack_tokens == 7, "expanse must use the fixed elite AI token cap")
 	_check(world.terrain != null, "the expedition built no terrain")
 	_check(world.districts.size() == 17, "expected 17 districts, built %d" % world.districts.size())
 	var sun := world.get_node_or_null("KeyLight") as DirectionalLight3D

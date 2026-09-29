@@ -6,7 +6,7 @@ extends WarfareGameWorld
 # It extends the campaign world on purpose rather than replacing it: the player,
 # enemies, projectiles and pickups all reach their world through get_parent()
 # and call spawn_tracer / spawn_explosion / request_attack_token /
-# has_line_of_sight on it, so inheriting keeps every one of those contracts
+# get_enemy_navigation_target on it, so inheriting keeps every one of those contracts
 # intact and this file only has to replace what actually differs — the ground,
 # the landmarks planted in it, and a roaming encounter director in place of
 # waves.
@@ -60,8 +60,8 @@ func _ready() -> void:
 	# no arena to build and no wave schedule to start.
 	level_data = _expanse_level_data()
 	arena_size = WarfareExpanseTerrain.HALF_EXTENT
-	difficulty_profile = GameState.get_difficulty_profile()
-	max_attack_tokens = int(difficulty_profile.get("attack_slots", 99))
+	enemy_ai_profile = GameState.get_enemy_ai_profile()
+	max_attack_tokens = int(enemy_ai_profile.get("attack_slots", 99))
 	GameState.apply_viewport_quality()
 	rng.seed = WORLD_SEED
 

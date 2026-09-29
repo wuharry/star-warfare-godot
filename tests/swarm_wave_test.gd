@@ -46,7 +46,6 @@ func _run() -> void:
 	GameState.save_path = "user://swarm_wave_test_profile.json"
 	GameState.selected_level = level_number
 	GameState.settings.quality = "low"
-	GameState.settings.difficulty = "veteran"
 	GameState.settings.show_touch_controls = false
 	var world := SwarmWorld.new()
 	active_world = world

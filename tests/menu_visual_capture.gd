@@ -3,6 +3,7 @@ extends Node
 var output_dir := "res://tests"
 var captures: Array[Dictionary] = []
 var failures: Array[String] = []
+var options_only := false
 
 
 func _ready() -> void:
@@ -23,6 +24,8 @@ func _run() -> void:
 				get_window().size = requested_size
 		elif argument.begins_with("--locale="):
 			Localization.apply_locale(argument.trim_prefix("--locale="))
+		elif argument == "--options-only":
+			options_only = true
 		elif argument == "--fixture":
 			GameState.unlocked_level = 1
 			GameState.best_scores = {}
@@ -36,6 +39,17 @@ func _run() -> void:
 	var menu := (load("res://scenes/main_menu.tscn") as PackedScene).instantiate()
 	add_child(menu)
 	await get_tree().create_timer(0.45).timeout
+	if options_only:
+		menu._show_options()
+		await _capture("options_preview", "settings without combat difficulty")
+		for label in menu.find_children("*", "Label", true, false):
+			_check(label.text != tr("COMBAT DIFFICULTY"), "removed difficulty selector still appears")
+		print("OPTIONS_CAPTURE_%s viewport=%s renderer=%s" % ["PASS" if failures.is_empty() else "FAIL", get_viewport().get_visible_rect().size, RenderingServer.get_current_rendering_method()])
+		menu.queue_free()
+		AudioDirector.stop_all_sfx()
+		await get_tree().process_frame
+		get_tree().quit(0 if failures.is_empty() else 1)
+		return
 	await _capture("menu_restoration_preview", "main menu")
 	menu._toggle_drawer(true, false)
 	await _capture("menu_navigation_preview", "navigation drawer")

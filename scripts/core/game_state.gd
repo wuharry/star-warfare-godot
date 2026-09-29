@@ -70,56 +70,20 @@ const QUALITY_PROFILES := {
 const QUALITY_ORDER := ["low", "medium", "high"]
 
 
-# Three combat tiers. "recruit" is the original beeline AI kept untouched so the
-# old balance stays playable; "veteran" and "elite" switch enemies over to the
-# tactical brain in enemy.gd (flanking, attack tokens, telegraphed strikes,
-# predictive fire). Every field is a behaviour knob, not a stat multiplier —
-# the difficulty comes from how the pack fights, not from inflated numbers.
-const DIFFICULTY_PROFILES := {
-	"recruit": {
-		"tactical": false,
-		"reaction": 0.0,
-		"aim_lead": 0.0,
-		"aim_spread": 0.0,
-		"melee_windup": 0.0,
-		"attack_slots": 99,
-		"flank_spread": 0.0,
-		"separation": 0.0,
-		"strafe": 0.0,
-		"suppression": 0.0,
-		"sight_check": false,
-		"attack_speed": 1.0,
-	},
-	"veteran": {
-		"tactical": true,
-		"reaction": 0.42,
-		"aim_lead": 0.7,
-		"aim_spread": 0.055,
-		"melee_windup": 0.34,
-		"attack_slots": 5,
-		"flank_spread": 0.7,
-		"separation": 1.9,
-		"strafe": 0.55,
-		"suppression": 0.5,
-		"sight_check": true,
-		"attack_speed": 0.92,
-	},
-	"elite": {
-		"tactical": true,
-		"reaction": 0.18,
-		"aim_lead": 1.0,
-		"aim_spread": 0.018,
-		"melee_windup": 0.24,
-		"attack_slots": 7,
-		"flank_spread": 1.0,
-		"separation": 2.4,
-		"strafe": 0.95,
-		"suppression": 0.8,
-		"sight_check": true,
-		"attack_speed": 0.82,
-	},
+# One shared combat brain, using the former elite behaviour for every enemy.
+# Elite monster variants still have their own HP/reward modifiers.
+const ENEMY_AI_PROFILE := {
+	"reaction": 0.18,
+	"aim_lead": 1.0,
+	"aim_spread": 0.018,
+	"melee_windup": 0.24,
+	"attack_slots": 7,
+	"flank_spread": 1.0,
+	"separation": 2.4,
+	"strafe": 0.95,
+	"suppression": 0.8,
+	"attack_speed": 0.82,
 }
-const DIFFICULTY_ORDER := ["recruit", "veteran", "elite"]
 
 var selected_level := 1
 var selected_weapon := "gun00"
@@ -137,7 +101,6 @@ var settings := {
 	"invert_y": false,
 	"show_touch_controls": false,
 	"quality": "high",
-	"difficulty": "veteran",
 	"language": "",
 	"nickname": "PLAYER"
 }
@@ -1014,9 +977,8 @@ func set_setting(key: String, value: Variant) -> void:
 		_save()
 		settings_changed.emit()
 
-func get_difficulty_profile() -> Dictionary:
-	var key := str(settings.get("difficulty", "veteran"))
-	return DIFFICULTY_PROFILES.get(key, DIFFICULTY_PROFILES["veteran"])
+func get_enemy_ai_profile() -> Dictionary:
+	return ENEMY_AI_PROFILE
 
 func get_quality_profile() -> Dictionary:
 	var key := str(settings.get("quality", "high"))
