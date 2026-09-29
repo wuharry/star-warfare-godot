@@ -1,6 +1,6 @@
 # 瞄準鏡與兩套準星
 
-未開鏡與開鏡使用不同準星；鏡內設計對應槍上的瞄準裝置，不必與第三人稱準星相同。
+未開鏡與開鏡使用不同準星；鏡內統一採 Call of Mini 參考的金色環形風格，各槍的鏡具設定決定環大小、短刻線、淡鏡片色調與倍率。
 
 ```text
 按住右鍵／手把左肩鍵，或手機點 AIM
@@ -15,10 +15,20 @@
 現有素材足以支援腰射準星與操作按鈕；這次新增的鏡框和鏡內準星由 Godot 向量繪製，不需要生成 PNG。
 
 - `assets/ui/HUD.png`／`HUD.json` 的 `hud0`～`hud13` 繼續用於第三人稱準星，`skill_bk` 用於手機按鈕。
-- 檢查範圍包含 `assets/callOfMini`、SW1 HUD、SW2 BattleHUD、CoM UI 圖集。未找到可直接套用到各槍的完整鏡內畫面；大圓環包含搖桿素材，不能當作鏡具證據。
+- 檢查範圍包含 `assets/callOfMini`、SW1 HUD、SW2 BattleHUD、CoM UI 圖集。本機現有圖片未包含完整 CoM 狙擊畫面；`docs/reconstruction_v1/com/inventory.json` 有記錄 `sharedassets22.assets` 的 `JUJI-weapon_007`（1136×768）及 `level22` 的 `SniperPanel`，但對應匯出圖片與原始封包不在本機。不能把清單存在說成已看過圖片。
 - 武器檢查走遊戲實際使用的 `EquipmentRefinement.weapon_mesh()`，查看側面與後方。單看側面會漏掉 R100、R700 的內建瞄準顯示器。
 - 有無鏡具由逐把模型檢查決定，不從武器類別或腰射 `aim_id` 推測。以 Reflection 為例，現有模型是開放式照門／準星，維持原有放大。
-- 鏡片／顯示器外形與色調參考現有模型；鏡內刻線及倍率是本專案的新設計，沒有宣稱是原作還原數值或真實光學規格。
+- 鏡片色調保留模型的淡色提示；鏡內刻線及倍率是本專案的新設計，沒有宣稱是原作還原數值或真實光學規格。
+
+## 2026-09-29 視覺修訂
+
+鏡框與準星一起改為細圓框、半透明外圍暗角和金色環形刻線，移除把槍上鏡殼放大成實心多邊形的做法。
+
+- 參考實際影片 [Call of Mini Infinity: Sniper Gameplay，約 0:54–0:57](https://www.youtube.com/watch?v=3j1gM6l4d5w&t=54s)：可見細圓形邊界、外圍仍透出場景，以及金黃色中心圓環、對角分段弧線、四方向導線。這只代表該影片中的鏡具，未推定原作每把槍都相同。
+- 本專案以 Godot 向量重新繪製這套視覺，不載入原作狙擊貼圖。圓框表示聚焦視野，外部鏡殼的五邊形／螢幕長寬不再直接裁切整張開鏡畫面。
+- 五把槍共用圓環、分段弧線與金色線條；短鏡使用較小的環，內建顯示器可增加少量短刻線。中心點始終對準相機射線；腰射準星仍由原本 `aim_id` 決定。
+- 鏡外只壓暗，鏡內外使用同一個已放大的相機。沒有宣稱實作「只有鏡片內放大、外圍保持腰射倍率」的雙相機效果。
+- 分段弧線目前是靜態方向標記，不表示未實作的充能進度。刻線不標公尺／彈道距離。
 
 ## 目前鏡具設定
 
@@ -26,11 +36,11 @@
 
 | 武器 | 模型上的瞄準裝置 | 鏡內準星 | 可用倍率 |
 | --- | --- | --- | --- |
-| FR28a / gun00 | 紫色稜角鏡筒、五邊形橙色鏡片 | 琥珀色細十字＋中心點 | 2×、4× |
-| Vox-07 / gun14 | 短型方殼、圓形青綠鏡片 | 青綠階梯刻線 | 固定 2× |
-| R100-RAILGUN / gun34 | 機身內建直向藍框瞄準螢幕 | 黃綠十字刻線 | 2×、4×、6× |
-| R700-AA / gun35 | 機身內建青綠瞄準螢幕 | 青綠分段環＋中心點 | 2×、4×、6× |
-| AST-KK / gun40 | 白灰色圓筒、青綠鏡片 | 紅色尖角＋垂直刻線 | 2×、4×、6× |
+| FR28a / gun00 | 紫色稜角鏡筒、五邊形橙色鏡片 | 金色標準環＋分段弧線／中心點 | 2×、4× |
+| Vox-07 / gun14 | 短型方殼、圓形青綠鏡片 | 金色小環＋分段弧線／中心點 | 固定 2× |
+| R100-RAILGUN / gun34 | 機身內建直向藍框瞄準螢幕 | 金色環＋三條下方短刻線 | 2×、4×、6× |
+| R700-AA / gun35 | 機身內建青綠瞄準螢幕 | 金色環＋兩條下方短刻線 | 2×、4×、6× |
+| AST-KK / gun40 | 白灰色圓筒、青綠鏡片 | 金色較大環＋一條下方短刻線 | 2×、4×、6× |
 
 刻線尚未對應實際彈道測距，不標公尺／彈道距離。沒有把雷射武器的能量發光片直接當成瞄準鏡；日後加裝鏡具時應一起更新模型與 `scope` 設定。
 
@@ -60,8 +70,9 @@
 | 驗證 | 結果 |
 | --- | --- |
 | `scope_aim_test`：各鏡具、實際投影倍率、準星互斥與恢復、相機射線對齊、觸控事件、換彈／換槍／暫停／死亡 | PASS |
-| `aim_platform_test`、`camera_hit_feedback_test`、`mouse_weapon_cycle_test`、`weapon_trigger_test`、`smoke_test` | PASS |
+| `aim_platform_test`、`camera_hit_feedback_test`、`mouse_weapon_cycle_test`、`weapon_trigger_test`、`smoke_test` | 前版 `30a8307` PASS；這次純視覺修訂未重跑 |
 | 桌面／手機真實渲染擷取：1280×720；手機另看 1560×720、960×640 | PASS |
+| 手機擷取退出清理 | 一次出現 2 個 ObjectDB 殘留警告；加 `--verbose` 複驗未重現，原因尚未定位 |
 | `.harness/verify.py` 與 `git diff --check` | PASS |
 | 實體手機觸控與手把硬體手感 | NOT RUN；觸控已以 Viewport 輸入事件驗證 |
 
@@ -76,4 +87,4 @@ godot --path . --rendering-method gl_compatibility --resolution 1280x720 res://t
 godot --path . --rendering-method gl_compatibility --resolution 1280x720 res://tests/scope_aim_capture.tscn -- --mobile
 ```
 
-輸出在 `test_output/scope_aim/`：`desktop.html`／`mobile.html` 可比較模型後方、第三人稱與各倍率鏡內畫面；PNG 和 JSON 記錄每張圖的武器、倍率、FOV、viewport。產物不提交；測試、擷取場景與設定會保留。擷取與回歸測試使用獨立測試存檔。
+輸出在 `test_output/scope_aim/`：`desktop.html`／`mobile.html` 可比較模型後方、第三人稱與各倍率鏡內畫面；PNG 和 JSON 記錄每張圖的武器、倍率、FOV、viewport。若本機保留 `before_com_style/` 的舊圖，頁首會顯示同槍同倍率的前後對照。產物不提交；測試、擷取場景與設定會保留。擷取與回歸測試使用獨立測試存檔。
