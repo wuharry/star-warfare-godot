@@ -3,24 +3,28 @@
   "kind": "turnaround",
   "path": "images/c12_turnaround.png",
   "prompt": "prompts/c12_turnaround.txt",
-  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-3560c903-68f8-40f9-8479-33977fea5c2d.png",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-e716db9a-00cc-4353-b741-f31d3857129e.png",
+  "tool": "built-in image_gen",
   "date": "2026-09-29",
   "reference_images": [
-    "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png"
+    "revisions/c12_before_t_adoption_20260929/images/c12_turnaround.png",
+    "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png"
   ],
   "reference_sha256": {
-    "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png": "a33f7a6be823fce41ed8527306309c7c428f21c1b0be74b69b0bfa862b863e08"
+    "revisions/c12_before_t_adoption_20260929/images/c12_turnaround.png": "f401318b50face740e148d48aee649b26e476add543cf44521ce9eee2aff0c3e",
+    "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f"
   },
   "postprocessing": "none",
-  "edit_scope": "helmet_shell_color_only",
-  "visual_review": "已目視：FRONT／LEFT SIDE／BACK 的頭盔外殼、側翼及後腦均為白灰，沒有粉色大色塊；暗紫玻璃與銅橙框保留。B-12 仍為白橘盾殼、藍頂、中央金屬筒與下方橫接頭，三視完整。",
-  "status": "visually_checked_color_correction_pending_user_review",
-  "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_turnaround.json",
-  "prompt_sha256": "5ef180b2e3b5149128967404fdf1cbf2e831683c4292dcc20d2c04fab44030d5",
-  "sha256": "f401318b50face740e148d48aee649b26e476add543cf44521ce9eee2aff0c3e",
+  "edit_scope": "synchronize_user_selected_gold_t_helmet",
+  "visual_review": "已目視：正面和左側的面窗均為反光金色、下方頰板內收，圓形頰接點改為小黑通風口；冠殼、短側翼和後腦白灰。正／側／背全身與雙腳完整，身甲和獨立 B-12 白橘殼、藍頂、中央金屬筒與下方橫接頭延續。正側玻璃轉折與頰板厚度須在建模時統一。",
+  "status": "visually_checked_supporting_sheet_for_adopted_direction",
+  "supersedes": "revisions/c12_before_t_adoption_20260929/generation_records/c12_turnaround.json",
+  "prompt_sha256": "dead7a55f3fc6ef944cc48dbbada0d947a49dc12c89d551cc87cf663a79e7c2c",
+  "sha256": "dd409d0b149cce7226be27bb4709b17573f8ce922fe4cc164e8bd9306f750b26",
   "dimensions": [
     1536,
     1024
   ],
-  "bytes": 2089188
+  "bytes": 2036512,
+  "record_file": "docs/art/original_armors_v1/generation_records/c12_turnaround.json"
 }

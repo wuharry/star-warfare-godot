@@ -1699,28 +1699,34 @@
     {
       "design_id": "C-12",
       "kind": "concept",
+      "variant": "anubis_gold_t",
+      "path_base": "docs/art/original_armors_v1",
       "path": "images/c12_concept.png",
       "prompt": "prompts/c12_concept.txt",
-      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-84ba03f2-7fcd-44a9-9501-76320590b580.png",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-908bb26c-702d-4174-b9f7-a45fdce34b36.png",
+      "tool": "built-in image_gen",
       "date": "2026-09-29",
       "reference_images": [
-        "revisions/c12_before_color_fix_20260929/images/c12_concept.png"
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold.png"
       ],
       "reference_sha256": {
-        "revisions/c12_before_color_fix_20260929/images/c12_concept.png": "aab35be5a07f51a2c3c6cf92249936b0f7ab97ce2ae2aec845968e1d0cb995d6"
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold.png": "f36a317ba82dcc35945493ab469e4200b8925953d64c41dfbe945d32aac141ed"
       },
-      "postprocessing": "none",
-      "edit_scope": "helmet_shell_color_only",
-      "visual_review": "已目視：冠殼、額甲、頰殼、下巴、圓形接點與短疊側翼均改成與身甲一致的白灰；暗紫面罩、銅橙 U 框與小嵌片、身甲深綠分區及全身輪廓保留，雙腳完整。",
-      "status": "visually_checked_color_correction_pending_user_review",
-      "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_concept.json",
-      "prompt_sha256": "e58c193036943993b4d1fcd560436700a4e0674c0d91321dace10b4e7accd86f",
-      "sha256": "2c514a713a0b00ac7afec173b739af7eed83f350db74e63213d22bf06e2ed046",
+      "prompt_sha256": "e03e7f5a3c014b1e6ac0be866aca7bb3fcd1fa380fdba26a8b39ad1e0c65081d",
+      "sha256": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f",
       "dimensions": [
         1024,
         1536
       ],
-      "bytes": 1915858,
+      "bytes": 1837427,
+      "postprocessing": "none",
+      "edit_scope": "visor_shape_and_adjacent_inner_cheek_edges_only",
+      "visual_review": "採用使用者選定的原始 T 字概念圖，沒有再次生成或改色：上方寬金色眼帶、兩側頰板微內收、中央直向玻璃及短下巴；白灰殼、Anubis 分層眉甲、短側翼與身甲配色延續。",
+      "status": "user_selected_concept_adopted",
+      "user_feedback": "好偏T字這種",
+      "supersedes": "revisions/c12_before_t_adoption_20260929/generation_records/c12_concept.json",
+      "adopted_from": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t.json",
+      "adoption_date": "2026-09-29",
       "generation_record": "generation_records/c12_concept.json"
     },
     {
@@ -1728,28 +1734,29 @@
       "kind": "construction",
       "path": "images/c12_construction.png",
       "prompt": "prompts/c12_construction.txt",
-      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-cc70b1be-0625-4a33-aa24-74dacf1c5a25.png",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-60c4d79b-ca7f-473a-90d2-d058dca9cb57.png",
+      "tool": "built-in image_gen",
       "date": "2026-09-29",
       "reference_images": [
-        "revisions/c12_before_color_fix_20260929/construction_initial.png",
-        "revisions/c12_before_color_fix_20260929/images/c12_construction.png"
+        "revisions/c12_before_t_adoption_20260929/images/c12_construction.png",
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png"
       ],
       "reference_sha256": {
-        "revisions/c12_before_color_fix_20260929/construction_initial.png": "fb84cf07f1e7a3c445f731c4822b07e5455fcefd652b77c2bb7213845cf4bb22",
-        "revisions/c12_before_color_fix_20260929/images/c12_construction.png": "8cc2dd4136b62656b0900c3736e3cadbf3803f503299529f2c3de9300124a629"
+        "revisions/c12_before_t_adoption_20260929/images/c12_construction.png": "96809c8d8077f7a3f89b0e5397e98720386cdaecd2c5f0a9038ff309c6679351",
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f"
       },
       "postprocessing": "none",
-      "edit_scope": "helmet_shell_color_only",
-      "visual_review": "已目視：組裝頭盔、拆開冠殼與頰殼、背視小圖及肩部小圖邊緣均為白灰；玻璃仍為暗紫，面框保有銅橙色。拆件右側銅橙邊較組裝示意窄，色塊邊界需建模統一。肩、軟關節及獨立 B-12 配色延續；本圖不是精確材質分區或尺寸圖。",
-      "status": "visually_checked_color_correction_pending_user_review",
-      "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_construction.json",
-      "prompt_sha256": "c60814daaf9fe59948e9b070d280086166d4a26c075cc751ac141be8d923c56a",
-      "sha256": "96809c8d8077f7a3f89b0e5397e98720386cdaecd2c5f0a9038ff309c6679351",
+      "edit_scope": "synchronize_user_selected_gold_t_helmet",
+      "visual_review": "已目視：組裝頭盔與拆出的玻璃均改金色，玻璃呈寬眼帶／中央下伸的微 T 形；冠殼、內收頰架與短下巴跟隨已選概念，舊圓形頰鈕已移除。肩部、軟關節、背視小圖及 B-12 配色延續。拆件輪廓和裝配縫只作示意，仍需在模型統一。",
+      "status": "visually_checked_supporting_sheet_for_adopted_direction",
+      "supersedes": "revisions/c12_before_t_adoption_20260929/generation_records/c12_construction.json",
+      "prompt_sha256": "0fad5dcc148023291562fd8c82b88ce378b8409d638b912bfd886c5cbe7650e6",
+      "sha256": "b45400886905a6bfd9323ea2d537ca54a8c3280076a58828fe99d7b3c9b0effb",
       "dimensions": [
         1536,
         1024
       ],
-      "bytes": 2269873,
+      "bytes": 2230106,
       "generation_record": "generation_records/c12_construction.json"
     },
     {
@@ -1757,26 +1764,29 @@
       "kind": "turnaround",
       "path": "images/c12_turnaround.png",
       "prompt": "prompts/c12_turnaround.txt",
-      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-3560c903-68f8-40f9-8479-33977fea5c2d.png",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-e716db9a-00cc-4353-b741-f31d3857129e.png",
+      "tool": "built-in image_gen",
       "date": "2026-09-29",
       "reference_images": [
-        "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png"
+        "revisions/c12_before_t_adoption_20260929/images/c12_turnaround.png",
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png"
       ],
       "reference_sha256": {
-        "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png": "a33f7a6be823fce41ed8527306309c7c428f21c1b0be74b69b0bfa862b863e08"
+        "revisions/c12_before_t_adoption_20260929/images/c12_turnaround.png": "f401318b50face740e148d48aee649b26e476add543cf44521ce9eee2aff0c3e",
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f"
       },
       "postprocessing": "none",
-      "edit_scope": "helmet_shell_color_only",
-      "visual_review": "已目視：FRONT／LEFT SIDE／BACK 的頭盔外殼、側翼及後腦均為白灰，沒有粉色大色塊；暗紫玻璃與銅橙框保留。B-12 仍為白橘盾殼、藍頂、中央金屬筒與下方橫接頭，三視完整。",
-      "status": "visually_checked_color_correction_pending_user_review",
-      "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_turnaround.json",
-      "prompt_sha256": "5ef180b2e3b5149128967404fdf1cbf2e831683c4292dcc20d2c04fab44030d5",
-      "sha256": "f401318b50face740e148d48aee649b26e476add543cf44521ce9eee2aff0c3e",
+      "edit_scope": "synchronize_user_selected_gold_t_helmet",
+      "visual_review": "已目視：正面和左側的面窗均為反光金色、下方頰板內收，圓形頰接點改為小黑通風口；冠殼、短側翼和後腦白灰。正／側／背全身與雙腳完整，身甲和獨立 B-12 白橘殼、藍頂、中央金屬筒與下方橫接頭延續。正側玻璃轉折與頰板厚度須在建模時統一。",
+      "status": "visually_checked_supporting_sheet_for_adopted_direction",
+      "supersedes": "revisions/c12_before_t_adoption_20260929/generation_records/c12_turnaround.json",
+      "prompt_sha256": "dead7a55f3fc6ef944cc48dbbada0d947a49dc12c89d551cc87cf663a79e7c2c",
+      "sha256": "dd409d0b149cce7226be27bb4709b17573f8ce922fe4cc164e8bd9306f750b26",
       "dimensions": [
         1536,
         1024
       ],
-      "bytes": 2089188,
+      "bytes": 2036512,
       "generation_record": "generation_records/c12_turnaround.json"
     },
     {
@@ -3817,6 +3827,12 @@
       "purpose": "source_reference_not_generated_delivery",
       "source_page_url": "https://d2.destinygamewiki.com/wiki/Iron_Symmachy_Hood",
       "image_url": "https://d2.destinygamewiki.com/mediawiki/images/thumb/3/3e/Iron_Symmachy_Hood1.jpg/800px-Iron_Symmachy_Hood1.jpg"
+    },
+    {
+      "path": "references/halo/c12_anubis_production.jpg",
+      "sha256": "4272212667d3eb489c9f92a5efd5937bba0f382b12775a812e370214ba5a3db5",
+      "bytes": 376911,
+      "purpose": "source_reference_not_generated_delivery"
     }
   ],
   "rejected_iterations": [
@@ -4453,6 +4469,89 @@
         1024
       ],
       "record_path": "revisions/c12_before_color_fix_20260929/construction_initial_record.json"
+    },
+    {
+      "design_id": "C-12",
+      "kind": "concept",
+      "path": "revisions/c12_before_t_adoption_20260929/images/c12_concept.png",
+      "prompt": "revisions/c12_before_t_adoption_20260929/prompts/c12_concept.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-84ba03f2-7fcd-44a9-9501-76320590b580.png",
+      "date": "2026-09-29",
+      "reference_images": [
+        "revisions/c12_before_color_fix_20260929/images/c12_concept.png"
+      ],
+      "reference_sha256": {
+        "revisions/c12_before_color_fix_20260929/images/c12_concept.png": "aab35be5a07f51a2c3c6cf92249936b0f7ab97ce2ae2aec845968e1d0cb995d6"
+      },
+      "postprocessing": "none",
+      "edit_scope": "helmet_shell_color_only",
+      "visual_review": "已目視：冠殼、額甲、頰殼、下巴、圓形接點與短疊側翼均改成與身甲一致的白灰；暗紫面罩、銅橙 U 框與小嵌片、身甲深綠分區及全身輪廓保留，雙腳完整。",
+      "status": "superseded_by_user_selected_gold_t_helmet",
+      "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_concept.json",
+      "prompt_sha256": "e58c193036943993b4d1fcd560436700a4e0674c0d91321dace10b4e7accd86f",
+      "sha256": "2c514a713a0b00ac7afec173b739af7eed83f350db74e63213d22bf06e2ed046",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "bytes": 1915858,
+      "record_path": "revisions/c12_before_t_adoption_20260929/generation_records/c12_concept.json"
+    },
+    {
+      "design_id": "C-12",
+      "kind": "construction",
+      "path": "revisions/c12_before_t_adoption_20260929/images/c12_construction.png",
+      "prompt": "revisions/c12_before_t_adoption_20260929/prompts/c12_construction.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-cc70b1be-0625-4a33-aa24-74dacf1c5a25.png",
+      "date": "2026-09-29",
+      "reference_images": [
+        "revisions/c12_before_color_fix_20260929/construction_initial.png",
+        "revisions/c12_before_color_fix_20260929/images/c12_construction.png"
+      ],
+      "reference_sha256": {
+        "revisions/c12_before_color_fix_20260929/construction_initial.png": "fb84cf07f1e7a3c445f731c4822b07e5455fcefd652b77c2bb7213845cf4bb22",
+        "revisions/c12_before_color_fix_20260929/images/c12_construction.png": "8cc2dd4136b62656b0900c3736e3cadbf3803f503299529f2c3de9300124a629"
+      },
+      "postprocessing": "none",
+      "edit_scope": "helmet_shell_color_only",
+      "visual_review": "已目視：組裝頭盔、拆開冠殼與頰殼、背視小圖及肩部小圖邊緣均為白灰；玻璃仍為暗紫，面框保有銅橙色。拆件右側銅橙邊較組裝示意窄，色塊邊界需建模統一。肩、軟關節及獨立 B-12 配色延續；本圖不是精確材質分區或尺寸圖。",
+      "status": "superseded_by_user_selected_gold_t_helmet",
+      "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_construction.json",
+      "prompt_sha256": "c60814daaf9fe59948e9b070d280086166d4a26c075cc751ac141be8d923c56a",
+      "sha256": "96809c8d8077f7a3f89b0e5397e98720386cdaecd2c5f0a9038ff309c6679351",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 2269873,
+      "record_path": "revisions/c12_before_t_adoption_20260929/generation_records/c12_construction.json"
+    },
+    {
+      "design_id": "C-12",
+      "kind": "turnaround",
+      "path": "revisions/c12_before_t_adoption_20260929/images/c12_turnaround.png",
+      "prompt": "revisions/c12_before_t_adoption_20260929/prompts/c12_turnaround.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-3560c903-68f8-40f9-8479-33977fea5c2d.png",
+      "date": "2026-09-29",
+      "reference_images": [
+        "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png"
+      ],
+      "reference_sha256": {
+        "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png": "a33f7a6be823fce41ed8527306309c7c428f21c1b0be74b69b0bfa862b863e08"
+      },
+      "postprocessing": "none",
+      "edit_scope": "helmet_shell_color_only",
+      "visual_review": "已目視：FRONT／LEFT SIDE／BACK 的頭盔外殼、側翼及後腦均為白灰，沒有粉色大色塊；暗紫玻璃與銅橙框保留。B-12 仍為白橘盾殼、藍頂、中央金屬筒與下方橫接頭，三視完整。",
+      "status": "superseded_by_user_selected_gold_t_helmet",
+      "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_turnaround.json",
+      "prompt_sha256": "5ef180b2e3b5149128967404fdf1cbf2e831683c4292dcc20d2c04fab44030d5",
+      "sha256": "f401318b50face740e148d48aee649b26e476add543cf44521ce9eee2aff0c3e",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 2089188,
+      "record_path": "revisions/c12_before_t_adoption_20260929/generation_records/c12_turnaround.json"
     }
   ],
   "previous_delivery_reset": {
@@ -4466,7 +4565,8 @@
     "B編號對應獨立背包ID，與同序C同框僅為本轮展示搭配。",
     "assets 保留本批生成圖的交付紀錄；目前採用方向以 user_reviews 為優先。Thunder 恢復舊 B 概念，原 C-07 三張圖列為未採用歷史，非舊稿配套三視。",
     "2026-09-29：使用者採用 Atom＋Recruit 為 C-05 Strike 正式頭盔方向，並指示 B＋Recruit 套用 C-08 Atom；各三張主圖、提示詞及紀錄同步，舊版已封存可比較。未修改 Godot 素材或執行期。",
-    "2026-09-29：依使用者更正，C-09 Pegasus 頭盔硬殼與白灰身甲統一；概念、三視、拆解及有效來源規則同步修正。原始擷取圖與舊紅盔稿保留為歷史，未修改 Godot 素材。"
+    "2026-09-29：依使用者更正，C-09 Pegasus 頭盔硬殼與白灰身甲統一；概念、三視、拆解及有效來源規則同步修正。原始擷取圖與舊紅盔稿保留為歷史，未修改 Godot 素材。",
+    "2026-09-29：C-12 Cygni 已採用使用者選定的 Anubis 融合金色微 T 面罩；主圖使用選定原圖，三視與拆解同步。寬金色面罩和舊紫面罩版本保留供比較，尚未接入 Godot。"
   ],
   "prompt_files": [
     {
@@ -4719,15 +4819,15 @@
     },
     {
       "path": "prompts/c12_concept.txt",
-      "sha256": "e58c193036943993b4d1fcd560436700a4e0674c0d91321dace10b4e7accd86f"
+      "sha256": "e03e7f5a3c014b1e6ac0be866aca7bb3fcd1fa380fdba26a8b39ad1e0c65081d"
     },
     {
       "path": "prompts/c12_construction.txt",
-      "sha256": "c60814daaf9fe59948e9b070d280086166d4a26c075cc751ac141be8d923c56a"
+      "sha256": "0fad5dcc148023291562fd8c82b88ce378b8409d638b912bfd886c5cbe7650e6"
     },
     {
       "path": "prompts/c12_turnaround.txt",
-      "sha256": "5ef180b2e3b5149128967404fdf1cbf2e831683c4292dcc20d2c04fab44030d5"
+      "sha256": "dead7a55f3fc6ef944cc48dbbada0d947a49dc12c89d551cc87cf663a79e7c2c"
     },
     {
       "path": "prompts/c13_concept.txt",
@@ -5040,22 +5140,24 @@
       "runtime_implemented": false
     },
     "C-12": {
-      "status": "helmet_color_corrected",
+      "status": "helmet_direction_adopted",
       "date": "2026-09-29",
-      "feedback": "Cygni 也是頭盔跟身體顏色應該一致",
-      "scope": "helmet_shell_color_only",
-      "action": "Cygni 頭盔外殼、側翼及後腦改為與身甲一致的白灰，保留紫面罩、銅橙 U 框及原造型；概念、三視與拆解同步更正。",
-      "acceptance_basis": "使用者明確更正配色；本次輸出由助理目視核對，尚未逐張獲使用者確認。",
+      "feedback": "好偏T字這種",
+      "scope": "anubis_fused_helmet_with_subtle_gold_t_visor",
+      "action": "已採用金色微 T 面罩與 Anubis 分層眉甲、內收護頰；白灰頭盔、後掠短翼及原身甲延續。主圖採用使用者選定原圖，三視／拆解依此同步。",
+      "acceptance_basis": "使用者明確選定 T 字概念版本；配套三視與拆解由助理核對，未宣稱使用者逐張驗收。",
+      "selected_concept": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png",
+      "comparison_page": "revisions/c12_helmet_fusions_20260929/index.html",
       "previous_revision": {
         "images": {
-          "concept": "revisions/c12_before_color_fix_20260929/images/c12_concept.png",
-          "turnaround": "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png",
-          "construction": "revisions/c12_before_color_fix_20260929/images/c12_construction.png"
+          "concept": "revisions/c12_before_t_adoption_20260929/images/c12_concept.png",
+          "turnaround": "revisions/c12_before_t_adoption_20260929/images/c12_turnaround.png",
+          "construction": "revisions/c12_before_t_adoption_20260929/images/c12_construction.png"
         },
         "prompts": {
-          "concept": "revisions/c12_before_color_fix_20260929/prompts/c12_concept.txt",
-          "turnaround": "revisions/c12_before_color_fix_20260929/prompts/c12_turnaround.txt",
-          "construction": "revisions/c12_before_color_fix_20260929/prompts/c12_construction.txt"
+          "concept": "revisions/c12_before_t_adoption_20260929/prompts/c12_concept.txt",
+          "turnaround": "revisions/c12_before_t_adoption_20260929/prompts/c12_turnaround.txt",
+          "construction": "revisions/c12_before_t_adoption_20260929/prompts/c12_construction.txt"
         }
       },
       "runtime_implemented": false

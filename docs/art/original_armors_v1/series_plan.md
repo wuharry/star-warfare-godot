@@ -19,7 +19,7 @@
 | [C-09](c09_bulwark.json) | 8 / Pegasus | 拒壁 BULWARK | HELIOSKRILL-class Mjolnir (GEN2) | 迎擊防板 |
 | [C-10](c10_lodestone.json) | 9 / Draco | 蓄鐵 LODESTONE | CQC 身甲＋Destiny 2 Reverie Dawn Helm 封閉金屬面甲 | 蓄鐵脈衝 |
 | [C-11](c11_seedvault.json) | 10 / Phoenix | 芽庫 SEEDVAULT | VENATOR-class Mjolnir (GEN2) | 共用修復份額 |
-| [C-12](c12_spur.json) | 11 / Cygni | 支點 SPUR | VALKYRIE-class Mjolnir (GEN2) | 穩架測距 |
+| [C-12](c12_spur.json) | 11 / Cygni | 支點 SPUR | Anubis 頭盔融合（金色微 T 面罩）／Valkyrie 身甲 | 穩架測距 |
 | [C-13](c13_stitch.json) | 12 / Andromedae | 縫光 STITCH | OCEANIC-class Mjolnir (GEN2) | 縫合光束 |
 | [C-14](c14_cutbank.json) | 13 / Perseus | 截岸 CUTBANK | EOD-class Mjolnir, Halo 3 helmet/chest/shoulder configuration（身甲結構；原版盔優先） | 截步護區 |
 | [C-15](c15_ringfence.json) | 14 / Chaos | 環界 RINGFENCE | HAYABUSA | 雙點界線 |
@@ -38,7 +38,7 @@ Pegasus 頭盔依使用者更正，外殼與身甲統一白灰色；先前紅盔
 
 Draco 頭盔取消玻璃護目鏡，改參考 Destiny 2 Reverie Dawn Helm 的盾形金屬面甲與細窄水平視孔，維持灰黑配色。新稿待評價；[來源、前後圖與提示詞](revisions/c10_before_closed_helmet_20260929/README.md)可供比較。
 
-Cygni 頭盔依使用者更正，冠殼、側翼及後腦與身甲統一白灰；暗紫面罩、銅橙 U 框及深綠身體分區保留。[更正前後圖與提示詞](revisions/c12_before_color_fix_20260929/README.md)可供比較。
+Cygni 已採用使用者選定的 Anubis 融合頭盔與金色微 T 面罩：冠殼、側翼及後腦與身甲統一白灰，兩側護頰內收、中央保留直向玻璃與短下巴；深綠身甲及少量銅橙細節延續。[大面罩／T 字比較](revisions/c12_helmet_fusions_20260929/index.html)保留，原大面罩不再修改。[採用前版本](revisions/c12_before_t_adoption_20260929/README.md)可回看。
 
 ## 25 個獨立背包
 

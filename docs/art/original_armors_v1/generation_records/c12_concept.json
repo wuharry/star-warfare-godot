@@ -1,26 +1,33 @@
 {
   "design_id": "C-12",
   "kind": "concept",
+  "variant": "anubis_gold_t",
+  "path_base": "docs/art/original_armors_v1",
   "path": "images/c12_concept.png",
   "prompt": "prompts/c12_concept.txt",
-  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-84ba03f2-7fcd-44a9-9501-76320590b580.png",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-908bb26c-702d-4174-b9f7-a45fdce34b36.png",
+  "tool": "built-in image_gen",
   "date": "2026-09-29",
   "reference_images": [
-    "revisions/c12_before_color_fix_20260929/images/c12_concept.png"
+    "revisions/c12_helmet_fusions_20260929/images/anubis_gold.png"
   ],
   "reference_sha256": {
-    "revisions/c12_before_color_fix_20260929/images/c12_concept.png": "aab35be5a07f51a2c3c6cf92249936b0f7ab97ce2ae2aec845968e1d0cb995d6"
+    "revisions/c12_helmet_fusions_20260929/images/anubis_gold.png": "f36a317ba82dcc35945493ab469e4200b8925953d64c41dfbe945d32aac141ed"
   },
-  "postprocessing": "none",
-  "edit_scope": "helmet_shell_color_only",
-  "visual_review": "已目視：冠殼、額甲、頰殼、下巴、圓形接點與短疊側翼均改成與身甲一致的白灰；暗紫面罩、銅橙 U 框與小嵌片、身甲深綠分區及全身輪廓保留，雙腳完整。",
-  "status": "visually_checked_color_correction_pending_user_review",
-  "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_concept.json",
-  "prompt_sha256": "e58c193036943993b4d1fcd560436700a4e0674c0d91321dace10b4e7accd86f",
-  "sha256": "2c514a713a0b00ac7afec173b739af7eed83f350db74e63213d22bf06e2ed046",
+  "prompt_sha256": "e03e7f5a3c014b1e6ac0be866aca7bb3fcd1fa380fdba26a8b39ad1e0c65081d",
+  "sha256": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f",
   "dimensions": [
     1024,
     1536
   ],
-  "bytes": 1915858
+  "bytes": 1837427,
+  "postprocessing": "none",
+  "edit_scope": "visor_shape_and_adjacent_inner_cheek_edges_only",
+  "visual_review": "採用使用者選定的原始 T 字概念圖，沒有再次生成或改色：上方寬金色眼帶、兩側頰板微內收、中央直向玻璃及短下巴；白灰殼、Anubis 分層眉甲、短側翼與身甲配色延續。",
+  "status": "user_selected_concept_adopted",
+  "record_file": "docs/art/original_armors_v1/generation_records/c12_concept.json",
+  "user_feedback": "好偏T字這種",
+  "supersedes": "revisions/c12_before_t_adoption_20260929/generation_records/c12_concept.json",
+  "adopted_from": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t.json",
+  "adoption_date": "2026-09-29"
 }

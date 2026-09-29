@@ -2,22 +2,23 @@
   "design_id": "C-12",
   "date": "2026-09-29",
   "path_base": "docs/art/original_armors_v1",
-  "status": "broad_gold_preserved_t_variant_pending_comparison",
+  "status": "gold_t_visor_adopted",
   "preferred_direction": "anubis",
   "latest_variant": "anubis_gold_t",
   "comparison_page": "revisions/c12_helmet_fusions_20260929/index.html",
   "user_feedback": {
     "reference_request": "Cygni 目前的頭盔很棒但是基本上是用原版的；看天命 2 或 Halo 類似頭盔結合原版生成。",
     "revision_request": "Halo 5 Anubis 這個比較好，但是面罩是金色的，面罩比例應該比較多。",
-    "interpretation": "Anubis 方向持續有效；使用者喜歡金色大面罩並要求原樣保留，另做略偏 T 字版並排比較。尚未選定兩種玻璃形狀中哪一版作正式版。",
-    "t_comparison_request": "不錯保留，然後稍微偏向 T 字一點，讓我比對哪個版本比較好。"
+    "interpretation": "使用者已選定略偏 T 字的金色面罩；正式主圖採用該原圖，較寬的大面罩原樣保留，配套三視與拆解依選定概念同步。",
+    "t_comparison_request": "不錯保留，然後稍微偏向 T 字一點，讓我比對哪個版本比較好。",
+    "selection": "好偏T字這種"
   },
   "baseline": {
     "image": "revisions/c12_helmet_fusions_20260929/images/baseline.png",
     "sha256": "2c514a713a0b00ac7afec173b739af7eed83f350db74e63213d22bf06e2ed046",
     "design_snapshot": "revisions/c12_helmet_fusions_20260929/design_before.json",
     "git_commit": "1500478",
-    "canonical_images_retained": true
+    "canonical_images_retained_at_study_start": true
   },
   "sources": [
     {
@@ -164,12 +165,13 @@
       "postprocessing": "none",
       "edit_scope": "visor_shape_and_adjacent_inner_cheek_edges_only",
       "visual_review": "已目視：金色上眼帶仍寬，下半部兩側頰板輕微內收，中央玻璃較集中，形成克制的 T 字輪廓；沒有縮成細狹縫。白灰冠殼、分層眉甲、短翼、身甲配色與站姿延續。差異屬小幅形狀調整，未量測面積百分比。",
-      "status": "t_visor_comparison_pending_user_selection",
-      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t.json"
+      "status": "user_selected_for_adoption",
+      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t.json",
+      "user_feedback": "好偏T字這種"
     }
   ],
   "runtime_implemented": false,
-  "turnaround_and_construction": "not_generated_for_this_study",
+  "turnaround_and_construction": "synchronized_and_visually_checked",
   "license_status": "reference_fusion_concept_not_a_legal_clearance",
   "limitations": [
     "三張新圖是生成概念參考，局部表面紋理會重繪；並非像素級修圖、尺寸圖或遊戲模型。",
@@ -181,6 +183,18 @@
     "anubis_gold_t"
   ],
   "preserved_variant": "anubis_gold",
-  "selected_visor_variant": null,
-  "previous_comparison_page": "revisions/c12_helmet_fusions_20260929/index_before_t.html"
+  "selected_visor_variant": "anubis_gold_t",
+  "previous_comparison_page": "revisions/c12_helmet_fusions_20260929/index_before_t.html",
+  "canonical_images_retained": false,
+  "canonical_concept": "images/c12_concept.png",
+  "canonical_images": {
+    "concept": "images/c12_concept.png",
+    "turnaround": "images/c12_turnaround.png",
+    "construction": "images/c12_construction.png"
+  },
+  "canonical_generation_records": {
+    "concept": "generation_records/c12_concept.json",
+    "turnaround": "generation_records/c12_turnaround.json",
+    "construction": "generation_records/c12_construction.json"
+  }
 }
