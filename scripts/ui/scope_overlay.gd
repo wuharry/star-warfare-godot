@@ -60,27 +60,62 @@ func _draw_surround(center: Vector2, radius: float) -> void:
 		]), colors)
 
 func _draw_reticle(center: Vector2, aperture: float, ui_scale: float) -> void:
-	# All optics share the amber ring/cross family. Ring size and small ticks
-	# belong to each weapon's optic, independently of its hip-fire AimID.
-	var scale := ui_scale * float(optic.reticle_scale)
-	var ring := 32.0 * scale
+	# Same stroke weight/color, distinct silhouettes. Only the ring optic uses
+	# the CoM reference's segmented arcs; other optics are project designs.
 	var color := Color(optic.reticle_color)
-	for direction: Vector2 in [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]:
-		_line(center, direction * aperture * 0.43, direction * aperture * 0.93, ui_scale, 0.48)
-		_line(center, direction * 18.0 * scale, direction * 48.0 * scale, ui_scale)
-	_arc(center, ring, 0.0, TAU, color, 1.6 * ui_scale)
-	# Static index marks, not a charge meter or a claim of ballistic ranging.
-	for start: float in [-PI * 0.5, PI * 0.5]:
-		for index in 6:
-			var angle := start + float(index) * 0.22
-			_arc(center, 44.0 * scale, angle + 0.025, angle + 0.18, color, 4.0 * ui_scale)
-	for index in int(optic.reticle_ticks):
-		var y := 65.0 * scale + float(index) * 18.0 * scale
-		var width := (5.0 + float(index) * 2.0) * scale
-		_line(center, Vector2(-width, y), Vector2(width, y), ui_scale, 0.72)
-	# This dot, not a ring edge, denotes the actual camera firing ray.
+	match str(optic.reticle):
+		"segmented_ring":
+			for direction: Vector2 in [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]:
+				_line(center, direction * aperture * 0.43, direction * aperture * 0.93, ui_scale, 0.48)
+				_stroke(center, direction * 18.0, direction * 48.0, ui_scale)
+			_arc(center, 32.0 * ui_scale, 0.0, TAU, color, 1.6 * ui_scale)
+			# Static direction marks, not a charge meter.
+			for start: float in [-PI * 0.5, PI * 0.5]:
+				for index in 6:
+					var angle := start + float(index) * 0.22
+					_arc(center, 44.0 * ui_scale, angle + 0.025, angle + 0.18, color, 4.0 * ui_scale)
+		"open_chevron":
+			# Compact sight: one open apex and two short side brackets.
+			_stroke(center, Vector2(-21, 23), Vector2.ZERO, ui_scale)
+			_stroke(center, Vector2.ZERO, Vector2(21, 23), ui_scale)
+			for side: float in [-1.0, 1.0]:
+				_stroke(center, Vector2(side * 48, -8), Vector2(side * 48, 12), ui_scale)
+				_stroke(center, Vector2(side * 48, 12), Vector2(side * 61, 12), ui_scale)
+		"precision_cross":
+			# Display optic: fine long axes and evenly spaced index marks.
+			for direction: Vector2 in [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]:
+				_line(center, direction * 7.0 * ui_scale, direction * aperture * 0.88, ui_scale, 0.78)
+				for tick in range(1, 5):
+					var point := direction * float(tick) * 26.0
+					var half_tick := direction.orthogonal() * (6.0 if tick % 2 == 0 else 3.0)
+					_stroke(center, point - half_tick, point + half_tick, ui_scale)
+		"bracket_diamond":
+			# Electronic display: four disconnected corners, no circular ring.
+			for corner: Vector2 in [Vector2(-1, -1), Vector2(1, -1), Vector2(1, 1), Vector2(-1, 1)]:
+				var point := corner * 41.0
+				_stroke(center, point - Vector2(corner.x * 19.0, 0), point, ui_scale)
+				_stroke(center, point, point - Vector2(0, corner.y * 19.0), ui_scale)
+			var diamond: Array[Vector2] = [Vector2(0, -14), Vector2(14, 0), Vector2(0, 14), Vector2(-14, 0)]
+			for index in diamond.size():
+				_stroke(center, diamond[index], diamond[(index + 1) % diamond.size()], ui_scale)
+		"t_post":
+			# Long tube: clear upper half, horizontal wings and a lower post.
+			for side: float in [-1.0, 1.0]:
+				_line(center, Vector2(side * 18.0 * ui_scale, 0), Vector2(side * aperture * 0.87, 0), ui_scale, 0.8)
+				for tick in range(1, 4):
+					var x := side * float(tick) * 34.0
+					_stroke(center, Vector2(x, 0), Vector2(x, 7), ui_scale)
+			_line(center, Vector2(0, 7.0 * ui_scale), Vector2(0, aperture * 0.86), ui_scale, 0.8)
+			for tick in range(1, 4):
+				var y := float(tick) * 30.0
+				var half_width := 5.0 + float(tick) * 5.0
+				_stroke(center, Vector2(-half_width, y), Vector2(half_width, y), ui_scale)
+	# All five styles keep this exact center on the camera's firing ray.
 	draw_circle(center, 3.1 * ui_scale, Color(0.06, 0.045, 0.015, 0.6))
 	draw_circle(center, 1.5 * ui_scale, color)
+
+func _stroke(center: Vector2, start: Vector2, end: Vector2, ui_scale: float) -> void:
+	_line(center, start * ui_scale, end * ui_scale, ui_scale)
 
 func _arc(center: Vector2, radius: float, start: float, end: float, color: Color, width: float) -> void:
 	var points := maxi(4, ceili((end - start) / TAU * SEGMENTS))

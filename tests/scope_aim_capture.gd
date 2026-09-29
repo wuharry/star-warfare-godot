@@ -76,17 +76,28 @@ func _capture(stem: String) -> void:
 		failed = true
 		push_error("Failed scope capture: " + stem)
 		return
-	captures.append({"path": stem + ".png", "viewport": [viewport.size.x, viewport.size.y], "weapon": world.player.current_weapon_id, "scoped": world.player.is_scope_active(), "magnification": world.player.get_scope_magnification(), "fov": world.player.camera.fov})
+	if world.player.is_scope_active() and stem.ends_with("_aim_0"):
+		# A crop of the real renderer, not a separately drawn reticle mockup.
+		var detail := capture.get_region(Rect2i(viewport.size / 2 - Vector2i(160, 160), Vector2i(320, 320)))
+		if detail.save_png(OUTPUT + stem + "_reticle.png") != OK:
+			failed = true
+			push_error("Failed reticle detail: " + stem)
+	captures.append({"path": stem + ".png", "viewport": [viewport.size.x, viewport.size.y], "weapon": world.player.current_weapon_id, "scoped": world.player.is_scope_active(), "reticle": world.player.current_weapon.get("scope", {}).get("reticle", ""), "magnification": world.player.get_scope_magnification(), "fov": world.player.camera.fov})
 
 func _write_preview(mode: String) -> void:
 	var html := """<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>瞄準鏡與準星對照</title>
 <style>body{margin:0;padding:32px;background:#10161d;color:#e7edf2;font:16px/1.6 system-ui}main{max-width:1600px;margin:auto}h1{margin:0}p{color:#a9bbc9}section{margin:32px 0;border-top:1px solid #33424f;padding-top:16px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}figure{margin:0}img{width:100%;background:#06090c;border:1px solid #33424f}figcaption{color:#a9bbc9}a{color:#8ed8e8}</style><main><h1>第三人稱與鏡內準星</h1><p>Godot Compatibility 實際擷取。未開鏡沿用原準星；鏡內準星、鏡框和倍率由各槍的瞄準鏡設定決定。模型圖使用中性無光照材質檢查；鏡內設計與倍率為本專案新增設定。點圖可看原尺寸。</p>"""
-	html += "<p>本版改為細圓框、可透視場景的外圍暗角，以及金色圓環＋分段弧線＋十字導線。各槍保留自己的環大小、短刻線、淡鏡片色調與倍率；鏡外也使用同一個放大相機。<a href='https://www.youtube.com/watch?v=3j1gM6l4d5w&amp;t=54s'>Call of Mini 參考影片（約 0:54）</a>。</p>"
+	html += "<p>本版改為五種不同準星形狀，共用金色細線、細圓框與半透明暗角。各槍有自己的準星、淡鏡片色調與倍率；鏡外也使用同一個放大相機。<a href='https://www.youtube.com/watch?v=3j1gM6l4d5w&amp;t=54s'>Call of Mini 參考影片（約 0:54）</a>提供整體風格，五種準星是本專案的設計。</p>"
+	html += "<section><h2>五把槍 · 五種準星形狀</h2><p>全部是 2× 實際遊戲截圖的中心裁切，沒有另外畫預覽示意。</p><div class='grid'>"
+	for key: String in ["gun00", "gun14", "gun34", "gun35", "gun40"]:
+		var profile: Dictionary = GameState.WEAPONS[key].scope
+		html += _figure(mode + "_" + key + "_aim_0_reticle.png", str(GameState.WEAPONS[key].name) + " · " + str(profile.reticle_name))
+	html += "</div></section>"
 	var before_stem := mode + "_gun00_aim_0.png" if mode == "mobile" else mode + "_gun40_aim_0.png"
 	if FileAccess.file_exists(OUTPUT + "before_com_style/" + before_stem):
-		html += "<section><h2>這次修改 · 相同武器與倍率</h2><div class='grid'>"
+		html += "<section><h2>鏡框修訂前後 · 相同武器與倍率</h2><div class='grid'>"
 		html += _figure("before_com_style/" + before_stem, "修改前：厚實鏡框與不透明周圍")
-		html += _figure(before_stem, "修改後：透視暗角、金色環形準星")
+		html += _figure(before_stem, "目前版本：透視暗角、該槍專屬準星")
 		html += "</div></section>"
 	for key: String in ["gun00", "gun14", "gun34", "gun35", "gun40", "gun01", "gun43"]:
 		html += "<section><h2>" + str(GameState.WEAPONS[key].name).xml_escape() + " · " + key + "</h2><div class='grid'>"
@@ -98,7 +109,7 @@ func _write_preview(mode: String) -> void:
 				continue
 			var caption := "第三人稱／腰射"
 			if "_aim_" in str(capture.path):
-				caption = str(capture.magnification).trim_suffix(".0") + "× · 鏡內專屬準星" if bool(capture.scoped) else "無瞄準鏡：原本的視野放大"
+				caption = str(capture.magnification).trim_suffix(".0") + "× · " + str(GameState.WEAPONS[key].scope.reticle_name) if bool(capture.scoped) else "無瞄準鏡：原本的視野放大"
 			html += _figure(str(capture.path), caption)
 		html += "</div></section>"
 	for capture in captures:
