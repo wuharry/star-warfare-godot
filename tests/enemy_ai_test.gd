@@ -1,9 +1,6 @@
 extends Node
 
-# Behavioural coverage for the three combat tiers. "recruit" must stay on the
-# original beeline AI byte for byte, while "veteran" and "elite" must actually
-# flank, throttle their attacks through the squad token pool, and telegraph
-# melee strikes so the player can dodge them.
+# Fixed elite combat behaviour, token ownership, prediction and dodge windows.
 
 var failures: Array[String] = []
 var world: WarfareGameWorld
@@ -16,11 +13,14 @@ func _check(condition: bool, message: String) -> void:
 		failures.append(message)
 		push_error("ENEMY AI TEST: " + message)
 
-func _make_world(difficulty: String) -> void:
-	GameState.settings.difficulty = difficulty
+func _make_world() -> void:
+	GameState.save_path = GameState.TEST_SAVE_PATH
+	GameState.selected_game_mode = "singleplayer"
 	GameState.selected_level = 1
 	world = (load("res://scenes/game.tscn") as PackedScene).instantiate() as WarfareGameWorld
 	add_child(world)
+	world.completed = true
+	world.player.set_physics_process(false)
 	await get_tree().process_frame
 
 func _teardown() -> void:
@@ -44,12 +44,13 @@ func _spawn(kind: String) -> WarfareEnemy:
 			newest = candidate
 	# Skip the grave-rise so the AI branches are reachable immediately.
 	if is_instance_valid(newest):
+		newest.set_physics_process(false)
+		newest.position = Vector3(0, 100, 0)
 		newest.spawn_left = 0.0
 		newest.reaction_left = 0.0
 	return newest
 
 func _run() -> void:
-	await _test_recruit_keeps_legacy_ai()
 	await _test_tactical_profiles_apply()
 	await _test_attack_token_pool()
 	await _test_melee_is_telegraphed()
@@ -58,44 +59,26 @@ func _run() -> void:
 	await _test_flanking_leaves_the_direct_line()
 	await _test_token_released_on_death()
 	if failures.is_empty():
-		print("ENEMY_AI_TEST_PASS checks=8")
+		print("ENEMY_AI_TEST_PASS checks=7")
 		get_tree().quit(0)
 	else:
 		print("ENEMY_AI_TEST_FAIL %d" % failures.size())
 		get_tree().quit(1)
 
-func _test_recruit_keeps_legacy_ai() -> void:
-	await _make_world("recruit")
-	var enemy := await _spawn("crawler")
-	_check(is_instance_valid(enemy), "recruit crawler was not spawned")
-	if is_instance_valid(enemy):
-		_check(not enemy.tactical, "recruit must not enable the tactical brain")
-		_check(enemy.melee_windup == 0.0, "recruit melee must have no wind-up")
-		_check(world.max_attack_tokens >= 99, "recruit must not throttle attackers")
-		# The legacy path damages the player the instant the range check passes.
-		var player := world.player
-		player.global_position = enemy.global_position + Vector3(0.6, 0.0, 0.0)
-		var before := player.health + player.shield
-		enemy.attack_cooldown = 0.0
-		var desired := enemy._legacy_step(0.6, Vector3(0.6, 0.0, 0.0))
-		_check(desired == Vector3.ZERO, "recruit should stop to swing in range")
-		_check(player.health + player.shield < before, "recruit melee must damage immediately")
+func _test_tactical_profiles_apply() -> void:
+	await _make_world()
+	for kind in ["crawler", "spitter", "brute", "boss"]:
+		var enemy := await _spawn(kind)
+		_check(is_instance_valid(enemy), kind + " was not spawned")
+		if is_instance_valid(enemy):
+			_check(is_equal_approx(enemy.reaction_time, 0.18), kind + " must use elite reactions")
+			_check(is_equal_approx(enemy.melee_windup, 0.24), kind + " must retain elite telegraph")
+			_check(is_equal_approx(enemy.aim_lead, 1.0), kind + " must fully lead shots")
+	_check(world.max_attack_tokens == 7, "all worlds must use the elite token cap")
 	await _teardown()
 
-func _test_tactical_profiles_apply() -> void:
-	for tier in ["veteran", "elite"]:
-		await _make_world(tier)
-		var enemy := await _spawn("crawler")
-		if is_instance_valid(enemy):
-			_check(enemy.tactical, "%s must enable the tactical brain" % tier)
-			_check(enemy.melee_windup > 0.0, "%s melee must telegraph" % tier)
-			_check(enemy.flank_spread > 0.0, "%s must flank" % tier)
-			_check(enemy.sight_check, "%s must gate attacks on line of sight" % tier)
-			_check(world.max_attack_tokens < 99, "%s must throttle simultaneous attackers" % tier)
-		await _teardown()
-
 func _test_attack_token_pool() -> void:
-	await _make_world("veteran")
+	await _make_world()
 	var cap := world.max_attack_tokens
 	var holders: Array[WarfareEnemy] = []
 	for i in range(cap + 3):
@@ -114,7 +97,7 @@ func _test_attack_token_pool() -> void:
 	await _teardown()
 
 func _test_melee_is_telegraphed() -> void:
-	await _make_world("veteran")
+	await _make_world()
 	var enemy := await _spawn("crawler")
 	if is_instance_valid(enemy):
 		var player := world.player
@@ -132,7 +115,7 @@ func _test_melee_is_telegraphed() -> void:
 	await _teardown()
 
 func _test_telegraph_can_be_dodged() -> void:
-	await _make_world("veteran")
+	await _make_world()
 	var enemy := await _spawn("crawler")
 	if is_instance_valid(enemy):
 		var player := world.player
@@ -149,7 +132,7 @@ func _test_telegraph_can_be_dodged() -> void:
 	await _teardown()
 
 func _test_ranged_fire_leads_target() -> void:
-	await _make_world("elite")
+	await _make_world()
 	var enemy := await _spawn("spitter")
 	if is_instance_valid(enemy):
 		var player := world.player
@@ -167,7 +150,7 @@ func _test_ranged_fire_leads_target() -> void:
 	await _teardown()
 
 func _test_flanking_leaves_the_direct_line() -> void:
-	await _make_world("elite")
+	await _make_world()
 	var enemy := await _spawn("crawler")
 	if is_instance_valid(enemy):
 		var player := world.player
@@ -186,7 +169,7 @@ func _test_flanking_leaves_the_direct_line() -> void:
 	await _teardown()
 
 func _test_token_released_on_death() -> void:
-	await _make_world("veteran")
+	await _make_world()
 	var enemy := await _spawn("crawler")
 	if is_instance_valid(enemy):
 		_check(enemy._claim_attack_token(), "enemy should be able to claim a token")

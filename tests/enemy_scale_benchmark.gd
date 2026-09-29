@@ -154,7 +154,6 @@ func _run() -> void:
 	GameState.selected_game_mode = "singleplayer"
 	GameState.selected_level = 1
 	GameState.selected_weapon = "gun00"
-	GameState.set_setting("difficulty", "veteran")
 	var world := (load("res://scenes/game.tscn") as PackedScene).instantiate() as WarfareGameWorld
 	add_child(world)
 	world.completed = true

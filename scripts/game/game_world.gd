@@ -51,14 +51,14 @@ const SWARM_GROUP_INTERVAL := 0.32
 # mindless. Boss enemies bypass the pool entirely.
 var attack_tokens: Array[int] = []
 var max_attack_tokens := 99
-var difficulty_profile: Dictionary = {}
+var enemy_ai_profile: Dictionary = {}
 
 func _ready() -> void:
 	level_data = GameState.get_level_data(GameState.selected_level)
 	pvp_arena = bool(level_data.get("pvp", false))
 	arena_size = float(level_data.arena_size)
-	difficulty_profile = GameState.get_difficulty_profile()
-	max_attack_tokens = int(difficulty_profile.get("attack_slots", 99))
+	enemy_ai_profile = GameState.get_enemy_ai_profile()
+	max_attack_tokens = int(enemy_ai_profile.get("attack_slots", 99))
 	GameState.apply_viewport_quality()
 	rng.seed = 0x5A17 + int(level_data.number) * 991
 	_load_stage_metadata()

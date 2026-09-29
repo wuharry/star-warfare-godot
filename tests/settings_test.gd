@@ -26,6 +26,8 @@ func _check(condition: bool, message: String) -> void:
 		push_error("SETTINGS TEST: " + message)
 
 func _run() -> void:
+	GameState.save_path = GameState.TEST_SAVE_PATH
+	_test_fixed_enemy_ai()
 	_test_quality_profiles()
 	_test_localization()
 
@@ -87,3 +89,24 @@ func _test_localization() -> void:
 	_check(tr("START") == "START", "English source text should pass through unchanged")
 
 	TranslationServer.set_locale(previous)
+
+func _test_fixed_enemy_ai() -> void:
+	const StateScript = preload("res://scripts/core/game_state.gd")
+	var path := "user://enemy_ai_settings_test.json"
+	for old_tier in ["recruit", "veteran", "elite", "unknown"]:
+		var file := FileAccess.open(path, FileAccess.WRITE)
+		file.store_string(JSON.stringify({"settings": {"difficulty": old_tier, "sfx": 0.37}}))
+		file.close()
+		var state := StateScript.new()
+		state.save_path = path
+		add_child(state)
+		_check(not state.settings.has("difficulty"), "legacy difficulty must be ignored on load")
+		_check(is_equal_approx(float(state.settings.sfx), 0.37), "migration must preserve other settings")
+		_check(state.get_enemy_ai_profile().attack_slots == 7, "legacy difficulty changed AI")
+		state.set_setting("difficulty", old_tier)
+		_check(not state.settings.has("difficulty"), "removed setting must not be writable")
+		state._save()
+		var saved: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(path))
+		_check(not saved.settings.has("difficulty"), "removed setting must not be saved again")
+		state.free()
+	DirAccess.remove_absolute(path)

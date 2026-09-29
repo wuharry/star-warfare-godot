@@ -23,7 +23,6 @@ func _run() -> void:
 	GameState.selected_level = 1
 	GameState.selected_weapon = "gun00"
 	GameState.selected_game_mode = "singleplayer"
-	GameState.settings.difficulty = "recruit"
 	GameState.experience = 0
 	_check(Source.SOURCE_SHA256 == FileAccess.get_sha256("res://assets/starwarfare_data/resDataSets_raw.bin"), "generated data is stale")
 	_check(GameState.WEAPONS.size() == 47 and GameState.ARMOR_ITEMS.size() == 141, "catalog items were lost")
@@ -63,7 +62,7 @@ func _run() -> void:
 			enemy.take_damage(100.0, Vector3.ZERO, world.player)
 			_check(world.battle_credits == 90 and GameState.experience == 10 and world.kills == 1, "kill did not award original cash/XP exactly once")
 		if kind == "spitter":
-			_check(enemy.attack_interval == 5.0 and enemy.attack_range == 18.0 and enemy.projectile_speed == 14.0, "Scorpion attack table is not used")
+			_check(is_equal_approx(enemy.attack_interval, 5.0 * 0.82) and enemy.attack_range == 18.0 and enemy.projectile_speed == 14.0, "Scorpion attack table is not used")
 	var elite := world._spawn_enemy("crawler", true)
 	_check(is_equal_approx(elite.max_health, 45.0 * 1.65) and elite.experience_value == 20 and elite.reward == 180, "elite modifiers were lost or doubled")
 	world.free()

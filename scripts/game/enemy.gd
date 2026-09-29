@@ -57,6 +57,7 @@ var model: Node3D
 var body_material: StandardMaterial3D
 var eye_material: StandardMaterial3D
 var hit_tween: Tween
+var attack_motion: Tween
 var locomotion_clock := 0.0
 var charge_timer := 0.0
 var voice: AudioStreamPlayer3D
@@ -72,10 +73,17 @@ var flesh_hit_cooldown := 0.0
 var spawn_left := 0.82
 var spawn_depth := 1.35
 
-# --- Tactical brain (veteran / elite difficulty only) -----------------------
-# On "recruit" every field below stays zeroed and _physics_process falls through
-# to _legacy_step, which is the original beeline behaviour byte for byte.
-var tactical := false
+# Vision controls acquisition; the tactical brain only receives visible targets.
+enum Awareness { UNAWARE, SUSPICIOUS, ENGAGED, SEARCHING }
+@export var sight_distance := 28.0
+@export_range(1.0, 179.0) var sight_angle := 110.0
+@export var detection_time := 0.35
+@export var search_duration := 6.0
+var awareness := Awareness.UNAWARE
+var detection_progress := 0.0
+var search_left := 0.0
+var target_visible := false
+var last_seen_position := Vector3.INF
 var reaction_time := 0.0
 var aim_lead := 0.0
 var aim_spread := 0.0
@@ -84,7 +92,6 @@ var flank_spread := 0.0
 var separation_radius := 0.0
 var strafe_strength := 0.0
 var suppression_strength := 0.0
-var sight_check := false
 var reaction_left := 0.0
 var windup_left := 0.0
 var flank_angle := 0.0
@@ -134,7 +141,7 @@ func configure(player: WarfarePlayer, kind: String, health_value: float, is_elit
 		reward *= 2
 		score_value *= 2
 	health = max_health
-	_apply_difficulty_profile()
+	_apply_ai_profile()
 
 func configure_recovered(player: WarfarePlayer, kind: String, health_scale := 1.0, is_elite := false) -> void:
 	# Keep the explicit-health configure API for diagnostic fixtures. Live worlds
@@ -151,7 +158,7 @@ func configure_recovered(player: WarfarePlayer, kind: String, health_scale := 1.
 	# machines in Unity. Keep the restoration's movement/reach for those zeros.
 	attack_damage = float(attack[1])
 	if float(attack[2]) > 0.0:
-		attack_interval = float(attack[2]) * float(GameState.get_difficulty_profile().get("attack_speed", 1.0))
+		attack_interval = float(attack[2]) * float(GameState.get_enemy_ai_profile().get("attack_speed", 1.0))
 	if kind == "spitter":
 		attack_range = float(attack[3])
 		projectile_speed = maxf(1.0, float(attack[8]))
@@ -168,12 +175,9 @@ func configure_recovered(player: WarfarePlayer, kind: String, health_scale := 1.
 		score_value *= 2
 	health = max_health
 
-func _apply_difficulty_profile() -> void:
-	var profile := GameState.get_difficulty_profile()
-	tactical = bool(profile.get("tactical", false))
+func _apply_ai_profile() -> void:
+	var profile := GameState.get_enemy_ai_profile()
 	attack_interval *= float(profile.get("attack_speed", 1.0))
-	if not tactical:
-		return
 	reaction_time = float(profile.get("reaction", 0.0))
 	aim_lead = float(profile.get("aim_lead", 0.0))
 	aim_spread = float(profile.get("aim_spread", 0.0))
@@ -182,7 +186,6 @@ func _apply_difficulty_profile() -> void:
 	separation_radius = float(profile.get("separation", 0.0))
 	strafe_strength = float(profile.get("strafe", 0.0))
 	suppression_strength = float(profile.get("suppression", 0.0))
-	sight_check = bool(profile.get("sight_check", false))
 	# Stagger the first decision so a wave does not think in lockstep.
 	reaction_left = reaction_time * randf_range(0.6, 1.4)
 	flank_angle = randf_range(-1.0, 1.0) * flank_spread * PI * 0.55
@@ -205,15 +208,8 @@ func _ready() -> void:
 		if not animated_hitbox.parts.is_empty():
 			collision_layer = 0
 	_build_audio()
-	# Choose the first recovered waypoint before the grave-rise animation locks
-	# movement. The enemy emerges already oriented toward a valid route.
-	if is_instance_valid(target):
-		var world := get_parent()
-		if world and world.has_method("get_enemy_navigation_target"):
-			navigation_target = world.get_enemy_navigation_target(global_position, target.global_position)
-		else:
-			navigation_target = target.global_position
-		_face_planar_direction(navigation_target - global_position)
+	# Spawn facing an independent heading, never the hidden player's position.
+	rotation.y = randf_range(-PI, PI)
 	_begin_grave_spawn()
 	health_reported.emit(health, max_health, enemy_kind == "boss")
 
@@ -409,6 +405,11 @@ func _physics_process(delta: float) -> void:
 		return
 	if not is_instance_valid(target) or target.dead:
 		_release_attack_token()
+		_cancel_attack_motion()
+		awareness = Awareness.UNAWARE
+		target_visible = false
+		last_seen_position = Vector3.INF
+		detection_progress = 0.0
 		velocity.x = 0.0
 		velocity.z = 0.0
 		if is_on_floor():
@@ -422,26 +423,23 @@ func _physics_process(delta: float) -> void:
 	hit_reaction_left = maxf(0.0, hit_reaction_left - delta)
 	flesh_hit_cooldown = maxf(0.0, flesh_hit_cooldown - delta)
 	charge_timer = maxf(0.0, charge_timer - delta)
-	navigation_refresh -= delta
-	if navigation_refresh <= 0.0 or navigation_target == Vector3.INF or global_position.distance_squared_to(navigation_target) < 1.7:
-		navigation_refresh = randf_range(0.42, 0.68)
-		var world := get_parent()
-		if world and world.has_method("get_enemy_navigation_target"):
-			navigation_target = world.get_enemy_navigation_target(global_position, target.global_position)
-		else:
-			navigation_target = target.global_position
-	var target_offset := target.global_position - global_position
-	var distance := target_offset.length()
-	_update_hull_detail(distance)
-	var movement_offset := navigation_target - global_position
-	var planar := Vector3(movement_offset.x, 0.0, movement_offset.z)
+	_update_hull_detail(global_position.distance_to(target.global_position))
+	_update_perception(delta)
 	var desired := Vector3.ZERO
-	if tactical:
-		_track_target_velocity(delta)
-		desired = _tactical_step(delta, target_offset, distance, planar)
-	else:
-		_face_planar_direction(planar)
-		desired = _legacy_step(distance, planar)
+	if awareness == Awareness.ENGAGED:
+		var target_offset := last_seen_position - global_position
+		var planar := _navigation_direction(delta, last_seen_position)
+		desired = _tactical_step(delta, target_offset, target_offset.length(), planar)
+	elif awareness == Awareness.SEARCHING:
+		# Never path to the live target behind cover; investigate the last sighting.
+		var offset := last_seen_position - global_position
+		offset.y = 0.0
+		if offset.length_squared() > 1.0:
+			var planar := _navigation_direction(delta, last_seen_position)
+			_face_planar_direction(planar)
+			desired = planar.normalized() * speed * 0.75
+		else:
+			rotate_y(delta * 0.8)
 	velocity.x = move_toward(velocity.x, desired.x, 16.0 * delta)
 	velocity.z = move_toward(velocity.z, desired.z, 16.0 * delta)
 	if is_on_floor():
@@ -460,31 +458,91 @@ func _update_hull_detail(distance: float) -> void:
 	hulls_active = want_hulls
 	animated_hitbox.set_coarse(not want_hulls)
 
-func _legacy_step(distance: float, planar: Vector3) -> Vector3:
-	# Original "recruit" behaviour: walk the path straight at the player and
-	# swing the moment the range check passes. Left untouched on purpose.
-	var desired := Vector3.ZERO
-	if enemy_kind == "spitter":
-		if distance > attack_range * 0.82:
-			desired = planar.normalized() * speed
-		elif distance < 7.0:
-			desired = -planar.normalized() * speed * 0.65
-		elif attack_cooldown <= 0.0:
-			_ranged_attack()
-	elif enemy_kind == "boss":
-		if distance > attack_range:
-			desired = planar.normalized() * speed * (2.1 if charge_timer > 0.0 else 1.0)
-		elif attack_cooldown <= 0.0:
-			_boss_attack(distance)
-	else:
-		if distance > attack_range:
-			desired = planar.normalized() * speed
-		elif attack_cooldown <= 0.0:
-			_melee_attack()
-	return desired
+func _navigation_direction(delta: float, destination: Vector3) -> Vector3:
+	navigation_refresh -= delta
+	if navigation_refresh <= 0.0 or navigation_target == Vector3.INF or global_position.distance_squared_to(navigation_target) < 1.7:
+		navigation_refresh = randf_range(0.42, 0.68)
+		var world := get_parent()
+		if world and world.has_method("get_enemy_navigation_target"):
+			navigation_target = world.get_enemy_navigation_target(global_position, destination)
+		else:
+			navigation_target = destination
+	var offset := navigation_target - global_position
+	return Vector3(offset.x, 0.0, offset.z)
+
+func _can_see_target() -> bool:
+	if not is_instance_valid(target) or target.dead:
+		return false
+	var offset := target.global_position - global_position
+	if offset.length_squared() > sight_distance * sight_distance:
+		return false
+	# Horizontal cone plus physical rays to chest/head; elevation is handled by
+	# the rays rather than treating a jumping player as instantly invisible.
+	var planar := Vector3(offset.x, 0.0, offset.z)
+	if planar.length_squared() > 0.001:
+		var forward := -global_transform.basis.z
+		forward.y = 0.0
+		if forward.normalized().dot(planar.normalized()) < cos(deg_to_rad(sight_angle * 0.5)):
+			return false
+	return _has_sight_to_target()
+
+func _update_perception(delta: float) -> void:
+	target_visible = _can_see_target()
+	if target_visible:
+		last_seen_position = target.global_position
+		search_left = search_duration
+		if awareness == Awareness.ENGAGED:
+			_track_target_velocity(delta)
+			return
+		if awareness == Awareness.SEARCHING:
+			awareness = Awareness.ENGAGED
+			reaction_left = reaction_time
+		else:
+			detection_progress += delta
+			awareness = Awareness.SUSPICIOUS
+			if detection_progress >= detection_time:
+				awareness = Awareness.ENGAGED
+				reaction_left = reaction_time
+		# Do not infer velocity from positions observed on opposite sides of a
+		# hidden interval (that would manufacture an enormous aim lead).
+		last_target_position = target.global_position
+		target_velocity = Vector3.ZERO
+		return
+	if awareness == Awareness.ENGAGED:
+		_begin_search(last_seen_position)
+	elif awareness == Awareness.SUSPICIOUS:
+		detection_progress = maxf(0.0, detection_progress - delta * 2.0)
+		if detection_progress <= 0.0:
+			awareness = Awareness.UNAWARE
+			last_seen_position = Vector3.INF
+	if awareness == Awareness.SEARCHING:
+		search_left = maxf(0.0, search_left - delta)
+		if search_left <= 0.0:
+			awareness = Awareness.UNAWARE
+			detection_progress = 0.0
+			last_seen_position = Vector3.INF
+			navigation_target = Vector3.INF
+
+func _begin_search(position_value: Vector3) -> void:
+	awareness = Awareness.SEARCHING
+	last_seen_position = position_value
+	search_left = search_duration
+	navigation_refresh = 0.0
+	navigation_target = Vector3.INF
+	last_target_position = Vector3.INF
+	target_velocity = Vector3.ZERO
+	# A hidden target cannot be hit by an already queued melee strike.
+	_cancel_attack_motion()
+	_release_attack_token()
+
+func _cancel_attack_motion() -> void:
+	windup_left = 0.0
+	if is_instance_valid(attack_motion):
+		attack_motion.kill()
+	model.position.z = 0.0
 
 func _tactical_step(delta: float, offset: Vector3, distance: float, planar: Vector3) -> Vector3:
-	var los := _has_sight_to_target()
+	var los := target_visible
 	# Track the player while engaged; only steer by the waypoint heading when
 	# the path is blocked and we are navigating around geometry.
 	if los:
@@ -557,7 +615,7 @@ func _tactical_ranged(distance: float, planar: Vector3, los: bool) -> Vector3:
 
 func _tactical_boss(distance: float, planar: Vector3, los: bool) -> Vector3:
 	# The boss never queues for a token; it is the fight.
-	if distance <= attack_range and attack_cooldown <= 0.0:
+	if distance <= attack_range and attack_cooldown <= 0.0 and los:
 		_boss_attack(distance)
 		return Vector3.ZERO
 	if distance <= attack_range:
@@ -628,12 +686,16 @@ func _refresh_separation(delta: float) -> void:
 		separation_vector += Vector3(dx, 0.0, dz) / gap * (1.0 - gap / separation_radius)
 
 func _has_sight_to_target() -> bool:
-	if not sight_check or not is_instance_valid(target):
-		return true
-	var world := get_parent()
-	if world and world.has_method("has_line_of_sight"):
-		return bool(world.has_line_of_sight(global_position, target.global_position))
-	return true
+	if not is_instance_valid(target) or target.dead:
+		return false
+	var eye := global_position + Vector3.UP * float(TARGET_HEIGHTS.get(enemy_kind, 2.0)) * 0.8
+	for height in [0.9, 1.6]:
+		var query := PhysicsRayQueryParameters3D.create(eye, target.global_position + Vector3.UP * height, 1)
+		query.exclude = [get_rid(), target.get_rid()]
+		query.hit_from_inside = true
+		if get_world_3d().direct_space_state.intersect_ray(query).is_empty():
+			return true
+	return false
 
 func _claim_attack_token() -> bool:
 	if holds_attack_token:
@@ -667,6 +729,7 @@ func _track_target_velocity(delta: float) -> void:
 	last_target_position = current
 
 func _begin_melee_windup() -> void:
+	_cancel_attack_motion()
 	attack_cooldown = attack_interval
 	windup_left = melee_windup
 	_play_recovered_animation("attack", 0.04)
@@ -675,26 +738,26 @@ func _begin_melee_windup() -> void:
 		"enemy/mantis/tanglang_attack_01.wav" if enemy_kind == "boss" else "enemies_smash1.wav",
 		global_position, -11.0, randf_range(0.66, 0.78)
 	)
-	var tween := create_tween()
-	tween.tween_property(model, "position:z", -0.55, maxf(melee_windup, 0.06))
+	attack_motion = create_tween()
+	attack_motion.tween_property(model, "position:z", -0.55, maxf(melee_windup, 0.06))
 
 func _resolve_melee_windup() -> void:
 	_release_attack_token()
-	var tween := create_tween()
-	tween.tween_property(model, "position:z", 0.0, 0.18)
+	if is_instance_valid(attack_motion):
+		attack_motion.kill()
+	attack_motion = create_tween()
+	attack_motion.tween_property(model, "position:z", 0.0, 0.18)
 	if not is_instance_valid(target) or target.dead:
 		return
 	# The strike only lands if the player is still inside the lunge when the
 	# telegraph ends, so dashing out of it is a real dodge.
-	if global_position.distance_to(target.global_position) > attack_range * 1.35:
+	if global_position.distance_to(target.global_position) > attack_range * 1.35 or not _has_sight_to_target():
 		return
 	target.take_damage(attack_damage, target.global_position, self)
 	AudioDirector.play_3d("enemies_smash1.wav", global_position, -7.0, randf_range(0.92, 1.07))
 
 func _predicted_aim_point(projectile_speed: float) -> Vector3:
 	var aim := target.global_position + Vector3.UP * 0.9
-	if not tactical:
-		return aim
 	var range_to_target := global_position.distance_to(aim)
 	if aim_lead > 0.0 and projectile_speed > 0.01:
 		aim += target_velocity * (range_to_target / projectile_speed) * aim_lead
@@ -717,14 +780,15 @@ func _face_planar_direction(direction: Vector3) -> void:
 	look_at(global_position + planar.normalized(), Vector3.UP)
 
 func _melee_attack() -> void:
+	_cancel_attack_motion()
 	attack_cooldown = attack_interval
 	_play_recovered_animation("attack", 0.04)
 	if is_instance_valid(target):
 		target.take_damage(attack_damage, target.global_position, self)
 	AudioDirector.play_3d("enemy/mantis/tanglang_attack_01.wav" if enemy_kind == "boss" else "enemies_smash1.wav", global_position, -7.0, randf_range(0.92, 1.07))
-	var tween := create_tween()
-	tween.tween_property(model, "position:z", -0.55, 0.1)
-	tween.tween_property(model, "position:z", 0.0, 0.18)
+	attack_motion = create_tween()
+	attack_motion.tween_property(model, "position:z", -0.55, 0.1)
+	attack_motion.tween_property(model, "position:z", 0.0, 0.18)
 
 func _ranged_attack() -> void:
 	attack_cooldown = attack_interval
@@ -763,6 +827,10 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 	var health_before := health
 	health = maxf(0.0, health - amount)
 	var actual_damage := maxf(0.0, health_before - health)
+	if actual_damage > 0.0 and _source == target and is_instance_valid(target) and awareness != Awareness.ENGAGED:
+		# Being hit reveals the attacker's position at impact, not ongoing vision.
+		_begin_search(target.global_position)
+		_face_planar_direction(last_seen_position - global_position)
 	# Player hits are sounded by local hit/kill confirmation, without a
 	# duplicate positional copy. Other damage sources retain world impacts.
 	if actual_damage > 0.0 and not (_source is WarfarePlayer):
@@ -771,7 +839,7 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 	# this enemy (excluding overkill), not the weapon's requested raw damage.
 	if actual_damage > 0.0 and is_instance_valid(_source) and _source.has_method("on_damage_dealt"):
 		_source.on_damage_dealt(actual_damage)
-	if tactical and suppression_strength > 0.0 and enemy_kind != "boss":
+	if suppression_strength > 0.0 and enemy_kind != "boss":
 		# Taking fire breaks the current lane: sidestep and pick a new approach
 		# instead of walking up the barrel like the original AI did.
 		suppressed_left = suppression_strength
@@ -819,6 +887,7 @@ func _play_flesh_impact(hit_position: Vector3) -> void:
 
 func _die(killer: Node = null) -> void:
 	dead = true
+	_cancel_attack_motion()
 	if is_instance_valid(animated_hitbox):
 		animated_hitbox.collision_layer = 0
 		# The corpse plays its death clip for another 1.15 s and used to keep

@@ -4,6 +4,8 @@
 
 目前可遊玩內容：
 
+- 敵人統一使用原本最高階 AI，取消難度選擇；加入視野、遮蔽物與最後目擊位置搜尋，可從背後或掩體外避開交戰。詳見 [敵人視線與潛行規則](docs/gameplay/enemy_vision.md)。
+
 - 單人模式與多人模式分開：單人戰役為 Level 1–8；多人入口保留原版 9 張 PvP 競技場 Level 13–21。目前尚未恢復官方配對服務，因此只提供離線場地預覽，且不會再套用 PvE 敵人波次。`GameState.CAMPAIGN_FULLY_UNLOCKED` 為 `true`，單人 8 關全部開放以便測試；進度仍照常記錄，改回 `false` 即恢復逐關解鎖
 - 17 張原始 `Level*.unity` 的 Static Batch 場景配置、材質貼圖、Transform 與原生碰撞；不再使用程序化競技場
 - 原始 Respawn、EnemySpawnPoint、BossSpawnPoint、FlagSpawn、GiftSpawn、Grave、WayPoint 座標及 Level 1–8 的 waypoint 鄰接圖；敵人會用原路徑節點繞過場景障礙
