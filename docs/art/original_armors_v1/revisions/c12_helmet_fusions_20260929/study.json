@@ -2,14 +2,15 @@
   "design_id": "C-12",
   "date": "2026-09-29",
   "path_base": "docs/art/original_armors_v1",
-  "status": "anubis_direction_preferred_gold_visor_revision_pending_user_review",
+  "status": "broad_gold_preserved_t_variant_pending_comparison",
   "preferred_direction": "anubis",
-  "latest_variant": "anubis_gold",
+  "latest_variant": "anubis_gold_t",
   "comparison_page": "revisions/c12_helmet_fusions_20260929/index.html",
   "user_feedback": {
     "reference_request": "Cygni 目前的頭盔很棒但是基本上是用原版的；看天命 2 或 Halo 類似頭盔結合原版生成。",
     "revision_request": "Halo 5 Anubis 這個比較好，但是面罩是金色的，面罩比例應該比較多。",
-    "interpretation": "採 Anubis 方向，以金色反光玻璃擴大面窗，縮薄頰框與中央下巴；此偏好不等於新修訂圖已驗收。"
+    "interpretation": "Anubis 方向持續有效；使用者喜歡金色大面罩並要求原樣保留，另做略偏 T 字版並排比較。尚未選定兩種玻璃形狀中哪一版作正式版。",
+    "t_comparison_request": "不錯保留，然後稍微偏向 T 字一點，讓我比對哪個版本比較好。"
   },
   "baseline": {
     "image": "revisions/c12_helmet_fusions_20260929/images/baseline.png",
@@ -133,8 +134,38 @@
       "postprocessing": "none",
       "edit_scope": "helmet_only",
       "visual_review": "已目視：玻璃由紫色改為有明暗反射的金色，開口向兩側及下頰延伸，中央白色護塊縮小，面罩明顯大於 Anubis 初稿。白灰冠殼、分層眉甲、後掠短翼與頸部以下裝甲配色和站姿延續。未量測面積百分比。",
-      "status": "gold_visor_revision_pending_user_review",
-      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold.json"
+      "status": "user_requested_preserved_for_t_comparison",
+      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold.json",
+      "user_feedback": "不錯保留，然後稍微偏向 T 字一點，讓我比對哪個版本比較好。"
+    },
+    {
+      "design_id": "C-12",
+      "kind": "helmet_fusion_study",
+      "variant": "anubis_gold_t",
+      "path_base": "docs/art/original_armors_v1",
+      "path": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png",
+      "prompt": "revisions/c12_helmet_fusions_20260929/prompts/anubis_gold_t.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-908bb26c-702d-4174-b9f7-a45fdce34b36.png",
+      "tool": "built-in image_gen",
+      "date": "2026-09-29",
+      "reference_images": [
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold.png"
+      ],
+      "reference_sha256": {
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold.png": "f36a317ba82dcc35945493ab469e4200b8925953d64c41dfbe945d32aac141ed"
+      },
+      "prompt_sha256": "e03e7f5a3c014b1e6ac0be866aca7bb3fcd1fa380fdba26a8b39ad1e0c65081d",
+      "sha256": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "bytes": 1837427,
+      "postprocessing": "none",
+      "edit_scope": "visor_shape_and_adjacent_inner_cheek_edges_only",
+      "visual_review": "已目視：金色上眼帶仍寬，下半部兩側頰板輕微內收，中央玻璃較集中，形成克制的 T 字輪廓；沒有縮成細狹縫。白灰冠殼、分層眉甲、短翼、身甲配色與站姿延續。差異屬小幅形狀調整，未量測面積百分比。",
+      "status": "t_visor_comparison_pending_user_selection",
+      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t.json"
     }
   ],
   "runtime_implemented": false,
@@ -144,5 +175,12 @@
     "三張新圖是生成概念參考，局部表面紋理會重繪；並非像素級修圖、尺寸圖或遊戲模型。",
     "尚未從背面或另一側驗證融合頭盔；雙側短翼為設計要求，此角度主要可見近側。",
     "沒有面罩面積或參考相似度的量測百分比。"
-  ]
+  ],
+  "comparison_variants": [
+    "anubis_gold",
+    "anubis_gold_t"
+  ],
+  "preserved_variant": "anubis_gold",
+  "selected_visor_variant": null,
+  "previous_comparison_page": "revisions/c12_helmet_fusions_20260929/index_before_t.html"
 }
