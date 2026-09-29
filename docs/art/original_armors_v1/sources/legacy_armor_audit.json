@@ -427,6 +427,29 @@
         "rear": "references/legacy/c10_rear.png"
       },
       "features": {
+        "helmet": "寬額低冠、細窄水平視孔、盾形不透明鐵灰面甲與收短下巴；煤灰側頰包框銜接小圓耳座，取消大片玻璃護目鏡與中央深色縱條。",
+        "chest_shoulders": "深灰胸板、胸腹中央有黑色細密網紋；肩為明確向外折出的尖矩形灰板，下層黑色圓肩；肩小刻槽。",
+        "forearms": "大塊淺鐵灰斜切菱角護臂，中央/腕側黑色，沒有鮮明發光點。",
+        "legs": "灰色大腿殼、黑色內腿布衣；小六角膝甲、重疊斜片護脛與大鞋面；腿後網狀深色材質。",
+        "colors": [
+          "煤灰",
+          "鐵灰",
+          "黑色內襯與暗凹槽"
+        ]
+      },
+      "retain_in_fusion": [
+        "全灰黑低反光套裝",
+        "既有厚肩、菱角前臂與人體軟內襯",
+        "寬頰包覆與原頭盔側耳線索"
+      ],
+      "optimization_direction": "頭盔改為寬額、盾形霧面金屬與單一細視孔，收短下巴並保持灰黑配色。取消大玻璃面罩與上一稿中央深色縱條；不使用原參考金飾。",
+      "halo_pair_status": "CQC 保留為身甲結構參考；頭盔目前改試 Destiny 2 Reverie Dawn Helm，待使用者評價。",
+      "source_sha256": {
+        "front": "b193e9a5f9ffd2b5966b9837ec746cc6514e93cee370438e4467e0fdeda40b4c",
+        "side": "6f44dcc3fb4083017eaf7daea7a0c1872148db2a71506bb774a86ed9f9b18b96",
+        "rear": "4af8dccb2fdddfdb0621f4c3548efff6c26c3d9e38ff49a717f54af3ce8b6676"
+      },
+      "capture_observations_before_user_correction": {
         "helmet": "全身煤灰/鐵灰；狹長黑色水平面罩與寬方下頰罩；冠頂中央凸起低稜後收，額側有兩三條斜短槽；側耳為水平橢圓凹面。",
         "chest_shoulders": "深灰胸板、胸腹中央有黑色細密網紋；肩為明確向外折出的尖矩形灰板，下層黑色圓肩；肩小刻槽。",
         "forearms": "大塊淺鐵灰斜切菱角護臂，中央/腕側黑色，沒有鮮明發光點。",
@@ -437,17 +460,14 @@
           "黑面罩與黑內襯"
         ]
       },
-      "retain_in_fusion": [
-        "全灰黑低反光套裝與狹黑面罩",
-        "中央低冠稜與寬方頰罩",
-        "外張折角肩與粗大的菱角前臂"
-      ],
-      "optimization_direction": "Halo 配對應偏隱匿/近戰工裝；保留低調無燈大色塊，通過材質粗糙度、黑布和灰甲層次提高辨讀，不能隨意引入亮色改掉原身份。",
-      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
-      "source_sha256": {
-        "front": "b193e9a5f9ffd2b5966b9837ec746cc6514e93cee370438e4467e0fdeda40b4c",
-        "side": "6f44dcc3fb4083017eaf7daea7a0c1872148db2a71506bb774a86ed9f9b18b96",
-        "rear": "4af8dccb2fdddfdb0621f4c3548efff6c26c3d9e38ff49a717f54af3ce8b6676"
+      "features_basis": "頭盔材質與面部方向依使用者更正，原擷取圖觀察另存 capture_observations_before_user_correction，不代表重新驗證原遊戲材質。",
+      "user_correction": {
+        "date": "2026-09-29",
+        "feedback": "Draco 的頭盔是沒有護目鏡那種的面罩的,我想可以改成天命2的那種頭盔風格的設計",
+        "authority": "user_requested_helmet_redesign",
+        "rule": "取消玻璃護目鏡／大片鏡片；以 Destiny 2 封閉金屬面甲為參考，維持 Draco 灰黑配色與既有身甲。",
+        "note": "原擷取圖保留作輪廓參考；黑色前片不再據此推定為玻璃。未重新驗證原遊戲材質。",
+        "follow_up_feedback": "不太對換一個天命的頭盔參考"
       }
     }
   ],

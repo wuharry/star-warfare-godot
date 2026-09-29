@@ -139,7 +139,7 @@
         "back_evidence": "original_game_asset_multi_view_assembly",
         "match_reason": "Draco 的全灰黑、中央低冠稜、寬方護頰和折角肩，与 CQC 的無裝飾包覆盔及平矩形肩相近；人類軟衣與肩部固定可直接改善原輪廓。"
       },
-      "integration_en": "Fuse original Star Warfare Draco with the observed Halo: Reach CQC construction. Keep Draco's coal-gray and iron-gray armor, very dark narrow horizontal visor, low central crown ridge, broad square cheek protection, outward-folded angular shoulders and hefty diamond-edged forearms. Borrow CQC's believable continuous helmet liner, circular low-profile ear seats, independent shoulder fastenings and flexible black undersuit around the chest, elbow, waist and knee. Keep the low crown ridge a single shallow wedge rather than reproducing CQC's exact twin top rails. Rebuild the chest as a compact split sternum frame around Draco's dark central mesh. Flatten the outer shoulder corners and add a second shorter lower plate so the arms can raise. Use a newly arranged two-rail rear armor support with a compact central service spine, based on the observed back's human attachment logic. Avoid new neon color blocks, gold visor, franchise badges or the reference's exact torso panel pattern.",
+      "integration_en": "Retain Draco's existing coal-gray/iron-gray body armor and layered shoulders. Redesign only the helmet with Destiny 2 Reverie Dawn Helm as reference: broad simple forehead, a very thin recessed horizontal sight slit, solid matte shield-shaped metal faceplate and short tucked chin. Keep cheek edge trim and modest ear seats integrated with Draco. No glass goggles, broad visor, dark vertical center stripe, elongated lower face, gold/white coating, ornaments or glowing eyes. CQC remains the retained body construction donor. B10 remains a separately colored backpack.",
       "source_page_url": "https://www.halopedia.org/File:HTMCC_HR_Spartan_CQC.png",
       "image_url": "https://www.halopedia.org/images/5/50/HTMCC_HR_Spartan_CQC.png?68744",
       "local_path": "references/halo/c10_cqc_game.png",
@@ -173,7 +173,35 @@
           "sha256": "13fd581e1ff6a1e10f0deced31fcae0f9c513a1058326d891f4422037ac7b76c",
           "visually_inspected": true
         }
-      ]
+      ],
+      "user_correction": {
+        "date": "2026-09-29",
+        "feedback": "Draco 的頭盔是沒有護目鏡那種的面罩的,我想可以改成天命2的那種頭盔風格的設計",
+        "authority": "user_requested_helmet_redesign",
+        "rule": "取消玻璃護目鏡／大片鏡片；以 Destiny 2 封閉金屬面甲為參考，維持 Draco 灰黑配色與既有身甲。",
+        "note": "原擷取圖保留作輪廓參考；黑色前片不再據此推定為玻璃。未重新驗證原遊戲材質。",
+        "follow_up_feedback": "不太對換一個天命的頭盔參考"
+      },
+      "role": "retained_body_structure_donor",
+      "helmet_override": {
+        "game": "Destiny 2",
+        "variant": "Reverie Dawn Helm",
+        "application": "寬額低冠、細窄水平視孔、盾形不透明鐵灰面甲與收短下巴；煤灰側頰包框銜接小圓耳座，取消大片玻璃護目鏡與中央深色縱條。",
+        "references": [
+          {
+            "name": "Reverie Dawn Helm",
+            "local_path": "references/destiny2/c10_reverie_dawn_helm.jpg",
+            "image_url": "https://www.bungie.net/common/destiny2_content/screenshots/99549082.jpg",
+            "source_page_url": "https://destinytracker.com/destiny-2/db/items/99549082-reverie-dawn-helm",
+            "source_kind": "Bungie 官方物品渲染圖片",
+            "visually_inspected": true,
+            "sha256": "4c13d18a93b767d5404fc3f950d0fcc696996fa14933d0737100cb2eeb6f31b1",
+            "bytes": 218457,
+            "reference_role": "helmet_structure_reference_concept_generation_input"
+          }
+        ],
+        "status": "pending_user_review"
+      }
     },
     {
       "design_id": "C-11",
