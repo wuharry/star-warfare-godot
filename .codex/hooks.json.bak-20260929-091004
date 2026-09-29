@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "CLAUDE_PROJECT_DIR=\"/Users/harvey/repo/star-warfare-godot\" python3 \"/Users/harvey/repo/star-warfare-godot/.harness/claude_hook.py\"",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.harness/claude_hook.py\"",
             "timeout": 180
           }
         ]
@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "CLAUDE_PROJECT_DIR=\"/Users/harvey/repo/star-warfare-godot\" python3 \"/Users/harvey/repo/star-warfare-godot/.harness/claude_hook.py\"",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.harness/claude_hook.py\"",
             "timeout": 180
           }
         ]
@@ -29,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "CLAUDE_PROJECT_DIR=\"/Users/harvey/repo/star-warfare-godot\" python3 \"/Users/harvey/repo/star-warfare-godot/.harness/claude_hook.py\"",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.harness/claude_hook.py\"",
             "timeout": 180
           }
         ]
@@ -40,7 +40,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "CLAUDE_PROJECT_DIR=\"/Users/harvey/repo/star-warfare-godot\" python3 \"/Users/harvey/repo/star-warfare-godot/.harness/claude_hook.py\"",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.harness/claude_hook.py\"",
             "timeout": 180
           }
         ]
