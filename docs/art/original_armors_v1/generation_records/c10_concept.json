@@ -3,13 +3,26 @@
   "kind": "concept",
   "path": "images/c10_concept.png",
   "prompt": "prompts/c10_concept.txt",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-7d24f4d5-fc66-41f2-b629-4ff957f3b993.png",
+  "date": "2026-09-29",
   "reference_images": [
-    "references/legacy/c10_front.png",
-    "references/halo/c10_cqc_game.png"
+    "revisions/c10_before_closed_helmet_20260929/images/c10_concept.png",
+    "references/destiny2/c10_reverie_dawn_helm.jpg"
   ],
-  "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-6376aacd-839b-42d7-a45a-fb2346a3b569.png",
-  "date": "2026-09-25",
+  "reference_sha256": {
+    "revisions/c10_before_closed_helmet_20260929/images/c10_concept.png": "e18788404bf0788762d2d06e2aac0185ed1d01e6d5d8758270ca806f19f06a1c",
+    "references/destiny2/c10_reverie_dawn_helm.jpg": "4c13d18a93b767d5404fc3f950d0fcc696996fa14933d0737100cb2eeb6f31b1"
+  },
   "postprocessing": "none",
-  "visual_review": "煤灰全甲、中央短楔冠、寬黑玻璃與雙層折肩保留。CQC圓耳座、厚下顎包框與可拆胸帶已融入。無新霓虹色；全身與五指可見，灰階需保留材質明度差。",
-  "status": "visually_reviewed_pending_user_selection"
+  "edit_scope": "helmet_design_only",
+  "visual_review": "已目視：新頭盔為寬額、細窄水平視孔、盾形鐵灰金屬正面，收短下巴並保留小圓耳座；沒有大片黑玻璃或中央深色縱條。煤灰身甲、厚肩、前臂、雙手與全身站姿延續，雙腳完整。",
+  "status": "visually_reviewed_pending_user_selection",
+  "supersedes": "revisions/c10_before_closed_helmet_20260929/generation_records/c10_concept.json",
+  "prompt_sha256": "0030adc1017b563ba396b3beded0977e10d86758939907887f0c83f1cc4eb911",
+  "sha256": "8e34e4873d122ea9f918e343c6239ba1a89f469e2f4caef7b9d4d4049e2ee452",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "bytes": 2030818
 }

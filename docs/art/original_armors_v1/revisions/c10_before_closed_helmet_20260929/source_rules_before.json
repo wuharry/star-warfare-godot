@@ -1,0 +1,91 @@
+{
+  "sources/legacy_armor_audit.json": {
+    "design_id": "C-10",
+    "runtime_armor_id": 9,
+    "runtime_name": "Draco",
+    "original_game_mesh": true,
+    "viewed_with": "tools.view_image，逐張觀看 front/side/rear 共三張",
+    "source_front": "references/legacy/c10_front.png",
+    "source_side": "references/legacy/c10_side.png",
+    "source_rear": "references/legacy/c10_rear.png",
+    "reference_copies": {
+      "front": "references/legacy/c10_front.png",
+      "side": "references/legacy/c10_side.png",
+      "rear": "references/legacy/c10_rear.png"
+    },
+    "features": {
+      "helmet": "全身煤灰/鐵灰；狹長黑色水平面罩與寬方下頰罩；冠頂中央凸起低稜後收，額側有兩三條斜短槽；側耳為水平橢圓凹面。",
+      "chest_shoulders": "深灰胸板、胸腹中央有黑色細密網紋；肩為明確向外折出的尖矩形灰板，下層黑色圓肩；肩小刻槽。",
+      "forearms": "大塊淺鐵灰斜切菱角護臂，中央/腕側黑色，沒有鮮明發光點。",
+      "legs": "灰色大腿殼、黑色內腿布衣；小六角膝甲、重疊斜片護脛與大鞋面；腿後網狀深色材質。",
+      "colors": [
+        "煤灰",
+        "鐵灰",
+        "黑面罩與黑內襯"
+      ]
+    },
+    "retain_in_fusion": [
+      "全灰黑低反光套裝與狹黑面罩",
+      "中央低冠稜與寬方頰罩",
+      "外張折角肩與粗大的菱角前臂"
+    ],
+    "optimization_direction": "Halo 配對應偏隱匿/近戰工裝；保留低調無燈大色塊，通過材質粗糙度、黑布和灰甲層次提高辨讀，不能隨意引入亮色改掉原身份。",
+    "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
+    "source_sha256": {
+      "front": "b193e9a5f9ffd2b5966b9837ec746cc6514e93cee370438e4467e0fdeda40b4c",
+      "side": "6f44dcc3fb4083017eaf7daea7a0c1872148db2a71506bb774a86ed9f9b18b96",
+      "rear": "4af8dccb2fdddfdb0621f4c3548efff6c26c3d9e38ff49a717f54af3ce8b6676"
+    }
+  },
+  "sources/halo_matches_08_14.json": {
+    "design_id": "C-10",
+    "runtime_armor_id": 9,
+    "runtime_name": "Draco",
+    "game": "Halo: Reach",
+    "variant": "CQC helmet and shoulder configuration",
+    "article_url": "https://www.halopedia.org/CQC",
+    "source_kind": "Actual Halo: Reach / MCC game-asset capture; supplementary multi-view assembly by Durandal-217 using Bungie assets, explicitly not an official published turnaround.",
+    "observed": {
+      "helmet": "圓而短的平眉頭盔，冠頂中央黑槽、厚包下顎、側面大圓耳座；玻璃面罩有明確框和深度，後腦由矩形橫條包覆。",
+      "chest": "CQC 展示組合胸甲呈厚環狀架，短腹板依次下收；兩側矩形肩片向外下方壓住上臂；腋下、腰部和肘膝均有大幅軟衣。",
+      "back": "資產多視圖有完整後方：左右長背板夾住中央上背凹槽，背中有四段短橫片，下方梯形腰後片。",
+      "back_evidence": "original_game_asset_multi_view_assembly",
+      "match_reason": "Draco 的全灰黑、中央低冠稜、寬方護頰和折角肩，与 CQC 的無裝飾包覆盔及平矩形肩相近；人類軟衣與肩部固定可直接改善原輪廓。"
+    },
+    "integration_en": "Fuse original Star Warfare Draco with the observed Halo: Reach CQC construction. Keep Draco's coal-gray and iron-gray armor, very dark narrow horizontal visor, low central crown ridge, broad square cheek protection, outward-folded angular shoulders and hefty diamond-edged forearms. Borrow CQC's believable continuous helmet liner, circular low-profile ear seats, independent shoulder fastenings and flexible black undersuit around the chest, elbow, waist and knee. Keep the low crown ridge a single shallow wedge rather than reproducing CQC's exact twin top rails. Rebuild the chest as a compact split sternum frame around Draco's dark central mesh. Flatten the outer shoulder corners and add a second shorter lower plate so the arms can raise. Use a newly arranged two-rail rear armor support with a compact central service spine, based on the observed back's human attachment logic. Avoid new neon color blocks, gold visor, franchise badges or the reference's exact torso panel pattern.",
+    "source_page_url": "https://www.halopedia.org/File:HTMCC_HR_Spartan_CQC.png",
+    "image_url": "https://www.halopedia.org/images/5/50/HTMCC_HR_Spartan_CQC.png?68744",
+    "local_path": "references/halo/c10_cqc_game.png",
+    "sha256": "bad4046414c3afcbe732258d74476f237d4ccf75ee73b677e58cb85fe97f149b",
+    "visually_inspected": true,
+    "references": [
+      {
+        "key": "c10_cqc_game",
+        "source_page_url": "https://www.halopedia.org/File:HTMCC_HR_Spartan_CQC.png",
+        "image_url": "https://www.halopedia.org/images/5/50/HTMCC_HR_Spartan_CQC.png?68744",
+        "local_path": "references/halo/c10_cqc_game.png",
+        "bytes": 779316,
+        "sha256": "bad4046414c3afcbe732258d74476f237d4ccf75ee73b677e58cb85fe97f149b",
+        "visually_inspected": true
+      },
+      {
+        "key": "c10_cqc_armor",
+        "source_page_url": "https://www.halopedia.org/File:HR_CQC_Armor_ref.jpg",
+        "image_url": "https://www.halopedia.org/images/5/5a/HR_CQC_Armor_ref.jpg?d9799",
+        "local_path": "references/halo/c10_cqc_armor.jpg",
+        "bytes": 733615,
+        "sha256": "f7ab93e98c237d602d0dde9469716e4b19da2c77bfa998235cef4b7727f840dc",
+        "visually_inspected": true
+      },
+      {
+        "key": "c10_cqc_helmet",
+        "source_page_url": "https://www.halopedia.org/File:HR_CQC_hel_ref.jpg",
+        "image_url": "https://www.halopedia.org/images/1/1b/HR_CQC_hel_ref.jpg?8464f",
+        "local_path": "references/halo/c10_cqc_helmet.jpg",
+        "bytes": 684203,
+        "sha256": "13fd581e1ff6a1e10f0deced31fcae0f9c513a1058326d891f4422037ac7b76c",
+        "visually_inspected": true
+      }
+    ]
+  }
+}

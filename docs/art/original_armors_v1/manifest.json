@@ -1531,83 +1531,87 @@
       "kind": "concept",
       "path": "images/c10_concept.png",
       "prompt": "prompts/c10_concept.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-7d24f4d5-fc66-41f2-b629-4ff957f3b993.png",
+      "date": "2026-09-29",
       "reference_images": [
-        "references/legacy/c10_front.png",
-        "references/halo/c10_cqc_game.png"
+        "revisions/c10_before_closed_helmet_20260929/images/c10_concept.png",
+        "references/destiny2/c10_reverie_dawn_helm.jpg"
       ],
-      "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-6376aacd-839b-42d7-a45a-fb2346a3b569.png",
-      "date": "2026-09-25",
+      "reference_sha256": {
+        "revisions/c10_before_closed_helmet_20260929/images/c10_concept.png": "e18788404bf0788762d2d06e2aac0185ed1d01e6d5d8758270ca806f19f06a1c",
+        "references/destiny2/c10_reverie_dawn_helm.jpg": "4c13d18a93b767d5404fc3f950d0fcc696996fa14933d0737100cb2eeb6f31b1"
+      },
       "postprocessing": "none",
-      "visual_review": "煤灰全甲、中央短楔冠、寬黑玻璃與雙層折肩保留。CQC圓耳座、厚下顎包框與可拆胸帶已融入。無新霓虹色；全身與五指可見，灰階需保留材質明度差。",
+      "edit_scope": "helmet_design_only",
+      "visual_review": "已目視：新頭盔為寬額、細窄水平視孔、盾形鐵灰金屬正面，收短下巴並保留小圓耳座；沒有大片黑玻璃或中央深色縱條。煤灰身甲、厚肩、前臂、雙手與全身站姿延續，雙腳完整。",
       "status": "visually_reviewed_pending_user_selection",
-      "generation_record": "generation_records/c10_concept.json",
-      "sha256": "e18788404bf0788762d2d06e2aac0185ed1d01e6d5d8758270ca806f19f06a1c",
+      "supersedes": "revisions/c10_before_closed_helmet_20260929/generation_records/c10_concept.json",
+      "prompt_sha256": "0030adc1017b563ba396b3beded0977e10d86758939907887f0c83f1cc4eb911",
+      "sha256": "8e34e4873d122ea9f918e343c6239ba1a89f469e2f4caef7b9d4d4049e2ee452",
       "dimensions": [
         1024,
         1536
       ],
-      "bytes": 2066185,
-      "prompt_sha256": "7cf51d85117ed5a8dda342eefca7c2a426e5180249cbdabb7f90894f270642b5",
-      "reference_sha256": {
-        "references/legacy/c10_front.png": "b193e9a5f9ffd2b5966b9837ec746cc6514e93cee370438e4467e0fdeda40b4c",
-        "references/halo/c10_cqc_game.png": "bad4046414c3afcbe732258d74476f237d4ccf75ee73b677e58cb85fe97f149b"
-      }
+      "bytes": 2030818,
+      "generation_record": "generation_records/c10_concept.json"
     },
     {
       "design_id": "C-10",
       "kind": "construction",
       "path": "images/c10_construction.png",
       "prompt": "prompts/c10_construction.txt",
-      "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-603ed241-8df1-4a7f-bfd6-b6656369c1b8.png",
-      "date": "2026-09-25",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-3dac6635-9999-4efe-ab3f-5edb83d170b6.png",
+      "date": "2026-09-29",
       "reference_images": [
-        "images/c10_concept.png",
-        "images/c10_turnaround.png",
-        "images/b10_design_sheet.png"
+        "revisions/c10_before_closed_helmet_20260929/images/c10_construction.png",
+        "images/c10_concept.png"
       ],
+      "reference_sha256": {
+        "revisions/c10_before_closed_helmet_20260929/images/c10_construction.png": "5565853e8c19dff4eec665f0db43b098c5a52488d68f91fd789d7f1c8037d9ae",
+        "images/c10_concept.png": "8e34e4873d122ea9f918e343c6239ba1a89f469e2f4caef7b9d4d4049e2ee452"
+      },
       "postprocessing": "none",
-      "visual_review": "已逐圖目視：A 區煤灰低楔冠、暗單片面罩、方頰下頜與黑色內襯分件，無新增亮色；B 區兩層外翻肩甲對應概念，C 區灰色雙胸片圍繞黑色中央胸件。D 區黑背墊双接軌與独立 B10 藍／紫／金 Y 外殼分開，兩側青窗完整。接點尺寸未驗證。",
+      "edit_scope": "helmet_design_only",
+      "visual_review": "已目視：A 區組裝頭盔與新概念一致；分成空前開口的冠後殼、單一盾形面甲及黑色軟內襯，沒有重複硬面甲。B/C 肩胸輪廓與 D 的背墊、獨立 B10 配色延續。圖中磨損紋理有重繪，接點與厚度尚未工程驗證。",
       "status": "visually_reviewed_pending_user_selection",
-      "generation_record": "generation_records/c10_construction.json",
-      "sha256": "5565853e8c19dff4eec665f0db43b098c5a52488d68f91fd789d7f1c8037d9ae",
+      "supersedes": "revisions/c10_before_closed_helmet_20260929/generation_records/c10_construction.json",
+      "prompt_sha256": "e538de1b20f69afc455989eb87c0cf23a8a296aa8a70804e7dd1504ec8bc5487",
+      "sha256": "970d5617e95f721fa30835b222e054558af03cd5551dbd98a2cffec9d4d97556",
       "dimensions": [
         1536,
         1024
       ],
-      "bytes": 2951425,
-      "prompt_sha256": "ef026af0e426ad8d5a0ba96446a6f890949f326b5bbcc9f10ecf40b5c7ff544f",
-      "reference_sha256": {
-        "images/c10_concept.png": "e18788404bf0788762d2d06e2aac0185ed1d01e6d5d8758270ca806f19f06a1c",
-        "images/c10_turnaround.png": "1445e4465d07294dd6f0e040050520cf658155159c7f51901f11b4822ce43407",
-        "images/b10_design_sheet.png": "608456cbcba2099d51eb809b74499d2164511b0813c96de24057a032001589f6"
-      }
+      "bytes": 2723218,
+      "generation_record": "generation_records/c10_construction.json"
     },
     {
       "design_id": "C-10",
       "kind": "turnaround",
       "path": "images/c10_turnaround.png",
       "prompt": "prompts/c10_turnaround.txt",
-      "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-9ca8d236-f30e-453a-b240-853f77fee6a0.png",
-      "date": "2026-09-25",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-5a84e5b1-6ff5-48ef-8d61-0f20979c6ee6.png",
+      "date": "2026-09-29",
       "reference_images": [
-        "images/c10_concept.png",
-        "images/b10_design_sheet.png"
+        "revisions/c10_before_closed_helmet_20260929/images/c10_turnaround.png",
+        "images/c10_concept.png"
       ],
+      "reference_sha256": {
+        "revisions/c10_before_closed_helmet_20260929/images/c10_turnaround.png": "1445e4465d07294dd6f0e040050520cf658155159c7f51901f11b4822ce43407",
+        "images/c10_concept.png": "8e34e4873d122ea9f918e343c6239ba1a89f469e2f4caef7b9d4d4049e2ee452"
+      },
       "postprocessing": "none",
-      "visual_review": "已逐圖目視：正／左／背三人同高同地線，左視鼻向左、背视無面罩。Draco 煤灰鐵灰配色、低楔冠、暗連續面罩、方頰、雙層外翻肩與厚前臂保留，灰色裝甲未添金色發光。B10 保持獨立藍主面、紫側塊、金 Y 邊線、雙青色側窗，搭配關係僅為穿戴展示。",
+      "edit_scope": "helmet_design_only",
+      "visual_review": "已目視：FRONT／LEFT／BACK 三視頭盔同步為寬額細視孔與實體面甲，背視為後殼。煤灰身甲與全身基線保留，獨立 B10 仍為藍主面、紫側片、金 Y 邊線和青側窗。側視仍帶概念透視，尺寸待建模統一。",
       "status": "visually_reviewed_pending_user_selection",
-      "generation_record": "generation_records/c10_turnaround.json",
-      "sha256": "1445e4465d07294dd6f0e040050520cf658155159c7f51901f11b4822ce43407",
+      "supersedes": "revisions/c10_before_closed_helmet_20260929/generation_records/c10_turnaround.json",
+      "prompt_sha256": "6d2cc76314131fce1746652526f4fb7dbbc3985329d1e7c1f641726b06a76dc7",
+      "sha256": "aa85fa1fba4709924ef7c5469af0bed8a7ff4e2536a4abf2759ade41c351bb6c",
       "dimensions": [
         1536,
         1024
       ],
-      "bytes": 2260791,
-      "prompt_sha256": "1fcfd492a3eafc2161255fa5bca61c893e8d82e709a0065ee7530dfc3cb6692f",
-      "reference_sha256": {
-        "images/c10_concept.png": "e18788404bf0788762d2d06e2aac0185ed1d01e6d5d8758270ca806f19f06a1c",
-        "images/b10_design_sheet.png": "608456cbcba2099d51eb809b74499d2164511b0813c96de24057a032001589f6"
-      }
+      "bytes": 2101510,
+      "generation_record": "generation_records/c10_turnaround.json"
     },
     {
       "design_id": "C-11",
@@ -3789,6 +3793,30 @@
       "sha256": "989047bf064abba2ddfe668bd9cf3521b5e66cae32a601b3fcd5e2dc667b2b39",
       "bytes": 345420,
       "purpose": "source_reference_not_generated_delivery"
+    },
+    {
+      "path": "references/destiny2/c10_reverie_dawn_helm.jpg",
+      "sha256": "4c13d18a93b767d5404fc3f950d0fcc696996fa14933d0737100cb2eeb6f31b1",
+      "bytes": 218457,
+      "purpose": "source_reference_not_generated_delivery",
+      "source_page_url": "https://destinytracker.com/destiny-2/db/items/99549082-reverie-dawn-helm",
+      "image_url": "https://www.bungie.net/common/destiny2_content/screenshots/99549082.jpg"
+    },
+    {
+      "path": "references/destiny2/c10_iron_symmachy_helm.jpg",
+      "sha256": "4292d92ebb7698432c5ae9218545086085566fe2b3e414315eb7e6a4aad0c0e8",
+      "bytes": 213118,
+      "purpose": "source_reference_not_generated_delivery",
+      "source_page_url": "https://destinytracker.com/destiny-2/db/items/1127757814-iron-symmachy-helm",
+      "image_url": "https://www.bungie.net/common/destiny2_content/screenshots/1127757814.jpg"
+    },
+    {
+      "path": "references/destiny2/c10_iron_symmachy_hood.jpg",
+      "sha256": "083e2dd0c6e5488f67caea90f42fb27f964c5cff842b98fd7927029421e27cc5",
+      "bytes": 65355,
+      "purpose": "source_reference_not_generated_delivery",
+      "source_page_url": "https://d2.destinygamewiki.com/wiki/Iron_Symmachy_Hood",
+      "image_url": "https://d2.destinygamewiki.com/mediawiki/images/thumb/3/3e/Iron_Symmachy_Hood1.jpg/800px-Iron_Symmachy_Hood1.jpg"
     }
   ],
   "rejected_iterations": [
@@ -4284,6 +4312,122 @@
       ],
       "bytes": 2573714,
       "record_path": "revisions/c05_helmet_assignment_20260929/construction_initial_record.json"
+    },
+    {
+      "design_id": "C-10",
+      "kind": "concept",
+      "path": "revisions/c10_rejected_iron_symmachy_20260929/images/c10_concept.png",
+      "prompt": "revisions/c10_rejected_iron_symmachy_20260929/prompts/c10_concept.txt",
+      "reference_path_base": "docs/art/original_armors_v1",
+      "reference_images": [
+        "revisions/c10_before_closed_helmet_20260929/images/c10_concept.png",
+        "references/destiny2/c10_iron_symmachy_helm.jpg",
+        "references/destiny2/c10_iron_symmachy_hood.jpg"
+      ],
+      "reference_sha256": {
+        "revisions/c10_before_closed_helmet_20260929/images/c10_concept.png": "e18788404bf0788762d2d06e2aac0185ed1d01e6d5d8758270ca806f19f06a1c",
+        "references/destiny2/c10_iron_symmachy_helm.jpg": "4292d92ebb7698432c5ae9218545086085566fe2b3e414315eb7e6a4aad0c0e8",
+        "references/destiny2/c10_iron_symmachy_hood.jpg": "083e2dd0c6e5488f67caea90f42fb27f964c5cff842b98fd7927029421e27cc5"
+      },
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-c1eaf72e-13fb-4727-80d0-bdeab1dba2c2.png",
+      "tool": "built-in image_gen",
+      "date": "2026-09-29",
+      "postprocessing": "none",
+      "status": "rejected_direction",
+      "feedback": "不太對換一個天命的頭盔參考",
+      "sha256": "a0114516b7f7c85d75bedd589062a2f425bae9ca8d8b605cda67fd730243e467",
+      "prompt_sha256": "bc4489a8211656474594155f105a5d8e89835c4da323996d8f6165da930dad60",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "bytes": 2041517,
+      "record_path": "revisions/c10_rejected_iron_symmachy_20260929/generation_records/c10_concept.json"
+    },
+    {
+      "design_id": "C-10",
+      "kind": "turnaround",
+      "path": "revisions/c10_rejected_iron_symmachy_20260929/images/c10_turnaround.png",
+      "prompt": "revisions/c10_rejected_iron_symmachy_20260929/prompts/c10_turnaround.txt",
+      "reference_path_base": "docs/art/original_armors_v1",
+      "reference_images": [
+        "revisions/c10_before_closed_helmet_20260929/images/c10_turnaround.png",
+        "revisions/c10_rejected_iron_symmachy_20260929/images/c10_concept.png"
+      ],
+      "reference_sha256": {
+        "revisions/c10_before_closed_helmet_20260929/images/c10_turnaround.png": "1445e4465d07294dd6f0e040050520cf658155159c7f51901f11b4822ce43407",
+        "revisions/c10_rejected_iron_symmachy_20260929/images/c10_concept.png": "a0114516b7f7c85d75bedd589062a2f425bae9ca8d8b605cda67fd730243e467"
+      },
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-6f7830ff-8051-4ea2-8fab-96731d675292.png",
+      "tool": "built-in image_gen",
+      "date": "2026-09-29",
+      "postprocessing": "none",
+      "status": "rejected_direction",
+      "feedback": "不太對換一個天命的頭盔參考",
+      "sha256": "2634757885a40379a32ecdd26791e9f52e19edc45fbc81444bbd50c62652bcb9",
+      "prompt_sha256": "beb2e7f53f94ccab0aac98f75b648108e88e7b18c86f1539ff8ffdaad9d7628c",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 2136499,
+      "record_path": "revisions/c10_rejected_iron_symmachy_20260929/generation_records/c10_turnaround.json"
+    },
+    {
+      "design_id": "C-10",
+      "kind": "construction",
+      "path": "revisions/c10_rejected_iron_symmachy_20260929/images/c10_construction.png",
+      "prompt": "revisions/c10_rejected_iron_symmachy_20260929/prompts/c10_construction.txt",
+      "reference_path_base": "docs/art/original_armors_v1",
+      "reference_images": [
+        "revisions/c10_rejected_iron_symmachy_20260929/construction_initial.png",
+        "revisions/c10_rejected_iron_symmachy_20260929/images/c10_concept.png"
+      ],
+      "reference_sha256": {
+        "revisions/c10_rejected_iron_symmachy_20260929/construction_initial.png": "7648c3016acccce0b963f9949d6cd581c352e3310626b11b52ba456a41dcbf52",
+        "revisions/c10_rejected_iron_symmachy_20260929/images/c10_concept.png": "a0114516b7f7c85d75bedd589062a2f425bae9ca8d8b605cda67fd730243e467"
+      },
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-3738fe92-bb2a-4205-8fbe-31c946a8a3a1.png",
+      "tool": "built-in image_gen",
+      "date": "2026-09-29",
+      "postprocessing": "none",
+      "status": "rejected_direction",
+      "feedback": "不太對換一個天命的頭盔參考",
+      "sha256": "c6c0e817931b0d820e5bd732131c9f9113a538d396d5f96ed5f254622484e2a7",
+      "prompt_sha256": "31cca71ba750c637900ae1f0615f4395e844cd521f2433e7e9c934b13e915abb",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 2488191,
+      "record_path": "revisions/c10_rejected_iron_symmachy_20260929/generation_records/c10_construction.json"
+    },
+    {
+      "design_id": "C-10",
+      "kind": "construction",
+      "path": "revisions/c10_rejected_iron_symmachy_20260929/construction_initial.png",
+      "prompt": "revisions/c10_rejected_iron_symmachy_20260929/construction_initial_prompt.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-75788a38-9694-4986-8df9-735a91993fb2.png",
+      "date": "2026-09-29",
+      "reference_images": [
+        "revisions/c10_before_closed_helmet_20260929/images/c10_construction.png",
+        "revisions/c10_rejected_iron_symmachy_20260929/images/c10_concept.png"
+      ],
+      "reference_sha256": {
+        "revisions/c10_before_closed_helmet_20260929/images/c10_construction.png": "5565853e8c19dff4eec665f0db43b098c5a52488d68f91fd789d7f1c8037d9ae",
+        "revisions/c10_rejected_iron_symmachy_20260929/images/c10_concept.png": "a0114516b7f7c85d75bedd589062a2f425bae9ca8d8b605cda67fd730243e467"
+      },
+      "postprocessing": "none",
+      "status": "rejected_direction_with_duplicate_parts",
+      "visual_review": "組裝頭盔已為封閉金屬臉甲，但拆解圖把中央面甲／縱肋重複畫在冠殼與獨立前片，耳座亦重複；需改成不重複的外殼、面甲與內襯。",
+      "prompt_sha256": "64f4d57b7bf22f56785b598b279b67ce8c623fbd44453bd0c67acd95c02067f7",
+      "sha256": "7648c3016acccce0b963f9949d6cd581c352e3310626b11b52ba456a41dcbf52",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 2726053,
+      "record_path": "revisions/c10_rejected_iron_symmachy_20260929/construction_initial_record.json"
     }
   ],
   "previous_delivery_reset": {
@@ -4526,15 +4670,15 @@
     },
     {
       "path": "prompts/c10_concept.txt",
-      "sha256": "7cf51d85117ed5a8dda342eefca7c2a426e5180249cbdabb7f90894f270642b5"
+      "sha256": "0030adc1017b563ba396b3beded0977e10d86758939907887f0c83f1cc4eb911"
     },
     {
       "path": "prompts/c10_construction.txt",
-      "sha256": "ef026af0e426ad8d5a0ba96446a6f890949f326b5bbcc9f10ecf40b5c7ff544f"
+      "sha256": "e538de1b20f69afc455989eb87c0cf23a8a296aa8a70804e7dd1504ec8bc5487"
     },
     {
       "path": "prompts/c10_turnaround.txt",
-      "sha256": "1fcfd492a3eafc2161255fa5bca61c893e8d82e709a0065ee7530dfc3cb6692f"
+      "sha256": "6d2cc76314131fce1746652526f4fb7dbbc3985329d1e7c1f641726b06a76dc7"
     },
     {
       "path": "prompts/c11_concept.txt",
@@ -4846,6 +4990,28 @@
           "construction": "revisions/c09_before_color_fix_20260929/prompts/c09_construction.txt"
         }
       },
+      "runtime_implemented": false
+    },
+    "C-10": {
+      "status": "helmet_revision_pending_user_review",
+      "date": "2026-09-29",
+      "feedback": "不太對換一個天命的頭盔參考",
+      "scope": "helmet_design_only",
+      "action": "Draco 改參考 Destiny 2 Reverie Dawn Helm：寬額、細窄水平視孔、盾形金屬面甲與短下巴，維持煤灰身甲。Iron Symmachy 版已存為未採用草稿。",
+      "acceptance_basis": "使用者要求更換參考；Reverie Dawn 的選擇及本輪新稿尚待使用者評價，未視為正式採用。",
+      "previous_revision": {
+        "images": {
+          "concept": "revisions/c10_before_closed_helmet_20260929/images/c10_concept.png",
+          "turnaround": "revisions/c10_before_closed_helmet_20260929/images/c10_turnaround.png",
+          "construction": "revisions/c10_before_closed_helmet_20260929/images/c10_construction.png"
+        },
+        "prompts": {
+          "concept": "revisions/c10_before_closed_helmet_20260929/prompts/c10_concept.txt",
+          "turnaround": "revisions/c10_before_closed_helmet_20260929/prompts/c10_turnaround.txt",
+          "construction": "revisions/c10_before_closed_helmet_20260929/prompts/c10_construction.txt"
+        }
+      },
+      "rejected_revision": "revisions/c10_rejected_iron_symmachy_20260929/README.md",
       "runtime_implemented": false
     }
   }

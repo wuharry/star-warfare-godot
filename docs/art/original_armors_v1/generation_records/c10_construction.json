@@ -3,14 +3,26 @@
   "kind": "construction",
   "path": "images/c10_construction.png",
   "prompt": "prompts/c10_construction.txt",
-  "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-603ed241-8df1-4a7f-bfd6-b6656369c1b8.png",
-  "date": "2026-09-25",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-3dac6635-9999-4efe-ab3f-5edb83d170b6.png",
+  "date": "2026-09-29",
   "reference_images": [
-    "images/c10_concept.png",
-    "images/c10_turnaround.png",
-    "images/b10_design_sheet.png"
+    "revisions/c10_before_closed_helmet_20260929/images/c10_construction.png",
+    "images/c10_concept.png"
   ],
+  "reference_sha256": {
+    "revisions/c10_before_closed_helmet_20260929/images/c10_construction.png": "5565853e8c19dff4eec665f0db43b098c5a52488d68f91fd789d7f1c8037d9ae",
+    "images/c10_concept.png": "8e34e4873d122ea9f918e343c6239ba1a89f469e2f4caef7b9d4d4049e2ee452"
+  },
   "postprocessing": "none",
-  "visual_review": "已逐圖目視：A 區煤灰低楔冠、暗單片面罩、方頰下頜與黑色內襯分件，無新增亮色；B 區兩層外翻肩甲對應概念，C 區灰色雙胸片圍繞黑色中央胸件。D 區黑背墊双接軌與独立 B10 藍／紫／金 Y 外殼分開，兩側青窗完整。接點尺寸未驗證。",
-  "status": "visually_reviewed_pending_user_selection"
+  "edit_scope": "helmet_design_only",
+  "visual_review": "已目視：A 區組裝頭盔與新概念一致；分成空前開口的冠後殼、單一盾形面甲及黑色軟內襯，沒有重複硬面甲。B/C 肩胸輪廓與 D 的背墊、獨立 B10 配色延續。圖中磨損紋理有重繪，接點與厚度尚未工程驗證。",
+  "status": "visually_reviewed_pending_user_selection",
+  "supersedes": "revisions/c10_before_closed_helmet_20260929/generation_records/c10_construction.json",
+  "prompt_sha256": "e538de1b20f69afc455989eb87c0cf23a8a296aa8a70804e7dd1504ec8bc5487",
+  "sha256": "970d5617e95f721fa30835b222e054558af03cd5551dbd98a2cffec9d4d97556",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "bytes": 2723218
 }

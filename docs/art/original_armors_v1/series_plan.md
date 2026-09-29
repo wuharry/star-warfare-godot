@@ -17,7 +17,7 @@
 | [C-07](c07_redline.json) | 6 / Thunder | 熾限 REDLINE | War Master (GEN2), official armor turnaround | 熱限過載 |
 | [C-08](c08_prism.json) | 7 / Atom | 折光 PRISM | ENGINEER 身甲＋B／Recruit 窄面罩 | 單次折向 |
 | [C-09](c09_bulwark.json) | 8 / Pegasus | 拒壁 BULWARK | HELIOSKRILL-class Mjolnir (GEN2) | 迎擊防板 |
-| [C-10](c10_lodestone.json) | 9 / Draco | 蓄鐵 LODESTONE | CQC helmet and shoulder configuration | 蓄鐵脈衝 |
+| [C-10](c10_lodestone.json) | 9 / Draco | 蓄鐵 LODESTONE | CQC 身甲＋Destiny 2 Reverie Dawn Helm 封閉金屬面甲 | 蓄鐵脈衝 |
 | [C-11](c11_seedvault.json) | 10 / Phoenix | 芽庫 SEEDVAULT | VENATOR-class Mjolnir (GEN2) | 共用修復份額 |
 | [C-12](c12_spur.json) | 11 / Cygni | 支點 SPUR | VALKYRIE-class Mjolnir (GEN2) | 穩架測距 |
 | [C-13](c13_stitch.json) | 12 / Andromedae | 縫光 STITCH | OCEANIC-class Mjolnir (GEN2) | 縫合光束 |
@@ -35,6 +35,8 @@
 Strike 正式採 Atom＋Recruit 青色收口面罩；Atom 採 B＋Recruit 的圓冠、淺 V 窄窗與短下巴，保留紫藍配色、三顆額燈及圓耳。兩套都沿用既有全身比例，概念、三視與拆解已同步；[採用紀錄](revisions/c05_helmet_assignment_20260929/README.md)保留選案、修改前與生成來源。此決定僅確認美術方向，尚未製作遊戲模型。
 
 Pegasus 頭盔依使用者更正，外殼與身甲統一白灰色；先前紅盔配色及其保留規則已取消。[更正紀錄與前後圖](revisions/c09_before_color_fix_20260929/README.md)保留三種視圖及提示詞。
+
+Draco 頭盔取消玻璃護目鏡，改參考 Destiny 2 Reverie Dawn Helm 的盾形金屬面甲與細窄水平視孔，維持灰黑配色。新稿待評價；[來源、前後圖與提示詞](revisions/c10_before_closed_helmet_20260929/README.md)可供比較。
 
 ## 25 個獨立背包
 

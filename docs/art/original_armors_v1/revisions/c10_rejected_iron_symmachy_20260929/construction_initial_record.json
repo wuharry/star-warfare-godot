@@ -1,0 +1,26 @@
+{
+  "design_id": "C-10",
+  "kind": "construction",
+  "path": "revisions/c10_rejected_iron_symmachy_20260929/construction_initial.png",
+  "prompt": "revisions/c10_rejected_iron_symmachy_20260929/construction_initial_prompt.txt",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-75788a38-9694-4986-8df9-735a91993fb2.png",
+  "date": "2026-09-29",
+  "reference_images": [
+    "revisions/c10_before_closed_helmet_20260929/images/c10_construction.png",
+    "revisions/c10_rejected_iron_symmachy_20260929/images/c10_concept.png"
+  ],
+  "reference_sha256": {
+    "revisions/c10_before_closed_helmet_20260929/images/c10_construction.png": "5565853e8c19dff4eec665f0db43b098c5a52488d68f91fd789d7f1c8037d9ae",
+    "revisions/c10_rejected_iron_symmachy_20260929/images/c10_concept.png": "a0114516b7f7c85d75bedd589062a2f425bae9ca8d8b605cda67fd730243e467"
+  },
+  "postprocessing": "none",
+  "status": "rejected_direction_with_duplicate_parts",
+  "visual_review": "組裝頭盔已為封閉金屬臉甲，但拆解圖把中央面甲／縱肋重複畫在冠殼與獨立前片，耳座亦重複；需改成不重複的外殼、面甲與內襯。",
+  "prompt_sha256": "64f4d57b7bf22f56785b598b279b67ce8c623fbd44453bd0c67acd95c02067f7",
+  "sha256": "7648c3016acccce0b963f9949d6cd581c352e3310626b11b52ba456a41dcbf52",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "bytes": 2726053
+}
