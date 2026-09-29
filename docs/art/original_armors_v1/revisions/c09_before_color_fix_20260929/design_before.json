@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "design_id": "C-09",
+  "runtime_id": null,
+  "working_name_zh": "拒壁",
+  "working_name_en": "BULWARK",
+  "status": "concept_ready_for_user_review",
+  "runtime_implemented": false,
+  "proposed_role_replacement": {
+    "legacy_visual_id": 8,
+    "legacy_set_name": "Pegasus",
+    "purpose": "指定未來外觀替换目標；能力、購買、升級和存檔 ID 本輪不變。"
+  },
+  "lore": "船艙入口的短時防護服。紅色頭盔讓隊友能快速辨認守位者，白灰層甲以人體活動範圍組合。",
+  "role": "抓準迎擊時機，折疊護臂承受正面一次攻擊",
+  "palette": [
+    {
+      "family": "紅盔",
+      "hex": "#B64247",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "白灰",
+      "hex": "#D5DADB",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "深藍黑",
+      "hex": "#253848",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    },
+    {
+      "family": "藍",
+      "hex": "#517EA8",
+      "target_percent": null,
+      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+    }
+  ],
+  "visual_identity": {
+    "status": "prompt_target_with_actual_reviews_below",
+    "proportion_target": "約6～6.5個頭盔高的厚實人體；屬 brief 目標，未作像素量測。",
+    "head": "紅色頭盔配深色淺 V 玻璃、雙低眉尖與分層護頰",
+    "torso": "白灰大胸板與少量藍色接縫，肋側留軟衣",
+    "shoulders": "白灰寬肩分層，縮短尖端便於抬臂",
+    "arms": "正常五指手套、布衣肘窩與分件護臂。原版保留線索：白灰折面寬臂甲配藍色腕條；手部/肘部深藍黑色，肩和臂板比例沉重。",
+    "legs": "人的髖膝踝位置、軟膝後和正常軍靴；尖片按融合 brief 收短。原版保留線索：白灰髖裙與膝脛，黑藍布衣大腿內面上有細藍紋；鞋头白灰配藍條。",
+    "pack": "背包為獨立装备。三視製作可示範搭配 B-09，不是原遊戲固定套裝或技能關聯；以 B 款獨立設計稿為準。",
+    "concept_prompt": "prompts/c09_concept.txt",
+    "full_fusion_brief_en": "Fuse the original Star Warfare Pegasus with the observed Halo 5 Helioskrill helmet-and-collar language. Preserve Pegasus's unmistakable red helmet over off-white body armor, narrow dark V-shaped visor, two short brow points, broad pale shoulders, and sparse blue seam accents. Borrow the reference's layered cheek guards, human neck opening, articulated shoulder plates, and angled rib-protecting chest structure. Replace the single ornate swept crown with two much lower divided brow rails that grow out of Pegasus's own short points. Keep the visor continuous glass with a shallow central V; do not turn the face into eyes or a robotic muzzle. Rear structure may combine a newly shaped vertical central cover with two short side rails, informed by the documented Helioskrill rear concept but with a different panel sequence. Maintain normal human hands, soft joints and waist flexibility. Do not copy the purple-gold coating, alien emblems, exact crest or decorative striping.",
+    "actual_reviews": {
+      "concept": "紅盔白甲與淺藍接縫保留，兩條低冠軌、連續V面窗、分層頰框及胸肋護甲可辨識。人體軟頸和肘膝成立；頭盔偏原Pegasus，HELIOSKRILL融合主要在頰框與胸肩。",
+      "construction": "已逐圖目視：紅色雙低冠軌頭盔、暗 V 形單片面罩、側頰與下頜分件清楚；B 區白色藍角肩蓋、C 區白甲淺藍線胸片都與概念一致。D 區只有黑色軟墊雙接軌，獨立 B09 青藍／銀雙艙、兩青三角與中央下圓模組完整，沒有把背包外殼重複畫進裝甲。屬視覺建模參考，接點尺寸未驗證。",
+      "turnaround": "已逐圖目視：正／左／背三人同高同地線，左視鼻向左、背視無玻璃。Pegasus 紅色双冠軌頭盔、暗 V 面罩、米白身甲與稀疏藍線保留；側視可讀分層頰甲和肩蓋。B09 維持青藍雙艙、銀白側板兩個青三角、中央下方圓模組，配色未受紅白裝甲影響。"
+    }
+  },
+  "proposed_stats": {
+    "status": "proposal_not_implemented_or_balanced",
+    "basis": "以 C-01 為比較點的未平衡提案，不是 Pegasus 現有數值；四件合計不含等級、背包與裝備升級；護盾容量不代表已具備回充功能",
+    "per_part": {
+      "hp": 350,
+      "shield": 25
+    },
+    "four_piece_total": {
+      "hp": 1400,
+      "shield": 100
+    },
+    "movement_modifier": 0,
+    "damage_modifier": 0,
+    "unlock": "後續任務／製作解鎖提案，具體條件待定",
+    "purchase_currency": null
+  },
+  "proposed_abilities": [
+    {
+      "id": "c09_timed_guard",
+      "name": "迎擊防板",
+      "kind": "四件套時機防禦主動提案",
+      "implemented": false,
+      "trigger": "完整四件、存活，未處於其他防禦姿態或位移技能中時舉起左前臂護板，立即開始10秒冷卻",
+      "effect": "接下來1.2秒內第一次來自正面90度扇形的直接攻擊減傷60%；成功後立即放下護板，剩餘冷卻最多保留5秒",
+      "stop": "成功擋下一次、時限結束、取消、死亡或卸裝時收起；未成功不退還冷卻，死亡卸裝也不重置冷卻",
+      "limits": "舉板期間不能射擊或換彈，移速降低20%；背面、地面持續傷害不適用，不無敵、不反射。一次霰彈齊射視為同一攻擊統一減傷，不能逐彈觸發冷卻縮減；與其他主動防禦互斥",
+      "visual": "前臂短時防護模組為額外技能配件提案，未在概念圖確認機構；不依賴 B-09。",
+      "design_reason": "以短時間窗口與攻擊空檔換取一次可靠迎擊；厚甲定位與時機操作並存",
+      "integration_note": "需直接攻擊分組、方向判定、射擊換彈限制和冷卻接口；左臂展開動畫、碰撞與雙手持槍須後續模型驗證",
+      "status": "proposal_only",
+      "equipment_dependency": "完整C裝甲四件；不要求同序B背包，不改B背包現有屬性。"
+    }
+  ],
+  "production_status": {
+    "concept": "generated_and_visually_checked_pending_user_review",
+    "turnaround": "generated_and_visually_checked_pending_user_review",
+    "construction": "generated_and_visually_checked_pending_user_review",
+    "original_mesh": "not_started",
+    "uv_atlas": "not_started",
+    "runtime_textures": "not_started",
+    "rig_skinning": "not_started",
+    "abilities": "proposal_only"
+  },
+  "images": {
+    "concept": "images/c09_concept.png",
+    "turnaround": "images/c09_turnaround.png",
+    "construction": "images/c09_construction.png"
+  },
+  "modeling_authority": "本輪概念圖及逐張目視紀錄定義採用外觀；三視與拆解為建模參考。少量透視、遮擋或跨視細節須在模型統一，不可當精確尺寸、UV或已完工資產。",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "generation": {
+    "tool": "built-in image_gen",
+    "date": "2026-09-25",
+    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "records": {
+      "concept": {
+        "design_id": "C-09",
+        "kind": "concept",
+        "path": "images/c09_concept.png",
+        "prompt": "prompts/c09_concept.txt",
+        "reference_images": [
+          "references/legacy/c09_front.png",
+          "references/halo/c09_helioskrill_front.png"
+        ],
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-1da436a5-6bbe-4279-b418-a953ee91aec7.png",
+        "date": "2026-09-25",
+        "postprocessing": "none",
+        "visual_review": "紅盔白甲與淺藍接縫保留，兩條低冠軌、連續V面窗、分層頰框及胸肋護甲可辨識。人體軟頸和肘膝成立；頭盔偏原Pegasus，HELIOSKRILL融合主要在頰框與胸肩。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c09_concept.json"
+      },
+      "construction": {
+        "design_id": "C-09",
+        "kind": "construction",
+        "path": "images/c09_construction.png",
+        "prompt": "prompts/c09_construction.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-5e16786f-78e4-4e53-9c0d-a5000da39e14.png",
+        "date": "2026-09-25",
+        "reference_images": [
+          "images/c09_concept.png",
+          "images/c09_turnaround.png",
+          "images/b09_design_sheet.png"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已逐圖目視：紅色雙低冠軌頭盔、暗 V 形單片面罩、側頰與下頜分件清楚；B 區白色藍角肩蓋、C 區白甲淺藍線胸片都與概念一致。D 區只有黑色軟墊雙接軌，獨立 B09 青藍／銀雙艙、兩青三角與中央下圓模組完整，沒有把背包外殼重複畫進裝甲。屬視覺建模參考，接點尺寸未驗證。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c09_construction.json"
+      },
+      "turnaround": {
+        "design_id": "C-09",
+        "kind": "turnaround",
+        "path": "images/c09_turnaround.png",
+        "prompt": "prompts/c09_turnaround.txt",
+        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-1374f759-dffb-459a-a8c1-f10f8b651192.png",
+        "date": "2026-09-25",
+        "reference_images": [
+          "images/c09_concept.png",
+          "images/b09_design_sheet.png"
+        ],
+        "postprocessing": "none",
+        "visual_review": "已逐圖目視：正／左／背三人同高同地線，左視鼻向左、背視無玻璃。Pegasus 紅色双冠軌頭盔、暗 V 面罩、米白身甲與稀疏藍線保留；側視可讀分層頰甲和肩蓋。B09 維持青藍雙艙、銀白側板兩個青三角、中央下方圓模組，配色未受紅白裝甲影響。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c09_turnaround.json"
+      }
+    },
+    "unselected_records": []
+  },
+  "equipment_type": "armor",
+  "proposal_only": true,
+  "source_references": {
+    "legacy": {
+      "name": "Pegasus",
+      "runtime_id": 8,
+      "kind": "restored_original_game_model_capture",
+      "images": [
+        "references/legacy/c09_front.png",
+        "references/legacy/c09_side.png",
+        "references/legacy/c09_rear.png"
+      ],
+      "audit": "sources/legacy_armor_audit.json"
+    },
+    "halo": {
+      "name": "HELIOSKRILL-class Mjolnir (GEN2)",
+      "game": "Halo 5: Guardians",
+      "master_chief": false,
+      "images": [
+        {
+          "key": "c09_helioskrill_front",
+          "source_page_url": "https://www.halopedia.org/File:H5-Waypoint-Helioskrill.png",
+          "image_url": "https://www.halopedia.org/images/4/4a/H5-Waypoint-Helioskrill.png?15b1c",
+          "local_path": "references/halo/c09_helioskrill_front.png",
+          "bytes": 2497520,
+          "sha256": "f180f5312ddc2e876922547a0f3b3660d47f9939fd029f5ae17d75eefd08ffcc",
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        },
+        {
+          "key": "c09_helioskrill_concept",
+          "source_page_url": "https://www.halopedia.org/File:H5G-Helioskrill_concept.jpg",
+          "image_url": "https://www.halopedia.org/images/1/1e/H5G-Helioskrill_concept.jpg?65b07",
+          "local_path": "references/halo/c09_helioskrill_concept.jpg",
+          "bytes": 331389,
+          "sha256": "9e263705ad081a2fcdddd6b69d64ffc08d9c6f6745d634446d86f5742666e1d0",
+          "visually_inspected": true,
+          "reference_role": "audited_source_not_necessarily_image_generation_input"
+        }
+      ],
+      "observed": {
+        "helmet": "頭盔眉緣下壓，連續玻璃面窗形成中央下凹 V 形；圓冠上有後掠的加厚冠片，護頰分成上下兩層，黑色短下顎清楚。",
+        "chest": "高開口護領围住可見軟頸，胸板依肋骨向中央斜收；肩甲和前臂由多片短甲叠成，肘部留出軟衣。",
+        "back": "製作原畫有後視：上背中央長尖盾形殼，兩側長後肩框，下接多層 V 形片；腰後另外一塊 U 形短板。",
+        "back_evidence": "production_concept_rear_and_side_view",
+        "match_reason": "Pegasus 的深 V 面罩、尖眉和寬肩，与 Helioskrill 的 V 面窗、分層護頰及環繞肩頸相近；能保留紅盔白甲並改善穿戴層次。"
+      },
+      "role": "selected_design_donor"
+    }
+  },
+  "fusion_recipe": {
+    "retained": [
+      "紅盔與白身的強烈原版分色",
+      "窄 V 形深面罩與短雙額尖",
+      "寬白肩及藍色身體細紋"
+    ],
+    "borrowed": {
+      "helmet": "頭盔眉緣下壓，連續玻璃面窗形成中央下凹 V 形；圓冠上有後掠的加厚冠片，護頰分成上下兩層，黑色短下顎清楚。",
+      "chest": "高開口護領围住可見軟頸，胸板依肋骨向中央斜收；肩甲和前臂由多片短甲叠成，肘部留出軟衣。",
+      "back": "製作原畫有後視：上背中央長尖盾形殼，兩側長後肩框，下接多層 V 形片；腰後另外一塊 U 形短板。",
+      "back_evidence": "production_concept_rear_and_side_view",
+      "match_reason": "Pegasus 的深 V 面罩、尖眉和寬肩，与 Helioskrill 的 V 面窗、分層護頰及環繞肩頸相近；能保留紅盔白甲並改善穿戴層次。"
+    },
+    "optimized": "Halo 配對可借折面戰術盔與肩甲層次；保留紅盔對白甲最關鍵識別，雙額尖可縮短成低眉角，不可全改白盔。",
+    "optimization_common": "胸腰按人體分件、露出織物關節、短化易勾掛尖片；避免單眼機械臉與巨型四肢。"
+  }
+}

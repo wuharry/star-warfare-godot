@@ -3,13 +3,24 @@
   "kind": "concept",
   "path": "images/c09_concept.png",
   "prompt": "prompts/c09_concept.txt",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-8dc16c8d-fc11-4215-aea4-847c96fd21ad.png",
+  "date": "2026-09-29",
   "reference_images": [
-    "references/legacy/c09_front.png",
-    "references/halo/c09_helioskrill_front.png"
+    "revisions/c09_before_color_fix_20260929/images/c09_concept.png"
   ],
-  "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-1da436a5-6bbe-4279-b418-a953ee91aec7.png",
-  "date": "2026-09-25",
+  "reference_sha256": {
+    "revisions/c09_before_color_fix_20260929/images/c09_concept.png": "65111bf812db20399f7fd4b589f6b1563dd194647c48b71967b447ab0a283cac"
+  },
   "postprocessing": "none",
-  "visual_review": "紅盔白甲與淺藍接縫保留，兩條低冠軌、連續V面窗、分層頰框及胸肋護甲可辨識。人體軟頸和肘膝成立；頭盔偏原Pegasus，HELIOSKRILL融合主要在頰框與胸肩。",
-  "status": "visually_reviewed_pending_user_selection"
+  "edit_scope": "helmet_shell_color_only",
+  "visual_review": "已目視：頭盔冠軌、額甲、側頰與下巴全部改為與胸肩一致的白灰色；深色 V 面罩、通風孔、既有全身輪廓與藍色身甲細節保留，雙腳完整。",
+  "status": "visually_checked_color_correction_pending_user_review",
+  "supersedes": "revisions/c09_before_color_fix_20260929/generation_records/c09_concept.json",
+  "prompt_sha256": "a87d04a7bd5d3fddf9e016952645702df31dd4c4d0ce3bd519d9065a93d1b6d2",
+  "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "bytes": 1956621
 }

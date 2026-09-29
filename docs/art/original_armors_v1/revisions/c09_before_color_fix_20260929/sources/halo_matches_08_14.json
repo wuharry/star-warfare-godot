@@ -1,0 +1,419 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-25",
+  "scope": "C-08–C-14 原裝甲 × Halo 非士官長款式的實圖配對稽核",
+  "status": "seven_matches_visually_audited_ready_for_parent_fusion_prompts",
+  "rules": [
+    "只有實際看過的原圖特徵才能稱為參考觀察。",
+    "禁止士官長及 Mark IV/V/VI/VII 主盔；CQC/EOD 是命名的多人遊戲變體，不能換成通用 Mark 主盔。",
+    "Halo 顏色不覆蓋 Star Warfare 原裝甲身份；保留原款配色與少量特徵再融合。",
+    "背部動力甲是穿戴結構參考；不可自行宣稱它對應 Star Warfare 獨立背包 ID。",
+    "新圖仍需重新安排輪廓、比例、板件、面罩、接縫，不能只把兩張圖拼起來。"
+  ],
+  "primary_source_policy": "官方原遊戲模型、官方網站渲染或製作人公開的原畫；Halopedia 用於取得檔案和原始作者出處。CQC 的補充四視圖是社群用 Bungie 原資產排版，已明列；不是 fanart 或 cosplay。",
+  "download_manifest": "test_output/armor_fusion_reset/halo_refs/downloads_08_14.json",
+  "legacy_audits": [
+    "test_output/armor_fusion_reset/legacy_armor_audit.json",
+    "test_output/armor_fusion_reset/legacy_armor_later.json"
+  ],
+  "technical_limitations": [
+    "c08_engineer_game3.png 的完整大圖透過 view_image 遭遇工具 base64 讀取錯誤；改下載並實看同公開頁面提供的 800px 伺服器縮圖，原檔仍保留。",
+    "Engineer 僅有側背模組可見；Perseus/EOD 無同款背面可見，兩者不能聲稱已核對完整後視。"
+  ],
+  "matches": [
+    {
+      "design_id": "C-08",
+      "runtime_armor_id": 7,
+      "runtime_name": "Atom",
+      "game": "Halo 4",
+      "variant": "ENGINEER-class Mjolnir (GEN2)",
+      "article_url": "https://www.halopedia.org/ENGINEER-class_Mjolnir",
+      "source_kind": "Official Halo 4 / Halo Waypoint render, confirmed against official Interactive Guide screenshot; supplementary actual MCC Halo 4 gameplay screenshot.",
+      "observed": {
+        "helmet": "圓冠中間寬槽；正面四個獨立圓形光譜節點、兩側機構框，下面連續環形下顎管。原款沒有普通寬面罩，融合時應主動保留 Atom 的玻璃面窗。",
+        "chest": "兩根向肩頸延伸的厚長胸帶，胸前一個集中維修模組，下胸收窄；肩殼低，胸帶、前臂、腹部之间露出蜂巢紋軟衣。",
+        "back": "主圖和遊戲側視看得到高於肩後的方長模組，外側有 U 形長槽與頂端網狀通風面；沒有取得正後方圖，不能描述背面中線。",
+        "back_evidence": "partial_side_only",
+        "match_reason": "Atom 的額頭多點感測與 Engineer 分散光學節點直接對應；胸帶／後肩模組能把 Atom 長肩領片轉成有用途的感測器護架。"
+      },
+      "integration_en": "Fuse original Star Warfare Atom with the observed Halo 4 Engineer construction. Keep Atom's violet and steel-blue armor, cyan glass visor, exactly three small cyan status points above and beside the brow, and paired rear-swept shoulder fins. Borrow Engineer's segmented engineering collar, serviceable chest cartridge, round side sensor fittings, and visible woven undersuit. Do not replace the visor with Engineer's four camera-like eyes: move the sensor language onto the brow and temple housings around one real human visor. Shorten Atom's shoulder fins into paired sensor guards connected to the rear carrier. Make the chest and hips follow a human torso with normal neck, elbows, knees and five-finger gloves. Rear carrier side pods may take Engineer's vented rectangular profile, but its unseen center-back details must be newly designed and identified as original. Retain Atom's purple-blue-cyan palette instead of the orange reference coating; change plate seams and module layout so the result is a new coherent suit.",
+      "source_page_url": "https://www.halopedia.org/File:H4_MJOLNIR_Engineer.png",
+      "image_url": "https://www.halopedia.org/images/1/12/H4_MJOLNIR_Engineer.png?8e2b5",
+      "local_path": "references/halo/c08_engineer_front.png",
+      "sha256": "59852ed20aa835bb5ba49a81107141d79e120bb06f00e193701e0d85adfc0e2a",
+      "visually_inspected": true,
+      "references": [
+        {
+          "key": "c08_engineer_front",
+          "source_page_url": "https://www.halopedia.org/File:H4_MJOLNIR_Engineer.png",
+          "image_url": "https://www.halopedia.org/images/1/12/H4_MJOLNIR_Engineer.png?8e2b5",
+          "local_path": "references/halo/c08_engineer_front.png",
+          "bytes": 1280234,
+          "sha256": "59852ed20aa835bb5ba49a81107141d79e120bb06f00e193701e0d85adfc0e2a",
+          "visually_inspected": true
+        },
+        {
+          "key": "c08_engineer_guide",
+          "source_page_url": "https://www.halopedia.org/File:H4IG_ENGINEER.jpg",
+          "image_url": "https://www.halopedia.org/images/e/e1/H4IG_ENGINEER.jpg?f2e1c",
+          "local_path": "references/halo/c08_engineer_guide.jpg",
+          "bytes": 153130,
+          "sha256": "5567e8f997f7e71742a2c0a46595e66edd48b118713008dfeb9281d30432a953",
+          "visually_inspected": true
+        },
+        {
+          "key": "c08_engineer_game3_preview",
+          "source_page_url": "https://www.halopedia.org/File:HTMCC-H4_Engineer_3.png",
+          "image_url": "https://halo.wiki.gallery/images/thumb/0/06/HTMCC-H4_Engineer_3.png/800px-HTMCC-H4_Engineer_3.png?20250420194221",
+          "local_path": "references/halo/c08_engineer_game3_preview.png",
+          "bytes": 506652,
+          "sha256": "4731b88799bc321a00e2eec4f785dde5f57090e7ef9aa5b4dd0ede19d4454285",
+          "note": "Public server thumbnail; original downloaded separately; no local image modification.",
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "C-09",
+      "runtime_armor_id": 8,
+      "runtime_name": "Pegasus",
+      "game": "Halo 5: Guardians",
+      "variant": "HELIOSKRILL-class Mjolnir (GEN2)",
+      "article_url": "https://www.halopedia.org/HELIOSKRILL-class_Mjolnir",
+      "source_kind": "Official Halo Waypoint customization renderer and Kory Lynn Hubbell production concept.",
+      "creator": "Kory Lynn Hubbell",
+      "creator_source_url": "https://www.artstation.com/artwork/dLwZ3",
+      "observed": {
+        "helmet": "頭盔眉緣下壓，連續玻璃面窗形成中央下凹 V 形；圓冠上有後掠的加厚冠片，護頰分成上下兩層，黑色短下顎清楚。",
+        "chest": "高開口護領围住可見軟頸，胸板依肋骨向中央斜收；肩甲和前臂由多片短甲叠成，肘部留出軟衣。",
+        "back": "製作原畫有後視：上背中央長尖盾形殼，兩側長後肩框，下接多層 V 形片；腰後另外一塊 U 形短板。",
+        "back_evidence": "production_concept_rear_and_side_view",
+        "match_reason": "Pegasus 的深 V 面罩、尖眉和寬肩，与 Helioskrill 的 V 面窗、分層護頰及環繞肩頸相近；能保留紅盔白甲並改善穿戴層次。"
+      },
+      "integration_en": "Fuse the original Star Warfare Pegasus with the observed Halo 5 Helioskrill helmet-and-collar language. Preserve Pegasus's unmistakable red helmet over off-white body armor, narrow dark V-shaped visor, two short brow points, broad pale shoulders, and sparse blue seam accents. Borrow the reference's layered cheek guards, human neck opening, articulated shoulder plates, and angled rib-protecting chest structure. Replace the single ornate swept crown with two much lower divided brow rails that grow out of Pegasus's own short points. Keep the visor continuous glass with a shallow central V; do not turn the face into eyes or a robotic muzzle. Rear structure may combine a newly shaped vertical central cover with two short side rails, informed by the documented Helioskrill rear concept but with a different panel sequence. Maintain normal human hands, soft joints and waist flexibility. Do not copy the purple-gold coating, alien emblems, exact crest or decorative striping.",
+      "source_page_url": "https://www.halopedia.org/File:H5-Waypoint-Helioskrill.png",
+      "image_url": "https://www.halopedia.org/images/4/4a/H5-Waypoint-Helioskrill.png?15b1c",
+      "local_path": "references/halo/c09_helioskrill_front.png",
+      "sha256": "f180f5312ddc2e876922547a0f3b3660d47f9939fd029f5ae17d75eefd08ffcc",
+      "visually_inspected": true,
+      "references": [
+        {
+          "key": "c09_helioskrill_front",
+          "source_page_url": "https://www.halopedia.org/File:H5-Waypoint-Helioskrill.png",
+          "image_url": "https://www.halopedia.org/images/4/4a/H5-Waypoint-Helioskrill.png?15b1c",
+          "local_path": "references/halo/c09_helioskrill_front.png",
+          "bytes": 2497520,
+          "sha256": "f180f5312ddc2e876922547a0f3b3660d47f9939fd029f5ae17d75eefd08ffcc",
+          "visually_inspected": true
+        },
+        {
+          "key": "c09_helioskrill_concept",
+          "source_page_url": "https://www.halopedia.org/File:H5G-Helioskrill_concept.jpg",
+          "image_url": "https://www.halopedia.org/images/1/1e/H5G-Helioskrill_concept.jpg?65b07",
+          "local_path": "references/halo/c09_helioskrill_concept.jpg",
+          "bytes": 331389,
+          "sha256": "9e263705ad081a2fcdddd6b69d64ffc08d9c6f6745d634446d86f5742666e1d0",
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "C-10",
+      "runtime_armor_id": 9,
+      "runtime_name": "Draco",
+      "game": "Halo: Reach",
+      "variant": "CQC helmet and shoulder configuration",
+      "article_url": "https://www.halopedia.org/CQC",
+      "source_kind": "Actual Halo: Reach / MCC game-asset capture; supplementary multi-view assembly by Durandal-217 using Bungie assets, explicitly not an official published turnaround.",
+      "observed": {
+        "helmet": "圓而短的平眉頭盔，冠頂中央黑槽、厚包下顎、側面大圓耳座；玻璃面罩有明確框和深度，後腦由矩形橫條包覆。",
+        "chest": "CQC 展示組合胸甲呈厚環狀架，短腹板依次下收；兩側矩形肩片向外下方壓住上臂；腋下、腰部和肘膝均有大幅軟衣。",
+        "back": "資產多視圖有完整後方：左右長背板夾住中央上背凹槽，背中有四段短橫片，下方梯形腰後片。",
+        "back_evidence": "original_game_asset_multi_view_assembly",
+        "match_reason": "Draco 的全灰黑、中央低冠稜、寬方護頰和折角肩，与 CQC 的無裝飾包覆盔及平矩形肩相近；人類軟衣與肩部固定可直接改善原輪廓。"
+      },
+      "integration_en": "Fuse original Star Warfare Draco with the observed Halo: Reach CQC construction. Keep Draco's coal-gray and iron-gray armor, very dark narrow horizontal visor, low central crown ridge, broad square cheek protection, outward-folded angular shoulders and hefty diamond-edged forearms. Borrow CQC's believable continuous helmet liner, circular low-profile ear seats, independent shoulder fastenings and flexible black undersuit around the chest, elbow, waist and knee. Keep the low crown ridge a single shallow wedge rather than reproducing CQC's exact twin top rails. Rebuild the chest as a compact split sternum frame around Draco's dark central mesh. Flatten the outer shoulder corners and add a second shorter lower plate so the arms can raise. Use a newly arranged two-rail rear armor support with a compact central service spine, based on the observed back's human attachment logic. Avoid new neon color blocks, gold visor, franchise badges or the reference's exact torso panel pattern.",
+      "source_page_url": "https://www.halopedia.org/File:HTMCC_HR_Spartan_CQC.png",
+      "image_url": "https://www.halopedia.org/images/5/50/HTMCC_HR_Spartan_CQC.png?68744",
+      "local_path": "references/halo/c10_cqc_game.png",
+      "sha256": "bad4046414c3afcbe732258d74476f237d4ccf75ee73b677e58cb85fe97f149b",
+      "visually_inspected": true,
+      "references": [
+        {
+          "key": "c10_cqc_game",
+          "source_page_url": "https://www.halopedia.org/File:HTMCC_HR_Spartan_CQC.png",
+          "image_url": "https://www.halopedia.org/images/5/50/HTMCC_HR_Spartan_CQC.png?68744",
+          "local_path": "references/halo/c10_cqc_game.png",
+          "bytes": 779316,
+          "sha256": "bad4046414c3afcbe732258d74476f237d4ccf75ee73b677e58cb85fe97f149b",
+          "visually_inspected": true
+        },
+        {
+          "key": "c10_cqc_armor",
+          "source_page_url": "https://www.halopedia.org/File:HR_CQC_Armor_ref.jpg",
+          "image_url": "https://www.halopedia.org/images/5/5a/HR_CQC_Armor_ref.jpg?d9799",
+          "local_path": "references/halo/c10_cqc_armor.jpg",
+          "bytes": 733615,
+          "sha256": "f7ab93e98c237d602d0dde9469716e4b19da2c77bfa998235cef4b7727f840dc",
+          "visually_inspected": true
+        },
+        {
+          "key": "c10_cqc_helmet",
+          "source_page_url": "https://www.halopedia.org/File:HR_CQC_hel_ref.jpg",
+          "image_url": "https://www.halopedia.org/images/1/1b/HR_CQC_hel_ref.jpg?8464f",
+          "local_path": "references/halo/c10_cqc_helmet.jpg",
+          "bytes": 684203,
+          "sha256": "13fd581e1ff6a1e10f0deced31fcae0f9c513a1058326d891f4422037ac7b76c",
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "C-11",
+      "runtime_armor_id": 10,
+      "runtime_name": "Phoenix",
+      "game": "Halo 4",
+      "variant": "VENATOR-class Mjolnir (GEN2)",
+      "article_url": "https://www.halopedia.org/VENATOR-class_Mjolnir",
+      "source_kind": "Production game-model presentation credited in-image to Josh Harvey / 343 Industries / Liquid Development; official-game Raptor-skin rear render as supplement.",
+      "creator": "Josh Harvey",
+      "observed": {
+        "helmet": "從額冠到尖收下顎的多面切角殼；面前 V 形發光窗框，側面有兩條短平行亮條，沒有外伸巨角。",
+        "chest": "胸甲由多塊斜向尖切片向中央集中；肩外側短三角甲片，高後頸護框；四肢仍是包在人類軟衣外的分片甲。",
+        "back": "同張製作模型圖提供全身後视：中線三個向下的 V 形／箭形層板，左右高短肩後柱，腰後小独立護板。",
+        "back_evidence": "production_model_front_rear_in_same_image",
+        "match_reason": "Phoenix 的尖翼冠、折線黑面罩、青藍線與分裂胸片，與 Venator 的 V 形面部及胸背斜切板相近；其穿戴結構能壓低原款過高的尖角。"
+      },
+      "integration_en": "Fuse original Star Warfare Phoenix with the observed Halo 4 Venator facet construction. Keep Phoenix's charcoal blue-violet armor, broad black visor with sparse cyan angular lines, two outward swept crown wings, cyan shoulder insets and tiny burgundy forearm inserts. Borrow Venator's angled cheek planes, compact segmented chest facets, short rear-collar pylons and a readable vertical sequence of back plates. Preserve a real continuous smoked-glass visor underneath the new brow instead of copying a sealed robotic Venator face. Reduce the original crown wings to low backward-swept armored tabs with rounded safety edges; leave the paired direction visible. Consolidate glowing circuitry into the visor rim and two shoulder strips. Use two broad staggered back cover plates with an offset latch rather than the reference's repeated three-chevron spine. Keep human-fit boots and gloves, soft armpits and a flexible waist. Retain the original dark-blue/cyan identity, not Venator's olive or Raptor coating.",
+      "source_page_url": "https://www.halopedia.org/File:H4_Venator_3d_model.jpg",
+      "image_url": "https://www.halopedia.org/images/b/b5/H4_Venator_3d_model.jpg?09d03",
+      "local_path": "references/halo/c11_venator_model.jpg",
+      "sha256": "de1573c2b4bf4d909e8a0fa57fcd20b5446ea740c337b5b02929760d8b96f803",
+      "visually_inspected": true,
+      "references": [
+        {
+          "key": "c11_venator_model",
+          "source_page_url": "https://www.halopedia.org/File:H4_Venator_3d_model.jpg",
+          "image_url": "https://www.halopedia.org/images/b/b5/H4_Venator_3d_model.jpg?09d03",
+          "local_path": "references/halo/c11_venator_model.jpg",
+          "bytes": 106473,
+          "sha256": "de1573c2b4bf4d909e8a0fa57fcd20b5446ea740c337b5b02929760d8b96f803",
+          "visually_inspected": true
+        },
+        {
+          "key": "c11_venator_rear",
+          "source_page_url": "https://www.halopedia.org/File:VenatorRaptorBack.png",
+          "image_url": "https://www.halopedia.org/images/c/cf/VenatorRaptorBack.png?bb4f6",
+          "local_path": "references/halo/c11_venator_rear.png",
+          "bytes": 101653,
+          "sha256": "c3aea31ce257f429a0663cab132ddbbde705ed3ac10d21f967b21da44072bdfa",
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "C-12",
+      "runtime_armor_id": 11,
+      "runtime_name": "Cygni",
+      "game": "Halo 5: Guardians",
+      "variant": "VALKYRIE-class Mjolnir (GEN2)",
+      "article_url": "https://www.halopedia.org/VALKYRIE-class_Mjolnir",
+      "source_kind": "Official Halo Waypoint customization renderer and Paul Richards production concept.",
+      "creator": "Paul Richards",
+      "creator_source_url": "https://thepaulrichards.tumblr.com/post/131979521164/for-freelance-inquiries-contact-paul-richards-at",
+      "observed": {
+        "helmet": "低圓冠與下压眉甲；連續面窗下緣呈折角；護頰斜向內收至中間短三角呼吸罩，小圓接點分置两側。",
+        "chest": "胸口上方兩塊高厚頸側板，下方黑色中央胸板；肩外端短翼片向外平展，前臂為緊貼手臂的長楔形。",
+        "back": "Paul Richards 多視原畫含後视與側面：左右後肩各一塊高短模組包圍中央深色水滴形小板，背腰分開，中下背留有軟衣空間。",
+        "back_evidence": "production_concept_rear_and_side_view",
+        "match_reason": "Cygni 的側翼、肩翼與U形護頰可結合 Valkyrie 的短外展肩片、內收面罩框和兩側高領；Valkyrie 的成對機翼感比已比較的 Air Assault 更接近原款。"
+      },
+      "rejected_alternative": {
+        "variant": "Halo 4/5 AIR ASSAULT",
+        "reason": "已實看官方製作前後模型及 Halo 5 渲染；是可用參考，但外形較平整箱式，Valkyrie 的肩端短翼與內收呼吸罩更貼近 Cygni。",
+        "references": [
+          {
+            "key": "c12_air_assault_model",
+            "source_page_url": "https://www.halopedia.org/File:H4_Air_Assault_3d_model.jpg",
+            "image_url": "https://www.halopedia.org/images/2/25/H4_Air_Assault_3d_model.jpg?d79de",
+            "local_path": "references/halo/c12_air_assault_model.jpg",
+            "bytes": 377873,
+            "sha256": "912ed21831808371d31bdb43eaf632215a57fdb451ca634a771123bd6a78613e"
+          },
+          {
+            "key": "c12_air_assault_h5_front",
+            "source_page_url": "https://www.halopedia.org/File:H5G_-_MJOLNIR_Air_Assault_render.png",
+            "image_url": "https://www.halopedia.org/images/e/e5/H5G_-_MJOLNIR_Air_Assault_render.png?f9e72",
+            "local_path": "references/halo/c12_air_assault_h5_front.png",
+            "bytes": 551299,
+            "sha256": "e62b37e7a9376e58195264e122e4e7206a4eb64c5209876b6faa79373b7577cc"
+          }
+        ]
+      },
+      "integration_en": "Fuse original Star Warfare Cygni with the observed Halo 5 Valkyrie collar, respirator and winged shoulder structure. Keep the coral-pink helmet distinct from the white-gray and deep forest-green body, the dark violet visor with a restrained copper-orange lower frame, and the paired short helmet/shoulder fins. Borrow Valkyrie's low brow shell, inward-sloping cheek plates, compact central breathing cover, broad upper chest straps and short wing-ended shoulders. Reshape the mask into Cygni's shallow copper U-frame with a shorter lower chin piece rather than copying Valkyrie's complete triangular beak. Consolidate the many original spikes into one short swept fin at each helmet side and one blunt shoulder wing on each side. Use the observed twin upper-back housings as inspiration for two small angled rear stabilizer cases connected to a newly designed central cover. Preserve black woven neck and joints, human gloves and proportional boots. Avoid the reference purple-yellow coating and all franchise symbols.",
+      "source_page_url": "https://www.halopedia.org/File:H5-Waypoint-Valkyrie.png",
+      "image_url": "https://www.halopedia.org/images/a/ac/H5-Waypoint-Valkyrie.png?be213",
+      "local_path": "references/halo/c12_valkyrie_front.png",
+      "sha256": "2f68796373cd4123ba4f73bdb8b6e67d2d6260a0cdbc83bb4798d7a338d5bedd",
+      "visually_inspected": true,
+      "references": [
+        {
+          "key": "c12_valkyrie_front",
+          "source_page_url": "https://www.halopedia.org/File:H5-Waypoint-Valkyrie.png",
+          "image_url": "https://www.halopedia.org/images/a/ac/H5-Waypoint-Valkyrie.png?be213",
+          "local_path": "references/halo/c12_valkyrie_front.png",
+          "bytes": 2497520,
+          "sha256": "2f68796373cd4123ba4f73bdb8b6e67d2d6260a0cdbc83bb4798d7a338d5bedd",
+          "visually_inspected": true
+        },
+        {
+          "key": "c12_valkyrie_concept",
+          "source_page_url": "https://www.halopedia.org/File:H5GC-Valkyrie.jpg",
+          "image_url": "https://www.halopedia.org/images/0/0a/H5GC-Valkyrie.jpg?c2b0a",
+          "local_path": "references/halo/c12_valkyrie_concept.jpg",
+          "bytes": 139983,
+          "sha256": "3a0726263de5e0e1b076bc6d534861ea6b01007caa701905681dca9f05b3ad55",
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "C-13",
+      "runtime_armor_id": 12,
+      "runtime_name": "Andromedae",
+      "game": "Halo 4",
+      "variant": "OCEANIC-class Mjolnir (GEN2)",
+      "article_url": "https://www.halopedia.org/OCEANIC-class_Mjolnir",
+      "source_kind": "Official production game model front/side and high-poly back by John Turner / Liquid Development / 343 Industries.",
+      "creator": "John Turner",
+      "creator_source_url": "https://www.johnturner3d.com/galleries/halo4/models/oceanic/oceanic.htm",
+      "observed": {
+        "helmet": "圓頂頭盔與幾乎包到冠部的大玻璃面窗；面前细十字保護桿，左右圓形耳座，短下顎與獨立頸圈。",
+        "chest": "宽 U 形大面胸框和圓弧頸口，兩側長肩帶；肩甲外片短尖，上臂與腹部保留大片黑色軟衣。",
+        "back": "高模後视有兩個平行長後肩殼，中間低矮中央服務蓋，下缘共用圆弧下框；盔後有圓形接點與分節中線。",
+        "back_evidence": "same-production high-poly rear; not a final textured rear screenshot",
+        "match_reason": "Andromedae 的圓冠、大面板、青色圓環，与 Oceanic 的圓耳座、圓弧護領和大玻璃窗相近；尤其可把原版實心假面變成明確有人佩戴的頭盔。"
+      },
+      "integration_en": "Fuse original Star Warfare Andromedae with the observed Halo 4 Oceanic round-shell and pressure-collar construction. Keep steel-blue main plates, deep navy undersuit, cyan segmented circles at the shoulders and one forearm, a rounded crown and a single central segmented crown channel. Borrow Oceanic's visible glass thickness, circular ear couplings, curved neck seal and wide open U-shaped chest support. Replace Andromedae's solid-looking face with a broad smoked-teal glass visor edged by a restrained cyan Y-shaped rim; do not copy Oceanic's exact full-height diving cage. Limit repeated circular graphics to three or four functional connector locations. Shape the back into two short low-profile side housings with one broad central service cover, informed by the documented high-poly back but with a different silhouette and seam layout. Keep the abdomen, inner arms and knees clearly fabric-covered and human. Retain the original blue/cyan palette instead of gold glass and exact Oceanic striping.",
+      "source_page_url": "https://www.halopedia.org/File:H4_Oceanic_Render.jpg",
+      "image_url": "https://www.halopedia.org/images/f/f1/H4_Oceanic_Render.jpg?47af9",
+      "local_path": "references/halo/c13_oceanic_model.jpg",
+      "sha256": "2f7f153d3d2286310558c7d79c6514c85712e44432c35112086dae4ae9edd5b2",
+      "visually_inspected": true,
+      "references": [
+        {
+          "key": "c13_oceanic_model",
+          "source_page_url": "https://www.halopedia.org/File:H4_Oceanic_Render.jpg",
+          "image_url": "https://www.halopedia.org/images/f/f1/H4_Oceanic_Render.jpg?47af9",
+          "local_path": "references/halo/c13_oceanic_model.jpg",
+          "bytes": 628895,
+          "sha256": "2f7f153d3d2286310558c7d79c6514c85712e44432c35112086dae4ae9edd5b2",
+          "visually_inspected": true
+        },
+        {
+          "key": "c13_oceanic_hipoly",
+          "source_page_url": "https://www.halopedia.org/File:H4_Oceanic_HiPoly_Render_2.jpg",
+          "image_url": "https://www.halopedia.org/images/6/64/H4_Oceanic_HiPoly_Render_2.jpg?49d9c",
+          "local_path": "references/halo/c13_oceanic_hipoly.jpg",
+          "bytes": 403347,
+          "sha256": "25a843dacaa80ab7ad676c08fa984eeb18fc2cc8450a64f9274bd4b503d8a7f2",
+          "visually_inspected": true
+        }
+      ]
+    },
+    {
+      "design_id": "C-14",
+      "runtime_armor_id": 13,
+      "runtime_name": "Perseus",
+      "game": "Halo 3 (MCC game captures)",
+      "variant": "EOD-class Mjolnir, Halo 3 helmet/chest/shoulder configuration",
+      "article_url": "https://www.halopedia.org/EOD-class_Mjolnir",
+      "source_kind": "Halo 3 original game model render and directly ripped MCC armor menu graphic; supplementary actual MCC Halo 3 screenshot.",
+      "observed": {
+        "helmet": "直立的高平冠，額部厚水平護板；小型雙玻璃眼窗，中央呼吸罩和兩側前突的短矩形呼吸管；頰側內凹，頭盔没有頭冠尖刺。",
+        "chest": "厚實宽V/U胸框包住中央黑色胸口開口；肩殼是單塊圓鈍護片，下缘小長條燈；領圈低而寬。",
+        "back": "已取得的確定 Halo 3 EOD 原圖皆為前面或前側，沒有確定的同款完整後视。不要把 Halo Reach EOD 頭盔圖或其他套裝背包当 Halo 3 EOD 背面。",
+        "back_evidence": "not_found_after_targeted_search",
+        "match_reason": "Perseus 的高封閉頭盔與兩側呼吸濾器，可結合 EOD 的爆破防護面殼和清楚頸口；厚胸框補足承重結構，原 Perseus 多層肩甲應保留。"
+      },
+      "rejected_alternative": {
+        "variant": "Halo: Reach EOD helmet reference",
+        "reason": "Halo_EOD.jpg 實圖為 Reach 的三種 EOD 頭盔附件，非 Halo 3 EOD；已下載但不混入主款式。",
+        "references": [
+          {
+            "key": "c14_eod_game",
+            "source_page_url": "https://www.halopedia.org/File:Halo_EOD.jpg",
+            "image_url": "https://www.halopedia.org/images/c/c7/Halo_EOD.jpg?ce055",
+            "local_path": "references/halo/c14_eod_game.jpg",
+            "bytes": 13512,
+            "sha256": "5f041aeee25a05a1f52bff62cda8ccd0d6e40166d4ef8abd6b2b06c9687d4fc0"
+          }
+        ]
+      },
+      "integration_en": "User revision: restore and improve the ORIGINAL Star Warfare helmet as the primary design. Preserve the current redesigned body. Perseus must have a completely enclosed hard faceplate, tall faceted shell, converging pale branch lines and narrow orange crown stripe. No goggles, no horizontal glass eye band, no exposed eye windows. Halo remains a body and attachment construction donor, not the helmet authority.",
+      "source_page_url": "https://www.halopedia.org/File:EODArmor.png",
+      "image_url": "https://www.halopedia.org/images/2/29/EODArmor.png?3bed1",
+      "local_path": "references/halo/c14_eod_full.png",
+      "sha256": "d5f83f844872f0366b3fdb41972076961842f0cc656b4dfbde8119ff4dc536bf",
+      "visually_inspected": true,
+      "references": [
+        {
+          "key": "c14_eod_full",
+          "source_page_url": "https://www.halopedia.org/File:EODArmor.png",
+          "image_url": "https://www.halopedia.org/images/2/29/EODArmor.png?3bed1",
+          "local_path": "references/halo/c14_eod_full.png",
+          "bytes": 552041,
+          "sha256": "d5f83f844872f0366b3fdb41972076961842f0cc656b4dfbde8119ff4dc536bf",
+          "visually_inspected": true
+        },
+        {
+          "key": "c14_eod_front",
+          "source_page_url": "https://www.halopedia.org/File:HTMCC_H3_EOD_Menu_Render.png",
+          "image_url": "https://www.halopedia.org/images/7/70/HTMCC_H3_EOD_Menu_Render.png?21a1c",
+          "local_path": "references/halo/c14_eod_front.png",
+          "bytes": 111560,
+          "sha256": "343c4cf6f271d2ae0019280c715a0f15b1875a34285764ec5cfe34dfa7612fa6",
+          "visually_inspected": true
+        },
+        {
+          "key": "c14_eod_closeup",
+          "source_page_url": "https://www.halopedia.org/File:HTMCC-H3_EODCloseup.jpg",
+          "image_url": "https://www.halopedia.org/images/1/10/HTMCC-H3_EODCloseup.jpg?09485",
+          "local_path": "references/halo/c14_eod_closeup.jpg",
+          "bytes": 356528,
+          "sha256": "a26bca7c81e7062ce04a53526c709566051b5423cf1f1c07314c2d37c1b717c0",
+          "visually_inspected": true
+        }
+      ],
+      "user_direction_override": {
+        "date": "2026-09-25",
+        "priority": "highest",
+        "instruction": "使用者要求原Perseus封閉硬面甲，不要護目鏡；EOD僅供頸部與胸肩穿戴結構參考。"
+      },
+      "initial_integration_en": "Fuse original Star Warfare Perseus with the observed Halo 3 EOD protective helmet-and-chest construction. Preserve Perseus's charcoal green-black armor, sparse rust-orange trim, tall enclosed helmet silhouette, side breathing fittings and layered heavy shoulders. Borrow EOD's pressure-deflecting brow, recessed human glass eye band, compact paired respirator housings and strong chest yoke around a soft neck opening. Keep the face windows readable as smoked glass rather than illuminated robot eyes; combine them into a slim shallow band under the brow if needed. Translate Perseus's white branching face marks into two restrained etched frame lines and keep its orange crown strip narrow. Retain three overlapping shoulder layers but lower their height so the head can turn. There is no verified Halo 3 EOD rear view in this source set: design the new rear armor and backpack interface originally from the mapped Star Warfare source, and label those choices as new design. Maintain human hands, soft joints and a flexible waist."
+    }
+  ],
+  "reference_path_base": "docs/art/original_armors_v1/",
+  "historical_reference_paths": {
+    "test_output/armor_fusion_reset/halo_refs/c08_engineer_front.png": "references/halo/c08_engineer_front.png",
+    "test_output/armor_fusion_reset/halo_refs/c08_engineer_guide.jpg": "references/halo/c08_engineer_guide.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c08_engineer_game3_preview.png": "references/halo/c08_engineer_game3_preview.png",
+    "test_output/armor_fusion_reset/halo_refs/c09_helioskrill_front.png": "references/halo/c09_helioskrill_front.png",
+    "test_output/armor_fusion_reset/halo_refs/c09_helioskrill_concept.jpg": "references/halo/c09_helioskrill_concept.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c10_cqc_game.png": "references/halo/c10_cqc_game.png",
+    "test_output/armor_fusion_reset/halo_refs/c10_cqc_armor.jpg": "references/halo/c10_cqc_armor.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c10_cqc_helmet.jpg": "references/halo/c10_cqc_helmet.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c11_venator_model.jpg": "references/halo/c11_venator_model.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c11_venator_rear.png": "references/halo/c11_venator_rear.png",
+    "test_output/armor_fusion_reset/halo_refs/c12_air_assault_model.jpg": "references/halo/c12_air_assault_model.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c12_air_assault_h5_front.png": "references/halo/c12_air_assault_h5_front.png",
+    "test_output/armor_fusion_reset/halo_refs/c12_valkyrie_front.png": "references/halo/c12_valkyrie_front.png",
+    "test_output/armor_fusion_reset/halo_refs/c12_valkyrie_concept.jpg": "references/halo/c12_valkyrie_concept.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c13_oceanic_model.jpg": "references/halo/c13_oceanic_model.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c13_oceanic_hipoly.jpg": "references/halo/c13_oceanic_hipoly.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c14_eod_game.jpg": "references/halo/c14_eod_game.jpg",
+    "test_output/armor_fusion_reset/halo_refs/c14_eod_full.png": "references/halo/c14_eod_full.png",
+    "test_output/armor_fusion_reset/halo_refs/c14_eod_front.png": "references/halo/c14_eod_front.png",
+    "test_output/armor_fusion_reset/halo_refs/c14_eod_closeup.jpg": "references/halo/c14_eod_closeup.jpg"
+  }
+}
