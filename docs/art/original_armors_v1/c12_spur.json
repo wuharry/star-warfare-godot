@@ -293,11 +293,16 @@
     "runtime_implemented": false
   },
   "helmet_studies": {
-    "status": "anubis_direction_preferred_gold_visor_revision_pending_user_review",
+    "status": "broad_gold_preserved_t_variant_pending_comparison",
     "preferred_direction": "anubis",
-    "latest_variant": "anubis_gold",
+    "latest_variant": "anubis_gold_t",
     "comparison_page": "revisions/c12_helmet_fusions_20260929/index.html",
     "manifest": "revisions/c12_helmet_fusions_20260929/study.json",
-    "note": "Anubis 方向已獲偏好；金色大面罩修訂待確認，三視與拆解尚未同步。"
+    "note": "金色大面罩已獲保留要求；另有略偏 T 字版並排比較，最終面罩形狀待選，三視與拆解尚未同步。",
+    "comparison_variants": [
+      "anubis_gold",
+      "anubis_gold_t"
+    ],
+    "preserved_variant": "anubis_gold"
   }
 }
