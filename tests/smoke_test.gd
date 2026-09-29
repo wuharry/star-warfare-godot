@@ -11,6 +11,7 @@ func _check(condition: bool, message: String) -> void:
 		push_error("SMOKE TEST: " + message)
 
 func _run() -> void:
+	GameState.save_path = GameState.TEST_SAVE_PATH
 	GameState.selected_level = 1
 	var packed := load("res://scenes/game.tscn") as PackedScene
 	_check(packed != null, "game scene could not be loaded")

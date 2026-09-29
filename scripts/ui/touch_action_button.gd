@@ -24,19 +24,19 @@ func _ready() -> void:
 	queue_redraw()
 
 func _input(event: InputEvent) -> void:
-	if not visible:
-		return
 	if event is InputEventScreenTouch:
-		if event.pressed and active_touch < 0 and get_global_rect().has_point(event.position):
-			active_touch = event.index
-			held = true
-			pressed.emit()
-			queue_redraw()
-			get_viewport().set_input_as_handled()
-		elif not event.pressed and event.index == active_touch:
+		# A scope button can disappear while its finger is still down (reload,
+		# weapon switch, pause). Always release that finger, even while hidden.
+		if not event.pressed and event.index == active_touch:
 			active_touch = -1
 			held = false
 			released.emit()
+			queue_redraw()
+			get_viewport().set_input_as_handled()
+		elif event.pressed and is_visible_in_tree() and not get_tree().paused and active_touch < 0 and get_global_rect().has_point(event.position):
+			active_touch = event.index
+			held = true
+			pressed.emit()
 			queue_redraw()
 			get_viewport().set_input_as_handled()
 
