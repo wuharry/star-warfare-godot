@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cygni｜頭盔融合試稿</title>
+<style>
+:root{color-scheme:dark;--bg:#10171b;--panel:#182228;--line:#34434c;--ink:#edf1f2;--muted:#adc0c9;--accent:#e2a970}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Noto Sans TC",sans-serif}main{max-width:1420px;margin:auto;padding:32px 28px 56px}a{color:#b6d8e9;text-underline-offset:4px}h1{font-size:clamp(28px,3.8vw,46px);line-height:1.2;margin:14px 0}h2{font-size:23px;line-height:1.35;margin:8px 0}h3{font-size:18px;margin:12px 0 6px}p{margin:8px 0}.eyebrow{letter-spacing:.16em;color:var(--accent);font-size:12px}.intro{max-width:850px;color:var(--muted)}.toolbar{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:16px 0;background:var(--bg);margin-top:18px}.toolbar span{color:var(--muted);font-size:13px;margin-left:auto}button{font:inherit;color:inherit;cursor:pointer}.mode{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px 18px}.mode[aria-pressed="true"]{border-color:var(--accent);color:#ffe2c2;background:#3a2d24}.mode:focus-visible,a:focus-visible,.portrait:focus-visible{outline:3px solid #97cfff;outline-offset:3px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}.card header{padding:18px 20px 14px;min-height:128px}.tag{color:var(--accent);font-size:12px;letter-spacing:.06em}.card header p{font-size:13px;color:var(--muted)}.portrait{display:block;position:relative;overflow:hidden;width:100%;aspect-ratio:1;border:0;padding:0;background:#b6b7b8}.portrait img{position:absolute;width:250%;max-width:none;height:auto;left:-73%;top:-4%;display:block}.cards.full .portrait{aspect-ratio:2/3}.cards.full .portrait img{position:static;width:100%;height:100%;object-fit:contain}.caption{padding:16px 20px 20px}.caption ul{padding-left:20px;margin:6px 0 14px}.caption li{margin:5px 0}.caption a{font-size:14px}.note{color:var(--muted);font-size:14px}.sources{margin-top:38px}.source-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.source-card{padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}.source-image{padding:0;border:0;width:100%;background:#0b1014;display:block;cursor:zoom-in}.source-image img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain}.source-card p{color:var(--muted);font-size:14px}.links{display:flex;flex-wrap:wrap;gap:16px}footer{border-top:1px solid var(--line);margin-top:32px;padding-top:20px;color:var(--muted);font-size:13px}dialog{width:min(1100px,96vw);max-height:96vh;background:#10171b;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px}dialog::backdrop{background:#000c}.dialog-bar{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:4px 4px 12px}.close{border:1px solid var(--line);border-radius:7px;padding:7px 14px;background:var(--panel)}#large-image{display:block;width:100%;max-height:82vh;object-fit:contain}
+#anubis-gold{border-color:var(--accent)}summary{cursor:pointer;margin-bottom:14px}
+@media(max-width:850px){main{padding:22px 16px 40px}.cards{grid-template-columns:1fr}#anubis-gold{order:-2}#anubis{order:-1}.card header{min-height:0}.portrait{aspect-ratio:1.3}.portrait img{width:220%;left:-58%;top:-3%}.source-grid{grid-template-columns:1fr}.toolbar span{width:100%;margin:0}.caption{padding-top:12px}}
+</style>
+</head>
+<body>
+<main>
+<a href="../../index.html#C-12">← 回到 Cygni 圖集</a>
+<header>
+<p class="eyebrow">C-12 · CYGNI · HELMET STUDY</p>
+<h1>Anubis 輪廓，金色大面罩。</h1>
+<p class="intro">依你的偏好沿用 Anubis 融合方向，將面罩改成金色並擴大，縮薄護頰與下巴。白灰外殼、後掠短翼和身甲配色延續。</p>
+<p class="note">Anubis 方向已獲偏好；最新金色大面罩修訂的效果待確認。下方保留 Moonfang 試稿及實際參考圖。</p>
+</header>
+<div class="toolbar" role="group" aria-label="比較範圍">
+<button class="mode" id="head-mode" type="button" aria-pressed="true">頭盔放大</button>
+<button class="mode" id="body-mode" type="button" aria-pressed="false">全身搭配</button>
+<span>點圖可開啟完整圖片</span>
+</div>
+<section class="cards" id="cards" aria-label="原稿、Anubis 初稿與金色大面罩修訂">
+<article class="card" id="baseline">
+<header><span class="tag">目前版本</span><h2>白灰 Cygni</h2><p>保留原版辨識度的基準稿</p></header>
+<button class="portrait" type="button" data-title="目前版本｜白灰 Cygni" aria-label="放大目前版本"><img src="images/baseline.png" alt="目前白灰 Cygni：楔形額甲、紫色面罩、厚銅橙 U 框與短疊側翼"></button>
+<div class="caption"><ul><li>大片楔形額甲、雙側短翼。</li><li>紫色面罩由銅橙 U 框包覆。</li><li>兩側圓接點、中央短下巴。</li></ul><p class="note">本輪融合稿的共同起點。</p></div>
+</article>
+<article class="card" id="anubis">
+<header><span class="tag">A 初稿 · 已偏好此方向</span><h2>Cygni × Anubis</h2><p>分層眉甲、斜收護頰</p></header>
+<button class="portrait" type="button" data-title="試稿 A｜Cygni × Anubis" aria-label="放大 Anubis 融合試稿"><img src="images/anubis.png" alt="Cygni 與 Halo 5 Anubis 結合的白灰頭盔試稿"></button>
+<div class="caption"><ul><li>額甲改為較低的分層眉緣。</li><li>護頰向內收，下巴改為短中央護塊。</li><li>銅橙細節跟隨新面部結構重排。</li></ul><a href="#source-anubis">對照 Anubis 參考 ↓</a></div>
+</article>
+<article class="card" id="anubis-gold">
+<header><span class="tag">A 修訂 · 最新</span><h2>金色大面罩</h2><p>玻璃面積擴大、護頰與下巴縮薄</p></header>
+<button class="portrait" type="button" data-title="最新修訂｜Cygni × Anubis 金色大面罩" aria-label="放大金色大面罩修訂"><img src="images/anubis_gold.png" alt="Cygni Anubis 融合修訂：擴大金色反光面罩、白灰外殼與後掠短翼"></button>
+<div class="caption"><ul><li>紫色玻璃改為金色反光面罩。</li><li>面罩向兩側及下方延伸，縮薄頰框。</li><li>保留分層眉甲、白灰外殼與雙側短翼。</li></ul><a href="prompts/anubis_gold.txt">本次修訂提示詞 ↗</a></div>
+</article>
+</section>
+<details class="sources" id="other-study"><summary>查看先前 B 方案：Moonfang-X7</summary>
+<article class="source-card" id="moonfang">
+<header><span class="tag">試稿 B · DESTINY 2</span><h2>Cygni × Moonfang-X7</h2><p>中央額脊、收尖面窗</p></header>
+<button class="source-image" type="button" data-title="試稿 B｜Cygni × Moonfang-X7" aria-label="放大 Moonfang 融合試稿"><img src="images/moonfang.png" alt="Cygni 與 Destiny 2 Moonfang-X7 Mask 結合的白灰頭盔試稿" style="aspect-ratio:2/3;max-height:720px"></button>
+<div class="caption"><ul><li>額頂改成中央淺脊與兩側凹槽。</li><li>面窗向中央收尖，頰甲包住兩側。</li><li>側翼接入耳後甲片，保留飛翼輪廓。</li></ul><a href="#source-moonfang">對照 Moonfang-X7 參考 ↓</a></div>
+</article>
+</details>
+<section class="sources" aria-labelledby="sources-heading">
+<h2 id="sources-heading">這次實際使用的參考</h2>
+<div class="source-grid">
+<article class="source-card" id="source-anubis"><h3>Halo 5 · Anubis</h3><button type="button" class="source-image" data-title="參考原圖｜Halo 5 Anubis" aria-label="放大 Anubis 原始參考"><img src="../../references/halo/c12_anubis_production.jpg" alt="Pablo Vicentini 的 Halo 5 Anubis 製作渲染"></button><p>取用眉甲的前後層次、斜向護頰與短中央護塊。白灰、暗紫與銅橙依 Cygni 配色重新安排。</p><p class="links"><a href="https://www.halopedia.org/File:Anubis-armor-render-02.jpg" target="_blank" rel="noopener noreferrer">圖片來源 ↗</a><a href="https://www.halopedia.org/ANUBIS-class_Mjolnir" target="_blank" rel="noopener noreferrer">型號資料 ↗</a></p></article>
+<article class="source-card" id="source-moonfang"><h3>Destiny 2 · Moonfang-X7 Mask</h3><button type="button" class="source-image" data-title="參考原圖｜Destiny 2 Moonfang-X7 Mask" aria-label="放大 Moonfang 原始參考"><img src="../../references/destiny2/c12_moonfang_x7_mask.jpg" alt="Bungie Moonfang-X7 Mask 物品圖片，中央額脊與向下收尖的面窗"></button><p>取用中央額脊、兩側冠槽與收尖玻璃輪廓。側翼及銅橙細節承接 Cygni；原參考的青藍色和額頭符號省略。</p><p class="links"><a href="https://www.bungie.net/common/destiny2_content/screenshots/2623956730.jpg" target="_blank" rel="noopener noreferrer">Bungie 原圖 ↗</a><a href="https://www.light.gg/db/items/2623956730/moonfang-x7-mask/" target="_blank" rel="noopener noreferrer">物品資料 ↗</a></p></article>
+</div>
+</section>
+<footer><p>本輪已選擇 Anubis 作為修訂方向；金色大面罩效果待確認，尚未同步三視／拆解。生成會重繪表面紋理與少量比例；後續建模需統一尺寸與活動間隙。</p><p class="links"><a href="README.md">製作紀錄</a><a href="prompts/anubis_gold.txt">金色修訂提示詞</a><a href="prompts/anubis.txt">A 初稿提示詞</a><a href="prompts/moonfang.txt">B 提示詞</a><a href="study.json">來源與生成紀錄</a></p></footer>
+</main>
+<dialog id="image-dialog" aria-labelledby="dialog-title"><div class="dialog-bar"><strong id="dialog-title"></strong><button class="close" id="close-dialog" type="button">關閉 ×</button></div><img id="large-image" alt=""></dialog>
+<script>
+const cards=document.getElementById('cards');
+const head=document.getElementById('head-mode'),body=document.getElementById('body-mode');
+function mode(full){cards.classList.toggle('full',full);head.setAttribute('aria-pressed',String(!full));body.setAttribute('aria-pressed',String(full))}
+head.addEventListener('click',()=>mode(false));body.addEventListener('click',()=>mode(true));
+const dialog=document.getElementById('image-dialog'),large=document.getElementById('large-image');
+document.querySelectorAll('[data-title]').forEach(button=>button.addEventListener('click',()=>{const image=button.querySelector('img');large.src=image.src;large.alt=image.alt;document.getElementById('dialog-title').textContent=button.dataset.title;dialog.showModal()}));
+document.getElementById('close-dialog').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close()});
+</script>
+</body>
+</html>
