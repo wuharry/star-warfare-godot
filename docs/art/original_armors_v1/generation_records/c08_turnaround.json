@@ -3,13 +3,26 @@
   "kind": "turnaround",
   "path": "images/c08_turnaround.png",
   "prompt": "prompts/c08_turnaround.txt",
-  "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-16c97566-35f3-4f16-ab9f-44cdfbac64e8.png",
-  "date": "2026-09-25",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-884e81ae-f152-4722-9aeb-1ac92477f3fa.png",
+  "date": "2026-09-29",
   "reference_images": [
-    "images/c08_concept.png",
-    "images/b08_design_sheet.png"
+    "revisions/c08_before_helmet_swap_20260929/images/c08_turnaround.png",
+    "images/c08_concept.png"
   ],
+  "reference_sha256": {
+    "revisions/c08_before_helmet_swap_20260929/images/c08_turnaround.png": "2a498909fd0855bb82cb841aaaaeb38f68cc74f38130d3a744d6c64d3c427f40",
+    "images/c08_concept.png": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d"
+  },
   "postprocessing": "none",
-  "visual_review": "已逐圖目視：FRONT／LEFT／BACK 三人等高同地線，左視鼻朝畫面左、背視無面罩。Atom 紫／鋼藍配色、額上三顆青點、青色單片玻璃、短肩護鰭、中央直青窗皆保留。B08 獨立藍黃雙艙與中央分節脊、下端黃三角一致，穿戴於腰上且沒有把背包色改成裝甲紫色。",
-  "status": "visually_reviewed_pending_user_selection"
+  "edit_scope": "helmet_only_edit_intent_existing_body_retained",
+  "visual_review": "已目視：正／左／背視沿用 Atom 紫藍配色，正側面為較扁的青色連續視窗與短下巴，背視無面罩；三顆額燈在正視可見，側視部分遮擋。B08 藍黃雙艙仍為獨立背包。細部接縫需在模型統一。",
+  "status": "visually_checked_from_adopted_helmet_direction",
+  "supersedes": "revisions/c08_before_helmet_swap_20260929/generation_records/c08_turnaround.json",
+  "prompt_sha256": "4b60ff96c142f99f9790b11b6f7f26eee3de2bb3f82c5dea6be5c23add6d0061",
+  "sha256": "971d30f86f4a23db839bd6e3e56fb97b321e54b9edb690c03ac7992f077ea969",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "bytes": 2164385
 }

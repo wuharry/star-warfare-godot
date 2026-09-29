@@ -4,7 +4,7 @@
   "runtime_id": null,
   "working_name_zh": "破線",
   "working_name_en": "BREACHLINE",
-  "status": "concept_ready_for_user_review",
+  "status": "helmet_direction_adopted",
   "runtime_implemented": false,
   "proposed_role_replacement": {
     "legacy_visual_id": 4,
@@ -27,10 +27,10 @@
       "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
     },
     {
-      "family": "金玻璃",
+      "family": "胸片金色",
       "hex": "#DDB44A",
       "target_percent": null,
-      "usage": "本輪原版配色身份的近似美術色票；不是圖像取樣或UV材質值。"
+      "usage": "保留胸甲中央小金片；本輪頭盔玻璃改為青色，色票為美術近似值。"
     },
     {
       "family": "深色內襯",
@@ -40,20 +40,20 @@
     }
   ],
   "visual_identity": {
-    "status": "prompt_target_with_actual_reviews_below",
+    "status": "adopted_helmet_direction_with_visual_reviews",
     "proportion_target": "約6～6.5個頭盔高的厚實人體；屬 brief 目標，未作像素量測。",
-    "head": "分節鋼藍頭殼、寬金玻璃、短眉槽與少量青色節點；Recruit 頰框",
+    "head": "鋼藍分節圓冠、雙青色冠環；Atom＋Recruit 青色連續面罩向下收窄，底中央留小凹口，短下巴與收口頰甲。",
     "torso": "斜分胸框及小金色中心片，腹部為織物和獨立甲片",
     "shoulders": "圓肩外殼與較短下層肩片；青色圓節點集中",
     "arms": "正常五指手套、布衣肘窩與分件護臂。原版保留線索：雙前臂藍色長切面甲，各有青色環形燈點，深色手套；腕段造型簡單。",
     "legs": "人的髖膝踝位置、軟膝後和正常軍靴；尖片按融合 brief 收短。原版保留線索：長藍色腿甲；髖側大青色環，膝有三條青色橫燈，鞋後/腳底有短青線；深棕布衣留在關節。",
     "pack": "背包為獨立装备。三視製作可示範搭配 B-05，不是原遊戲固定套裝或技能關聯；以 B 款獨立設計稿為準。",
     "concept_prompt": "prompts/c05_concept.txt",
-    "full_fusion_brief_en": "Fuse Strike's steel-blue armor, wide golden visor, vented brow and turquoise circular or hexagonal status nodes with Halo 4 Recruit's segmented rounded helmet, separated shoulder layers, sloping chest frame and human-shaped black flexible abdomen. Rebuild the helmet outlines around Strike's wide visor rather than copying Recruit's exact facial cutout. Concentrate the turquoise nodes on the crown, one shoulder region and forearm; reduce the scattered circuitry to improve readability. Borrow the rear design principle of two spaced vertical armored housings with a clear flexible spine channel, redesigning their shapes and connection points. These housings are part of the suit, not a freestanding backpack; leave a separate hardpoint for the actual mapped game backpack. Keep athletic human hips, exposed textile elbow folds and normal gloves.",
+    "full_fusion_brief_en": "Adopt the selected Atom-plus-Recruit helmet on the existing Strike full-body concept. Keep the steel-blue segmented round crown and exactly two cyan crown rings. Use one continuous cyan faceplate tapering down toward a small lower-center notch, with compact cheek framing and a short tucked chin. Retain Strike's existing full-body proportions, body armor, cyan nodes and gold chest insert. The previous gold visor and illuminated forehead square are superseded. Turnaround and exploded construction must follow the new head while retaining the existing body and separate B05 pack.",
     "actual_reviews": {
-      "concept": "已目視：Strike金面罩、冠頂青點與青圓節點保留；Recruit式分段圓冠、收口頰架、分離肩片及双低背甲構造可讀；全身藍甲、正常手套、人類關節、無武器和獨立背包。",
-      "construction": "修正版逐圖目視通過：A 保留藍殼、雙青色冠點、金面罩與軟頭襯；B/C 肩胸拆件與概念一致。D 區角色背部已改成純黑軟墊及雙灰接軌，沒有複製背包三條青光或白色底板；完整 B05 外殼與三條青光只出現在旁邊獨立背包一次。未驗證接點實際尺寸。",
-      "turnaround": "三視已目視：Strike雙額青點、金面罩、青肩前臂節點及三條膝燈一致；站高與地線一致；B05灰白雙殼、藍色中艙三青横窗及下方藍長窗符合Bsheet，背包保持獨立。 仍是建模概念參考，未證明尺寸/機構可製作。"
+      "concept": "已目視：鋼藍分片圓冠及雙青色冠環保留；面罩改為 Atom＋Recruit 的青色連續玻璃，下緣向中央收窄並留小凹口，頰甲與下巴縮短。沿用原全身概念的比例、藍甲與金色胸片；完整站姿，無武器或獨立背包。",
+      "turnaround": "已目視：正／左／背視的藍色分片圓冠、雙青色冠環與青玻璃方向一致，背視無面罩；身甲及獨立 B05 灰白雙殼與藍色中艙保留。跨視接縫與尺寸仍須建模時統一。",
+      "construction": "已目視：A 組裝與拆件皆為雙青色冠環、青色收口玻璃及短下巴；舊額前方形燈已填回不發光藍甲，眉側通風槽已簡化。B/C 肩胸沿用原設計；D 為黑色背墊與双接軌，完整 B05 外殼只在獨立背包上。未驗證實際接點尺寸。"
     }
   },
   "proposed_stats": {
@@ -90,9 +90,9 @@
     }
   ],
   "production_status": {
-    "concept": "generated_and_visually_checked_pending_user_review",
-    "turnaround": "generated_and_visually_checked_pending_user_review",
-    "construction": "generated_and_visually_checked_pending_user_review",
+    "concept": "generated_and_visually_checked_from_adopted_helmet_direction",
+    "turnaround": "generated_and_visually_checked_from_adopted_helmet_direction",
+    "construction": "generated_and_visually_checked_from_adopted_helmet_direction",
     "original_mesh": "not_started",
     "uv_atlas": "not_started",
     "runtime_textures": "not_started",
@@ -104,29 +104,40 @@
     "turnaround": "images/c05_turnaround.png",
     "construction": "images/c05_construction.png"
   },
-  "modeling_authority": "本輪概念圖及逐張目視紀錄定義採用外觀；三視與拆解為建模參考。少量透視、遮擋或跨視細節須在模型統一，不可當精確尺寸、UV或已完工資產。",
+  "modeling_authority": "使用者已採用的頭盔方向以本輪概念圖為準；身體沿用既有全身比例。三視與拆解已依方向同步並目視核對，仍是建模參考，跨視接縫、遮擋及尺寸須於模型統一，不是精確正投影、UV 或完工遊戲資產。",
   "license_status": "reference_fusion_concept_not_a_legal_clearance",
   "generation": {
     "tool": "built-in image_gen",
-    "date": "2026-09-25",
-    "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
+    "date": "2026-09-29",
+    "reference_policy": "Actual edit inputs are listed per image. Previous canonical edit targets are archived byte-for-byte and referenced by their stable archive paths. Historical source observations do not imply direct input to this edit.",
     "records": {
       "concept": {
         "design_id": "C-05",
         "kind": "concept",
         "path": "images/c05_concept.png",
         "prompt": "prompts/c05_concept.txt",
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-a426f480-3743-4b05-a196-49bee663db94.png",
-        "date": "2026-09-25",
+        "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-ab7163a4-fe14-4859-b81b-721dad72c6c4.png",
+        "date": "2026-09-29",
         "reference_images": [
-          "references/legacy/c05_front.png",
-          "references/legacy/c05_side.png",
-          "references/halo/c05_recruit_halo4_model.jpg",
-          "references/halo/c05_recruit_halo4_render.png"
+          "revisions/c05_before_helmet_swap_20260929/images/c05_concept.png",
+          "revisions/c05_recruit_fusions_20260929/atom_recruit_original_fit.png"
         ],
+        "reference_sha256": {
+          "revisions/c05_before_helmet_swap_20260929/images/c05_concept.png": "09ad306e7dbcf2d80b3b8e44f601e55bfa6f6c2f2f39b9a5e0eca2cbab0df85f",
+          "revisions/c05_recruit_fusions_20260929/atom_recruit_original_fit.png": "e5c8d304a4463cc4ea738e34f005aae6010cac28ca8cb0a2ed77f28683895539"
+        },
         "postprocessing": "none",
-        "visual_review": "已目視：Strike金面罩、冠頂青點與青圓節點保留；Recruit式分段圓冠、收口頰架、分離肩片及双低背甲構造可讀；全身藍甲、正常手套、人類關節、無武器和獨立背包。",
-        "status": "visually_reviewed_pending_user_selection",
+        "edit_scope": "helmet_only_edit_intent_existing_body_retained",
+        "visual_review": "已目視：鋼藍分片圓冠及雙青色冠環保留；面罩改為 Atom＋Recruit 的青色連續玻璃，下緣向中央收窄並留小凹口，頰甲與下巴縮短。沿用原全身概念的比例、藍甲與金色胸片；完整站姿，無武器或獨立背包。",
+        "status": "visually_checked_from_adopted_helmet_direction",
+        "supersedes": "revisions/c05_before_helmet_swap_20260929/generation_records/c05_concept.json",
+        "prompt_sha256": "4bdf76bea58f7da2fd67c0736a139c9bf96b9c5485f165543900edfffae41f20",
+        "sha256": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "bytes": 1987246,
         "record_file": "docs/art/original_armors_v1/generation_records/c05_concept.json"
       },
       "construction": {
@@ -134,16 +145,28 @@
         "kind": "construction",
         "path": "images/c05_construction.png",
         "prompt": "prompts/c05_construction.txt",
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-2b418d9b-113b-42b0-9dd5-b4b1cc72324e.png",
-        "date": "2026-09-25",
+        "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-fb941495-eb7b-4c8b-9461-10875dca4bfa.png",
+        "date": "2026-09-29",
         "reference_images": [
-          "images/c05_concept.png",
-          "images/c05_turnaround.png",
-          "images/b05_design_sheet.png"
+          "revisions/c05_helmet_assignment_20260929/construction_initial.png",
+          "images/c05_concept.png"
         ],
+        "reference_sha256": {
+          "revisions/c05_helmet_assignment_20260929/construction_initial.png": "81a1741919c15563a9288993368717cba6bc94b734ee6f06286aa6123834f99d",
+          "images/c05_concept.png": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1"
+        },
         "postprocessing": "none",
-        "visual_review": "修正版逐圖目視通過：A 保留藍殼、雙青色冠點、金面罩與軟頭襯；B/C 肩胸拆件與概念一致。D 區角色背部已改成純黑軟墊及雙灰接軌，沒有複製背包三條青光或白色底板；完整 B05 外殼與三條青光只出現在旁邊獨立背包一次。未驗證接點實際尺寸。",
-        "status": "visually_reviewed_pending_user_selection",
+        "edit_scope": "helmet_only_edit_intent_existing_body_retained",
+        "visual_review": "已目視：A 組裝與拆件皆為雙青色冠環、青色收口玻璃及短下巴；舊額前方形燈已填回不發光藍甲，眉側通風槽已簡化。B/C 肩胸沿用原設計；D 為黑色背墊與双接軌，完整 B05 外殼只在獨立背包上。未驗證實際接點尺寸。",
+        "status": "visually_checked_from_adopted_helmet_direction",
+        "supersedes": "revisions/c05_before_helmet_swap_20260929/generation_records/c05_construction.json",
+        "prompt_sha256": "13dbc86626d6958c045da7b40be56f21649ce8ec8a2e7b0f7ff8ff8aba1bfdbc",
+        "sha256": "1fbcc9fe53b82aa550efa6c23073bbea310a6d51eacd376ce7cc7582e1b5344f",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "bytes": 2394877,
         "record_file": "docs/art/original_armors_v1/generation_records/c05_construction.json"
       },
       "turnaround": {
@@ -151,15 +174,28 @@
         "kind": "turnaround",
         "path": "images/c05_turnaround.png",
         "prompt": "prompts/c05_turnaround.txt",
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-e749640e-59ec-4e6c-b201-cfa8fea5854d.png",
-        "date": "2026-09-25",
+        "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-a0dd4ba9-d0ad-4248-b037-723e581e001e.png",
+        "date": "2026-09-29",
         "reference_images": [
-          "images/c05_concept.png",
-          "images/b05_design_sheet.png"
+          "revisions/c05_before_helmet_swap_20260929/images/c05_turnaround.png",
+          "images/c05_concept.png"
         ],
+        "reference_sha256": {
+          "revisions/c05_before_helmet_swap_20260929/images/c05_turnaround.png": "8ee30c2484ab0d56a9c03ffbd7c9f4e8b907bb43272073d47924611e05ba4981",
+          "images/c05_concept.png": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1"
+        },
         "postprocessing": "none",
-        "visual_review": "三視已目視：Strike雙額青點、金面罩、青肩前臂節點及三條膝燈一致；站高與地線一致；B05灰白雙殼、藍色中艙三青横窗及下方藍長窗符合Bsheet，背包保持獨立。 仍是建模概念參考，未證明尺寸/機構可製作。",
-        "status": "visually_reviewed_pending_user_selection",
+        "edit_scope": "helmet_only_edit_intent_existing_body_retained",
+        "visual_review": "已目視：正／左／背視的藍色分片圓冠、雙青色冠環與青玻璃方向一致，背視無面罩；身甲及獨立 B05 灰白雙殼與藍色中艙保留。跨視接縫與尺寸仍須建模時統一。",
+        "status": "visually_checked_from_adopted_helmet_direction",
+        "supersedes": "revisions/c05_before_helmet_swap_20260929/generation_records/c05_turnaround.json",
+        "prompt_sha256": "a4a3b979eacdfd53a1cfc371a9d7fe3f228817aa0416a1a39dc66ebd0d50f9b3",
+        "sha256": "fa6a7be3696d421e7d6ed8fa3a9491b344e9f7f847314c6185cc00af94e0ff8d",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "bytes": 2102628,
         "record_file": "docs/art/original_armors_v1/generation_records/c05_turnaround.json"
       }
     },
@@ -180,6 +216,33 @@
         "visual_review": "目視發現 D 區除了獨立 B05 背包，角色背部又出現同一藍色三條發光槽與白色底板，造成背包外殼重複烘焙在裝甲上；此稿不採用，需要移除角色背部的背包外觀，只保留接軌。",
         "status": "rejected_visual_inconsistency",
         "record_file": "docs/art/original_armors_v1/generation_records/c05_construction_v1.json"
+      },
+      {
+        "design_id": "C-05",
+        "kind": "construction",
+        "path": "revisions/c05_helmet_assignment_20260929/construction_initial.png",
+        "prompt": "revisions/c05_helmet_assignment_20260929/construction_initial_prompt.txt",
+        "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-d13a4db5-942a-4203-8682-d951498cab45.png",
+        "date": "2026-09-29",
+        "reference_images": [
+          "revisions/c05_before_helmet_swap_20260929/images/c05_construction.png",
+          "images/c05_concept.png"
+        ],
+        "reference_sha256": {
+          "revisions/c05_before_helmet_swap_20260929/images/c05_construction.png": "80ddc5704d27ebf7d2f0da2ba9eab35cc342fe01e5ca51670a61639506437cd9",
+          "images/c05_concept.png": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1"
+        },
+        "postprocessing": "none",
+        "status": "superseded_visual_correction",
+        "visual_review": "已保留青色收口玻璃與短下巴，但額前還有舊方形發光點，且眉侧通風槽與新概念不一致；已由正式 construction 的局部修訂取代。",
+        "prompt_sha256": "7e707091a16f592412e55675bf157a6fc43a5b505eae683777781ee8ca89d160",
+        "sha256": "81a1741919c15563a9288993368717cba6bc94b734ee6f06286aa6123834f99d",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "bytes": 2573714,
+        "record_file": "docs/art/original_armors_v1/revisions/c05_helmet_assignment_20260929/construction_initial_record.json"
       }
     ]
   },
@@ -240,21 +303,51 @@
         "back_status": "observed_full_armor_back_not_standalone_backpack"
       },
       "role": "selected_design_donor"
+    },
+    "helmet_direction": {
+      "date": "2026-09-29",
+      "selected_proposal": "revisions/c05_recruit_fusions_20260929/atom_recruit_original_fit.png",
+      "role": "user_selected_helmet_silhouette",
+      "application": "正式採用 Atom＋Recruit 為 Strike 頭盔方向：青色收口面罩、短下巴，保留雙冠環及現有全身設計。概念、三視及拆解已同步。",
+      "recruit_reference": "references/halo/c05_recruit_halo4_model.jpg",
+      "note": "實際 image_gen 輸入逐圖記錄；原始來源觀察保留為歷史參考。"
     }
   },
   "fusion_recipe": {
     "retained": [
-      "金黃大面罩与額頂青色節點",
-      "少量青色圓/六角電路節點",
-      "有眉槽與頰側方燈的分面藍盔"
+      "鋼藍身甲、金色胸片與青色圓形節點",
+      "分片圓冠與雙青色冠環",
+      "既有全身比例、肩胸及四肢設計"
     ],
     "borrowed": {
-      "helmet": "有中央低冠條的圓分面殼、寬連續面罩中間下沿向下延伸、黑色頰框與分片下巴。",
+      "helmet": "鋼藍分節圓冠、雙青色冠環；Atom＋Recruit 青色連續面罩向下收窄，底中央留小凹口，短下巴與收口頰甲。",
       "torso": "X/U形胸甲由兩條斜向硬框圍成；肩殼分上下兩片且邊緣夾小側片；大腿板外移留下黑色人形胯與腹。",
       "back": "完整後視可見兩條分開的長縱向背甲外殼、上肩後獨立模組、脊中圓/方小機件，中央與腰部仍為黑色布衣；這是裝甲背部構造，不是獨立行囊。",
       "back_status": "observed_full_armor_back_not_standalone_backpack"
     },
-    "optimized": "Halo 配對應偏電子/突擊；簡化全身散佈發光紋，集中眉/肩/前臂，保留原版科技感而不只留兩個不相干圓點。",
+    "optimized": "採用 Atom＋Recruit 的向下收口玻璃與短下巴；去除舊金色面罩及額前方形發光點。身甲沿用既有方案，青色節點集中於冠頂、肩及前臂。",
     "optimization_common": "胸腰按人體分件、露出織物關節、短化易勾掛尖片；避免單眼機械臉與巨型四肢。"
+  },
+  "user_review": {
+    "status": "helmet_direction_adopted",
+    "date": "2026-09-29",
+    "feedback": "Atom 版 當正式的好了\n但是B＋Recruit。的設計我希望你把它用到atom的頭盔上",
+    "scope": "helmet_visual_design",
+    "action": "正式採用 Atom＋Recruit 為 Strike 頭盔方向：青色收口面罩、短下巴，保留雙冠環及現有全身設計。概念、三視及拆解已同步。",
+    "acceptance_basis": "使用者選定前輪 Atom＋Recruit 供 Strike 正式採用，並指示 B＋Recruit 轉用 Atom；本輪衍生全身、三視及拆解由助理目視核對，尚未逐張獲使用者確認。",
+    "selected_reference": "revisions/c05_recruit_fusions_20260929/atom_recruit_original_fit.png",
+    "previous_revision": {
+      "images": {
+        "concept": "revisions/c05_before_helmet_swap_20260929/images/c05_concept.png",
+        "turnaround": "revisions/c05_before_helmet_swap_20260929/images/c05_turnaround.png",
+        "construction": "revisions/c05_before_helmet_swap_20260929/images/c05_construction.png"
+      },
+      "prompts": {
+        "concept": "revisions/c05_before_helmet_swap_20260929/prompts/c05_concept.txt",
+        "turnaround": "revisions/c05_before_helmet_swap_20260929/prompts/c05_turnaround.txt",
+        "construction": "revisions/c05_before_helmet_swap_20260929/prompts/c05_construction.txt"
+      }
+    },
+    "runtime_implemented": false
   }
 }

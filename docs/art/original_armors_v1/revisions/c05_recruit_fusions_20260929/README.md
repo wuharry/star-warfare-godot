@@ -1,6 +1,8 @@
 # Strike：B／Atom 與 Recruit 的頭盔融合預覽
 
-日期：2026-09-29。狀態：使用者偏好前輪 B，要求這兩個融合方向都製作供參考；本輪尚未選定正式版本。
+日期：2026-09-29。狀態：使用者已選 Atom＋Recruit 作為 Strike 正式頭盔方向，並指示將 B＋Recruit 的設計套用 Atom 頭盔。
+
+正式成果見 [Strike 概念](../../images/c05_concept.png)、[Atom 概念](../../images/c08_concept.png)；兩套的三視、拆解及設計資料已同步。採用紀錄與前後版本見 [頭盔分配紀錄](../c05_helmet_assignment_20260929/README.md)。下列短身圖保留為當時的選案預覽，正式全身稿沿用既有重設稿的身體比例。
 
 ## 兩案皆套回遊戲原始 Strike 的大頭短身比例
 
@@ -32,7 +34,7 @@
 | 原始 Strike 的比例、身甲及站姿 | [正面](../../references/legacy/c05_front.png)、[側面](../../references/legacy/c05_side.png) |
 | 使用者偏好的 B 面罩 | [B 方案](../c05_helmet_alternatives_20260929/strike_b.png) |
 | 原始 Atom 面罩 | [正面](../../references/legacy/c08_front.png)、[側面](../../references/legacy/c08_side.png) |
-| Atom 目前重設面罩輪廓的補充參考 | [概念圖](../../images/c08_concept.png) |
+| 當時 Atom 重設面罩輪廓的補充參考 | [已封存的概念圖](../c08_before_helmet_swap_20260929/images/c08_concept.png) |
 | Halo 4 Recruit (GEN2) 頭盔結構 | [近照及模型](../../references/halo/c05_recruit_halo4_model.jpg)、[另一張遊戲造型參考](../../references/halo/c05_recruit_halo4_render.png) |
 
-本輪使用內建 image_gen，各案獨立生成。兩圖均為概念合成，尚未接入 Godot、修改原始模型或替換正式素材；不代表精確比例量測或可直接建模的正投影圖。
+兩張選案預覽使用內建 image_gen，各案獨立生成。後續已按使用者選擇更新正式概念圖；尚未接入 Godot 或修改原始模型，不代表精確比例量測或可直接建模的正投影圖。
