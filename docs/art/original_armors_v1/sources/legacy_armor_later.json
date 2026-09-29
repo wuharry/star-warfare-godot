@@ -71,20 +71,19 @@
       "observed_palette": [
         "淺灰白胸肩四肢",
         "深森林綠內板與內襯",
-        "粉珊瑚紅／暗粉頭盔",
         "銅橙面罩框和少量嵌片",
         "暗紫面罩"
       ],
-      "helmet": "高額冠向後拉長，頭盔側後各兩片短翼；深紫面罩被銅橙U形長頰框包住，粉紅下顎與圓形耳件。",
+      "helmet": "白灰冠殼、側翼、下顎與圓形接點和身甲主色一致；保留暗紫面罩及銅橙 U 框。",
       "chest_shoulders": "白色對稱分片胸甲，中央銅橙三角楔與黑色縱縫；肩頂白色細翼片向外上方伸出，深綠肩板由白框包圍。",
       "forearms": "白色護臂外殼包住深綠面板，銅色短線與小矩形嵌件；護肘尖端明顯。",
       "legs": "白色大腿前片与脛甲，深綠內分區；踝後各有短白翼，銅橙小盾牌樣標記。",
       "retained_cues": [
-        "粉珊瑚頭盔對白灰／深綠身甲的顏色反差",
+        "頭盔外殼與白灰身甲同色，保留深綠身體分區",
         "短側翼頭盔與白色肩翼呼應",
         "銅橙U形護頰框和少量胸部楔形嵌片"
       ],
-      "optimization": "保留分色身份；把肩翼、踝翼轉成短型通訊或散熱護片，減少裸尖角；縮短面罩下框，加入清楚的頸圈與胸腰軟接縫。",
+      "optimization": "頭盔外殼、側翼與身甲統一白灰；保留紫面罩、銅橙 U 框、既有短側翼與肩翼輪廓。取消粉盔分色要求；頸圈與胸腰軟接縫延續。",
       "references": {
         "primary": "references/legacy/c12_front.png",
         "supplementary_oblique": "references/legacy/c12_side.png",
@@ -96,11 +95,28 @@
       ],
       "source_reliability": "high_for_recovered_original_assets; not_a_historical_release_screenshot",
       "halo_match_status": "assigned_to_parent_research",
-      "note": "本段只記原版觀察；Halo 型號與融合比例由主代理根據實際參考圖決定，不能把本文視為已完成新圖。",
+      "note": "有效頭盔配色依使用者更正；舊擷取觀察另存 capture_observations_before_user_correction，不代表重新驗證原遊戲材質。",
       "reference_sha256": {
         "primary": "d8d16da0224425faf7bda6090ecaadd1563985370469477fedadc14d3ccf69d1",
         "supplementary_oblique": "ed85454452c964f520d757a4636d6cc930e084a4fded11619a55d7990e461c40",
         "third_view_exists": "0a42bbacc07e2be0272a07d21e742722fc3ad2f8e18bc7d63cc63ba0f0549d56"
+      },
+      "capture_observations_before_user_correction": {
+        "observed_palette": [
+          "淺灰白胸肩四肢",
+          "深森林綠內板與內襯",
+          "粉珊瑚紅／暗粉頭盔",
+          "銅橙面罩框和少量嵌片",
+          "暗紫面罩"
+        ],
+        "helmet": "高額冠向後拉長，頭盔側後各兩片短翼；深紫面罩被銅橙U形長頰框包住，粉紅下顎與圓形耳件。"
+      },
+      "user_correction": {
+        "date": "2026-09-29",
+        "feedback": "Cygni 也是頭盔跟身體顏色應該一致",
+        "authority": "explicit_user_color_correction",
+        "rule": "頭盔粉色硬殼改為與身甲相同的白灰；暗紫玻璃、銅橙細節、黑色內襯及原造型保留。",
+        "note": "原擷取圖只作輪廓參考；粉盔不是本次有效配色依據，未重新驗證原遊戲材質。"
       }
     },
     {

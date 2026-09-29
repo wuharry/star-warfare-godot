@@ -1701,83 +1701,83 @@
       "kind": "concept",
       "path": "images/c12_concept.png",
       "prompt": "prompts/c12_concept.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-84ba03f2-7fcd-44a9-9501-76320590b580.png",
+      "date": "2026-09-29",
       "reference_images": [
-        "references/legacy/c12_front.png",
-        "references/halo/c12_valkyrie_front.png"
+        "revisions/c12_before_color_fix_20260929/images/c12_concept.png"
       ],
-      "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-a1a0a1ab-f152-4a33-a587-205d9c78df73.png",
-      "date": "2026-09-25",
+      "reference_sha256": {
+        "revisions/c12_before_color_fix_20260929/images/c12_concept.png": "aab35be5a07f51a2c3c6cf92249936b0f7ab97ce2ae2aec845968e1d0cb995d6"
+      },
       "postprocessing": "none",
-      "visual_review": "粉紅頭盔、紫面窗銅色U框、白灰深綠身體與短肩翼成立；VALKYRIE內收頰框與寬胸帶可讀。原版的成對側鰭仍偏突出，後續建模需檢查轉頭間隙。",
-      "status": "visually_reviewed_pending_user_selection",
-      "generation_record": "generation_records/c12_concept.json",
-      "sha256": "aab35be5a07f51a2c3c6cf92249936b0f7ab97ce2ae2aec845968e1d0cb995d6",
+      "edit_scope": "helmet_shell_color_only",
+      "visual_review": "已目視：冠殼、額甲、頰殼、下巴、圓形接點與短疊側翼均改成與身甲一致的白灰；暗紫面罩、銅橙 U 框與小嵌片、身甲深綠分區及全身輪廓保留，雙腳完整。",
+      "status": "visually_checked_color_correction_pending_user_review",
+      "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_concept.json",
+      "prompt_sha256": "e58c193036943993b4d1fcd560436700a4e0674c0d91321dace10b4e7accd86f",
+      "sha256": "2c514a713a0b00ac7afec173b739af7eed83f350db74e63213d22bf06e2ed046",
       "dimensions": [
         1024,
         1536
       ],
-      "bytes": 2127129,
-      "prompt_sha256": "3f01daa9aa4c2951097d6cb0f56d58c8a98ee361e6317d81dea6f50c25a84c3c",
-      "reference_sha256": {
-        "references/legacy/c12_front.png": "d8d16da0224425faf7bda6090ecaadd1563985370469477fedadc14d3ccf69d1",
-        "references/halo/c12_valkyrie_front.png": "2f68796373cd4123ba4f73bdb8b6e67d2d6260a0cdbc83bb4798d7a338d5bedd"
-      }
+      "bytes": 1915858,
+      "generation_record": "generation_records/c12_concept.json"
     },
     {
       "design_id": "C-12",
       "kind": "construction",
       "path": "images/c12_construction.png",
       "prompt": "prompts/c12_construction.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-cc70b1be-0625-4a33-aa24-74dacf1c5a25.png",
+      "date": "2026-09-29",
       "reference_images": [
-        "images/c12_concept.png",
-        "images/c12_turnaround.png",
-        "images/b12_design_sheet.png"
+        "revisions/c12_before_color_fix_20260929/construction_initial.png",
+        "revisions/c12_before_color_fix_20260929/images/c12_construction.png"
       ],
-      "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-6fb00bb8-40a7-47a5-a998-f07c93ed0ef0.png",
-      "date": "2026-09-25",
+      "reference_sha256": {
+        "revisions/c12_before_color_fix_20260929/construction_initial.png": "fb84cf07f1e7a3c445f731c4822b07e5455fcefd652b77c2bb7213845cf4bb22",
+        "revisions/c12_before_color_fix_20260929/images/c12_construction.png": "8cc2dd4136b62656b0900c3736e3cadbf3803f503299529f2c3de9300124a629"
+      },
       "postprocessing": "none",
-      "visual_review": "已目視：粉盔外殼、紫玻璃與銅U下框拆件清楚，保留短疊側翼；白肩與深綠下層、短外翼和軟上臂符合概念。B-12 白橘盾形、藍頂及單筒橫接頭完整，內架與肩帶可辨；肘膝布褶及人手成立。部分隱藏鎖點為近似裝配提案，仍須模型驗證肩翼及背包下尖的活動間隙。",
-      "status": "visually_reviewed_pending_user_selection",
-      "generation_record": "generation_records/c12_construction.json",
-      "sha256": "8cc2dd4136b62656b0900c3736e3cadbf3803f503299529f2c3de9300124a629",
+      "edit_scope": "helmet_shell_color_only",
+      "visual_review": "已目視：組裝頭盔、拆開冠殼與頰殼、背視小圖及肩部小圖邊緣均為白灰；玻璃仍為暗紫，面框保有銅橙色。拆件右側銅橙邊較組裝示意窄，色塊邊界需建模統一。肩、軟關節及獨立 B-12 配色延續；本圖不是精確材質分區或尺寸圖。",
+      "status": "visually_checked_color_correction_pending_user_review",
+      "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_construction.json",
+      "prompt_sha256": "c60814daaf9fe59948e9b070d280086166d4a26c075cc751ac141be8d923c56a",
+      "sha256": "96809c8d8077f7a3f89b0e5397e98720386cdaecd2c5f0a9038ff309c6679351",
       "dimensions": [
         1536,
         1024
       ],
-      "bytes": 2687017,
-      "prompt_sha256": "03ca352b00a87eedb3a77c188a5d47ecbe7af7ff727a09c436afac875281fe7e",
-      "reference_sha256": {
-        "images/c12_concept.png": "aab35be5a07f51a2c3c6cf92249936b0f7ab97ce2ae2aec845968e1d0cb995d6",
-        "images/c12_turnaround.png": "a33f7a6be823fce41ed8527306309c7c428f21c1b0be74b69b0bfa862b863e08",
-        "images/b12_design_sheet.png": "da7d69a907b534a87467bd99aaf58d442059884abc6db890452f0edec17bc58a"
-      }
+      "bytes": 2269873,
+      "generation_record": "generation_records/c12_construction.json"
     },
     {
       "design_id": "C-12",
       "kind": "turnaround",
       "path": "images/c12_turnaround.png",
       "prompt": "prompts/c12_turnaround.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-3560c903-68f8-40f9-8479-33977fea5c2d.png",
+      "date": "2026-09-29",
       "reference_images": [
-        "images/c12_concept.png",
-        "images/b12_design_sheet.png"
+        "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png"
       ],
-      "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-7ad02d6d-e3c3-4f6f-889c-ad9cc3c4b84c.png",
-      "date": "2026-09-25",
+      "reference_sha256": {
+        "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png": "a33f7a6be823fce41ed8527306309c7c428f21c1b0be74b69b0bfa862b863e08"
+      },
       "postprocessing": "none",
-      "visual_review": "已目視：粉珊瑚盔、紫玻璃銅U框、雙側短疊翼及白灰／深綠人體裝甲與概念一致；三視皆完整且同地平線。B-12 保留藍頂、白橘盾殼及單筒橫接頭，在背面和側面可辨。背包下尖接近後腰板，穿戴碰撞與實際鎖點需模型階段修正；本圖只示範獨立裝備搭配。",
-      "status": "visually_reviewed_pending_user_selection",
-      "generation_record": "generation_records/c12_turnaround.json",
-      "sha256": "a33f7a6be823fce41ed8527306309c7c428f21c1b0be74b69b0bfa862b863e08",
+      "edit_scope": "helmet_shell_color_only",
+      "visual_review": "已目視：FRONT／LEFT SIDE／BACK 的頭盔外殼、側翼及後腦均為白灰，沒有粉色大色塊；暗紫玻璃與銅橙框保留。B-12 仍為白橘盾殼、藍頂、中央金屬筒與下方橫接頭，三視完整。",
+      "status": "visually_checked_color_correction_pending_user_review",
+      "supersedes": "revisions/c12_before_color_fix_20260929/generation_records/c12_turnaround.json",
+      "prompt_sha256": "5ef180b2e3b5149128967404fdf1cbf2e831683c4292dcc20d2c04fab44030d5",
+      "sha256": "f401318b50face740e148d48aee649b26e476add543cf44521ce9eee2aff0c3e",
       "dimensions": [
         1536,
         1024
       ],
-      "bytes": 2203981,
-      "prompt_sha256": "7eba3acf2c0f5a769d11ecea03de3027c906d8577e849e10c22db52742fbbb24",
-      "reference_sha256": {
-        "images/c12_concept.png": "aab35be5a07f51a2c3c6cf92249936b0f7ab97ce2ae2aec845968e1d0cb995d6",
-        "images/b12_design_sheet.png": "da7d69a907b534a87467bd99aaf58d442059884abc6db890452f0edec17bc58a"
-      }
+      "bytes": 2089188,
+      "generation_record": "generation_records/c12_turnaround.json"
     },
     {
       "design_id": "C-13",
@@ -4428,6 +4428,31 @@
       ],
       "bytes": 2726053,
       "record_path": "revisions/c10_rejected_iron_symmachy_20260929/construction_initial_record.json"
+    },
+    {
+      "design_id": "C-12",
+      "kind": "construction",
+      "path": "revisions/c12_before_color_fix_20260929/construction_initial.png",
+      "prompt": "revisions/c12_before_color_fix_20260929/construction_initial_prompt.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-a2a52eb1-74d4-4794-bf5d-2b43709b7804.png",
+      "date": "2026-09-29",
+      "reference_images": [
+        "revisions/c12_before_color_fix_20260929/images/c12_construction.png"
+      ],
+      "reference_sha256": {
+        "revisions/c12_before_color_fix_20260929/images/c12_construction.png": "8cc2dd4136b62656b0900c3736e3cadbf3803f503299529f2c3de9300124a629"
+      },
+      "postprocessing": "none",
+      "status": "superseded_visual_correction",
+      "visual_review": "主要頭盔與背視小圖已改白灰，但肩部小圖邊緣仍殘粉色，拆開面框右上段銅橙被過度改白；另作局部修正。",
+      "sha256": "fb84cf07f1e7a3c445f731c4822b07e5455fcefd652b77c2bb7213845cf4bb22",
+      "prompt_sha256": "21c49f40cf0ad2246e811c85e73f983f88731433a91c547f237b226fd06ee791",
+      "bytes": 2358375,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "record_path": "revisions/c12_before_color_fix_20260929/construction_initial_record.json"
     }
   ],
   "previous_delivery_reset": {
@@ -4694,15 +4719,15 @@
     },
     {
       "path": "prompts/c12_concept.txt",
-      "sha256": "3f01daa9aa4c2951097d6cb0f56d58c8a98ee361e6317d81dea6f50c25a84c3c"
+      "sha256": "e58c193036943993b4d1fcd560436700a4e0674c0d91321dace10b4e7accd86f"
     },
     {
       "path": "prompts/c12_construction.txt",
-      "sha256": "03ca352b00a87eedb3a77c188a5d47ecbe7af7ff727a09c436afac875281fe7e"
+      "sha256": "c60814daaf9fe59948e9b070d280086166d4a26c075cc751ac141be8d923c56a"
     },
     {
       "path": "prompts/c12_turnaround.txt",
-      "sha256": "7eba3acf2c0f5a769d11ecea03de3027c906d8577e849e10c22db52742fbbb24"
+      "sha256": "5ef180b2e3b5149128967404fdf1cbf2e831683c4292dcc20d2c04fab44030d5"
     },
     {
       "path": "prompts/c13_concept.txt",
@@ -5012,6 +5037,27 @@
         }
       },
       "rejected_revision": "revisions/c10_rejected_iron_symmachy_20260929/README.md",
+      "runtime_implemented": false
+    },
+    "C-12": {
+      "status": "helmet_color_corrected",
+      "date": "2026-09-29",
+      "feedback": "Cygni 也是頭盔跟身體顏色應該一致",
+      "scope": "helmet_shell_color_only",
+      "action": "Cygni 頭盔外殼、側翼及後腦改為與身甲一致的白灰，保留紫面罩、銅橙 U 框及原造型；概念、三視與拆解同步更正。",
+      "acceptance_basis": "使用者明確更正配色；本次輸出由助理目視核對，尚未逐張獲使用者確認。",
+      "previous_revision": {
+        "images": {
+          "concept": "revisions/c12_before_color_fix_20260929/images/c12_concept.png",
+          "turnaround": "revisions/c12_before_color_fix_20260929/images/c12_turnaround.png",
+          "construction": "revisions/c12_before_color_fix_20260929/images/c12_construction.png"
+        },
+        "prompts": {
+          "concept": "revisions/c12_before_color_fix_20260929/prompts/c12_concept.txt",
+          "turnaround": "revisions/c12_before_color_fix_20260929/prompts/c12_turnaround.txt",
+          "construction": "revisions/c12_before_color_fix_20260929/prompts/c12_construction.txt"
+        }
+      },
       "runtime_implemented": false
     }
   }
