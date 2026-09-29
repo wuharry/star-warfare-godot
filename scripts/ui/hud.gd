@@ -492,7 +492,7 @@ func _layout_original_hud() -> void:
 	_place_original(skill_button, Vector2(1.0, 0.5), Vector2(-50, 50), Vector2(102, 98), ui_scale)
 	_place_original(boss_panel, Vector2(0.5, 0.0), Vector2(0, 20), Vector2(510, 32), ui_scale)
 	_place_original(announcement, Vector2(0.5, 0.0), Vector2(0, 72), Vector2(600, 40), ui_scale)
-	_place_original(scope_zoom_hint, Vector2(0.5, 0.5), Vector2(0, 238), Vector2(220, 24), ui_scale)
+	_place_original(scope_zoom_hint, Vector2(0.5, 0.5), Vector2(70, 218), Vector2(104, 24), ui_scale)
 	if is_instance_valid(power_panel) and power_panel.visible:
 		var power_count := power_buttons.size()
 		var power_columns := maxi(1, mini(5, power_count))

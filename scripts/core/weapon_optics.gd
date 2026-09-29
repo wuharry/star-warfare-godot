@@ -3,33 +3,35 @@ extends RefCounted
 # New project design, not recovered Unity data. Optics are opt-in per weapon;
 # neither a sci-fi model nor an AimID alone implies that a weapon has a scope.
 # Inspected through EquipmentRefinement.weapon_mesh(), the same runtime path.
-# Reticles and magnifications are new design choices tied to the visible optic,
-# not claims that its internals/magnification were recoverable from the mesh.
+# Reticles use one CoM-inspired amber ring family, with per-optic dimensions.
+# Housing silhouettes are not magnified into solid panels around the view.
+# Reticles and magnifications are new design choices, not recovered values.
+const RETICLE_AMBER := Color(1.0, 0.72, 0.20, 0.94)
 const PROFILES := {
 	"gun00": {
-		"id": "fr28a_prismatic_tube", "aperture": "pentagon", "reticle": "duplex",
-		"rim_color": Color(0.28, 0.20, 0.43), "reticle_color": Color(1.0, 0.67, 0.25),
-		"lens_tint": Color(1.0, 0.58, 0.18, 0.025), "magnifications": [2.0, 4.0],
+		"id": "fr28a_prismatic_tube", "reticle_color": RETICLE_AMBER,
+		"reticle_scale": 1.0, "reticle_ticks": 0,
+		"lens_tint": Color(1.0, 0.58, 0.18, 0.012), "magnifications": [2.0, 4.0],
 	},
 	"gun14": {
-		"id": "vox07_compact_sight", "aperture": "circle", "reticle": "ladder",
-		"rim_color": Color(0.25, 0.30, 0.27), "reticle_color": Color(0.45, 0.95, 0.83),
-		"lens_tint": Color(0.2, 0.9, 0.8, 0.025), "magnifications": [2.0],
+		"id": "vox07_compact_sight", "reticle_color": RETICLE_AMBER,
+		"reticle_scale": 0.8, "reticle_ticks": 0,
+		"lens_tint": Color(0.2, 0.9, 0.8, 0.012), "magnifications": [2.0],
 	},
 	"gun34": {
-		"id": "r100_integrated_display", "aperture": "portrait_screen", "reticle": "grid_cross",
-		"rim_color": Color(0.13, 0.45, 0.78), "reticle_color": Color(0.94, 1.0, 0.32),
-		"lens_tint": Color(0.15, 0.4, 0.8, 0.025), "magnifications": [2.0, 4.0, 6.0],
+		"id": "r100_integrated_display", "reticle_color": RETICLE_AMBER,
+		"reticle_scale": 1.05, "reticle_ticks": 3,
+		"lens_tint": Color(0.15, 0.4, 0.8, 0.012), "magnifications": [2.0, 4.0, 6.0],
 	},
 	"gun35": {
-		"id": "r700_integrated_display", "aperture": "square_screen", "reticle": "ring",
-		"rim_color": Color(0.36, 0.44, 0.25), "reticle_color": Color(0.20, 1.0, 0.91),
-		"lens_tint": Color(0.1, 0.9, 0.8, 0.035), "magnifications": [2.0, 4.0, 6.0],
+		"id": "r700_integrated_display", "reticle_color": RETICLE_AMBER,
+		"reticle_scale": 0.95, "reticle_ticks": 2,
+		"lens_tint": Color(0.1, 0.9, 0.8, 0.012), "magnifications": [2.0, 4.0, 6.0],
 	},
 	"gun40": {
-		"id": "astkk_large_tube", "aperture": "circle", "reticle": "chevron",
-		"rim_color": Color(0.62, 0.65, 0.68), "reticle_color": Color(1.0, 0.32, 0.23),
-		"lens_tint": Color(0.1, 0.7, 0.65, 0.025), "magnifications": [2.0, 4.0, 6.0],
+		"id": "astkk_large_tube", "reticle_color": RETICLE_AMBER,
+		"reticle_scale": 1.1, "reticle_ticks": 1,
+		"lens_tint": Color(0.1, 0.7, 0.65, 0.012), "magnifications": [2.0, 4.0, 6.0],
 	},
 }
 
