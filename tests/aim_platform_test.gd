@@ -26,6 +26,7 @@ func _check_center(control: Control, expected: Vector2, label: String) -> void:
 	)
 
 func _run() -> void:
+	GameState.save_path = GameState.TEST_SAVE_PATH
 	var original_touch_setting := bool(GameState.settings.show_touch_controls)
 	GameState.settings.show_touch_controls = true
 	ProjectSettings.set_setting("debug/restoration/force_mobile_ui", false)

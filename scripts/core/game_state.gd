@@ -12,6 +12,7 @@ const Source = preload("res://scripts/core/recovered_game_data.gd")
 const ArmorCatalogData = preload("res://scripts/core/armor_catalog.gd")
 const PropsCatalogData = preload("res://scripts/core/props_catalog.gd")
 const UpgradeRules = preload("res://scripts/core/equipment_upgrade_rules.gd")
+const WeaponOptics = preload("res://scripts/core/weapon_optics.gd")
 const SINGLEPLAYER_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8]
 const MULTIPLAYER_LEVELS := [13, 14, 15, 16, 17, 18, 19, 20, 21]
 const CAMPAIGN_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19, 20, 21]
@@ -185,6 +186,7 @@ func _build_weapon_database() -> void:
 			"kind": profile.kind, "speed": profile.speed,
 			# Additional restoration tuning; Unity speedDrag is additive above.
 			"move_speed_multiplier": 1.0,
+			"scope": WeaponOptics.for_weapon(weapon_id),
 			# Feedback tuning, not recovered weapon damage/fire-rate data.
 			"recoil_strength": {"machinegun": 0.7, "rocket": 2.4, "grenade": 1.8, "sniper": 2.0}.get(profile.kind, 1.6 if type_id == 2 else 1.0),
 			"shot_sound": "res://assets/audio/non_original/weapon_shots/%s.wav" % str(row[1]) if type_id in [11, 21] else "",
@@ -343,6 +345,7 @@ func _configure_input_map() -> void:
 	_add_key_action("move_left", KEY_A)
 	_add_key_action("move_right", KEY_D)
 	_add_key_action("reload", KEY_R)
+	_add_key_action("scope_zoom", KEY_Z)
 	_add_key_action("dash", KEY_SHIFT)
 	_add_key_action("pause", KEY_ESCAPE)
 	_add_key_action("weapon_1", KEY_1)
@@ -363,6 +366,7 @@ func _configure_input_map() -> void:
 	_add_joy_axis("look_down", JOY_AXIS_RIGHT_Y, 1.0)
 	_add_joy_button("fire", JOY_BUTTON_RIGHT_SHOULDER)
 	_add_joy_button("aim", JOY_BUTTON_LEFT_SHOULDER)
+	_add_joy_button("scope_zoom", JOY_BUTTON_RIGHT_STICK)
 	_add_joy_button("reload", JOY_BUTTON_X)
 	_add_joy_button("dash", JOY_BUTTON_LEFT_STICK)
 	_add_joy_button("pause", JOY_BUTTON_START)

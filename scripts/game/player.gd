@@ -13,6 +13,7 @@ signal died
 const ProjectileScript = preload("res://scripts/game/projectile.gd")
 const RocketReloadPose = preload("res://scripts/game/rocket_reload_pose.gd")
 const WeaponReloadPose = preload("res://scripts/game/weapon_reload_pose.gd")
+const WeaponOptics = preload("res://scripts/core/weapon_optics.gd")
 const ARMOR_HP_SCALE := 1.0
 const CAMERA_BASE_HEIGHT := 1.683712
 const FLY_CAMERA_OFFSET := 0.25
@@ -52,6 +53,10 @@ var touch_fire := false
 var touch_fire_started := false
 var touch_dash_requested := false
 var touch_reload_requested := false
+var touch_aim := false
+var scope_magnification_index := 0
+var _scope_hides_model := false
+var _model_visible_before_scope := true
 
 var camera_rig: Node3D
 var pitch_node: Node3D
@@ -147,6 +152,7 @@ func _on_equipment_upgraded(item_key: String) -> void:
 	if item_key == current_weapon_id:
 		# Refresh damage without switching guns, canceling reload or refilling ammo.
 		current_weapon = GameState.get_weapon_data(item_key)
+		scope_magnification_index = clampi(scope_magnification_index, 0, maxi(0, get_scope_magnifications().size() - 1))
 		weapon_changed.emit(item_key, current_weapon)
 	elif GameState.ARMOR_ITEMS.has(item_key):
 		var set_id := int(GameState.ARMOR_ITEMS[item_key].set_id)
@@ -818,17 +824,70 @@ func _update_camera_controller(delta: float) -> void:
 	var look := Input.get_vector("look_left", "look_right", "look_up", "look_down")
 	if look.length_squared() > 0.0001:
 		_apply_look_delta(look * 165.0 * delta)
-	var focused := Input.is_action_pressed("aim")
-	var weapon_kind := str(current_weapon.get("kind", "hitscan"))
-	var target_fov := (13.2 if weapon_kind in ["sniper", "reflection"] else 22.0) if focused else (80.0 if weapon_kind == "rocket" else 60.0)
+	var focused := is_focus_aiming()
+	var target_fov := get_aim_fov() if focused else get_hip_fov()
 	camera.fov = lerpf(camera.fov, target_fov, 1.0 - exp(-10.0 * delta))
+	_set_scope_model_hidden(is_scope_active())
 	var target_length := 1.8 if focused else camera_distance
 	spring_arm.spring_length = lerpf(spring_arm.spring_length, target_length, 1.0 - exp(-11.0 * delta))
 	var target_height := CAMERA_BASE_HEIGHT + (FLY_CAMERA_OFFSET if float(armor_skills.get("fly", 0.0)) > 0.0 else 0.0)
 	camera_rig.position.y = lerpf(camera_rig.position.y, target_height, 1.0 - exp(-10.0 * delta))
 
+func get_scope_magnifications() -> Array:
+	return current_weapon.get("scope", {}).get("magnifications", [])
+
+func get_scope_magnification() -> float:
+	var steps := get_scope_magnifications()
+	if steps.is_empty():
+		return 1.0
+	return float(steps[clampi(scope_magnification_index, 0, steps.size() - 1)])
+
+func get_hip_fov() -> float:
+	return 80.0 if str(current_weapon.get("kind", "")) == "rocket" else 60.0
+
+func get_aim_fov() -> float:
+	if get_scope_magnifications().is_empty():
+		return 13.2 if str(current_weapon.get("kind", "")) in ["sniper", "reflection"] else 22.0
+	return WeaponOptics.magnified_fov(get_hip_fov(), get_scope_magnification())
+
+func is_focus_aiming() -> bool:
+	return not dead and not get_tree().paused and reload_left <= 0.0 and (touch_aim or Input.is_action_pressed("aim"))
+
+func is_scope_active() -> bool:
+	return is_focus_aiming() and not get_scope_magnifications().is_empty()
+
+func cycle_scope_magnification() -> void:
+	var steps := get_scope_magnifications()
+	if is_scope_active() and steps.size() > 1:
+		scope_magnification_index = (scope_magnification_index + 1) % steps.size()
+
+func toggle_touch_aim() -> void:
+	if not dead and not get_tree().paused and reload_left <= 0.0:
+		touch_aim = not touch_aim
+
+func cancel_aim() -> void:
+	touch_aim = false
+	_set_scope_model_hidden(false)
+	# Pause and death stop physics, so restore the view immediately as well.
+	if is_instance_valid(camera):
+		camera.fov = get_hip_fov()
+		spring_arm.spring_length = camera_distance
+
+func _set_scope_model_hidden(hidden: bool) -> void:
+	if hidden == _scope_hides_model or not is_instance_valid(model):
+		return
+	if hidden:
+		_model_visible_before_scope = model.visible
+		model.hide()
+	else:
+		model.visible = _model_visible_before_scope
+	_scope_hides_model = hidden
+
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("weapon_previous"):
+	if event.is_action_pressed("scope_zoom"):
+		cycle_scope_magnification()
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("weapon_previous"):
 		cycle_weapon(-1)
 		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("weapon_next"):
@@ -843,6 +902,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _apply_look_delta(relative: Vector2) -> void:
 	var sensitivity := float(GameState.settings.look_sensitivity) * 0.01
+	if is_scope_active():
+		# Preserve approximately the same on-screen travel as magnification rises.
+		sensitivity *= tan(deg_to_rad(camera.fov) * 0.5) / tan(deg_to_rad(get_hip_fov()) * 0.5)
 	camera_yaw = wrapf(camera_yaw - relative.x * sensitivity, -PI, PI)
 	var direction := -1.0 if bool(GameState.settings.invert_y) else 1.0
 	camera_pitch -= relative.y * sensitivity * direction
@@ -879,7 +941,7 @@ func is_combat_aim_active() -> bool:
 	if _uses_magazine() and reload_left > 0.0:
 		return false
 	return (
-		Input.is_action_pressed("aim")
+		is_focus_aiming()
 		or Input.is_action_pressed("fire")
 		or touch_fire
 		or shoot_pose_left > 0.0
@@ -963,6 +1025,8 @@ func equip_weapon(weapon_id: String, persist_selection := true) -> void:
 		weapon_recoil_tween.kill()
 	current_weapon_id = weapon_id
 	current_weapon = GameState.get_weapon_data(weapon_id)
+	scope_magnification_index = 0
+	cancel_aim()
 	auto_reload_left = -1.0
 	_ensure_magazine_state()
 	restart_shoot_animation_requested = false
@@ -1244,6 +1308,7 @@ func _start_reload() -> void:
 		weapon_recoil_tween.kill()
 	gun_mount.position = gun_mount_rest_position
 	_begin_reload_cycle()
+	cancel_aim()
 
 func _begin_reload_cycle(first_cycle := true) -> void:
 	reload_first_cycle = first_cycle
@@ -1949,6 +2014,7 @@ func get_damage_category() -> String:
 
 func _die(killer: Node = null) -> void:
 	dead = true
+	cancel_aim()
 	if is_instance_valid(killer) and killer != self and killer.has_method("on_enemy_defeated"):
 		killer.on_enemy_defeated()
 	if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("cancel_all_active"):

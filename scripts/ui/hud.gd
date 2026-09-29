@@ -5,6 +5,7 @@ const JoystickScript = preload("res://scripts/ui/virtual_joystick.gd")
 const TouchActionButtonScript = preload("res://scripts/ui/touch_action_button.gd")
 const Atlas = preload("res://scripts/ui/original_atlas.gd")
 const HitMarkerScript = preload("res://scripts/ui/hit_marker.gd")
+const ScopeOverlayScript = preload("res://scripts/ui/scope_overlay.gd")
 const POWER_SLOT_KEYS := [
 	KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5,
 	KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10,
@@ -38,6 +39,10 @@ var boss_icon: TextureRect
 var move_joystick: WarfareVirtualJoystick
 var shoot_joystick: WarfareVirtualJoystick
 var reload_button: Control
+var aim_button: TouchActionButton
+var scope_zoom_button: TouchActionButton
+var scope_overlay: WarfareScopeOverlay
+var scope_zoom_hint: Label
 var power_controller: ArmorPowerController
 var power_panel: PanelContainer
 var power_grid: GridContainer
@@ -54,6 +59,9 @@ func setup(game_world: WarfareGameWorld, controlled_player: WarfarePlayer, data:
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	scope_overlay = ScopeOverlayScript.new()
+	scope_overlay.name = "ScopeOverlay"
+	add_child(scope_overlay)
 	_build_status_hud()
 	_build_crosshair()
 	_build_touch_controls()
@@ -93,6 +101,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 
 func _process(delta: float) -> void:
+	_update_aim_hud()
 	_update_armor_power_hud()
 	if not is_instance_valid(world):
 		return
@@ -179,6 +188,37 @@ func _build_status_hud() -> void:
 	announcement.add_theme_constant_override("outline_size", 4)
 	announcement.add_theme_color_override("font_outline_color", Color.BLACK)
 	hud_root.add_child(announcement)
+	scope_zoom_hint = _label("", 14, Color(0.7, 0.85, 0.88))
+	scope_zoom_hint.name = "ScopeZoomHint"
+	scope_zoom_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	scope_zoom_hint.add_theme_constant_override("outline_size", 3)
+	scope_zoom_hint.add_theme_color_override("font_outline_color", Color.BLACK)
+	scope_zoom_hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	scope_zoom_hint.hide()
+	hud_root.add_child(scope_zoom_hint)
+
+func _update_aim_hud() -> void:
+	if not is_instance_valid(player) or not is_instance_valid(scope_overlay):
+		return
+	var scoped := player.is_scope_active()
+	scope_overlay.visible = scoped
+	if scoped:
+		scope_overlay.configure(player.current_weapon.get("scope", {}), player.get_scope_magnification())
+	var can_switch := scoped and player.get_scope_magnifications().size() > 1
+	scope_zoom_hint.visible = can_switch and not is_instance_valid(touch_root)
+	if scope_zoom_hint.visible:
+		scope_zoom_hint.text = "RS · ZOOM" if not Input.get_connected_joypads().is_empty() else "Z · ZOOM"
+	if is_instance_valid(scope_zoom_button):
+		scope_zoom_button.visible = can_switch
+		# The recovered button font has ASCII x, but no multiplication glyph.
+		var caption := str(player.get_scope_magnification()).trim_suffix(".0") + "x"
+		if scope_zoom_button.caption != caption:
+			scope_zoom_button.caption = caption
+			scope_zoom_button.queue_redraw()
+	if is_instance_valid(aim_button):
+		aim_button.modulate = Color(0.4, 1.0, 1.0) if player.is_focus_aiming() else Color.WHITE
+		if player.reload_left > 0.0 or player.dead:
+			aim_button.modulate = Color(0.5, 0.5, 0.5, 0.5)
 
 func _build_crosshair() -> void:
 	# A real full-screen Control parent is required here. CanvasLayer itself has
@@ -242,9 +282,12 @@ func _update_fire_reticle_visibility() -> void:
 		and player.is_fire_input_active()
 		and kind not in ["sniper", "reflection"]
 	)
-	var show_fire := fire_reticle_left > 0.0 or held_non_sniper
+	# Each optic owns its etched/projected reticle. The recovered hip-fire sprite
+	# must not be superimposed on it; confirmed hits remain a separate top layer.
+	var scoped := is_instance_valid(player) and player.is_scope_active()
+	var show_fire := (fire_reticle_left > 0.0 or held_non_sniper) and not scoped
 	fire_crosshair.visible = show_fire
-	crosshair.visible = not show_fire
+	crosshair.visible = not show_fire and not scoped
 
 func _build_touch_controls() -> void:
 	if not _should_build_mobile_ui():
@@ -282,6 +325,16 @@ func _build_touch_controls() -> void:
 	reload_button.pressed.connect(func(): if is_instance_valid(player): player.request_touch_reload())
 	touch_root.add_child(reload_button)
 	reload_button.visible = is_instance_valid(player) and str(player.current_weapon.get("resource_model", "energy")) == "magazine"
+	aim_button = TouchActionButtonScript.new()
+	aim_button.name = "AimButton"
+	aim_button.caption = "AIM"
+	aim_button.pressed.connect(func(): if is_instance_valid(player): player.toggle_touch_aim())
+	touch_root.add_child(aim_button)
+	scope_zoom_button = TouchActionButtonScript.new()
+	scope_zoom_button.name = "ScopeZoomButton"
+	scope_zoom_button.pressed.connect(func(): if is_instance_valid(player): player.cycle_scope_magnification())
+	touch_root.add_child(scope_zoom_button)
+	scope_zoom_button.hide()
 
 func _build_armor_power_hud() -> void:
 	# GameWorld creates this controller before the HUD. Keeping that ownership
@@ -439,6 +492,7 @@ func _layout_original_hud() -> void:
 	_place_original(skill_button, Vector2(1.0, 0.5), Vector2(-50, 50), Vector2(102, 98), ui_scale)
 	_place_original(boss_panel, Vector2(0.5, 0.0), Vector2(0, 20), Vector2(510, 32), ui_scale)
 	_place_original(announcement, Vector2(0.5, 0.0), Vector2(0, 72), Vector2(600, 40), ui_scale)
+	_place_original(scope_zoom_hint, Vector2(0.5, 0.5), Vector2(0, 238), Vector2(220, 24), ui_scale)
 	if is_instance_valid(power_panel) and power_panel.visible:
 		var power_count := power_buttons.size()
 		var power_columns := maxi(1, mini(5, power_count))
@@ -478,6 +532,10 @@ func _layout_original_hud() -> void:
 		_place_original(shoot_joystick, Vector2(0.5, 0.5), Vector2(320, 170), Vector2(200, 197), ui_scale)
 	if is_instance_valid(reload_button):
 		_place_original(reload_button, Vector2(1.0, 0.5), Vector2(-172, 42), Vector2(88, 88), ui_scale)
+	if is_instance_valid(aim_button):
+		_place_original(aim_button, Vector2(1.0, 0.5), Vector2(-172, -62), Vector2(88, 88), ui_scale)
+	if is_instance_valid(scope_zoom_button):
+		_place_original(scope_zoom_button, Vector2(1.0, 0.5), Vector2(-172, -160), Vector2(88, 88), ui_scale)
 
 	_resize_crosshair()
 
@@ -544,6 +602,9 @@ func toggle_pause() -> void:
 	var pausing := not get_tree().paused
 	AudioDirector.play_ui("pause" if pausing else "resume")
 	get_tree().paused = pausing
+	if pausing and is_instance_valid(player):
+		player.cancel_aim()
+	_update_aim_hud()
 	pause_overlay.visible = pausing
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if pausing or OS.has_feature("mobile") else Input.MOUSE_MODE_CAPTURED
 
@@ -551,6 +612,9 @@ func show_result(victory: bool, stats: Dictionary) -> void:
 	if is_instance_valid(result_overlay):
 		return
 	get_tree().paused = true
+	if is_instance_valid(player):
+		player.cancel_aim()
+	_update_aim_hud()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	result_overlay = _modal_base()
 	add_child(result_overlay)

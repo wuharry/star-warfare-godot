@@ -24,6 +24,7 @@ func _check(condition: bool, message: String) -> void:
 		push_error("CAMERA / HIT FEEDBACK TEST: " + message)
 
 func _run() -> void:
+	GameState.save_path = GameState.TEST_SAVE_PATH
 	GameState.selected_level = 1
 	GameState.selected_weapon = "gun00"
 	GameState.settings.show_touch_controls = false
