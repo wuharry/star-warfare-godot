@@ -3,13 +3,24 @@
   "kind": "turnaround",
   "path": "images/c09_turnaround.png",
   "prompt": "prompts/c09_turnaround.txt",
-  "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-1374f759-dffb-459a-a8c1-f10f8b651192.png",
-  "date": "2026-09-25",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-bdd532c5-52f6-4837-a043-1e6d08343ed5.png",
+  "date": "2026-09-29",
   "reference_images": [
-    "images/c09_concept.png",
-    "images/b09_design_sheet.png"
+    "revisions/c09_before_color_fix_20260929/images/c09_turnaround.png"
   ],
+  "reference_sha256": {
+    "revisions/c09_before_color_fix_20260929/images/c09_turnaround.png": "1d2bf5edba18009f81dd071aa50c815befb503ba90a873269ffcce190ebe5374"
+  },
   "postprocessing": "none",
-  "visual_review": "已逐圖目視：正／左／背三人同高同地線，左視鼻向左、背視無玻璃。Pegasus 紅色双冠軌頭盔、暗 V 面罩、米白身甲與稀疏藍線保留；側視可讀分層頰甲和肩蓋。B09 維持青藍雙艙、銀白側板兩個青三角、中央下方圓模組，配色未受紅白裝甲影響。",
-  "status": "visually_reviewed_pending_user_selection"
+  "edit_scope": "helmet_shell_color_only",
+  "visual_review": "已目視：FRONT／LEFT／BACK 三個頭盔的全部外殼均為白灰色，後腦沒有殘留紅甲；深色玻璃只出現在正側視。身甲與獨立 B09 青藍／銀雙艙、青三角及下方圓模組保留。",
+  "status": "visually_checked_color_correction_pending_user_review",
+  "supersedes": "revisions/c09_before_color_fix_20260929/generation_records/c09_turnaround.json",
+  "prompt_sha256": "b46944344ece998cec754e802b47aa112411e0ee9b2ef6b8bda8575ab9040fd1",
+  "sha256": "03740fb5d428b89cdffa5045ddb26be53ab8b83ce5aa68cddf879526e4e70212",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "bytes": 2057026
 }

@@ -1450,83 +1450,81 @@
       "kind": "concept",
       "path": "images/c09_concept.png",
       "prompt": "prompts/c09_concept.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-8dc16c8d-fc11-4215-aea4-847c96fd21ad.png",
+      "date": "2026-09-29",
       "reference_images": [
-        "references/legacy/c09_front.png",
-        "references/halo/c09_helioskrill_front.png"
+        "revisions/c09_before_color_fix_20260929/images/c09_concept.png"
       ],
-      "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-1da436a5-6bbe-4279-b418-a953ee91aec7.png",
-      "date": "2026-09-25",
+      "reference_sha256": {
+        "revisions/c09_before_color_fix_20260929/images/c09_concept.png": "65111bf812db20399f7fd4b589f6b1563dd194647c48b71967b447ab0a283cac"
+      },
       "postprocessing": "none",
-      "visual_review": "紅盔白甲與淺藍接縫保留，兩條低冠軌、連續V面窗、分層頰框及胸肋護甲可辨識。人體軟頸和肘膝成立；頭盔偏原Pegasus，HELIOSKRILL融合主要在頰框與胸肩。",
-      "status": "visually_reviewed_pending_user_selection",
-      "generation_record": "generation_records/c09_concept.json",
-      "sha256": "65111bf812db20399f7fd4b589f6b1563dd194647c48b71967b447ab0a283cac",
+      "edit_scope": "helmet_shell_color_only",
+      "visual_review": "已目視：頭盔冠軌、額甲、側頰與下巴全部改為與胸肩一致的白灰色；深色 V 面罩、通風孔、既有全身輪廓與藍色身甲細節保留，雙腳完整。",
+      "status": "visually_checked_color_correction_pending_user_review",
+      "supersedes": "revisions/c09_before_color_fix_20260929/generation_records/c09_concept.json",
+      "prompt_sha256": "a87d04a7bd5d3fddf9e016952645702df31dd4c4d0ce3bd519d9065a93d1b6d2",
+      "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
       "dimensions": [
         1024,
         1536
       ],
-      "bytes": 2150095,
-      "prompt_sha256": "e5ff0a25748333d1549c5e12bc4d25e558c728c806628ae3f58bd25e437af80b",
-      "reference_sha256": {
-        "references/legacy/c09_front.png": "b2eb41d018c71542056bcde82a83913cfaadf7de5694a31895fdd76f18436084",
-        "references/halo/c09_helioskrill_front.png": "f180f5312ddc2e876922547a0f3b3660d47f9939fd029f5ae17d75eefd08ffcc"
-      }
+      "bytes": 1956621,
+      "generation_record": "generation_records/c09_concept.json"
     },
     {
       "design_id": "C-09",
       "kind": "construction",
       "path": "images/c09_construction.png",
       "prompt": "prompts/c09_construction.txt",
-      "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-5e16786f-78e4-4e53-9c0d-a5000da39e14.png",
-      "date": "2026-09-25",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-8c7341ea-206c-409f-b846-dda161bdeb24.png",
+      "date": "2026-09-29",
       "reference_images": [
-        "images/c09_concept.png",
-        "images/c09_turnaround.png",
-        "images/b09_design_sheet.png"
+        "revisions/c09_before_color_fix_20260929/images/c09_construction.png"
       ],
+      "reference_sha256": {
+        "revisions/c09_before_color_fix_20260929/images/c09_construction.png": "e49202156b6de4dfd58a7f6465c52e869b9ed81e7a8756a4a6f7929e77a7ba37"
+      },
       "postprocessing": "none",
-      "visual_review": "已逐圖目視：紅色雙低冠軌頭盔、暗 V 形單片面罩、側頰與下頜分件清楚；B 區白色藍角肩蓋、C 區白甲淺藍線胸片都與概念一致。D 區只有黑色軟墊雙接軌，獨立 B09 青藍／銀雙艙、兩青三角與中央下圓模組完整，沒有把背包外殼重複畫進裝甲。屬視覺建模參考，接點尺寸未驗證。",
-      "status": "visually_reviewed_pending_user_selection",
-      "generation_record": "generation_records/c09_construction.json",
-      "sha256": "e49202156b6de4dfd58a7f6465c52e869b9ed81e7a8756a4a6f7929e77a7ba37",
+      "edit_scope": "helmet_shell_color_only",
+      "visual_review": "已目視：A 區完整頭盔與拆開的冠殼、側片、下巴全部改為白灰色，玻璃維持深色、軟內襯為黑色；B/C 肩胸沿用白灰及藍色細節，D 保留黑背墊雙接軌與獨立 B09。尺寸及跨視細節仍須建模核對。",
+      "status": "visually_checked_color_correction_pending_user_review",
+      "supersedes": "revisions/c09_before_color_fix_20260929/generation_records/c09_construction.json",
+      "prompt_sha256": "eaa6d1bbea6e81a5ec5761e972bf27900cf808053d957a5562c06e13c73524e6",
+      "sha256": "6cef8d62fd6c64a140d5a597aba9e8ccd8629afa1dcc155d14ae3d5ab4b33967",
       "dimensions": [
         1536,
         1024
       ],
-      "bytes": 2750450,
-      "prompt_sha256": "73c7850caa4fdab5be6dceb4f43d902131f44fed21f27b6f0d045512e4309324",
-      "reference_sha256": {
-        "images/c09_concept.png": "65111bf812db20399f7fd4b589f6b1563dd194647c48b71967b447ab0a283cac",
-        "images/c09_turnaround.png": "1d2bf5edba18009f81dd071aa50c815befb503ba90a873269ffcce190ebe5374",
-        "images/b09_design_sheet.png": "81f641c8c9d7c8605e3b78ab0c5c90adde3dee09e626cce210e13df128eb7d6a"
-      }
+      "bytes": 2468151,
+      "generation_record": "generation_records/c09_construction.json"
     },
     {
       "design_id": "C-09",
       "kind": "turnaround",
       "path": "images/c09_turnaround.png",
       "prompt": "prompts/c09_turnaround.txt",
-      "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-1374f759-dffb-459a-a8c1-f10f8b651192.png",
-      "date": "2026-09-25",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-bdd532c5-52f6-4837-a043-1e6d08343ed5.png",
+      "date": "2026-09-29",
       "reference_images": [
-        "images/c09_concept.png",
-        "images/b09_design_sheet.png"
+        "revisions/c09_before_color_fix_20260929/images/c09_turnaround.png"
       ],
+      "reference_sha256": {
+        "revisions/c09_before_color_fix_20260929/images/c09_turnaround.png": "1d2bf5edba18009f81dd071aa50c815befb503ba90a873269ffcce190ebe5374"
+      },
       "postprocessing": "none",
-      "visual_review": "已逐圖目視：正／左／背三人同高同地線，左視鼻向左、背視無玻璃。Pegasus 紅色双冠軌頭盔、暗 V 面罩、米白身甲與稀疏藍線保留；側視可讀分層頰甲和肩蓋。B09 維持青藍雙艙、銀白側板兩個青三角、中央下方圓模組，配色未受紅白裝甲影響。",
-      "status": "visually_reviewed_pending_user_selection",
-      "generation_record": "generation_records/c09_turnaround.json",
-      "sha256": "1d2bf5edba18009f81dd071aa50c815befb503ba90a873269ffcce190ebe5374",
+      "edit_scope": "helmet_shell_color_only",
+      "visual_review": "已目視：FRONT／LEFT／BACK 三個頭盔的全部外殼均為白灰色，後腦沒有殘留紅甲；深色玻璃只出現在正側視。身甲與獨立 B09 青藍／銀雙艙、青三角及下方圓模組保留。",
+      "status": "visually_checked_color_correction_pending_user_review",
+      "supersedes": "revisions/c09_before_color_fix_20260929/generation_records/c09_turnaround.json",
+      "prompt_sha256": "b46944344ece998cec754e802b47aa112411e0ee9b2ef6b8bda8575ab9040fd1",
+      "sha256": "03740fb5d428b89cdffa5045ddb26be53ab8b83ce5aa68cddf879526e4e70212",
       "dimensions": [
         1536,
         1024
       ],
-      "bytes": 2267103,
-      "prompt_sha256": "77626f4ca4c5eaa8759d65b73bbb1d277b114e80e65e7060bb34a13f69f94be4",
-      "reference_sha256": {
-        "images/c09_concept.png": "65111bf812db20399f7fd4b589f6b1563dd194647c48b71967b447ab0a283cac",
-        "images/b09_design_sheet.png": "81f641c8c9d7c8605e3b78ab0c5c90adde3dee09e626cce210e13df128eb7d6a"
-      }
+      "bytes": 2057026,
+      "generation_record": "generation_records/c09_turnaround.json"
     },
     {
       "design_id": "C-10",
@@ -4298,7 +4296,8 @@
     "Halo和原遊戲圖是來源參考，來源權利不因融合生成而消失；未聲稱法律授權。",
     "B編號對應獨立背包ID，與同序C同框僅為本轮展示搭配。",
     "assets 保留本批生成圖的交付紀錄；目前採用方向以 user_reviews 為優先。Thunder 恢復舊 B 概念，原 C-07 三張圖列為未採用歷史，非舊稿配套三視。",
-    "2026-09-29：使用者採用 Atom＋Recruit 為 C-05 Strike 正式頭盔方向，並指示 B＋Recruit 套用 C-08 Atom；各三張主圖、提示詞及紀錄同步，舊版已封存可比較。未修改 Godot 素材或執行期。"
+    "2026-09-29：使用者採用 Atom＋Recruit 為 C-05 Strike 正式頭盔方向，並指示 B＋Recruit 套用 C-08 Atom；各三張主圖、提示詞及紀錄同步，舊版已封存可比較。未修改 Godot 素材或執行期。",
+    "2026-09-29：依使用者更正，C-09 Pegasus 頭盔硬殼與白灰身甲統一；概念、三視、拆解及有效來源規則同步修正。原始擷取圖與舊紅盔稿保留為歷史，未修改 Godot 素材。"
   ],
   "prompt_files": [
     {
@@ -4515,15 +4514,15 @@
     },
     {
       "path": "prompts/c09_concept.txt",
-      "sha256": "e5ff0a25748333d1549c5e12bc4d25e558c728c806628ae3f58bd25e437af80b"
+      "sha256": "a87d04a7bd5d3fddf9e016952645702df31dd4c4d0ce3bd519d9065a93d1b6d2"
     },
     {
       "path": "prompts/c09_construction.txt",
-      "sha256": "73c7850caa4fdab5be6dceb4f43d902131f44fed21f27b6f0d045512e4309324"
+      "sha256": "eaa6d1bbea6e81a5ec5761e972bf27900cf808053d957a5562c06e13c73524e6"
     },
     {
       "path": "prompts/c09_turnaround.txt",
-      "sha256": "77626f4ca4c5eaa8759d65b73bbb1d277b114e80e65e7060bb34a13f69f94be4"
+      "sha256": "b46944344ece998cec754e802b47aa112411e0ee9b2ef6b8bda8575ab9040fd1"
     },
     {
       "path": "prompts/c10_concept.txt",
@@ -4824,6 +4823,27 @@
           "concept": "revisions/c08_before_helmet_swap_20260929/prompts/c08_concept.txt",
           "turnaround": "revisions/c08_before_helmet_swap_20260929/prompts/c08_turnaround.txt",
           "construction": "revisions/c08_before_helmet_swap_20260929/prompts/c08_construction.txt"
+        }
+      },
+      "runtime_implemented": false
+    },
+    "C-09": {
+      "status": "helmet_color_corrected",
+      "date": "2026-09-29",
+      "feedback": "Pegasus 頭盔應該是同色不是紅色的",
+      "scope": "helmet_shell_color_only",
+      "action": "Pegasus 頭盔硬殼已改為與身甲一致的白灰色，保留深色 V 面罩、雙低冠軌與原造型；概念、三視及拆解同步更正。",
+      "acceptance_basis": "使用者明確更正配色；本次生成結果由助理目視核對，尚未逐張獲使用者確認。",
+      "previous_revision": {
+        "images": {
+          "concept": "revisions/c09_before_color_fix_20260929/images/c09_concept.png",
+          "turnaround": "revisions/c09_before_color_fix_20260929/images/c09_turnaround.png",
+          "construction": "revisions/c09_before_color_fix_20260929/images/c09_construction.png"
+        },
+        "prompts": {
+          "concept": "revisions/c09_before_color_fix_20260929/prompts/c09_concept.txt",
+          "turnaround": "revisions/c09_before_color_fix_20260929/prompts/c09_turnaround.txt",
+          "construction": "revisions/c09_before_color_fix_20260929/prompts/c09_construction.txt"
         }
       },
       "runtime_implemented": false

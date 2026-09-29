@@ -369,29 +369,6 @@
         "rear": "references/legacy/c09_rear.png"
       },
       "features": {
-        "helmet": "與身甲一致的白灰頭盔，配深色淺 V 玻璃、雙低眉尖與分層護頰；冠頂、側殼、下巴與後殼統一白灰。",
-        "chest_shoulders": "身體是白灰大面板，肩為宽白灰折面殼與小藍接縫；胸中央深藍黑色領口及電路般藍線；背脊中央有圓盤/放射分片。",
-        "forearms": "白灰折面寬臂甲配藍色腕條；手部/肘部深藍黑色，肩和臂板比例沉重。",
-        "legs": "白灰髖裙與膝脛，黑藍布衣大腿內面上有細藍紋；鞋头白灰配藍條。",
-        "colors": [
-          "白灰頭盔與身甲",
-          "黑藍內襯與深色面罩",
-          "藍色接縫／電路紋"
-        ]
-      },
-      "retain_in_fusion": [
-        "頭盔與身甲一致的白灰主色",
-        "窄 V 形深面罩與短雙額尖",
-        "寬白肩及藍色身體細紋"
-      ],
-      "optimization_direction": "頭盔外殼與身甲統一白灰；保留深色 V 面罩、低眉角與分層頰甲。紅盔屬本輪更正前的錯誤配色，不再列為保留條件。",
-      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
-      "source_sha256": {
-        "front": "b2eb41d018c71542056bcde82a83913cfaadf7de5694a31895fdd76f18436084",
-        "side": "00c48f6cc2ded218f635c82ce74fa92514e356e1fccd466001675493668e389e",
-        "rear": "9b54f7c77d7fa6884171d856ad4c0c3b657cd16c53da8ee918281ce49accdb83"
-      },
-      "capture_observations_before_user_correction": {
         "helmet": "鮮紅硬角頭盔；左右額上緣成短尖，冠頂中央倒 V/箭頭板；深紅黑色 V 形窄面罩；前後多段斜切通風孔，尖收紅下巴。",
         "chest_shoulders": "身體是白灰大面板，肩為宽白灰折面殼與小藍接縫；胸中央深藍黑色領口及電路般藍線；背脊中央有圓盤/放射分片。",
         "forearms": "白灰折面寬臂甲配藍色腕條；手部/肘部深藍黑色，肩和臂板比例沉重。",
@@ -403,13 +380,17 @@
           "藍色接縫/電路紋"
         ]
       },
-      "features_basis": "頭盔配色已依使用者更正；原擷取圖觀察另存 capture_observations_before_user_correction，並非重新擷取或重新驗證原遊戲材質。",
-      "user_correction": {
-        "date": "2026-09-29",
-        "feedback": "Pegasus 頭盔應該是同色不是紅色的",
-        "authority": "user_correction_for_current_art_direction",
-        "rule": "頭盔硬殼與身甲使用一致的白灰主色；深色面罩、黑色內襯與既有藍色身甲細節維持原方向。",
-        "note": "舊擷取參考及其歷史記錄中可見紅盔，但此顏色不作為後續設計規範；原始擷取圖片不重繪。"
+      "retain_in_fusion": [
+        "紅盔與白身的強烈原版分色",
+        "窄 V 形深面罩與短雙額尖",
+        "寬白肩及藍色身體細紋"
+      ],
+      "optimization_direction": "Halo 配對可借折面戰術盔與肩甲層次；保留紅盔對白甲最關鍵識別，雙額尖可縮短成低眉角，不可全改白盔。",
+      "halo_pair_status": "待主agent核對Halo官方/來源圖後指定，不從記憶任選。",
+      "source_sha256": {
+        "front": "b2eb41d018c71542056bcde82a83913cfaadf7de5694a31895fdd76f18436084",
+        "side": "00c48f6cc2ded218f635c82ce74fa92514e356e1fccd466001675493668e389e",
+        "rear": "9b54f7c77d7fa6884171d856ad4c0c3b657cd16c53da8ee918281ce49accdb83"
       }
     },
     {

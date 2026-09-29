@@ -3,14 +3,24 @@
   "kind": "construction",
   "path": "images/c09_construction.png",
   "prompt": "prompts/c09_construction.txt",
-  "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6b7-acc0-7ec2-99da-1cb53b0cc8f7\\exec-5e16786f-78e4-4e53-9c0d-a5000da39e14.png",
-  "date": "2026-09-25",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-8c7341ea-206c-409f-b846-dda161bdeb24.png",
+  "date": "2026-09-29",
   "reference_images": [
-    "images/c09_concept.png",
-    "images/c09_turnaround.png",
-    "images/b09_design_sheet.png"
+    "revisions/c09_before_color_fix_20260929/images/c09_construction.png"
   ],
+  "reference_sha256": {
+    "revisions/c09_before_color_fix_20260929/images/c09_construction.png": "e49202156b6de4dfd58a7f6465c52e869b9ed81e7a8756a4a6f7929e77a7ba37"
+  },
   "postprocessing": "none",
-  "visual_review": "已逐圖目視：紅色雙低冠軌頭盔、暗 V 形單片面罩、側頰與下頜分件清楚；B 區白色藍角肩蓋、C 區白甲淺藍線胸片都與概念一致。D 區只有黑色軟墊雙接軌，獨立 B09 青藍／銀雙艙、兩青三角與中央下圓模組完整，沒有把背包外殼重複畫進裝甲。屬視覺建模參考，接點尺寸未驗證。",
-  "status": "visually_reviewed_pending_user_selection"
+  "edit_scope": "helmet_shell_color_only",
+  "visual_review": "已目視：A 區完整頭盔與拆開的冠殼、側片、下巴全部改為白灰色，玻璃維持深色、軟內襯為黑色；B/C 肩胸沿用白灰及藍色細節，D 保留黑背墊雙接軌與獨立 B09。尺寸及跨視細節仍須建模核對。",
+  "status": "visually_checked_color_correction_pending_user_review",
+  "supersedes": "revisions/c09_before_color_fix_20260929/generation_records/c09_construction.json",
+  "prompt_sha256": "eaa6d1bbea6e81a5ec5761e972bf27900cf808053d957a5562c06e13c73524e6",
+  "sha256": "6cef8d62fd6c64a140d5a597aba9e8ccd8629afa1dcc155d14ae3d5ab4b33967",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "bytes": 2468151
 }
