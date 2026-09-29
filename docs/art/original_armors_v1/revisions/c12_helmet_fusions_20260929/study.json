@@ -1,0 +1,148 @@
+{
+  "design_id": "C-12",
+  "date": "2026-09-29",
+  "path_base": "docs/art/original_armors_v1",
+  "status": "anubis_direction_preferred_gold_visor_revision_pending_user_review",
+  "preferred_direction": "anubis",
+  "latest_variant": "anubis_gold",
+  "comparison_page": "revisions/c12_helmet_fusions_20260929/index.html",
+  "user_feedback": {
+    "reference_request": "Cygni 目前的頭盔很棒但是基本上是用原版的；看天命 2 或 Halo 類似頭盔結合原版生成。",
+    "revision_request": "Halo 5 Anubis 這個比較好，但是面罩是金色的，面罩比例應該比較多。",
+    "interpretation": "採 Anubis 方向，以金色反光玻璃擴大面窗，縮薄頰框與中央下巴；此偏好不等於新修訂圖已驗收。"
+  },
+  "baseline": {
+    "image": "revisions/c12_helmet_fusions_20260929/images/baseline.png",
+    "sha256": "2c514a713a0b00ac7afec173b739af7eed83f350db74e63213d22bf06e2ed046",
+    "design_snapshot": "revisions/c12_helmet_fusions_20260929/design_before.json",
+    "git_commit": "1500478",
+    "canonical_images_retained": true
+  },
+  "sources": [
+    {
+      "id": "anubis",
+      "name": "Halo 5 · Anubis",
+      "local_path": "references/halo/c12_anubis_production.jpg",
+      "source_page_url": "https://www.halopedia.org/File:Anubis-armor-render-02.jpg",
+      "image_url": "https://www.halopedia.org/images/d/de/Anubis-armor-render-02.jpg?2969c",
+      "observed": "分層前突眉甲、斜向內收護頰、小型中央呼吸護塊；不採用原作身甲或配色。",
+      "sha256": "4272212667d3eb489c9f92a5efd5937bba0f382b12775a812e370214ba5a3db5",
+      "bytes": 376911,
+      "visually_inspected": true,
+      "role": "helmet_shape_reference_only"
+    },
+    {
+      "id": "moonfang",
+      "name": "Destiny 2 · Moonfang-X7 Mask",
+      "local_path": "references/destiny2/c12_moonfang_x7_mask.jpg",
+      "source_page_url": "https://www.light.gg/db/items/2623956730/moonfang-x7-mask/",
+      "image_url": "https://www.bungie.net/common/destiny2_content/screenshots/2623956730.jpg",
+      "observed": "中央額脊與兩側冠槽、橫向眼帶向中央下方收尖；不採用青藍與粉色塗裝。",
+      "sha256": "132651cbdaf5a7ba9bd83412c9758ddeafd1fb07448a809ee651849674f1d66e",
+      "bytes": 224221,
+      "visually_inspected": true,
+      "role": "helmet_shape_reference_only"
+    }
+  ],
+  "generation_records": [
+    {
+      "design_id": "C-12",
+      "kind": "helmet_fusion_study",
+      "variant": "anubis",
+      "path_base": "docs/art/original_armors_v1",
+      "path": "revisions/c12_helmet_fusions_20260929/images/anubis.png",
+      "prompt": "revisions/c12_helmet_fusions_20260929/prompts/anubis.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-5b68d874-bc8c-43b3-9c21-aeacff6d5489.png",
+      "tool": "built-in image_gen",
+      "date": "2026-09-29",
+      "reference_images": [
+        "revisions/c12_helmet_fusions_20260929/images/baseline.png",
+        "references/halo/c12_anubis_production.jpg"
+      ],
+      "reference_sha256": {
+        "revisions/c12_helmet_fusions_20260929/images/baseline.png": "2c514a713a0b00ac7afec173b739af7eed83f350db74e63213d22bf06e2ed046",
+        "references/halo/c12_anubis_production.jpg": "4272212667d3eb489c9f92a5efd5937bba0f382b12775a812e370214ba5a3db5"
+      },
+      "prompt_sha256": "d695137fd12e17c5601b610caa21c97f931bb964196723e48550c5e00bc03459",
+      "sha256": "32c4f4a28fe4dad103e6da6272a3bfa5208bc5d1de3cce83c205bd6a9bd409b4",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "bytes": 1938281,
+      "postprocessing": "none",
+      "edit_scope": "helmet_only",
+      "visual_review": "已目視：分層額甲與斜收頰板取代舊 U 框和圓形頰接點；仍是暗紫面罩，中央白色下巴偏高。白灰／深綠／銅橙身甲、短翼與站姿延續。",
+      "status": "user_preferred_direction_superseded_by_gold_revision",
+      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis.json"
+    },
+    {
+      "design_id": "C-12",
+      "kind": "helmet_fusion_study",
+      "variant": "moonfang",
+      "path_base": "docs/art/original_armors_v1",
+      "path": "revisions/c12_helmet_fusions_20260929/images/moonfang.png",
+      "prompt": "revisions/c12_helmet_fusions_20260929/prompts/moonfang.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-ef5278f5-ad78-4d8c-b48b-ec83400bad0f.png",
+      "tool": "built-in image_gen",
+      "date": "2026-09-29",
+      "reference_images": [
+        "revisions/c12_helmet_fusions_20260929/images/baseline.png",
+        "references/destiny2/c12_moonfang_x7_mask.jpg"
+      ],
+      "reference_sha256": {
+        "revisions/c12_helmet_fusions_20260929/images/baseline.png": "2c514a713a0b00ac7afec173b739af7eed83f350db74e63213d22bf06e2ed046",
+        "references/destiny2/c12_moonfang_x7_mask.jpg": "132651cbdaf5a7ba9bd83412c9758ddeafd1fb07448a809ee651849674f1d66e"
+      },
+      "prompt_sha256": "e263dbaf2d8240716209df9224da0ad95c918c5d8c962131f1831d1089f74196",
+      "sha256": "d2c6af5d7c12ac89632d0a1b6e8fe2f3c90626f60c1c37d172efec553c7a4851",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "bytes": 1949435,
+      "postprocessing": "none",
+      "edit_scope": "helmet_only",
+      "visual_review": "已目視：中央額脊、冠槽及向下收尖的暗紫面罩；白色頰板形成長 V 輪廓，中央下巴較尖。身甲主輪廓與配色延續。使用者偏好 Anubis，因此此稿保留作比較。",
+      "status": "alternative_not_selected",
+      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/moonfang.json"
+    },
+    {
+      "design_id": "C-12",
+      "kind": "helmet_fusion_study",
+      "variant": "anubis_gold",
+      "path_base": "docs/art/original_armors_v1",
+      "path": "revisions/c12_helmet_fusions_20260929/images/anubis_gold.png",
+      "prompt": "revisions/c12_helmet_fusions_20260929/prompts/anubis_gold.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-9808eac1-66c2-4b88-ac0e-4ee9b1638a36.png",
+      "tool": "built-in image_gen",
+      "date": "2026-09-29",
+      "reference_images": [
+        "revisions/c12_helmet_fusions_20260929/images/anubis.png"
+      ],
+      "reference_sha256": {
+        "revisions/c12_helmet_fusions_20260929/images/anubis.png": "32c4f4a28fe4dad103e6da6272a3bfa5208bc5d1de3cce83c205bd6a9bd409b4"
+      },
+      "prompt_sha256": "efb7e0e8099d461f6afe156edeac117aff17df63faa1b3a8386ef14c94dde3c6",
+      "sha256": "f36a317ba82dcc35945493ab469e4200b8925953d64c41dfbe945d32aac141ed",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "bytes": 1871536,
+      "postprocessing": "none",
+      "edit_scope": "helmet_only",
+      "visual_review": "已目視：玻璃由紫色改為有明暗反射的金色，開口向兩側及下頰延伸，中央白色護塊縮小，面罩明顯大於 Anubis 初稿。白灰冠殼、分層眉甲、後掠短翼與頸部以下裝甲配色和站姿延續。未量測面積百分比。",
+      "status": "gold_visor_revision_pending_user_review",
+      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold.json"
+    }
+  ],
+  "runtime_implemented": false,
+  "turnaround_and_construction": "not_generated_for_this_study",
+  "license_status": "reference_fusion_concept_not_a_legal_clearance",
+  "limitations": [
+    "三張新圖是生成概念參考，局部表面紋理會重繪；並非像素級修圖、尺寸圖或遊戲模型。",
+    "尚未從背面或另一側驗證融合頭盔；雙側短翼為設計要求，此角度主要可見近側。",
+    "沒有面罩面積或參考相似度的量測百分比。"
+  ]
+}
