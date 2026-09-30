@@ -735,7 +735,9 @@ func _ranged_attack() -> void:
 	_play_recovered_animation("attack", 0.04)
 	if not is_instance_valid(target):
 		return
-	AudioDirector.play_3d("enemy/feixingchong.wav", global_position, -8.0, randf_range(0.94, 1.05))
+	# 蝎尾虫 fires this, so it uses its own recovered clip. feixingchong.wav
+	# belongs to 飞行虫, an enemy this restoration does not spawn at all.
+	AudioDirector.play_3d("enemy/xeiweichong.wav", global_position, -8.0, randf_range(0.94, 1.05))
 	var projectile := ProjectileScript.new()
 	var origin := global_position + Vector3.UP * 1.15
 	var travel := (_predicted_aim_point(projectile_speed) - origin).normalized()
