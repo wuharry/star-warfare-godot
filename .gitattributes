@@ -3,3 +3,10 @@
 *.ogg filter=lfs diff=lfs merge=lfs -text
 *.tres filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
+
+# The harness hashes these text files byte-for-byte; use LF on every platform.
+/.claude/** text eol=lf
+/.harness/** text eol=lf
+/.codex/*.json text eol=lf
+/AGENTS.md text eol=lf
+/CLAUDE.md text eol=lf
