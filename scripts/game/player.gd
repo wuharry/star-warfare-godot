@@ -1262,6 +1262,70 @@ func _fire_projectile(projectile_kind: String) -> void:
 		projectile.position = get_parent().to_local(muzzle.global_position)
 		get_parent().add_child(projectile)
 
+# projectile.gd applies this to the grenade kind; the reticle must predict the
+# same arc or its impact marker would point somewhere the grenade never goes.
+const GRENADE_GRAVITY := 9.81
+const GRENADE_PREDICT_STEP := 0.15
+const GRENADE_PREDICT_TIME := 3.0
+
+func get_reticle_readout() -> Dictionary:
+	"""State the HUD reticle and the scope overlay both read, from one ray.
+
+	Each readout used to need its own raycast. Casting once here and sharing
+	the result keeps the scoped overlay from adding several more per refresh.
+	"""
+	var weapon_range := float(current_weapon.get("range", 105.0))
+	var aim := get_aim_solution(weapon_range)
+	var collider = aim.collider
+	var capacity := maxi(1, int(current_weapon.get("magazine_size", 1)))
+	var interval := _current_shot_interval()
+	return {
+		"spread_ratio": get_hip_spread_ratio(),
+		"cooldown_ratio": clampf(shot_cooldown / interval, 0.0, 1.0) if interval > 0.0 else 0.0,
+		"cooldown_left": shot_cooldown,
+		"shot_interval": interval,
+		"target_distance": Vector3(aim.origin).distance_to(Vector3(aim.target)),
+		"weapon_range": weapon_range,
+		"on_enemy": is_instance_valid(collider) and (collider as Node).is_in_group("enemies"),
+		"uses_magazine": _uses_magazine(),
+		"magazine_rounds": _magazine_rounds(),
+		"magazine_size": capacity,
+		"magazine_ratio": (float(_magazine_rounds()) / float(capacity)) if _uses_magazine() else 1.0,
+		"impact_offset": predict_ballistic_offset(aim),
+	}
+
+func predict_ballistic_offset(aim: Dictionary) -> Vector2:
+	"""Screen offset from the reticle centre to where an arcing shot lands.
+
+	Only the grenade launcher falls; everything else lands on the camera ray,
+	which is exactly where the reticle centre already sits. Vector2.INF means
+	the weapon needs no separate impact marker.
+	"""
+	if str(current_weapon.get("kind", "")) != "grenade":
+		return Vector2.INF
+	# Match _fire_projectile: the muzzle converges on the aim point and the
+	# grenade kind is then lifted, so the prediction starts from the muzzle.
+	var position := muzzle.global_position
+	var launch := (Vector3(aim.target) - position).normalized()
+	launch = (launch + Vector3.UP * 0.18).normalized()
+	var velocity := launch * float(current_weapon.get("speed", 20.0))
+	var space := get_world_3d().direct_space_state
+	var elapsed := 0.0
+	while elapsed < GRENADE_PREDICT_TIME:
+		var next := position + velocity * GRENADE_PREDICT_STEP
+		var query := PhysicsRayQueryParameters3D.create(position, next, 3)
+		query.exclude = [get_rid()]
+		var hit := space.intersect_ray(query)
+		if not hit.is_empty():
+			position = hit.position
+			break
+		position = next
+		velocity += Vector3.DOWN * GRENADE_GRAVITY * GRENADE_PREDICT_STEP
+		elapsed += GRENADE_PREDICT_STEP
+	if camera.is_position_behind(position):
+		return Vector2.INF
+	return camera.unproject_position(position) - get_viewport().get_visible_rect().size * 0.5
+
 func get_aim_solution(maximum_range := 180.0) -> Dictionary:
 	return _camera_aim_solution(maximum_range, 0.0)
 

@@ -291,15 +291,21 @@ func _check_reticle() -> void:
 	world.hud._resize_crosshair()
 	world.hud._update_fire_reticle_visibility()
 	var base_size: Vector2 = world.hud.crosshair.size
+	var base_radius: float = world.hud.hip_bracket_radius()
 	var viewport_center := get_viewport().get_visible_rect().get_center()
+	_check(not world.hud.spread_brackets.visible, "brackets opened before any shot")
 	for shot in 12:
 		_fire()
 	world.hud._resize_crosshair()
 	world.hud._update_fire_reticle_visibility()
 	_check(world.hud.fire_crosshair.visible and not world.hud.crosshair.visible, "bloom did not select fire reticle")
-	_check(world.hud.fire_crosshair.size.x > base_size.x, "real fire did not expand HUD")
-	_check(world.hud.fire_crosshair.size.is_equal_approx(world.hud.crosshair.size), "reticle layers have different spread sizes")
-	_check(world.hud.fire_crosshair.get_global_rect().get_center().distance_to(viewport_center) < 0.01, "expanded reticle moved away from viewport center")
+	# The recovered AimID sprite keeps its own size. The brackets around it are
+	# what report the cone, so the centre of aim never changes size or place.
+	_check(world.hud.crosshair.size.is_equal_approx(base_size), "spread resized the recovered sprite")
+	_check(world.hud.fire_crosshair.size.is_equal_approx(world.hud.crosshair.size), "reticle layers have different sizes")
+	_check(world.hud.spread_brackets.visible, "accumulated spread did not show the brackets")
+	_check(world.hud.hip_bracket_radius() > base_radius + 1.0, "real fire did not open the brackets")
+	_check(world.hud.fire_crosshair.get_global_rect().get_center().distance_to(viewport_center) < 0.01, "reticle moved away from viewport center")
 	world.hud.fire_reticle_left = 0.0
 	world.hud._update_fire_reticle_visibility()
 	_check(world.hud.fire_crosshair.visible, "short fire flash expiry hid ongoing recovery")
@@ -307,8 +313,37 @@ func _check_reticle() -> void:
 	world.hud._resize_crosshair()
 	world.hud._update_fire_reticle_visibility()
 	_check(world.hud.crosshair.visible and not world.hud.fire_crosshair.visible, "recovery did not restore idle reticle")
-	_check(world.hud.crosshair.size.is_equal_approx(base_size), "recovery left the HUD expanded")
+	_check(is_equal_approx(world.hud.hip_bracket_radius(), base_radius), "recovery left the brackets open")
+	_check(not world.hud.spread_brackets.visible, "recovery left the brackets on screen")
 	_check(world.hud.crosshair.get_global_rect().get_center().distance_to(viewport_center) < 0.01, "idle reticle moved away from viewport center")
+	_check_bracket_geometry()
+
+func _check_bracket_geometry() -> void:
+	# The brackets are an indicator, not a hit box, but they must still be
+	# driven by the real angle so a wider-coned weapon really does open wider.
+	_equip("gun00")
+	for shot in 12:
+		_fire()
+	var hud := world.hud
+	var half_fov := deg_to_rad(player.get_hip_fov()) * 0.5
+	var half_height: float = get_viewport().get_visible_rect().size.y * 0.5
+	var expected := tan(deg_to_rad(player.get_hip_spread_degrees())) / tan(half_fov) * half_height
+	_check(absf(hud.hip_cone_radius_px() - expected) < 0.01, "bracket radius is not the projected cone")
+	var gain: float = hud.hip_bracket_gain()
+	_check(gain > 1.0, "the readability gain collapsed to nothing")
+	var inner: float = maxf(hud.crosshair.size.x, hud.crosshair.size.y) * 0.5 + 5.0 * hud._original_ui_scale()
+	_check(absf(hud.hip_bracket_radius() - (inner + hud.hip_cone_radius_px(gain))) < 0.01,
+		"bracket radius stopped following the cone and its stated gain")
+	# A precise weapon must not open as far as a wide one at the same ratio.
+	var wide: float = hud.hip_bracket_radius()
+	_equip("gun40")
+	for shot in 20:
+		_fire()
+	_check(not is_equal_approx(hud.hip_bracket_gain(), gain) or not is_equal_approx(hud.hip_bracket_radius(), wide),
+		"every weapon opens its brackets identically")
+	player._update_hip_spread(10.0)
+	hud._update_fire_reticle_visibility()
+	_check(is_zero_approx(hud.hip_cone_radius_px(8.0)), "a recovered weapon still projects a cone")
 
 func _check_pause() -> void:
 	_equip("gun00")

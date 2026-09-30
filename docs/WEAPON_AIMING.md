@@ -61,6 +61,46 @@ godot --path . --rendering-method gl_compatibility --resolution 1280x720 res://t
 測試把靶牆放在各槍射程內：`gun06` 的還原射程只有 8 公尺，固定 25 公尺的靶牆會完全打不到，看起來像散布壞掉。移動靶牆後要等一個 physics frame，實體位置才會進到物理空間。
 
 
+## 準心回報狀態（2026-09-30）
+
+五款鏡內準心與腰射準心的形狀、顏色都不變，改的是它們各自回報一個該把槍真正需要的值。所有數值來自玩家已經在追蹤的狀態，`get_reticle_readout()` 一次射線同時供準心變色、五款讀數與目標距離使用，取代原本各自射線。
+
+| 槍 | 回報 | 來源 |
+| --- | --- | --- |
+| FR28a `gun00` | 彈匣殘量：下半六段弧依剩餘比例熄滅，低於四分之一轉紅 | `weapon_magazines` 與 `magazine_size` |
+| Vox-07 `gun14` | 榴彈落點：外圈環標在實際彈道命中處 | `predict_ballistic_offset()` |
+| R100 `gun34` | 冷卻：孔徑外緣的環開口代表等待，接回滿圈即可再開 | `shot_cooldown` ÷ `_current_shot_interval()` |
+| R700 `gun35` | 目標距離：右側 0–射程垂直尺與數字，超出射程轉紅顯示 `OUT` | `get_aim_solution()` 的命中點 |
+| AST-KK `gun40` | 連射時間：下方柱線三根橫杆依持續射擊點亮 | `get_hip_spread_ratio()` |
+
+`predict_ballistic_offset()` 重跑 `_fire_projectile()` 的發射條件——槍口位置、朝瞄準點收斂再上抬 0.18、`projectile.gd` 的 9.81 重力——以 0.15 秒為步長逐段射線直到命中或 3 秒。只有 `kind == "grenade"` 會算，其餘武器回傳 `Vector2.INF`，準心不畫落點環。榴彈近距離會落在瞄準線**上方**（仍在上升段），遠距離才落到下方，連接線兩個方向都畫。
+
+AST-KK 的三根橫杆有前提：**開鏡時散布為零**，所以橫杆是對扣扳機時間的回饋，不代表彈道真的在散開。要讓它對應真實彈道，必須讓鏡內也有一段散布，那是玩法改動，尚未做。
+
+### 腰射改成四角括號
+
+原本開火時把整張 `aim_id` 圖等比放大到 `reticle_max_scale`。改成圖維持原尺寸，外圍四個角括號依散布外推。
+
+**括號不是真正的彈著範圍。** gun00 上限 0.75 度，在 60 度腰射 FOV、720 像素高的畫面上只有約 8 像素，比準心圖本身還小，畫出來看不見。所以括號取真實投影角度再乘一個放大倍率：
+
+```text
+hip_cone_radius_px(gain) = tan(目前散布角 × gain) ÷ tan(FOV/2) × 畫面高度/2
+gain = (該槍 reticle_max_scale − 1) × BRACKET_GAIN_PER_UNIT(22)
+```
+
+角度是真的，倍率是明寫的一個常數。各槍的差異來自各自的 `max_degrees` 與 `reticle_max_scale`，不是憑空給值。若日後散布值調大到本身就看得見，把 `gain` 收回 1.0 即可，括號就成為真實錐角。
+
+### 驗證（2026-09-30）
+
+| 驗證 | 結果 |
+| --- | --- |
+| `hip_fire_spread_test` 桌面與手機各 941 項，含括號半徑等於投影錐角乘明定倍率、各槍開合幅度不同、恢復後錐角歸零 | PASS |
+| `scope_aim_test` 185 項，含五款讀數欄位齊全、距離不超過射程、冷卻比例落在 0–1、只有拋物線武器有落點、相同讀數不重繪 | PASS |
+| `camera_hit_feedback_test`、`weapon_fire_feedback_test`、`weapon_trigger_test`、`aim_platform_test`、`mouse_weapon_cycle_test`、`original_weapon_test`、`weapon_polish_test`、`reload_system_test`、`projectile_vfx_test`、`smoke_test`、`settings_test`、`recovered_data_test`、`menu_equipment_test`、`equipment_upgrade_test` | PASS |
+| 桌面真實渲染擷取：`scope_aim_capture` 五款讀數、`hip_fire_spread_capture` 17 張括號開合 | PASS |
+| `mobile_ui_smoke_test` | FAIL；未套用本次修改同樣 FAIL，屬既有問題 |
+| 實機手機觸控手感、各槍讀數的實戰可讀性 | NOT RUN |
+
 ## 素材與對應原則
 
 現有素材足以支援腰射準星與操作按鈕；這次新增的鏡框和鏡內準星由 Godot 向量繪製，不需要生成 PNG。
