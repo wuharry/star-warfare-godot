@@ -30,8 +30,7 @@ func _draw() -> void:
 	var ui_scale := minf(size.x / 960.0, size.y / 640.0)
 	_draw_surround(center, radius)
 	draw_circle(center, radius, Color(optic.lens_tint))
-	var rim := Color(optic.reticle_color)
-	rim.a = 0.48
+	var rim := Color(1.0, 0.72, 0.20, 0.48)
 	draw_arc(center, radius, 0.0, TAU, SEGMENTS + 1, rim, maxf(1.0, ui_scale), true)
 	_draw_reticle(center, radius, ui_scale)
 	var font := ThemeDB.fallback_font
@@ -60,8 +59,8 @@ func _draw_surround(center: Vector2, radius: float) -> void:
 		]), colors)
 
 func _draw_reticle(center: Vector2, aperture: float, ui_scale: float) -> void:
-	# Same stroke weight/color, distinct silhouettes. Only the ring optic uses
-	# the CoM reference's segmented arcs; other optics are project designs.
+	# Keep the three accepted amber styles. Vox-07 and R700 restore the
+	# first design's ladder and compact ring; both use their original colors.
 	var color := Color(optic.reticle_color)
 	match str(optic.reticle):
 		"segmented_ring":
@@ -74,13 +73,14 @@ func _draw_reticle(center: Vector2, aperture: float, ui_scale: float) -> void:
 				for index in 6:
 					var angle := start + float(index) * 0.22
 					_arc(center, 44.0 * ui_scale, angle + 0.025, angle + 0.18, color, 4.0 * ui_scale)
-		"open_chevron":
-			# Compact sight: one open apex and two short side brackets.
-			_stroke(center, Vector2(-21, 23), Vector2.ZERO, ui_scale)
-			_stroke(center, Vector2.ZERO, Vector2(21, 23), ui_scale)
-			for side: float in [-1.0, 1.0]:
-				_stroke(center, Vector2(side * 48, -8), Vector2(side * 48, 12), ui_scale)
-				_stroke(center, Vector2(side * 48, 12), Vector2(side * 61, 12), ui_scale)
+		"ladder":
+			_stroke(center, Vector2(-8, 0), Vector2(8, 0), ui_scale)
+			_stroke(center, Vector2(0, -8), Vector2(0, 10), ui_scale)
+			for index in range(1, 4):
+				var width := 10.0 + index * 6.0
+				var y := index * 23.0
+				_stroke(center, Vector2(-width, y), Vector2(width, y), ui_scale)
+				_stroke(center, Vector2(0, y - 4), Vector2(0, y + 4), ui_scale)
 		"precision_cross":
 			# Display optic: fine long axes and evenly spaced index marks.
 			for direction: Vector2 in [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]:
@@ -89,15 +89,14 @@ func _draw_reticle(center: Vector2, aperture: float, ui_scale: float) -> void:
 					var point := direction * float(tick) * 26.0
 					var half_tick := direction.orthogonal() * (6.0 if tick % 2 == 0 else 3.0)
 					_stroke(center, point - half_tick, point + half_tick, ui_scale)
-		"bracket_diamond":
-			# Electronic display: four disconnected corners, no circular ring.
-			for corner: Vector2 in [Vector2(-1, -1), Vector2(1, -1), Vector2(1, 1), Vector2(-1, 1)]:
-				var point := corner * 41.0
-				_stroke(center, point - Vector2(corner.x * 19.0, 0), point, ui_scale)
-				_stroke(center, point, point - Vector2(0, corner.y * 19.0), ui_scale)
-			var diamond: Array[Vector2] = [Vector2(0, -14), Vector2(14, 0), Vector2(0, 14), Vector2(-14, 0)]
-			for index in diamond.size():
-				_stroke(center, diamond[index], diamond[(index + 1) % diamond.size()], ui_scale)
+		"ring":
+			for index in 4:
+				var angle := index * PI * 0.5
+				draw_arc(center, 23.0 * ui_scale, angle + 0.15, angle + PI * 0.5 - 0.15, 16, Color.BLACK, 4.0 * ui_scale, true)
+				draw_arc(center, 23.0 * ui_scale, angle + 0.15, angle + PI * 0.5 - 0.15, 16, Color(optic.reticle_color), 1.6 * ui_scale, true)
+			draw_circle(center, 1.8 * ui_scale, Color(optic.reticle_color))
+			_stroke(center, Vector2(-9, -40), Vector2(0, -30), ui_scale)
+			_stroke(center, Vector2(0, -30), Vector2(9, -40), ui_scale)
 		"t_post":
 			# Long tube: clear upper half, horizontal wings and a lower post.
 			for side: float in [-1.0, 1.0]:
@@ -110,9 +109,10 @@ func _draw_reticle(center: Vector2, aperture: float, ui_scale: float) -> void:
 				var y := float(tick) * 30.0
 				var half_width := 5.0 + float(tick) * 5.0
 				_stroke(center, Vector2(-half_width, y), Vector2(half_width, y), ui_scale)
-	# All five styles keep this exact center on the camera's firing ray.
-	draw_circle(center, 3.1 * ui_scale, Color(0.06, 0.045, 0.015, 0.6))
-	draw_circle(center, 1.5 * ui_scale, color)
+	# The ladder crosses at the firing ray; the compact ring draws its own dot.
+	if str(optic.reticle) not in ["ladder", "ring"]:
+		draw_circle(center, 3.1 * ui_scale, Color(0.06, 0.045, 0.015, 0.6))
+		draw_circle(center, 1.5 * ui_scale, color)
 
 func _stroke(center: Vector2, start: Vector2, end: Vector2, ui_scale: float) -> void:
 	_line(center, start * ui_scale, end * ui_scale, ui_scale)
