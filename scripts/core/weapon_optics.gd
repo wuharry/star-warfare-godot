@@ -3,8 +3,9 @@ extends RefCounted
 # New project design, not recovered Unity data. Optics are opt-in per weapon;
 # neither a sci-fi model nor an AimID alone implies that a weapon has a scope.
 # Inspected through EquipmentRefinement.weapon_mesh(), the same runtime path.
-# Reticles share CoM-inspired thin amber strokes, but each optic has a distinct
-# silhouette. Style names are consumed by WarfareScopeOverlay and the preview.
+# Three accepted styles retained; Vox-07/R700 restore their first design
+# (30a8307) while awaiting visual approval.
+# Style names are consumed by WarfareScopeOverlay and the preview.
 # Housing silhouettes are not magnified into solid panels around the view.
 # Reticles and magnifications are new design choices, not recovered values.
 const RETICLE_AMBER := Color(1.0, 0.72, 0.20, 0.94)
@@ -15,8 +16,8 @@ const PROFILES := {
 		"lens_tint": Color(1.0, 0.58, 0.18, 0.012), "magnifications": [2.0, 4.0],
 	},
 	"gun14": {
-		"id": "vox07_compact_sight", "reticle_color": RETICLE_AMBER,
-		"reticle": "open_chevron", "reticle_name": "開口尖角",
+		"id": "vox07_compact_sight", "reticle_color": Color(0.45, 0.95, 0.83),
+		"reticle": "ladder", "reticle_name": "青綠階梯刻線",
 		"lens_tint": Color(0.2, 0.9, 0.8, 0.012), "magnifications": [2.0],
 	},
 	"gun34": {
@@ -25,8 +26,8 @@ const PROFILES := {
 		"lens_tint": Color(0.15, 0.4, 0.8, 0.012), "magnifications": [2.0, 4.0, 6.0],
 	},
 	"gun35": {
-		"id": "r700_integrated_display", "reticle_color": RETICLE_AMBER,
-		"reticle": "bracket_diamond", "reticle_name": "四角菱形",
+		"id": "r700_integrated_display", "reticle_color": Color(0.20, 1.0, 0.91),
+		"reticle": "ring", "reticle_name": "青綠分段環",
 		"lens_tint": Color(0.1, 0.9, 0.8, 0.012), "magnifications": [2.0, 4.0, 6.0],
 	},
 	"gun40": {
