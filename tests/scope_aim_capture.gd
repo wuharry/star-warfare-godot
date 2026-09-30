@@ -67,6 +67,10 @@ func _capture(stem: String) -> void:
 	world.hud._layout_original_hud()
 	world.hud._update_aim_hud()
 	world.hud._update_fire_reticle_visibility()
+	# The per-weapon readouts live behind the HUD's own refresh timer. Push the
+	# real values so the captures show magazine, cooldown, range and impact.
+	if world.hud.scope_overlay.visible:
+		world.hud.scope_overlay.set_readout(world.player.get_reticle_readout())
 	await get_tree().process_frame
 	await get_tree().process_frame
 	# macOS can occlude the root window; explicitly render our own viewport.

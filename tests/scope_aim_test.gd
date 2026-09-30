@@ -2,6 +2,7 @@ extends Node
 
 const Optics = preload("res://scripts/core/weapon_optics.gd")
 var failures: Array[String] = []
+var checks := 0
 var world: WarfareGameWorld
 var player: WarfarePlayer
 
@@ -10,6 +11,7 @@ func _ready() -> void:
 	call_deferred("_run")
 
 func _check(condition: bool, message: String) -> void:
+	checks += 1
 	if not condition:
 		failures.append(message)
 		push_error("SCOPE AIM TEST: " + message)
@@ -47,6 +49,7 @@ func _run() -> void:
 	player = world.player
 	player.set_physics_process(false)
 	_check(InputMap.has_action("scope_zoom"), "magnification input was not registered")
+	_check_scoped_readouts()
 	# Audit-backed opt-in: an iron-sighted sniper or laser gets its old zoom,
 	# while a scoped rifle must not lose its lens just because it is not a sniper.
 	for id: String in ["gun01", "gun17", "gun19", "gun43"]:
@@ -143,5 +146,30 @@ func _run() -> void:
 	AudioDirector.stop_all_sfx()
 	await get_tree().process_frame
 	await get_tree().create_timer(0.2).timeout
-	print("SCOPE_AIM_TEST_PASS optics=5 projection=true two_reticles=true touch=true lifecycle=true" if failures.is_empty() else "SCOPE_AIM_TEST_FAIL")
+	print("SCOPE_AIM_TEST_%s optics=5 checks=%d projection=true two_reticles=true touch=true lifecycle=true readouts=true" % ["PASS" if failures.is_empty() else "FAIL", checks])
 	get_tree().quit(0 if failures.is_empty() else 1)
+
+
+func _check_scoped_readouts() -> void:
+	# Each optic reports one live value. The overlay must receive real player
+	# state, and it must not redraw when nothing displayed actually moved.
+	var overlay := world.hud.scope_overlay
+	for id: String in ["gun00", "gun14", "gun34", "gun35", "gun40"]:
+		player.equip_weapon(id, false)
+		var readout: Dictionary = player.get_reticle_readout()
+		for key: String in overlay.READOUT_KEYS:
+			_check(readout.has(key), id + " readout is missing " + key)
+		_check(float(readout.target_distance) <= float(readout.weapon_range) + 0.01, id + " target distance exceeded its range")
+		_check(float(readout.cooldown_ratio) >= 0.0 and float(readout.cooldown_ratio) <= 1.0, id + " cooldown ratio left 0..1")
+		var arcing := str(player.current_weapon.get("kind", "")) == "grenade"
+		var offset: Variant = readout.impact_offset
+		_check(offset is Vector2 and Vector2(offset).is_finite() == arcing,
+			id + " impact marker does not match whether the shot arcs")
+		overlay.readout = {}
+		overlay.set_readout(readout)
+		_check(not overlay.readout.is_empty(), id + " readout never reached the overlay")
+		# Re-sending identical values must not queue another surround redraw.
+		var before: Dictionary = overlay.readout
+		overlay.set_readout(readout.duplicate())
+		_check(overlay.readout == before, id + " redrew on an unchanged readout")
+	player.equip_weapon("gun00", false)
