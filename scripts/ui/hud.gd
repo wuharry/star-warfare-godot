@@ -42,7 +42,6 @@ var reload_button: Control
 var aim_button: TouchActionButton
 var scope_zoom_button: TouchActionButton
 var scope_overlay: WarfareScopeOverlay
-var spread_brackets: Control
 var scope_zoom_hint: Label
 var power_controller: ArmorPowerController
 var power_panel: PanelContainer
@@ -118,8 +117,6 @@ func _process(delta: float) -> void:
 		crosshair.modulate = reticle_color
 		if is_instance_valid(fire_crosshair):
 			fire_crosshair.modulate = reticle_color
-		if is_instance_valid(spread_brackets):
-			spread_brackets.queue_redraw()
 		if is_instance_valid(scope_overlay) and scope_overlay.visible:
 			scope_overlay.set_readout(readout)
 
@@ -235,15 +232,6 @@ func _build_crosshair() -> void:
 	reticle_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(reticle_layer)
 	reticle_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	# Four corner brackets carry the hip-fire cone. They draw a box the shots
-	# can land inside; scaling the whole sprite only made the picture bigger
-	# without telling the player how wide the spread had grown.
-	spread_brackets = Control.new()
-	spread_brackets.name = "HipSpreadBrackets"
-	spread_brackets.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	spread_brackets.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	spread_brackets.draw.connect(_draw_spread_brackets)
-	reticle_layer.add_child(spread_brackets)
 	crosshair = TextureRect.new()
 	crosshair.size = Vector2(76, 50)
 	crosshair.pivot_offset = crosshair.size * 0.5
@@ -288,58 +276,11 @@ func _on_shot_fired(_weapon_data: Dictionary) -> void:
 	fire_reticle_left = maxf(fire_reticle_left, 0.085)
 	_update_fire_reticle_visibility()
 
-# The real cone is very small on screen. gun00's 0.75 degree cap covers about
-# 8 px on a 720 px tall viewport at the 60 degree hip FOV, which is inside the
-# reticle sprite. The brackets therefore track the true projected angle and
-# multiply it by a stated gain; they are a readable indicator, not a literal
-# hit box. Each weapon's reticle_max_scale surplus sets its own gain, so a gun
-# tuned wider in weapon_spread.gd also opens wider. Set GAIN_PER_UNIT so that
-# gain reaches 1.0 if the spread values are ever raised enough to read alone.
-const BRACKET_GAIN_PER_UNIT := 22.0
-const BRACKET_ARM := 9.0
-
-func hip_cone_radius_px(gain := 1.0) -> float:
-	"""Screen radius of the current hip cone, magnified by gain."""
-	if not is_instance_valid(player):
-		return 0.0
-	var half_fov := deg_to_rad(player.get_hip_fov()) * 0.5
-	var half_height := get_viewport().get_visible_rect().size.y * 0.5
-	var angle := deg_to_rad(player.get_hip_spread_degrees()) * maxf(0.0, gain)
-	return tan(clampf(angle, 0.0, half_fov * 0.9)) / tan(half_fov) * half_height
-
-func hip_bracket_gain() -> float:
-	if not is_instance_valid(player):
-		return 1.0
-	var profile: Dictionary = player.current_weapon.get("hip_spread", {})
-	return maxf(1.0, (float(profile.get("reticle_max_scale", 1.0)) - 1.0) * BRACKET_GAIN_PER_UNIT)
-
-func hip_bracket_radius() -> float:
-	if not is_instance_valid(player) or not is_instance_valid(crosshair):
-		return 0.0
-	var inner := maxf(crosshair.size.x, crosshair.size.y) * 0.5 + 5.0 * _original_ui_scale()
-	return inner + hip_cone_radius_px(hip_bracket_gain())
-
-func _draw_spread_brackets() -> void:
-	if not is_instance_valid(player) or not is_instance_valid(crosshair):
-		return
-	var radius := hip_bracket_radius()
-	var center := spread_brackets.size * 0.5
-	var ui_scale := _original_ui_scale()
-	var arm := BRACKET_ARM * ui_scale
-	var color: Color = crosshair.modulate
-	for corner: Vector2 in [Vector2(-1, -1), Vector2(1, -1), Vector2(-1, 1), Vector2(1, 1)]:
-		var point := center + corner * radius
-		spread_brackets.draw_line(point, point - Vector2(corner.x * arm, 0.0), color, 2.2 * ui_scale, true)
-		spread_brackets.draw_line(point, point - Vector2(0.0, corner.y * arm), color, 2.2 * ui_scale, true)
-
 func _update_fire_reticle_visibility() -> void:
 	if not is_instance_valid(crosshair) or not is_instance_valid(fire_crosshair):
 		return
 	_resize_crosshair()
 	var spread_active := is_instance_valid(player) and player.get_hip_spread_ratio() > 0.0
-	if is_instance_valid(spread_brackets):
-		spread_brackets.visible = spread_active and not (is_instance_valid(player) and player.is_scope_active())
-		spread_brackets.queue_redraw()
 	# Each optic owns its etched/projected reticle. The recovered hip-fire sprite
 	# must not be superimposed on it; confirmed hits remain a separate top layer.
 	var scoped := is_instance_valid(player) and player.is_scope_active()
@@ -615,6 +556,8 @@ func _resize_crosshair() -> void:
 	if not is_instance_valid(crosshair) or crosshair.texture == null:
 		return
 	var display_size := Atlas.logical_size(crosshair.texture) * _original_ui_scale()
+	if is_instance_valid(player):
+		display_size *= player.get_hip_reticle_scale()
 	crosshair.custom_minimum_size = display_size
 	crosshair.size = display_size
 	crosshair.position = (crosshair.get_parent().size - display_size) * 0.5

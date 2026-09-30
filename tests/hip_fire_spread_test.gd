@@ -191,7 +191,9 @@ func _check_projectile_path() -> void:
 		if shot == 0:
 			_check(observed < 0.015, "first rocket failed to converge on camera center")
 		max_observed = maxf(max_observed, observed)
-		projectile.free()
+		# Match gameplay cleanup: let the renderer finish this frame before
+		# releasing the freshly created rocket and its materials.
+		projectile.queue_free()
 	_check(max_observed > float(player.current_weapon.hip_spread.max_degrees) * 0.25, "rocket initial direction ignored hip bloom")
 
 func _check_shotgun_baseline() -> void:
@@ -291,59 +293,35 @@ func _check_reticle() -> void:
 	world.hud._resize_crosshair()
 	world.hud._update_fire_reticle_visibility()
 	var base_size: Vector2 = world.hud.crosshair.size
-	var base_radius: float = world.hud.hip_bracket_radius()
+	var original_texture := world.hud.crosshair.texture
 	var viewport_center := get_viewport().get_visible_rect().get_center()
-	_check(not world.hud.spread_brackets.visible, "brackets opened before any shot")
+	_check(world.hud.find_child("HipSpreadBrackets", true, false) == null, "extra hip-fire frame was recreated")
+	_fire()
+	var first_size: Vector2 = world.hud.fire_crosshair.size
+	_check(first_size.x > base_size.x, "first shot did not expand the original reticle")
+	_check(first_size.x < base_size.x * float(player.current_weapon.hip_spread.reticle_max_scale), "first shot jumped straight to full expansion")
 	for shot in 12:
 		_fire()
 	world.hud._resize_crosshair()
 	world.hud._update_fire_reticle_visibility()
 	_check(world.hud.fire_crosshair.visible and not world.hud.crosshair.visible, "bloom did not select fire reticle")
-	# The recovered AimID sprite keeps its own size. The brackets around it are
-	# what report the cone, so the centre of aim never changes size or place.
-	_check(world.hud.crosshair.size.is_equal_approx(base_size), "spread resized the recovered sprite")
+	var peak_size := base_size * float(player.current_weapon.hip_spread.reticle_max_scale)
+	_check(world.hud.crosshair.size.is_equal_approx(peak_size), "original reticle did not reach this gun's expansion limit")
+	_check(world.hud.crosshair.texture == original_texture and world.hud.fire_crosshair.texture == original_texture, "firing replaced the original reticle image")
 	_check(world.hud.fire_crosshair.size.is_equal_approx(world.hud.crosshair.size), "reticle layers have different sizes")
-	_check(world.hud.spread_brackets.visible, "accumulated spread did not show the brackets")
-	_check(world.hud.hip_bracket_radius() > base_radius + 1.0, "real fire did not open the brackets")
 	_check(world.hud.fire_crosshair.get_global_rect().get_center().distance_to(viewport_center) < 0.01, "reticle moved away from viewport center")
 	world.hud.fire_reticle_left = 0.0
 	world.hud._update_fire_reticle_visibility()
 	_check(world.hud.fire_crosshair.visible, "short fire flash expiry hid ongoing recovery")
+	player._update_hip_spread(player.hip_spread_recovery_left + 0.1)
+	world.hud._update_fire_reticle_visibility()
+	_check(world.hud.fire_crosshair.size.x < peak_size.x and world.hud.fire_crosshair.size.x > base_size.x, "original reticle did not shrink gradually")
 	player._update_hip_spread(10.0)
 	world.hud._resize_crosshair()
 	world.hud._update_fire_reticle_visibility()
 	_check(world.hud.crosshair.visible and not world.hud.fire_crosshair.visible, "recovery did not restore idle reticle")
-	_check(is_equal_approx(world.hud.hip_bracket_radius(), base_radius), "recovery left the brackets open")
-	_check(not world.hud.spread_brackets.visible, "recovery left the brackets on screen")
+	_check(world.hud.crosshair.size.is_equal_approx(base_size), "recovery did not restore original reticle size")
 	_check(world.hud.crosshair.get_global_rect().get_center().distance_to(viewport_center) < 0.01, "idle reticle moved away from viewport center")
-	_check_bracket_geometry()
-
-func _check_bracket_geometry() -> void:
-	# The brackets are an indicator, not a hit box, but they must still be
-	# driven by the real angle so a wider-coned weapon really does open wider.
-	_equip("gun00")
-	for shot in 12:
-		_fire()
-	var hud := world.hud
-	var half_fov := deg_to_rad(player.get_hip_fov()) * 0.5
-	var half_height: float = get_viewport().get_visible_rect().size.y * 0.5
-	var expected := tan(deg_to_rad(player.get_hip_spread_degrees())) / tan(half_fov) * half_height
-	_check(absf(hud.hip_cone_radius_px() - expected) < 0.01, "bracket radius is not the projected cone")
-	var gain: float = hud.hip_bracket_gain()
-	_check(gain > 1.0, "the readability gain collapsed to nothing")
-	var inner: float = maxf(hud.crosshair.size.x, hud.crosshair.size.y) * 0.5 + 5.0 * hud._original_ui_scale()
-	_check(absf(hud.hip_bracket_radius() - (inner + hud.hip_cone_radius_px(gain))) < 0.01,
-		"bracket radius stopped following the cone and its stated gain")
-	# A precise weapon must not open as far as a wide one at the same ratio.
-	var wide: float = hud.hip_bracket_radius()
-	_equip("gun40")
-	for shot in 20:
-		_fire()
-	_check(not is_equal_approx(hud.hip_bracket_gain(), gain) or not is_equal_approx(hud.hip_bracket_radius(), wide),
-		"every weapon opens its brackets identically")
-	player._update_hip_spread(10.0)
-	hud._update_fire_reticle_visibility()
-	_check(is_zero_approx(hud.hip_cone_radius_px(8.0)), "a recovered weapon still projects a cone")
 
 func _check_pause() -> void:
 	_equip("gun00")

@@ -9,7 +9,7 @@ const OUTPUT := "res://test_output/hip_fire_spread/"
 const DETAIL := Vector2i(320, 320)
 const WEAPONS := ["gun00", "gun17", "gun06", "gun40"]
 const STAGES := [
-	{"key": "precise", "ratio": 0.0, "label": "首發：中心精準"},
+	{"key": "precise", "ratio": 0.0, "label": "起始：最小散布"},
 	{"key": "half", "ratio": 0.5, "label": "連射中：約半滿"},
 	{"key": "capped", "ratio": 1.0, "label": "持續連射：到達上限"},
 ]
@@ -60,9 +60,14 @@ func _run() -> void:
 		for stage: Dictionary in STAGES:
 			_fire_to_ratio(float(stage.ratio))
 			await _capture("%s_%s_%s" % [mode, weapon_id, str(stage.key)], str(stage.label))
-		# Hold the trigger closed and let the recovery run at its real rate.
-		_recover(_effective_recovery_delay() + 0.45)
-		await _capture("%s_%s_recovered" % [mode, weapon_id], "停火後：縮回中")
+		# Use each gun's recovery rate so every preview shows both the gradual
+		# closing and the fully recovered state, including the shotgun.
+		var profile: Dictionary = world.player.current_weapon.hip_spread
+		var recovery_seconds := (float(profile.max_degrees) - float(profile.min_degrees)) / float(profile.recovery_degrees_per_second)
+		_recover(_effective_recovery_delay() + recovery_seconds * 0.5)
+		await _capture("%s_%s_recovering" % [mode, weapon_id], "停火後：縮回中")
+		_recover(recovery_seconds)
+		await _capture("%s_%s_recovered" % [mode, weapon_id], "恢復完成：原準星尺寸")
 	# Focus aim must show the unbloomed reticle even right after a burst.
 	_equip("gun17")
 	_fire_to_ratio(1.0)
@@ -167,6 +172,8 @@ func _capture(stem: String, label: String) -> void:
 		"spread_degrees": snappedf(world.player.get_hip_spread_degrees(), 0.0001),
 		"spread_ratio": snappedf(world.player.get_hip_spread_ratio(), 0.001),
 		"reticle_scale": snappedf(world.player.get_hip_reticle_scale(), 0.001),
+		"reticle_size_px": [world.hud.crosshair.size.x, world.hud.crosshair.size.y],
+		"recovery_delay_seconds": _effective_recovery_delay(),
 		"max_degrees": float(profile.max_degrees),
 		"focus_aiming": world.player.is_focus_aiming(),
 	})
@@ -175,22 +182,26 @@ func _capture(stem: String, label: String) -> void:
 func _write_preview(mode: String) -> void:
 	var html := """<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>腰射連射散布對照</title>
 <style>body{margin:0;padding:32px;background:#10161d;color:#e7edf2;font:16px/1.6 system-ui}main{max-width:1600px;margin:auto}h1{margin:0}p{color:#a9bbc9}section{margin:32px 0;border-top:1px solid #33424f;padding-top:16px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}figure{margin:0}img{width:100%;background:#06090c;border:1px solid #33424f}figcaption{color:#a9bbc9;font-size:14px}a{color:#8ed8e8}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:6px 12px 6px 0;border-bottom:1px solid #26323c}th{color:#8ea3b4;font-weight:500}td{font-variant-numeric:tabular-nums}</style><main><h1>腰射連射散布</h1>
-<p>Godot Compatibility 實際擷取。散布由 <code>WarfarePlayer._try_fire()</code> 連續發射累積，不是直接寫入數值；準心大小由 HUD 依當前散布比例計算。裁切圖是實機畫面的中央 320×320，不是另外繪製的示意圖。點圖可看原尺寸。</p>"""
+<p>現在的腰射準星本身隨連射小幅擴張，停火後逐步縮回原尺寸。每把槍的準星與子彈散布同步變化，移動不增加散布。霰彈槍保留原本的多彈丸散布。</p><p>以下為 Godot Compatibility 的 1280×720 實際畫面，取中央 320×320 作比較。點圖可看原尺寸。</p>"""
 	for weapon_id: String in WEAPONS:
 		var profile: Dictionary = GameState.WEAPONS[weapon_id].hip_spread
 		html += "<section><h2>" + str(GameState.WEAPONS[weapon_id].name).xml_escape() + " · " + weapon_id + "</h2>"
-		html += "<p>上限 %.2f°，每發 +%.2f°，恢復延遲 %.2f 秒後每秒收 %.2f°，準心最大 %.2f 倍。</p>" % [
+		var recovery_delay := 0.0
+		for capture in captures:
+			if str(capture.weapon) == weapon_id:
+				recovery_delay = float(capture.recovery_delay_seconds)
+				break
+		html += "<p>新增腰射散布上限 %.2f°，每發 +%.2f°，最後一發後 %.2f 秒開始恢復，每秒收 %.2f°。</p>" % [
 			float(profile.max_degrees), float(profile.per_shot_degrees),
-			float(profile.recovery_delay), float(profile.recovery_degrees_per_second),
-			float(profile.reticle_max_scale)]
+			recovery_delay, float(profile.recovery_degrees_per_second)]
 		html += "<div class='grid'>"
 		for capture in captures:
 			if str(capture.weapon) != weapon_id:
 				continue
 			html += _figure(str(capture.path).trim_suffix(".png") + "_reticle.png",
-				"%s · %.2f° · 準心 %.2f×" % [str(capture.label), float(capture.spread_degrees), float(capture.reticle_scale)])
+				"%s · %.2f° · 原準星 %.2f×" % [str(capture.label), float(capture.spread_degrees), float(capture.reticle_scale)])
 		html += "</div></section>"
-	html += "<section><h2>逐張數值</h2><table><tr><th>畫面</th><th>武器</th><th>散布</th><th>佔上限</th><th>準心倍率</th><th>聚焦中</th></tr>"
+	html += "<section><h2>逐張數值</h2><p>準星倍率相對於該槍的起始尺寸；散布角度只計新增的連射散布。</p><table><tr><th>畫面</th><th>武器</th><th>散布</th><th>佔上限</th><th>準星倍率</th><th>聚焦中</th></tr>"
 	for capture in captures:
 		html += "<tr><td>%s</td><td>%s</td><td>%.3f°</td><td>%.0f%%</td><td>%.3f×</td><td>%s</td></tr>" % [
 			str(capture.label).xml_escape(), str(capture.weapon),

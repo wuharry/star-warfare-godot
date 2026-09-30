@@ -17,15 +17,15 @@
 ```text
 每把槍的 hip_spread 設定 → player 保存目前散布
   ├─ 本發：用目前散布計算射線／投射物發射方向
-  └─ 發射成功：增加下一發的散布 → HUD 同步小幅放大準心
-停止射擊 → 經過恢復延遲 → 散布與準心一起縮回
+  └─ 發射成功：增加下一發的散布 → 現有腰射準星本身小幅擴張
+停止射擊 → 經過恢復延遲 → 散布與原準星一起縮回
 ```
 
-- `scripts/core/weapon_spread.gd` 管理每槍的範圍、每發增量、恢復速度與準心放大上限，`GameState` 把設定放入 `hip_spread`。
+- `scripts/core/weapon_spread.gd` 管理每槍的範圍、每發增量、恢復速度與準星放大上限，`GameState` 把設定放入 `hip_spread`。
 - 一般單彈武器首發保持中心精準；霰彈、Morpheus／Spreader 保留原有多彈丸散布，再增加連射散布。Trinity／Spring 的多發形狀也保留。
 - 冷卻、換彈、空彈匣或能量不足而未發射時，不累積散布。換槍重設；換彈期間自然恢復；暫停期間凍結。
 - 右鍵／AIM 聚焦時不套用新增的腰射散布；劍類不累積。追蹤投射物的初始方向可偏移，發射後仍保留追蹤能力。
-- 準心保留原 `aim_id` 圖案，大小反映目前散布在該槍範圍中的比例；圖案邊界不是精確的彈著範圍。開火不再立刻固定跳到原圖的 1.2 倍。
+- 準星使用原 `aim_id` 圖案，依目前散布比例小幅放大；額外四角括號已移除。準星中心固定在瞄準線上，首發後只增加一小步，連射才到達各槍的放大上限。
 - 中央瞄準解 `get_aim_solution()` 仍供槍身姿勢、目標變色與技能使用；射擊專用的 `get_shot_aim_solution()` 才抽樣散布，避免準心與槍身隨機抖動。
 
 | `hip_spread` 欄位 | 用途 |
@@ -34,11 +34,11 @@
 | `per_shot_degrees` | 每次成功腰射後增加的角度 |
 | `recovery_delay` | 停火後的恢復延遲；執行時也考量實際射擊間隔，讓慢速槍能累積 |
 | `recovery_degrees_per_second` | 恢復時每秒減少的角度 |
-| `reticle_max_scale` | 最大散布時，準心相對原尺寸的倍率 |
+| `reticle_max_scale` | 最大散布時，原腰射準星相對起始尺寸的倍率 |
 
 例如 FR28a 連射後，下一發可稍微偏離中央，但 HUD 判斷敵人變紅仍使用穩定的中央瞄準線。
 
-### 散布驗證（2026-09-30）
+### 初版散布驗證（2026-09-30，a934a3f）
 
 | 驗證 | 結果 |
 | --- | --- |
@@ -56,7 +56,26 @@ godot --headless --path . res://tests/hip_fire_spread_test.tscn -- --mobile
 godot --path . --rendering-method gl_compatibility --resolution 1280x720 res://tests/hip_fire_spread_capture.tscn
 ```
 
-輸出在 `test_output/hip_fire_spread/`：`desktop.html` 依武器排出「首發精準 → 約半滿 → 到達上限 → 停火縮回」四張準心裁切，再列出每張的實際角度、佔上限比例與準心倍率。擷取用的散布是連續呼叫 `_try_fire()` 累積出來的，不是直接寫入變數；拍照前清掉同一幀堆疊的曳光與彈著特效，散布值不受影響。產物不提交。
+輸出在 `test_output/hip_fire_spread/`：`desktop.html`／`mobile.html` 依武器排出「最小散布 → 約半滿 → 到達上限 → 停火縮回 → 完全恢復」的準星裁切，列出實際角度、佔上限比例與原準星倍率。JSON 另記錄準星實際尺寸。霰彈的起始畫面表示新增連射散布為零，仍保留原有多彈丸散布。
+
+預覽顯示的恢復延遲為 `max(recovery_delay, 實際射擊間隔 + 0.08 秒)`；恢復截圖也按各槍速率推進，確實包含縮回中與完全恢復。擷取用的散布是連續呼叫 `_try_fire()` 累積出來的；拍照前清掉同一幀堆疊的曳光與彈著特效，散布值不受影響。產物不提交。
+
+### 預覽續作驗證（2026-09-30）
+
+使用者確認要由現有腰射準星本身擴張，額外四角括號已移除。桌面與手機預覽改為顯示原準星擴張、縮回；射擊散布參數沿用現有設定。
+
+| 驗證 | 結果 |
+| --- | --- |
+| `hip_fire_spread_test`：桌面、手機 headless | PASS，各 937 項斷言，包含原圖不替換、首發小幅擴張、上限、逐步縮回、中心固定與無額外外框；清除火箭的 `projectile.free()` 仍出現 `Parameter "material" is null` renderer 錯誤 |
+| `scope_aim_test`、`aim_platform_test`、`camera_hit_feedback_test` | PASS；鏡內顯示、中心對齊與命中回饋維持正常 |
+| `hip_fire_spread_capture`：桌面與手機，1280×720、Compatibility | PASS，各 21 張；核對 JSON 與 PNG，包含半恢復與完全恢復 |
+| `.harness/verify.py`、`git diff --check` | PASS；harness 結果只代表投遞完整性 |
+| 實體手機手感與各槍平衡 | NOT RUN |
+
+```sh
+godot --path . --rendering-method gl_compatibility --resolution 1280x720 res://tests/hip_fire_spread_capture.tscn
+godot --path . --rendering-method gl_compatibility --resolution 1280x720 res://tests/hip_fire_spread_capture.tscn -- --mobile
+```
 
 測試把靶牆放在各槍射程內：`gun06` 的還原射程只有 8 公尺，固定 25 公尺的靶牆會完全打不到，看起來像散布壞掉。移動靶牆後要等一個 physics frame，實體位置才會進到物理空間。
 
@@ -77,20 +96,13 @@ godot --path . --rendering-method gl_compatibility --resolution 1280x720 res://t
 
 AST-KK 的三根橫杆有前提：**開鏡時散布為零**，所以橫杆是對扣扳機時間的回饋，不代表彈道真的在散開。要讓它對應真實彈道，必須讓鏡內也有一段散布，那是玩法改動，尚未做。
 
-### 腰射改成四角括號
+### 腰射準星本身擴張
 
-原本開火時把整張 `aim_id` 圖等比放大到 `reticle_max_scale`。改成圖維持原尺寸，外圍四個角括號依散布外推。
+腰射只顯示原準星，連射擴張與停火縮回都作用在同一張 `aim_id` 圖案上。依散布比例從原尺寸逐步增加至該槍的 `reticle_max_scale`；例如 FR28a 的上限為原尺寸的 1.18 倍。圖案邊界表示散布程度，不是精確彈著範圍。
 
-**括號不是真正的彈著範圍。** gun00 上限 0.75 度，在 60 度腰射 FOV、720 像素高的畫面上只有約 8 像素，比準心圖本身還小，畫出來看不見。所以括號取真實投影角度再乘一個放大倍率：
+四角括號方案已依使用者要求撤回。以下保留其初版驗證記錄，現行實作以上方「預覽續作驗證」為準。
 
-```text
-hip_cone_radius_px(gain) = tan(目前散布角 × gain) ÷ tan(FOV/2) × 畫面高度/2
-gain = (該槍 reticle_max_scale − 1) × BRACKET_GAIN_PER_UNIT(22)
-```
-
-角度是真的，倍率是明寫的一個常數。各槍的差異來自各自的 `max_degrees` 與 `reticle_max_scale`，不是憑空給值。若日後散布值調大到本身就看得見，把 `gain` 收回 1.0 即可，括號就成為真實錐角。
-
-### 驗證（2026-09-30）
+### 四角括號初版驗證（2026-09-30，ba1deca）
 
 | 驗證 | 結果 |
 | --- | --- |
