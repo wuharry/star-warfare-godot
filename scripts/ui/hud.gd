@@ -111,7 +111,7 @@ func _process(delta: float) -> void:
 	if is_instance_valid(crosshair) and reticle_target_refresh <= 0.0:
 		reticle_target_refresh = 0.09
 		# StateAim.cs changes the recovered AimID sprite to red over a hostile.
-		# BattleHUD's separate 1.2x firing sprite receives the same target state.
+		# Both hip-fire layers share the same spread size and target tint.
 		var reticle_color := Color.RED if player.is_reticle_on_enemy() else Color(0.0, 1.0, 1.0, 0.8)
 		crosshair.modulate = reticle_color
 		if is_instance_valid(fire_crosshair):
@@ -240,8 +240,8 @@ func _build_crosshair() -> void:
 	crosshair.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	crosshair.modulate = Color(0.0, 1.0, 1.0, 0.8)
 	reticle_layer.add_child(crosshair)
-	# BattleHUD.SetAimOnFire uses the same AimID image at exactly 1.2x size.
-	# This trigger-state cue stays independent from confirmed hit feedback.
+	# Keep the recovered AimID image on both layers. Their size now follows
+	# the player's actual hip spread instead of jumping to a fixed 1.2x.
 	fire_crosshair = TextureRect.new()
 	fire_crosshair.name = "FireCrosshair"
 	fire_crosshair.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -268,24 +268,20 @@ func _on_kill_confirmed() -> void:
 		hit_marker.show_kill()
 
 func _on_shot_fired(_weapon_data: Dictionary) -> void:
-	# Preserve a short readable pulse even when a mouse click is released between
-	# rendered frames. Held non-sniper fire remains enlarged, as in BattleHUD.
+	# The player emits after adding spread for the next shot. A dry trigger
+	# never reaches this signal and cannot enlarge the reticle.
 	fire_reticle_left = maxf(fire_reticle_left, 0.085)
 	_update_fire_reticle_visibility()
 
 func _update_fire_reticle_visibility() -> void:
 	if not is_instance_valid(crosshair) or not is_instance_valid(fire_crosshair):
 		return
-	var kind := str(player.current_weapon.get("kind", "hitscan")) if is_instance_valid(player) else ""
-	var held_non_sniper := (
-		is_instance_valid(player)
-		and player.is_fire_input_active()
-		and kind not in ["sniper", "reflection"]
-	)
+	_resize_crosshair()
+	var spread_active := is_instance_valid(player) and player.get_hip_spread_ratio() > 0.0
 	# Each optic owns its etched/projected reticle. The recovered hip-fire sprite
 	# must not be superimposed on it; confirmed hits remain a separate top layer.
 	var scoped := is_instance_valid(player) and player.is_scope_active()
-	var show_fire := (fire_reticle_left > 0.0 or held_non_sniper) and not scoped
+	var show_fire := (fire_reticle_left > 0.0 or spread_active) and not scoped
 	fire_crosshair.visible = show_fire
 	crosshair.visible = not show_fire and not scoped
 
@@ -557,16 +553,17 @@ func _resize_crosshair() -> void:
 	if not is_instance_valid(crosshair) or crosshair.texture == null:
 		return
 	var display_size := Atlas.logical_size(crosshair.texture) * _original_ui_scale()
+	if is_instance_valid(player):
+		display_size *= player.get_hip_reticle_scale()
 	crosshair.custom_minimum_size = display_size
 	crosshair.size = display_size
 	crosshair.position = (crosshair.get_parent().size - display_size) * 0.5
 	crosshair.pivot_offset = display_size * 0.5
 	if is_instance_valid(fire_crosshair):
-		var fire_size := display_size * 1.2
-		fire_crosshair.custom_minimum_size = fire_size
-		fire_crosshair.size = fire_size
-		fire_crosshair.position = (fire_crosshair.get_parent().size - fire_size) * 0.5
-		fire_crosshair.pivot_offset = fire_size * 0.5
+		fire_crosshair.custom_minimum_size = display_size
+		fire_crosshair.size = display_size
+		fire_crosshair.position = (fire_crosshair.get_parent().size - display_size) * 0.5
+		fire_crosshair.pivot_offset = display_size * 0.5
 
 func _original_ui_scale() -> float:
 	var viewport_size := get_viewport().get_visible_rect().size
@@ -691,19 +688,8 @@ func _set_reticle_for_weapon(data: Dictionary) -> void:
 	crosshair.texture = texture
 	if is_instance_valid(fire_crosshair):
 		fire_crosshair.texture = texture
-	if texture:
-		var original_size := Atlas.logical_size(texture)
-		var display_size := original_size * _original_ui_scale()
-		crosshair.custom_minimum_size = display_size
-		crosshair.size = display_size
-		crosshair.position = (crosshair.get_parent().size - display_size) * 0.5
-		crosshair.pivot_offset = display_size * 0.5
-		if is_instance_valid(fire_crosshair):
-			var fire_size := display_size * 1.2
-			fire_crosshair.custom_minimum_size = fire_size
-			fire_crosshair.size = fire_size
-			fire_crosshair.position = (fire_crosshair.get_parent().size - fire_size) * 0.5
-			fire_crosshair.pivot_offset = fire_size * 0.5
+	fire_reticle_left = 0.0
+	_update_fire_reticle_visibility()
 
 func _should_build_mobile_ui() -> bool:
 	return OS.has_feature("mobile") or bool(ProjectSettings.get_setting("debug/restoration/force_mobile_ui", false))
