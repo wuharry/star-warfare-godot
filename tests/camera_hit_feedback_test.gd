@@ -37,15 +37,15 @@ func _run() -> void:
 	var fire_crosshair := world.hud.fire_crosshair
 	_check(is_instance_valid(player), "player was not created")
 	_check(is_instance_valid(marker), "transitional hit marker was not created")
-	_check(is_instance_valid(fire_crosshair), "original 1.2x fire crosshair was not created")
+	_check(is_instance_valid(fire_crosshair), "fire crosshair was not created")
 	_check(marker.get_parent() == world.hud.crosshair.get_parent(), "hit marker did not stay in the crosshair layer")
 	_check(marker != world.hud.crosshair, "hit feedback replaced the recovered crosshair")
 	_check(marker.HIT_DURATION >= 0.15, "ordinary hit confirmation is still too brief to read during recoil")
 	_check(marker.KILL_DURATION >= 0.22, "kill confirmation is still too brief to distinguish from an ordinary hit")
 	_check(fire_crosshair.texture == world.hud.crosshair.texture, "fire crosshair does not use the recovered AimID texture")
 	_check(
-		fire_crosshair.custom_minimum_size.is_equal_approx(world.hud.crosshair.custom_minimum_size * 1.2),
-		"fire crosshair is not exactly 1.2x the normal reticle"
+		fire_crosshair.custom_minimum_size.is_equal_approx(world.hud.crosshair.custom_minimum_size),
+		"idle and firing reticles disagree on the current spread size"
 	)
 	_check(is_zero_approx(float(GameState.WEAPONS.gun00.spread)), "assault rifle retained random spread")
 	_check(is_zero_approx(float(GameState.WEAPONS.gun17.spread)), "laser rifle retained random spread")
@@ -90,7 +90,7 @@ func _run() -> void:
 	_check_fr28a_reload_camera(player)
 
 	player.shot_fired.emit(player.current_weapon)
-	_check(fire_crosshair.visible and not world.hud.crosshair.visible, "successful shot did not switch to the 1.2x fire reticle")
+	_check(fire_crosshair.visible and not world.hud.crosshair.visible, "successful shot did not switch to the fire reticle")
 	world.hud.fire_reticle_left = 0.0
 	world.hud._update_fire_reticle_visibility()
 	_check(not fire_crosshair.visible and world.hud.crosshair.visible, "fire reticle did not return to the normal AimID sprite")

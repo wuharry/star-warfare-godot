@@ -13,6 +13,7 @@ const ArmorCatalogData = preload("res://scripts/core/armor_catalog.gd")
 const PropsCatalogData = preload("res://scripts/core/props_catalog.gd")
 const UpgradeRules = preload("res://scripts/core/equipment_upgrade_rules.gd")
 const WeaponOptics = preload("res://scripts/core/weapon_optics.gd")
+const WeaponSpread = preload("res://scripts/core/weapon_spread.gd")
 const SINGLEPLAYER_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8]
 const MULTIPLAYER_LEVELS := [13, 14, 15, 16, 17, 18, 19, 20, 21]
 const CAMPAIGN_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19, 20, 21]
@@ -187,6 +188,7 @@ func _build_weapon_database() -> void:
 			# Additional restoration tuning; Unity speedDrag is additive above.
 			"move_speed_multiplier": 1.0,
 			"scope": WeaponOptics.for_weapon(weapon_id),
+			"hip_spread": WeaponSpread.for_weapon(weapon_id, str(profile.kind)),
 			# Feedback tuning, not recovered weapon damage/fire-rate data.
 			"recoil_strength": {"machinegun": 0.7, "rocket": 2.4, "grenade": 1.8, "sniper": 2.0}.get(profile.kind, 1.6 if type_id == 2 else 1.0),
 			"shot_sound": "res://assets/audio/non_original/weapon_shots/%s.wav" % str(row[1]) if type_id in [11, 21] else "",
@@ -206,9 +208,8 @@ func _build_weapon_database() -> void:
 
 func _weapon_profile(type_id: int, gun_id: int, weapon_name: String) -> Dictionary:
 	var profile := {
-		# The original rifle/laser/machine-gun families fire through the exact
-		# camera-centre ray. Enemy collision volumes provide the mobile-friendly
-		# tolerance; a generic random cone made an apparently centred shot miss.
+		# Preserve the original pellet spread separately from the new hip-fire
+		# bloom. Rifles start on the camera-centre ray; shotguns keep their fan.
 		"pellets": 1, "range": 105.0, "spread": 0.0, "automatic": false,
 		"kind": "hitscan", "speed": 24.0, "animation": "rifle",
 		"tracer_style": "legacy", "tracer_every": 1,

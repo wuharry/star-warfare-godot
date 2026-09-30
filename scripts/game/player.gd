@@ -14,6 +14,7 @@ const ProjectileScript = preload("res://scripts/game/projectile.gd")
 const RocketReloadPose = preload("res://scripts/game/rocket_reload_pose.gd")
 const WeaponReloadPose = preload("res://scripts/game/weapon_reload_pose.gd")
 const WeaponOptics = preload("res://scripts/core/weapon_optics.gd")
+const WeaponSpread = preload("res://scripts/core/weapon_spread.gd")
 const ARMOR_HP_SCALE := 1.0
 const CAMERA_BASE_HEIGHT := 1.683712
 const FLY_CAMERA_OFFSET := 0.25
@@ -99,6 +100,8 @@ var max_energy := 9999999
 var energy := 9999999
 var weapon_magazines: Dictionary = {}
 var shot_cooldown := 0.0
+var hip_spread_degrees := 0.0
+var hip_spread_recovery_left := 0.0
 var auto_reload_left := -1.0
 var reload_left := 0.0
 var reload_elapsed := 0.0
@@ -764,6 +767,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	shot_cooldown = maxf(0.0, shot_cooldown - delta)
+	_update_hip_spread(delta)
 	if auto_reload_left >= 0.0:
 		auto_reload_left -= delta
 		if auto_reload_left <= 0.0:
@@ -852,6 +856,45 @@ func get_aim_fov() -> float:
 
 func is_focus_aiming() -> bool:
 	return not dead and not get_tree().paused and reload_left <= 0.0 and (touch_aim or Input.is_action_pressed("aim"))
+
+func get_hip_spread_degrees() -> float:
+	if str(current_weapon.get("kind", "")) == "sword" or is_focus_aiming():
+		return 0.0
+	var profile: Dictionary = current_weapon.get("hip_spread", {})
+	return clampf(hip_spread_degrees, float(profile.get("min_degrees", 0.0)), float(profile.get("max_degrees", 0.0)))
+
+func get_hip_spread_ratio() -> float:
+	if str(current_weapon.get("kind", "")) == "sword" or is_focus_aiming():
+		return 0.0
+	var profile: Dictionary = current_weapon.get("hip_spread", {})
+	var minimum := float(profile.get("min_degrees", 0.0))
+	var maximum := float(profile.get("max_degrees", 0.0))
+	if maximum <= minimum:
+		return 0.0
+	return clampf((get_hip_spread_degrees() - minimum) / (maximum - minimum), 0.0, 1.0)
+
+func get_hip_reticle_scale() -> float:
+	var profile: Dictionary = current_weapon.get("hip_spread", {})
+	return lerpf(1.0, float(profile.get("reticle_max_scale", 1.0)), get_hip_spread_ratio())
+
+func _update_hip_spread(delta: float) -> void:
+	if get_tree().paused:
+		return
+	var profile: Dictionary = current_weapon.get("hip_spread", {})
+	var minimum := float(profile.get("min_degrees", 0.0))
+	hip_spread_degrees = clampf(hip_spread_degrees, minimum, float(profile.get("max_degrees", 0.0)))
+	# A frame crossing the delay boundary only recovers for its remaining time.
+	var recovery_delta := maxf(0.0, delta - hip_spread_recovery_left)
+	hip_spread_recovery_left = maxf(0.0, hip_spread_recovery_left - maxf(0.0, delta))
+	hip_spread_degrees = move_toward(hip_spread_degrees, minimum, float(profile.get("recovery_degrees_per_second", 0.0)) * recovery_delta)
+
+func _increase_hip_spread() -> void:
+	if str(current_weapon.get("kind", "")) == "sword" or is_focus_aiming():
+		return
+	var profile: Dictionary = current_weapon.get("hip_spread", {})
+	hip_spread_degrees = clampf(hip_spread_degrees + float(profile.get("per_shot_degrees", 0.0)), float(profile.get("min_degrees", 0.0)), float(profile.get("max_degrees", 0.0)))
+	# Slow weapons must retain bloom until their next possible shot as well.
+	hip_spread_recovery_left = maxf(float(profile.get("recovery_delay", 0.0)), _current_shot_interval() + 0.08)
 
 func is_scope_active() -> bool:
 	return is_focus_aiming() and not get_scope_magnifications().is_empty()
@@ -1025,6 +1068,8 @@ func equip_weapon(weapon_id: String, persist_selection := true) -> void:
 		weapon_recoil_tween.kill()
 	current_weapon_id = weapon_id
 	current_weapon = GameState.get_weapon_data(weapon_id)
+	hip_spread_degrees = float(current_weapon.get("hip_spread", {}).get("min_degrees", 0.0))
+	hip_spread_recovery_left = 0.0
 	scope_magnification_index = 0
 	cancel_aim()
 	auto_reload_left = -1.0
@@ -1119,7 +1164,6 @@ func _try_fire() -> void:
 			auto_reload_left = maxf(float(current_weapon.get("cooldown", 0.1)), 0.12)
 	shot_cooldown = _current_shot_interval()
 	shoot_pose_left = maxf(0.14, minf(0.55, shot_cooldown))
-	shot_fired.emit(current_weapon)
 	# One-shot clips must restart on every successful trigger pull. Automatic
 	# clips deliberately remain continuous while the button is held.
 	restart_shoot_animation_requested = not bool(current_weapon.get("automatic", false))
@@ -1146,10 +1190,14 @@ func _try_fire() -> void:
 		_fire_projectile(kind)
 	else:
 		_fire_hitscan()
+	# The current bullet uses the previous spread; feedback shows the spread
+	# that the next bullet will use. Rejected attempts never reach this point.
+	_increase_hip_spread()
+	shot_fired.emit(current_weapon)
 	_emit_ammo()
 
 func _fire_hitscan() -> void:
-	var aim := get_aim_solution(float(current_weapon.range))
+	var aim := get_shot_aim_solution(float(current_weapon.range))
 	var origin: Vector3 = aim.origin
 	var base_direction: Vector3 = aim.direction
 	var space := get_world_3d().direct_space_state
@@ -1185,7 +1233,7 @@ func _consume_tracer_slot(tracer_style: String, every: int) -> bool:
 	return shot_count % maxi(1, every) == 0
 
 func _fire_projectile(projectile_kind: String) -> void:
-	var aim := get_aim_solution(float(current_weapon.get("range", 105.0)))
+	var aim := get_shot_aim_solution(float(current_weapon.get("range", 105.0)))
 	# Unity first raycast from the shoulder camera and then converged the actual
 	# muzzle toward that point.  This prevents close shots from travelling
 	# parallel to (and visibly missing) the reticle.
@@ -1215,10 +1263,17 @@ func _fire_projectile(projectile_kind: String) -> void:
 		get_parent().add_child(projectile)
 
 func get_aim_solution(maximum_range := 180.0) -> Dictionary:
+	return _camera_aim_solution(maximum_range, 0.0)
+
+func get_shot_aim_solution(maximum_range := 180.0) -> Dictionary:
+	return _camera_aim_solution(maximum_range, get_hip_spread_degrees())
+
+func _camera_aim_solution(maximum_range: float, spread_degrees: float) -> Dictionary:
 	var viewport_size := get_viewport().get_visible_rect().size
 	var screen_point := viewport_size * 0.5
 	var origin := camera.project_ray_origin(screen_point)
 	var direction := camera.project_ray_normal(screen_point)
+	direction = WeaponSpread.sample_direction(direction, camera.global_basis, spread_degrees)
 	var endpoint := origin + direction * maximum_range
 	var query := PhysicsRayQueryParameters3D.create(origin, endpoint, 3)
 	query.exclude = [get_rid()]

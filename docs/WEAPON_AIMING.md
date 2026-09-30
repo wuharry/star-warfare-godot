@@ -10,6 +10,57 @@
 → 退出瞄準：恢復正常視野與第三人稱準星
 ```
 
+## 腰射連射散布（2026-09-30）
+
+腰射從各槍的最小散布開始，成功連射後逐步增加到上限，停火後恢復；移動不增加散布。這是本專案新增的手感設定。
+
+```text
+每把槍的 hip_spread 設定 → player 保存目前散布
+  ├─ 本發：用目前散布計算射線／投射物發射方向
+  └─ 發射成功：增加下一發的散布 → HUD 同步小幅放大準心
+停止射擊 → 經過恢復延遲 → 散布與準心一起縮回
+```
+
+- `scripts/core/weapon_spread.gd` 管理每槍的範圍、每發增量、恢復速度與準心放大上限，`GameState` 把設定放入 `hip_spread`。
+- 一般單彈武器首發保持中心精準；霰彈、Morpheus／Spreader 保留原有多彈丸散布，再增加連射散布。Trinity／Spring 的多發形狀也保留。
+- 冷卻、換彈、空彈匣或能量不足而未發射時，不累積散布。換槍重設；換彈期間自然恢復；暫停期間凍結。
+- 右鍵／AIM 聚焦時不套用新增的腰射散布；劍類不累積。追蹤投射物的初始方向可偏移，發射後仍保留追蹤能力。
+- 準心保留原 `aim_id` 圖案，大小反映目前散布在該槍範圍中的比例；圖案邊界不是精確的彈著範圍。開火不再立刻固定跳到原圖的 1.2 倍。
+- 中央瞄準解 `get_aim_solution()` 仍供槍身姿勢、目標變色與技能使用；射擊專用的 `get_shot_aim_solution()` 才抽樣散布，避免準心與槍身隨機抖動。
+
+| `hip_spread` 欄位 | 用途 |
+| --- | --- |
+| `min_degrees`／`max_degrees` | 中央瞄準線到散布邊界的最小／最大角度，單位為度 |
+| `per_shot_degrees` | 每次成功腰射後增加的角度 |
+| `recovery_delay` | 停火後的恢復延遲；執行時也考量實際射擊間隔，讓慢速槍能累積 |
+| `recovery_degrees_per_second` | 恢復時每秒減少的角度 |
+| `reticle_max_scale` | 最大散布時，準心相對原尺寸的倍率 |
+
+例如 FR28a 連射後，下一發可稍微偏離中央，但 HUD 判斷敵人變紅仍使用穩定的中央瞄準線。
+
+### 散布驗證（2026-09-30）
+
+| 驗證 | 結果 |
+| --- | --- |
+| `hip_fire_spread_test`：桌面與手機各 932 項。實際射線落點、實際生成的火箭方向、霰彈丸型樣、冷卻／空匣／換彈／死亡不累積、恢復延遲與速率、移動不影響、聚焦與劍類不累積、換槍重設、暫停凍結 | PASS |
+| `scope_aim_test`、`aim_platform_test`、`camera_hit_feedback_test`、`weapon_trigger_test`、`weapon_fire_feedback_test`、`mouse_weapon_cycle_test`、`original_weapon_test`、`weapon_polish_test`、`reload_system_test`、`smoke_test`、`settings_test`、`recovered_data_test` | PASS |
+| 桌面真實渲染擷取 1280×720，17 張 | PASS |
+| `mobile_ui_smoke_test` | FAIL；`git stash` 後在未套用本次修改的分支上同樣 FAIL，屬既有問題，未在本次處理 |
+| 實體手機觸控手感、各槍數值平衡 | NOT RUN |
+
+重現：
+
+```sh
+godot --headless --path . res://tests/hip_fire_spread_test.tscn
+godot --headless --path . res://tests/hip_fire_spread_test.tscn -- --mobile
+godot --path . --rendering-method gl_compatibility --resolution 1280x720 res://tests/hip_fire_spread_capture.tscn
+```
+
+輸出在 `test_output/hip_fire_spread/`：`desktop.html` 依武器排出「首發精準 → 約半滿 → 到達上限 → 停火縮回」四張準心裁切，再列出每張的實際角度、佔上限比例與準心倍率。擷取用的散布是連續呼叫 `_try_fire()` 累積出來的，不是直接寫入變數；拍照前清掉同一幀堆疊的曳光與彈著特效，散布值不受影響。產物不提交。
+
+測試把靶牆放在各槍射程內：`gun06` 的還原射程只有 8 公尺，固定 25 公尺的靶牆會完全打不到，看起來像散布壞掉。移動靶牆後要等一個 physics frame，實體位置才會進到物理空間。
+
+
 ## 素材與對應原則
 
 現有素材足以支援腰射準星與操作按鈕；這次新增的鏡框和鏡內準星由 Godot 向量繪製，不需要生成 PNG。
