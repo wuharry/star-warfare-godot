@@ -1,0 +1,237 @@
+{
+  "id": 11,
+  "revision": "concept_painted_cygni_trial_v2",
+  "status": "style_trial_pending_visual_review",
+  "source_fingerprints": {
+    "tools/armor_concept_runtime/build_painted.py": "3c5195af8e7009c90769808315a4645e459779e23452caef117933e04ecbf884",
+    "tools/armor_facets/build_meshes.py": "e856d6e61aa3f313292919c66ba235886d809d14f09481b0647b8f8ba53ba5f7",
+    "tools/armor_rework/thunder_body.py": "ea5aa94828524aff8eec2d8e09f5276de54fb637574a3c6c33c1d89cdbc1c766",
+    "test_output/armor_facets/sources.json": "28c4f7416e1d11a4b3daae186af23d944bf2521606ce2d70f3036e357873bbe2",
+    "assets/armors/concept_runtime/textures/cygni_head.png": "fdc33eddf572eebf273afdcc88237b5dcae9e9eb4ba12c975291dad37ab37779"
+  },
+  "parts": {
+    "ArmorHead_11": [
+      {
+        "source_triangles": 238,
+        "triangles": 544,
+        "fitted_layers": [
+          "-1 layered brow",
+          "-1 swept cheek",
+          "1 layered brow",
+          "1 swept cheek"
+        ],
+        "original_bounds": [
+          [
+            -0.34161925315856934,
+            0.34161925315856934
+          ],
+          [
+            1.1964001655578613,
+            1.9783999919891357
+          ],
+          [
+            -0.44469934701919556,
+            0.25510072708129883
+          ]
+        ],
+        "candidate_bounds": [
+          [
+            -0.34161925315856934,
+            0.34161925315856934
+          ],
+          [
+            1.1964001655578613,
+            1.9783999919891357
+          ],
+          [
+            -0.44469934701919556,
+            0.25510072708129883
+          ]
+        ],
+        "extent_change_percent": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "ArmorBody_11": [
+      {
+        "source_triangles": 228,
+        "triangles": 605,
+        "fitted_layers": [
+          "-1 upper breastplate",
+          "-1 outer thigh",
+          "1 upper breastplate",
+          "1 outer thigh"
+        ],
+        "original_bounds": [
+          [
+            -0.3363023102283478,
+            0.3363023102283478
+          ],
+          [
+            0.3057369589805603,
+            1.4180364608764648
+          ],
+          [
+            -0.3146604895591736,
+            0.25762078166007996
+          ]
+        ],
+        "candidate_bounds": [
+          [
+            -0.3363023102283478,
+            0.3363023102283478
+          ],
+          [
+            0.3057369589805603,
+            1.4180364608764648
+          ],
+          [
+            -0.3146604895591736,
+            0.25762078166007996
+          ]
+        ],
+        "extent_change_percent": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "source_triangles": 232,
+        "triangles": 500,
+        "fitted_layers": [
+          "-1 shoulder plate",
+          "1 shoulder plate"
+        ],
+        "original_bounds": [
+          [
+            -0.6323451995849609,
+            0.6323451995849609
+          ],
+          [
+            0.9974998831748962,
+            1.5407280921936035
+          ],
+          [
+            -0.1765536367893219,
+            0.2332463413476944
+          ]
+        ],
+        "candidate_bounds": [
+          [
+            -0.6323451995849609,
+            0.6323451995849609
+          ],
+          [
+            0.9974998831748962,
+            1.5407280921936035
+          ],
+          [
+            -0.1765536367893219,
+            0.2332463413476944
+          ]
+        ],
+        "extent_change_percent": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "ArmorHand_11": [
+      {
+        "source_triangles": 152,
+        "triangles": 302,
+        "fitted_layers": [
+          "-1 forearm plate",
+          "1 forearm plate"
+        ],
+        "original_bounds": [
+          [
+            -0.6216999888420105,
+            0.6216999888420105
+          ],
+          [
+            0.5525000095367432,
+            1.0781999826431274
+          ],
+          [
+            -0.11557301878929138,
+            0.15832698345184326
+          ]
+        ],
+        "candidate_bounds": [
+          [
+            -0.6216999888420105,
+            0.6216999888420105
+          ],
+          [
+            0.5525000095367432,
+            1.0781999826431274
+          ],
+          [
+            -0.11557301878929138,
+            0.15832698345184326
+          ]
+        ],
+        "extent_change_percent": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "ArmorFoot_11": [
+      {
+        "source_triangles": 156,
+        "triangles": 484,
+        "fitted_layers": [
+          "-1 shin plate",
+          "1 shin plate"
+        ],
+        "original_bounds": [
+          [
+            -0.4925592541694641,
+            0.4925592541694641
+          ],
+          [
+            -0.0018000941490754485,
+            0.4951000511646271
+          ],
+          [
+            -0.25119999051094055,
+            0.2487000674009323
+          ]
+        ],
+        "candidate_bounds": [
+          [
+            -0.4925592541694641,
+            0.4925592541694641
+          ],
+          [
+            -0.0018000941490754485,
+            0.4951000511646271
+          ],
+          [
+            -0.25119999051094055,
+            0.2487000674009323
+          ]
+        ],
+        "extent_change_percent": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  "coordinates": "original game Y-up, -Z forward",
+  "inferred": [
+    "Shallow projected plate outlines and layer thickness",
+    "Helmet back retains original source geometry"
+  ],
+  "retained": "Original skeleton, joints, UV seams, gloves, fin silhouettes and all body texture atlases"
+}

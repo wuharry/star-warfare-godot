@@ -1,0 +1,57 @@
+{
+  "blend": "/Users/harvey/repo/star-warfare-godot/docs/art/armor_runtime_v1/armor_11/repair_shell_v4/master.blend",
+  "summary": {
+    "tris_by_lod": {
+      "0": 644
+    },
+    "fail": [],
+    "warn": []
+  },
+  "objects": [
+    {
+      "name": "Cygni_ConnectedHelmet",
+      "type": "MESH",
+      "warn": [],
+      "fail": [],
+      "info": {
+        "tris_evaluated": 644,
+        "verts_evaluated": 334,
+        "verts": 334,
+        "faces": 644,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "islands": 6,
+        "uv_loops_outside_0_1": 0,
+        "materials": [
+          "clay_shell",
+          "clay_T_window",
+          "clay_neck"
+        ],
+        "modifiers": [
+          "ARMATURE:Original player skeleton"
+        ],
+        "skin": {
+          "armature": "Bone",
+          "unweighted": 0,
+          "over_influences": 0,
+          "not_normalised": 0,
+          "tiny_weights": 0,
+          "orphan_groups": []
+        }
+      }
+    },
+    {
+      "name": "Bone",
+      "type": "ARMATURE",
+      "warn": [],
+      "fail": [],
+      "info": {
+        "bones": 28,
+        "deform_bones": 28,
+        "roots": [
+          "Bip01"
+        ]
+      }
+    }
+  ]
+}

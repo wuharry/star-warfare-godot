@@ -1,0 +1,47 @@
+{
+  "revision": "concept_cygni_connected_shell_v4",
+  "status": "rejected_proportions_and_silhouette_v4_do_not_roll_out",
+  "body": "unaltered original Cygni geometry and existing refined textures",
+  "head_triangles": 644,
+  "continuous_primary_cage": true,
+  "visor_extrusion": 0,
+  "bounds": [
+    [
+      -0.3416000008583069,
+      0.3416000008583069
+    ],
+    [
+      1.1964000463485718,
+      1.9783999919891357
+    ],
+    [
+      -0.4447000026702881,
+      0.2551000118255615
+    ]
+  ],
+  "source_fingerprints": {
+    "tools/armor_concept_runtime/repair_cygni_helmet.py": "bd9c8fe8aaaf4b5690f823d425db7114e9f44d59797c3f324edf200a2e8b8768",
+    "tools/armor_concept_runtime/build.py": "f9e598cd2f47d67a048b6b15cadde49a84f6dd6847de285fb44cbe64d0a677da",
+    "test_output/armor_facets/sources.json": "28c4f7416e1d11a4b3daae186af23d944bf2521606ce2d70f3036e357873bbe2",
+    "test_output/armor_concept_runtime/repaired_armor_arrays.json": "be3364ec72248d374fb619234f49e1d16c1c3cf3fb2066983596beb9088a9f0b"
+  },
+  "inferred": [
+    "new front-to-side depth profile",
+    "rear crown shape",
+    "fin depth"
+  ],
+  "not_done": [
+    "production UV",
+    "new painted texture",
+    "visual acceptance",
+    "other armor rollout"
+  ],
+  "rejection": {
+    "date": "2026-10-01",
+    "feedback": [
+      "頭盔大小或長寬比例仍不對",
+      "外型也怪怪的"
+    ],
+    "next_direction": "derive a reusable style base prompt from raw original meshes/textures/settings; review game-proportioned construction references before rebuilding"
+  }
+}

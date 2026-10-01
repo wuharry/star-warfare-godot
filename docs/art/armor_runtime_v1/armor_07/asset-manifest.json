@@ -1,0 +1,190 @@
+{
+  "id": 7,
+  "name": "Atom",
+  "revision": "concept_armor_chibi_v1",
+  "status": "rejected_flat_prototype_do_not_roll_out",
+  "reference": "docs/art/original_armors_v1/images/c08_concept.png",
+  "reference_sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+  "rig_source": "assets/models/player/animated/player.gltf",
+  "rig_changed": false,
+  "proportion_authority": "original in-game large head / short body, explicitly chosen by Harvey",
+  "inferred": [
+    "armor panel depths and bevel widths",
+    "back panels hidden by independent backpacks",
+    "concept reshaped around original game skeleton; no 85% fidelity claim"
+  ],
+  "retained_source": "original glove geometry and skin weights only; existing animations and skeleton",
+  "parts": [
+    {
+      "name": "ArmorHead_07",
+      "triangles": 1752,
+      "vertices": 898,
+      "components": [
+        "sealed crown and nape",
+        "flexible neck seal",
+        "ear coupling",
+        "ear face",
+        "ear coupling",
+        "ear face",
+        "visor gasket",
+        "single continuous visor",
+        "layered brow",
+        "swept cheek enclosure",
+        "oblique cheek intake",
+        "swept cheek enclosure",
+        "oblique cheek intake",
+        "short closed chin",
+        "crown spine",
+        "crown status light",
+        "crown status light",
+        "crown status light"
+      ],
+      "bounds": [
+        [
+          -0.2720000147819519,
+          0.27399998903274536
+        ],
+        [
+          1.2000000476837158,
+          1.9119999408721924
+        ],
+        [
+          -0.36399999260902405,
+          0.3100000023841858
+        ]
+      ]
+    },
+    {
+      "name": "ArmorBody_07",
+      "triangles": 1370,
+      "vertices": 749,
+      "components": [
+        "flexible torso",
+        "soft waist and pelvis",
+        "pressure collar",
+        "floating pectoral shell",
+        "shoulder harness strap",
+        "rounded shoulder underplate",
+        "shoulder face cap",
+        "short shoulder blade",
+        "upper-arm fabric",
+        "upper-arm shield",
+        "thigh fabric",
+        "thigh hard shell",
+        "contrasting thigh outer rail",
+        "pelvic side plate",
+        "floating pectoral shell",
+        "shoulder harness strap",
+        "rounded shoulder underplate",
+        "shoulder face cap",
+        "short shoulder blade",
+        "upper-arm fabric",
+        "upper-arm shield",
+        "thigh fabric",
+        "thigh hard shell",
+        "contrasting thigh outer rail",
+        "pelvic side plate",
+        "abdominal articulated plate",
+        "abdominal articulated plate",
+        "abdominal articulated plate",
+        "chest identity fitting",
+        "belt buckle",
+        "pelvic guard",
+        "back thoracic shell"
+      ],
+      "bounds": [
+        [
+          -0.5600000023841858,
+          0.5600000023841858
+        ],
+        [
+          0.3926315903663635,
+          1.4249999523162842
+        ],
+        [
+          -0.24199999868869781,
+          0.22300000488758087
+        ]
+      ]
+    },
+    {
+      "name": "ArmorHand_07",
+      "triangles": 818,
+      "vertices": 490,
+      "components": [
+        "elbow flex joint",
+        "fitted forearm shell",
+        "chamfered forearm guard",
+        "wrist rim",
+        "forearm luminous connector",
+        "elbow flex joint",
+        "fitted forearm shell",
+        "chamfered forearm guard",
+        "wrist rim",
+        "forearm luminous connector",
+        "retained original glove geometry and grip weights"
+      ],
+      "bounds": [
+        [
+          -0.5588857531547546,
+          0.5588857531547546
+        ],
+        [
+          0.548610270023346,
+          1.0053762197494507
+        ],
+        [
+          -0.10499999672174454,
+          0.14393773674964905
+        ]
+      ]
+    },
+    {
+      "name": "ArmorFoot_07",
+      "triangles": 664,
+      "vertices": 360,
+      "components": [
+        "calf flexible core",
+        "angular kneecap",
+        "tapered shin shell",
+        "shin center facet",
+        "armored boot",
+        "boot sole",
+        "knee status strips",
+        "calf flexible core",
+        "angular kneecap",
+        "tapered shin shell",
+        "shin center facet",
+        "armored boot",
+        "boot sole",
+        "knee status strips"
+      ],
+      "bounds": [
+        [
+          -0.31200000643730164,
+          0.31200000643730164
+        ],
+        [
+          0.01600000075995922,
+          0.4620000123977661
+        ],
+        [
+          -0.33000001311302185,
+          0.15000000596046448
+        ]
+      ]
+    }
+  ],
+  "triangles": 4604,
+  "texture_contract": {
+    "base_color": "linear vertex colors from art palette",
+    "role": "vertex alpha: cloth .08, paint .4, metal .55, glass .72, light .90",
+    "roughness": "runtime shader by role",
+    "normal": "geometric chamfers; no normal map"
+  },
+  "rejection": {
+    "date": "2026-10-01",
+    "reason": "User: 廉價感太重；比例、細節、風格應像同一位美術。原型平塗且錯用共通外形，不能代表各套原比例。",
+    "enabled_in_default_loader": false
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-01",
+  "tool": "image_gen.imagegen",
+  "status": "style_reference_review_pending_not_a_3d_asset",
+  "prompt_path": "docs/art/armor_runtime_v1/style_base_v1/cygni_proportion_correction_prompt.txt",
+  "prompt": "Precise structural edit of Image 1, the new white/gold Cygni three-view sheet. Image 2 is the ORIGINAL Cygni rest-pose three-view sheet and is the mandatory silhouette/proportion authority. Image 3 is the original armor family and defines sparse hand-painted diffuse detail.\n\nKeep the white/silver + forest green + copper colors, connected gold T-aperture, shallow stepped crown/brow, swept cheek edges, small rear fins, simple large painted facets and uniform dark background of Image 1. Keep three full-body views (front, quarter, side), their same design, arm-down rest pose, complete feet, ground line and overall height. Make a substantial PROPORTION CORRECTION, not a minor polish.\n\nImage 1 still has a helmet that is too broad and too short and a long visible neck. Replace its proportions with the exact original proportions in Image 2. The new character must have a tall relatively NARROW helmet with a long tapered face/chin, placed almost directly over the original compact chest. Original main helmet crown-to-low-chin is about 39.5% of the entire armored character height, and main cheek-to-cheek width is about 23% of total height, excluding side fins. In Image 1 it is too close to a broad square toy head. Narrow the FRONT main shell approximately 20%, lengthen it vertically approximately 20-25%, and shorten the below-chin body accordingly while keeping the overall crown-to-feet height fixed. These percentage corrections are visual guides: the ORIGINAL silhouette in Image 2 takes precedence.\n\nMake the short neck almost completely concealed under the lower helmet and shoulder collar; bring the shoulder/chest arrangement up to nest beside the low tapered cheeks exactly like Image 2, without a tall exposed neck cylinder. Preserve Image 2's compact chest/abdomen/pelvis lengths, short legs, thick short forearms, large shoulder caps and stocky boot scale. The main helmet crown-to-chin should be visibly almost two fifths of the complete character, NOT one third. The front helmet main-shell width must be visibly smaller than Image 1 and clearly narrower than the shoulder caps. The attached fins retain their original outside span; do not shrink the fins together with the shell or interpret their span as the shell width.\n\nFor the SIDE view, copy the original top-to-low-chin profile and its tall face with strong tapered lower cheek. Keep the new white stepped brow and thin painted cheek vent, but avoid a round short dome, a long exposed neck and a detached face card. The side shell depth must remain ample relative to the corrected narrower front width, as in the original. The crown, brow, gold glass, cheek, compact chin and rear shell are one coherent fitted low-poly helmet. The gold glass is a real T-shaped aperture with a broad eye band and narrow central stem, not a T drawing on a huge gold plate.\n\nThe corrected model must still look adult and armored in the exaggerated original mobile-game proportions, NOT a realistic tall soldier and NOT an infant/chibi collectible with a globular head. Use a few large flat/slightly chamfered planes, broad painted light/shadow gradients and thin localized painted highlights. Match the coarse original detail density in Image 3; no micro scratches, hyperreal metal, dense decorative paneling, glossy PBR, studio cinematic lighting or new anatomy. No labels, text, logos, props or weapons.\n\nOutput only the corrected coherent THREE-VIEW sheet. This is a bitmap construction reference, not a playable 3D model.\n",
+  "prompt_sha256": "c0103085aee5f0cc34b89a24224bb7f9994ec64b8a51c692f127acbd9ccf6c70",
+  "references": [
+    {
+      "path": "docs/art/armor_runtime_v1/style_base_v1/cygni_style_trial_v1.png",
+      "sha256": "2e3dbb79c8cc5c37405b83dd4a2bc8c8bb71d3a7a97c305175dd94ae08027d43"
+    },
+    {
+      "path": "docs/art/armor_runtime_v1/style_base_v1/references/original_cygni_views.png",
+      "sha256": "5464fd9e6313ebc953e11af2ce94e864763fefa4b2e52833cc3bfc18d244a752"
+    },
+    {
+      "path": "docs/art/armor_runtime_v1/style_base_v1/references/original_style_sheet.png",
+      "sha256": "65b632a2dd573f19e5d8a1b4511339c9bf22e422802956abb71ae8052bae7783"
+    }
+  ],
+  "transparent_background": false,
+  "output": "docs/art/armor_runtime_v1/style_base_v1/cygni_style_trial_v2.png",
+  "not_done": [
+    "visual acceptance",
+    "3D rebuild",
+    "UV and texture",
+    "game rollout"
+  ],
+  "output_sha256": "20a38f9d6da61393fed8b5737d418a594f1080f8f31d70ba6368271e401a809b",
+  "tool_original_output": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-fc54b682-2b48-4a28-a29f-0a787104283e.png",
+  "visual_review": {
+    "improved": [
+      "taller and narrower main helmet than trial v1",
+      "neck concealed close to chest/collar",
+      "shorter torso and limbs",
+      "few large painted facets without dense scratches"
+    ],
+    "remaining": [
+      "exact silhouette and front/side consistency require user review and geometric construction",
+      "gold highlights still stronger than some original diffuse textures",
+      "unseen back/inside/UV/rig not specified by this bitmap"
+    ],
+    "not_claimed": [
+      "100% fidelity",
+      "playable 3D model",
+      "game integration"
+    ]
+  }
+}

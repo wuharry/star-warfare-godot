@@ -2,6 +2,7 @@ extends RefCounted
 
 const Catalog = preload("res://scripts/core/armor_catalog.gd")
 const ORIGINAL_PART_PREFIXES := ["ArmorHead_", "ArmorBody_", "ArmorHand_", "ArmorFoot_"]
+const CONCEPT_ARMOR_DIR := "res://assets/armors/concept_runtime/"
 const REWORKED_SCENES := {
 	0: "res://assets/armors/viper/viper.scn",
 	6: "res://assets/armors/thunder/thunder.scn",
@@ -9,6 +10,17 @@ const REWORKED_SCENES := {
 
 
 static func reworked_scene_path(visual_id: int) -> String:
+	if visual_id == 11 and "--cygni-helmet-repair" in OS.get_cmdline_user_args():
+		var repaired_path := CONCEPT_ARMOR_DIR + "painted/repaired_cygni_helmet.scn"
+		if ResourceLoader.exists(repaired_path):
+			return repaired_path
+	# The floating-face v3 helmet was rejected; its old flag no longer loads it.
+	# Review the painted Cygni through the actual gameplay/store loader. The
+	# rejected flat prototypes stay disabled until their art review is resolved.
+	if visual_id == 11 and "--cygni-painted-trial" in OS.get_cmdline_user_args():
+		var painted_path := CONCEPT_ARMOR_DIR + "painted/armor_11.scn"
+		if ResourceLoader.exists(painted_path):
+			return painted_path
 	# Development comparison uses the same loader in gameplay and the store.
 	if visual_id == 6:
 		for argument in OS.get_cmdline_user_args():
