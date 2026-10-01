@@ -141,11 +141,11 @@
       "forearms": "塊狀鋼藍護臂，上有青色圈／切線圓盤；小黑色圓孔。",
       "legs": "幾何大腿護片、短方膝塊、寬直脛甲；小腿兩側青色圓形嵌件；內側深色肋紋。",
       "retained_cues": [
-        "鋼藍大面板和青色分段圓環",
-        "圓冠＋中央分節冠槽",
-        "寬面罩上單一青色T形／Y形窗線"
+        "鋼藍大甲片與青色分段圓環",
+        "圓冠與中央分節槽",
+        "封閉面甲上的單一青色 T／Y 細線"
       ],
-      "optimization": "將假面式實心臉改為可辨識的寬玻璃面窗，保留青色窗框；圓環集中於肩與一處前臂，減少重複圖符；胸甲按胸廓和腰部動作切開。",
+      "optimization": "修正玻璃判斷：面部改為鋼藍不透明甲片，保留青色細光槽與原版圓冠，身甲方向延續。",
       "references": {
         "primary": "references/legacy/c13_front.png",
         "supplementary_oblique": "references/legacy/c13_side.png",
@@ -162,6 +162,13 @@
         "primary": "72c9c7192e4198ff94a818446145785897e3c7de38269d9648322274efd94007",
         "supplementary_oblique": "a5f0dd6d3192ebc014b2bd720f91b3169730738fa4d0c2ab79ca6246ac0b9d49",
         "third_view_exists": "370910f096ba79b8b53b8717e1f0c6886247739d764a7526d9828598f53b9dec"
+      },
+      "helmet_correction": {
+        "date": "2026-10-01",
+        "feedback": "Andromedae · ID 12 與 Draco · ID 9 都沒有玻璃面罩；重新生成 Andromedae 頭盔，參考其他科幻作品並結合原版。",
+        "priority": "highest",
+        "rule": "面部為不透明鋼藍硬甲；青色 T／Y 線是嵌入甲片的細光槽。禁止大片玻璃、護目鏡或黑色鏡片面窗。",
+        "basis": "使用者明確指定無玻璃；恢復模型截圖可見藍灰封閉面部和青色線條，未重新驗證原遊戲材質。"
       }
     },
     {
