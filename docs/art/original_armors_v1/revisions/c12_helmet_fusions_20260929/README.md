@@ -73,3 +73,15 @@
 ### 前前稿直接比較
 
 依使用者要求，比較頁預設改為「前前稿金色微 T 原稿」對「最新斜收護頰版」。左側可切换成未採用的方頰版；右側保持最新版，頭盔／全身與原圖放大仍可用。這次只調整比較頁，沒有重新生成或修改任何圖片。
+
+## 2026-10-01：保留原護頰的另一個修訂
+
+針對「不太對臉頰面甲的部份」，新增 [保留原護頰概念圖](images/anubis_gold_t_sculpted.png)。這次重新以微 T 原稿為輸入，保留原本斜切護頰、黑色凹入通風口與短中央下巴，主要收窄金色玻璃兩側的內框。T 字交界保留小斜角，避免再用大片矩形白甲強行夾出直角。
+
+[比較頁](index.html)預設左側為正式微 T 原稿、右側為本次修訂；右側可切回既有斜收薄護頰候選，左側可切為未採用方頰版。既有候選及來源紀錄均保留。本次的 [三視圖](images/anubis_gold_t_sculpted_turnaround.png) 和 [結構拆解](images/anubis_gold_t_sculpted_construction.png) 收在頁面下方，可點擊放大，仍屬候選配套概念參考。正式 C-12 主圖、三視、拆解與採用資料沒有更換。
+
+使用 built-in image_gen，直接保存原始 PNG，沒有另行裁切、上色或合成。實送完整提示詞分別為 [概念](prompts/anubis_gold_t_sculpted.txt)、[三視](prompts/anubis_gold_t_sculpted_turnaround.txt)、[拆解](prompts/anubis_gold_t_sculpted_construction.txt)。概念僅輸入微 T 原稿；三視與拆解各輸入原採用配套圖及本次候選概念。生成時的檔案路徑與歸檔後內容相同的參考副本，均記錄在逐圖 JSON，並以 SHA-256 核對。
+
+這一輪先前的 [方頰試稿](images/anubis_gold_t_boxy_local.png) 及 [實送提示詞](prompts/anubis_gold_t_boxy_local.txt) 亦保留，標示為未採用；它與另一輪的 `anubis_gold_t_narrow.png` 是不同輸出。新增記錄不代表使用者已選定新稿，也未接入遊戲模型。
+
+本次限定範圍驗證通過：四個新輸出及實送提示詞、所有輸入副本的 SHA-256、圖片尺寸與位元組數、28 個頁面本地連結、HTML ID 唯一性、JavaScript 語法及 `git diff --check`。正式三張圖片與 HEAD 相同，既有六筆候選生成紀錄和正式採用資料未變。本輪未執行瀏覽器互動或 Godot 測試，也未重跑全系列交付驗證。

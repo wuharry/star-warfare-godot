@@ -2,9 +2,9 @@
   "design_id": "C-12",
   "date": "2026-09-29",
   "path_base": "docs/art/original_armors_v1",
-  "status": "swept_cheeks_revision_pending_user_selection",
+  "status": "cheek_revisions_pending_user_selection",
   "preferred_direction": "anubis",
-  "latest_variant": "anubis_gold_t_swept",
+  "latest_variant": "anubis_gold_t_sculpted",
   "comparison_page": "revisions/c12_helmet_fusions_20260929/index.html",
   "user_feedback": {
     "reference_request": "Cygni 目前的頭盔很棒但是基本上是用原版的；看天命 2 或 Halo 類似頭盔結合原版生成。",
@@ -238,6 +238,148 @@
       "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t_swept.json",
       "user_feedback": "臉頰的裝甲太方了，感覺還是不對。",
       "runtime_implemented": false
+    },
+    {
+      "design_id": "C-12",
+      "kind": "helmet_fusion_study",
+      "variant": "anubis_gold_t_boxy_local",
+      "path_base": "docs/art/original_armors_v1",
+      "path": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_boxy_local.png",
+      "prompt": "revisions/c12_helmet_fusions_20260929/prompts/anubis_gold_t_boxy_local.txt",
+      "generated_filename": "C:/Users/whw88/.codex/generated_images/01a0d34a-7c78-72d0-b7ae-7c134c979b6f/exec-d30e348d-a003-48ff-a7a1-687c31ba2005.png",
+      "tool": "built-in image_gen",
+      "date": "2026-09-30",
+      "reference_images": [
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png"
+      ],
+      "reference_sha256": {
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f"
+      },
+      "original_reference_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/revisions/c12_before_strong_t_20260930/images/c12_concept.png"
+      ],
+      "reference_path_note": "實際生成時使用 original_reference_paths；歸檔時改指向內容 SHA-256 相同的穩定副本。",
+      "prompt_sha256": "a802f9c74a18bde48d678449bce38120fb34f221d562ac306c37b006b79ec156",
+      "sha256": "e9244f100d345209a1c00d2dfefa22283019de9b8dc308715c903541e7866bf6",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "bytes": 1849703,
+      "postprocessing": "none",
+      "edit_scope": "strong_t_visor_and_cheek_rim_first_attempt_rejected",
+      "visual_review": "金色 T 字較明顯，但白灰護頰變為厚重矩形大平面；使用者回饋臉頰面甲不對，因此保留為未採用稿。",
+      "status": "rejected_by_user",
+      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t_boxy_local.json",
+      "runtime_implemented": false
+    },
+    {
+      "design_id": "C-12",
+      "kind": "helmet_fusion_study",
+      "variant": "anubis_gold_t_sculpted",
+      "path_base": "docs/art/original_armors_v1",
+      "path": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted.png",
+      "prompt": "revisions/c12_helmet_fusions_20260929/prompts/anubis_gold_t_sculpted.txt",
+      "generated_filename": "C:/Users/whw88/.codex/generated_images/01a0d34a-7c78-72d0-b7ae-7c134c979b6f/exec-07d13310-7509-4994-8819-7734b3e17777.png",
+      "tool": "built-in image_gen",
+      "date": "2026-10-01",
+      "reference_images": [
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png"
+      ],
+      "reference_sha256": {
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t.png": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f"
+      },
+      "original_reference_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/revisions/c12_before_strong_t_20260930/images/c12_concept.png"
+      ],
+      "reference_path_note": "實際生成時使用 original_reference_paths；歸檔時改指向內容 SHA-256 相同的穩定副本。",
+      "prompt_sha256": "9f9ca7a296f76b399cdcf34cf96bb11ee11e1dfbdd5d865b4b6c09bba808568a",
+      "sha256": "3e45a58e7c2bd331a0d4df918bd2aa9e51748607767916c4799d2f74a66d3a5b",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "bytes": 1885179,
+      "postprocessing": "none",
+      "edit_scope": "helmet_visor_inner_rim_with_original_sculpted_cheeks",
+      "visual_review": "已目視：回到原稿斜切護頰、黑色凹入通風口與短中央下巴；主要收窄玻璃下半部，金色橫帶連接中央直條。T 字交界保留斜角，未做成厚重直角白牆；局部紋理經生成重繪。",
+      "status": "visually_reviewed_pending_user_selection",
+      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t_sculpted.json",
+      "runtime_implemented": false
+    },
+    {
+      "design_id": "C-12",
+      "kind": "candidate_turnaround",
+      "variant": "anubis_gold_t_sculpted_turnaround",
+      "path_base": "docs/art/original_armors_v1",
+      "path": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted_turnaround.png",
+      "prompt": "revisions/c12_helmet_fusions_20260929/prompts/anubis_gold_t_sculpted_turnaround.txt",
+      "generated_filename": "C:/Users/whw88/.codex/generated_images/01a0d34a-7c78-72d0-b7ae-7c134c979b6f/exec-9b301ff1-b6a9-4776-838e-25dd1bbf82da.png",
+      "tool": "built-in image_gen",
+      "date": "2026-10-01",
+      "reference_images": [
+        "revisions/c12_helmet_fusions_20260929/references/sculpted_cheeks_input_turnaround.png",
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted.png"
+      ],
+      "reference_sha256": {
+        "revisions/c12_helmet_fusions_20260929/references/sculpted_cheeks_input_turnaround.png": "dd409d0b149cce7226be27bb4709b17573f8ce922fe4cc164e8bd9306f750b26",
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted.png": "3e45a58e7c2bd331a0d4df918bd2aa9e51748607767916c4799d2f74a66d3a5b"
+      },
+      "original_reference_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/revisions/c12_before_strong_t_20260930/images/c12_turnaround.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/images/c12_concept.png"
+      ],
+      "reference_path_note": "實際生成時使用 original_reference_paths；歸檔時改指向內容 SHA-256 相同的穩定副本。配套圖第二張輸入是本次保留原護頰候選概念，並非目前正式主圖。",
+      "prompt_sha256": "b29ea287ec6db0564d1d164a5ba30d6d6873f76045a101cbc18f675f848664f0",
+      "sha256": "a369cce0181fb8883a9bf3f84bfcab0114c30b92531bb76293a4babd8fae77f1",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 2000158,
+      "postprocessing": "none",
+      "edit_scope": "supporting_sheet_for_sculpted_cheeks_candidate",
+      "visual_review": "已目視正面、左側與背面完整人形及同一地平線；正面金色眼帶連接中央直條，護頰斜收。保留裝甲和背包方向；這是配套概念參考，細節與主圖可能有生成差異。",
+      "status": "visually_reviewed_pending_user_selection",
+      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t_sculpted_turnaround.json",
+      "runtime_implemented": false
+    },
+    {
+      "design_id": "C-12",
+      "kind": "candidate_construction",
+      "variant": "anubis_gold_t_sculpted_construction",
+      "path_base": "docs/art/original_armors_v1",
+      "path": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted_construction.png",
+      "prompt": "revisions/c12_helmet_fusions_20260929/prompts/anubis_gold_t_sculpted_construction.txt",
+      "generated_filename": "C:/Users/whw88/.codex/generated_images/01a0d34a-7c78-72d0-b7ae-7c134c979b6f/exec-348907dd-12ea-473c-a717-8f9fda30cab2.png",
+      "tool": "built-in image_gen",
+      "date": "2026-10-01",
+      "reference_images": [
+        "revisions/c12_helmet_fusions_20260929/references/sculpted_cheeks_input_construction.png",
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted.png"
+      ],
+      "reference_sha256": {
+        "revisions/c12_helmet_fusions_20260929/references/sculpted_cheeks_input_construction.png": "b45400886905a6bfd9323ea2d537ca54a8c3280076a58828fe99d7b3c9b0effb",
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted.png": "3e45a58e7c2bd331a0d4df918bd2aa9e51748607767916c4799d2f74a66d3a5b"
+      },
+      "original_reference_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/revisions/c12_before_strong_t_20260930/images/c12_construction.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/images/c12_concept.png"
+      ],
+      "reference_path_note": "實際生成時使用 original_reference_paths；歸檔時改指向內容 SHA-256 相同的穩定副本。配套圖第二張輸入是本次保留原護頰候選概念，並非目前正式主圖。",
+      "prompt_sha256": "afe8cb8dc2aa8d83432f27ca20ea12964abe7b7b6fcfa8e53feec3963fd77956",
+      "sha256": "5063720d28efb140710be23080ec5d2d5941af2c8a4047a0e4f2ab30a620d9c3",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 2154905,
+      "postprocessing": "none",
+      "edit_scope": "supporting_sheet_for_sculpted_cheeks_candidate",
+      "visual_review": "已目視頭盔組裝圖與分離金色 T 面窗、斜切護頰及凹入通風口；肩部、背包安裝和軟關節示意延續。這是結構概念參考，非精確建模尺寸圖。",
+      "status": "visually_reviewed_pending_user_selection",
+      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t_sculpted_construction.json",
+      "runtime_implemented": false
     }
   ],
   "runtime_implemented": false,
@@ -250,7 +392,8 @@
   ],
   "comparison_variants": [
     "anubis_gold_t",
-    "anubis_gold_t_swept"
+    "anubis_gold_t_swept",
+    "anubis_gold_t_sculpted"
   ],
   "preserved_variant": "anubis_gold",
   "selected_visor_variant": "anubis_gold_t",
@@ -270,16 +413,38 @@
   "latest_revision_date": "2026-10-01",
   "latest_revision": {
     "date": "2026-10-01",
-    "variant": "anubis_gold_t_swept",
+    "variant": "anubis_gold_t_sculpted",
     "status": "pending_user_selection",
+    "user_feedback": "不太對臉頰面甲的部份",
+    "interpretation": "回到原稿斜切護頰與凹入通風口，主要調整靠近金色玻璃的內框，避免把臉頰做成矩形大平面。",
     "canonical_images_retained": true,
-    "turnaround_and_construction": "still_show_previous_adopted_subtle_t",
+    "canonical_adopted_variant": "anubis_gold_t",
     "baseline_sha256": {
       "images/c12_concept.png": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f",
       "images/c12_turnaround.png": "dd409d0b149cce7226be27bb4709b17573f8ce922fe4cc164e8bd9306f750b26",
       "images/c12_construction.png": "b45400886905a6bfd9323ea2d537ca54a8c3280076a58828fe99d7b3c9b0effb"
     },
-    "rejected_variant": "anubis_gold_t_narrow"
+    "supporting_variants": [
+      "anubis_gold_t_sculpted_turnaround",
+      "anubis_gold_t_sculpted_construction"
+    ],
+    "turnaround_and_construction": "candidate_sheets_archived_separately_canonical_unchanged",
+    "rejected_variant": "anubis_gold_t_boxy_local"
   },
-  "alternate_comparison_variant": "anubis_gold_t_narrow"
+  "alternate_comparison_variant": "anubis_gold_t_narrow",
+  "revision_history": [
+    {
+      "date": "2026-10-01",
+      "variant": "anubis_gold_t_swept",
+      "status": "pending_user_selection",
+      "canonical_images_retained": true,
+      "turnaround_and_construction": "still_show_previous_adopted_subtle_t",
+      "baseline_sha256": {
+        "images/c12_concept.png": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f",
+        "images/c12_turnaround.png": "dd409d0b149cce7226be27bb4709b17573f8ce922fe4cc164e8bd9306f750b26",
+        "images/c12_construction.png": "b45400886905a6bfd9323ea2d537ca54a8c3280076a58828fe99d7b3c9b0effb"
+      },
+      "rejected_variant": "anubis_gold_t_narrow"
+    }
+  ]
 }

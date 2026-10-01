@@ -1,0 +1,37 @@
+{
+  "design_id": "C-12",
+  "kind": "candidate_construction",
+  "variant": "anubis_gold_t_sculpted_construction",
+  "path_base": "docs/art/original_armors_v1",
+  "path": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted_construction.png",
+  "prompt": "revisions/c12_helmet_fusions_20260929/prompts/anubis_gold_t_sculpted_construction.txt",
+  "generated_filename": "C:/Users/whw88/.codex/generated_images/01a0d34a-7c78-72d0-b7ae-7c134c979b6f/exec-348907dd-12ea-473c-a717-8f9fda30cab2.png",
+  "tool": "built-in image_gen",
+  "date": "2026-10-01",
+  "reference_images": [
+    "revisions/c12_helmet_fusions_20260929/references/sculpted_cheeks_input_construction.png",
+    "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted.png"
+  ],
+  "reference_sha256": {
+    "revisions/c12_helmet_fusions_20260929/references/sculpted_cheeks_input_construction.png": "b45400886905a6bfd9323ea2d537ca54a8c3280076a58828fe99d7b3c9b0effb",
+    "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted.png": "3e45a58e7c2bd331a0d4df918bd2aa9e51748607767916c4799d2f74a66d3a5b"
+  },
+  "original_reference_paths": [
+    "E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/revisions/c12_before_strong_t_20260930/images/c12_construction.png",
+    "E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/images/c12_concept.png"
+  ],
+  "reference_path_note": "實際生成時使用 original_reference_paths；歸檔時改指向內容 SHA-256 相同的穩定副本。配套圖第二張輸入是本次保留原護頰候選概念，並非目前正式主圖。",
+  "prompt_sha256": "afe8cb8dc2aa8d83432f27ca20ea12964abe7b7b6fcfa8e53feec3963fd77956",
+  "sha256": "5063720d28efb140710be23080ec5d2d5941af2c8a4047a0e4f2ab30a620d9c3",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "bytes": 2154905,
+  "postprocessing": "none",
+  "edit_scope": "supporting_sheet_for_sculpted_cheeks_candidate",
+  "visual_review": "已目視頭盔組裝圖與分離金色 T 面窗、斜切護頰及凹入通風口；肩部、背包安裝和軟關節示意延續。這是結構概念參考，非精確建模尺寸圖。",
+  "status": "visually_reviewed_pending_user_selection",
+  "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t_sculpted_construction.json",
+  "runtime_implemented": false
+}
