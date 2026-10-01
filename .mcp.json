@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "nanobanana": {
+      "command": "node",
+      "args": ["/Users/harvey/tools/nanobanana/mcp-server/dist/index.js"],
+      "env": { "NANOBANANA_API_KEY": "${NANOBANANA_API_KEY}" }
+    }
+  }
+}
