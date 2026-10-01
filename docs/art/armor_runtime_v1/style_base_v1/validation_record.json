@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-01",
+  "checks": [
+    {
+      "name": "raw reference Godot capture",
+      "status": "PASS",
+      "engine": "4.7.2.stable.official.ed1daf0bf",
+      "renderer": "OpenGL 4.1 / Compatibility / Apple M4",
+      "viewport_pixels": [
+        640,
+        720
+      ],
+      "images": 36
+    },
+    {
+      "name": "mesh component analysis",
+      "status": "PASS",
+      "originals": 9
+    },
+    {
+      "name": "Python parsing and prompt/provenance/texture/source hashes",
+      "status": "PASS"
+    },
+    {
+      "name": "git diff --check",
+      "status": "PASS"
+    },
+    {
+      "name": "harness integrity",
+      "status": "PASS"
+    }
+  ],
+  "not_run": [
+    "new playable Cygni 3D / UV / animation / integration",
+    "application checks via harness"
+  ],
+  "visual_acceptance": "PENDING",
+  "remaining_deviations": [
+    "v2 shoulder silhouette still differs from raw original",
+    "gold reflections stronger than some original textures",
+    "unseen rear / interior needs construction drawings"
+  ],
+  "next_step": "user selects the helmet direction; constrain shoulders/body to original meshes before rebuilding",
+  "no_new_commit_or_push": true
+}

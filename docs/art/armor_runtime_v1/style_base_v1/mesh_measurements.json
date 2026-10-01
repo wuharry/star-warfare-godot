@@ -1,0 +1,2473 @@
+{
+  "date": "2026-10-01",
+  "source": "assets/models/player/animated/player.gltf",
+  "source_sha256": "15dbc5e532878e7fbc961a8bed45986f7b6a53a1fde5c955c66cfef806eee5bd",
+  "staging_sha256": "28c4f7416e1d11a4b3daae186af23d944bf2521606ce2d70f3036e357873bbe2",
+  "measurement": "raw_surfaces only; bind-space Y-up; weld round(position, 5); largest connected head component is a proxy for main shell, not an anatomical head count",
+  "selected_originals": [
+    {
+      "id": 0,
+      "name": "Viper",
+      "part_triangles": {
+        "ArmorHead_00": 136,
+        "ArmorBody_00": 298,
+        "ArmorHand_00": 112,
+        "ArmorFoot_00": 136
+      },
+      "triangles": 682,
+      "complete_armor": {
+        "min_max_xyz": [
+          [
+            -0.56326,
+            0.56315
+          ],
+          [
+            -0.00108,
+            1.9115
+          ],
+          [
+            -0.40333,
+            0.27533
+          ]
+        ],
+        "width_height_depth": [
+          1.12641,
+          1.91258,
+          0.67866
+        ]
+      },
+      "head_with_attachments": {
+        "min_max_xyz": [
+          [
+            -0.25922,
+            0.25911
+          ],
+          [
+            1.23585,
+            1.9115
+          ],
+          [
+            -0.40333,
+            0.25688
+          ]
+        ],
+        "width_height_depth": [
+          0.51833,
+          0.6756500000000001,
+          0.66021
+        ]
+      },
+      "head_components": [
+        {
+          "triangles": 124,
+          "position_count": 64,
+          "min_max_xyz": [
+            [
+              -0.25922,
+              0.25911
+            ],
+            [
+              1.26239,
+              1.9115
+            ],
+            [
+              -0.40333,
+              0.25688
+            ]
+          ],
+          "width_height_depth": [
+            0.51833,
+            0.6491100000000001,
+            0.66021
+          ]
+        },
+        {
+          "triangles": 12,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              -0.20703,
+              0.20705
+            ],
+            [
+              1.23585,
+              1.49839
+            ],
+            [
+              -0.14308,
+              0.15083
+            ]
+          ],
+          "width_height_depth": [
+            0.41408,
+            0.2625400000000002,
+            0.29391
+          ]
+        }
+      ],
+      "armor_height_div_main_connected_head_height": 2.9464651599882914,
+      "textures": [
+        {
+          "part": "ArmorHead_00",
+          "path": "assets/models/player/animated/armor_textures/head_22f92a18e5f8_2x.png",
+          "sha256": "1c18a72b2c12aa70ba7697924b21d3bfaa34f3e2c5ede8354c366962700eb5f9",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_00",
+          "path": "assets/models/player/animated/armor_textures/body_41c59e886aaa_2x.png",
+          "sha256": "1e1dee320b11a5c15f2a59c7fa89faa140033d3e2076a9db2fd7139dd1188e00",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_00",
+          "path": "assets/models/player/animated/armor_textures/jian_6847836cc115_2x.png",
+          "sha256": "35aa9e729484f61e5eea046c2e1a222483f338e621a6f989303821d962502f61",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorHand_00",
+          "path": "assets/models/player/animated/armor_textures/hand_f539ff620e61_2x.png",
+          "sha256": "a6af731e037f3779d9fc99bcdc55cd7cb8645d04508c398ff9a7d284f30a97c2",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorFoot_00",
+          "path": "assets/models/player/animated/armor_textures/foot_3d4c778949e5_2x.png",
+          "sha256": "ac77dc34c29e6d09d37d146374772d5d18a2dd6f380da01c20c945fe744bf8d3",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Tank",
+      "part_triangles": {
+        "ArmorHead_02": 206,
+        "ArmorBody_02": 338,
+        "ArmorHand_02": 116,
+        "ArmorFoot_02": 136
+      },
+      "triangles": 796,
+      "complete_armor": {
+        "min_max_xyz": [
+          [
+            -0.56097,
+            0.56097
+          ],
+          [
+            -0.00155,
+            1.92715
+          ],
+          [
+            -0.39907,
+            0.26527
+          ]
+        ],
+        "width_height_depth": [
+          1.12194,
+          1.9286999999999999,
+          0.6643399999999999
+        ]
+      },
+      "head_with_attachments": {
+        "min_max_xyz": [
+          [
+            -0.26422,
+            0.26422
+          ],
+          [
+            1.2192,
+            1.92715
+          ],
+          [
+            -0.39907,
+            0.26112
+          ]
+        ],
+        "width_height_depth": [
+          0.52844,
+          0.7079499999999999,
+          0.66019
+        ]
+      },
+      "head_components": [
+        {
+          "triangles": 194,
+          "position_count": 99,
+          "min_max_xyz": [
+            [
+              -0.26422,
+              0.26422
+            ],
+            [
+              1.29112,
+              1.92715
+            ],
+            [
+              -0.39907,
+              0.26112
+            ]
+          ],
+          "width_height_depth": [
+            0.52844,
+            0.6360299999999999,
+            0.66019
+          ]
+        },
+        {
+          "triangles": 12,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              -0.20581,
+              0.20699
+            ],
+            [
+              1.2192,
+              1.49882
+            ],
+            [
+              -0.09788,
+              0.21563
+            ]
+          ],
+          "width_height_depth": [
+            0.4128,
+            0.27962,
+            0.31350999999999996
+          ]
+        }
+      ],
+      "armor_height_div_main_connected_head_height": 3.032404131880572,
+      "textures": [
+        {
+          "part": "ArmorHead_02",
+          "path": "assets/models/player/animated/armor_textures/head_27f2a32dc8b6_2x.png",
+          "sha256": "93d71adfd46866b2cb26aa22bd5993377c584924d5a5a9e652ef1a1216cf765c",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.906331777572632,
+            0.906331777572632,
+            0.906331777572632,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorHead_02",
+          "path": "assets/models/player/animated/armor_textures/hand_e05d06ac0d12_2x.png",
+          "sha256": "82cdcfea69c126971e52f3221da8823d901d26f9f80a4c5337f640b55ccf34a3",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.906331777572632,
+            0.906331777572632,
+            0.906331777572632,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_02",
+          "path": "assets/models/player/animated/armor_textures/body_ed36db00f85b_2x.png",
+          "sha256": "98a1803ffa1838c4fd39223dd302de4a0725684404dd7bdf5cc3d87e4cd14104",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.906331777572632,
+            0.906331777572632,
+            0.906331777572632,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_02",
+          "path": "assets/models/player/animated/armor_textures/jian_077c0f9d616a_2x.png",
+          "sha256": "7572036a24caf732eabff2629c0ab7364d89a267a825a41342b17f99afdca67f",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.906331777572632,
+            0.906331777572632,
+            0.906331777572632,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorHand_02",
+          "path": "assets/models/player/animated/armor_textures/hand_e05d06ac0d12_2x.png",
+          "sha256": "82cdcfea69c126971e52f3221da8823d901d26f9f80a4c5337f640b55ccf34a3",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.906331777572632,
+            0.906331777572632,
+            0.906331777572632,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorFoot_02",
+          "path": "assets/models/player/animated/armor_textures/foot_31083bd2d7d1_2x.png",
+          "sha256": "8e5dde835854e66f41577e4c21fa5f4d37b5522f99237a1671cee6e7c15fcf3d",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.906331777572632,
+            0.906331777572632,
+            0.906331777572632,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Hydra",
+      "part_triangles": {
+        "ArmorHead_03": 186,
+        "ArmorBody_03": 330,
+        "ArmorHand_03": 108,
+        "ArmorFoot_03": 136
+      },
+      "triangles": 760,
+      "complete_armor": {
+        "min_max_xyz": [
+          [
+            -0.5543,
+            0.5543
+          ],
+          [
+            0.00748,
+            1.89472
+          ],
+          [
+            -0.39658,
+            0.26092
+          ]
+        ],
+        "width_height_depth": [
+          1.1086,
+          1.88724,
+          0.6575
+        ]
+      },
+      "head_with_attachments": {
+        "min_max_xyz": [
+          [
+            -0.23936,
+            0.23936
+          ],
+          [
+            1.21444,
+            1.89472
+          ],
+          [
+            -0.39658,
+            0.24009
+          ]
+        ],
+        "width_height_depth": [
+          0.47872,
+          0.68028,
+          0.63667
+        ]
+      },
+      "head_components": [
+        {
+          "triangles": 174,
+          "position_count": 89,
+          "min_max_xyz": [
+            [
+              -0.23936,
+              0.23936
+            ],
+            [
+              1.26725,
+              1.89472
+            ],
+            [
+              -0.39658,
+              0.24009
+            ]
+          ],
+          "width_height_depth": [
+            0.47872,
+            0.62747,
+            0.63667
+          ]
+        },
+        {
+          "triangles": 12,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              -0.2035,
+              0.20447
+            ],
+            [
+              1.21444,
+              1.49111
+            ],
+            [
+              -0.09811,
+              0.21199
+            ]
+          ],
+          "width_height_depth": [
+            0.40797,
+            0.27666999999999997,
+            0.31010000000000004
+          ]
+        }
+      ],
+      "armor_height_div_main_connected_head_height": 3.007697579167132,
+      "textures": [
+        {
+          "part": "ArmorHead_03",
+          "path": "assets/models/player/animated/armor_textures/head_9d25898f6b16_2x.png",
+          "sha256": "1275f49dc08d07bb9f673defb6b0310c1d82e8fe336450cc3bcf0efe581d8d5f",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_03",
+          "path": "assets/models/player/animated/armor_textures/body_bd16b9436c5e_2x.png",
+          "sha256": "90878024c950f285b302841e25be651ad6610865887ceffba4e84065309da0a6",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_03",
+          "path": "assets/models/player/animated/armor_textures/jian_496b2bbd770e_2x.png",
+          "sha256": "aa7560b374160584f627b68ca30d1b4b2516f8fdc0cde706996e50ef7331c7d5",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorHand_03",
+          "path": "assets/models/player/animated/armor_textures/hand_c974522680fe_2x.png",
+          "sha256": "ed9ff2b8bc216f802e77802c507611119b038c6ffd6bd8e3e634433b3fc30511",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790730655193329,
+            0.790730655193329,
+            0.790730655193329,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorFoot_03",
+          "path": "assets/models/player/animated/armor_textures/foot_ee6e6e462c68_2x.png",
+          "sha256": "0c38d3f243cec54d5f99bb826efd047492c2d8025c41304afa5ba52197678cf3",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790730655193329,
+            0.790730655193329,
+            0.790730655193329,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Strike",
+      "part_triangles": {
+        "ArmorHead_04": 180,
+        "ArmorBody_04": 298,
+        "ArmorHand_04": 108,
+        "ArmorFoot_04": 136
+      },
+      "triangles": 722,
+      "complete_armor": {
+        "min_max_xyz": [
+          [
+            -0.56531,
+            0.56531
+          ],
+          [
+            0.00095,
+            1.91318
+          ],
+          [
+            -0.38028,
+            0.26887
+          ]
+        ],
+        "width_height_depth": [
+          1.13062,
+          1.91223,
+          0.64915
+        ]
+      },
+      "head_with_attachments": {
+        "min_max_xyz": [
+          [
+            -0.27661,
+            0.27661
+          ],
+          [
+            1.21972,
+            1.91318
+          ],
+          [
+            -0.38028,
+            0.24322
+          ]
+        ],
+        "width_height_depth": [
+          0.55322,
+          0.6934600000000002,
+          0.6234999999999999
+        ]
+      },
+      "head_components": [
+        {
+          "triangles": 132,
+          "position_count": 68,
+          "min_max_xyz": [
+            [
+              -0.25923,
+              0.25923
+            ],
+            [
+              1.26398,
+              1.91318
+            ],
+            [
+              -0.38028,
+              0.24322
+            ]
+          ],
+          "width_height_depth": [
+            0.51846,
+            0.6492,
+            0.6234999999999999
+          ]
+        },
+        {
+          "triangles": 16,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              -0.06651,
+              0.06651
+            ],
+            [
+              1.69627,
+              1.9026
+            ],
+            [
+              -0.02054,
+              0.22131
+            ]
+          ],
+          "width_height_depth": [
+            0.13302,
+            0.20633000000000012,
+            0.24185
+          ]
+        },
+        {
+          "triangles": 12,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              -0.22219,
+              0.22295
+            ],
+            [
+              1.21972,
+              1.4954
+            ],
+            [
+              -0.16779,
+              0.15685
+            ]
+          ],
+          "width_height_depth": [
+            0.44514,
+            0.27568000000000015,
+            0.32464
+          ]
+        },
+        {
+          "triangles": 10,
+          "position_count": 8,
+          "min_max_xyz": [
+            [
+              -0.27661,
+              -0.18592
+            ],
+            [
+              1.47559,
+              1.61919
+            ],
+            [
+              -0.1271,
+              -0.01374
+            ]
+          ],
+          "width_height_depth": [
+            0.09069000000000002,
+            0.14359999999999995,
+            0.11335999999999999
+          ]
+        },
+        {
+          "triangles": 10,
+          "position_count": 8,
+          "min_max_xyz": [
+            [
+              0.18592,
+              0.27661
+            ],
+            [
+              1.47559,
+              1.61919
+            ],
+            [
+              -0.1271,
+              -0.01374
+            ]
+          ],
+          "width_height_depth": [
+            0.09069000000000002,
+            0.14359999999999995,
+            0.11335999999999999
+          ]
+        }
+      ],
+      "armor_height_div_main_connected_head_height": 2.945517560073937,
+      "textures": [
+        {
+          "part": "ArmorHead_04",
+          "path": "assets/models/player/animated/armor_textures/head_0fec56bddc36_2x.png",
+          "sha256": "294809b57133048fadaa8292bd10bed32309f3e5edf3f933230c3f976dbc491e",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_04",
+          "path": "assets/models/player/animated/armor_textures/body_c4fabbd7d47a_2x.png",
+          "sha256": "a5ee77df2e13753f58da7f9ed49e02e574b9be5b92dff0898363aae85f116599",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790730655193329,
+            0.790730655193329,
+            0.790730655193329,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_04",
+          "path": "assets/models/player/animated/armor_textures/jian_636c11b729f7_2x.png",
+          "sha256": "cea7181983e7fbdd0b0e57c318ee5e24e463b34739fe5022bab582add8dc87c9",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790730655193329,
+            0.790730655193329,
+            0.790730655193329,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorHand_04",
+          "path": "assets/models/player/animated/armor_textures/hand_1a8b5c7e8dee_2x.png",
+          "sha256": "fd84255464fdbad923108e20b6359d6892a4406254c9500ac249f22d88e409d4",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorFoot_04",
+          "path": "assets/models/player/animated/armor_textures/foot_efec64cd00d2_2x.png",
+          "sha256": "fc5aabe890404edf1fddb3ad7cdfb0b9dbc2d6e0eafee4bceecec0d53d4f7f81",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Atom",
+      "part_triangles": {
+        "ArmorHead_07": 246,
+        "ArmorBody_07": 354,
+        "ArmorHand_07": 124,
+        "ArmorFoot_07": 136
+      },
+      "triangles": 860,
+      "complete_armor": {
+        "min_max_xyz": [
+          [
+            -0.63192,
+            0.63192
+          ],
+          [
+            0.00568,
+            1.89549
+          ],
+          [
+            -0.36416,
+            0.26521
+          ]
+        ],
+        "width_height_depth": [
+          1.26384,
+          1.88981,
+          0.62937
+        ]
+      },
+      "head_with_attachments": {
+        "min_max_xyz": [
+          [
+            -0.3076,
+            0.3076
+          ],
+          [
+            1.22841,
+            1.89549
+          ],
+          [
+            -0.36416,
+            0.21957
+          ]
+        ],
+        "width_height_depth": [
+          0.6152,
+          0.6670799999999999,
+          0.58373
+        ]
+      },
+      "head_components": [
+        {
+          "triangles": 234,
+          "position_count": 119,
+          "min_max_xyz": [
+            [
+              -0.3076,
+              0.3076
+            ],
+            [
+              1.27406,
+              1.89549
+            ],
+            [
+              -0.36416,
+              0.21957
+            ]
+          ],
+          "width_height_depth": [
+            0.6152,
+            0.6214299999999999,
+            0.58373
+          ]
+        },
+        {
+          "triangles": 12,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              -0.20455,
+              0.20455
+            ],
+            [
+              1.22841,
+              1.48782
+            ],
+            [
+              -0.09115,
+              0.19972
+            ]
+          ],
+          "width_height_depth": [
+            0.4091,
+            0.2594099999999999,
+            0.29087
+          ]
+        }
+      ],
+      "armor_height_div_main_connected_head_height": 3.0410665722607537,
+      "textures": [
+        {
+          "part": "ArmorHead_07",
+          "path": "assets/models/player/animated/armor_textures/head_bb67000287dd_2x.png",
+          "sha256": "2fca1535c7ff1c03a0b915ec4609f700009b8c9326754e60a5a28763f2f228dc",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_07",
+          "path": "assets/models/player/animated/armor_textures/jian_aa13458c0049_2x.png",
+          "sha256": "70aa31f956d00d4d7847de840f3be6fea0a7d06ba41d90fd34d04d93ef863d47",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.906331777572632,
+            0.906331777572632,
+            0.906331777572632,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_07",
+          "path": "assets/models/player/animated/armor_textures/body_1b6b8f34e05d_2x.png",
+          "sha256": "2ee571cd15d4bad6e003bfbbda1a913fd7847f736b23428e4ba1bb4bb3f1908f",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorHand_07",
+          "path": "assets/models/player/animated/armor_textures/hand_0fc9da36fa37_2x.png",
+          "sha256": "a8ae7a58c8536045fe8ff6a423a155723d9b387414d73033401498001fff368a",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorFoot_07",
+          "path": "assets/models/player/animated/armor_textures/foot_2d50e768959c_2x.png",
+          "sha256": "05309542695bc332278871c11f415b4dfc3c6b8e08f58fa5183f36ebac7517a7",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790730655193329,
+            0.790730655193329,
+            0.790730655193329,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Draco",
+      "part_triangles": {
+        "ArmorHead_09": 176,
+        "ArmorBody_09": 366,
+        "ArmorHand_09": 160,
+        "ArmorFoot_09": 152
+      },
+      "triangles": 854,
+      "complete_armor": {
+        "min_max_xyz": [
+          [
+            -0.62165,
+            0.62165
+          ],
+          [
+            -0.00176,
+            1.94868
+          ],
+          [
+            -0.3948,
+            0.26127
+          ]
+        ],
+        "width_height_depth": [
+          1.2433,
+          1.95044,
+          0.6560699999999999
+        ]
+      },
+      "head_with_attachments": {
+        "min_max_xyz": [
+          [
+            -0.25886,
+            0.25886
+          ],
+          [
+            1.22145,
+            1.94868
+          ],
+          [
+            -0.3948,
+            0.23224
+          ]
+        ],
+        "width_height_depth": [
+          0.51772,
+          0.72723,
+          0.62704
+        ]
+      },
+      "head_components": [
+        {
+          "triangles": 156,
+          "position_count": 81,
+          "min_max_xyz": [
+            [
+              -0.25886,
+              0.25886
+            ],
+            [
+              1.22145,
+              1.94868
+            ],
+            [
+              -0.3948,
+              0.23224
+            ]
+          ],
+          "width_height_depth": [
+            0.51772,
+            0.72723,
+            0.62704
+          ]
+        },
+        {
+          "triangles": 12,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              -0.22196,
+              0.1928
+            ],
+            [
+              1.23732,
+              1.50017
+            ],
+            [
+              -0.0997,
+              0.19503
+            ]
+          ],
+          "width_height_depth": [
+            0.41476,
+            0.26285000000000003,
+            0.29473
+          ]
+        },
+        {
+          "triangles": 8,
+          "position_count": 9,
+          "min_max_xyz": [
+            [
+              -0.14289,
+              0.14289
+            ],
+            [
+              1.70946,
+              1.94344
+            ],
+            [
+              -0.34614,
+              -0.01846
+            ]
+          ],
+          "width_height_depth": [
+            0.28578,
+            0.23398000000000008,
+            0.32768
+          ]
+        }
+      ],
+      "armor_height_div_main_connected_head_height": 2.6820125682383837,
+      "textures": [
+        {
+          "part": "ArmorHead_09",
+          "path": "assets/models/player/animated/armor_textures/10_head_e0f50e924883_2x.png",
+          "sha256": "4f73ec7d46d23acde499ebe2aeef8c58fc85151fb2fe8724254065cc62be7eb4",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790730655193329,
+            0.790730655193329,
+            0.790730655193329,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_09",
+          "path": "assets/models/player/animated/armor_textures/10_body_3ae3c84f3d48_2x.png",
+          "sha256": "a81457a17e5390df377f3799eba76e2a0a76db7a30b1b1b72d87cf09ee10a31a",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790730655193329,
+            0.790730655193329,
+            0.790730655193329,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_09",
+          "path": "assets/models/player/animated/armor_textures/10_jian_65bd618d01a0_2x.png",
+          "sha256": "99aed47e437726fda65be3be1da01b75bc5a975137a1f5298e07230465535d71",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790730655193329,
+            0.790730655193329,
+            0.790730655193329,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorHand_09",
+          "path": "assets/models/player/animated/armor_textures/10_hand_81a30970e8c5_2x.png",
+          "sha256": "a50c185be59c356f0195c78f73438d37718ff3eb87f7dac4776ca2c77cbe3f59",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790730655193329,
+            0.790730655193329,
+            0.790730655193329,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorFoot_09",
+          "path": "assets/models/player/animated/armor_textures/10_foot_5b3d23be8b3b_2x.png",
+          "sha256": "2737cd3b6b16dc6a84a7ff5d5d4c7eddd6e0d37ebb008c9c3c79f29c3ec5bb69",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790730655193329,
+            0.790730655193329,
+            0.790730655193329,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Phoenix",
+      "part_triangles": {
+        "ArmorHead_10": 292,
+        "ArmorBody_10": 372,
+        "ArmorHand_10": 202,
+        "ArmorFoot_10": 156
+      },
+      "triangles": 1022,
+      "complete_armor": {
+        "min_max_xyz": [
+          [
+            -0.7017,
+            0.7017
+          ],
+          [
+            0.0005,
+            2.00404
+          ],
+          [
+            -0.43656,
+            0.26022
+          ]
+        ],
+        "width_height_depth": [
+          1.4034,
+          2.0035399999999997,
+          0.69678
+        ]
+      },
+      "head_with_attachments": {
+        "min_max_xyz": [
+          [
+            -0.3616,
+            0.3616
+          ],
+          [
+            1.23323,
+            2.00404
+          ],
+          [
+            -0.43656,
+            0.21024
+          ]
+        ],
+        "width_height_depth": [
+          0.7232,
+          0.7708099999999998,
+          0.6468
+        ]
+      },
+      "head_components": [
+        {
+          "triangles": 280,
+          "position_count": 142,
+          "min_max_xyz": [
+            [
+              -0.3616,
+              0.3616
+            ],
+            [
+              1.28744,
+              2.00404
+            ],
+            [
+              -0.43656,
+              0.21024
+            ]
+          ],
+          "width_height_depth": [
+            0.7232,
+            0.7165999999999999,
+            0.6468
+          ]
+        },
+        {
+          "triangles": 12,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              -0.2077,
+              0.2077
+            ],
+            [
+              1.23323,
+              1.49663
+            ],
+            [
+              -0.1029,
+              0.1924
+            ]
+          ],
+          "width_height_depth": [
+            0.4154,
+            0.26339999999999986,
+            0.2953
+          ]
+        }
+      ],
+      "armor_height_div_main_connected_head_height": 2.7958972927714205,
+      "textures": [
+        {
+          "part": "ArmorHead_10",
+          "path": "assets/models/player/animated/armor_textures/11_head_b52a3c95a113_2x.png",
+          "sha256": "af583b305e915387296b295fd6fddf680e50e501989493b2d7d3feddafc3d678",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_10",
+          "path": "assets/models/player/animated/armor_textures/11_body_a85e7d5e28a8_2x.png",
+          "sha256": "b59e7bc9a372c23b3baff00700bd76240b723ee384276dc6199800786767e687",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_10",
+          "path": "assets/models/player/animated/armor_textures/11_jian_f0978280b0ba_2x.png",
+          "sha256": "de1f0d9c334a0205a1de672c3017e0a4118feb6d9505fb880bba9ffe69201bf8",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorHand_10",
+          "path": "assets/models/player/animated/armor_textures/11_hand_c31f0ebfc6d3_2x.png",
+          "sha256": "68a2b618e86c3f728cb7e540e48bb3916eea47c2d8f436fe2eb4e18b87814f89",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorFoot_10",
+          "path": "assets/models/player/animated/armor_textures/11_foot_6852f656af02_2x.png",
+          "sha256": "e6c56297442104e576fe84cb4d384cb8394a82203443885f36c990de577ed7b0",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Cygni",
+      "part_triangles": {
+        "ArmorHead_11": 238,
+        "ArmorBody_11": 460,
+        "ArmorHand_11": 152,
+        "ArmorFoot_11": 156
+      },
+      "triangles": 1006,
+      "complete_armor": {
+        "min_max_xyz": [
+          [
+            -0.63235,
+            0.63235
+          ],
+          [
+            -0.0018,
+            1.9784
+          ],
+          [
+            -0.4447,
+            0.25762
+          ]
+        ],
+        "width_height_depth": [
+          1.2647,
+          1.9802,
+          0.70232
+        ]
+      },
+      "head_with_attachments": {
+        "min_max_xyz": [
+          [
+            -0.34162,
+            0.34162
+          ],
+          [
+            1.1964,
+            1.9784
+          ],
+          [
+            -0.4447,
+            0.2551
+          ]
+        ],
+        "width_height_depth": [
+          0.68324,
+          0.782,
+          0.6998
+        ]
+      },
+      "head_components": [
+        {
+          "triangles": 166,
+          "position_count": 85,
+          "min_max_xyz": [
+            [
+              -0.2303,
+              0.2303
+            ],
+            [
+              1.1964,
+              1.9784
+            ],
+            [
+              -0.4447,
+              0.2551
+            ]
+          ],
+          "width_height_depth": [
+            0.4606,
+            0.782,
+            0.6998
+          ]
+        },
+        {
+          "triangles": 21,
+          "position_count": 15,
+          "min_max_xyz": [
+            [
+              0.10825,
+              0.20915
+            ],
+            [
+              1.2979,
+              1.4349
+            ],
+            [
+              -0.2409,
+              -0.1048
+            ]
+          ],
+          "width_height_depth": [
+            0.1009,
+            0.137,
+            0.1361
+          ]
+        },
+        {
+          "triangles": 21,
+          "position_count": 15,
+          "min_max_xyz": [
+            [
+              -0.20915,
+              -0.10825
+            ],
+            [
+              1.2979,
+              1.4349
+            ],
+            [
+              -0.2409,
+              -0.1048
+            ]
+          ],
+          "width_height_depth": [
+            0.1009,
+            0.137,
+            0.1361
+          ]
+        },
+        {
+          "triangles": 14,
+          "position_count": 14,
+          "min_max_xyz": [
+            [
+              -0.1847,
+              0.1847
+            ],
+            [
+              1.23732,
+              1.49314
+            ],
+            [
+              -0.09948,
+              0.18981
+            ]
+          ],
+          "width_height_depth": [
+            0.3694,
+            0.25581999999999994,
+            0.28929
+          ]
+        },
+        {
+          "triangles": 2,
+          "position_count": 4,
+          "min_max_xyz": [
+            [
+              -0.2994,
+              -0.1986
+            ],
+            [
+              1.6007,
+              1.7078
+            ],
+            [
+              0.07226,
+              0.23076
+            ]
+          ],
+          "width_height_depth": [
+            0.1008,
+            0.10709999999999997,
+            0.15849999999999997
+          ]
+        },
+        {
+          "triangles": 2,
+          "position_count": 4,
+          "min_max_xyz": [
+            [
+              -0.2975,
+              -0.1967
+            ],
+            [
+              1.6013,
+              1.7084
+            ],
+            [
+              0.07306,
+              0.23166
+            ]
+          ],
+          "width_height_depth": [
+            0.10079999999999997,
+            0.10709999999999997,
+            0.15860000000000002
+          ]
+        },
+        {
+          "triangles": 2,
+          "position_count": 4,
+          "min_max_xyz": [
+            [
+              -0.34162,
+              -0.20732
+            ],
+            [
+              1.69684,
+              1.91044
+            ],
+            [
+              0.03266,
+              0.22659
+            ]
+          ],
+          "width_height_depth": [
+            0.13429999999999997,
+            0.2136,
+            0.19393000000000002
+          ]
+        },
+        {
+          "triangles": 2,
+          "position_count": 4,
+          "min_max_xyz": [
+            [
+              -0.33892,
+              -0.20462
+            ],
+            [
+              1.69764,
+              1.91114
+            ],
+            [
+              0.03406,
+              0.22798
+            ]
+          ],
+          "width_height_depth": [
+            0.1343,
+            0.21350000000000002,
+            0.19391999999999998
+          ]
+        },
+        {
+          "triangles": 2,
+          "position_count": 4,
+          "min_max_xyz": [
+            [
+              0.1986,
+              0.2994
+            ],
+            [
+              1.6007,
+              1.7078
+            ],
+            [
+              0.07226,
+              0.23076
+            ]
+          ],
+          "width_height_depth": [
+            0.1008,
+            0.10709999999999997,
+            0.15849999999999997
+          ]
+        },
+        {
+          "triangles": 2,
+          "position_count": 4,
+          "min_max_xyz": [
+            [
+              0.1967,
+              0.2975
+            ],
+            [
+              1.6013,
+              1.7084
+            ],
+            [
+              0.07306,
+              0.23166
+            ]
+          ],
+          "width_height_depth": [
+            0.10079999999999997,
+            0.10709999999999997,
+            0.15860000000000002
+          ]
+        },
+        {
+          "triangles": 2,
+          "position_count": 4,
+          "min_max_xyz": [
+            [
+              0.20732,
+              0.34162
+            ],
+            [
+              1.69684,
+              1.91044
+            ],
+            [
+              0.03266,
+              0.22659
+            ]
+          ],
+          "width_height_depth": [
+            0.13429999999999997,
+            0.2136,
+            0.19393000000000002
+          ]
+        },
+        {
+          "triangles": 2,
+          "position_count": 4,
+          "min_max_xyz": [
+            [
+              0.20462,
+              0.33892
+            ],
+            [
+              1.69764,
+              1.91114
+            ],
+            [
+              0.03406,
+              0.22798
+            ]
+          ],
+          "width_height_depth": [
+            0.1343,
+            0.21350000000000002,
+            0.19391999999999998
+          ]
+        }
+      ],
+      "armor_height_div_main_connected_head_height": 2.532225063938619,
+      "textures": [
+        {
+          "part": "ArmorHead_11",
+          "path": "assets/models/player/animated/armor_textures/man12_head_451652e6b89d_2x.png",
+          "sha256": "1b2518e7216dcd7be80d318f8fc5b4173e59f9312a5c64d01fa4b757990e9502",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790730655193329,
+            0.442601025104523,
+            0.442601025104523,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_11",
+          "path": "assets/models/player/animated/armor_textures/man12_body_1778b2d39261_2x.png",
+          "sha256": "48b9bec008e6af3673e269dd6cab5877feee400c1bc0941d1c9094994a0d57aa",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_11",
+          "path": "assets/models/player/animated/armor_textures/man12_jian_a2e46ef2f89e_2x.png",
+          "sha256": "638b05adcc710bdd5c56b20a0e318670d47f02d32b237d564767f206ba90ad59",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorHand_11",
+          "path": "assets/models/player/animated/armor_textures/man12_hand_64abc2477921_2x.png",
+          "sha256": "16a12a4ae693c0ceb1e8ebb50909404b28b680286b9199fb0c2a883aaa2a12e2",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorFoot_11",
+          "path": "assets/models/player/animated/armor_textures/man12_foot_f6f97a1a8d53_2x.png",
+          "sha256": "8d6e5f5573e474454d9b19060e1955019b58e1a03cc698e98eb8523a6e99dd45",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Andromedae",
+      "part_triangles": {
+        "ArmorHead_12": 330,
+        "ArmorBody_12": 546,
+        "ArmorHand_12": 152,
+        "ArmorFoot_12": 140
+      },
+      "triangles": 1168,
+      "complete_armor": {
+        "min_max_xyz": [
+          [
+            -0.6607,
+            0.6607
+          ],
+          [
+            -0.0018,
+            1.90744
+          ],
+          [
+            -0.4117,
+            0.2613
+          ]
+        ],
+        "width_height_depth": [
+          1.3214,
+          1.90924,
+          0.673
+        ]
+      },
+      "head_with_attachments": {
+        "min_max_xyz": [
+          [
+            -0.3324,
+            0.3324
+          ],
+          [
+            1.2159,
+            1.90744
+          ],
+          [
+            -0.4117,
+            0.2501
+          ]
+        ],
+        "width_height_depth": [
+          0.6648,
+          0.69154,
+          0.6617999999999999
+        ]
+      },
+      "head_components": [
+        {
+          "triangles": 154,
+          "position_count": 79,
+          "min_max_xyz": [
+            [
+              -0.2493,
+              0.2493
+            ],
+            [
+              1.2159,
+              1.9074
+            ],
+            [
+              -0.4117,
+              0.2501
+            ]
+          ],
+          "width_height_depth": [
+            0.4986,
+            0.6915,
+            0.6617999999999999
+          ]
+        },
+        {
+          "triangles": 34,
+          "position_count": 22,
+          "min_max_xyz": [
+            [
+              0.1821,
+              0.3324
+            ],
+            [
+              1.4656,
+              1.7264
+            ],
+            [
+              -0.1524,
+              0.0829
+            ]
+          ],
+          "width_height_depth": [
+            0.15029999999999996,
+            0.2607999999999999,
+            0.2353
+          ]
+        },
+        {
+          "triangles": 34,
+          "position_count": 22,
+          "min_max_xyz": [
+            [
+              -0.3324,
+              -0.1821
+            ],
+            [
+              1.4656,
+              1.7264
+            ],
+            [
+              -0.1524,
+              0.0829
+            ]
+          ],
+          "width_height_depth": [
+            0.15029999999999996,
+            0.2607999999999999,
+            0.2353
+          ]
+        },
+        {
+          "triangles": 16,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              0.01749,
+              0.1828
+            ],
+            [
+              1.67579,
+              1.8277
+            ],
+            [
+              -0.3591,
+              -0.19659
+            ]
+          ],
+          "width_height_depth": [
+            0.16530999999999998,
+            0.1519100000000002,
+            0.16251
+          ]
+        },
+        {
+          "triangles": 16,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              0.04424,
+              0.1943
+            ],
+            [
+              1.78807,
+              1.90744
+            ],
+            [
+              -0.12177,
+              0.01466
+            ]
+          ],
+          "width_height_depth": [
+            0.15006,
+            0.11936999999999998,
+            0.13643
+          ]
+        },
+        {
+          "triangles": 16,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              0.02854,
+              0.1734
+            ],
+            [
+              1.74165,
+              1.8819
+            ],
+            [
+              0.08567,
+              0.2159
+            ]
+          ],
+          "width_height_depth": [
+            0.14486,
+            0.14024999999999999,
+            0.13023
+          ]
+        },
+        {
+          "triangles": 16,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              -0.1828,
+              -0.01749
+            ],
+            [
+              1.67579,
+              1.8277
+            ],
+            [
+              -0.3591,
+              -0.19659
+            ]
+          ],
+          "width_height_depth": [
+            0.16530999999999998,
+            0.1519100000000002,
+            0.16251
+          ]
+        },
+        {
+          "triangles": 16,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              -0.1943,
+              -0.04424
+            ],
+            [
+              1.78807,
+              1.90744
+            ],
+            [
+              -0.12177,
+              0.01466
+            ]
+          ],
+          "width_height_depth": [
+            0.15006,
+            0.11936999999999998,
+            0.13643
+          ]
+        },
+        {
+          "triangles": 16,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              -0.1734,
+              -0.02854
+            ],
+            [
+              1.74165,
+              1.8819
+            ],
+            [
+              0.08567,
+              0.2159
+            ]
+          ],
+          "width_height_depth": [
+            0.14486,
+            0.14024999999999999,
+            0.13023
+          ]
+        },
+        {
+          "triangles": 12,
+          "position_count": 12,
+          "min_max_xyz": [
+            [
+              -0.2083,
+              0.2065
+            ],
+            [
+              1.2373,
+              1.5002
+            ],
+            [
+              -0.0846,
+              0.2101
+            ]
+          ],
+          "width_height_depth": [
+            0.4148,
+            0.2628999999999999,
+            0.2947
+          ]
+        }
+      ],
+      "armor_height_div_main_connected_head_height": 2.7610122921185827,
+      "textures": [
+        {
+          "part": "ArmorHead_12",
+          "path": "assets/models/player/animated/armor_textures/man14_head_0ab6d8812c14_2x.png",
+          "sha256": "21fce6a4658d05c3132325b9f2f006bd1b81010eb5e99be29423d0e7a0864d3e",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_12",
+          "path": "assets/models/player/animated/armor_textures/man14_jian_9e232c36c926_2x.png",
+          "sha256": "e2ed0edd9541d15e779b5f2751a2b6660ec73b40cd40a21a7a6f32aa94aaa6f9",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorBody_12",
+          "path": "assets/models/player/animated/armor_textures/man14_body_c6cc7be2b05d_2x.png",
+          "sha256": "1d1e2673387740407db6da2a31c3d4389e55f71be5f2cefaace924c69a5935e1",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorHand_12",
+          "path": "assets/models/player/animated/armor_textures/man14_hand_99131397b1b3_2x.png",
+          "sha256": "d8ea6bf576337acce0f80d9ac9ed0212bd6e450adeba2728b960d81011d0f51a",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        },
+        {
+          "part": "ArmorFoot_12",
+          "path": "assets/models/player/animated/armor_textures/man14_foot_e4fbb3b61198_2x.png",
+          "sha256": "5b1406eebf7bab181708db6c91fee75b57b6d6725b605e8e055de756ec697efc",
+          "imported_pixels": [
+            512,
+            512
+          ],
+          "legacy_source_pixels_inferred_from_export_scale_2": [
+            256,
+            256
+          ],
+          "tint": [
+            0.790589690208435,
+            0.790589690208435,
+            0.790589690208435,
+            1.0
+          ]
+        }
+      ]
+    }
+  ],
+  "rejected_v4_comparison": {
+    "source": "test_output/armor_concept_runtime/repaired_armor_arrays.json",
+    "source_sha256": "be3364ec72248d374fb619234f49e1d16c1c3cf3fb2066983596beb9088a9f0b",
+    "components": [
+      {
+        "triangles": 520,
+        "position_count": 262,
+        "min_max_xyz": [
+          [
+            -0.3,
+            0.3
+          ],
+          [
+            1.278,
+            1.9784
+          ],
+          [
+            -0.4447,
+            0.2551
+          ]
+        ],
+        "width_height_depth": [
+          0.6,
+          0.7003999999999999,
+          0.6998
+        ]
+      },
+      {
+        "triangles": 60,
+        "position_count": 32,
+        "min_max_xyz": [
+          [
+            -0.112,
+            0.112
+          ],
+          [
+            1.1964,
+            1.355
+          ],
+          [
+            -0.092,
+            0.132
+          ]
+        ],
+        "width_height_depth": [
+          0.224,
+          0.15860000000000007,
+          0.224
+        ]
+      },
+      {
+        "triangles": 16,
+        "position_count": 10,
+        "min_max_xyz": [
+          [
+            -0.3416,
+            -0.205
+          ],
+          [
+            1.76,
+            1.859
+          ],
+          [
+            0.08,
+            0.194
+          ]
+        ],
+        "width_height_depth": [
+          0.13660000000000003,
+          0.09899999999999998,
+          0.114
+        ]
+      },
+      {
+        "triangles": 16,
+        "position_count": 10,
+        "min_max_xyz": [
+          [
+            -0.3416,
+            -0.205
+          ],
+          [
+            1.86,
+            1.959
+          ],
+          [
+            0.08,
+            0.194
+          ]
+        ],
+        "width_height_depth": [
+          0.13660000000000003,
+          0.09899999999999998,
+          0.114
+        ]
+      },
+      {
+        "triangles": 16,
+        "position_count": 10,
+        "min_max_xyz": [
+          [
+            0.205,
+            0.3416
+          ],
+          [
+            1.76,
+            1.859
+          ],
+          [
+            0.08,
+            0.194
+          ]
+        ],
+        "width_height_depth": [
+          0.13660000000000003,
+          0.09899999999999998,
+          0.114
+        ]
+      },
+      {
+        "triangles": 16,
+        "position_count": 10,
+        "min_max_xyz": [
+          [
+            0.205,
+            0.3416
+          ],
+          [
+            1.86,
+            1.959
+          ],
+          [
+            0.08,
+            0.194
+          ]
+        ],
+        "width_height_depth": [
+          0.13660000000000003,
+          0.09899999999999998,
+          0.114
+        ]
+      }
+    ],
+    "original_main_shell_width": 0.4606,
+    "v4_main_shell_width": 0.6,
+    "width_increase_percent": 30.26487190620928,
+    "warning": "Equal outer bounds hid a wider and shorter main shell. Numeric bounds do not certify visual fidelity."
+  }
+}

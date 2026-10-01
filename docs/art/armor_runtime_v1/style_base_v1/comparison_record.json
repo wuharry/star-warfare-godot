@@ -1,0 +1,37 @@
+{
+  "inputs": [
+    {
+      "source": "docs/art/armor_runtime_v1/style_base_v1/references/original_cygni_front.png",
+      "crop": [
+        126,
+        70,
+        514,
+        680
+      ],
+      "sha256": "03d0c5b544600d4b3d8138a71df73fd65784d53f4adc54b6f89024b99bae3873"
+    },
+    {
+      "source": "docs/art/armor_runtime_v1/style_base_v1/cygni_style_trial_v1.png",
+      "crop": [
+        131,
+        72,
+        522,
+        744
+      ],
+      "sha256": "2e3dbb79c8cc5c37405b83dd4a2bc8c8bb71d3a7a97c305175dd94ae08027d43"
+    },
+    {
+      "source": "docs/art/armor_runtime_v1/style_base_v1/cygni_style_trial_v2.png",
+      "crop": [
+        130,
+        44,
+        522,
+        737
+      ],
+      "sha256": "20a38f9d6da61393fed8b5737d418a594f1080f8f31d70ba6368271e401a809b"
+    }
+  ],
+  "display_character_height": 550,
+  "operations": "manual review crops, uniform resize preserving aspect, layout and labels only",
+  "limitations": "Image-plane silhouette comparison only; no geometric / animation acceptance"
+}
