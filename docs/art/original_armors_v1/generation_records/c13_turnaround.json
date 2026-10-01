@@ -1,16 +1,32 @@
 {
   "design_id": "C-13",
   "kind": "turnaround",
+  "path_base": "docs/art/original_armors_v1",
   "path": "images/c13_turnaround.png",
   "prompt": "prompts/c13_turnaround.txt",
   "reference_images": [
-    "images/c13_turnaround_v1.png",
-    "images/c13_concept.png",
-    "images/b13_design_sheet.png"
+    "revisions/c13_before_closed_helmet_20261001/images/c13_turnaround.png",
+    "images/c13_concept.png"
   ],
-  "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-60b07fcd-4b66-467c-b647-d34f3988bc70.png",
-  "date": "2026-09-25",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-65802ec1-3431-4d4a-8a20-4e466f73472e.png",
+  "tool": "built-in image_gen",
+  "date": "2026-10-01",
   "postprocessing": "none",
-  "visual_review": "已目視修正版：側面左脛恢復青色分段圓環，右前臂有圈／左前臂無圈的穿戴者左右一致；正面肩後多餘金色圓頭已移除。鋼藍圓冠、青Y玻璃窗緣、雙肩環及U胸維持概念外形；B-13 背面一上二下橘金三筒和灰紫酒紅配色一致。三視完整並近似同高；後背被包遮住的甲片與接口仍需拆解／模型補完，未作精準尺寸量測。",
-  "status": "visually_reviewed_pending_user_selection"
+  "edit_scope": "opaque_closed_helmet_only_preserve_body_design",
+  "visual_review": "已目視：正面與左側均改為鋼藍不透明面甲和青色細光槽；背面為鋼藍冠殼與分節中線，沒有面部光線。三個全身完整並近似同高，身甲、右前臂／左脛圓環配置與 B-13 灰紫酒紅殼、一上二下橘金三筒延續。正側的光槽延伸與局部縫線仍需建模統一。",
+  "status": "visually_reviewed_pending_user_selection",
+  "record_file": "docs/art/original_armors_v1/generation_records/c13_turnaround.json",
+  "supersedes": "revisions/c13_before_closed_helmet_20261001/generation_records/c13_turnaround.json",
+  "user_feedback": "Andromedae · ID 12 與 Draco · ID 9 都沒有玻璃面罩；重新生成 Andromedae 頭盔，參考其他科幻作品並結合原版。",
+  "prompt_sha256": "6371c2c45ac19467e1552d271c87b99c1e73122446decb7881c5d2ae7368e194",
+  "reference_sha256": {
+    "revisions/c13_before_closed_helmet_20261001/images/c13_turnaround.png": "1741486f326cac083190679cf3f947924f43fd6f19a683f1c95985d7b3d3b5c4",
+    "images/c13_concept.png": "8d6042a54b559ea7e3a55c0fa51bfbd61e279b2d08fe8a8a3b03e6cf84e464e8"
+  },
+  "sha256": "b835541e062c53050c961116be8b26e4eeae9b1e7e9cac122ec87e5cae2c917c",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "bytes": 1999248
 }

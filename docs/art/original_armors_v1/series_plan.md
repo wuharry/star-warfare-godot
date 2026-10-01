@@ -20,7 +20,7 @@
 | [C-10](c10_lodestone.json) | 9 / Draco | 蓄鐵 LODESTONE | CQC 身甲＋Destiny 2 Reverie Dawn Helm 封閉金屬面甲 | 蓄鐵脈衝 |
 | [C-11](c11_seedvault.json) | 10 / Phoenix | 芽庫 SEEDVAULT | VENATOR-class Mjolnir (GEN2) | 共用修復份額 |
 | [C-12](c12_spur.json) | 11 / Cygni | 支點 SPUR | Anubis 頭盔融合（金色微 T 面罩）／Valkyrie 身甲 | 穩架測距 |
-| [C-13](c13_stitch.json) | 12 / Andromedae | 縫光 STITCH | OCEANIC-class Mjolnir (GEN2) | 縫合光束 |
+| [C-13](c13_stitch.json) | 12 / Andromedae | 縫光 STITCH | Oceanic 身甲＋Warframe Vauban Prime 封閉面甲 | 縫合光束 |
 | [C-14](c14_cutbank.json) | 13 / Perseus | 截岸 CUTBANK | EOD-class Mjolnir, Halo 3 helmet/chest/shoulder configuration（身甲結構；原版盔優先） | 截步護區 |
 | [C-15](c15_ringfence.json) | 14 / Chaos | 環界 RINGFENCE | HAYABUSA | 雙點界線 |
 | [C-16](c16_lantern.json) | 15 / DEC.24 | 引燈 LANTERN | HAZOP | 引路標記 |
@@ -77,3 +77,5 @@ Cygni 已採用使用者選定的 Anubis 融合頭盔與金色微 T 面罩：冠
 先選稿及修正跨視差異，再製作新模型、UV、貼圖和骨架。裝甲各四部件及獨立背包必須驗證混搭、轉頭、抬臂、跑步、換彈與武器避讓；目前尚未執行這些遊戲素材驗收。
 
 CoM 的 8 套仍在 ID 21～28，來源數值與共通完整套裝回盾規則見 [com_consolidation.json](com_consolidation.json)。均衡、盾偏重、高容量回充均為新模組方向；沒有刪除原模型、改寫存檔或聲稱來源文案中的進階技能已實作。
+
+Andromedae／C-13 依 2026-10-01 更正，面部使用不透明鋼藍甲片與青色 T／Y 細光槽，沒有玻璃。頭盔參考 Vauban Prime 封閉臉部及縱向分片，Oceanic 僅作既有身甲參考；[前後比較與三圖紀錄](revisions/c13_before_closed_helmet_20261001/README.md)。
