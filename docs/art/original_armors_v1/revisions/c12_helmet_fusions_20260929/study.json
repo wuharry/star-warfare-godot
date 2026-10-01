@@ -2,16 +2,20 @@
   "design_id": "C-12",
   "date": "2026-09-29",
   "path_base": "docs/art/original_armors_v1",
-  "status": "gold_t_visor_adopted",
+  "status": "swept_cheeks_revision_pending_user_selection",
   "preferred_direction": "anubis",
-  "latest_variant": "anubis_gold_t",
+  "latest_variant": "anubis_gold_t_swept",
   "comparison_page": "revisions/c12_helmet_fusions_20260929/index.html",
   "user_feedback": {
     "reference_request": "Cygni 目前的頭盔很棒但是基本上是用原版的；看天命 2 或 Halo 類似頭盔結合原版生成。",
     "revision_request": "Halo 5 Anubis 這個比較好，但是面罩是金色的，面罩比例應該比較多。",
     "interpretation": "使用者已選定略偏 T 字的金色面罩；正式主圖採用該原圖，較寬的大面罩原樣保留，配套三視與拆解依選定概念同步。",
     "t_comparison_request": "不錯保留，然後稍微偏向 T 字一點，讓我比對哪個版本比較好。",
-    "selection": "好偏T字這種"
+    "selection": "好偏T字這種",
+    "narrow_t_request": "目前很好但 T 字面罩不夠 T 字，希望兩側臉頰的面罩更窄。",
+    "latest_interpretation": "收窄 T 字版因護頰太方被否定；新稿改為斜收護頰和細長通風口，保留金色橫帶及中央直條，待使用者選定。",
+    "square_cheeks_rejection": "臉頰的裝甲太方了，感覺還是不對。",
+    "comparison_request": "那跟前前一稿的比較呢"
   },
   "baseline": {
     "image": "revisions/c12_helmet_fusions_20260929/images/baseline.png",
@@ -168,6 +172,72 @@
       "status": "user_selected_for_adoption",
       "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t.json",
       "user_feedback": "好偏T字這種"
+    },
+    {
+      "design_id": "C-12",
+      "kind": "helmet_fusion_study",
+      "variant": "anubis_gold_t_narrow",
+      "path_base": "docs/art/original_armors_v1",
+      "path": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_narrow.png",
+      "prompt": "revisions/c12_helmet_fusions_20260929/prompts/anubis_gold_t_narrow.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-f88e1ad1-f2af-422d-aa05-a05e792cc841.png",
+      "tool": "built-in image_gen",
+      "date": "2026-10-01",
+      "reference_images": [
+        "images/c12_concept.png"
+      ],
+      "reference_sha256": {
+        "images/c12_concept.png": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f"
+      },
+      "prompt_sha256": "88222c44731ec7abc2436e36f7f43013005cb29adb942cce1b36e623e9a311b6",
+      "sha256": "c8726a937d3fd345a48a88b2aae92169d2cc47cfe06d4985f060a5592c3af783",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "bytes": 1817700,
+      "postprocessing": "none",
+      "edit_scope": "visor_aperture_and_inner_cheek_edges_only",
+      "visual_review": "已目視：白灰護頰向內、向上延伸，金色眼帶下方形成明顯轉角，下半臉只留較窄的中央金色直條，T 字辨識度高於現行微 T 版。中央直條底部仍稍微斜收；上方寬眼帶、短下巴、冠殼、側翼及身甲設計延續。生成會重繪局部紋理，不宣稱逐像素不變或面積縮減百分比。",
+      "status": "rejected_by_user_square_cheeks",
+      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t_narrow.json",
+      "user_feedback": "目前很好但 T 字面罩不夠 T 字，希望兩側臉頰的面罩更窄。",
+      "runtime_implemented": false,
+      "user_rejection": {
+        "date": "2026-10-01",
+        "feedback": "臉頰的裝甲太方了，感覺還是不對。"
+      }
+    },
+    {
+      "design_id": "C-12",
+      "kind": "helmet_fusion_study",
+      "variant": "anubis_gold_t_swept",
+      "path_base": "docs/art/original_armors_v1",
+      "path": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_swept.png",
+      "prompt": "revisions/c12_helmet_fusions_20260929/prompts/anubis_gold_t_swept.txt",
+      "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-05a07206-2a02-4634-91aa-fff987d43ced.png",
+      "tool": "built-in image_gen",
+      "date": "2026-10-01",
+      "reference_images": [
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_narrow.png"
+      ],
+      "reference_sha256": {
+        "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_narrow.png": "c8726a937d3fd345a48a88b2aae92169d2cc47cfe06d4985f060a5592c3af783"
+      },
+      "prompt_sha256": "3f8279959d5802ab49e7226b4efb71410ad45f4ff402f5332435d9399888a25e",
+      "sha256": "6d6ec92ff24820880d0fa1e0da401863163faea6bbda0c4bf87866e2e3ba5bff",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "bytes": 1908293,
+      "postprocessing": "none",
+      "edit_scope": "slimmer_swept_cheek_plates_and_visor_junction",
+      "visual_review": "已目視：近側護頰的大矩形平面改為斜向折面，下緣朝中央下巴收尖，寬矩形黑色格柵改成斜向細長通風口。金色上眼帶及下伸中央面窗仍相連，交界改為斜切，較上一版直角 T 柔和；中央金色上段略變寬，不宣稱面罩形狀逐像素保留。白灰冠殼、側翼與身甲設計延續，身體與局部紋理可能有生成重繪。",
+      "status": "visually_reviewed_pending_user_selection",
+      "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t_swept.json",
+      "user_feedback": "臉頰的裝甲太方了，感覺還是不對。",
+      "runtime_implemented": false
     }
   ],
   "runtime_implemented": false,
@@ -179,12 +249,12 @@
     "沒有面罩面積或參考相似度的量測百分比。"
   ],
   "comparison_variants": [
-    "anubis_gold",
-    "anubis_gold_t"
+    "anubis_gold_t",
+    "anubis_gold_t_swept"
   ],
   "preserved_variant": "anubis_gold",
   "selected_visor_variant": "anubis_gold_t",
-  "previous_comparison_page": "revisions/c12_helmet_fusions_20260929/index_before_t.html",
+  "previous_comparison_page": "revisions/c12_helmet_fusions_20260929/index_before_swept_cheeks.html",
   "canonical_images_retained": false,
   "canonical_concept": "images/c12_concept.png",
   "canonical_images": {
@@ -196,5 +266,20 @@
     "concept": "generation_records/c12_concept.json",
     "turnaround": "generation_records/c12_turnaround.json",
     "construction": "generation_records/c12_construction.json"
-  }
+  },
+  "latest_revision_date": "2026-10-01",
+  "latest_revision": {
+    "date": "2026-10-01",
+    "variant": "anubis_gold_t_swept",
+    "status": "pending_user_selection",
+    "canonical_images_retained": true,
+    "turnaround_and_construction": "still_show_previous_adopted_subtle_t",
+    "baseline_sha256": {
+      "images/c12_concept.png": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f",
+      "images/c12_turnaround.png": "dd409d0b149cce7226be27bb4709b17573f8ce922fe4cc164e8bd9306f750b26",
+      "images/c12_construction.png": "b45400886905a6bfd9323ea2d537ca54a8c3280076a58828fe99d7b3c9b0effb"
+    },
+    "rejected_variant": "anubis_gold_t_narrow"
+  },
+  "alternate_comparison_variant": "anubis_gold_t_narrow"
 }

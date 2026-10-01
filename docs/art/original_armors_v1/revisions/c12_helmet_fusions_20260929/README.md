@@ -42,3 +42,34 @@
 - PASS：in-app browser 目視窄版頭盔放大；圖片均載入、全身切換與金色圖放大有效；主圖集入口可到達本頁。
 - PASS：新增 T 字版後重新目視並排頭盔；兩張圖載入、全身切換及 T 字原圖放大有效；大面罩原檔 SHA-256 與前一 commit 相同。
 - PASS：harness integrity。Godot 應用測試 NOT RUN，本輪只有美術試稿、資料及 HTML 圖集變更。
+
+## 2026-10-01：收窄雙頰的 T 字修訂
+
+新增 [收窄 T 字試稿](images/anubis_gold_t_narrow.png)，白灰護頰往內、往上延伸，讓寬金色眼帶與窄中央直條的交界更清楚。完整提示詞在 [anubis_gold_t_narrow.txt](prompts/anubis_gold_t_narrow.txt)。使用 built-in image_gen，實際輸入僅為目前正式 `images/c12_concept.png`；原始輸出直接複製，沒有裁切、重塗或合成。
+
+這是待選候選稿；2026-09-29 採用的微 T 原圖、正式三視與拆解保留，遊戲模型未更新。本頁較早的採用紀錄指的是微 T 版，不代表新稿已獲同意。[新版並排比較](index.html)提供頭盔放大與全身切換；[前一輪比較頁](index_before_narrow_t.html)亦保留。
+
+### 本次驗證
+
+本次候選圖、來源紀錄與連結檢查通過；全圖集驗證仍有既有失敗，已用 HEAD 內容在記憶體中重跑比較，錯誤清單完全相同。
+
+| 檢查 | 結果 |
+| --- | --- |
+| 新圖目視：收窄下頰、金色 T 字、白灰外殼與身甲延續 | PASS |
+| 新圖／提示詞／實際輸入 SHA-256、頁面本地連結 | PASS |
+| 原正式三圖保持原樣、其他圖集項目未變 | PASS |
+| `git diff --check`、harness integrity | PASS |
+| `validate_delivery.py` 全圖集一致性 | FAIL：與 HEAD 相同的 39 項既有錯誤，涉及歷史狀態、來源與提示詞雜湊；本次新增 0 項 |
+| 瀏覽器互動、Godot runtime | NOT RUN：本輪未改頁面互動程式或遊戲內容 |
+
+本機檢查報告位於 `test_output/cygni_narrow_t_delivery.json` 與 `test_output/cygni_narrow_t_baseline.json`（不提交的測試輸出）。
+
+## 2026-10-01：修正護頰太方
+
+方頰收窄版被使用者以「臉頰的裝甲太方了，感覺還是不對」否定，已標示為未採用並保留原圖。新版 [斜收護頰稿](images/anubis_gold_t_swept.png) 把矩形大平面改成朝下巴斜收的折面，寬通風格柵改為細長斜口。金色面窗仍有寬眼帶與中央下伸直條；轉角更柔和，中央上段略變寬，未宣稱完整保留前稿面罩形狀。
+
+使用 built-in image_gen，唯一圖像輸入是前稿 `images/anubis_gold_t_narrow.png`，完整實送提示保存在 [anubis_gold_t_swept.txt](prompts/anubis_gold_t_swept.txt)。輸出原樣複製，沒有另行裁切或上色。現行正式概念／三視／拆解及遊戲模型未變，新稿尚待使用者評價；比較页更新為方頰版與斜收版，上一頁保存在 [index_before_swept_cheeks.html](index_before_swept_cheeks.html)。
+
+### 前前稿直接比較
+
+依使用者要求，比較頁預設改為「前前稿金色微 T 原稿」對「最新斜收護頰版」。左側可切换成未採用的方頰版；右側保持最新版，頭盔／全身與原圖放大仍可用。這次只調整比較頁，沒有重新生成或修改任何圖片。
