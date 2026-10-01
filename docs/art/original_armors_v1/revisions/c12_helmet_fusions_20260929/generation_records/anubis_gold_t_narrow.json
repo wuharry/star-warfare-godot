@@ -1,0 +1,35 @@
+{
+  "design_id": "C-12",
+  "kind": "helmet_fusion_study",
+  "variant": "anubis_gold_t_narrow",
+  "path_base": "docs/art/original_armors_v1",
+  "path": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_narrow.png",
+  "prompt": "revisions/c12_helmet_fusions_20260929/prompts/anubis_gold_t_narrow.txt",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-f88e1ad1-f2af-422d-aa05-a05e792cc841.png",
+  "tool": "built-in image_gen",
+  "date": "2026-10-01",
+  "reference_images": [
+    "images/c12_concept.png"
+  ],
+  "reference_sha256": {
+    "images/c12_concept.png": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f"
+  },
+  "prompt_sha256": "88222c44731ec7abc2436e36f7f43013005cb29adb942cce1b36e623e9a311b6",
+  "sha256": "c8726a937d3fd345a48a88b2aae92169d2cc47cfe06d4985f060a5592c3af783",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "bytes": 1817700,
+  "postprocessing": "none",
+  "edit_scope": "visor_aperture_and_inner_cheek_edges_only",
+  "visual_review": "已目視：白灰護頰向內、向上延伸，金色眼帶下方形成明顯轉角，下半臉只留較窄的中央金色直條，T 字辨識度高於現行微 T 版。中央直條底部仍稍微斜收；上方寬眼帶、短下巴、冠殼、側翼及身甲設計延續。生成會重繪局部紋理，不宣稱逐像素不變或面積縮減百分比。",
+  "status": "rejected_by_user_square_cheeks",
+  "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t_narrow.json",
+  "user_feedback": "目前很好但 T 字面罩不夠 T 字，希望兩側臉頰的面罩更窄。",
+  "runtime_implemented": false,
+  "user_rejection": {
+    "date": "2026-10-01",
+    "feedback": "臉頰的裝甲太方了，感覺還是不對。"
+  }
+}

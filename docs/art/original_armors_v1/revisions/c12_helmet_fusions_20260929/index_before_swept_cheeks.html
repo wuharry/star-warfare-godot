@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cygni｜微 T 原稿 vs 最新斜收護頰</title>
+<title>Cygni｜微 T 原稿 vs 收窄 T 字</title>
 <style>
 :root{color-scheme:dark;--bg:#10171b;--panel:#182228;--line:#34434c;--ink:#edf1f2;--muted:#adc0c9;--accent:#e2a970}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Noto Sans TC",sans-serif}main{max-width:1160px;margin:auto;padding:32px 28px 56px}a{color:#b6d8e9;text-underline-offset:4px}h1{font-size:clamp(28px,3.8vw,46px);line-height:1.2;margin:14px 0}h2{font-size:23px;line-height:1.35;margin:8px 0}h3{font-size:18px;margin:12px 0 6px}p{margin:8px 0}.eyebrow{letter-spacing:.16em;color:var(--accent);font-size:12px}.intro{max-width:850px;color:var(--muted)}.toolbar{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:16px 0;background:var(--bg);margin-top:18px}.toolbar span{color:var(--muted);font-size:13px;margin-left:auto}button{font:inherit;color:inherit;cursor:pointer}.mode{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px 18px}.mode[aria-pressed="true"]{border-color:var(--accent);color:#ffe2c2;background:#3a2d24}.mode:focus-visible,a:focus-visible,.portrait:focus-visible{outline:3px solid #97cfff;outline-offset:3px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}.card header{padding:18px 20px 14px;min-height:128px}.tag{color:var(--accent);font-size:12px;letter-spacing:.06em}.card header p{font-size:13px;color:var(--muted)}.portrait{display:block;position:relative;overflow:hidden;width:100%;aspect-ratio:1;border:0;padding:0;background:#b6b7b8}.portrait img{position:absolute;width:300%;max-width:none;height:auto;left:-94%;top:-5%;display:block}.cards.full .portrait{aspect-ratio:2/3}.cards.full .portrait img{position:static;width:100%;height:100%;object-fit:contain}.caption{padding:16px 20px 20px}.caption ul{padding-left:20px;margin:6px 0 14px}.caption li{margin:5px 0}.caption a{font-size:14px}.note{color:var(--muted);font-size:14px}.sources{margin-top:38px}.source-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.source-card{padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}.source-image{padding:0;border:0;width:100%;background:#0b1014;display:block;cursor:zoom-in}.source-image img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain}.source-card p{color:var(--muted);font-size:14px}.links{display:flex;flex-wrap:wrap;gap:16px}footer{border-top:1px solid var(--line);margin-top:32px;padding-top:20px;color:var(--muted);font-size:13px}dialog{width:min(1100px,96vw);max-height:96vh;background:#10171b;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px}dialog::backdrop{background:#000c}.dialog-bar{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:4px 4px 12px}.close{border:1px solid var(--line);border-radius:7px;padding:7px 14px;background:var(--panel)}#large-image{display:block;width:100%;max-height:82vh;object-fit:contain}
-#anubis-gold-t-swept{border-color:var(--accent)}summary{cursor:pointer;margin-bottom:14px}
+#anubis-gold-t-narrow{border-color:var(--accent)}summary{cursor:pointer;margin-bottom:14px}
 @media(max-width:850px){main{padding:22px 16px 40px}.card header{padding:14px 12px;min-height:148px}.card h2{font-size:20px}.card header{min-height:0}.portrait{aspect-ratio:1.15}.portrait img{width:300%;left:-94%;top:-5%}.source-grid{grid-template-columns:1fr}.toolbar span{width:100%;margin:0}.caption{padding:12px;font-size:14px}}
 @media(max-width:480px){.cards{grid-template-columns:1fr}.card header{min-height:0}}
 </style>
@@ -17,38 +17,28 @@
 <a href="../../index.html#C-12">← 回到 Cygni 圖集</a>
 <header>
 <p class="eyebrow">C-12 · CYGNI · HELMET STUDY</p>
-<h1>前前稿，與最新版直接比。</h1>
-<p class="intro">左側預設是你先前採用的「金色微 T 原稿」，右側固定為最新「斜收護頰版」。原稿下頰玻璃較寬；新版護頰往內延伸，金色面窗向中央集中。</p>
-<p class="note">可切換左側為前一稿「方頰收窄版」。正式主圖、三視與拆解仍保留微 T 原稿，新版尚待你選定。</p>
+<h1>臉頰收窄，T 字更明確。</h1>
+<p class="intro">保留上方寬金色眼帶，讓兩側白灰護頰向內延伸，下方只留較窄的中央直條。並排比較目前原稿與這次修訂。</p>
+<p class="note">右側為新試稿，等你選定；目前主圖、三視與拆解仍保留左側微 T 方向。可切換頭盔放大／全身搭配。</p>
 </header>
-<div role="group" aria-label="左側比較版本">
-<p class="note">左側版本</p>
-<button class="mode" id="compare-original" type="button" aria-pressed="true">前前稿：微 T 原稿</button>
-<button class="mode" id="compare-square" type="button" aria-pressed="false">前一稿：方頰版</button>
-</div>
 <div class="toolbar" role="group" aria-label="比較範圍">
 <button class="mode" id="head-mode" type="button" aria-pressed="true">頭盔放大</button>
 <button class="mode" id="body-mode" type="button" aria-pressed="false">全身搭配</button>
 <span>點圖可開啟完整圖片</span>
 </div>
-<section class="cards" id="cards" aria-label="Cygni 微 T 原稿與最新斜收護頰比較">
+<section class="cards" id="cards" aria-label="Cygni 現行微 T 與收窄 T 字面罩比較">
 <article class="card" id="anubis-gold-t">
-<header><span class="tag">前前稿 · 目前正式方向</span><h2>金色微 T 原稿</h2><p>較寬的下頰玻璃、較小的護頰</p></header>
-<button class="portrait" type="button" data-title="前前稿｜金色微 T 原稿" aria-label="放大前前稿金色微 T 原稿"><img src="images/anubis_gold_t.png" alt="Cygni 前前稿：金色玻璃在下頰延伸較寬，白灰護頰較小，T 字轉折較不明顯"></button>
-<div class="caption"><ul><li>你先前選定的微 T 版本，原圖保留。</li><li>下頰金色玻璃較寬，接近盾形輪廓。</li><li>白灰護頰面積較小，黑色通風口較寬。</li></ul><a href="prompts/anubis_gold_t.txt">原稿提示詞 ↗</a></div>
+<header><span class="tag">目前採用 · 原圖保留</span><h2>原稿：微 T 字</h2><p>下頰仍有較寬的金色玻璃</p></header>
+<button class="portrait" type="button" data-title="現行原稿｜Cygni 微 T 面罩" aria-label="放大現行微 T 原稿"><img src="images/anubis_gold_t.png" alt="現行 Cygni 微 T 面罩，金色玻璃向臉頰延伸，下半部較寬"></button>
+<div class="caption"><ul><li>金色面罩下方仍接近盾形。</li><li>頰板內收較少，橫帶與直條的轉折較弱。</li><li>原圖、三視與拆解保持原樣。</li></ul><a href="prompts/anubis_gold_t.txt">原稿提示詞 ↗</a></div>
 </article>
-<article class="card" id="anubis-gold-t-narrow" hidden>
-<header><span class="tag">前一稿 · 未採用</span><h2>方頰收窄版</h2><p>護頰面積大，轉角接近直角</p></header>
-<button class="portrait" type="button" data-title="前一稿｜方頰收窄版" aria-label="放大未採用的方頰版"><img src="images/anubis_gold_t_narrow.png" alt="前一稿 Cygni 窄 T 面罩，臉頰是較寬的白色矩形裝甲"></button>
-<div class="caption"><ul><li>下半臉由兩塊較方的白灰護頰包住。</li><li>矩形通風口讓方塊感更強。</li><li>依你的回饋保留作修改前比較。</li></ul><a href="prompts/anubis_gold_t_narrow.txt">前一稿提示詞 ↗</a></div>
-</article>
-<article class="card" id="anubis-gold-t-swept">
-<header><span class="tag">新修訂 · 等你看效果</span><h2>斜收薄護頰</h2><p>斜向折面、細長通風口</p></header>
-<button class="portrait" type="button" data-title="新修訂｜斜收薄護頰" aria-label="放大斜收護頰新版"><img src="images/anubis_gold_t_swept.png" alt="新版 Cygni：白灰護頰以斜切面朝下巴收尖，通風口改為斜向細長形，保留金色面罩與側翼"></button>
-<div class="caption"><ul><li>護頰下緣朝中央下巴收尖。</li><li>大平面改成斜向折面，減輕厚重感。</li><li>金色眼帶與中央直條相連，轉折較柔和。</li></ul><a href="prompts/anubis_gold_t_swept.txt">新版完整提示詞 ↗</a></div>
+<article class="card" id="anubis-gold-t-narrow">
+<header><span class="tag">新試稿 · 等你選定</span><h2>收窄：明確 T 字</h2><p>寬眼帶、窄直條、內收白灰護頰</p></header>
+<button class="portrait" type="button" data-title="新試稿｜Cygni 收窄 T 字面罩" aria-label="放大收窄 T 字新試稿"><img src="images/anubis_gold_t_narrow.png" alt="新版 Cygni 面罩：兩側白灰護頰延伸到內側，上方保留寬金色眼帶，下方留下較窄中央金色直條"></button>
+<div class="caption"><ul><li>兩側下頰的金色玻璃明顯縮小。</li><li>眼帶下方有清楚轉角，中央保留金色直條。</li><li>延續白灰殼、短下巴、側翼及身甲設計。</li></ul><a href="prompts/anubis_gold_t_narrow.txt">新版完整提示詞 ↗</a></div>
 </article>
 </section>
-<p class="note"><a href="index_before_swept_cheeks.html">回看正式微 T 原稿與方頰版 ↗</a> · <a href="index_before_narrow_t.html">回看金色大面罩與微 T 字的前一輪比較 ↗</a> · <a href="index_before_t.html">查看原稿、Anubis 紫面罩與第一版金色修訂的比較 ↗</a></p>
+<p class="note"><a href="index_before_narrow_t.html">回看金色大面罩與微 T 字的前一輪比較 ↗</a> · <a href="index_before_t.html">查看原稿、Anubis 紫面罩與第一版金色修訂的比較 ↗</a></p>
 <details class="sources" id="other-study"><summary>查看先前 B 方案：Moonfang-X7</summary>
 <article class="source-card" id="moonfang">
 <header><span class="tag">試稿 B · DESTINY 2</span><h2>Cygni × Moonfang-X7</h2><p>中央額脊、收尖面窗</p></header>
@@ -58,25 +48,17 @@
 </details>
 <section class="sources" aria-labelledby="sources-heading">
 <h2 id="sources-heading">先前融合所用的參考</h2>
-<p class="note">這次護頰修改只將前一稿方頰收窄版送入生成；下方圖片是先前建立頭盔方向時使用的參考。</p>
+<p class="note">這次收窄修改只將現行 Cygni 概念原圖送入生成；下方圖片是先前建立頭盔方向時使用的參考。</p>
 <div class="source-grid">
 <article class="source-card" id="source-anubis"><h3>Halo 5 · Anubis</h3><button type="button" class="source-image" data-title="參考原圖｜Halo 5 Anubis" aria-label="放大 Anubis 原始參考"><img src="../../references/halo/c12_anubis_production.jpg" alt="Pablo Vicentini 的 Halo 5 Anubis 製作渲染"></button><p>取用眉甲的前後層次、斜向護頰與短中央護塊。初稿沿用白灰、暗紫與銅橙；後續依使用者要求改為金色玻璃。</p><p class="links"><a href="https://www.halopedia.org/File:Anubis-armor-render-02.jpg" target="_blank" rel="noopener noreferrer">圖片來源 ↗</a><a href="https://www.halopedia.org/ANUBIS-class_Mjolnir" target="_blank" rel="noopener noreferrer">型號資料 ↗</a></p></article>
 <article class="source-card" id="source-moonfang"><h3>Destiny 2 · Moonfang-X7 Mask</h3><button type="button" class="source-image" data-title="參考原圖｜Destiny 2 Moonfang-X7 Mask" aria-label="放大 Moonfang 原始參考"><img src="../../references/destiny2/c12_moonfang_x7_mask.jpg" alt="Bungie Moonfang-X7 Mask 物品圖片，中央額脊與向下收尖的面窗"></button><p>取用中央額脊、兩側冠槽與收尖玻璃輪廓。側翼及銅橙細節承接 Cygni；原參考的青藍色和額頭符號省略。</p><p class="links"><a href="https://www.bungie.net/common/destiny2_content/screenshots/2623956730.jpg" target="_blank" rel="noopener noreferrer">Bungie 原圖 ↗</a><a href="https://www.light.gg/db/items/2623956730/moonfang-x7-mask/" target="_blank" rel="noopener noreferrer">物品資料 ↗</a></p></article>
 </div>
 </section>
-<footer><p>斜收護頰版是本次新候選稿，尚未替換正式主圖、三視或拆解，也未接入遊戲模型。生成會重繪局部表面紋理；頭盔放大僅使用 CSS 顯示，不另行修圖。</p><p class="links"><a href="../../index.html#C-12">正式圖集</a><a href="README.md">製作紀錄</a><a href="prompts/anubis_gold.txt">大面罩提示詞</a><a href="prompts/anubis_gold_t.txt">T 字提示詞</a><a href="study.json">來源與生成紀錄</a></p></footer>
+<footer><p>收窄 T 字版是本次新候選稿，尚未替換正式主圖、三視或拆解，也未接入遊戲模型。生成會重繪局部表面紋理；頭盔放大僅使用 CSS 顯示，不另行修圖。</p><p class="links"><a href="../../index.html#C-12">正式圖集</a><a href="README.md">製作紀錄</a><a href="prompts/anubis_gold.txt">大面罩提示詞</a><a href="prompts/anubis_gold_t.txt">T 字提示詞</a><a href="study.json">來源與生成紀錄</a></p></footer>
 </main>
 <dialog id="image-dialog" aria-labelledby="dialog-title"><div class="dialog-bar"><strong id="dialog-title"></strong><button class="close" id="close-dialog" type="button">關閉 ×</button></div><img id="large-image" alt=""></dialog>
 <script>
 const cards=document.getElementById('cards');
-const originalCard=document.getElementById('anubis-gold-t'),squareCard=document.getElementById('anubis-gold-t-narrow');
-const originalButton=document.getElementById('compare-original'),squareButton=document.getElementById('compare-square');
-function compareSquare(square){
-  originalCard.hidden=square;squareCard.hidden=!square;
-  originalButton.setAttribute('aria-pressed',String(!square));squareButton.setAttribute('aria-pressed',String(square));
-  cards.setAttribute('aria-label',square?'Cygni 方頰與最新斜收護頰比較':'Cygni 微 T 原稿與最新斜收護頰比較');
-}
-originalButton.addEventListener('click',()=>compareSquare(false));squareButton.addEventListener('click',()=>compareSquare(true));
 const head=document.getElementById('head-mode'),body=document.getElementById('body-mode');
 function mode(full){cards.classList.toggle('full',full);head.setAttribute('aria-pressed',String(!full));body.setAttribute('aria-pressed',String(full))}
 head.addEventListener('click',()=>mode(false));body.addEventListener('click',()=>mode(true));
