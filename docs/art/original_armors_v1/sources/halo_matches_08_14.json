@@ -355,9 +355,9 @@
         "chest": "宽 U 形大面胸框和圓弧頸口，兩側長肩帶；肩甲外片短尖，上臂與腹部保留大片黑色軟衣。",
         "back": "高模後视有兩個平行長後肩殼，中間低矮中央服務蓋，下缘共用圆弧下框；盔後有圓形接點與分節中線。",
         "back_evidence": "same-production high-poly rear; not a final textured rear screenshot",
-        "match_reason": "Andromedae 的圓冠、大面板、青色圓環，与 Oceanic 的圓耳座、圓弧護領和大玻璃窗相近；尤其可把原版實心假面變成明確有人佩戴的頭盔。"
+        "match_reason": "Oceanic 只保留既有身甲、U 形壓力護領與圓耳接合方向；其大玻璃窗不作本次頭盔依據。"
       },
-      "integration_en": "Fuse original Star Warfare Andromedae with the observed Halo 4 Oceanic round-shell and pressure-collar construction. Keep steel-blue main plates, deep navy undersuit, cyan segmented circles at the shoulders and one forearm, a rounded crown and a single central segmented crown channel. Borrow Oceanic's visible glass thickness, circular ear couplings, curved neck seal and wide open U-shaped chest support. Replace Andromedae's solid-looking face with a broad smoked-teal glass visor edged by a restrained cyan Y-shaped rim; do not copy Oceanic's exact full-height diving cage. Limit repeated circular graphics to three or four functional connector locations. Shape the back into two short low-profile side housings with one broad central service cover, informed by the documented high-poly back but with a different silhouette and seam layout. Keep the abdomen, inner arms and knees clearly fabric-covered and human. Retain the original blue/cyan palette instead of gold glass and exact Oceanic striping.",
+      "integration_en": "Retain the current Andromedae steel-blue body armor and original rounded crown, segmented central crown channel and cyan T/Y face conduit. Replace the mistaken broad smoked-teal glass with a compact opaque painted steel-blue faceplate with shallow longitudinal facets, taking covered-face segmentation from Warframe Vauban Prime. Keep low-profile cheek guards, ear couplings and a short chin. The cyan line is a flush emissive conduit in metal, never a visor rim. Oceanic remains a body/pressure-collar reference only. Do not import gold trim, tall crest, pointed face or Warframe body proportions.",
       "source_page_url": "https://www.halopedia.org/File:H4_Oceanic_Render.jpg",
       "image_url": "https://www.halopedia.org/images/f/f1/H4_Oceanic_Render.jpg?47af9",
       "local_path": "references/halo/c13_oceanic_model.jpg",
@@ -382,7 +382,35 @@
           "sha256": "25a843dacaa80ab7ad676c08fa984eeb18fc2cc8450a64f9274bd4b503d8a7f2",
           "visually_inspected": true
         }
-      ]
+      ],
+      "reference_scope": "existing_body_structure_only; glass_helmet_direction_superseded",
+      "helmet_correction": {
+        "date": "2026-10-01",
+        "feedback": "Andromedae · ID 12 與 Draco · ID 9 都沒有玻璃面罩；重新生成 Andromedae 頭盔，參考其他科幻作品並結合原版。",
+        "priority": "highest",
+        "rule": "面部為不透明鋼藍硬甲；青色 T／Y 線是嵌入甲片的細光槽。禁止大片玻璃、護目鏡或黑色鏡片面窗。",
+        "basis": "使用者明確指定無玻璃；恢復模型截圖可見藍灰封閉面部和青色線條，未重新驗證原遊戲材質。"
+      },
+      "active_helmet_reference": {
+        "name": "Warframe · Vauban Prime",
+        "game": "Warframe",
+        "images": [
+          {
+            "key": "c13_vauban_prime_official",
+            "name": "Warframe · Vauban Prime",
+            "source_page_url": "https://www.warframe.com/en/news/vauban-prime-access-here-fr",
+            "image_url": "https://www-static.warframe.com/uploads/thumbnails/160d52b58c1c7850d80ab6c4ca038236_1600x900.jpg",
+            "local_path": "references/warframe/c13_vauban_prime_official.jpg",
+            "sha256": "2f0480d76f42061cc1f4907423204edda884b661cd25794a13ecb4989a48aa11",
+            "bytes": 249962,
+            "visually_inspected": true,
+            "reference_role": "helmet_shape_only",
+            "observed": "可見封閉臉部、縱向分片和中央突出結構；不採用金色塗裝、高冠、尖下巴、身甲或武器。"
+          }
+        ],
+        "role": "closed_face_longitudinal_segmentation_only",
+        "adaptation": "保留原版 Andromedae 圓冠、分節中槽和青色 T／Y 線，用鋼藍淺分面取代玻璃；省略 Vauban 高冠、金飾、尖下巴與身甲。"
+      }
     },
     {
       "design_id": "C-14",

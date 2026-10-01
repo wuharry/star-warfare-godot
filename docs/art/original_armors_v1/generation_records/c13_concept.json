@@ -1,15 +1,34 @@
 {
   "design_id": "C-13",
   "kind": "concept",
+  "path_base": "docs/art/original_armors_v1",
   "path": "images/c13_concept.png",
   "prompt": "prompts/c13_concept.txt",
   "reference_images": [
+    "revisions/c13_before_closed_helmet_20261001/images/c13_concept.png",
     "references/legacy/c13_front.png",
-    "references/halo/c13_oceanic_model.jpg"
+    "references/warframe/c13_vauban_prime_official.jpg"
   ],
-  "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-45aff946-fdc3-4d81-a5fe-4e3acc13bf97.png",
-  "date": "2026-09-25",
+  "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-352e05f9-67a6-4ac7-a90c-f5b12d5de13c.png",
+  "tool": "built-in image_gen",
+  "date": "2026-10-01",
   "postprocessing": "none",
-  "visual_review": "鋼藍圆冠、青色分段圓環與中央冠槽保留。OCEANIC的玻璃面窗、圓耳接座、U胸框及軟頸清楚，已改善實心機器臉。圓環數比提案多，屬後續可減量項。",
-  "status": "visually_reviewed_pending_user_selection"
+  "edit_scope": "opaque_closed_helmet_only_preserve_body_design",
+  "visual_review": "已目視：原深綠玻璃面窗改為不透明鋼藍甲片，具有與冠殼相近的塗裝磨損和淺縱向分面；青色 T／Y 線維持上橫下直，嵌在實心甲片中。圓冠、分節中槽、耳部圓接座及短下巴延續。身甲、圓環配置、站姿和全身構圖延續，局部紋理有生成重繪，不宣稱逐像素不變。Vauban 參考的縱向分片吸收較克制，未採用高冠或金飾。",
+  "status": "visually_reviewed_pending_user_selection",
+  "record_file": "docs/art/original_armors_v1/generation_records/c13_concept.json",
+  "supersedes": "revisions/c13_before_closed_helmet_20261001/generation_records/c13_concept.json",
+  "user_feedback": "Andromedae · ID 12 與 Draco · ID 9 都沒有玻璃面罩；重新生成 Andromedae 頭盔，參考其他科幻作品並結合原版。",
+  "prompt_sha256": "4dc557ef1f82d95539fa111906698c76d36821d2ecebda7022f3a4899d03a67a",
+  "reference_sha256": {
+    "revisions/c13_before_closed_helmet_20261001/images/c13_concept.png": "edc02f2f6bbcc555cb1ce75f02174000ae62ec96a9268f4c8fc0f1ff909c2d2b",
+    "references/legacy/c13_front.png": "72c9c7192e4198ff94a818446145785897e3c7de38269d9648322274efd94007",
+    "references/warframe/c13_vauban_prime_official.jpg": "2f0480d76f42061cc1f4907423204edda884b661cd25794a13ecb4989a48aa11"
+  },
+  "sha256": "8d6042a54b559ea7e3a55c0fa51bfbd61e279b2d08fe8a8a3b03e6cf84e464e8",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "bytes": 2010393
 }

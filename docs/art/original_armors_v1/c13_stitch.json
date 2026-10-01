@@ -11,7 +11,7 @@
     "legacy_set_name": "Andromedae",
     "purpose": "指定未來外觀替换目標；能力、購買、升級和存檔 ID 本輪不變。"
   },
-  "lore": "密閉設施救援人員的維修服。圓冠、封頸和少數青色圓環維持一致的接合語彙，修復束需要可靠的視線。",
+  "lore": "密閉設施救援人員的維修服。圓冠、封頸和青色接合圓環維持裝甲識別，鋼藍實心面甲上的細光槽表示感測與通訊狀態。",
   "role": "主動救援",
   "palette": [
     {
@@ -42,18 +42,18 @@
   "visual_identity": {
     "status": "prompt_target_with_actual_reviews_below",
     "proportion_target": "約6～6.5個頭盔高的厚實人體；屬 brief 目標，未作像素量測。",
-    "head": "鋼藍圓冠與分節中槽；Oceanic 厚玻璃、圓耳座和青色 Y 形窗緣",
+    "head": "鋼藍圓冠、分節中槽與耳部圓接座；不透明鋼藍封閉面甲帶淺縱向分面，青色 T／Y 細光槽嵌在甲片上，沒有玻璃面罩或護目鏡。",
     "torso": "寬 U 形壓力護領與分件胸板，深海軍藍軟腰",
     "shoulders": "肩部青色分段環集中作接合位置",
     "arms": "穿戴者右前臂外側有青色分段圓環，左前臂為素藍面板；雙手為正常五指手套，肘窩留黑布。",
     "legs": "穿戴者左脛有青色分段圓環，右脛為素藍面板；膝後與髖內側留軟衣，以修正版三視固定左右，不鏡像。",
     "pack": "背包為獨立装备。三視製作可示範搭配 B-13，不是原遊戲固定套裝或技能關聯；以 B 款獨立設計稿為準。",
     "concept_prompt": "prompts/c13_concept.txt",
-    "full_fusion_brief_en": "Fuse original Star Warfare Andromedae with the observed Halo 4 Oceanic round-shell and pressure-collar construction. Keep steel-blue main plates, deep navy undersuit, cyan segmented circles at the shoulders and one forearm, a rounded crown and a single central segmented crown channel. Borrow Oceanic's visible glass thickness, circular ear couplings, curved neck seal and wide open U-shaped chest support. Replace Andromedae's solid-looking face with a broad smoked-teal glass visor edged by a restrained cyan Y-shaped rim; do not copy Oceanic's exact full-height diving cage. Limit repeated circular graphics to three or four functional connector locations. Shape the back into two short low-profile side housings with one broad central service cover, informed by the documented high-poly back but with a different silhouette and seam layout. Keep the abdomen, inner arms and knees clearly fabric-covered and human. Retain the original blue/cyan palette instead of gold glass and exact Oceanic striping.",
+    "full_fusion_brief_en": "Retain the current Andromedae steel-blue body armor and original rounded crown, segmented central crown channel and cyan T/Y face conduit. Replace the mistaken broad smoked-teal glass with a compact opaque painted steel-blue faceplate with shallow longitudinal facets, taking covered-face segmentation from Warframe Vauban Prime. Keep low-profile cheek guards, ear couplings and a short chin. The cyan line is a flush emissive conduit in metal, never a visor rim. Oceanic remains a body/pressure-collar reference only. Do not import gold trim, tall crest, pointed face or Warframe body proportions.",
     "actual_reviews": {
-      "concept": "鋼藍圆冠、青色分段圓環與中央冠槽保留。OCEANIC的玻璃面窗、圓耳接座、U胸框及軟頸清楚，已改善實心機器臉。圓環數比提案多，屬後續可減量項。",
-      "construction": "已目視：鋼藍圓盔、分節冠槽、青Y大玻璃、圓耳座和U形胸領一致；頭盔拆成外殼／玻璃／軟內襯／頰下蓋，肩部圓環外殼與短下層板分開。B-13 一上二下橘金三筒及灰紫酒紅殼完整，背帶與獨立掛架可辨。局部肘膝研究保留青圈和布衣關節；局部零件未逐個標左右，正式建模應以修正版三視的右前臂／左脛配置為準。拆件順序與實際間隙為後續工程工作。",
-      "turnaround": "已目視修正版：側面左脛恢復青色分段圓環，右前臂有圈／左前臂無圈的穿戴者左右一致；正面肩後多餘金色圓頭已移除。鋼藍圓冠、青Y玻璃窗緣、雙肩環及U胸維持概念外形；B-13 背面一上二下橘金三筒和灰紫酒紅配色一致。三視完整並近似同高；後背被包遮住的甲片與接口仍需拆解／模型補完，未作精準尺寸量測。"
+      "concept": "已目視：原深綠玻璃面窗改為不透明鋼藍甲片，具有與冠殼相近的塗裝磨損和淺縱向分面；青色 T／Y 線維持上橫下直，嵌在實心甲片中。圓冠、分節中槽、耳部圓接座及短下巴延續。身甲、圓環配置、站姿和全身構圖延續，局部紋理有生成重繪，不宣稱逐像素不變。Vauban 參考的縱向分片吸收較克制，未採用高冠或金飾。",
+      "turnaround": "已目視：正面與左側均改為鋼藍不透明面甲和青色細光槽；背面為鋼藍冠殼與分節中線，沒有面部光線。三個全身完整並近似同高，身甲、右前臂／左脛圓環配置與 B-13 灰紫酒紅殼、一上二下橘金三筒延續。正側的光槽延伸與局部縫線仍需建模統一。",
+      "construction": "已目視：組裝頭盔及拆出的面部零件均變成有塗裝磨損的鋼藍不透明甲片，青色 T／Y 細光槽可見，原大玻璃零件已移除。冠殼、內襯、頰下框与耳部接座分件延續；肩甲、軟關節及獨立 B-13 背包板塊與配色延續。拆件厚度、接口與光槽結構仍是概念示意，未作裝配驗證。"
     }
   },
   "proposed_stats": {
@@ -103,62 +103,110 @@
     "turnaround": "images/c13_turnaround.png",
     "construction": "images/c13_construction.png"
   },
-  "modeling_authority": "本輪概念圖及逐張目視紀錄定義採用外觀；三視與拆解為建模參考。少量透視、遮擋或跨視細節須在模型統一，不可當精確尺寸、UV或已完工資產。",
+  "modeling_authority": "本次不透明鋼藍面甲概念及逐張目視紀錄為頭盔新方向，三視／拆解已同步；尚待使用者評價。原玻璃版封存供比較。跨視縫線、甲片厚度與感測／光槽結構須在 3D 建模統一，不是尺寸圖或已完工遊戲模型。",
   "license_status": "reference_fusion_concept_not_a_legal_clearance",
   "generation": {
     "tool": "built-in image_gen",
-    "date": "2026-09-25",
+    "date": "2026-10-01",
     "reference_policy": "Actual inputs are recorded per image below. Audit references alone do not prove they were passed to image_gen.",
     "records": {
       "concept": {
         "design_id": "C-13",
         "kind": "concept",
+        "path_base": "docs/art/original_armors_v1",
         "path": "images/c13_concept.png",
         "prompt": "prompts/c13_concept.txt",
         "reference_images": [
+          "revisions/c13_before_closed_helmet_20261001/images/c13_concept.png",
           "references/legacy/c13_front.png",
-          "references/halo/c13_oceanic_model.jpg"
+          "references/warframe/c13_vauban_prime_official.jpg"
         ],
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-45aff946-fdc3-4d81-a5fe-4e3acc13bf97.png",
-        "date": "2026-09-25",
+        "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-352e05f9-67a6-4ac7-a90c-f5b12d5de13c.png",
+        "tool": "built-in image_gen",
+        "date": "2026-10-01",
         "postprocessing": "none",
-        "visual_review": "鋼藍圆冠、青色分段圓環與中央冠槽保留。OCEANIC的玻璃面窗、圓耳接座、U胸框及軟頸清楚，已改善實心機器臉。圓環數比提案多，屬後續可減量項。",
+        "edit_scope": "opaque_closed_helmet_only_preserve_body_design",
+        "visual_review": "已目視：原深綠玻璃面窗改為不透明鋼藍甲片，具有與冠殼相近的塗裝磨損和淺縱向分面；青色 T／Y 線維持上橫下直，嵌在實心甲片中。圓冠、分節中槽、耳部圓接座及短下巴延續。身甲、圓環配置、站姿和全身構圖延續，局部紋理有生成重繪，不宣稱逐像素不變。Vauban 參考的縱向分片吸收較克制，未採用高冠或金飾。",
         "status": "visually_reviewed_pending_user_selection",
-        "record_file": "docs/art/original_armors_v1/generation_records/c13_concept.json"
-      },
-      "construction": {
-        "design_id": "C-13",
-        "kind": "construction",
-        "path": "images/c13_construction.png",
-        "prompt": "prompts/c13_construction.txt",
-        "reference_images": [
-          "images/c13_concept.png",
-          "images/c13_turnaround.png",
-          "images/b13_design_sheet.png"
+        "record_file": "docs/art/original_armors_v1/generation_records/c13_concept.json",
+        "supersedes": "revisions/c13_before_closed_helmet_20261001/generation_records/c13_concept.json",
+        "user_feedback": "Andromedae · ID 12 與 Draco · ID 9 都沒有玻璃面罩；重新生成 Andromedae 頭盔，參考其他科幻作品並結合原版。",
+        "prompt_sha256": "4dc557ef1f82d95539fa111906698c76d36821d2ecebda7022f3a4899d03a67a",
+        "reference_sha256": {
+          "revisions/c13_before_closed_helmet_20261001/images/c13_concept.png": "edc02f2f6bbcc555cb1ce75f02174000ae62ec96a9268f4c8fc0f1ff909c2d2b",
+          "references/legacy/c13_front.png": "72c9c7192e4198ff94a818446145785897e3c7de38269d9648322274efd94007",
+          "references/warframe/c13_vauban_prime_official.jpg": "2f0480d76f42061cc1f4907423204edda884b661cd25794a13ecb4989a48aa11"
+        },
+        "sha256": "8d6042a54b559ea7e3a55c0fa51bfbd61e279b2d08fe8a8a3b03e6cf84e464e8",
+        "dimensions": [
+          1024,
+          1536
         ],
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-94c14300-05cb-4bfc-9e53-9f3e1bb46265.png",
-        "date": "2026-09-25",
-        "postprocessing": "none",
-        "visual_review": "已目視：鋼藍圓盔、分節冠槽、青Y大玻璃、圓耳座和U形胸領一致；頭盔拆成外殼／玻璃／軟內襯／頰下蓋，肩部圓環外殼與短下層板分開。B-13 一上二下橘金三筒及灰紫酒紅殼完整，背帶與獨立掛架可辨。局部肘膝研究保留青圈和布衣關節；局部零件未逐個標左右，正式建模應以修正版三視的右前臂／左脛配置為準。拆件順序與實際間隙為後續工程工作。",
-        "status": "visually_reviewed_pending_user_selection",
-        "record_file": "docs/art/original_armors_v1/generation_records/c13_construction.json"
+        "bytes": 2010393
       },
       "turnaround": {
         "design_id": "C-13",
         "kind": "turnaround",
+        "path_base": "docs/art/original_armors_v1",
         "path": "images/c13_turnaround.png",
         "prompt": "prompts/c13_turnaround.txt",
         "reference_images": [
-          "images/c13_turnaround_v1.png",
-          "images/c13_concept.png",
-          "images/b13_design_sheet.png"
+          "revisions/c13_before_closed_helmet_20261001/images/c13_turnaround.png",
+          "images/c13_concept.png"
         ],
-        "generated_filename": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d6ba-27e8-7213-a474-8c6686146aab\\exec-60b07fcd-4b66-467c-b647-d34f3988bc70.png",
-        "date": "2026-09-25",
+        "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-65802ec1-3431-4d4a-8a20-4e466f73472e.png",
+        "tool": "built-in image_gen",
+        "date": "2026-10-01",
         "postprocessing": "none",
-        "visual_review": "已目視修正版：側面左脛恢復青色分段圓環，右前臂有圈／左前臂無圈的穿戴者左右一致；正面肩後多餘金色圓頭已移除。鋼藍圓冠、青Y玻璃窗緣、雙肩環及U胸維持概念外形；B-13 背面一上二下橘金三筒和灰紫酒紅配色一致。三視完整並近似同高；後背被包遮住的甲片與接口仍需拆解／模型補完，未作精準尺寸量測。",
+        "edit_scope": "opaque_closed_helmet_only_preserve_body_design",
+        "visual_review": "已目視：正面與左側均改為鋼藍不透明面甲和青色細光槽；背面為鋼藍冠殼與分節中線，沒有面部光線。三個全身完整並近似同高，身甲、右前臂／左脛圓環配置與 B-13 灰紫酒紅殼、一上二下橘金三筒延續。正側的光槽延伸與局部縫線仍需建模統一。",
         "status": "visually_reviewed_pending_user_selection",
-        "record_file": "docs/art/original_armors_v1/generation_records/c13_turnaround.json"
+        "record_file": "docs/art/original_armors_v1/generation_records/c13_turnaround.json",
+        "supersedes": "revisions/c13_before_closed_helmet_20261001/generation_records/c13_turnaround.json",
+        "user_feedback": "Andromedae · ID 12 與 Draco · ID 9 都沒有玻璃面罩；重新生成 Andromedae 頭盔，參考其他科幻作品並結合原版。",
+        "prompt_sha256": "6371c2c45ac19467e1552d271c87b99c1e73122446decb7881c5d2ae7368e194",
+        "reference_sha256": {
+          "revisions/c13_before_closed_helmet_20261001/images/c13_turnaround.png": "1741486f326cac083190679cf3f947924f43fd6f19a683f1c95985d7b3d3b5c4",
+          "images/c13_concept.png": "8d6042a54b559ea7e3a55c0fa51bfbd61e279b2d08fe8a8a3b03e6cf84e464e8"
+        },
+        "sha256": "b835541e062c53050c961116be8b26e4eeae9b1e7e9cac122ec87e5cae2c917c",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "bytes": 1999248
+      },
+      "construction": {
+        "design_id": "C-13",
+        "kind": "construction",
+        "path_base": "docs/art/original_armors_v1",
+        "path": "images/c13_construction.png",
+        "prompt": "prompts/c13_construction.txt",
+        "reference_images": [
+          "revisions/c13_before_closed_helmet_20261001/images/c13_construction.png",
+          "images/c13_concept.png"
+        ],
+        "generated_filename": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-b5435bc0-e981-42a5-a10b-cafe2ba33a51.png",
+        "tool": "built-in image_gen",
+        "date": "2026-10-01",
+        "postprocessing": "none",
+        "edit_scope": "opaque_closed_helmet_only_preserve_body_design",
+        "visual_review": "已目視：組裝頭盔及拆出的面部零件均變成有塗裝磨損的鋼藍不透明甲片，青色 T／Y 細光槽可見，原大玻璃零件已移除。冠殼、內襯、頰下框与耳部接座分件延續；肩甲、軟關節及獨立 B-13 背包板塊與配色延續。拆件厚度、接口與光槽結構仍是概念示意，未作裝配驗證。",
+        "status": "visually_reviewed_pending_user_selection",
+        "record_file": "docs/art/original_armors_v1/generation_records/c13_construction.json",
+        "supersedes": "revisions/c13_before_closed_helmet_20261001/generation_records/c13_construction.json",
+        "user_feedback": "Andromedae · ID 12 與 Draco · ID 9 都沒有玻璃面罩；重新生成 Andromedae 頭盔，參考其他科幻作品並結合原版。",
+        "prompt_sha256": "f797df53eb9fd23778b510d23ad3a96d4fb1e56a966041565fa1e7db9b3a0748",
+        "reference_sha256": {
+          "revisions/c13_before_closed_helmet_20261001/images/c13_construction.png": "a3fdad9f7e2a9cc5e2424185c50f8ceeca3e278a2f4e8cb0c6978b9857c20659",
+          "images/c13_concept.png": "8d6042a54b559ea7e3a55c0fa51bfbd61e279b2d08fe8a8a3b03e6cf84e464e8"
+        },
+        "sha256": "0ed249a6e5ad84dfcf4c433187d01457b7af36e23080e898e87e0e82d2ba9e9e",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "bytes": 2740367
       }
     },
     "unselected_records": [
@@ -192,7 +240,14 @@
         "references/legacy/c13_side.png",
         "references/legacy/c13_rear.png"
       ],
-      "audit": "sources/legacy_armor_later.json"
+      "audit": "sources/legacy_armor_later.json",
+      "helmet_correction": {
+        "date": "2026-10-01",
+        "feedback": "Andromedae · ID 12 與 Draco · ID 9 都沒有玻璃面罩；重新生成 Andromedae 頭盔，參考其他科幻作品並結合原版。",
+        "priority": "highest",
+        "rule": "面部為不透明鋼藍硬甲；青色 T／Y 線是嵌入甲片的細光槽。禁止大片玻璃、護目鏡或黑色鏡片面窗。",
+        "basis": "使用者明確指定無玻璃；恢復模型截圖可見藍灰封閉面部和青色線條，未重新驗證原遊戲材質。"
+      }
     },
     "halo": {
       "name": "OCEANIC-class Mjolnir (GEN2)",
@@ -225,25 +280,73 @@
         "chest": "宽 U 形大面胸框和圓弧頸口，兩側長肩帶；肩甲外片短尖，上臂與腹部保留大片黑色軟衣。",
         "back": "高模後视有兩個平行長後肩殼，中間低矮中央服務蓋，下缘共用圆弧下框；盔後有圓形接點與分節中線。",
         "back_evidence": "same-production high-poly rear; not a final textured rear screenshot",
-        "match_reason": "Andromedae 的圓冠、大面板、青色圓環，与 Oceanic 的圓耳座、圓弧護領和大玻璃窗相近；尤其可把原版實心假面變成明確有人佩戴的頭盔。"
+        "match_reason": "Oceanic 只保留既有身甲、U 形壓力護領與圓耳接合方向；其大玻璃窗不作本次頭盔依據。"
       },
-      "role": "selected_design_donor"
+      "role": "body_and_pressure_collar_only_after_closed_helmet_correction"
+    },
+    "scifi_helmet": {
+      "name": "Warframe · Vauban Prime",
+      "game": "Warframe",
+      "images": [
+        {
+          "key": "c13_vauban_prime_official",
+          "name": "Warframe · Vauban Prime",
+          "source_page_url": "https://www.warframe.com/en/news/vauban-prime-access-here-fr",
+          "image_url": "https://www-static.warframe.com/uploads/thumbnails/160d52b58c1c7850d80ab6c4ca038236_1600x900.jpg",
+          "local_path": "references/warframe/c13_vauban_prime_official.jpg",
+          "sha256": "2f0480d76f42061cc1f4907423204edda884b661cd25794a13ecb4989a48aa11",
+          "bytes": 249962,
+          "visually_inspected": true,
+          "reference_role": "helmet_shape_only",
+          "observed": "可見封閉臉部、縱向分片和中央突出結構；不採用金色塗裝、高冠、尖下巴、身甲或武器。"
+        }
+      ],
+      "role": "closed_face_longitudinal_segmentation_only",
+      "adaptation": "保留原版 Andromedae 圓冠、分節中槽和青色 T／Y 線，用鋼藍淺分面取代玻璃；省略 Vauban 高冠、金飾、尖下巴與身甲。"
     }
   },
   "fusion_recipe": {
     "retained": [
-      "鋼藍大面板和青色分段圓環",
-      "圓冠＋中央分節冠槽",
-      "寬面罩上單一青色T形／Y形窗線"
+      "鋼藍大甲片與青色分段圓環",
+      "圓冠與中央分節槽",
+      "封閉面甲上的單一青色 T／Y 細線"
     ],
     "borrowed": {
-      "helmet": "圓頂頭盔與幾乎包到冠部的大玻璃面窗；面前细十字保護桿，左右圓形耳座，短下顎與獨立頸圈。",
+      "helmet": "Vauban Prime 封閉臉部與縱向分片的設計語彙；改為短而圓的鋼藍甲片，不取高冠、金飾或尖下巴。",
       "chest": "宽 U 形大面胸框和圓弧頸口，兩側長肩帶；肩甲外片短尖，上臂與腹部保留大片黑色軟衣。",
       "back": "高模後视有兩個平行長後肩殼，中間低矮中央服務蓋，下缘共用圆弧下框；盔後有圓形接點與分節中線。",
       "back_evidence": "same-production high-poly rear; not a final textured rear screenshot",
-      "match_reason": "Andromedae 的圓冠、大面板、青色圓環，与 Oceanic 的圓耳座、圓弧護領和大玻璃窗相近；尤其可把原版實心假面變成明確有人佩戴的頭盔。"
+      "match_reason": "原版藍灰封閉臉部與 Vauban 的包覆／縱向分片方向相容；Oceanic 只保留既有身甲。"
     },
-    "optimized": "將假面式實心臉改為可辨識的寬玻璃面窗，保留青色窗框；圓環集中於肩與一處前臂，減少重複圖符；胸甲按胸廓和腰部動作切開。",
+    "optimized": "修正玻璃判斷：面部改為鋼藍不透明甲片，保留青色細光槽與原版圓冠，身甲方向延續。",
     "optimization_common": "胸腰按人體分件、露出織物關節、短化易勾掛尖片；避免單眼機械臉與巨型四肢。"
+  },
+  "user_review": {
+    "status": "helmet_revision_pending_user_review",
+    "date": "2026-10-01",
+    "feedback": "Andromedae · ID 12 與 Draco · ID 9 都沒有玻璃面罩；重新生成 Andromedae 頭盔，參考其他科幻作品並結合原版。",
+    "scope": "andromedae_opaque_helmet_correction",
+    "action": "已將寬玻璃面窗改為鋼藍封閉面甲，結合原版青色 T／Y 細線與 Vauban Prime 縱向分片方向；概念、三視與拆解同步，待你評價。",
+    "acceptance_basis": "使用者授權修正與重新生成，尚未對新圖逐張驗收。",
+    "previous_revision": {
+      "images": {
+        "concept": "revisions/c13_before_closed_helmet_20261001/images/c13_concept.png",
+        "turnaround": "revisions/c13_before_closed_helmet_20261001/images/c13_turnaround.png",
+        "construction": "revisions/c13_before_closed_helmet_20261001/images/c13_construction.png"
+      },
+      "prompts": {
+        "concept": "revisions/c13_before_closed_helmet_20261001/prompts/c13_concept.txt",
+        "turnaround": "revisions/c13_before_closed_helmet_20261001/prompts/c13_turnaround.txt",
+        "construction": "revisions/c13_before_closed_helmet_20261001/prompts/c13_construction.txt"
+      }
+    },
+    "runtime_implemented": false
+  },
+  "helmet_studies": {
+    "status": "closed_helmet_revision_pending_user_review",
+    "latest_variant": "closed_vauban_fusion",
+    "comparison_page": "revisions/c13_before_closed_helmet_20261001/index.html",
+    "link_label": "比較 Andromedae 玻璃舊稿與封閉面甲新版 ↗",
+    "note": "只修正頭盔；舊圖和正式新圖在比較頁並排。"
   }
 }
