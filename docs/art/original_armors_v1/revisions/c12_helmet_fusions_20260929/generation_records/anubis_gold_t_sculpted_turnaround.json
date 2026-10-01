@@ -1,0 +1,37 @@
+{
+  "design_id": "C-12",
+  "kind": "candidate_turnaround",
+  "variant": "anubis_gold_t_sculpted_turnaround",
+  "path_base": "docs/art/original_armors_v1",
+  "path": "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted_turnaround.png",
+  "prompt": "revisions/c12_helmet_fusions_20260929/prompts/anubis_gold_t_sculpted_turnaround.txt",
+  "generated_filename": "C:/Users/whw88/.codex/generated_images/01a0d34a-7c78-72d0-b7ae-7c134c979b6f/exec-9b301ff1-b6a9-4776-838e-25dd1bbf82da.png",
+  "tool": "built-in image_gen",
+  "date": "2026-10-01",
+  "reference_images": [
+    "revisions/c12_helmet_fusions_20260929/references/sculpted_cheeks_input_turnaround.png",
+    "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted.png"
+  ],
+  "reference_sha256": {
+    "revisions/c12_helmet_fusions_20260929/references/sculpted_cheeks_input_turnaround.png": "dd409d0b149cce7226be27bb4709b17573f8ce922fe4cc164e8bd9306f750b26",
+    "revisions/c12_helmet_fusions_20260929/images/anubis_gold_t_sculpted.png": "3e45a58e7c2bd331a0d4df918bd2aa9e51748607767916c4799d2f74a66d3a5b"
+  },
+  "original_reference_paths": [
+    "E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/revisions/c12_before_strong_t_20260930/images/c12_turnaround.png",
+    "E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/images/c12_concept.png"
+  ],
+  "reference_path_note": "實際生成時使用 original_reference_paths；歸檔時改指向內容 SHA-256 相同的穩定副本。配套圖第二張輸入是本次保留原護頰候選概念，並非目前正式主圖。",
+  "prompt_sha256": "b29ea287ec6db0564d1d164a5ba30d6d6873f76045a101cbc18f675f848664f0",
+  "sha256": "a369cce0181fb8883a9bf3f84bfcab0114c30b92531bb76293a4babd8fae77f1",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "bytes": 2000158,
+  "postprocessing": "none",
+  "edit_scope": "supporting_sheet_for_sculpted_cheeks_candidate",
+  "visual_review": "已目視正面、左側與背面完整人形及同一地平線；正面金色眼帶連接中央直條，護頰斜收。保留裝甲和背包方向；這是配套概念參考，細節與主圖可能有生成差異。",
+  "status": "visually_reviewed_pending_user_selection",
+  "record_file": "revisions/c12_helmet_fusions_20260929/generation_records/anubis_gold_t_sculpted_turnaround.json",
+  "runtime_implemented": false
+}
