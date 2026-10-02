@@ -41,7 +41,7 @@ Blender topology／UV／weights 檢查沒有 failures 或 warnings；主外殼�
 
 最終目標是 Viper 到 Cygni，Phoenix 保留原版，Thunder 沿用既有採用模型。Andromedae 之後所有套裝及 Call of Mini 套裝保留現有素材。
 
-目前預設遊戲仍使用既有素材。`--cygni-helmet-repair` 僅保留重現被拒絕的 v4 灰模，不能作為正式採用旗標；其他套裝不替換。全批次尚未完成，新的 prompt 圖沒有直接掛進遊戲 loader。
+2026-10-02 起，Cygni 的預設外觀已改用 [cygni_runtime_v2](../cygni_runtime_v2/README.md)，本目錄的灰模／試貼圖仍為歷史試作。`--cygni-helmet-repair` 僅保留重現被拒絕的 v4 灰模，不能作為正式採用旗標；其他套裝不替換。全批次尚未完成，新的 prompt 圖沒有直接掛進遊戲 loader。
 
 ## 重現 v4
 

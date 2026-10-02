@@ -1,0 +1,15 @@
+{
+  "tool": "image_gen.imagegen",
+  "version": "head_r6_center_tab_removal",
+  "generated_source": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-ebb13e32-6c6a-4b29-99a8-c09a953dab5c.png",
+  "saved_original": "docs/art/cygni_runtime_v2/generation_records/head_r6_original.png",
+  "sha256": "2f3e8596922327e2145a3b276b2527b3da7c1fce3056a785dbd346ae6bec2fb3",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "processing": "none on original; Blender scales separate runtime output to 512x512",
+  "prompt": "docs/art/cygni_runtime_v2/generation_records/head_r6_actual_prompt.txt",
+  "inputs": "docs/art/cygni_runtime_v2/generation_records/head_r6_inputs.json",
+  "status": "NOT SELECTED: generator moved the gold border but failed to remove original center sampling issue; final repair uses unchanged r4 atlas plus two local TargetUV seam corrections"
+}

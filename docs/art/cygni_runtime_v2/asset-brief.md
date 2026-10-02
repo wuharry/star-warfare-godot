@@ -27,7 +27,7 @@ ARTICULATION 原 28 bone names/rests；最多 4 influences；保留 r hand gun /
 INFERRED   新頭殼深度、耳後連接、內面厚度、背甲與原身體 cage 的接合皆屬推定；候選三視圖不是使用者外形驗收。
 TARGET     Godot 4.7.2 Compatibility；native .blend、GLB、四件 PackedScene、diffuse PNG；原型預算 3,000 tris（原 Cygni 1,006），新增幾何用於面罩／眉頰及接合而不是微型刻線。128px 為暫定縮小檢視；實際 gameplay 視圖另擷取，不宣稱已量測遊戲高度。
 
-Owned paths：docs/art/cygni_runtime_v2/、tools/cygni_runtime_v2/、assets/armors/cygni_v2/；loader 僅增加 --cygni-v2 比較入口。
+Owned paths：docs/art/cygni_runtime_v2/、tools/cygni_runtime_v2/、assets/armors/cygni_v2/；loader 預設以新版替代 Cygni；其他套裝範圍不變。
 Inputs：ref/sources.json、原 player rig、已選 c12_concept、風格基底。
 Outputs：四件 skin meshes／UV／生成 diffuse／Blender master／GLB／engine scene／原新比較與動作驗證。
 Acceptance：原版與新版並排應像同一位美術製作的不同裝甲（使用者於 2026-10-02 明確設定的底線）；比較遊戲比例、甲片明暗、邊緣畫法、材料表現與細節分配。可載入、四件混搭、存檔不變、掛點不變、動作不爆裂；逐視圖檢查外形、UV 與甲片穿插。工程測試不能替代這項美術門檻。
@@ -41,3 +41,5 @@ Handoff：本示範通過工程檢查後仍須使用者看效果；不擴至其�
 **使用者要求新版非常接近原版，僅接受局部改動。** 原先碎片化的頭盔 checkpoint 已保存；本輪改用 Blender 重塑原 Cygni 的連續 cage，保留原 UV 與 legacy Skin bind。頭冠微收、下巴縮短、頰部內收、側翼收短；金 T 面罩及淺眉甲層次由貼圖表現，不新增浮動面甲。這是模型與貼圖都改的試作，並非只在舊幾何上換色。
 
 實作在 `tools/cygni_runtime_v2/build.py::helmet`。參數按原 game-space 座標調整，含從概念推定的局部形狀；不能將此形狀記成使用者已驗收。原 Spine1 collar、原骨架與掛點保留。其他三件沿用上一個 checkpoint，本輪不宣稱其 UV 已改回原版。
+
+**2026-10-02 局部修正：使用者要求移除金色面罩中央白色凸起，並直接替代原版。** 凸起由鏡像 UV 共用邊緣的白色貼圖形成，把三個共用 TargetUV 取樣點移到既有金色區域，不新增幾何、不切開 UV、不改骨架。ImageGen 局部修图候選未採用；沿用已生成的 r4 貼圖，身體／手腳維持已交付版本。

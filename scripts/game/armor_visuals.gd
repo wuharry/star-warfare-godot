@@ -6,6 +6,7 @@ const CONCEPT_ARMOR_DIR := "res://assets/armors/concept_runtime/"
 const REWORKED_SCENES := {
 	0: "res://assets/armors/viper/viper.scn",
 	6: "res://assets/armors/thunder/thunder.scn",
+	11: "res://assets/armors/cygni_v2/cygni.scn",
 }
 
 
