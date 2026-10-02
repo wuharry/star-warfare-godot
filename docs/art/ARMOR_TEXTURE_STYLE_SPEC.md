@@ -125,6 +125,8 @@ Cygni 的 28° 只來自 2.8% 的達標彩色像素（銅橙嵌條），整套�
 
 ## 驗收
 
+**原版與新版並排應像同一位美術製作的不同裝甲；這是使用者於 2026-10-02 設定的交付底線。** 用同一相機、姿勢與顯示高度，比較遊戲比例、甲片明暗、亮邊與凹縫畫法、材料表現及細節密度；例如 Cygni 新頭盔可以改成金 T 面罩，但白甲仍應使用原 Cygni 的灰白漸層與克制亮邊，不能變成大塊純白或馬賽克式三角分色。統計和工程 PASS 不代表這項目視門檻已通過。
+
 檢查器可列出數據，**以一整套 5 張為單位**，但它的 PASS／FAIL 只代表所寫門檻，
 不是美術或 UV 驗收。新幾何先確定模型與 UV，再生成對應貼圖；不能任意生 atlas 後逼模型去配。
 
@@ -238,7 +240,7 @@ SW 的 `_2x` 是匯出器做的 LANCZOS 放大；100 張為 512²、R.O.M.E 的 
 
 ### 三種輸入各有責任
 
-**概念圖不能同時決定比例、表面畫法和 UV；這三件事要各自有可靠參考。** 按下表提供圖片，生成器才知道哪些特徵要保留、哪些要轉換。
+**新版只做指定的局部改動；主要輪廓、比例與製作方式沿用原版。** 概念圖不能同時決定比例、表面畫法和 UV；這三件事要各自有可靠參考。 按下表提供圖片，生成器才知道哪些特徵要保留、哪些要轉換。
 
 | 輸入 | 決定 | 不決定 | Cygni 例子 |
 | --- | --- | --- | --- |
@@ -250,13 +252,28 @@ SW 的 `_2x` 是匯出器做的 LANCZOS 放大；100 張為 512²、R.O.M.E 的 
 ```text
 全部原素材分析 → 共通規則／套裝例外
                           ↓
-原模型比例＋畫法基底＋已選新概念 → 遊戲比例的新造型
+原模型主要輪廓／比例／UV 方法＋畫法基底＋已選概念局部 → 遊戲比例的局部改造
                           ↓
 外形有變：新模型 → UV 展開／材質區域 → 生成 diffuse → 貼回模型檢查
 外形不變：原模型與原 UV 固定 → 編修對應 diffuse → 貼回模型檢查
 ```
 
 例如 Cygni 想從舊長下巴改成短下巴，必須走「外形有變」；只拿原 atlas 生一張看似正確的頭盔圖，再貼回舊模型，仍然會是舊長下巴，並可能把金色和白甲畫到錯誤位置。
+
+### 原版的連續頭殼與 UV 方法（2026-10-02 更新）
+
+**使用者要求：新版必須非常接近對應原版，只接受局部改動；不得大幅重做後失去原版風格。** 保留主要輪廓、遊戲比例、連續體積、分片密度與 UV 共用方式。新概念只轉換已指定的局部；例如 Cygni 可縮短下巴、內收頰甲及改金 T 面罩，不因此把整個頭盔換成大量獨立甲片。這項範圍優先於早期「新概念決定新造型」的泛用措辭。
+
+**新版沿用原版的製作方法：完整主頭殼、大片連續 UV、對稱部分共用貼圖；新概念仍決定輪廓與面罩。** 眉甲與頰甲先接成完整體積，細縫、淺層分片及倒角亮邊由 diffuse 表現；只有影響外輪廓、動作或必要厚度的附件另外建模。適用到其他套裝時先查該套原件，不把 Cygni 的配置硬套給所有裝甲。
+
+Cygni 原件的頭部為 238 tris，最大連續頭殼 166 tris；貼圖上的相連區域為 7（左右重疊合併）。被使用者否決的試作為 596 tris、141 個相連區域。數量是偏差證據，不是硬性美術門檻；真正要避免的是把主體切成零碎片段，再替每片各畫一圈亮邊。實測在 [original_head_method.json](cygni_runtime_v2/review/original_head_method.json)。
+
+- 保留大面明暗連續；UV 切口放在後側、隱藏處或必要邊界。
+- 對稱表面可鏡像共用 UV；使用者指定的非對稱設計要保留獨立區域。
+- UV 島邊界不是甲片邊界；不得逐島、逐三角形加亮框或黑框。
+- 用原拓撲改造時可保留原 UV，但要真的改外輪廓；Cygni 仍須短下巴、內收頰甲與金 T 面罩。
+- 可用 Blender 局部改造原 mesh：縮短下巴、內收頰部、調整頭冠／側翼；保留遊戲尺寸、原骨架、掛點與可用權重，保存可編輯 `.blend` 和改動前後對照。這是使用者要求的建模做法，不限於換貼圖。
+- 先檢查灰模、棋盤格與接縫，再把實際 UV／區域圖交給圖片生成器；生成器不負責展 UV。
 
 ### 整合基底 prompt（直接複製）
 
@@ -268,7 +285,7 @@ Translate the supplied NEW armor concept into the visual language of the supplie
 REFERENCE RESPONSIBILITIES
 A — Original in-game mesh views: authority for game-scale body proportions, joint locations, thickness hierarchy and readable silhouette mass.
 B — Original diffuse atlases: authority for painted lighting, edge treatment, surface detail frequency and material separation. They do not dictate the new design or its UV layout.
-C — New approved concept: authority for design identity, helmet/visor shape, plate arrangement and color placement. Its realistic anatomy, cinematic lighting and microscopic detail are NOT target style.
+C — New approved concept: reference for the specifically approved LOCAL helmet/visor, plate and color changes. Keep the original armor strongly recognizable in overall mass, proportion, construction and painting style. A concept does not authorize a wholesale redesign, extra fragmentation or realistic anatomy; simplify it to fit the legacy construction. Its cinematic lighting and microscopic detail are NOT target style.
 D — Target mesh renders, exact UV layout and material-region masks, when provided: authority for texture placement. A missing D must never be invented and described as a working UV atlas.
 Explicit user corrections override reference-image artifacts, such as a pink/red imported helmet tint.
 
@@ -276,7 +293,13 @@ STYLE FAMILY
 Use {STYLE_FAMILY: Star Warfare or Call of Mini}, matching the chosen old model, not an average of both games. Make it look authored alongside that old model. Human wearing hard-surface armor: enclosed helmet, broad chest and shoulder plates, compact torso, short sturdy limbs, substantial gloves and boots, dark flexible joints. Preserve the selected game skeleton's limb lengths and body mass. Translate the new concept onto those proportions. Do not turn it into an adult realistic soldier, a slender action figure, a smooth toy, a voxel doll or an exposed-piston robot.
 
 SHAPE HIERARCHY
-Read the helmet, chest, shoulders, forearms and shin/boot masses before small detail. Use broad faceted planes and controlled curved transitions. Keep neck, elbow, hip and knee gaps readable and functional. Real geometry must carry silhouette-changing fins, cheek volume, visor recess, shoulder overhang and plate thickness. Paint can describe small seams, screws and bevel highlights. Preserve {DESIGN_IDENTITY_FEATURES}; simplify minor segmentation rather than erasing those features. Do not clone the old helmet contour if the concept intentionally changes it. Do not lock every armor to Cygni's long chin or Chaos's horn dimensions.
+Read the helmet, chest, shoulders, forearms and shin/boot masses before small detail. Use broad faceted planes and controlled curved transitions. Keep neck, elbow, hip and knee gaps readable and functional. Real geometry must carry silhouette-changing fins, cheek volume, visor recess, shoulder overhang and plate thickness. Paint can describe small seams, screws and bevel highlights. Preserve {DESIGN_IDENTITY_FEATURES}; simplify minor segmentation rather than erasing those features. Preserve the selected legacy armor's main contour and mass; make only the approved local changes, such as Cygni's shorter chin and gold T visor. Do not replace the whole helmet with a different design language. Other suits keep their own legacy features rather than adopting Cygni's proportions.
+
+LEGACY CONSTRUCTION AND UV METHOD
+USER CONSTRAINT: new armor must remain very close to its corresponding original. Local edits are acceptable; wholesale changes to silhouette, body proportions, plate segmentation or UV fragmentation are not. Compare original and new clay geometry at the same camera/scale before generating diffuse. Preserve the major continuous masses and original-compatible UV reuse where possible. Do not trade the legacy identity for more detail, more triangles or more separately outlined pieces. If the concept cannot fit within this local-edit scope, show the departure explicitly rather than silently adopting it.
+Build each major helmet or armor mass as a coherent low-poly shell. Use separate geometry only for genuine silhouette-changing attachments, moving pieces or necessary thickness. Keep the brow and inward-swept cheeks continuous with the shell; paint most shallow seams, bevels, vents and layering cues into diffuse. Do not assemble the face from many floating plates, bevel every tiny piece, or triangulate the shading into a mosaic.
+Author broad continuous UV charts for the shell and visor. Reuse mirrored UV space for genuinely symmetric surfaces and matching paint; provide unique space only where an approved asymmetric feature needs it. Cut seams at hidden/rear transitions or real material boundaries. An automatic projection that splits individual triangles or every little plate into separate charts is not an acceptable default. Original atlas layouts are evidence for chart continuity and mirrored reuse, not a universal island-count limit. If adapting a compatible original cage, preserve its broad UV layout and vertex-to-UV correspondence while reshaping the contour for the new concept. Blender may be used to make local edits to the existing mesh: shorten an elongated chin, sweep cheeks inward, soften a crown or shorten side fins. Preserve game scale, joints, attachment points and compatible weights. Save an editable .blend and record the actual geometry changes; a retextured unchanged mesh is only a surface trial. If making a new cage, author equivalent continuous charts before requesting imagery.
+UV chart boundaries are technical cuts, not armor plate edges. Maintain broad painted gradients across adjoining faces and matching seam pairs. Do not draw a bright rim or dark outline around every UV island or triangle. Image generation paints the validated layout; it must not invent, repack or repair the layout. Inspect clay, checker and textured front/side/back views on the same model before claiming a usable material.
 
 PAINTING AND MATERIALS
 Painted diffuse with broad, restrained light-to-dark gradients across each surface; lighter exposed edges and dark recessed seams imply the low-poly volume. Orient the painted lighting by the surface in 3D, not by the top edge of the atlas. Keep some quiet plate interiors. Allow sparse readable wear, a few fasteners, vents or symbols only where the reference supports them. Keep cloth/rubber mostly dark, with localized coarse ribbing or fabric pattern. Visors use simple painted reflection bands and color depth; do not require physical transparency. Opaque metal faceplates stay metal when the concept has no visor. Avoid dense scratches, noisy brushed-metal grain, all-over hexagons, micro-greebles, mirror chrome, glossy product-render highlights and cinematic rim lights. Avoid making every seam a thick black outline or every edge a bright glow.
@@ -310,7 +333,7 @@ KEEP THESE DESIGN FEATURES:
 - Small copper-orange inserts on chest and selected limb/helmet regions; short shoulder wings echoing the helmet fins.
 
 TRANSLATE TO THE GAME:
-Use the old SW character's large helmet, compact body, short limb spans, chunky hands/boots and existing joint positions. The new full-height adult anatomy in the concept is not the target. Keep the new helmet identity rather than merely recoloring the old Cygni helmet.
+Use the old SW character's large helmet, compact body, short limb spans, chunky hands/boots and existing joint positions. The new full-height adult anatomy in the concept is not the target. Preserve the original Cygni shell identity and construction. Make local mesh changes for the approved shorter chin and swept cheeks, plus the gold T visor; avoid a wholesale helmet replacement.
 Use original Cygni diffuse maps to judge white paint, dark green, subdued gold/copper and restrained seam/cloth detail. Imported pink head tint is not desired. Gold glass should have a simple broad painted reflection, not a photoreal environment reflection.
 New chest/cheek/fin shapes that alter silhouette require model work and matching UVs. If only original UVs are supplied, label the result a surface-style trial on the OLD geometry; it is not completion of this new design.
 Phoenix remains unchanged. No rollout to later armor sets is authorized by this analysis prompt alone.
@@ -329,6 +352,8 @@ land. Input D is the selected new concept. The original atlas/style samples
 are painting references only unless A explicitly uses that same original UV.
 
 Keep every UV island's position, size, orientation and outer silhouette exact.
+Chart boundaries are technical seams, not armor outlines. Continue painted
+gradients across adjoining surfaces; do not rim every island or triangle.
 Keep seam pairs consistent in color and edge-detail continuation. Paint the
 specified material only inside its designated region. Do not add a front-view
 helmet picture over an unfolded side shell. Do not place reflected highlights
@@ -358,12 +383,15 @@ This is a candidate until placement, seams and material reading pass on-model re
 不要把此預設寫成使用者已批准的新版外形。
 
 套用「整合基底 prompt」＋所選概念的「套裝附加條件」＋明確的輸出類型。
-原版只決定風格及遊戲體格，新概念決定新設計；不照抄原 Cygni 的長下巴，
+新版要非常接近對應原版，只接受指定局部改動；原版決定主要輪廓、遊戲體格、
+分片密度與 UV 方法，新概念補入局部新設計。不照抄原 Cygni 的長下巴，
 也不沿用概念圖的成人長腿。檢查正、側、背時要用同一個模型。
 
 如果新概念改變頭盔／肩甲／胸甲外形：
 先製作符合遊戲骨架的模型，檢查主體輪廓與關節後製作 UV 和材質區域遮罩，
 再用圖片生成工具產生對應 diffuse。UV 輸入要來自這個模型。
+主體採連續頭殼／甲片與大片 UV；對稱部分可鏡像共用。不要以逐片自動投影
+代替展 UV，也不要讓生成器替每個 UV 島各畫亮框；詳見「原版的連續頭殼與 UV 方法」。
 如果只試貼圖：固定原模型和原 UV，明確標示「舊幾何上的表面風格試作」，
 不得把它稱為完整新版裝甲。
 
@@ -385,7 +413,9 @@ Thunder 依已選版本，不任意蓋過。Cygni 後面的套裝保留原版。
 本次「分析所有原素材」不等於授權把全部 29 套一起改掉。
 ```
 
-### 驗收與交接狀態
+### 原分析階段的驗收與交接狀態
+
+**以下保留分析階段的紀錄；後續 Cygni 生成、建模和遊戲檢查見 [Cygni 示範 README](cygni_runtime_v2/README.md)。** 本輪另補入連續頭殼、原 UV 與 Blender 局部改造規則，不能把舊分析表的 NOT RUN 當成現在沒有試作。
 
 **本次完成的是全原素材分析和生成規格；依使用者最新安排，新素材由後續 sol6.1 工作生成。** 目前的參考圖都是原資產擷取或排版，沒有把新的 PNG、模型或材質套到遊戲。
 

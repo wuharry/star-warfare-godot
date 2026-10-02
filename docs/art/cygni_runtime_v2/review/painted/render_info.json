@@ -1,0 +1,68 @@
+{
+  "blend": "/Users/harvey/repo/star-warfare-godot/docs/art/cygni_runtime_v2/CH_Cygni_master.blend",
+  "mode": "material",
+  "engine": "cycles",
+  "bbox_min": [
+    -0.6323454976081848,
+    -0.44469964504241943,
+    0.020661458373069763
+  ],
+  "bbox_max": [
+    0.6323453187942505,
+    0.25762078166007996,
+    1.9784002304077148
+  ],
+  "size_xyz": [
+    1.26469087600708,
+    0.7023204565048218,
+    1.9577387571334839
+  ],
+  "objects": [
+    "ArmorHead_11",
+    "ArmorBody_11",
+    "ArmorHand_11",
+    "ArmorFoot_11"
+  ],
+  "renders": {
+    "front": {
+      "file": "docs/art/cygni_runtime_v2/review/painted/material_front.png",
+      "az_el_lens": [
+        0,
+        0,
+        0
+      ],
+      "distance": 4.351160228252411
+    },
+    "side": {
+      "file": "docs/art/cygni_runtime_v2/review/painted/material_side.png",
+      "az_el_lens": [
+        90,
+        0,
+        0
+      ],
+      "distance": 4.63234543800354
+    },
+    "back": {
+      "file": "docs/art/cygni_runtime_v2/review/painted/material_back.png",
+      "az_el_lens": [
+        180,
+        0,
+        0
+      ],
+      "distance": 4.351160228252411
+    },
+    "threequarter": {
+      "file": "docs/art/cygni_runtime_v2/review/painted/material_threequarter.png",
+      "az_el_lens": [
+        35,
+        15,
+        50
+      ],
+      "distance": 3.5375934601933863
+    },
+    "gameplay": {
+      "file": "docs/art/cygni_runtime_v2/review/painted/material_gameplay_128px.png",
+      "subject_px": 128
+    }
+  }
+}

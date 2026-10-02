@@ -758,24 +758,30 @@
   },
   "parts": {
     "ArmorHead_11": {
-      "vertices": 387,
-      "triangles": 596,
+      "vertices": 161,
+      "triangles": 238,
+      "source_uv_checked_faces": 238,
+      "binding": "legacy",
+      "uv_method": "continuous source charts; mirrored reuse retained",
       "bounds_game": {
         "min": [
-          -0.3409999907016754,
-          1.2100000381469727,
-          -0.3903149962425232
+          -0.31036576628685,
+          1.2373180389404297,
+          -0.39298349618911743
         ],
         "max": [
-          0.3409999907016754,
-          1.9783999919891357,
-          0.18000000715255737
+          0.3103659152984619,
+          1.9452478885650635,
+          0.25510072708129883
         ]
       }
     },
     "ArmorBody_11": {
       "vertices": 339,
       "triangles": 564,
+      "source_uv_checked_faces": 460,
+      "binding": "legacy_or_appended",
+      "uv_method": "checkpoint automatic projection",
       "bounds_game": {
         "min": [
           -0.6323451399803162,
@@ -792,6 +798,9 @@
     "ArmorHand_11": {
       "vertices": 90,
       "triangles": 152,
+      "source_uv_checked_faces": 152,
+      "binding": "legacy_or_appended",
+      "uv_method": "checkpoint automatic projection",
       "bounds_game": {
         "min": [
           -0.6216999888420105,
@@ -808,6 +817,9 @@
     "ArmorFoot_11": {
       "vertices": 94,
       "triangles": 156,
+      "source_uv_checked_faces": 156,
+      "binding": "legacy_or_appended",
+      "uv_method": "checkpoint automatic projection",
       "bounds_game": {
         "min": [
           -0.41547027230262756,

@@ -1,0 +1,181 @@
+{
+  "original_bones": 28,
+  "aliases": [
+    {
+      "name": "Bip01_Bind_1_28",
+      "parent": "Bip01",
+      "skin": 1,
+      "bind": 28
+    },
+    {
+      "name": "Bip01 Pelvis_Bind_1_29",
+      "parent": "Bip01 Pelvis",
+      "skin": 1,
+      "bind": 29
+    },
+    {
+      "name": "Bip01 Spine_Bind_1_30",
+      "parent": "Bip01 Spine",
+      "skin": 1,
+      "bind": 30
+    },
+    {
+      "name": "Bip01 L Thigh_Bind_1_31",
+      "parent": "Bip01 L Thigh",
+      "skin": 1,
+      "bind": 31
+    },
+    {
+      "name": "Bip01 L Calf_Bind_1_32",
+      "parent": "Bip01 L Calf",
+      "skin": 1,
+      "bind": 32
+    },
+    {
+      "name": "Bip01 L Foot_Bind_1_33",
+      "parent": "Bip01 L Foot",
+      "skin": 1,
+      "bind": 33
+    },
+    {
+      "name": "Bip01 L Toe0_Bind_1_34",
+      "parent": "Bip01 L Toe0",
+      "skin": 1,
+      "bind": 34
+    },
+    {
+      "name": "Bip01 R Thigh_Bind_1_35",
+      "parent": "Bip01 R Thigh",
+      "skin": 1,
+      "bind": 35
+    },
+    {
+      "name": "Bip01 R Calf_Bind_1_36",
+      "parent": "Bip01 R Calf",
+      "skin": 1,
+      "bind": 36
+    },
+    {
+      "name": "Bip01 R Foot_Bind_1_37",
+      "parent": "Bip01 R Foot",
+      "skin": 1,
+      "bind": 37
+    },
+    {
+      "name": "Bip01 R Toe0_Bind_1_38",
+      "parent": "Bip01 R Toe0",
+      "skin": 1,
+      "bind": 38
+    },
+    {
+      "name": "Bip01 Spine1_Bind_1_39",
+      "parent": "Bip01 Spine1",
+      "skin": 1,
+      "bind": 39
+    },
+    {
+      "name": "Bip01 Neck_Bind_1_40",
+      "parent": "Bip01 Neck",
+      "skin": 1,
+      "bind": 40
+    },
+    {
+      "name": "Bip01 Head_Bind_1_41",
+      "parent": "Bip01 Head",
+      "skin": 1,
+      "bind": 41
+    },
+    {
+      "name": "Bip01 L Clavicle_Bind_1_42",
+      "parent": "Bip01 L Clavicle",
+      "skin": 1,
+      "bind": 42
+    },
+    {
+      "name": "Bip01 L UpperArm_Bind_1_43",
+      "parent": "Bip01 L UpperArm",
+      "skin": 1,
+      "bind": 43
+    },
+    {
+      "name": "Bip01 L Forearm_Bind_1_44",
+      "parent": "Bip01 L Forearm",
+      "skin": 1,
+      "bind": 44
+    },
+    {
+      "name": "Bip01 L Hand_Bind_1_45",
+      "parent": "Bip01 L Hand",
+      "skin": 1,
+      "bind": 45
+    },
+    {
+      "name": "Bip01 L Finger0_Bind_1_46",
+      "parent": "Bip01 L Finger0",
+      "skin": 1,
+      "bind": 46
+    },
+    {
+      "name": "l hand gun_Bind_1_47",
+      "parent": "l hand gun",
+      "skin": 1,
+      "bind": 47
+    },
+    {
+      "name": "Bip01 R Clavicle_Bind_1_48",
+      "parent": "Bip01 R Clavicle",
+      "skin": 1,
+      "bind": 48
+    },
+    {
+      "name": "Bip01 R UpperArm_Bind_1_49",
+      "parent": "Bip01 R UpperArm",
+      "skin": 1,
+      "bind": 49
+    },
+    {
+      "name": "Bip01 R Forearm_Bind_1_50",
+      "parent": "Bip01 R Forearm",
+      "skin": 1,
+      "bind": 50
+    },
+    {
+      "name": "Bip01 R Hand_Bind_1_51",
+      "parent": "Bip01 R Hand",
+      "skin": 1,
+      "bind": 51
+    },
+    {
+      "name": "Bip01 R Finger0_Bind_1_52",
+      "parent": "Bip01 R Finger0",
+      "skin": 1,
+      "bind": 52
+    },
+    {
+      "name": "r hand gun_Bind_1_53",
+      "parent": "r hand gun",
+      "skin": 1,
+      "bind": 53
+    },
+    {
+      "name": "fly_bag_Bind_1_54",
+      "parent": "fly_bag",
+      "skin": 1,
+      "bind": 54
+    },
+    {
+      "name": "bullet_bag_Bind_1_55",
+      "parent": "bullet_bag",
+      "skin": 1,
+      "bind": 55
+    },
+    {
+      "name": "Bip01_Bind_3_12",
+      "parent": "Bip01",
+      "skin": 3,
+      "bind": 12
+    }
+  ],
+  "schema": "https://raw.githubusercontent.com/KhronosGroup/glTF/main/specification/2.0/schema/skin.schema.json",
+  "rule": "skin.joints uniqueItems=true; identity children preserve parent global pose"
+}

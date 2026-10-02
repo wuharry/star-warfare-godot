@@ -17,6 +17,10 @@ for node in data["nodes"]:
 for item in data["buffers"] + data["images"]:
     item["uri"] = str((source.parent / item["uri"]).resolve())
 compatible = ROOT / "test_output/cygni_runtime_v2/source_blender.gltf"
+compatible.parent.mkdir(parents=True, exist_ok=True)
+ignore = compatible.parent / ".gdignore"
+if not ignore.exists():
+    ignore.write_text("# Authoring diagnostics are not runtime resources.\n")
 compatible.write_text(json.dumps(data))
 bpy.ops.import_scene.gltf(filepath=str(compatible))
 records = {}

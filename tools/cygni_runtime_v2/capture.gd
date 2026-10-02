@@ -1,0 +1,165 @@
+extends Node3D
+
+const Fixture=preload("res://tests/reload_catalog_fixture.gd")
+const OUT:="res://docs/art/cygni_runtime_v2/review/engine/"
+const NAMES:=["ArmorHead_11","ArmorBody_11","ArmorHand_11","ArmorFoot_11"]
+var baseline: Node3D
+var candidate: Node3D
+var files: Array[String]=[]
+var dimensions: Dictionary={}
+var capture_viewport: SubViewport
+
+func _ready() -> void:
+	_run.call_deferred()
+
+func _run() -> void:
+	get_tree().root.size=Vector2i(640,720)
+	capture_viewport=SubViewport.new()
+	capture_viewport.size=Vector2i(640,720)
+	capture_viewport.own_world_3d=true
+	capture_viewport.msaa_3d=Viewport.MSAA_4X
+	capture_viewport.render_target_update_mode=SubViewport.UPDATE_ALWAYS
+	add_child(capture_viewport)
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT))
+	var real_save:=GameState.save_path
+	var before:=_hash(real_save)
+	GameState.save_path="user://cygni_v2_capture_profile.json"
+	baseline=(load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate()
+	candidate=(load("res://assets/armors/cygni_v2/cygni.scn") as PackedScene).instantiate()
+	var fixture:=Fixture.new()
+	capture_viewport.add_child(fixture)
+	fixture.setup()
+	GameState.save_path="user://cygni_v2_capture_profile.json"
+	GameState.equipped_armor={"head":"armor_head_11","body":"armor_body_11","arms":"armor_arms_11","legs":"armor_legs_11","bag":"armor_bag_00"}
+	fixture.player._apply_recovered_armor_visibility()
+	fixture.label.hide()
+	var player: WarfarePlayer=fixture.player
+	player.recovered_animation_tree.active=false
+	player.recovered_animation_player.stop()
+	player.recovered_skeleton.reset_bone_poses()
+	player.recovered_skeleton.force_update_all_bone_transforms()
+	var hidden: Array[MeshInstance3D]=[]
+	for mesh: MeshInstance3D in player.recovered_avatar.find_children("*","MeshInstance3D",true,false):
+		if not str(mesh.name).begins_with("Armor") and mesh.visible:
+			hidden.append(mesh);mesh.hide()
+	for view: String in ["front","side","rear","quarter"]:
+		_set_ortho(fixture.view_camera,view)
+		for style: String in ["clay","painted","diffuse"]:
+			for version: String in ["original","new"]:
+				_apply(player.recovered_avatar,version,style=="clay",style=="diffuse")
+				await _capture("%s_%s_%s"%[version,style,view])
+	# Compare with the untouched neighbouring suits as well as old Cygni.
+	_set_ortho(fixture.view_camera,"front")
+	for id: int in [10,12]:
+		for part: MeshInstance3D in player.recovered_avatar.find_children("Armor*","MeshInstance3D",true,false):
+			part.visible=str(part.name) in ["ArmorHead_%02d"%id,"ArmorBody_%02d"%id,"ArmorHand_%02d"%id,"ArmorFoot_%02d"%id]
+			if not part.visible:continue
+			var raw:=baseline.find_child(str(part.name),true,false) as MeshInstance3D
+			part.mesh=raw.mesh;part.skin=raw.skin;part.transform=raw.transform
+			part.material_override=null
+			for sid: int in part.mesh.get_surface_count():
+				var mat:=raw.get_active_material(sid).duplicate() as BaseMaterial3D
+				mat.shading_mode=BaseMaterial3D.SHADING_MODE_UNSHADED
+				mat.albedo_color=Color.WHITE
+				part.set_surface_override_material(sid,mat)
+		await _capture("family_original_%02d_front"%id)
+	player._apply_recovered_armor_visibility()
+	for mesh in hidden:mesh.show()
+	fixture.view_camera.projection=Camera3D.PROJECTION_PERSPECTIVE
+	fixture.set_view("front")
+	for clip: String in ["idle_rifle","run_rifle"]:
+		player._play_recovered_animation(clip,0,true)
+		player.recovered_animation_player.seek(.30,true)
+		player.recovered_skeleton.force_update_all_bone_transforms()
+		for version: String in ["original","new"]:
+			_apply(player.recovered_avatar,version,false)
+			await _capture(version+"_"+clip)
+	fixture.begin("gun00",0)
+	for i: int in 8:
+		fixture.advance_to(fixture.duration*float(i)/8.0)
+		for version: String in ["original","new"]:
+			_apply(player.recovered_avatar,version,false)
+			await _capture("%s_reload_%02d"%[version,i])
+	fixture.cleanup()
+	fixture.free()
+	await get_tree().process_frame
+	capture_viewport.size=Vector2i(1280,720)
+	GameState.selected_weapon="gun00"
+	GameState.battle_weapons.assign(["gun00"])
+	GameState.equipped_armor={"head":"armor_head_11","body":"armor_body_11","arms":"armor_arms_11","legs":"armor_legs_11","bag":"armor_bag_00"}
+	GameState.settings.show_touch_controls=false
+	GameState.settings.quality="high"
+	for level: int in [1,8]:
+		seed(1633)
+		GameState.selected_level=level
+		var world: WarfareGameWorld=(load("res://scenes/game.tscn") as PackedScene).instantiate()
+		capture_viewport.add_child(world)
+		world.completed=true
+		world.player.set_physics_process(false)
+		for frame: int in 12:await get_tree().process_frame
+		for version: String in ["original","new"]:
+			_apply(world.player.recovered_avatar,version,false)
+			await _capture("%s_level_%02d_gameplay"%[version,level])
+		world.hud.hide()
+		var camera:=Camera3D.new()
+		world.add_child(camera)
+		camera.fov=40
+		camera.global_position=world.player.global_position+Vector3(3.1,1.8,-3.4)
+		camera.look_at(world.player.global_position+Vector3(0,1.05,0))
+		camera.make_current()
+		for version: String in ["original","new"]:
+			_apply(world.player.recovered_avatar,version,false)
+			await _capture("%s_level_%02d_front"%[version,level])
+		world.free()
+		AudioDirector.stop_all_sfx()
+		await get_tree().process_frame
+	baseline.free()
+	candidate.free()
+	var unchanged:=_hash(real_save)==before
+	GameState.save_path=real_save
+	var report:=FileAccess.open(OUT+"capture.json",FileAccess.WRITE)
+	report.store_string(JSON.stringify({"viewports":{"review":[640,720],"gameplay":[1280,720]},"image_dimensions":dimensions,"renderer":RenderingServer.get_current_rendering_method(),"files":files,"save_unchanged":unchanged,"orthographic_size":2.35,"center":[0,1.04,0],"note":"One new model for all views; original raw mesh/skin preserved for comparison. Poses use actual player and reload fixture; two real levels also captured.","diffuse_views":"White material tint for both versions, so original painted greys can be compared without the glTF pink head tint. Painted views retain original imported tint. This affects captures only, not source assets or gameplay defaults."},"\t"))
+	print("CYGNI_CAPTURE_%s files=%d save_unchanged=%s"%["PASS" if unchanged else "FAIL",files.size(),str(unchanged)])
+	get_tree().quit(0 if unchanged else 1)
+
+func _apply(avatar: Node3D, version: String, clay: bool, neutral: bool=false) -> void:
+	var source:=baseline if version=="original" else candidate
+	for name_key: String in NAMES:
+		var target:=avatar.find_child(name_key,true,false) as MeshInstance3D
+		var part:=source.find_child(name_key,true,false) as MeshInstance3D
+		target.mesh=part.mesh;target.skin=part.skin;target.transform=part.transform
+		target.material_override=null
+		for sid: int in target.get_surface_override_material_count():target.set_surface_override_material(sid,null)
+		if clay:
+			var material:=StandardMaterial3D.new()
+			material.albedo_color=Color(.35,.35,.35)
+			material.roughness=1
+			material.cull_mode=BaseMaterial3D.CULL_DISABLED
+			target.material_override=material
+		elif version=="original":
+			for sid: int in target.mesh.get_surface_count():
+				var material:=part.get_active_material(sid).duplicate() as BaseMaterial3D
+				material.shading_mode=BaseMaterial3D.SHADING_MODE_UNSHADED
+				if neutral:material.albedo_color=Color.WHITE
+				target.set_surface_override_material(sid,material)
+
+func _set_ortho(camera: Camera3D, view: String) -> void:
+	var directions:={"front":Vector3(0,0,-1),"side":Vector3(1,0,0),"rear":Vector3(0,0,1),"quarter":Vector3(.55,.15,-1)}
+	var center:=Vector3(0,1.04,0)
+	camera.projection=Camera3D.PROJECTION_ORTHOGONAL
+	camera.size=2.35
+	camera.global_position=center+directions[view].normalized()*7
+	camera.look_at(center)
+
+func _capture(name_key: String) -> void:
+	await get_tree().process_frame
+	await get_tree().process_frame
+	RenderingServer.force_draw(false)
+	var path:=OUT+name_key+".png"
+	var image:=capture_viewport.get_texture().get_image()
+	assert(image.save_png(path)==OK)
+	dimensions[path]=[image.get_width(),image.get_height()]
+	files.append(path)
+
+func _hash(path: String) -> String:
+	return FileAccess.get_sha256(path) if FileAccess.file_exists(path) else "missing"

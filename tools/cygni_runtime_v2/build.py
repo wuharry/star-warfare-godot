@@ -50,6 +50,7 @@ class Part:
         self.groups = []
         self.source_uv = []
         self.source_materials = []
+        self.source_positions = []
 
     def add(self, verts, faces, role, bone="Bip01 Head", group=""):
         offset = len(self.vertices)
@@ -60,6 +61,7 @@ class Part:
         self.groups.extend([group] * len(faces))
         self.source_uv.extend([None] * len(faces))
         self.source_materials.extend([None] * len(faces))
+        self.source_positions.extend(verts)
 
     def plate(self, xy, role, depth, bone="Bip01 Head", thickness=.012, side=1, group=""):
         # Coordinates are chosen in the original game's Y-up, -Z-front frame.
@@ -74,12 +76,15 @@ class Part:
         mesh = bpy.data.meshes.new(self.name + "Mesh")
         mesh.from_pydata(self.vertices, [], self.faces)
         mesh.update()
-        # Recalculate outward normals for closed panels, then retain faceting.
-        bm = bmesh.new()
-        bm.from_mesh(mesh)
-        bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
-        bm.to_mesh(mesh)
-        bm.free()
+        cage = mesh.attributes.new(name="SourceCage",type="BOOLEAN",domain="FACE")
+        for i,mat in enumerate(self.source_materials):cage.data[i].value=mat is not None
+        source_face = mesh.attributes.new(name="SourceFace",type="INT",domain="FACE")
+        for i,mat in enumerate(self.source_materials):source_face.data[i].value=i if mat else -1
+        position = mesh.attributes.new(name="SourceGamePoint",type="FLOAT_VECTOR",domain="POINT")
+        for i,point in enumerate(self.source_positions):position.data[i].vector=point
+        # Assign source UVs while the loop order still matches self.faces.
+        # Reversing normals first changes the vertex order of some faces and
+        # would attach their original UVs to the wrong corners.
         ob = bpy.data.objects.new(self.name, mesh)
         bpy.context.scene.collection.objects.link(ob)
         for role in PALETTE:
@@ -120,6 +125,22 @@ class Part:
         bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
         bm.to_mesh(mesh)
         bm.free()
+        # Check corner correspondence, not just UV range or posed bounds.
+        # Those checks cannot detect a UV attached to the wrong vertex.
+        checked = 0
+        for poly in mesh.polygons:
+            source_index = mesh.attributes["SourceFace"].data[poly.index].value
+            if source_index < 0:
+                continue
+            expected = [(Vector(self.source_positions[vi]), Vector(uv))
+                        for vi,uv in zip(self.faces[source_index],self.source_uv[source_index])]
+            for li in poly.loop_indices:
+                point = mesh.attributes["SourceGamePoint"].data[mesh.loops[li].vertex_index].vector
+                original,uv = min(expected,key=lambda pair:(pair[0]-point).length_squared)
+                if (original-point).length>0.00002 or (mesh.uv_layers["OriginalUV"].data[li].uv-uv).length>0.000001:
+                    raise ValueError(f"Source UV corner mismatch: {self.name} face {source_index}")
+            checked += 1
+        ob["source_uv_checked_faces"] = checked
         mesh.transform(C)
         modifier = ob.modifiers.new("OriginalGameRig", "ARMATURE")
         modifier.object = rig
@@ -127,64 +148,31 @@ class Part:
         return ob
 
 
-def helmet():
-    p = Part("ArmorHead_11")
-    # Crown/rear shell: the front stops at the brow, leaving a real visor opening.
-    # Ring stations follow the original helmet envelope, not adult concept scale.
-    stations = [(1.35, .135, .12, .095), (1.48, .205, .19, .13),
-                (1.69, .238, .28, .19), (1.82, .236, .29, .19),
-                (1.925, .17, .205, .14), (1.9784, .09, .12, .07)]
-    n = 16
-    verts = []
-    for y, w, front, back in stations:
-        for j in range(n):
-            a = 2 * math.pi * j/n
-            verts.append((w * math.sin(a), y, -.035 - math.cos(a)*(front if math.cos(a)>0 else back)))
-    faces = []
-    for k in range(len(stations)-1):
-        for j in range(n):
-            # Remove the central forward sector below brow height.
-            if k < 2 and (j in [0, 1, 2, 13, 14, 15]):
-                continue
-            faces.append((k*n+j, k*n+(j+1)%n, (k+1)*n+(j+1)%n, (k+1)*n+j))
-    faces += [tuple(range((len(stations)-1)*n, len(verts))), tuple(range(n))[::-1]]
-    p.add(verts, faces, "white", group="shell")
-    face_z = lambda x,y: -.387 + 1.72*x*x + .065*(1.69-y)
-    # Visor perimeter and central stem are one continuous curved glass insert.
-    upper = [(-.208,1.753),(-.135,1.769),(-.068,1.758),(0,1.741),(.068,1.758),(.135,1.769),(.208,1.753)]
-    lower = [(-.195,1.655),(-.132,1.632),(-.070,1.590),(0,1.583),(.070,1.590),(.132,1.632),(.195,1.655)]
-    vv = [(x,y,face_z(x,y)) for x,y in upper+lower]
-    vf = [(i,i+1,i+8,i+7) for i in range(6)]
-    vv += [(-.056,1.430,face_z(-.056,1.430)),(0,1.391,face_z(0,1.391)),(.056,1.430,face_z(.056,1.430))]
-    vf += [(9,10,15,14),(10,11,16,15)]
-    p.add(vv, vf, "gold", group="visor")
-    # Seal and sloping cheek structures connect the glass to the side shell.
-    for s in [-1,1]:
-        # Join the face perimeter to the rear shell with actual side volume.
-        # A front mask hovering in front of a crown was a rejected earlier fault.
-        contour=[(.218,1.753),(.237,1.624),(.188,1.459),(.104,1.338)]
-        front=[(s*x,y,face_z(x,y)+.018) for x,y in contour]
-        middle=[(s*x,y,z) for x,y,z in [(.244,1.753,-.165),(.241,1.624,-.148),(.208,1.459,-.131),(.145,1.338,-.104)]]
-        rear=[(s*x,y,-.027) for x,y in [(.235,1.753),(.232,1.624),(.205,1.459),(.135,1.350)]]
-        joins=[(j,j+1,j+5,j+4) for j in range(3)]+[(j+4,j+5,j+9,j+8) for j in range(3)]
-        p.add(front+middle+rear,joins,"white",group="side_cheek_connection")
-        p.plate([(.064,1.583),(.198,1.650),(.211,1.749),(.232,1.735),(.224,1.618),(.088,1.567),(.071,1.419),(.058,1.420)], "black", lambda x,y:face_z(x,y)+.008, side=s, group="seal")
-        p.plate([(.208,1.68),(.237,1.624),(.188,1.459),(.104,1.338),(.047,1.338),(.071,1.431),(.085,1.593),(.185,1.634)], "white", face_z, side=s, thickness=.031, group="cheek")
-        # Inset vent is a dark face on a bevel, not a separate round ear button.
-        p.plate([(.145,1.526),(.185,1.565),(.185,1.524),(.125,1.445),(.112,1.453)], "green", lambda x,y:face_z(x,y)-.005, side=s, thickness=.005, group="vent")
-        p.plate([(.064,1.802),(.116,1.845),(.207,1.799),(.218,1.739),(.123,1.745)], "white", lambda x,y:face_z(x,y)-.002, side=s, thickness=.018, group="brow")
-        p.plate([(.180,1.814),(.204,1.801),(.207,1.772),(.182,1.788)], "copper", lambda x,y:face_z(x,y)-.006, side=s, thickness=.003, group="indicator")
-        # Two short swept fins with angular ear brackets, visible in silhouette.
-        for y, z, endx in [(1.750,.04,.341),(1.625,.085,.312)]:
-            p.plate([(.219,y),(.250,y-.011),(endx,y+.103),(endx-.012,y+.051),(.259,y-.051)], "white", z, side=s, thickness=.055, group="fin")
-            p.plate([(.267,y+.021),(endx-.016,y+.077),(endx-.020,y+.045),(.267,y-.002)], "copper", z-.003, side=s, thickness=.004, group="fin_insert")
-    p.plate([(-.10,1.901),(-.077,1.952),(0,1.976),(.077,1.952),(.10,1.901),(.061,1.84),(-.061,1.84)], "white", lambda x,y:-.185-(1.95-y)*1.3, thickness=.014, group="crown")
-    p.plate([(-.051,1.392),(-.040,1.334),(0,1.317),(.040,1.334),(.051,1.392),(0,1.407)], "white", face_z, thickness=.026, group="chin")
-    # Rear shell patch and neck seal preserve a dark moving joint beneath helmet.
-    p.plate([(-.077,1.565),(-.070,1.66),(.070,1.66),(.077,1.565)], "green", .159, thickness=.014, group="rear_vent")
-    v = [(r*math.sin(2*math.pi*j/12),y,.055+r*math.cos(2*math.pi*j/12)) for y,r in [(1.210,.102),(1.355,.125)] for j in range(12)]
-    p.add(v, [(j,(j+1)%12,(j+1)%12+12,j+12) for j in range(12)], "black", "Bip01 Neck", "neck")
-    return p
+def helmet(original, rig):
+    """Reshape the continuous legacy cage, preserving its broad mirrored UVs.
+
+    The approved concept asks for a compact chin and swept cheeks. The values
+    below are inferred adaptations at SW scale, not adult concept dimensions.
+    No extra brow/cheek plates are stacked onto the face.
+    """
+    part = source_part(original, rig)
+    for i, (x, y, z) in enumerate(part.vertices):
+        if part.weights[i].get("Bip01 Head", 0) < .99:
+            continue  # The original small collar follows Spine1.
+        if y < 1.68:
+            y = 1.68 + (y - 1.68) * .72  # Shorten the old elongated jaw/nape.
+        if y > 1.86:
+            y = 1.86 + (y - 1.86) * .72  # Round the high pointed crown.
+        if z < -.26:
+            z = -.26 + (z + .26) * .72  # Pull the projecting face back.
+        if z < -.10:
+            cheek = max(0, min(1, (1.68 - y) / .25))
+            x *= 1.035 - .10 * cheek
+        if abs(x) > .23 and z > .04:
+            x = math.copysign(.23 + (abs(x) - .23) * .72, x)
+            y = 1.69 + (y - 1.69) * .82  # Short, swept side fins.
+        part.vertices[i] = (x, y, z)
+    return part
 
 
 def source_part(original, rig):
@@ -192,6 +180,7 @@ def source_part(original, rig):
     # weldable without changing the old cage's silhouette.
     p = Part(original.name)
     p.vertices = [tuple(original.matrix_world @ v.co) for v in original.data.vertices]
+    p.source_positions = list(p.vertices)
     names = {g.index:g.name for g in original.vertex_groups}
     p.weights = [{names[g.group]:g.weight for g in v.groups if g.weight>1e-8} for v in original.data.vertices]
     source_uv = original.data.uv_layers.active
@@ -232,6 +221,16 @@ def reshape_body(p):
 
 
 def unwrap(ob):
+    # The head keeps the source atlas coordinates and mirrored reuse exactly.
+    if ob.name == "ArmorHead_11":
+        target = ob.data.uv_layers.new(name="TargetUV")
+        original = ob.data.uv_layers["OriginalUV"]
+        for src, dst in zip(original.data, target.data):
+            dst.uv = src.uv
+        ob.data.uv_layers.active = target
+        target.active_render = True
+        ob["uv_method"] = "continuous source charts; mirrored reuse retained"
+        return
     bpy.ops.object.select_all(action="DESELECT")
     ob.select_set(True)
     bpy.context.view_layer.objects.active = ob
@@ -306,7 +305,7 @@ def main():
     # Capture immutable original rests before rotating the presentation frame.
     rests={b.name:[list(r) for r in rig.matrix_world @ b.matrix_local] for b in rig.data.bones}
     source_matrices={ob:ob.matrix_world.copy() for ob in sources.values()}
-    models={"Head":helmet(),"Body":reshape_body(source_part(sources["ArmorBody_11"],rig)),"Hand":source_part(sources["ArmorHand_11"],rig),"Foot":source_part(sources["ArmorFoot_11"],rig)}
+    models={"Head":helmet(sources["ArmorHead_11"],rig),"Body":reshape_body(source_part(sources["ArmorBody_11"],rig)),"Hand":source_part(sources["ArmorHand_11"],rig),"Foot":source_part(sources["ArmorFoot_11"],rig)}
     for role,color in PALETTE.items():emission("Guide_"+role,color)
     for ob in list(imported):
         if ob not in sources.values() and ob!=rig:bpy.data.objects.remove(ob,do_unlink=True)
@@ -340,8 +339,11 @@ def main():
     for ob in low:
         pts=[C.inverted() @ v.co for v in ob.data.vertices]
         ob.data.calc_loop_triangles()
-        manifest["parts"][ob.name]={"vertices":len(pts),"triangles":len(ob.data.loop_triangles),"bounds_game":{"min":[min(p[i] for p in pts) for i in range(3)],"max":[max(p[i] for p in pts) for i in range(3)]}}
+        manifest["parts"][ob.name]={"vertices":len(pts),"triangles":len(ob.data.loop_triangles),"source_uv_checked_faces":ob["source_uv_checked_faces"],"binding":"legacy" if ob.name=="ArmorHead_11" else "legacy_or_appended", "uv_method":ob.get("uv_method","checkpoint automatic projection"),"bounds_game":{"min":[min(p[i] for p in pts) for i in range(3)],"max":[max(p[i] for p in pts) for i in range(3)]}}
     (WORK/"build"/"geometry.json").write_text(json.dumps(manifest,indent=2))
+    uv_report = {"status":"PASS source corner correspondence", "parts":{ob.name:int(ob["source_uv_checked_faces"]) for ob in low}}
+    uv_report["faces_checked"] = sum(uv_report["parts"].values())
+    (WORK/"review"/"source_uv_validation.json").write_text(json.dumps(uv_report,indent=2)+"\n")
     bpy.context.preferences.filepaths.save_version=0
     bpy.ops.wm.save_as_mainfile(filepath=str(WORK/"CH_Cygni_master.blend"))
     print("CYGNI_GEOMETRY_BUILT",json.dumps(manifest["parts"]))
