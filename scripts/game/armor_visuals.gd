@@ -2,27 +2,13 @@ extends RefCounted
 
 const Catalog = preload("res://scripts/core/armor_catalog.gd")
 const ORIGINAL_PART_PREFIXES := ["ArmorHead_", "ArmorBody_", "ArmorHand_", "ArmorFoot_"]
-const REWORKED_SCENES := {
-	0: "res://assets/armors/viper/viper.scn",
-	6: "res://assets/armors/thunder/thunder.scn",
-}
+const REWORKED_SCENES := {}
 
 
 static func reworked_scene_path(visual_id: int) -> String:
-	# Development comparison uses the same loader in gameplay and the store.
-	if visual_id == 6:
-		for argument in OS.get_cmdline_user_args():
-			if argument == "--thunder-helmet=prototype":
-				return "res://assets/armors/thunder/thunder_prototype.scn"
-			if argument == "--thunder-helmet=sw2":
-				return "res://assets/armors/thunder/thunder_sw2.scn"
-			# The original SW1 helmet mesh wearing Viper's fitted panels.
-			if argument == "--thunder-helmet=original":
-				return "res://assets/armors/thunder/thunder_original.scn"
-	elif visual_id == 0 and "--armor-style=legacy" not in OS.get_cmdline_user_args():
-		var angular_path := "res://assets/armors/angular/armor_%02d.scn" % visual_id
-		if ResourceLoader.exists(angular_path):
-			return angular_path
+	# Backup branch: retain original geometry with the existing HD diffuse.
+	# In particular, thunder_original.scn still adds fitted panels; the genuine
+	# original Thunder helmet lives in the refinement-only armor_06 scene.
 	return str(REWORKED_SCENES.get(visual_id, "res://assets/equipment_refined/armors/armor_%02d.scn" % visual_id))
 
 
@@ -72,13 +58,22 @@ static func _ensure_reworked_parts(avatar: Node3D, skeleton: Skeleton3D, visual_
 				continue
 			var existing := avatar.find_child(str(replacement.name), true, false) as MeshInstance3D
 			if existing != null:
+				var original_mesh := existing.mesh
 				# Keep node paths stable for animation tracks and mixed equipment.
 				existing.material_override = null
 				for surface in existing.get_surface_override_material_count():
 					existing.set_surface_override_material(surface, null)
-				existing.mesh = replacement.mesh
-				existing.skin = replacement.skin
-				existing.transform = replacement.transform
+				if visual_id < Catalog.CALLOFMINI_FIRST_ID:
+					# HD scenes include bevelled geometry. This backup keeps the
+					# exact SW1 source cage/UV/skin and adopts only their HD paint.
+					var painted_original := original_mesh.duplicate() as ArrayMesh
+					for surface: int in painted_original.get_surface_count():
+						painted_original.surface_set_material(surface, replacement.get_active_material(surface))
+					existing.mesh = painted_original
+				else:
+					existing.mesh = replacement.mesh
+					existing.skin = replacement.skin
+					existing.transform = replacement.transform
 				existing.extra_cull_margin = replacement.extra_cull_margin
 				existing.set_meta("armor_rework", replacement.get_meta("armor_rework"))
 			else:
