@@ -69,6 +69,9 @@ h2#design-title{font-size:clamp(1.4rem,2.5vw,2rem);margin:0;line-height:1.35;ove
 .image-button{position:relative;border:0;background:#11171b;display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:3/4;padding:12px}
 .image-button img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;display:block}
 .image-button:hover:not(:disabled){background:#19232a}
+.image-button.helmet-focus{overflow:hidden;padding:0}
+.image-button.helmet-focus img{position:absolute;max-width:none;max-height:none;width:300%;height:auto;left:-100%;top:0}
+.helmet-controls{display:flex;flex-wrap:wrap;gap:6px}
 .empty-art{color:var(--muted);font-size:.84rem;max-width:22ch;text-align:center;margin:0;line-height:1.8}
 .empty-art strong{display:block;color:var(--warm);font-weight:500;margin-bottom:8px}
 .figure-controls{padding:10px 12px 12px;margin-top:auto;min-height:69px;display:flex;flex-direction:column;gap:7px}
@@ -187,7 +190,7 @@ dialog::backdrop{background:rgba(0,0,0,.86)}
             <img id="result-image" alt="" hidden><p class="empty-art" id="result-empty"><strong>新稿尚未完成</strong>先查看原裝備、Halo 參考與下方融合方案。</p>
           </button>
           </div>
-          <div class="figure-controls"><div class="view-tabs" id="view-tabs" role="tablist" aria-label="新設計視圖"></div><button id="toggle-previous" class="reference-option" type="button" hidden>查看修改前</button><p class="figure-note" id="result-view-note"></p></div>
+          <div class="figure-controls"><div class="view-tabs" id="view-tabs" role="tablist" aria-label="新設計視圖"></div><div id="helmet-controls" class="helmet-controls" role="group" aria-label="新版頭盔顯示範圍" hidden><button id="helmet-focus" class="reference-option" type="button" aria-pressed="true">頭盔放大</button><button id="helmet-full" class="reference-option" type="button" aria-pressed="false">全身原圖</button></div><button id="toggle-previous" class="reference-option" type="button" hidden>查看修改前</button><p class="figure-note" id="result-view-note"></p></div>
         </figure>
       </section>
       <section class="panel" aria-labelledby="fusion-heading">
@@ -223,8 +226,8 @@ dialog::backdrop{background:rgba(0,0,0,.86)}
 'use strict';
 const catalog = JSON.parse(document.getElementById('catalog').textContent);
 const byId = new Map(catalog.map(item => [item.design_id, item]));
-const viewLabels = {preferred_concept:'保留的舊概念',concept:'全身概念',turnaround:'三視圖',construction:'結構拆解',design_sheet:'背包設計稿'};
-const viewOrder = ['preferred_concept','concept','turnaround','construction','design_sheet'];
+const viewLabels = {helmet_reference:'新版頭盔',preferred_concept:'保留的舊概念',concept:'全身概念',turnaround:'三視圖',construction:'結構拆解',design_sheet:'背包設計稿'};
+const viewOrder = ['helmet_reference','preferred_concept','concept','turnaround','construction','design_sheet'];
 let initialHash='';try{initialHash=decodeURIComponent(location.hash.slice(1))}catch{}
 const state = {kind:'all',query:'',id:byId.has(initialHash)?initialHash:(byId.has('C-01')?'C-01':catalog[0]?.design_id),view:null};
 const element = id => document.getElementById(id);
@@ -232,10 +235,11 @@ const text = (id,value) => {element(id).textContent=value == null?'':String(valu
 const kindLabel = kind => kind==='backpack'?'背包':'裝甲';
 const cleanPath = value => typeof value==='string'&&value.trim()&&!/^(javascript|data|vbscript):/i.test(value.trim())?value.trim():'';
 const preferredArt = item => item.user_review?.preferred_art;
-const displayImages = item => preferredArt(item)?{preferred_concept:preferredArt(item).path,...item.images}:item.images;
+const helmetArt = item => cleanPath(item.helmet_art?.path)?item.helmet_art:null;
+const displayImages = item => ({...(helmetArt(item)?{helmet_reference:helmetArt(item).path}:{}),...(preferredArt(item)?{preferred_concept:preferredArt(item).path}:{}),...item.images});
 const availableViews = item => viewOrder.filter(key=>cleanPath(displayImages(item)?.[key]));
-const viewLabel = (item,key) => (preferredArt(item)&&key!=='preferred_concept'?'未採用版本 · ':'')+(viewLabels[key]||key);
-const reviewLabel = item => preferredArt(item)?'保留舊稿':item.user_review?.status==='keep_current_design'?'保留目前設計':item.user_review?.status==='helmet_revision_pending_user_review'?'頭盔已改稿，待評價':'';
+const viewLabel = (item,key) => key==='helmet_reference'?viewLabels[key]:(preferredArt(item)&&key!=='preferred_concept'?'未採用版本 · ':helmetArt(item)&&key!=='preferred_concept'?'既有版本 · ':'')+(viewLabels[key]||key);
+const reviewLabel = item => helmetArt(item)?'已加入新版頭盔':preferredArt(item)?'保留舊稿':item.user_review?.status==='keep_current_design'?'保留目前設計':item.user_review?.status==='helmet_revision_pending_user_review'?'頭盔已改稿，待評價':'';
 const asArray = value => Array.isArray(value)?value:[];
 const plain = value => {
   if(value==null)return '';
@@ -307,6 +311,12 @@ function renderStats(item){
     body.textContent=typeof ability==='string'?ability:[ability.trigger?'觸發：'+plain(ability.trigger):'',plain(ability.effect||ability.description||ability.summary||ability.proposed_effect||ability.design_reason||'技能說明待補。'),ability.limits?'限制：'+plain(ability.limits):''].filter(Boolean).join('\n');card.append(heading,body);output.append(card);
   }
 }
+function setHelmetFocus(zoom){
+  state.helmetFocus=zoom;
+  element('result-image-button').classList.toggle('helmet-focus',state.view==='helmet_reference'&&zoom);
+  element('helmet-focus').setAttribute('aria-pressed',String(zoom));
+  element('helmet-full').setAttribute('aria-pressed',String(!zoom));
+}
 function selectView(key,{focus=false,previous=false}={}){
   const item=byId.get(state.id),views=availableViews(item);state.view=views.includes(key)?key:views[0]||null;
   const tabs=element('view-tabs');tabs.replaceChildren();
@@ -318,14 +328,17 @@ function selectView(key,{focus=false,previous=false}={}){
   const before=item.user_review?.previous_revision;
   state.previous=!!(previous&&cleanPath(before?.images?.[state.view]));
   const path=state.previous?before.images[state.view]:state.view?displayImages(item)[state.view]:'';
-  const asset=state.previous?{prompt:before.prompts?.[state.view],visual_review:'修改前版本，已由本次頭盔修訂取代。'}:state.view==='preferred_concept'?preferredArt(item):asArray(item._assets).find(entry=>entry.path===path||entry.kind===state.view);
+  const asset=state.previous?{prompt:before.prompts?.[state.view],visual_review:'修改前版本，已由本次頭盔修訂取代。'}:state.view==='helmet_reference'?helmetArt(item):state.view==='preferred_concept'?preferredArt(item):asArray(item._assets).find(entry=>entry.path===path||entry.kind===state.view);
   const toggle=element('toggle-previous');toggle.hidden=!cleanPath(before?.images?.[state.view]);toggle.textContent=state.previous?'返回修改後':'查看修改前';toggle.setAttribute('aria-pressed',String(state.previous));
   toggle.onclick=()=>selectView(state.view,{previous:!state.previous});
+  const isHelmet=state.view==='helmet_reference';
+  element('helmet-controls').hidden=!isHelmet;
+  setHelmetFocus(state.helmetFocus!==false);
   const name=item.working_name_zh||item.legacy_name;
   setImage('result',path,name+'｜'+(state.previous?'修改前 · ':'')+(state.view?viewLabel(item,state.view):'新設計'));
   if(!path)element('result-empty').innerHTML='<strong>新稿尚未完成</strong>先查看原裝備、Halo 參考與下方融合方案。';
   text('result-caption',(state.previous?'修改前 · ':'')+(state.view?viewLabel(item,state.view):'尚未生成'));
-  text('result-view-note',state.previous?'修改前版本：'+(item.user_review?.feedback||'已由本輪修訂取代。'):preferredArt(item)?(state.view==='preferred_concept'?preferredArt(item).note:'此圖屬未採用的 C-07 融合方案，保留作歷史比較。'):path?'概念參考，尚非遊戲模型或 UV 貼圖。':'完成後會在此顯示新稿。');
+  text('result-view-note',state.previous?'修改前版本：'+(item.user_review?.feedback||'已由本輪修訂取代。'):isHelmet?helmetArt(item).note:preferredArt(item)?(state.view==='preferred_concept'?preferredArt(item).note:'此圖屬未採用的 C-07 融合方案，保留作歷史比較。'):helmetArt(item)?'既有配套圖，尚未同步新版頭盔；可切回「新版頭盔」查看本次參考。':path?'概念參考，尚非遊戲模型或 UV 貼圖。':'完成後會在此顯示新稿。');
   if(views.length)element('result-image-panel').setAttribute('role','tabpanel');else element('result-image-panel').removeAttribute('role');
   if(state.view)element('result-image-panel').setAttribute('aria-labelledby','view-'+state.view);else element('result-image-panel').removeAttribute('aria-labelledby');
   link('original-image',path);link('actual-prompt',asset?.prompt);text('asset-review',asset?.visual_review?'本稿檢視：'+plain(asset.visual_review):'');
@@ -333,14 +346,17 @@ function selectView(key,{focus=false,previous=false}={}){
 }
 function selectDesign(id,{updateHash=true}={}){
   const item=byId.get(id);if(!item)return;
-  const previousView=state.id!==id&&preferredArt(item)?'preferred_concept':state.view;state.id=id;
+  const changed=state.id!==id;
+  const previousView=changed&&helmetArt(item)?'helmet_reference':changed&&preferredArt(item)?'preferred_concept':state.view;
+  if(changed)state.helmetFocus=true;
+  state.id=id;
   if(updateHash&&location.hash!=='#'+id)history.replaceState(null,'','#'+encodeURIComponent(id));
   text('mapping',item.legacy_name+' · '+kindLabel(item.kind)+' ID '+item.legacy_id+' → '+item.design_id);
   text('name-zh',item.working_name_zh||item.legacy_name);text('name-en',item.working_name_en||'');text('design-code',item.design_id+' · '+kindLabel(item.kind));
-  const views=availableViews(item),expected=item.kind==='backpack'?1:3;
-  const status=element('image-status');status.className='tag '+(views.length?'ready':'pending');status.textContent=preferredArt(item)?'舊概念已恢復 · 配套三視待同步':views.length?'新稿 '+views.length+' / '+expected+' 張':'待重新生成';
-  const review=element('user-review-status');review.textContent=reviewLabel(item);review.hidden=!review.textContent;review.title=item.user_review?.feedback||'';
-  const reviewNote=element('user-review-note');reviewNote.textContent=item.user_review?.action||'';reviewNote.hidden=!reviewNote.textContent;
+  const views=availableViews(item),expected=item.kind==='backpack'?1:3,delivered=Object.values(item.images||{}).filter(cleanPath).length;
+  const status=element('image-status');status.className='tag '+(views.length?'ready':'pending');status.textContent=helmetArt(item)?'新版頭盔已加入 · 配套圖待同步':preferredArt(item)?'舊概念已恢復 · 配套三視待同步':views.length?'新稿 '+delivered+' / '+expected+' 張':'待重新生成';
+  const review=element('user-review-status');review.textContent=reviewLabel(item);review.hidden=!review.textContent;review.title=helmetArt(item)?.note||item.user_review?.feedback||'';
+  const reviewNote=element('user-review-note');reviewNote.textContent=helmetArt(item)?.note||item.user_review?.action||'';reviewNote.hidden=!reviewNote.textContent;
   text('halo-variant',item.halo?.variant||'Halo 款式待補');text('halo-game',item.halo?.game?' · '+item.halo.game:'');link('halo-source',item.halo?.url);link('source-file',item.source_file);
   text('legacy-caption',item.legacy_name+' · ID '+item.legacy_id);text('halo-caption',(item.halo?.game?item.halo.game+' · ':'')+(item.halo?.variant||'待補'));
   renderReferences('legacy',item.legacy_refs,item.legacy_name+' 原遊戲');
@@ -351,6 +367,8 @@ function selectDesign(id,{updateHash=true}={}){
   renderStats(item);selectView(previousView);
   for(const card of document.querySelectorAll('.catalog-card'))card.setAttribute('aria-pressed',String(card.dataset.id===id));
 }
+element('helmet-focus').addEventListener('click',()=>setHelmetFocus(true));
+element('helmet-full').addEventListener('click',()=>setHelmetFocus(false));
 for(const button of document.querySelectorAll('.filter'))button.addEventListener('click',()=>{
   state.kind=button.dataset.kind;renderList();const items=filteredItems();if(items.length&&!items.some(item=>item.design_id===state.id))selectDesign(items[0].design_id);
 });

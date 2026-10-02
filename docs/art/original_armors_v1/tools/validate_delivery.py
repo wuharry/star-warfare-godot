@@ -203,10 +203,43 @@ class Validator:
             path = self.expected[(did, kind)]
             self.check(d.get('images', {}).get(kind) == path, 'design_image', f'{did}/{kind}', f'Expected {path}')
             self.check(d.get('production_status', {}).get(kind) == PRODUCTION_REVIEWED, 'unreviewed_design_image', f'{did}/{kind}', 'Missing reviewed production status')
+        if 'helmet_art' in d:
+            self.helmet_art(did, d['helmet_art'])
+
+    def helmet_art(self, did, art):
+        """Check an imported helmet reference separately from generated delivery sheets."""
+        if not self.check(isinstance(art, dict), 'helmet_art_schema', did, 'Helmet art must be an object'):
+            return
+        self.check(str(did).startswith('C-') and art.get('scope') == 'helmet_only',
+                   'helmet_art_scope', did, 'Helmet reference must target an armor and remain helmet_only')
+        commit = art.get('source_commit')
+        self.check(isinstance(commit, str) and re.fullmatch(r'[0-9a-fA-F]{40}', commit) is not None,
+                   'helmet_art_commit', did, 'Expected a full 40-character source commit hash')
+        dimensions = art.get('dimensions')
+        self.check(isinstance(dimensions, list) and len(dimensions) == 2
+                   and all(type(value) is int and value > 0 for value in dimensions),
+                   'helmet_art_dimensions', did, 'Expected two positive pixel dimensions; JPEG dimensions are not decoded here')
+        relative = art.get('path')
+        path = None
+        if self.check(isinstance(relative, str) and bool(relative), 'invalid_local_path',
+                      f'{did}/helmet_art/path', 'Expected a nonempty portable relative path'):
+            candidate = (ART / relative).resolve()
+            safe = not Path(relative).is_absolute() and candidate.is_relative_to(ROOT.resolve())
+            if self.check(safe, 'nonportable_path', f'{did}/helmet_art/path', relative):
+                path = self.local(candidate.relative_to(ROOT.resolve()).as_posix(), f'{did}/helmet_art/path', ROOT)
+        source = self.local(art.get('source_repo_path'), f'{did}/helmet_art/source_repo_path', ROOT)
+        if path:
+            self.check(self.digest(path) == art.get('sha256'), 'helmet_art_hash', did, 'Helmet reference differs from its recorded hash')
+            self.check(path.stat().st_size == art.get('bytes'), 'helmet_art_bytes', did, 'Helmet reference length differs from metadata')
+        if path and source:
+            self.check(path == source, 'helmet_art_source_path', did, 'Gallery path and repository source path must identify the same file')
 
     def manifest(self):
         manifest = self.load(ART / 'manifest.json')
         self.check(manifest.get('runtime_changed') is False, 'manifest_runtime', 'manifest', 'Runtime must remain unchanged')
+        helmet_art = {did: d['helmet_art'] for did, d in self.designs.items() if 'helmet_art' in d}
+        self.check(manifest.get('helmet_art', {}) == helmet_art, 'manifest_helmet_art', 'manifest',
+                   'Helmet references must match the design metadata and stay separate from selected delivery sheets')
         scope = manifest.get('scope', {})
         self.check(all(scope.get(k) == v for k, v in {'armors': 21, 'backpacks': 25, 'expected_selected_images': 88}.items()), 'manifest_scope', 'manifest', 'Expected 21 / 25 / 88 scope')
         for asset in manifest.get('assets', []):
@@ -290,6 +323,8 @@ class Validator:
                 self.check(entry.get(field) == d.get(field), 'catalog_metadata', f'{did}/{field}', 'Catalog is stale')
             review = d.get('user_review')
             self.check(entry.get('user_review') == review, 'catalog_user_review', did, 'Gallery must preserve user selection')
+            self.check(entry.get('helmet_art') == d.get('helmet_art'), 'catalog_helmet_art', did,
+                       'Gallery helmet reference must match the design metadata')
             if review and review.get('previous_revision'):
                 before = review['previous_revision']
                 self.check(set(before.get('images', {})) == set(before.get('prompts', {})), 'previous_art_pairs', did, 'Every previous image needs its actual prompt')

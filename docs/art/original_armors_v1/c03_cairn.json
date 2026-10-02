@@ -292,5 +292,27 @@
       "design_snapshot": "revisions/c03_flat_visor_rejected_20260928/design_rejected.json"
     },
     "revision_direction": "沒有之前原版的 tank 的那種強烈的風格；護目鏡或是面罩保持原本的話勒。"
+  },
+  "helmet_art": {
+    "path": "../fusion_v2_generated/c03_tank_fusion.jpg",
+    "label": "Tank · 新版頭盔",
+    "source_commit": "25f11d9a52ab1bc2c4f63dc509f1fcb0943589f5",
+    "source_repo_path": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
+    "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49",
+    "dimensions": [
+      848,
+      1264
+    ],
+    "bytes": 634321,
+    "scope": "helmet_only",
+    "status": "user_requested_helmet_reference",
+    "date_added": "2026-10-02",
+    "note": "以這張圖的頭盔作本次修改參考；可切換全身原圖。既有全身概念、三視與拆解尚未同步這次頭盔。",
+    "visual_review": "已目視：藍綠分節頭冠、圓耳盤、橙金面窗與向上尖起的中央下巴護片。來源為使用者指定提交中的完整人物 JPG；本次直接引用原檔，沒有合成或重新生成。",
+    "generation": {
+      "tool": null,
+      "prompt": null,
+      "status": "not_recorded_in_source_commit"
+    }
   }
 }
