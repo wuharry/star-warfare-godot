@@ -1,0 +1,48 @@
+Translate the supplied NEW armor concept into the visual language of the supplied ORIGINAL mobile-game armor assets.
+
+REFERENCE RESPONSIBILITIES
+A — Original in-game mesh views: authority for game-scale body proportions, joint locations, thickness hierarchy and readable silhouette mass.
+B — Original diffuse atlases: authority for painted lighting, edge treatment, surface detail frequency and material separation. They do not dictate the new design or its UV layout.
+C — New approved concept: authority for design identity, helmet/visor shape, plate arrangement and color placement. Its realistic anatomy, cinematic lighting and microscopic detail are NOT target style.
+D — Target mesh renders, exact UV layout and material-region masks, when provided: authority for texture placement. A missing D must never be invented and described as a working UV atlas.
+Explicit user corrections override reference-image artifacts, such as a pink/red imported helmet tint.
+
+STYLE FAMILY
+Use {STYLE_FAMILY: Star Warfare or Call of Mini}, matching the chosen old model, not an average of both games. Make it look authored alongside that old model. Human wearing hard-surface armor: enclosed helmet, broad chest and shoulder plates, compact torso, short sturdy limbs, substantial gloves and boots, dark flexible joints. Preserve the selected game skeleton's limb lengths and body mass. Translate the new concept onto those proportions. Do not turn it into an adult realistic soldier, a slender action figure, a smooth toy, a voxel doll or an exposed-piston robot.
+
+SHAPE HIERARCHY
+Read the helmet, chest, shoulders, forearms and shin/boot masses before small detail. Use broad faceted planes and controlled curved transitions. Keep neck, elbow, hip and knee gaps readable and functional. Real geometry must carry silhouette-changing fins, cheek volume, visor recess, shoulder overhang and plate thickness. Paint can describe small seams, screws and bevel highlights. Preserve {DESIGN_IDENTITY_FEATURES}; simplify minor segmentation rather than erasing those features. Do not clone the old helmet contour if the concept intentionally changes it. Do not lock every armor to Cygni's long chin or Chaos's horn dimensions.
+
+PAINTING AND MATERIALS
+Painted diffuse with broad, restrained light-to-dark gradients across each surface; lighter exposed edges and dark recessed seams imply the low-poly volume. Orient the painted lighting by the surface in 3D, not by the top edge of the atlas. Keep some quiet plate interiors. Allow sparse readable wear, a few fasteners, vents or symbols only where the reference supports them. Keep cloth/rubber mostly dark, with localized coarse ribbing or fabric pattern. Visors use simple painted reflection bands and color depth; do not require physical transparency. Opaque metal faceplates stay metal when the concept has no visor. Avoid dense scratches, noisy brushed-metal grain, all-over hexagons, micro-greebles, mirror chrome, glossy product-render highlights and cinematic rim lights. Avoid making every seam a thick black outline or every edge a bright glow.
+
+COLOR
+Use {MAIN_ARMOR}, {SECONDARY_ARMOR}, {FLEXIBLE_JOINTS}, {VISOR_OR_FACEPLATE}, {ACCENT_LOCATIONS} from the approved concept. Preserve a readable hierarchy of large armor colors, dark joints and focal accents. Match the closest original armor's material treatment. Do not force all suits to dark blue, one hue, a fixed mean brightness or a universal accent percentage. White armor, saturated red armor, two-color armor and dark opaque helmets all exist in the original corpus. Saturated accents may appear on armor plates when the design requires them. Preserve head/body color agreement when specified.
+
+DETAIL SCALE
+The SW source family mostly uses five 256x256 diffuse atlases per suit, with R.O.M.E using five inferred 512x512 sources. CoM uses helmet/equip at 256x256 and undersuit at 128x128. These describe original feature density, not a ban on higher-resolution output. A larger output must retain this restrained feature density. Check the design at a small game-like display size as well as close-up. Enlarging the image must not add thousands of new surface details.
+
+OUTPUT CONTRACT
+Follow the appended task: design sheet, texture atlas, or actual 3D model. These are different deliverables.
+For an atlas: paint only the supplied target UV layout; preserve island coordinates, relative scale, orientation, seam relationships and masks. Preserve opacity and source padding when editing an existing map. Produce one flat diffuse image, no character render, perspective, labels, swatches, checkerboard or decorative border. Never project a perspective concept drawing onto the whole atlas. Do not pretend a texture can change the old mesh silhouette.
+For a model: reproduce the concept's forms at the old game proportions; verify grey geometry before texturing, then author UVs and compatible rigging. A PNG is not a rigged GLB or a validated game asset.
+Report missing views and inferred surfaces. Validate the textured model from front, side, rear, the gameplay camera and moving poses beside original armor. Do not claim style consistency or UV correctness from image statistics alone.
+
+TARGET: Cygni / armor ID 11 / design C-12. STYLE_FAMILY: Star Warfare.
+DESIGN SOURCE: docs/art/original_armors_v1/images/c12_concept.png, the current main gallery image. Inspect the gallery's user_review and helmet_studies records before generating; study candidates do not automatically replace the selected main image. The supporting turnaround is a design reference, not a dimensionally exact blueprint.
+
+KEEP THESE DESIGN FEATURES:
+- White/light-grey helmet shell matching the white/light-grey body armor.
+- Gold T-shaped visor: a broad eye band narrowing into a central downward strip, flanked by inward-swept cheek armor. Do not broaden glass into both lower cheeks.
+- Layered brow, compact chin, short swept-back side fins. Avoid square cheek blocks and the elongated original helmet's lower guard.
+- White armor over a dark desaturated green secondary shell and charcoal flexible joints.
+- Small copper-orange inserts on chest and selected limb/helmet regions; short shoulder wings echoing the helmet fins.
+
+TRANSLATE TO THE GAME:
+Use the old SW character's large helmet, compact body, short limb spans, chunky hands/boots and existing joint positions. The new full-height adult anatomy in the concept is not the target. Keep the new helmet identity rather than merely recoloring the old Cygni helmet.
+Use original Cygni diffuse maps to judge white paint, dark green, subdued gold/copper and restrained seam/cloth detail. Imported pink head tint is not desired. Gold glass should have a simple broad painted reflection, not a photoreal environment reflection.
+New chest/cheek/fin shapes that alter silhouette require model work and matching UVs. If only original UVs are supplied, label the result a surface-style trial on the OLD geometry; it is not completion of this new design.
+Phoenix remains unchanged. No rollout to later armor sets is authorized by this analysis prompt alone.
+
+TASK: Produce ONE opaque square 1024x1024 painted diffuse UV ATLAS. First attached image is the EXACT target UV placement guide, not an aesthetic suggestion. All white, dark green, black, gold and copper regions must retain their exact normalized pixel coordinates, size and orientation. Increase resolution only; do not rearrange anything. Image 2 is the original painted style authority; image 3 is new design identity and colors; image 4 is the actual target model preview (placement colors only). Engine material is UNLIT: all lighting is painted into the diffuse; do not output flat albedo. Retain feature density of 256x256 native assets, with large quiet interiors, dark recesses and narrow painted edge highlights. NO photographic metal, grainy brush noise, fine all-over scratches, chrome, bloom, thick black outlines. Preserve a fully opaque very dark green background outside UV islands with no labels, frame, swatches, grid, checker or transparency. Output the flat atlas only, never a model render or character sheet.
+This new UV guide contains the OLD painted body, shoulder, hip and thigh surfaces baked into the new model UVs, plus flat guide islands for the new V chest layers. Retain old paint detail frequency and dark green cloth. Finish the flat white V plate islands in the SAME painterly style as the old white plates; copper sternum and small chest inserts stay at their guide coordinates. Restyle minor seams for the new concept but do not move any UV islands.
