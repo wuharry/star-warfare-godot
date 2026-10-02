@@ -33,6 +33,7 @@ static func ensure_parts(avatar: Node3D, visual_ids: Dictionary) -> void:
 		return
 	var skeleton := skeletons[0] as Skeleton3D
 	_ensure_reworked_parts(avatar, skeleton, visual_ids)
+	_restore_original_helmet_colors(avatar)
 	for visual_id: int in visual_ids.values():
 		var scene_path := Catalog.gameplay_scene_path(visual_id)
 		if scene_path.is_empty() or skeleton.has_node("ArmorHead_%02d" % visual_id):
@@ -88,6 +89,37 @@ static func _ensure_reworked_parts(avatar: Node3D, skeleton: Skeleton3D, visual_
 				replacement.visible = false
 		source.free()
 		avatar.set_meta(marker, true)
+
+
+static func _restore_original_helmet_colors(avatar: Node3D) -> void:
+	# The recovered glTF adds a red multiplier to these two original helmets.
+	# Match the same suit's body multiplier while retaining its painted diffuse.
+	for id: int in [8, 11]:
+		var head := avatar.find_child("ArmorHead_%02d" % id, true, false) as MeshInstance3D
+		var body := avatar.find_child("ArmorBody_%02d" % id, true, false) as MeshInstance3D
+		if head == null or body == null or head.mesh == null or body.mesh == null:
+			continue
+		var revision := str(head.get_meta("armor_rework", ""))
+		if not revision.is_empty() and not revision.begins_with("original_refined_"):
+			continue  # New designs own their palette; this fixes originals only.
+		var body_material := body.get_active_material(0)
+		var tint := Color(0.5882353, 0.5882353, 0.5882353, 1.0)
+		if body_material is BaseMaterial3D:
+			tint = body_material.albedo_color
+		elif body_material is ShaderMaterial:
+			var value: Variant = body_material.get_shader_parameter("albedo_tint")
+			if value is Color:
+				tint = value
+		for surface: int in head.mesh.get_surface_count():
+			var source := head.get_active_material(surface)
+			if source is BaseMaterial3D and source.albedo_color != tint:
+				var material := source.duplicate() as BaseMaterial3D
+				material.albedo_color = tint
+				head.set_surface_override_material(surface, material)
+			elif source is ShaderMaterial and source.get_shader_parameter("albedo_tint") != tint:
+				var material := source.duplicate() as ShaderMaterial
+				material.set_shader_parameter("albedo_tint", tint)
+				head.set_surface_override_material(surface, material)
 
 
 static func _restore_original_materials(avatar: Node3D) -> void:
