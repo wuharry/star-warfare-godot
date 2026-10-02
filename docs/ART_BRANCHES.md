@@ -29,3 +29,7 @@ godot --path .
 ## 共用的頭盔配色修正
 
 **原版 Cygni、Pegasus 的頭盔改用同套身體的中性色乘值，移除匯入的紅色染色。** 原 PNG、網格和 UV 不變；只複製並修正材質。原件、遊戲 loader、重複換裝及存檔保護由 `tests/original_helmet_color_test.tscn` 驗證。新版 Cygni 自己的配色不受這項原件修正影響。
+
+**原版備用分支已完成還原及推送。** SW1 保留全 21 套、84 個部件的原三角形／UV，搭配既有高清材質；Thunder 頭盔回到原 glTF，Cygni／Pegasus 取消額外紅色染色。詳細畫面及接續規則見 [原版備用說明](https://github.com/wuharry/star-warfare-godot/blob/6d7c07b/docs/art/original_hd_backup/README.md)。
+
+**本分支裝備回歸依實際採用的美術契約驗收。** 新版 Cygni 用專屬換裝／動作／GLB 檢查，Thunder 用既有改造版檢查；其餘原版高清部件沿用原幾何與貼圖驗收，Pegasus 頭盔期望值改為原身體中性色。
