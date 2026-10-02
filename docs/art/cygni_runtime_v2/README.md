@@ -1,6 +1,6 @@
-# Cygni：一套可入遊戲的示範
+# Cygni：遊戲內預設裝甲
 
-**這版已用 Blender 局部改造原 Cygni 頭盔，保留原版的 238 tris 與 7 個 UV 連續區域；新貼圖、換裝場景與 GLB 可入遊戲，美術效果仍待使用者評價。** 先看 [原版／新版 3D 比較頁](index.html)，再決定是否修改這套，不擴到其他裝甲。交付底線是「並排像同一位美術製作的不同裝甲」；工程 PASS 不能代替這項美術判斷。
+**這版已用 Blender 局部改造原 Cygni 頭盔，保留原版的 238 tris 與 7 個 UV 連續區域；使用者要求移除面罩中央白色凸起後，直接替代遊戲內原版 Cygni。** 先看 [原版／新版 3D 比較頁](index.html)，再決定是否修改這套，不擴到其他裝甲。交付底線是「並排像同一位美術製作的不同裝甲」；工程 PASS 不能代替這項美術判斷。
 
 ![原版／碎片化上一版／這次局部改造](review/head_before_after.png)
 
@@ -12,7 +12,7 @@
 
 ## 實際交付
 
-**頭盔改用原 cage 局部重塑，原 UV 座標與鏡像共用不變；其餘三件沿用上一個示範 checkpoint。** 新版需非常接近原版，僅接受局部改動；金 T、短下巴與內收頰甲融入原頭殼，不能把整個頭盔換成另一種製作風格。胸前新增 V 甲片仍為上輪示範，其他三件的 TargetUV 尚未改回原版，不假稱本輪已完成全部位的連續 UV 重製。
+**頭盔改用原 cage 局部重塑，保留原大片 UV 與鏡像共用，僅微調三個中央接縫取樣點；其餘三件沿用上一個示範 checkpoint。** 新版需非常接近原版，僅接受局部改動；金 T、短下巴與內收頰甲融入原頭殼，不能把整個頭盔換成另一種製作風格。胸前新增 V 甲片仍為上輪示範，其他三件的 TargetUV 尚未改回原版，不假稱本輪已完成全部位的連續 UV 重製。
 
 | 檔案 | 類型與用途 |
 | --- | --- |
@@ -32,7 +32,7 @@
 | 生成輸出 | 四張原圖各為 1,254 × 1,254，原圖保留 |
 | Runtime diffuse | 四張各為 512 × 512；Blender 僅縮放匯出，沒有將透視概念投影到 atlas |
 | 材質 | Godot `SHADING_MODE_UNSHADED`；GLB `KHR_materials_unlit` |
-| 預覽狀態 | `--cygni-v2` 比較入口，尚未採用為預設正式外形 |
+| 套用狀態 | 預設載入新版 Cygni，不再需要啟動參數；原件留作比較 |
 
 ## 已跑過的驗證
 
@@ -51,7 +51,7 @@
 | 不透明、均值、p98、色相集中度 | PASS（數值） | 四張實際 runtime PNG，排除 GLB importer 自動抽出的副本 |
 | 亮像素占比 | FAIL（原版 atlas 參考帶） | 27.5%，高於原五張 atlas 統計上緣 18.1%；白甲亮度仍待評價 |
 | 互動頁的瀏覽器目視驗收 | NOT RUN | Browser 工具網址政策禁止 `file://`；未繞過限制。JS 語法及檔案引用已檢查，Godot 畫面另外檢視 |
-| 使用者美術選定 | 本輪待評價 | 上一版碎片化頭盔已被否決；本輪採原模型局部改造，工程 PASS 不能代替同作者風格門檻 |
+| 使用者套用授權 | 已指定直接替代原版 | 2026-10-02：移除面罩中央白色凸起並直接套用；工程 PASS 仍不能量化同作者風格 |
 
 ## 生成來源與推定
 
@@ -61,7 +61,7 @@
 - 設計：[c12_concept.png](ref/c12_concept.png)；原圖決定角色比例的部分不沿用成人長腿。
 - 原參考：[sources.json](ref/sources.json)、原模型正側背、原 diffuse 與原骨架。
 - 真正生成：`image_gen.imagegen`。每次使用該模型的 UV placement guide；沒有用程式畫成品 diffuse。
-- 最終選圖由 [selection.json](generation_records/selection.json) 指定：頭部 r4、身體／手腳 r2；生成被拒絕的版本仍保留與標示原因。原 r1 的 guide 已原樣封存到 `generation_records/inputs_r1/`，輸入 hash 不隨修正 guide 而失去對應。
+- 最終選圖由 [selection.json](generation_records/selection.json) 指定：頭部 r4＋三個 UV 接縫點修正、身體／手腳 r2；生成被拒絕的版本仍保留與標示原因。原 r1 的 guide 已原樣封存到 `generation_records/inputs_r1/`，輸入 hash 不隨修正 guide 而失去對應。
 - 上一版的六個側接片頂點上收屬已否決 checkpoint；完整母檔、原場景、GLB、UV guide 和比較圖存於 `generation_records/continuous_head/previous_checkpoint/`。本輪以原 cage 局部改造取代，不再執行 `taper_cheek.py`。
 - 所有生成原圖均保留。Body guide 將原 diffuse 烘焙到新模型 UV；新甲片在模型內先有幾何與材質區域，再生成 painted diffuse。
 - 本示範保留原肩甲、手套與靴子的主要輪廓；肩翼尖端收短，胸前新增 V 甲片，沒有宣稱所有局部都已一比一重建概念。
@@ -76,7 +76,7 @@
 | 全頭盔 tris | 238 | 596 | 238 |
 | 貼圖上連續 UV 區域（左右重疊合併） | 7 | 141 | 7 |
 
-原主頭殼是 166 tris；側圓附件及薄翼另外做幾何，面罩與大量縫隙、亮邊由手繪 diffuse 表現。鏡像三角形的配對中，大部分共用相同 UV。這些是成品檔案證據，不能據此聲稱知道原作者當年的實際作業順序。本輪已按此方法局部改造。逐面檢查見 [method_validation.json](review/continuous_head/method_validation.json)：238 個來源 faces、TargetUV 與 OriginalUV 完全相同；最大單點改動約 0.136 game units，主要縮短舊下巴。這不是風格相似率，仍需看並排效果。
+原主頭殼是 166 tris；側圓附件及薄翼另外做幾何，面罩與大量縫隙、亮邊由手繪 diffuse 表現。鏡像三角形的配對中，大部分共用相同 UV。這些是成品檔案證據，不能據此聲稱知道原作者當年的實際作業順序。本輪已按此方法局部改造。逐面檢查見 [method_validation.json](review/continuous_head/method_validation.json)：238 個來源 faces、TargetUV 僅三個共用座標局部修正；其他座標與 OriginalUV 相同；最大單點改動約 0.136 game units，主要縮短舊下巴。這不是風格相似率，仍需看並排效果。
 
 ## 綁定與母檔的限制
 
@@ -89,10 +89,10 @@
 
 ## 如何看遊戲效果
 
-**加入 `--cygni-v2` 即可由既有玩家及商店載入本示範。** 使用比較頁先確認外形；遊戲中需裝備 Cygni，這個 flag 不改寫存檔中的裝備選擇。
+**正常啟動即會載入新版 Cygni；不再需要 `--cygni-v2`。** 商店及配裝沿用 `Cygni Head`／`Cygni Chest`／`Cygni Hands`／`Cygni Legs` 四個項目，裝備後進關卡即可查看。這次改的是外觀對應，不改存檔的裝備選擇、持有狀態或數值。原旗標仍相容，歷史試作旗標只用於重現舊版本。
 
 ```bash
-godot --path . -- --cygni-v2
+godot --path .
 ```
 
 ## 重建與驗證
@@ -109,9 +109,9 @@ godot --headless --path . --script tools/cygni_runtime_v2/inspect_rig.gd
 godot --headless --path . --script tools/cygni_runtime_v2/compile.gd
 python3 tools/cygni_runtime_v2/glb_unique_joints.py
 godot --headless --editor --path . --import
-godot --headless --path . tests/cygni_v2_test.tscn -- --cygni-v2
-godot --headless --path . tests/cygni_v2_roundtrip.tscn -- --cygni-v2
-godot --path . --disable-render-loop tools/cygni_runtime_v2/capture.tscn -- --cygni-v2
+godot --headless --path . tests/cygni_v2_test.tscn
+godot --headless --path . tests/cygni_v2_roundtrip.tscn
+godot --path . --disable-render-loop tools/cygni_runtime_v2/capture.tscn
 godot --headless --path . --script tools/cygni_runtime_v2/viewer_data.gd
 python3 tools/cygni_runtime_v2/assemble_review.py
 python3 tools/cygni_runtime_v2/make_viewer.py
@@ -123,7 +123,7 @@ python3 tools/armor_texture_check.py assets/armors/cygni_v2/head_diffuse.png ass
 
 ## 回家後繼續的工作
 
-**接續時先評價本輪 Cygni，再把同樣方法用到其他已授權裝甲；不要把這版自動視為正式採用。**
+**本輪 Cygni 已按使用者要求替代原版；其他裝甲仍按各自原件逐套製作與評價。**
 
 - 工作入口：[完整比較頁](index.html)，不是 `tools/cygni_runtime_v2/viewer.template.html`；模板沒有嵌入模型資料。
 - 規則入口：[ARMOR_TEXTURE_STYLE_SPEC.md](../ARMOR_TEXTURE_STYLE_SPEC.md)、[base_prompt.txt](../legacy_armor_base_v2/base_prompt.txt)。已加入「新版非常接近各自原版、只做局部改動」與 Blender 建模／大片鏡像 UV 方法。
@@ -133,3 +133,14 @@ python3 tools/armor_texture_check.py assets/armors/cygni_v2/head_diffuse.png ass
 - 待辦：使用者美術評價、整套亮度／材料一致性；若繼續改胸肩與手腳 UV，要用它們自己的原件並另生成相容貼圖，不能沿用碎片版 UV。
 - 生成器未嚴格逐像素服從技術區域圖；已在正／側／背確認金色玻璃位於臉部、側頰為白甲，但不宣稱遮罩位置完全一致。來源原圖及偏差保留供下輪修改。
 - 匯入注意：研究 `.blend` 必須放在 `.gdignore` 排除的 authoring 目錄。本輪一度因臨時 `.blend` 匯入提示阻斷 Godot 更新，載入了舊 GLB cache；排除後重新匯入，9 個動作取樣比較才通過。
+
+## 2026-10-02：移除面罩中央凸起與預設套用
+
+**中央白色凸起來自左右共用 UV 接縫取到 atlas 白色邊緣，不是另外一塊 mesh。** 頭盔幾何保持不變，Blender 只把三個共用接縫座標移到既有金色區域；沒有新增／拆開 UV 島，也沒有改 OriginalUV。其餘 TargetUV 座標不變，原 7 個連續區域和鏡像共用保留。
+
+- 使用者標示：[移除位置](ref/user_center_tab_remove_20261002.png)。
+- r5、r6 曾使用實際 ImageGen 嘗試局部修圖，但仍取到白色邊緣；兩張均保留為未採用候選，實際 prompt、輸入 hash 和原圖存於 `generation_records/`。最終沿用 r4 原圖，避免其他細節被重畫。
+- 可重現修正：`build.py::repair_visor_seam_uv`；驗證精確限定三個座標，其他座標必須與原件一致。
+- 更改前的 r4 正側面存於 [center_tab_before_r5](generation_records/center_tab_before_r5/checkpoint.json)；修正後看 [中央面罩前後比較](review/center_tab_before_after.png)。
+
+- `armor_visuals.gd::REWORKED_SCENES[11]` 改為新版場景；商店、配裝、玩家沿用共用 loader。只替換 Cygni 外觀。

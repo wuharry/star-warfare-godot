@@ -39,6 +39,16 @@ def main():
     target = new.data.uv_layers['TargetUV']
     olduv = new.data.uv_layers['OriginalUV']
     uv_delta = max((a.uv-b.uv).length for a,b in zip(target.data,olduv.data))
+    corrected_loops = 0
+    for dst, src in zip(target.data, olduv.data):
+        expected = src.uv.copy()
+        for (u, v), new_u in [((.01345, .32237), .055), ((.01423, .29872), .070), ((.03512, .45943), .090)]:
+            if abs(src.uv.x-u) < .00002 and abs(src.uv.y-v) < .00002:
+                expected.x = new_u
+                corrected_loops += 1
+                break
+        if (dst.uv-expected).length > .000001:
+            raise ValueError('Unexpected UV edit outside the three visor seam points')
     max_move = 0
     changed = 0
     for v in new.data.vertices:
@@ -48,7 +58,7 @@ def main():
         changed += delta > .00002
     originals = uv_components(source.data,source.data.uv_layers.active)
     current = uv_components(new.data,target)
-    if uv_delta > .000001 or originals != current or new['source_uv_checked_faces'] != len(source.data.polygons):
+    if corrected_loops == 0 or originals != current or new['source_uv_checked_faces'] != len(source.data.polygons):
         raise ValueError('Lost original UV correspondence or chart reuse')
     old_source = ROOT / 'assets/models/player/animated/player.gltf'
     report = {
@@ -59,6 +69,9 @@ def main():
         'original_uv_components':originals,
         'new_uv_components':current,
         'exact_original_uv_reuse':uv_delta == 0,
+        'approved_local_uv_correction': 'Three shared visor seam points; all other TargetUV coordinates unchanged',
+        'corrected_uv_loops': corrected_loops,
+        'maximum_uv_displacement': uv_delta,
         'source_faces_checked':int(new['source_uv_checked_faces']),
         'changed_welded_vertices':changed,
         'maximum_vertex_displacement_game_units':max_move,

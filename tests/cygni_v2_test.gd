@@ -26,7 +26,7 @@ func _run() -> void:
 	var skeleton := player.recovered_skeleton
 	var rests: Array[Transform3D]=[]
 	for i: int in skeleton.get_bone_count():rests.append(skeleton.get_bone_rest(i))
-	_check(Visuals.reworked_scene_path(11)=="res://assets/armors/cygni_v2/cygni.scn","Run this test with --cygni-v2")
+	_check(Visuals.reworked_scene_path(11)=="res://assets/armors/cygni_v2/cygni.scn","Default Cygni should load the adopted current asset")
 	for id: int in [10,12,13,20,21,28]:
 		_check(Visuals.reworked_scene_path(id)=="res://assets/equipment_refined/armors/armor_%02d.scn"%id,"Retained set changed")
 	_check(Visuals.reworked_scene_path(6)=="res://assets/armors/thunder/thunder.scn","Adopted Thunder changed")
@@ -117,7 +117,7 @@ func _run() -> void:
 	_check(_hash(real_save)==before,"Real save modified")
 	GameState.save_path=real_save
 	var report:=FileAccess.open("res://docs/art/cygni_runtime_v2/review/runtime_test.json",FileAccess.WRITE)
-	report.store_string(JSON.stringify({"status":"PASS" if failures.is_empty() else "FAIL","failures":failures,"triangles":triangles,"poses":records,"save_unchanged":_hash(real_save)==before},"\t"))
+	report.store_string(JSON.stringify({"status":"PASS" if failures.is_empty() else "FAIL","failures":failures,"triangles":triangles,"poses":records,"save_unchanged":_hash(real_save)==before,"user_args":OS.get_cmdline_user_args(),"cygni_scene":Visuals.reworked_scene_path(11)},"\t"))
 	print("CYGNI_V2_TEST_%s failures=%d samples=%d triangles=%d save_unchanged=%s"%["PASS" if failures.is_empty() else "FAIL",failures.size(),records.size(),triangles,str(_hash(real_save)==before)])
 	get_tree().quit(0 if failures.is_empty() else 1)
 

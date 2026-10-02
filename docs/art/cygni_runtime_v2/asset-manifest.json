@@ -1,7 +1,7 @@
 {
   "revision": "cygni_runtime_v2",
   "id": 11,
-  "status": "continuous original-cage head with local edits; art pending user review",
+  "status": "Default Cygni adopted at user request; center white tab removed by three local TargetUV seam corrections",
   "source": "assets/models/player/animated/player.gltf",
   "source_hash": "15dbc5e532878e7fbc961a8bed45986f7b6a53a1fde5c955c66cfef806eee5bd",
   "design": "docs/art/original_armors_v1/images/c12_concept.png",
@@ -24,7 +24,7 @@
     ],
     "note": "cygni_*_diffuse.png are Godot GLB-import extraction copies; not four extra generation runs"
   },
-  "runtime_test": "PASS",
+  "runtime_test": "PASS without development flags",
   "roundtrip_test": "PASS",
   "texture_check": {
     "status": "FAIL reference atlas bright-ratio band",
@@ -340,12 +340,12 @@
     },
     {
       "path": "assets/armors/cygni_v2/cygni.glb",
-      "sha256": "8acf9b40e3ac45cc5380e9d9fe1ef3c6ce048ccfed168bae05a7bb2955ed8e94",
-      "bytes": 1816312
+      "sha256": "51292ed9455f410dc4d65bed0d4ee795cbe0e867bbbadbe5f77e80040b875381",
+      "bytes": 1812524
     },
     {
       "path": "assets/armors/cygni_v2/cygni.scn",
-      "sha256": "7642b4e79108ea21578ffa0a3e1d7511de29b1652fb7d5742680675667cc6844",
+      "sha256": "753adeae47667b1d77cd50ad087fc9a6c2f1972140af13b7d70957f09902824d",
       "bytes": 170033
     },
     {
@@ -365,8 +365,8 @@
     },
     {
       "path": "assets/armors/cygni_v2/cygni_head_diffuse.png",
-      "sha256": "a1a20538e75a767ff577c576c86fc0f89874d91edcc15cd9174e246d62868a8c",
-      "bytes": 381755
+      "sha256": "d19c444a8c146e6166ca69df99cf1949d33021d6ce3d4eca10c67a0611a51de9",
+      "bytes": 377964
     },
     {
       "path": "assets/armors/cygni_v2/foot_diffuse.png",
@@ -384,22 +384,22 @@
       "bytes": 405391
     }
   ],
-  "scope": "Cygni only; development flag --cygni-v2; no default art adoption; other armors unchanged",
+  "scope": "Cygni default appearance on codex/new-armor-design; original-HD fallback lives on codex/original-hd-backup",
   "native_blend": {
     "path": "docs/art/cygni_runtime_v2/CH_Cygni_master.blend",
-    "sha256": "18790ae76fe55cd64b0583421c51c52af915f99c07fc21757330c8037d2496be",
+    "sha256": "18d793e7bcd9f958799b3d3f2c5197feaddb2abded17638a65b445b6cfd8a47a",
     "packed_textures": true,
-    "bytes": 5659992
+    "bytes": 5659750
   },
-  "art_gate": "PENDING: latest local-edit prototype awaits user review; previous fragmented head was rejected",
+  "art_gate": "User explicitly requested default replacement after center-tab correction on 2026-10-02; no quantified style-similarity claim",
   "head_method_report": "docs/art/cygni_runtime_v2/review/original_head_method.json",
   "generation_selection": {
-    "status": "Continuous legacy-cage head r4 prototype; local mesh edits and original UV reuse; pending on-model/art review.",
+    "status": "User requested default adoption; original generated r4 atlas retained, three mirrored UV seam points corrected in Blender.",
     "parts": {
       "head": {
         "path": "docs/art/cygni_runtime_v2/generation_records/head_r4_original.png",
         "sha256": "2fb2bf8bf943b7e7a7a599f28652fd82a48ea2f970250a8bbf46a04170c50abb",
-        "version": "r4"
+        "version": "r4 + local visor seam UV correction"
       },
       "body": {
         "path": "docs/art/cygni_runtime_v2/generation_records/body_r2_original.png",
@@ -422,8 +422,9 @@
   "continuous_head": {
     "triangles": 238,
     "uv_image_components": 7,
-    "same_original_uv_coordinates": true,
+    "same_original_uv_coordinates": false,
     "original_legacy_bind_retained": true,
-    "scope": "local original-cage shape edits; other three parts retain prior checkpoint"
+    "scope": "local original-cage shape edits; other three parts retain prior checkpoint",
+    "local_uv_correction": "Three shared visor seam coordinates; original seven charts, geometry and OriginalUV retained"
   }
 }

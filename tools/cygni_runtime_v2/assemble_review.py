@@ -43,6 +43,9 @@ def main():
     crop = (160,35,480,320)
     sheet([im.crop(crop) for im in [old,previous,new]],
           ['原版','上一版：碎片化','這次：局部改造'], 'head_before_after.png')
+    before = Image.open(WORK/'generation_records/center_tab_before_r5/new_diffuse_front.png').convert('RGB')
+    sheet([before.crop(crop), new.crop(crop)],
+          ['修改前：中央白色凸起', '修改後：連續金色面罩'], 'center_tab_before_after.png')
     out = Image.new('RGB', (1280,760), (12,16,19))
     draw = ImageDraw.Draw(out)
     for i in range(8):

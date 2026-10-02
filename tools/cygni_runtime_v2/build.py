@@ -220,6 +220,23 @@ def reshape_body(p):
     return p
 
 
+def repair_visor_seam_uv(ob):
+    """Move three shared seam samples inside gold; preserve connected charts.
+
+    The mirrored center sampled the white atlas margin, making a false tooth.
+    These are local placement edits, not new islands or changes to OriginalUV.
+    """
+    target = ob.data.uv_layers["TargetUV"]
+    original = ob.data.uv_layers["OriginalUV"]
+    corrections = [((.01345, .32237), .055), ((.01423, .29872), .070), ((.03512, .45943), .090)]
+    for src, dst in zip(original.data, target.data):
+        for (u, v), new_u in corrections:
+            if abs(src.uv.x - u) < .00002 and abs(src.uv.y - v) < .00002:
+                dst.uv = (new_u, src.uv.y)
+                break
+    ob["uv_method"] = "source charts; three mirrored visor seam UV points corrected"
+
+
 def unwrap(ob):
     # The head keeps the source atlas coordinates and mirrored reuse exactly.
     if ob.name == "ArmorHead_11":
@@ -229,7 +246,7 @@ def unwrap(ob):
             dst.uv = src.uv
         ob.data.uv_layers.active = target
         target.active_render = True
-        ob["uv_method"] = "continuous source charts; mirrored reuse retained"
+        repair_visor_seam_uv(ob)
         return
     bpy.ops.object.select_all(action="DESELECT")
     ob.select_set(True)

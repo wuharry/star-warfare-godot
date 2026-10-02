@@ -19,6 +19,15 @@ func _check(condition: bool, message: String) -> void:
 
 
 func _run() -> void:
+	# Cygni now uses the adopted runtime asset by default. Its dedicated test
+	# validates the legacy-plus-appended binds; the old assertions below remain
+	# specific to explicitly requested historical trial scenes.
+	if not "--cygni-helmet-repair" in OS.get_cmdline_user_args() and not "--cygni-painted-trial" in OS.get_cmdline_user_args():
+		var error := get_tree().change_scene_to_file("res://tests/cygni_v2_test.tscn")
+		if error != OK:
+			push_error("Cannot load adopted Cygni test: " + error_string(error))
+			get_tree().quit(1)
+		return
 	var real_save := GameState.save_path
 	var real_hash := _hash(real_save)
 	GameState.save_path = "user://concept_armor_test.json"
