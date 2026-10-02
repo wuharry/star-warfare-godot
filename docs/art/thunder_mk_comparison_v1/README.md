@@ -1,5 +1,7 @@
 # Thunder mk1 / mk2 配色與硬甲對照
 
+**2026-10-02：本目錄是歷史改造版記錄；`codex/original-hd-backup` 的遊戲預設已還原為原版 Thunder。** 當前套用與驗證見 [原版高清備用入口](../original_hd_backup/README.md)。
+
 2026-09-14。B 新頭盔方向已獲使用者核准，並完成首版 3D 套用；先看 [runtime.html](runtime.html) 的原版／概念／實際遊戲角色對照。
 
 [index.html](index.html) 保留概念階段的 A／B 比較、舊／新頭盔切換、灰階和放大互動。該頁的「尚未套用」等文字是當時候選階段紀錄，不代表目前 runtime 狀態；頁首已連到實際套用頁。兩頁都不需要網路服務或外部套件。
