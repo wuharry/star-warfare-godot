@@ -10,6 +10,10 @@ const REWORKED_SCENES := {
 
 
 static func reworked_scene_path(visual_id: int) -> String:
+	if visual_id == 11 and "--cygni-v2" in OS.get_cmdline_user_args():
+		var path := "res://assets/armors/cygni_v2/cygni.scn"
+		if ResourceLoader.exists(path):
+			return path
 	if visual_id == 11 and "--cygni-helmet-repair" in OS.get_cmdline_user_args():
 		var repaired_path := CONCEPT_ARMOR_DIR + "painted/repaired_cygni_helmet.scn"
 		if ResourceLoader.exists(repaired_path):

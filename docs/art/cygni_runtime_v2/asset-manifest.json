@@ -1,0 +1,429 @@
+{
+  "revision": "cygni_runtime_v2",
+  "id": 11,
+  "status": "continuous original-cage head with local edits; art pending user review",
+  "source": "assets/models/player/animated/player.gltf",
+  "source_hash": "15dbc5e532878e7fbc961a8bed45986f7b6a53a1fde5c955c66cfef806eee5bd",
+  "design": "docs/art/original_armors_v1/images/c12_concept.png",
+  "design_hash": "2c5331581050c6bc25c37eb36dbe170ea606be9f29fc816cd5805d20a4dd919f",
+  "triangles": 1110,
+  "parts": 4,
+  "source_bones": 28,
+  "glb_identity_bind_aliases": 29,
+  "texture_atlases": {
+    "logical": 4,
+    "runtime_dimensions": [
+      512,
+      512
+    ],
+    "parts": [
+      "head",
+      "body",
+      "hand",
+      "foot"
+    ],
+    "note": "cygni_*_diffuse.png are Godot GLB-import extraction copies; not four extra generation runs"
+  },
+  "runtime_test": "PASS",
+  "roundtrip_test": "PASS",
+  "texture_check": {
+    "status": "FAIL reference atlas bright-ratio band",
+    "mean_value": 0.358,
+    "p98_value": 0.902,
+    "bright_ratio": 0.275,
+    "band_high": 0.181,
+    "opaque": true,
+    "limitation": "Four densely repacked atlases and white new helmet differ from old five-map layouts. Padding and packing alter atlas statistics. This is not a measured style match; brightness still needs visual approval."
+  },
+  "browser_visual_qa": "NOT RUN: browser tool URL policy blocks file://; no workaround attempted",
+  "game_capture": {
+    "center": [
+      0,
+      1.04,
+      0
+    ],
+    "diffuse_views": "White material tint for both versions, so original painted greys can be compared without the glTF pink head tint. Painted views retain original imported tint. This affects captures only, not source assets or gameplay defaults.",
+    "files": [
+      "res://docs/art/cygni_runtime_v2/review/engine/original_clay_front.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_clay_front.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_painted_front.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_painted_front.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_diffuse_front.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_diffuse_front.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_clay_side.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_clay_side.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_painted_side.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_painted_side.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_diffuse_side.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_diffuse_side.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_clay_rear.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_clay_rear.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_painted_rear.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_painted_rear.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_diffuse_rear.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_diffuse_rear.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_clay_quarter.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_clay_quarter.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_painted_quarter.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_painted_quarter.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_diffuse_quarter.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_diffuse_quarter.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/family_original_10_front.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/family_original_12_front.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_idle_rifle.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_idle_rifle.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_run_rifle.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_run_rifle.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_00.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_00.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_01.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_01.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_02.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_02.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_03.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_03.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_04.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_04.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_05.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_05.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_06.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_06.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_07.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_07.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_level_01_gameplay.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_level_01_gameplay.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_level_01_front.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_level_01_front.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_level_08_gameplay.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_level_08_gameplay.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/original_level_08_front.png",
+      "res://docs/art/cygni_runtime_v2/review/engine/new_level_08_front.png"
+    ],
+    "image_dimensions": {
+      "res://docs/art/cygni_runtime_v2/review/engine/family_original_10_front.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/family_original_12_front.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_clay_front.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_clay_quarter.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_clay_rear.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_clay_side.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_diffuse_front.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_diffuse_quarter.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_diffuse_rear.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_diffuse_side.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_idle_rifle.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_level_01_front.png": [
+        1280,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_level_01_gameplay.png": [
+        1280,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_level_08_front.png": [
+        1280,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_level_08_gameplay.png": [
+        1280,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_painted_front.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_painted_quarter.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_painted_rear.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_painted_side.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_00.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_01.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_02.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_03.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_04.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_05.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_06.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_reload_07.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/new_run_rifle.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_clay_front.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_clay_quarter.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_clay_rear.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_clay_side.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_diffuse_front.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_diffuse_quarter.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_diffuse_rear.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_diffuse_side.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_idle_rifle.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_level_01_front.png": [
+        1280,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_level_01_gameplay.png": [
+        1280,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_level_08_front.png": [
+        1280,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_level_08_gameplay.png": [
+        1280,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_painted_front.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_painted_quarter.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_painted_rear.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_painted_side.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_00.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_01.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_02.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_03.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_04.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_05.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_06.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_reload_07.png": [
+        640,
+        720
+      ],
+      "res://docs/art/cygni_runtime_v2/review/engine/original_run_rifle.png": [
+        640,
+        720
+      ]
+    },
+    "note": "One new model for all views; original raw mesh/skin preserved for comparison. Poses use actual player and reload fixture; two real levels also captured.",
+    "orthographic_size": 2.35,
+    "renderer": "gl_compatibility",
+    "save_unchanged": true,
+    "viewports": {
+      "gameplay": [
+        1280,
+        720
+      ],
+      "review": [
+        640,
+        720
+      ]
+    }
+  },
+  "files": [
+    {
+      "path": "assets/armors/cygni_v2/body_diffuse.png",
+      "sha256": "4ebd805cb0c099386e82fb838f5584fdb82aa175605e4b034629df47df2d333f",
+      "bytes": 430821
+    },
+    {
+      "path": "assets/armors/cygni_v2/cygni.glb",
+      "sha256": "8acf9b40e3ac45cc5380e9d9fe1ef3c6ce048ccfed168bae05a7bb2955ed8e94",
+      "bytes": 1816312
+    },
+    {
+      "path": "assets/armors/cygni_v2/cygni.scn",
+      "sha256": "7642b4e79108ea21578ffa0a3e1d7511de29b1652fb7d5742680675667cc6844",
+      "bytes": 170033
+    },
+    {
+      "path": "assets/armors/cygni_v2/cygni_body_diffuse.png",
+      "sha256": "583aa6b4c446c5515c1088d5d11d4b6d0576d941f2a01eb1b48182aa190f7932",
+      "bytes": 414031
+    },
+    {
+      "path": "assets/armors/cygni_v2/cygni_foot_diffuse.png",
+      "sha256": "a8ebd81cbf63c6756becb3c14d9759c1faacf9b6d5e4ff832025d457e19a9205",
+      "bytes": 382178
+    },
+    {
+      "path": "assets/armors/cygni_v2/cygni_hand_diffuse.png",
+      "sha256": "e43d05534060be776c8977085598334b27a1bde56fff03c3a342b73d6b54f16d",
+      "bytes": 375890
+    },
+    {
+      "path": "assets/armors/cygni_v2/cygni_head_diffuse.png",
+      "sha256": "a1a20538e75a767ff577c576c86fc0f89874d91edcc15cd9174e246d62868a8c",
+      "bytes": 381755
+    },
+    {
+      "path": "assets/armors/cygni_v2/foot_diffuse.png",
+      "sha256": "ecc41ef0c8138cee194b8b109c12d9842a622a54978cd67df1dc9b528fb1f924",
+      "bytes": 407818
+    },
+    {
+      "path": "assets/armors/cygni_v2/hand_diffuse.png",
+      "sha256": "5b10f66a7887ec11b8a7c7446354908a0b43ce79ea2e47e3ced8fafd3b39f7a6",
+      "bytes": 400437
+    },
+    {
+      "path": "assets/armors/cygni_v2/head_diffuse.png",
+      "sha256": "e3a5c74ab8a2f69b36a7d274da7dd080f86cc0b7abe7a378ce00fca8318c8fd8",
+      "bytes": 405391
+    }
+  ],
+  "scope": "Cygni only; development flag --cygni-v2; no default art adoption; other armors unchanged",
+  "native_blend": {
+    "path": "docs/art/cygni_runtime_v2/CH_Cygni_master.blend",
+    "sha256": "18790ae76fe55cd64b0583421c51c52af915f99c07fc21757330c8037d2496be",
+    "packed_textures": true,
+    "bytes": 5659992
+  },
+  "art_gate": "PENDING: latest local-edit prototype awaits user review; previous fragmented head was rejected",
+  "head_method_report": "docs/art/cygni_runtime_v2/review/original_head_method.json",
+  "generation_selection": {
+    "status": "Continuous legacy-cage head r4 prototype; local mesh edits and original UV reuse; pending on-model/art review.",
+    "parts": {
+      "head": {
+        "path": "docs/art/cygni_runtime_v2/generation_records/head_r4_original.png",
+        "sha256": "2fb2bf8bf943b7e7a7a599f28652fd82a48ea2f970250a8bbf46a04170c50abb",
+        "version": "r4"
+      },
+      "body": {
+        "path": "docs/art/cygni_runtime_v2/generation_records/body_r2_original.png",
+        "sha256": "92f5d5f26c632aa4ca445d6a3de0d6a03d28d729f6b467377aaad9404acab9c4",
+        "version": "r2"
+      },
+      "hand": {
+        "path": "docs/art/cygni_runtime_v2/generation_records/hand_r2_original.png",
+        "sha256": "4aed715927f3b3eb3ab985be3506e76646e4eda486ae6c72cfbe6608cc6421c8",
+        "version": "r2"
+      },
+      "foot": {
+        "path": "docs/art/cygni_runtime_v2/generation_records/foot_r2_original.png",
+        "sha256": "8f52c111ecca484f0a3baa5e6306690eb9595db75ab7f942523f1a82f65c04ee",
+        "version": "r2"
+      }
+    }
+  },
+  "continuous_head_method_report": "docs/art/cygni_runtime_v2/review/continuous_head/method_validation.json",
+  "continuous_head": {
+    "triangles": 238,
+    "uv_image_components": 7,
+    "same_original_uv_coordinates": true,
+    "original_legacy_bind_retained": true,
+    "scope": "local original-cage shape edits; other three parts retain prior checkpoint"
+  }
+}
