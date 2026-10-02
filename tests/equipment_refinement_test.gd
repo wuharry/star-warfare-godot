@@ -24,6 +24,11 @@ func _run() -> void:
 	var original_avatar := (load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate()
 	var checked_armor_sets := 0
 	for id in range(1, Catalog.SET_NAMES.size()):
+		if id == 11:
+			# The adopted new Cygni owns a different cage/UV contract, checked
+			# by cygni_v2_test and cygni_v2_roundtrip with actual poses and equips.
+			_check(Visuals.REWORKED_SCENES.get(11, "") == "res://assets/armors/cygni_v2/cygni.scn", "Adopted Cygni lost its default mapping")
+			continue
 		if id == 6:
 			# Thunder now has deliberately redesigned helmet / plate geometry and
 			# materials. Old-atlas and < .025 silhouette parity are not its contract.
@@ -44,8 +49,12 @@ func _run() -> void:
 			_check(part.skin != null, "missing original skin " + str(part.name))
 			_validate_mesh(part.mesh, str(part.name), skeleton.get_bone_count())
 			var source_part := original.find_child(str(part.name), true, false) as MeshInstance3D
+			var approved_tint: Variant = null
+			if str(part.name) == "ArmorHead_08":
+				var body := original.find_child("ArmorBody_08", true, false) as MeshInstance3D
+				approved_tint = (body.get_active_material(0) as BaseMaterial3D).albedo_color
 			for surface in source_part.mesh.get_surface_count():
-				_validate_material(source_part.get_active_material(surface), part.get_active_material(surface), str(part.name))
+				_validate_material(source_part.get_active_material(surface), part.get_active_material(surface), str(part.name), approved_tint)
 		var count := skeleton.get_child_count()
 		Visuals.ensure_parts(avatar, ids)
 		_check(count == skeleton.get_child_count(), "repeated equip duplicated armor")
@@ -151,20 +160,21 @@ func _validate_mesh(mesh: Mesh, label: String, bone_count: int) -> void:
 				total += weight
 			_check(absf(total-1.0) < .003, "unnormalized skin " + label)
 
-func _validate_material(source: Material, refined: Material, label: String) -> void:
+func _validate_material(source: Material, refined: Material, label: String, approved_tint: Variant = null) -> void:
 	if source == null:
 		return
 	_check(refined != null, "missing material " + label)
 	if source is BaseMaterial3D:
+		var expected_tint: Color = approved_tint if approved_tint is Color else source.albedo_color
 		var actual: Texture2D
 		if refined is BaseMaterial3D:
 			actual = refined.albedo_texture
-			_check(source.albedo_color.is_equal_approx(refined.albedo_color), "material tint changed " + label)
+			_check(expected_tint.is_equal_approx(refined.albedo_color), "material tint changed " + label)
 			_check(source.texture_repeat == refined.texture_repeat and source.cull_mode == refined.cull_mode, "material UV wrapping or culling changed " + label)
 		elif refined is ShaderMaterial:
 			actual = refined.get_shader_parameter("albedo_texture")
 			var tint: Color = refined.get_shader_parameter("albedo_tint")
-			_check(source.albedo_color.is_equal_approx(tint), "painted material lost original tint " + label)
+			_check(expected_tint.is_equal_approx(tint), "painted material lost expected tint " + label)
 		if source.albedo_texture != null:
 			_check(actual != null and actual.resource_path == Refined.texture_path(source.albedo_texture.resource_path), "incorrect refined atlas " + label)
 			if actual != null and label.begins_with("Armor"):
