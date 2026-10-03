@@ -3,6 +3,7 @@ extends Node
 # Exercise the input/physics path, not just the configured interval or rate.
 var failures: Array[String] = []
 var shot_frames: Array[int] = []
+var visual_ratios: Array[float] = []
 var pulse_count := 0
 var world: WarfareGameWorld
 var player: WarfarePlayer
@@ -17,6 +18,7 @@ func _check(ok: bool, message: String) -> void:
 
 func _on_shot(_weapon: Dictionary) -> void:
 	shot_frames.append(Engine.get_physics_frames())
+	visual_ratios.append(world.hud._hip_reticle_spread_ratio())
 
 func _on_audio(node: Node) -> void:
 	if node is AudioStreamPlayer3D and node.stream and "/weapon_shots/" in node.stream.resource_path:
@@ -43,6 +45,7 @@ func _run() -> void:
 		player.shot_cooldown = 0.0
 		player.energy = player.max_energy
 		shot_frames.clear()
+		visual_ratios.clear()
 		pulse_count = 0
 		Input.action_press("fire")
 		for frame in range(120):
@@ -51,6 +54,15 @@ func _run() -> void:
 		await get_tree().physics_frame
 		counts[weapon_id] = shot_frames.size()
 		_check(shot_frames.size() > 2, weapon_id + " did not sustain held fire")
+		if weapon_id in ["gun00", "gun40"]:
+			_check(not visual_ratios.is_empty() and visual_ratios[0] >= 0.10 and visual_ratios[0] <= 0.15, weapon_id + " first real input shot did not make a small reticle step")
+			_check(visual_ratios.size() > 2 and visual_ratios[2] > visual_ratios[0] * 1.5, weapon_id + " real held fire did not accumulate visual bloom")
+			if not visual_ratios.is_empty():
+				_check(visual_ratios.max() >= visual_ratios[0] * 4.0, weapon_id + " real burst did not reach a substantially wider reticle than one shot")
+				_check(world.hud._hip_reticle_spread_ratio() > visual_ratios[0] * 3.0, weapon_id + " ongoing fire let the reticle close back to single-shot width")
+		else:
+			for ratio in visual_ratios:
+				_check(is_zero_approx(ratio), weapon_id + " non-rifle held fire moved the reticle")
 		var nominal := player._current_shot_interval()
 		var tick := 1.0 / float(Engine.physics_ticks_per_second)
 		for i in range(1, shot_frames.size()):

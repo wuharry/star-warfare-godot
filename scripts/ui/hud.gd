@@ -6,6 +6,7 @@ const TouchActionButtonScript = preload("res://scripts/ui/touch_action_button.gd
 const Atlas = preload("res://scripts/ui/original_atlas.gd")
 const HitMarkerScript = preload("res://scripts/ui/hit_marker.gd")
 const ScopeOverlayScript = preload("res://scripts/ui/scope_overlay.gd")
+const HipReticleScript = preload("res://scripts/ui/hip_reticle.gd")
 const POWER_SLOT_KEYS := [
 	KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5,
 	KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10,
@@ -27,11 +28,12 @@ var announcement: Label
 var pause_overlay: Control
 var result_overlay: Control
 var touch_root: Control
-var crosshair: TextureRect
-var fire_crosshair: TextureRect
+var crosshair: WarfareHipReticle
+var fire_crosshair: WarfareHipReticle
 var hit_marker: WarfareHitMarker
 var reticle_target_refresh := 0.0
 var fire_reticle_left := 0.0
+var hip_reticle_bloom := HipReticleScript.Bloom.new()
 var hud_root: Control
 var pause_button: Button
 var skill_button: Button
@@ -84,9 +86,12 @@ func _ready() -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST and is_node_ready() and not is_instance_valid(result_overlay):
 		toggle_pause()
+	elif what == NOTIFICATION_TRANSLATION_CHANGED and is_node_ready():
+		_refresh_pause_translation()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause") and not is_instance_valid(result_overlay):
+	var pause_requested := event.is_action_pressed("pause") or (get_tree().paused and event.is_action_pressed("ui_cancel"))
+	if pause_requested and not is_instance_valid(result_overlay):
 		toggle_pause()
 		get_viewport().set_input_as_handled()
 		return
@@ -105,6 +110,7 @@ func _process(delta: float) -> void:
 	_update_armor_power_hud()
 	if not is_instance_valid(world):
 		return
+	_advance_hip_reticle(delta)
 	fire_reticle_left = maxf(0.0, fire_reticle_left - delta)
 	_update_fire_reticle_visibility()
 	reticle_target_refresh -= delta
@@ -232,23 +238,19 @@ func _build_crosshair() -> void:
 	reticle_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(reticle_layer)
 	reticle_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	crosshair = TextureRect.new()
+	crosshair = HipReticleScript.new()
 	crosshair.size = Vector2(76, 50)
 	crosshair.pivot_offset = crosshair.size * 0.5
-	crosshair.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	crosshair.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	# HUD.png used bilinear filtering in Unity. This matters when the original
 	# 960x640 UI is uniformly scaled to modern phone and desktop resolutions.
 	crosshair.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	crosshair.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	crosshair.modulate = Color(0.0, 1.0, 1.0, 0.8)
 	reticle_layer.add_child(crosshair)
-	# Keep the recovered AimID image on both layers. Their size now follows
-	# the player's actual hip spread instead of jumping to a fixed 1.2x.
-	fire_crosshair = TextureRect.new()
+	# Both layers draw pieces of the same AimID sprite at a constant scale.
+	# Successful shots open the gaps; recovery closes them again.
+	fire_crosshair = HipReticleScript.new()
 	fire_crosshair.name = "FireCrosshair"
-	fire_crosshair.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	fire_crosshair.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	fire_crosshair.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	fire_crosshair.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	fire_crosshair.modulate = crosshair.modulate
@@ -271,16 +273,38 @@ func _on_kill_confirmed() -> void:
 		hit_marker.show_kill()
 
 func _on_shot_fired(_weapon_data: Dictionary) -> void:
-	# The player emits after adding spread for the next shot. A dry trigger
-	# never reaches this signal and cannot enlarge the reticle.
+	# Only successful rifle shots accumulate visual bloom. A held trigger,
+	# rejected shot, or laser's ballistic spread cannot move the sight pieces.
+	if _uses_rifle_reticle_bloom() and not player.is_focus_aiming():
+		hip_reticle_bloom.fire()
+	else:
+		hip_reticle_bloom.reset()
 	fire_reticle_left = maxf(fire_reticle_left, 0.085)
 	_update_fire_reticle_visibility()
+
+func _uses_rifle_reticle_bloom() -> bool:
+	# The recovered assault-rifle family is type 1 / 23. The store's broad
+	# RIFLE filter also contains type-5 lasers, which retain their static art.
+	return is_instance_valid(player) and int(player.current_weapon.get("type", -1)) in [1, 23]
+
+func _hip_reticle_spread_ratio() -> float:
+	if not _uses_rifle_reticle_bloom() or player.dead or player.is_focus_aiming():
+		return 0.0
+	return hip_reticle_bloom.ratio
+
+func _advance_hip_reticle(delta: float) -> void:
+	if get_tree().paused:
+		return
+	if not _uses_rifle_reticle_bloom() or player.dead or player.is_focus_aiming():
+		hip_reticle_bloom.reset()
+		return
+	hip_reticle_bloom.advance(delta)
 
 func _update_fire_reticle_visibility() -> void:
 	if not is_instance_valid(crosshair) or not is_instance_valid(fire_crosshair):
 		return
 	_resize_crosshair()
-	var spread_active := is_instance_valid(player) and player.get_hip_spread_ratio() > 0.0
+	var spread_active := _hip_reticle_spread_ratio() > 0.0
 	# Each optic owns its etched/projected reticle. The recovered hip-fire sprite
 	# must not be superimposed on it; confirmed hits remain a separate top layer.
 	var scoped := is_instance_valid(player) and player.is_scope_active()
@@ -555,16 +579,14 @@ func _place_original(control: Control, anchor: Vector2, center_offset: Vector2, 
 func _resize_crosshair() -> void:
 	if not is_instance_valid(crosshair) or crosshair.texture == null:
 		return
-	var display_size := Atlas.logical_size(crosshair.texture) * _original_ui_scale()
-	if is_instance_valid(player):
-		display_size *= player.get_hip_reticle_scale()
-	crosshair.custom_minimum_size = display_size
-	crosshair.size = display_size
+	var spread_ratio := _hip_reticle_spread_ratio()
+	var max_scale := float(player.current_weapon.hip_spread.reticle_max_scale) if is_instance_valid(player) else 1.0
+	crosshair.update_spread(_original_ui_scale(), spread_ratio, max_scale)
+	var display_size := crosshair.size
 	crosshair.position = (crosshair.get_parent().size - display_size) * 0.5
 	crosshair.pivot_offset = display_size * 0.5
 	if is_instance_valid(fire_crosshair):
-		fire_crosshair.custom_minimum_size = display_size
-		fire_crosshair.size = display_size
+		fire_crosshair.update_spread(_original_ui_scale(), spread_ratio, max_scale)
 		fire_crosshair.position = (fire_crosshair.get_parent().size - display_size) * 0.5
 		fire_crosshair.pivot_offset = display_size * 0.5
 
@@ -684,13 +706,15 @@ func _on_weapon_changed(_weapon_id: String, data: Dictionary) -> void:
 func _set_reticle_for_weapon(data: Dictionary) -> void:
 	if not is_instance_valid(crosshair):
 		return
-	var aim_id := int(data.get("aim_id", 0))
-	var texture := Atlas.hud("hud%d" % clampi(aim_id, 0, 13))
+	var aim_id := clampi(int(data.get("aim_id", 0)), 0, 13)
+	var texture := Atlas.hud("hud%d" % aim_id)
 	if texture == null:
+		aim_id = 0
 		texture = Atlas.hud("hud0")
-	crosshair.texture = texture
+	crosshair.configure(texture, aim_id)
 	if is_instance_valid(fire_crosshair):
-		fire_crosshair.texture = texture
+		fire_crosshair.configure(texture, aim_id)
+	hip_reticle_bloom.reset()
 	fire_reticle_left = 0.0
 	_update_fire_reticle_visibility()
 

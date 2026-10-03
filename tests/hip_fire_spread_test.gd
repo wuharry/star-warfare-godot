@@ -8,6 +8,9 @@ var shot_count := 0
 var world: WarfareGameWorld
 var player: WarfarePlayer
 var target: HitRecorder
+# Independent expected equipment IDs: ordinary assault rifles plus AST-KK.
+# Lasers share the store filter, but the user excluded their reticle bloom.
+const VISUAL_RIFLES := ["gun00", "gun01", "gun02", "gun03", "gun04", "gun05", "gun40"]
 
 class HitRecorder:
 	extends StaticBody3D
@@ -86,6 +89,8 @@ func _run() -> void:
 	_check_recovery_and_movement()
 	_check_focus_and_melee()
 	_check_reticle()
+	_check_reticle_weapon_scope()
+	_check_visual_recovery_timing()
 	await _check_pause()
 	Input.action_release("aim")
 	Input.action_release("fire")
@@ -164,7 +169,7 @@ func _check_hitscan_paths() -> void:
 			_check(player.get_hip_spread_degrees() <= peak + 0.0001, id + " exceeded cap")
 		_check(max_observed > peak * 0.25, id + " fired center rays despite accumulated spread")
 		_check(is_equal_approx(player.get_hip_spread_degrees(), peak), id + " sustained fire never reached cap")
-		_check(is_equal_approx(player.get_hip_reticle_scale(), float(player.current_weapon.hip_spread.reticle_max_scale)), id + " cap is disconnected from reticle")
+		_check(is_equal_approx(player.get_hip_reticle_scale(), float(player.current_weapon.hip_spread.reticle_max_scale)), id + " ballistic spread ratio did not reach its configured cap")
 
 func _check_projectile_path() -> void:
 	_equip("gun11")
@@ -293,35 +298,136 @@ func _check_reticle() -> void:
 	world.hud._resize_crosshair()
 	world.hud._update_fire_reticle_visibility()
 	var base_size: Vector2 = world.hud.crosshair.size
+	var original_source_scale: float = world.hud.crosshair.source_scale
 	var original_texture := world.hud.crosshair.texture
 	var viewport_center := get_viewport().get_visible_rect().get_center()
 	_check(world.hud.find_child("HipSpreadBrackets", true, false) == null, "extra hip-fire frame was recreated")
+	_check(world.hud.crosshair.segment_offset.is_zero_approx() and world.hud.fire_crosshair.segment_offset.is_zero_approx(), "idle reticle pieces did not start at their source positions")
 	_fire()
 	var first_size: Vector2 = world.hud.fire_crosshair.size
-	_check(first_size.x > base_size.x, "first shot did not expand the original reticle")
+	var first_offset: Vector2 = world.hud.fire_crosshair.segment_offset
+	_check(first_size.x > base_size.x and first_offset.x > 0.0 and first_offset.y > 0.0, "first shot did not move the original reticle pieces outward")
+	_check(world.hud._hip_reticle_spread_ratio() >= 0.10 and world.hud._hip_reticle_spread_ratio() <= 0.15, "single shot did not create a small initial reticle step")
 	_check(first_size.x < base_size.x * float(player.current_weapon.hip_spread.reticle_max_scale), "first shot jumped straight to full expansion")
+	_check(is_equal_approx(world.hud.crosshair.source_scale, original_source_scale) and is_equal_approx(world.hud.fire_crosshair.source_scale, original_source_scale), "first shot enlarged the source strokes")
+	# A rejected trigger does not emit shot_fired; the visible gaps must also
+	# remain unchanged, rather than responding to the input by themselves.
+	player._try_fire()
+	_check(world.hud.fire_crosshair.segment_offset.is_equal_approx(first_offset), "cooldown rejection moved the reticle pieces")
 	for shot in 12:
 		_fire()
 	world.hud._resize_crosshair()
 	world.hud._update_fire_reticle_visibility()
 	_check(world.hud.fire_crosshair.visible and not world.hud.crosshair.visible, "bloom did not select fire reticle")
 	var peak_size := base_size * float(player.current_weapon.hip_spread.reticle_max_scale)
-	_check(world.hud.crosshair.size.is_equal_approx(peak_size), "original reticle did not reach this gun's expansion limit")
+	var peak_offset: Vector2 = world.hud.fire_crosshair.segment_offset
+	_check(world.hud.crosshair.size.is_equal_approx(peak_size), "reticle pieces did not reach this gun's expansion limit")
+	_check(peak_offset.x > first_offset.x and peak_offset.y > first_offset.y, "continuous fire did not gradually increase the reticle gaps")
+	_check(is_equal_approx(world.hud.crosshair.source_scale, original_source_scale) and is_equal_approx(world.hud.fire_crosshair.source_scale, original_source_scale), "continuous fire changed source stroke thickness or length")
 	_check(world.hud.crosshair.texture == original_texture and world.hud.fire_crosshair.texture == original_texture, "firing replaced the original reticle image")
 	_check(world.hud.fire_crosshair.size.is_equal_approx(world.hud.crosshair.size), "reticle layers have different sizes")
+	_check(world.hud.fire_crosshair.segment_offset.is_equal_approx(world.hud.crosshair.segment_offset), "reticle layers have different gaps")
+	_check(world.hud.crosshair.get_global_rect().get_center().distance_to(viewport_center) < 0.01, "idle reticle layer moved away from viewport center during bloom")
 	_check(world.hud.fire_crosshair.get_global_rect().get_center().distance_to(viewport_center) < 0.01, "reticle moved away from viewport center")
 	world.hud.fire_reticle_left = 0.0
 	world.hud._update_fire_reticle_visibility()
 	_check(world.hud.fire_crosshair.visible, "short fire flash expiry hid ongoing recovery")
-	player._update_hip_spread(player.hip_spread_recovery_left + 0.1)
+	world.hud._advance_hip_reticle(0.2)
 	world.hud._update_fire_reticle_visibility()
-	_check(world.hud.fire_crosshair.size.x < peak_size.x and world.hud.fire_crosshair.size.x > base_size.x, "original reticle did not shrink gradually")
-	player._update_hip_spread(10.0)
+	_check(world.hud.fire_crosshair.size.x < peak_size.x and world.hud.fire_crosshair.size.x > base_size.x, "reticle extent did not shrink gradually")
+	_check(world.hud.fire_crosshair.segment_offset.x < peak_offset.x and world.hud.fire_crosshair.segment_offset.x > 0.0, "reticle gaps did not close gradually")
+	_check(is_equal_approx(world.hud.fire_crosshair.source_scale, original_source_scale), "recovery resized the source strokes")
+	world.hud._advance_hip_reticle(10.0)
 	world.hud._resize_crosshair()
 	world.hud._update_fire_reticle_visibility()
 	_check(world.hud.crosshair.visible and not world.hud.fire_crosshair.visible, "recovery did not restore idle reticle")
 	_check(world.hud.crosshair.size.is_equal_approx(base_size), "recovery did not restore original reticle size")
+	_check(world.hud.crosshair.segment_offset.is_zero_approx() and world.hud.fire_crosshair.segment_offset.is_zero_approx(), "recovery did not restore the original gaps")
 	_check(world.hud.crosshair.get_global_rect().get_center().distance_to(viewport_center) < 0.01, "idle reticle moved away from viewport center")
+	_fire()
+	_equip("gun17")
+	world.hud._update_fire_reticle_visibility()
+	_check(world.hud.crosshair.segment_offset.is_zero_approx() and world.hud.fire_crosshair.segment_offset.is_zero_approx(), "weapon switch retained the previous reticle's gaps")
+	_check(world.hud.crosshair.texture != original_texture and world.hud.fire_crosshair.texture == world.hud.crosshair.texture, "weapon switch did not select the new weapon's reticle on both layers")
+	_equip("gun00")
+	_fire()
+	Input.action_press("aim")
+	world.hud._update_fire_reticle_visibility()
+	_check(world.hud.crosshair.segment_offset.is_zero_approx() and world.hud.fire_crosshair.segment_offset.is_zero_approx(), "focused aim retained the hip-fire reticle gaps")
+	_check(is_equal_approx(world.hud.crosshair.source_scale, original_source_scale), "focused aim changed the source stroke scale")
+	Input.action_release("aim")
+
+func _check_reticle_weapon_scope() -> void:
+	for weapon_id: String in GameState.WEAPONS:
+		_equip(weapon_id)
+		world.hud._update_fire_reticle_visibility()
+		var base_size: Vector2 = world.hud.crosshair.size
+		var source_scale: float = world.hud.crosshair.source_scale
+		var source_texture := world.hud.crosshair.texture
+		var enabled := weapon_id in VISUAL_RIFLES
+		_fire()
+		_check((world.hud.fire_crosshair.segment_offset.x > 0.0) == enabled, weapon_id + " first-shot reticle does not match the rifle-only scope")
+		# Use successful shots to accumulate the visual state independently of
+		# each weapon's ballistic profile, then inspect recovery and flash expiry.
+		for shot in 11:
+			_fire()
+		world.hud.fire_reticle_left = 0.0
+		world.hud._update_fire_reticle_visibility()
+		_check((world.hud.crosshair.segment_offset.x > 0.0) == enabled and (world.hud.fire_crosshair.segment_offset.x > 0.0) == enabled, weapon_id + " burst reticle does not match the rifle-only scope")
+		_check(world.hud.fire_crosshair.visible == enabled and world.hud.crosshair.visible != enabled, weapon_id + " ballistic bloom retained the wrong idle/fire image layer")
+		if not enabled:
+			_check(world.hud.crosshair.size.is_equal_approx(base_size), weapon_id + " burst enlarged a non-rifle reticle")
+		world.hud._advance_hip_reticle(0.2)
+		world.hud._update_fire_reticle_visibility()
+		_check((world.hud.crosshair.segment_offset.x > 0.0) == enabled, weapon_id + " recovery reticle does not match the rifle-only scope")
+		_check(is_equal_approx(world.hud.crosshair.source_scale, source_scale) and world.hud.crosshair.texture == source_texture, weapon_id + " visual feedback changed original image strokes")
+		world.hud._advance_hip_reticle(10.0)
+		world.hud._update_fire_reticle_visibility()
+		_check(world.hud.crosshair.segment_offset.is_zero_approx() and world.hud.crosshair.size.is_equal_approx(base_size), weapon_id + " recovered reticle did not return to the original image")
+
+func _check_visual_recovery_timing() -> void:
+	_equip("gun00")
+	_fire()
+	var single := world.hud._hip_reticle_spread_ratio()
+	world.hud._advance_hip_reticle(1.0)
+	_fire()
+	_check(is_equal_approx(world.hud._hip_reticle_spread_ratio(), single), "separate single taps accumulated a burst-sized reticle")
+	for shot in 5:
+		_fire()
+	var burst := world.hud._hip_reticle_spread_ratio()
+	_check(burst > single * 4.0 and burst < 1.0, "short burst did not accumulate gradual reticle steps")
+	world.hud._advance_hip_reticle(0.08)
+	_check(is_equal_approx(world.hud._hip_reticle_spread_ratio(), burst), "reticle recovered before its short hold completed")
+	world.hud._advance_hip_reticle(0.1)
+	var first_recovery := world.hud._hip_reticle_spread_ratio()
+	world.hud._advance_hip_reticle(0.1)
+	var second_recovery := world.hud._hip_reticle_spread_ratio()
+	_check(burst > first_recovery and first_recovery > second_recovery and second_recovery > 0.0, "reticle recovery did not remain smooth and progressive")
+	_check(first_recovery - second_recovery > (burst - first_recovery) * 2.0, "reticle closing speed did not increase over equal time spans")
+	var baseline := -1.0
+	for fps in [30, 60, 120]:
+		_equip("gun00")
+		for shot in 6:
+			_fire()
+		for frame in fps / 2:
+			world.hud._advance_hip_reticle(1.0 / float(fps))
+		var recovered_ratio := world.hud._hip_reticle_spread_ratio()
+		_check(recovered_ratio > 0.0 and recovered_ratio < burst, "visual frame-rate fixture did not photograph active recovery")
+		if baseline < 0.0:
+			baseline = recovered_ratio
+		else:
+			_check(absf(recovered_ratio - baseline) < 0.00001, "reticle recovery depends on frame rate (%d FPS)" % fps)
+		world.hud._advance_hip_reticle(1.0)
+		_check(is_zero_approx(world.hud._hip_reticle_spread_ratio()), "accelerated recovery overshot or did not finish")
+	_equip("gun00")
+	for shot in 80:
+		_fire()
+		world.hud._advance_hip_reticle(player._current_shot_interval())
+	_check(world.hud._hip_reticle_spread_ratio() > 0.85 and world.hud._hip_reticle_spread_ratio() <= 1.0, "long rifle burst did not stay near its reticle cap")
+	Input.action_press("aim")
+	world.hud._advance_hip_reticle(0.01)
+	Input.action_release("aim")
+	_check(is_zero_approx(world.hud._hip_reticle_spread_ratio()), "leaving focused aim revived the previous hip-fire bloom")
 
 func _check_pause() -> void:
 	_equip("gun00")
@@ -329,6 +435,8 @@ func _check_pause() -> void:
 		_fire()
 	var before := player.hip_spread_degrees
 	var delay_before := player.hip_spread_recovery_left
+	var visual_before := world.hud._hip_reticle_spread_ratio()
+	var visual_time_before: float = world.hud.hip_reticle_bloom.since_shot
 	# Re-enable the real player callback: pause must stop that callback even
 	# though this test node continues and can observe elapsed process frames.
 	player.set_physics_process(true)
@@ -336,5 +444,6 @@ func _check_pause() -> void:
 	for frame in 4:
 		await get_tree().process_frame
 	_check(is_equal_approx(player.hip_spread_degrees, before) and is_equal_approx(player.hip_spread_recovery_left, delay_before), "pause advanced spread or its recovery timer")
+	_check(is_equal_approx(world.hud._hip_reticle_spread_ratio(), visual_before) and is_equal_approx(world.hud.hip_reticle_bloom.since_shot, visual_time_before), "pause advanced the visual reticle recovery")
 	player.set_physics_process(false)
 	get_tree().paused = false
