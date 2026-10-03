@@ -1,6 +1,6 @@
 [
   {
-    "path": "assets/armors/viper_v2/body_diffuse.png",
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/body_diffuse.png",
     "sha256": "21aef1a44e4606b3ef849060fdae059ab4ba95980809531503983339c4183f66",
     "bytes": 1480505,
     "label": "body",
@@ -47,11 +47,13 @@
         "actual_input_path": "docs/art/viper_runtime_v2/review/engine/new_diffuse_front.png"
       }
     ],
-    "status": "runtime_integrated_pending_user_art_review",
-    "selected": true
+    "status": "superseded_by_concept_match_v8",
+    "selected": false,
+    "superseded_runtime_path": "assets/armors/viper_v2/body_diffuse.png",
+    "actual_input_path": "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/body_diffuse.png"
   },
   {
-    "path": "assets/armors/viper_v2/shoulder_diffuse.png",
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/shoulder_diffuse.png",
     "sha256": "fd8021d3591c61583b43355ccb2dadfdb409f7f46d051b13d540c720c89fcb04",
     "bytes": 1539209,
     "label": "shoulder",
@@ -98,11 +100,13 @@
         "actual_input_path": "docs/art/viper_runtime_v2/review/engine/new_diffuse_front.png"
       }
     ],
-    "status": "runtime_integrated_pending_user_art_review",
-    "selected": true
+    "status": "superseded_by_concept_match_v8",
+    "selected": false,
+    "superseded_runtime_path": "assets/armors/viper_v2/shoulder_diffuse.png",
+    "actual_input_path": "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/shoulder_diffuse.png"
   },
   {
-    "path": "assets/armors/viper_v2/foot_diffuse.png",
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/foot_diffuse.png",
     "sha256": "e38b42e016997c72c9efe347bae830d729879294a18776db0c6bbe9f0dbcf37f",
     "bytes": 1480691,
     "label": "foot",
@@ -149,11 +153,13 @@
         "actual_input_path": "docs/art/viper_runtime_v2/review/engine/new_diffuse_front.png"
       }
     ],
-    "status": "runtime_integrated_pending_user_art_review",
-    "selected": true
+    "status": "superseded_by_concept_match_v8",
+    "selected": false,
+    "superseded_runtime_path": "assets/armors/viper_v2/foot_diffuse.png",
+    "actual_input_path": "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/foot_diffuse.png"
   },
   {
-    "path": "assets/armors/viper_v2/hand_diffuse.png",
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/hand_diffuse.png",
     "sha256": "fc69da2dc27af4fd8cd8bde0363bde4f0458aed8de03636b43dcf19e5cbfc0e3",
     "bytes": 1365278,
     "label": "hand",
@@ -200,8 +206,10 @@
         "actual_input_path": "docs/art/viper_runtime_v2/review/engine/new_diffuse_front.png"
       }
     ],
-    "status": "runtime_integrated_pending_user_art_review",
-    "selected": true
+    "status": "superseded_by_concept_match_v8",
+    "selected": false,
+    "superseded_runtime_path": "assets/armors/viper_v2/hand_diffuse.png",
+    "actual_input_path": "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/hand_diffuse.png"
   },
   {
     "path": "docs/art/viper_runtime_v2/rejected/head_diffuse_v1.png",
@@ -530,7 +538,7 @@
     "status": "superseded_local_texture_attempt"
   },
   {
-    "path": "assets/armors/viper_v2/head_diffuse.png",
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/head_diffuse.png",
     "sha256": "a312d13235d07e14bc7040508e16a47885aa14cf8e761816685d7f499756940f",
     "bytes": 1984509,
     "dimensions": [
@@ -584,7 +592,522 @@
         ]
       }
     ],
+    "selected": false,
+    "status": "superseded_by_concept_match_v8",
+    "superseded_runtime_path": "assets/armors/viper_v2/head_diffuse.png",
+    "actual_input_path": "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/head_diffuse.png"
+  },
+  {
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse_v8c.png",
+    "sha256": "83701b740e31ecf124f288e0428f1ea55bdf73f202cfb6616ab66950394b957a",
+    "bytes": 2001984,
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "label": "body",
+    "variant": "concept_match_v8",
+    "source_revision": "concept_match_v8",
+    "tool": "image_gen.imagegen",
+    "generator": "image_gen",
+    "generated_at": "2026-10-03T05:48:57.550Z",
+    "notes": "Exact source semantic guide as first reference yields conservative back plate and mostly blue front thighs; application locally remaps 20 original chest and 12 abdomen UV coordinates to align chest windows, buckle, black belly core and blue groin. All source coordinate/island counts unchanged.",
+    "prompt": {
+      "path": "docs/art/viper_runtime_v2/prompts/body_diffuse_concept_match_v8c.txt",
+      "sha256": "78cd1756e25e378e601a8a333b39bbf7a23de73af6c89040db694b25198d51a7",
+      "bytes": 2674
+    },
+    "references": [
+      {
+        "path": "docs/art/viper_runtime_v2/guides/body_regions_v8.png",
+        "sha256": "4e79e872c39a2512cae379dc6b71962bd5ebca067c90ab2d866e5048c7163c83",
+        "bytes": 217025,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/body_regions_v8.png"
+      },
+      {
+        "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png",
+        "sha256": "d16a31e4789e64d6144a93f2df0594b463fa5672d3adf25202eec2f82a3154c7",
+        "bytes": 1853876,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png"
+      },
+      {
+        "path": "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "sha256": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
+        "bytes": 607230,
+        "dimensions": [
+          848,
+          1264
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      }
+    ],
     "selected": true,
-    "status": "runtime_integrated_pending_user_art_review"
+    "status": "runtime_integrated_pending_user_art_review",
+    "canonical_output": {
+      "path": "assets/armors/viper_v2/body_diffuse.png",
+      "sha256": "83701b740e31ecf124f288e0428f1ea55bdf73f202cfb6616ab66950394b957a",
+      "bytes": 2001984,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-ef6d5ef2-d1a4-4577-9425-ed3b6d20dc2a.png"
+  },
+  {
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/hand_diffuse.png",
+    "sha256": "d1023bdedbe824dbac3d1c62717eb3703c4f54acf4cb3c0c6c36a6ab98ebfa5f",
+    "bytes": 1558635,
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "label": "hand",
+    "variant": "concept_match_v8",
+    "source_revision": "concept_match_v8",
+    "tool": "image_gen.imagegen",
+    "generator": "image_gen",
+    "generated_at": "2026-10-03T05:26:20.329Z",
+    "notes": "Full concept body paint correction; normalized UV coordinates unchanged from head_v7. Before snapshot has exact bytes of original edit input.",
+    "prompt": {
+      "path": "docs/art/viper_runtime_v2/prompts/hand_diffuse_concept_match_v8.txt",
+      "sha256": "ee26b2813e2c32906223093d33314e40e714dcd5b97b0af62ed13f9d9273051a",
+      "bytes": 10839
+    },
+    "references": [
+      {
+        "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/hand_diffuse.png",
+        "sha256": "fc69da2dc27af4fd8cd8bde0363bde4f0458aed8de03636b43dcf19e5cbfc0e3",
+        "bytes": 1365278,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/hand_diffuse.png"
+      },
+      {
+        "path": "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "sha256": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
+        "bytes": 607230,
+        "dimensions": [
+          848,
+          1264
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      },
+      {
+        "path": "docs/art/viper_runtime_v2/guides/hand_uv.png",
+        "sha256": "422f503a831ca158726a9474599f43b2e86d75e7c2f2cde187a586c6d6da45b0",
+        "bytes": 151952,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/hand_uv.png"
+      }
+    ],
+    "selected": true,
+    "status": "runtime_integrated_pending_user_art_review",
+    "canonical_output": {
+      "path": "assets/armors/viper_v2/hand_diffuse.png",
+      "sha256": "d1023bdedbe824dbac3d1c62717eb3703c4f54acf4cb3c0c6c36a6ab98ebfa5f",
+      "bytes": 1558635,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-bf277b19-eafe-4e50-9829-3f14fd1dc433.png"
+  },
+  {
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/foot_diffuse.png",
+    "sha256": "340cec30ec508a82fc0c73de9c4fadef4210730d5286616e65a9b1194153e2a5",
+    "bytes": 1657785,
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "label": "foot",
+    "variant": "concept_match_v8",
+    "source_revision": "concept_match_v8",
+    "tool": "image_gen.imagegen",
+    "generator": "image_gen",
+    "generated_at": "2026-10-03T05:26:20.335Z",
+    "notes": "Full concept body paint correction; normalized UV coordinates unchanged from head_v7. Before snapshot has exact bytes of original edit input.",
+    "prompt": {
+      "path": "docs/art/viper_runtime_v2/prompts/foot_diffuse_concept_match_v8.txt",
+      "sha256": "674c170fe347485052f29b1aa135bf32b271ab2a97f99e6b7385782a2d45f328",
+      "bytes": 10826
+    },
+    "references": [
+      {
+        "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/foot_diffuse.png",
+        "sha256": "e38b42e016997c72c9efe347bae830d729879294a18776db0c6bbe9f0dbcf37f",
+        "bytes": 1480691,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/foot_diffuse.png"
+      },
+      {
+        "path": "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "sha256": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
+        "bytes": 607230,
+        "dimensions": [
+          848,
+          1264
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      },
+      {
+        "path": "docs/art/viper_runtime_v2/guides/foot_uv.png",
+        "sha256": "a08f15261e53d9f476fa21fd633928670c5432d78044c099aef96a4f047cab2e",
+        "bytes": 209842,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/foot_uv.png"
+      }
+    ],
+    "selected": true,
+    "status": "runtime_integrated_pending_user_art_review",
+    "canonical_output": {
+      "path": "assets/armors/viper_v2/foot_diffuse.png",
+      "sha256": "340cec30ec508a82fc0c73de9c4fadef4210730d5286616e65a9b1194153e2a5",
+      "bytes": 1657785,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-09afde6a-12df-414a-b65f-fe6b3f014aab.png"
+  },
+  {
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/shoulder_diffuse.png",
+    "sha256": "162ca5bb1de8533e7637ca7aba0464feb11e225b19ba8b63adfd60d3a56ccc90",
+    "bytes": 1705494,
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "label": "shoulder",
+    "variant": "concept_match_v8",
+    "source_revision": "concept_match_v8",
+    "tool": "image_gen.imagegen",
+    "generator": "image_gen",
+    "generated_at": "2026-10-03T05:26:20.343Z",
+    "notes": "Full concept body paint correction; normalized UV coordinates unchanged from head_v7. Before snapshot has exact bytes of original edit input.",
+    "prompt": {
+      "path": "docs/art/viper_runtime_v2/prompts/shoulder_diffuse_concept_match_v8.txt",
+      "sha256": "dd1fb8087fffaeab2aca0c2325b0790d0c2a82eeb13d926937d98cfd92266dd0",
+      "bytes": 10570
+    },
+    "references": [
+      {
+        "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/shoulder_diffuse.png",
+        "sha256": "fd8021d3591c61583b43355ccb2dadfdb409f7f46d051b13d540c720c89fcb04",
+        "bytes": 1539209,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/shoulder_diffuse.png"
+      },
+      {
+        "path": "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "sha256": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
+        "bytes": 607230,
+        "dimensions": [
+          848,
+          1264
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      },
+      {
+        "path": "docs/art/viper_runtime_v2/guides/shoulder_uv.png",
+        "sha256": "5023b2801d7f30ca482a97155c4096515567a41fe177c6e2f1c5ac49ff0fe800",
+        "bytes": 153679,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/shoulder_uv.png"
+      }
+    ],
+    "selected": true,
+    "status": "runtime_integrated_pending_user_art_review",
+    "canonical_output": {
+      "path": "assets/armors/viper_v2/shoulder_diffuse.png",
+      "sha256": "162ca5bb1de8533e7637ca7aba0464feb11e225b19ba8b63adfd60d3a56ccc90",
+      "bytes": 1705494,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-daa63f43-2ed9-4872-aa15-ce105698d2a2.png"
+  },
+  {
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/head_diffuse.png",
+    "sha256": "b19e5ef331cf3a9a0619c5ce7ec8c3cb08251588d1d194f8dce4fad4cd8b2964",
+    "bytes": 1992201,
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "label": "head",
+    "variant": "concept_match_v8",
+    "source_revision": "concept_match_v8",
+    "tool": "image_gen.imagegen",
+    "generator": "image_gen",
+    "generated_at": "2026-10-03T05:26:20.351Z",
+    "notes": "Full concept body paint correction; normalized UV coordinates unchanged from head_v7. Before snapshot has exact bytes of original edit input.",
+    "prompt": {
+      "path": "docs/art/viper_runtime_v2/prompts/head_diffuse_concept_match_v8.txt",
+      "sha256": "67eab1cca0ed2d3ce0f66b4dd963e42833cc12ba99c49162a24cc7dbc16eef79",
+      "bytes": 10879
+    },
+    "references": [
+      {
+        "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/head_diffuse.png",
+        "sha256": "a312d13235d07e14bc7040508e16a47885aa14cf8e761816685d7f499756940f",
+        "bytes": 1984509,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/head_diffuse.png"
+      },
+      {
+        "path": "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "sha256": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
+        "bytes": 607230,
+        "dimensions": [
+          848,
+          1264
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      },
+      {
+        "path": "docs/art/viper_runtime_v2/guides/head_uv_v6.png",
+        "sha256": "809747cf0b01431ba4cbfb423457a3ff5f8642c55f1d1f031c23c722c9464d75",
+        "bytes": 198311,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/head_uv_v6.png"
+      }
+    ],
+    "selected": true,
+    "status": "runtime_integrated_pending_user_art_review",
+    "canonical_output": {
+      "path": "assets/armors/viper_v2/head_diffuse.png",
+      "sha256": "b19e5ef331cf3a9a0619c5ce7ec8c3cb08251588d1d194f8dce4fad4cd8b2964",
+      "bytes": 1992201,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-fa83607d-8532-497d-b6a6-a09851269871.png"
+  },
+  {
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png",
+    "sha256": "d16a31e4789e64d6144a93f2df0594b463fa5672d3adf25202eec2f82a3154c7",
+    "bytes": 1853876,
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "label": "body",
+    "variant": "concept_match_v8_initial_body",
+    "source_revision": "concept_match_v8",
+    "tool": "image_gen.imagegen",
+    "generator": "image_gen",
+    "generated_at": "2026-10-03T05:26:20.311Z",
+    "notes": "Rejected after game application: frontal torso painted on rear, front abdomen missing.",
+    "prompt": {
+      "path": "docs/art/viper_runtime_v2/prompts/body_diffuse_concept_match_v8.txt",
+      "sha256": "7a31c9f1413448e3667015d8ec0539a22f1f4fb6983bc5b8c2b89c93dab3f3a1",
+      "bytes": 11279
+    },
+    "references": [
+      {
+        "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/body_diffuse.png",
+        "sha256": "21aef1a44e4606b3ef849060fdae059ab4ba95980809531503983339c4183f66",
+        "bytes": 1480505,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/body_diffuse.png"
+      },
+      {
+        "path": "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "sha256": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
+        "bytes": 607230,
+        "dimensions": [
+          848,
+          1264
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      },
+      {
+        "path": "docs/art/viper_runtime_v2/guides/body_uv.png",
+        "sha256": "54155b20b123bb190cde2694b4d2d82180a6f9b09f108d89f4793e78c77c68ab",
+        "bytes": 216222,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/body_uv.png"
+      }
+    ],
+    "selected": false,
+    "status": "superseded_concept_match_attempt",
+    "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f19b65a3-e0ef-4041-adc7-667ea82a223a.png"
+  },
+  {
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse_v8b_rejected.png",
+    "sha256": "935d74d9c388f969f5d796e65eafc60b64fca76ea26d32143abf55f3c8720472",
+    "bytes": 1865658,
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "label": "body",
+    "variant": "concept_match_v8_body_v8b_rejected",
+    "source_revision": "concept_match_v8",
+    "tool": "image_gen.imagegen",
+    "generator": "image_gen",
+    "generated_at": "2026-10-03T05:49:53.778Z",
+    "notes": "Rejected on atlas inspection: long central inset remained on back.",
+    "prompt": {
+      "path": "docs/art/viper_runtime_v2/prompts/body_diffuse_concept_match_v8b.txt",
+      "sha256": "6297a1914dc0cb609305eddf657fb46a32a2bc673c144e2abc655c8dcd24095d",
+      "bytes": 12308
+    },
+    "references": [
+      {
+        "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png",
+        "sha256": "d16a31e4789e64d6144a93f2df0594b463fa5672d3adf25202eec2f82a3154c7",
+        "bytes": 1853876,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png"
+      },
+      {
+        "path": "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "sha256": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
+        "bytes": 607230,
+        "dimensions": [
+          848,
+          1264
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      },
+      {
+        "path": "docs/art/viper_runtime_v2/guides/body_regions_v8.png",
+        "sha256": "4e79e872c39a2512cae379dc6b71962bd5ebca067c90ab2d866e5048c7163c83",
+        "bytes": 217025,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/body_regions_v8.png"
+      },
+      {
+        "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/first_application/front.png",
+        "sha256": "3944e87bb99a1a0e3924c1aea7f7f4d14b8d8304ea393c8cd86c8723c0321c00",
+        "bytes": 264317,
+        "dimensions": [
+          640,
+          720
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/revisions/concept_match_v8/first_application/front.png"
+      },
+      {
+        "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/first_application/rear.png",
+        "sha256": "65f65e6d512bc6efbb50c38bb4c4d00a0d2185e9c86383b0e7f1bf6a379f9611",
+        "bytes": 254528,
+        "dimensions": [
+          640,
+          720
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/revisions/concept_match_v8/first_application/rear.png"
+      }
+    ],
+    "selected": false,
+    "status": "superseded_concept_match_attempt",
+    "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-4b700a50-4ac9-490c-bf24-16cdd3477b46.png"
+  },
+  {
+    "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse_v8d_rejected.png",
+    "sha256": "5f6056bf6c9a1dafafc9bb9cf499ba08a2dd9ad5aad741f9a203720d013c7b73",
+    "bytes": 1897008,
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "label": "body",
+    "variant": "concept_match_v8_body_v8d_rejected",
+    "source_revision": "concept_match_v8",
+    "tool": "image_gen.imagegen",
+    "generator": "image_gen",
+    "generated_at": "2026-10-03T06:03:19.211Z",
+    "notes": "Rejected on atlas inspection: local repair did not move chest window into original chest sampling region. v8c artwork selected with scoped chest UV correction.",
+    "prompt": {
+      "path": "docs/art/viper_runtime_v2/prompts/body_diffuse_concept_match_v8d.txt",
+      "sha256": "071df0de4364d4f9c199d493f017e8e63e0fe432226c10107c6758f489de3e93",
+      "bytes": 2419
+    },
+    "references": [
+      {
+        "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse_v8c.png",
+        "sha256": "83701b740e31ecf124f288e0428f1ea55bdf73f202cfb6616ab66950394b957a",
+        "bytes": 2001984,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse_v8c.png"
+      },
+      {
+        "path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png",
+        "sha256": "d16a31e4789e64d6144a93f2df0594b463fa5672d3adf25202eec2f82a3154c7",
+        "bytes": 1853876,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png"
+      },
+      {
+        "path": "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "sha256": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
+        "bytes": 607230,
+        "dimensions": [
+          848,
+          1264
+        ],
+        "actual_input_path": "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      }
+    ],
+    "selected": false,
+    "status": "superseded_concept_match_attempt",
+    "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f748089c-29d1-4b76-a735-4159816b878d.png"
   }
 ]

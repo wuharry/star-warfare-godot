@@ -8,6 +8,8 @@ var candidate: Node3D
 var files: Array[String]=[]
 var dimensions: Dictionary={}
 var capture_viewport: SubViewport
+var review_points: Array[Vector3]=[]
+var framing: Dictionary={}
 
 func _ready() -> void:
 	_run.call_deferred()
@@ -45,6 +47,17 @@ func _run() -> void:
 	for mesh: MeshInstance3D in player.recovered_avatar.find_children("*","MeshInstance3D",true,false):
 		if not str(mesh.name).begins_with("Armor") and mesh.visible:
 			hidden.append(mesh);mesh.hide()
+	# Fit both cages together, using the actual fixture skeleton in world space.
+	# Import bounds alone omit the parent transform and the current skin pose.
+	for source: Node3D in [baseline,candidate]:
+		for name_key: String in NAMES:
+			review_points.append_array(_posed_points(source.find_child(name_key,true,false) as MeshInstance3D,player.recovered_skeleton))
+	if "--check-framing" in OS.get_cmdline_user_args():
+		for view: String in ["front","side","rear","quarter"]:
+			_set_ortho(fixture.view_camera,view)
+		print("VIPER_FRAMING_PASS "+JSON.stringify(framing))
+		baseline.free();candidate.free();fixture.cleanup();GameState.save_path=real_save
+		get_tree().quit();return
 	for view: String in ["front","side","rear","quarter"]:
 		_set_ortho(fixture.view_camera,view)
 		for style: String in ["clay","painted","diffuse"]:
@@ -58,7 +71,7 @@ func _run() -> void:
 	for view: String in ["front","side","rear","quarter"]:
 		_set_ortho(fixture.view_camera,view)
 		var center:=Vector3(0,1.58,-.07)
-		var direction:=(fixture.view_camera.global_position-Vector3(0,1.04,0)).normalized()
+		var direction:=fixture.view_camera.global_basis.z
 		fixture.view_camera.size=.83
 		fixture.view_camera.global_position=center+direction*7
 		fixture.view_camera.look_at(center)
@@ -135,7 +148,7 @@ func _run() -> void:
 	var unchanged:=_hash(real_save)==before
 	GameState.save_path=real_save
 	var report:=FileAccess.open(OUT+"capture.json",FileAccess.WRITE)
-	report.store_string(JSON.stringify({"viewports":{"review":[640,720],"gameplay":[1280,720]},"image_dimensions":dimensions,"renderer":RenderingServer.get_current_rendering_method(),"files":files,"save_unchanged":unchanged,"orthographic_size":2.35,"center":[0,1.04,0],"note":"One new model for all views; original raw mesh/skin preserved for comparison. Poses use actual player and reload fixture; two real levels also captured.","diffuse_views":"White material tint for both versions, so original painted greys can be compared without the glTF pink head tint. Painted views retain original imported tint. This affects captures only, not source assets or gameplay defaults."},"\t"))
+	report.store_string(JSON.stringify({"viewports":{"review":[640,720],"gameplay":[1280,720]},"image_dimensions":dimensions,"renderer":RenderingServer.get_current_rendering_method(),"files":files,"save_unchanged":unchanged,"full_body_framing":framing,"note":"One new model for all views; each full-body camera fits the original and candidate posed vertices together with KEEP_HEIGHT and a shared margin. Original raw mesh/skin preserved for comparison. Poses use actual player and reload fixture; two real levels also captured.","diffuse_views":"White material tint for both versions, so original painted greys can be compared without the glTF pink head tint. Painted views retain original imported tint. This affects captures only, not source assets or gameplay defaults."},"\t"))
 	print("VIPER_CAPTURE_%s files=%d save_unchanged=%s"%["PASS" if unchanged else "FAIL",files.size(),str(unchanged)])
 	get_tree().quit(0 if unchanged else 1)
 
@@ -163,10 +176,49 @@ func _apply(avatar: Node3D, version: String, clay: bool, neutral: bool=false) ->
 func _set_ortho(camera: Camera3D, view: String) -> void:
 	var directions:={"front":Vector3(0,0,-1),"side":Vector3(1,0,0),"rear":Vector3(0,0,1),"quarter":Vector3(.55,.15,-1)}
 	var center:=Vector3(0,1.04,0)
+	if not review_points.is_empty():
+		var world_bounds:=AABB(review_points[0],Vector3.ZERO)
+		for point: Vector3 in review_points:world_bounds=world_bounds.expand(point)
+		center=world_bounds.get_center()
 	camera.projection=Camera3D.PROJECTION_ORTHOGONAL
+	camera.keep_aspect=Camera3D.KEEP_HEIGHT
 	camera.size=2.35
 	camera.global_position=center+directions[view].normalized()*7
 	camera.look_at(center)
+	if review_points.is_empty():return
+	var to_camera:=camera.global_transform.affine_inverse()
+	var first_point:=to_camera*review_points[0]
+	var projected:=Rect2(Vector2(first_point.x,first_point.y),Vector2.ZERO)
+	for point: Vector3 in review_points:
+		var local:=to_camera*point
+		projected=projected.expand(Vector2(local.x,local.y))
+	# Center the screen-space bounds, then retain at least 6% on every side.
+	var offset:=projected.get_center()
+	center+=camera.global_basis.x*offset.x+camera.global_basis.y*offset.y
+	camera.global_position=center+directions[view].normalized()*7
+	camera.look_at(center)
+	var aspect:=float(capture_viewport.size.x)/float(capture_viewport.size.y)
+	camera.size=maxf(2.35,maxf(projected.size.y,projected.size.x/aspect)/.88)
+	var screen_bounds:=Rect2(camera.unproject_position(review_points[0]),Vector2.ZERO)
+	for point: Vector3 in review_points:screen_bounds=screen_bounds.expand(camera.unproject_position(point))
+	assert(screen_bounds.position.x>=12 and screen_bounds.position.y>=12 and screen_bounds.end.x<=capture_viewport.size.x-12 and screen_bounds.end.y<=capture_viewport.size.y-12,"Full-body capture clips an armor vertex")
+	framing[view]={"orthographic_size":camera.size,"keep_aspect":"KEEP_HEIGHT","center":[center.x,center.y,center.z],"projected_bounds_px":{"min":[screen_bounds.position.x,screen_bounds.position.y],"max":[screen_bounds.end.x,screen_bounds.end.y]},"same_camera_for_original_and_new":true}
+
+func _posed_points(part: MeshInstance3D, skeleton: Skeleton3D) -> Array[Vector3]:
+	var transforms: Array[Transform3D]=[]
+	for bind: int in part.skin.get_bind_count():
+		var bone:=skeleton.find_bone(part.skin.get_bind_name(bind))
+		transforms.append(skeleton.global_transform*skeleton.get_bone_global_pose(bone)*part.skin.get_bind_pose(bind))
+	var result: Array[Vector3]=[]
+	for sid: int in part.mesh.get_surface_count():
+		var arrays:=part.mesh.surface_get_arrays(sid)
+		for index: int in arrays[Mesh.ARRAY_VERTEX].size():
+			var point:=Vector3.ZERO
+			for influence: int in 4:
+				var offset:=index*4+influence
+				point+=(transforms[arrays[Mesh.ARRAY_BONES][offset]]*arrays[Mesh.ARRAY_VERTEX][index])*arrays[Mesh.ARRAY_WEIGHTS][offset]
+			result.append(point)
+	return result
 
 func _capture(name_key: String) -> void:
 	await get_tree().process_frame

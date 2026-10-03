@@ -15,8 +15,8 @@
     },
     {
       "view": "side",
-      "silhouette_iou": 0.9858594214512835,
-      "silhouette_changed_fraction": 0.014140578548716531,
+      "silhouette_iou": 0.9857170555160603,
+      "silhouette_changed_fraction": 0.014282944483939741,
       "camera_identical": true,
       "pixels": [
         640,
@@ -35,8 +35,8 @@
     },
     {
       "view": "quarter",
-      "silhouette_iou": 0.9976140744838062,
-      "silhouette_changed_fraction": 0.0023859255161937654,
+      "silhouette_iou": 0.9975563444233468,
+      "silhouette_changed_fraction": 0.0024436555766531587,
       "camera_identical": true,
       "pixels": [
         640,
@@ -79,12 +79,15 @@
         "max_rest_displacement": 0.0,
         "max_displacement_fraction_of_smallest_dimension": 0.0,
         "triangles": 298,
-        "uv_preserved": true,
+        "uv_preserved": false,
         "original_uv_charts": 8,
         "uv_charts": 8,
         "uv_coordinate_count": 295,
         "original_uv_coordinate_count": 295,
-        "uv_changed_count": 0,
+        "uv_changed_count": 32,
+        "uv_changed_fraction": 0.10847457627118644,
+        "uv_max_displacement_from_original": 0.1989864767081163,
+        "uv_rms_displacement_from_original": 0.04821368587089638,
         "weight_source": "original, unchanged"
       },
       "ArmorFoot_00": {
@@ -126,6 +129,9 @@
         "uv_coordinate_count": 122,
         "original_uv_coordinate_count": 122,
         "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
         "weight_source": "original, unchanged"
       },
       "ArmorHand_00": {
@@ -167,6 +173,9 @@
         "uv_coordinate_count": 120,
         "original_uv_coordinate_count": 120,
         "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
         "weight_source": "original, unchanged"
       },
       "ArmorHead_00": {
@@ -208,10 +217,13 @@
         "uv_coordinate_count": 130,
         "original_uv_coordinate_count": 130,
         "uv_changed_count": 18,
+        "uv_changed_fraction": 0.13846153846153847,
+        "uv_max_displacement_from_original": 0.3152343467662682,
+        "uv_rms_displacement_from_original": 0.05936348528516494,
         "weight_source": "original, unchanged"
       }
     },
-    "constraint": "Local shape/dimension changes <=20%; visor UV adjusted locally, chart/coordinate count and skin retained."
+    "constraint": "Local shape/dimension changes <=20%; changed UV coordinates <=20% per part, only visor and front chest/abdomen; original chart/coordinate count and skin retained. Absolute UV displacement is recorded separately."
   },
   "inferred": "Local chin/cheek/brow depth inferred from selected perspective art; original mesh owns game scale, hidden rear and all joint positions."
 }

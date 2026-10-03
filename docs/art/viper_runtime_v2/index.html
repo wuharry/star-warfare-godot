@@ -1,37 +1,39 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Viper · 新版頭盔／原版／遊戲素材比較</title>
+<title>Viper · 概念圖／原版／修改前／遊戲素材比較</title>
 <style>
 :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0d151e;color:#e9eff4;font:16px/1.65 system-ui,sans-serif}main{max-width:1480px;margin:auto;padding:32px 24px 70px}h1{font-size:30px;margin:0 0 8px}h2{font-size:21px;margin-top:36px}p{color:#b8c7d4;max-width:1000px}a{color:#8ed7ff}nav,.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:20px 0}select,button{font:inherit;background:#1d2b39;color:#eaf2f7;border:1px solid #40566b;border-radius:6px;padding:6px 12px}input{accent-color:#8ed7ff}figure{margin:0;background:#101c27;border:1px solid #344758;border-radius:10px;overflow:hidden}figcaption{padding:12px 16px;color:#d8e7f1}.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}.pair img{width:100%;display:block;object-fit:contain;background:#0a1015;max-height:650px}.concepts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}.concepts img{width:100%;height:460px;object-fit:contain;background:#0a1015;display:block}.stats{display:flex;flex-wrap:wrap;gap:12px}.stats span{border:1px solid #344758;padding:7px 12px;border-radius:7px;color:#bdd3e2}.atlas{position:relative;aspect-ratio:1}.atlas img{width:100%;height:100%;max-height:none}.atlas .wire{position:absolute;inset:0;opacity:.38;mix-blend-mode:screen;pointer-events:none}.hidden{display:none!important}small{color:#a4b9ca}.note{border-left:3px solid #78bbdf;padding-left:14px}@media(max-width:800px){.pair,.concepts{grid-template-columns:1fr}.concepts img{height:400px}main{padding:20px 14px}}
 </style></head>
 <body><main>
-<h1>Viper · 新版頭盔與遊戲素材</h1>
-<p>沿用原版短壯比例、四個換裝部件和五張 UV 配置，將選定的新版頭盔轉成實際可套用貼圖與局部模型修改。以下原版與新版使用相同相機、骨架、動作時間點。</p>
+<h1>Viper · 完整裝甲概念與遊戲素材</h1>
+<p>整套以指定美術圖的鋼藍護板、黑肩頂、胸窗、腹甲、腿甲與最新版紫色面甲為目標，沿用原版短壯比例、四個換裝部件和五張 UV 配置。原版與本輪使用相同相機、骨架、動作時間點；也可切換修訂前 v7，檢視這次貼圖調整。</p>
 <nav><a href="../original_armors_v1/index.html">← 全系列</a><a href="../../../assets/armors/viper_v2/viper.glb">下載 GLB</a><a href="../../../assets/armors/viper_v2/viper.scn">Godot 四部件 scene</a><a href="build/viper_master.blend">Blender master</a><a href="README.md">製作紀錄</a><a href="manifest.json">素材清單</a></nav>
-<div class="stats"><span>682 tris · 維持原版</span><span>28 bones · 原 Skin／權重</span><span>身體 UV 原樣 · 頭盔18／130座標調整</span><span>局部位移最大 10.24% · 上限 20%</span></div>
-<h2>指定的最新版頭盔</h2>
+<div class="stats"><span>682 tris · 維持原版</span><span>28 bones · 原 Skin／權重</span><span>胸腹 UV 32／221 · 改動比例 14.48%</span><span>頭盔 UV 18／130 · 改動比例 13.85%</span></div>
+<h2>指定的完整裝甲美術</h2>
 <div class="concepts">
-<figure><img src="../fusion_v2_generated/c01_viper_fusion.jpg" alt="使用者指定最新版 Viper 頭盔美術"><figcaption>指定稿 · 頭盔設計權威<br><small>成人全身比例不套進遊戲。</small></figcaption></figure>
-<figure><img src="review/engine/original_head_quarter.png" alt="原版 Viper 頭盔近照"><figcaption>原版遊戲頭盔 · 同比例近照</figcaption></figure>
-<figure><img src="review/engine/new_head_quarter.png" alt="新版 Viper 遊戲頭盔近照"><figcaption>新版遊戲素材 v7 · 紫色五邊面甲／黑色包邊／臉頰凹槽</figcaption></figure>
+<figure><img src="../fusion_v2_generated/c01_viper_fusion.jpg" alt="使用者指定 Viper 完整裝甲美術"><figcaption>指定稿 · 全套護板、配色與最新版頭盔<br><small>設計套進原版遊戲比例；美術圖的成人肢體長度不移植。</small></figcaption></figure>
+<figure><img src="review/engine/new_diffuse_quarter.png" alt="本輪 Viper 全身遊戲素材"><figcaption>本輪遊戲素材 · 完整四部件<br><small>實際模型與 diffuse，同一套素材用於全部視角。</small></figcaption></figure>
+<figure><img src="review/engine/new_head_quarter.png" alt="本輪 Viper 頭盔近照"><figcaption>本輪頭盔 · 紫色面甲／黑眉沿／鋼藍護頰</figcaption></figure>
 </div>
-<h2>原版／新版實際模型</h2>
+<h2>原版／修改前／本輪實際模型</h2>
 <div class="controls">
-<label>比較 <select id="mode"><option value="head">頭盔近照</option><option value="body">全身</option><option value="idle">待機</option><option value="run">跑動</option><option value="reload">換彈</option><option value="gameplay">遊戲關卡</option></select></label>
+<label>左側 <select id="comparison"><option value="original">原版遊戲裝甲</option><option value="v7">修改前 v7</option></select></label>
+<label>比較 <select id="mode"><option value="body">全身</option><option value="head">頭盔近照</option><option value="idle">待機</option><option value="run">跑動</option><option value="reload">換彈</option><option value="gameplay">遊戲關卡</option></select></label>
 <label id="view-control">視角 <select id="view"><option value="front">正面</option><option value="quarter">四分之三</option><option value="side">側面</option><option value="rear">背面</option></select></label>
 <label id="style-control" class="hidden">材質 <select id="style"><option value="diffuse">貼圖／白色 tint</option><option value="clay">灰模</option><option value="painted">原匯入 tint</option></select></label>
 <label id="reload-control" class="hidden">進度 <input id="frame" type="range" min="0" max="8" value="4"><output id="percent">50%</output></label>
 <button id="play" class="hidden" type="button">播放換彈</button>
 <label id="level-control" class="hidden">關卡 <select id="level"><option value="01">01 · 前線</option><option value="08">08</option></select></label>
 </div>
-<div class="pair"><figure><img id="original" src="review/engine/original_head_front.png" alt="原版 Viper 比較"><figcaption>原版 · 原 mesh／UV／Skin</figcaption></figure><figure><img id="candidate" src="review/engine/new_head_front.png" alt="新版 Viper 比較"><figcaption>新版 · 指定頭盔／新 diffuse／局部收形</figcaption></figure></div>
-<p id="pose-note">頭盔近照使用相同 .83 正交相機。兩者比例固定，不以圖片縮放掩蓋差異。</p>
-<h2>五張貼圖 · 保留主要 UV 分區，面甲局部調整</h2>
-<p>左右分別顯示原版與目前 UV。頭盔仍有130個座標與相同分區；18個面甲座標改為完整正面展開，避免鏡像高光。其他四張貼圖的 UV 精確沿用原版。線圖沒有畫進貼圖。</p>
+<div class="pair"><figure><img id="original" src="review/engine/original_diffuse_front.png" alt="原版 Viper 比較"><figcaption id="comparison-caption">原版 · 原 mesh／UV／Skin</figcaption></figure><figure><img id="candidate" src="review/engine/new_diffuse_front.png" alt="本輪 Viper 比較"><figcaption>本輪 · 完整概念配色與護板／五張新 diffuse</figcaption></figure></div>
+<p id="pose-note">原版與本輪全身圖使用共同計算的相機，保留頭頂與鞋底空間。</p>
+<h2>五張貼圖 · 原 UV 分區，局部面甲與胸腹採樣</h2>
+<p>左右分別顯示原版與目前 UV。頭盔18／130個面甲座標改為完整正面展開；胸甲20個、腹甲12個座標調整到新貼圖的胸窗、肩帶與黑色腹芯，合計32／221個身體貼圖座標。其餘座標保持原值，肩甲、手臂與靴子的 UV 完全相同。每個部位的座標總數和分區數量均不變，線圖沒有畫進貼圖。</p>
+<p>20% 上限按各部位「改動的原 UV 座標比例」驗證，胸腹每個座標的位移也控制在 .20 atlas 單位內；整套共50／667個座標改動（7.50%）。貼圖可完整重畫來接近指定美術，不受重畫20%的限制；實際美術效果請透過上方遊戲畫面比對。</p>
 <div class="controls"><label>部位 <select id="atlas-part"><option value="head">頭盔</option><option value="body">身體</option><option value="shoulder">肩甲</option><option value="hand">手臂／手套</option><option value="foot">腿部／靴子</option></select></label><label><input id="wire-toggle" type="checkbox" checked> 顯示各自 UV 線圖</label></div>
-<div class="pair"><figure><div class="atlas"><img id="old-atlas" alt="原版 diffuse"><img id="old-wire" class="wire" alt="原版 UV 線圖"></div><figcaption>原版 · 512 × 512</figcaption></figure><figure><div class="atlas"><img id="new-atlas" alt="新版 diffuse"><img id="new-wire" class="wire" alt="新版 UV 線圖"></div><figcaption>新版 · 1254 × 1254 · 主要分區不變 · 面甲局部展開</figcaption></figure></div>
-<p class="note">頭盔、冠槽和眉沿已轉成原版外殼上的局部設計；保留低面數切面、側耳的大體積和原版主要分區。身體、肩甲、手臂與靴子幾何保持原版。這是可運作的遊戲素材版本，仍可依你的美術評價繼續修改。</p>
+<div class="pair"><figure><div class="atlas"><img id="old-atlas" alt="原版 diffuse"><img id="old-wire" class="wire" alt="原版 UV 線圖"></div><figcaption>原版 · 512 × 512</figcaption></figure><figure><div class="atlas"><img id="new-atlas" alt="新版 diffuse"><img id="new-wire" class="wire" alt="新版 UV 線圖"></div><figcaption>新版 · 1254 × 1254 · 分區不變 · 面甲與胸腹局部調整</figcaption></figure></div>
+<p class="note">頭盔採指定新版；胸腹局部調整貼圖採樣位置，身體、肩甲、手臂與靴子保持原幾何。黑眉沿、紫色面甲、鋼藍與炭黑護板均來自指定稿；原版的低面數輪廓、肢體長度與骨架保留。這些是實際可套用的遊戲素材，仍可依你的美術評價繼續調整。</p>
 <nav><a href="review/runtime_test.json">動作／UV／混搭／商店檢查</a><a href="review/proportion_test.json">輪廓與尺寸測量</a><a href="review/roundtrip_test.json">GLB 動作回讀</a><a href="review/blender_validate.json">Blender 檢查</a><a href="../original_armors_v1/revisions/c01_game_proportions_20261002/index.html">先前比例探索稿</a></nav>
 </main>
 <script>
@@ -39,20 +41,22 @@ const sourceMaps={"body": "../../../assets/models/player/animated/armor_textures
 const el=id=>document.getElementById(id);
 let timer=null;
 function update(){
- const mode=el('mode').value, view=el('view').value, frame=Number(el('frame').value);
+ const mode=el('mode').value, view=el('view').value, frame=Number(el('frame').value), before=el('comparison').value==='v7';
  el('view-control').classList.toggle('hidden',!['head','body'].includes(mode));
  el('style-control').classList.toggle('hidden',mode!=='body');
  el('reload-control').classList.toggle('hidden',mode!=='reload');
  el('play').classList.toggle('hidden',mode!=='reload');
  el('level-control').classList.toggle('hidden',mode!=='gameplay');
  const suffix=mode==='head'?`head_${view}`:mode==='body'?`${el('style').value}_${view}`:mode==='reload'?`reload_${String(frame).padStart(2,'0')}`:mode==='gameplay'?`level_${el('level').value}_gameplay`:`${mode==='idle'?'idle':'run'}_rifle`;
- el('original').src=`review/engine/original_${suffix}.png`;el('candidate').src=`review/engine/new_${suffix}.png`;
+ el('original').src=before?`review/before_concept_match_v8/new_${suffix}.png`:`review/engine/original_${suffix}.png`;el('candidate').src=`review/engine/new_${suffix}.png`;
+ el('original').alt=before?'修改前 v7 Viper 比較':'原版 Viper 比較';
+ el('comparison-caption').textContent=before?'修改前 v7 · 舊 diffuse／較早的胸腹 UV':'原版 · 原 mesh／UV／Skin';
  el('percent').textContent=`${frame*12.5}%`;
- el('pose-note').textContent=mode==='reload'?`實際 gun00 換彈 ${frame*12.5}%，相同進度與 IK；0–100% 共九個取樣畫面。`:['idle','run'].includes(mode)?'使用原版動畫的 .30 秒取樣，相同骨架、武器與姿勢。':mode==='gameplay'?'兩個實際關卡，相同遊戲相機與裝備；背包、武器維持原裝備。':'原版／新版使用相同相機、尺度與待機 rest pose；頭盔近照 .83，全身 2.35 正交相機。';
+ el('pose-note').textContent=(mode==='reload'?`實際 gun00 換彈 ${frame*12.5}%，相同進度與 IK；0–100% 共九個取樣畫面。`:['idle','run'].includes(mode)?'使用原版動畫的 .30 秒取樣，相同骨架、武器與姿勢。':mode==='gameplay'?'兩個實際關卡，相同遊戲相機與裝備；背包、武器維持原裝備。':mode==='head'?'原版與本輪使用相同 .83 正交相機及待機 rest pose。':'原版與本輪使用共同計算的全身相機，頭頂、鞋底皆在畫面內；相機參數列於 capture.json。')+(before&&['body','head'].includes(mode)?' 修改前 v7 為修訂前原圖，使用舊相機構圖；這一對只比較美術，輪廓測量使用原版與本輪相同相機。':'');
  if(mode!=='reload'&&timer){clearInterval(timer);timer=null;el('play').textContent='播放換彈';}
 }
-function atlas(){const part=el('atlas-part').value;el('old-atlas').src=sourceMaps[part];el('new-atlas').src=`../../../assets/armors/viper_v2/${part}_diffuse.png`;for(const side of ['old','new']){el(`${side}-wire`).src=side==='new'&&part==='head'?'guides/head_uv_v6.svg':`guides/${part}_uv.svg`;el(`${side}-wire`).classList.toggle('hidden',!el('wire-toggle').checked);}}
-for(const id of ['mode','view','style','frame','level'])el(id).addEventListener('input',update);
+function atlas(){const part=el('atlas-part').value;el('old-atlas').src=sourceMaps[part];el('new-atlas').src=`../../../assets/armors/viper_v2/${part}_diffuse.png`;for(const side of ['old','new']){el(`${side}-wire`).src=side==='new'&&part==='head'?'guides/head_uv_v6.svg':side==='new'&&part==='body'?'guides/body_uv_v8.png':`guides/${part}_uv.svg`;el(`${side}-wire`).classList.toggle('hidden',!el('wire-toggle').checked);}}
+for(const id of ['comparison','mode','view','style','frame','level'])el(id).addEventListener('input',update);
 for(const id of ['atlas-part','wire-toggle'])el(id).addEventListener('input',atlas);
 el('play').addEventListener('click',()=>{if(timer){clearInterval(timer);timer=null;el('play').textContent='播放換彈';}else{timer=setInterval(()=>{el('frame').value=(Number(el('frame').value)+1)%9;update();},300);el('play').textContent='暫停';}});
 update();atlas();

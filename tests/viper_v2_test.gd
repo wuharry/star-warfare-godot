@@ -40,6 +40,7 @@ func _run() -> void:
 	var parts := _visible(player)
 	_check(parts.size()==4,"Expected four modular parts")
 	var triangles := 0
+	var uv_records: Dictionary = {}
 	for part: MeshInstance3D in parts:
 		var baseline:=source.find_child(str(part.name),true,false) as MeshInstance3D
 		_check(part.get_meta("armor_rework","")=="viper_runtime_v2","Wrong asset revision")
@@ -66,19 +67,39 @@ func _run() -> void:
 			var arrays:=part.mesh.surface_get_arrays(sid)
 			var raw:=baseline.mesh.surface_get_arrays(sid)
 			_check(arrays[Mesh.ARRAY_TEX_UV].size()==raw[Mesh.ARRAY_TEX_UV].size(),"Changed UV coordinate count")
-			if part.name!="ArmorHead_00":
-				_check(arrays[Mesh.ARRAY_TEX_UV]==raw[Mesh.ARRAY_TEX_UV],"Changed body/limb UV")
-			else:
+			if part.name in ["ArmorHead_00","ArmorBody_00"]:
 				var changed_uv := 0
+				var chest_uv := 0
+				var abdomen_uv := 0
+				var max_uv_displacement := 0.0
 				for uv_index: int in raw[Mesh.ARRAY_TEX_UV].size():
 					var old_uv: Vector2=raw[Mesh.ARRAY_TEX_UV][uv_index]
 					var new_uv: Vector2=arrays[Mesh.ARRAY_TEX_UV][uv_index]
 					var expected_uv: Array=authored.parts[str(part.name)].surfaces[sid].uv[uv_index]
-					_check(new_uv.distance_to(Vector2(expected_uv[0],expected_uv[1]))<.000001,"Runtime UV differs from authored visor")
+					_check(new_uv.distance_to(Vector2(expected_uv[0],expected_uv[1]))<.000001,"Runtime UV differs from authored local edit")
+					max_uv_displacement=maxf(max_uv_displacement,new_uv.distance_to(old_uv))
 					if new_uv!=old_uv:
 						changed_uv+=1
-						_check(old_uv.x>.59 and old_uv.y>.69 and new_uv.x>=.60 and new_uv.x<=.95 and new_uv.y>=.69 and new_uv.y<=.96,"Visor edits escaped the original chart region")
-				_check(float(changed_uv)/raw[Mesh.ARRAY_TEX_UV].size()<=.20,"More than20% of head UV coordinates moved")
+						if part.name=="ArmorHead_00":
+							_check(old_uv.x>.59 and old_uv.y>.69 and new_uv.x>=.60 and new_uv.x<=.95 and new_uv.y>=.69 and new_uv.y<=.96,"Visor edits escaped the original chart region")
+						else:
+							var original_chest := old_uv.x<.26 and old_uv.y>.38 and old_uv.y<.69
+							var original_abdomen := old_uv.x<.24 and old_uv.y>.69 and old_uv.y<.885
+							_check(sid==0 and (original_chest or original_abdomen),"Body UV edits escaped the original front-torso coordinates")
+							if original_chest:
+								chest_uv+=1
+								_check(new_uv.x>=.025 and new_uv.x<=.17 and new_uv.y>=.27 and new_uv.y<=.51,"Front-chest UV escaped selected chest paint")
+							elif original_abdomen:
+								abdomen_uv+=1
+								_check(absf(new_uv.x-old_uv.x)<.000001 and new_uv.y>=.64 and new_uv.y<=.86,"Front-abdomen UV escaped selected belly paint or shifted horizontally")
+							_check(new_uv.distance_to(old_uv)<=.20,"Torso UV moved more than .20 atlas units")
+				_check(float(changed_uv)/raw[Mesh.ARRAY_TEX_UV].size()<=.20,"More than20% of local material UV coordinates moved")
+				if part.name=="ArmorBody_00":
+					_check(changed_uv==(32 if sid==0 else 0),"Expected exactly32 front-torso edits and original shoulder UV")
+					_check(chest_uv==(20 if sid==0 else 0) and abdomen_uv==(12 if sid==0 else 0),"Expected20 chest and12 abdomen coordinates only")
+				uv_records["%s_surface_%d"%[part.name,sid]]={"coordinates":raw[Mesh.ARRAY_TEX_UV].size(),"changed":changed_uv,"chest":chest_uv,"abdomen":abdomen_uv,"changed_fraction":float(changed_uv)/raw[Mesh.ARRAY_TEX_UV].size(),"maximum_uv_displacement":max_uv_displacement}
+			else:
+				_check(arrays[Mesh.ARRAY_TEX_UV]==raw[Mesh.ARRAY_TEX_UV],"Changed limb UV")
 			_check(arrays[Mesh.ARRAY_INDEX]==raw[Mesh.ARRAY_INDEX],"Reordered original triangles")
 			_check(arrays[Mesh.ARRAY_BONES]==raw[Mesh.ARRAY_BONES] and arrays[Mesh.ARRAY_WEIGHTS]==raw[Mesh.ARRAY_WEIGHTS],"Changed original rig weights")
 			if part.name!="ArmorHead_00":_check(arrays[Mesh.ARRAY_VERTEX]==raw[Mesh.ARRAY_VERTEX],"Untouched body/limb geometry changed")
@@ -136,7 +157,7 @@ func _run() -> void:
 	_check(_hash(real_save)==before,"Real save modified")
 	GameState.save_path=real_save
 	var report:=FileAccess.open("res://docs/art/viper_runtime_v2/review/runtime_test.json",FileAccess.WRITE)
-	report.store_string(JSON.stringify({"status":"PASS" if failures.is_empty() else "FAIL","failures":failures,"triangles":triangles,"poses":records,"save_unchanged":_hash(real_save)==before,"user_args":OS.get_cmdline_user_args(),"viper_scene":Visuals.reworked_scene_path(0)},"\t"))
+	report.store_string(JSON.stringify({"status":"PASS" if failures.is_empty() else "FAIL","failures":failures,"triangles":triangles,"poses":records,"uv_edits":uv_records,"save_unchanged":_hash(real_save)==before,"user_args":OS.get_cmdline_user_args(),"viper_scene":Visuals.reworked_scene_path(0)},"\t"))
 	print("VIPER_V2_TEST_%s failures=%d samples=%d triangles=%d save_unchanged=%s"%["PASS" if failures.is_empty() else "FAIL",failures.size(),records.size(),triangles,str(_hash(real_save)==before)])
 	get_tree().quit(0 if failures.is_empty() else 1)
 

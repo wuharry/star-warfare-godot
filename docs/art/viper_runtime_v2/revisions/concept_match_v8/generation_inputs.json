@@ -1,0 +1,166 @@
+{
+  "revision": "concept_match_v8",
+  "entries": [
+    {
+      "label": "body",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/body_diffuse_concept_match_v8c.txt",
+      "input_paths": [
+        "docs/art/viper_runtime_v2/guides/body_regions_v8.png",
+        "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png",
+        "docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/body_regions_v8.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse_v8c.png",
+      "generator": "image_gen",
+      "generated_at": "2026-10-03T05:48:57.550Z",
+      "generated_source_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-ef6d5ef2-d1a4-4577-9425-ed3b6d20dc2a.png",
+      "notes": "Exact source semantic guide as first reference yields conservative back plate and mostly blue front thighs; application locally remaps 20 original chest and 12 abdomen UV coordinates to align chest windows, buckle, black belly core and blue groin. All source coordinate/island counts unchanged."
+    },
+    {
+      "label": "hand",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/hand_diffuse_concept_match_v8.txt",
+      "input_paths": [
+        "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/hand_diffuse.png",
+        "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "docs/art/viper_runtime_v2/guides/hand_uv.png"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/hand_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/hand_uv.png"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/hand_diffuse.png",
+      "generator": "image_gen",
+      "generated_at": "2026-10-03T05:26:20.329Z",
+      "notes": "Full concept body paint correction; normalized UV coordinates unchanged from head_v7. Before snapshot has exact bytes of original edit input.",
+      "generated_source_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-bf277b19-eafe-4e50-9829-3f14fd1dc433.png"
+    },
+    {
+      "label": "foot",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/foot_diffuse_concept_match_v8.txt",
+      "input_paths": [
+        "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/foot_diffuse.png",
+        "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "docs/art/viper_runtime_v2/guides/foot_uv.png"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/foot_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/foot_uv.png"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/foot_diffuse.png",
+      "generator": "image_gen",
+      "generated_at": "2026-10-03T05:26:20.335Z",
+      "notes": "Full concept body paint correction; normalized UV coordinates unchanged from head_v7. Before snapshot has exact bytes of original edit input.",
+      "generated_source_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-09afde6a-12df-414a-b65f-fe6b3f014aab.png"
+    },
+    {
+      "label": "shoulder",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/shoulder_diffuse_concept_match_v8.txt",
+      "input_paths": [
+        "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/shoulder_diffuse.png",
+        "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "docs/art/viper_runtime_v2/guides/shoulder_uv.png"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/shoulder_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/shoulder_uv.png"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/shoulder_diffuse.png",
+      "generator": "image_gen",
+      "generated_at": "2026-10-03T05:26:20.343Z",
+      "notes": "Full concept body paint correction; normalized UV coordinates unchanged from head_v7. Before snapshot has exact bytes of original edit input.",
+      "generated_source_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-daa63f43-2ed9-4872-aa15-ce105698d2a2.png"
+    },
+    {
+      "label": "head",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/head_diffuse_concept_match_v8.txt",
+      "input_paths": [
+        "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/head_diffuse.png",
+        "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "docs/art/viper_runtime_v2/guides/head_uv_v6.png"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/head_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/head_uv_v6.png"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/head_diffuse.png",
+      "generator": "image_gen",
+      "generated_at": "2026-10-03T05:26:20.351Z",
+      "notes": "Full concept body paint correction; normalized UV coordinates unchanged from head_v7. Before snapshot has exact bytes of original edit input.",
+      "generated_source_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-fa83607d-8532-497d-b6a6-a09851269871.png"
+    }
+  ],
+  "archived_attempts": [
+    {
+      "label": "body",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/body_diffuse_concept_match_v8.txt",
+      "input_paths": [
+        "docs/art/viper_runtime_v2/revisions/concept_match_v8/before/body_diffuse.png",
+        "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "docs/art/viper_runtime_v2/guides/body_uv.png"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/assets/armors/viper_v2/body_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/body_uv.png"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png",
+      "generator": "image_gen",
+      "generated_at": "2026-10-03T05:26:20.311Z",
+      "notes": "Rejected after game application: frontal torso painted on rear, front abdomen missing.",
+      "generated_source_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f19b65a3-e0ef-4041-adc7-667ea82a223a.png",
+      "variant": "concept_match_v8_initial_body"
+    },
+    {
+      "label": "body",
+      "variant": "concept_match_v8_body_v8b_rejected",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/body_diffuse_concept_match_v8b.txt",
+      "input_paths": [
+        "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png",
+        "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "docs/art/viper_runtime_v2/guides/body_regions_v8.png",
+        "docs/art/viper_runtime_v2/revisions/concept_match_v8/first_application/front.png",
+        "docs/art/viper_runtime_v2/revisions/concept_match_v8/first_application/rear.png"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/guides/body_regions_v8.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/revisions/concept_match_v8/first_application/front.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/revisions/concept_match_v8/first_application/rear.png"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse_v8b_rejected.png",
+      "generator": "image_gen",
+      "generated_at": "2026-10-03T05:49:53.778Z",
+      "generated_source_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-4b700a50-4ac9-490c-bf24-16cdd3477b46.png",
+      "notes": "Rejected on atlas inspection: long central inset remained on back."
+    },
+    {
+      "label": "body",
+      "variant": "concept_match_v8_body_v8d_rejected",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/body_diffuse_concept_match_v8d.txt",
+      "input_paths": [
+        "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse_v8c.png",
+        "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png",
+        "docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse_v8c.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse_v8d_rejected.png",
+      "generator": "image_gen",
+      "generated_at": "2026-10-03T06:03:19.211Z",
+      "generated_source_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f748089c-29d1-4b76-a735-4159816b878d.png",
+      "notes": "Rejected on atlas inspection: local repair did not move chest window into original chest sampling region. v8c artwork selected with scoped chest UV correction."
+    }
+  ]
+}
