@@ -10,3 +10,7 @@
 /.codex/*.json text eol=lf
 /AGENTS.md text eol=lf
 /CLAUDE.md text eol=lf
+
+# Preserve the exact prompts recorded for the Viper image-generation calls.
+/docs/art/viper_runtime_v2/prompts/*.txt text eol=lf
+/docs/art/original_armors_v1/revisions/c01_game_proportions_20261002/*.txt text eol=lf

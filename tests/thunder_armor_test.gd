@@ -24,7 +24,7 @@ func _run() -> void:
 	_set_thunder()
 	GameState.selected_weapon = "gun00"
 	_check(Visuals.reworked_scene_path(6) == scene_path, "set 06 does not load the new scene")
-	_check(Visuals.REWORKED_SCENES.get(0, "") == "res://assets/armors/viper/viper.scn", "Viper mapping changed")
+	_check(Visuals.REWORKED_SCENES.get(0, "") == "res://assets/armors/viper_v2/viper.scn", "Viper mapping changed")
 	if not ResourceLoader.exists(scene_path):
 		_check(false, "Thunder scene has not been compiled")
 		_finish(0, 0)

@@ -4,7 +4,7 @@ const Catalog = preload("res://scripts/core/armor_catalog.gd")
 const ORIGINAL_PART_PREFIXES := ["ArmorHead_", "ArmorBody_", "ArmorHand_", "ArmorFoot_"]
 const CONCEPT_ARMOR_DIR := "res://assets/armors/concept_runtime/"
 const REWORKED_SCENES := {
-	0: "res://assets/armors/viper/viper.scn",
+	0: "res://assets/armors/viper_v2/viper.scn",
 	6: "res://assets/armors/thunder/thunder.scn",
 	11: "res://assets/armors/cygni_v2/cygni.scn",
 }
@@ -33,10 +33,11 @@ static func reworked_scene_path(visual_id: int) -> String:
 				return "res://assets/armors/thunder/thunder_prototype.scn"
 			if argument == "--thunder-helmet=sw2":
 				return "res://assets/armors/thunder/thunder_sw2.scn"
-	elif visual_id == 0 and "--armor-style=legacy" not in OS.get_cmdline_user_args():
-		var angular_path := "res://assets/armors/angular/armor_%02d.scn" % visual_id
-		if ResourceLoader.exists(angular_path):
-			return angular_path
+	elif visual_id == 0:
+		if "--armor-style=legacy" in OS.get_cmdline_user_args():
+			return "res://assets/armors/viper/viper.scn"
+		if "--viper-angular-trial" in OS.get_cmdline_user_args():
+			return "res://assets/armors/angular/armor_00.scn"
 	return str(REWORKED_SCENES.get(visual_id, "res://assets/equipment_refined/armors/armor_%02d.scn" % visual_id))
 
 

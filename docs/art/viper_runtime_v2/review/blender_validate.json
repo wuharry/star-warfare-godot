@@ -1,0 +1,164 @@
+{
+  "blend": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\viper_runtime_v2\\build\\viper_master.blend",
+  "summary": {
+    "tris_by_lod": {
+      "0": 682
+    },
+    "fail": [],
+    "warn": [
+      "ArmorBody_00: 135 doubled vertices within 0.0001",
+      "ArmorBody_00: 4 tiny influences below 0.01",
+      "ArmorFoot_00: 50 doubled vertices within 0.0001",
+      "ArmorHand_00: 50 doubled vertices within 0.0001",
+      "ArmorHead_00: 54 doubled vertices within 0.0001"
+    ]
+  },
+  "objects": [
+    {
+      "name": "ArmorBody_00",
+      "type": "MESH",
+      "warn": [
+        "135 doubled vertices within 0.0001",
+        "4 tiny influences below 0.01"
+      ],
+      "fail": [],
+      "info": {
+        "tris_evaluated": 298,
+        "verts_evaluated": 295,
+        "verts": 295,
+        "faces": 298,
+        "boundary_edges": 264,
+        "nonmanifold_edges": 0,
+        "islands": 18,
+        "flipped_vs_recalc": 39,
+        "uv_loops_outside_0_1": 0,
+        "materials": [
+          "body",
+          "shoulder"
+        ],
+        "modifiers": [
+          "ARMATURE:PreservedSourceWeights"
+        ],
+        "skin": {
+          "armature": "ViperRig",
+          "unweighted": 0,
+          "over_influences": 0,
+          "not_normalised": 0,
+          "tiny_weights": 4,
+          "orphan_groups": []
+        }
+      }
+    },
+    {
+      "name": "ArmorFoot_00",
+      "type": "MESH",
+      "warn": [
+        "50 doubled vertices within 0.0001"
+      ],
+      "fail": [],
+      "info": {
+        "tris_evaluated": 136,
+        "verts_evaluated": 122,
+        "verts": 122,
+        "faces": 136,
+        "boundary_edges": 92,
+        "nonmanifold_edges": 0,
+        "islands": 8,
+        "uv_loops_outside_0_1": 0,
+        "materials": [
+          "foot"
+        ],
+        "modifiers": [
+          "ARMATURE:PreservedSourceWeights"
+        ],
+        "skin": {
+          "armature": "ViperRig",
+          "unweighted": 0,
+          "over_influences": 0,
+          "not_normalised": 0,
+          "tiny_weights": 0,
+          "orphan_groups": []
+        }
+      }
+    },
+    {
+      "name": "ArmorHand_00",
+      "type": "MESH",
+      "warn": [
+        "50 doubled vertices within 0.0001"
+      ],
+      "fail": [],
+      "info": {
+        "tris_evaluated": 112,
+        "verts_evaluated": 120,
+        "verts": 120,
+        "faces": 112,
+        "boundary_edges": 112,
+        "nonmanifold_edges": 0,
+        "islands": 9,
+        "flipped_vs_recalc": 14,
+        "uv_loops_outside_0_1": 0,
+        "materials": [
+          "hand"
+        ],
+        "modifiers": [
+          "ARMATURE:PreservedSourceWeights"
+        ],
+        "skin": {
+          "armature": "ViperRig",
+          "unweighted": 0,
+          "over_influences": 0,
+          "not_normalised": 0,
+          "tiny_weights": 0,
+          "orphan_groups": []
+        }
+      }
+    },
+    {
+      "name": "ArmorHead_00",
+      "type": "MESH",
+      "warn": [
+        "54 doubled vertices within 0.0001"
+      ],
+      "fail": [],
+      "info": {
+        "tris_evaluated": 136,
+        "verts_evaluated": 130,
+        "verts": 130,
+        "faces": 136,
+        "boundary_edges": 114,
+        "nonmanifold_edges": 0,
+        "islands": 7,
+        "flipped_vs_recalc": 23,
+        "uv_loops_outside_0_1": 0,
+        "materials": [
+          "head"
+        ],
+        "modifiers": [
+          "ARMATURE:PreservedSourceWeights"
+        ],
+        "skin": {
+          "armature": "ViperRig",
+          "unweighted": 0,
+          "over_influences": 0,
+          "not_normalised": 0,
+          "tiny_weights": 0,
+          "orphan_groups": []
+        }
+      }
+    },
+    {
+      "name": "ViperRig",
+      "type": "ARMATURE",
+      "warn": [],
+      "fail": [],
+      "info": {
+        "bones": 28,
+        "deform_bones": 28,
+        "roots": [
+          "Bip01"
+        ]
+      }
+    }
+  ]
+}

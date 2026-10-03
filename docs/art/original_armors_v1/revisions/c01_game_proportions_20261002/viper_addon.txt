@@ -1,0 +1,25 @@
+
+
+TASK ADD-ON — VIPER C-01 GAME-PROPORTION CONCEPT, 2026-10-02
+Use case: stylized-concept.
+Asset type: proposed armor construction/style reference image ONLY, before modeling. Do not output an atlas or claim a model.
+TARGET: Viper / armor ID 0 / C-01. STYLE_FAMILY: Star Warfare.
+INPUT ROLES (in supplied order):
+1. original_00_views.png — original Viper front, quarter, side and back. PRIMARY authority for full-body proportions, shoulder/hip/limb positions, torso length, original body armor silhouette and rest stance.
+2. head_22f92a18e5f8_2x.png — original Viper head DIFFUSE PAINTING reference only. Do not copy its old visor/brow design over the newly selected helmet.
+3. body_41c59e886aaa_2x.png — original Viper body DIFFUSE PAINTING reference only. Its atlas layout is NOT the requested output.
+4. c01_viper_fusion.jpg — USER-SELECTED NEW HELMET DESIGN. Use ONLY the helmet shape/color details. Ignore this reference's long adult body, visible long neck, long legs, utility pouches and elaborate body segmentation.
+5. sw_family.png — original Star Warfare family for restrained diffuse painting and coherent low-poly visual language. Do not mix other suits' identity into Viper.
+
+USER PRIORITY: the helmet MUST unmistakably be the newly selected helmet in input 4, rescaled to the original Viper game proportions. Retain the steel-blue coherent rounded crown with its simple longitudinal panel channels; projecting SHORT BLACK BROW BAND with a small central steel-blue trapezoid at the forehead; one continuous PURPLE visor with a broad upper eye area and lower center narrowing into a bevel-sided polygon; compact fitted blue jaw/U frame; recessed dark side-cheek panels and compact ear covering. The visor has one broad pale lavender painted reflection. Do not restore the original thick blue visor brow or deep black original crown notch at the expense of this selected helmet. Do not borrow Cygni's gold T visor, white shell, fins or elongated chin. No extra nose, robotic face, separate goggles or floating faceplate.
+
+GAME PROPORTIONS:
+Copy image 1's short compact armored humanoid, with a large helmet seated close above broad shoulders, very short concealed neck, compact chest/waist, short thick arms and legs, substantial hands and boots. NOT the tall soldier silhouette of input 4.
+Measured ORIGINAL context: full suit height about 1.91258 game units; original main connected head height about 0.64911, width 0.51833 and depth 0.66021. Thus the main helmet's height is visually about one third of the entire figure, and width about one quarter of full figure height. These are reference bounds, not proof that a generated drawing matches numbers. Original views take priority over a generic anatomical head-count formula. Do not inflate helmet WIDTH into a round baby/toy head; preserve Viper's original width/depth relation while changing the brow/visor/cheeks to input 4.
+Keep the original blue-black Viper body nearly unchanged: black shoulder caps over simple blue lower shoulders, paired inward-slanting dark chest apertures, compact angular lower chest, dark flexible midriff, broad blue forearms, original short thigh/shin and black boot accents. Keep large coherent plates and sparse painted seams. No added harness buckles, belt pouches, new fins, shoulder spikes, excessive armor layers or invented glowing dots.
+COLORS: original muted steel blue/blue-gray armor; near-black shoulder caps, joints and recessed chest apertures; purple/lavender glass as the focal accent. Head and body paint should belong together. Retain broad gentle blue gradients and restrained thin worn edges from inputs 2 and 3. Avoid bright silver edges everywhere, black comic outlines, high-frequency scratches, tiled cloth, glossy PBR reflections, cinematic lighting or a smooth plastic collectible.
+
+OUTPUT:
+One landscape 1536 x 1024 sheet with THREE full-body views of the SAME proposed Viper, side by side: FRONT, FRONT THREE-QUARTER, LEFT SIDE. Same scale, aligned crown height and ground line, whole boots visible, relaxed arms down slightly clear of torso; orthographic/near-orthographic as in input 1. Uniform dark charcoal background. The helmet and body in all three views must be consistent.
+Spend pixels on legible simple volume, not more surface detail. Preserve the chosen helmet's black brow, purple tapered visor and fitted jaw in the front and quarter views; side view should show their continuous fitted shell construction. Side/rear surfaces not visible in input 4 may be conservatively inferred from the ORIGINAL Viper shell, with no invented attachments.
+No captions, labels, logos, text, watermark, weapon or backpack. This is the requested CONCEPT SHEET, not a UV texture, runtime mesh or final adoption.

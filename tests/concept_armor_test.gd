@@ -51,7 +51,7 @@ func _run() -> void:
 		elif id == 6:
 			_check(path == "res://assets/armors/thunder/thunder.scn", "Adopted Thunder changed")
 		elif id == 0:
-			_check(path == "res://assets/armors/angular/armor_00.scn", "Existing Viper changed")
+			_check(path == "res://assets/armors/viper_v2/viper.scn", "Current Viper changed")
 		else:
 			_check(path == "res://assets/equipment_refined/armors/armor_%02d.scn" % id, "Replaced retained Phoenix/later/CoM set " + str(id))
 	var trial_enabled := repaired or "--cygni-painted-trial" in OS.get_cmdline_user_args()

@@ -1,0 +1,115 @@
+{
+  "design_id": "C-01",
+  "legacy_name": "Viper",
+  "legacy_id": 0,
+  "date": "2026-10-02",
+  "scope": "concept_only_pending_user_review_before_modeling",
+  "requested_commits": [
+    "13d6836708418208a2d5c8318fb0e3260c4a2bfc",
+    "48f0a12adba5c71abde2ac9c9d7513edfabdc20e"
+  ],
+  "base_prompt": {
+    "source_path": "docs/art/legacy_armor_base_v2/base_prompt.txt",
+    "snapshot_path": "docs/art/original_armors_v1/revisions/c01_game_proportions_20261002/base_prompt_snapshot.txt",
+    "sha256": "de445a88ca6c06ae90c567e188461f9b823157f767b46145fbb4eb8901f6c7e2",
+    "identical_in_both_requested_commits": true,
+    "latest_content_change_commit": "ae11dc81",
+    "usage": "完整基底內容加上套裝／圖像角色／輸出附加條件；僅去掉基底檔尾換行後串接，未改寫基底文字。"
+  },
+  "selected_helmet_source": "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+  "selected_helmet_sha256": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
+  "preview": "docs/art/original_armors_v1/revisions/c01_game_proportions_20261002/viper_game_sheet_v2.png",
+  "status": "pending_user_art_review",
+  "records": [
+    {
+      "design_id": "C-01",
+      "legacy_name": "Viper",
+      "legacy_id": 0,
+      "kind": "game_proportion_concept_sheet",
+      "date": "2026-10-02",
+      "tool": "built-in image_gen",
+      "path_base": "repository_root",
+      "path": "docs/art/original_armors_v1/revisions/c01_game_proportions_20261002/viper_game_sheet_v1.png",
+      "prompt": "docs/art/original_armors_v1/revisions/c01_game_proportions_20261002/prompt.txt",
+      "prompt_sha256": "139e86caaedb5fcc24ebdaec310af9f882496152a070782fffcf18f6328128dc",
+      "generated_filename": "C:/Users/whw88/.codex/generated_images/01a0d34a-7c78-72d0-b7ae-7c134c979b6f/exec-17c339b2-f1b6-468f-a9b3-71c7b55083f5.png",
+      "sha256": "38209e42e9df38b5cb7c9856b7b6cbeb9fcdc115cf2ac732f8e2997e699c1c58",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 1528085,
+      "reference_images": [
+        "docs/art/legacy_armor_base_v2/references/original_00_views.png",
+        "assets/models/player/animated/armor_textures/head_22f92a18e5f8_2x.png",
+        "assets/models/player/animated/armor_textures/body_41c59e886aaa_2x.png",
+        "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "docs/art/legacy_armor_base_v2/references/sw_family.png"
+      ],
+      "reference_sha256": {
+        "docs/art/legacy_armor_base_v2/references/original_00_views.png": "b45ea22215497c1c1ec112cce6a28217ce86a7552d5c895da7fcc15bdadcee19",
+        "assets/models/player/animated/armor_textures/head_22f92a18e5f8_2x.png": "1c18a72b2c12aa70ba7697924b21d3bfaa34f3e2c5ede8354c366962700eb5f9",
+        "assets/models/player/animated/armor_textures/body_41c59e886aaa_2x.png": "1e1dee320b11a5c15f2a59c7fa89faa140033d3e2076a9db2fd7139dd1188e00",
+        "docs/art/fusion_v2_generated/c01_viper_fusion.jpg": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
+        "docs/art/legacy_armor_base_v2/references/sw_family.png": "0bdbe7e8834961d1f7237abe37943ca622e5ae9fab663fb44b31b26ee97bf092"
+      },
+      "actual_reference_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/legacy_armor_base_v2/references/original_00_views.png",
+        "E:/Star-Warfare-Godot-Restoration/assets/models/player/animated/armor_textures/head_22f92a18e5f8_2x.png",
+        "E:/Star-Warfare-Godot-Restoration/assets/models/player/animated/armor_textures/body_41c59e886aaa_2x.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/legacy_armor_base_v2/references/sw_family.png"
+      ],
+      "reference_path_note": "實際輸入為列出的原版视圖、原 diffuse、指定新版頭盔和 SW 家族。",
+      "postprocessing": "none",
+      "status": "superseded_by_proportion_revision",
+      "visual_review": "首稿已保留新黑眉沿與紫色面窗，但頭盔相對身軀偏小、肩到腳偏長，另生成比例修訂。",
+      "runtime_implemented": false
+    },
+    {
+      "design_id": "C-01",
+      "legacy_name": "Viper",
+      "legacy_id": 0,
+      "kind": "game_proportion_concept_sheet",
+      "date": "2026-10-02",
+      "tool": "built-in image_gen",
+      "path_base": "repository_root",
+      "path": "docs/art/original_armors_v1/revisions/c01_game_proportions_20261002/viper_game_sheet_v2.png",
+      "prompt": "docs/art/original_armors_v1/revisions/c01_game_proportions_20261002/correction_prompt.txt",
+      "prompt_sha256": "073e98f15b7761672addabf7127ddc58c470076ef8281f218bb1dd84c371d96e",
+      "generated_filename": "C:/Users/whw88/.codex/generated_images/01a0d34a-7c78-72d0-b7ae-7c134c979b6f/exec-e769eeb3-54a6-48e3-9205-e5875f39d4fa.png",
+      "sha256": "bb20b69dc11e13513e340329880db951a69942117ead363572fb43325da7c215",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 1735875,
+      "reference_images": [
+        "docs/art/original_armors_v1/revisions/c01_game_proportions_20261002/viper_game_sheet_v1.png",
+        "docs/art/legacy_armor_base_v2/references/original_00_views.png",
+        "docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      ],
+      "reference_sha256": {
+        "docs/art/original_armors_v1/revisions/c01_game_proportions_20261002/viper_game_sheet_v1.png": "38209e42e9df38b5cb7c9856b7b6cbeb9fcdc115cf2ac732f8e2997e699c1c58",
+        "docs/art/legacy_armor_base_v2/references/original_00_views.png": "b45ea22215497c1c1ec112cce6a28217ce86a7552d5c895da7fcc15bdadcee19",
+        "docs/art/fusion_v2_generated/c01_viper_fusion.jpg": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed"
+      },
+      "actual_reference_paths": [
+        "C:/Users/whw88/.codex/generated_images/01a0d34a-7c78-72d0-b7ae-7c134c979b6f/exec-17c339b2-f1b6-468f-a9b3-71c7b55083f5.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/legacy_armor_base_v2/references/original_00_views.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c01_viper_fusion.jpg"
+      ],
+      "reference_path_note": "第二稿第一張輸入為生成器保存的首稿；專案副本內容相同，SHA-256 可核對。",
+      "postprocessing": "none",
+      "status": "visually_reviewed_pending_user_selection",
+      "visual_review": "已目視：正／斜前／側三視延續黑色短眉、紫色收口面罩與藍色下顎；較首稿加大頭部，身體更緊湊，原 Viper 藍黑配色、黑肩頂與雙胸窗保留。未量測頭身相似度，畫法的亮邊仍比原版清晰；側面殼形包含推定，這不是同一個 3D 模型的多角度驗證。",
+      "runtime_implemented": false
+    }
+  ],
+  "limits": [
+    "未建模、未展 UV、未製作 runtime 貼圖或套用遊戲。",
+    "新增三視為生成的造型參考，不能視為幾何完全一致的模型驗證。",
+    "頭盔採用指定新稿；原模型提供遊戲比例和低密度手繪表面參考。",
+    "精確頭身比例及與原版同作者的風格相符程度，仍待使用者目視確認。"
+  ]
+}
