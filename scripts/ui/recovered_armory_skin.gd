@@ -1,11 +1,14 @@
 extends RefCounted
-## Desktop adaptation of SW1 cut-metal modules + CoM CommonUI controls.
-## All pixels come from recovered atlases; nine-slicing preserves corner shapes.
+## Shared menu skin based on the armory's SW1 metal modules + CoM controls.
+## Metal frames come from recovered atlases; nine-slicing preserves corner shapes.
 
 const COMPONENTS := "res://assets/ui/components/"
 const COM_ATLAS := "res://assets/recovered_sources/com/ui/CommonUI.png"
 const COM_REGIONS := "res://assets/recovered_sources/com/ui/CommonUI.json"
 const FONT := preload("res://assets/original/fonts/ZEROTWOS.ttf")
+const DROPDOWN_CHECK := preload("res://assets/ui/components/dropdown_check.svg")
+const DROPDOWN_CHECK_DISABLED := preload("res://assets/ui/components/dropdown_check_disabled.svg")
+const DROPDOWN_CHECK_BLANK := preload("res://assets/ui/components/dropdown_check_blank.svg")
 const CYAN := Color(0.40, 1.0, 1.0)
 static var _frames: Dictionary = {}
 static var _scaled_textures: Dictionary = {}
@@ -74,10 +77,14 @@ static func header() -> StyleBoxTexture:
 	return sliced(texture, 20, Vector4.ZERO)
 
 
-static func make_theme() -> Theme:
+static func make_theme(include_menu_controls := false) -> Theme:
 	var result := Theme.new()
 	result.default_font = FONT
 	result.default_font_size = 14
+	# Opt in on the modal subtree only: the approved outer menu and shop keep
+	# their original themes and authored button art.
+	if include_menu_controls:
+		_add_menu_controls(result)
 	result.set_stylebox("panel", "PopupMenu", panel())
 	result.set_stylebox("hover", "PopupMenu", plate("hover"))
 	result.set_stylebox("panel", "TooltipPanel", panel())
@@ -107,6 +114,53 @@ static func make_theme() -> Theme:
 	return result
 
 
+static func _add_menu_controls(result: Theme) -> void:
+	for type_name: String in ["Button", "OptionButton", "CheckButton", "CheckBox"]:
+		for state: String in ["normal", "hover", "pressed", "disabled", "hover_pressed"]:
+			result.set_stylebox(state, type_name, plate("hover" if state == "hover_pressed" else state))
+		result.set_stylebox("focus", type_name, focus())
+		for key: String in ["font_color", "font_hover_color", "font_pressed_color", "font_hover_pressed_color", "font_focus_color", "font_disabled_color"]:
+			result.set_color(key, type_name, _button_font_color(key))
+		result.set_constant("outline_size", type_name, 0)
+	var unchecked := logical_texture(com_sprite("baikuang"), "checkbox_empty", 0.22)
+	for type_name: String in ["CheckButton", "CheckBox"]:
+		for key: String in ["checked", "checked_disabled", "checked_mirrored", "checked_disabled_mirrored"]:
+			result.set_icon(key, type_name, com_sprite("xuanjiao"))
+		for key: String in ["unchecked", "unchecked_disabled", "unchecked_mirrored", "unchecked_disabled_mirrored"]:
+			result.set_icon(key, type_name, unchecked)
+		result.set_constant("h_separation", type_name, 12)
+	result.set_stylebox("normal", "LineEdit", plate("normal", Vector4(12, 8, 12, 8)))
+	result.set_stylebox("read_only", "LineEdit", plate("disabled", Vector4(12, 8, 12, 8)))
+	result.set_stylebox("focus", "LineEdit", focus())
+	result.set_color("font_color", "LineEdit", Color(0.88, 0.96, 0.98))
+	result.set_color("font_placeholder_color", "LineEdit", Color(0.45, 0.53, 0.56))
+	result.set_color("caret_color", "LineEdit", CYAN)
+	result.set_color("selection_color", "LineEdit", Color(0.08, 0.48, 0.57, 0.9))
+	result.set_stylebox("slider", "HSlider", sliced(com_sprite("huadongtiao-3"), 3, Vector4(3, 3, 3, 3)))
+	for key: String in ["grabber_area", "grabber_area_highlight"]:
+		var track := sliced(com_sprite("huadongtiao-1"), 3, Vector4(3, 3, 3, 3))
+		track.modulate_color = CYAN if key == "grabber_area_highlight" else Color(0.50, 0.75, 0.80)
+		result.set_stylebox(key, "HSlider", track)
+	for key: String in ["grabber", "grabber_highlight", "grabber_disabled"]:
+		result.set_icon(key, "HSlider", com_sprite("huadongtiao-1" if key == "grabber" else "huadongtiao-2"))
+	result.set_stylebox("panel", "PanelContainer", panel())
+
+
+static func _button_font_color(key: String) -> Color:
+	if key == "font_disabled_color":
+		return Color(0.45, 0.53, 0.56)
+	return CYAN if key == "font_color" else Color.WHITE
+
+
+static func style_button(button: Button, padding := Vector4(14, 4, 14, 4)) -> void:
+	button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	for state: String in ["normal", "hover", "pressed", "disabled", "hover_pressed"]:
+		button.add_theme_stylebox_override(state, plate("hover" if state == "hover_pressed" else state, padding))
+	button.add_theme_stylebox_override("focus", focus())
+	for key: String in ["font_color", "font_hover_color", "font_pressed_color", "font_hover_pressed_color", "font_focus_color", "font_disabled_color"]:
+		button.add_theme_color_override(key, _button_font_color(key))
+
+
 static func style_picker(picker: OptionButton, theme: Theme) -> void:
 	picker.fit_to_longest_item = false
 	picker.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
@@ -122,6 +176,14 @@ static func style_picker(picker: OptionButton, theme: Theme) -> void:
 	var popup := picker.get_popup()
 	popup.theme = theme
 	popup.prefer_native_menu = false
+	# A small check denotes the saved choice; the metal hover frame denotes
+	# keyboard/mouse focus. Equal icon extents keep every item label aligned.
+	for key: String in ["checked", "radio_checked"]:
+		popup.add_theme_icon_override(key, DROPDOWN_CHECK)
+	for key: String in ["checked_disabled", "radio_checked_disabled"]:
+		popup.add_theme_icon_override(key, DROPDOWN_CHECK_DISABLED)
+	for key: String in ["unchecked", "radio_unchecked", "unchecked_disabled", "radio_unchecked_disabled"]:
+		popup.add_theme_icon_override(key, DROPDOWN_CHECK_BLANK)
 	# OptionButton's PopupMenu is a Window; explicitly assign the same skin.
 	# It retains native focus, arrow keys, wheel scrolling and Escape handling.
 	var arrow := chevron(picker, false)

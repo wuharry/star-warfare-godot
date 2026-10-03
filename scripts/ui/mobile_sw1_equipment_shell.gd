@@ -379,6 +379,9 @@ func _refresh_filter_buttons() -> void:
 
 
 func _refresh_desktop_navigation() -> void:
+	# Showing a scroller synchronously cancels its gesture and emits moved.
+	# Switch the catalog first so those callbacks cannot render stale prop IDs.
+	_ids = _get_category_ids()
 	var equipment := selected_section == "equipment"
 	if is_instance_valid(customize_controls):
 		customize_controls.visible = mode == "customize" and equipment
@@ -905,8 +908,16 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _show_ammo() -> void:
 	if not is_instance_valid(_ammo_dialog):
 		_ammo_dialog = AcceptDialog.new()
+		var dialog_theme := ArmorySkin.make_theme(true)
+		dialog_theme.set_stylebox("panel", "AcceptDialog", ArmorySkin.panel())
+		_ammo_dialog.theme = dialog_theme
 		_ammo_dialog.title = "AMMO"
 		_ammo_dialog.dialog_text = "每場任務開始時會補充能量，無須購買彈藥。\n這裡不會扣除點數或秘銀。"
+		var close := _ammo_dialog.get_ok_button()
+		# AcceptDialog resets custom_minimum_size while arranging its actions.
+		# Skin padding keeps the touch target large after every popup layout.
+		close.add_theme_font_size_override("font_size", 16)
+		ArmorySkin.style_button(close, Vector4(40, 14, 40, 14))
 		add_child(_ammo_dialog)
 		_ammo_dialog.visibility_changed.connect(func(): set_interaction_enabled(not _ammo_dialog.visible))
 	_ammo_dialog.popup_centered(Vector2i(460, 150))
