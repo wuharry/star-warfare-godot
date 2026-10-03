@@ -33,7 +33,12 @@ func _notification(what: int) -> void:
 		queue_redraw()
 
 func _input(event: InputEvent) -> void:
-	if not visible:
+	# A finger can be released after a parent hides or the game pauses.
+	if event is InputEventScreenTouch and not event.pressed and event.index == active_touch:
+		cancel_input()
+		get_viewport().set_input_as_handled()
+		return
+	if not is_visible_in_tree() or get_tree().paused:
 		return
 	if event is InputEventScreenTouch:
 		if event.pressed and active_touch < 0 and get_global_rect().has_point(event.position):
@@ -41,17 +46,19 @@ func _input(event: InputEvent) -> void:
 			engaged.emit()
 			_update_from_screen(event.position)
 			get_viewport().set_input_as_handled()
-		elif not event.pressed and event.index == active_touch:
-			active_touch = -1
-			value = Vector2.ZERO
-			knob_position = size * 0.5
-			vector_changed.emit(value)
-			released.emit()
-			queue_redraw()
-			get_viewport().set_input_as_handled()
 	elif event is InputEventScreenDrag and event.index == active_touch:
 		_update_from_screen(event.position)
 		get_viewport().set_input_as_handled()
+
+func cancel_input() -> void:
+	if active_touch < 0 and value == Vector2.ZERO:
+		return
+	active_touch = -1
+	value = Vector2.ZERO
+	knob_position = size * 0.5
+	vector_changed.emit(value)
+	released.emit()
+	queue_redraw()
 
 func _update_from_screen(screen_position: Vector2) -> void:
 	var local_position := screen_position - global_position

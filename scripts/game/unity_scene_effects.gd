@@ -32,6 +32,7 @@ static func _build_emitter(record: Dictionary, quality: Dictionary) -> CPUPartic
 	particles.set_meta("unity_effect_kind", str(record.kind))
 	particles.set_meta("unity_source_scene", str(record.source_scene))
 	particles.set_meta("unity_emission_rate", record.emission_rate)
+	particles.set_meta("unity_particle_capacity", int(record.particle_capacity))
 	particles.transform = _transform(record.transform)
 	particles.local_coords = false
 	particles.gravity = Vector3.ZERO
@@ -93,6 +94,18 @@ static func _build_emitter(record: Dictionary, quality: Dictionary) -> CPUPartic
 		var radius := particles.emission_sphere_radius + growth.max_value * particles.scale_amount_max
 		particles.visibility_aabb = AABB(-Vector3.ONE * radius, Vector3.ONE * radius * 2.0)
 	return particles
+
+static func apply_quality(root: Node3D, quality: Dictionary) -> void:
+	if not is_instance_valid(root):
+		return
+	var density := 0.5 if float(quality.get("render_scale", 1.0)) <= 0.7 else 1.0
+	for child in root.get_children():
+		var particles := child as CPUParticles3D
+		if particles == null or not particles.has_meta("unity_particle_capacity"):
+			continue
+		var amount := maxi(1, roundi(float(particles.get_meta("unity_particle_capacity")) * density))
+		if particles.amount != amount:
+			particles.amount = amount
 
 
 static func _material(record: Dictionary) -> ShaderMaterial:
