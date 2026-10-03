@@ -1,0 +1,19 @@
+Create a production BODY UV texture following the FIRST image's exact polygon layout. This is a placement correction in the Viper game asset generation based on the previously preserved 13d6836/48f0a12a base design prompt, whose style is represented by image2. The current user insists on the COMPLETE armor in image3, with original UV unchanged. No new UV packing.
+
+Image1 is the EXACT body UV semantic construction template. Paint inside those existing polygons and do not move boundaries. Ignore guide colors/text/wires in final output; they only identify anatomy:
+RED LEFT part = HALF FRONT CHEST.
+SALMON LEFT part below it = HALF FRONT ABDOMEN.
+Yellow straight left boundary = MIRRORED FRONT CENTER.
+BLUE RIGHT part = BACK.
+GREEN UPPER RIGHT = FRONT THIGH.
+GOLD RIGHT = REAR THIGH.
+Grey upper-left hip, grey slender-right upperarm cloth, purple lower-right thigh endcap.
+
+Image2 is the current painted diffuse atlas, for identical visual style and texture footprint. Its HUGE FULL SYMMETRIC CHEST in the middle-right of the torso island is WRONG: it lands on the BACK. ERASE that whole duplicated front chest window/strap/buckle design from the BLUE RIGHT REGION, replace it with a PLAIN STEEL-BLUE BACK PLATE, simple dark lower-back cloth. Preserve one small chest window ONLY in the RED FRONT-HALF left region.
+
+Image3 is the COMPLETE target armor concept. In the SALMON left region, paint only HALF of its frontal ABDOMINAL ARMOR:
+The HALF-long central charcoal inset must be CUT by the extreme LEFT yellow mirror edge. Paint that dark central inset hugging the FAR-LEFT edge at u=.03-.065,v=.74-.81. Paint the blue angled belly guard immediately beside it at u=.065-.14. The blue center GROIN PLATE is also cut IN HALF at the FAR LEFT edge u=.03,v=.81-.88. Remove black horizontal rib stripes and tiny blue label in this far-left region. The game mirrors this half into one whole front belly. DO NOT paint a whole symmetric belly centered at u=.30; that is the wrong body surface.
+
+GREEN FRONT THIGH: all broad steel-blue armor like image3, ERASE the long black slot rectangles there. A narrow black INNER-side band is enough. GOLD REAR THIGH: charcoal underlayer with blue side panels.
+
+Use muted steel-blue and charcoal, painted large planes, same original game low-poly surface language. Original padding dark navy. Return ONE square opaque 1254x1254 diffuse atlas, with technical layout of image1 exactly, visual style image2, correct armor design image3. No human, no UV lines, no labels, no red/green/guide colors. MOST IMPORTANT: front belly is only a half design cut by the far LEFT edge; right torso is a plain back plate with NO FRONT WINDOWS OR BUCKLES.

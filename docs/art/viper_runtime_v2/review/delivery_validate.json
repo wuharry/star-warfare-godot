@@ -1,0 +1,217 @@
+{
+  "status": "PASS",
+  "scope": "Read-only packed-master identity, PNG bytes, original topology/rig, and authored UV/position consistency. Does not measure artistic likeness or certify fresh engine captures.",
+  "master": "docs/art/viper_runtime_v2/build/viper_master.blend",
+  "master_sha256": "878a521e07489a58ffe187e7792c7b0a10697a16e59ef26e60b99754a92a35b8",
+  "source_sha256": "71f61e014e3ea33fad79b91c49b559bb87091a18eada8c6ec3339813b1b4565c",
+  "target_sha256": "1749913da13117b97419480de6390ce0bd1cd48d77ca77d5d4bd61b38d258f45",
+  "blender": "5.1.0",
+  "errors": [],
+  "mesh_count": 4,
+  "surface_count": 5,
+  "bone_count": 28,
+  "triangle_count": 682,
+  "packed_diffuse_count": 5,
+  "original_uv_coordinate_count": 667,
+  "changed_uv_coordinate_count": 50,
+  "changed_uv_coordinate_fraction": 0.07496251874062969,
+  "uv_count_limit": 0.2,
+  "uv_metric_note": "The 20% limit counts original coordinates changed per head/body part; the body edit is limited to20 chest and12 abdomen coordinates, at most .20 atlas units each. Coordinate/chart counts and topology remain unchanged. Inherited head atlas displacement is reported separately.",
+  "meshes": [
+    {
+      "name": "ArmorHead_00",
+      "vertices": 130,
+      "triangles": 136,
+      "surfaces": 1,
+      "uv_loops": 408,
+      "original_uv_coordinates": 130,
+      "authored_uv_coordinates": 130,
+      "changed_uv_coordinates": 18,
+      "changed_uv_coordinate_fraction": 0.13846153846153847,
+      "maximum_uv_displacement_from_original": 0.3152343551664451,
+      "rms_uv_displacement_from_original": 0.059363484643175146,
+      "maximum_master_uv_error_from_authored": 2.9217761291094986e-08,
+      "maximum_master_position_error_from_authored": 0.0,
+      "original_uv_charts": 4,
+      "authored_uv_charts": 4,
+      "uv_by_surface": [
+        {
+          "surface": 0,
+          "label": "head",
+          "original_uv_coordinates": 130,
+          "changed_uv_coordinates": 18,
+          "changed_uv_coordinate_fraction": 0.13846153846153847,
+          "maximum_uv_displacement_from_original": 0.3152343551664451
+        }
+      ]
+    },
+    {
+      "name": "ArmorBody_00",
+      "vertices": 295,
+      "triangles": 298,
+      "surfaces": 2,
+      "uv_loops": 894,
+      "original_uv_coordinates": 295,
+      "authored_uv_coordinates": 295,
+      "changed_uv_coordinates": 32,
+      "changed_uv_coordinate_fraction": 0.10847457627118644,
+      "maximum_uv_displacement_from_original": 0.19898646248584123,
+      "rms_uv_displacement_from_original": 0.04821368564528052,
+      "maximum_master_uv_error_from_authored": 2.467895954671739e-08,
+      "maximum_master_position_error_from_authored": 0.0,
+      "original_uv_charts": 8,
+      "authored_uv_charts": 8,
+      "uv_by_surface": [
+        {
+          "surface": 0,
+          "label": "body",
+          "original_uv_coordinates": 221,
+          "changed_uv_coordinates": 32,
+          "changed_uv_coordinate_fraction": 0.14479638009049775,
+          "maximum_uv_displacement_from_original": 0.19898646248584123,
+          "changed_chest_coordinates": 20,
+          "changed_abdomen_coordinates": 12
+        },
+        {
+          "surface": 1,
+          "label": "shoulder",
+          "original_uv_coordinates": 74,
+          "changed_uv_coordinates": 0,
+          "changed_uv_coordinate_fraction": 0.0,
+          "maximum_uv_displacement_from_original": 0.0,
+          "changed_chest_coordinates": 0,
+          "changed_abdomen_coordinates": 0
+        }
+      ]
+    },
+    {
+      "name": "ArmorHand_00",
+      "vertices": 120,
+      "triangles": 112,
+      "surfaces": 1,
+      "uv_loops": 336,
+      "original_uv_coordinates": 120,
+      "authored_uv_coordinates": 120,
+      "changed_uv_coordinates": 0,
+      "changed_uv_coordinate_fraction": 0.0,
+      "maximum_uv_displacement_from_original": 0.0,
+      "rms_uv_displacement_from_original": 0.0,
+      "maximum_master_uv_error_from_authored": 5.900916318210353e-16,
+      "maximum_master_position_error_from_authored": 0.0,
+      "original_uv_charts": 3,
+      "authored_uv_charts": 3,
+      "uv_by_surface": [
+        {
+          "surface": 0,
+          "label": "hand",
+          "original_uv_coordinates": 120,
+          "changed_uv_coordinates": 0,
+          "changed_uv_coordinate_fraction": 0.0,
+          "maximum_uv_displacement_from_original": 0.0
+        }
+      ]
+    },
+    {
+      "name": "ArmorFoot_00",
+      "vertices": 122,
+      "triangles": 136,
+      "surfaces": 1,
+      "uv_loops": 408,
+      "original_uv_coordinates": 122,
+      "authored_uv_coordinates": 122,
+      "changed_uv_coordinates": 0,
+      "changed_uv_coordinate_fraction": 0.0,
+      "maximum_uv_displacement_from_original": 0.0,
+      "rms_uv_displacement_from_original": 0.0,
+      "maximum_master_uv_error_from_authored": 6.684427777288335e-16,
+      "maximum_master_position_error_from_authored": 0.0,
+      "original_uv_charts": 4,
+      "authored_uv_charts": 4,
+      "uv_by_surface": [
+        {
+          "surface": 0,
+          "label": "foot",
+          "original_uv_coordinates": 122,
+          "changed_uv_coordinates": 0,
+          "changed_uv_coordinate_fraction": 0.0,
+          "maximum_uv_displacement_from_original": 0.0
+        }
+      ]
+    }
+  ],
+  "images": {
+    "head": {
+      "material": "head",
+      "image": "head_diffuse.png",
+      "canonical_path": "assets/armors/viper_v2/head_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "packed_bytes": 1992201,
+      "packed_sha256": "b19e5ef331cf3a9a0619c5ce7ec8c3cb08251588d1d194f8dce4fad4cd8b2964",
+      "canonical_sha256": "b19e5ef331cf3a9a0619c5ce7ec8c3cb08251588d1d194f8dce4fad4cd8b2964",
+      "byte_identical": true
+    },
+    "body": {
+      "material": "body",
+      "image": "body_diffuse.png",
+      "canonical_path": "assets/armors/viper_v2/body_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "packed_bytes": 2001984,
+      "packed_sha256": "83701b740e31ecf124f288e0428f1ea55bdf73f202cfb6616ab66950394b957a",
+      "canonical_sha256": "83701b740e31ecf124f288e0428f1ea55bdf73f202cfb6616ab66950394b957a",
+      "byte_identical": true
+    },
+    "shoulder": {
+      "material": "shoulder",
+      "image": "shoulder_diffuse.png",
+      "canonical_path": "assets/armors/viper_v2/shoulder_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "packed_bytes": 1705494,
+      "packed_sha256": "162ca5bb1de8533e7637ca7aba0464feb11e225b19ba8b63adfd60d3a56ccc90",
+      "canonical_sha256": "162ca5bb1de8533e7637ca7aba0464feb11e225b19ba8b63adfd60d3a56ccc90",
+      "byte_identical": true
+    },
+    "hand": {
+      "material": "hand",
+      "image": "hand_diffuse.png",
+      "canonical_path": "assets/armors/viper_v2/hand_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "packed_bytes": 1558635,
+      "packed_sha256": "d1023bdedbe824dbac3d1c62717eb3703c4f54acf4cb3c0c6c36a6ab98ebfa5f",
+      "canonical_sha256": "d1023bdedbe824dbac3d1c62717eb3703c4f54acf4cb3c0c6c36a6ab98ebfa5f",
+      "byte_identical": true
+    },
+    "foot": {
+      "material": "foot",
+      "image": "foot_diffuse.png",
+      "canonical_path": "assets/armors/viper_v2/foot_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "packed_bytes": 1657785,
+      "packed_sha256": "340cec30ec508a82fc0c73de9c4fadef4210730d5286616e65a9b1194153e2a5",
+      "canonical_sha256": "340cec30ec508a82fc0c73de9c4fadef4210730d5286616e65a9b1194153e2a5",
+      "byte_identical": true
+    }
+  },
+  "previous_source_geometry_warnings": [
+    "ArmorBody_00: 135 doubled vertices within 0.0001",
+    "ArmorBody_00: 4 tiny influences below 0.01",
+    "ArmorFoot_00: 50 doubled vertices within 0.0001",
+    "ArmorHand_00: 50 doubled vertices within 0.0001",
+    "ArmorHead_00: 54 doubled vertices within 0.0001"
+  ],
+  "previous_warning_note": "Prior general Blender validation warnings are retained here for context, not recomputed by this focused validator."
+}

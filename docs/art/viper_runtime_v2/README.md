@@ -1,18 +1,26 @@
 # Viper 可套用遊戲素材
 
-開啟 `index.html`，比對原版、最新版頭盔美術與實際遊戲素材。頁面提供四向、頭盔近照、灰模、待機／跑動、完整換彈進度、兩個遊戲關卡，以及五組原版／新版貼圖與各自 UV 線圖。
+開啟 `index.html`，比對原版、修訂前 v7、指定的完整裝甲美術圖與本輪遊戲素材。頁面提供四向、頭盔近照、灰模、待機／跑動、完整換彈進度、兩個遊戲關卡，以及五組原版／新版貼圖與各自 UV 線圖。
 
 遊戲預設 Viper 已改用 `assets/armors/viper_v2/viper.scn`，仍是 visual ID 00，四個原節點與混搭／存檔 ID 不變。`--armor-style=legacy` 保留之前的 refined Viper；`--viper-angular-trial` 可看較早的 angular 版本。比較頁的「原版」採未改動的原始 player.gltf，並非上述兩個舊試作。
 
 這套包含五張實際生成的 diffuse、四部件 scene、帶骨架的 GLB 和 `build/viper_master.blend`。Master 包含貼圖；GLB 匯出產生的 `viper_*_diffuse.png` 是引擎寫出的 portable 副本。概念圖不當成 UV 貼圖。
 
-生成基底完整沿用指定 commits 13d6836／48f0a12a 的 `docs/art/legacy_armor_base_v2/base_prompt.txt`，兩個 commit 的該檔內容相同。每次實際送出的全文保存在 `prompts/`；指定頭盔是 25f11d9 的 C-01 Viper。`manifest.json` 和 `build/generation.json` 記錄輸入、輸出、SHA256、尺寸及未採用稿。第一版黑眉沿位置錯誤，已保留但未套用；最後選用 v7，擴大連續紫色面甲、收窄下半部、縮薄藍色下巴，並減少黑色斜塊侵入面罩。
+本輪 `concept_match_v8` 以 `../fusion_v2_generated/c01_viper_fusion.jpg` 的整套鋼藍／炭黑裝甲為設計權威，包含胸甲、腹甲、大腿、護膝、前臂與最新紫色連續面甲。原版提供遊戲短壯比例、模型外殼與 UV；貼圖的板件分區及配色按完整美術圖調整。先前「保留 85–90% 原版外觀」的生成條件已被使用者這次要求取代，20% 限制不套用到貼圖重畫面積。
 
-模型保持原 682 tris 與五個 surface。頭盔130個 UV 座標數量不變、分區數量不變，僅18個面甲座標（13.85%）改為完整正面展開；其他部位 UV 保持原樣。使用者本輪明確允許修改貼圖及UV，將容許誤差放寬到20%。身體、手臂、靴子頂點完全相同；頭盔局部改動的最大 rest 位移 .05306 m，約為原頭最小尺寸的 10.24%；頭部尺寸差異最大 5.00%。四視角灰模輪廓差異最大 1.42%，符合本輪「改動稍大一點」的方向，仍在本輪 20% 局部幾何上限內。這些是幾何測量，不把貼圖與美術相似度稱為已量化或已獲使用者確認。
+生成基底完整沿用指定 commits 13d6836／48f0a12a 的 `docs/art/legacy_armor_base_v2/base_prompt.txt`，兩個 commit 的該檔內容相同。每次實際送出的完整提示詞保存在 `prompts/`；完整裝甲參考來自 25f11d9 的 C-01 Viper。`revisions/concept_match_v8/generation_inputs.json` 列出本輪五張生成圖的真實 prompt、輸入快照、輸出與生成時間；`manifest.json` 和 `build/generation.json` 記錄 SHA256、尺寸及歷史稿。先前 v7 的五張貼圖與預覽留作比較，不再將新版 canonical 貼圖歸因於舊生成結果。最新頭盔沿用 v7 已修正的連續紫色面甲、較窄的下半部與藍色下巴，並與身體配色一起調整。
 
-`review/runtime_test.json` 驗證身體 UV／索引／bones／weights 精確相等；頭盔 UV 數量不變，18個面甲座標局部調整、原 skin binds、骨架／掛點、15 個動作樣本、混搭與商店／自訂顯示，並確認真實存檔未變。`review/roundtrip_test.json` 驗證 GLB 重新匯入後 9 個動作樣本；`review/blender_roundtrip/roundtrip.json` 記錄 4 mesh、28 bone、5 images、身高與零錯誤。`review/blender_validate.json` 零 fail；原 mesh 因 UV／法線拆點而有重合頂點，以及原 body 的 4 個小權重，均保留且列為 warning。
+模型保持原 682 tris 與五個 surface。頭盔沿用 v7 的局部面甲 UV；本輪另將胸甲與腹甲正面的少量 UV 重映射到生成貼圖中正確的藍色甲片、黑色斜窗及較長的中央腹甲凹槽，修正生成圖把細節畫到相鄰區域與腹甲凹槽過短的問題。原有 UV 座標及分區數量不變，肩甲、手臂、靴子 UV 完全相同；身體及四肢幾何完全相同。
 
-仍保留原版低面數外殼的切面及側面耳部的大體積，以保留遊戲比例及主要 UV 分區；新版頭盔設計已轉成其上的前額、面罩、冠槽、下巴貼圖與局部形狀。美術品質仍可在比較頁逐項調整。
+由最後重建的 `build/source.json`／`build/target.json` 對比並與 `build/geometry.json` 核對，頭盔沿用18／130個面甲座標（13.846%）；身體貼圖調整32／221（14.480%，胸甲20個、腹甲12個），含肩甲的整個 body 部件為32／295（10.847%）；全套改動50／667（7.496%）。「20%」按頭盔與身體材質分別計算改動座標的數量占比，不代表每個點的 UV 位移距離均小於0.20，也不代表已量化美術相似度。
+
+頭盔局部改動仍沿用前一輪：最大 rest 位移 .05306 m，約為原頭最小尺寸的 10.24%；頭部尺寸差異最大 5.00%。前一輪四視角灰模輪廓差異最大 1.42%，仍在20%局部幾何上限內；本輪實際量測與構圖以更新的 `review/` 報告為準，不把舊量測當作新畫面驗收。
+
+`review/runtime_test.json` 驗證頭盔、胸甲及腹甲 UV 的預期局部調整與20%預算、其他部位 UV 精確相等，以及原索引／bones／weights／skin binds、骨架／掛點、15個動作樣本、混搭、商店／自訂顯示和真實存檔保留。`review/roundtrip_test.json` 驗證 GLB 重新匯入後9個動作樣本。
+
+`review/delivery_validate.json` 是本輪的 focused Blender 檢查，核對 packed master 的4 mesh、28 bone、5個內嵌 diffuse 的實際 bytes、原 topology／rig，以及本輪 authored UV／position。它不判斷美術相似度，且不等同重新跑過所有一般 Blender 檢查。`review/blender_validate.json` 與 `review/blender_roundtrip/roundtrip.json` 保留前一輪證據；原版重合頂點與 body 的4個小權重仍以歷史 warning 列出，不把舊報告稱為本輪新驗證。
+
+仍保留原版低面數外殼的切面及側面耳部的大體積，以保留遊戲比例及主要 UV 分區；完整美術圖的表面設計轉成對應的 diffuse 貼圖。現有短壯、鏡像胸甲外殼限制胸窗的寬度，套用後的黑色斜窗仍比概念圖寬；概念圖中的成人身形與所有立體細節也不能逐項完全一致。比較頁呈現真正套用後的差異，供使用者繼續評價。
 
 重建順序（在 repo 根執行，使用專案 Godot／Blender）：
 
@@ -21,5 +29,7 @@
 3. 套用已提交的生成 diffuse；Godot `--headless --editor --path . --import` 讓引擎匯入。
 4. Godot `--headless --path . --script res://tools/viper_runtime_v2/compile.gd`，再 `python tools/viper_runtime_v2/glb_unique_joints.py`。不要以 Blender 普通匯出取代原 Skin 的引擎編譯。
 5. 執行 `tests/viper_v2_test.tscn`、`tests/viper_v2_roundtrip.tscn`；可視 renderer 執行 `tools/viper_runtime_v2/capture.tscn`，再 `python tools/viper_runtime_v2/measure.py`、`python tools/viper_runtime_v2/review.py`。
+6. Blender `--background docs/art/viper_runtime_v2/build/viper_master.blend --python tools/viper_runtime_v2/validate_delivery.py` 產生本輪 packed master 驗證。
+7. 本輪輸入、版本化生成圖與 canonical 貼圖均保存完畢後，執行 `python tools/viper_runtime_v2/provenance.py`。程式驗證每張已選輸出與 canonical SHA256 相同、動態計算 UV 修改數量，並拒絕 master／target／貼圖 SHA 已過期的 delivery 報告；將被替換的舊稿指向不可變輸入快照，保留歷史歸屬並更新 manifest。
 
 `.import`／`.uid` 由引擎產生。此工作沒有修改 Claude hooks。編輯器掃描會另外報既有 `audio-missing-archive-tfpon_0v` 目錄不可讀，Viper 的匯入與執行測試均完成。

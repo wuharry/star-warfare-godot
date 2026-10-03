@@ -1,0 +1,19 @@
+Precise LOCAL UV-ATLAS repair. Edit image1, the current Viper BODY atlas. Return the same opaque square 1254x1254 diffuse map. Preserve the existing UV footprint, paint and details everywhere EXCEPT the FRONT UPPER CHEST rectangle described below.
+
+Image1 is the edit target. Its back plate, abdomen and thigh paint are correctly positioned. Keep them unchanged.
+Image2 is a previous atlas whose FAR-LEFT chest paint was correctly positioned on the game model.
+Image3 is the desired fullbody concept for context only.
+
+COPY/RESTORE THE CORRECT FRONT CHEST PAINT FROM IMAGE2 INTO THE EXACT SAME PIXEL COORDINATES OF IMAGE1, in the FAR-LEFT rectangle:
+normalized u .020-.230 and v .380-.675
+= pixel x 25-288, y 476-846 on this 1254 square atlas.
+This is HALF of the mirrored front chest. At those same coordinates, image2 has the CORRECT single silver rectangular strap buckle at the top and the CORRECT steel-blue chest plate with ONE inset slanted black window below. Place them at the SAME source pixel coordinates as image2, without shifting upward, down, or horizontally. The black chest window belongs near x140-224,y610-750, NOT near y445-558. The front chest steel-blue plate surrounds that window. The narrow upper strap and silver buckle also must occupy their actual image2 source coordinates, about y500-580. The game mirrors this half into two front plates/windows. DO NOT draw a whole symmetric chest on the atlas.
+
+Image1 currently places the small window TOO HIGH on the left island, above y560, so the actual model's chest samples a black horizontal belt. Correct this. The actual chest field between y630 and846 must be blue with the slanted black window, not a charcoal horizontal belt.
+
+CRITICAL PRESERVATION:
+Do not change the already-correct abdomen/groin below y850 (v .68): retain the long half dark center touching the left edge, blue flanks, and blue groin plate.
+Do not change the plain BLUE BACK area at x450-692 on the main torso island; leave it with NO chest windows or front buckles.
+Do not change upper-right thighs: retain broad blue front plates and dark rear cloth.
+Do not change any other island, the upper-arm cloth strip, the UV boundaries, image resolution, or padding.
+This is a local paint replacement from image2's exact left upper-chest field, NOT a redesign, NOT a new unpacking, and NOT repainting the whole torso. No human figure, guide text, wires or extra material slots.

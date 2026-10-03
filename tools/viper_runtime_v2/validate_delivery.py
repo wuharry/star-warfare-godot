@@ -1,0 +1,269 @@
+"""Read-only validation of the delivered, packed Viper Blender master.
+
+Run with the project Blender, opening the existing master before this script:
+  blender --background docs/art/viper_runtime_v2/build/viper_master.blend \
+    --python-exit-code 1 --python tools/viper_runtime_v2/validate_delivery.py
+
+Only review/delivery_validate.json is written. No image, UV, mesh, rig or .blend
+is modified or saved. Coordinate-count and displacement metrics are separate.
+"""
+import hashlib
+import json
+import math
+import struct
+from pathlib import Path
+
+import bpy
+from mathutils import Vector
+
+ROOT = Path(__file__).resolve().parents[2]
+WORK = ROOT / "docs/art/viper_runtime_v2"
+MASTER = WORK / "build/viper_master.blend"
+REPORT = WORK / "review/delivery_validate.json"
+LABELS = {
+    "ArmorHead_00": ["head"],
+    "ArmorBody_00": ["body", "shoulder"],
+    "ArmorHand_00": ["hand"],
+    "ArmorFoot_00": ["foot"],
+}
+EPSILON = 0.000001
+
+
+def sha256(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def uv_chart_count(original_rows: list[dict], authored_rows: list[dict]) -> int:
+    adjacency: dict[tuple[float, ...], set[tuple[float, ...]]] = {}
+    for source_row, authored_row in zip(original_rows, authored_rows):
+        keys = [tuple(round(value, 6) for value in uv) for uv in authored_row["uv"]]
+        for start in range(0, len(source_row["indices"]), 3):
+            triangle = [keys[index] for index in source_row["indices"][start:start + 3]]
+            for key in triangle:
+                adjacency.setdefault(key, set()).update(triangle)
+    remaining = set(adjacency)
+    count = 0
+    while remaining:
+        count += 1
+        pending = [remaining.pop()]
+        while pending:
+            for neighbor in adjacency[pending.pop()]:
+                if neighbor in remaining:
+                    remaining.remove(neighbor)
+                    pending.append(neighbor)
+    return count
+
+
+def main() -> None:
+    source = json.loads((WORK / "build/source.json").read_text(encoding="utf-8"))
+    target = json.loads((WORK / "build/target.json").read_text(encoding="utf-8"))
+    errors: list[str] = []
+
+    def check(ok: bool, message: str) -> None:
+        if not ok:
+            errors.append(message)
+
+    loaded_file = Path(bpy.data.filepath).resolve()
+    check(loaded_file == MASTER.resolve(), "Loaded file is not the delivered Viper master")
+    meshes = {obj.name: obj for obj in bpy.data.objects if obj.type == "MESH"}
+    rigs = [obj for obj in bpy.data.objects if obj.type == "ARMATURE"]
+    check(set(meshes) == set(LABELS), "Expected exactly the four original modular meshes")
+    check(len(rigs) == 1, "Expected one armature")
+    expected_bones = {row["name"] for row in source["bones"]}
+    if len(rigs) == 1:
+        check(len(rigs[0].data.bones) == 28, "Expected 28 original bones")
+        check({bone.name for bone in rigs[0].data.bones} == expected_bones,
+              "Armature bone names differ from original")
+
+    mesh_records: list[dict] = []
+    image_records: dict[str, dict] = {}
+    triangles = 0
+    surfaces = 0
+    total_uv_coordinates = 0
+    total_changed_coordinates = 0
+    for name, labels in LABELS.items():
+        if name not in meshes:
+            continue
+        obj = meshes[name]
+        mesh = obj.data
+        original_rows = source["parts"][name]["surfaces"]
+        authored_rows = target["parts"][name]["surfaces"]
+        authored_uv = [uv for row in authored_rows for uv in row["uv"]]
+        original_uv = [uv for row in original_rows for uv in row["uv"]]
+        authored_positions = [point for row in authored_rows for point in row["positions"]]
+        check(len(authored_uv) == len(original_uv), f"{name}: UV coordinate count changed")
+        check(len(mesh.vertices) == len(authored_uv), f"{name}: master vertex count differs from authored UV count")
+        check(len(mesh.materials) == len(labels), f"{name}: material surface count changed")
+        check(mesh.uv_layers.active is not None, f"{name}: missing UV layer")
+        check(any(mod.type == "ARMATURE" and mod.object in rigs for mod in obj.modifiers),
+              f"{name}: missing original-rig armature modifier")
+
+        expected_faces: list[tuple[int, ...]] = []
+        vertex_offset = 0
+        for row in original_rows:
+            for index in range(0, len(row["indices"]), 3):
+                expected_faces.append(tuple(vertex_offset + item for item in reversed(row["indices"][index:index + 3])))
+            vertex_offset += len(row["uv"])
+        actual_faces = [tuple(poly.vertices) for poly in mesh.polygons]
+        check(actual_faces == expected_faces, f"{name}: original triangle indices or winding changed")
+        count = sum(len(poly.vertices) - 2 for poly in mesh.polygons)
+        triangles += count
+        surfaces += len(mesh.materials)
+
+        max_uv_error = 0.0
+        if mesh.uv_layers.active is not None:
+            layer = mesh.uv_layers.active.data
+            for loop_index, loop in enumerate(mesh.loops):
+                index = loop.vertex_index
+                if index >= len(authored_uv):
+                    continue
+                expected = authored_uv[index]
+                actual = layer[loop_index].uv
+                error = math.hypot(actual.x - expected[0], 1.0 - actual.y - expected[1])
+                max_uv_error = max(max_uv_error, error)
+            check(max_uv_error <= EPSILON, f"{name}: packed master UV differs from authored UV")
+
+        max_position_error = 0.0
+        for vertex in mesh.vertices:
+            if vertex.index >= len(authored_positions):
+                continue
+            x, y, z = authored_positions[vertex.index]
+            # Same Godot-to-Blender conversion used by build.py: (-x,z,y).
+            max_position_error = max(max_position_error, (vertex.co - Vector((-x, z, y))).length)
+        check(max_position_error <= EPSILON, f"{name}: packed master position differs from authored cage")
+
+        uv_displacements = [math.dist(a, b) for a, b in zip(original_uv, authored_uv)]
+        changed = sum(distance > EPSILON for distance in uv_displacements)
+        total_uv_coordinates += len(original_uv)
+        total_changed_coordinates += changed
+        original_chart_count = uv_chart_count(original_rows, original_rows)
+        authored_chart_count = uv_chart_count(original_rows, authored_rows)
+        check(authored_chart_count == original_chart_count, f"{name}: original UV chart count changed")
+        surface_uv_records = []
+        for surface, (old_row, new_row) in enumerate(zip(original_rows, authored_rows)):
+            distances = [math.dist(a, b) for a, b in zip(old_row["uv"], new_row["uv"])]
+            moved = sum(distance > EPSILON for distance in distances)
+            surface_uv_records.append({
+                "surface": surface, "label": labels[surface],
+                "original_uv_coordinates": len(old_row["uv"]),
+                "changed_uv_coordinates": moved,
+                "changed_uv_coordinate_fraction": moved / len(old_row["uv"]),
+                "maximum_uv_displacement_from_original": max(distances),
+            })
+            if name == "ArmorBody_00":
+                check(moved == (32 if surface == 0 else 0),
+                      "Body requires exactly32 front-torso UV edits and unchanged shoulder UV")
+                chest_moved = 0
+                abdomen_moved = 0
+                for old_uv, new_uv, distance in zip(old_row["uv"], new_row["uv"], distances):
+                    if distance <= EPSILON:
+                        continue
+                    original_chest = old_uv[0] < .26 and .38 < old_uv[1] < .69
+                    original_abdomen = old_uv[0] < .24 and .69 < old_uv[1] < .885
+                    check(surface == 0 and (original_chest or original_abdomen),
+                          "Body UV edit escaped original front-torso coordinates")
+                    if original_chest:
+                        chest_moved += 1
+                        check(.025 <= new_uv[0] <= .17 and .27 <= new_uv[1] <= .51,
+                              "Front-chest UV escaped selected chest paint")
+                    elif original_abdomen:
+                        abdomen_moved += 1
+                        check(abs(new_uv[0] - old_uv[0]) <= EPSILON and .64 <= new_uv[1] <= .86,
+                              "Front-abdomen UV escaped selected belly paint or shifted horizontally")
+                    check(distance <= .20, "Torso UV moved more than .20 atlas units")
+                check(chest_moved == (20 if surface == 0 else 0) and abdomen_moved == (12 if surface == 0 else 0),
+                      "Expected20 chest and12 abdomen coordinates only")
+                surface_uv_records[-1]["changed_chest_coordinates"] = chest_moved
+                surface_uv_records[-1]["changed_abdomen_coordinates"] = abdomen_moved
+        if name in ("ArmorHead_00", "ArmorBody_00"):
+            check(changed / len(original_uv) <= 0.20, f"{name}: changed UV coordinate count exceeds 20%")
+        else:
+            check(changed == 0, f"{name}: original limb UV changed")
+
+        for surface, label in enumerate(labels):
+            if surface >= len(mesh.materials):
+                continue
+            material = mesh.materials[surface]
+            check(material is not None and material.node_tree is not None, f"{name}/{label}: missing texture material")
+            if material is None or material.node_tree is None:
+                continue
+            images = [node.image for node in material.node_tree.nodes
+                      if node.bl_idname == "ShaderNodeTexImage" and node.image is not None]
+            check(len(images) == 1, f"{name}/{label}: expected one diffuse image")
+            if len(images) != 1:
+                continue
+            image = images[0]
+            canonical = ROOT / f"assets/armors/viper_v2/{label}_diffuse.png"
+            canonical_bytes = canonical.read_bytes()
+            dimensions = list(struct.unpack(">II", canonical_bytes[16:24]))
+            check(canonical_bytes[:8] == b"\x89PNG\r\n\x1a\n", f"{label}: canonical diffuse is not PNG")
+            check(dimensions == [1254, 1254], f"{label}: canonical dimensions changed")
+            check(list(image.size) == [1254, 1254], f"{label}: packed image dimensions changed")
+            packed = image.packed_file
+            check(packed is not None, f"{label}: master image is not packed")
+            packed_sha = sha256(bytes(packed.data)) if packed is not None else None
+            canonical_sha = sha256(canonical_bytes)
+            check(packed_sha == canonical_sha, f"{label}: packed PNG bytes differ from canonical delivered diffuse")
+            check(label not in image_records, f"{label}: material label is used more than once")
+            image_records[label] = {
+                "material": material.name,
+                "image": image.name,
+                "canonical_path": canonical.relative_to(ROOT).as_posix(),
+                "dimensions": dimensions,
+                "packed_bytes": len(packed.data) if packed is not None else 0,
+                "packed_sha256": packed_sha,
+                "canonical_sha256": canonical_sha,
+                "byte_identical": packed_sha == canonical_sha,
+            }
+        mesh_records.append({
+            "name": name, "vertices": len(mesh.vertices), "triangles": count,
+            "surfaces": len(mesh.materials), "uv_loops": len(mesh.loops),
+            "original_uv_coordinates": len(original_uv),
+            "authored_uv_coordinates": len(authored_uv),
+            "changed_uv_coordinates": changed,
+            "changed_uv_coordinate_fraction": changed / len(original_uv),
+            "maximum_uv_displacement_from_original": max(uv_displacements),
+            "rms_uv_displacement_from_original": math.sqrt(sum(value * value for value in uv_displacements) / len(uv_displacements)),
+            "maximum_master_uv_error_from_authored": max_uv_error,
+            "maximum_master_position_error_from_authored": max_position_error,
+            "original_uv_charts": original_chart_count,
+            "authored_uv_charts": authored_chart_count,
+            "uv_by_surface": surface_uv_records,
+        })
+    check(triangles == 682, "Expected original 682 triangles")
+    check(surfaces == 5, "Expected five material surfaces")
+    check(set(image_records) == {"head", "body", "shoulder", "hand", "foot"},
+          "Expected all five canonical packed diffuse images")
+    file_images = [image for image in bpy.data.images if image.source == "FILE"]
+    check(len(file_images) == 5, "Expected exactly five file images in the master")
+
+    previous = json.loads((WORK / "review/blender_validate.json").read_text(encoding="utf-8"))
+    report = {
+        "status": "FAIL" if errors else "PASS",
+        "scope": "Read-only packed-master identity, PNG bytes, original topology/rig, and authored UV/position consistency. Does not measure artistic likeness or certify fresh engine captures.",
+        "master": MASTER.relative_to(ROOT).as_posix(),
+        "master_sha256": sha256(MASTER.read_bytes()),
+        "source_sha256": sha256((WORK / "build/source.json").read_bytes()),
+        "target_sha256": sha256((WORK / "build/target.json").read_bytes()),
+        "blender": bpy.app.version_string,
+        "errors": errors,
+        "mesh_count": len(meshes), "surface_count": surfaces,
+        "bone_count": len(rigs[0].data.bones) if len(rigs) == 1 else None,
+        "triangle_count": triangles, "packed_diffuse_count": len(image_records),
+        "original_uv_coordinate_count": total_uv_coordinates,
+        "changed_uv_coordinate_count": total_changed_coordinates,
+        "changed_uv_coordinate_fraction": total_changed_coordinates / total_uv_coordinates,
+        "uv_count_limit": 0.20,
+        "uv_metric_note": "The 20% limit counts original coordinates changed per head/body part; the body edit is limited to20 chest and12 abdomen coordinates, at most .20 atlas units each. Coordinate/chart counts and topology remain unchanged. Inherited head atlas displacement is reported separately.",
+        "meshes": mesh_records, "images": image_records,
+        "previous_source_geometry_warnings": previous["summary"]["warn"],
+        "previous_warning_note": "Prior general Blender validation warnings are retained here for context, not recomputed by this focused validator.",
+    }
+    REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"VIPER_DELIVERY_VALIDATE_{report['status']} meshes={len(meshes)} surfaces={surfaces} bones={report['bone_count']} tris={triangles} packed={len(image_records)} errors={len(errors)}")
+    if errors:
+        raise RuntimeError("; ".join(errors))
+
+
+if __name__ == "__main__":
+    main()
