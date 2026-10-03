@@ -27,6 +27,9 @@ func _run() -> void:
 	GameState.experience = 0
 	GameState.credits = 4499
 	GameState.mithril = 1000
+	var base_interval := float(GameState.get_weapon_data("gun00").cooldown)
+	var base_fire_rate := float(GameState.get_weapon_data("gun00").fire_rate)
+	_check(is_equal_approx(base_interval, 0.24 / 1.3) and is_equal_approx(base_fire_rate, 1.3 / 0.24), "FR28a must start with the 30% fire-rate boost")
 	var quote := GameState.get_upgrade_quote("gun00")
 	_check(quote.credits == 4500 and quote.current.POW == 20.0 and quote.next.POW == 23.0, "FR28a source LV1→2 quote")
 	_check(GameState.upgrade_equipment("gun00") == "not_enough_credits", "insufficient credits allowed")
@@ -42,16 +45,18 @@ func _run() -> void:
 		_check(GameState.upgrade_equipment("gun00", level) == "upgraded", "FR28a transaction level %d" % level)
 		_check(cash - GameState.credits == source_costs[level - 1], "SW1 upgrade fee used wrong row")
 		_check(is_equal_approx(GameState.get_weapon_data("gun00").damage, source_damage[level - 1]), "SW1 damage compounded or missed stage")
+		_check(is_equal_approx(float(GameState.get_weapon_data("gun00").cooldown), base_interval) and is_equal_approx(float(GameState.get_weapon_data("gun00").fire_rate), base_fire_rate), "SW1 damage upgrade compounded or removed the fire-rate boost")
 		var after := GameState.credits
 		_check(GameState.upgrade_equipment("gun00", level) == "stale" and GameState.credits == after, "repeated confirmation charged twice")
 	_check(GameState.upgrade_equipment("gun00") == "max_level", "LV8 should be final")
-	_check(GameState.WEAPONS.gun00.damage == 20.0 and GameState.get_weapon_data("gun00").cooldown == 0.24, "base data or firerate changed")
+	_check(GameState.WEAPONS.gun00.damage == 20.0 and is_equal_approx(float(GameState.get_weapon_data("gun00").cooldown), base_interval), "base damage or tuned fire rate changed during upgrades")
 	# Every current weapon uses the SW1 source profile, including premium weapons.
 	GameState.owned_weapons.assign(GameState.get_weapon_ids())
 	for key: String in GameState.get_weapon_ids():
 		GameState.weapon_levels[key] = 8
 		var weapon := GameState.get_weapon_data(key)
 		_check(is_equal_approx(weapon.damage, float(GameState.WEAPONS[key].damage) * 3.5), "missing weapon progression: " + key)
+		_check(is_equal_approx(float(weapon.cooldown), float(GameState.WEAPONS[key].cooldown)) and is_equal_approx(float(weapon.fire_rate), float(GameState.WEAPONS[key].fire_rate)), "weapon upgrade changed the tuned fire rate: " + key)
 		_check(weapon.splash_damage == GameState.WEAPONS[key].splash_damage, "SW1 upgrade incorrectly scaled secondary splash")
 	GameState.weapon_levels.gun02 = 1
 	quote = GameState.get_upgrade_quote("gun02")
@@ -103,6 +108,7 @@ func _run() -> void:
 	player.reload_left = 0.5
 	_check(GameState.upgrade_equipment("gun00", 1) == "upgraded", "live weapon upgrade")
 	_check(is_equal_approx(player._current_weapon_damage(), 23.0), "shots still use catalog base damage")
+	_check(is_equal_approx(float(player.current_weapon.cooldown), base_interval) and is_equal_approx(float(player.current_weapon.fire_rate), base_fire_rate), "live weapon upgrade lost the tuned fire rate")
 	_check(player._magazine_rounds() == 7 and player.reload_left == 0.5, "upgrade refilled magazine or canceled reload")
 	_check(GameState.upgrade_equipment("armor_body_21", 1) == "upgraded", "live armor upgrade")
 	_check(is_equal_approx(player.max_health, 357.0) and is_equal_approx(player.max_shield, 300.0), "live armor pools did not update")
