@@ -1,0 +1,171 @@
+{
+  "revision": "viper_runtime_v2",
+  "date": "2026-10-03",
+  "legacy_name": "Viper",
+  "visual_id": 0,
+  "design_id": "C-01",
+  "status": "runtime_integrated_pending_user_art_review",
+  "runtime_scene": "assets/armors/viper_v2/viper.scn",
+  "base_prompt": {
+    "path": "docs/art/viper_runtime_v2/prompts/base_prompt_snapshot.txt",
+    "sha256": "de445a88ca6c06ae90c567e188461f9b823157f767b46145fbb4eb8901f6c7e2",
+    "bytes": 8150
+  },
+  "base_prompt_commits": [
+    "13d6836708418208a2d5c8318fb0e3260c4a2bfc",
+    "48f0a12adba5c71abde2ac9c9d7513edfabdc20e"
+  ],
+  "selected_helmet_reference": {
+    "path": "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
+    "sha256": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
+    "bytes": 607230,
+    "source_commit": "25f11d9a52ab1bc2c4f63dc509f1fcb0943589f5",
+    "scope": "helmet_only"
+  },
+  "source_mesh": {
+    "path": "assets/models/player/animated/player.gltf",
+    "sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
+    "bytes": 4894930
+  },
+  "source_buffer": {
+    "path": "assets/models/player/animated/player.bin",
+    "sha256": "9b1b4a428ae59b19d361f42f8aee762c608d9f174e535e125e0354f37a4c105d",
+    "bytes": 2424908
+  },
+  "construction": "Original indexed continuous cages; local head reshape only. Four modular parts, five material surfaces, original indices/bones/weights/Skin binds; original four head UV charts and130 coordinates retained,18 visor coordinates locally changed with whole-face projection; body UV exact.",
+  "budget": {
+    "triangles": 682,
+    "bones": 28,
+    "surfaces": 5,
+    "local_geometry_change_limit": 0.2,
+    "head_uv_coordinate_count": 130,
+    "original_head_uv_coordinate_count": 130,
+    "head_uv_changed_coordinates": 18,
+    "head_uv_changed_fraction": 0.13846153846153847,
+    "uv_chart_count_change_limit": 0.2
+  },
+  "selected_generations": [
+    "assets/armors/viper_v2/body_diffuse.png",
+    "assets/armors/viper_v2/shoulder_diffuse.png",
+    "assets/armors/viper_v2/foot_diffuse.png",
+    "assets/armors/viper_v2/hand_diffuse.png",
+    "assets/armors/viper_v2/head_diffuse.png"
+  ],
+  "generation_records": "build/generation.json",
+  "outputs": [
+    {
+      "path": "assets/armors/viper_v2/body_diffuse.png",
+      "sha256": "21aef1a44e4606b3ef849060fdae059ab4ba95980809531503983339c4183f66",
+      "bytes": 1480505,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "assets/armors/viper_v2/foot_diffuse.png",
+      "sha256": "e38b42e016997c72c9efe347bae830d729879294a18776db0c6bbe9f0dbcf37f",
+      "bytes": 1480691,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "assets/armors/viper_v2/hand_diffuse.png",
+      "sha256": "fc69da2dc27af4fd8cd8bde0363bde4f0458aed8de03636b43dcf19e5cbfc0e3",
+      "bytes": 1365278,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "assets/armors/viper_v2/head_diffuse.png",
+      "sha256": "a312d13235d07e14bc7040508e16a47885aa14cf8e761816685d7f499756940f",
+      "bytes": 1984509,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "assets/armors/viper_v2/shoulder_diffuse.png",
+      "sha256": "fd8021d3591c61583b43355ccb2dadfdb409f7f46d051b13d540c720c89fcb04",
+      "bytes": 1539209,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "assets/armors/viper_v2/viper.glb",
+      "sha256": "f43e491c5d9cc8974693e1d4111d7dff3d08ff1d243fea4d33f53d40a9aca93d",
+      "bytes": 7729720
+    },
+    {
+      "path": "assets/armors/viper_v2/viper.scn",
+      "sha256": "920af223fd8b88c3c0cfee952dfe60d401ebf3cfc19a5d5fffa334d4e89c4d81",
+      "bytes": 53106
+    },
+    {
+      "path": "assets/armors/viper_v2/viper_body_diffuse.png",
+      "sha256": "570ffe6800df48dc36386c3a4a0610121c7b72ce1d630c2e9900d30731db0ec7",
+      "bytes": 1458495,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "assets/armors/viper_v2/viper_foot_diffuse.png",
+      "sha256": "121c3506436eaead73d27c99654dbf2b5c8fe51ce843fca0393b9a2748febd1e",
+      "bytes": 1439443,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "assets/armors/viper_v2/viper_hand_diffuse.png",
+      "sha256": "a6a0dd5c87676e2dc3e7e1c02d1024a7d357c35024bd5fa7ac54b668ad3ef4dc",
+      "bytes": 1340555,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "assets/armors/viper_v2/viper_head_diffuse.png",
+      "sha256": "e71a2669b626b5fc70790790656341cf5d3711a633ca9bf800b0bcc3baecaaff",
+      "bytes": 1928692,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "assets/armors/viper_v2/viper_shoulder_diffuse.png",
+      "sha256": "5de9a72f4b86e73108b35a2a241e01a4ba6fcfa902071c3196535ad75c8dc234",
+      "bytes": 1487582,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "docs/art/viper_runtime_v2/build/viper_master.blend",
+      "sha256": "ae4c5cde0bb1570d3982cdfbfe93dee895190e2335018c4061f01db6369468c7",
+      "bytes": 7911022
+    }
+  ],
+  "verification": {
+    "runtime": "review/runtime_test.json",
+    "engine_roundtrip": "review/roundtrip_test.json",
+    "geometry": "review/proportion_test.json",
+    "blender": "review/blender_validate.json",
+    "blender_roundtrip": "review/blender_roundtrip/roundtrip.json"
+  },
+  "visual_review": "Compared actual front/side/rear/quarter, closeup, idle/run/reload and two game levels. V7 follows the user-selected helmet: continuous purple visor, central lower polygon bevel seam, dark angled lens edges, blue framed cheek recesses. Only18 of130 headUVs moved inside the original visor chart, whole-face mapping avoids mirrored reflections. Front black brow/blue center and blue crown channels retained. Original low-poly side ear mass and source shell construction retained. User art approval remains pending.",
+  "inferred": "Local chin/cheek/brow depth from a perspective helmet concept; original hidden rear/neck/joints/bodyUV authoritative; user explicitly allowed local helmetUV changes with20% tolerance."
+}

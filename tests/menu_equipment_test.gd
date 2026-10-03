@@ -265,7 +265,17 @@ func _run() -> void:
 					elif str(armor_mesh.name).ends_with("_00"):
 						var viper_part := viper_template.find_child(str(armor_mesh.name), true, false) as MeshInstance3D
 						_check(viper_part != null and armor_mesh.mesh == viper_part.mesh and material == viper_part.get_active_material(surface_index), "shop preview lost the selected Viper geometry/material")
-						_check(material is ShaderMaterial and material.shader.resource_path == viper_shader, "shop preview lost the selected Viper surface shader")
+						if viper_path=="res://assets/armors/viper_v2/viper.scn":
+							_check(material is BaseMaterial3D and material.shading_mode==BaseMaterial3D.SHADING_MODE_UNSHADED,"shop preview lost Viper painted diffuse")
+						else:
+							_check(material is ShaderMaterial and material.shader.resource_path == viper_shader, "shop preview lost the selected Viper surface shader")
+					elif str(armor_mesh.name).ends_with("_11"):
+						# Adopted Cygni also uses painted StandardMaterial3D now.
+						# Check the actual shared loader rather than its former shader.
+						var cygni_template := (load(ArmorVisuals.reworked_scene_path(11)) as PackedScene).instantiate()
+						var cygni_part := cygni_template.find_child(str(armor_mesh.name), true, false) as MeshInstance3D
+						_check(cygni_part != null and armor_mesh.mesh == cygni_part.mesh and material == cygni_part.get_active_material(surface_index), "shop preview lost adopted Cygni geometry/material")
+						cygni_template.free()
 					elif armor_mesh.has_meta("armor_rework") and int(str(armor_mesh.name).right(2)) < 21:
 						_check(material is ShaderMaterial and material.shader.resource_path == "res://assets/equipment_refined/painted_equipment.gdshader", "shop preview lost refined armor material")
 					else:

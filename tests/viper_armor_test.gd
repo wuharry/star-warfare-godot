@@ -15,6 +15,10 @@ func _check(condition: bool, message: String) -> void:
 
 
 func _run() -> void:
+	if Visuals.reworked_scene_path(0)=="res://assets/armors/viper_v2/viper.scn":
+		var error:=get_tree().change_scene_to_file("res://tests/viper_v2_test.tscn")
+		if error!=OK:get_tree().quit(1)
+		return
 	GameState.save_path = "user://viper_armor_test_profile.json"
 	GameState.equipped_armor = GameState._default_armor_equipment()
 	GameState.selected_weapon = "gun00"
