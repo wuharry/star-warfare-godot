@@ -3,6 +3,13 @@ extends Node
 const Source = preload("res://scripts/core/recovered_game_data.gd")
 const Monsters = preload("res://scripts/core/monster_catalog.gd")
 const StateScript = preload("res://scripts/core/game_state.gd")
+# Pin the requested balance scope independently of the runtime classification.
+# Snipers, single-shot launchers, bows and melee weapons keep their source rate.
+const FASTER_WEAPON_IDS := [
+	"gun00", "gun01", "gun02", "gun03", "gun04", "gun05",
+	"gun17", "gun18", "gun19", "gun20", "gun21",
+	"gun24", "gun25", "gun26", "gun31", "gun38", "gun39", "gun40",
+]
 var failures: Array[String] = []
 
 
@@ -27,10 +34,19 @@ func _run() -> void:
 	GameState.experience = 0
 	_check(Source.SOURCE_SHA256 == FileAccess.get_sha256("res://assets/starwarfare_data/resDataSets_raw.bin"), "generated data is stale")
 	_check(GameState.WEAPONS.size() == 47 and GameState.ARMOR_ITEMS.size() == 141, "catalog items were lost")
+	var faster_weapon_count := 0
 	for row: Array in Source.WEAPON_ROWS:
-		var weapon: Dictionary = GameState.WEAPONS["gun%02d" % int(row[0])]
-		_check(weapon.damage == row[2] and is_equal_approx(weapon.cooldown, float(row[3])) and weapon.energy == row[4], "weapon combat fields differ: " + str(row[1]))
+		var weapon_id := "gun%02d" % int(row[0])
+		var weapon: Dictionary = GameState.WEAPONS[weapon_id]
+		var source_interval := float(row[3])
+		var expected_rate_multiplier := 1.3 if weapon_id in FASTER_WEAPON_IDS else 1.0
+		if weapon_id in FASTER_WEAPON_IDS:
+			faster_weapon_count += 1
+		_check(weapon.damage == row[2] and weapon.energy == row[4], "weapon damage or energy differs: " + str(row[1]))
+		_check(is_equal_approx(float(weapon.cooldown), source_interval / expected_rate_multiplier), "weapon cooldown differs from requested balance: " + weapon_id)
+		_check(is_equal_approx(float(weapon.fire_rate), expected_rate_multiplier / source_interval), "weapon displayed fire rate differs from requested balance: " + weapon_id)
 		_check(weapon.price == row[11] and weapon.mithril == row[12] and weapon.unlock == row[8], "weapon shop fields differ: " + str(row[1]))
+	_check(faster_weapon_count == 18, "the 30% fire-rate boost must cover exactly 18 weapons")
 	var rocket: Dictionary = GameState.WEAPONS.gun11
 	_check(rocket.magazine_size == 1 and is_equal_approx(rocket.cooldown, 1.4) and rocket.energy == 120 and rocket.unlock == 3, "RPG columns mistaken for magazine or rank")
 	_check(is_equal_approx(rocket.speed_drag, -2.0), "signed speed drag was lost")

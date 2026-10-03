@@ -39,6 +39,10 @@ var save_path := SAVE_PATH
 # unlock level, aim id, display order, price, mithril.
 const WEAPON_ROWS = Source.WEAPON_ROWS
 
+# Runtime balance: rifles and held-fire weapons fire 30% more shots per second.
+# Keep the recovered source table unchanged; interval = original interval / 1.3.
+const SUSTAINED_FIRE_RATE_MULTIPLIER := 1.3
+
 # First modern reload vertical slice. Reserve ammunition is intentionally
 # infinite: the magazine creates the short combat rhythm while the recovered
 # 9,999,999 Energy pool remains a compatibility detail rather than a second
@@ -173,6 +177,8 @@ func _build_weapon_database() -> void:
 		var type_id := int(row[5])
 		var profile := _weapon_profile(type_id, int(row[0]), str(row[1]))
 		var cooldown := maxf(0.05, float(row[3]))
+		if type_id in [1, 5, 23] or bool(profile.automatic):
+			cooldown /= SUSTAINED_FIRE_RATE_MULTIPLIER
 		var weapon_data := {
 			"id": int(row[0]), "name": str(row[1]), "damage": float(row[2]),
 			"cooldown": cooldown, "fire_rate": 1.0 / cooldown,
@@ -371,6 +377,8 @@ func _configure_input_map() -> void:
 	_add_joy_button("reload", JOY_BUTTON_X)
 	_add_joy_button("dash", JOY_BUTTON_LEFT_STICK)
 	_add_joy_button("pause", JOY_BUTTON_START)
+	_add_joy_button("ui_accept", JOY_BUTTON_A)
+	_add_joy_button("ui_cancel", JOY_BUTTON_B)
 
 func _ensure_action(action: StringName) -> void:
 	if not InputMap.has_action(action):
