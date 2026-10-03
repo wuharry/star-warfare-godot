@@ -113,6 +113,7 @@ func _run() -> void:
 	_check(GameState.credits == 100000 - int(GameState.PROPS.prop00.price), "supply purchase charged wrong amount")
 	menu._handle_back()
 	_check(is_instance_valid(menu.equipment_shell) and shell.selected_section == "equipment", "Back from ITEMS should return to gear")
+	_check_supply_gear_round_trip()
 	# Real controls route through the existing transaction functions.
 	shell._select_category("gun", false)
 	shell._select_item("gun01", false)
@@ -158,6 +159,9 @@ func _run() -> void:
 	shell._show_ammo()
 	await _frames(2)
 	_check(shell._ammo_dialog.visible and not shell.gear_scroller.enabled, "AMMO dialog did not block background gestures")
+	var ammo_close := shell._ammo_dialog.get_ok_button() as Button
+	_check(ammo_close.size.y >= 44, "AMMO close button lost its touch target after popup layout")
+	_check(ammo_close.get_theme_stylebox("normal") is StyleBoxTexture and shell._ammo_dialog.get_theme_stylebox("panel") is StyleBoxTexture, "AMMO dialog did not retain the shared menu skin")
 	menu._handle_back()
 	_check(not shell._ammo_dialog.visible and shell.gear_scroller.enabled and GameState.credits == ammo_cash, "AMMO notice changed wallet or failed to return")
 	# SW1's 960 x 640 canvas must remain centered on wider landscape phones.
@@ -201,6 +205,34 @@ func _run() -> void:
 func _frames(count: int) -> void:
 	for index in count:
 		await get_tree().process_frame
+
+
+func _check_supply_gear_round_trip() -> void:
+	var observed: Array[Dictionary] = []
+	var observe := func():
+		if shell.selected_section == "equipment":
+			observed.append({"category": shell.selected_category, "ids": shell._ids.duplicate()})
+	var cash_before := GameState.credits
+	var loadout_before := GameState.battle_weapons.duplicate()
+	var armor_before := GameState.equipped_armor.duplicate()
+	shell.gear_scroller.moved.connect(observe)
+	# Returning to guns or armor exposes the same synchronous visibility/move path.
+	for category: String in ["gun", "head"]:
+		for supply: String in ["health", "aid", "assist"]:
+			shell._select_supply_category(supply, false)
+			_check(shell._ids == GameState.get_prop_ids(supply), "supply switch retained the wrong catalog: " + supply)
+		shell._select_category(category, false)
+		_check(shell._ids == shell._get_category_ids() and shell.gear_scroller.count == shell._ids.size(), "gear return retained supplies: " + category)
+		_check(shell._ids.has(shell.selected_item_key), "gear return selected an unrelated item: " + category)
+	shell.gear_scroller.moved.disconnect(observe)
+	_check(not observed.is_empty(), "gear round-trip did not emit movement callbacks")
+	for event: Dictionary in observed:
+		var category := str(event.category)
+		var expected := GameState.get_weapon_ids() if category == "gun" else GameState.get_armor_ids(category)
+		_check(event.ids == expected, "gear move used another catalog: " + category)
+		for key: String in event.ids:
+			_check(not GameState.PROPS.has(key), "supply ID reached gear movement: " + key)
+	_check(GameState.credits == cash_before and GameState.battle_weapons == loadout_before and GameState.equipped_armor == armor_before, "category round-trip mutated wallet/loadout")
 
 
 func _touch(control: Control, point: Vector2, pressed: bool, index := 0, canceled := false) -> void:

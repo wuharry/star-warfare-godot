@@ -46,6 +46,14 @@ func _run() -> void:
 	_check(menu.drawer.get_node_or_null("CustomizeButton") is TextureButton, "original CUSTOMIZE entry is missing")
 	_check(menu.drawer.get_node_or_null("StoreButton") is TextureButton, "original STORE entry is missing")
 	_check(menu.drawer.get_node_or_null("EditNameButton") is TextureButton, "original EDIT NAME entry is missing")
+	_check_original_menu_art(solo_button, "main_single_normal", "main_single_pressed")
+	_check_original_menu_art(online_button, "main_online_normal", "main_online_pressed")
+	_check_original_menu_art(menu.drawer_toggle as TextureButton, "main_nav_toggle", "main_nav_toggle")
+	_check_original_menu_art(menu.drawer.get_node("BankButton") as TextureButton, "main_nav_bank", "main_nav_bank")
+	for original_entry: String in ["OptionsButton", "CustomizeButton", "StoreButton"]:
+		_check_original_menu_art(menu.drawer.get_node(original_entry) as TextureButton, "main_nav_button_normal", "main_nav_button_pressed")
+	_check_original_menu_art(menu.drawer.get_node("EditNameButton") as TextureButton, "main_nav_edit_normal", "main_nav_edit_pressed")
+	await _check_internal_menu_skin_and_settings(menu)
 	menu._toggle_drawer(false, false)
 	menu._show_armory("store")
 	await get_tree().process_frame
@@ -419,6 +427,118 @@ func _run() -> void:
 		get_tree().quit(0)
 	else:
 		get_tree().quit(1)
+
+
+func _check_button_skin(button: Button, context: String) -> void:
+	_check(button != null, context + " is missing")
+	if button == null:
+		return
+	for state: String in ["normal", "hover", "pressed", "disabled", "focus"]:
+		var style := button.get_theme_stylebox(state) as StyleBoxTexture
+		_check(style != null and style.texture != null, "%s has no recovered metal %s state" % [context, state])
+	var normal := button.get_theme_stylebox("normal") as StyleBoxTexture
+	var disabled := button.get_theme_stylebox("disabled") as StyleBoxTexture
+	var focus := button.get_theme_stylebox("focus") as StyleBoxTexture
+	if normal != null and disabled != null:
+		_check(normal.modulate_color != disabled.modulate_color, context + " disabled state is indistinguishable")
+	if focus != null:
+		_check(not focus.draw_center, context + " focus hides its label instead of drawing a border")
+	_check(button.focus_mode == Control.FOCUS_ALL, context + " cannot receive keyboard focus")
+
+
+func _check_original_menu_art(button: TextureButton, normal_component: String, pressed_component: String) -> void:
+	_check(button != null, "original outer-menu artwork control is missing")
+	if button == null:
+		return
+	_check(button.texture_normal == load("res://assets/ui/components/%s.png" % normal_component), "%s replaced its original normal artwork" % button.name)
+	_check(button.texture_pressed == load("res://assets/ui/components/%s.png" % pressed_component), "%s replaced its original pressed artwork" % button.name)
+
+
+func _check_internal_menu_skin_and_settings(menu: Control) -> void:
+	var previous_settings: Dictionary = GameState.settings.duplicate(true)
+	var options := menu.drawer.get_node("OptionsButton") as TextureButton
+	options.pressed.emit()
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var panels: Array[Node] = menu.modal_layer.find_children("*", "PanelContainer", true, false)
+	# PopupMenu and ScrollContainer include their own internal focus panels.
+	# Inspect the authored modal, which is a direct child of its centering node.
+	var modal_panel: PanelContainer
+	for candidate: Node in panels:
+		if candidate.get_parent() is CenterContainer and candidate.get_parent().get_parent() == menu.modal_layer:
+			modal_panel = candidate as PanelContainer
+	_check(modal_panel != null and modal_panel.get_theme_stylebox("panel") is StyleBoxTexture, "options modal has no shared recovered panel")
+	var pickers: Array[Node] = menu.modal_layer.find_children("*", "OptionButton", true, false)
+	_check(pickers.size() == 3, "options lost difficulty, quality or language selection")
+	for node: Node in pickers:
+		var picker := node as OptionButton
+		_check_button_skin(picker, "options picker")
+		_check(picker.get_popup().get_theme_stylebox("panel") is StyleBoxTexture and picker.get_popup().get_theme_stylebox("hover") is StyleBoxTexture, "options dropdown retains the default engine artwork")
+	if not pickers.is_empty():
+		var difficulty := pickers[0] as OptionButton
+		var next_index := (difficulty.selected + 1) % difficulty.item_count
+		difficulty.select(next_index)
+		difficulty.item_selected.emit(next_index)
+		_check(GameState.settings.difficulty == GameState.DIFFICULTY_ORDER[next_index], "shared picker no longer applies difficulty")
+	var sliders: Array[Node] = menu.modal_layer.find_children("*", "HSlider", true, false)
+	_check(sliders.size() == 3, "options lost volume or sensitivity sliders")
+	for node: Node in sliders:
+		var slider := node as HSlider
+		for state: String in ["slider", "grabber_area", "grabber_area_highlight"]:
+			_check(slider.get_theme_stylebox(state) is StyleBoxTexture, "options slider has unstyled " + state)
+		for state: String in ["grabber", "grabber_highlight", "grabber_disabled"]:
+			_check(slider.get_theme_icon(state) is Texture2D, "options slider has no recovered " + state)
+	if not sliders.is_empty():
+		var sound := sliders[0] as HSlider
+		sound.value = 0.25 if not is_equal_approx(sound.value, 0.25) else 0.75
+		_check(is_equal_approx(float(GameState.settings.sfx), sound.value), "shared slider no longer applies sound volume")
+	var switches: Array[Node] = menu.modal_layer.find_children("*", "CheckButton", true, false)
+	_check(not switches.is_empty(), "options lost the vertical-look switch")
+	for node: Node in switches:
+		var toggle := node as CheckButton
+		_check_button_skin(toggle, "options switch")
+		for icon_name: String in ["checked", "unchecked", "checked_disabled", "unchecked_disabled"]:
+			_check(toggle.get_theme_icon(icon_name) is Texture2D, "options switch has no recovered " + icon_name)
+	if not switches.is_empty():
+		var invert := switches[0] as CheckButton
+		invert.button_pressed = not invert.button_pressed
+		_check(bool(GameState.settings.invert_y) == invert.button_pressed, "shared switch no longer applies vertical look")
+	menu._handle_back()
+	await get_tree().process_frame
+	_check(menu.modal_layer.get_child_count() == 0, "Back did not close options")
+	menu.drawer.get_node("EditNameButton").pressed.emit()
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var input := menu.modal_layer.find_child("NicknameInput", true, false) as LineEdit
+	_check(input != null, "name editor input is missing")
+	if input != null:
+		for state: String in ["normal", "read_only", "focus"]:
+			_check(input.get_theme_stylebox(state) is StyleBoxTexture, "name input has unstyled " + state)
+		input.text = "NOT VALID!"
+		input.text_submitted.emit(input.text)
+		_check(is_instance_valid(input) and GameState.settings.nickname == previous_settings.nickname, "invalid nickname changed the profile")
+		input.text = "UIFormatTest"
+		input.text_submitted.emit(input.text)
+		await get_tree().process_frame
+		_check(GameState.settings.nickname == "UIFormatTest" and menu.modal_layer.get_child_count() == 0, "shared name field no longer submits a valid name")
+	var solo := menu.main_page.get_node("DeploymentStrip/SoloButton") as TextureButton
+	solo.pressed.emit()
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var level_grids: Array[Node] = menu.modal_layer.find_children("*", "GridContainer", true, false)
+	_check(level_grids.size() == 1, "Solo button no longer opens sector selection")
+	if not level_grids.is_empty():
+		var cards := (level_grids[0] as GridContainer).get_children()
+		var expected_levels: Array = GameState.get_levels_for_mode("singleplayer")
+		_check(cards.size() == expected_levels.size(), "sector card count differs from campaign")
+		for index in mini(cards.size(), expected_levels.size()):
+			var card := cards[index] as Button
+			_check_button_skin(card, "sector %s" % expected_levels[index])
+			_check(card.disabled == not GameState.is_level_unlocked(int(expected_levels[index]), "singleplayer"), "shared card changed the campaign lock state")
+	menu._close_modal()
+	await get_tree().process_frame
+	GameState.settings = previous_settings
+	GameState._apply_audio_settings()
 
 
 func _check_store_layout(shell: UnityEquipmentShell) -> void:

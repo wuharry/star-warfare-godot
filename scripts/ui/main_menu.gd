@@ -1,6 +1,7 @@
 extends Control
 
 const Atlas = preload("res://scripts/ui/original_atlas.gd")
+const ArmorySkin = preload("res://scripts/ui/recovered_armory_skin.gd")
 const EquipmentShell = preload("res://scripts/ui/unity_equipment_shell.gd")
 const MobileEquipmentShell = preload("res://scripts/ui/mobile_sw1_equipment_shell.gd")
 const COMPONENT_DIR := "res://assets/ui/components/"
@@ -388,8 +389,10 @@ func _show_name_editor() -> void:
 	validation.custom_minimum_size.y = 24
 	body.add_child(validation)
 	var confirm := Button.new()
+	confirm.name = "ConfirmNameButton"
 	confirm.text = tr("CONFIRM")
 	confirm.custom_minimum_size.y = 46
+	ArmorySkin.style_button(confirm)
 	body.add_child(confirm)
 	var submit := func() -> void:
 		var candidate := input.text.strip_edges()
@@ -486,8 +489,7 @@ func _show_level_select(game_mode: String = "singleplayer") -> void:
 		button.add_theme_constant_override("icon_max_width", 88)
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		button.add_theme_font_size_override("font_size", 11)
-		button.add_theme_stylebox_override("normal", _panel_style(Color(0.025, 0.12, 0.17, 0.96), Color(0.12, 0.52, 0.66, 0.8), 4, 6))
-		button.add_theme_stylebox_override("hover", _panel_style(Color(0.05, 0.32, 0.4, 0.98), Color(0.35, 0.9, 1.0), 4, 6))
+		ArmorySkin.style_button(button, Vector4(6, 6, 6, 6))
 		button.disabled = is_locked
 		button.pressed.connect(func():
 			AudioDirector.play_ui("accept")
@@ -508,12 +510,15 @@ func _show_options() -> void:
 	body.add_child(_quality_row())
 	body.add_child(_language_row())
 	var invert := CheckButton.new()
+	invert.name = "InvertLookButton"
 	invert.text = tr("INVERT VERTICAL LOOK")
+	invert.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	invert.button_pressed = bool(GameState.settings.invert_y)
 	invert.toggled.connect(func(value): GameState.set_setting("invert_y", value))
 	body.add_child(invert)
 	if OS.has_feature("mobile"):
 		var touch := CheckButton.new()
+		touch.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		touch.text = tr("SHOW MOBILE TOUCH CONTROLS")
 		touch.button_pressed = bool(GameState.settings.show_touch_controls)
 		touch.toggled.connect(func(value): GameState.set_setting("show_touch_controls", value))
@@ -573,6 +578,7 @@ func _option_row(label_text: String, options: Array[String], selected_index: int
 		picker.select(clampi(selected_index, 0, options.size() - 1))
 	picker.item_selected.connect(func(index: int): on_select.call(index))
 	row.add_child(picker)
+	ArmorySkin.style_picker(picker, ArmorySkin.make_theme(true))
 	return row
 
 
@@ -632,8 +638,9 @@ func _show_modal(body: Control, requested_size: Vector2) -> void:
 	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	modal_layer.add_child(center)
 	var panel := PanelContainer.new()
+	panel.theme = ArmorySkin.make_theme(true)
 	panel.custom_minimum_size = Vector2(minf(requested_size.x, 920.0), minf(requested_size.y, 600.0))
-	panel.add_theme_stylebox_override("panel", _panel_style(Color(0.014, 0.06, 0.085, 0.995), Color(0.17, 0.78, 0.94, 0.92), 3, 12))
+	panel.add_theme_stylebox_override("panel", ArmorySkin.panel())
 	center.add_child(panel)
 	var outer := VBoxContainer.new()
 	outer.add_theme_constant_override("separation", 10)
@@ -645,8 +652,10 @@ func _show_modal(body: Control, requested_size: Vector2) -> void:
 	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(body)
 	var close := Button.new()
+	close.name = "ModalBackButton"
 	close.text = tr("BACK")
 	close.custom_minimum_size.y = 42
+	ArmorySkin.style_button(close)
 	close.pressed.connect(func():
 		AudioDirector.play_ui("back")
 		_close_modal()

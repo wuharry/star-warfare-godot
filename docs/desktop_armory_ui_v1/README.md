@@ -21,7 +21,27 @@
 
 原始 PNG 未修改。CommonUI 座標直接使用此 2048 × 2048 圖集的像素座標，不能套用 SW1 `OriginalAtlas` 的雙倍座標換算。
 
-實作集中在 `scripts/ui/recovered_armory_skin.gd`；`unity_equipment_shell.gd` 的桌面背景建構時啟用。手機子類覆寫背景與布局，未啟用桌面 skin。共享細節區依此旗標保留手機樣式。
+實作集中在 `scripts/ui/recovered_armory_skin.gd`；`unity_equipment_shell.gd` 的桌面背景建構時啟用。手機子類覆寫背景與布局，共享細節區依此旗標保留手機樣式。
+
+2026-10-03：商店樣式延伸至設定、一般彈窗、關卡選擇，以及進入房間後的暫停／結算選單。外層主菜單與商店保留先前的外觀和專用按鈕；只有內部彈窗使用 `make_theme(true)`，預設的 `make_theme()` 保持原商店 theme。
+
+設定的滑桿、開關、名稱輸入與下拉選單共用現有圖集，無需新增點陣素材。手機 AMMO 彈窗的 OK 按鈕以樣式內距維持至少 44 px 點擊高度，避免 `AcceptDialog` 排版時重設自訂最小尺寸。同時修正補給頁切回裝備頁時，可見性回呼讀到舊補給 ID 的問題；不改購買或裝備規則。
+
+房間內暫停選單的「重新進入競技場／重啟區域」改為「選項」，提供低／中／高畫質並立即保存與套用。更新既有 viewport、陰影、場景效果及 lightmap 光照參數，保留原場景的霧設定，不重建房間或重置玩家與分數。返回按鈕回到暫停選單；Esc 或系統返回依序關閉畫質下拉選單、選項頁，最後才繼續遊戲。結算頁的重試功能保留。
+
+房間內選項分為「畫面、音效、操作、語言」四頁，新增音樂／音效音量與百分比、視角靈敏度、反轉 Y 軸、行動觸控開關及中英文切換，全部使用既有存檔設定。語言切換會更新選項與暫停文字，保留同一場景與 UI 節點。觸控開關放入操作頁，省去暫停頁的重複入口。
+
+下拉選單改用自製 16×16 SVG 青色勾勾表示目前套用值；游標／手把焦點仍使用商店金屬高亮，未選項保留同尺寸透明位置以維持文字對齊。只調整 `style_picker()` 的下拉標示；預設商店 theme 保留原樣。SVG 來源為 `assets/ui/components/dropdown_check*.svg`，`.import` 由 Godot 產生。
+
+手把 Start 開啟暫停後預選「繼續」，方向鍵與 A 可開啟選項；B 沿下拉選單、選項、暫停的順序返回。進入暫停或結算會釋放兩個觸控搖桿並清除尚未處理的觸控射擊、移動、換彈與衝刺輸入。搖桿在暫停或父節點隱藏時不接受新觸控，仍處理既有手指的放開事件。
+
+`pause_options_test` 在 PvP 13 與單人 1 驗證實際點擊、畫質儲存、返回層級及暫停期間進度不變；`live_quality_test` 驗證畫質往返時同一組場景與材質即時更新。可用 `tests/pause_options_test.tscn -- --capture --locale=zh_TW` 取得實際 GPU 畫面，輸出至 `test_output/pause_options/`。
+
+四頁版本驗證：`in_game_options_test` headless PASS 80 checks，實際滑鼠驗證音量 bus、瞄準反應、觸控開關、中英文即時切換與重開保留值，原玩家存檔 SHA256 未變。`pause_options_test` 最終 Compatibility GPU 四輪皆 PASS：中文滑鼠、手把，以及 844×390 中文／640×360 英文觸控模擬，每輪含兩種模式與四頁，共 12 張圖。保留生產 `canvas_items` 拉伸與邏輯畫布，已檢視完整面板、文字與勾選標示；輸出位於 `test_output/pause_options_v2/`。Android／iOS 實機未執行。
+
+Godot 4.7.2 的現有 `ui_accept` 未含手把按鍵，已在既有輸入建構流程加上 A 確認／B 返回，保留鍵盤設定。測試送滑鼠移動後再點擊，讓原生 GPU 視窗的游標命中位置與合成輸入一致；面板邊界只檢查外層置中的面板，排除原生下拉視窗的內部面板。
+
+本輪 `menu_equipment_test`、`desktop_armory_ui_test`、`mobile_store_sw1_test`、`mobile_customize_sw1_test`、`equipment_upgrade_ui_test` 與煙霧測試均 PASS。Compatibility / OpenGL、1280 × 720 實際截圖確認設定、暫停與勝負結算文字清楚；手機彈窗的確認按鈕可正常關閉。商店及導覽抽屜與修改前的參考圖逐像素相同，主菜單底部按鈕區域也相同；標題差異來自進場動畫的拍攝時間。截圖與參考比對記錄位於 `test_output/ui_unified/`，不改原商店展示頁的圖片。Harness integrity PASS；該檢查不代表應用測試。
 
 保留既有購買、所有權、裝備欄位及資料。這是桌面尺寸的原作素材改造，並非宣稱 CoM / SW1 手機布局的 1:1 桌面移植。
 
