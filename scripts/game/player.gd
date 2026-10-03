@@ -2158,6 +2158,13 @@ func set_touch_fire(pressed: bool) -> void:
 		touch_fire_started = true
 	touch_fire = pressed
 
+func cancel_touch_input() -> void:
+	touch_move = Vector2.ZERO
+	touch_fire = false
+	touch_fire_started = false
+	touch_dash_requested = false
+	touch_reload_requested = false
+
 func request_touch_dash() -> void:
 	touch_dash_requested = true
 

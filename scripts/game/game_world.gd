@@ -35,6 +35,11 @@ var enemy_spawn_points: Array[Vector3] = []
 var boss_spawn_points: Array[Vector3] = []
 var waypoint_positions: Array[Vector3] = []
 var waypoint_graph: Array = []
+var _quality_environment: Environment
+var _quality_key_light: DirectionalLight3D
+var _quality_scene_effects: Node3D
+var _quality_lightmap_materials: Array[ShaderMaterial] = []
+var _applied_quality_profile: Dictionary = {}
 
 # Keep one complete late-sector swarm on screen while bounding the number of
 # animated enemies and collision hulls. The largest regular wave is 35; sector
@@ -67,6 +72,8 @@ func _ready() -> void:
 	_build_player()
 	_build_hud()
 	_start_music()
+	GameState.settings_changed.connect(_apply_quality_settings)
+	_apply_quality_settings()
 	call_deferred("_begin_level")
 
 func _process(delta: float) -> void:
@@ -77,6 +84,8 @@ func _is_pvp_arena() -> bool:
 	return pvp_arena or bool(level_data.get("pvp", false)) or str(level_data.get("mode", "")) == "pvp"
 
 func _exit_tree() -> void:
+	if GameState.settings_changed.is_connected(_apply_quality_settings):
+		GameState.settings_changed.disconnect(_apply_quality_settings)
 	if is_instance_valid(music):
 		music.stop()
 		music.stream = null
@@ -109,6 +118,7 @@ func _build_environment() -> void:
 	environment.fog_density = float(restored_settings.get("fog_density", 0.008))
 	environment.fog_sky_affect = 0.55
 	world_environment.environment = environment
+	_quality_environment = environment
 	add_child(world_environment)
 
 	var sun := DirectionalLight3D.new()
@@ -121,6 +131,7 @@ func _build_environment() -> void:
 	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
 	sun.directional_shadow_blend_splits = true
 	sun.shadow_normal_bias = 0.8
+	_quality_key_light = sun
 	add_child(sun)
 
 	if stage_metadata.is_empty():
@@ -135,6 +146,26 @@ func _build_environment() -> void:
 	effects_root = Node3D.new()
 	effects_root.name = "Effects"
 	add_child(effects_root)
+
+func _apply_quality_settings() -> void:
+	var profile := GameState.get_quality_profile()
+	if profile == _applied_quality_profile:
+		return
+	_applied_quality_profile = profile.duplicate()
+	if _quality_environment != null:
+		_quality_environment.glow_enabled = bool(profile.glow)
+		var restored_settings: Dictionary = stage_metadata.get("render_settings", {})
+		_quality_environment.fog_enabled = bool(profile.fog) and bool(restored_settings.get("fog_enabled", true))
+	if is_instance_valid(_quality_key_light):
+		_quality_key_light.shadow_enabled = bool(profile.shadows)
+	UnitySceneEffectsScript.apply_quality(_quality_scene_effects, profile)
+	var dynamic_strength := 0.0
+	if profile == GameState.QUALITY_PROFILES.high:
+		dynamic_strength = 0.14
+	elif profile == GameState.QUALITY_PROFILES.medium:
+		dynamic_strength = 0.06
+	for material: ShaderMaterial in _quality_lightmap_materials:
+		material.set_shader_parameter("dynamic_light_strength", dynamic_strength)
 
 func _environment_fill_radius() -> float:
 	# The bounce light covers the arena. Worlds that have no arena boundary
@@ -962,6 +993,10 @@ func _build_restored_arena() -> bool:
 	restored.mesh = stage_mesh
 	restored.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 	UnityMaterialRestorerScript.apply_to_mesh(restored, stage_metadata.get("material_render_modes", {}))
+	for surface_index in restored.mesh.get_surface_count():
+		var material := restored.get_active_material(surface_index) as ShaderMaterial
+		if material != null and material.get_shader_parameter("dynamic_light_strength") != null:
+			_quality_lightmap_materials.append(material)
 	add_child(restored)
 
 	var physics_body := StaticBody3D.new()
@@ -983,7 +1018,7 @@ func _build_restored_arena() -> bool:
 				collision_shape.shape = collision_mesh.create_trimesh_shape()
 				if collision_shape.shape:
 					physics_body.add_child(collision_shape)
-	UnitySceneEffectsScript.build(self, level_number, GameState.get_quality_profile())
+	_quality_scene_effects = UnitySceneEffectsScript.build(self, level_number, GameState.get_quality_profile())
 	return true
 
 func _color_from_json(values: Variant) -> Color:

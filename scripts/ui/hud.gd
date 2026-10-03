@@ -7,6 +7,8 @@ const Atlas = preload("res://scripts/ui/original_atlas.gd")
 const HitMarkerScript = preload("res://scripts/ui/hit_marker.gd")
 const ScopeOverlayScript = preload("res://scripts/ui/scope_overlay.gd")
 const HipReticleScript = preload("res://scripts/ui/hip_reticle.gd")
+const ArmorySkin = preload("res://scripts/ui/recovered_armory_skin.gd")
+const InGameOptionsScript = preload("res://scripts/ui/in_game_options.gd")
 const POWER_SLOT_KEYS := [
 	KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5,
 	KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10,
@@ -26,6 +28,10 @@ var energy_bar: Range
 var weapon_button: Button
 var announcement: Label
 var pause_overlay: Control
+var pause_options_overlay: WarfareInGameOptions
+var pause_quality_picker: OptionButton
+var pause_options_button: Button
+var pause_resume_button: Button
 var result_overlay: Control
 var touch_root: Control
 var crosshair: WarfareHipReticle
@@ -69,6 +75,7 @@ func _ready() -> void:
 	_build_touch_controls()
 	_build_armor_power_hud()
 	_build_pause_overlay()
+	GameState.settings_changed.connect(_sync_touch_controls)
 	get_viewport().size_changed.connect(_layout_original_hud)
 	_layout_original_hud()
 	if is_instance_valid(player):
@@ -596,46 +603,110 @@ func _original_ui_scale() -> float:
 
 func _build_pause_overlay() -> void:
 	pause_overlay = _modal_base()
+	pause_overlay.name = "PauseOverlay"
 	pause_overlay.visible = false
 	add_child(pause_overlay)
 	var box := _modal_panel(pause_overlay, Vector2(460, 390))
-	box.add_child(_center_label(tr("TACTICAL PAUSE"), 30, Color(0.72, 0.94, 1.0)))
-	box.add_child(_center_label(tr("The simulation is suspended."), 14, Color(0.62, 0.74, 0.8)))
+	var title := _center_label(tr("TACTICAL PAUSE"), 30, Color(0.72, 0.94, 1.0))
+	title.name = "PauseTitle"
+	box.add_child(title)
+	var description := _center_label(tr("The simulation is suspended."), 14, Color(0.62, 0.74, 0.8))
+	description.name = "PauseDescription"
+	box.add_child(description)
 	var resume := _modal_button(tr("RESUME"))
+	resume.name = "ResumeButton"
+	pause_resume_button = resume
 	resume.pressed.connect(toggle_pause)
 	box.add_child(resume)
-	var restart := _modal_button(tr("RESTART ARENA") if bool(level_data.get("pvp", false)) else tr("RESTART SECTOR"))
-	restart.pressed.connect(_restart)
-	box.add_child(restart)
-	if is_instance_valid(touch_root):
-		var options := _modal_button(tr("TOGGLE TOUCH CONTROLS"))
-		options.pressed.connect(func():
-			GameState.set_setting("show_touch_controls", not bool(GameState.settings.show_touch_controls))
-			touch_root.visible = bool(GameState.settings.show_touch_controls)
-		)
-		box.add_child(options)
+	pause_options_button = _modal_button(tr("Options"))
+	pause_options_button.name = "PauseOptionsButton"
+	pause_options_button.pressed.connect(_show_pause_options)
+	box.add_child(pause_options_button)
 	var menu := _modal_button(tr("ABORT TO MENU"))
+	menu.name = "AbortMenuButton"
 	menu.pressed.connect(GameState.return_to_menu)
 	box.add_child(menu)
 
+func _refresh_pause_translation() -> void:
+	if not is_instance_valid(pause_overlay):
+		return
+	(pause_overlay.find_child("PauseTitle", true, false) as Label).text = tr("TACTICAL PAUSE")
+	(pause_overlay.find_child("PauseDescription", true, false) as Label).text = tr("The simulation is suspended.")
+	pause_resume_button.text = tr("RESUME")
+	pause_options_button.text = tr("Options")
+	(pause_overlay.find_child("AbortMenuButton", true, false) as Button).text = tr("ABORT TO MENU")
+
+func _show_pause_options() -> void:
+	if not get_tree().paused or is_instance_valid(result_overlay):
+		return
+	if not is_instance_valid(pause_options_overlay):
+		pause_options_overlay = InGameOptionsScript.new()
+		pause_options_overlay.name = "PauseOptionsOverlay"
+		pause_options_overlay.hide()
+		pause_options_overlay.closed.connect(_close_pause_options)
+		add_child(pause_options_overlay)
+		pause_quality_picker = pause_options_overlay.quality_picker
+	pause_options_overlay.sync_settings()
+	AudioDirector.play_ui("accept")
+	pause_overlay.hide()
+	pause_options_overlay.show()
+	pause_options_overlay.focus_default()
+
+func _close_pause_options() -> void:
+	if not is_instance_valid(pause_options_overlay):
+		return
+	pause_options_overlay.close_popups()
+	pause_options_overlay.hide()
+	pause_overlay.show()
+	pause_options_button.grab_focus()
+	AudioDirector.play_ui("back")
+
 func toggle_pause() -> void:
 	if is_instance_valid(result_overlay):
+		return
+	if is_instance_valid(pause_options_overlay) and pause_options_overlay.visible:
+		if not pause_options_overlay.close_popups():
+			_close_pause_options()
 		return
 	var pausing := not get_tree().paused
 	AudioDirector.play_ui("pause" if pausing else "resume")
 	get_tree().paused = pausing
 	if pausing and is_instance_valid(player):
 		player.cancel_aim()
+		_cancel_touch_input()
 	_update_aim_hud()
 	pause_overlay.visible = pausing
+	if pausing:
+		pause_resume_button.grab_focus()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if pausing or OS.has_feature("mobile") else Input.MOUSE_MODE_CAPTURED
+
+func _cancel_touch_input() -> void:
+	if is_instance_valid(move_joystick):
+		move_joystick.cancel_input()
+	if is_instance_valid(shoot_joystick):
+		shoot_joystick.cancel_input()
+	if is_instance_valid(player):
+		player.cancel_touch_input()
+
+func _sync_touch_controls() -> void:
+	if not is_instance_valid(touch_root):
+		return
+	var show_controls := bool(GameState.settings.show_touch_controls)
+	if touch_root.visible and not show_controls:
+		_cancel_touch_input()
+	touch_root.visible = show_controls
 
 func show_result(victory: bool, stats: Dictionary) -> void:
 	if is_instance_valid(result_overlay):
 		return
+	pause_overlay.hide()
+	if is_instance_valid(pause_options_overlay):
+		pause_options_overlay.close_popups()
+		pause_options_overlay.hide()
 	get_tree().paused = true
 	if is_instance_valid(player):
 		player.cancel_aim()
+	_cancel_touch_input()
 	_update_aim_hud()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	result_overlay = _modal_base()
@@ -812,6 +883,7 @@ func _center_label(value: String, size_value: int, color: Color) -> Label:
 
 func _modal_base() -> Control:
 	var root := Control.new()
+	root.theme = ArmorySkin.make_theme(true)
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_STOP
 	root.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -827,7 +899,7 @@ func _modal_panel(root: Control, minimum_size: Vector2) -> VBoxContainer:
 	root.add_child(center)
 	var panel := PanelContainer.new()
 	panel.custom_minimum_size = minimum_size
-	panel.add_theme_stylebox_override("panel", _panel_style(Color(0.018, 0.065, 0.09, 0.99), Color(0.16, 0.77, 0.94, 0.95), 12))
+	panel.add_theme_stylebox_override("panel", ArmorySkin.panel())
 	center.add_child(panel)
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 12)
@@ -839,4 +911,5 @@ func _modal_button(value: String) -> Button:
 	button.text = value
 	button.custom_minimum_size.y = 45
 	button.add_theme_font_size_override("font_size", 16)
+	ArmorySkin.style_button(button)
 	return button
