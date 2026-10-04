@@ -1,0 +1,508 @@
+{
+	"canonical_diffuse_sha256_at_start": {
+		"body": "8f27c361ddb22de381daadb36da55614325a7b4a264f43a3d10875b1737d3048",
+		"foot": "9dd8c2ca7c0de439788a2c3e002a13a3371911d4de086032cd0b2c596c319ce3",
+		"hand": "ccc60e5e1f080528629d79178761c1bc33d791d04c7da2fb7fcf7e8ef3217d52",
+		"head": "07a4243cc973748b08417fabedc7150f3258de9c17f7b5d208a478c92c9cccbf",
+		"shoulder": "760d86b1e026916e938ad52d3ed5066460896f9e5c4a5e855f18df1a134913ac"
+	},
+	"capture_sha256": {
+		"res://docs/art/strike_runtime_v1/review/engine/family_original_01_front.png": "26c867289ad59491707e4810753bc299dfae12194e48f498363a6c967f9e294a",
+		"res://docs/art/strike_runtime_v1/review/engine/family_original_06_front.png": "4d22a32756a8f60a8adf29346870c8a9cba16a4fb9650de6f7d39d0292a10e2c",
+		"res://docs/art/strike_runtime_v1/review/engine/new_clay_front.png": "74168fee5290c5e12e0a227afa9b02ea7aa72fa9544361a159bfef3394a5e386",
+		"res://docs/art/strike_runtime_v1/review/engine/new_clay_quarter.png": "e9b14de4f023b00667c808821ec0660d3cb4037a1b164e68e80b5fa110fcca70",
+		"res://docs/art/strike_runtime_v1/review/engine/new_clay_rear.png": "1f6fb8bbfa87c8e194094f62a0a339b8681019620a2ae0f8bb26cd2d451b5038",
+		"res://docs/art/strike_runtime_v1/review/engine/new_clay_side.png": "f0c573e47307668145a0c680fc468366a91ac6a7a9dd3c9bed2b757532d29e61",
+		"res://docs/art/strike_runtime_v1/review/engine/new_diffuse_front.png": "523ada5812cc7e994132923965ea8984814bb76ce77c5199808c90384c60ae47",
+		"res://docs/art/strike_runtime_v1/review/engine/new_diffuse_quarter.png": "defd2c46a30f1b340824b3d1b6a231e2d0fbedae6895fb0afc3e2c73ae286393",
+		"res://docs/art/strike_runtime_v1/review/engine/new_diffuse_rear.png": "2b685da0220db1dca64df87026d9f8e6a46d8a486ae73fd9e029fb276bc2923f",
+		"res://docs/art/strike_runtime_v1/review/engine/new_diffuse_side.png": "dc7bc87c890cebe54fc6573b621a7d3bb8d5b5cf7695497b3559f7b80bdf3ade",
+		"res://docs/art/strike_runtime_v1/review/engine/new_head_front.png": "9d3d2f08ff14236390b4c869dc68217bf71e3e415b108fef42c38246ed5733c6",
+		"res://docs/art/strike_runtime_v1/review/engine/new_head_quarter.png": "fe4cd3461c6298792e88b84df158c533eb591898954f9fd4e13b69dd2e48b594",
+		"res://docs/art/strike_runtime_v1/review/engine/new_head_rear.png": "a9904c755851afee52abfddf7a59246a3665a4df6a5d2af05af6e7e474d83513",
+		"res://docs/art/strike_runtime_v1/review/engine/new_head_side.png": "96d0d3c931fb95afea443fab93d8cd56860fb7f8d57da112e136f082d4d175a8",
+		"res://docs/art/strike_runtime_v1/review/engine/new_idle_rifle.png": "5ff11b576f5b3f0e0351fdbd2e0b01eb810415e3f3a50e4721da917ad943d305",
+		"res://docs/art/strike_runtime_v1/review/engine/new_level_01_front.png": "aeb5ed06dfeb6261e48697de87b5ed66326fa33a34a3fdc8d62007c31c924830",
+		"res://docs/art/strike_runtime_v1/review/engine/new_level_01_gameplay.png": "52c408bc10c6d6d0def57e981acfe65b0d8987295f79d32579737d754e53e2bf",
+		"res://docs/art/strike_runtime_v1/review/engine/new_level_08_front.png": "f8036a301dbdae30bd1e8d492baa9371384a5dc0ecc302c8e5d066b71d99a791",
+		"res://docs/art/strike_runtime_v1/review/engine/new_level_08_gameplay.png": "ec8f324865ee4122613f40c7a734bf063ebc4eae81a8e9ac1a86ad1660946abb",
+		"res://docs/art/strike_runtime_v1/review/engine/new_painted_front.png": "523ada5812cc7e994132923965ea8984814bb76ce77c5199808c90384c60ae47",
+		"res://docs/art/strike_runtime_v1/review/engine/new_painted_quarter.png": "defd2c46a30f1b340824b3d1b6a231e2d0fbedae6895fb0afc3e2c73ae286393",
+		"res://docs/art/strike_runtime_v1/review/engine/new_painted_rear.png": "2b685da0220db1dca64df87026d9f8e6a46d8a486ae73fd9e029fb276bc2923f",
+		"res://docs/art/strike_runtime_v1/review/engine/new_painted_side.png": "dc7bc87c890cebe54fc6573b621a7d3bb8d5b5cf7695497b3559f7b80bdf3ade",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_00.png": "61cbe163c3c41045a5ea1f4f64768cccc694f294eaf768deadfff5fdc93b6561",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_01.png": "6bb56432d95f40196d7c049d340af8d2a73d8ba3c1c61db66e942de87286277a",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_02.png": "3d77abdfccce954e6a054bcaaad2689896f8d24b26d36dd24b2c3e4117a84969",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_03.png": "fb5019f74b944c73639bf38d96db414eec531f63d95e12eb456e82055df8d0bc",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_04.png": "7c15dd7fcd82d3677db232932c12d4f9491bb10df97ad90923e1d4b06d1f7c68",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_05.png": "e3e7e4cf225adca96fc703fa43c51252a82acf4cbf522c8b23f143895a4e4f9e",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_06.png": "f9b7c04cc71b65d7a380ed8cc1be1adb9e0de53989fc064a34d6a079d9291c66",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_07.png": "fa75a2ed038c251a563428ce200f5f69b5110eebeeeefae689288ed776f83e0c",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_08.png": "f290813ce31f89d9bc3e51644f024cf4a58340171927612a6eebad74787973c2",
+		"res://docs/art/strike_runtime_v1/review/engine/new_run_rifle.png": "c9b6d7cc1c407bc2cfdfa1c58d7c837fe6a3de795475e1cc11d6b789a815adf7",
+		"res://docs/art/strike_runtime_v1/review/engine/original_clay_front.png": "db36b7dbaf1cbe4511e30c8a254e2bcdc7be169a36a32786e6d965e0a862380e",
+		"res://docs/art/strike_runtime_v1/review/engine/original_clay_quarter.png": "db2e05b2d5d379044797a3cabca03d055c3043ac2e277d287bcc61af560981ef",
+		"res://docs/art/strike_runtime_v1/review/engine/original_clay_rear.png": "bc64a1e77fc8b81405071fe8030e792e891f66f4f628b9088814ef3f3c4da0ad",
+		"res://docs/art/strike_runtime_v1/review/engine/original_clay_side.png": "aa0820030442b26bd161de83ed96b8a91e436cb1218e2a35d4c489c308336a7d",
+		"res://docs/art/strike_runtime_v1/review/engine/original_diffuse_front.png": "f377e1b59fc7d5ddb858a24ee699f7ecc6a008e026779eb5a6f95add29323dc7",
+		"res://docs/art/strike_runtime_v1/review/engine/original_diffuse_quarter.png": "d3e8afcd9715108138c89d19b4497bb258ff1ac5d8deddd7f489d5426f9737aa",
+		"res://docs/art/strike_runtime_v1/review/engine/original_diffuse_rear.png": "48f5705c5670ced229456732d19ebfa4dd99d1ca06ad8eec5fe7880f2cec36b9",
+		"res://docs/art/strike_runtime_v1/review/engine/original_diffuse_side.png": "4e78eb2d8d8206b91c2108a84b0b4f760ed494cd3921c3196adcb0ee14f7a41a",
+		"res://docs/art/strike_runtime_v1/review/engine/original_head_front.png": "fd1dc5380edd5aaa4d59238374155d1ee5fb8e2a52d18db8f5d58ab92dd5d2e2",
+		"res://docs/art/strike_runtime_v1/review/engine/original_head_quarter.png": "92e37f6b7e7eb618e792d4224e109ce5e299af4520a5f633e873b296df9e2eae",
+		"res://docs/art/strike_runtime_v1/review/engine/original_head_rear.png": "8d91b33809baa6019b459e47ab12596b1f1ab318164e9a481bfd63c266e25e7b",
+		"res://docs/art/strike_runtime_v1/review/engine/original_head_side.png": "cb98f3f4a4f013ab887bf0da257cdb67960c1dc17e53ca8c159429ba175ed854",
+		"res://docs/art/strike_runtime_v1/review/engine/original_idle_rifle.png": "92f0f43a6b5248bfe6869496e45f1c6d2db4f6da6ef41c5d9b526dfc57b80979",
+		"res://docs/art/strike_runtime_v1/review/engine/original_level_01_front.png": "b2d36f6396089127999b75a9384df2bffb9c7ecbe557ea5eceafd64f83ca3ff8",
+		"res://docs/art/strike_runtime_v1/review/engine/original_level_01_gameplay.png": "e7de3ffcb64b8f11ceca50dbda46ee58e819e94bd91343efb5ab516cef3f179d",
+		"res://docs/art/strike_runtime_v1/review/engine/original_level_08_front.png": "47b6860dbbadd4e0f620b641ddd3da5940c5767c541f4754ff7a4b0f1447b976",
+		"res://docs/art/strike_runtime_v1/review/engine/original_level_08_gameplay.png": "4bf73ff22bb17270499037f000dc4da57caa46361ece57e10bbb24701b2cc8d7",
+		"res://docs/art/strike_runtime_v1/review/engine/original_painted_front.png": "338779037f93420f75e9dab84908a5dba2f5cbf620885f372390a0238b731c5b",
+		"res://docs/art/strike_runtime_v1/review/engine/original_painted_quarter.png": "b56850ee89c0f41307636a4997708d0eb82e2d126097969a8d445c1d9b3dcc3c",
+		"res://docs/art/strike_runtime_v1/review/engine/original_painted_rear.png": "66874ab4afc2889dd21ee616e911cd8003f021fa808c48e17b4d7f03a6a4eeef",
+		"res://docs/art/strike_runtime_v1/review/engine/original_painted_side.png": "0e339e7a0c0ab1e2d69b80d3ebdccef070675f5dd8521def851d93d399797d98",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_00.png": "b011f7bffca0f475e3cba7b1795b5423fea4ee44eb83f45b2049aa6fff1323da",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_01.png": "09abca33f532c103e5c698cd18f575234692cfc96f90c625ee036768d79d2f79",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_02.png": "c4fce50c52ae889cebd436458bb689aac0ffd36eff8371291bfbb9951f894609",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_03.png": "596ef983e2b831f738f9edfa821fa9792a8b58398a6b1eb61bb501dcd9db4444",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_04.png": "fed780523607534223795091230dbc8599dbbd905e7193f83c622c543795a9fe",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_05.png": "2446ad1649f0e2def4a143c09918a31c433dfa133c7092c1057c2eac2a1a470d",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_06.png": "b4733f77e9e94d2c36a6f96d396cf03ec5a5a153c09ebf43b8797899069e01ad",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_07.png": "ee934a8aec97dc76ba99855802c1e963e740b91180685cbdf315cae4a0fd5dac",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_08.png": "c1487f885a4c4e40d501bb2d1b055de6a1e4cab2cbc372bb461b1827828d2d93",
+		"res://docs/art/strike_runtime_v1/review/engine/original_run_rifle.png": "2bbd213e0399a55fb6d742917cd81e0fd7a5cc6cd700992d67d71972b0e42d5e"
+	},
+	"diffuse_views": "White material tint for both versions, so original painted greys can be compared without the original material tint. Painted views retain original imported tint. This affects captures only, not source assets or gameplay defaults.",
+	"engine_arguments": [
+		"tools/armor_runtime_v1/capture.tscn"
+	],
+	"files": [
+		"res://docs/art/strike_runtime_v1/review/engine/original_clay_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_clay_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_painted_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_painted_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_diffuse_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_diffuse_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_clay_side.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_clay_side.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_painted_side.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_painted_side.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_diffuse_side.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_diffuse_side.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_clay_rear.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_clay_rear.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_painted_rear.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_painted_rear.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_diffuse_rear.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_diffuse_rear.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_clay_quarter.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_clay_quarter.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_painted_quarter.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_painted_quarter.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_diffuse_quarter.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_diffuse_quarter.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_head_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_head_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_head_side.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_head_side.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_head_rear.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_head_rear.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_head_quarter.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_head_quarter.png",
+		"res://docs/art/strike_runtime_v1/review/engine/family_original_01_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/family_original_06_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_idle_rifle.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_idle_rifle.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_run_rifle.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_run_rifle.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_00.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_00.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_01.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_01.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_02.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_02.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_03.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_03.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_04.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_04.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_05.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_05.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_06.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_06.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_07.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_07.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_08.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_08.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_level_01_gameplay.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_level_01_gameplay.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_level_01_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_level_01_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_level_08_gameplay.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_level_08_gameplay.png",
+		"res://docs/art/strike_runtime_v1/review/engine/original_level_08_front.png",
+		"res://docs/art/strike_runtime_v1/review/engine/new_level_08_front.png"
+	],
+	"full_body_framing": {
+		"front": {
+			"center": [
+				-0.000000894069671630859,
+				0.957064986228943,
+				-0.0557129085063934
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					493.1181640625,
+					652.936645507813
+				],
+				"min": [
+					146.881851196289,
+					67.0634002685547
+				]
+			},
+			"same_camera_for_original_and_new": true
+		},
+		"quarter": {
+			"center": [
+				0.0502678453922272,
+				0.937919020652771,
+				-0.0309373158961535
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					475.123657226563,
+					656.845581054688
+				],
+				"min": [
+					164.876266479492,
+					63.1544990539551
+				]
+			},
+			"same_camera_for_original_and_new": true
+		},
+		"rear": {
+			"center": [
+				-0.000000298023223876953,
+				0.957064986228943,
+				-0.0557129085063934
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					493.1181640625,
+					652.936645507813
+				],
+				"min": [
+					146.881851196289,
+					67.0634002685547
+				]
+			},
+			"same_camera_for_original_and_new": true
+		},
+		"side": {
+			"center": [
+				-0.000000298023223876953,
+				0.957064986228943,
+				-0.0557132065296173
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					419.441772460938,
+					652.936645507813
+				],
+				"min": [
+					220.558242797852,
+					67.0634002685547
+				]
+			},
+			"same_camera_for_original_and_new": true
+		}
+	},
+	"image_dimensions": {
+		"res://docs/art/strike_runtime_v1/review/engine/family_original_01_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/family_original_06_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_clay_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_clay_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_clay_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_clay_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_diffuse_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_diffuse_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_diffuse_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_diffuse_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_head_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_head_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_head_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_head_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_idle_rifle.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_level_01_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_level_01_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_level_08_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_level_08_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_painted_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_painted_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_painted_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_painted_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_00.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_01.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_02.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_03.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_04.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_05.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_06.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_07.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_reload_08.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/new_run_rifle.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_clay_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_clay_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_clay_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_clay_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_diffuse_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_diffuse_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_diffuse_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_diffuse_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_head_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_head_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_head_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_head_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_idle_rifle.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_level_01_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_level_01_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_level_08_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_level_08_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_painted_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_painted_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_painted_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_painted_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_00.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_01.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_02.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_03.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_04.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_05.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_06.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_07.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_reload_08.png": [
+			640,
+			720
+		],
+		"res://docs/art/strike_runtime_v1/review/engine/original_run_rifle.png": [
+			640,
+			720
+		]
+	},
+	"isolated_save_path_at_end": "user://strike_v1_capture_profile.json",
+	"note": "One current configured armor model for all views; each full-body camera fits the original and candidate posed vertices together with KEEP_HEIGHT and a shared margin. Original raw mesh/skin preserved for comparison. Poses use actual player and reload fixture; two real levels also captured.",
+	"real_save_path": "user://star_warfare_save.json",
+	"real_save_sha256_at_end": "ba4612a66106620e1e9956c4a43037d5201c620a358f83f328092270e1d2605a",
+	"real_save_sha256_at_start": "ba4612a66106620e1e9956c4a43037d5201c620a358f83f328092270e1d2605a",
+	"renderer": "gl_compatibility",
+	"resource_mode": "normal_imported_resources",
+	"runtime_scene_sha256": "09d47849d7a455e1cec9e5e3f40fb6bf2cb1a1fa9abd53a1d131db80b4f9a4c5",
+	"save_change_first_capture": "",
+	"save_unchanged": true,
+	"scene_sha256_at_start": "09d47849d7a455e1cec9e5e3f40fb6bf2cb1a1fa9abd53a1d131db80b4f9a4c5",
+	"target_sha256": "03b8f3723060046e4ad8cfbc868e9ac9ca0a304c6d2c318cbb28adf0182cd3e4",
+	"target_sha256_at_start": "03b8f3723060046e4ad8cfbc868e9ac9ca0a304c6d2c318cbb28adf0182cd3e4",
+	"viewports": {
+		"gameplay": [
+			1280,
+			720
+		],
+		"review": [
+			640,
+			720
+		]
+	}
+}

@@ -1,0 +1,1874 @@
+{
+  "schema_version": 1,
+  "design_id": "C-05",
+  "runtime_id": 4,
+  "name": "Strike",
+  "revision": "strike_runtime_v1",
+  "texture_surface_revision": "original_integration_v3_head",
+  "status": "runtime_integrated_pending_user_art_review",
+  "checked_at_utc": "2026-10-04T17:18:00.395919+00:00",
+  "design_authority": {
+    "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/approved_body_design.png",
+    "sha256": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1",
+    "bytes": 1987246,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "mode": "RGB"
+  },
+  "helmet_design_authority": {
+    "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v3_head/approved_helmet.jpg",
+    "sha256": "9157b428f382ed6548050aeaec2e8c0f1e499bc51f43d49c51662535d01fe201",
+    "bytes": 463281,
+    "dimensions": [
+      848,
+      1264
+    ],
+    "mode": "RGB"
+  },
+  "original_source_snapshot": {
+    "path": "docs/art/strike_runtime_v1/revisions/original_source_v1/snapshot.json",
+    "sha256": "e2f7bacad42e4525de219f682b12ddb75cdd32d22e14f394692ed7b1ebe51533",
+    "bytes": 5619
+  },
+  "source_node_index": {
+    "path": "docs/art/strike_runtime_v1/revisions/original_source_v1/source_node_index.json",
+    "sha256": "a91476b5e3afdca7aea1cf65462ffdd0b43a2276167caa21d7b5ae467bb4401e",
+    "bytes": 1891
+  },
+  "original_node_ids": {
+    "ArmorHead_04": 46,
+    "ArmorBody_04": 47,
+    "ArmorHand_04": 48,
+    "ArmorFoot_04": 49
+  },
+  "geometry": {
+    "parts": {
+      "ArmorBody_04": {
+        "bounds_game": {
+          "min": [
+            -0.5397064685821533,
+            0.33197587728500366,
+            -0.30931293964385986
+          ],
+          "max": [
+            0.5397050976753235,
+            1.4225177764892578,
+            0.26885393261909485
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5397064685821533,
+            0.33197587728500366,
+            -0.30931293964385986
+          ],
+          "max": [
+            0.5397050976753235,
+            1.4225177764892578,
+            0.26885393261909485
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 298,
+        "uv_preserved": true,
+        "original_uv_charts": 8,
+        "uv_charts": 8,
+        "uv_coordinate_count": 283,
+        "original_uv_coordinate_count": 283,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "body",
+            "uv_coordinate_count": 207,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          },
+          {
+            "surface": 1,
+            "label": "shoulder",
+            "uv_coordinate_count": 76,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      },
+      "ArmorFoot_04": {
+        "bounds_game": {
+          "min": [
+            -0.4028196930885315,
+            0.0009523536427877843,
+            -0.2528977692127228
+          ],
+          "max": [
+            0.40282168984413147,
+            0.45138657093048096,
+            0.24816863238811493
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.4028196930885315,
+            0.0009523536427877843,
+            -0.2528977692127228
+          ],
+          "max": [
+            0.40282168984413147,
+            0.45138657093048096,
+            0.24816863238811493
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 136,
+        "uv_preserved": true,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 122,
+        "original_uv_coordinate_count": 122,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "foot",
+            "uv_coordinate_count": 122,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      },
+      "ArmorHand_04": {
+        "bounds_game": {
+          "min": [
+            -0.5650386810302734,
+            0.539596676826477,
+            -0.04977358877658844
+          ],
+          "max": [
+            0.5650379657745361,
+            1.0574705600738525,
+            0.1921384483575821
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5650386810302734,
+            0.539596676826477,
+            -0.04977358877658844
+          ],
+          "max": [
+            0.5650379657745361,
+            1.0574705600738525,
+            0.1921384483575821
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 108,
+        "uv_preserved": true,
+        "original_uv_charts": 3,
+        "uv_charts": 3,
+        "uv_coordinate_count": 106,
+        "original_uv_coordinate_count": 106,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "hand",
+            "uv_coordinate_count": 106,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      },
+      "ArmorHead_04": {
+        "bounds_game": {
+          "min": [
+            -0.27660953998565674,
+            1.2197160720825195,
+            -0.3802797496318817
+          ],
+          "max": [
+            0.2766073942184448,
+            1.913177490234375,
+            0.24322301149368286
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.27660953998565674,
+            1.2197160720825195,
+            -0.3802797496318817
+          ],
+          "max": [
+            0.2766073942184448,
+            1.913177490234375,
+            0.24322301149368286
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.05139970828742503,
+        "max_displacement_fraction_of_smallest_dimension": 0.09291058373217086,
+        "triangles": 180,
+        "uv_preserved": true,
+        "original_uv_charts": 8,
+        "uv_charts": 8,
+        "uv_coordinate_count": 198,
+        "original_uv_coordinate_count": 198,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "head",
+            "uv_coordinate_count": 198,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged",
+        "shape_quality": {
+          "reversed_triangles": 0,
+          "zero_area_triangles": 0,
+          "coincident_seam_max_rest_gap": 0.0,
+          "min_triangle_normal_cosine_from_original": 0.5589098259806633
+        }
+      }
+    },
+    "stage": "original_integration_v1",
+    "constraint": "True original-total shape/dimensions/UV20% per surface; original chart/count/topology/Skin retained. No UV edits in first integration.",
+    "user_authorized_original_total_limit": 0.2
+  },
+  "limits": {
+    "local_geometry_displacement": 0.2,
+    "dimension_change": 0.2,
+    "silhouette_change": 0.2,
+    "uv_changed_fraction_per_material": 0.2,
+    "uv_coordinate_and_chart_counts_preserved": true
+  },
+  "topology": {
+    "triangles": 722,
+    "original_bones": 28,
+    "parts": 4,
+    "surfaces": 5,
+    "diffuse_maps": 5
+  },
+  "files": [
+    {
+      "path": "assets/armors/strike_v1/strike.scn",
+      "sha256": "09d47849d7a455e1cec9e5e3f40fb6bf2cb1a1fa9abd53a1d131db80b4f9a4c5",
+      "bytes": 58894
+    },
+    {
+      "path": "assets/armors/strike_v1/strike.glb",
+      "sha256": "6894e7b5b024add43ecbf51d6a1e8e7635be863f8ab10af117b56943e1c6c1c1",
+      "bytes": 8787268
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/build/strike_master.blend",
+      "sha256": "ce533de2824638227f551ee5a13160651f9cbd9299e7b8f1ca3d4d736c72614e",
+      "bytes": 8975246
+    },
+    {
+      "path": "assets/armors/strike_v1/body_diffuse.png",
+      "sha256": "8f27c361ddb22de381daadb36da55614325a7b4a264f43a3d10875b1737d3048",
+      "bytes": 1689629,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/strike_v1/foot_diffuse.png",
+      "sha256": "9dd8c2ca7c0de439788a2c3e002a13a3371911d4de086032cd0b2c596c319ce3",
+      "bytes": 1694017,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/strike_v1/hand_diffuse.png",
+      "sha256": "ccc60e5e1f080528629d79178761c1bc33d791d04c7da2fb7fcf7e8ef3217d52",
+      "bytes": 1861513,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/strike_v1/head_diffuse.png",
+      "sha256": "07a4243cc973748b08417fabedc7150f3258de9c17f7b5d208a478c92c9cccbf",
+      "bytes": 1876480,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/strike_v1/shoulder_diffuse.png",
+      "sha256": "760d86b1e026916e938ad52d3ed5066460896f9e5c4a5e855f18df1a134913ac",
+      "bytes": 1792077,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    }
+  ],
+  "generation": [
+    {
+      "label": "body",
+      "variant": "original_integration_v1",
+      "prompt": {
+        "path": "docs/art/strike_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+        "sha256": "f94a596d0bdb0c80b75792b28fc122b47c012271f71ed0e5078b80dcbbd42770",
+        "bytes": 6090
+      },
+      "prompt_sha256": "f94a596d0bdb0c80b75792b28fc122b47c012271f71ed0e5078b80dcbbd42770",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\body_original_edit_target.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/body_original_edit_target.png",
+          "role": "edit_target",
+          "sha256": "a5ee77df2e13753f58da7f9ed49e02e574b9be5b92dff0898363aae85f116599",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/body_original_edit_target.png",
+            "sha256": "a5ee77df2e13753f58da7f9ed49e02e574b9be5b92dff0898363aae85f116599",
+            "bytes": 253385,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_design.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/approved_body_design.png",
+          "role": "approved_body_design",
+          "sha256": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/approved_body_design.png",
+            "sha256": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1",
+            "bytes": 1987246,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\body_fortune_style.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/body_fortune_style.png",
+          "role": "current_fortune_family_style_only",
+          "sha256": "492467eb209e1846665063634c05a9298a33cc2763cf2afa8921a0c968883df6",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/body_fortune_style.png",
+            "sha256": "492467eb209e1846665063634c05a9298a33cc2763cf2afa8921a0c968883df6",
+            "bytes": 1702150,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\body_original_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_design.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\body_fortune_style.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-5d28fb4c-85b7-45e7-86bf-19a604f06a11.png",
+      "archive": {
+        "path": "docs/art/strike_runtime_v1/generated/body_diffuse_original_integration_v1.png",
+        "sha256": "8f27c361ddb22de381daadb36da55614325a7b4a264f43a3d10875b1737d3048",
+        "bytes": 1689629,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "8f27c361ddb22de381daadb36da55614325a7b4a264f43a3d10875b1737d3048",
+      "selected": true,
+      "output": "assets/armors/strike_v1/body_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "output_size": [
+        1254,
+        1254
+      ],
+      "status": "runtime_validated_pending_user_art_review",
+      "generated_at": "2026-10-04T23:28:42.931644+08:00",
+      "canonical": {
+        "path": "assets/armors/strike_v1/body_diffuse.png",
+        "sha256": "8f27c361ddb22de381daadb36da55614325a7b4a264f43a3d10875b1737d3048",
+        "bytes": 1689629,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "body"
+    },
+    {
+      "label": "shoulder",
+      "variant": "original_integration_v1",
+      "prompt": {
+        "path": "docs/art/strike_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+        "sha256": "065fd241b8887796e5e6595e66601158e12cc4f3f3120d76ad768773f4ce589a",
+        "bytes": 5969
+      },
+      "prompt_sha256": "065fd241b8887796e5e6595e66601158e12cc4f3f3120d76ad768773f4ce589a",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\shoulder_original_edit_target.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/shoulder_original_edit_target.png",
+          "role": "edit_target",
+          "sha256": "cea7181983e7fbdd0b0e57c318ee5e24e463b34739fe5022bab582add8dc87c9",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/shoulder_original_edit_target.png",
+            "sha256": "cea7181983e7fbdd0b0e57c318ee5e24e463b34739fe5022bab582add8dc87c9",
+            "bytes": 237683,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_design.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/approved_body_design.png",
+          "role": "approved_body_design",
+          "sha256": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/approved_body_design.png",
+            "sha256": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1",
+            "bytes": 1987246,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\shoulder_fortune_style.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/shoulder_fortune_style.png",
+          "role": "current_fortune_family_style_only",
+          "sha256": "a4aae6d7fdc44c2fec61236a885335df2476da4895cb14c30e723cadcb2215ba",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/shoulder_fortune_style.png",
+            "sha256": "a4aae6d7fdc44c2fec61236a885335df2476da4895cb14c30e723cadcb2215ba",
+            "bytes": 1600593,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\shoulder_original_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_design.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\shoulder_fortune_style.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-2772e6bd-64db-44e4-8f2b-362af929eb50.png",
+      "archive": {
+        "path": "docs/art/strike_runtime_v1/generated/shoulder_diffuse_original_integration_v1.png",
+        "sha256": "760d86b1e026916e938ad52d3ed5066460896f9e5c4a5e855f18df1a134913ac",
+        "bytes": 1792077,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "760d86b1e026916e938ad52d3ed5066460896f9e5c4a5e855f18df1a134913ac",
+      "selected": true,
+      "output": "assets/armors/strike_v1/shoulder_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "output_size": [
+        1254,
+        1254
+      ],
+      "status": "runtime_validated_pending_user_art_review",
+      "generated_at": "2026-10-04T23:44:35.602401+08:00",
+      "canonical": {
+        "path": "assets/armors/strike_v1/shoulder_diffuse.png",
+        "sha256": "760d86b1e026916e938ad52d3ed5066460896f9e5c4a5e855f18df1a134913ac",
+        "bytes": 1792077,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "shoulder"
+    },
+    {
+      "label": "hand",
+      "variant": "original_integration_v1",
+      "prompt": {
+        "path": "docs/art/strike_runtime_v1/prompts/hand_diffuse_original_integration_v1.txt",
+        "sha256": "f789572364709ba3a68774ddd56b4a06e68b9cf22b46bce6a6396714e25699af",
+        "bytes": 5894
+      },
+      "prompt_sha256": "f789572364709ba3a68774ddd56b4a06e68b9cf22b46bce6a6396714e25699af",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\hand_original_edit_target.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/hand_original_edit_target.png",
+          "role": "edit_target",
+          "sha256": "fd84255464fdbad923108e20b6359d6892a4406254c9500ac249f22d88e409d4",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/hand_original_edit_target.png",
+            "sha256": "fd84255464fdbad923108e20b6359d6892a4406254c9500ac249f22d88e409d4",
+            "bytes": 191482,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_design.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/approved_body_design.png",
+          "role": "approved_body_design",
+          "sha256": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/approved_body_design.png",
+            "sha256": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1",
+            "bytes": 1987246,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\hand_fortune_style.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/hand_fortune_style.png",
+          "role": "current_fortune_family_style_only",
+          "sha256": "afd6260186294173a4a45a513fa541574f651ca490c6a42616900ba3ba876d92",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/hand_fortune_style.png",
+            "sha256": "afd6260186294173a4a45a513fa541574f651ca490c6a42616900ba3ba876d92",
+            "bytes": 1599516,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\hand_original_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_design.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\hand_fortune_style.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-ddf47144-427b-4f8c-a238-28949ea0d8da.png",
+      "archive": {
+        "path": "docs/art/strike_runtime_v1/generated/hand_diffuse_original_integration_v1.png",
+        "sha256": "ccc60e5e1f080528629d79178761c1bc33d791d04c7da2fb7fcf7e8ef3217d52",
+        "bytes": 1861513,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "ccc60e5e1f080528629d79178761c1bc33d791d04c7da2fb7fcf7e8ef3217d52",
+      "selected": true,
+      "output": "assets/armors/strike_v1/hand_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "output_size": [
+        1254,
+        1254
+      ],
+      "status": "runtime_validated_pending_user_art_review",
+      "generated_at": "2026-10-04T23:45:38.535465+08:00",
+      "canonical": {
+        "path": "assets/armors/strike_v1/hand_diffuse.png",
+        "sha256": "ccc60e5e1f080528629d79178761c1bc33d791d04c7da2fb7fcf7e8ef3217d52",
+        "bytes": 1861513,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "hand"
+    },
+    {
+      "label": "foot",
+      "variant": "original_integration_v1",
+      "prompt": {
+        "path": "docs/art/strike_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+        "sha256": "063787e383c0a8d4890f9e3bcaa07eec5fe6d87c1e3dcc8e56ff668a46ab5e8c",
+        "bytes": 5881
+      },
+      "prompt_sha256": "063787e383c0a8d4890f9e3bcaa07eec5fe6d87c1e3dcc8e56ff668a46ab5e8c",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\foot_original_edit_target.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/foot_original_edit_target.png",
+          "role": "edit_target",
+          "sha256": "fc5aabe890404edf1fddb3ad7cdfb0b9dbc2d6e0eafee4bceecec0d53d4f7f81",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/foot_original_edit_target.png",
+            "sha256": "fc5aabe890404edf1fddb3ad7cdfb0b9dbc2d6e0eafee4bceecec0d53d4f7f81",
+            "bytes": 237796,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_design.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/approved_body_design.png",
+          "role": "approved_body_design",
+          "sha256": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/approved_body_design.png",
+            "sha256": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1",
+            "bytes": 1987246,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\foot_fortune_style.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/foot_fortune_style.png",
+          "role": "current_fortune_family_style_only",
+          "sha256": "58ded7a38496e334af747d8035c9a9c07f81c862de2cdbf54dade6797f220f17",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/foot_fortune_style.png",
+            "sha256": "58ded7a38496e334af747d8035c9a9c07f81c862de2cdbf54dade6797f220f17",
+            "bytes": 1537026,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\foot_original_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_design.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\foot_fortune_style.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-aa57c9d6-6615-415d-9ffd-1ca5a311d100.png",
+      "archive": {
+        "path": "docs/art/strike_runtime_v1/generated/foot_diffuse_original_integration_v1.png",
+        "sha256": "9dd8c2ca7c0de439788a2c3e002a13a3371911d4de086032cd0b2c596c319ce3",
+        "bytes": 1694017,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "9dd8c2ca7c0de439788a2c3e002a13a3371911d4de086032cd0b2c596c319ce3",
+      "selected": true,
+      "output": "assets/armors/strike_v1/foot_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "output_size": [
+        1254,
+        1254
+      ],
+      "status": "runtime_validated_pending_user_art_review",
+      "generated_at": "2026-10-04T23:46:42.753081+08:00",
+      "canonical": {
+        "path": "assets/armors/strike_v1/foot_diffuse.png",
+        "sha256": "9dd8c2ca7c0de439788a2c3e002a13a3371911d4de086032cd0b2c596c319ce3",
+        "bytes": 1694017,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "foot"
+    },
+    {
+      "label": "head",
+      "variant": "original_integration_v1",
+      "prompt": {
+        "path": "docs/art/strike_runtime_v1/prompts/head_diffuse_original_integration_v1.txt",
+        "sha256": "3f4233d0a4fac55f8107746e32761051a2031db04e30aa98ebba5f150ec773a7",
+        "bytes": 6775
+      },
+      "prompt_sha256": "3f4233d0a4fac55f8107746e32761051a2031db04e30aa98ebba5f150ec773a7",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\head_original_edit_target.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/head_original_edit_target.png",
+          "role": "edit_target",
+          "sha256": "294809b57133048fadaa8292bd10bed32309f3e5edf3f933230c3f976dbc491e",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/head_original_edit_target.png",
+            "sha256": "294809b57133048fadaa8292bd10bed32309f3e5edf3f933230c3f976dbc491e",
+            "bytes": 325603,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\latest_head_design.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/latest_head_design.png",
+          "role": "latest_helmet_design_authority",
+          "sha256": "9157b428f382ed6548050aeaec2e8c0f1e499bc51f43d49c51662535d01fe201",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/latest_head_design.png",
+            "sha256": "9157b428f382ed6548050aeaec2e8c0f1e499bc51f43d49c51662535d01fe201",
+            "bytes": 463281,
+            "dimensions": [
+              848,
+              1264
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\actual_head_uv_semantics.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/actual_head_uv_semantics.png",
+          "role": "technical_uv_guide",
+          "sha256": "96e7b98322dbc7247b536b903fa60922b42be2f7963faac9c0e5d2886f64d000",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/actual_head_uv_semantics.png",
+            "sha256": "96e7b98322dbc7247b536b903fa60922b42be2f7963faac9c0e5d2886f64d000",
+            "bytes": 234876,
+            "dimensions": [
+              1360,
+              1024
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\head_fortune_style.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/head_fortune_style.png",
+          "role": "current_fortune_style_only",
+          "sha256": "10d07e20bd3955fdee018b8b16a9994d3dc511990af6d60cf5cfe88ed886b0cf",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v1/head_fortune_style.png",
+            "sha256": "10d07e20bd3955fdee018b8b16a9994d3dc511990af6d60cf5cfe88ed886b0cf",
+            "bytes": 1623463,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\head_original_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\latest_head_design.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\actual_head_uv_semantics.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v1\\head_fortune_style.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-367917bb-62ab-4c9b-8622-a68a953149c6.png",
+      "archive": {
+        "path": "docs/art/strike_runtime_v1/generated/head_diffuse_original_integration_v1.png",
+        "sha256": "60032660a28393d95f982843321fc5aef40c868ec686c5eaed8cc9b415b0729b",
+        "bytes": 1908645,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "60032660a28393d95f982843321fc5aef40c868ec686c5eaed8cc9b415b0729b",
+      "selected": false,
+      "output": "assets/armors/strike_v1/head_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "output_size": [
+        1254,
+        1254
+      ],
+      "status": "native_rejected",
+      "generated_at": "2026-10-04T23:43:01.299778+08:00",
+      "rejection_reason": "Old transverse crown stripes and four frontal points replaced with actual mesh-derived longitudinal rail and single half-atlas dot."
+    },
+    {
+      "label": "head",
+      "variant": "original_integration_v2_head",
+      "prompt": {
+        "path": "docs/art/strike_runtime_v1/prompts/head_diffuse_original_integration_v2_head.txt",
+        "sha256": "d4b596cea0f82d27bf8ddda43bd80fc23026c27912b181f298fd371fd6f0e7f9",
+        "bytes": 7288
+      },
+      "prompt_sha256": "d4b596cea0f82d27bf8ddda43bd80fc23026c27912b181f298fd371fd6f0e7f9",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v2_head\\v1_head_edit_target.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v2_head/v1_head_edit_target.png",
+          "role": "edit_target_previous_attempt",
+          "sha256": "60032660a28393d95f982843321fc5aef40c868ec686c5eaed8cc9b415b0729b",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v2_head/v1_head_edit_target.png",
+            "sha256": "60032660a28393d95f982843321fc5aef40c868ec686c5eaed8cc9b415b0729b",
+            "bytes": 1908645,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v2_head\\actual_crown_rails_guide.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v2_head/actual_crown_rails_guide.png",
+          "role": "technical_uv_crown_rail",
+          "sha256": "3610a50d230245a2947e859709cd2191def1bb8732a673cf7cf956cd06264552",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v2_head/actual_crown_rails_guide.png",
+            "sha256": "3610a50d230245a2947e859709cd2191def1bb8732a673cf7cf956cd06264552",
+            "bytes": 146836,
+            "dimensions": [
+              1820,
+              1535
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v2_head\\approved_helmet.jpg",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v2_head/approved_helmet.jpg",
+          "role": "latest_helmet_design_authority",
+          "sha256": "9157b428f382ed6548050aeaec2e8c0f1e499bc51f43d49c51662535d01fe201",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v2_head/approved_helmet.jpg",
+            "sha256": "9157b428f382ed6548050aeaec2e8c0f1e499bc51f43d49c51662535d01fe201",
+            "bytes": 463281,
+            "dimensions": [
+              848,
+              1264
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v2_head\\v1_runtime_mapping_defect.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v2_head/v1_runtime_mapping_defect.png",
+          "role": "runtime_mapping_defect_only",
+          "sha256": "f3f68a638d3fbc2386b4d76b6d5cf0cd61a5b79cada605027ed6c486f9a5cbea",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v2_head/v1_runtime_mapping_defect.png",
+            "sha256": "f3f68a638d3fbc2386b4d76b6d5cf0cd61a5b79cada605027ed6c486f9a5cbea",
+            "bytes": 542283,
+            "dimensions": [
+              640,
+              720
+            ],
+            "mode": "RGBA"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v2_head\\v1_head_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v2_head\\actual_crown_rails_guide.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v2_head\\approved_helmet.jpg",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v2_head\\v1_runtime_mapping_defect.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-d949686f-41a7-4d87-9ae4-5022964e49ae.png",
+      "archive": {
+        "path": "docs/art/strike_runtime_v1/generated/head_diffuse_original_integration_v2_head.png",
+        "sha256": "6379313791c0af008a1c4dd22ff9ed243493e8e0d3907ae3994719c94f653549",
+        "bytes": 1817225,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "6379313791c0af008a1c4dd22ff9ed243493e8e0d3907ae3994719c94f653549",
+      "selected": false,
+      "output": "assets/armors/strike_v1/head_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-05",
+      "generated_at": "2026-10-05T00:50:12.681334+08:00",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "output_size": [
+        1254,
+        1254
+      ],
+      "status": "native_rejected",
+      "source_attempt": "original_integration_v1",
+      "rejection_reason": "Native output retained old transverse crown strips and misplaced dot; actual mesh guide not followed. Superseded by next native attempt."
+    },
+    {
+      "label": "head",
+      "variant": "original_integration_v3_head",
+      "prompt": {
+        "path": "docs/art/strike_runtime_v1/prompts/head_diffuse_original_integration_v3_head.txt",
+        "sha256": "d9ba118cd9408a28be2da1f566deee02c3af08627f2772d45917e19c8c780f3f",
+        "bytes": 6907
+      },
+      "prompt_sha256": "d9ba118cd9408a28be2da1f566deee02c3af08627f2772d45917e19c8c780f3f",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v3_head\\v1_head_edit_target.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v3_head/v1_head_edit_target.png",
+          "role": "edit_target_original_attempt",
+          "sha256": "60032660a28393d95f982843321fc5aef40c868ec686c5eaed8cc9b415b0729b",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v3_head/v1_head_edit_target.png",
+            "sha256": "60032660a28393d95f982843321fc5aef40c868ec686c5eaed8cc9b415b0729b",
+            "bytes": 1908645,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v3_head\\exact_atlas_placement.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v3_head/exact_atlas_placement.png",
+          "role": "technical_uv_exact_layout",
+          "sha256": "7f1aeaaaf6cc42e659910eda741ed5ed55fd8c5dacf0bd79fc1537697d231b53",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v3_head/exact_atlas_placement.png",
+            "sha256": "7f1aeaaaf6cc42e659910eda741ed5ed55fd8c5dacf0bd79fc1537697d231b53",
+            "bytes": 38765,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v3_head\\approved_helmet.jpg",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v3_head/approved_helmet.jpg",
+          "role": "latest_helmet_design_authority",
+          "sha256": "9157b428f382ed6548050aeaec2e8c0f1e499bc51f43d49c51662535d01fe201",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v3_head/approved_helmet.jpg",
+            "sha256": "9157b428f382ed6548050aeaec2e8c0f1e499bc51f43d49c51662535d01fe201",
+            "bytes": 463281,
+            "dimensions": [
+              848,
+              1264
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v3_head\\rejected_v2.png",
+          "snapshot": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v3_head/rejected_v2.png",
+          "role": "rejected_previous_attempt",
+          "sha256": "6379313791c0af008a1c4dd22ff9ed243493e8e0d3907ae3994719c94f653549",
+          "immutable_file": {
+            "path": "docs/art/strike_runtime_v1/input_snapshots/original_integration_v3_head/rejected_v2.png",
+            "sha256": "6379313791c0af008a1c4dd22ff9ed243493e8e0d3907ae3994719c94f653549",
+            "bytes": 1817225,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v3_head\\v1_head_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v3_head\\exact_atlas_placement.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v3_head\\approved_helmet.jpg",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\strike_runtime_v1\\input_snapshots\\original_integration_v3_head\\rejected_v2.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-a228fd65-ca28-4d65-832e-221b595b7a20.png",
+      "archive": {
+        "path": "docs/art/strike_runtime_v1/generated/head_diffuse_original_integration_v3_head.png",
+        "sha256": "07a4243cc973748b08417fabedc7150f3258de9c17f7b5d208a478c92c9cccbf",
+        "bytes": 1876480,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "07a4243cc973748b08417fabedc7150f3258de9c17f7b5d208a478c92c9cccbf",
+      "selected": true,
+      "output": "assets/armors/strike_v1/head_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-05",
+      "generated_at": "2026-10-05T00:56:52.624767+08:00",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "output_size": [
+        1254,
+        1254
+      ],
+      "status": "runtime_validated_pending_user_art_review",
+      "source_attempt": "original_integration_v1",
+      "also_referenced_rejected_attempt": "original_integration_v2_head",
+      "canonical": {
+        "path": "assets/armors/strike_v1/head_diffuse.png",
+        "sha256": "07a4243cc973748b08417fabedc7150f3258de9c17f7b5d208a478c92c9cccbf",
+        "bytes": 1876480,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "head"
+    }
+  ],
+  "tests": {
+    "runtime_test": {
+      "file": {
+        "path": "docs/art/strike_runtime_v1/review/runtime_test.json",
+        "sha256": "7967fc428300cdacf94b9abc743be4643c614bb83a1b65f91b5e55082dd56a04",
+        "bytes": 11383
+      },
+      "status": "PASS"
+    },
+    "roundtrip_test": {
+      "file": {
+        "path": "docs/art/strike_runtime_v1/review/roundtrip_test.json",
+        "sha256": "1cbc5da1500d7d56e880321b912346bb89ea1ecd09514df9fdbb7dd53a1a1adc",
+        "bytes": 11917
+      },
+      "status": "PASS"
+    },
+    "proportion_test": {
+      "file": {
+        "path": "docs/art/strike_runtime_v1/review/proportion_test.json",
+        "sha256": "6dd88f2f6a6ddb97ca26f931bb2d18fad796b34683e33cdc1882843e63534896",
+        "bytes": 7999
+      },
+      "status": "PASS"
+    },
+    "delivery_validate": {
+      "file": {
+        "path": "docs/art/strike_runtime_v1/review/delivery_validate.json",
+        "sha256": "31833c0ab574295b2e68dc61cc1f92b0ac18d8a439b4be1c52cae2b65fb2a29a",
+        "bytes": 9003
+      },
+      "status": "PASS"
+    },
+    "original_scene_invariants": {
+      "file": {
+        "path": "docs/art/strike_runtime_v1/review/original_scene_invariants.json",
+        "sha256": "2a89b56976d0786ec47dcbdb8338473d55e03cfc9494f1637c6fd6034992be4e",
+        "bytes": 1856
+      },
+      "status": "PASS"
+    },
+    "glb_images_test": {
+      "file": {
+        "path": "docs/art/strike_runtime_v1/review/glb_images_test.json",
+        "sha256": "fc26a8fb633369aee9afc8b91b74a2fa40771686e3438f0b78eb706b2bdae973",
+        "bytes": 4670
+      },
+      "status": "PASS"
+    }
+  },
+  "captures": [
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_clay_front.png",
+      "sha256": "db36b7dbaf1cbe4511e30c8a254e2bcdc7be169a36a32786e6d965e0a862380e",
+      "bytes": 41484,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_clay_front.png",
+      "sha256": "74168fee5290c5e12e0a227afa9b02ea7aa72fa9544361a159bfef3394a5e386",
+      "bytes": 41736,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_painted_front.png",
+      "sha256": "338779037f93420f75e9dab84908a5dba2f5cbf620885f372390a0238b731c5b",
+      "bytes": 230568,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_painted_front.png",
+      "sha256": "523ada5812cc7e994132923965ea8984814bb76ce77c5199808c90384c60ae47",
+      "bytes": 289339,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_diffuse_front.png",
+      "sha256": "f377e1b59fc7d5ddb858a24ee699f7ecc6a008e026779eb5a6f95add29323dc7",
+      "bytes": 246886,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_diffuse_front.png",
+      "sha256": "523ada5812cc7e994132923965ea8984814bb76ce77c5199808c90384c60ae47",
+      "bytes": 289339,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_clay_side.png",
+      "sha256": "aa0820030442b26bd161de83ed96b8a91e436cb1218e2a35d4c489c308336a7d",
+      "bytes": 27989,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_clay_side.png",
+      "sha256": "f0c573e47307668145a0c680fc468366a91ac6a7a9dd3c9bed2b757532d29e61",
+      "bytes": 28426,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_painted_side.png",
+      "sha256": "0e339e7a0c0ab1e2d69b80d3ebdccef070675f5dd8521def851d93d399797d98",
+      "bytes": 159031,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_painted_side.png",
+      "sha256": "dc7bc87c890cebe54fc6573b621a7d3bb8d5b5cf7695497b3559f7b80bdf3ade",
+      "bytes": 192190,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_diffuse_side.png",
+      "sha256": "4e78eb2d8d8206b91c2108a84b0b4f760ed494cd3921c3196adcb0ee14f7a41a",
+      "bytes": 169548,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_diffuse_side.png",
+      "sha256": "dc7bc87c890cebe54fc6573b621a7d3bb8d5b5cf7695497b3559f7b80bdf3ade",
+      "bytes": 192190,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_clay_rear.png",
+      "sha256": "bc64a1e77fc8b81405071fe8030e792e891f66f4f628b9088814ef3f3c4da0ad",
+      "bytes": 43517,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_clay_rear.png",
+      "sha256": "1f6fb8bbfa87c8e194094f62a0a339b8681019620a2ae0f8bb26cd2d451b5038",
+      "bytes": 43452,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_painted_rear.png",
+      "sha256": "66874ab4afc2889dd21ee616e911cd8003f021fa808c48e17b4d7f03a6a4eeef",
+      "bytes": 219892,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_painted_rear.png",
+      "sha256": "2b685da0220db1dca64df87026d9f8e6a46d8a486ae73fd9e029fb276bc2923f",
+      "bytes": 282559,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_diffuse_rear.png",
+      "sha256": "48f5705c5670ced229456732d19ebfa4dd99d1ca06ad8eec5fe7880f2cec36b9",
+      "bytes": 236601,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_diffuse_rear.png",
+      "sha256": "2b685da0220db1dca64df87026d9f8e6a46d8a486ae73fd9e029fb276bc2923f",
+      "bytes": 282559,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_clay_quarter.png",
+      "sha256": "db2e05b2d5d379044797a3cabca03d055c3043ac2e277d287bcc61af560981ef",
+      "bytes": 42035,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_clay_quarter.png",
+      "sha256": "e9b14de4f023b00667c808821ec0660d3cb4037a1b164e68e80b5fa110fcca70",
+      "bytes": 41989,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_painted_quarter.png",
+      "sha256": "b56850ee89c0f41307636a4997708d0eb82e2d126097969a8d445c1d9b3dcc3c",
+      "bytes": 239597,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_painted_quarter.png",
+      "sha256": "defd2c46a30f1b340824b3d1b6a231e2d0fbedae6895fb0afc3e2c73ae286393",
+      "bytes": 300842,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_diffuse_quarter.png",
+      "sha256": "d3e8afcd9715108138c89d19b4497bb258ff1ac5d8deddd7f489d5426f9737aa",
+      "bytes": 257076,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "sha256": "defd2c46a30f1b340824b3d1b6a231e2d0fbedae6895fb0afc3e2c73ae286393",
+      "bytes": 300842,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_head_front.png",
+      "sha256": "fd1dc5380edd5aaa4d59238374155d1ee5fb8e2a52d18db8f5d58ab92dd5d2e2",
+      "bytes": 491587,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_head_front.png",
+      "sha256": "9d3d2f08ff14236390b4c869dc68217bf71e3e415b108fef42c38246ed5733c6",
+      "bytes": 530424,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_head_side.png",
+      "sha256": "cb98f3f4a4f013ab887bf0da257cdb67960c1dc17e53ca8c159429ba175ed854",
+      "bytes": 500988,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_head_side.png",
+      "sha256": "96d0d3c931fb95afea443fab93d8cd56860fb7f8d57da112e136f082d4d175a8",
+      "bytes": 532449,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_head_rear.png",
+      "sha256": "8d91b33809baa6019b459e47ab12596b1f1ab318164e9a481bfd63c266e25e7b",
+      "bytes": 449761,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_head_rear.png",
+      "sha256": "a9904c755851afee52abfddf7a59246a3665a4df6a5d2af05af6e7e474d83513",
+      "bytes": 505793,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_head_quarter.png",
+      "sha256": "92e37f6b7e7eb618e792d4224e109ce5e299af4520a5f633e873b296df9e2eae",
+      "bytes": 532623,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_head_quarter.png",
+      "sha256": "fe4cd3461c6298792e88b84df158c533eb591898954f9fd4e13b69dd2e48b594",
+      "bytes": 564648,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/family_original_01_front.png",
+      "sha256": "26c867289ad59491707e4810753bc299dfae12194e48f498363a6c967f9e294a",
+      "bytes": 226605,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/family_original_06_front.png",
+      "sha256": "4d22a32756a8f60a8adf29346870c8a9cba16a4fb9650de6f7d39d0292a10e2c",
+      "bytes": 244640,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_idle_rifle.png",
+      "sha256": "92f0f43a6b5248bfe6869496e45f1c6d2db4f6da6ef41c5d9b526dfc57b80979",
+      "bytes": 203199,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_idle_rifle.png",
+      "sha256": "5ff11b576f5b3f0e0351fdbd2e0b01eb810415e3f3a50e4721da917ad943d305",
+      "bytes": 238319,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_run_rifle.png",
+      "sha256": "2bbd213e0399a55fb6d742917cd81e0fd7a5cc6cd700992d67d71972b0e42d5e",
+      "bytes": 189258,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_run_rifle.png",
+      "sha256": "c9b6d7cc1c407bc2cfdfa1c58d7c837fe6a3de795475e1cc11d6b789a815adf7",
+      "bytes": 222191,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_reload_00.png",
+      "sha256": "b011f7bffca0f475e3cba7b1795b5423fea4ee44eb83f45b2049aa6fff1323da",
+      "bytes": 194913,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_reload_00.png",
+      "sha256": "61cbe163c3c41045a5ea1f4f64768cccc694f294eaf768deadfff5fdc93b6561",
+      "bytes": 226661,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_reload_01.png",
+      "sha256": "09abca33f532c103e5c698cd18f575234692cfc96f90c625ee036768d79d2f79",
+      "bytes": 179891,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_reload_01.png",
+      "sha256": "6bb56432d95f40196d7c049d340af8d2a73d8ba3c1c61db66e942de87286277a",
+      "bytes": 214685,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_reload_02.png",
+      "sha256": "c4fce50c52ae889cebd436458bb689aac0ffd36eff8371291bfbb9951f894609",
+      "bytes": 182694,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_reload_02.png",
+      "sha256": "3d77abdfccce954e6a054bcaaad2689896f8d24b26d36dd24b2c3e4117a84969",
+      "bytes": 217722,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_reload_03.png",
+      "sha256": "596ef983e2b831f738f9edfa821fa9792a8b58398a6b1eb61bb501dcd9db4444",
+      "bytes": 183889,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_reload_03.png",
+      "sha256": "fb5019f74b944c73639bf38d96db414eec531f63d95e12eb456e82055df8d0bc",
+      "bytes": 219139,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_reload_04.png",
+      "sha256": "fed780523607534223795091230dbc8599dbbd905e7193f83c622c543795a9fe",
+      "bytes": 188973,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_reload_04.png",
+      "sha256": "7c15dd7fcd82d3677db232932c12d4f9491bb10df97ad90923e1d4b06d1f7c68",
+      "bytes": 224573,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_reload_05.png",
+      "sha256": "2446ad1649f0e2def4a143c09918a31c433dfa133c7092c1057c2eac2a1a470d",
+      "bytes": 188807,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_reload_05.png",
+      "sha256": "e3e7e4cf225adca96fc703fa43c51252a82acf4cbf522c8b23f143895a4e4f9e",
+      "bytes": 223837,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_reload_06.png",
+      "sha256": "b4733f77e9e94d2c36a6f96d396cf03ec5a5a153c09ebf43b8797899069e01ad",
+      "bytes": 185570,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_reload_06.png",
+      "sha256": "f9b7c04cc71b65d7a380ed8cc1be1adb9e0de53989fc064a34d6a079d9291c66",
+      "bytes": 220596,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_reload_07.png",
+      "sha256": "ee934a8aec97dc76ba99855802c1e963e740b91180685cbdf315cae4a0fd5dac",
+      "bytes": 181872,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_reload_07.png",
+      "sha256": "fa75a2ed038c251a563428ce200f5f69b5110eebeeeefae689288ed776f83e0c",
+      "bytes": 214664,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_reload_08.png",
+      "sha256": "c1487f885a4c4e40d501bb2d1b055de6a1e4cab2cbc372bb461b1827828d2d93",
+      "bytes": 196327,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_reload_08.png",
+      "sha256": "f290813ce31f89d9bc3e51644f024cf4a58340171927612a6eebad74787973c2",
+      "bytes": 227485,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_level_01_gameplay.png",
+      "sha256": "e7de3ffcb64b8f11ceca50dbda46ee58e819e94bd91343efb5ab516cef3f179d",
+      "bytes": 1431055,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "sha256": "52c408bc10c6d6d0def57e981acfe65b0d8987295f79d32579737d754e53e2bf",
+      "bytes": 1464482,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_level_01_front.png",
+      "sha256": "b2d36f6396089127999b75a9384df2bffb9c7ecbe557ea5eceafd64f83ca3ff8",
+      "bytes": 1073428,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_level_01_front.png",
+      "sha256": "aeb5ed06dfeb6261e48697de87b5ed66326fa33a34a3fdc8d62007c31c924830",
+      "bytes": 1103764,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_level_08_gameplay.png",
+      "sha256": "4bf73ff22bb17270499037f000dc4da57caa46361ece57e10bbb24701b2cc8d7",
+      "bytes": 984101,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "sha256": "ec8f324865ee4122613f40c7a734bf063ebc4eae81a8e9ac1a86ad1660946abb",
+      "bytes": 1017940,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/original_level_08_front.png",
+      "sha256": "47b6860dbbadd4e0f620b641ddd3da5940c5767c541f4754ff7a4b0f1447b976",
+      "bytes": 906011,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/strike_runtime_v1/review/engine/new_level_08_front.png",
+      "sha256": "f8036a301dbdae30bd1e8d492baa9371384a5dc0ecc302c8e5d066b71d99a791",
+      "bytes": 930213,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    }
+  ],
+  "capture_summary": {
+    "path": "docs/art/strike_runtime_v1/review/engine/capture.json",
+    "sha256": "137bae73222ad7f2e39ba5db5f03ffa0207ee4a7dad9d07c65ed5526ebf6f96e",
+    "bytes": 23788
+  },
+  "capture_driver_evidence": {
+    "driver": "opengl3_angle",
+    "renderer_banner": "OpenGL API OpenGL ES 3.0 (ANGLE 2.1.1 git hash: aaebda1c5a40) - Compatibility - Using Device: Google Inc. (NVIDIA) - ANGLE (NVIDIA, NVIDIA GeForce RTX 4080 Laptop GPU (0x000027A0) Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.9579)",
+    "log": {
+      "path": "docs/art/strike_runtime_v1/review/original_integration_angle_capture.log",
+      "sha256": "cd0fc0b5551240bfb14b81b839206b306bc85e74cac79236ba29d35a69f481fa",
+      "bytes": 351
+    }
+  },
+  "uv_summary": {
+    "original_coordinate_count": 709,
+    "changed_coordinate_count": 0,
+    "changed_coordinate_fraction": 0,
+    "per_material": {
+      "ArmorBody_04_surface_0": {
+        "authored_charts": 5,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 207,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 5
+      },
+      "ArmorBody_04_surface_1": {
+        "authored_charts": 3,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 76,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 3
+      },
+      "ArmorFoot_04_surface_0": {
+        "authored_charts": 4,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 122,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 4
+      },
+      "ArmorHand_04_surface_0": {
+        "authored_charts": 3,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 106,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 3
+      },
+      "ArmorHead_04_surface_0": {
+        "authored_charts": 8,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 198,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 8
+      }
+    }
+  },
+  "inherited_out_of_range_uv": [],
+  "metric_scope": "True original source totals, head-only geometry deformation and unchanged original UV. Body/limb actual SCN raw mesh buffers exact; skin/indices/weights preserved. GLB exporter normalizes exchange weights, per-triangle identity independently verified. Artistic similarity is not measured by20%; pending user review.",
+  "residuals": [
+    "最新縱向雙青冠條與兩小點已映射，前額冠面已收平；原冠片黑描邊與少量低模折面仍存在，待使用者美術評價。"
+  ]
+}

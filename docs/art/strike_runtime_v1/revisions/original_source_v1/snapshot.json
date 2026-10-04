@@ -1,0 +1,136 @@
+{
+  "status": "FROZEN_TRUE_ORIGINAL_SOURCE",
+  "created_at_utc": "2026-10-04T15:03:09.274854+00:00",
+  "runtime_id": 4,
+  "used_nodes": [
+    "ArmorHead_04",
+    "ArmorBody_04",
+    "ArmorHand_04",
+    "ArmorFoot_04"
+  ],
+  "original_scene": "res://assets/models/player/animated/player.gltf",
+  "original_scene_sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
+  "files": {
+    "source.json": {
+      "source": "docs/art/strike_runtime_v1/build/source.json",
+      "sha256": "f16f9320b39ae5dd01f655135d4df1d5fbc98c893920a05dc51238cf0d9de987",
+      "bytes": 516905
+    },
+    "atlases/head.png": {
+      "source": "assets/models/player/animated/armor_textures/head_0fec56bddc36_2x.png",
+      "sha256": "294809b57133048fadaa8292bd10bed32309f3e5edf3f933230c3f976dbc491e",
+      "bytes": 325603
+    },
+    "guides/head_uv.svg": {
+      "source": "docs/art/strike_runtime_v1/guides/head_uv.svg",
+      "sha256": "b2758063122177f355afde8b56494f8a3e50af9d2925f23622f56e8ef3838b83",
+      "bytes": 20387
+    },
+    "atlases/body.png": {
+      "source": "assets/models/player/animated/armor_textures/body_c4fabbd7d47a_2x.png",
+      "sha256": "a5ee77df2e13753f58da7f9ed49e02e574b9be5b92dff0898363aae85f116599",
+      "bytes": 253385
+    },
+    "guides/body_uv.svg": {
+      "source": "docs/art/strike_runtime_v1/guides/body_uv.svg",
+      "sha256": "c5dd1ec85ebd7121b59b1dbbb5346e258b4c616ce0a45c6a7f5c81b83f6c020f",
+      "bytes": 24252
+    },
+    "atlases/shoulder.png": {
+      "source": "assets/models/player/animated/armor_textures/jian_636c11b729f7_2x.png",
+      "sha256": "cea7181983e7fbdd0b0e57c318ee5e24e463b34739fe5022bab582add8dc87c9",
+      "bytes": 237683
+    },
+    "guides/shoulder_uv.svg": {
+      "source": "docs/art/strike_runtime_v1/guides/shoulder_uv.svg",
+      "sha256": "a6a8a76fa2621bb032e17a7f7b32151405047feddab17360d2024b66a44bc2a6",
+      "bytes": 9606
+    },
+    "atlases/hand.png": {
+      "source": "assets/models/player/animated/armor_textures/hand_1a8b5c7e8dee_2x.png",
+      "sha256": "fd84255464fdbad923108e20b6359d6892a4406254c9500ac249f22d88e409d4",
+      "bytes": 191482
+    },
+    "guides/hand_uv.svg": {
+      "source": "docs/art/strike_runtime_v1/guides/hand_uv.svg",
+      "sha256": "bdd8f69638cc874e057ccf8c299d5a09055e62a1c9faaa3af35f651e24a12922",
+      "bytes": 12300
+    },
+    "atlases/foot.png": {
+      "source": "assets/models/player/animated/armor_textures/foot_efec64cd00d2_2x.png",
+      "sha256": "fc5aabe890404edf1fddb3ad7cdfb0b9dbc2d6e0eafee4bceecec0d53d4f7f81",
+      "bytes": 237796
+    },
+    "guides/foot_uv.svg": {
+      "source": "docs/art/strike_runtime_v1/guides/foot_uv.svg",
+      "sha256": "fa29b0201d1a00b4e34ffd05aa64edfa1d509f5b669265d2679a07b655922ead",
+      "bytes": 15492
+    },
+    "runtime_config.json": {
+      "source": "docs/art/strike_runtime_v1/runtime_config.json",
+      "sha256": "078a86962adcb1955efc3e068f25003ba2e5e9ec4a911222d4ab089d78027bca",
+      "bytes": 3175
+    },
+    "scripts/inspect_sources.gd": {
+      "source": "tools/armor_runtime_v1/inspect_sources.gd",
+      "sha256": "71995ecdbfd426b0b99503f856909b26f3ea489ee01b7811947d7c8909c08ff5",
+      "bytes": 4261
+    }
+  },
+  "texture_slots": {
+    "head": {
+      "node": "ArmorHead_04",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/head_0fec56bddc36_2x.png",
+      "snapshot": "docs/art/strike_runtime_v1/revisions/original_source_v1/atlases/head.png",
+      "original_sha256": "294809b57133048fadaa8292bd10bed32309f3e5edf3f933230c3f976dbc491e",
+      "coordinates": 198,
+      "charts": 8,
+      "triangles": 180
+    },
+    "body": {
+      "node": "ArmorBody_04",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/body_c4fabbd7d47a_2x.png",
+      "snapshot": "docs/art/strike_runtime_v1/revisions/original_source_v1/atlases/body.png",
+      "original_sha256": "a5ee77df2e13753f58da7f9ed49e02e574b9be5b92dff0898363aae85f116599",
+      "coordinates": 207,
+      "charts": 5,
+      "triangles": 214
+    },
+    "shoulder": {
+      "node": "ArmorBody_04",
+      "surface": 1,
+      "original_texture": "assets/models/player/animated/armor_textures/jian_636c11b729f7_2x.png",
+      "snapshot": "docs/art/strike_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+      "original_sha256": "cea7181983e7fbdd0b0e57c318ee5e24e463b34739fe5022bab582add8dc87c9",
+      "coordinates": 76,
+      "charts": 3,
+      "triangles": 84
+    },
+    "hand": {
+      "node": "ArmorHand_04",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/hand_1a8b5c7e8dee_2x.png",
+      "snapshot": "docs/art/strike_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+      "original_sha256": "fd84255464fdbad923108e20b6359d6892a4406254c9500ac249f22d88e409d4",
+      "coordinates": 106,
+      "charts": 3,
+      "triangles": 108
+    },
+    "foot": {
+      "node": "ArmorFoot_04",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/foot_efec64cd00d2_2x.png",
+      "snapshot": "docs/art/strike_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+      "original_sha256": "fc5aabe890404edf1fddb3ad7cdfb0b9dbc2d6e0eafee4bceecec0d53d4f7f81",
+      "coordinates": 122,
+      "charts": 4,
+      "triangles": 136
+    }
+  },
+  "original_triangles": 722,
+  "original_bones": 28,
+  "original_uv_coordinate_count": 709,
+  "authoring_budget_from_original": 0.2
+}

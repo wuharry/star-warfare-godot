@@ -1,0 +1,85 @@
+{
+  "runtime_id": 4,
+  "design_id": "C-05",
+  "name": "Strike",
+  "slug": "strike",
+  "work": "docs/art/strike_runtime_v1",
+  "asset": "assets/armors/strike_v1",
+  "source": "docs/art/strike_runtime_v1/build/source.json",
+  "original_source_snapshot": "docs/art/strike_runtime_v1/revisions/original_source_v1/snapshot.json",
+  "parts": {
+    "ArmorHead_04": [
+      "head"
+    ],
+    "ArmorBody_04": [
+      "body",
+      "shoulder"
+    ],
+    "ArmorHand_04": [
+      "hand"
+    ],
+    "ArmorFoot_04": [
+      "foot"
+    ]
+  },
+  "original_triangles": 722,
+  "original_bones": 28,
+  "original_surface_count": 5,
+  "original_uv_coordinate_count": 709,
+  "original_total_geometry_limit": 0.2,
+  "original_total_uv_changed_fraction_per_surface_limit": 0.2,
+  "texture_slots": {
+    "head": {
+      "node": "ArmorHead_04",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/head_0fec56bddc36_2x.png",
+      "snapshot": "docs/art/strike_runtime_v1/revisions/original_source_v1/atlases/head.png",
+      "original_sha256": "294809b57133048fadaa8292bd10bed32309f3e5edf3f933230c3f976dbc491e",
+      "coordinates": 198,
+      "charts": 8,
+      "triangles": 180
+    },
+    "body": {
+      "node": "ArmorBody_04",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/body_c4fabbd7d47a_2x.png",
+      "snapshot": "docs/art/strike_runtime_v1/revisions/original_source_v1/atlases/body.png",
+      "original_sha256": "a5ee77df2e13753f58da7f9ed49e02e574b9be5b92dff0898363aae85f116599",
+      "coordinates": 207,
+      "charts": 5,
+      "triangles": 214
+    },
+    "shoulder": {
+      "node": "ArmorBody_04",
+      "surface": 1,
+      "original_texture": "assets/models/player/animated/armor_textures/jian_636c11b729f7_2x.png",
+      "snapshot": "docs/art/strike_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+      "original_sha256": "cea7181983e7fbdd0b0e57c318ee5e24e463b34739fe5022bab582add8dc87c9",
+      "coordinates": 76,
+      "charts": 3,
+      "triangles": 84
+    },
+    "hand": {
+      "node": "ArmorHand_04",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/hand_1a8b5c7e8dee_2x.png",
+      "snapshot": "docs/art/strike_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+      "original_sha256": "fd84255464fdbad923108e20b6359d6892a4406254c9500ac249f22d88e409d4",
+      "coordinates": 106,
+      "charts": 3,
+      "triangles": 108
+    },
+    "foot": {
+      "node": "ArmorFoot_04",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/foot_efec64cd00d2_2x.png",
+      "snapshot": "docs/art/strike_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+      "original_sha256": "fc5aabe890404edf1fddb3ad7cdfb0b9dbc2d6e0eafee4bceecec0d53d4f7f81",
+      "coordinates": 122,
+      "charts": 4,
+      "triangles": 136
+    }
+  },
+  "accepted_art_status": "pending_root_latest_reference_selection",
+  "geometry_authoring": "No local changes yet; each armor must use its own original source and approved art."
+}
