@@ -39,7 +39,11 @@ func _run() -> void:
 			continue
 		var selected := Visuals.reworked_scene_path(id)
 		_check(not selected.begins_with("res://assets/armors/angular/"), "Viper-only rollout replaced another armor %02d" % id)
-		if id != 6:
+		if id in [1, 2]:
+			_validate_adopted_materials(player, id, selected)
+		elif id == 11:
+			_check(selected == "res://assets/armors/cygni_v2/cygni.scn", "Adopted Cygni mapping changed")
+		elif id != 6:
 			_check(selected == "res://assets/equipment_refined/armors/armor_%02d.scn" % id, "Accepted armor mapping changed for %02d" % id)
 	for id: int in [0]:
 		var path := "res://assets/armors/angular/armor_%02d.scn" % id
@@ -126,6 +130,31 @@ func _run() -> void:
 	_check(_hash(real_save) == save_hash, "Real player save changed")
 	print("ANGULAR_ARMOR_%s sets=%d triangles=%d mixed_equipment=true animated_skin=true store_customize=true save_unchanged=%s" % ["PASS" if failures.is_empty() else "FAIL", tested, triangle_count, str(_hash(real_save) == save_hash)])
 	get_tree().quit(0 if failures.is_empty() else 1)
+
+
+func _validate_adopted_materials(player: WarfarePlayer, id: int, selected: String) -> void:
+	var asset_name := "fortune" if id == 1 else "tank"
+	_check(selected == "res://assets/armors/%s_v1/%s.scn" % [asset_name, asset_name], "Adopted %s mapping changed" % asset_name)
+	_equip(player, id)
+	var expected: Array[String] = []
+	for prefix: String in Visuals.ORIGINAL_PART_PREFIXES:
+		var name_key := prefix + "%02d" % id
+		expected.append(name_key)
+		var part := player.recovered_avatar.find_child(name_key, true, false) as MeshInstance3D
+		_check(part != null and part.visible and part.get_meta("armor_rework", "") == asset_name + "_runtime_v1", "Adopted armor missing or stale " + name_key)
+		if part == null: continue
+		_check(part.skin != null and part.get_node_or_null(part.skeleton) == player.recovered_skeleton, "Adopted armor uses another skeleton " + name_key)
+		var labels: Array[String] = ["head"]
+		if id == 2 and prefix == "ArmorHead_": labels.append("hand")
+		if prefix == "ArmorBody_": labels = ["body", "shoulder"]
+		if prefix == "ArmorHand_": labels = ["hand"]
+		if prefix == "ArmorFoot_": labels = ["foot"]
+		_check(part.mesh.get_surface_count() == labels.size(), "Adopted armor surface mapping changed " + name_key)
+		for surface: int in mini(part.mesh.get_surface_count(), labels.size()):
+			var material := part.get_active_material(surface) as StandardMaterial3D
+			var canonical := load("res://assets/armors/%s_v1/%s_diffuse.png" % [asset_name, labels[surface]]) as Texture2D
+			_check(material != null and canonical != null and material.albedo_texture == canonical and material.albedo_color.is_equal_approx(Color.WHITE), "Adopted armor lost canonical paint " + name_key + " surface %d" % surface)
+	_validate_visible(player.recovered_avatar, expected)
 
 
 func _validate_mesh(part: MeshInstance3D) -> void:
