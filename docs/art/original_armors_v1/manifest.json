@@ -5349,7 +5349,7 @@
       "scope": "helmet_only",
       "status": "user_requested_helmet_reference",
       "date_added": "2026-10-02",
-      "note": "以這張圖的頭盔作本次修改參考；可切換全身原圖。既有全身概念、三視與拆解尚未同步這次頭盔。",
+      "note": "本次附圖指定的頭頂、面甲與短下巴已重畫並套用到 Fortune ID 1。下方「新版 Fortune／原版／UV／遊戲動作比較」預設顯示頭盔近照，並保留本輪附圖作比對基準。原概念、三視與拆解圖保留原檔。",
       "visual_review": "已目視：綠色圓冠、鋼藍連續眉框、紫色面窗、短綠色下顎及斜切護頰。來源為使用者指定提交中的完整人物 JPG；本次直接引用原檔，沒有合成或重新生成。",
       "generation": {
         "tool": null,
@@ -5358,26 +5358,47 @@
       }
     },
     "C-03": {
-      "path": "../fusion_v2_generated/c03_tank_fusion.jpg",
-      "label": "Tank · 新版頭盔",
-      "source_commit": "25f11d9a52ab1bc2c4f63dc509f1fcb0943589f5",
-      "source_repo_path": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
-      "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49",
+      "path": "../tank_runtime_v1/approved_helmet_reference.png",
+      "label": "Tank · 最新使用者頭盔參考",
+      "scope": "helmet_only",
+      "status": "user_requested_helmet_reference",
+      "date_added": "2026-10-05",
+      "sha256": "e005a0fb50e04f8b3f25a91a379d2124802ba82a1c206294c232dc6dfde8ad73",
       "dimensions": [
         848,
         1264
       ],
-      "bytes": 634321,
-      "scope": "helmet_only",
-      "status": "user_requested_helmet_reference",
-      "date_added": "2026-10-02",
-      "note": "以這張圖的頭盔作本次修改參考；可切換全身原圖。既有全身概念、三視與拆解尚未同步這次頭盔。",
-      "visual_review": "已目視：藍綠分節頭冠、圓耳盤、橙金面窗與向上尖起的中央下巴護片。來源為使用者指定提交中的完整人物 JPG；本次直接引用原檔，沒有合成或重新生成。",
+      "bytes": 1522777,
+      "reference_source": "user_attachment",
+      "note": "本輪以這張使用者提供的頭盔圖為最高優先；舊fusion頭盔保留在previous_reference，概念／三視／拆解仍為原檔。實際v6模型與貼圖見下方比對。",
       "generation": {
         "tool": null,
         "prompt": null,
-        "status": "not_recorded_in_source_commit"
-      }
+        "status": "user_reference_not_a_new_generation"
+      },
+      "previous_reference": {
+        "path": "../fusion_v2_generated/c03_tank_fusion.jpg",
+        "label": "Tank · 新版頭盔",
+        "source_commit": "25f11d9a52ab1bc2c4f63dc509f1fcb0943589f5",
+        "source_repo_path": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
+        "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49",
+        "dimensions": [
+          848,
+          1264
+        ],
+        "bytes": 634321,
+        "scope": "helmet_only",
+        "status": "user_requested_helmet_reference",
+        "date_added": "2026-10-02",
+        "note": "此圖保留作 Tank 頭盔參考；遊戲素材以本輪選定的藍綠部件美術與大金色面罩為準。下方「新版 Tank／原版／UV／遊戲動作比較」可查看選定素材及實際套用效果。既有概念、三視與拆解圖保留原檔。",
+        "visual_review": "已目視：藍綠分節頭冠、圓耳盤、橙金面窗與向上尖起的中央下巴護片。來源為使用者指定提交中的完整人物 JPG；本次直接引用原檔，沒有合成或重新生成。",
+        "generation": {
+          "tool": null,
+          "prompt": null,
+          "status": "not_recorded_in_source_commit"
+        }
+      },
+      "source_repo_path": "docs/art/tank_runtime_v1/approved_helmet_reference.png"
     },
     "C-05": {
       "path": "../fusion_v2_generated/c05_strike_fusion.jpg",

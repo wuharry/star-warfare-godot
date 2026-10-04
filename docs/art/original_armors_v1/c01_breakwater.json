@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "design_id": "C-01",
-  "runtime_id": null,
+  "runtime_id": 0,
   "working_name_zh": "堤衛",
   "working_name_en": "BREAKWATER",
   "status": "concept_ready_for_user_review",
@@ -12,7 +12,7 @@
     "scope": "armor_visual_design",
     "action": "保留目前頭盔與身甲設計。"
   },
-  "runtime_implemented": false,
+  "runtime_implemented": true,
   "proposed_role_replacement": {
     "legacy_visual_id": 0,
     "legacy_set_name": "Viper",
@@ -108,10 +108,10 @@
     "concept": "generated_and_visually_checked_pending_user_review",
     "turnaround": "generated_and_visually_checked_pending_user_review",
     "construction": "generated_and_visually_checked_pending_user_review",
-    "original_mesh": "not_started",
-    "uv_atlas": "not_started",
-    "runtime_textures": "not_started",
-    "rig_skinning": "not_started",
+    "original_mesh": "original_model_retained_with_local_helmet_shape_refinement",
+    "uv_atlas": "original_charts_retained_previous_local_uv_edits_under_15_percent_no_added_edits_in_style_pass",
+    "runtime_textures": "five_generated_diffuse_maps_style_unified_integrated_and_verified",
+    "rig_skinning": "original_skin_preserved_and_pose_verified",
     "abilities": "proposal_only"
   },
   "images": {
@@ -292,9 +292,54 @@
   "helmet_studies": {
     "comparison_page": "../viper_runtime_v2/index.html",
     "link_label": "新版 Viper／原版／UV／遊戲動作比較 ↗",
-    "latest_variant": "viper_runtime_v2_concept_match_v8",
+    "latest_variant": "viper_runtime_v2_style_unified_v9",
     "status": "runtime_integrated_pending_user_art_review",
-    "scope": "full_concept_armor_repaint_four_modular_game_parts_five_diffuse_maps_local_chest_abdomen_uv_inherited_head_v7_uv_original_skin",
-    "note": "整套以指定鋼藍／炭黑裝甲與紫色面甲為設計基準；身體僅調整32/221個胸腹UV（14.48%），肩甲與四肢UV保持原版。頭盔沿用v7：18/130個面甲UV（13.85%）；全套50/667（7.50%）。UV座標及分區數量不變，20%為修改座標占比。含原版、修改前v7、指定稿、UV與遊戲動作／關卡比較。"
+    "scope": "texture_style_unification_five_diffuse_maps_current_accepted_design_geometry_uv_rig_unchanged",
+    "note": "完成整套貼圖畫法第一輪統一，保留已確認新版頭盔與大甲片配置。相對修改前新增 UV／模型改動量為0，降低細白磨線並改用寬柔高光；仍有部分亮邊，待使用者美術評價。",
+    "style_comparison_page": "../armor_style_unification_v1/index.html#viper",
+    "mandatory_style_prompt": "../armor_style_unification_v1/base_prompt.txt"
+  },
+  "runtime_delivery": {
+    "status": "runtime_integrated_pending_user_art_review",
+    "scope": "visual_assets_only_stats_and_abilities_remain_proposals",
+    "runtime_id": 0,
+    "scene": "assets/armors/viper_v2/viper.scn",
+    "comparison_page": "../viper_runtime_v2/index.html",
+    "manifest": "../viper_runtime_v2/manifest.json",
+    "uv_limit": 0.15,
+    "original_bones_weights_skin_retained": true,
+    "uv_changed_coordinates_by_material": {
+      "head": [
+        18,
+        130
+      ],
+      "body": [
+        32,
+        221
+      ],
+      "shoulder": [
+        0,
+        74
+      ],
+      "hand": [
+        0,
+        120
+      ],
+      "foot": [
+        0,
+        122
+      ]
+    },
+    "head_maximum_local_displacement_ratio": 0.10237625,
+    "date": "2026-10-04",
+    "selected_head_generation": "viper_head_style_unified_v9",
+    "style_optimization": {
+      "status": "runtime_integrated_pending_user_art_review",
+      "comparison_page": "../armor_style_unification_v1/index.html#viper",
+      "mandatory_prompt": "../armor_style_unification_v1/base_prompt.txt",
+      "added_geometry_changes": 0,
+      "added_uv_changes": 0,
+      "verification": "../armor_style_unification_v1/validate.json"
+    }
   }
 }

@@ -1,0 +1,108 @@
+{
+  "status": "PASS",
+  "date": "2026-10-05",
+  "scope": "runtime metadata and links for C03-C06 only; concept art and gameplay proposals unchanged",
+  "unchanged_other_catalog_items": 42,
+  "before_catalog_item_hashes": {
+    "C-01": "b9635521d55a924248da85b32658a9c6284f3f7513fbeca0e631fcffafa3ceb3",
+    "C-02": "fcfe48e3b8ae79cefba870b81b13572faad794fb7076046e22f2d43f384d1b76",
+    "C-03": "412849486e3b0fc89d32b513513c004d5e8a652ae499b11bf46e1bfd50cdf930",
+    "C-04": "e34e10af47b06050730cd8ea35c2d80ed59a47d9a4b6de3263bc4f147fc1177a",
+    "C-05": "e0059cbb10f2c88e35d786ce82b64e4b126fba840033ff4ae4f106f83f395971",
+    "C-06": "b31610000b5cd80e20b4f0936e8dde2188c256a5edaf81262238b2354e2009f5",
+    "C-07": "fc61d2eb416e899fb2710db3582d631b19fe1e3d300fd292cafcc720fe8c9f3f",
+    "C-08": "d78b0cc9ef5002d87abccab186d47d494855c9eb11671114e253c3ea8aa84703",
+    "C-09": "5aef73fa03b397166a80264967fb3703a3debdeeb39072f5055889651a6d85ac",
+    "C-10": "ac8b9587aef8c2bc92dd68106bbaeacef7cf5b2b2389f1d07ec7729763171f59",
+    "C-11": "d65c8565cc4f54303df02f82317d70975305cb81b1fc3a136fad26e4c922e5c7",
+    "C-12": "ec50e2da20753950ae29c9a26d54cbeb38489230d32162902d584ee4e17176ea",
+    "C-13": "25bd677abdf8142028902a4ac4893d0d3904803c0ac95e29b84686524b741a0c",
+    "C-14": "2e86368e9c31feb811bfca09d08df2cbec21430a44fd49d33a1d2f57e83db32a",
+    "C-15": "768f1087b94f626a8929579babba713ba110c044c1671fd83ccba3780c953a24",
+    "C-16": "d605aa6c71dd6ec0a778a35400748367ad12d2ae36684703865a1c97fac87d27",
+    "C-17": "d2a64b6561d1385392869c13e3300f255c73a6e56b316732bbe64f3d07722173",
+    "C-18": "874a441e167a6b3bfd810c9d0eacf2e00ab8f4e8ae6f61a2224bd918e04edf76",
+    "C-19": "5a5c8c08806036a93ce6a1f3c23805d5af0a8ea90f83ffd832f458ff28ecf4b0",
+    "C-20": "e6cc08dcbb9792a65638f0bc994a1096c9ef2cd66b75c2b3c2dcc1bd91d251a9",
+    "C-21": "90404c41fa46813f3389c1fb7f0b3efdfe019700b1919733b99c57c31db1bdef",
+    "B-01": "8fdd93f329ae985b46555eeccac7bf8e436b5d9e74e0137e8a0bf5834e54f8f4",
+    "B-02": "661140ad67371d233503285ab1cd14648522bcfb16fd22aaea2574bb502d79bf",
+    "B-03": "f4f85da5c40fc487cf2d2264dfc035f244259e1fd6013e16a171fa794be548c8",
+    "B-04": "8e54fd7d0e653e7c280f903f1ff06998533ad2682eda089ae7c9990b3823fcb7",
+    "B-05": "f67afdb41a515f625c2f20f9ed7e39bd1cae9ef26c545232287445673dde2460",
+    "B-06": "5bfd2edf38607dd295b1d2e5c9d3463b5a271e00dd9e885dbffcd86ce9d465f9",
+    "B-07": "00e340ab775008eb88caf82faef03bbbec702e74ef1acf5b1997f070893b76d8",
+    "B-08": "2c2e342fbd02923bb818596193a6ef94aaadb8657ba486de2b8489ab10b41831",
+    "B-09": "152e73d992af1704720e74b2909b17e2a4a27edcc6113d01baec9e3b4f4e1758",
+    "B-10": "d5704e49c5efe10b381f0df90c3bda37af0136cf81af23eedc9a1828ddca4c36",
+    "B-11": "2f8b85469af1192b1d86c172b627ec16bc93c60291c6ff9cf8ad4a86cf59be99",
+    "B-12": "30078e8b13cf9842174630a3ba21ebcd2ff272a00b5c70490ea14db176ca566b",
+    "B-13": "ccc52d57eee5a53fea427dc38c4130a163dcc16521ad50d4bdc0c2d265c5b4bd",
+    "B-14": "ec1dbc3f32a34ac11bec7ee6bc543bfaf6dadcab5f6ffe2c12b195f4964d47a7",
+    "B-15": "d84fd8da8493ed5e38d1a376ee9adbdb7031e7a15fc02696323fe6d8f0fbac87",
+    "B-16": "57602bf62060a7ab179385e94ae83fd61afb713a608ee3052147f1e73992382a",
+    "B-17": "546ec009ebc5d0dea2a62151ffbb7558ae8b0fd098a9f5190522296a8fa5738d",
+    "B-18": "bae4513cda116421898c0705e861122dba48b94b1f5d946ebbdc550a6c4b10e1",
+    "B-19": "996839f31bf88abfaad8bd7d761650e728dfbdb049371d9583ffa2236f18aa02",
+    "B-20": "0035f299e27d56de6dabaf587b89a23523bf5cdb9dde2ff028e19608243344d1",
+    "B-21": "d39c29cdb9e47525439ad48194527abbb0b1bb44d9dc7a512a1cc7f513dffefb",
+    "B-22": "7bb19f95519a30c95f01b765e218218c7362c1df2f01e53a367ce82e6658d97f",
+    "B-23": "6ce19256c813be0acef954ab36c75c85068bea61e596e51d2ccf5e605f5388d5",
+    "B-24": "4f35699887df6ed6429022b806eb82768e5c42d7d46cc924ff558929c96fa245",
+    "B-25": "a5a961aa75a43081a172af0e912fe1ee12ba4782dead2e29297269683863ac01"
+  },
+  "updated_runtime_records": [
+    {
+      "design_id": "C-03",
+      "name": "tank",
+      "scene": "assets/armors/tank_v1/tank.scn",
+      "head_maximum_local_displacement_ratio": 0.11845644818692949,
+      "additional_uv_changes": 0,
+      "manifest_sha256": "24ab1e99907ea3d29da4898246fd90e93782d4d91301b335297b0b1e6c27ecd3"
+    },
+    {
+      "design_id": "C-04",
+      "name": "hydra",
+      "scene": "assets/armors/hydra_v1/hydra.scn",
+      "head_maximum_local_displacement_ratio": 0.14743986641374077,
+      "additional_uv_changes": 0,
+      "manifest_sha256": "9296a125ebac679470d34713ce005e3a0c6e8526f2991be63b83d8880735005d"
+    },
+    {
+      "design_id": "C-05",
+      "name": "strike",
+      "scene": "assets/armors/strike_v1/strike.scn",
+      "head_maximum_local_displacement_ratio": 0.09291058373217086,
+      "additional_uv_changes": 0,
+      "manifest_sha256": "0cc23201b8b29e52ab318e3522e450de994f01e8e33571728bd86e86a25e7728"
+    },
+    {
+      "design_id": "C-06",
+      "name": "titan",
+      "scene": "assets/armors/titan_v1/titan.scn",
+      "head_maximum_local_displacement_ratio": 0.10308802453142658,
+      "additional_uv_changes": 0,
+      "manifest_sha256": "f90cb2cc6540d41059a4905051bb8321251debc9b1f75fe74bb6b7ecdb6529d1"
+    }
+  ],
+  "gallery_sha256": "bc4da61a6fa6b4808d3f78d706884b697d994442ac6eeca9651b202df84eda52",
+  "template_matches_current_gallery_outside_catalog": true,
+  "runtime_ids_verified": {
+    "C-04": 3,
+    "C-05": 4,
+    "C-06": 5
+  },
+  "previous_legacy_concept_pack_validation": {
+    "status": "FAIL",
+    "report": "runtime_gallery_legacy_validate.json",
+    "scope": "Legacy 88 concept-sheet pack; separate from current runtime/master/SCN/GLB/native and six-armor browser verification",
+    "note": "Legacy whole-pack report has pre-existing prompt/source hash and status-contract mismatches; no hash tolerance weakened or unrelated armor metadata changed."
+  },
+  "legacy_concept_pack_validation": {
+    "status": "PASS",
+    "error_count": 0,
+    "report": "runtime_gallery_validate.json",
+    "report_sha256": "291ef4573c3609b92ac46515be4985ab93c178c81c4f7cdc739088704bcceed4",
+    "scope": "46 mapped designs and 88 selected concept PNGs, plus current verified visual-runtime metadata; no engine execution or user art approval"
+  }
+}

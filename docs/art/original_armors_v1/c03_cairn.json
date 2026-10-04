@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "design_id": "C-03",
-  "runtime_id": null,
+  "runtime_id": 2,
   "working_name_zh": "岩樁",
   "working_name_en": "CAIRN",
   "status": "concept_ready_for_user_review",
-  "runtime_implemented": false,
+  "runtime_implemented": true,
   "proposed_role_replacement": {
     "legacy_visual_id": 2,
     "legacy_set_name": "Tank",
@@ -94,10 +94,10 @@
     "concept": "generated_and_visually_checked_pending_user_review",
     "turnaround": "generated_and_visually_checked_pending_user_review",
     "construction": "generated_and_visually_checked_pending_user_review",
-    "original_mesh": "not_started",
-    "uv_atlas": "not_started",
-    "runtime_textures": "not_started",
-    "rig_skinning": "not_started",
+    "original_mesh": "original_model_retained_with_measured_local_head_refinement",
+    "uv_atlas": "original_charts_counts_preserved_under_original_total_20_percent",
+    "runtime_textures": "five_native_diffuse_maps_integrated_and_verified",
+    "rig_skinning": "original_28_bone_skin_and_animation_preserved_and_pose_verified",
     "abilities": "proposal_only"
   },
   "images": {
@@ -294,25 +294,138 @@
     "revision_direction": "沒有之前原版的 tank 的那種強烈的風格；護目鏡或是面罩保持原本的話勒。"
   },
   "helmet_art": {
-    "path": "../fusion_v2_generated/c03_tank_fusion.jpg",
-    "label": "Tank · 新版頭盔",
-    "source_commit": "25f11d9a52ab1bc2c4f63dc509f1fcb0943589f5",
-    "source_repo_path": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
-    "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49",
+    "path": "../tank_runtime_v1/approved_helmet_reference.png",
+    "label": "Tank · 最新使用者頭盔參考",
+    "scope": "helmet_only",
+    "status": "user_requested_helmet_reference",
+    "date_added": "2026-10-05",
+    "sha256": "e005a0fb50e04f8b3f25a91a379d2124802ba82a1c206294c232dc6dfde8ad73",
     "dimensions": [
       848,
       1264
     ],
-    "bytes": 634321,
-    "scope": "helmet_only",
-    "status": "user_requested_helmet_reference",
-    "date_added": "2026-10-02",
-    "note": "以這張圖的頭盔作本次修改參考；可切換全身原圖。既有全身概念、三視與拆解尚未同步這次頭盔。",
-    "visual_review": "已目視：藍綠分節頭冠、圓耳盤、橙金面窗與向上尖起的中央下巴護片。來源為使用者指定提交中的完整人物 JPG；本次直接引用原檔，沒有合成或重新生成。",
+    "bytes": 1522777,
+    "reference_source": "user_attachment",
+    "note": "本輪以這張使用者提供的頭盔圖為最高優先；舊fusion頭盔保留在previous_reference，概念／三視／拆解仍為原檔。實際v6模型與貼圖見下方比對。",
     "generation": {
       "tool": null,
       "prompt": null,
-      "status": "not_recorded_in_source_commit"
+      "status": "user_reference_not_a_new_generation"
+    },
+    "previous_reference": {
+      "path": "../fusion_v2_generated/c03_tank_fusion.jpg",
+      "label": "Tank · 新版頭盔",
+      "source_commit": "25f11d9a52ab1bc2c4f63dc509f1fcb0943589f5",
+      "source_repo_path": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
+      "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49",
+      "dimensions": [
+        848,
+        1264
+      ],
+      "bytes": 634321,
+      "scope": "helmet_only",
+      "status": "user_requested_helmet_reference",
+      "date_added": "2026-10-02",
+      "note": "此圖保留作 Tank 頭盔參考；遊戲素材以本輪選定的藍綠部件美術與大金色面罩為準。下方「新版 Tank／原版／UV／遊戲動作比較」可查看選定素材及實際套用效果。既有概念、三視與拆解圖保留原檔。",
+      "visual_review": "已目視：藍綠分節頭冠、圓耳盤、橙金面窗與向上尖起的中央下巴護片。來源為使用者指定提交中的完整人物 JPG；本次直接引用原檔，沒有合成或重新生成。",
+      "generation": {
+        "tool": null,
+        "prompt": null,
+        "status": "not_recorded_in_source_commit"
+      }
+    },
+    "source_repo_path": "docs/art/tank_runtime_v1/approved_helmet_reference.png"
+  },
+  "helmet_studies": {
+    "comparison_page": "../tank_runtime_v1/index.html",
+    "link_label": "Tank · 原版／新版／UV／動作比對 ↗",
+    "latest_variant": "helmet_refinement_v6",
+    "status": "runtime_integrated_pending_user_art_review",
+    "scope": "head_geometry_and_native_atlas_refinement",
+    "note": "依最新頭盔圖收薄眉沿、擴大連續金色面罩與收短下護片；頭部局部修形與v6原生貼圖，身體四圖保留v2。後腦取樣補齊，沒有新增UV；既有頭4/149、胸12/210的UV差異仍計入真原版總額。部分低模折面及接觸亮邊保留，待使用者美術評價。",
+    "style_comparison_page": "../armor_style_unification_v1/index.html#tank",
+    "mandatory_style_prompt": "../armor_style_unification_v1/tank_helmet_refinement_prompt.txt"
+  },
+  "runtime_delivery": {
+    "status": "runtime_integrated_pending_user_art_review",
+    "scope": "visual_assets_only_stats_and_abilities_remain_proposals",
+    "runtime_id": 2,
+    "scene": "assets/armors/tank_v1/tank.scn",
+    "comparison_page": "../tank_runtime_v1/index.html",
+    "manifest": "../tank_runtime_v1/manifest.json",
+    "reference_art": "../tank_runtime_v1/approved_helmet_reference.png",
+    "body_reference_art": "images/c03_concept.png",
+    "uv_limit": 0.2,
+    "actual_original_validation_limit": 0.2,
+    "uv_changed_coordinates_by_surface": {
+      "ArmorBody_02:0": [
+        12,
+        210
+      ],
+      "ArmorBody_02:1": [
+        0,
+        120
+      ],
+      "ArmorFoot_02:0": [
+        0,
+        122
+      ],
+      "ArmorHand_02:0": [
+        0,
+        116
+      ],
+      "ArmorHead_02:0": [
+        4,
+        149
+      ],
+      "ArmorHead_02:1": [
+        0,
+        14
+      ]
+    },
+    "additional_uv_changes": 0,
+    "head_maximum_local_displacement_ratio": 0.11845644818692949,
+    "head_dimension_delta_fraction": [
+      0.0,
+      0.02421835297350694,
+      0.0
+    ],
+    "original_bones_weights_skin_retained": true,
+    "original_vertex_uv_triangle_counts_retained": true,
+    "date": "2026-10-05",
+    "selected_head_generation": "helmet_refinement_v6",
+    "selected_native_generations": {
+      "body": "style_unified_v2",
+      "shoulder": "style_unified_v2",
+      "hand": "style_unified_v2",
+      "foot": "style_unified_v2",
+      "head": "helmet_refinement_v6"
+    },
+    "original_source_snapshot": "../tank_runtime_v1/revisions/before_style_unification_v2/snapshot.json",
+    "runtime_loader": "scripts/game/armor_visuals.gd",
+    "engineering_status": "PASS",
+    "art_review_status": "pending_user_review",
+    "style_optimization": {
+      "status": "runtime_integrated_pending_user_art_review",
+      "stage": "head_geometry_and_native_atlas_refinement",
+      "comparison_page": "../armor_style_unification_v1/index.html#tank",
+      "mandatory_prompt": "../armor_style_unification_v1/tank_helmet_refinement_prompt.txt",
+      "prompt_set": [
+        "../tank_runtime_v1/prompts/body_diffuse_style_unified_v2.txt",
+        "../tank_runtime_v1/prompts/foot_diffuse_style_unified_v2.txt",
+        "../tank_runtime_v1/prompts/hand_diffuse_style_unified_v2.txt",
+        "../tank_runtime_v1/prompts/head_diffuse_helmet_refinement_v6.txt",
+        "../tank_runtime_v1/prompts/shoulder_diffuse_style_unified_v2.txt"
+      ],
+      "latest_variant": "helmet_refinement_v6",
+      "added_uv_changes": 0,
+      "user_authorized_original_ceiling": 0.2,
+      "actual_original_validation_limit": 0.2,
+      "baseline": "../tank_runtime_v1/revisions/before_helmet_refinement_v3/snapshot.json",
+      "verification": "../armor_style_unification_v1/tank_helmet_refinement_validate.json",
+      "note": "依最新頭盔圖收薄眉沿、擴大連續金色面罩與收短下護片；頭部局部修形與v6原生貼圖，身體四圖保留v2。後腦取樣補齊，沒有新增UV；既有頭4/149、胸12/210的UV差異仍計入真原版總額。部分低模折面及接觸亮邊保留，待使用者美術評價。",
+      "added_geometry_changes": 86,
+      "body_style_mandatory_prompt": "../armor_style_unification_v1/base_prompt.txt"
     }
   }
 }

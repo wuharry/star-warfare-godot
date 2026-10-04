@@ -1,0 +1,179 @@
+{
+  "result": "PASS",
+  "expected_designs": 46,
+  "mapped_designs": 46,
+  "expected_selected_images": 88,
+  "manifest_selected_images": 88,
+  "missing_pngs": [],
+  "missing_manifest_entries": [],
+  "error_count": 0,
+  "errors": [],
+  "runtime_evidence": [
+    {
+      "design_id": "C-01",
+      "runtime_id": 0,
+      "manifest": "docs/art/viper_runtime_v2/manifest.json",
+      "manifest_sha256": "e806aea046e6777b750634e7055b9aec9e890ad7c0725199176941b26f8cb11e",
+      "source_sha256": "71f61e014e3ea33fad79b91c49b559bb87091a18eada8c6ec3339813b1b4565c",
+      "scene_sha256": "2b475fbb1f515555bbb602dbb300087a51c2f3b0ed7cc8acf7b94325858e46e6",
+      "combined_current_report": "docs/art/armor_style_unification_v1/validate.json",
+      "combined_current_report_sha256": "9263a1619cf78cb9bad0495805bce1d6260581f36646236d6f4fa67b85987d8b"
+    },
+    {
+      "design_id": "C-02",
+      "runtime_id": 1,
+      "manifest": "docs/art/fortune_runtime_v1/manifest.json",
+      "manifest_sha256": "ff7128f0746dc6e9b27788dea008ab05eb57d11f8267f4acdd2d46cad152523d",
+      "source_sha256": "932227eab68d09f5a3b1778ff43090ab07a3b629ed365a8c0a79e827cef81132",
+      "scene_sha256": "499da48815ccf3eb140355b3ab16bcea2549603abfb5b91a26f06357ab80b724",
+      "combined_current_report": "docs/art/armor_style_unification_v1/validate.json",
+      "combined_current_report_sha256": "9263a1619cf78cb9bad0495805bce1d6260581f36646236d6f4fa67b85987d8b"
+    },
+    {
+      "design_id": "C-03",
+      "runtime_id": 2,
+      "manifest": "docs/art/tank_runtime_v1/manifest.json",
+      "manifest_sha256": "24ab1e99907ea3d29da4898246fd90e93782d4d91301b335297b0b1e6c27ecd3",
+      "source_sha256": "fb4371b450799b9038d6ef04bf3dc44bcc629ab7520834768decab5908917000",
+      "scene_sha256": "daa91815d79c729bf767a05f247e1dffa840edb620023e38b078f2db7c1b5af8",
+      "combined_current_report": "docs/art/armor_style_unification_v1/validate.json",
+      "combined_current_report_sha256": "9263a1619cf78cb9bad0495805bce1d6260581f36646236d6f4fa67b85987d8b"
+    },
+    {
+      "design_id": "C-04",
+      "runtime_id": 3,
+      "manifest": "docs/art/hydra_runtime_v1/manifest.json",
+      "manifest_sha256": "9296a125ebac679470d34713ce005e3a0c6e8526f2991be63b83d8880735005d",
+      "source_sha256": "2f0411d4c44673ed0604e971d16de8c17be63096c7814ae27ed95211d93257fa",
+      "scene_sha256": "3dcdb111e499c95879a8d2fedbaa440fab6938c2bbfeb1ca4a966704f2432a5d",
+      "combined_current_report": "docs/art/armor_style_unification_v1/validate.json",
+      "combined_current_report_sha256": "9263a1619cf78cb9bad0495805bce1d6260581f36646236d6f4fa67b85987d8b"
+    },
+    {
+      "design_id": "C-05",
+      "runtime_id": 4,
+      "manifest": "docs/art/strike_runtime_v1/manifest.json",
+      "manifest_sha256": "0cc23201b8b29e52ab318e3522e450de994f01e8e33571728bd86e86a25e7728",
+      "source_sha256": "f16f9320b39ae5dd01f655135d4df1d5fbc98c893920a05dc51238cf0d9de987",
+      "scene_sha256": "09d47849d7a455e1cec9e5e3f40fb6bf2cb1a1fa9abd53a1d131db80b4f9a4c5",
+      "combined_current_report": "docs/art/armor_style_unification_v1/validate.json",
+      "combined_current_report_sha256": "9263a1619cf78cb9bad0495805bce1d6260581f36646236d6f4fa67b85987d8b"
+    },
+    {
+      "design_id": "C-06",
+      "runtime_id": 5,
+      "manifest": "docs/art/titan_runtime_v1/manifest.json",
+      "manifest_sha256": "f90cb2cc6540d41059a4905051bb8321251debc9b1f75fe74bb6b7ecdb6529d1",
+      "source_sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
+      "scene_sha256": "3eed445e8a1110d26469d49e5df866c3021090b27ae2f7a0f62e877912050bf0",
+      "combined_current_report": "docs/art/armor_style_unification_v1/validate.json",
+      "combined_current_report_sha256": "9263a1619cf78cb9bad0495805bce1d6260581f36646236d6f4fa67b85987d8b"
+    }
+  ],
+  "source_hash_evidence": [
+    {
+      "path": "scripts/core/armor_catalog.gd",
+      "historical_sha256": "010e2f4104f14138154f1587c822bf7fce5c9ba536b70206a7b1f98187e70884",
+      "current_sha256": "010e2f4104f14138154f1587c822bf7fce5c9ba536b70206a7b1f98187e70884",
+      "hash_normalization": "lf",
+      "match": "historical"
+    },
+    {
+      "path": "scripts/core/recovered_game_data.gd",
+      "historical_sha256": "e7c82bcc7df0320aa316d05a8718939a5f579ad6f3aaf8e657d9b7881151b626",
+      "current_sha256": "e7c82bcc7df0320aa316d05a8718939a5f579ad6f3aaf8e657d9b7881151b626",
+      "hash_normalization": "lf",
+      "match": "historical"
+    },
+    {
+      "path": "scripts/core/game_state.gd",
+      "historical_sha256": "5d3bbc2a1c8fba212ef8b7c3c0c395b3dae7afba85d57658321e4e1da369c1ce",
+      "current_sha256": "51f798ec5faa80f87729fbf783474e22c8bdcea390a8e4b21d36f07a575f28e5",
+      "hash_normalization": "lf",
+      "match": "audited_current"
+    },
+    {
+      "path": "scripts/game/player.gd",
+      "historical_sha256": "98aaebe3ad4d668da68c54c34758378c201ec16366e4ab5230b53852692f26fe",
+      "current_sha256": "69ebc3d519d61c8855ba8296e261dcdf8606eef3582087e414379d0fbb655bcd",
+      "hash_normalization": "lf",
+      "match": "audited_current"
+    },
+    {
+      "path": "scripts/game/armor_visuals.gd",
+      "historical_sha256": "257cc3cb38491a2db477a43cf74cda19322ac3a952d19033032d421ce7b46e11",
+      "current_sha256": "de8b9fc4e0840fb2eae879299c42008ebe44aaff5791e9a2756495a5014dfad5",
+      "hash_normalization": "lf",
+      "match": "audited_current"
+    }
+  ],
+  "legacy_prompt_hash_evidence": [
+    {
+      "path": "prompts/c02_turnaround.txt",
+      "raw_sha256": "955b8c32eda04e7bf1e9c764b618d100837696b4cfd211e8d1ed19aea4ff5899",
+      "recorded_sha256": "b01490d1d36cdf911d105d844f557230de2c115ed786e953faaa875e4b0de5fa",
+      "exact_reconstructed_crlf_sha256": "b01490d1d36cdf911d105d844f557230de2c115ed786e953faaa875e4b0de5fa",
+      "match": "legacy_CRLF_reconstruction_only",
+      "content_and_trailing_whitespace_unchanged": true
+    },
+    {
+      "path": "prompts/c02_construction.txt",
+      "raw_sha256": "fd18c84b25186afb1baede6b0d10866a22002ba4a808bee5336603d6811fce7d",
+      "recorded_sha256": "7172f61f5dbec88b2ee522a647c840d618aff02e3b9ad739ac008cb2c0d656d1",
+      "exact_reconstructed_crlf_sha256": "7172f61f5dbec88b2ee522a647c840d618aff02e3b9ad739ac008cb2c0d656d1",
+      "match": "legacy_CRLF_reconstruction_only",
+      "content_and_trailing_whitespace_unchanged": true
+    },
+    {
+      "path": "prompts/c03_concept.txt",
+      "raw_sha256": "3beddcb72a2351a118aa2ad8ba76f695a5f46dc13b17de20d5517044b5d13c8c",
+      "recorded_sha256": "f7fc7d1a6cf5a5ef185d56095ac0f8905fa55cf4179a2ae0c814770501766019",
+      "exact_reconstructed_crlf_sha256": "f7fc7d1a6cf5a5ef185d56095ac0f8905fa55cf4179a2ae0c814770501766019",
+      "match": "legacy_CRLF_reconstruction_only",
+      "content_and_trailing_whitespace_unchanged": true
+    },
+    {
+      "path": "prompts/c03_turnaround.txt",
+      "raw_sha256": "9f25c8566a15575df56d6f5f17def8d444f6dd947c3a114ab1ab19935b87070d",
+      "recorded_sha256": "90d8f37d6d032736927b3ae428e7866b7faaea87aab6e67ce1c84d38f7648da5",
+      "exact_reconstructed_crlf_sha256": "90d8f37d6d032736927b3ae428e7866b7faaea87aab6e67ce1c84d38f7648da5",
+      "match": "legacy_CRLF_reconstruction_only",
+      "content_and_trailing_whitespace_unchanged": true
+    },
+    {
+      "path": "prompts/c03_construction.txt",
+      "raw_sha256": "5a845ebc63a30511c30fe48414336a33801e18d598409c5fc33c72acc3eb68f7",
+      "recorded_sha256": "bc9802cb84b152c60d70696fc1fc7aa8a5edfaefa3f57d6abe5f4d8486c5a90f",
+      "exact_reconstructed_crlf_sha256": "bc9802cb84b152c60d70696fc1fc7aa8a5edfaefa3f57d6abe5f4d8486c5a90f",
+      "match": "legacy_CRLF_reconstruction_only",
+      "content_and_trailing_whitespace_unchanged": true
+    },
+    {
+      "path": "prompts/c04_concept.txt",
+      "raw_sha256": "934fdee0a82f33ef79ed69b9b6a83870f48833307509d38b1d2a82d51322471a",
+      "recorded_sha256": "6aeed045a21eefcbc853568f6e17253b607f5d35f77524fc02578a0ef0c4a4b4",
+      "exact_reconstructed_crlf_sha256": "6aeed045a21eefcbc853568f6e17253b607f5d35f77524fc02578a0ef0c4a4b4",
+      "match": "legacy_CRLF_reconstruction_only",
+      "content_and_trailing_whitespace_unchanged": true
+    },
+    {
+      "path": "prompts/c04_turnaround.txt",
+      "raw_sha256": "8f7993d393efa9880c4cb1849bee856744941158d0c67fe4f123392334c6bdfd",
+      "recorded_sha256": "b527a8fcd9919e7b88312309bf5d3b0507ffefd4152464e10572de6ae057150a",
+      "exact_reconstructed_crlf_sha256": "b527a8fcd9919e7b88312309bf5d3b0507ffefd4152464e10572de6ae057150a",
+      "match": "legacy_CRLF_reconstruction_only",
+      "content_and_trailing_whitespace_unchanged": true
+    },
+    {
+      "path": "prompts/c04_construction.txt",
+      "raw_sha256": "b533af4f12cfe6d1fc3ca3f0f94383dff211bafc6bfbda1f9f67a7a07a7db5dd",
+      "recorded_sha256": "c7f7011ce74bc912acc680bb43cbd72dc0ea103bb2c58a2b4a5aa6e6ba9bcdb5",
+      "exact_reconstructed_crlf_sha256": "c7f7011ce74bc912acc680bb43cbd72dc0ea103bb2c58a2b4a5aa6e6ba9bcdb5",
+      "match": "legacy_CRLF_reconstruction_only",
+      "content_and_trailing_whitespace_unchanged": true
+    }
+  ],
+  "mapping_current_source_audit": "docs/art/original_armors_v1/mapping_current_source_audit.json",
+  "mapping_current_source_audit_sha256": "ba00397ac3e529498af803ee75ac038d9c0cb3d331b34fab32174d7535456c9e",
+  "limits": "Artifact consistency only; visual review is recorded by humans/agents. No runtime test, asset integration or legal clearance."
+}

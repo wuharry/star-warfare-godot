@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "design_id": "C-06",
-  "runtime_id": null,
+  "runtime_id": 5,
   "working_name_zh": "補綴",
   "working_name_en": "PATCHWORK",
   "status": "concept_ready_for_user_review",
-  "runtime_implemented": false,
+  "runtime_implemented": true,
   "proposed_role_replacement": {
     "legacy_visual_id": 5,
     "legacy_set_name": "Titan",
@@ -93,10 +93,10 @@
     "concept": "generated_and_visually_checked_pending_user_review",
     "turnaround": "generated_and_visually_checked_pending_user_review",
     "construction": "generated_and_visually_checked_pending_user_review",
-    "original_mesh": "not_started",
-    "uv_atlas": "not_started",
-    "runtime_textures": "not_started",
-    "rig_skinning": "not_started",
+    "original_mesh": "original_model_retained_with_measured_local_head_refinement",
+    "uv_atlas": "original_uv_coordinates_charts_counts_unchanged",
+    "runtime_textures": "five_native_diffuse_maps_integrated_and_verified",
+    "rig_skinning": "original_28_bone_skin_and_animation_preserved_and_pose_verified",
     "abilities": "proposal_only"
   },
   "images": {
@@ -253,5 +253,91 @@
     },
     "optimized": "Halo 配對可借 EVA 大視野面罩/圓殼重裝的人形穿戴邏輯；面罩仍需原創外輪廓與真實頰部空間。",
     "optimization_common": "胸腰按人體分件、露出織物關節、短化易勾掛尖片；避免單眼機械臉與巨型四肢。"
+  },
+  "runtime_delivery": {
+    "status": "runtime_integrated_pending_user_art_review",
+    "scope": "visual_assets_only_stats_and_abilities_remain_proposals",
+    "runtime_id": 5,
+    "scene": "assets/armors/titan_v1/titan.scn",
+    "comparison_page": "../titan_runtime_v1/index.html",
+    "manifest": "../titan_runtime_v1/manifest.json",
+    "reference_art": "images/c06_concept.png",
+    "body_reference_art": "images/c06_concept.png",
+    "uv_limit": 0.2,
+    "actual_original_validation_limit": 0.2,
+    "uv_changed_coordinates_by_surface": {
+      "ArmorBody_05:0": [
+        0,
+        334
+      ],
+      "ArmorBody_05:1": [
+        0,
+        464
+      ],
+      "ArmorFoot_05:0": [
+        0,
+        258
+      ],
+      "ArmorHand_05:0": [
+        0,
+        257
+      ],
+      "ArmorHead_05:0": [
+        0,
+        294
+      ]
+    },
+    "additional_uv_changes": 0,
+    "head_maximum_local_displacement_ratio": 0.10308802453142658,
+    "head_dimension_delta_fraction": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "original_bones_weights_skin_retained": true,
+    "original_vertex_uv_triangle_counts_retained": true,
+    "date": "2026-10-05",
+    "selected_head_generation": "original_integration_v2_head",
+    "selected_native_generations": {
+      "body": "original_integration_v1",
+      "shoulder": "original_integration_v1",
+      "foot": "original_integration_v1",
+      "head": "original_integration_v2_head",
+      "hand": "original_integration_v2_hand"
+    },
+    "original_source_snapshot": "../titan_runtime_v1/revisions/original_source_v1/snapshot.json",
+    "runtime_loader": "scripts/game/armor_visuals.gd",
+    "engineering_status": "PASS",
+    "art_review_status": "pending_user_review",
+    "style_optimization": {
+      "status": "runtime_integrated_pending_user_art_review",
+      "stage": "first_runtime_integration_with_head_refinement",
+      "comparison_page": "../armor_style_unification_v1/index.html#titan",
+      "mandatory_prompt": "../armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "prompt_set": [
+        "../titan_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+        "../titan_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+        "../titan_runtime_v1/prompts/hand_diffuse_original_integration_v2_hand.txt",
+        "../titan_runtime_v1/prompts/head_diffuse_original_integration_v2_head.txt",
+        "../titan_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt"
+      ],
+      "latest_variant": "original_integration_v2_head",
+      "added_uv_changes": 0,
+      "user_authorized_original_ceiling": 0.2,
+      "actual_original_validation_limit": 0.2,
+      "baseline": "../titan_runtime_v1/revisions/original_source_v1/snapshot.json",
+      "verification": "../armor_style_unification_v1/titan_first_integration_validate.json",
+      "note": "依C06概念整合連續金色全罩玻璃、藍色封閉下顎，v2頭圖移除舊口鼻硬面甲線與橘冠燈；v2手圖使每側前臂正面三個金點成立。其餘三圖保留v1，UV0。原盒形耳護、低模折面及接觸亮邊仍待美術評價。"
+    }
+  },
+  "helmet_studies": {
+    "comparison_page": "../titan_runtime_v1/index.html",
+    "link_label": "Titan · 原版／新版／UV／動作比對 ↗",
+    "latest_variant": "original_integration_v2_head",
+    "status": "runtime_integrated_pending_user_art_review",
+    "scope": "first_runtime_integration_with_head_refinement",
+    "note": "依C06概念整合連續金色全罩玻璃、藍色封閉下顎，v2頭圖移除舊口鼻硬面甲線與橘冠燈；v2手圖使每側前臂正面三個金點成立。其餘三圖保留v1，UV0。原盒形耳護、低模折面及接觸亮邊仍待美術評價。",
+    "style_comparison_page": "../armor_style_unification_v1/index.html#titan",
+    "mandatory_style_prompt": "../armor_style_unification_v1/armor_runtime_integration_prompt.txt"
   }
 }

@@ -39,11 +39,19 @@ Thunder／C-07 恢復先前核准的 [B 新頭盔概念](../thunder_mk_compariso
 
 ## 從美術圖到遊戲
 
-本輪已執行的資料、圖檔與瀏覽器檢查見 [validation.json](validation.json)；檢查通過不等於使用者已選定造型或遊戲素材已完成。
+2026-10-04 起，已確認概念轉成遊戲貼圖後，必須執行 [貼圖畫法統一](../armor_style_unification_v1/README.md)，並在每張實送提示詞中包含 [必要基底 prompt](../armor_style_unification_v1/base_prompt.txt) 及該裝甲的補充。原版提供畫法、現有 UV 提供位置、已確認的新概念提供設計；三者不能互相取代。這個階段鎖定既有模型與 UV，先處理高光、邊線、黑縫、磨損及面甲反光，再驗收遊戲視角和動作。
+
+使用者若指出頭盔造型仍有問題，另用 [頭盔修正基底 prompt](../armor_style_unification_v1/helmet_refinement_prompt.txt) 和 [UV 定位規則](../armor_style_unification_v1/helmet_mapping_notes.md)。例如 Fortune 本輪修正圓冠、眉沿、面罩下緣和下巴，軟體局部改形仍以原版總 15% 工程預算計算，不能沿用純貼圖階段的零新增模型結論。
+
+2026-10-05：Tank／C-03（遊戲裝甲 ID 2）目前採用 `helmet_refinement_v6` 頭部貼圖與局部修形，身體四張保留 `style_unified_v2`。依使用者最新頭盔圖收薄眉沿、放大金色玻璃、收短中央下護片，並修正後腦取樣黑縫。相對真正原版，頭部最大局部位移為 11.8456%、頭高差異 2.4218%；本輪沒有追加 UV 改動，既有頭部 4/149、胸部 12/210 的 UV 取樣修正仍列入總額。工程採使用者授權的總 20% 上限，不能把前一版純貼圖零改動結論套到目前頭部。可查看 [Tank 原版／v2／目前實機比對](../armor_style_unification_v1/index.html#tank)，完整 prompt、來源與驗證在 [Tank 遊戲素材](../tank_runtime_v1/README.md)；造型仍待使用者評價。
+
+Hydra／C-04、Strike／C-05 與 Titan／C-06 的首次遊戲素材整合使用 [20% 整合基底 prompt](../armor_style_unification_v1/armor_runtime_integration_prompt.txt)，以各自真正原版 glTF、既有 UV 圖表、已確認概念及最新頭盔圖為依據。Viper／Fortune 提供寬柔手繪畫法，裝甲各自保留配色、面罩、冠線及肩部識別。本輪保留原 UV、頂點與三角形數量、骨架及動作，只在必要位置調整頭部幾何；20% 是相對原版的總工程上限，不是每次重做可以再加 20%。各套的實際貼圖、模型、提示詞、未採用稿與驗收在獨立 runtime 資料夾，統一由 [六套實機比對頁](../armor_style_unification_v1/index.html) 顯示目前完成狀態。
+
+早期概念集的檢查保留在 [validation.json](validation.json)。2026-10-05 的目前圖集完整性檢查見 [runtime_gallery_validate.json](runtime_gallery_validate.json)，C03–C06 資料同步與其他 42 款不變的檢查見 [runtime_catalog_update_validate.json](runtime_catalog_update_validate.json)；實際遊戲資產另以 [六套嚴格驗收](../armor_style_unification_v1/validate.json) 及 [比對頁瀏覽器驗收](../armor_style_unification_v1/review_browser/six_armor_final_browser_validate.json) 為準。最初舊規則的失敗報告仍保存於 [runtime_gallery_legacy_validate.json](runtime_gallery_legacy_validate.json)。這些工程檢查不代替使用者的美術評價。
 
 概念／三視／拆解 → 製作新 3D 模型 → UV 展開 → 專用貼圖 → 綁骨架與裝配 → 遊戲內混搭及動作測試。
 
-模型決定頭盔、肩甲與背包的立體輪廓；UV 指定每塊表面使用貼圖的哪個位置。整張人物概念圖不能直接捲到現有模型上；只換貼圖也不會得到新輪廓。這批圖是建模參考，尚未交付 mesh、UV、runtime 紋理或骨架。
+模型決定頭盔、肩甲與背包的立體輪廓；UV 指定每塊表面使用貼圖的哪個位置。整張人物概念圖不能直接捲到現有模型上；只換貼圖也不會得到新輪廓。這批 `images/` 圖檔是建模參考；已整合裝甲的 mesh、UV、runtime 紋理與骨架則以各套 `runtime_delivery` 指向的遊戲資產及驗收為準。
 
 ## 資料與来源
 

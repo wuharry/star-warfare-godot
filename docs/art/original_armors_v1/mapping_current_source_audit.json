@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "status": "AUDITED_CURRENT_MAPPING_AND_EQUIPMENT",
+  "date": "2026-10-05",
+  "scope": "Only these three explicitly reviewed current script versions supplement historical mapping evidence. Original mapping hashes remain unchanged. No arbitrary new source version is accepted.",
+  "sources": [
+    {
+      "path": "scripts/core/game_state.gd",
+      "historical_mapping_sha256": "5d3bbc2a1c8fba212ef8b7c3c0c395b3dae7afba85d57658321e4e1da369c1ce",
+      "current_sha256": "51f798ec5faa80f87729fbf783474e22c8bdcea390a8e4b21d36f07a575f28e5",
+      "hash_normalization": "lf",
+      "mapping_evidence_symbols": [
+        "equip_armor",
+        "get_bag_capacity"
+      ],
+      "audited_functions_sha256": {
+        "equip_armor": "8cd2bddb88504ba07a8ad352dcebc491f63adf9a0073103af0249a667a52ac79",
+        "equip_armor_set": "86f2b26b59462272e86a5c29d8719ef86b87e548c338c7036bb5c071dc9bbf1e",
+        "get_bag_capacity": "3dc8615ad9127761bb0b8e90f075aa2b089345c83a6150fcc877ee97d57b91e6"
+      }
+    },
+    {
+      "path": "scripts/game/player.gd",
+      "historical_mapping_sha256": "98aaebe3ad4d668da68c54c34758378c201ec16366e4ab5230b53852692f26fe",
+      "current_sha256": "69ebc3d519d61c8855ba8296e261dcdf8606eef3582087e414379d0fbb655bcd",
+      "hash_normalization": "lf",
+      "mapping_evidence_symbols": [
+        "_add_recovered_backpack"
+      ],
+      "audited_functions_sha256": {
+        "_add_recovered_backpack": "5651cd7acd49d84346ad73210b33d9dde0865e0b99afe3c13f5eacbde98d7a1c",
+        "_apply_recovered_armor_visibility": "9bceecd8ced4894d274d1055fa5c23068c99d8d438b62fd3b03abce864019767"
+      }
+    },
+    {
+      "path": "scripts/game/armor_visuals.gd",
+      "historical_mapping_sha256": "257cc3cb38491a2db477a43cf74cda19322ac3a952d19033032d421ce7b46e11",
+      "current_sha256": "de8b9fc4e0840fb2eae879299c42008ebe44aaff5791e9a2756495a5014dfad5",
+      "hash_normalization": "lf",
+      "mapping_evidence_symbols": [
+        "reworked_scene_path",
+        "ensure_parts"
+      ],
+      "audited_functions_sha256": {
+        "reworked_scene_path": "63a81a255f7ee240e949b5d35440bace2c35f8ffc073ed7eb5174e069b8b2e18",
+        "ensure_parts": "d7ef56c560fcf2edbdc1529a9da5fcb00b7c325727771ce635b694d41b7febb4",
+        "_ensure_reworked_parts": "e2dea152277883d3357d42edf05e591c62fa30535993251038bf2b996392b14a"
+      }
+    }
+  ],
+  "mapping_contract": {
+    "armor_visual_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "armor_parts": [
+      "head",
+      "body",
+      "arms",
+      "legs"
+    ],
+    "backpack_visual_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "backpack_attachment_bone": "fly_bag",
+    "callofmini_legacy_ids": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ]
+  },
+  "runtime_scene_overrides": {
+    "0": "res://assets/armors/viper_v2/viper.scn",
+    "1": "res://assets/armors/fortune_v1/fortune.scn",
+    "2": "res://assets/armors/tank_v1/tank.scn",
+    "3": "res://assets/armors/hydra_v1/hydra.scn",
+    "4": "res://assets/armors/strike_v1/strike.scn",
+    "5": "res://assets/armors/titan_v1/titan.scn",
+    "6": "res://assets/armors/thunder/thunder.scn",
+    "11": "res://assets/armors/cygni_v2/cygni.scn"
+  },
+  "audit_findings": [
+    "equip_armor still requires an existing owned ARMOR_ITEMS key and equips the catalog part_key; equip_armor_set still uses the unchanged Catalog item_key(part,set_id) for all four original parts.",
+    "get_bag_capacity still reads the independently equipped bag and catalog bag_slots, clamped to LOADOUT_MAX_SLOTS; no armor ability or concept stat proposal is activated by these visual routes.",
+    "Player visual IDs are read from equipped head/body/arms/legs catalog items and mapped to head/body/hand/foot mesh names. Backpack visual_id comes from the independently equipped bag and attaches to fly_bag.",
+    "ArmorVisuals uses exact approved scene routes for IDs0-5, preserves existing Thunder6 and Cygni11 routes, and keeps the generic visual_id fallback. Replacements preserve original part node names, mesh Skin and transform for animation and mixed equipment."
+  ],
+  "runtime_verification": "docs/art/armor_style_unification_v1/validate.json",
+  "runtime_verification_sha256": "9263a1619cf78cb9bad0495805bce1d6260581f36646236d6f4fa67b85987d8b"
+}

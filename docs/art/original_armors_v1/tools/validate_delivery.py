@@ -11,6 +11,7 @@ import argparse
 import ast
 import hashlib
 from html.parser import HTMLParser
+import importlib.util
 import json
 from pathlib import Path
 import re
@@ -22,6 +23,50 @@ ART = Path(__file__).resolve().parents[1]
 ROOT = ART.parents[2]
 REVIEWED = 'visually_reviewed_pending_user_selection'
 PRODUCTION_REVIEWED = 'generated_and_visually_checked_pending_user_review'
+SOURCE_AUDIT_SHA256 = 'ba00397ac3e529498af803ee75ac038d9c0cb3d331b34fab32174d7535456c9e'
+APPROVED_CURRENT_SOURCES = {
+    'scripts/core/game_state.gd': '51f798ec5faa80f87729fbf783474e22c8bdcea390a8e4b21d36f07a575f28e5',
+    'scripts/game/player.gd': '69ebc3d519d61c8855ba8296e261dcdf8606eef3582087e414379d0fbb655bcd',
+    'scripts/game/armor_visuals.gd': 'de8b9fc4e0840fb2eae879299c42008ebe44aaff5791e9a2756495a5014dfad5',
+}
+HISTORICAL_MAPPING_SOURCES = {
+    'scripts/core/armor_catalog.gd': '010e2f4104f14138154f1587c822bf7fce5c9ba536b70206a7b1f98187e70884',
+    'scripts/core/recovered_game_data.gd': 'e7c82bcc7df0320aa316d05a8718939a5f579ad6f3aaf8e657d9b7881151b626',
+    'scripts/core/game_state.gd': '5d3bbc2a1c8fba212ef8b7c3c0c395b3dae7afba85d57658321e4e1da369c1ce',
+    'scripts/game/player.gd': '98aaebe3ad4d668da68c54c34758378c201ec16366e4ab5230b53852692f26fe',
+    'scripts/game/armor_visuals.gd': '257cc3cb38491a2db477a43cf74cda19322ac3a952d19033032d421ce7b46e11',
+}
+RUNTIME_SPECS = {
+    'C-01': ('viper', 'viper_runtime_v2', 'viper_v2', 'visual_id'),
+    'C-02': ('fortune', 'fortune_runtime_v1', 'fortune_v1', 'game_visual_id'),
+    'C-03': ('tank', 'tank_runtime_v1', 'tank_v1', 'runtime_id'),
+    'C-04': ('hydra', 'hydra_runtime_v1', 'hydra_v1', 'runtime_id'),
+    'C-05': ('strike', 'strike_runtime_v1', 'strike_v1', 'runtime_id'),
+    'C-06': ('titan', 'titan_runtime_v1', 'titan_v1', 'runtime_id'),
+}
+DESIGN_REVIEW_STATES = {
+    'helmet_direction_adopted': 'helmet_direction_adopted',
+    'helmet_color_corrected_pending_user_review': 'helmet_color_corrected',
+    'helmet_revision_pending_user_review': 'helmet_revision_pending_user_review',
+}
+PRODUCTION_STATES = {
+    'concept_ready_for_user_review': {PRODUCTION_REVIEWED},
+    'helmet_direction_adopted': {'generated_and_visually_checked_from_adopted_helmet_direction',
+                                 'user_selected_concept_adopted', 'visually_checked_supporting_sheet_for_adopted_direction'},
+    'helmet_color_corrected_pending_user_review': {'color_corrected_and_visually_checked_pending_user_review'},
+    'helmet_revision_pending_user_review': {PRODUCTION_REVIEWED},
+}
+SELECTED_STATES = {
+    'concept_ready_for_user_review': {REVIEWED},
+    'helmet_direction_adopted': {'visually_checked_from_adopted_helmet_direction',
+                                 'user_selected_concept_adopted', 'visually_checked_supporting_sheet_for_adopted_direction'},
+    'helmet_color_corrected_pending_user_review': {'visually_checked_color_correction_pending_user_review'},
+    'helmet_revision_pending_user_review': {REVIEWED},
+}
+LEGACY_CRLF_PROMPTS = {
+    'prompts/c02_turnaround.txt', 'prompts/c02_construction.txt',
+    *(f'prompts/c{number:02d}_{kind}.txt' for number in (3, 4) for kind in ('concept', 'turnaround', 'construction')),
+}
 ARMOR_KINDS = ('concept', 'turnaround', 'construction')
 ROOT_FIELDS = {
     'schema_version', 'design_id', 'runtime_id', 'working_name_zh', 'working_name_en',
@@ -52,6 +97,16 @@ class CatalogParser(HTMLParser):
     def handle_data(self, data):
         if self.active:
             self.parts.append(data)
+
+
+def portable_runtime_proof(proof):
+    # The archive SHA is mandatory in the fresh helper. A generator's original
+    # absolute local path may be absent after cloning; that diagnostic boolean
+    # must not invalidate otherwise identical portable artifact evidence.
+    return {**proof, 'images': [
+        {key: value for key, value in image.items() if key != 'native_generator_path_available'}
+        for image in proof.get('images', [])
+    ]}
 
 
 def required_assets():
@@ -107,6 +162,10 @@ class Validator:
         self.designs = {}
         self.assets = {}
         self.mapping = {}
+        self.runtime_rows = None
+        self.runtime_evidence = []
+        self.prompt_hash_evidence = []
+        self.source_hash_evidence = []
 
     def check(self, condition, code, location, message):
         if not condition:
@@ -136,6 +195,173 @@ class Validator:
         if path not in self.hashes:
             self.hashes[path] = hashlib.sha256(path.read_bytes()).hexdigest()
         return self.hashes[path]
+
+    def current_source_audit(self):
+        path = ART / 'mapping_current_source_audit.json'
+        audit = self.load(path)
+        if not self.check(path.is_file() and self.digest(path) == SOURCE_AUDIT_SHA256,
+                          'current_source_audit_hash', path.relative_to(ROOT), 'Audited sidecar changed'):
+            return {}
+        rows = audit.get('sources', [])
+        self.check(len(rows) == 3 and {row.get('path') for row in rows} == set(APPROVED_CURRENT_SOURCES),
+                   'current_source_audit_set', path.name, 'Only the three explicitly audited scripts are allowed')
+        historical = {row['path']: row for row in self.mapping.get('source_evidence', [])}
+        self.check(len(self.mapping.get('source_evidence', [])) == 5
+                   and {relative: row.get('sha256') for relative, row in historical.items()} == HISTORICAL_MAPPING_SOURCES,
+                   'historical_mapping_sources', 'runtime_mapping', 'All five historical source SHA records must remain unchanged')
+        for row in rows:
+            relative = row.get('path')
+            source = self.local(relative, 'current source audit', ROOT)
+            self.check(row.get('current_sha256') == APPROVED_CURRENT_SOURCES.get(relative)
+                       and row.get('hash_normalization') == 'lf'
+                       and row.get('historical_mapping_sha256') == historical.get(relative, {}).get('sha256')
+                       and row.get('mapping_evidence_symbols') == historical.get(relative, {}).get('symbols'),
+                       'current_source_audit_version', relative, 'Historical mapping and approved current version must both remain exact')
+            if source:
+                text = source.read_bytes().replace(b'\r\n', b'\n').decode('utf-8')
+                for symbol, expected in row.get('audited_functions_sha256', {}).items():
+                    match = re.search(rf'(?ms)^(?:static )?func {re.escape(symbol)}\([^\n]*\n.*?(?=^(?:static )?func |\Z)', text)
+                    self.check(match is not None and hashlib.sha256(match.group(0).encode()).hexdigest() == expected,
+                               'current_mapping_function', f'{relative}/{symbol}', 'Equipment/mapping function differs from the reviewed version')
+        visuals = (ROOT / 'scripts/game/armor_visuals.gd').read_text(encoding='utf-8')
+        match = re.search(r'const REWORKED_SCENES\s*:?=\s*(\{.*?\n\})', visuals, re.S)
+        routes = ast.literal_eval(match.group(1)) if match else {}
+        self.check({str(key): value for key, value in routes.items()} == audit.get('runtime_scene_overrides'),
+                   'current_runtime_routes', 'ArmorVisuals', 'IDs0–5, existing Thunder6 and Cygni11 routes must remain exact')
+        snippets = {
+            'scripts/core/game_state.gd': ['not ARMOR_ITEMS.has(armor_key) or not is_armor_owned(armor_key)',
+                'str(ARMOR_ITEMS[armor_key].part_key)', 'ArmorCatalogData.item_key(part, set_id)',
+                'var bag_key := get_equipped_armor_key("bag")', 'clampi(int(ARMOR_ITEMS[bag_key].bag_slots), 1, LOADOUT_MAX_SLOTS)'],
+            'scripts/game/player.gd': ['GameState.get_equipped_armor_key("bag")',
+                'backpack_socket.bone_name = "fly_bag"', 'GameState.get_equipped_armor_key("head")',
+                'GameState.get_equipped_armor_key("body")', 'GameState.get_equipped_armor_key("arms")',
+                'GameState.get_equipped_armor_key("legs")', '.ensure_parts(recovered_avatar, equipped_ids)'],
+            'scripts/game/armor_visuals.gd': ['_ensure_reworked_parts(avatar, skeleton, visual_ids)',
+                'reworked_scene_path(visual_id)', 'existing.skin = replacement.skin', 'existing.transform = replacement.transform'],
+        }
+        for relative, required in snippets.items():
+            text = (ROOT / relative).read_text(encoding='utf-8')
+            self.check(all(fragment in text for fragment in required), 'current_equipment_mapping', relative,
+                       'Reviewed catalog IDs, independent bag and original node/Skin routes are required')
+        return {row['path']: row for row in rows}
+
+    def runtime_contracts(self):
+        """Read current six-armor proofs; never start an engine or rewrite them."""
+        if self.runtime_rows is not None:
+            return self.runtime_rows
+        self.runtime_rows = {}
+        shared = ROOT / 'docs/art/armor_style_unification_v1'
+        combined = self.load(shared / 'validate.json')
+        rows = combined.get('armors', [])
+        names = {spec[0] for spec in RUNTIME_SPECS.values()}
+        if not self.check(combined.get('status') == 'PASS' and len(rows) == 6
+                          and {row.get('name') for row in rows} == names,
+                          'current_runtime_six', 'runtime delivery', 'A historical/PENDING/partial PASS cannot certify current six armors'):
+            return self.runtime_rows
+        module_path = ROOT / 'tools/armor_style_unification_v1/validate.py'
+        spec = importlib.util.spec_from_file_location('current_armor_runtime_contract', module_path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        for row in rows:
+            name = row['name']
+            try:
+                if name == 'tank':
+                    fresh = module.verify_tank_delivery(True)
+                    assert portable_runtime_proof(fresh) == portable_runtime_proof(row)
+                elif name in module.FIRST_INTEGRATIONS:
+                    fresh = module.verify_first_integration(name)
+                    assert portable_runtime_proof(fresh) == portable_runtime_proof(row)
+                else:
+                    folder = 'viper_runtime_v2' if name == 'viper' else 'fortune_runtime_v1'
+                    asset_folder = 'viper_v2' if name == 'viper' else 'fortune_v1'
+                    runtime, assets = ROOT / 'docs/art' / folder, ROOT / 'assets/armors' / asset_folder
+                    images = module.verify_generation(name, runtime, assets, (shared / 'base_prompt.txt').read_text(encoding='utf-8'))
+                    assert portable_runtime_proof({'images': images}) == portable_runtime_proof({'images': row['images']})
+                    target = module.read(runtime / 'build/target.json')
+                    if name == 'fortune':
+                        scope = module.verify_fortune_refinement(runtime, target)
+                        assert all(row[key] == value for key, value in scope.items())
+                    else:
+                        assert module.read(shared / 'before/viper/delivery/target.json')['parts'] == target['parts']
+                    invariant = module.read(ROOT / row['scene_invariants'])
+                    assert invariant['status'] == 'PASS' and invariant['current_scene_sha256'] == self.digest(assets / f'{name}.scn')
+                for label in ['runtime', 'roundtrip', 'master', 'proportion']:
+                    report = self.load(ROOT / row['reports'][label])
+                    assert report['status'] == 'PASS' and not report.get('errors', report.get('failures', []))
+                self.runtime_rows[name] = row
+            except (AssertionError, KeyError, OSError, ValueError, TypeError) as exc:
+                self.check(False, 'current_runtime_stale', name, f'Current runtime proof failed: {type(exc).__name__}: {exc}')
+        return self.runtime_rows
+
+    def implemented_visual(self, d, mapping):
+        did = d['design_id']
+        if not self.check(did in RUNTIME_SPECS, 'runtime_design_scope', did, 'Only the six verified visual integrations are allowed'):
+            return
+        name, folder, asset_folder, id_key = RUNTIME_SPECS[did]
+        delivery = d.get('runtime_delivery', {})
+        expected_manifest = ROOT / 'docs/art' / folder / 'manifest.json'
+        manifest_path = (ART / delivery.get('manifest', '')).resolve()
+        if not self.check(manifest_path == expected_manifest.resolve() and manifest_path.is_file(),
+                          'runtime_manifest_path', did, 'Expected the corresponding current runtime manifest'):
+            return
+        manifest = self.load(manifest_path)
+        ids = [d.get('runtime_id'), delivery.get('runtime_id'), manifest.get(id_key), mapping.get('legacy_visual_id')]
+        self.check(all(type(value) is int for value in ids) and len(set(ids)) == 1,
+                   'runtime_visual_ids', did, 'Design, delivery, manifest and unchanged game mapping IDs must all agree')
+        self.check(delivery.get('status') == manifest.get('status') == 'runtime_integrated_pending_user_art_review'
+                   and delivery.get('scope') == 'visual_assets_only_stats_and_abilities_remain_proposals',
+                   'runtime_visual_scope', did, 'Implemented assets cannot claim implemented proposal stats/abilities or user art acceptance')
+        scene_relative = f'assets/armors/{asset_folder}/{name}.scn'
+        self.check(delivery.get('scene') == scene_relative, 'runtime_scene_path', did, 'Scene must match the original visual ID route')
+        records = manifest.get('outputs', manifest.get('files', []))
+        files = {record.get('path'): record for record in records}
+        if name == 'fortune':
+            files = {path: {'path': path, 'sha256': sha} for path, sha in manifest.get('asset_sha256', {}).items()}
+            files.update({record['path']: record for record in manifest.get('diffuse_maps', {}).values()})
+        row = self.runtime_contracts().get(name)
+        if not self.check(row is not None, 'runtime_current_proof', did, 'Corresponding current six-armor proof is required'):
+            return
+        master_path = f'docs/art/{folder}/build/{name}_master.blend'
+        required = {scene_relative, f'assets/armors/{asset_folder}/{name}.glb', master_path,
+                    *(f'assets/armors/{asset_folder}/{label}_diffuse.png' for label in ('head', 'body', 'shoulder', 'hand', 'foot'))}
+        self.check(required.issubset(files), 'runtime_manifest_files', did, 'Manifest must fingerprint current SCN/GLB/master and five maps')
+        for relative in sorted(required):
+            path = self.local(relative, f'{did}/runtime artifact', ROOT)
+            record = files.get(relative, {})
+            if path:
+                self.check(self.digest(path) == record.get('sha256'), 'runtime_manifest_hash', relative, 'Current asset differs from latest runtime manifest')
+                if 'bytes' in record:
+                    self.check(path.stat().st_size == record['bytes'], 'runtime_manifest_bytes', relative, 'Current runtime file length differs')
+        master = self.load(ROOT / row['reports']['master'])
+        runtime_test = self.load(ROOT / row['reports']['runtime'])
+        source_path, target_path = ROOT / f'docs/art/{folder}/build/source.json', ROOT / f'docs/art/{folder}/build/target.json'
+        self.check(master.get('source_sha256') == self.digest(source_path)
+                   and master.get('target_sha256') == runtime_test.get('target_sha256') == self.digest(target_path)
+                   and master.get('master_sha256') == self.digest(ROOT / master_path)
+                   and runtime_test.get('runtime_scene_sha256') == self.digest(ROOT / scene_relative),
+                   'runtime_source_sha', did, 'Fresh source/target/master/scene SHA must agree with actual files')
+        for image in row['images']:
+            relative = f'assets/armors/{asset_folder}/{image["label"]}_diffuse.png'
+            self.check(files.get(relative, {}).get('sha256') == image['canonical_sha256'],
+                       'runtime_native_selected', relative, 'Latest manifest and verified selected native atlas differ')
+        for image in row['captures']:
+            path = ROOT / f'docs/art/armor_style_unification_v1/after/{name}/review/{image["view"]}.png'
+            self.check(self.digest(path) == image['sha256'], 'runtime_shared_capture', did, 'Current comparison capture changed')
+        self.runtime_evidence.append({'design_id': did, 'runtime_id': ids[0],
+            'manifest': manifest_path.relative_to(ROOT).as_posix(), 'manifest_sha256': self.digest(manifest_path),
+            'source_sha256': self.digest(source_path), 'scene_sha256': self.digest(ROOT / scene_relative),
+            'combined_current_report': 'docs/art/armor_style_unification_v1/validate.json',
+            'combined_current_report_sha256': self.digest(ROOT / 'docs/art/armor_style_unification_v1/validate.json')})
+
+    def reviewed_state(self, d, kind, status, selected=False):
+        allowed = (SELECTED_STATES if selected else PRODUCTION_STATES).get(d.get('status'), set())
+        if status not in allowed:
+            return False
+        if status == 'user_selected_concept_adopted':
+            return kind == 'concept' and bool(d.get('user_review', {}).get('selected_concept'))
+        if status == 'visually_checked_supporting_sheet_for_adopted_direction':
+            return kind in ('turnaround', 'construction')
+        return True
 
     def source_mapping(self):
         self.mapping = self.load(ART / 'runtime_mapping.json')
@@ -176,24 +402,45 @@ class Validator:
         declared = {e.get('data_file') for e in armors + bags}
         actual = {p.name for pattern in ('c[0-9][0-9]_*.json', 'b[0-9][0-9]_*.json') for p in ART.glob(pattern)}
         self.check(declared == actual and len(actual) == 46, 'design_files', 'art root', 'Exactly the 46 mapped design JSON files are required')
+        current_audit = self.current_source_audit()
         for evidence in m.get('source_evidence', []):
             path = self.local(evidence.get('path'), 'runtime source evidence', ROOT)
             if path and evidence.get('sha256'):
                 normalization = evidence.get('hash_normalization', 'raw')
                 self.check(normalization in ('raw', 'lf'), 'source_hash_format', evidence['path'], 'Unknown source hash normalization')
                 digest = hashlib.sha256(path.read_bytes().replace(b'\r\n', b'\n')).hexdigest() if normalization == 'lf' else self.digest(path)
-                self.check(digest == evidence['sha256'], 'source_hash', evidence['path'], 'Game source changed after mapping audit')
+                approved = current_audit.get(evidence['path'], {})
+                audited_match = (normalization == 'lf' and approved.get('historical_mapping_sha256') == evidence['sha256']
+                                 and digest == approved.get('current_sha256') == APPROVED_CURRENT_SOURCES.get(evidence['path']))
+                self.check(digest == evidence['sha256'] or audited_match, 'source_hash', evidence['path'],
+                           'Source must match the historical mapping SHA or this explicitly audited current version')
+                self.source_hash_evidence.append({'path': evidence['path'], 'historical_sha256': evidence['sha256'],
+                    'current_sha256': digest, 'hash_normalization': normalization,
+                    'match': 'historical' if digest == evidence['sha256'] else ('audited_current' if audited_match else 'FAIL')})
 
     def design(self, d, mapping):
         did = d.get('design_id', '?')
         self.check(ROOT_FIELDS.issubset(d), 'design_schema', did, f'Missing C01 root fields: {sorted(ROOT_FIELDS - set(d))}')
-        self.check(d.get('proposal_only') is True and d.get('runtime_implemented') is False and d.get('runtime_id') is None,
-                   'proposal_boundary', did, 'Must remain proposal_only=true, runtime_implemented=false, runtime_id=null')
+        self.check(d.get('proposal_only') is True, 'proposal_boundary', did, 'Stats and abilities remain proposal_only=true')
+        if d.get('runtime_implemented') is True:
+            self.implemented_visual(d, mapping)
+        else:
+            self.check(d.get('runtime_implemented') is False and d.get('runtime_id') is None,
+                       'proposal_boundary', did, 'Unintegrated proposals require runtime_implemented=false and runtime_id=null')
         self.check(d.get('production_status', {}).get('abilities') == 'proposal_only', 'ability_status', did, 'Abilities are proposals')
         self.check(str(d.get('proposed_stats', {}).get('status', '')).startswith('proposal_'), 'stats_status', did, 'Stats must remain explicitly proposed, not implemented')
         self.check(all(a.get('implemented') is False for a in d.get('proposed_abilities', [])), 'implemented_ability', did, 'No proposed ability may claim implementation')
         self.check(d.get('proposed_role_replacement', {}).get('legacy_visual_id') == mapping.get('legacy_visual_id'), 'replacement_target', did, 'Design and mapping disagree')
-        self.check(d.get('status') == 'concept_ready_for_user_review', 'design_not_ready', did, 'All required sheets must be reviewed before delivery')
+        state = d.get('status')
+        self.check(state in PRODUCTION_STATES, 'design_not_ready', did, 'Expected an explicitly supported reviewed concept/revision state')
+        if state in DESIGN_REVIEW_STATES:
+            review = d.get('user_review', {})
+            self.check(review.get('status') == DESIGN_REVIEW_STATES[state]
+                       and all(isinstance(review.get(key), str) and review[key].strip()
+                               for key in ('feedback', 'action', 'acceptance_basis')),
+                       'design_review_evidence', did, 'Adopted/corrected/pending direction requires its actual user request and bounded acceptance basis')
+            if state == 'helmet_direction_adopted':
+                self.local(review.get('selected_concept', review.get('selected_reference')), f'{did}/adopted direction source')
         kinds = ARMOR_KINDS if did.startswith('C-') else ('design_sheet',)
         if did.startswith('B-'):
             self.check(d.get('proposed_abilities') == [] and d.get('runtime_target', {}).get('inherits_armor_abilities') is False,
@@ -202,7 +449,8 @@ class Validator:
         for kind in kinds:
             path = self.expected[(did, kind)]
             self.check(d.get('images', {}).get(kind) == path, 'design_image', f'{did}/{kind}', f'Expected {path}')
-            self.check(d.get('production_status', {}).get(kind) == PRODUCTION_REVIEWED, 'unreviewed_design_image', f'{did}/{kind}', 'Missing reviewed production status')
+            self.check(self.reviewed_state(d, kind, d.get('production_status', {}).get(kind)),
+                       'unreviewed_design_image', f'{did}/{kind}', 'Production status must match this explicitly reviewed direction and sheet kind')
         if 'helmet_art' in d:
             self.helmet_art(did, d['helmet_art'])
 
@@ -213,8 +461,14 @@ class Validator:
         self.check(str(did).startswith('C-') and art.get('scope') == 'helmet_only',
                    'helmet_art_scope', did, 'Helmet reference must target an armor and remain helmet_only')
         commit = art.get('source_commit')
-        self.check(isinstance(commit, str) and re.fullmatch(r'[0-9a-fA-F]{40}', commit) is not None,
-                   'helmet_art_commit', did, 'Expected a full 40-character source commit hash')
+        if art.get('reference_source') == 'user_attachment':
+            generation = art.get('generation', {})
+            self.check(commit is None and generation.get('tool') is None
+                       and generation.get('status') == 'user_reference_not_a_new_generation',
+                       'helmet_art_attachment', did, 'User references must not claim a source commit or a new generation')
+        else:
+            self.check(isinstance(commit, str) and re.fullmatch(r'[0-9a-fA-F]{40}', commit) is not None,
+                       'helmet_art_commit', did, 'Expected a full 40-character source commit hash')
         dimensions = art.get('dimensions')
         self.check(isinstance(dimensions, list) and len(dimensions) == 2
                    and all(type(value) is int and value > 0 for value in dimensions),
@@ -227,12 +481,22 @@ class Validator:
             safe = not Path(relative).is_absolute() and candidate.is_relative_to(ROOT.resolve())
             if self.check(safe, 'nonportable_path', f'{did}/helmet_art/path', relative):
                 path = self.local(candidate.relative_to(ROOT.resolve()).as_posix(), f'{did}/helmet_art/path', ROOT)
-        source = self.local(art.get('source_repo_path'), f'{did}/helmet_art/source_repo_path', ROOT)
+        source = None
+        if art.get('reference_source') != 'user_attachment' or art.get('source_repo_path') is not None:
+            source = self.local(art.get('source_repo_path'), f'{did}/helmet_art/source_repo_path', ROOT)
         if path:
             self.check(self.digest(path) == art.get('sha256'), 'helmet_art_hash', did, 'Helmet reference differs from its recorded hash')
             self.check(path.stat().st_size == art.get('bytes'), 'helmet_art_bytes', did, 'Helmet reference length differs from metadata')
+            if art.get('reference_source') == 'user_attachment':
+                try:
+                    self.check(png_dimensions(path.read_bytes()) == dimensions,
+                               'helmet_art_attachment_png', did, 'User reference PNG dimensions differ from metadata')
+                except (ValueError, zlib.error) as exc:
+                    self.check(False, 'helmet_art_attachment_png', did, str(exc))
         if path and source:
             self.check(path == source, 'helmet_art_source_path', did, 'Gallery path and repository source path must identify the same file')
+        if art.get('previous_reference'):
+            self.helmet_art(did, art['previous_reference'])
 
     def manifest(self):
         manifest = self.load(ART / 'manifest.json')
@@ -257,7 +521,9 @@ class Validator:
                 self.check(False, 'missing_selected_asset', f'{did}/{kind}', expected)
                 continue
             self.check(a.get('path') == expected, 'selected_path', key, expected)
-            self.check(a.get('status') == REVIEWED and bool(a.get('visual_review')), 'selected_review', key, 'Selected asset must have an actual visual review')
+            self.check(self.reviewed_state(self.designs.get(did, {}), kind, a.get('status'), selected=True)
+                       and isinstance(a.get('visual_review'), str) and bool(a['visual_review'].strip()),
+                       'selected_review', key, 'Selected asset requires its supported direction status and a nonempty actual visual review')
             self.check(a.get('postprocessing') == 'none', 'postprocessing', key, 'Delivery records promise no postprocessing')
             if path:
                 raw = path.read_bytes()
@@ -272,7 +538,16 @@ class Validator:
                 self.check(len(raw) == a.get('bytes'), 'image_bytes', expected, 'File length differs from manifest')
             prompt = self.local(a.get('prompt'), f'{did}/{kind}/prompt')
             if prompt:
-                self.check(self.digest(prompt) == a.get('prompt_sha256'), 'prompt_hash', prompt.name, 'Prompt differs from manifest')
+                raw_sha = self.digest(prompt)
+                expected_sha = a.get('prompt_sha256')
+                reconstructed_sha = hashlib.sha256(prompt.read_bytes().replace(b'\r\n', b'\n').replace(b'\n', b'\r\n')).hexdigest()
+                legacy_match = a.get('prompt') in LEGACY_CRLF_PROMPTS and reconstructed_sha == expected_sha
+                self.check(raw_sha == expected_sha or legacy_match, 'prompt_hash', prompt.name,
+                           'Prompt must match raw SHA or the exact known legacy CRLF bytes; no trimming/content changes')
+                if raw_sha != expected_sha and legacy_match:
+                    self.prompt_hash_evidence.append({'path': a['prompt'], 'raw_sha256': raw_sha,
+                        'recorded_sha256': expected_sha, 'exact_reconstructed_crlf_sha256': reconstructed_sha,
+                        'match': 'legacy_CRLF_reconstruction_only', 'content_and_trailing_whitespace_unchanged': True})
             refs = a.get('reference_images', [])
             self.check(set(refs) == set(a.get('reference_sha256', {})), 'reference_hash_keys', key, 'Every actual local image input needs a hash')
             for ref in refs:
@@ -393,6 +668,10 @@ class Validator:
                 'manifest_selected_images': len(self.assets), 'missing_pngs': missing,
                 'missing_manifest_entries': [f'{did}/{kind}' for did, kind in sorted(set(self.expected) - set(self.assets))],
                 'error_count': len(self.errors), 'errors': self.errors,
+                'runtime_evidence': self.runtime_evidence, 'source_hash_evidence': self.source_hash_evidence,
+                'legacy_prompt_hash_evidence': self.prompt_hash_evidence,
+                'mapping_current_source_audit': 'docs/art/original_armors_v1/mapping_current_source_audit.json',
+                'mapping_current_source_audit_sha256': SOURCE_AUDIT_SHA256,
                 'limits': 'Artifact consistency only; visual review is recorded by humans/agents. No runtime test, asset integration or legal clearance.'}
 
 

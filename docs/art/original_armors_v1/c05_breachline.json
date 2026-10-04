@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "design_id": "C-05",
-  "runtime_id": null,
+  "runtime_id": 4,
   "working_name_zh": "破線",
   "working_name_en": "BREACHLINE",
   "status": "helmet_direction_adopted",
-  "runtime_implemented": false,
+  "runtime_implemented": true,
   "proposed_role_replacement": {
     "legacy_visual_id": 4,
     "legacy_set_name": "Strike",
@@ -93,10 +93,10 @@
     "concept": "generated_and_visually_checked_from_adopted_helmet_direction",
     "turnaround": "generated_and_visually_checked_from_adopted_helmet_direction",
     "construction": "generated_and_visually_checked_from_adopted_helmet_direction",
-    "original_mesh": "not_started",
-    "uv_atlas": "not_started",
-    "runtime_textures": "not_started",
-    "rig_skinning": "not_started",
+    "original_mesh": "original_model_retained_with_measured_local_head_refinement",
+    "uv_atlas": "original_uv_coordinates_charts_counts_unchanged",
+    "runtime_textures": "five_native_diffuse_maps_integrated_and_verified",
+    "rig_skinning": "original_28_bone_skin_and_animation_preserved_and_pose_verified",
     "abilities": "proposal_only"
   },
   "images": {
@@ -371,5 +371,91 @@
       "prompt": null,
       "status": "not_recorded_in_source_commit"
     }
+  },
+  "runtime_delivery": {
+    "status": "runtime_integrated_pending_user_art_review",
+    "scope": "visual_assets_only_stats_and_abilities_remain_proposals",
+    "runtime_id": 4,
+    "scene": "assets/armors/strike_v1/strike.scn",
+    "comparison_page": "../strike_runtime_v1/index.html",
+    "manifest": "../strike_runtime_v1/manifest.json",
+    "reference_art": "../fusion_v2_generated/c05_strike_fusion.jpg",
+    "body_reference_art": "images/c05_concept.png",
+    "uv_limit": 0.2,
+    "actual_original_validation_limit": 0.2,
+    "uv_changed_coordinates_by_surface": {
+      "ArmorBody_04:0": [
+        0,
+        207
+      ],
+      "ArmorBody_04:1": [
+        0,
+        76
+      ],
+      "ArmorFoot_04:0": [
+        0,
+        122
+      ],
+      "ArmorHand_04:0": [
+        0,
+        106
+      ],
+      "ArmorHead_04:0": [
+        0,
+        198
+      ]
+    },
+    "additional_uv_changes": 0,
+    "head_maximum_local_displacement_ratio": 0.09291058373217086,
+    "head_dimension_delta_fraction": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "original_bones_weights_skin_retained": true,
+    "original_vertex_uv_triangle_counts_retained": true,
+    "date": "2026-10-05",
+    "selected_head_generation": "original_integration_v3_head",
+    "selected_native_generations": {
+      "body": "original_integration_v1",
+      "shoulder": "original_integration_v1",
+      "hand": "original_integration_v1",
+      "foot": "original_integration_v1",
+      "head": "original_integration_v3_head"
+    },
+    "original_source_snapshot": "../strike_runtime_v1/revisions/original_source_v1/snapshot.json",
+    "runtime_loader": "scripts/game/armor_visuals.gd",
+    "engineering_status": "PASS",
+    "art_review_status": "pending_user_review",
+    "style_optimization": {
+      "status": "runtime_integrated_pending_user_art_review",
+      "stage": "first_runtime_integration_with_head_refinement",
+      "comparison_page": "../armor_style_unification_v1/index.html#strike",
+      "mandatory_prompt": "../armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "prompt_set": [
+        "../strike_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+        "../strike_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+        "../strike_runtime_v1/prompts/hand_diffuse_original_integration_v1.txt",
+        "../strike_runtime_v1/prompts/head_diffuse_original_integration_v3_head.txt",
+        "../strike_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt"
+      ],
+      "latest_variant": "original_integration_v3_head",
+      "added_uv_changes": 0,
+      "user_authorized_original_ceiling": 0.2,
+      "actual_original_validation_limit": 0.2,
+      "baseline": "../strike_runtime_v1/revisions/original_source_v1/snapshot.json",
+      "verification": "../armor_style_unification_v1/strike_first_integration_validate.json",
+      "note": "頭盔以最新c05_strike_fusion為準、身甲以C05概念為準。v3頭圖修成沿前後方向的兩冠線、兩前額小點，局部收低前額折片並抬順冠根；無追加UV。冠片黑邊、低模折面及較亮的面罩反光仍列為待評價。"
+    }
+  },
+  "helmet_studies": {
+    "comparison_page": "../strike_runtime_v1/index.html",
+    "link_label": "Strike · 原版／新版／UV／動作比對 ↗",
+    "latest_variant": "original_integration_v3_head",
+    "status": "runtime_integrated_pending_user_art_review",
+    "scope": "first_runtime_integration_with_head_refinement",
+    "note": "頭盔以最新c05_strike_fusion為準、身甲以C05概念為準。v3頭圖修成沿前後方向的兩冠線、兩前額小點，局部收低前額折片並抬順冠根；無追加UV。冠片黑邊、低模折面及較亮的面罩反光仍列為待評價。",
+    "style_comparison_page": "../armor_style_unification_v1/index.html#strike",
+    "mandatory_style_prompt": "../armor_style_unification_v1/armor_runtime_integration_prompt.txt"
   }
 }

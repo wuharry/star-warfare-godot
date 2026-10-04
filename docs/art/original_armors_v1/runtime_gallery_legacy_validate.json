@@ -1,0 +1,258 @@
+{
+  "result": "FAIL",
+  "expected_designs": 46,
+  "mapped_designs": 46,
+  "expected_selected_images": 88,
+  "manifest_selected_images": 88,
+  "missing_pngs": [],
+  "missing_manifest_entries": [],
+  "error_count": 49,
+  "errors": [
+    {
+      "code": "proposal_boundary",
+      "location": "C-01",
+      "message": "Must remain proposal_only=true, runtime_implemented=false, runtime_id=null"
+    },
+    {
+      "code": "proposal_boundary",
+      "location": "C-02",
+      "message": "Must remain proposal_only=true, runtime_implemented=false, runtime_id=null"
+    },
+    {
+      "code": "proposal_boundary",
+      "location": "C-03",
+      "message": "Must remain proposal_only=true, runtime_implemented=false, runtime_id=null"
+    },
+    {
+      "code": "helmet_art_commit",
+      "location": "C-03",
+      "message": "Expected a full 40-character source commit hash"
+    },
+    {
+      "code": "invalid_local_path",
+      "location": "C-03/helmet_art/source_repo_path",
+      "message": "Expected a nonempty portable relative path"
+    },
+    {
+      "code": "proposal_boundary",
+      "location": "C-04",
+      "message": "Must remain proposal_only=true, runtime_implemented=false, runtime_id=null"
+    },
+    {
+      "code": "proposal_boundary",
+      "location": "C-05",
+      "message": "Must remain proposal_only=true, runtime_implemented=false, runtime_id=null"
+    },
+    {
+      "code": "design_not_ready",
+      "location": "C-05",
+      "message": "All required sheets must be reviewed before delivery"
+    },
+    {
+      "code": "unreviewed_design_image",
+      "location": "C-05/concept",
+      "message": "Missing reviewed production status"
+    },
+    {
+      "code": "unreviewed_design_image",
+      "location": "C-05/turnaround",
+      "message": "Missing reviewed production status"
+    },
+    {
+      "code": "unreviewed_design_image",
+      "location": "C-05/construction",
+      "message": "Missing reviewed production status"
+    },
+    {
+      "code": "proposal_boundary",
+      "location": "C-06",
+      "message": "Must remain proposal_only=true, runtime_implemented=false, runtime_id=null"
+    },
+    {
+      "code": "design_not_ready",
+      "location": "C-08",
+      "message": "All required sheets must be reviewed before delivery"
+    },
+    {
+      "code": "unreviewed_design_image",
+      "location": "C-08/concept",
+      "message": "Missing reviewed production status"
+    },
+    {
+      "code": "unreviewed_design_image",
+      "location": "C-08/turnaround",
+      "message": "Missing reviewed production status"
+    },
+    {
+      "code": "unreviewed_design_image",
+      "location": "C-08/construction",
+      "message": "Missing reviewed production status"
+    },
+    {
+      "code": "design_not_ready",
+      "location": "C-09",
+      "message": "All required sheets must be reviewed before delivery"
+    },
+    {
+      "code": "unreviewed_design_image",
+      "location": "C-09/concept",
+      "message": "Missing reviewed production status"
+    },
+    {
+      "code": "unreviewed_design_image",
+      "location": "C-09/turnaround",
+      "message": "Missing reviewed production status"
+    },
+    {
+      "code": "unreviewed_design_image",
+      "location": "C-09/construction",
+      "message": "Missing reviewed production status"
+    },
+    {
+      "code": "design_not_ready",
+      "location": "C-10",
+      "message": "All required sheets must be reviewed before delivery"
+    },
+    {
+      "code": "design_not_ready",
+      "location": "C-12",
+      "message": "All required sheets must be reviewed before delivery"
+    },
+    {
+      "code": "unreviewed_design_image",
+      "location": "C-12/concept",
+      "message": "Missing reviewed production status"
+    },
+    {
+      "code": "unreviewed_design_image",
+      "location": "C-12/turnaround",
+      "message": "Missing reviewed production status"
+    },
+    {
+      "code": "unreviewed_design_image",
+      "location": "C-12/construction",
+      "message": "Missing reviewed production status"
+    },
+    {
+      "code": "source_hash",
+      "location": "scripts/core/game_state.gd",
+      "message": "Game source changed after mapping audit"
+    },
+    {
+      "code": "source_hash",
+      "location": "scripts/game/player.gd",
+      "message": "Game source changed after mapping audit"
+    },
+    {
+      "code": "source_hash",
+      "location": "scripts/game/armor_visuals.gd",
+      "message": "Game source changed after mapping audit"
+    },
+    {
+      "code": "manifest_helmet_art",
+      "location": "manifest",
+      "message": "Helmet references must match the design metadata and stay separate from selected delivery sheets"
+    },
+    {
+      "code": "prompt_hash",
+      "location": "c02_turnaround.txt",
+      "message": "Prompt differs from manifest"
+    },
+    {
+      "code": "prompt_hash",
+      "location": "c02_construction.txt",
+      "message": "Prompt differs from manifest"
+    },
+    {
+      "code": "prompt_hash",
+      "location": "c03_concept.txt",
+      "message": "Prompt differs from manifest"
+    },
+    {
+      "code": "prompt_hash",
+      "location": "c03_turnaround.txt",
+      "message": "Prompt differs from manifest"
+    },
+    {
+      "code": "prompt_hash",
+      "location": "c03_construction.txt",
+      "message": "Prompt differs from manifest"
+    },
+    {
+      "code": "prompt_hash",
+      "location": "c04_concept.txt",
+      "message": "Prompt differs from manifest"
+    },
+    {
+      "code": "prompt_hash",
+      "location": "c04_turnaround.txt",
+      "message": "Prompt differs from manifest"
+    },
+    {
+      "code": "prompt_hash",
+      "location": "c04_construction.txt",
+      "message": "Prompt differs from manifest"
+    },
+    {
+      "code": "selected_review",
+      "location": "('C-05', 'concept')",
+      "message": "Selected asset must have an actual visual review"
+    },
+    {
+      "code": "selected_review",
+      "location": "('C-05', 'turnaround')",
+      "message": "Selected asset must have an actual visual review"
+    },
+    {
+      "code": "selected_review",
+      "location": "('C-05', 'construction')",
+      "message": "Selected asset must have an actual visual review"
+    },
+    {
+      "code": "selected_review",
+      "location": "('C-08', 'concept')",
+      "message": "Selected asset must have an actual visual review"
+    },
+    {
+      "code": "selected_review",
+      "location": "('C-08', 'turnaround')",
+      "message": "Selected asset must have an actual visual review"
+    },
+    {
+      "code": "selected_review",
+      "location": "('C-08', 'construction')",
+      "message": "Selected asset must have an actual visual review"
+    },
+    {
+      "code": "selected_review",
+      "location": "('C-09', 'concept')",
+      "message": "Selected asset must have an actual visual review"
+    },
+    {
+      "code": "selected_review",
+      "location": "('C-09', 'turnaround')",
+      "message": "Selected asset must have an actual visual review"
+    },
+    {
+      "code": "selected_review",
+      "location": "('C-09', 'construction')",
+      "message": "Selected asset must have an actual visual review"
+    },
+    {
+      "code": "selected_review",
+      "location": "('C-12', 'concept')",
+      "message": "Selected asset must have an actual visual review"
+    },
+    {
+      "code": "selected_review",
+      "location": "('C-12', 'turnaround')",
+      "message": "Selected asset must have an actual visual review"
+    },
+    {
+      "code": "selected_review",
+      "location": "('C-12', 'construction')",
+      "message": "Selected asset must have an actual visual review"
+    }
+  ],
+  "limits": "Artifact consistency only; visual review is recorded by humans/agents. No runtime test, asset integration or legal clearance."
+}
