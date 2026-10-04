@@ -1,0 +1,81 @@
+{
+  "status": "FROZEN_ORIGINAL_NODE_INDEX_SUPPLEMENT",
+  "original_source_snapshot_sha256": "e2f7bacad42e4525de219f682b12ddb75cdd32d22e14f394692ed7b1ebe51533",
+  "runtime_id": 4,
+  "original_gltf_sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
+  "node_ids": {
+    "ArmorHead_04": 46,
+    "ArmorBody_04": 47,
+    "ArmorHand_04": 48,
+    "ArmorFoot_04": 49
+  },
+  "gltf_node_records": {
+    "ArmorHead_04": {
+      "name": "ArmorHead_04",
+      "mesh": 16,
+      "skin": 16,
+      "extras": {
+        "armor_part": "head",
+        "armor_id": 4,
+        "source_folder": "05"
+      },
+      "extensions": {
+        "KHR_node_visibility": {
+          "visible": false
+        }
+      }
+    },
+    "ArmorBody_04": {
+      "name": "ArmorBody_04",
+      "mesh": 17,
+      "skin": 17,
+      "extras": {
+        "armor_part": "body",
+        "armor_id": 4,
+        "source_folder": "05"
+      },
+      "extensions": {
+        "KHR_node_visibility": {
+          "visible": false
+        }
+      }
+    },
+    "ArmorHand_04": {
+      "name": "ArmorHand_04",
+      "mesh": 18,
+      "skin": 18,
+      "extras": {
+        "armor_part": "hand",
+        "armor_id": 4,
+        "source_folder": "05"
+      },
+      "extensions": {
+        "KHR_node_visibility": {
+          "visible": false
+        }
+      }
+    },
+    "ArmorFoot_04": {
+      "name": "ArmorFoot_04",
+      "mesh": 19,
+      "skin": 19,
+      "extras": {
+        "armor_part": "foot",
+        "armor_id": 4,
+        "source_folder": "05"
+      },
+      "extensions": {
+        "KHR_node_visibility": {
+          "visible": false
+        }
+      }
+    }
+  },
+  "buffers": [
+    {
+      "uri": "player.bin",
+      "byteLength": 2424908,
+      "sha256": "9b1b4a428ae59b19d361f42f8aee762c608d9f174e535e125e0354f37a4c105d"
+    }
+  ]
+}

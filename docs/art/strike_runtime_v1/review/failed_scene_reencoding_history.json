@@ -1,0 +1,61 @@
+{
+	"current_scene_sha256": "1537026ade673a2cc541a9b87e8c0c08c457581b02ceeec3bbbefc6a4802559d",
+	"errors": [
+		"Changed original array ArmorHead_04/0/channel2",
+		"Changed original array ArmorBody_04/0/channel1",
+		"Changed original array ArmorBody_04/0/channel2",
+		"Changed original array ArmorBody_04/1/channel1",
+		"Changed original array ArmorBody_04/1/channel2",
+		"Changed original array ArmorHand_04/0/channel1",
+		"Changed original array ArmorHand_04/0/channel2",
+		"Changed original array ArmorFoot_04/0/channel1",
+		"Changed original array ArmorFoot_04/0/channel2"
+	],
+	"geometry_sha256": "a130cb8cb19adc219b397e6f88380aa1015faf095eda596feea9b8dfdb3ac012",
+	"original_bones": 28,
+	"original_node_ids": {
+		"ArmorBody_04": 47.0,
+		"ArmorFoot_04": 49.0,
+		"ArmorHand_04": 48.0,
+		"ArmorHead_04": 46.0
+	},
+	"original_source_snapshot_sha256": "e2f7bacad42e4525de219f682b12ddb75cdd32d22e14f394692ed7b1ebe51533",
+	"records": [
+		{
+			"body_limbs_all_arrays_exact": null,
+			"indices_skin_weights_bones_topology_exact": false,
+			"max_rest_error_m": 0.0000000149011611938477,
+			"part": "ArmorHead_04",
+			"rest_position_uv_verified_against_target": false,
+			"surfaces": 1
+		},
+		{
+			"body_limbs_all_arrays_exact": false,
+			"indices_skin_weights_bones_topology_exact": false,
+			"max_rest_error_m": 0.0,
+			"part": "ArmorBody_04",
+			"rest_position_uv_verified_against_target": false,
+			"surfaces": 2
+		},
+		{
+			"body_limbs_all_arrays_exact": false,
+			"indices_skin_weights_bones_topology_exact": false,
+			"max_rest_error_m": 0.0,
+			"part": "ArmorHand_04",
+			"rest_position_uv_verified_against_target": false,
+			"surfaces": 1
+		},
+		{
+			"body_limbs_all_arrays_exact": false,
+			"indices_skin_weights_bones_topology_exact": false,
+			"max_rest_error_m": 0.0,
+			"part": "ArmorFoot_04",
+			"rest_position_uv_verified_against_target": false,
+			"surfaces": 1
+		}
+	],
+	"scope": "Actual SCN arrays versus current true original player.gltf: only configured head positions/normals may differ; all UV, indices, skin binds, weights, bone indices, topology and body/limb arrays exact. Authored rest-space target verified vertex by vertex.",
+	"source_sha256": "f16f9320b39ae5dd01f655135d4df1d5fbc98c893920a05dc51238cf0d9de987",
+	"status": "FAIL",
+	"target_sha256": "e313c9855d62c0f90429850631e8f21ea93562d62a0a0eed80529cd19160fd15"
+}
