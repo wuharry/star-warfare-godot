@@ -1,0 +1,508 @@
+{
+	"canonical_diffuse_sha256_at_start": {
+		"body": "06bad887459805c1f3a084472454f561a4ac075fe5b98f5223c045c37a661bbd",
+		"foot": "8947c227fffd74c45696b2001f64a1c8bf673da2479eec08b014910af6428750",
+		"hand": "6dea1c6cb3ee9ae3666af7fb5e483365e1ed58109a64e72069b49d30f1d1691c",
+		"head": "c85276bace7eb04528f697dd62cf413412e178f1d36692ed78017cee2cda63e8",
+		"shoulder": "6ab940688708399dd5ec5663950f414b9d760bcb05058443f13bffb904b71a3f"
+	},
+	"capture_sha256": {
+		"res://docs/art/hydra_runtime_v1/review/engine/family_original_01_front.png": "264ad2018dd607b741c6fb2ca4e50708ab6ac2a721ea26fd7a75bcb306c66b4b",
+		"res://docs/art/hydra_runtime_v1/review/engine/family_original_06_front.png": "5c696741d3289f22a041e27ca32c35af8428702a3eb4cd5a052f2748887466eb",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_clay_front.png": "fcf617939222700453b0e0beba26913a90e87cadfdd37b605d0fe7cf36d9e656",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_clay_quarter.png": "5506b55aa05a89e3fc1a3657f1b313e7a086aa124f4154e6f527ecd8cc1de3b2",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_clay_rear.png": "1d56b7204446024ae01f049978dce038a409507663a778d9ad4d8ab868789ec7",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_clay_side.png": "f15816070a439449bc150400b415209f74be8ba1165a4acd898fdb6e466d40ae",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_diffuse_front.png": "ca4a1dca1c058c02d6164ee125e7dcec15ce336b6aa3bd89f639ff75d547978b",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_diffuse_quarter.png": "cee53a2605a7622b75ef97cb792c46a4d80b6d0b55c67519224364d62d91984f",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_diffuse_rear.png": "7b9394a7e3d744c9fac116aa01ca237a1550965dbed06c71d2613e8ce55d4e39",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_diffuse_side.png": "223bd185611e1959ed8d44fef1b90034e538b62ebcb31d4e74b6c4933de63f64",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_head_front.png": "8ba7dea57a092e23bb067807af79cafac9dfa535390fcbbda5474121c07db0d5",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_head_quarter.png": "7b2e98408e9a6d200c3c8aa79eede437597e48893b9087fa0ca6863830233dc9",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_head_rear.png": "0b56bfefaaf24507028ad4a3ff341d481c35910ab257bb7e5be397713f1494b4",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_head_side.png": "d47c25530c6c0d0ca35062fd905b04d347f859a2d6a37d4bdb050c040978810a",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_idle_rifle.png": "93c73903a08cebb7ff8b2df199948fdff317b350eee17977471b8cf6bdee94d4",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_level_01_front.png": "9b52d3e4760b4c197da99febce3483d767a3bfa55d0b967d262327e31bd9fa80",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_level_01_gameplay.png": "dcf958aa90f1b6ced9229bffdabee9a42585e56fbdf3b7f52aed74ae005d4774",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_level_08_front.png": "00d35fe08978fa5f6477c564e854d7178cf3a24ef51933234cb2ded395bd301a",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_level_08_gameplay.png": "424cc4f00538aa8196d7bae628aa793a17e9a784b6dd0eddd7baedbf8b138e9c",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_painted_front.png": "ca4a1dca1c058c02d6164ee125e7dcec15ce336b6aa3bd89f639ff75d547978b",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_painted_quarter.png": "cee53a2605a7622b75ef97cb792c46a4d80b6d0b55c67519224364d62d91984f",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_painted_rear.png": "7b9394a7e3d744c9fac116aa01ca237a1550965dbed06c71d2613e8ce55d4e39",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_painted_side.png": "223bd185611e1959ed8d44fef1b90034e538b62ebcb31d4e74b6c4933de63f64",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_00.png": "727928c803d60b239992f7ed20f540d4d6ba83147d4fdeecf7bc179a8fa4ec20",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_01.png": "148c639b7082f738e2b66984f2e0aaab7f415ed64d79757b6df9dbfd47ad978d",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_02.png": "e6f4853705f540ec3db90b5c4b8440d28908099522ce08e19d1e99a4e7c50875",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_03.png": "49744b1fb546f3068b243dbb39dd69422cfc0f180f5e0d177ca776ceae4235c7",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_04.png": "05001db401468b514432a25405c8a3ee9f837190cbeeb668c9465d5daafcc4fb",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_05.png": "cf2e9e1cf6216a7e5cd3d00b80e3d1468d25c67ef8bf63b186d54a3fa162c31b",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_06.png": "8dcbdc32811794cc8905dd5c36c4a7e943ecc942d5b82ba17fcefabeeb4e5bdd",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_07.png": "c13877e8c35c41bb4166fb2f4501474acda48377a053ea68b14f469f64e3e15d",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_08.png": "3e8a2796c03bd04caf516d751fc5162c88b3555dbfbf8a5bf75651702281a4dd",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_run_rifle.png": "427b32eb8574e4afcdbfef6672446491f4823c00741f958694b71dce6ea8af14",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_clay_front.png": "b57b2a2e33daeaaeab0a6e6091d52f6824f1b7ebbd05641df82de2babc479e18",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_clay_quarter.png": "720c5df9160ed6b992c6a8f38f6b9d35ea9945e2cf18e6830973743988be8dec",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_clay_rear.png": "592c14a9248146a1d3c438ccdfb1acac69389ae1c11560e3d81e19740f3c8174",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_clay_side.png": "e1afc68e6a345f35568b5c3cccf0d2aaecda16d1ea9c520acc0d983b4f042b82",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_diffuse_front.png": "98c547d00f54700af3c3a49f72fbe395376f925d1151d14aa63ff85758de4c7c",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_diffuse_quarter.png": "fb21ae88b59e2cb37e7806b8d6b5e44be34b34a1b3fb852d6097ed6ea6e80259",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_diffuse_rear.png": "4f5f3d3a341a438431f6dfa6144ead0891a6f7b2d959d3d43a954727300e8ffe",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_diffuse_side.png": "069b7377dc256d591147d02e18df9d833357ce2fc1ce9856486e805020507706",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_head_front.png": "464ee135a054ced65051a8422c9719ccdd332f6a8ac4dccc91de7ffa0b2e9ceb",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_head_quarter.png": "3a8c5f6868e95281405c721cc59ce4a23cdea8464bfa65193e582defe88b2808",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_head_rear.png": "93c50384a21e13639e3d4a9b5a5421a06588b46e5b7adc15126611e9600d4e74",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_head_side.png": "d9ca64167c148a76da83ef52af0068d6d8487d2e2e6ce88b5d397b9189877151",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_idle_rifle.png": "25b3da95b541d76071fccfe9b4d2db326ea57c8feaef5fe905e3de8410624f80",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_level_01_front.png": "1b4d3bf8536ccd0e8938269b315a6e71113921c8b445b28ec4421618457d761c",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_level_01_gameplay.png": "e8c45e75da44b36fa00c8553c2cf76617bff5e0ef6e579088b54d4a21a7ea827",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_level_08_front.png": "e50a66b78bdb71bc57769a85b1306aa62546cb664e2be2db6cf0b5e366790c36",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_level_08_gameplay.png": "d8d2fa1a380619cdc566cb6080479f82399905d3f35014c9c78c4a1912565183",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_painted_front.png": "7b45e9f945084a6af40a7fd3457d8e862595722820b1a973d6a14f5aa9fae326",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_painted_quarter.png": "f5608a2da34ad5402be3abd39cd6a0e135d3e6280d720e120f95617e4c0f8c51",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_painted_rear.png": "91debd40155c827e60a90cb4a5cd3048d54d052188dc66bff13cbd688eebd681",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_painted_side.png": "54a7fb96ebe63677f38e23fe0f7874961c1a9c30b20979f9153ad2e9893288ca",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_00.png": "ab9db9cacda9ee87e62fabbc1078629ff443bb63ca36e327a5f45077024ab13a",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_01.png": "9f3d2b679fcf1287055497f31736cf94c1a7af1f2b45377fb4d5f63669bee8bd",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_02.png": "590f49e113ec5ff485fe85f447c24a28e4c37f3b4bff6db92061bdfe33d42477",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_03.png": "f7843aae687a9a43fe5323475fd07ebc70c16e08d7b46a2c14578f582f7dc4c6",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_04.png": "03a25c8f0318582a255d08975fa945a7d252cbc5b06f197a8dcb26ede56dfa8e",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_05.png": "469a2a9a7cd0d7688140119928177537e1e4984a31180d4a875104a4e800b6a3",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_06.png": "8451794a921a81d159f0afd51afee1e60283153d6de1b247799b0a3bb0cc90e9",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_07.png": "e05808a2e44a8b1355cd2e69f78e0e419cf701ced15e23a620edc2d3eaaae605",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_08.png": "2921e7c0f6d257723c1e70d08edec6872a23c300b26c746e6c1d968841cd3ff5",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_run_rifle.png": "5870e909dc6ac68459998fe30cf2ea61eed0a1e4a37d28d882c6f23b7828ea5e"
+	},
+	"diffuse_views": "White material tint for both versions, so original painted greys can be compared without the original material tint. Painted views retain original imported tint. This affects captures only, not source assets or gameplay defaults.",
+	"engine_arguments": [
+		"tools/armor_runtime_v1/capture.tscn"
+	],
+	"files": [
+		"res://docs/art/hydra_runtime_v1/review/engine/original_clay_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_clay_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_painted_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_painted_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_diffuse_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_diffuse_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_clay_side.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_clay_side.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_painted_side.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_painted_side.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_diffuse_side.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_diffuse_side.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_clay_rear.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_clay_rear.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_painted_rear.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_painted_rear.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_diffuse_rear.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_diffuse_rear.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_clay_quarter.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_clay_quarter.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_painted_quarter.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_painted_quarter.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_diffuse_quarter.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_diffuse_quarter.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_head_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_head_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_head_side.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_head_side.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_head_rear.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_head_rear.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_head_quarter.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_head_quarter.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/family_original_01_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/family_original_06_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_idle_rifle.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_idle_rifle.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_run_rifle.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_run_rifle.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_00.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_00.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_01.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_01.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_02.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_02.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_03.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_03.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_04.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_04.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_05.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_05.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_06.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_06.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_07.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_07.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_08.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_08.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_level_01_gameplay.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_level_01_gameplay.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_level_01_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_level_01_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_level_08_gameplay.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_level_08_gameplay.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/original_level_08_front.png",
+		"res://docs/art/hydra_runtime_v1/review/engine/new_level_08_front.png"
+	],
+	"full_body_framing": {
+		"front": {
+			"center": [
+				-0.000000894069671630859,
+				0.951098501682281,
+				-0.0678306221961975
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					489.754211425781,
+					649.10986328125
+				],
+				"min": [
+					150.245788574219,
+					70.8902282714844
+				]
+			},
+			"same_camera_for_original_and_new": true
+		},
+		"quarter": {
+			"center": [
+				0.051336444914341,
+				0.933285176753998,
+				-0.0422674268484116
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					476.416595458984,
+					652.6494140625
+				],
+				"min": [
+					163.583312988281,
+					67.350700378418
+				]
+			},
+			"same_camera_for_original_and_new": true
+		},
+		"rear": {
+			"center": [
+				-0.000000238418579101563,
+				0.951098501682281,
+				-0.0678306221961975
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					489.754211425781,
+					649.10986328125
+				],
+				"min": [
+					150.245788574219,
+					70.8902282714844
+				]
+			},
+			"same_camera_for_original_and_new": true
+		},
+		"side": {
+			"center": [
+				-0.000000238418607523272,
+				0.951098501682281,
+				-0.0678309500217438
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					420.724273681641,
+					649.10986328125
+				],
+				"min": [
+					219.27571105957,
+					70.8902282714844
+				]
+			},
+			"same_camera_for_original_and_new": true
+		}
+	},
+	"image_dimensions": {
+		"res://docs/art/hydra_runtime_v1/review/engine/family_original_01_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/family_original_06_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_clay_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_clay_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_clay_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_clay_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_diffuse_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_diffuse_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_diffuse_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_diffuse_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_head_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_head_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_head_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_head_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_idle_rifle.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_level_01_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_level_01_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_level_08_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_level_08_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_painted_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_painted_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_painted_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_painted_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_00.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_01.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_02.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_03.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_04.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_05.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_06.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_07.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_reload_08.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/new_run_rifle.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_clay_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_clay_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_clay_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_clay_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_diffuse_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_diffuse_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_diffuse_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_diffuse_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_head_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_head_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_head_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_head_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_idle_rifle.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_level_01_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_level_01_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_level_08_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_level_08_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_painted_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_painted_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_painted_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_painted_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_00.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_01.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_02.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_03.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_04.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_05.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_06.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_07.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_reload_08.png": [
+			640,
+			720
+		],
+		"res://docs/art/hydra_runtime_v1/review/engine/original_run_rifle.png": [
+			640,
+			720
+		]
+	},
+	"isolated_save_path_at_end": "user://hydra_v1_capture_profile.json",
+	"note": "One current configured armor model for all views; each full-body camera fits the original and candidate posed vertices together with KEEP_HEIGHT and a shared margin. Original raw mesh/skin preserved for comparison. Poses use actual player and reload fixture; two real levels also captured.",
+	"real_save_path": "user://star_warfare_save.json",
+	"real_save_sha256_at_end": "ba4612a66106620e1e9956c4a43037d5201c620a358f83f328092270e1d2605a",
+	"real_save_sha256_at_start": "ba4612a66106620e1e9956c4a43037d5201c620a358f83f328092270e1d2605a",
+	"renderer": "gl_compatibility",
+	"resource_mode": "normal_imported_resources",
+	"runtime_scene_sha256": "3dcdb111e499c95879a8d2fedbaa440fab6938c2bbfeb1ca4a966704f2432a5d",
+	"save_change_first_capture": "",
+	"save_unchanged": true,
+	"scene_sha256_at_start": "3dcdb111e499c95879a8d2fedbaa440fab6938c2bbfeb1ca4a966704f2432a5d",
+	"target_sha256": "ed050e238f03dfb3239cd8faba92f5b068c3f54693eecc8b3cd7a2b0da825f7d",
+	"target_sha256_at_start": "ed050e238f03dfb3239cd8faba92f5b068c3f54693eecc8b3cd7a2b0da825f7d",
+	"viewports": {
+		"gameplay": [
+			1280,
+			720
+		],
+		"review": [
+			640,
+			720
+		]
+	}
+}

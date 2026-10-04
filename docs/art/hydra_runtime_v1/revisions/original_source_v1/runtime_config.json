@@ -1,0 +1,85 @@
+{
+  "runtime_id": 3,
+  "design_id": "C-04",
+  "name": "Hydra",
+  "slug": "hydra",
+  "work": "docs/art/hydra_runtime_v1",
+  "asset": "assets/armors/hydra_v1",
+  "source": "docs/art/hydra_runtime_v1/build/source.json",
+  "original_source_snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/snapshot.json",
+  "parts": {
+    "ArmorHead_03": [
+      "head"
+    ],
+    "ArmorBody_03": [
+      "body",
+      "shoulder"
+    ],
+    "ArmorHand_03": [
+      "hand"
+    ],
+    "ArmorFoot_03": [
+      "foot"
+    ]
+  },
+  "original_triangles": 760,
+  "original_bones": 28,
+  "original_surface_count": 5,
+  "original_uv_coordinate_count": 726,
+  "original_total_geometry_limit": 0.2,
+  "original_total_uv_changed_fraction_per_surface_limit": 0.2,
+  "texture_slots": {
+    "head": {
+      "node": "ArmorHead_03",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/head_9d25898f6b16_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/head.png",
+      "original_sha256": "1275f49dc08d07bb9f673defb6b0310c1d82e8fe336450cc3bcf0efe581d8d5f",
+      "coordinates": 161,
+      "charts": 4,
+      "triangles": 186
+    },
+    "body": {
+      "node": "ArmorBody_03",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/body_bd16b9436c5e_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/body.png",
+      "original_sha256": "90878024c950f285b302841e25be651ad6610865887ceffba4e84065309da0a6",
+      "coordinates": 214,
+      "charts": 5,
+      "triangles": 214
+    },
+    "shoulder": {
+      "node": "ArmorBody_03",
+      "surface": 1,
+      "original_texture": "assets/models/player/animated/armor_textures/jian_496b2bbd770e_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+      "original_sha256": "aa7560b374160584f627b68ca30d1b4b2516f8fdc0cde706996e50ef7331c7d5",
+      "coordinates": 114,
+      "charts": 5,
+      "triangles": 116
+    },
+    "hand": {
+      "node": "ArmorHand_03",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/hand_c974522680fe_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+      "original_sha256": "ed9ff2b8bc216f802e77802c507611119b038c6ffd6bd8e3e634433b3fc30511",
+      "coordinates": 113,
+      "charts": 3,
+      "triangles": 108
+    },
+    "foot": {
+      "node": "ArmorFoot_03",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/foot_ee6e6e462c68_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+      "original_sha256": "0c38d3f243cec54d5f99bb826efd047492c2d8025c41304afa5ba52197678cf3",
+      "coordinates": 124,
+      "charts": 4,
+      "triangles": 136
+    }
+  },
+  "accepted_art_status": "pending_root_latest_reference_selection",
+  "geometry_authoring": "No local changes yet; each armor must use its own original source and approved art."
+}

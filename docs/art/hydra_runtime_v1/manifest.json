@@ -1,0 +1,1792 @@
+{
+  "schema_version": 1,
+  "design_id": "C-04",
+  "runtime_id": 3,
+  "name": "Hydra",
+  "revision": "hydra_runtime_v1",
+  "texture_surface_revision": "original_integration_v2_head",
+  "status": "runtime_integrated_pending_user_art_review",
+  "checked_at_utc": "2026-10-04T17:18:00.693517+00:00",
+  "design_authority": {
+    "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/approved_body_and_head_design.png",
+    "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+    "bytes": 2077141,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "mode": "RGB"
+  },
+  "helmet_design_authority": {
+    "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v2_head/approved_design.png",
+    "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+    "bytes": 2077141,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "mode": "RGB"
+  },
+  "original_source_snapshot": {
+    "path": "docs/art/hydra_runtime_v1/revisions/original_source_v1/snapshot.json",
+    "sha256": "a7b7060b098baa898dd222317c435f3fca4101e13f105ed50b13292ea5004922",
+    "bytes": 5610
+  },
+  "source_node_index": {
+    "path": "docs/art/hydra_runtime_v1/revisions/original_source_v1/source_node_index.json",
+    "sha256": "2fee186378990fb528b7ccfdddcf2dc555151a7a1804e0a407b767f88b680388",
+    "bytes": 1891
+  },
+  "original_node_ids": {
+    "ArmorHead_03": 42,
+    "ArmorBody_03": 43,
+    "ArmorHand_03": 44,
+    "ArmorFoot_03": 45
+  },
+  "geometry": {
+    "parts": {
+      "ArmorBody_03": {
+        "bounds_game": {
+          "min": [
+            -0.5321770310401917,
+            0.3316267728805542,
+            -0.3055063784122467
+          ],
+          "max": [
+            0.5321756601333618,
+            1.4096792936325073,
+            0.26092222332954407
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5321770310401917,
+            0.3316267728805542,
+            -0.3055063784122467
+          ],
+          "max": [
+            0.5321756601333618,
+            1.4096792936325073,
+            0.26092222332954407
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 330,
+        "uv_preserved": true,
+        "original_uv_charts": 10,
+        "uv_charts": 10,
+        "uv_coordinate_count": 328,
+        "original_uv_coordinate_count": 328,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "body",
+            "uv_coordinate_count": 214,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          },
+          {
+            "surface": 1,
+            "label": "shoulder",
+            "uv_coordinate_count": 114,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      },
+      "ArmorFoot_03": {
+        "bounds_game": {
+          "min": [
+            -0.39440643787384033,
+            0.007476176600903273,
+            -0.24201896786689758
+          ],
+          "max": [
+            0.39440831542015076,
+            0.45130619406700134,
+            0.2488066852092743
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.39440643787384033,
+            0.007476176600903273,
+            -0.24201896786689758
+          ],
+          "max": [
+            0.39440831542015076,
+            0.45130619406700134,
+            0.2488066852092743
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 136,
+        "uv_preserved": true,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 124,
+        "original_uv_coordinate_count": 124,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "foot",
+            "uv_coordinate_count": 124,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      },
+      "ArmorHand_03": {
+        "bounds_game": {
+          "min": [
+            -0.5540590286254883,
+            0.539063036441803,
+            -0.05050687491893768
+          ],
+          "max": [
+            0.5540585517883301,
+            1.049080491065979,
+            0.19197365641593933
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5540590286254883,
+            0.539063036441803,
+            -0.05050687491893768
+          ],
+          "max": [
+            0.5540585517883301,
+            1.049080491065979,
+            0.19197365641593933
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 108,
+        "uv_preserved": true,
+        "original_uv_charts": 3,
+        "uv_charts": 3,
+        "uv_coordinate_count": 113,
+        "original_uv_coordinate_count": 113,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "hand",
+            "uv_coordinate_count": 113,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      },
+      "ArmorHead_03": {
+        "bounds_game": {
+          "min": [
+            -0.2393590658903122,
+            1.2144405841827393,
+            -0.3965834975242615
+          ],
+          "max": [
+            0.23935674130916595,
+            1.8947206735610962,
+            0.24008873105049133
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.2393590658903122,
+            1.2144405841827393,
+            -0.3965834975242615
+          ],
+          "max": [
+            0.23935674130916595,
+            1.8947206735610962,
+            0.24008873105049133
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.07058179466363713,
+        "max_displacement_fraction_of_smallest_dimension": 0.14743986641374077,
+        "triangles": 186,
+        "uv_preserved": true,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 161,
+        "original_uv_coordinate_count": 161,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "head",
+            "uv_coordinate_count": 161,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged",
+        "shape_quality": {
+          "reversed_triangles": 0,
+          "zero_area_triangles": 0,
+          "coincident_seam_max_rest_gap": 0.0,
+          "min_triangle_normal_cosine_from_original": 0.918529137969017
+        }
+      }
+    },
+    "stage": "original_integration_v1",
+    "constraint": "True original-total shape/dimensions/UV20% per surface; original chart/count/topology/Skin retained. No UV edits in first integration.",
+    "user_authorized_original_total_limit": 0.2
+  },
+  "limits": {
+    "local_geometry_displacement": 0.2,
+    "dimension_change": 0.2,
+    "silhouette_change": 0.2,
+    "uv_changed_fraction_per_material": 0.2,
+    "uv_coordinate_and_chart_counts_preserved": true
+  },
+  "topology": {
+    "triangles": 760,
+    "original_bones": 28,
+    "parts": 4,
+    "surfaces": 5,
+    "diffuse_maps": 5
+  },
+  "files": [
+    {
+      "path": "assets/armors/hydra_v1/hydra.scn",
+      "sha256": "3dcdb111e499c95879a8d2fedbaa440fab6938c2bbfeb1ca4a966704f2432a5d",
+      "bytes": 60445
+    },
+    {
+      "path": "assets/armors/hydra_v1/hydra.glb",
+      "sha256": "0b9a5aef24989f1aed2b95b00f0dc6a7ad3e41e4fbc59377580aab4331a5f536",
+      "bytes": 8173276
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/build/hydra_master.blend",
+      "sha256": "c14ec403fb12fb57ce6c1f361bfc93029fe9b5ed70f31ae371582b29ff42d096",
+      "bytes": 8388551
+    },
+    {
+      "path": "assets/armors/hydra_v1/body_diffuse.png",
+      "sha256": "06bad887459805c1f3a084472454f561a4ac075fe5b98f5223c045c37a661bbd",
+      "bytes": 1580376,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/hydra_v1/foot_diffuse.png",
+      "sha256": "8947c227fffd74c45696b2001f64a1c8bf673da2479eec08b014910af6428750",
+      "bytes": 1844728,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/hydra_v1/hand_diffuse.png",
+      "sha256": "6dea1c6cb3ee9ae3666af7fb5e483365e1ed58109a64e72069b49d30f1d1691c",
+      "bytes": 1550676,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/hydra_v1/head_diffuse.png",
+      "sha256": "c85276bace7eb04528f697dd62cf413412e178f1d36692ed78017cee2cda63e8",
+      "bytes": 1729985,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/hydra_v1/shoulder_diffuse.png",
+      "sha256": "6ab940688708399dd5ec5663950f414b9d760bcb05058443f13bffb904b71a3f",
+      "bytes": 1619544,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    }
+  ],
+  "generation": [
+    {
+      "label": "body",
+      "variant": "original_integration_v1",
+      "prompt": {
+        "path": "docs/art/hydra_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+        "sha256": "0f2c8c32eedc3f9f22db4595ad5d8d1b61d223eb18313c37fc3174f00ca33183",
+        "bytes": 6170
+      },
+      "prompt_sha256": "0f2c8c32eedc3f9f22db4595ad5d8d1b61d223eb18313c37fc3174f00ca33183",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\body_original_edit_target.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/body_original_edit_target.png",
+          "role": "edit_target",
+          "sha256": "90878024c950f285b302841e25be651ad6610865887ceffba4e84065309da0a6",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/body_original_edit_target.png",
+            "sha256": "90878024c950f285b302841e25be651ad6610865887ceffba4e84065309da0a6",
+            "bytes": 221972,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_and_head_design.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/approved_body_and_head_design.png",
+          "role": "approved_design",
+          "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/approved_body_and_head_design.png",
+            "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+            "bytes": 2077141,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\body_fortune_style.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/body_fortune_style.png",
+          "role": "current_fortune_family_style_only",
+          "sha256": "492467eb209e1846665063634c05a9298a33cc2763cf2afa8921a0c968883df6",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/body_fortune_style.png",
+            "sha256": "492467eb209e1846665063634c05a9298a33cc2763cf2afa8921a0c968883df6",
+            "bytes": 1702150,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\body_original_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_and_head_design.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\body_fortune_style.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-2b31a009-1b21-457a-afdd-6c64bf2e99d8.png",
+      "archive": {
+        "path": "docs/art/hydra_runtime_v1/generated/body_diffuse_original_integration_v1.png",
+        "sha256": "06bad887459805c1f3a084472454f561a4ac075fe5b98f5223c045c37a661bbd",
+        "bytes": 1580376,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "06bad887459805c1f3a084472454f561a4ac075fe5b98f5223c045c37a661bbd",
+      "selected": true,
+      "output": "assets/armors/hydra_v1/body_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "output_size": [
+        1254,
+        1254
+      ],
+      "status": "runtime_validated_pending_user_art_review",
+      "generated_at": "2026-10-04T23:17:19.138931+08:00",
+      "canonical": {
+        "path": "assets/armors/hydra_v1/body_diffuse.png",
+        "sha256": "06bad887459805c1f3a084472454f561a4ac075fe5b98f5223c045c37a661bbd",
+        "bytes": 1580376,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "body"
+    },
+    {
+      "label": "shoulder",
+      "variant": "original_integration_v1",
+      "prompt": {
+        "path": "docs/art/hydra_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+        "sha256": "8c0182177ce81c4ea0fbeba091c399738d09a6a17a733bb0f211035de2bdc4d5",
+        "bytes": 5979
+      },
+      "prompt_sha256": "8c0182177ce81c4ea0fbeba091c399738d09a6a17a733bb0f211035de2bdc4d5",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\shoulder_original_edit_target.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/shoulder_original_edit_target.png",
+          "role": "edit_target",
+          "sha256": "aa7560b374160584f627b68ca30d1b4b2516f8fdc0cde706996e50ef7331c7d5",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/shoulder_original_edit_target.png",
+            "sha256": "aa7560b374160584f627b68ca30d1b4b2516f8fdc0cde706996e50ef7331c7d5",
+            "bytes": 261511,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_and_head_design.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/approved_body_and_head_design.png",
+          "role": "approved_design",
+          "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/approved_body_and_head_design.png",
+            "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+            "bytes": 2077141,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\shoulder_fortune_style.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/shoulder_fortune_style.png",
+          "role": "current_fortune_family_style_only",
+          "sha256": "a4aae6d7fdc44c2fec61236a885335df2476da4895cb14c30e723cadcb2215ba",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/shoulder_fortune_style.png",
+            "sha256": "a4aae6d7fdc44c2fec61236a885335df2476da4895cb14c30e723cadcb2215ba",
+            "bytes": 1600593,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\shoulder_original_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_and_head_design.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\shoulder_fortune_style.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-c2d14127-fc21-47e7-8cf7-8e78b6ea72f5.png",
+      "archive": {
+        "path": "docs/art/hydra_runtime_v1/generated/shoulder_diffuse_original_integration_v1.png",
+        "sha256": "6ab940688708399dd5ec5663950f414b9d760bcb05058443f13bffb904b71a3f",
+        "bytes": 1619544,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "6ab940688708399dd5ec5663950f414b9d760bcb05058443f13bffb904b71a3f",
+      "selected": true,
+      "output": "assets/armors/hydra_v1/shoulder_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "output_size": [
+        1254,
+        1254
+      ],
+      "status": "runtime_validated_pending_user_art_review",
+      "generated_at": "2026-10-04T23:17:50.311126+08:00",
+      "canonical": {
+        "path": "assets/armors/hydra_v1/shoulder_diffuse.png",
+        "sha256": "6ab940688708399dd5ec5663950f414b9d760bcb05058443f13bffb904b71a3f",
+        "bytes": 1619544,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "shoulder"
+    },
+    {
+      "label": "hand",
+      "variant": "original_integration_v1",
+      "prompt": {
+        "path": "docs/art/hydra_runtime_v1/prompts/hand_diffuse_original_integration_v1.txt",
+        "sha256": "51a3e455fc7702a8deae00b6973b1b9433b52c9682a04bf35229367b8369fc96",
+        "bytes": 5980
+      },
+      "prompt_sha256": "51a3e455fc7702a8deae00b6973b1b9433b52c9682a04bf35229367b8369fc96",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\hand_original_edit_target.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/hand_original_edit_target.png",
+          "role": "edit_target",
+          "sha256": "ed9ff2b8bc216f802e77802c507611119b038c6ffd6bd8e3e634433b3fc30511",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/hand_original_edit_target.png",
+            "sha256": "ed9ff2b8bc216f802e77802c507611119b038c6ffd6bd8e3e634433b3fc30511",
+            "bytes": 215185,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_and_head_design.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/approved_body_and_head_design.png",
+          "role": "approved_design",
+          "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/approved_body_and_head_design.png",
+            "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+            "bytes": 2077141,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\hand_fortune_style.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/hand_fortune_style.png",
+          "role": "current_fortune_family_style_only",
+          "sha256": "afd6260186294173a4a45a513fa541574f651ca490c6a42616900ba3ba876d92",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/hand_fortune_style.png",
+            "sha256": "afd6260186294173a4a45a513fa541574f651ca490c6a42616900ba3ba876d92",
+            "bytes": 1599516,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\hand_original_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_and_head_design.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\hand_fortune_style.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-a430b149-e9ef-4984-abb6-2def601f0ef0.png",
+      "archive": {
+        "path": "docs/art/hydra_runtime_v1/generated/hand_diffuse_original_integration_v1.png",
+        "sha256": "6dea1c6cb3ee9ae3666af7fb5e483365e1ed58109a64e72069b49d30f1d1691c",
+        "bytes": 1550676,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "6dea1c6cb3ee9ae3666af7fb5e483365e1ed58109a64e72069b49d30f1d1691c",
+      "selected": true,
+      "output": "assets/armors/hydra_v1/hand_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "output_size": [
+        1254,
+        1254
+      ],
+      "status": "runtime_validated_pending_user_art_review",
+      "generated_at": "2026-10-04T23:18:15.290409+08:00",
+      "canonical": {
+        "path": "assets/armors/hydra_v1/hand_diffuse.png",
+        "sha256": "6dea1c6cb3ee9ae3666af7fb5e483365e1ed58109a64e72069b49d30f1d1691c",
+        "bytes": 1550676,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "hand"
+    },
+    {
+      "label": "foot",
+      "variant": "original_integration_v1",
+      "prompt": {
+        "path": "docs/art/hydra_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+        "sha256": "84639c837135721d11e360e36e7f2b8436eb057f0a6d24c46c33b298b633b0cf",
+        "bytes": 5935
+      },
+      "prompt_sha256": "84639c837135721d11e360e36e7f2b8436eb057f0a6d24c46c33b298b633b0cf",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\foot_original_edit_target.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/foot_original_edit_target.png",
+          "role": "edit_target",
+          "sha256": "0c38d3f243cec54d5f99bb826efd047492c2d8025c41304afa5ba52197678cf3",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/foot_original_edit_target.png",
+            "sha256": "0c38d3f243cec54d5f99bb826efd047492c2d8025c41304afa5ba52197678cf3",
+            "bytes": 233184,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_and_head_design.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/approved_body_and_head_design.png",
+          "role": "approved_design",
+          "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/approved_body_and_head_design.png",
+            "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+            "bytes": 2077141,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\foot_fortune_style.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/foot_fortune_style.png",
+          "role": "current_fortune_family_style_only",
+          "sha256": "58ded7a38496e334af747d8035c9a9c07f81c862de2cdbf54dade6797f220f17",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/foot_fortune_style.png",
+            "sha256": "58ded7a38496e334af747d8035c9a9c07f81c862de2cdbf54dade6797f220f17",
+            "bytes": 1537026,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\foot_original_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\approved_body_and_head_design.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\foot_fortune_style.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-07a7bb2c-637d-4241-a95c-74861e47ccb1.png",
+      "archive": {
+        "path": "docs/art/hydra_runtime_v1/generated/foot_diffuse_original_integration_v1.png",
+        "sha256": "8947c227fffd74c45696b2001f64a1c8bf673da2479eec08b014910af6428750",
+        "bytes": 1844728,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "8947c227fffd74c45696b2001f64a1c8bf673da2479eec08b014910af6428750",
+      "selected": true,
+      "output": "assets/armors/hydra_v1/foot_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "output_size": [
+        1254,
+        1254
+      ],
+      "status": "runtime_validated_pending_user_art_review",
+      "generated_at": "2026-10-04T23:18:43.074883+08:00",
+      "canonical": {
+        "path": "assets/armors/hydra_v1/foot_diffuse.png",
+        "sha256": "8947c227fffd74c45696b2001f64a1c8bf673da2479eec08b014910af6428750",
+        "bytes": 1844728,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "foot"
+    },
+    {
+      "label": "head",
+      "variant": "original_integration_v1",
+      "prompt": {
+        "path": "docs/art/hydra_runtime_v1/prompts/head_diffuse_original_integration_v1.txt",
+        "sha256": "133d14f8f92d69271c0583b0965bace582db0b39dd1c9a5c70804e2cf44ba858",
+        "bytes": 6770
+      },
+      "prompt_sha256": "133d14f8f92d69271c0583b0965bace582db0b39dd1c9a5c70804e2cf44ba858",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\head_original_edit_target.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/head_original_edit_target.png",
+          "role": "edit_target",
+          "sha256": "1275f49dc08d07bb9f673defb6b0310c1d82e8fe336450cc3bcf0efe581d8d5f",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/head_original_edit_target.png",
+            "sha256": "1275f49dc08d07bb9f673defb6b0310c1d82e8fe336450cc3bcf0efe581d8d5f",
+            "bytes": 280690,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\latest_head_design.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/latest_head_design.png",
+          "role": "latest_helmet_design_authority",
+          "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/latest_head_design.png",
+            "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+            "bytes": 2077141,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\actual_head_uv_semantics.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/actual_head_uv_semantics.png",
+          "role": "technical_uv_guide",
+          "sha256": "d6404f359a8d600959b2d6626cb81f74a3e856d9884d22cf09c0e5f551f4e1bb",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/actual_head_uv_semantics.png",
+            "sha256": "d6404f359a8d600959b2d6626cb81f74a3e856d9884d22cf09c0e5f551f4e1bb",
+            "bytes": 219834,
+            "dimensions": [
+              1360,
+              1024
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\head_fortune_style.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/head_fortune_style.png",
+          "role": "current_fortune_style_only",
+          "sha256": "10d07e20bd3955fdee018b8b16a9994d3dc511990af6d60cf5cfe88ed886b0cf",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v1/head_fortune_style.png",
+            "sha256": "10d07e20bd3955fdee018b8b16a9994d3dc511990af6d60cf5cfe88ed886b0cf",
+            "bytes": 1623463,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\head_original_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\latest_head_design.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\actual_head_uv_semantics.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v1\\head_fortune_style.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-9647cb60-d50c-406b-9ad8-b1983dd7cd64.png",
+      "archive": {
+        "path": "docs/art/hydra_runtime_v1/generated/head_diffuse_original_integration_v1.png",
+        "sha256": "c2ab3c7541f504144d99ff9333c489e229aae1567e1be438db9cd0351893fd3b",
+        "bytes": 1725103,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "c2ab3c7541f504144d99ff9333c489e229aae1567e1be438db9cd0351893fd3b",
+      "selected": false,
+      "output": "assets/armors/hydra_v1/head_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "output_size": [
+        1254,
+        1254
+      ],
+      "status": "native_adopted_pending_runtime_visual_review",
+      "generated_at": "2026-10-04T23:40:18.335847+08:00",
+      "rejection_reason": "Mirror atlas made two camera lenses; selected half-lens native retry."
+    },
+    {
+      "label": "head",
+      "variant": "original_integration_v2_head",
+      "prompt": {
+        "path": "docs/art/hydra_runtime_v1/prompts/head_diffuse_original_integration_v2_head.txt",
+        "sha256": "fd8b93d44ddcd56757cb050faaaa9c294ea7b45e962c8d03b598c04182167947",
+        "bytes": 6631
+      },
+      "prompt_sha256": "fd8b93d44ddcd56757cb050faaaa9c294ea7b45e962c8d03b598c04182167947",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v2_head\\v1_head_edit_target.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v2_head/v1_head_edit_target.png",
+          "role": "edit_target_previous_attempt",
+          "sha256": "c2ab3c7541f504144d99ff9333c489e229aae1567e1be438db9cd0351893fd3b",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v2_head/v1_head_edit_target.png",
+            "sha256": "c2ab3c7541f504144d99ff9333c489e229aae1567e1be438db9cd0351893fd3b",
+            "bytes": 1725103,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v2_head\\approved_design.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v2_head/approved_design.png",
+          "role": "latest_helmet_design_authority",
+          "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v2_head/approved_design.png",
+            "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+            "bytes": 2077141,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v2_head\\actual_diagonal_join.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v2_head/actual_diagonal_join.png",
+          "role": "technical_uv_mirror_join",
+          "sha256": "b5408d504922feba3d2305b6cedcce37b67c7062bdc5c536fe9b90acb73f3058",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v2_head/actual_diagonal_join.png",
+            "sha256": "b5408d504922feba3d2305b6cedcce37b67c7062bdc5c536fe9b90acb73f3058",
+            "bytes": 39390,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v2_head\\v1_runtime_double_lens_defect.png",
+          "snapshot": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v2_head/v1_runtime_double_lens_defect.png",
+          "role": "runtime_mapping_defect_only",
+          "sha256": "73417555c3ebc555e996a677edf97c040f9f3233b4fb6a7b84a4fdd3903aff90",
+          "immutable_file": {
+            "path": "docs/art/hydra_runtime_v1/input_snapshots/original_integration_v2_head/v1_runtime_double_lens_defect.png",
+            "sha256": "73417555c3ebc555e996a677edf97c040f9f3233b4fb6a7b84a4fdd3903aff90",
+            "bytes": 502365,
+            "dimensions": [
+              640,
+              720
+            ],
+            "mode": "RGBA"
+          }
+        }
+      ],
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v2_head\\v1_head_edit_target.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v2_head\\approved_design.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v2_head\\actual_diagonal_join.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\hydra_runtime_v1\\input_snapshots\\original_integration_v2_head\\v1_runtime_double_lens_defect.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-988a7052-b05a-4504-9a7a-ec5729533884.png",
+      "archive": {
+        "path": "docs/art/hydra_runtime_v1/generated/head_diffuse_original_integration_v2_head.png",
+        "sha256": "c85276bace7eb04528f697dd62cf413412e178f1d36692ed78017cee2cda63e8",
+        "bytes": 1729985,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "c85276bace7eb04528f697dd62cf413412e178f1d36692ed78017cee2cda63e8",
+      "selected": true,
+      "output": "assets/armors/hydra_v1/head_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-05",
+      "generated_at": "2026-10-05T00:33:56.778924+08:00",
+      "user_authorized_engineering_limit": 0.2,
+      "additional_uv_changes": 0,
+      "status": "runtime_validated_pending_user_art_review",
+      "source_attempt": "original_integration_v1",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "canonical": {
+        "path": "assets/armors/hydra_v1/head_diffuse.png",
+        "sha256": "c85276bace7eb04528f697dd62cf413412e178f1d36692ed78017cee2cda63e8",
+        "bytes": 1729985,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "head"
+    }
+  ],
+  "tests": {
+    "runtime_test": {
+      "file": {
+        "path": "docs/art/hydra_runtime_v1/review/runtime_test.json",
+        "sha256": "acb4627650aa661f7140d33f638fef3b9fb69291902c92440324a1ba0925eeb4",
+        "bytes": 11857
+      },
+      "status": "PASS"
+    },
+    "roundtrip_test": {
+      "file": {
+        "path": "docs/art/hydra_runtime_v1/review/roundtrip_test.json",
+        "sha256": "69780b8eeef362b364cddb89ea22555588b8e48dcc030ded1edf1aa2c3a77d4f",
+        "bytes": 11885
+      },
+      "status": "PASS"
+    },
+    "proportion_test": {
+      "file": {
+        "path": "docs/art/hydra_runtime_v1/review/proportion_test.json",
+        "sha256": "b7c6676f19167f091809c4a278a9ca928b3c516336cd3d859ec9ce0087fc4742",
+        "bytes": 8065
+      },
+      "status": "PASS"
+    },
+    "delivery_validate": {
+      "file": {
+        "path": "docs/art/hydra_runtime_v1/review/delivery_validate.json",
+        "sha256": "a16e0c4bca051612c500f74f489c7645be7e244bdf3dad5644ec41148f8aeae0",
+        "bytes": 8654
+      },
+      "status": "PASS"
+    },
+    "original_scene_invariants": {
+      "file": {
+        "path": "docs/art/hydra_runtime_v1/review/original_scene_invariants.json",
+        "sha256": "d488b8f1707b59deb55705613dcaa3153c5d592a09ba0c68add2f8d0579be2a9",
+        "bytes": 1855
+      },
+      "status": "PASS"
+    },
+    "glb_images_test": {
+      "file": {
+        "path": "docs/art/hydra_runtime_v1/review/glb_images_test.json",
+        "sha256": "db8a3e036b7ed598e35fa93dd92e0568299f656048e4b7e71422cf35c665617a",
+        "bytes": 4673
+      },
+      "status": "PASS"
+    }
+  },
+  "captures": [
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_clay_front.png",
+      "sha256": "b57b2a2e33daeaaeab0a6e6091d52f6824f1b7ebbd05641df82de2babc479e18",
+      "bytes": 41743,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_clay_front.png",
+      "sha256": "fcf617939222700453b0e0beba26913a90e87cadfdd37b605d0fe7cf36d9e656",
+      "bytes": 41508,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_painted_front.png",
+      "sha256": "7b45e9f945084a6af40a7fd3457d8e862595722820b1a973d6a14f5aa9fae326",
+      "bytes": 218845,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_painted_front.png",
+      "sha256": "ca4a1dca1c058c02d6164ee125e7dcec15ce336b6aa3bd89f639ff75d547978b",
+      "bytes": 279868,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_diffuse_front.png",
+      "sha256": "98c547d00f54700af3c3a49f72fbe395376f925d1151d14aa63ff85758de4c7c",
+      "bytes": 234295,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_diffuse_front.png",
+      "sha256": "ca4a1dca1c058c02d6164ee125e7dcec15ce336b6aa3bd89f639ff75d547978b",
+      "bytes": 279868,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_clay_side.png",
+      "sha256": "e1afc68e6a345f35568b5c3cccf0d2aaecda16d1ea9c520acc0d983b4f042b82",
+      "bytes": 28702,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_clay_side.png",
+      "sha256": "f15816070a439449bc150400b415209f74be8ba1165a4acd898fdb6e466d40ae",
+      "bytes": 28469,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_painted_side.png",
+      "sha256": "54a7fb96ebe63677f38e23fe0f7874961c1a9c30b20979f9153ad2e9893288ca",
+      "bytes": 155612,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_painted_side.png",
+      "sha256": "223bd185611e1959ed8d44fef1b90034e538b62ebcb31d4e74b6c4933de63f64",
+      "bytes": 184017,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_diffuse_side.png",
+      "sha256": "069b7377dc256d591147d02e18df9d833357ce2fc1ce9856486e805020507706",
+      "bytes": 165942,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_diffuse_side.png",
+      "sha256": "223bd185611e1959ed8d44fef1b90034e538b62ebcb31d4e74b6c4933de63f64",
+      "bytes": 184017,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_clay_rear.png",
+      "sha256": "592c14a9248146a1d3c438ccdfb1acac69389ae1c11560e3d81e19740f3c8174",
+      "bytes": 44540,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_clay_rear.png",
+      "sha256": "1d56b7204446024ae01f049978dce038a409507663a778d9ad4d8ab868789ec7",
+      "bytes": 44577,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_painted_rear.png",
+      "sha256": "91debd40155c827e60a90cb4a5cd3048d54d052188dc66bff13cbd688eebd681",
+      "bytes": 214100,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_painted_rear.png",
+      "sha256": "7b9394a7e3d744c9fac116aa01ca237a1550965dbed06c71d2613e8ce55d4e39",
+      "bytes": 271508,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_diffuse_rear.png",
+      "sha256": "4f5f3d3a341a438431f6dfa6144ead0891a6f7b2d959d3d43a954727300e8ffe",
+      "bytes": 229854,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_diffuse_rear.png",
+      "sha256": "7b9394a7e3d744c9fac116aa01ca237a1550965dbed06c71d2613e8ce55d4e39",
+      "bytes": 271508,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_clay_quarter.png",
+      "sha256": "720c5df9160ed6b992c6a8f38f6b9d35ea9945e2cf18e6830973743988be8dec",
+      "bytes": 42432,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_clay_quarter.png",
+      "sha256": "5506b55aa05a89e3fc1a3657f1b313e7a086aa124f4154e6f527ecd8cc1de3b2",
+      "bytes": 41753,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_painted_quarter.png",
+      "sha256": "f5608a2da34ad5402be3abd39cd6a0e135d3e6280d720e120f95617e4c0f8c51",
+      "bytes": 231191,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_painted_quarter.png",
+      "sha256": "cee53a2605a7622b75ef97cb792c46a4d80b6d0b55c67519224364d62d91984f",
+      "bytes": 292869,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_diffuse_quarter.png",
+      "sha256": "fb21ae88b59e2cb37e7806b8d6b5e44be34b34a1b3fb852d6097ed6ea6e80259",
+      "bytes": 247251,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "sha256": "cee53a2605a7622b75ef97cb792c46a4d80b6d0b55c67519224364d62d91984f",
+      "bytes": 292869,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_head_front.png",
+      "sha256": "464ee135a054ced65051a8422c9719ccdd332f6a8ac4dccc91de7ffa0b2e9ceb",
+      "bytes": 461430,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_head_front.png",
+      "sha256": "8ba7dea57a092e23bb067807af79cafac9dfa535390fcbbda5474121c07db0d5",
+      "bytes": 496952,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_head_side.png",
+      "sha256": "d9ca64167c148a76da83ef52af0068d6d8487d2e2e6ce88b5d397b9189877151",
+      "bytes": 496797,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_head_side.png",
+      "sha256": "d47c25530c6c0d0ca35062fd905b04d347f859a2d6a37d4bdb050c040978810a",
+      "bytes": 506738,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_head_rear.png",
+      "sha256": "93c50384a21e13639e3d4a9b5a5421a06588b46e5b7adc15126611e9600d4e74",
+      "bytes": 442308,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_head_rear.png",
+      "sha256": "0b56bfefaaf24507028ad4a3ff341d481c35910ab257bb7e5be397713f1494b4",
+      "bytes": 485077,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_head_quarter.png",
+      "sha256": "3a8c5f6868e95281405c721cc59ce4a23cdea8464bfa65193e582defe88b2808",
+      "bytes": 507235,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_head_quarter.png",
+      "sha256": "7b2e98408e9a6d200c3c8aa79eede437597e48893b9087fa0ca6863830233dc9",
+      "bytes": 536498,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/family_original_01_front.png",
+      "sha256": "264ad2018dd607b741c6fb2ca4e50708ab6ac2a721ea26fd7a75bcb306c66b4b",
+      "bytes": 226629,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/family_original_06_front.png",
+      "sha256": "5c696741d3289f22a041e27ca32c35af8428702a3eb4cd5a052f2748887466eb",
+      "bytes": 244258,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_idle_rifle.png",
+      "sha256": "25b3da95b541d76071fccfe9b4d2db326ea57c8feaef5fe905e3de8410624f80",
+      "bytes": 197870,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_idle_rifle.png",
+      "sha256": "93c73903a08cebb7ff8b2df199948fdff317b350eee17977471b8cf6bdee94d4",
+      "bytes": 232501,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_run_rifle.png",
+      "sha256": "5870e909dc6ac68459998fe30cf2ea61eed0a1e4a37d28d882c6f23b7828ea5e",
+      "bytes": 184027,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_run_rifle.png",
+      "sha256": "427b32eb8574e4afcdbfef6672446491f4823c00741f958694b71dce6ea8af14",
+      "bytes": 217588,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_reload_00.png",
+      "sha256": "ab9db9cacda9ee87e62fabbc1078629ff443bb63ca36e327a5f45077024ab13a",
+      "bytes": 190001,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_reload_00.png",
+      "sha256": "727928c803d60b239992f7ed20f540d4d6ba83147d4fdeecf7bc179a8fa4ec20",
+      "bytes": 220512,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_reload_01.png",
+      "sha256": "9f3d2b679fcf1287055497f31736cf94c1a7af1f2b45377fb4d5f63669bee8bd",
+      "bytes": 173961,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_reload_01.png",
+      "sha256": "148c639b7082f738e2b66984f2e0aaab7f415ed64d79757b6df9dbfd47ad978d",
+      "bytes": 205864,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_reload_02.png",
+      "sha256": "590f49e113ec5ff485fe85f447c24a28e4c37f3b4bff6db92061bdfe33d42477",
+      "bytes": 176636,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_reload_02.png",
+      "sha256": "e6f4853705f540ec3db90b5c4b8440d28908099522ce08e19d1e99a4e7c50875",
+      "bytes": 209545,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_reload_03.png",
+      "sha256": "f7843aae687a9a43fe5323475fd07ebc70c16e08d7b46a2c14578f582f7dc4c6",
+      "bytes": 176365,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_reload_03.png",
+      "sha256": "49744b1fb546f3068b243dbb39dd69422cfc0f180f5e0d177ca776ceae4235c7",
+      "bytes": 209886,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_reload_04.png",
+      "sha256": "03a25c8f0318582a255d08975fa945a7d252cbc5b06f197a8dcb26ede56dfa8e",
+      "bytes": 183149,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_reload_04.png",
+      "sha256": "05001db401468b514432a25405c8a3ee9f837190cbeeb668c9465d5daafcc4fb",
+      "bytes": 216381,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_reload_05.png",
+      "sha256": "469a2a9a7cd0d7688140119928177537e1e4984a31180d4a875104a4e800b6a3",
+      "bytes": 184967,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_reload_05.png",
+      "sha256": "cf2e9e1cf6216a7e5cd3d00b80e3d1468d25c67ef8bf63b186d54a3fa162c31b",
+      "bytes": 217387,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_reload_06.png",
+      "sha256": "8451794a921a81d159f0afd51afee1e60283153d6de1b247799b0a3bb0cc90e9",
+      "bytes": 179617,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_reload_06.png",
+      "sha256": "8dcbdc32811794cc8905dd5c36c4a7e943ecc942d5b82ba17fcefabeeb4e5bdd",
+      "bytes": 210815,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_reload_07.png",
+      "sha256": "e05808a2e44a8b1355cd2e69f78e0e419cf701ced15e23a620edc2d3eaaae605",
+      "bytes": 176752,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_reload_07.png",
+      "sha256": "c13877e8c35c41bb4166fb2f4501474acda48377a053ea68b14f469f64e3e15d",
+      "bytes": 206083,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_reload_08.png",
+      "sha256": "2921e7c0f6d257723c1e70d08edec6872a23c300b26c746e6c1d968841cd3ff5",
+      "bytes": 190877,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_reload_08.png",
+      "sha256": "3e8a2796c03bd04caf516d751fc5162c88b3555dbfbf8a5bf75651702281a4dd",
+      "bytes": 220951,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_level_01_gameplay.png",
+      "sha256": "e8c45e75da44b36fa00c8553c2cf76617bff5e0ef6e579088b54d4a21a7ea827",
+      "bytes": 1432796,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "sha256": "dcf958aa90f1b6ced9229bffdabee9a42585e56fbdf3b7f52aed74ae005d4774",
+      "bytes": 1467673,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_level_01_front.png",
+      "sha256": "1b4d3bf8536ccd0e8938269b315a6e71113921c8b445b28ec4421618457d761c",
+      "bytes": 1071846,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_level_01_front.png",
+      "sha256": "9b52d3e4760b4c197da99febce3483d767a3bfa55d0b967d262327e31bd9fa80",
+      "bytes": 1098782,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_level_08_gameplay.png",
+      "sha256": "d8d2fa1a380619cdc566cb6080479f82399905d3f35014c9c78c4a1912565183",
+      "bytes": 983745,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "sha256": "424cc4f00538aa8196d7bae628aa793a17e9a784b6dd0eddd7baedbf8b138e9c",
+      "bytes": 1018457,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/original_level_08_front.png",
+      "sha256": "e50a66b78bdb71bc57769a85b1306aa62546cb664e2be2db6cf0b5e366790c36",
+      "bytes": 905497,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/hydra_runtime_v1/review/engine/new_level_08_front.png",
+      "sha256": "00d35fe08978fa5f6477c564e854d7178cf3a24ef51933234cb2ded395bd301a",
+      "bytes": 927844,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    }
+  ],
+  "capture_summary": {
+    "path": "docs/art/hydra_runtime_v1/review/engine/capture.json",
+    "sha256": "9da12e9eeb689a0d294cd792ab358a6a8251cc7350f865989360c97b9cbcda8f",
+    "bytes": 23591
+  },
+  "capture_driver_evidence": {
+    "driver": "opengl3_angle",
+    "renderer_banner": "OpenGL API OpenGL ES 3.0 (ANGLE 2.1.1 git hash: aaebda1c5a40) - Compatibility - Using Device: Google Inc. (NVIDIA) - ANGLE (NVIDIA, NVIDIA GeForce RTX 4080 Laptop GPU (0x000027A0) Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.9579)",
+    "log": {
+      "path": "docs/art/hydra_runtime_v1/review/original_integration_angle_capture.log",
+      "sha256": "cd0fc0b5551240bfb14b81b839206b306bc85e74cac79236ba29d35a69f481fa",
+      "bytes": 351
+    }
+  },
+  "uv_summary": {
+    "original_coordinate_count": 726,
+    "changed_coordinate_count": 0,
+    "changed_coordinate_fraction": 0,
+    "per_material": {
+      "ArmorBody_03_surface_0": {
+        "authored_charts": 5,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 214,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 5
+      },
+      "ArmorBody_03_surface_1": {
+        "authored_charts": 5,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 114,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 5
+      },
+      "ArmorFoot_03_surface_0": {
+        "authored_charts": 4,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 124,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 4
+      },
+      "ArmorHand_03_surface_0": {
+        "authored_charts": 3,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 113,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 3
+      },
+      "ArmorHead_03_surface_0": {
+        "authored_charts": 4,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 161,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 4
+      }
+    }
+  },
+  "inherited_out_of_range_uv": [
+    {
+      "current_uv": [
+        0.0939000025391579,
+        -0.00209999084472656
+      ],
+      "index": 33,
+      "part": "ArmorBody_03",
+      "source_exact": true,
+      "source_uv": [
+        0.0939000025391579,
+        -0.00209999084472656
+      ],
+      "surface": 1
+    },
+    {
+      "current_uv": [
+        0.0939000025391579,
+        -0.00209999084472656
+      ],
+      "index": 41,
+      "part": "ArmorBody_03",
+      "source_exact": true,
+      "source_uv": [
+        0.0939000025391579,
+        -0.00209999084472656
+      ],
+      "surface": 1
+    }
+  ],
+  "metric_scope": "True original source totals, head-only geometry deformation and unchanged original UV. Body/limb actual SCN raw mesh buffers exact; skin/indices/weights preserved. GLB exporter normalizes exchange weights, per-triangle identity independently verified. Artistic similarity is not measured by20%; pending user review.",
+  "residuals": [
+    "中央單鏡頭已映射；金綠大面甲與短下巴仍保留原低模折面和少量亮色接觸邊，待使用者美術評價。",
+    "原肩甲兩個UV樣本超出0–1邊界，與true original逐值相同，沒有新增越界座標或UV改動。"
+  ]
+}

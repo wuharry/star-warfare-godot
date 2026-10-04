@@ -1,0 +1,98 @@
+{
+  "runtime_id": 3,
+  "design_id": "C-04",
+  "name": "Hydra",
+  "slug": "hydra",
+  "work": "docs/art/hydra_runtime_v1",
+  "asset": "assets/armors/hydra_v1",
+  "source": "docs/art/hydra_runtime_v1/build/source.json",
+  "original_source_snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/snapshot.json",
+  "parts": {
+    "ArmorHead_03": [
+      "head"
+    ],
+    "ArmorBody_03": [
+      "body",
+      "shoulder"
+    ],
+    "ArmorHand_03": [
+      "hand"
+    ],
+    "ArmorFoot_03": [
+      "foot"
+    ]
+  },
+  "original_triangles": 760,
+  "original_bones": 28,
+  "original_surface_count": 5,
+  "original_uv_coordinate_count": 726,
+  "original_total_geometry_limit": 0.2,
+  "original_total_uv_changed_fraction_per_surface_limit": 0.2,
+  "texture_slots": {
+    "head": {
+      "node": "ArmorHead_03",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/head_9d25898f6b16_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/head.png",
+      "original_sha256": "1275f49dc08d07bb9f673defb6b0310c1d82e8fe336450cc3bcf0efe581d8d5f",
+      "coordinates": 161,
+      "charts": 4,
+      "triangles": 186
+    },
+    "body": {
+      "node": "ArmorBody_03",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/body_bd16b9436c5e_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/body.png",
+      "original_sha256": "90878024c950f285b302841e25be651ad6610865887ceffba4e84065309da0a6",
+      "coordinates": 214,
+      "charts": 5,
+      "triangles": 214
+    },
+    "shoulder": {
+      "node": "ArmorBody_03",
+      "surface": 1,
+      "original_texture": "assets/models/player/animated/armor_textures/jian_496b2bbd770e_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+      "original_sha256": "aa7560b374160584f627b68ca30d1b4b2516f8fdc0cde706996e50ef7331c7d5",
+      "coordinates": 114,
+      "charts": 5,
+      "triangles": 116
+    },
+    "hand": {
+      "node": "ArmorHand_03",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/hand_c974522680fe_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+      "original_sha256": "ed9ff2b8bc216f802e77802c507611119b038c6ffd6bd8e3e634433b3fc30511",
+      "coordinates": 113,
+      "charts": 3,
+      "triangles": 108
+    },
+    "foot": {
+      "node": "ArmorFoot_03",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/foot_ee6e6e462c68_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+      "original_sha256": "0c38d3f243cec54d5f99bb826efd047492c2d8025c41304afa5ba52197678cf3",
+      "coordinates": 124,
+      "charts": 4,
+      "triangles": 136
+    }
+  },
+  "accepted_art_status": "engineering_integrated_pending_user_art_review",
+  "geometry_authoring": "True-source head-only monotone front-height remap: larger visor, shorter lower blue lip; all original UV and body/limbs exact.",
+  "source_node_index": "docs/art/hydra_runtime_v1/revisions/original_source_v1/source_node_index.json",
+  "source_node_index_sha256": "2fee186378990fb528b7ccfdddcf2dc555151a7a1804e0a407b767f88b680388",
+  "original_node_ids": {
+    "ArmorHead_03": 42,
+    "ArmorBody_03": 43,
+    "ArmorHand_03": 44,
+    "ArmorFoot_03": 45
+  },
+  "shape_file": "tools/armor_runtime_v1/shapes/hydra.py",
+  "art_residuals": [
+    "中央單鏡頭已映射；金綠大面甲與短下巴仍保留原低模折面和少量亮色接觸邊，待使用者美術評價。",
+    "原肩甲兩個UV樣本超出0–1邊界，與true original逐值相同，沒有新增越界座標或UV改動。"
+  ]
+}
