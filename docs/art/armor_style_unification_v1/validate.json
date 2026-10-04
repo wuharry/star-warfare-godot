@@ -1,0 +1,1259 @@
+{
+  "status": "PASS",
+  "baseline_snapshots_verified": 52,
+  "fortune_v7_snapshot_records_verified": 56,
+  "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+  "armors": [
+    {
+      "name": "viper",
+      "scope": "texture surface painting only",
+      "added_geometry_changes": 0,
+      "added_uv_changes": 0,
+      "target_parts_exactly_equal_prepass": true,
+      "images": [
+        {
+          "label": "head",
+          "canonical_sha256": "a1221cefc4ce785b05fe40dcd927010dafae9990332aad12c984c9c96308b0dc",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/viper_runtime_v2/prompts/head_diffuse_style_unified_v9.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "body",
+          "canonical_sha256": "0bbd05125ae61c081c207a1f814bdcfb4ab2bd94613afb36210dd9296b64eeba",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/viper_runtime_v2/prompts/body_diffuse_style_unified_v9.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "shoulder",
+          "canonical_sha256": "963ed30b4a109b6dd4a5b2b2e993fd0f29e0e468928d053875ed3e49e9e1e860",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/viper_runtime_v2/prompts/shoulder_diffuse_style_unified_v9.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "hand",
+          "canonical_sha256": "53a5d1bddd101de3db5652a2eb7343fbd48a40678b449900a09c5e979ab7fa62",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/viper_runtime_v2/prompts/hand_diffuse_style_unified_v9.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "foot",
+          "canonical_sha256": "ae7e71a599d5ede22021fae67bd7ad3d3f90ec6f6dfb020b3cbeca387236e849",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/viper_runtime_v2/prompts/foot_diffuse_style_unified_v9.txt",
+          "postprocessing": "none; native PNG bytes"
+        }
+      ],
+      "actual_scene_invariant_scope": "Exact prepass/current mesh arrays, transforms, skeleton paths, skin binds and material mode. Pixel painting changes are intentional and not measured as a similarity score.",
+      "scene_invariants": "docs/art/viper_runtime_v2/revisions/style_unified_v9/mesh_invariants.json",
+      "reports": {
+        "runtime": "docs/art/viper_runtime_v2/review/runtime_test.json",
+        "roundtrip": "docs/art/viper_runtime_v2/review/roundtrip_test.json",
+        "master": "docs/art/viper_runtime_v2/review/delivery_validate.json",
+        "proportion": "docs/art/viper_runtime_v2/review/proportion_test.json"
+      },
+      "captures": [
+        {
+          "view": "diffuse_front",
+          "sha256": "ef946b7c996c3b089a35b187351f45a74c6651cca8b835bdc3ca2b1be19b2425"
+        },
+        {
+          "view": "diffuse_quarter",
+          "sha256": "3a35dfda90b29c894d0550e0399dc1484b68c9713a3a3585d7911dc86c85eaab"
+        },
+        {
+          "view": "diffuse_side",
+          "sha256": "e6bcec10d50f145373526517f7fae8f87d09cd31530b1db7da9bb31835fa0e23"
+        },
+        {
+          "view": "diffuse_rear",
+          "sha256": "44631e34d70b7065374b4f4e15e0453c5912695ba77889318b57b3d6f2b261d1"
+        },
+        {
+          "view": "head_front",
+          "sha256": "125eb4a2cfff4dfacef009749d294af9b210cf936d36c1275b910fde9db4085b"
+        },
+        {
+          "view": "head_quarter",
+          "sha256": "c7b34d5326c5c0140c7f52971e9c49481b96c421b0cecaef765ccf427eb88858"
+        },
+        {
+          "view": "head_side",
+          "sha256": "947f7a6b3605f757542971c395a4688ba1eea993b7a6b0063beece9e6bd8f040"
+        },
+        {
+          "view": "head_rear",
+          "sha256": "040eb4a8402b1b8284521e2ce1f7c995bd5cfa16cd74ac7645b2ac6b2a6fc568"
+        },
+        {
+          "view": "clay_front",
+          "sha256": "94e07ccc067d4f8b472a6f44987ed0629c7ef02a36763f475aebe32ef69f1175"
+        },
+        {
+          "view": "clay_side",
+          "sha256": "3be25f7cfdb363154d77187bd55e1d667a9f649ba41239221f6592adae2f6212"
+        },
+        {
+          "view": "level_01_gameplay",
+          "sha256": "2812cca3b9f48a8d9164deaa8846bc14919f6feb150b01aad2453f072f993ecb"
+        },
+        {
+          "view": "level_08_gameplay",
+          "sha256": "95e512a067668ccdcb08a6e7bf2ef639cec3584cc7e8da19d735692e9ba08825"
+        },
+        {
+          "view": "idle_rifle",
+          "sha256": "a3c928463306d0cf360257fd82d53ec3ef112b2499a64241a119ac9e603a21fd"
+        },
+        {
+          "view": "run_rifle",
+          "sha256": "b2626b44b0e76cef1439f7be61819c5f0ffc7c7506eff5f86011e617c4f121d8"
+        },
+        {
+          "view": "reload_04",
+          "sha256": "84ad3fb73cf45422cfabc35455ca6796b361520d6b9c2ffc76cf9e292ce16178"
+        }
+      ]
+    },
+    {
+      "name": "fortune",
+      "scope": "head positions only; all additional UV edits forbidden",
+      "added_geometry_changes": 83,
+      "added_uv_changes": 0,
+      "incremental_head_vertex_max_displacement_m": 0.018000006675720215,
+      "original_head_vertex_max_displacement_fraction": 0.14736285892366593,
+      "original_head_dimension_delta_fractions": [
+        0.0,
+        0.039666904006954384,
+        0.07682595807820791
+      ],
+      "original_head_uv_changed_count": 22,
+      "original_head_uv_count": 157,
+      "target_parts_exactly_equal_prepass": false,
+      "head_uv_and_non_head_parts_exactly_equal_v7": true,
+      "images": [
+        {
+          "label": "body",
+          "canonical_sha256": "492467eb209e1846665063634c05a9298a33cc2763cf2afa8921a0c968883df6",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/fortune_runtime_v1/prompts/body_diffuse_style_v3.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "shoulder",
+          "canonical_sha256": "a4aae6d7fdc44c2fec61236a885335df2476da4895cb14c30e723cadcb2215ba",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/fortune_runtime_v1/prompts/shoulder_diffuse_style_v2.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "hand",
+          "canonical_sha256": "afd6260186294173a4a45a513fa541574f651ca490c6a42616900ba3ba876d92",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/fortune_runtime_v1/prompts/hand_diffuse_style_v2.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "foot",
+          "canonical_sha256": "58ded7a38496e334af747d8035c9a9c07f81c862de2cdbf54dade6797f220f17",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/fortune_runtime_v1/prompts/foot_diffuse_style_v2.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "head",
+          "canonical_sha256": "10d07e20bd3955fdee018b8b16a9994d3dc511990af6d60cf5cfe88ed886b0cf",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_refinement_v11.txt",
+          "postprocessing": "none; native PNG bytes"
+        }
+      ],
+      "actual_scene_invariant_scope": "Actual final SCN arrays against immutable v7 SCN: only head vertex positions/normals may change; all UV/index/weights/bones/skin and all body/limb arrays exact. Original total 15% displacement/dimensions checked, not an incremental allowance.",
+      "scene_invariants": "docs/art/fortune_runtime_v1/review/helmet_refinement_invariants.json",
+      "reports": {
+        "runtime": "docs/art/fortune_runtime_v1/review/runtime_test.json",
+        "roundtrip": "docs/art/fortune_runtime_v1/review/roundtrip_test.json",
+        "master": "docs/art/fortune_runtime_v1/review/delivery_validate.json",
+        "proportion": "docs/art/fortune_runtime_v1/review/proportion_test.json"
+      },
+      "captures": [
+        {
+          "view": "diffuse_front",
+          "sha256": "037c2bb580dc977e400a383c44e487edb865c13c7c1475bc4ed9f457fdeb2bb4"
+        },
+        {
+          "view": "diffuse_quarter",
+          "sha256": "bcb4144cb6cf3d00ad040f47338e9880b1f0b8d263c5bc7f80be244be7212231"
+        },
+        {
+          "view": "diffuse_side",
+          "sha256": "32dc69ebc41e8d7662fee1186d8f82942564c63d5d3202f78849d5c049b65cdb"
+        },
+        {
+          "view": "diffuse_rear",
+          "sha256": "763d665c367473b3be4326ae721431fad8e48dc792b187f83ac2c7e24eebfc31"
+        },
+        {
+          "view": "head_front",
+          "sha256": "41008b56fbe71109f044a6a188be5c2abc1bba9eb974a108f0bb13add204766a"
+        },
+        {
+          "view": "head_quarter",
+          "sha256": "88cbc393e7b25a2dc70e57deac0a1d579cf2342fb80a8ff67fd64e6f479efe72"
+        },
+        {
+          "view": "head_side",
+          "sha256": "e7ec9f18c40eeb749e7f697550673ed06491aa8b26108f34c422eefe4ea012f6"
+        },
+        {
+          "view": "head_rear",
+          "sha256": "22c5c6585472ba1f0f5494819533046fd9f5df3d68492815ee0822778a2359b3"
+        },
+        {
+          "view": "clay_front",
+          "sha256": "ab0b1b15535268d96d2e13be3c56bbc954e0f0ce8c4285aa1323508a7cacfdbb"
+        },
+        {
+          "view": "clay_side",
+          "sha256": "e2dcf5a788fb39586292f3acbb3e39c0e2bb37c803ee5987fb51ff273707c033"
+        },
+        {
+          "view": "level_01_gameplay",
+          "sha256": "e11afbb69b7b4be582f4b23cae5a4b3ee89a5991958556955e6ba50dcb192ada"
+        },
+        {
+          "view": "level_08_gameplay",
+          "sha256": "6bbc58a875b1e7aa9913a321f1fbccf52690fa94eed33428d6849d6eb1939e01"
+        },
+        {
+          "view": "idle_rifle",
+          "sha256": "bd097de996e6eec931c26edcb96ede40ea107cab1632986d6c38d83a6a30b243"
+        },
+        {
+          "view": "run_rifle",
+          "sha256": "2fbc439b3f496b0b738774319d57da4c32101f42d0b56f3409b322ea8476ea39"
+        },
+        {
+          "view": "reload_04",
+          "sha256": "c48a5ba541474ef017514da08fcfe864f617dccd0ea161e8389960042adaa5ea"
+        }
+      ]
+    },
+    {
+      "name": "tank",
+      "scope": "Tank head surface 0 positions/normals refinement; original-total head limit20%, all additional UV and non-head geometry edits forbidden",
+      "user_authorized_original_ceiling": 0.2,
+      "actual_delivery_original_limit": 0.2,
+      "added_geometry_changes": 86,
+      "added_uv_changes": 0,
+      "incremental_head_vertex_max_displacement_m": 0.06259727478027344,
+      "target_parts_exactly_equal_prepass": false,
+      "head_uv_shared_neck_and_non_head_parts_exactly_equal_style_v2": true,
+      "original_measurements": [
+        {
+          "part": "ArmorBody_02",
+          "original_total_limit": 0.15,
+          "original_max_rest_displacement_fraction": 8.577614879580877e-15,
+          "original_dimension_delta_fractions": [
+            0.0,
+            3.6637359812630166e-15,
+            6.661338147750939e-16
+          ],
+          "original_uv_changed_fraction": 0.03636363636363636,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "body",
+              "uv_coordinate_count": 210,
+              "uv_changed_count": 12,
+              "uv_changed_fraction": 0.05714285714285714
+            },
+            {
+              "surface": 1,
+              "label": "shoulder",
+              "uv_coordinate_count": 120,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        },
+        {
+          "part": "ArmorFoot_02",
+          "original_total_limit": 0.15,
+          "original_max_rest_displacement_fraction": 1.594670826946629e-15,
+          "original_dimension_delta_fractions": [
+            2.220446049250313e-16,
+            2.220446049250313e-16,
+            0.0
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "foot",
+              "uv_coordinate_count": 122,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        },
+        {
+          "part": "ArmorHand_02",
+          "original_total_limit": 0.15,
+          "original_max_rest_displacement_fraction": 2.0264963770418896e-14,
+          "original_dimension_delta_fractions": [
+            5.551115123125783e-16,
+            8.881784197001252e-16,
+            4.440892098500626e-16
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "hand",
+              "uv_coordinate_count": 116,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        },
+        {
+          "part": "ArmorHead_02",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 0.11845645044148163,
+          "original_dimension_delta_fractions": [
+            4.440892098500626e-16,
+            0.024218352973500723,
+            2.220446049250313e-16
+          ],
+          "original_uv_changed_fraction": 0.024539877300613498,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "head",
+              "uv_coordinate_count": 149,
+              "uv_changed_count": 4,
+              "uv_changed_fraction": 0.026845637583892617
+            },
+            {
+              "surface": 1,
+              "label": "hand",
+              "uv_coordinate_count": 14,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        }
+      ],
+      "triangles": 796,
+      "surfaces": 6,
+      "uv_coordinates": 731,
+      "uv_charts": 20,
+      "runtime_snapshot_records_verified": 319,
+      "shared_snapshot_records_verified": 46,
+      "runtime_snapshot_sha256": "5cc171e01d5e58663e0f5e93632da9f156f765c7ebc526e0eda126d98a8e5dbf",
+      "historical_style_v2": {
+        "runtime_records_verified": 73,
+        "comparison_records_verified": 52,
+        "status": "historical paint-only delivery verified",
+        "added_geometry_changes": 0,
+        "added_uv_changes": 0,
+        "runtime_snapshot_sha256": "2235a24b261d60b58c1f0f87c115518cc0723f5406e3a24c4b2a3411b7eb157f",
+        "comparison_snapshot_sha256": "cca5d8ef43bce685a19be82e912e2d52776a36a3739d424addea64ca583d1390"
+      },
+      "images": [
+        {
+          "label": "body",
+          "canonical_sha256": "a92ae9149165beec2afb7e23a339cfdc13380ae4da71f6ab1d576c15b2a4eac4",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/tank_runtime_v1/prompts/body_diffuse_style_unified_v2.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "shoulder",
+          "canonical_sha256": "4905a54b926654a52e8f63d06b4ac51bc65396db023f4684c1150ee5969df3db",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/tank_runtime_v1/prompts/shoulder_diffuse_style_unified_v2.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "hand",
+          "canonical_sha256": "6bf882758297af2c789b61d602cf39dbfd797e81320fd11fee8f03dee2aac79d",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/tank_runtime_v1/prompts/hand_diffuse_style_unified_v2.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "foot",
+          "canonical_sha256": "e8a16ff8e61c0fe04ee9f766a9ffb3d04459ce773e0f5ce5dc44d55db8f5e2be",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/tank_runtime_v1/prompts/foot_diffuse_style_unified_v2.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "head",
+          "canonical_sha256": "cb9b267677e802d29236c7cd92f8d556e50acb39b5ef6cab9ec8d9aea2e96e1e",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/tank_runtime_v1/prompts/head_diffuse_helmet_refinement_v6.txt",
+          "postprocessing": "none; native PNG bytes"
+        }
+      ],
+      "reports": {
+        "runtime": "docs/art/tank_runtime_v1/review/runtime_test.json",
+        "roundtrip": "docs/art/tank_runtime_v1/review/roundtrip_test.json",
+        "master": "docs/art/tank_runtime_v1/review/delivery_validate.json",
+        "proportion": "docs/art/tank_runtime_v1/review/proportion_test.json",
+        "invariants": "docs/art/tank_runtime_v1/review/helmet_refinement_invariants.json",
+        "scene": "docs/art/tank_runtime_v1/review/helmet_refinement_scene_invariants.json",
+        "glb_images": "docs/art/tank_runtime_v1/review/glb_images_test.json",
+        "capture_execution": "docs/art/tank_runtime_v1/review/helmet_refinement_angle_capture.log"
+      },
+      "captures": [
+        {
+          "view": "diffuse_front",
+          "sha256": "66532ea501ae81aa08c1d7a8b9532d19ed6bc2df3ce732ff1b174fe2fbb030f5"
+        },
+        {
+          "view": "diffuse_quarter",
+          "sha256": "8c7081d5f3d0fcee1f0779e99d0c2e76349f134cdf09aee64590d7ec889c6073"
+        },
+        {
+          "view": "diffuse_side",
+          "sha256": "c17cee1812f8645eee1e6af59d451a85bbcb9526ef02ba43227ef682b7c3c10a"
+        },
+        {
+          "view": "diffuse_rear",
+          "sha256": "010b61f5ffb60d84c6aba2a3e44cf517cd60d7aaf9419981cdea3ab03292e848"
+        },
+        {
+          "view": "head_front",
+          "sha256": "dfdd7858bccc5ac0b8f67d92298b4083c5cb422f6c456add7bf5602917fda37b"
+        },
+        {
+          "view": "head_quarter",
+          "sha256": "4da5dd466eef1b7dce73f6247e713f55643b3984d447aab86d935b89562262fd"
+        },
+        {
+          "view": "head_side",
+          "sha256": "384396c64fde58a4dde4c47e106b914ec675bd8d1b6f12603e16420e71926763"
+        },
+        {
+          "view": "head_rear",
+          "sha256": "fca14e9adbaeaaf6f54fc37714ed53934e62c3d6b38a10621461e9ba73d2037a"
+        },
+        {
+          "view": "clay_front",
+          "sha256": "afe604afecd3e7784e42f07df414c581c7880358ec7cfb80058b9198449e1084"
+        },
+        {
+          "view": "clay_side",
+          "sha256": "31298a9e265fa7bad49be81a4f90bc5186009f253da6f7dd5fe725c06097fc14"
+        },
+        {
+          "view": "level_01_gameplay",
+          "sha256": "1229af2b2fb810dfe9b101c3ebede75ca488005adbb05a00bac2c21b0d70e100"
+        },
+        {
+          "view": "level_08_gameplay",
+          "sha256": "f31d90c706f56d1009cebb4b667dbafe99a3291257d3da2a81a33ba529c1c977"
+        },
+        {
+          "view": "idle_rifle",
+          "sha256": "b0f8303da44eaebe6592294fa0f1480dd0841e32aef71afc6be0d08cdfaf4ae8"
+        },
+        {
+          "view": "run_rifle",
+          "sha256": "47155f78b90d2f6cd16515bc0d5a918413a5273c510a4760893338dc6a86de17"
+        },
+        {
+          "view": "reload_04",
+          "sha256": "8ddb9508b31d8da1011e0f71da2d522139d107ce09ef3725c7339f31f2dc1d25"
+        }
+      ],
+      "actual_scene_invariant_scope": "Helmet refinement v3 against frozen style v2 actual SCN: only ArmorHead_02 surface0 positions/normals allowed; all UV/index/bone/weights/Skin/transforms/material parameters, head surface1 neck and body/limbs exact. True original source immutable; original-total20 percent checked independently in packed report.",
+      "scene_invariants": "docs/art/tank_runtime_v1/review/helmet_refinement_scene_invariants.json"
+    },
+    {
+      "name": "hydra",
+      "scope": "first approved-concept integration against true original source; positions/normals/UV permitted within original-total20%; topology, indices, skin, weights and 28-bone rig preserved",
+      "user_authorized_original_ceiling": 0.2,
+      "actual_delivery_original_limit": 0.2,
+      "prior_runtime_zero_geometry_contract_applies": false,
+      "original_source_snapshot_records_verified": 13,
+      "original_source_snapshot_sha256": "a7b7060b098baa898dd222317c435f3fca4101e13f105ed50b13292ea5004922",
+      "original_node_index_sha256": "2fee186378990fb528b7ccfdddcf2dc555151a7a1804e0a407b767f88b680388",
+      "used_node_ids": {
+        "ArmorHead_03": 42,
+        "ArmorBody_03": 43,
+        "ArmorHand_03": 44,
+        "ArmorFoot_03": 45
+      },
+      "original_measurements": [
+        {
+          "part": "ArmorBody_03",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 8.651420023593312e-15,
+          "original_dimension_delta_fractions": [
+            4.440892098500626e-16,
+            2.6645352591003757e-15,
+            4.440892098500626e-16
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "body",
+              "uv_coordinate_count": 214,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            },
+            {
+              "surface": 1,
+              "label": "shoulder",
+              "uv_coordinate_count": 114,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        },
+        {
+          "part": "ArmorFoot_03",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 1.481204414302158e-15,
+          "original_dimension_delta_fractions": [
+            2.220446049250313e-16,
+            6.661338147750939e-16,
+            2.220446049250313e-16
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "foot",
+              "uv_coordinate_count": 124,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        },
+        {
+          "part": "ArmorHand_03",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 1.9236717574841048e-14,
+          "original_dimension_delta_fractions": [
+            4.440892098500626e-16,
+            1.7763568394002505e-15,
+            1.3322676295501878e-15
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "hand",
+              "uv_coordinate_count": 113,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        },
+        {
+          "part": "ArmorHead_03",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 0.14743986457853522,
+          "original_dimension_delta_fractions": [
+            2.220446049250313e-16,
+            4.551914400963142e-15,
+            1.3322676295501878e-15
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "head",
+              "uv_coordinate_count": 161,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        }
+      ],
+      "triangles": 760,
+      "surfaces": 5,
+      "uv_coordinates": 726,
+      "uv_charts": 21,
+      "images": [
+        {
+          "label": "body",
+          "canonical_sha256": "06bad887459805c1f3a084472454f561a4ac075fe5b98f5223c045c37a661bbd",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/hydra_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "shoulder",
+          "canonical_sha256": "6ab940688708399dd5ec5663950f414b9d760bcb05058443f13bffb904b71a3f",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/hydra_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "hand",
+          "canonical_sha256": "6dea1c6cb3ee9ae3666af7fb5e483365e1ed58109a64e72069b49d30f1d1691c",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/hydra_runtime_v1/prompts/hand_diffuse_original_integration_v1.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "foot",
+          "canonical_sha256": "8947c227fffd74c45696b2001f64a1c8bf673da2479eec08b014910af6428750",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/hydra_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "head",
+          "canonical_sha256": "c85276bace7eb04528f697dd62cf413412e178f1d36692ed78017cee2cda63e8",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/hydra_runtime_v1/prompts/head_diffuse_original_integration_v2_head.txt",
+          "postprocessing": "none; native PNG bytes"
+        }
+      ],
+      "reports": {
+        "runtime": "docs/art/hydra_runtime_v1/review/runtime_test.json",
+        "roundtrip": "docs/art/hydra_runtime_v1/review/roundtrip_test.json",
+        "master": "docs/art/hydra_runtime_v1/review/delivery_validate.json",
+        "proportion": "docs/art/hydra_runtime_v1/review/proportion_test.json",
+        "glb_images": "docs/art/hydra_runtime_v1/review/glb_images_test.json",
+        "scene": "docs/art/hydra_runtime_v1/review/original_scene_invariants.json"
+      },
+      "captures": [
+        {
+          "view": "diffuse_front",
+          "sha256": "ca4a1dca1c058c02d6164ee125e7dcec15ce336b6aa3bd89f639ff75d547978b"
+        },
+        {
+          "view": "diffuse_quarter",
+          "sha256": "cee53a2605a7622b75ef97cb792c46a4d80b6d0b55c67519224364d62d91984f"
+        },
+        {
+          "view": "diffuse_side",
+          "sha256": "223bd185611e1959ed8d44fef1b90034e538b62ebcb31d4e74b6c4933de63f64"
+        },
+        {
+          "view": "diffuse_rear",
+          "sha256": "7b9394a7e3d744c9fac116aa01ca237a1550965dbed06c71d2613e8ce55d4e39"
+        },
+        {
+          "view": "head_front",
+          "sha256": "8ba7dea57a092e23bb067807af79cafac9dfa535390fcbbda5474121c07db0d5"
+        },
+        {
+          "view": "head_quarter",
+          "sha256": "7b2e98408e9a6d200c3c8aa79eede437597e48893b9087fa0ca6863830233dc9"
+        },
+        {
+          "view": "head_side",
+          "sha256": "d47c25530c6c0d0ca35062fd905b04d347f859a2d6a37d4bdb050c040978810a"
+        },
+        {
+          "view": "head_rear",
+          "sha256": "0b56bfefaaf24507028ad4a3ff341d481c35910ab257bb7e5be397713f1494b4"
+        },
+        {
+          "view": "clay_front",
+          "sha256": "fcf617939222700453b0e0beba26913a90e87cadfdd37b605d0fe7cf36d9e656"
+        },
+        {
+          "view": "clay_side",
+          "sha256": "f15816070a439449bc150400b415209f74be8ba1165a4acd898fdb6e466d40ae"
+        },
+        {
+          "view": "level_01_gameplay",
+          "sha256": "dcf958aa90f1b6ced9229bffdabee9a42585e56fbdf3b7f52aed74ae005d4774"
+        },
+        {
+          "view": "level_08_gameplay",
+          "sha256": "424cc4f00538aa8196d7bae628aa793a17e9a784b6dd0eddd7baedbf8b138e9c"
+        },
+        {
+          "view": "idle_rifle",
+          "sha256": "93c73903a08cebb7ff8b2df199948fdff317b350eee17977471b8cf6bdee94d4"
+        },
+        {
+          "view": "run_rifle",
+          "sha256": "427b32eb8574e4afcdbfef6672446491f4823c00741f958694b71dce6ea8af14"
+        },
+        {
+          "view": "reload_04",
+          "sha256": "05001db401468b514432a25405c8a3ee9f837190cbeeb668c9465d5daafcc4fb"
+        }
+      ],
+      "capture_execution": "docs/art/hydra_runtime_v1/review/original_integration_angle_capture.log"
+    },
+    {
+      "name": "strike",
+      "scope": "first approved-concept integration against true original source; positions/normals/UV permitted within original-total20%; topology, indices, skin, weights and 28-bone rig preserved",
+      "user_authorized_original_ceiling": 0.2,
+      "actual_delivery_original_limit": 0.2,
+      "prior_runtime_zero_geometry_contract_applies": false,
+      "original_source_snapshot_records_verified": 13,
+      "original_source_snapshot_sha256": "e2f7bacad42e4525de219f682b12ddb75cdd32d22e14f394692ed7b1ebe51533",
+      "original_node_index_sha256": "a91476b5e3afdca7aea1cf65462ffdd0b43a2276167caa21d7b5ae467bb4401e",
+      "used_node_ids": {
+        "ArmorHead_04": 46,
+        "ArmorBody_04": 47,
+        "ArmorHand_04": 48,
+        "ArmorFoot_04": 49
+      },
+      "original_measurements": [
+        {
+          "part": "ArmorBody_04",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 8.470368201228872e-15,
+          "original_dimension_delta_fractions": [
+            8.881784197001252e-16,
+            1.6653345369377348e-15,
+            3.3306690738754696e-16
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "body",
+              "uv_coordinate_count": 207,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            },
+            {
+              "surface": 1,
+              "label": "shoulder",
+              "uv_coordinate_count": 76,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        },
+        {
+          "part": "ArmorFoot_04",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 1.6032941151174794e-15,
+          "original_dimension_delta_fractions": [
+            1.1102230246251565e-15,
+            1.1102230246251565e-16,
+            6.661338147750939e-16
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "foot",
+              "uv_coordinate_count": 122,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        },
+        {
+          "part": "ArmorHand_04",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 2.022596478247045e-14,
+          "original_dimension_delta_fractions": [
+            4.440892098500626e-16,
+            4.6629367034256575e-15,
+            4.440892098500626e-16
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "hand",
+              "uv_coordinate_count": 106,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        },
+        {
+          "part": "ArmorHead_04",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 0.09291058284059162,
+          "original_dimension_delta_fractions": [
+            7.771561172376096e-16,
+            6.772360450213455e-15,
+            6.661338147750939e-16
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "head",
+              "uv_coordinate_count": 198,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        }
+      ],
+      "triangles": 722,
+      "surfaces": 5,
+      "uv_coordinates": 709,
+      "uv_charts": 23,
+      "images": [
+        {
+          "label": "body",
+          "canonical_sha256": "8f27c361ddb22de381daadb36da55614325a7b4a264f43a3d10875b1737d3048",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/strike_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "shoulder",
+          "canonical_sha256": "760d86b1e026916e938ad52d3ed5066460896f9e5c4a5e855f18df1a134913ac",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/strike_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "hand",
+          "canonical_sha256": "ccc60e5e1f080528629d79178761c1bc33d791d04c7da2fb7fcf7e8ef3217d52",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/strike_runtime_v1/prompts/hand_diffuse_original_integration_v1.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "foot",
+          "canonical_sha256": "9dd8c2ca7c0de439788a2c3e002a13a3371911d4de086032cd0b2c596c319ce3",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/strike_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "head",
+          "canonical_sha256": "07a4243cc973748b08417fabedc7150f3258de9c17f7b5d208a478c92c9cccbf",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/strike_runtime_v1/prompts/head_diffuse_original_integration_v3_head.txt",
+          "postprocessing": "none; native PNG bytes"
+        }
+      ],
+      "reports": {
+        "runtime": "docs/art/strike_runtime_v1/review/runtime_test.json",
+        "roundtrip": "docs/art/strike_runtime_v1/review/roundtrip_test.json",
+        "master": "docs/art/strike_runtime_v1/review/delivery_validate.json",
+        "proportion": "docs/art/strike_runtime_v1/review/proportion_test.json",
+        "glb_images": "docs/art/strike_runtime_v1/review/glb_images_test.json",
+        "scene": "docs/art/strike_runtime_v1/review/original_scene_invariants.json"
+      },
+      "captures": [
+        {
+          "view": "diffuse_front",
+          "sha256": "523ada5812cc7e994132923965ea8984814bb76ce77c5199808c90384c60ae47"
+        },
+        {
+          "view": "diffuse_quarter",
+          "sha256": "defd2c46a30f1b340824b3d1b6a231e2d0fbedae6895fb0afc3e2c73ae286393"
+        },
+        {
+          "view": "diffuse_side",
+          "sha256": "dc7bc87c890cebe54fc6573b621a7d3bb8d5b5cf7695497b3559f7b80bdf3ade"
+        },
+        {
+          "view": "diffuse_rear",
+          "sha256": "2b685da0220db1dca64df87026d9f8e6a46d8a486ae73fd9e029fb276bc2923f"
+        },
+        {
+          "view": "head_front",
+          "sha256": "9d3d2f08ff14236390b4c869dc68217bf71e3e415b108fef42c38246ed5733c6"
+        },
+        {
+          "view": "head_quarter",
+          "sha256": "fe4cd3461c6298792e88b84df158c533eb591898954f9fd4e13b69dd2e48b594"
+        },
+        {
+          "view": "head_side",
+          "sha256": "96d0d3c931fb95afea443fab93d8cd56860fb7f8d57da112e136f082d4d175a8"
+        },
+        {
+          "view": "head_rear",
+          "sha256": "a9904c755851afee52abfddf7a59246a3665a4df6a5d2af05af6e7e474d83513"
+        },
+        {
+          "view": "clay_front",
+          "sha256": "74168fee5290c5e12e0a227afa9b02ea7aa72fa9544361a159bfef3394a5e386"
+        },
+        {
+          "view": "clay_side",
+          "sha256": "f0c573e47307668145a0c680fc468366a91ac6a7a9dd3c9bed2b757532d29e61"
+        },
+        {
+          "view": "level_01_gameplay",
+          "sha256": "52c408bc10c6d6d0def57e981acfe65b0d8987295f79d32579737d754e53e2bf"
+        },
+        {
+          "view": "level_08_gameplay",
+          "sha256": "ec8f324865ee4122613f40c7a734bf063ebc4eae81a8e9ac1a86ad1660946abb"
+        },
+        {
+          "view": "idle_rifle",
+          "sha256": "5ff11b576f5b3f0e0351fdbd2e0b01eb810415e3f3a50e4721da917ad943d305"
+        },
+        {
+          "view": "run_rifle",
+          "sha256": "c9b6d7cc1c407bc2cfdfa1c58d7c837fe6a3de795475e1cc11d6b789a815adf7"
+        },
+        {
+          "view": "reload_04",
+          "sha256": "7c15dd7fcd82d3677db232932c12d4f9491bb10df97ad90923e1d4b06d1f7c68"
+        }
+      ],
+      "capture_execution": "docs/art/strike_runtime_v1/review/original_integration_angle_capture.log"
+    },
+    {
+      "name": "titan",
+      "scope": "first approved-concept integration against true original source; positions/normals/UV permitted within original-total20%; topology, indices, skin, weights and 28-bone rig preserved",
+      "user_authorized_original_ceiling": 0.2,
+      "actual_delivery_original_limit": 0.2,
+      "prior_runtime_zero_geometry_contract_applies": false,
+      "original_source_snapshot_records_verified": 13,
+      "original_source_snapshot_sha256": "1d2883a7123e3297245ee9845569335981d82f26842b661ca98393fd6a3ff0cc",
+      "original_node_index_sha256": "ec6be5fe46fc753ed75c850e95d088f5ed6e961af0170995af95cb2b00a116da",
+      "used_node_ids": {
+        "ArmorHead_05": 50,
+        "ArmorBody_05": 51,
+        "ArmorHand_05": 52,
+        "ArmorFoot_05": 53
+      },
+      "titan_first_v1_snapshot_records_verified": 90,
+      "titan_first_v1_snapshot_sha256": "9a04729f9df7c23134eb377bf22f9e0d9580e824dda7949992d65a400d860009",
+      "titan_v2_additional_geometry_uv_changes": 0,
+      "original_measurements": [
+        {
+          "part": "ArmorBody_05",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 9.095843481806661e-15,
+          "original_dimension_delta_fractions": [
+            2.220446049250313e-16,
+            2.220446049250313e-16,
+            7.771561172376096e-16
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "shoulder",
+              "uv_coordinate_count": 334,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            },
+            {
+              "surface": 1,
+              "label": "body",
+              "uv_coordinate_count": 464,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        },
+        {
+          "part": "ArmorFoot_05",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 1.3978468570097316e-15,
+          "original_dimension_delta_fractions": [
+            0.0,
+            4.440892098500626e-16,
+            1.7763568394002505e-15
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "foot",
+              "uv_coordinate_count": 258,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        },
+        {
+          "part": "ArmorHand_05",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 1.735483901366589e-14,
+          "original_dimension_delta_fractions": [
+            0.0,
+            2.886579864025407e-15,
+            9.992007221626409e-16
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "hand",
+              "uv_coordinate_count": 257,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        },
+        {
+          "part": "ArmorHead_05",
+          "original_total_limit": 0.2,
+          "original_max_rest_displacement_fraction": 0.10308802403500102,
+          "original_dimension_delta_fractions": [
+            8.881784197001252e-16,
+            2.886579864025407e-15,
+            8.881784197001252e-16
+          ],
+          "original_uv_changed_fraction": 0.0,
+          "surfaces": [
+            {
+              "surface": 0,
+              "label": "head",
+              "uv_coordinate_count": 294,
+              "uv_changed_count": 0,
+              "uv_changed_fraction": 0.0
+            }
+          ]
+        }
+      ],
+      "triangles": 700,
+      "surfaces": 5,
+      "uv_coordinates": 1607,
+      "uv_charts": 16,
+      "images": [
+        {
+          "label": "body",
+          "canonical_sha256": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/titan_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "shoulder",
+          "canonical_sha256": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/titan_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "foot",
+          "canonical_sha256": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/titan_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "head",
+          "canonical_sha256": "e7018129a62f4f675f1c196e7b15afd5734124a097eea9d5fd4af230e3bdf534",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/titan_runtime_v1/prompts/head_diffuse_original_integration_v2_head.txt",
+          "postprocessing": "none; native PNG bytes"
+        },
+        {
+          "label": "hand",
+          "canonical_sha256": "511a205683e0e98bd9f8468edebf5a73052085e49e7fed66bd98ac3328ea74ec",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "native_generator_path_available": true,
+          "prompt": "docs/art/titan_runtime_v1/prompts/hand_diffuse_original_integration_v2_hand.txt",
+          "postprocessing": "none; native PNG bytes"
+        }
+      ],
+      "reports": {
+        "runtime": "docs/art/titan_runtime_v1/review/runtime_test.json",
+        "roundtrip": "docs/art/titan_runtime_v1/review/roundtrip_test.json",
+        "master": "docs/art/titan_runtime_v1/review/delivery_validate.json",
+        "proportion": "docs/art/titan_runtime_v1/review/proportion_test.json",
+        "glb_images": "docs/art/titan_runtime_v1/review/glb_images_test.json",
+        "scene": "docs/art/titan_runtime_v1/review/original_scene_invariants.json"
+      },
+      "captures": [
+        {
+          "view": "diffuse_front",
+          "sha256": "598062d49af957060750ae1539054cab039ad0efb02214529641e1bf519fe026"
+        },
+        {
+          "view": "diffuse_quarter",
+          "sha256": "2fff3f37dee0b28fe9f3a2ef6c42381c34b84dbca4840e5e6a9655ad511ea16d"
+        },
+        {
+          "view": "diffuse_side",
+          "sha256": "9e7a2ea614e0fa165ac7d72a62d34a507742303aab92d5c31d6e9f4f70775955"
+        },
+        {
+          "view": "diffuse_rear",
+          "sha256": "6556605ff904caf9229496aba4817921d6e4127bc0680be50de2d3c50bf8f2f8"
+        },
+        {
+          "view": "head_front",
+          "sha256": "aa33b150c21f9265d913ee39cdc8b656ec6dfd26befaa70ca6a88ea452e6f674"
+        },
+        {
+          "view": "head_quarter",
+          "sha256": "e2320f1cc480d0cc0f52490817a02209b7964637db619fb8dca3abc1b4d69a63"
+        },
+        {
+          "view": "head_side",
+          "sha256": "2643d9c67a78e89cd30d1833e98a6f74c876815e660db7bd0a07d91b4fa9adea"
+        },
+        {
+          "view": "head_rear",
+          "sha256": "96cc33e73d39159f760b0d9bd2b628bc4cd778edfc321809b5c474297438ccaa"
+        },
+        {
+          "view": "clay_front",
+          "sha256": "f63c76fd0f6d395e012226a7f6bf652ebe05ae8b6c4bc36955101484c1d3095f"
+        },
+        {
+          "view": "clay_side",
+          "sha256": "dff0a0a1984c3a23a5020f26971ee7ca85fa53970a7ad16c659afad77b3028fd"
+        },
+        {
+          "view": "level_01_gameplay",
+          "sha256": "9739de8219a5a4cfd9034965d27dc5f5b643464ad6249f4f10b84321cad746c6"
+        },
+        {
+          "view": "level_08_gameplay",
+          "sha256": "6bf27ddd4cac8ee670dc976399dd4f4d630d117afab92c70094b6de39df8e59a"
+        },
+        {
+          "view": "idle_rifle",
+          "sha256": "a242a3991e46996c3d1c9296a98318ea959dfe1e089c9061d113b088ba4f7f69"
+        },
+        {
+          "view": "run_rifle",
+          "sha256": "e2298548f085bd75ca24c7aac8b92ffbc8704246b5c497ba712206b7b072a00b"
+        },
+        {
+          "view": "reload_04",
+          "sha256": "0851c35f45e7fef5e1b51cd882bd73637a9b15b8cb4f6951466262acc48d1e21"
+        }
+      ],
+      "capture_execution": "docs/art/titan_runtime_v1/review/original_integration_angle_capture.log"
+    }
+  ],
+  "art_review": "runtime-verified first pass; pending user preference review; no objective style score",
+  "superseded_historical_combined_report": "docs/art/armor_style_unification_v1/revisions/combined_before_first_integrations/validate.json",
+  "superseded_historical_combined_report_sha256": "260e4d1552092283c22c461a5b004fb766d92970f49d36125a9624b9a583da26",
+  "prior_pending_combined_report": "docs/art/armor_style_unification_v1/revisions/combined_pending_first_integrations/validate.json",
+  "prior_pending_combined_report_sha256": "7cfbcc7139350564c9cc81410602d10f425775636b3c2c665adbc1e10c76a152"
+}

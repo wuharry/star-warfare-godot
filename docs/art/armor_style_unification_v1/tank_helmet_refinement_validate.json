@@ -1,0 +1,258 @@
+{
+  "status": "PASS",
+  "name": "tank",
+  "scope": "Tank head surface 0 positions/normals refinement; original-total head limit20%, all additional UV and non-head geometry edits forbidden",
+  "user_authorized_original_ceiling": 0.2,
+  "actual_delivery_original_limit": 0.2,
+  "added_geometry_changes": 86,
+  "added_uv_changes": 0,
+  "incremental_head_vertex_max_displacement_m": 0.06259727478027344,
+  "target_parts_exactly_equal_prepass": false,
+  "head_uv_shared_neck_and_non_head_parts_exactly_equal_style_v2": true,
+  "original_measurements": [
+    {
+      "part": "ArmorBody_02",
+      "original_total_limit": 0.15,
+      "original_max_rest_displacement_fraction": 8.577614879580877e-15,
+      "original_dimension_delta_fractions": [
+        0.0,
+        3.6637359812630166e-15,
+        6.661338147750939e-16
+      ],
+      "original_uv_changed_fraction": 0.03636363636363636,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "body",
+          "uv_coordinate_count": 210,
+          "uv_changed_count": 12,
+          "uv_changed_fraction": 0.05714285714285714
+        },
+        {
+          "surface": 1,
+          "label": "shoulder",
+          "uv_coordinate_count": 120,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "part": "ArmorFoot_02",
+      "original_total_limit": 0.15,
+      "original_max_rest_displacement_fraction": 1.594670826946629e-15,
+      "original_dimension_delta_fractions": [
+        2.220446049250313e-16,
+        2.220446049250313e-16,
+        0.0
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "foot",
+          "uv_coordinate_count": 122,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "part": "ArmorHand_02",
+      "original_total_limit": 0.15,
+      "original_max_rest_displacement_fraction": 2.0264963770418896e-14,
+      "original_dimension_delta_fractions": [
+        5.551115123125783e-16,
+        8.881784197001252e-16,
+        4.440892098500626e-16
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "hand",
+          "uv_coordinate_count": 116,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "part": "ArmorHead_02",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 0.11845645044148163,
+      "original_dimension_delta_fractions": [
+        4.440892098500626e-16,
+        0.024218352973500723,
+        2.220446049250313e-16
+      ],
+      "original_uv_changed_fraction": 0.024539877300613498,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "head",
+          "uv_coordinate_count": 149,
+          "uv_changed_count": 4,
+          "uv_changed_fraction": 0.026845637583892617
+        },
+        {
+          "surface": 1,
+          "label": "hand",
+          "uv_coordinate_count": 14,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    }
+  ],
+  "triangles": 796,
+  "surfaces": 6,
+  "uv_coordinates": 731,
+  "uv_charts": 20,
+  "runtime_snapshot_records_verified": 319,
+  "shared_snapshot_records_verified": 46,
+  "runtime_snapshot_sha256": "5cc171e01d5e58663e0f5e93632da9f156f765c7ebc526e0eda126d98a8e5dbf",
+  "historical_style_v2": {
+    "runtime_records_verified": 73,
+    "comparison_records_verified": 52,
+    "status": "historical paint-only delivery verified",
+    "added_geometry_changes": 0,
+    "added_uv_changes": 0,
+    "runtime_snapshot_sha256": "2235a24b261d60b58c1f0f87c115518cc0723f5406e3a24c4b2a3411b7eb157f",
+    "comparison_snapshot_sha256": "cca5d8ef43bce685a19be82e912e2d52776a36a3739d424addea64ca583d1390"
+  },
+  "images": [
+    {
+      "label": "body",
+      "canonical_sha256": "a92ae9149165beec2afb7e23a339cfdc13380ae4da71f6ab1d576c15b2a4eac4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/tank_runtime_v1/prompts/body_diffuse_style_unified_v2.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "shoulder",
+      "canonical_sha256": "4905a54b926654a52e8f63d06b4ac51bc65396db023f4684c1150ee5969df3db",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/tank_runtime_v1/prompts/shoulder_diffuse_style_unified_v2.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "hand",
+      "canonical_sha256": "6bf882758297af2c789b61d602cf39dbfd797e81320fd11fee8f03dee2aac79d",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/tank_runtime_v1/prompts/hand_diffuse_style_unified_v2.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "foot",
+      "canonical_sha256": "e8a16ff8e61c0fe04ee9f766a9ffb3d04459ce773e0f5ce5dc44d55db8f5e2be",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/tank_runtime_v1/prompts/foot_diffuse_style_unified_v2.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "head",
+      "canonical_sha256": "cb9b267677e802d29236c7cd92f8d556e50acb39b5ef6cab9ec8d9aea2e96e1e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/tank_runtime_v1/prompts/head_diffuse_helmet_refinement_v6.txt",
+      "postprocessing": "none; native PNG bytes"
+    }
+  ],
+  "reports": {
+    "runtime": "docs/art/tank_runtime_v1/review/runtime_test.json",
+    "roundtrip": "docs/art/tank_runtime_v1/review/roundtrip_test.json",
+    "master": "docs/art/tank_runtime_v1/review/delivery_validate.json",
+    "proportion": "docs/art/tank_runtime_v1/review/proportion_test.json",
+    "invariants": "docs/art/tank_runtime_v1/review/helmet_refinement_invariants.json",
+    "scene": "docs/art/tank_runtime_v1/review/helmet_refinement_scene_invariants.json",
+    "glb_images": "docs/art/tank_runtime_v1/review/glb_images_test.json",
+    "capture_execution": "docs/art/tank_runtime_v1/review/helmet_refinement_angle_capture.log"
+  },
+  "captures": [
+    {
+      "view": "diffuse_front",
+      "sha256": "66532ea501ae81aa08c1d7a8b9532d19ed6bc2df3ce732ff1b174fe2fbb030f5"
+    },
+    {
+      "view": "diffuse_quarter",
+      "sha256": "8c7081d5f3d0fcee1f0779e99d0c2e76349f134cdf09aee64590d7ec889c6073"
+    },
+    {
+      "view": "diffuse_side",
+      "sha256": "c17cee1812f8645eee1e6af59d451a85bbcb9526ef02ba43227ef682b7c3c10a"
+    },
+    {
+      "view": "diffuse_rear",
+      "sha256": "010b61f5ffb60d84c6aba2a3e44cf517cd60d7aaf9419981cdea3ab03292e848"
+    },
+    {
+      "view": "head_front",
+      "sha256": "dfdd7858bccc5ac0b8f67d92298b4083c5cb422f6c456add7bf5602917fda37b"
+    },
+    {
+      "view": "head_quarter",
+      "sha256": "4da5dd466eef1b7dce73f6247e713f55643b3984d447aab86d935b89562262fd"
+    },
+    {
+      "view": "head_side",
+      "sha256": "384396c64fde58a4dde4c47e106b914ec675bd8d1b6f12603e16420e71926763"
+    },
+    {
+      "view": "head_rear",
+      "sha256": "fca14e9adbaeaaf6f54fc37714ed53934e62c3d6b38a10621461e9ba73d2037a"
+    },
+    {
+      "view": "clay_front",
+      "sha256": "afe604afecd3e7784e42f07df414c581c7880358ec7cfb80058b9198449e1084"
+    },
+    {
+      "view": "clay_side",
+      "sha256": "31298a9e265fa7bad49be81a4f90bc5186009f253da6f7dd5fe725c06097fc14"
+    },
+    {
+      "view": "level_01_gameplay",
+      "sha256": "1229af2b2fb810dfe9b101c3ebede75ca488005adbb05a00bac2c21b0d70e100"
+    },
+    {
+      "view": "level_08_gameplay",
+      "sha256": "f31d90c706f56d1009cebb4b667dbafe99a3291257d3da2a81a33ba529c1c977"
+    },
+    {
+      "view": "idle_rifle",
+      "sha256": "b0f8303da44eaebe6592294fa0f1480dd0841e32aef71afc6be0d08cdfaf4ae8"
+    },
+    {
+      "view": "run_rifle",
+      "sha256": "47155f78b90d2f6cd16515bc0d5a918413a5273c510a4760893338dc6a86de17"
+    },
+    {
+      "view": "reload_04",
+      "sha256": "8ddb9508b31d8da1011e0f71da2d522139d107ce09ef3725c7339f31f2dc1d25"
+    }
+  ],
+  "actual_scene_invariant_scope": "Helmet refinement v3 against frozen style v2 actual SCN: only ArmorHead_02 surface0 positions/normals allowed; all UV/index/bone/weights/Skin/transforms/material parameters, head surface1 neck and body/limbs exact. True original source immutable; original-total20 percent checked independently in packed report.",
+  "scene_invariants": "docs/art/tank_runtime_v1/review/helmet_refinement_scene_invariants.json",
+  "scope_note": "Independent current armor verification; combined current six-armor PASS is also available.",
+  "combined_current_report": "docs/art/armor_style_unification_v1/validate.json",
+  "combined_current_report_sha256": "9263a1619cf78cb9bad0495805bce1d6260581f36646236d6f4fa67b85987d8b"
+}

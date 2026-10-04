@@ -1,0 +1,565 @@
+{
+  "title": "Viper／Fortune／Tank 裝甲實機前後比較",
+  "date": "2026-10-04",
+  "status": "三套目前版本的正式資源與來源一致性檢查完成；Tank 畫法第一輪待使用者評價",
+  "summary": "Viper 保留畫法第一輪，Fortune 顯示頭盔 v11 修正。Tank 五張貼圖已套入正式遊戲資源，減少密集白裂網、以寬柔藍甲高光塑形，保留大橙金面罩及已確認設計。三欄皆為原版、凍結前版與目前正常資源的實機圖；工程通過不代表美術定稿。",
+  "base_prompt": "base_prompt.txt",
+  "protocol": [
+    "原版：原始遊戲裝甲同相機擷取，使用此頁保留的原始 PNG。",
+    "修改前：Viper 是畫法調整前的新設計；Fortune 是已凍結的頭盔 v7 修正前版本。兩者的快照均保留原始 PNG 位元組。",
+    "本輪：只顯示正常匯入、編譯資源重新擷取的實際模型。候選未完成驗證與擷取時，第三欄明確標示等待，不以舊圖冒充。",
+    "中性 diffuse 與頭部擷取使用白色 tint／UN_SHADED；灰模查看外殼；遊戲及動作圖保留實際材質口徑。",
+    "Viper 維持純貼圖畫法調整；Fortune 本次包含頭盔局部形狀修正及貼圖。Fortune 形狀總改動仍按原版 15% 預算驗收，不是再增加 15%，且不新增 UV、拓撲或骨架。耳蓋只是在既有側板上的貼圖細節。",
+    "工程驗證不代表使用者接受美術，也沒有客觀風格相似度評分。歷史 paint-only PASS 僅適用凍結的 v7，不能沿用為候選的新模型結論。",
+    "Tank 當輪獲准原版總 20% 工程上限，Viper／Fortune 既有上限仍為 15%。Tank 這轮只調整貼圖畫法，新增模型與 UV 為 0；實際管線仍按更嚴格的 15% 條件通過。上限不代表必須增加改動，也不是美術相似度。"
+  ],
+  "armors": [
+    {
+      "id": "viper",
+      "name": "Viper",
+      "runtime_dir": "viper_runtime_v2",
+      "variant_before": "concept_match_v8",
+      "variant_after": "style_unified_v9",
+      "status": "正常資源實機擷取與工程檢查完成；畫法待使用者評價",
+      "summary": "面甲直亮條已收斂，肩、腿與背甲畫法更柔；新設計保持。扣具與下巴仍偏亮，沒有聲稱完全消除違和。",
+      "prompt": "../viper_runtime_v2/prompts/head_diffuse_style_unified_v9.txt",
+      "changes": [
+        {
+          "part": "面甲／頭頂",
+          "before": "面甲中央直亮條、頂冠細白邊與刮線較突出。",
+          "after": "面甲改為較寬柔反光，頂冠以大漸層塑形；下巴接觸邊仍偏亮。",
+          "preserved": "黑眉、紫色切面、斜削下巴、頭盔外殼。"
+        },
+        {
+          "part": "胸腹／背甲",
+          "before": "細亮邊、硬黑分板與細磨損較多。",
+          "after": "甲面高光更寬，細磨線減少；胸口扣具與部分甲片邊仍較亮。",
+          "preserved": "雙胸窗、層疊腹甲、四片背甲與主要分色。"
+        },
+        {
+          "part": "肩／手／腿靴",
+          "before": "細白描邊與分散細刮痕遍布甲面。",
+          "after": "長刮線收斂，以較寬的色彩漸層塑形。",
+          "preserved": "肩甲黑藍帶、前臂黑窗、大腿藍板及原關節。"
+        }
+      ],
+      "verification": [
+        {
+          "label": "新增模型／UV 改動",
+          "result": "0；target 頂點、UV 與修改前完全相同",
+          "evidence": "validate.json"
+        },
+        {
+          "label": "正常 runtime／GLB 動作",
+          "result": "15／9 個姿勢 PASS",
+          "evidence": "../viper_runtime_v2/review/runtime_test.json"
+        },
+        {
+          "label": "GLB 與 packed master 貼圖",
+          "result": "五張 canonical 貼圖對照 PASS",
+          "evidence": "../viper_runtime_v2/review/delivery_validate.json"
+        },
+        {
+          "label": "正常資源實機圖",
+          "result": "64 張 ANGLE／Direct3D11；本頁選用其中 15 組",
+          "evidence": "../viper_runtime_v2/review/engine/capture.json"
+        }
+      ],
+      "sources": [
+        {
+          "label": "必要基底 prompt",
+          "path": "base_prompt.txt"
+        },
+        {
+          "label": "輸入與驗收規則",
+          "path": "README.md"
+        },
+        {
+          "label": "修改前快照索引",
+          "path": "baseline_snapshot.json"
+        },
+        {
+          "label": "該裝甲完整素材頁",
+          "path": "../viper_runtime_v2/index.html"
+        },
+        {
+          "label": "實送 head prompt",
+          "path": "../viper_runtime_v2/prompts/head_diffuse_style_unified_v9.txt"
+        },
+        {
+          "label": "實送 body prompt",
+          "path": "../viper_runtime_v2/prompts/body_diffuse_style_unified_v9.txt"
+        },
+        {
+          "label": "實送 shoulder prompt",
+          "path": "../viper_runtime_v2/prompts/shoulder_diffuse_style_unified_v9.txt"
+        },
+        {
+          "label": "實送 hand prompt",
+          "path": "../viper_runtime_v2/prompts/hand_diffuse_style_unified_v9.txt"
+        },
+        {
+          "label": "實送 foot prompt",
+          "path": "../viper_runtime_v2/prompts/foot_diffuse_style_unified_v9.txt"
+        }
+      ],
+      "original_prefix": "original/viper/review/",
+      "capture_revision": "125eb4a2cfff4dfa"
+    },
+    {
+      "id": "fortune",
+      "name": "Fortune",
+      "runtime_dir": "fortune_runtime_v1",
+      "variant_before": "head style v7／body style v3／shoulder・hand・foot style v2",
+      "variant_after": "head refinement v11／body style v3／shoulder・hand・foot style v2",
+      "status": "v11 正常資源管線、64 張擷取與共用嚴格一致性檢查 PASS；待使用者美術評價",
+      "summary": "已調整薄鋼藍眉沿、深紫連續面罩、短綠下巴與較緊湊的頂冠／耳蓋分色；移除藍色三角鼻片及粗後腦藍帶。耳蓋是既有側板上的貼圖。頂冠仍可見低模切面，後腦中線暗縫仍有貼圖殘留；模型接縫位置間隙量測為 0。",
+      "prompt": "../fortune_runtime_v1/prompts/head_diffuse_refinement_v11.txt",
+      "changes": [
+        {
+          "part": "頭頂／前額眉沿",
+          "before": "v7 綠色頂冠切面與額前銀藍邊較硬，前額容易讀成寬框。",
+          "after": "頂冠局部形狀收整，薄鋼藍眉沿畫到真正前額取樣區；稀疏原模型仍能看見切面。",
+          "preserved": "原 170 個頭部三角形、4 個 UV 分區及原座標總數。"
+        },
+        {
+          "part": "面甲／中央鼻片",
+          "before": "紫玻璃較亮，面甲下緣有藍色三角裝飾。",
+          "after": "深紫連續面罩及較克制的寬柔反光；移除藍色三角鼻片，面罩下緣更接近平整。",
+          "preserved": "原面甲 UV 取樣，沒有新中心分割或新增 UV 改動。"
+        },
+        {
+          "part": "下巴／兩側面甲",
+          "before": "v7 下巴與眉面突出，頰面亮邊較硬。",
+          "after": "收回眉沿、面罩及下巴的突出量，短綠下巴與兩側甲面更連續；不宣稱與概念圖完全重合。",
+          "preserved": "兩側小槽、原皮膚權重、骨架與動作。"
+        },
+        {
+          "part": "耳蓋／後腦",
+          "before": "側邊藍板較長，後腦有粗銀藍色帶。",
+          "after": "耳蓋改成較小的綠色分色，長藍帶大多改為綠甲；後腦中線暗縫仍殘留。",
+          "preserved": "耳蓋只是既有側板貼圖，沒有新增獨立耳盤模型；幾何接縫間隙為 0。"
+        },
+        {
+          "part": "胸背／肩手／腿靴",
+          "before": "已完成畫法第一輪的身體、肩、手與靴貼圖。",
+          "after": "本次只修頭盔，其餘四張貼圖和部件形狀保持 v7 整合結果。",
+          "preserved": "U 胸框、綠銀藍色塊、四肢形狀與原關節。"
+        }
+      ],
+      "verification": [
+        {
+          "label": "頭部新增形狀改動（相對 v7）",
+          "result": "83 個 rest 頂點；最大 18.000 mm",
+          "evidence": "../fortune_runtime_v1/review/helmet_refinement_invariants.json"
+        },
+        {
+          "label": "頭部最大位移（相對原版）",
+          "result": "74.800 mm；14.7363% ＜ 15%",
+          "evidence": "../fortune_runtime_v1/build/geometry.json"
+        },
+        {
+          "label": "頭部尺寸差（相對原版）",
+          "result": "寬 0%；高縮短 3.9667%；深縮短 7.6826%",
+          "evidence": "../fortune_runtime_v1/review/proportion_test.json"
+        },
+        {
+          "label": "四向全身灰模輪廓",
+          "result": "1−IoU 最大 3.81494%（側面）",
+          "evidence": "../fortune_runtime_v1/review/proportion_test.json"
+        },
+        {
+          "label": "UV／拓撲／骨架",
+          "result": "新增 UV 0；原總改動 22／157＝14.0127%",
+          "evidence": "../fortune_runtime_v1/review/helmet_refinement_invariants.json"
+        },
+        {
+          "label": "頭部三角形與接縫",
+          "result": "170 三角形；反轉／零面積 0；幾何接縫間隙 0",
+          "evidence": "../fortune_runtime_v1/build/geometry.json"
+        },
+        {
+          "label": "正常 runtime／GLB 動作",
+          "result": "15／9 個姿勢的管線報告 PASS",
+          "evidence": "../fortune_runtime_v1/review/runtime_test.json"
+        },
+        {
+          "label": "GLB 與 packed master 貼圖",
+          "result": "五張 canonical 貼圖對照 PASS",
+          "evidence": "../fortune_runtime_v1/review/delivery_validate.json"
+        },
+        {
+          "label": "正常資源實機圖",
+          "result": "64 張 ANGLE／Direct3D11；本頁選用 15 組",
+          "evidence": "../fortune_runtime_v1/review/engine/capture.json"
+        },
+        {
+          "label": "共用資料一致性檢查",
+          "result": "PASS；本頁來源與當前素材／報告一致",
+          "evidence": "validate.json"
+        },
+        {
+          "label": "修正前 v7 歷史證據",
+          "result": "歷史 paint-only PASS；不能套用本次形狀修正",
+          "evidence": "revisions/fortune_head_v7_before_refinement/snapshot.json"
+        }
+      ],
+      "sources": [
+        {
+          "label": "畫法調整基底 prompt（純貼圖用途）",
+          "path": "base_prompt.txt"
+        },
+        {
+          "label": "頭盔形狀／貼圖修正基底 prompt",
+          "path": "helmet_refinement_prompt.txt"
+        },
+        {
+          "label": "頭盔 UV 區域與鏡像取樣筆記",
+          "path": "helmet_mapping_notes.md"
+        },
+        {
+          "label": "輸入與驗收規則",
+          "path": "README.md"
+        },
+        {
+          "label": "修正前 v7 凍結索引",
+          "path": "revisions/fortune_head_v7_before_refinement/snapshot.json"
+        },
+        {
+          "label": "第一輪畫法前快照索引",
+          "path": "baseline_snapshot.json"
+        },
+        {
+          "label": "該裝甲完整素材頁",
+          "path": "../fortune_runtime_v1/index.html"
+        },
+        {
+          "label": "頭盔實送 prompt v8（未採用候選）",
+          "path": "../fortune_runtime_v1/prompts/head_diffuse_refinement_v8.txt"
+        },
+        {
+          "label": "頭盔實送 prompt v9（未採用候選）",
+          "path": "../fortune_runtime_v1/prompts/head_diffuse_refinement_v9.txt"
+        },
+        {
+          "label": "頭盔實送 prompt v10（未採用候選）",
+          "path": "../fortune_runtime_v1/prompts/head_diffuse_refinement_v10.txt"
+        },
+        {
+          "label": "頭盔實送 prompt v11（本次採用）",
+          "path": "../fortune_runtime_v1/prompts/head_diffuse_refinement_v11.txt"
+        },
+        {
+          "label": "實送 body prompt",
+          "path": "../fortune_runtime_v1/prompts/body_diffuse_style_v3.txt"
+        },
+        {
+          "label": "實送 shoulder prompt",
+          "path": "../fortune_runtime_v1/prompts/shoulder_diffuse_style_v2.txt"
+        },
+        {
+          "label": "實送 hand prompt",
+          "path": "../fortune_runtime_v1/prompts/hand_diffuse_style_v2.txt"
+        },
+        {
+          "label": "實送 foot prompt",
+          "path": "../fortune_runtime_v1/prompts/foot_diffuse_style_v2.txt"
+        },
+        {
+          "label": "本輪 after 實機圖 SHA 索引",
+          "path": "fortune_head_refinement_after_snapshot.json"
+        }
+      ],
+      "original_prefix": "original/fortune/review/",
+      "capture_revision": "41008b56fbe71109",
+      "after_ready": true,
+      "before_prefix": "revisions/fortune_head_v7_before_refinement/review/",
+      "change_scope": "頭盔局部形狀修正＋頭部貼圖；其餘部位保留",
+      "scope_description": "Fortune 本次調整 83 個頭部 rest 頂點，相對 v7 最大新增位移 18 mm；其他部件不動。形狀總額度仍按真正原版驗收，最大位移占原完整頭部最短邊 14.7363%，不是新增 15% 額度。UV 本輪新增 0，原版總改動仍 22／157（14.0127%）。工程通過不代表美術相似度或使用者接受。",
+      "review_status": "Fortune v11 · 15 個正式實機視角 · 工程 PASS／待人工美術確認",
+      "column_labels": {
+        "before": {
+          "title": "頭盔修正前 v7",
+          "description": "已凍結的畫法第一輪 · 頭盔仍待改進"
+        },
+        "after": {
+          "title": "此次頭盔修正 v11",
+          "description": "局部形狀＋頭部貼圖 · 待人工美術確認"
+        }
+      },
+      "engineering_details": {
+        "changed_head_rest_entries": 83,
+        "max_incremental_rest_displacement_m": 0.0180000066757202,
+        "head_original_total_max_displacement_m": 0.0748000092537929,
+        "head_original_total_max_displacement_fraction": 0.14736285830118964,
+        "head_original_dimension_absolute_delta_fraction": [
+          0.0,
+          0.03966690400695283,
+          0.07682595807820725
+        ],
+        "max_wholebody_gray_1_minus_iou": 0.038149415227941796,
+        "additional_uv_changes": 0,
+        "original_head_uv_changed_count": 22,
+        "original_head_uv_coordinate_count": 157,
+        "head_triangles": 170,
+        "head_scene_sha256": "499da48815ccf3eb140355b3ab16bcea2549603abfb5b91a26f06357ab80b724",
+        "head_atlas_sha256": "10d07e20bd3955fdee018b8b16a9994d3dc511990af6d60cf5cfe88ed886b0cf",
+        "art_limits": [
+          "低模頂冠仍可見切面",
+          "後腦中線仍有暗縫（貼圖殘留，幾何接縫間隙 0）"
+        ]
+      },
+      "base_prompt_label": "畫法基底 Prompt（純貼圖用途）"
+    },
+    {
+      "id": "tank",
+      "name": "Tank",
+      "runtime_dir": "tank_runtime_v1",
+      "game_visual_id": 2,
+      "variant_before": "approved parts：head v2／body v4／shoulder v2／hand・foot v1",
+      "variant_after": "style_unified_v2",
+      "status": "style_unified_v2 正常資源 64 張擷取與共用嚴格一致性檢查 PASS；待使用者美術評價",
+      "after_ready": true,
+      "original_prefix": "original/tank/review/",
+      "before_prefix": "before/tank/review/",
+      "after_prefix": "after/tank/review/",
+      "change_scope": "五張貼圖畫法統一；原模型與 UV 維持本輪前版本",
+      "scope_description": "Tank 當輪獲准原版總 20% 上限，本輪只改五張貼圖，模型、UV、索引、骨架與權重相對凍結前版完全相同。相對真正原版，頭部最大位移 2.97859%、三軸尺寸差 0，頭表面 UV 4／149（2.68456%）、胸表面 12／210（5.71429%），仍在原管線更嚴格的 15% 條件內。Viper／Fortune 仍維持各自 15% 契約；工程百分比不是美術相似度。",
+      "review_status": "Tank style_unified_v2 · 15 個正式實機視角 · 工程 PASS／待人工美術確認",
+      "column_labels": {
+        "before": {
+          "title": "本輪前 Tank",
+          "description": "已凍結的原模型／五張採用貼圖"
+        },
+        "after": {
+          "title": "此次 Tank 畫法試作",
+          "description": "style_unified_v2 · 正常遊戲資源／待美術評價"
+        }
+      },
+      "summary": "密集白裂紋與細磨線收斂，藍甲改用寬柔高光，保留大橙金面罩、中央下緣尖折、雙綠冠條、圓耳盤、綠 U 護領及上翹肩甲。部分接觸邊仍較亮，冠頂低模角面保留原形狀；新圖已套回正常遊戲資源，仍待使用者逐部位評價。",
+      "base_prompt_label": "後續畫法基底 Prompt（純貼圖用途）",
+      "changes": [
+        {
+          "part": "面甲／頭頂",
+          "before": "採用的大金色面罩、藍綠冠條與厚眉，局部高光和磨邊較硬。",
+          "after": "大橙金面罩保持中央下緣尖折，冠條與眉沿的密集白裂網收斂；高光更寬柔，冠頂低模角面沒有改動。",
+          "preserved": "大面罩、中央尖折、冠條、圓耳罩及現有頭盔外殼。"
+        },
+        {
+          "part": "中央護片／護頰",
+          "before": "實心中央藍護片及短橫進氣口已確認，斜向護頰層次明確。",
+          "after": "藍護片與斜向護頰沿用原設計，細白磨邊收斂；部分接觸邊仍偏亮，遊戲距離下仍可再評價。",
+          "preserved": "原採用護頰、短橫進氣口；頭表面4個已改 UV 取樣不再移動。"
+        },
+        {
+          "part": "胸領／胸背",
+          "before": "鋼藍厚胸板配綠色 U 護領，板縫及磨損較細。",
+          "after": "藍甲由寬柔明暗塑形，密集細裂紋減少；綠 U 護領與厚胸板保持。",
+          "preserved": "綠 U 領與胸背配置；胸12個已改 UV 取樣不再移動。"
+        },
+        {
+          "part": "肩／手臂／共享頸襯",
+          "before": "厚肩藍甲、上折綠護唇和寬護臂；頭部深頸襯共用手臂atlas上區。",
+          "after": "保留藍綠大分色、上翹肩甲與黑棕內襯，減少均勻細刮線；共享頸襯已完成正式管線驗證。",
+          "preserved": "五張貼圖服務六個surfaces；共享頸襯14座標必須連續、不混入甲片顏色。"
+        },
+        {
+          "part": "腿／靴",
+          "before": "綠邊包藍大腿，藍膝及 V 形護脛，細磨線較多。",
+          "after": "保留大腿、膝脛與靴的大分色，細白裂網收斂，較接近 Viper／Fortune 的寬柔手繪畫法。",
+          "preserved": "雙圓孔腿板、膝脛及寬平靴頭；原關節。"
+        }
+      ],
+      "verification": [
+        {
+          "label": "使用者上限／實際管線條件",
+          "result": "20% 上限；仍按原 15% 條件通過",
+          "evidence": "validate.json"
+        },
+        {
+          "label": "本輪新增模型／UV",
+          "result": "0；四部件 SCN 與 packed master 不變量 PASS",
+          "evidence": "../tank_runtime_v1/review/style_pass_invariants.json"
+        },
+        {
+          "label": "頭部幾何（相對原版）",
+          "result": "最大位移 2.97859%；三軸尺寸差 0",
+          "evidence": "../tank_runtime_v1/build/geometry.json"
+        },
+        {
+          "label": "UV（相對原版）",
+          "result": "頭 4／149＝2.68456%；胸 12／210＝5.71429%",
+          "evidence": "../tank_runtime_v1/build/geometry.json"
+        },
+        {
+          "label": "肩／手／靴／共享頸襯 UV",
+          "result": "0 改動；頸襯單獨 0／14",
+          "evidence": "../tank_runtime_v1/review/runtime_test.json"
+        },
+        {
+          "label": "模型／材質／骨架",
+          "result": "796 三角形／4 部件／6 surfaces／5 maps／28 bones",
+          "evidence": "../tank_runtime_v1/review/delivery_validate.json"
+        },
+        {
+          "label": "全身灰模輪廓",
+          "result": "1−IoU 最大 0.347129%（側面）",
+          "evidence": "../tank_runtime_v1/review/proportion_test.json"
+        },
+        {
+          "label": "正常 runtime／GLB 動作",
+          "result": "15／9 個姿勢 PASS；原存檔保持",
+          "evidence": "../tank_runtime_v1/review/runtime_test.json"
+        },
+        {
+          "label": "GLB／packed master 五張貼圖",
+          "result": "原始 PNG、master bytes 與 GLB 解碼 RGB 對照 PASS",
+          "evidence": "../tank_runtime_v1/review/glb_images_test.json"
+        },
+        {
+          "label": "正常資源實機圖",
+          "result": "64 張 ANGLE／Direct3D11；本頁選用 15 組",
+          "evidence": "../tank_runtime_v1/review/engine/capture.json"
+        },
+        {
+          "label": "共用嚴格來源驗證",
+          "result": "PASS；新實機圖與當前素材／報告一致",
+          "evidence": "validate.json"
+        },
+        {
+          "label": "修改前獨立快照",
+          "result": "46 筆 SHA 核對 PASS；保持不可變",
+          "evidence": "tank_baseline_snapshot.json"
+        }
+      ],
+      "limits": {
+        "geometry_original_total_fraction": 0.2,
+        "dimension_original_total_fraction": 0.2,
+        "uv_changed_coordinate_fraction_per_surface": 0.2,
+        "gray_silhouette_original_fraction": 0.2,
+        "incremental_geometry_target": 0,
+        "incremental_uv_target": 0
+      },
+      "baseline_engineering_details": {
+        "head_max_displacement_fraction": 0.029785886291478044,
+        "head_dimensions_absolute_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "head_uv": [
+          4,
+          149
+        ],
+        "body_uv": [
+          12,
+          210
+        ],
+        "neck_uv": [
+          0,
+          14
+        ],
+        "total_uv_coordinates": 731,
+        "max_wholebody_gray_1_minus_iou": 0.003471291652309305
+      },
+      "sources": [
+        {
+          "label": "修改前 Tank SHA 快照索引",
+          "path": "tank_baseline_snapshot.json"
+        },
+        {
+          "label": "完整 runtime 凍結索引",
+          "path": "../tank_runtime_v1/revisions/before_style_unification_v2/snapshot.json"
+        },
+        {
+          "label": "Tank 完整素材與動作比較",
+          "path": "../tank_runtime_v1/index.html"
+        },
+        {
+          "label": "使用者選定的部件美術",
+          "path": "../tank_runtime_v1/approved_parts_reference.png"
+        },
+        {
+          "label": "Tank 實送 head prompt（本輪已實送）",
+          "path": "../tank_runtime_v1/prompts/head_diffuse_style_unified_v2.txt"
+        },
+        {
+          "label": "Tank 實送 body prompt（本輪已實送）",
+          "path": "../tank_runtime_v1/prompts/body_diffuse_style_unified_v2.txt"
+        },
+        {
+          "label": "Tank 實送 shoulder prompt（本輪已實送）",
+          "path": "../tank_runtime_v1/prompts/shoulder_diffuse_style_unified_v2.txt"
+        },
+        {
+          "label": "Tank 實送 hand prompt（本輪已實送）",
+          "path": "../tank_runtime_v1/prompts/hand_diffuse_style_unified_v2.txt"
+        },
+        {
+          "label": "Tank 實送 foot prompt（本輪已實送）",
+          "path": "../tank_runtime_v1/prompts/foot_diffuse_style_unified_v2.txt"
+        },
+        {
+          "label": "Tank 五張採用原始輸出與參考 SHA 記錄",
+          "path": "../tank_runtime_v1/style_unified_v2_generation.json"
+        },
+        {
+          "label": "本輪 after 實機圖 SHA 索引",
+          "path": "tank_style_unified_after_snapshot.json"
+        },
+        {
+          "label": "本輪 SCN 不變量",
+          "path": "../tank_runtime_v1/review/style_pass_scene_invariants.json"
+        },
+        {
+          "label": "本輪 packed master 不變量",
+          "path": "../tank_runtime_v1/review/style_pass_invariants.json"
+        }
+      ],
+      "art_residuals": [
+        "部分甲片接觸邊仍較亮，可在正式實機圖與遊戲距離下逐部位評價。",
+        "冠頂與其他低模角面保留原幾何，畫法調整不會消除實際折角。"
+      ],
+      "prompt": "../tank_runtime_v1/prompts/head_diffuse_style_unified_v2.txt",
+      "capture_revision": "430e16d99fb3db4a",
+      "engineering_details": {
+        "head_max_displacement_fraction": 0.029785886291478044,
+        "head_dimensions_absolute_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "head_uv": [
+          4,
+          149
+        ],
+        "body_uv": [
+          12,
+          210
+        ],
+        "neck_uv": [
+          0,
+          14
+        ],
+        "total_uv_coordinates": 731,
+        "max_wholebody_gray_1_minus_iou": 0.003471291652309305,
+        "additional_geometry_changes": 0,
+        "additional_uv_changes": 0,
+        "user_authorized_original_ceiling": 0.2,
+        "actual_pipeline_original_limit": 0.15,
+        "head_scene_sha256": "0cd3bc22bee11bb21cb8a0daaea304745123ae731994cef6d226b07a9029adf8",
+        "canonical_diffuse_sha256": {
+          "body": "a92ae9149165beec2afb7e23a339cfdc13380ae4da71f6ab1d576c15b2a4eac4",
+          "foot": "e8a16ff8e61c0fe04ee9f766a9ffb3d04459ce773e0f5ce5dc44d55db8f5e2be",
+          "hand": "6bf882758297af2c789b61d602cf39dbfd797e81320fd11fee8f03dee2aac79d",
+          "head": "a7f1e5a2ff91ae4663e3ea40fcb6a6f599e8536b1cb544cba65b1abc1b1fa1dd",
+          "shoulder": "4905a54b926654a52e8f63d06b4ac51bc65396db023f4684c1150ee5969df3db"
+        },
+        "art_limits": [
+          "部分甲片接觸邊仍較亮，可在正式實機圖與遊戲距離下逐部位評價。",
+          "冠頂與其他低模角面保留原幾何，畫法調整不會消除實際折角。"
+        ]
+      }
+    }
+  ]
+}

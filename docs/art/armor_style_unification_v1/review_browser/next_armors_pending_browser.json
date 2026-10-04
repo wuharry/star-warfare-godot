@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "scope": "Pending Tank helmet refinement and first-runtime Hydra/Strike/Titan UI only; no new-engine or art acceptance claimed",
+  "index_sha256": "5489290266de5b74c6106ff9edc4473b9dcbbc6ec891c5e2f68a8268c5e970cf",
+  "next_armors": [
+    {
+      "id": "hydra",
+      "columns": 2,
+      "no_fake_before": true,
+      "after_pending": true,
+      "reference_path": "../original_armors_v1/images/c04_concept.png",
+      "reference_sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+      "reference_zoom": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "strike",
+      "columns": 2,
+      "no_fake_before": true,
+      "after_pending": true,
+      "reference_path": "../fusion_v2_generated/c05_strike_fusion.jpg",
+      "reference_sha256": "9157b428f382ed6548050aeaec2e8c0f1e499bc51f43d49c51662535d01fe201",
+      "reference_zoom": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "titan",
+      "columns": 2,
+      "no_fake_before": true,
+      "after_pending": true,
+      "reference_path": "../original_armors_v1/images/c06_concept.png",
+      "reference_sha256": "54cb4073c1f482e072e23aa344dc4fff300e5157191dcd7b3e82f68ced75fc49",
+      "reference_zoom": "PASS",
+      "status": "PASS"
+    }
+  ],
+  "tank_head_views": [
+    {
+      "view": "front",
+      "status": "PASS",
+      "after_pending": true
+    },
+    {
+      "view": "quarter",
+      "status": "PASS",
+      "after_pending": true
+    },
+    {
+      "view": "side",
+      "status": "PASS",
+      "after_pending": true
+    },
+    {
+      "view": "rear",
+      "status": "PASS",
+      "after_pending": true
+    }
+  ],
+  "widths": [
+    {
+      "width": 390,
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "status": "PASS"
+    }
+  ],
+  "errors": []
+}

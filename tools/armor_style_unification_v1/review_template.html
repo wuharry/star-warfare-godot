@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>裝甲畫風整合與頭盔修正 · 實機前後比較</title>
+<style>
+:root{color-scheme:dark;--bg:#101519;--panel:#192129;--line:#364550;--text:#edf1f3;--muted:#b5c0c8;--accent:#b0cbd8;--warn:#dcc494}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,"Microsoft JhengHei",sans-serif}main{max-width:1480px;margin:auto;padding:32px 28px 50px}h1{font-size:clamp(26px,3vw,36px);line-height:1.3;margin:4px 0 12px}h2{font-size:23px;margin:0 0 14px}h3{font-size:18px;margin:0 0 8px}p{margin:8px 0 14px}button,input,select{font:inherit}button{cursor:pointer}a{color:var(--accent)}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.muted,.intro,.note,.eyebrow{color:var(--muted)}.intro{max-width:1050px}.eyebrow,.note{font-size:14px}.panel{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:20px;margin:22px 0}.goal{border-left:3px solid var(--accent);padding:12px 18px;background:#17212a}.tabs,.toolbar,.options,.links{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.tabs{margin:22px 0 10px}.button{min-height:42px;padding:9px 14px;background:#233039;color:var(--text);border:1px solid #4c5e6b;border-radius:6px}.button[aria-pressed="true"]{background:#354b57;border-color:var(--accent)}.armor-button{min-width:155px;font-size:19px;padding:11px 20px}.toolbar{justify-content:space-between}.options{margin-bottom:12px}.comparison{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;align-items:start}.comparison.two-version{grid-template-columns:repeat(2,minmax(0,1fr))}.shot{border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:0;background:#0b1014}.shot-title{padding:11px 14px;background:#233039;min-height:74px}.shot-title strong,.shot-title span{display:block}.shot-title span{font-size:13px;color:var(--muted)}.image-button{display:block;width:100%;padding:0;border:0;background:#0b1014;cursor:zoom-in}.image-button img{display:block;width:100%;height:auto;max-height:560px;object-fit:contain}.compact .image-button img{max-height:310px}.shot figcaption{padding:9px 13px;font-size:13px;color:var(--muted)}.pending{display:flex;min-height:310px;align-items:center;justify-content:center;text-align:center;padding:25px;color:var(--warn);border-bottom:1px solid var(--line)}.status{display:inline-block;padding:3px 10px;border:1px solid #796949;border-radius:4px;color:var(--warn);font-size:13px;margin-bottom:12px}.hidden{display:none!important}.wipe-wrap{max-width:670px;margin:auto}.wipe-wrap.landscape{max-width:1150px}.wipe-stage{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#0b1014}.wipe-stage>img{display:block;width:100%}.wipe-top{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;clip-path:inset(0 50% 0 0)}.wipe-line{position:absolute;inset:0 auto 0 50%;border-left:2px solid #edf1f3;pointer-events:none}.wipe-label{position:absolute;top:12px;padding:4px 10px;border:1px solid #6a7983;background:#101519e8;border-radius:4px;font-size:14px}.wipe-label.after{left:12px}.wipe-label.before{right:12px}.range-row{display:flex;gap:14px;align-items:center;margin:15px 0}.range-row input{flex:1;min-width:70px;accent-color:var(--accent)}.range-row output{min-width:50px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:15px;text-align:left;min-width:820px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--accent)}tbody tr:last-child td{border-bottom:0}.table-wrap.verification table{min-width:680px}.verification td:first-child{width:24%}.verification td:nth-child(2){width:22%}.protocol{color:var(--muted);font-size:14px}.protocol li{margin:7px 0}.links a{overflow-wrap:anywhere}.footer{color:var(--muted);font-size:13px}dialog{padding:0;border:1px solid var(--line);border-radius:7px;background:#0b1014;color:var(--text);max-width:96vw;max-height:96vh}dialog::backdrop{background:#000d}.dialog-head{display:flex;gap:18px;align-items:center;justify-content:space-between;padding:10px 15px}dialog img{display:block;max-width:93vw;max-height:82vh;object-fit:contain}.section-note{color:var(--muted);font-size:14px}#armor-meta{display:flex;flex-wrap:wrap;gap:18px;font-size:14px;color:var(--muted)}@media(max-width:800px){main{padding:23px 14px 40px}.panel{padding:15px}.comparison,.comparison.two-version{grid-template-columns:1fr}.shot-title{min-height:0}.image-button img{max-height:540px}.compact .image-button img{max-height:310px}.armor-button{min-width:120px;flex:1}.toolbar{align-items:flex-start}.button{font-size:14px;padding:8px 11px}.range-row{gap:8px;font-size:14px}.wipe-label{font-size:12px}.dialog-head{font-size:14px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow" id="review-date">實際遊戲素材 · 貼圖畫風整合第一版</div>
+<h1 id="page-title">裝甲畫風整合與頭盔修正</h1>
+<p class="intro" id="global-summary">保留已確認的頭盔、甲片配置與模型，先把細白邊、黑縫和玻璃高光調回原版較柔和的畫法。這一頁用實際 Godot 擷取圖比對原版、調整前和調整後。</p>
+<p class="goal"><strong>這次先減少畫法的違和感，裝甲身分仍要靠主要甲片配置判斷。</strong><br><span class="note">「同風格、不同套」是美術目標；UV 與幾何的工程百分比不代表風格相似度。本輪是否符合你的審美，仍需看圖確認。</span></p>
+<nav class="tabs" id="armor-tabs" aria-label="選擇裝甲"></nav>
+<div id="armor-meta"></div>
+<section class="panel" aria-labelledby="visual-title">
+<span class="status" id="pass-status">第一版 · 待人工美術確認</span>
+<div class="toolbar"><h2 id="visual-title">三版實際模型對照</h2><div class="options"><button class="button" data-display="triple" aria-pressed="true">三版並排</button><button class="button" data-display="wipe" aria-pressed="false">調整前後重疊</button><button class="button" id="compact-toggle" aria-pressed="false">縮小看遊戲辨識</button></div></div>
+<div class="options" id="scope-tabs" aria-label="比較範圍"><button class="button" data-scope="body" aria-pressed="true">全身貼圖</button><button class="button" data-scope="head" aria-pressed="false">頭盔近照</button><button class="button" data-scope="clay" aria-pressed="false">灰模輪廓</button><button class="button" data-scope="gameplay" aria-pressed="false">第三人稱遊戲</button><button class="button" data-scope="animation" aria-pressed="false">待機／跑動／換彈</button></div>
+<div class="options" id="view-tabs" aria-label="選擇視角"></div>
+<p class="note" id="comparison-note"></p>
+<p class="note hidden" id="reference-row"><button class="button" id="reference-open" type="button">查看最新頭盔參考圖</button> <span id="reference-description"></span></p>
+<div id="triple" class="comparison"></div>
+<div id="wipe" class="wipe-wrap hidden"><div id="wipe-pending" class="pending hidden">調整後尚未完成實機擷取，暫不顯示重疊結果。</div><div id="wipe-ready"><div class="wipe-stage"><img id="wipe-before" alt="本輪調整前"><img id="wipe-after" class="wipe-top" alt="本輪調整後"><span class="wipe-line" id="wipe-line"></span><span class="wipe-label after">此次調整後</span><span class="wipe-label before">此次調整前</span></div><label class="range-row" for="wipe-range"><span>調整後覆蓋</span><input id="wipe-range" type="range" min="0" max="100" value="50"><output id="wipe-output" for="wipe-range">50%</output></label><p class="note">左右是同一相機的不同版本。可拖曳分界看筆觸改動；此百分比只表示覆蓋範圍。</p></div></div>
+</section>
+<section class="panel" aria-labelledby="changes-title"><h2 id="changes-title">這次改了什麼、保留什麼</h2><p id="armor-summary" class="section-note"></p><div class="table-wrap"><table><thead><tr><th>部位／畫法</th><th>調整前</th><th>此次調整後</th><th>保留項目</th></tr></thead><tbody id="changes"></tbody></table></div><p id="changes-empty" class="note hidden">實際改動摘要尚在整理；圖片只顯示已存在的實機擷取。</p></section>
+<section class="panel" aria-labelledby="verification-title"><h2 id="verification-title">模型與 UV 是否仍符合限制</h2><p class="section-note" id="verification-note">本輪先處理貼圖。下表只報告真正驗證的工程結果；沒有美術相似度或辨識率分數。</p><div class="table-wrap verification"><table><thead><tr><th>檢查項目</th><th>結果</th><th>證據／限制</th></tr></thead><tbody id="verification"></tbody></table></div></section>
+<section class="panel protocol" aria-labelledby="sources-title"><h2 id="sources-title">後續必要 Prompt 與資料來源</h2><ul id="protocol"></ul><div class="links" id="source-links"></div></section>
+<p class="footer">模型比較只引用實際擷取 PNG，不以概念圖、生成預覽或重新畫過的截圖充當遊戲內成果。另列的參考圖只提供設計方向。所有圖片均可點擊放大。</p>
+</main>
+<dialog id="image-dialog"><div class="dialog-head"><strong id="dialog-title"></strong><button class="button" id="dialog-close">關閉</button></div><img id="dialog-image" alt="裝甲實際擷取原始圖片"></dialog>
+<script id="comparison-data" type="application/json">__COMPARISON_JSON__</script>
+<script>
+'use strict';
+const data=JSON.parse(document.getElementById('comparison-data').textContent);
+const el=id=>document.getElementById(id);
+const armorFromHash=()=>data.armors.findIndex(armor=>armor.id===location.hash.slice(1).toLowerCase());
+const state={armor:Math.max(0,armorFromHash()),scope:'body',view:'front',level:'01',pose:'idle_rifle',display:'triple',compact:false};
+const versions=[['original','遊戲原版','原始裝甲模型與貼圖'],['before','本輪調整前','已採用的新頭盔與裝甲設計'],['after','此次調整後','貼圖畫法整合第一版 · 待人工確認']];
+const directions=[['front','正面'],['quarter','斜前'],['side','側面'],['rear','背面']];
+const poses=[['idle_rifle','持槍待機'],['run_rifle','持槍跑動'],['reload_04','換彈中段']];
+const setText=(node,value)=>{node.textContent=String(value??'');};
+function addText(parent,tag,value,className){const node=document.createElement(tag);setText(node,value);if(className)node.className=className;parent.append(node);return node;}
+const current=()=>data.armors[state.armor];
+function imageSource(entry){return entry.path+'?rev='+encodeURIComponent(entry.revision);}
+function selectedSuffix(){if(state.scope==='head')return'head_'+state.view;if(state.scope==='clay')return'clay_'+state.view;if(state.scope==='gameplay')return'level_'+state.level+'_gameplay';if(state.scope==='animation')return state.pose;return'diffuse_'+state.view;}
+function viewLabel(){if(state.scope==='gameplay')return'區域 '+state.level;if(state.scope==='animation')return poses.find(row=>row[0]===state.pose)[1];return directions.find(row=>row[0]===state.view)[1];}
+function displayLabel(){return{body:'全身',head:'頭盔',clay:'灰模',gameplay:'遊戲',animation:'動作'}[state.scope]+'／'+viewLabel();}
+function zoom(source,title){el('dialog-image').src=source;el('dialog-image').alt=title;setText(el('dialog-title'),title);el('image-dialog').showModal();}
+function renderViews(){
+ el('view-tabs').replaceChildren();
+ const options=state.scope==='gameplay'?[['01','區域 01'],['08','區域 08']]:state.scope==='animation'?poses:state.scope==='clay'?directions.filter(row=>row[0]==='front'||row[0]==='side'):directions;
+ const active=state.scope==='gameplay'?state.level:state.scope==='animation'?state.pose:state.view;
+ for(const[value,label]of options){const button=addText(el('view-tabs'),'button',label,'button');button.type='button';button.dataset.view=value;button.setAttribute('aria-pressed',String(value===active));button.addEventListener('click',()=>{if(state.scope==='gameplay')state.level=value;else if(state.scope==='animation')state.pose=value;else state.view=value;renderViews();renderImages();});}
+}
+function renderImages(){
+ const armor=current(),suffix=selectedSuffix(),captures=armor.capture_images[suffix],label=displayLabel();
+ const notes={body:'全身採中性白色 tint／UN_SHADED 與同一相機，主要比較 diffuse 上的高光、描邊、黑縫與色塊。這些畫法不能靠材質粗糙度直接修正。',head:'頭盔採中性白色 tint／UN_SHADED。比較頭頂、面罩、兩側面甲與下巴在實際模型上的連接，並分開看造型和玻璃反光的改動。',clay:'灰模隱去所有貼圖，用來查看實際模型外殼。某個視角的投影重合不代表所有頂點都相同；是否新增形狀改動，以工程檢查為準。',gameplay:'關卡中的真實第三人稱畫面，保留遊戲材質顯示口徑。武器、背包與環境會遮住部分裝甲，適合看玩家真正能讀到的色塊。',animation:'原版、調整前與調整後使用對應持槍姿勢；看肩部、肘部與胸腹貼圖在動作時是否連續。這三張是固定動畫取樣，不是完整動作播放。'};
+ if(armor.comparison_mode==='first_runtime'&&state.scope==='animation')notes.animation='原版與首版使用對應持槍姿勢；看肩部、肘部與胸腹貼圖在動作時是否連續。這兩張是固定動畫取樣，不是完整動作播放。';
+ setText(el('comparison-note'),notes[state.scope]);el('triple').replaceChildren();
+ const versionRows=armor.comparison_mode==='first_runtime'?versions.filter(row=>row[0]!=='before'):versions;
+ el('triple').classList.toggle('two-version',armor.comparison_mode==='first_runtime');
+ for(const[version,defaultTitle,defaultDescription]of versionRows){
+  const column=armor.column_labels?.[version]||{},title=column.title||defaultTitle,description=column.description||defaultDescription;
+  const entry=captures[version],figure=document.createElement('figure');figure.className='shot';figure.dataset.version=version;
+  const heading=document.createElement('div');heading.className='shot-title';addText(heading,'strong',title);addText(heading,'span',description);figure.append(heading);
+  const pending=addText(figure,'div',version==='after'?'尚未完成這個視角的實機擷取':'此視角的原始擷取尚未提供','pending');
+  if(entry.exists){pending.classList.add('hidden');const button=document.createElement('button');button.className='image-button';button.type='button';button.setAttribute('aria-label','放大 '+armor.name+' '+title+' '+label);const img=document.createElement('img');img.src=imageSource(entry);img.alt=armor.name+' '+title+' '+label;img.addEventListener('error',()=>{button.classList.add('hidden');pending.classList.remove('hidden');setText(pending,'圖片讀取失敗；請確認實際擷取檔案存在。');});button.append(img);button.addEventListener('click',()=>zoom(img.src,img.alt));figure.append(button);}
+  addText(figure,'figcaption',armor.name+' · '+label+(entry.exists?' · 點圖放大':' · 尚未提供'));el('triple').append(figure);
+ }
+ const ready=Boolean(captures.before?.exists&&captures.after.exists);el('wipe-pending').classList.toggle('hidden',ready);el('wipe-ready').classList.toggle('hidden',!ready);el('wipe').classList.toggle('landscape',state.scope==='gameplay');
+ if(ready){el('wipe-before').src=imageSource(captures.before);el('wipe-after').src=imageSource(captures.after);el('wipe-before').alt=armor.name+' 調整前 '+label;el('wipe-after').alt=armor.name+' 調整後 '+label;}
+}
+function renderArmor(){
+ const armor=current();for(const button of el('armor-tabs').children)button.setAttribute('aria-pressed',String(Number(button.dataset.armor)===state.armor));
+ const reference=armor.reference_art,referenceImage=armor.reference_image;
+ el('reference-row').classList.toggle('hidden',!referenceImage?.exists);
+ if(referenceImage?.exists){setText(el('reference-open'),'查看 '+(reference.title||'最新設計參考'));setText(el('reference-description'),reference.description||'設計參考圖，並非遊戲內實機成果。');el('reference-open').onclick=()=>zoom(imageSource(referenceImage),'設計參考 · '+(reference.title||armor.name));}
+ el('armor-meta').replaceChildren();addText(el('armor-meta'),'span',armor.name);if(armor.variant_before)addText(el('armor-meta'),'span','調整前 '+armor.variant_before);if(armor.variant_after)addText(el('armor-meta'),'span','此次 '+armor.variant_after);if(armor.change_scope)addText(el('armor-meta'),'span','製作範圍：'+armor.change_scope);
+ const firstRuntime=armor.comparison_mode==='first_runtime',wipeButton=document.querySelector('[data-display="wipe"]'),tripleButton=document.querySelector('[data-display="triple"]');
+ wipeButton.classList.toggle('hidden',firstRuntime);setText(tripleButton,firstRuntime?'原版／首版並排':'三版並排');setText(el('visual-title'),firstRuntime?'原版與首版遊戲素材':'三版實際模型對照');
+ if(firstRuntime&&state.display==='wipe'){state.display='triple';el('triple').classList.remove('hidden');el('wipe').classList.add('hidden');tripleButton.setAttribute('aria-pressed','true');wipeButton.setAttribute('aria-pressed','false');}
+ const afterCount=Object.values(armor.capture_images).filter(capture=>capture.after.exists).length;setText(el('pass-status'),armor.review_status||(afterCount===15?'第一版 · 已有 15 個實機視角 · 待人工美術確認':'第一版 · 調整後實機視角 '+afterCount+'／15 · 待完成擷取'));
+ setText(el('verification-note'),armor.scope_description||'本輪先處理貼圖。下表只報告真正驗證的工程結果；沒有美術相似度或辨識率分數。');
+ setText(el('armor-summary'),armor.summary||'');el('changes').replaceChildren();for(const row of armor.changes||[]){const tr=document.createElement('tr');for(const value of[row.part,row.before,row.after,row.preserved])addText(tr,'td',value);el('changes').append(tr);}el('changes-empty').classList.toggle('hidden',Boolean(armor.changes?.length));
+ el('verification').replaceChildren();const checks=armor.verification?.length?armor.verification:[{label:'工程驗證',result:'待整理',evidence:'尚未提供驗證結果；不推估 PASS。'}];for(const row of checks){const tr=document.createElement('tr');addText(tr,'td',row.label);addText(tr,'td',row.result);const evidence=addText(tr,'td','');if(typeof row.evidence==='string'&&/^[\w./-]+\.(json|html|txt|md)$/.test(row.evidence)){const link=addText(evidence,'a',row.evidence);link.href=row.evidence;}else setText(evidence,row.evidence);el('verification').append(tr);}
+ el('source-links').replaceChildren();const sources=[{label:armor.base_prompt_label||'後續必要基底 Prompt',path:data.base_prompt||'base_prompt.txt'},{label:'本輪交付說明',path:'README.md'},{label:'前一輪風格與工程比較',path:'../armor_style_comparison_v1/index.html'},{label:'本頁比較資料',path:'comparison.json'},...(armor.prompt?[{label:armor.name+' 本次實際生成 Prompt',path:armor.prompt}]:[]),...(armor.sources||[])];
+ const linked=new Set();for(const source of sources){if(linked.has(source.path))continue;linked.add(source.path);const link=addText(el('source-links'),'a',source.label);link.href=source.path;}
+ renderViews();renderImages();
+}
+for(const[index,armor]of data.armors.entries()){const button=addText(el('armor-tabs'),'button',armor.name,'button armor-button');button.type='button';button.dataset.armor=String(index);button.addEventListener('click',()=>{state.armor=index;history.replaceState(null,'','#'+armor.id);renderArmor();});}
+window.addEventListener('hashchange',()=>{const index=armorFromHash();if(index>=0&&index!==state.armor){state.armor=index;renderArmor();}});
+for(const button of document.querySelectorAll('[data-scope]'))button.addEventListener('click',()=>{state.scope=button.dataset.scope;if(state.scope==='clay'&&state.view!=='front'&&state.view!=='side')state.view='front';for(const item of document.querySelectorAll('[data-scope]'))item.setAttribute('aria-pressed',String(item===button));renderViews();renderImages();});
+for(const button of document.querySelectorAll('[data-display]'))button.addEventListener('click',()=>{state.display=button.dataset.display;for(const item of document.querySelectorAll('[data-display]'))item.setAttribute('aria-pressed',String(item===button));el('triple').classList.toggle('hidden',state.display!=='triple');el('wipe').classList.toggle('hidden',state.display!=='wipe');});
+el('compact-toggle').addEventListener('click',()=>{state.compact=!state.compact;el('triple').classList.toggle('compact',state.compact);el('compact-toggle').setAttribute('aria-pressed',String(state.compact));});
+el('wipe-range').addEventListener('input',()=>{const value=Number(el('wipe-range').value);el('wipe-after').style.clipPath='inset(0 '+(100-value)+'% 0 0)';el('wipe-line').style.left=value+'%';setText(el('wipe-output'),value+'%');});
+el('dialog-close').addEventListener('click',()=>el('image-dialog').close());el('image-dialog').addEventListener('click',event=>{if(event.target===el('image-dialog'))el('image-dialog').close();});
+if(data.title){setText(el('page-title'),data.title);document.title=data.title;}if(data.date)setText(el('review-date'),'實際遊戲素材 · '+data.date);if(data.summary)setText(el('global-summary'),data.summary);
+const protocol=data.protocol||['三欄使用同一視角的實際 Godot 擷取，PNG 原檔沒有為比較頁重畫、裁切或變色。','原版是遊戲來源裝甲；調整前是本輪開始時保存的新版快照；調整後只使用重新擷取的實際遊戲素材。','中性全身與頭盔主要比較貼圖畫法；遊戲和動作圖保留實際材質顯示口徑，兩者分開解讀。','工程檢查通過不等於美術定稿，本輪是供你逐套確認的第一版。'];
+for(const item of protocol)addText(el('protocol'),'li',item);renderArmor();
+</script>
+</body>
+</html>

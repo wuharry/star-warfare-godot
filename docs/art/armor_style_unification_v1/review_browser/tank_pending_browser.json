@@ -1,0 +1,179 @@
+{
+  "status": "PASS",
+  "scope": "Tank pending page only; no new-art or engine acceptance claimed",
+  "tank_views": [
+    {
+      "scope": "body",
+      "view": "front",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "body",
+      "view": "quarter",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "body",
+      "view": "side",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "body",
+      "view": "rear",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "head",
+      "view": "front",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "head",
+      "view": "quarter",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "head",
+      "view": "side",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "head",
+      "view": "rear",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "clay",
+      "view": "front",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "clay",
+      "view": "side",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "gameplay",
+      "view": "01",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "gameplay",
+      "view": "08",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "animation",
+      "view": "idle_rifle",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "animation",
+      "view": "run_rifle",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    },
+    {
+      "scope": "animation",
+      "view": "reload_04",
+      "original_before": 2,
+      "pending_after": true,
+      "status": "PASS"
+    }
+  ],
+  "existing_head_regressions": [
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "front",
+      "status": "PASS"
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "quarter",
+      "status": "PASS"
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "side",
+      "status": "PASS"
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "rear",
+      "status": "PASS"
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "front",
+      "status": "PASS"
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "quarter",
+      "status": "PASS"
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "side",
+      "status": "PASS"
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "rear",
+      "status": "PASS"
+    }
+  ],
+  "widths": [
+    {
+      "width": 390,
+      "inner": 390,
+      "scroll": 390,
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "inner": 320,
+      "scroll": 320,
+      "status": "PASS"
+    }
+  ],
+  "deep_link": "PASS",
+  "pending_wipe": "PASS",
+  "zoom": "PASS",
+  "page_errors": []
+}

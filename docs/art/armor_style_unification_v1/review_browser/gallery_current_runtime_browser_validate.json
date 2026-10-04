@@ -1,0 +1,181 @@
+{
+  "status": "PASS",
+  "scope": "C03–C06 current runtime IDs, links, sources, 20% engineering badge and latest helmet references only; no runtime art approval",
+  "gallery_sha256": "bc4da61a6fa6b4808d3f78d706884b697d994442ac6eeca9651b202df84eda52",
+  "loader_sha256": "74804b207ceacee9171ea442fd903753d53a82002933811ae98b4ca97a9863bd",
+  "checks": [
+    {
+      "id": "C-03",
+      "armor": "tank",
+      "runtime_id_mapping": {
+        "catalog": 2,
+        "original_legacy": 2,
+        "manifest": 2,
+        "loader": 2,
+        "scene": "res://assets/armors/tank_v1/tank.scn",
+        "status": "PASS"
+      },
+      "current_head_variant": "helmet_refinement_v6",
+      "selected_native_generations": {
+        "body": "style_unified_v2",
+        "shoulder": "style_unified_v2",
+        "hand": "style_unified_v2",
+        "foot": "style_unified_v2",
+        "head": "helmet_refinement_v6"
+      },
+      "source_sha256": "91e895e6891d2a459b5a9570c219193c3291ecb1d84f6b9f6a13ea874a47e542",
+      "manifest_sha256": "24ab1e99907ea3d29da4898246fd90e93782d4d91301b335297b0b1e6c27ecd3",
+      "runtime_href": "../tank_runtime_v1/index.html",
+      "shared_href": "../armor_style_unification_v1/index.html#tank",
+      "engineering_badge": "已套用遊戲 · 20% 驗收通過",
+      "art_review_status": "pending_user_review",
+      "reference": {
+        "path": "../tank_runtime_v1/approved_helmet_reference.png",
+        "sha256": "e005a0fb50e04f8b3f25a91a379d2124802ba82a1c206294c232dc6dfde8ad73",
+        "dimensions": [
+          848,
+          1264
+        ],
+        "zoom": "PASS"
+      },
+      "current_prompt_files": [
+        "../tank_runtime_v1/prompts/body_diffuse_style_unified_v2.txt",
+        "../tank_runtime_v1/prompts/foot_diffuse_style_unified_v2.txt",
+        "../tank_runtime_v1/prompts/hand_diffuse_style_unified_v2.txt",
+        "../tank_runtime_v1/prompts/head_diffuse_helmet_refinement_v6.txt",
+        "../tank_runtime_v1/prompts/shoulder_diffuse_style_unified_v2.txt"
+      ],
+      "source_links": "PASS"
+    },
+    {
+      "id": "C-04",
+      "armor": "hydra",
+      "runtime_id_mapping": {
+        "catalog": 3,
+        "original_legacy": 3,
+        "manifest": 3,
+        "loader": 3,
+        "scene": "res://assets/armors/hydra_v1/hydra.scn",
+        "status": "PASS"
+      },
+      "current_head_variant": "original_integration_v2_head",
+      "selected_native_generations": {
+        "body": "original_integration_v1",
+        "shoulder": "original_integration_v1",
+        "hand": "original_integration_v1",
+        "foot": "original_integration_v1",
+        "head": "original_integration_v2_head"
+      },
+      "source_sha256": "2c74296ee8478a479ffb96249d9bc415d80145f9cbdf5423d844885f9b63442a",
+      "manifest_sha256": "9296a125ebac679470d34713ce005e3a0c6e8526f2991be63b83d8880735005d",
+      "runtime_href": "../hydra_runtime_v1/index.html",
+      "shared_href": "../armor_style_unification_v1/index.html#hydra",
+      "engineering_badge": "已套用遊戲 · 20% 驗收通過",
+      "art_review_status": "pending_user_review",
+      "reference": {
+        "path": "images/c04_concept.png",
+        "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "zoom": "PASS"
+      },
+      "current_prompt_files": [
+        "../hydra_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+        "../hydra_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+        "../hydra_runtime_v1/prompts/hand_diffuse_original_integration_v1.txt",
+        "../hydra_runtime_v1/prompts/head_diffuse_original_integration_v2_head.txt",
+        "../hydra_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt"
+      ],
+      "source_links": "PASS"
+    },
+    {
+      "id": "C-05",
+      "armor": "strike",
+      "runtime_id_mapping": {
+        "catalog": 4,
+        "original_legacy": 4,
+        "manifest": 4,
+        "loader": 4,
+        "scene": "res://assets/armors/strike_v1/strike.scn",
+        "status": "PASS"
+      },
+      "current_head_variant": "original_integration_v3_head",
+      "selected_native_generations": {
+        "body": "original_integration_v1",
+        "shoulder": "original_integration_v1",
+        "hand": "original_integration_v1",
+        "foot": "original_integration_v1",
+        "head": "original_integration_v3_head"
+      },
+      "source_sha256": "96c9ecaed60c22ef9d12437dd6c0c487915c197c64a0cc04acd03b7f74e467a0",
+      "manifest_sha256": "0cc23201b8b29e52ab318e3522e450de994f01e8e33571728bd86e86a25e7728",
+      "runtime_href": "../strike_runtime_v1/index.html",
+      "shared_href": "../armor_style_unification_v1/index.html#strike",
+      "engineering_badge": "已套用遊戲 · 20% 驗收通過",
+      "art_review_status": "pending_user_review",
+      "reference": {
+        "path": "../fusion_v2_generated/c05_strike_fusion.jpg",
+        "sha256": "9157b428f382ed6548050aeaec2e8c0f1e499bc51f43d49c51662535d01fe201",
+        "dimensions": [
+          848,
+          1264
+        ],
+        "zoom": "PASS"
+      },
+      "current_prompt_files": [
+        "../strike_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+        "../strike_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+        "../strike_runtime_v1/prompts/hand_diffuse_original_integration_v1.txt",
+        "../strike_runtime_v1/prompts/head_diffuse_original_integration_v3_head.txt",
+        "../strike_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt"
+      ],
+      "source_links": "PASS"
+    },
+    {
+      "id": "C-06",
+      "armor": "titan",
+      "runtime_id_mapping": {
+        "catalog": 5,
+        "original_legacy": 5,
+        "manifest": 5,
+        "loader": 5,
+        "scene": "res://assets/armors/titan_v1/titan.scn",
+        "status": "PASS"
+      },
+      "current_head_variant": "original_integration_v2_head",
+      "selected_native_generations": {
+        "body": "original_integration_v1",
+        "shoulder": "original_integration_v1",
+        "foot": "original_integration_v1",
+        "head": "original_integration_v2_head",
+        "hand": "original_integration_v2_hand"
+      },
+      "source_sha256": "8726aadd488593da0124042be0cbdd9acb65cc9de15506adfeb0924abd021208",
+      "manifest_sha256": "f90cb2cc6540d41059a4905051bb8321251debc9b1f75fe74bb6b7ecdb6529d1",
+      "runtime_href": "../titan_runtime_v1/index.html",
+      "shared_href": "../armor_style_unification_v1/index.html#titan",
+      "engineering_badge": "已套用遊戲 · 20% 驗收通過",
+      "art_review_status": "pending_user_review",
+      "reference": {
+        "path": "images/c06_concept.png",
+        "sha256": "54cb4073c1f482e072e23aa344dc4fff300e5157191dcd7b3e82f68ced75fc49",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "zoom": "PASS"
+      },
+      "current_prompt_files": [
+        "../titan_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+        "../titan_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+        "../titan_runtime_v1/prompts/hand_diffuse_original_integration_v2_hand.txt",
+        "../titan_runtime_v1/prompts/head_diffuse_original_integration_v2_head.txt",
+        "../titan_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt"
+      ],
+      "source_links": "PASS"
+    }
+  ],
+  "errors": []
+}

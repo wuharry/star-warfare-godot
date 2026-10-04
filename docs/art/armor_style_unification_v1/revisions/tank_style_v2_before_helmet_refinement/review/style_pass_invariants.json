@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "scope": "Exact packed-master vertex positions, UV loop values, polygon indices/materials, weights, rest rig and object transforms against immutable pre-paint master; source and authored target/geometry bytes unchanged. Does not certify artistic likeness or an engine capture.",
+  "before_scene_sha256": "4bee6ec3d15c71d52171ea6af9526c412740723a7ca59448f364bb8fbe7b2556",
+  "current_scene_sha256": "0cd3bc22bee11bb21cb8a0daaea304745123ae731994cef6d226b07a9029adf8",
+  "before_target_sha256": "cf79528dfb54a3ae8f2403035fb08ab31b8ba35f6a52b554ff7a0e36e6f2a2de",
+  "scene_invariants": "review/style_pass_scene_invariants.json",
+  "scene_invariants_sha256": "89096e95e26d44c6358c6fdea17187d679bc31b5b353209dbc18478a2699560f",
+  "scene_records": [
+    {
+      "all_mesh_arrays_transform_skeleton_skin_material_parameters_exact": true,
+      "part": "ArmorHead_02",
+      "surfaces": 2
+    },
+    {
+      "all_mesh_arrays_transform_skeleton_skin_material_parameters_exact": true,
+      "part": "ArmorBody_02",
+      "surfaces": 2
+    },
+    {
+      "all_mesh_arrays_transform_skeleton_skin_material_parameters_exact": true,
+      "part": "ArmorHand_02",
+      "surfaces": 1
+    },
+    {
+      "all_mesh_arrays_transform_skeleton_skin_material_parameters_exact": true,
+      "part": "ArmorFoot_02",
+      "surfaces": 1
+    }
+  ],
+  "material_parameters_preserved": true,
+  "baseline_snapshot_sha256": "5cc171e01d5e58663e0f5e93632da9f156f765c7ebc526e0eda126d98a8e5dbf",
+  "baseline_master": "docs/art/tank_runtime_v1/revisions/before_style_unification_v2/delivery/tank_master.blend",
+  "baseline_master_sha256": "4a9c993ef04de5656dd1e8cc3af99e4e174f20a94bb0ca4f6718a98c0d4a7ec9",
+  "master_sha256": "16d820760149dba2735543729a897c221611579a2fb0c8d76e6955cf42f17d01",
+  "source_sha256": "fb4371b450799b9038d6ef04bf3dc44bcc629ab7520834768decab5908917000",
+  "target_sha256": "cf79528dfb54a3ae8f2403035fb08ab31b8ba35f6a52b554ff7a0e36e6f2a2de",
+  "geometry_sha256": "e455eee7ed29aa081579e988169b06940f3c90751852ff1310b98c0cd1026dfc",
+  "additional_vertex_position_changes": 0,
+  "additional_uv_changes": 0,
+  "packed_meshes": 4,
+  "packed_rigs": 1
+}

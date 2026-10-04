@@ -1,0 +1,144 @@
+{
+  "status": "PASS_current_normal_resources_and_Tank_strict_shared_helper",
+  "date": "2026-10-04T16:47:42.363950+00:00",
+  "variant": "helmet_refinement_v6",
+  "capture_summary": "docs/art/tank_runtime_v1/review/engine/capture.json",
+  "capture_summary_sha256": "b24a5b339450f9de0fa870467f51637671f760abf549e67c2b88c9dea6425f1e",
+  "scene_sha256": "daa91815d79c729bf767a05f247e1dffa840edb620023e38b078f2db7c1b5af8",
+  "target_sha256": "77d972fae0128a8a66c8c9d23ea5028bfe8539a4a8f0f5352e38477967b22460",
+  "canonical_diffuse_sha256": {
+    "body": "a92ae9149165beec2afb7e23a339cfdc13380ae4da71f6ab1d576c15b2a4eac4",
+    "foot": "e8a16ff8e61c0fe04ee9f766a9ffb3d04459ce773e0f5ce5dc44d55db8f5e2be",
+    "hand": "6bf882758297af2c789b61d602cf39dbfd797e81320fd11fee8f03dee2aac79d",
+    "head": "cb9b267677e802d29236c7cd92f8d556e50acb39b5ef6cab9ec8d9aea2e96e1e",
+    "shoulder": "4905a54b926654a52e8f63d06b4ac51bc65396db023f4684c1150ee5969df3db"
+  },
+  "resource_mode": "normal_imported_resources",
+  "save_unchanged": true,
+  "save_sha256_at_start": "ba4612a66106620e1e9956c4a43037d5201c620a358f83f328092270e1d2605a",
+  "save_sha256_at_end": "ba4612a66106620e1e9956c4a43037d5201c620a358f83f328092270e1d2605a",
+  "prior_capture_failure": "docs/art/tank_runtime_v1/review/failed_capture_v6_savecheck/capture.json",
+  "prior_capture_failure_note": "First v6 capture save_unchanged false preserved; latest second capture independently passes with identical start/end hashes.",
+  "records": [
+    {
+      "armor": "tank",
+      "view": "diffuse_front",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_diffuse_front.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/diffuse_front.png",
+      "sha256": "66532ea501ae81aa08c1d7a8b9532d19ed6bc2df3ce732ff1b174fe2fbb030f5",
+      "bytes": 266288
+    },
+    {
+      "armor": "tank",
+      "view": "diffuse_quarter",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/diffuse_quarter.png",
+      "sha256": "8c7081d5f3d0fcee1f0779e99d0c2e76349f134cdf09aee64590d7ec889c6073",
+      "bytes": 277794
+    },
+    {
+      "armor": "tank",
+      "view": "diffuse_side",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_diffuse_side.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/diffuse_side.png",
+      "sha256": "c17cee1812f8645eee1e6af59d451a85bbcb9526ef02ba43227ef682b7c3c10a",
+      "bytes": 179467
+    },
+    {
+      "armor": "tank",
+      "view": "diffuse_rear",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_diffuse_rear.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/diffuse_rear.png",
+      "sha256": "010b61f5ffb60d84c6aba2a3e44cf517cd60d7aaf9419981cdea3ab03292e848",
+      "bytes": 258485
+    },
+    {
+      "armor": "tank",
+      "view": "head_front",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_head_front.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/head_front.png",
+      "sha256": "dfdd7858bccc5ac0b8f67d92298b4083c5cb422f6c456add7bf5602917fda37b",
+      "bytes": 478022
+    },
+    {
+      "armor": "tank",
+      "view": "head_quarter",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_head_quarter.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/head_quarter.png",
+      "sha256": "4da5dd466eef1b7dce73f6247e713f55643b3984d447aab86d935b89562262fd",
+      "bytes": 512766
+    },
+    {
+      "armor": "tank",
+      "view": "head_side",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_head_side.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/head_side.png",
+      "sha256": "384396c64fde58a4dde4c47e106b914ec675bd8d1b6f12603e16420e71926763",
+      "bytes": 485271
+    },
+    {
+      "armor": "tank",
+      "view": "head_rear",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_head_rear.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/head_rear.png",
+      "sha256": "fca14e9adbaeaaf6f54fc37714ed53934e62c3d6b38a10621461e9ba73d2037a",
+      "bytes": 478745
+    },
+    {
+      "armor": "tank",
+      "view": "clay_front",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_clay_front.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/clay_front.png",
+      "sha256": "afe604afecd3e7784e42f07df414c581c7880358ec7cfb80058b9198449e1084",
+      "bytes": 42405
+    },
+    {
+      "armor": "tank",
+      "view": "clay_side",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_clay_side.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/clay_side.png",
+      "sha256": "31298a9e265fa7bad49be81a4f90bc5186009f253da6f7dd5fe725c06097fc14",
+      "bytes": 28767
+    },
+    {
+      "armor": "tank",
+      "view": "level_01_gameplay",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/level_01_gameplay.png",
+      "sha256": "1229af2b2fb810dfe9b101c3ebede75ca488005adbb05a00bac2c21b0d70e100",
+      "bytes": 1455047
+    },
+    {
+      "armor": "tank",
+      "view": "level_08_gameplay",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/level_08_gameplay.png",
+      "sha256": "f31d90c706f56d1009cebb4b667dbafe99a3291257d3da2a81a33ba529c1c977",
+      "bytes": 1008350
+    },
+    {
+      "armor": "tank",
+      "view": "idle_rifle",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_idle_rifle.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/idle_rifle.png",
+      "sha256": "b0f8303da44eaebe6592294fa0f1480dd0841e32aef71afc6be0d08cdfaf4ae8",
+      "bytes": 227692
+    },
+    {
+      "armor": "tank",
+      "view": "run_rifle",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_run_rifle.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/run_rifle.png",
+      "sha256": "47155f78b90d2f6cd16515bc0d5a918413a5273c510a4760893338dc6a86de17",
+      "bytes": 213000
+    },
+    {
+      "armor": "tank",
+      "view": "reload_04",
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_04.png",
+      "snapshot": "docs/art/armor_style_unification_v1/after/tank/review/reload_04.png",
+      "sha256": "8ddb9508b31d8da1011e0f71da2d522139d107ce09ef3725c7339f31f2dc1d25",
+      "bytes": 214972
+    }
+  ]
+}

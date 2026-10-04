@@ -1,0 +1,27 @@
+{
+  "status": "PENDING",
+  "scope": "Combined current six-armor validation awaits latest Strike and Titan integrations. Historical three-armor PASS is preserved; it does not certify current six-armor assets.",
+  "required_armors": [
+    "viper",
+    "fortune",
+    "tank",
+    "hydra",
+    "strike",
+    "titan"
+  ],
+  "pending_armors": [
+    "strike",
+    "titan"
+  ],
+  "current_independent_pass_reports": {
+    "tank": "docs/art/armor_style_unification_v1/tank_helmet_refinement_validate.json",
+    "hydra": "docs/art/armor_style_unification_v1/hydra_first_integration_validate.json"
+  },
+  "historical_report": "docs/art/armor_style_unification_v1/revisions/combined_before_first_integrations/validate.json",
+  "historical_report_sha256": "260e4d1552092283c22c461a5b004fb766d92970f49d36125a9624b9a583da26",
+  "historical_armors": [
+    "viper",
+    "fortune",
+    "tank"
+  ]
+}

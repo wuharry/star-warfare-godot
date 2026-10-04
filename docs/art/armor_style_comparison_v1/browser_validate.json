@@ -1,0 +1,191 @@
+{
+  "status": "PASS",
+  "scope": "isolated headless Chrome development render; no user browser profile",
+  "checks": [
+    {
+      "check": "default Viper images",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "body",
+      "view": "front",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "body",
+      "view": "quarter",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "body",
+      "view": "side",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "body",
+      "view": "rear",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "head",
+      "view": "front",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "head",
+      "view": "quarter",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "head",
+      "view": "side",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "head",
+      "view": "rear",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "clay",
+      "view": "front",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "clay",
+      "view": "quarter",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "clay",
+      "view": "side",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "clay",
+      "view": "rear",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "gameplay",
+      "view": "01",
+      "pass": true
+    },
+    {
+      "armor": "0",
+      "scope": "gameplay",
+      "view": "08",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "body",
+      "view": "front",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "body",
+      "view": "quarter",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "body",
+      "view": "side",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "body",
+      "view": "rear",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "head",
+      "view": "front",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "head",
+      "view": "quarter",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "head",
+      "view": "side",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "head",
+      "view": "rear",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "clay",
+      "view": "front",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "clay",
+      "view": "quarter",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "clay",
+      "view": "side",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "clay",
+      "view": "rear",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "gameplay",
+      "view": "01",
+      "pass": true
+    },
+    {
+      "armor": "1",
+      "scope": "gameplay",
+      "view": "08",
+      "pass": true
+    },
+    {
+      "check": "viewport overflow",
+      "width": 390,
+      "scroll": 390,
+      "pass": true
+    },
+    {
+      "check": "viewport overflow",
+      "width": 320,
+      "scroll": 320,
+      "pass": true
+    }
+  ],
+  "errors": []
+}

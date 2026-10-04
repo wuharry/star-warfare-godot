@@ -1,0 +1,244 @@
+{
+  "status": "PASS",
+  "name": "titan",
+  "scope": "first approved-concept integration against true original source; positions/normals/UV permitted within original-total20%; topology, indices, skin, weights and 28-bone rig preserved",
+  "user_authorized_original_ceiling": 0.2,
+  "actual_delivery_original_limit": 0.2,
+  "prior_runtime_zero_geometry_contract_applies": false,
+  "original_source_snapshot_records_verified": 13,
+  "original_source_snapshot_sha256": "1d2883a7123e3297245ee9845569335981d82f26842b661ca98393fd6a3ff0cc",
+  "original_node_index_sha256": "ec6be5fe46fc753ed75c850e95d088f5ed6e961af0170995af95cb2b00a116da",
+  "used_node_ids": {
+    "ArmorHead_05": 50,
+    "ArmorBody_05": 51,
+    "ArmorHand_05": 52,
+    "ArmorFoot_05": 53
+  },
+  "titan_first_v1_snapshot_records_verified": 90,
+  "titan_first_v1_snapshot_sha256": "9a04729f9df7c23134eb377bf22f9e0d9580e824dda7949992d65a400d860009",
+  "titan_v2_additional_geometry_uv_changes": 0,
+  "original_measurements": [
+    {
+      "part": "ArmorBody_05",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 9.095843481806661e-15,
+      "original_dimension_delta_fractions": [
+        2.220446049250313e-16,
+        2.220446049250313e-16,
+        7.771561172376096e-16
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "shoulder",
+          "uv_coordinate_count": 334,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        },
+        {
+          "surface": 1,
+          "label": "body",
+          "uv_coordinate_count": 464,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "part": "ArmorFoot_05",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 1.3978468570097316e-15,
+      "original_dimension_delta_fractions": [
+        0.0,
+        4.440892098500626e-16,
+        1.7763568394002505e-15
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "foot",
+          "uv_coordinate_count": 258,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "part": "ArmorHand_05",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 1.735483901366589e-14,
+      "original_dimension_delta_fractions": [
+        0.0,
+        2.886579864025407e-15,
+        9.992007221626409e-16
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "hand",
+          "uv_coordinate_count": 257,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "part": "ArmorHead_05",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 0.10308802403500102,
+      "original_dimension_delta_fractions": [
+        8.881784197001252e-16,
+        2.886579864025407e-15,
+        8.881784197001252e-16
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "head",
+          "uv_coordinate_count": 294,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    }
+  ],
+  "triangles": 700,
+  "surfaces": 5,
+  "uv_coordinates": 1607,
+  "uv_charts": 16,
+  "images": [
+    {
+      "label": "body",
+      "canonical_sha256": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/titan_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "shoulder",
+      "canonical_sha256": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/titan_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "foot",
+      "canonical_sha256": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/titan_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "head",
+      "canonical_sha256": "e7018129a62f4f675f1c196e7b15afd5734124a097eea9d5fd4af230e3bdf534",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/titan_runtime_v1/prompts/head_diffuse_original_integration_v2_head.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "hand",
+      "canonical_sha256": "511a205683e0e98bd9f8468edebf5a73052085e49e7fed66bd98ac3328ea74ec",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/titan_runtime_v1/prompts/hand_diffuse_original_integration_v2_hand.txt",
+      "postprocessing": "none; native PNG bytes"
+    }
+  ],
+  "reports": {
+    "runtime": "docs/art/titan_runtime_v1/review/runtime_test.json",
+    "roundtrip": "docs/art/titan_runtime_v1/review/roundtrip_test.json",
+    "master": "docs/art/titan_runtime_v1/review/delivery_validate.json",
+    "proportion": "docs/art/titan_runtime_v1/review/proportion_test.json",
+    "glb_images": "docs/art/titan_runtime_v1/review/glb_images_test.json",
+    "scene": "docs/art/titan_runtime_v1/review/original_scene_invariants.json"
+  },
+  "captures": [
+    {
+      "view": "diffuse_front",
+      "sha256": "598062d49af957060750ae1539054cab039ad0efb02214529641e1bf519fe026"
+    },
+    {
+      "view": "diffuse_quarter",
+      "sha256": "2fff3f37dee0b28fe9f3a2ef6c42381c34b84dbca4840e5e6a9655ad511ea16d"
+    },
+    {
+      "view": "diffuse_side",
+      "sha256": "9e7a2ea614e0fa165ac7d72a62d34a507742303aab92d5c31d6e9f4f70775955"
+    },
+    {
+      "view": "diffuse_rear",
+      "sha256": "6556605ff904caf9229496aba4817921d6e4127bc0680be50de2d3c50bf8f2f8"
+    },
+    {
+      "view": "head_front",
+      "sha256": "aa33b150c21f9265d913ee39cdc8b656ec6dfd26befaa70ca6a88ea452e6f674"
+    },
+    {
+      "view": "head_quarter",
+      "sha256": "e2320f1cc480d0cc0f52490817a02209b7964637db619fb8dca3abc1b4d69a63"
+    },
+    {
+      "view": "head_side",
+      "sha256": "2643d9c67a78e89cd30d1833e98a6f74c876815e660db7bd0a07d91b4fa9adea"
+    },
+    {
+      "view": "head_rear",
+      "sha256": "96cc33e73d39159f760b0d9bd2b628bc4cd778edfc321809b5c474297438ccaa"
+    },
+    {
+      "view": "clay_front",
+      "sha256": "f63c76fd0f6d395e012226a7f6bf652ebe05ae8b6c4bc36955101484c1d3095f"
+    },
+    {
+      "view": "clay_side",
+      "sha256": "dff0a0a1984c3a23a5020f26971ee7ca85fa53970a7ad16c659afad77b3028fd"
+    },
+    {
+      "view": "level_01_gameplay",
+      "sha256": "9739de8219a5a4cfd9034965d27dc5f5b643464ad6249f4f10b84321cad746c6"
+    },
+    {
+      "view": "level_08_gameplay",
+      "sha256": "6bf27ddd4cac8ee670dc976399dd4f4d630d117afab92c70094b6de39df8e59a"
+    },
+    {
+      "view": "idle_rifle",
+      "sha256": "a242a3991e46996c3d1c9296a98318ea959dfe1e089c9061d113b088ba4f7f69"
+    },
+    {
+      "view": "run_rifle",
+      "sha256": "e2298548f085bd75ca24c7aac8b92ffbc8704246b5c497ba712206b7b072a00b"
+    },
+    {
+      "view": "reload_04",
+      "sha256": "0851c35f45e7fef5e1b51cd882bd73637a9b15b8cb4f6951466262acc48d1e21"
+    }
+  ],
+  "capture_execution": "docs/art/titan_runtime_v1/review/original_integration_angle_capture.log",
+  "scope_note": "Independent current armor verification; combined current six-armor PASS is also available.",
+  "combined_current_report": "docs/art/armor_style_unification_v1/validate.json",
+  "combined_current_report_sha256": "9263a1619cf78cb9bad0495805bce1d6260581f36646236d6f4fa67b85987d8b"
+}

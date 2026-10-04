@@ -1,0 +1,200 @@
+{
+  "title": "Viper／Fortune 貼圖畫法統一實機比對",
+  "date": "2026-10-04",
+  "status": "已套入遊戲，工程驗證通過；待使用者評價第一輪畫法",
+  "summary": "兩套已完成整套貼圖畫法試作：主要高光變寬、細白磨線減少，保留已確認頭盔及大甲片配置。近照仍有較亮的眉沿、下巴或胸框；這是第一輪，最終偏好待使用者評價。",
+  "base_prompt": "base_prompt.txt",
+  "protocol": [
+    "原版：原始遊戲裝甲，同相機的正式資源擷取。",
+    "修改前：本輪開始前的新設計快照，保持原始 PNG 位元組。",
+    "本輪：生成完成後，以正常匯入、編譯資源重新擷取；缺圖不顯示假成果。",
+    "中性 diffuse 與頭部擷取使用白色 tint／UN_SHADED；灰模只看輪廓；遊戲及動作圖保留實際材質口徑。",
+    "這是畫法統一試作，不新增造型；新增 UV／模型改動量必須為零。沒有客觀風格相似度評分，最終偏好待使用者評價。"
+  ],
+  "armors": [
+    {
+      "id": "viper",
+      "name": "Viper",
+      "runtime_dir": "viper_runtime_v2",
+      "variant_before": "concept_match_v8",
+      "variant_after": "style_unified_v9",
+      "status": "正常資源實機擷取與工程檢查完成；畫法待使用者評價",
+      "summary": "面甲直亮條已收斂，肩、腿與背甲畫法更柔；新設計保持。扣具與下巴仍偏亮，沒有聲稱完全消除違和。",
+      "prompt": "../viper_runtime_v2/prompts/head_diffuse_style_unified_v9.txt",
+      "changes": [
+        {
+          "part": "面甲／頭頂",
+          "before": "面甲中央直亮條、頂冠細白邊與刮線較突出。",
+          "after": "面甲改為較寬柔反光，頂冠以大漸層塑形；下巴接觸邊仍偏亮。",
+          "preserved": "黑眉、紫色切面、斜削下巴、頭盔外殼。"
+        },
+        {
+          "part": "胸腹／背甲",
+          "before": "細亮邊、硬黑分板與細磨損較多。",
+          "after": "甲面高光更寬，細磨線減少；胸口扣具與部分甲片邊仍較亮。",
+          "preserved": "雙胸窗、層疊腹甲、四片背甲與主要分色。"
+        },
+        {
+          "part": "肩／手／腿靴",
+          "before": "細白描邊與分散細刮痕遍布甲面。",
+          "after": "長刮線收斂，以較寬的色彩漸層塑形。",
+          "preserved": "肩甲黑藍帶、前臂黑窗、大腿藍板及原關節。"
+        }
+      ],
+      "verification": [
+        {
+          "label": "新增模型／UV 改動",
+          "result": "0；target 頂點、UV 與修改前完全相同",
+          "evidence": "validate.json"
+        },
+        {
+          "label": "正常 runtime／GLB 動作",
+          "result": "15／9 個姿勢 PASS",
+          "evidence": "../viper_runtime_v2/review/runtime_test.json"
+        },
+        {
+          "label": "GLB 與 packed master 貼圖",
+          "result": "五張 canonical 貼圖對照 PASS",
+          "evidence": "../viper_runtime_v2/review/delivery_validate.json"
+        },
+        {
+          "label": "正常資源實機圖",
+          "result": "64 張 ANGLE／Direct3D11；本頁選用其中 15 組",
+          "evidence": "../viper_runtime_v2/review/engine/capture.json"
+        }
+      ],
+      "sources": [
+        {
+          "label": "必要基底 prompt",
+          "path": "base_prompt.txt"
+        },
+        {
+          "label": "輸入與驗收規則",
+          "path": "README.md"
+        },
+        {
+          "label": "修改前快照索引",
+          "path": "baseline_snapshot.json"
+        },
+        {
+          "label": "該裝甲完整素材頁",
+          "path": "../viper_runtime_v2/index.html"
+        },
+        {
+          "label": "實送 head prompt",
+          "path": "../viper_runtime_v2/prompts/head_diffuse_style_unified_v9.txt"
+        },
+        {
+          "label": "實送 body prompt",
+          "path": "../viper_runtime_v2/prompts/body_diffuse_style_unified_v9.txt"
+        },
+        {
+          "label": "實送 shoulder prompt",
+          "path": "../viper_runtime_v2/prompts/shoulder_diffuse_style_unified_v9.txt"
+        },
+        {
+          "label": "實送 hand prompt",
+          "path": "../viper_runtime_v2/prompts/hand_diffuse_style_unified_v9.txt"
+        },
+        {
+          "label": "實送 foot prompt",
+          "path": "../viper_runtime_v2/prompts/foot_diffuse_style_unified_v9.txt"
+        }
+      ],
+      "original_prefix": "original/viper/review/",
+      "capture_revision": "125eb4a2cfff4dfa"
+    },
+    {
+      "id": "fortune",
+      "name": "Fortune",
+      "runtime_dir": "fortune_runtime_v1",
+      "variant_before": "head_v6 / body_v2",
+      "variant_after": "head style v7／body style v3／shoulder・hand・foot style v2",
+      "status": "正常資源實機擷取與工程檢查完成；畫法待使用者評價",
+      "summary": "腿、靴與肩甲的細白磨線減少最明顯；頭盔與 U 胸框採保守調整，仍保留原亮邊。",
+      "prompt": "../fortune_runtime_v1/prompts/head_diffuse_style_v7.txt",
+      "changes": [
+        {
+          "part": "面甲／頭頂",
+          "before": "綠冠、薄眉與紫玻璃的細亮邊較集中。",
+          "after": "頂冠改為較寬柔漸層、玻璃保持單一連續反光；薄眉與短下巴調整較保守。",
+          "preserved": "圓冠、薄銀藍眉、連續紫面罩、短實心下巴及兩側小槽。"
+        },
+        {
+          "part": "胸框／背甲",
+          "before": "銀藍 U 框與板件細亮邊較突出。",
+          "after": "甲面過渡更柔，磨損減少；U 框仍保留較亮邊。",
+          "preserved": "U 形胸框、腹甲與背甲主配置。"
+        },
+        {
+          "part": "肩／手／腿靴",
+          "before": "膝與脛有醒目的細白刮線，肩部有長細磨線。",
+          "after": "膝、脛及肩部的細白磨線明顯減少，改以寬柔高光表現。",
+          "preserved": "原綠銀藍大色塊、肩甲及四肢形狀。"
+        }
+      ],
+      "verification": [
+        {
+          "label": "新增模型／UV 改動",
+          "result": "0；target 頂點、UV 與修改前完全相同",
+          "evidence": "validate.json"
+        },
+        {
+          "label": "正常 runtime／GLB 動作",
+          "result": "15／9 個姿勢 PASS",
+          "evidence": "../fortune_runtime_v1/review/runtime_test.json"
+        },
+        {
+          "label": "GLB 與 packed master 貼圖",
+          "result": "五張 canonical 貼圖對照 PASS",
+          "evidence": "../fortune_runtime_v1/review/delivery_validate.json"
+        },
+        {
+          "label": "正常資源實機圖",
+          "result": "64 張 ANGLE／Direct3D11；本頁選用其中 15 組",
+          "evidence": "../fortune_runtime_v1/review/engine/capture.json"
+        }
+      ],
+      "sources": [
+        {
+          "label": "必要基底 prompt",
+          "path": "base_prompt.txt"
+        },
+        {
+          "label": "輸入與驗收規則",
+          "path": "README.md"
+        },
+        {
+          "label": "修改前快照索引",
+          "path": "baseline_snapshot.json"
+        },
+        {
+          "label": "該裝甲完整素材頁",
+          "path": "../fortune_runtime_v1/index.html"
+        },
+        {
+          "label": "實送 head prompt",
+          "path": "../fortune_runtime_v1/prompts/head_diffuse_style_v7.txt"
+        },
+        {
+          "label": "實送 body prompt",
+          "path": "../fortune_runtime_v1/prompts/body_diffuse_style_v3.txt"
+        },
+        {
+          "label": "實送 shoulder prompt",
+          "path": "../fortune_runtime_v1/prompts/shoulder_diffuse_style_v2.txt"
+        },
+        {
+          "label": "實送 hand prompt",
+          "path": "../fortune_runtime_v1/prompts/hand_diffuse_style_v2.txt"
+        },
+        {
+          "label": "實送 foot prompt",
+          "path": "../fortune_runtime_v1/prompts/foot_diffuse_style_v2.txt"
+        }
+      ],
+      "original_prefix": "original/fortune/review/",
+      "capture_revision": "8bb51b97021844a1"
+    }
+  ]
+}

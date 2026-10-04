@@ -1,0 +1,241 @@
+{
+  "status": "PASS",
+  "name": "hydra",
+  "scope": "first approved-concept integration against true original source; positions/normals/UV permitted within original-total20%; topology, indices, skin, weights and 28-bone rig preserved",
+  "user_authorized_original_ceiling": 0.2,
+  "actual_delivery_original_limit": 0.2,
+  "prior_runtime_zero_geometry_contract_applies": false,
+  "original_source_snapshot_records_verified": 13,
+  "original_source_snapshot_sha256": "a7b7060b098baa898dd222317c435f3fca4101e13f105ed50b13292ea5004922",
+  "original_node_index_sha256": "2fee186378990fb528b7ccfdddcf2dc555151a7a1804e0a407b767f88b680388",
+  "used_node_ids": {
+    "ArmorHead_03": 42,
+    "ArmorBody_03": 43,
+    "ArmorHand_03": 44,
+    "ArmorFoot_03": 45
+  },
+  "original_measurements": [
+    {
+      "part": "ArmorBody_03",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 8.651420023593312e-15,
+      "original_dimension_delta_fractions": [
+        4.440892098500626e-16,
+        2.6645352591003757e-15,
+        4.440892098500626e-16
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "body",
+          "uv_coordinate_count": 214,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        },
+        {
+          "surface": 1,
+          "label": "shoulder",
+          "uv_coordinate_count": 114,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "part": "ArmorFoot_03",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 1.481204414302158e-15,
+      "original_dimension_delta_fractions": [
+        2.220446049250313e-16,
+        6.661338147750939e-16,
+        2.220446049250313e-16
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "foot",
+          "uv_coordinate_count": 124,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "part": "ArmorHand_03",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 1.9236717574841048e-14,
+      "original_dimension_delta_fractions": [
+        4.440892098500626e-16,
+        1.7763568394002505e-15,
+        1.3322676295501878e-15
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "hand",
+          "uv_coordinate_count": 113,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "part": "ArmorHead_03",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 0.14743986457853522,
+      "original_dimension_delta_fractions": [
+        2.220446049250313e-16,
+        4.551914400963142e-15,
+        1.3322676295501878e-15
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "head",
+          "uv_coordinate_count": 161,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    }
+  ],
+  "triangles": 760,
+  "surfaces": 5,
+  "uv_coordinates": 726,
+  "uv_charts": 21,
+  "images": [
+    {
+      "label": "body",
+      "canonical_sha256": "06bad887459805c1f3a084472454f561a4ac075fe5b98f5223c045c37a661bbd",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/hydra_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "shoulder",
+      "canonical_sha256": "6ab940688708399dd5ec5663950f414b9d760bcb05058443f13bffb904b71a3f",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/hydra_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "hand",
+      "canonical_sha256": "6dea1c6cb3ee9ae3666af7fb5e483365e1ed58109a64e72069b49d30f1d1691c",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/hydra_runtime_v1/prompts/hand_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "foot",
+      "canonical_sha256": "8947c227fffd74c45696b2001f64a1c8bf673da2479eec08b014910af6428750",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/hydra_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "head",
+      "canonical_sha256": "c85276bace7eb04528f697dd62cf413412e178f1d36692ed78017cee2cda63e8",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/hydra_runtime_v1/prompts/head_diffuse_original_integration_v2_head.txt",
+      "postprocessing": "none; native PNG bytes"
+    }
+  ],
+  "reports": {
+    "runtime": "docs/art/hydra_runtime_v1/review/runtime_test.json",
+    "roundtrip": "docs/art/hydra_runtime_v1/review/roundtrip_test.json",
+    "master": "docs/art/hydra_runtime_v1/review/delivery_validate.json",
+    "proportion": "docs/art/hydra_runtime_v1/review/proportion_test.json",
+    "glb_images": "docs/art/hydra_runtime_v1/review/glb_images_test.json",
+    "scene": "docs/art/hydra_runtime_v1/review/original_scene_invariants.json"
+  },
+  "captures": [
+    {
+      "view": "diffuse_front",
+      "sha256": "ca4a1dca1c058c02d6164ee125e7dcec15ce336b6aa3bd89f639ff75d547978b"
+    },
+    {
+      "view": "diffuse_quarter",
+      "sha256": "cee53a2605a7622b75ef97cb792c46a4d80b6d0b55c67519224364d62d91984f"
+    },
+    {
+      "view": "diffuse_side",
+      "sha256": "223bd185611e1959ed8d44fef1b90034e538b62ebcb31d4e74b6c4933de63f64"
+    },
+    {
+      "view": "diffuse_rear",
+      "sha256": "7b9394a7e3d744c9fac116aa01ca237a1550965dbed06c71d2613e8ce55d4e39"
+    },
+    {
+      "view": "head_front",
+      "sha256": "8ba7dea57a092e23bb067807af79cafac9dfa535390fcbbda5474121c07db0d5"
+    },
+    {
+      "view": "head_quarter",
+      "sha256": "7b2e98408e9a6d200c3c8aa79eede437597e48893b9087fa0ca6863830233dc9"
+    },
+    {
+      "view": "head_side",
+      "sha256": "d47c25530c6c0d0ca35062fd905b04d347f859a2d6a37d4bdb050c040978810a"
+    },
+    {
+      "view": "head_rear",
+      "sha256": "0b56bfefaaf24507028ad4a3ff341d481c35910ab257bb7e5be397713f1494b4"
+    },
+    {
+      "view": "clay_front",
+      "sha256": "fcf617939222700453b0e0beba26913a90e87cadfdd37b605d0fe7cf36d9e656"
+    },
+    {
+      "view": "clay_side",
+      "sha256": "f15816070a439449bc150400b415209f74be8ba1165a4acd898fdb6e466d40ae"
+    },
+    {
+      "view": "level_01_gameplay",
+      "sha256": "dcf958aa90f1b6ced9229bffdabee9a42585e56fbdf3b7f52aed74ae005d4774"
+    },
+    {
+      "view": "level_08_gameplay",
+      "sha256": "424cc4f00538aa8196d7bae628aa793a17e9a784b6dd0eddd7baedbf8b138e9c"
+    },
+    {
+      "view": "idle_rifle",
+      "sha256": "93c73903a08cebb7ff8b2df199948fdff317b350eee17977471b8cf6bdee94d4"
+    },
+    {
+      "view": "run_rifle",
+      "sha256": "427b32eb8574e4afcdbfef6672446491f4823c00741f958694b71dce6ea8af14"
+    },
+    {
+      "view": "reload_04",
+      "sha256": "05001db401468b514432a25405c8a3ee9f837190cbeeb668c9465d5daafcc4fb"
+    }
+  ],
+  "capture_execution": "docs/art/hydra_runtime_v1/review/original_integration_angle_capture.log",
+  "scope_note": "Independent current armor verification; combined current six-armor PASS is also available.",
+  "combined_current_report": "docs/art/armor_style_unification_v1/validate.json",
+  "combined_current_report_sha256": "9263a1619cf78cb9bad0495805bce1d6260581f36646236d6f4fa67b85987d8b"
+}
