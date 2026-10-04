@@ -1,0 +1,2611 @@
+{
+  "status": "FROZEN_BEFORE_STYLE_UNIFICATION_V2",
+  "created_at_utc": "2026-10-04T13:58:51.144879+00:00",
+  "scope": "Byte snapshots of existing runtime v1 delivery, five canonical and five portable maps, original atlases, reports/captures/drafts, master/target/source, authored guides, generation prompts/archives and reproduction scripts/tests. New style stage must not overwrite this baseline.",
+  "files": {
+    "README.md": {
+      "source": "docs/art/tank_runtime_v1/README.md",
+      "sha256": "b0a32fca888017e004a86de887a8c7fd8a8714e056b0fab4308192803f5a1370",
+      "bytes": 4519
+    },
+    "asset-brief.md": {
+      "source": "docs/art/tank_runtime_v1/asset-brief.md",
+      "sha256": "bc64ebd2e510acdd350b665ebb0102a5aa9ec32743624877e1c2abbb7f6fc87f",
+      "bytes": 2534
+    },
+    "index.html": {
+      "source": "docs/art/tank_runtime_v1/index.html",
+      "sha256": "d35b1a5d4cdae4a9451d65da4cac082e4dc8ee7cb5ea4cb0c2bda44e01f0060d",
+      "bytes": 8089
+    },
+    "manifest.json": {
+      "source": "docs/art/tank_runtime_v1/manifest.json",
+      "sha256": "0ec1c895d6a5792e976179ae075fd6070d97055cd916db1f47ee79e6aebe8ca0",
+      "bytes": 63867
+    },
+    "generation_inputs.json": {
+      "source": "docs/art/tank_runtime_v1/generation_inputs.json",
+      "sha256": "af489ae1441d490e8585cd7789a2e88229e32bd600413e9402875d3adcdf5c83",
+      "bytes": 20151
+    },
+    "approved_parts_reference.png": {
+      "source": "docs/art/tank_runtime_v1/approved_parts_reference.png",
+      "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12",
+      "bytes": 2335456,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "delivery/geometry.json": {
+      "source": "docs/art/tank_runtime_v1/build/geometry.json",
+      "sha256": "e455eee7ed29aa081579e988169b06940f3c90751852ff1310b98c0cd1026dfc",
+      "bytes": 6465
+    },
+    "delivery/glb_bind_aliases.json": {
+      "source": "docs/art/tank_runtime_v1/build/glb_bind_aliases.json",
+      "sha256": "004c995124954fcca9f9127656aba45772066414bb1e408f179bdf35a09d0682",
+      "bytes": 251
+    },
+    "delivery/source.json": {
+      "source": "docs/art/tank_runtime_v1/build/source.json",
+      "sha256": "fb4371b450799b9038d6ef04bf3dc44bcc629ab7520834768decab5908917000",
+      "bytes": 533101
+    },
+    "delivery/tank_master.blend": {
+      "source": "docs/art/tank_runtime_v1/build/tank_master.blend",
+      "sha256": "4a9c993ef04de5656dd1e8cc3af99e4e174f20a94bb0ca4f6718a98c0d4a7ec9",
+      "bytes": 7614812
+    },
+    "delivery/target.json": {
+      "source": "docs/art/tank_runtime_v1/build/target.json",
+      "sha256": "cf79528dfb54a3ae8f2403035fb08ab31b8ba35f6a52b554ff7a0e36e6f2a2de",
+      "bytes": 173378
+    },
+    "delivery/texture_sources.json": {
+      "source": "docs/art/tank_runtime_v1/build/texture_sources.json",
+      "sha256": "8a16016a064f486fcbe5bd0ace637d5759eb55109de94839142ccf2f849eb21e",
+      "bytes": 4671
+    },
+    "atlases/body_diffuse.png": {
+      "source": "assets/armors/tank_v1/body_diffuse.png",
+      "sha256": "4ab7e617dab966f4a9505a0793066c1010b001431232564ab1b6cd44832b5075",
+      "bytes": 1535720,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "atlases/foot_diffuse.png": {
+      "source": "assets/armors/tank_v1/foot_diffuse.png",
+      "sha256": "09528411436cbd609da4917ca3974f6eece628c2dcdb22f279a898ca1d149112",
+      "bytes": 1485825,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "atlases/hand_diffuse.png": {
+      "source": "assets/armors/tank_v1/hand_diffuse.png",
+      "sha256": "b1e31fb647f6cceb0f44477190e1adbe63e63c3b55bddc9e577efe1b6a96f05e",
+      "bytes": 1415370,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "atlases/head_diffuse.png": {
+      "source": "assets/armors/tank_v1/head_diffuse.png",
+      "sha256": "85b42fdcdb953b30cb36c21ff0f7c23293cd795bcf9d324e8caeeeeaaf8986c4",
+      "bytes": 1684473,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "atlases/shoulder_diffuse.png": {
+      "source": "assets/armors/tank_v1/shoulder_diffuse.png",
+      "sha256": "903fb418276ce29a25cc25ac4e92ca9f56d57320334a2c3855db72bf3b1e7adb",
+      "bytes": 1428541,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "delivery/tank.glb": {
+      "source": "assets/armors/tank_v1/tank.glb",
+      "sha256": "111a94ab3ee4371ce47e30f8fb5d5a66e26f79ba2366b11cf17d23c38ec05de0",
+      "bytes": 7435636
+    },
+    "delivery/tank.scn": {
+      "source": "assets/armors/tank_v1/tank.scn",
+      "sha256": "4bee6ec3d15c71d52171ea6af9526c412740723a7ca59448f364bb8fbe7b2556",
+      "bytes": 57193
+    },
+    "atlases/tank_body_diffuse.png": {
+      "source": "assets/armors/tank_v1/tank_body_diffuse.png",
+      "sha256": "4d968a97334f58165dbf624b509d9ad9f50447f652eeb3b0fbd8f9df2b94065e",
+      "bytes": 1484189,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "atlases/tank_foot_diffuse.png": {
+      "source": "assets/armors/tank_v1/tank_foot_diffuse.png",
+      "sha256": "ad7bfa074cda14485182313c0c9b7ce5591f9effe033b1457eeabbccc7712b82",
+      "bytes": 1434462,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "atlases/tank_hand_diffuse.png": {
+      "source": "assets/armors/tank_v1/tank_hand_diffuse.png",
+      "sha256": "106975a8d2dbd75e607c2ca42f104b1b6426135852e0f047a53681b5b17ad152",
+      "bytes": 1389435,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "atlases/tank_head_diffuse.png": {
+      "source": "assets/armors/tank_v1/tank_head_diffuse.png",
+      "sha256": "44009a2bbbcebb6adb496eadcce2f59a32af622d3e76d995163b6dc6cb2c9e15",
+      "bytes": 1644400,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "atlases/tank_shoulder_diffuse.png": {
+      "source": "assets/armors/tank_v1/tank_shoulder_diffuse.png",
+      "sha256": "3315f98ba3beea7ecbdabee930f2c9c19482cbf29126d0c8eabb3777603556ce",
+      "bytes": 1401359,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "review/delivery_validate.json": {
+      "source": "docs/art/tank_runtime_v1/review/delivery_validate.json",
+      "sha256": "d6f27a5139d3b2fe62f68cb10dda9d47bd2fe06dd607c8fdc3750237598063d4",
+      "bytes": 8840
+    },
+    "review/proportion_test.json": {
+      "source": "docs/art/tank_runtime_v1/review/proportion_test.json",
+      "sha256": "0b13ff0b68e4b0632feaa649bc9c02218f6367aea1ba8562a4dd00c079bb80aa",
+      "bytes": 8127
+    },
+    "review/roundtrip_test.json": {
+      "source": "docs/art/tank_runtime_v1/review/roundtrip_test.json",
+      "sha256": "558595813f60887f93d92f5f1db0465dcee8ca7a17eadbd33106c218d7278e8e",
+      "bytes": 1190
+    },
+    "review/runtime_test.json": {
+      "source": "docs/art/tank_runtime_v1/review/runtime_test.json",
+      "sha256": "60e710c755d6a9be8c71c706af27aa77a4a2962b863c4f2605ac88d447731853",
+      "bytes": 11496
+    },
+    "review/baseline/capture.json": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/capture.json",
+      "sha256": "d6b14a71838b2e59a076105102ba4ac7cd4d73b5ac7c365623170d06561d242c",
+      "bytes": 13331
+    },
+    "review/baseline/family_original_01_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/family_original_01_front.png",
+      "sha256": "2b7eaeecfba29bbc23730325dd41166e24d36a54a8a74738b8e8cf674be8100e",
+      "bytes": 226771,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/family_original_06_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/family_original_06_front.png",
+      "sha256": "39be7ee13957a3fe39bd4974ce97a7f4698f5f1abef2891af934100dee6e4254",
+      "bytes": 244621,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_clay_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_clay_front.png",
+      "sha256": "bb5234671aa5a2e4c40e77ecd868ac18bb142583ffdd6911a9bcc063dec612a3",
+      "bytes": 43159,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_clay_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_clay_quarter.png",
+      "sha256": "6c51076fd5b1a475007e7e541726b12a90b5aabb27d0e04b683867540119b073",
+      "bytes": 43117,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_clay_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_clay_rear.png",
+      "sha256": "61e979d588d9219a465790d76cc3a4f08c41f3aee36c8a9c472934474de24f4c",
+      "bytes": 45695,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_clay_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_clay_side.png",
+      "sha256": "f1dd54a3ba4201c400c8865037054a32d219a406db8f5d73bbcced080696a77a",
+      "bytes": 29579,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_diffuse_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_diffuse_front.png",
+      "sha256": "984ceec991c65c616a5d8a2a5eac21c2f2a9f364999a65422c21e739e98f6225",
+      "bytes": 233811,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_diffuse_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_diffuse_quarter.png",
+      "sha256": "fbc6ec2cfb230c7330b2aba6ca88ba7ab764c8e66b7c6e2790f00735804f34e4",
+      "bytes": 241950,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_diffuse_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_diffuse_rear.png",
+      "sha256": "e9cbd16cee7aac1cb9b59b3507753a4ebb422476da476d6bc088d117c453d3f0",
+      "bytes": 222387,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_diffuse_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_diffuse_side.png",
+      "sha256": "f424585c5c891191fafae055cb92ae50ee4b63a9aee39cffc93e1495b328d508",
+      "bytes": 158855,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_head_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_head_front.png",
+      "sha256": "30b13d471456e9f8435d0e538dc0b17c0b9abb8ae9f794ce9ade1897fe68278d",
+      "bytes": 469647,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_head_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_head_quarter.png",
+      "sha256": "efb7af7c345212e4ed560a3bbe6832034d7352b72acc63021ac8f6bc04cee276",
+      "bytes": 509314,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_head_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_head_rear.png",
+      "sha256": "1f4c22da36ba5b4706e7eeb8eb8754aab742a6d6a9ffd2ae0f5791f27a9686fc",
+      "bytes": 436961,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_head_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_head_side.png",
+      "sha256": "47f4b18d3b5c3596fdf81b8f987b4b7b1d173ae1e254a0039da3b3f58520dc19",
+      "bytes": 480342,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_idle_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_idle_rifle.png",
+      "sha256": "8425257217062892ae8168de0dbe0bcba2973b8e92fead08d795a24c0876f613",
+      "bytes": 208130,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_level_01_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_level_01_front.png",
+      "sha256": "c73d2b3f492f21effdc80fbf2220950faa78168214bce0173e45b3451fb379e7",
+      "bytes": 1021507,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/baseline/new_level_01_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_level_01_gameplay.png",
+      "sha256": "1689cb4f70268de58b721e050e655d68ffdfc324973cff8c0e823a9a7dbe695c",
+      "bytes": 1405404,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/baseline/new_level_08_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_level_08_front.png",
+      "sha256": "6d552ef409a9774b918ba2728b21fdfc97f465c59f7624d9bb6037148c0ee95e",
+      "bytes": 854568,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/baseline/new_level_08_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_level_08_gameplay.png",
+      "sha256": "7e9f21670eaa93f0dca0731da3fb18d73bd882d7946bae7df9eaa0c0dbbfaf40",
+      "bytes": 952349,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/baseline/new_painted_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_painted_front.png",
+      "sha256": "984ceec991c65c616a5d8a2a5eac21c2f2a9f364999a65422c21e739e98f6225",
+      "bytes": 233811,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_painted_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_painted_quarter.png",
+      "sha256": "fbc6ec2cfb230c7330b2aba6ca88ba7ab764c8e66b7c6e2790f00735804f34e4",
+      "bytes": 241950,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_painted_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_painted_rear.png",
+      "sha256": "e9cbd16cee7aac1cb9b59b3507753a4ebb422476da476d6bc088d117c453d3f0",
+      "bytes": 222387,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_painted_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_painted_side.png",
+      "sha256": "f424585c5c891191fafae055cb92ae50ee4b63a9aee39cffc93e1495b328d508",
+      "bytes": 158855,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_reload_00.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_reload_00.png",
+      "sha256": "d04f1c213ef962412c9c23f5097664d6db7b1874abf1583340f2196bef1562db",
+      "bytes": 200571,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_reload_01.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_reload_01.png",
+      "sha256": "77437eb705d253cbf2c2e0c41626fb076bb1362965cb58d07ea28fa8fc0e9503",
+      "bytes": 184619,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_reload_02.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_reload_02.png",
+      "sha256": "ed7fccedc96cfc8973c5bf3712432ca9aaa3006b7aec87b00978d7fe817bdfe1",
+      "bytes": 187413,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_reload_03.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_reload_03.png",
+      "sha256": "013a55d02f45b7165aa83e681a5443c7e96a526e53e6f4ad7abb7fa38bcfaf65",
+      "bytes": 188238,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_reload_04.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_reload_04.png",
+      "sha256": "34ed04e49dacbb84b6f67af3c76c91e548a623f04435e693bebdccd66a42e7ec",
+      "bytes": 195342,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_reload_05.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_reload_05.png",
+      "sha256": "44f4952006129c33fcb3d65419370dd51747b0583cc7eced9768ff07ec966e91",
+      "bytes": 195626,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_reload_06.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_reload_06.png",
+      "sha256": "5946d0afc9523615fc168d0fb312372c21e51204ebb0cecfb62c590748ee37c6",
+      "bytes": 187995,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_reload_07.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_reload_07.png",
+      "sha256": "75b3bdf5422a3e35896d4dbbd6961fd84859735ec06904a922851728b7a09da0",
+      "bytes": 185705,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_reload_08.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_reload_08.png",
+      "sha256": "004cddb266e2cc5aabe6d0f8852986e07d206011df7a332f08dfc2672fab0a49",
+      "bytes": 201575,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/new_run_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/new_run_rifle.png",
+      "sha256": "3feff40b65c0167438d8627046c994e99047323fc5467a75d9d888fa29f7bf97",
+      "bytes": 216451,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_clay_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_clay_front.png",
+      "sha256": "bb5234671aa5a2e4c40e77ecd868ac18bb142583ffdd6911a9bcc063dec612a3",
+      "bytes": 43159,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_clay_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_clay_quarter.png",
+      "sha256": "6c51076fd5b1a475007e7e541726b12a90b5aabb27d0e04b683867540119b073",
+      "bytes": 43117,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_clay_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_clay_rear.png",
+      "sha256": "61e979d588d9219a465790d76cc3a4f08c41f3aee36c8a9c472934474de24f4c",
+      "bytes": 45695,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_clay_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_clay_side.png",
+      "sha256": "f1dd54a3ba4201c400c8865037054a32d219a406db8f5d73bbcced080696a77a",
+      "bytes": 29579,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_diffuse_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_diffuse_front.png",
+      "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521",
+      "bytes": 235816,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_diffuse_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_diffuse_quarter.png",
+      "sha256": "d044809fec207b38f86e652e2f8fac681b2bd820446a53e9a46c6f125bf98c90",
+      "bytes": 245714,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_diffuse_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_diffuse_rear.png",
+      "sha256": "bb31295041b6427f22fa16b75f9a9405444ce2c244a5ea500a9ec1b9b5f7e7c0",
+      "bytes": 223317,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_diffuse_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_diffuse_side.png",
+      "sha256": "f7d3f240951129df46869453ed3169d6aec1660410aa068e77543de8f8751ace",
+      "bytes": 164762,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_head_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_head_front.png",
+      "sha256": "fdf8d13526e9f23c25fa380c68345f76bf888e40c7ef3f75e05636f0062db8a9",
+      "bytes": 485011,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_head_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_head_quarter.png",
+      "sha256": "7c0cf13bbc304114c88b6dbea6dbbfbaee9a728e4c3631e956a357cc014c0b6a",
+      "bytes": 524835,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_head_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_head_rear.png",
+      "sha256": "1e3ae59c4190d41cd9c95ee3efe2d750711bc6bbedf0887c4954aa31af59b7b1",
+      "bytes": 438122,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_head_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_head_side.png",
+      "sha256": "2d2bc3af8ad5c850a8fea9d5d8a01dc55fd66c5a0e7c5b25659e2dd186b1b315",
+      "bytes": 504651,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_idle_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_idle_rifle.png",
+      "sha256": "59f5123c4d8a582f1c1915fdd898b345e1cb29985ebcffa306118c49a05001d1",
+      "bytes": 205864,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_level_01_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_level_01_front.png",
+      "sha256": "c44285bcfbcc79fac7ebf79aa56b9e2267c22e56b322e8a84146c1331943616d",
+      "bytes": 1081522,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/baseline/original_level_01_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_level_01_gameplay.png",
+      "sha256": "46778e721bab0b0a24133dea4ea82ec3452d156f9a8b7e41c6670f37eb29d83e",
+      "bytes": 1435656,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/baseline/original_level_08_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_level_08_front.png",
+      "sha256": "c360e2fe3bbd3a950045050dac4aa634a4fda3411dbd45f620af5fb347c7f5c7",
+      "bytes": 906367,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/baseline/original_level_08_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_level_08_gameplay.png",
+      "sha256": "06c5e783be1ab47499d8b2c28958da6c50017a5348d5b2fd476f48528bba2fdd",
+      "bytes": 982896,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/baseline/original_painted_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_painted_front.png",
+      "sha256": "855683665bb0d8871b2de8d3f9f77fbec02d149f24af87120c4e942e8f6cabdf",
+      "bytes": 228982,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_painted_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_painted_quarter.png",
+      "sha256": "68a1bbd50fa4dcef202f519f8a18627fd7e3e33275f9ab648f51fc2ecf9b21a7",
+      "bytes": 238328,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_painted_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_painted_rear.png",
+      "sha256": "e750061f85243184bb27717e1475f4fd00e26c9e5879be90d2ba741286228a6d",
+      "bytes": 216135,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_painted_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_painted_side.png",
+      "sha256": "01e29542ad718e8b93921e2e45833ee454f8da77b8d81532abb848e53e701e75",
+      "bytes": 160621,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_reload_00.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_reload_00.png",
+      "sha256": "15fb25a9cb08934627f1f29bcc39269e57f66d653f3bde0be8e0eb4486f7bf98",
+      "bytes": 196925,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_reload_01.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_reload_01.png",
+      "sha256": "97617ab40a13593b23a5773f6b75798483956595943a0cbe8646a8011675a39c",
+      "bytes": 180994,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_reload_02.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_reload_02.png",
+      "sha256": "b1e5c494260f67e327af516fe826478da8ea745f8b9052da9e600f3cd3688d88",
+      "bytes": 184300,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_reload_03.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_reload_03.png",
+      "sha256": "255143d8b498d4bdcf50751680f2540e09ee1f223c143ee50c232116b4e3b4a5",
+      "bytes": 184225,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_reload_04.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_reload_04.png",
+      "sha256": "c879911e1c92ada31bb5b465769fbe63665aa62b33100165ebbc66269a919470",
+      "bytes": 190543,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_reload_05.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_reload_05.png",
+      "sha256": "19db632109702e76979e9dc4f046682a33bd2b3625d787ab0d1c4ca0124d441f",
+      "bytes": 192319,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_reload_06.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_reload_06.png",
+      "sha256": "6b979b44642bd02d192528230c0a4306448040c1eaac828180aeee71f19b2a1d",
+      "bytes": 185373,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_reload_07.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_reload_07.png",
+      "sha256": "8e950e0db7a1880bf960cc1fb54834b5d1a3bce0d44582c20531193794e81a31",
+      "bytes": 182684,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_reload_08.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_reload_08.png",
+      "sha256": "7ca565596a7ec38be182ae14107b96ee3b9fc77674342e87e7298bb5acede304",
+      "bytes": 198118,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/baseline/original_run_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/baseline/original_run_rifle.png",
+      "sha256": "e54a5b0d6c6b515b6a7172960dfb8dccc591f87a2624cd01a2613caa8cbfa465",
+      "bytes": 213210,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/capture.json": {
+      "source": "docs/art/tank_runtime_v1/review/engine/capture.json",
+      "sha256": "08a86051e3432bef2be99abd983e30446495c537b9b57aa99be406e5263bec0c",
+      "bytes": 13254
+    },
+    "review/engine/family_original_01_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/family_original_01_front.png",
+      "sha256": "2b7eaeecfba29bbc23730325dd41166e24d36a54a8a74738b8e8cf674be8100e",
+      "bytes": 226771,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/family_original_06_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/family_original_06_front.png",
+      "sha256": "39be7ee13957a3fe39bd4974ce97a7f4698f5f1abef2891af934100dee6e4254",
+      "bytes": 244621,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_clay_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_clay_front.png",
+      "sha256": "63eb34c2752672a66811b4fbd00b22f0b0cdad4fa602890a87efed66c8e62af1",
+      "bytes": 43294,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_clay_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_clay_quarter.png",
+      "sha256": "77061874e7fee4d39fef111eefa09de2fb9da8ebc32d9764be91483b6a81026a",
+      "bytes": 43166,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_clay_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_clay_rear.png",
+      "sha256": "d2c229b3b4386ad397aa1786c2a2c5a2ebaa070f4a7e9f0b77180d3df797a667",
+      "bytes": 45689,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_clay_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_clay_side.png",
+      "sha256": "2061a8da06ea60e1754091abfeb46ccf7812ecb4e125d2b467710adeffa2ab6d",
+      "bytes": 29588,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_diffuse_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_diffuse_front.png",
+      "sha256": "f4d558a0d726c8b0de67f96651a59a9d7e1c7e8d9935eacccd6b86fb8cf60bd9",
+      "bytes": 278611,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_diffuse_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "sha256": "9468ce1ce84a28e6502777be8bd35940c3e703bdf350072c4df42f9f15315076",
+      "bytes": 290180,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_diffuse_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_diffuse_rear.png",
+      "sha256": "8afc9f35a018390c9998c156ed8f8812ec683a2949550c07b17f7216c9f70282",
+      "bytes": 266374,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_diffuse_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_diffuse_side.png",
+      "sha256": "fa269246bc194d7a14d54edc456de50a6541ca0c340b4f82e13cbe243f7e9835",
+      "bytes": 187188,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_head_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_head_front.png",
+      "sha256": "727f00a245c712c235a3c5d8e6fce13c57a96da6f97a82dd1248d06653edf7cf",
+      "bytes": 493306,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_head_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_head_quarter.png",
+      "sha256": "055a3d8331672135ad6348266dd3d6c0adf6831412f8c51369a8d1462db13740",
+      "bytes": 528537,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_head_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_head_rear.png",
+      "sha256": "ffed56b072b8059d12fc46197202d4025276dcf5bbfcac902f361a875b51b509",
+      "bytes": 473610,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_head_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_head_side.png",
+      "sha256": "cba3df1e928412550b0414af4bcd517ce1acec2704a421f34f726a3038836101",
+      "bytes": 504650,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_idle_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_idle_rifle.png",
+      "sha256": "ccf378c547e21159722e3a197e28ccbd4a57cf91183020cf1011a2c3121bef54",
+      "bytes": 227210,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_level_01_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_level_01_front.png",
+      "sha256": "9a2b32d250a4cfc9e15411559c2a1e8f8cf6ee4277984bf6be391cb21cd370af",
+      "bytes": 1110529,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/engine/new_level_01_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "sha256": "ea93d5ce1073d0518c11f9f32142f408b097034586d2b89a267b837ac72cba14",
+      "bytes": 1461485,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/engine/new_level_08_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_level_08_front.png",
+      "sha256": "807b1232eca06f0d36ec575df077a2845ff7bd0a915de97c8ac0aae1ae4cb153",
+      "bytes": 927732,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/engine/new_level_08_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "sha256": "ee6e926012dc4b8f0d61b8534c21838e2ff84006e0a38fbefef2ce92ddb1cc36",
+      "bytes": 1008093,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/engine/new_painted_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_painted_front.png",
+      "sha256": "f4d558a0d726c8b0de67f96651a59a9d7e1c7e8d9935eacccd6b86fb8cf60bd9",
+      "bytes": 278611,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_painted_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_painted_quarter.png",
+      "sha256": "9468ce1ce84a28e6502777be8bd35940c3e703bdf350072c4df42f9f15315076",
+      "bytes": 290180,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_painted_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_painted_rear.png",
+      "sha256": "8afc9f35a018390c9998c156ed8f8812ec683a2949550c07b17f7216c9f70282",
+      "bytes": 266374,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_painted_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_painted_side.png",
+      "sha256": "fa269246bc194d7a14d54edc456de50a6541ca0c340b4f82e13cbe243f7e9835",
+      "bytes": 187188,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_reload_00.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_00.png",
+      "sha256": "51ab0a738aac5cba6aa341d3efe1c776f796ea653377a3e2bbca2b7eed1936a8",
+      "bytes": 224584,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_reload_01.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_01.png",
+      "sha256": "5acffeee270f570acc96024c3bc5bd5845a0e685bf857331572ec8346f790db5",
+      "bytes": 209670,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_reload_02.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_02.png",
+      "sha256": "d7d248a766631a27a69bd837cdb5e7b18e4e32c5667d695e0a4aeee3abdf006f",
+      "bytes": 214951,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_reload_03.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_03.png",
+      "sha256": "b1996de8ebec9251fa68130243246e3c3223ceef10d1a3fbf62dfaf4cfaa623b",
+      "bytes": 215065,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_reload_04.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_04.png",
+      "sha256": "32a46832e0294749db710089eaae2cc9e8819350d566363508e0c51790e6d1bd",
+      "bytes": 219430,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_reload_05.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_05.png",
+      "sha256": "bec992a64e92e5b3bfb655e862519c90ee87c120e6488a1f0ab34d088c45acac",
+      "bytes": 220828,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_reload_06.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_06.png",
+      "sha256": "0f024729d641330a66bf53fd05f57ad1f923ddc53542ee935bbc6b495d70bb84",
+      "bytes": 217279,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_reload_07.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_07.png",
+      "sha256": "968a37e5290de4fe72ead0545174391eec98b86d37c5002399c990ae87b06c87",
+      "bytes": 214307,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_reload_08.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_08.png",
+      "sha256": "d27c6ae19d37c4cebe81f2aaab6ea2af5a6f93f1e7017dc6ca6eb2a9c888ef14",
+      "bytes": 230089,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_run_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_run_rifle.png",
+      "sha256": "bc18ad27e4633167be20aabb4110fad3952728f25f980084e92a2b3983fd319c",
+      "bytes": 242022,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_clay_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_clay_front.png",
+      "sha256": "bb5234671aa5a2e4c40e77ecd868ac18bb142583ffdd6911a9bcc063dec612a3",
+      "bytes": 43159,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_clay_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_clay_quarter.png",
+      "sha256": "a41e1eec045cfbb8b9c5bb1c50c64642c3a82fe25cd7d8e2f11365e6620e51e6",
+      "bytes": 43120,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_clay_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_clay_rear.png",
+      "sha256": "61e979d588d9219a465790d76cc3a4f08c41f3aee36c8a9c472934474de24f4c",
+      "bytes": 45695,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_clay_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_clay_side.png",
+      "sha256": "f1dd54a3ba4201c400c8865037054a32d219a406db8f5d73bbcced080696a77a",
+      "bytes": 29579,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_diffuse_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_diffuse_front.png",
+      "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521",
+      "bytes": 235816,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_diffuse_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_diffuse_quarter.png",
+      "sha256": "d044809fec207b38f86e652e2f8fac681b2bd820446a53e9a46c6f125bf98c90",
+      "bytes": 245714,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_diffuse_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_diffuse_rear.png",
+      "sha256": "bb31295041b6427f22fa16b75f9a9405444ce2c244a5ea500a9ec1b9b5f7e7c0",
+      "bytes": 223317,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_diffuse_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_diffuse_side.png",
+      "sha256": "f7d3f240951129df46869453ed3169d6aec1660410aa068e77543de8f8751ace",
+      "bytes": 164762,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_head_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_head_front.png",
+      "sha256": "fdf8d13526e9f23c25fa380c68345f76bf888e40c7ef3f75e05636f0062db8a9",
+      "bytes": 485011,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_head_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_head_quarter.png",
+      "sha256": "7c0cf13bbc304114c88b6dbea6dbbfbaee9a728e4c3631e956a357cc014c0b6a",
+      "bytes": 524835,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_head_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_head_rear.png",
+      "sha256": "bae36f6333a69296ac8231abd3b6b4a2664f2f400111937186bb25698e2d51f1",
+      "bytes": 438108,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_head_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_head_side.png",
+      "sha256": "2d2bc3af8ad5c850a8fea9d5d8a01dc55fd66c5a0e7c5b25659e2dd186b1b315",
+      "bytes": 504651,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_idle_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_idle_rifle.png",
+      "sha256": "59f5123c4d8a582f1c1915fdd898b345e1cb29985ebcffa306118c49a05001d1",
+      "bytes": 205864,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_level_01_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_level_01_front.png",
+      "sha256": "29bf01a03fa524609854d2552330f7a2c9d6b43d3bdbe0e94028c5959406255b",
+      "bytes": 1082469,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/engine/original_level_01_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_level_01_gameplay.png",
+      "sha256": "9f58b39d2c0d2e21850095a43fff252036d73ee4998354e929148011c6d99ba9",
+      "bytes": 1435983,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/engine/original_level_08_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_level_08_front.png",
+      "sha256": "378aa7522bd5fea811d04b22c55836c6e4183b9481bf5cb34e3f04f3b3da8b41",
+      "bytes": 906044,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/engine/original_level_08_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_level_08_gameplay.png",
+      "sha256": "27a89374d786aae9bfcc225bd93ffcf2cf9168662a615c328da8db22730820c1",
+      "bytes": 983607,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/engine/original_painted_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_painted_front.png",
+      "sha256": "855683665bb0d8871b2de8d3f9f77fbec02d149f24af87120c4e942e8f6cabdf",
+      "bytes": 228982,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_painted_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_painted_quarter.png",
+      "sha256": "68a1bbd50fa4dcef202f519f8a18627fd7e3e33275f9ab648f51fc2ecf9b21a7",
+      "bytes": 238328,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_painted_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_painted_rear.png",
+      "sha256": "6639b5aa234ffd154dbd2c5f5522da55e04920e6e01746178af19f3ac1b78b36",
+      "bytes": 216126,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_painted_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_painted_side.png",
+      "sha256": "01e29542ad718e8b93921e2e45833ee454f8da77b8d81532abb848e53e701e75",
+      "bytes": 160621,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_reload_00.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_reload_00.png",
+      "sha256": "2a81e95614549fd948a8ed737edf51e731d763ea8034bb78fd0894f77c6c2505",
+      "bytes": 196925,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_reload_01.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_reload_01.png",
+      "sha256": "97617ab40a13593b23a5773f6b75798483956595943a0cbe8646a8011675a39c",
+      "bytes": 180994,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_reload_02.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_reload_02.png",
+      "sha256": "5be2992f213cc763101ece6571d44ce5012b608d42ead9eb6ecd967e05218691",
+      "bytes": 184404,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_reload_03.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_reload_03.png",
+      "sha256": "5a9054404ceff08de15e7a6c7e3505232a4337ee549c77eed2834eeba5107adb",
+      "bytes": 185215,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_reload_04.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_reload_04.png",
+      "sha256": "aea00a89d42eebda336010eec3e4e565d881ebe38206b9122ca35b3db94b0bc5",
+      "bytes": 190347,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_reload_05.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_reload_05.png",
+      "sha256": "b96323662cb554fb1f033d88b8e8dbeecce4c6719a130c3feb684cde6abcb832",
+      "bytes": 189677,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_reload_06.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_reload_06.png",
+      "sha256": "ecd16ff95d3f08cb0d9ba36ecbaa72ec54e745de7401059c4d79906e108153af",
+      "bytes": 187705,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_reload_07.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_reload_07.png",
+      "sha256": "430b5d6152c02cc000b366386f04774bb7ac61eafca90fcd312bd234b7e75777",
+      "bytes": 187631,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_reload_08.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_reload_08.png",
+      "sha256": "cedd80aa6a3fb825924588455b7cfbc5ebfe277165b065e67378b05d1e0fb780",
+      "bytes": 201830,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/original_run_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/original_run_rifle.png",
+      "sha256": "42cadffa645b236a505b5a76d5729ce20aa96d3b2a7c80c45ed42d870b9eec95",
+      "bytes": 213210,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/head_v2_preview/new_head_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/head_v2_preview/new_head_front.png",
+      "sha256": "87ecd411ad7c2e7ad1a38c5f0cc70227af1fbe71df1439ba8ae4fb12899336fa",
+      "bytes": 489547,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/head_v2_preview/new_head_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/head_v2_preview/new_head_quarter.png",
+      "sha256": "f61c7b02133e7e57390fcbbf2d4d98b32d70ac97081fa933607f2947d508ebfa",
+      "bytes": 521737,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/head_v2_preview/new_head_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/head_v2_preview/new_head_rear.png",
+      "sha256": "5073d9ad9d87ae516f7ef715fa5a16b3909f1986eee4be59105389ceef86bcdf",
+      "bytes": 473675,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/head_v2_preview/new_head_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/head_v2_preview/new_head_side.png",
+      "sha256": "c74d5984489efcc570769b8ad9271eb85ac55136dc65836162012190e5fa7428",
+      "bytes": 503861,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/head_v2_preview/original_head_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/head_v2_preview/original_head_front.png",
+      "sha256": "fdf8d13526e9f23c25fa380c68345f76bf888e40c7ef3f75e05636f0062db8a9",
+      "bytes": 485011,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/head_v2_preview/original_head_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/head_v2_preview/original_head_quarter.png",
+      "sha256": "7c0cf13bbc304114c88b6dbea6dbbfbaee9a728e4c3631e956a357cc014c0b6a",
+      "bytes": 524835,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/head_v2_preview/original_head_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/head_v2_preview/original_head_rear.png",
+      "sha256": "bae36f6333a69296ac8231abd3b6b4a2664f2f400111937186bb25698e2d51f1",
+      "bytes": 438108,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/head_v2_preview/original_head_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/head_v2_preview/original_head_side.png",
+      "sha256": "7fefc808ee8f2c5b157a2400b6bc647b3af3ce67fbfaa620a2b0d6942e90dd8c",
+      "bytes": 504656,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/placement_v4_preview/new_diffuse_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/placement_v4_preview/new_diffuse_front.png",
+      "sha256": "6fb7ae1f3cb98b96d5d14242f33d4ed1516dd7c7104f8c1823faf7ccc5e37178",
+      "bytes": 278280,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/placement_v4_preview/new_diffuse_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/placement_v4_preview/new_diffuse_quarter.png",
+      "sha256": "a029d6e75acd5b48f15c4066b0e2c514fb2c7ad78b4d521f11c56e058f8b5ab1",
+      "bytes": 289542,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/placement_v4_preview/new_diffuse_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/placement_v4_preview/new_diffuse_rear.png",
+      "sha256": "b5df1fd210f06fb56b1da453b4965ed1fad7b36e36fd6dea62d03ef362975d21",
+      "bytes": 266030,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/placement_v4_preview/new_diffuse_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/placement_v4_preview/new_diffuse_side.png",
+      "sha256": "a469f290701a66e00536d6eead24757c5036beb8b14779757ba5203c5fc9e452",
+      "bytes": 187141,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/placement_v4_preview/original_diffuse_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/placement_v4_preview/original_diffuse_front.png",
+      "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521",
+      "bytes": 235816,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/placement_v4_preview/original_diffuse_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/placement_v4_preview/original_diffuse_quarter.png",
+      "sha256": "d044809fec207b38f86e652e2f8fac681b2bd820446a53e9a46c6f125bf98c90",
+      "bytes": 245714,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/placement_v4_preview/original_diffuse_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/placement_v4_preview/original_diffuse_rear.png",
+      "sha256": "bb31295041b6427f22fa16b75f9a9405444ce2c244a5ea500a9ec1b9b5f7e7c0",
+      "bytes": 223317,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/placement_v4_preview/original_diffuse_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/placement_v4_preview/original_diffuse_side.png",
+      "sha256": "ed0dd31f69f810b2070366bc8e6aac31d8214928f14cc2ca8c421d801a3eb6c3",
+      "bytes": 164757,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/delivery_validate.json": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/delivery_validate.json",
+      "sha256": "9b67986e7c0235a2de040e0b017f1d6a1b16f265b5748a56920b0f96fa770968",
+      "bytes": 8662
+    },
+    "review/drafts/uv0_head1_body2/manifest.json": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/manifest.json",
+      "sha256": "8f5704f2a5c4934ba91c0fcddae516a20b0800c68074c121352559499d8be1a2",
+      "bytes": 51248
+    },
+    "review/drafts/uv0_head1_body2/proportion_test.json": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/proportion_test.json",
+      "sha256": "ead55615f373d22e7c209ebeb3c349c33262d4183a1334e04896372fc296b2ce",
+      "bytes": 6616
+    },
+    "review/drafts/uv0_head1_body2/roundtrip_test.json": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/roundtrip_test.json",
+      "sha256": "4faf2520bcb3a27a9b1ac388047feacf32d9ea7993ba90d4f323c0d2e9dc16f3",
+      "bytes": 1190
+    },
+    "review/drafts/uv0_head1_body2/runtime_test.json": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/runtime_test.json",
+      "sha256": "735af121056b025ff0b9774c30cee452c62d290217aaa2e7fccb7a98e3d7f753",
+      "bytes": 10927
+    },
+    "review/drafts/uv0_head1_body2/engine/capture.json": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/capture.json",
+      "sha256": "f382cee2763dba83294e4b3012d28656a39215820c8bd913526f7b3d55103614",
+      "bytes": 13254
+    },
+    "review/drafts/uv0_head1_body2/engine/family_original_01_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/family_original_01_front.png",
+      "sha256": "2b7eaeecfba29bbc23730325dd41166e24d36a54a8a74738b8e8cf674be8100e",
+      "bytes": 226771,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/family_original_06_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/family_original_06_front.png",
+      "sha256": "39be7ee13957a3fe39bd4974ce97a7f4698f5f1abef2891af934100dee6e4254",
+      "bytes": 244621,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_clay_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_clay_front.png",
+      "sha256": "63eb34c2752672a66811b4fbd00b22f0b0cdad4fa602890a87efed66c8e62af1",
+      "bytes": 43294,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_clay_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_clay_quarter.png",
+      "sha256": "77061874e7fee4d39fef111eefa09de2fb9da8ebc32d9764be91483b6a81026a",
+      "bytes": 43166,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_clay_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_clay_rear.png",
+      "sha256": "d2c229b3b4386ad397aa1786c2a2c5a2ebaa070f4a7e9f0b77180d3df797a667",
+      "bytes": 45689,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_clay_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_clay_side.png",
+      "sha256": "2061a8da06ea60e1754091abfeb46ccf7812ecb4e125d2b467710adeffa2ab6d",
+      "bytes": 29588,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_diffuse_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_diffuse_front.png",
+      "sha256": "0e23dd9cef15c54a759ac93fa90f162788fac2ea54b4746b6f6651718e3867da",
+      "bytes": 276557,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_diffuse_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_diffuse_quarter.png",
+      "sha256": "57dd1734b790cb6cd3197fe2d4dadc2fa7ff58dd011aa650e04a80c2226c4822",
+      "bytes": 287358,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_diffuse_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_diffuse_rear.png",
+      "sha256": "f575b19e3d42904043553413eb2be12ed574a08a0d5e8a292fcc973531544b71",
+      "bytes": 262751,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_diffuse_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_diffuse_side.png",
+      "sha256": "5b04e5c048050dcb7508fc63ff1b0e12646acfc40e163eb9219d7dd35aef8bef",
+      "bytes": 185564,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_head_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_head_front.png",
+      "sha256": "2bf2535dc817fe8a481eb06ddf32556199d2e27c8ecd585781538304687a212d",
+      "bytes": 492654,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_head_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_head_quarter.png",
+      "sha256": "72eda09b435f9c9e365dc6f2a23ec95bb6dd94f91e7b48ef5007e972e21a7a15",
+      "bytes": 524446,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_head_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_head_rear.png",
+      "sha256": "6d2a826130afe6cd9fc2e8e1aa1485f7f37e3edfb6cfbddffc6dac2f4a7840c4",
+      "bytes": 473208,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_head_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_head_side.png",
+      "sha256": "f258bb62c97040e21a428b2fdb04d85016798dc802a27289446ed2c7a08c4cbe",
+      "bytes": 507905,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_idle_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_idle_rifle.png",
+      "sha256": "b58943e93cda33ce7ef717183cf1e27b40102625c1267100168b0d048c41d298",
+      "bytes": 227513,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_level_01_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_level_01_front.png",
+      "sha256": "a343dcfb548ac8d63f0d3b195f1c59f72051720105102a73739a6f03dfb854a1",
+      "bytes": 1110686,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_level_01_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_level_01_gameplay.png",
+      "sha256": "1f301207c5b3a97440fa37786f7e27ae35e8e3c26fe253cbd0ca3b6ee236603b",
+      "bytes": 1458776,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_level_08_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_level_08_front.png",
+      "sha256": "199353dce4dbabe3c0087725944e623327eb76a71cd9038933e3122b26a51401",
+      "bytes": 927998,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_level_08_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_level_08_gameplay.png",
+      "sha256": "3c919f946803a2babbe5005d18b9296997311c3056ff72a95be132d0e60a54df",
+      "bytes": 1006276,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_painted_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_painted_front.png",
+      "sha256": "0e23dd9cef15c54a759ac93fa90f162788fac2ea54b4746b6f6651718e3867da",
+      "bytes": 276557,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_painted_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_painted_quarter.png",
+      "sha256": "57dd1734b790cb6cd3197fe2d4dadc2fa7ff58dd011aa650e04a80c2226c4822",
+      "bytes": 287358,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_painted_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_painted_rear.png",
+      "sha256": "f575b19e3d42904043553413eb2be12ed574a08a0d5e8a292fcc973531544b71",
+      "bytes": 262751,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_painted_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_painted_side.png",
+      "sha256": "5b04e5c048050dcb7508fc63ff1b0e12646acfc40e163eb9219d7dd35aef8bef",
+      "bytes": 185564,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_reload_00.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_reload_00.png",
+      "sha256": "216e3d08241867c45f6909565c94bb9ac4e03b3af0d0345d44454ccf204bd6e6",
+      "bytes": 224236,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_reload_01.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_reload_01.png",
+      "sha256": "dca012fc2fd09e1770cbeed8712fa896f97c42247bfe94f229c606d57f464ce2",
+      "bytes": 209002,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_reload_02.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_reload_02.png",
+      "sha256": "0da2cfc28c8fd90f60fd7efb4d50874b66542a7b5688da5c9c9040856a99e9c2",
+      "bytes": 214501,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_reload_03.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_reload_03.png",
+      "sha256": "634d6d9ba9e4416819a9cde94557dedb66f63c4a2256950c44720486d208a643",
+      "bytes": 215699,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_reload_04.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_reload_04.png",
+      "sha256": "d888a41d06f14eb2dea0591574c199fe97c0542932b39d8f2dabf9a40b0a35cd",
+      "bytes": 220272,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_reload_05.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_reload_05.png",
+      "sha256": "9344341c0d763c8532605d263de784165474262c2d64bc349a00e69a1c6648ac",
+      "bytes": 220382,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_reload_06.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_reload_06.png",
+      "sha256": "235bc997f05a0a9d969f69923c9c1baaf40dabd2530c3205c9a67f2f53824968",
+      "bytes": 215800,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_reload_07.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_reload_07.png",
+      "sha256": "2bc27fa8e6b87ea8e8a8ed5e62d5b9ea72176d05562eb8cccf480fa42719ad9b",
+      "bytes": 213439,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_reload_08.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_reload_08.png",
+      "sha256": "be8e6738736be3d4d14b15626581e4a50441fb942aba310a81e600258e792e7d",
+      "bytes": 225670,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/new_run_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/new_run_rifle.png",
+      "sha256": "3cc8b25ff2a771c6af58d373a7bce7b804294d870ae9be6893feeed7bc243b0b",
+      "bytes": 241472,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_clay_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_clay_front.png",
+      "sha256": "bb5234671aa5a2e4c40e77ecd868ac18bb142583ffdd6911a9bcc063dec612a3",
+      "bytes": 43159,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_clay_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_clay_quarter.png",
+      "sha256": "a41e1eec045cfbb8b9c5bb1c50c64642c3a82fe25cd7d8e2f11365e6620e51e6",
+      "bytes": 43120,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_clay_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_clay_rear.png",
+      "sha256": "61e979d588d9219a465790d76cc3a4f08c41f3aee36c8a9c472934474de24f4c",
+      "bytes": 45695,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_clay_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_clay_side.png",
+      "sha256": "f1dd54a3ba4201c400c8865037054a32d219a406db8f5d73bbcced080696a77a",
+      "bytes": 29579,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_diffuse_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_diffuse_front.png",
+      "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521",
+      "bytes": 235816,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_diffuse_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_diffuse_quarter.png",
+      "sha256": "d044809fec207b38f86e652e2f8fac681b2bd820446a53e9a46c6f125bf98c90",
+      "bytes": 245714,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_diffuse_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_diffuse_rear.png",
+      "sha256": "bb31295041b6427f22fa16b75f9a9405444ce2c244a5ea500a9ec1b9b5f7e7c0",
+      "bytes": 223317,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_diffuse_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_diffuse_side.png",
+      "sha256": "f7d3f240951129df46869453ed3169d6aec1660410aa068e77543de8f8751ace",
+      "bytes": 164762,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_head_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_head_front.png",
+      "sha256": "fdf8d13526e9f23c25fa380c68345f76bf888e40c7ef3f75e05636f0062db8a9",
+      "bytes": 485011,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_head_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_head_quarter.png",
+      "sha256": "7c0cf13bbc304114c88b6dbea6dbbfbaee9a728e4c3631e956a357cc014c0b6a",
+      "bytes": 524835,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_head_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_head_rear.png",
+      "sha256": "bae36f6333a69296ac8231abd3b6b4a2664f2f400111937186bb25698e2d51f1",
+      "bytes": 438108,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_head_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_head_side.png",
+      "sha256": "2d2bc3af8ad5c850a8fea9d5d8a01dc55fd66c5a0e7c5b25659e2dd186b1b315",
+      "bytes": 504651,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_idle_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_idle_rifle.png",
+      "sha256": "59f5123c4d8a582f1c1915fdd898b345e1cb29985ebcffa306118c49a05001d1",
+      "bytes": 205864,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_level_01_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_level_01_front.png",
+      "sha256": "88186b9bc19c69943f56ef07118759e712b9f4c2dd437072c15b533cd38928f7",
+      "bytes": 1083044,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_level_01_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_level_01_gameplay.png",
+      "sha256": "59cf535adc996466452964ac470a1816b1154808d6f2ebc602bd7a76d1c44603",
+      "bytes": 1435653,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_level_08_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_level_08_front.png",
+      "sha256": "f62ea38b9a256aae9d402021964ac1c0f597acc61f8061935f2229d941bfa6d4",
+      "bytes": 905587,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_level_08_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_level_08_gameplay.png",
+      "sha256": "0dd12a2d62d1c6228a41ff457b1e1db3f0d889861af3039e5dc1da21150311d2",
+      "bytes": 983027,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_painted_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_painted_front.png",
+      "sha256": "855683665bb0d8871b2de8d3f9f77fbec02d149f24af87120c4e942e8f6cabdf",
+      "bytes": 228982,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_painted_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_painted_quarter.png",
+      "sha256": "68a1bbd50fa4dcef202f519f8a18627fd7e3e33275f9ab648f51fc2ecf9b21a7",
+      "bytes": 238328,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_painted_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_painted_rear.png",
+      "sha256": "6639b5aa234ffd154dbd2c5f5522da55e04920e6e01746178af19f3ac1b78b36",
+      "bytes": 216126,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_painted_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_painted_side.png",
+      "sha256": "01e29542ad718e8b93921e2e45833ee454f8da77b8d81532abb848e53e701e75",
+      "bytes": 160621,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_reload_00.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_reload_00.png",
+      "sha256": "2a81e95614549fd948a8ed737edf51e731d763ea8034bb78fd0894f77c6c2505",
+      "bytes": 196925,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_reload_01.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_reload_01.png",
+      "sha256": "97617ab40a13593b23a5773f6b75798483956595943a0cbe8646a8011675a39c",
+      "bytes": 180994,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_reload_02.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_reload_02.png",
+      "sha256": "17330378d10219c8977f2b0546426c2c618c406a1a9ee8f77a36aa39011085e4",
+      "bytes": 184590,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_reload_03.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_reload_03.png",
+      "sha256": "2847091d892466d72b5e05a2ebb5eb00579d092026c31a5d1c55773bc63b05c3",
+      "bytes": 185812,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_reload_04.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_reload_04.png",
+      "sha256": "cf55003864d9c7b55047638281199f58066a3adb83d793bda5f98109cb68c84b",
+      "bytes": 192107,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_reload_05.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_reload_05.png",
+      "sha256": "39540e6b86132898b9284f806ae261e6221589f8bdc9c57d944106ccc6bac171",
+      "bytes": 190055,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_reload_06.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_reload_06.png",
+      "sha256": "5cb36a33500b90cfd8484efe2f2834dee7c480ec2ab9a52291f34c7cc24eae5d",
+      "bytes": 187358,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_reload_07.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_reload_07.png",
+      "sha256": "b132f883f182e40125dd601640caa9fb4100e7b4c929b1484d10b5355887b7c8",
+      "bytes": 185515,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_reload_08.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_reload_08.png",
+      "sha256": "7a2e74b87f3a09602b0f61545916fc5841b70cd655c39e642ad7a1a9a249c1ee",
+      "bytes": 199084,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/drafts/uv0_head1_body2/engine/original_run_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/drafts/uv0_head1_body2/engine/original_run_rifle.png",
+      "sha256": "42cadffa645b236a505b5a76d5729ce20aa96d3b2a7c80c45ed42d870b9eec95",
+      "bytes": 213210,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "guides/body_authored_uv.png": {
+      "source": "docs/art/tank_runtime_v1/guides/body_authored_uv.png",
+      "sha256": "89872c2e2b7626379212021741c628026f29b101c6307241fa15f875857c6545",
+      "bytes": 217094,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/body_authored_uv.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/body_authored_uv.svg",
+      "sha256": "7912b01d81335ff3777efa000864793b4714f991b33627d2dc0b36d0e1b825e7",
+      "bytes": 24258
+    },
+    "guides/body_front_regions.json": {
+      "source": "docs/art/tank_runtime_v1/guides/body_front_regions.json",
+      "sha256": "06e95fa6382acc1f4aa6a70eeaed631063085264ec1f1376916217be33759562",
+      "bytes": 15635
+    },
+    "guides/body_front_regions.png": {
+      "source": "docs/art/tank_runtime_v1/guides/body_front_regions.png",
+      "sha256": "7b31470addd38bedd29902293b0af39bf11b10a49797f8deaabfedb085580fb5",
+      "bytes": 203124,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/body_front_regions.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/body_front_regions.svg",
+      "sha256": "98123f49047f9075d6c65fad3416360ad453e301e775e745f61bdd1e9809ed2f",
+      "bytes": 25456
+    },
+    "guides/body_placement_v3.png": {
+      "source": "docs/art/tank_runtime_v1/guides/body_placement_v3.png",
+      "sha256": "6e8bc192823f4af7d246ac1926ce4e5b862f605a569e97078f86f0990f403bea",
+      "bytes": 206433,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/body_placement_v3.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/body_placement_v3.svg",
+      "sha256": "9066efd91932949b59cdcb1e704a05ac0abd0fdb976018abc5a69bc5ab1f630f",
+      "bytes": 27903
+    },
+    "guides/body_uv.png": {
+      "source": "docs/art/tank_runtime_v1/guides/body_uv.png",
+      "sha256": "ebc10295d1f3ef2af4848b710e86c990757ba18679a0994f3158f27dd686a78f",
+      "bytes": 215215,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/body_uv.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/body_uv.svg",
+      "sha256": "805f64cc274e3cdb9cbeb4efee2f7a9811a18d0b91d23b5ccf98dbad33fad50a",
+      "bytes": 24258
+    },
+    "guides/foot_authored_uv.png": {
+      "source": "docs/art/tank_runtime_v1/guides/foot_authored_uv.png",
+      "sha256": "443826d41c9a4b5fd431aa0e9b53252041fa3006d03fbef84855cd00b5bfdead",
+      "bytes": 213413,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/foot_authored_uv.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/foot_authored_uv.svg",
+      "sha256": "beaed68cda02905087e6aaa8bbd0c7ab053727b1b123cb25cf20907ba5befdb0",
+      "bytes": 15492
+    },
+    "guides/foot_uv.png": {
+      "source": "docs/art/tank_runtime_v1/guides/foot_uv.png",
+      "sha256": "443826d41c9a4b5fd431aa0e9b53252041fa3006d03fbef84855cd00b5bfdead",
+      "bytes": 213413,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/foot_uv.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/foot_uv.svg",
+      "sha256": "beaed68cda02905087e6aaa8bbd0c7ab053727b1b123cb25cf20907ba5befdb0",
+      "bytes": 15492
+    },
+    "guides/hand_authored_uv.png": {
+      "source": "docs/art/tank_runtime_v1/guides/hand_authored_uv.png",
+      "sha256": "e13745fc5b14f896422e5dc986408b5dc5b9638bdf533b442ee4ea2d4606948e",
+      "bytes": 171166,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/hand_authored_uv.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/hand_authored_uv.svg",
+      "sha256": "a98cb8a9f82439a9b6292e2b886364801ec9123d1c088f34335ad63c1a2ec625",
+      "bytes": 14515
+    },
+    "guides/hand_uv.png": {
+      "source": "docs/art/tank_runtime_v1/guides/hand_uv.png",
+      "sha256": "e13745fc5b14f896422e5dc986408b5dc5b9638bdf533b442ee4ea2d4606948e",
+      "bytes": 171166,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/hand_uv.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/hand_uv.svg",
+      "sha256": "a98cb8a9f82439a9b6292e2b886364801ec9123d1c088f34335ad63c1a2ec625",
+      "bytes": 14515
+    },
+    "guides/head_authored_uv.png": {
+      "source": "docs/art/tank_runtime_v1/guides/head_authored_uv.png",
+      "sha256": "5b50368b30884f9364a22f1ae53eaa65e703f129f95f4a4ba03b1ad0bb0b1c12",
+      "bytes": 249835,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/head_authored_uv.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/head_authored_uv.svg",
+      "sha256": "b118dff782c393904759ddbc9a0d6f59994c02fc85268a1db3212f0bf23aa1de",
+      "bytes": 22022
+    },
+    "guides/head_uv.png": {
+      "source": "docs/art/tank_runtime_v1/guides/head_uv.png",
+      "sha256": "55bdee490a2a319483c6ded694ab88aaffa19eaa83301e41195a317c47f4af45",
+      "bytes": 250754,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/head_uv.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/head_uv.svg",
+      "sha256": "56145a734c64d3460d2a58fba3a8167e87f7fc04b5474a798653c67c3fd11aab",
+      "bytes": 22022
+    },
+    "guides/head_vent_v2.png": {
+      "source": "docs/art/tank_runtime_v1/guides/head_vent_v2.png",
+      "sha256": "6651ec9a4efbdc1d86708d9bf2569c117baa27eb25dcf370301a0ab8e6df55dc",
+      "bytes": 240551,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/head_vent_v2.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/head_vent_v2.svg",
+      "sha256": "38fbd5172e50b411cb8ee55cfebfae089b587f16ea89415b83d94cea7683b828",
+      "bytes": 22893
+    },
+    "guides/placement_v3.json": {
+      "source": "docs/art/tank_runtime_v1/guides/placement_v3.json",
+      "sha256": "5a6dd18bad8a6322bbda448a5fb0dfa40a5138fd13938e1817c1d3482709d62b",
+      "bytes": 1955
+    },
+    "guides/shoulder_authored_uv.png": {
+      "source": "docs/art/tank_runtime_v1/guides/shoulder_authored_uv.png",
+      "sha256": "41f6319f28ef856c6407dccd601136bcd3a9bca1140b5547a6263bf98bc430da",
+      "bytes": 236397,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/shoulder_authored_uv.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/shoulder_authored_uv.svg",
+      "sha256": "9a47eaef614a07bfff55b09682ebb31cf03d36363e883219b61a3b4e1517f0b3",
+      "bytes": 14126
+    },
+    "guides/shoulder_uv.png": {
+      "source": "docs/art/tank_runtime_v1/guides/shoulder_uv.png",
+      "sha256": "41f6319f28ef856c6407dccd601136bcd3a9bca1140b5547a6263bf98bc430da",
+      "bytes": 236397,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    "guides/shoulder_uv.svg": {
+      "source": "docs/art/tank_runtime_v1/guides/shoulder_uv.svg",
+      "sha256": "9a47eaef614a07bfff55b09682ebb31cf03d36363e883219b61a3b4e1517f0b3",
+      "bytes": 14126
+    },
+    "prompts/head_diffuse_v1.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/head_diffuse_v1.txt",
+      "sha256": "e4fee4421240e3493e13c84f5cb55339c726e99a92a1df9c29ef95e68e03a69a",
+      "bytes": 10260
+    },
+    "generated/head_diffuse_v1.png": {
+      "source": "docs/art/tank_runtime_v1/generated/head_diffuse_v1.png",
+      "sha256": "78277e53bfa0091d92d8b3cc603bb8cd10cf2c223ae833bbde5be1f992c39d43",
+      "bytes": 1723713,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/body_diffuse_v1.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/body_diffuse_v1.txt",
+      "sha256": "49c1945d0b8cd822630b6180d5d37af3d1c865cff6baf2865ca2086bd54469c1",
+      "bytes": 10173
+    },
+    "generated/body_diffuse_v1.png": {
+      "source": "docs/art/tank_runtime_v1/generated/body_diffuse_v1.png",
+      "sha256": "41de11e0dac02837046db29c06e545873ce29bfb8f476b71f5f5e5f07cfab122",
+      "bytes": 1335619,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/shoulder_diffuse_v1.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/shoulder_diffuse_v1.txt",
+      "sha256": "ac89d585d98b4940666d2d79ef8e385d219e8b17f02e109d2259d01a0413520a",
+      "bytes": 9867
+    },
+    "generated/shoulder_diffuse_v1.png": {
+      "source": "docs/art/tank_runtime_v1/generated/shoulder_diffuse_v1.png",
+      "sha256": "fe5044af9119879a0cb240ba6f7137b4673ba370822b4045f81b587d33ccc362",
+      "bytes": 1853793,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/hand_diffuse_v1.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/hand_diffuse_v1.txt",
+      "sha256": "f6e0d47f153a49228254b708df7a0f944c010f93365d5e62325ee1fed11e38b2",
+      "bytes": 9930
+    },
+    "generated/hand_diffuse_v1.png": {
+      "source": "docs/art/tank_runtime_v1/generated/hand_diffuse_v1.png",
+      "sha256": "b1e31fb647f6cceb0f44477190e1adbe63e63c3b55bddc9e577efe1b6a96f05e",
+      "bytes": 1415370,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/foot_diffuse_v1.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/foot_diffuse_v1.txt",
+      "sha256": "d60a6184c309a8f58ac015c3d48faf85d189efada7fba35b2bd8e99a1029a0cd",
+      "bytes": 9918
+    },
+    "generated/foot_diffuse_v1.png": {
+      "source": "docs/art/tank_runtime_v1/generated/foot_diffuse_v1.png",
+      "sha256": "09528411436cbd609da4917ca3974f6eece628c2dcdb22f279a898ca1d149112",
+      "bytes": 1485825,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/body_diffuse_v2.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/body_diffuse_v2.txt",
+      "sha256": "a35ac4f9537e3970555791ab5dbdbcc890379c845afaffde5c02b331801f3359",
+      "bytes": 9719
+    },
+    "generated/body_diffuse_v2.png": {
+      "source": "docs/art/tank_runtime_v1/generated/body_diffuse_v2.png",
+      "sha256": "7828b6ec8ff7f7ae1b71dd2c329b7d21f3f18ccbd8e7c9402b27c0f35c4b2e3d",
+      "bytes": 1456576,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/shoulder_diffuse_v2.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/shoulder_diffuse_v2.txt",
+      "sha256": "b64d951f9d23c3566f8dd2407fea277b16ab60795cca49a83dd5d1aacae146bf",
+      "bytes": 9520
+    },
+    "generated/shoulder_diffuse_v2.png": {
+      "source": "docs/art/tank_runtime_v1/generated/shoulder_diffuse_v2.png",
+      "sha256": "903fb418276ce29a25cc25ac4e92ca9f56d57320334a2c3855db72bf3b1e7adb",
+      "bytes": 1428541,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/body_diffuse_v3.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/body_diffuse_v3.txt",
+      "sha256": "51e5c27c58f56c31ed60f14d9bbbdafd516f7bf2c539bd7f83f78857167cf18d",
+      "bytes": 11359
+    },
+    "generated/body_diffuse_v3.png": {
+      "source": "docs/art/tank_runtime_v1/generated/body_diffuse_v3.png",
+      "sha256": "67deceee326859fa201f3a2beb621c65af1b6cb3f230979fc6daea09dc2c0a82",
+      "bytes": 1463949,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/head_diffuse_v2.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/head_diffuse_v2.txt",
+      "sha256": "8215ce8655947278ef9d5beec3cef8843f27ccf1f36f65f59d3a7f91144e0c65",
+      "bytes": 11555
+    },
+    "generated/head_diffuse_v2.png": {
+      "source": "docs/art/tank_runtime_v1/generated/head_diffuse_v2.png",
+      "sha256": "85b42fdcdb953b30cb36c21ff0f7c23293cd795bcf9d324e8caeeeeaaf8986c4",
+      "bytes": 1684473,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/body_diffuse_v4.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/body_diffuse_v4.txt",
+      "sha256": "ab0c850de63735f960e3f661f737cdb40a8c8fd0aedc9745c867dff598a172de",
+      "bytes": 2229
+    },
+    "generated/body_diffuse_v4.png": {
+      "source": "docs/art/tank_runtime_v1/generated/body_diffuse_v4.png",
+      "sha256": "4ab7e617dab966f4a9505a0793066c1010b001431232564ab1b6cd44832b5075",
+      "bytes": 1535720,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "scripts/build.py": {
+      "source": "tools/tank_runtime_v1/build.py",
+      "sha256": "74f76cb2adb874f53b9803e90faea90d40ac20159029c1b2d84e6a5e3a1034bb",
+      "bytes": 11099
+    },
+    "scripts/capture.gd": {
+      "source": "tools/tank_runtime_v1/capture.gd",
+      "sha256": "70980dceaff400ff154c260690b18059e758901dfa9aa5df65940b4210b4e6cd",
+      "bytes": 15551
+    },
+    "scripts/capture.tscn": {
+      "source": "tools/tank_runtime_v1/capture.tscn",
+      "sha256": "e415412cdc8255ac767a84e73479a84a833e31139e8434f51b1937a0290c44ec",
+      "bytes": 189
+    },
+    "scripts/compile.gd": {
+      "source": "tools/tank_runtime_v1/compile.gd",
+      "sha256": "c3374303d2d89ff7aaebb610c615621c7ba638840767a43f8557c02a6ed6ef0e",
+      "bytes": 4850
+    },
+    "scripts/glb_unique_joints.py": {
+      "source": "tools/tank_runtime_v1/glb_unique_joints.py",
+      "sha256": "4d6a10e6edbf0da831ec2ea74b3cfc8ac1e4fd2fc7863d6d6f7e1fb81dcf1ba5",
+      "bytes": 2144
+    },
+    "scripts/inspect.gd": {
+      "source": "tools/tank_runtime_v1/inspect.gd",
+      "sha256": "6038d102ae497074780bb9b1e86715bfefd86c72931b36e44c4796d961fa9c97",
+      "bytes": 3596
+    },
+    "scripts/measure.py": {
+      "source": "tools/tank_runtime_v1/measure.py",
+      "sha256": "e956c85b203bb307bcb0bcb2e6e4cf0117b20a0027cde8777454cca85a84de6b",
+      "bytes": 1638
+    },
+    "scripts/provenance.py": {
+      "source": "tools/tank_runtime_v1/provenance.py",
+      "sha256": "6acd4e46a7906eb50cffd2e0a599e5ec160ccdbf74464aeba05bbc8bc8bdf7e9",
+      "bytes": 6974
+    },
+    "scripts/render_regions.gd": {
+      "source": "tools/tank_runtime_v1/render_regions.gd",
+      "sha256": "64a2e0d7c96c62d9643d334cf804824720e4d59e76e7db0551fc82ab71137cd3",
+      "bytes": 469
+    },
+    "scripts/render_uv.gd": {
+      "source": "tools/tank_runtime_v1/render_uv.gd",
+      "sha256": "f6b42ee1c25548784e8f5fe6a3b5138df95ba4431f35bc4f89c1c187e34cb21e",
+      "bytes": 481
+    },
+    "scripts/review.py": {
+      "source": "tools/tank_runtime_v1/review.py",
+      "sha256": "a0255888851b73c9ed95cb52e2dc79b1febadc08386ab186affd5a2035c3318a",
+      "bytes": 866
+    },
+    "scripts/review_template.html": {
+      "source": "tools/tank_runtime_v1/review_template.html",
+      "sha256": "ec660dd703187e6184484ff6790bf6895abd15e4193486dc1c54df8d7a642e96",
+      "bytes": 7650
+    },
+    "scripts/validate_delivery.py": {
+      "source": "tools/tank_runtime_v1/validate_delivery.py",
+      "sha256": "60672a28be7126c14602f034bab6940152cfa6477bc9e1ec47063a3bda3fabb4",
+      "bytes": 15672
+    },
+    "tests/tank_v1_roundtrip.gd": {
+      "source": "tests/tank_v1_roundtrip.gd",
+      "sha256": "59f4776f3f59feadf2d9948144594bf1fef20705895b39eb81dc65e7e0665bc8",
+      "bytes": 3634
+    },
+    "tests/tank_v1_roundtrip.tscn": {
+      "source": "tests/tank_v1_roundtrip.tscn",
+      "sha256": "00214646876727b3a774011f9b1c0f54230a9497744a31a7b90cd80054b43c82",
+      "bytes": 187
+    },
+    "tests/tank_v1_test.gd": {
+      "source": "tests/tank_v1_test.gd",
+      "sha256": "d5b03364e37de16073bc5a40573121eb13182f4ff2c0ab8d2bf41940a3cfc29d",
+      "bytes": 15182
+    },
+    "tests/tank_v1_test.tscn": {
+      "source": "tests/tank_v1_test.tscn",
+      "sha256": "3e9f1665c70d366a2c88b1ea14a4a9661e0266e67e43ddd09dff16044de310a0",
+      "bytes": 177
+    },
+    "original_atlases/body.png": {
+      "source": "assets/models/player/animated/armor_textures/body_ed36db00f85b_2x.png",
+      "sha256": "98a1803ffa1838c4fd39223dd302de4a0725684404dd7bdf5cc3d87e4cd14104",
+      "bytes": 219400,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    "original_atlases/shoulder.png": {
+      "source": "assets/models/player/animated/armor_textures/jian_077c0f9d616a_2x.png",
+      "sha256": "7572036a24caf732eabff2629c0ab7364d89a267a825a41342b17f99afdca67f",
+      "bytes": 233956,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    "original_atlases/foot.png": {
+      "source": "assets/models/player/animated/armor_textures/foot_31083bd2d7d1_2x.png",
+      "sha256": "8e5dde835854e66f41577e4c21fa5f4d37b5522f99237a1671cee6e7c15fcf3d",
+      "bytes": 177219,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    "original_atlases/hand.png": {
+      "source": "assets/models/player/animated/armor_textures/hand_e05d06ac0d12_2x.png",
+      "sha256": "82cdcfea69c126971e52f3221da8823d901d26f9f80a4c5337f640b55ccf34a3",
+      "bytes": 188061,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    "original_atlases/head.png": {
+      "source": "assets/models/player/animated/armor_textures/head_27f2a32dc8b6_2x.png",
+      "sha256": "93d71adfd46866b2cb26aa22bd5993377c584924d5a5a9e652ef1a1216cf765c",
+      "bytes": 308268,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    "concept/c03_concept.png": {
+      "source": "docs/art/original_armors_v1/images/c03_concept.png",
+      "sha256": "f8baaf02fcbb9292b48735b7b3710d62d817147c0af64d572109f69cdce8a9f5",
+      "bytes": 2077407,
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    "concept/c03_turnaround.png": {
+      "source": "docs/art/original_armors_v1/images/c03_turnaround.png",
+      "sha256": "241671cc79bbef8d275a36b301468c092c92a146a79e1cb92e38f1cec0485604",
+      "bytes": 2121670,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    "concept/c03_construction.png": {
+      "source": "docs/art/original_armors_v1/images/c03_construction.png",
+      "sha256": "06b92529a5c3d6e827624a91dad0c5b2d714570e435bcede4e6f2a54422a8602",
+      "bytes": 2669019,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    "concept/c03_cairn.json": {
+      "source": "docs/art/original_armors_v1/c03_cairn.json",
+      "sha256": "fa43fc40534e4d2ed0b891ecdb3f0cfe51bf62f00224bf929fa15b2020ab0fec",
+      "bytes": 21379
+    },
+    "concept/c03_tank_fusion.jpg": {
+      "source": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
+      "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49",
+      "bytes": 634321
+    }
+  },
+  "limits_at_snapshot": {
+    "local_geometry_displacement": 0.15,
+    "dimension_change": 0.15,
+    "silhouette_change": 0.15,
+    "uv_changed_fraction_per_material": 0.15,
+    "uv_coordinate_and_chart_counts_preserved": true
+  },
+  "current_user_authorized_ceiling": 0.2,
+  "planned_scope": "Texture painting only, zero additional geometry/UV/indices/skin/weights/bones. Existing original-relative metrics remain within prior 15%; 20% is new authorization, not a changed historical limit."
+}

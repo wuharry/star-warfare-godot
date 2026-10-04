@@ -1,0 +1,243 @@
+{
+  "status": "PASS",
+  "scope": "Read-only packed-master identity, PNG bytes, original topology/rig, and authored UV/position consistency. Does not measure artistic likeness or certify fresh engine captures.",
+  "master": "docs/art/tank_runtime_v1/build/tank_master.blend",
+  "master_sha256": "4a9c993ef04de5656dd1e8cc3af99e4e174f20a94bb0ca4f6718a98c0d4a7ec9",
+  "source_sha256": "fb4371b450799b9038d6ef04bf3dc44bcc629ab7520834768decab5908917000",
+  "target_sha256": "cf79528dfb54a3ae8f2403035fb08ab31b8ba35f6a52b554ff7a0e36e6f2a2de",
+  "blender": "5.1.0",
+  "errors": [],
+  "mesh_count": 4,
+  "surface_count": 6,
+  "bone_count": 28,
+  "triangle_count": 796,
+  "packed_diffuse_count": 5,
+  "original_uv_coordinate_count": 731,
+  "changed_uv_coordinate_count": 16,
+  "changed_uv_coordinate_fraction": 0.02188782489740082,
+  "uv_count_limit": 0.15,
+  "uv_count_scope": "per_material_surface",
+  "local_geometry_change_limit": 0.15,
+  "uv_metric_note": "15% moved-coordinate budget per material, coordinate/chart counts fixed. Only chin seam and upper front collar samples changed; absolute coordinate displacement is a separate metric.",
+  "meshes": [
+    {
+      "name": "ArmorHead_02",
+      "vertices": 163,
+      "triangles": 206,
+      "surfaces": 2,
+      "uv_loops": 618,
+      "original_uv_coordinates": 163,
+      "authored_uv_coordinates": 163,
+      "changed_uv_coordinates": 4,
+      "changed_uv_coordinate_fraction": 0.024539877300613498,
+      "maximum_uv_displacement_from_original": 0.017,
+      "rms_uv_displacement_from_original": 0.002663085529959055,
+      "maximum_master_uv_error_from_authored": 9.238720413695734e-10,
+      "maximum_master_position_error_from_authored": 0.0,
+      "dimension_delta_fraction": [
+        4.440892098500626e-16,
+        6.217248937900877e-15,
+        2.220446049250313e-16
+      ],
+      "max_rest_displacement": 0.015740091150457162,
+      "max_displacement_fraction_of_smallest_dimension": 0.02978588658776944,
+      "original_uv_charts": 4,
+      "authored_uv_charts": 4,
+      "uv_by_surface": [
+        {
+          "surface": 0,
+          "label": "head",
+          "original_uv_coordinates": 149,
+          "changed_uv_coordinates": 4,
+          "changed_uv_coordinate_fraction": 0.026845637583892617,
+          "maximum_uv_displacement_from_original": 0.017
+        },
+        {
+          "surface": 1,
+          "label": "hand",
+          "original_uv_coordinates": 14,
+          "changed_uv_coordinates": 0,
+          "changed_uv_coordinate_fraction": 0.0,
+          "maximum_uv_displacement_from_original": 0.0
+        }
+      ]
+    },
+    {
+      "name": "ArmorBody_02",
+      "vertices": 330,
+      "triangles": 338,
+      "surfaces": 2,
+      "uv_loops": 1014,
+      "original_uv_coordinates": 330,
+      "authored_uv_coordinates": 330,
+      "changed_uv_coordinates": 12,
+      "changed_uv_coordinate_fraction": 0.03636363636363636,
+      "maximum_uv_displacement_from_original": 0.135,
+      "rms_uv_displacement_from_original": 0.021804025205257746,
+      "maximum_master_uv_error_from_authored": 2.384185837644992e-08,
+      "maximum_master_position_error_from_authored": 0.0,
+      "dimension_delta_fraction": [
+        0.0,
+        3.6637359812630166e-15,
+        6.661338147750939e-16
+      ],
+      "max_rest_displacement": 4.912972095078126e-15,
+      "max_displacement_fraction_of_smallest_dimension": 8.577614879580877e-15,
+      "original_uv_charts": 9,
+      "authored_uv_charts": 9,
+      "uv_by_surface": [
+        {
+          "surface": 0,
+          "label": "body",
+          "original_uv_coordinates": 210,
+          "changed_uv_coordinates": 12,
+          "changed_uv_coordinate_fraction": 0.05714285714285714,
+          "maximum_uv_displacement_from_original": 0.135
+        },
+        {
+          "surface": 1,
+          "label": "shoulder",
+          "original_uv_coordinates": 120,
+          "changed_uv_coordinates": 0,
+          "changed_uv_coordinate_fraction": 0.0,
+          "maximum_uv_displacement_from_original": 0.0
+        }
+      ]
+    },
+    {
+      "name": "ArmorHand_02",
+      "vertices": 116,
+      "triangles": 116,
+      "surfaces": 1,
+      "uv_loops": 348,
+      "original_uv_coordinates": 116,
+      "authored_uv_coordinates": 116,
+      "changed_uv_coordinates": 0,
+      "changed_uv_coordinate_fraction": 0.0,
+      "maximum_uv_displacement_from_original": 0.0,
+      "rms_uv_displacement_from_original": 0.0,
+      "maximum_master_uv_error_from_authored": 6.280369834735101e-16,
+      "maximum_master_position_error_from_authored": 0.0,
+      "dimension_delta_fraction": [
+        5.551115123125783e-16,
+        8.881784197001252e-16,
+        4.440892098500626e-16
+      ],
+      "max_rest_displacement": 4.6644440171094525e-15,
+      "max_displacement_fraction_of_smallest_dimension": 2.0264963770418896e-14,
+      "original_uv_charts": 3,
+      "authored_uv_charts": 3,
+      "uv_by_surface": [
+        {
+          "surface": 0,
+          "label": "hand",
+          "original_uv_coordinates": 116,
+          "changed_uv_coordinates": 0,
+          "changed_uv_coordinate_fraction": 0.0,
+          "maximum_uv_displacement_from_original": 0.0
+        }
+      ]
+    },
+    {
+      "name": "ArmorFoot_02",
+      "vertices": 122,
+      "triangles": 136,
+      "surfaces": 1,
+      "uv_loops": 408,
+      "original_uv_coordinates": 122,
+      "authored_uv_coordinates": 122,
+      "changed_uv_coordinates": 0,
+      "changed_uv_coordinate_fraction": 0.0,
+      "maximum_uv_displacement_from_original": 0.0,
+      "rms_uv_displacement_from_original": 0.0,
+      "maximum_master_uv_error_from_authored": 6.684427777288335e-16,
+      "maximum_master_position_error_from_authored": 0.0,
+      "dimension_delta_fraction": [
+        2.220446049250313e-16,
+        2.220446049250313e-16,
+        0.0
+      ],
+      "max_rest_displacement": 7.162874682589104e-16,
+      "max_displacement_fraction_of_smallest_dimension": 1.594670826946629e-15,
+      "original_uv_charts": 4,
+      "authored_uv_charts": 4,
+      "uv_by_surface": [
+        {
+          "surface": 0,
+          "label": "foot",
+          "original_uv_coordinates": 122,
+          "changed_uv_coordinates": 0,
+          "changed_uv_coordinate_fraction": 0.0,
+          "maximum_uv_displacement_from_original": 0.0
+        }
+      ]
+    }
+  ],
+  "images": {
+    "head": {
+      "material": "head",
+      "image": "head_diffuse.png",
+      "canonical_path": "assets/armors/tank_v1/head_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "packed_bytes": 1684473,
+      "packed_sha256": "85b42fdcdb953b30cb36c21ff0f7c23293cd795bcf9d324e8caeeeeaaf8986c4",
+      "canonical_sha256": "85b42fdcdb953b30cb36c21ff0f7c23293cd795bcf9d324e8caeeeeaaf8986c4",
+      "byte_identical": true
+    },
+    "hand": {
+      "material": "hand",
+      "image": "hand_diffuse.png",
+      "canonical_path": "assets/armors/tank_v1/hand_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "packed_bytes": 1415370,
+      "packed_sha256": "b1e31fb647f6cceb0f44477190e1adbe63e63c3b55bddc9e577efe1b6a96f05e",
+      "canonical_sha256": "b1e31fb647f6cceb0f44477190e1adbe63e63c3b55bddc9e577efe1b6a96f05e",
+      "byte_identical": true
+    },
+    "body": {
+      "material": "body",
+      "image": "body_diffuse.png",
+      "canonical_path": "assets/armors/tank_v1/body_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "packed_bytes": 1535720,
+      "packed_sha256": "4ab7e617dab966f4a9505a0793066c1010b001431232564ab1b6cd44832b5075",
+      "canonical_sha256": "4ab7e617dab966f4a9505a0793066c1010b001431232564ab1b6cd44832b5075",
+      "byte_identical": true
+    },
+    "shoulder": {
+      "material": "shoulder",
+      "image": "shoulder_diffuse.png",
+      "canonical_path": "assets/armors/tank_v1/shoulder_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "packed_bytes": 1428541,
+      "packed_sha256": "903fb418276ce29a25cc25ac4e92ca9f56d57320334a2c3855db72bf3b1e7adb",
+      "canonical_sha256": "903fb418276ce29a25cc25ac4e92ca9f56d57320334a2c3855db72bf3b1e7adb",
+      "byte_identical": true
+    },
+    "foot": {
+      "material": "foot",
+      "image": "foot_diffuse.png",
+      "canonical_path": "assets/armors/tank_v1/foot_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "packed_bytes": 1485825,
+      "packed_sha256": "09528411436cbd609da4917ca3974f6eece628c2dcdb22f279a898ca1d149112",
+      "canonical_sha256": "09528411436cbd609da4917ca3974f6eece628c2dcdb22f279a898ca1d149112",
+      "byte_identical": true
+    }
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "status": "PASS",
+  "scope": "Geometry silhouettes only; does not measure texture likeness or artistic approval.",
+  "limit": 0.15,
+  "silhouettes": [
+    {
+      "view": "front",
+      "silhouette_iou": 1.0,
+      "silhouette_changed_fraction": 0.0,
+      "camera_identical": true,
+      "pixels": [
+        640,
+        720
+      ]
+    },
+    {
+      "view": "side",
+      "silhouette_iou": 0.9965287083476907,
+      "silhouette_changed_fraction": 0.003471291652309305,
+      "camera_identical": true,
+      "pixels": [
+        640,
+        720
+      ]
+    },
+    {
+      "view": "rear",
+      "silhouette_iou": 1.0,
+      "silhouette_changed_fraction": 0.0,
+      "camera_identical": true,
+      "pixels": [
+        640,
+        720
+      ]
+    },
+    {
+      "view": "quarter",
+      "silhouette_iou": 0.9999917906955743,
+      "silhouette_changed_fraction": 8.209304425688124e-06,
+      "camera_identical": true,
+      "pixels": [
+        640,
+        720
+      ]
+    }
+  ],
+  "geometry": {
+    "parts": {
+      "ArmorBody_02": {
+        "bounds_game": {
+          "min": [
+            -0.5486419200897217,
+            0.3264181613922119,
+            -0.30749794840812683
+          ],
+          "max": [
+            0.5486406683921814,
+            1.4197744131088257,
+            0.2652687430381775
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5486419200897217,
+            0.3264181613922119,
+            -0.30749794840812683
+          ],
+          "max": [
+            0.5486406683921814,
+            1.4197744131088257,
+            0.2652687430381775
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 338,
+        "uv_preserved": true,
+        "original_uv_charts": 9,
+        "uv_charts": 9,
+        "uv_coordinate_count": 330,
+        "original_uv_coordinate_count": 330,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "weight_source": "original, unchanged"
+      },
+      "ArmorFoot_02": {
+        "bounds_game": {
+          "min": [
+            -0.39875900745391846,
+            -0.0015471349470317364,
+            -0.24362029135227203
+          ],
+          "max": [
+            0.39876094460487366,
+            0.44762861728668213,
+            0.252826988697052
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.39875900745391846,
+            -0.0015471349470317364,
+            -0.24362029135227203
+          ],
+          "max": [
+            0.39876094460487366,
+            0.44762861728668213,
+            0.252826988697052
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 136,
+        "uv_preserved": true,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 122,
+        "original_uv_coordinate_count": 122,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "weight_source": "original, unchanged"
+      },
+      "ArmorHand_02": {
+        "bounds_game": {
+          "min": [
+            -0.5607552528381348,
+            0.5362426042556763,
+            -0.050415828824043274
+          ],
+          "max": [
+            0.5607547760009766,
+            1.0521984100341797,
+            0.1797569990158081
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5607552528381348,
+            0.5362426042556763,
+            -0.050415828824043274
+          ],
+          "max": [
+            0.5607547760009766,
+            1.0521984100341797,
+            0.1797569990158081
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 116,
+        "uv_preserved": true,
+        "original_uv_charts": 3,
+        "uv_charts": 3,
+        "uv_coordinate_count": 116,
+        "original_uv_coordinate_count": 116,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "weight_source": "original, unchanged"
+      },
+      "ArmorHead_02": {
+        "bounds_game": {
+          "min": [
+            -0.2642218768596649,
+            1.2191996574401855,
+            -0.39907175302505493
+          ],
+          "max": [
+            0.26421937346458435,
+            1.92714524269104,
+            0.2611244022846222
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.2642218768596649,
+            1.2191996574401855,
+            -0.39907175302505493
+          ],
+          "max": [
+            0.26421937346458435,
+            1.92714524269104,
+            0.2611244022846222
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.015740090993884574,
+        "max_displacement_fraction_of_smallest_dimension": 0.029785886291478044,
+        "triangles": 206,
+        "uv_preserved": true,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 163,
+        "original_uv_coordinate_count": 163,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "weight_source": "original, unchanged"
+      }
+    },
+    "constraint": "Local shape/dimension changes <=15%; changed UV coordinates <=15% per part, local lower-helmet cage change; every original UV coordinate retained; original chart/coordinate count and skin retained. Absolute UV displacement is recorded separately."
+  },
+  "inferred": "Local chin/cheek/brow depth inferred from selected perspective art; original mesh owns game scale, hidden rear and all joint positions."
+}
