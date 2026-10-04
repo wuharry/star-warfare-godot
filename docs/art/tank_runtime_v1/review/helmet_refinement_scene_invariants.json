@@ -1,0 +1,45 @@
+{
+	"additional_uv_changes": 0,
+	"additional_vertex_position_changes": 86,
+	"allowed_geometry_scope": "ArmorHead_02 surface 0 positions and normals only",
+	"before_scene_sha256": "0cd3bc22bee11bb21cb8a0daaea304745123ae731994cef6d226b07a9029adf8",
+	"current_scene_sha256": "daa91815d79c729bf767a05f247e1dffa840edb620023e38b078f2db7c1b5af8",
+	"errors": [],
+	"geometry_sha256": "2c408d92ed69a466520b2a820ef71fbdb747a159411474e570e61f593408f487",
+	"material_parameters_preserved": true,
+	"max_incremental_rest_displacement_m": 0.0625972747802734,
+	"positions_changed_parts": [
+		"ArmorHead_02"
+	],
+	"records": [
+		{
+			"head_surface0_positions_normals_only": true,
+			"head_surface1_all_arrays_exact": true,
+			"part": "ArmorHead_02",
+			"surfaces": 2,
+			"uv_indices_weights_bone_arrays_skin_transform_material_parameters_exact": true
+		},
+		{
+			"all_mesh_arrays_transform_skeleton_skin_material_parameters_exact": true,
+			"part": "ArmorBody_02",
+			"surfaces": 2,
+			"uv_indices_weights_bone_arrays_skin_transform_material_parameters_exact": true
+		},
+		{
+			"all_mesh_arrays_transform_skeleton_skin_material_parameters_exact": true,
+			"part": "ArmorHand_02",
+			"surfaces": 1,
+			"uv_indices_weights_bone_arrays_skin_transform_material_parameters_exact": true
+		},
+		{
+			"all_mesh_arrays_transform_skeleton_skin_material_parameters_exact": true,
+			"part": "ArmorFoot_02",
+			"surfaces": 1,
+			"uv_indices_weights_bone_arrays_skin_transform_material_parameters_exact": true
+		}
+	],
+	"scope": "Helmet refinement v3 against frozen style v2 actual SCN: only ArmorHead_02 surface0 positions/normals allowed; all UV/index/bone/weights/Skin/transforms/material parameters, head surface1 neck and body/limbs exact. True original source immutable; original-total20 percent checked independently in packed report.",
+	"source_sha256": "fb4371b450799b9038d6ef04bf3dc44bcc629ab7520834768decab5908917000",
+	"status": "PASS",
+	"target_sha256": "77d972fae0128a8a66c8c9d23ea5028bfe8539a4a8f0f5352e38477967b22460"
+}

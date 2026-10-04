@@ -1,0 +1,85 @@
+{
+  "id": 2,
+  "design_id": "C-03",
+  "concept": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
+  "body_reference": "docs/art/original_armors_v1/images/c03_concept.png",
+  "turnaround": "docs/art/original_armors_v1/images/c03_turnaround.png",
+  "surfaces": [
+    {
+      "part": "ArmorBody_02",
+      "surface": 0,
+      "label": "body",
+      "texture": "res://assets/models/player/animated/armor_textures/body_ed36db00f85b_2x.png",
+      "absolute_texture": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\body_ed36db00f85b_2x.png",
+      "uv_coordinates": 210,
+      "triangles": 214
+    },
+    {
+      "part": "ArmorBody_02",
+      "surface": 1,
+      "label": "shoulder",
+      "texture": "res://assets/models/player/animated/armor_textures/jian_077c0f9d616a_2x.png",
+      "absolute_texture": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\jian_077c0f9d616a_2x.png",
+      "uv_coordinates": 120,
+      "triangles": 124
+    },
+    {
+      "part": "ArmorFoot_02",
+      "surface": 0,
+      "label": "foot",
+      "texture": "res://assets/models/player/animated/armor_textures/foot_31083bd2d7d1_2x.png",
+      "absolute_texture": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\foot_31083bd2d7d1_2x.png",
+      "uv_coordinates": 122,
+      "triangles": 136
+    },
+    {
+      "part": "ArmorHand_02",
+      "surface": 0,
+      "label": "hand",
+      "texture": "res://assets/models/player/animated/armor_textures/hand_e05d06ac0d12_2x.png",
+      "absolute_texture": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\hand_e05d06ac0d12_2x.png",
+      "uv_coordinates": 116,
+      "triangles": 116
+    },
+    {
+      "part": "ArmorHead_02",
+      "surface": 0,
+      "label": "head",
+      "texture": "res://assets/models/player/animated/armor_textures/head_27f2a32dc8b6_2x.png",
+      "absolute_texture": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\head_27f2a32dc8b6_2x.png",
+      "uv_coordinates": 149,
+      "triangles": 194
+    },
+    {
+      "part": "ArmorHead_02",
+      "surface": 1,
+      "label": "hand",
+      "texture": "res://assets/models/player/animated/armor_textures/hand_e05d06ac0d12_2x.png",
+      "absolute_texture": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\hand_e05d06ac0d12_2x.png",
+      "uv_coordinates": 14,
+      "triangles": 12
+    }
+  ],
+  "regions": {
+    "head": {
+      "description": "One mirrored half of helmet per original. Large amber visor at left x0.02–0.42 y0.38–0.62; blue cheek/chin from x0.02–0.28 y0.49–0.77; side dome/round ear x0.30–0.98 y0.03–0.72; crown band strips x0.01–0.96 y0.77–0.99. Preserve large visor notch silhouette, paint flat central blue guard and lower horizontal vent.",
+      "shared": "Head surface 1 uses hand texture upper strip for dark neck undersuit, not faceplate."
+    },
+    "body": {
+      "description": "Original front half-torso chart at left edge x0.01–0.58 y0.22–0.95; collar green surrounds cutout, chest steel blue panels / sage trim, dark fabric abdomen. Right upper diagonal large chart x0.37–0.98 y0.02–0.69 belongs upper thigh with sage side frame and blue thigh plate. Keep empty atlas spaces."
+    },
+    "shoulder": {
+      "description": "Upper detached trapezoid x0.14–0.88 y0.02–0.31 is green upward shoulder lip; lower main chart x0.02–0.96 y0.32–0.97 is mirrored round blue shoulder cap and sage lower rim. No extra silhouettes."
+    },
+    "hand": {
+      "description": "Large center chart x0.14–0.98 y0.25–0.97: sage upper forearm cuff, blue gauntlet, dark glove underside. Upper strip x0.05–0.93 y0.01–0.24 also shared by helmet neck surface 1: keep this dark woven material with no blue window/gold visor. Small lower-left square dark hand sole."
+    },
+    "foot": {
+      "description": "Upper right x0.33–0.90 y0.01–0.45 contains knee and lower shin outer edges; lower chart x0.01–0.99 y0.52–0.99 blue boot/ankle and toe surfaces; green/black fields retain original regions. Match blue boots and dark toe cap."
+    }
+  },
+  "source_geometry": "Original Tank body, hand, foot exactly retained; lower helmet guard locally tightened 2.9786% of smallest original head dimension. All UV coordinates retained.",
+  "budget_fraction": 0.15,
+  "adopted_art": "docs/art/tank_runtime_v1/approved_parts_reference.png",
+  "semantic_body_guide": "docs/art/tank_runtime_v1/guides/body_front_regions.png"
+}

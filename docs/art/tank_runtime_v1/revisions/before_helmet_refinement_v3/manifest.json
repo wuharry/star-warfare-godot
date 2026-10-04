@@ -1,0 +1,2416 @@
+{
+  "schema_version": 1,
+  "design_id": "C-03",
+  "runtime_id": 2,
+  "name": "Tank",
+  "revision": "tank_runtime_v1",
+  "status": "runtime_integrated_pending_user_art_review",
+  "checked_at_utc": "2026-10-04T14:26:22.309438+00:00",
+  "texture_surface_revision": "style_unification_v2",
+  "style_pass": {
+    "scope": "Diffuse painting only; all existing Tank geometry/UV/skin/material rendering parameters exact.",
+    "baseline": "docs/art/tank_runtime_v1/revisions/before_style_unification_v2",
+    "baseline_snapshot_sha256": "5cc171e01d5e58663e0f5e93632da9f156f765c7ebc526e0eda126d98a8e5dbf",
+    "invariants": "review/style_pass_invariants.json",
+    "additional_uv_changes": 0,
+    "additional_vertex_position_changes": 0,
+    "user_authorized_ceiling": 0.2,
+    "actual_original_relative_validation_ceiling": 0.15,
+    "note": "Latest user permits15-20% if needed. This pass retains inherited geometry/UV exactly and still passes stricter existing15%; no numerical allowance is spent for its own sake.",
+    "art_acceptance": "pending user review; no quantified style-similarity score"
+  },
+  "capture_driver_evidence": {
+    "driver": "opengl3_angle",
+    "renderer_banner": "OpenGL API OpenGL ES 3.0 (ANGLE 2.1.1 git hash: aaebda1c5a40) - Compatibility - Using Device: Google Inc. (NVIDIA) - ANGLE (NVIDIA, NVIDIA GeForce RTX 4080 Laptop GPU (0x000027A0) Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.9579)",
+    "log": {
+      "path": "docs/art/tank_runtime_v1/review/final_angle_capture.log",
+      "bytes": 350,
+      "sha256": "11ed05e8995f9895dc4eed3ec8f1d217beb2775112dab9d4c25244ba91315ca9"
+    }
+  },
+  "design_authority": {
+    "path": "docs/art/tank_runtime_v1/approved_parts_reference.png",
+    "bytes": 2335456,
+    "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "mode": "RGB"
+  },
+  "helmet_concept": {
+    "path": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
+    "bytes": 634321,
+    "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49",
+    "dimensions": [
+      848,
+      1264
+    ],
+    "mode": "RGB"
+  },
+  "limits": {
+    "local_geometry_displacement": 0.15,
+    "dimension_change": 0.15,
+    "silhouette_change": 0.15,
+    "uv_changed_fraction_per_material": 0.15,
+    "uv_coordinate_and_chart_counts_preserved": true
+  },
+  "geometry": {
+    "parts": {
+      "ArmorBody_02": {
+        "bounds_game": {
+          "min": [
+            -0.5486419200897217,
+            0.3264181613922119,
+            -0.30749794840812683
+          ],
+          "max": [
+            0.5486406683921814,
+            1.4197744131088257,
+            0.2652687430381775
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5486419200897217,
+            0.3264181613922119,
+            -0.30749794840812683
+          ],
+          "max": [
+            0.5486406683921814,
+            1.4197744131088257,
+            0.2652687430381775
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 338,
+        "uv_preserved": false,
+        "original_uv_charts": 9,
+        "uv_charts": 9,
+        "uv_coordinate_count": 330,
+        "original_uv_coordinate_count": 330,
+        "uv_changed_count": 12,
+        "uv_changed_fraction": 0.03636363636363636,
+        "uv_max_displacement_from_original": 0.13499999054052178,
+        "uv_rms_displacement_from_original": 0.021804024791656336,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "body",
+            "uv_coordinate_count": 210,
+            "uv_changed_count": 12,
+            "uv_changed_fraction": 0.05714285714285714
+          },
+          {
+            "surface": 1,
+            "label": "shoulder",
+            "uv_coordinate_count": 120,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      },
+      "ArmorFoot_02": {
+        "bounds_game": {
+          "min": [
+            -0.39875900745391846,
+            -0.0015471349470317364,
+            -0.24362029135227203
+          ],
+          "max": [
+            0.39876094460487366,
+            0.44762861728668213,
+            0.252826988697052
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.39875900745391846,
+            -0.0015471349470317364,
+            -0.24362029135227203
+          ],
+          "max": [
+            0.39876094460487366,
+            0.44762861728668213,
+            0.252826988697052
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 136,
+        "uv_preserved": true,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 122,
+        "original_uv_coordinate_count": 122,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "foot",
+            "uv_coordinate_count": 122,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      },
+      "ArmorHand_02": {
+        "bounds_game": {
+          "min": [
+            -0.5607552528381348,
+            0.5362426042556763,
+            -0.050415828824043274
+          ],
+          "max": [
+            0.5607547760009766,
+            1.0521984100341797,
+            0.1797569990158081
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5607552528381348,
+            0.5362426042556763,
+            -0.050415828824043274
+          ],
+          "max": [
+            0.5607547760009766,
+            1.0521984100341797,
+            0.1797569990158081
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 116,
+        "uv_preserved": true,
+        "original_uv_charts": 3,
+        "uv_charts": 3,
+        "uv_coordinate_count": 116,
+        "original_uv_coordinate_count": 116,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "hand",
+            "uv_coordinate_count": 116,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      },
+      "ArmorHead_02": {
+        "bounds_game": {
+          "min": [
+            -0.2642218768596649,
+            1.2191996574401855,
+            -0.39907175302505493
+          ],
+          "max": [
+            0.26421937346458435,
+            1.92714524269104,
+            0.2611244022846222
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.2642218768596649,
+            1.2191996574401855,
+            -0.39907175302505493
+          ],
+          "max": [
+            0.26421937346458435,
+            1.92714524269104,
+            0.2611244022846222
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.015740090993884574,
+        "max_displacement_fraction_of_smallest_dimension": 0.029785886291478044,
+        "triangles": 206,
+        "uv_preserved": false,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 163,
+        "original_uv_coordinate_count": 163,
+        "uv_changed_count": 4,
+        "uv_changed_fraction": 0.024539877300613498,
+        "uv_max_displacement_from_original": 0.01700000052356763,
+        "uv_rms_displacement_from_original": 0.002663085611977019,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "head",
+            "uv_coordinate_count": 149,
+            "uv_changed_count": 4,
+            "uv_changed_fraction": 0.026845637583892617
+          },
+          {
+            "surface": 1,
+            "label": "hand",
+            "uv_coordinate_count": 14,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      }
+    },
+    "constraint": "Local shape/dimension changes <=15%; changed UV coordinates <=15% per material and per part; chin-seam and upper-front-chest sampling edits only. Original chart/coordinate count, topology and skin retained. Absolute UV displacement is recorded separately."
+  },
+  "topology": {
+    "triangles": 796,
+    "original_bones": 28,
+    "parts": 4,
+    "surfaces": 6,
+    "diffuse_maps": 5
+  },
+  "files": [
+    {
+      "path": "docs/art/tank_runtime_v1/build/tank_master.blend",
+      "bytes": 7718425,
+      "sha256": "16d820760149dba2735543729a897c221611579a2fb0c8d76e6955cf42f17d01"
+    },
+    {
+      "path": "assets/armors/tank_v1/tank.scn",
+      "bytes": 57193,
+      "sha256": "0cd3bc22bee11bb21cb8a0daaea304745123ae731994cef6d226b07a9029adf8"
+    },
+    {
+      "path": "assets/armors/tank_v1/tank.glb",
+      "bytes": 7492608,
+      "sha256": "b0c78967f646d5a7e8c3d7ef685d3f188be0d238744bed4da20c246059d881aa"
+    },
+    {
+      "path": "assets/armors/tank_v1/body_diffuse.png",
+      "bytes": 1517695,
+      "sha256": "a92ae9149165beec2afb7e23a339cfdc13380ae4da71f6ab1d576c15b2a4eac4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/tank_v1/foot_diffuse.png",
+      "bytes": 1465043,
+      "sha256": "e8a16ff8e61c0fe04ee9f766a9ffb3d04459ce773e0f5ce5dc44d55db8f5e2be",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/tank_v1/hand_diffuse.png",
+      "bytes": 1407615,
+      "sha256": "6bf882758297af2c789b61d602cf39dbfd797e81320fd11fee8f03dee2aac79d",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/tank_v1/head_diffuse.png",
+      "bytes": 1736304,
+      "sha256": "a7f1e5a2ff91ae4663e3ea40fcb6a6f599e8536b1cb544cba65b1abc1b1fa1dd",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/tank_v1/shoulder_diffuse.png",
+      "bytes": 1525086,
+      "sha256": "4905a54b926654a52e8f63d06b4ac51bc65396db023f4684c1150ee5969df3db",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    }
+  ],
+  "generation": [
+    {
+      "label": "head",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/head_diffuse_v1.txt",
+        "bytes": 10260,
+        "sha256": "e4fee4421240e3493e13c84f5cb55339c726e99a92a1df9c29ef95e68e03a69a"
+      },
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\head_27f2a32dc8b6_2x.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\head_uv.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_head_front.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f87cb276-cf09-4cd4-92e5-2eefdd354d83.png",
+      "selected": false,
+      "output": "assets/armors/tank_v1/head_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none",
+      "date": "2026-10-03",
+      "note": "",
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/head_diffuse_v1.png",
+        "bytes": 1723713,
+        "sha256": "78277e53bfa0091d92d8b3cc603bb8cd10cf2c223ae833bbde5be1f992c39d43",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "sha256": "78277e53bfa0091d92d8b3cc603bb8cd10cf2c223ae833bbde5be1f992c39d43",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "references": [
+        {
+          "path": "assets/models/player/animated/armor_textures/head_27f2a32dc8b6_2x.png",
+          "bytes": 308268,
+          "sha256": "93d71adfd46866b2cb26aa22bd5993377c584924d5a5a9e652ef1a1216cf765c",
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
+          "bytes": 634321,
+          "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49",
+          "dimensions": [
+            848,
+            1264
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/guides/head_uv.png",
+          "bytes": 250754,
+          "sha256": "55bdee490a2a319483c6ded694ab88aaffa19eaa83301e41195a317c47f4af45",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/review/baseline/original_head_front.png",
+          "bytes": 485011,
+          "sha256": "fdf8d13526e9f23c25fa380c68345f76bf888e40c7ef3f75e05636f0062db8a9",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "superseded_by": "tank_head_v2",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f87cb276-cf09-4cd4-92e5-2eefdd354d83.png"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/body_diffuse_v1.txt",
+        "bytes": 10173,
+        "sha256": "49c1945d0b8cd822630b6180d5d37af3d1c865cff6baf2865ca2086bd54469c1"
+      },
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\body_ed36db00f85b_2x.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\body_uv.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-e96c4280-3de7-4f83-86ab-c978eb380f3e.png",
+      "selected": false,
+      "output": "assets/armors/tank_v1/body_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none",
+      "date": "2026-10-03",
+      "note": "",
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/body_diffuse_v1.png",
+        "bytes": 1335619,
+        "sha256": "41de11e0dac02837046db29c06e545873ce29bfb8f476b71f5f5e5f07cfab122",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "sha256": "41de11e0dac02837046db29c06e545873ce29bfb8f476b71f5f5e5f07cfab122",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "references": [
+        {
+          "path": "assets/models/player/animated/armor_textures/body_ed36db00f85b_2x.png",
+          "bytes": 219400,
+          "sha256": "98a1803ffa1838c4fd39223dd302de4a0725684404dd7bdf5cc3d87e4cd14104",
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
+          "bytes": 634321,
+          "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49",
+          "dimensions": [
+            848,
+            1264
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/guides/body_uv.png",
+          "bytes": 215215,
+          "sha256": "ebc10295d1f3ef2af4848b710e86c990757ba18679a0994f3158f27dd686a78f",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/review/baseline/original_diffuse_front.png",
+          "bytes": 235816,
+          "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "superseded_by": "body_diffuse_v2",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-e96c4280-3de7-4f83-86ab-c978eb380f3e.png"
+    },
+    {
+      "label": "shoulder",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/shoulder_diffuse_v1.txt",
+        "bytes": 9867,
+        "sha256": "ac89d585d98b4940666d2d79ef8e385d219e8b17f02e109d2259d01a0413520a"
+      },
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\jian_077c0f9d616a_2x.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\shoulder_uv.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-efec810b-73ed-4fb4-94f1-979826088940.png",
+      "selected": false,
+      "output": null,
+      "tool": "built-in image_gen",
+      "postprocessing": "none",
+      "date": "2026-10-03",
+      "note": "Generated a part-design sheet instead of a compatible shoulder UV atlas; user chose it as new design reference. Not a runtime texture.",
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/shoulder_diffuse_v1.png",
+        "bytes": 1853793,
+        "sha256": "fe5044af9119879a0cb240ba6f7137b4673ba370822b4045f81b587d33ccc362",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "sha256": "fe5044af9119879a0cb240ba6f7137b4673ba370822b4045f81b587d33ccc362",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "references": [
+        {
+          "path": "assets/models/player/animated/armor_textures/jian_077c0f9d616a_2x.png",
+          "bytes": 233956,
+          "sha256": "7572036a24caf732eabff2629c0ab7364d89a267a825a41342b17f99afdca67f",
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
+          "bytes": 634321,
+          "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49",
+          "dimensions": [
+            848,
+            1264
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/guides/shoulder_uv.png",
+          "bytes": 236397,
+          "sha256": "41f6319f28ef856c6407dccd601136bcd3a9bca1140b5547a6263bf98bc430da",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/review/baseline/original_diffuse_front.png",
+          "bytes": 235816,
+          "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-efec810b-73ed-4fb4-94f1-979826088940.png"
+    },
+    {
+      "label": "hand",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/hand_diffuse_v1.txt",
+        "bytes": 9930,
+        "sha256": "f6e0d47f153a49228254b708df7a0f944c010f93365d5e62325ee1fed11e38b2"
+      },
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\hand_e05d06ac0d12_2x.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\hand_uv.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-bdbb92d6-410b-4dcc-baae-9ef8b28459a4.png",
+      "selected": false,
+      "output": "assets/armors/tank_v1/hand_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none",
+      "date": "2026-10-03",
+      "note": "",
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/hand_diffuse_v1.png",
+        "bytes": 1415370,
+        "sha256": "b1e31fb647f6cceb0f44477190e1adbe63e63c3b55bddc9e577efe1b6a96f05e",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "sha256": "b1e31fb647f6cceb0f44477190e1adbe63e63c3b55bddc9e577efe1b6a96f05e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "references": [
+        {
+          "path": "assets/models/player/animated/armor_textures/hand_e05d06ac0d12_2x.png",
+          "bytes": 188061,
+          "sha256": "82cdcfea69c126971e52f3221da8823d901d26f9f80a4c5337f640b55ccf34a3",
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
+          "bytes": 634321,
+          "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49",
+          "dimensions": [
+            848,
+            1264
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/guides/hand_uv.png",
+          "bytes": 171166,
+          "sha256": "e13745fc5b14f896422e5dc986408b5dc5b9638bdf533b442ee4ea2d4606948e",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/review/baseline/original_diffuse_front.png",
+          "bytes": 235816,
+          "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "superseded_reason": "Superseded by texture-only style_unified_v2; preserved in immutable before_style_unification_v2 snapshot.",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-bdbb92d6-410b-4dcc-baae-9ef8b28459a4.png"
+    },
+    {
+      "label": "foot",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/foot_diffuse_v1.txt",
+        "bytes": 9918,
+        "sha256": "d60a6184c309a8f58ac015c3d48faf85d189efada7fba35b2bd8e99a1029a0cd"
+      },
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\foot_31083bd2d7d1_2x.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\foot_uv.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f974d4b7-1e9c-4d34-8d5c-56fb13120f5e.png",
+      "selected": false,
+      "output": "assets/armors/tank_v1/foot_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none",
+      "date": "2026-10-03",
+      "note": "",
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/foot_diffuse_v1.png",
+        "bytes": 1485825,
+        "sha256": "09528411436cbd609da4917ca3974f6eece628c2dcdb22f279a898ca1d149112",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "sha256": "09528411436cbd609da4917ca3974f6eece628c2dcdb22f279a898ca1d149112",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "references": [
+        {
+          "path": "assets/models/player/animated/armor_textures/foot_31083bd2d7d1_2x.png",
+          "bytes": 177219,
+          "sha256": "8e5dde835854e66f41577e4c21fa5f4d37b5522f99237a1671cee6e7c15fcf3d",
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/fusion_v2_generated/c03_tank_fusion.jpg",
+          "bytes": 634321,
+          "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49",
+          "dimensions": [
+            848,
+            1264
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/guides/foot_uv.png",
+          "bytes": 213413,
+          "sha256": "443826d41c9a4b5fd431aa0e9b53252041fa3006d03fbef84855cd00b5bfdead",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/review/baseline/original_diffuse_front.png",
+          "bytes": 235816,
+          "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "superseded_reason": "Superseded by texture-only style_unified_v2; preserved in immutable before_style_unification_v2 snapshot.",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f974d4b7-1e9c-4d34-8d5c-56fb13120f5e.png"
+    },
+    {
+      "key": "tank_body_v2",
+      "suit": "tank",
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/body_diffuse_v2.txt",
+        "bytes": 9719,
+        "sha256": "a35ac4f9537e3970555791ab5dbdbcc890379c845afaffde5c02b331801f3359"
+      },
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\tank_v1\\body_diffuse.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\body_front_regions.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-bd6502d9-a32a-477e-93e4-15dd40f579ca.png",
+      "selected": false,
+      "output": "assets/armors/tank_v1/body_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none",
+      "date": "2026-10-03",
+      "references": [
+        {
+          "path": "docs/art/tank_runtime_v1/generated/body_diffuse_v1.png",
+          "bytes": 1335619,
+          "sha256": "41de11e0dac02837046db29c06e545873ce29bfb8f476b71f5f5e5f07cfab122",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB",
+          "actual_input_path": "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\tank_v1\\body_diffuse.png"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/approved_parts_reference.png",
+          "bytes": 2335456,
+          "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/guides/body_front_regions.png",
+          "bytes": 203124,
+          "sha256": "7b31470addd38bedd29902293b0af39bf11b10a49797f8deaabfedb085580fb5",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/review/baseline/original_diffuse_front.png",
+          "bytes": 235816,
+          "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/body_diffuse_v2.png",
+        "bytes": 1456576,
+        "sha256": "7828b6ec8ff7f7ae1b71dd2c329b7d21f3f18ccbd8e7c9402b27c0f35c4b2e3d",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "sha256": "7828b6ec8ff7f7ae1b71dd2c329b7d21f3f18ccbd8e7c9402b27c0f35c4b2e3d",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "superseded_by": "tank_body_v4",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-bd6502d9-a32a-477e-93e4-15dd40f579ca.png"
+    },
+    {
+      "key": "tank_shoulder_v2",
+      "suit": "tank",
+      "label": "shoulder",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/shoulder_diffuse_v2.txt",
+        "bytes": 9520,
+        "sha256": "b64d951f9d23c3566f8dd2407fea277b16ab60795cca49a83dd5d1aacae146bf"
+      },
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\jian_077c0f9d616a_2x.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\shoulder_uv.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-43a24eec-a777-4247-8c2f-28fca2a70222.png",
+      "selected": false,
+      "output": "assets/armors/tank_v1/shoulder_diffuse.png",
+      "tool": "built-in image_gen",
+      "postprocessing": "none",
+      "date": "2026-10-03",
+      "references": [
+        {
+          "path": "assets/models/player/animated/armor_textures/jian_077c0f9d616a_2x.png",
+          "bytes": 233956,
+          "sha256": "7572036a24caf732eabff2629c0ab7364d89a267a825a41342b17f99afdca67f",
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/approved_parts_reference.png",
+          "bytes": 2335456,
+          "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/guides/shoulder_uv.png",
+          "bytes": 236397,
+          "sha256": "41f6319f28ef856c6407dccd601136bcd3a9bca1140b5547a6263bf98bc430da",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/review/baseline/original_diffuse_front.png",
+          "bytes": 235816,
+          "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/shoulder_diffuse_v2.png",
+        "bytes": 1428541,
+        "sha256": "903fb418276ce29a25cc25ac4e92ca9f56d57320334a2c3855db72bf3b1e7adb",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "sha256": "903fb418276ce29a25cc25ac4e92ca9f56d57320334a2c3855db72bf3b1e7adb",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "superseded_reason": "Superseded by texture-only style_unified_v2; preserved in immutable before_style_unification_v2 snapshot.",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-43a24eec-a777-4247-8c2f-28fca2a70222.png"
+    },
+    {
+      "label": "tank_body_v3",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/body_diffuse_v3.txt",
+        "bytes": 11359,
+        "sha256": "51e5c27c58f56c31ed60f14d9bbbdafd516f7bf2c539bd7f83f78857167cf18d"
+      },
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\tank_v1\\body_diffuse.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\body_placement_v3.png"
+      ],
+      "references": [
+        {
+          "path": "docs/art/tank_runtime_v1/generated/body_diffuse_v2.png",
+          "bytes": 1456576,
+          "sha256": "7828b6ec8ff7f7ae1b71dd2c329b7d21f3f18ccbd8e7c9402b27c0f35c4b2e3d",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB",
+          "actual_input_path": "assets/armors/tank_v1/body_diffuse.png"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/approved_parts_reference.png",
+          "bytes": 2335456,
+          "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/guides/body_placement_v3.png",
+          "bytes": 206433,
+          "sha256": "6e8bc192823f4af7d246ac1926ce4e5b862f605a569e97078f86f0990f403bea",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-d0282485-3a1a-4f40-90be-f3bf4bd47198.png",
+      "selected": false,
+      "output": null,
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/body_diffuse_v3.png",
+        "bytes": 1463949,
+        "sha256": "67deceee326859fa201f3a2beb621c65af1b6cb3f230979fc6daea09dc2c0a82",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "sha256": "67deceee326859fa201f3a2beb621c65af1b6cb3f230979fc6daea09dc2c0a82",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "tool": "built-in image_gen",
+      "postprocessing": "none",
+      "date": "2026-10-03",
+      "rejection_reason": "Image retained the misplaced lower green collar and high black chest vent; did not follow engine-verified semantic placement guide. Kept as unused generation.",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-d0282485-3a1a-4f40-90be-f3bf4bd47198.png"
+    },
+    {
+      "label": "tank_head_v2",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/head_diffuse_v2.txt",
+        "bytes": 11555,
+        "sha256": "8215ce8655947278ef9d5beec3cef8843f27ccf1f36f65f59d3a7f91144e0c65"
+      },
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\tank_v1\\head_diffuse.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\head_vent_v2.png"
+      ],
+      "references": [
+        {
+          "path": "docs/art/tank_runtime_v1/generated/head_diffuse_v1.png",
+          "bytes": 1723713,
+          "sha256": "78277e53bfa0091d92d8b3cc603bb8cd10cf2c223ae833bbde5be1f992c39d43",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB",
+          "actual_input_path": "assets/armors/tank_v1/head_diffuse.png"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/approved_parts_reference.png",
+          "bytes": 2335456,
+          "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/guides/head_vent_v2.png",
+          "bytes": 240551,
+          "sha256": "6651ec9a4efbdc1d86708d9bf2569c117baa27eb25dcf370301a0ab8e6df55dc",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-acbd9be0-2bdb-4b97-a074-4cf5ec908adf.png",
+      "selected": false,
+      "output": "assets/armors/tank_v1/head_diffuse.png",
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/head_diffuse_v2.png",
+        "bytes": 1684473,
+        "sha256": "85b42fdcdb953b30cb36c21ff0f7c23293cd795bcf9d324e8caeeeeaaf8986c4",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "sha256": "85b42fdcdb953b30cb36c21ff0f7c23293cd795bcf9d324e8caeeeeaaf8986c4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "tool": "built-in image_gen",
+      "postprocessing": "none",
+      "date": "2026-10-03",
+      "superseded_reason": "Superseded by texture-only style_unified_v2; preserved in immutable before_style_unification_v2 snapshot.",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-acbd9be0-2bdb-4b97-a074-4cf5ec908adf.png"
+    },
+    {
+      "label": "tank_body_v4",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/body_diffuse_v4.txt",
+        "bytes": 2229,
+        "sha256": "ab0c850de63735f960e3f661f737cdb40a8c8fd0aedc9745c867dff598a172de"
+      },
+      "reference_images": [
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\body_placement_v3.png",
+        "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\tank_v1\\body_diffuse.png",
+        "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png"
+      ],
+      "references": [
+        {
+          "path": "docs/art/tank_runtime_v1/guides/body_placement_v3.png",
+          "bytes": 206433,
+          "sha256": "6e8bc192823f4af7d246ac1926ce4e5b862f605a569e97078f86f0990f403bea",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/generated/body_diffuse_v2.png",
+          "bytes": 1456576,
+          "sha256": "7828b6ec8ff7f7ae1b71dd2c329b7d21f3f18ccbd8e7c9402b27c0f35c4b2e3d",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB",
+          "actual_input_path": "assets/armors/tank_v1/body_diffuse.png"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/approved_parts_reference.png",
+          "bytes": 2335456,
+          "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        }
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-8f0cb55a-36f4-4afd-9a49-2820068a901b.png",
+      "selected": false,
+      "output": "assets/armors/tank_v1/body_diffuse.png",
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/body_diffuse_v4.png",
+        "bytes": 1535720,
+        "sha256": "4ab7e617dab966f4a9505a0793066c1010b001431232564ab1b6cd44832b5075",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "sha256": "4ab7e617dab966f4a9505a0793066c1010b001431232564ab1b6cd44832b5075",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "tool": "built-in image_gen",
+      "postprocessing": "none",
+      "date": "2026-10-03",
+      "superseded_reason": "Superseded by texture-only style_unified_v2; preserved in immutable before_style_unification_v2 snapshot.",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-8f0cb55a-36f4-4afd-9a49-2820068a901b.png"
+    },
+    {
+      "label": "head",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/head_diffuse_style_unified_v2.txt",
+        "bytes": 7221,
+        "sha256": "1fe7dfd68840bfd6aa8ba051d6231a0de42660ca6100206302338b8c27d2b40d"
+      },
+      "reference_images": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_target.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_original_style.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_fortune_style.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_head_quarter.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/approved_parts_reference.png"
+      ],
+      "references": [
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_target.png",
+          "bytes": 1684473,
+          "sha256": "85b42fdcdb953b30cb36c21ff0f7c23293cd795bcf9d324e8caeeeeaaf8986c4",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_original_style.png",
+          "bytes": 308268,
+          "sha256": "93d71adfd46866b2cb26aa22bd5993377c584924d5a5a9e652ef1a1216cf765c",
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_fortune_style.png",
+          "bytes": 1623463,
+          "sha256": "10d07e20bd3955fdee018b8b16a9994d3dc511990af6d60cf5cfe88ed886b0cf",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_head_quarter.png",
+          "bytes": 528537,
+          "sha256": "055a3d8331672135ad6348266dd3d6c0adf6831412f8c51369a8d1462db13740",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/approved_parts_reference.png",
+          "bytes": 2335456,
+          "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        }
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-b1b813f2-59c8-48da-9c26-e14b7913a701.png",
+      "selected": true,
+      "output": "assets/armors/tank_v1/head_diffuse.png",
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/head_diffuse_style_unified_v2.png",
+        "bytes": 1736304,
+        "sha256": "a7f1e5a2ff91ae4663e3ea40fcb6a6f599e8536b1cb544cba65b1abc1b1fa1dd",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "variant": "style_unified_v2",
+      "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+      "additional_uv_changes": 0,
+      "additional_geometry_changes": 0,
+      "user_authorized_engineering_limit": 0.2,
+      "status": "runtime_integrated_pending_user_art_review",
+      "note": "Selected after direct PNG mapping review and validated runtime integration; five-map style pass retains exact current geometry and UV. Partial bright contact edges and inherited low-poly rear crown facets remain. User art review pending.",
+      "sha256": "a7f1e5a2ff91ae4663e3ea40fcb6a6f599e8536b1cb544cba65b1abc1b1fa1dd",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt_sha256": "1fe7dfd68840bfd6aa8ba051d6231a0de42660ca6100206302338b8c27d2b40d",
+      "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-b1b813f2-59c8-48da-9c26-e14b7913a701.png",
+      "canonical": {
+        "path": "assets/armors/tank_v1/head_diffuse.png",
+        "bytes": 1736304,
+        "sha256": "a7f1e5a2ff91ae4663e3ea40fcb6a6f599e8536b1cb544cba65b1abc1b1fa1dd",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "head"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/body_diffuse_style_unified_v2.txt",
+        "bytes": 6765,
+        "sha256": "533db9b236f2f1ad0e335f5da0d8d2cc8edf7aae4768ffe8851c28ea2118c735"
+      },
+      "reference_images": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_target.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_original_style.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_fortune_style.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png"
+      ],
+      "references": [
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_target.png",
+          "bytes": 1535720,
+          "sha256": "4ab7e617dab966f4a9505a0793066c1010b001431232564ab1b6cd44832b5075",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_original_style.png",
+          "bytes": 219400,
+          "sha256": "98a1803ffa1838c4fd39223dd302de4a0725684404dd7bdf5cc3d87e4cd14104",
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_fortune_style.png",
+          "bytes": 1702150,
+          "sha256": "492467eb209e1846665063634c05a9298a33cc2763cf2afa8921a0c968883df6",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png",
+          "bytes": 290180,
+          "sha256": "9468ce1ce84a28e6502777be8bd35940c3e703bdf350072c4df42f9f15315076",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f9ab540e-7c0e-4c42-b514-a95fd29271b2.png",
+      "selected": true,
+      "output": "assets/armors/tank_v1/body_diffuse.png",
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/body_diffuse_style_unified_v2.png",
+        "bytes": 1517695,
+        "sha256": "a92ae9149165beec2afb7e23a339cfdc13380ae4da71f6ab1d576c15b2a4eac4",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "variant": "style_unified_v2",
+      "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+      "additional_uv_changes": 0,
+      "additional_geometry_changes": 0,
+      "user_authorized_engineering_limit": 0.2,
+      "status": "runtime_integrated_pending_user_art_review",
+      "note": "Selected after direct PNG mapping review and validated runtime integration; five-map style pass retains exact current geometry and UV. Partial bright contact edges and inherited low-poly rear crown facets remain. User art review pending.",
+      "sha256": "a92ae9149165beec2afb7e23a339cfdc13380ae4da71f6ab1d576c15b2a4eac4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt_sha256": "533db9b236f2f1ad0e335f5da0d8d2cc8edf7aae4768ffe8851c28ea2118c735",
+      "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f9ab540e-7c0e-4c42-b514-a95fd29271b2.png",
+      "canonical": {
+        "path": "assets/armors/tank_v1/body_diffuse.png",
+        "bytes": 1517695,
+        "sha256": "a92ae9149165beec2afb7e23a339cfdc13380ae4da71f6ab1d576c15b2a4eac4",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "body"
+    },
+    {
+      "label": "shoulder",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/shoulder_diffuse_style_unified_v2.txt",
+        "bytes": 6481,
+        "sha256": "df0f7e259e86985db9ad77af55164fdb1d8e19e5595a6fb2daf65f2548292782"
+      },
+      "reference_images": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_target.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_original_style.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_fortune_style.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png"
+      ],
+      "references": [
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_target.png",
+          "bytes": 1428541,
+          "sha256": "903fb418276ce29a25cc25ac4e92ca9f56d57320334a2c3855db72bf3b1e7adb",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_original_style.png",
+          "bytes": 233956,
+          "sha256": "7572036a24caf732eabff2629c0ab7364d89a267a825a41342b17f99afdca67f",
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_fortune_style.png",
+          "bytes": 1600593,
+          "sha256": "a4aae6d7fdc44c2fec61236a885335df2476da4895cb14c30e723cadcb2215ba",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png",
+          "bytes": 290180,
+          "sha256": "9468ce1ce84a28e6502777be8bd35940c3e703bdf350072c4df42f9f15315076",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-75e1f84f-da8b-4bd9-b598-08de76f4b955.png",
+      "selected": true,
+      "output": "assets/armors/tank_v1/shoulder_diffuse.png",
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/shoulder_diffuse_style_unified_v2.png",
+        "bytes": 1525086,
+        "sha256": "4905a54b926654a52e8f63d06b4ac51bc65396db023f4684c1150ee5969df3db",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "variant": "style_unified_v2",
+      "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+      "additional_uv_changes": 0,
+      "additional_geometry_changes": 0,
+      "user_authorized_engineering_limit": 0.2,
+      "status": "runtime_integrated_pending_user_art_review",
+      "note": "Selected after direct PNG mapping review and validated runtime integration; five-map style pass retains exact current geometry and UV. Partial bright contact edges and inherited low-poly rear crown facets remain. User art review pending.",
+      "sha256": "4905a54b926654a52e8f63d06b4ac51bc65396db023f4684c1150ee5969df3db",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt_sha256": "df0f7e259e86985db9ad77af55164fdb1d8e19e5595a6fb2daf65f2548292782",
+      "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-75e1f84f-da8b-4bd9-b598-08de76f4b955.png",
+      "canonical": {
+        "path": "assets/armors/tank_v1/shoulder_diffuse.png",
+        "bytes": 1525086,
+        "sha256": "4905a54b926654a52e8f63d06b4ac51bc65396db023f4684c1150ee5969df3db",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "shoulder"
+    },
+    {
+      "label": "hand",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/hand_diffuse_style_unified_v2.txt",
+        "bytes": 6641,
+        "sha256": "4470a31d4c6156f7044efe6e5e7816035ee380f2b9c0bc095fd7ec88e766e855"
+      },
+      "reference_images": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_target.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_original_style.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_fortune_style.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png"
+      ],
+      "references": [
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_target.png",
+          "bytes": 1415370,
+          "sha256": "b1e31fb647f6cceb0f44477190e1adbe63e63c3b55bddc9e577efe1b6a96f05e",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_original_style.png",
+          "bytes": 188061,
+          "sha256": "82cdcfea69c126971e52f3221da8823d901d26f9f80a4c5337f640b55ccf34a3",
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_fortune_style.png",
+          "bytes": 1599516,
+          "sha256": "afd6260186294173a4a45a513fa541574f651ca490c6a42616900ba3ba876d92",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png",
+          "bytes": 290180,
+          "sha256": "9468ce1ce84a28e6502777be8bd35940c3e703bdf350072c4df42f9f15315076",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-116f60d5-fe48-45ac-96ac-2953524eeef8.png",
+      "selected": true,
+      "output": "assets/armors/tank_v1/hand_diffuse.png",
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/hand_diffuse_style_unified_v2.png",
+        "bytes": 1407615,
+        "sha256": "6bf882758297af2c789b61d602cf39dbfd797e81320fd11fee8f03dee2aac79d",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "variant": "style_unified_v2",
+      "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+      "additional_uv_changes": 0,
+      "additional_geometry_changes": 0,
+      "user_authorized_engineering_limit": 0.2,
+      "status": "runtime_integrated_pending_user_art_review",
+      "note": "Selected after direct PNG mapping review and validated runtime integration; five-map style pass retains exact current geometry and UV. Partial bright contact edges and inherited low-poly rear crown facets remain. User art review pending.",
+      "sha256": "6bf882758297af2c789b61d602cf39dbfd797e81320fd11fee8f03dee2aac79d",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt_sha256": "4470a31d4c6156f7044efe6e5e7816035ee380f2b9c0bc095fd7ec88e766e855",
+      "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-116f60d5-fe48-45ac-96ac-2953524eeef8.png",
+      "canonical": {
+        "path": "assets/armors/tank_v1/hand_diffuse.png",
+        "bytes": 1407615,
+        "sha256": "6bf882758297af2c789b61d602cf39dbfd797e81320fd11fee8f03dee2aac79d",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "hand"
+    },
+    {
+      "label": "foot",
+      "prompt": {
+        "path": "docs/art/tank_runtime_v1/prompts/foot_diffuse_style_unified_v2.txt",
+        "bytes": 6416,
+        "sha256": "bc92e5d3db06c829136059204faabc2f4fc815c820acab09b925f56a8f059052"
+      },
+      "reference_images": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_target.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_original_style.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_fortune_style.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png"
+      ],
+      "references": [
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_target.png",
+          "bytes": 1485825,
+          "sha256": "09528411436cbd609da4917ca3974f6eece628c2dcdb22f279a898ca1d149112",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_original_style.png",
+          "bytes": 177219,
+          "sha256": "8e5dde835854e66f41577e4c21fa5f4d37b5522f99237a1671cee6e7c15fcf3d",
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_fortune_style.png",
+          "bytes": 1537026,
+          "sha256": "58ded7a38496e334af747d8035c9a9c07f81c862de2cdbf54dade6797f220f17",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png",
+          "bytes": 290180,
+          "sha256": "9468ce1ce84a28e6502777be8bd35940c3e703bdf350072c4df42f9f15315076",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-be6c0887-4040-4ce8-90f5-23f6e4e1f022.png",
+      "selected": true,
+      "output": "assets/armors/tank_v1/foot_diffuse.png",
+      "archive": {
+        "path": "docs/art/tank_runtime_v1/generated/foot_diffuse_style_unified_v2.png",
+        "bytes": 1465043,
+        "sha256": "e8a16ff8e61c0fe04ee9f766a9ffb3d04459ce773e0f5ce5dc44d55db8f5e2be",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "tool": "built-in image_gen",
+      "postprocessing": "none; native PNG bytes copied unchanged",
+      "date": "2026-10-04",
+      "variant": "style_unified_v2",
+      "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+      "additional_uv_changes": 0,
+      "additional_geometry_changes": 0,
+      "user_authorized_engineering_limit": 0.2,
+      "status": "runtime_integrated_pending_user_art_review",
+      "note": "Selected after direct PNG mapping review and validated runtime integration; five-map style pass retains exact current geometry and UV. Partial bright contact edges and inherited low-poly rear crown facets remain. User art review pending.",
+      "sha256": "e8a16ff8e61c0fe04ee9f766a9ffb3d04459ce773e0f5ce5dc44d55db8f5e2be",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt_sha256": "bc92e5d3db06c829136059204faabc2f4fc815c820acab09b925f56a8f059052",
+      "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+      "original_generation_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-be6c0887-4040-4ce8-90f5-23f6e4e1f022.png",
+      "canonical": {
+        "path": "assets/armors/tank_v1/foot_diffuse.png",
+        "bytes": 1465043,
+        "sha256": "e8a16ff8e61c0fe04ee9f766a9ffb3d04459ce773e0f5ce5dc44d55db8f5e2be",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "foot"
+    }
+  ],
+  "tests": {
+    "runtime_test": {
+      "file": {
+        "path": "docs/art/tank_runtime_v1/review/runtime_test.json",
+        "bytes": 11496,
+        "sha256": "aef79a458c0c44e4506154d151c0575815b2758e2db0267686ba68c27cddae23"
+      },
+      "status": "PASS"
+    },
+    "roundtrip_test": {
+      "file": {
+        "path": "docs/art/tank_runtime_v1/review/roundtrip_test.json",
+        "bytes": 12181,
+        "sha256": "5a33d80f750f121d7a9a098426759089cf91abe9d3ea4c269a13612248d6d0a6"
+      },
+      "status": "PASS"
+    },
+    "proportion_test": {
+      "file": {
+        "path": "docs/art/tank_runtime_v1/review/proportion_test.json",
+        "bytes": 8127,
+        "sha256": "0b13ff0b68e4b0632feaa649bc9c02218f6367aea1ba8562a4dd00c079bb80aa"
+      },
+      "status": "PASS"
+    },
+    "delivery_validate": {
+      "file": {
+        "path": "docs/art/tank_runtime_v1/review/delivery_validate.json",
+        "bytes": 8840,
+        "sha256": "ca1780c1fb76da2b9bec95118305dfa8ecb26265273dd44ba7b785324287b02b"
+      },
+      "status": "PASS"
+    },
+    "style_pass_invariants": {
+      "file": {
+        "path": "docs/art/tank_runtime_v1/review/style_pass_invariants.json",
+        "bytes": 2222,
+        "sha256": "2efdbfa63d31e24ab9ee3cc979baca36cc24b0f3b916b922241fd3aba7f44d79"
+      },
+      "status": "PASS"
+    },
+    "glb_images_test": {
+      "file": {
+        "path": "docs/art/tank_runtime_v1/review/glb_images_test.json",
+        "bytes": 2742,
+        "sha256": "bc98a5dc63533f8e0739d0224d8074b35413395182488f1577b250d5b7c02f38"
+      },
+      "status": "PASS"
+    }
+  },
+  "captures": [
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_clay_front.png",
+      "bytes": 43204,
+      "sha256": "cd9f0d0812e61a11f7376602bbe5ddd2ed0851f9b6a56d305e549160d6950705",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_clay_front.png",
+      "bytes": 43320,
+      "sha256": "8ca4b72fbaf7fc84bf14725e4b03e64e8d23d10127a2df5ca639e149d7f34a53",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_painted_front.png",
+      "bytes": 229149,
+      "sha256": "2a0b1ba645a161cd9f77d727182e36047679db90b91a841e2b8bb1a5047161ce",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_painted_front.png",
+      "bytes": 267885,
+      "sha256": "3196be89490f542b7b7794e9cb98ad0a9cad6bd35604828cbfe91a75a484f76a",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_diffuse_front.png",
+      "bytes": 236058,
+      "sha256": "92b3b59e185207fd4b1566bc53967673bfde0db1cc896b9c6e12858a664ea468",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_diffuse_front.png",
+      "bytes": 267885,
+      "sha256": "3196be89490f542b7b7794e9cb98ad0a9cad6bd35604828cbfe91a75a484f76a",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_clay_side.png",
+      "bytes": 29613,
+      "sha256": "20c46db5a0d91b33cd02ec5811091b67a71fbfb8b8d9bcdbbc3f99d6f114d438",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_clay_side.png",
+      "bytes": 29597,
+      "sha256": "f0bde581a39947ed2ca7b9b0cb68df296cf24db33114c0e148d1d80398d870d2",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_painted_side.png",
+      "bytes": 160702,
+      "sha256": "013aa2654b55822ac910c70aaa20366536a57a818f1ec8eb2a9d4ded81b630b5",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_painted_side.png",
+      "bytes": 182081,
+      "sha256": "09c9e2246d163fdb7c7c8d27994e1a1d61647a043733dae0781c695e33826f07",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_diffuse_side.png",
+      "bytes": 164815,
+      "sha256": "a63b25a14dc1422c3389abb8709ef69a8b6222864e270b7b710b2a5a7d7abe6f",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_diffuse_side.png",
+      "bytes": 182081,
+      "sha256": "09c9e2246d163fdb7c7c8d27994e1a1d61647a043733dae0781c695e33826f07",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_clay_rear.png",
+      "bytes": 45540,
+      "sha256": "89da7b0793590695c96e3f22fa2ff881e570eec2532bb0d1aceafc06224a687c",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_clay_rear.png",
+      "bytes": 45520,
+      "sha256": "ff0b4e5067fa6ef0b5e95de8ff94d5e94a993796aeddbdb1a77cbbfef02d1821",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_painted_rear.png",
+      "bytes": 216682,
+      "sha256": "a4307f69b7195a73428ec932247f9206248c9b8473da6c5a507c1ef483ed72b1",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_painted_rear.png",
+      "bytes": 257785,
+      "sha256": "fe51d3344dd37f551ffd026d2cb0858d9280b95157d74c2873fcbdc94bfb8338",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_diffuse_rear.png",
+      "bytes": 223468,
+      "sha256": "b40561c0254664ca3d0269e92cc2d3585ddb493e5ccceda531aa0451d33231c5",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_diffuse_rear.png",
+      "bytes": 257785,
+      "sha256": "fe51d3344dd37f551ffd026d2cb0858d9280b95157d74c2873fcbdc94bfb8338",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_clay_quarter.png",
+      "bytes": 43119,
+      "sha256": "ab54c03a0044a9ff1dc743a8daaba06b1c34d750b34b1508abfc265d149b3829",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_clay_quarter.png",
+      "bytes": 43154,
+      "sha256": "09e7e7847c007ae2072bf6bf06cb8c9523e5ae15339fe9e1f15210c7ad1c2ba4",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_painted_quarter.png",
+      "bytes": 238620,
+      "sha256": "ed61d068dcf947f25a3266af9868997ff9b12bce91bd87046b649af0f2f521d1",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_painted_quarter.png",
+      "bytes": 279128,
+      "sha256": "60438b9aaa38ae951292a256ef4f17f6c86c21f7234bf245da677864a5d4cc71",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_diffuse_quarter.png",
+      "bytes": 245785,
+      "sha256": "c91374780b952bc2b7bd20e150f47b58b0b370740c89479e93e3cb72912cc2f7",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "bytes": 279128,
+      "sha256": "60438b9aaa38ae951292a256ef4f17f6c86c21f7234bf245da677864a5d4cc71",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_head_front.png",
+      "bytes": 484937,
+      "sha256": "f372c25c9f4a9abc34b0273a0ed1ff0d9ddcba62bbe73bd90202ca06e0b7a532",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_head_front.png",
+      "bytes": 484497,
+      "sha256": "07563e08a1290f5c191d5d7a8e638ce6d753b242a8eab4861cc7d28b4a52c1df",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_head_side.png",
+      "bytes": 505345,
+      "sha256": "c5d51ca0a24a3294dae0f1bdec053e70b251de82517176621835a451ed3ba733",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_head_side.png",
+      "bytes": 496008,
+      "sha256": "3bef19eb094ad1de4133fc699d97e196bd38247836a0e9df424297389a2aaf87",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_head_rear.png",
+      "bytes": 437886,
+      "sha256": "c9eeac98bcfbe788aecebc055d4c2e52b771c43665c3232f0c85b990c558cc21",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_head_rear.png",
+      "bytes": 471604,
+      "sha256": "faa434a6bd923f0d582a352341a53ae67b1d6520b497cd59feef311fcac34c97",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_head_quarter.png",
+      "bytes": 525300,
+      "sha256": "d2dc7321fc4377354b839dd1caac5c0f286d68a2d056a970d9976db7663424b6",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_head_quarter.png",
+      "bytes": 516784,
+      "sha256": "eda2c318aab453c38a756bc8c1fc4d561f13948391e09b0697127be68f9d67a4",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/family_original_01_front.png",
+      "bytes": 226878,
+      "sha256": "664a2dbf2b478c88941a774fb48c6a6ccf646a5a190966df4bf3da0ce9e1ad2c",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/family_original_06_front.png",
+      "bytes": 244467,
+      "sha256": "8caa62dc3aa0dded257e1a286a74e1d5d54d4af008b59d860ef57d4e422348d8",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_idle_rifle.png",
+      "bytes": 204571,
+      "sha256": "5a6db3222346c3d79e725ff4fbd3f9a4435846c5ec28ab02c743229031e4bce2",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_idle_rifle.png",
+      "bytes": 228740,
+      "sha256": "bc65be476900e837b9502a539c0b72afab9c76623d38d5131af174bcb842d104",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_run_rifle.png",
+      "bytes": 188561,
+      "sha256": "56b6f1b33dfd9893157df08d97befb74599be54a3ac8687246d46cda08dd72eb",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_run_rifle.png",
+      "bytes": 214519,
+      "sha256": "c7b82e2d0e73a9c659b33fbb2f4bfcb0aa3ccad59f6801c65749e59a003baa4d",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_reload_00.png",
+      "bytes": 197197,
+      "sha256": "711ecced62af1c9c4002b5efccb9e6abc5f14dca91d8dccff519960b38ef6f1b",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_reload_00.png",
+      "bytes": 220298,
+      "sha256": "c7095310cbf9add526c7ae32fb9fc1acc4e678e8c7f9ff922daa666b67e1fc3f",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_reload_01.png",
+      "bytes": 181273,
+      "sha256": "6311f24074cd0c291f9019f2f9b9db305eb4485f2a6699355b3c910dd80bfaef",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_reload_01.png",
+      "bytes": 205345,
+      "sha256": "98e4ffbd939b4a6eb164cf1c4969f25287c739a8661dc5ea61a3d5ba99f9d88b",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_reload_02.png",
+      "bytes": 185011,
+      "sha256": "5a075baf9d0b23eb540c25cfe7a6b0efe3e49e6d94d0e7648b95f6231206fce4",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_reload_02.png",
+      "bytes": 210254,
+      "sha256": "2189e0618c4a8e8be901a9b5c16dd3ac9ebac2b60b44f73c08a55da765b75781",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_reload_03.png",
+      "bytes": 184816,
+      "sha256": "eb18ac8f194ed7529971ebc293422050ea67d82ad5fececc439fb015540b5b41",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_reload_03.png",
+      "bytes": 211076,
+      "sha256": "014c3e3372f2c04ccb80713edf95ed923406750e4dcc01b56b163a38d404d90c",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_reload_04.png",
+      "bytes": 192156,
+      "sha256": "5274a153e766284b9d25508ee2cba1ba7dfdda62e5e1c0207590bb7ebf097061",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_reload_04.png",
+      "bytes": 216091,
+      "sha256": "ca09b2a43d3a0a9e30c3dc35cfcac47e6d4af99c20592308f9b04aa15cc97a04",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_reload_05.png",
+      "bytes": 189777,
+      "sha256": "6a10eda5086737a50af3fef6c353208df251594bacc0429ca345ecc2333c2b29",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_reload_05.png",
+      "bytes": 214892,
+      "sha256": "85f14996610354ff5b678e38a3bba029d57c406e2d5f9909c7adf55ad99b35a6",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_reload_06.png",
+      "bytes": 186088,
+      "sha256": "a190235467e2cd2056dbb83f0ea3d04ecab19c4365a3fcf71b2d2c9267d8c053",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_reload_06.png",
+      "bytes": 208501,
+      "sha256": "fd95c4efae52c6e53b0e5116beb642b6f863eb7b82070dcde05c90d4c822dd0a",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_reload_07.png",
+      "bytes": 182990,
+      "sha256": "e904e05bf63f73186cf8faba624bd5785ffdf0668198d091a7c4ba7eb9ff4060",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_reload_07.png",
+      "bytes": 206458,
+      "sha256": "1ca1f9447b30421650e7a6dcf0ea63401d7a429f7c64867c2fadbe79ca47e93b",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_reload_08.png",
+      "bytes": 198327,
+      "sha256": "0a92c7a72327612b96dc0bba6930afae88a1d2aabfd921f5e42efe72b5cdce4a",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_reload_08.png",
+      "bytes": 221384,
+      "sha256": "f6f1934b8481be381ac70b196ed17e6ea6c66997f20b3083257f3de057d039f0",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_level_01_gameplay.png",
+      "bytes": 1432967,
+      "sha256": "fcded099627675cd72fd9858f06f6a4f5c68682b28bd5c3d24f857c4aa342507",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "bytes": 1454657,
+      "sha256": "4ae84ad7ce6680db1a282f7a6b7479cd0d341e906a5e1e4453a6415aeef5b114",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_level_01_front.png",
+      "bytes": 1075136,
+      "sha256": "feebedfec1e3842a9d7e691b19ff08a37a8a3a9982d5214acecebc933f8921a4",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_level_01_front.png",
+      "bytes": 1101449,
+      "sha256": "f2ca024fe4af95c0ad5cbd6f218fedc84376a0db0ac8b9665b75510ae5ac0ae9",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_level_08_gameplay.png",
+      "bytes": 987217,
+      "sha256": "6c9eb18ad7ec082ce01d461a0a0dece9a41879cea98ed7a766d65acafdd31ab9",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "bytes": 1008403,
+      "sha256": "f5a63ff94664bedda0628456dd48107a15baed0673a764c2730593a30009872c",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/original_level_08_front.png",
+      "bytes": 909379,
+      "sha256": "87b099c146a157ec6ee0518132024d5b5f5f395d5c04075d54530518ea6ceac1",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/tank_runtime_v1/review/engine/new_level_08_front.png",
+      "bytes": 928605,
+      "sha256": "e56d2a6fef085a7168dff01425466a67ccbe36df191a319f4fdadfa1a92ee808",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    }
+  ],
+  "capture_summary": {
+    "path": "docs/art/tank_runtime_v1/review/engine/capture.json",
+    "bytes": 23032,
+    "sha256": "430e16d99fb3db4a1139d8d5b1167c57da4d6cdd864d47ba6823e62ad608fbd0"
+  },
+  "uv_summary": {
+    "original_coordinate_count": 731,
+    "changed_coordinate_count": 16,
+    "changed_coordinate_fraction": 0.02188782489740082,
+    "per_material": {
+      "ArmorBody_02_surface_0": {
+        "authored_charts": 5,
+        "changed": 12,
+        "changed_fraction": 0.0571428571428571,
+        "coordinates": 210,
+        "maximum_uv_displacement": 0.134999990463257,
+        "original_charts": 5
+      },
+      "ArmorBody_02_surface_1": {
+        "authored_charts": 4,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 120,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 4
+      },
+      "ArmorFoot_02_surface_0": {
+        "authored_charts": 4,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 122,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 4
+      },
+      "ArmorHand_02_surface_0": {
+        "authored_charts": 3,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 116,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 3
+      },
+      "ArmorHead_02_surface_0": {
+        "authored_charts": 3,
+        "changed": 4,
+        "changed_fraction": 0.0268456375838926,
+        "coordinates": 149,
+        "maximum_uv_displacement": 0.017000000923872,
+        "original_charts": 3
+      },
+      "ArmorHead_02_surface_1": {
+        "authored_charts": 1,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 14,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 1
+      }
+    },
+    "original_guides_preserved": true,
+    "authored_guides": [
+      {
+        "path": "docs/art/tank_runtime_v1/guides/body_authored_uv.svg",
+        "bytes": 24258,
+        "sha256": "7912b01d81335ff3777efa000864793b4714f991b33627d2dc0b36d0e1b825e7"
+      },
+      {
+        "path": "docs/art/tank_runtime_v1/guides/foot_authored_uv.svg",
+        "bytes": 15492,
+        "sha256": "beaed68cda02905087e6aaa8bbd0c7ab053727b1b123cb25cf20907ba5befdb0"
+      },
+      {
+        "path": "docs/art/tank_runtime_v1/guides/hand_authored_uv.svg",
+        "bytes": 14515,
+        "sha256": "a98cb8a9f82439a9b6292e2b886364801ec9123d1c088f34335ad63c1a2ec625"
+      },
+      {
+        "path": "docs/art/tank_runtime_v1/guides/head_authored_uv.svg",
+        "bytes": 22022,
+        "sha256": "b118dff782c393904759ddbc9a0d6f59994c02fc85268a1db3212f0bf23aa1de"
+      },
+      {
+        "path": "docs/art/tank_runtime_v1/guides/shoulder_authored_uv.svg",
+        "bytes": 14126,
+        "sha256": "9a47eaef614a07bfff55b09682ebb31cf03d36363e883219b61a3b4e1517f0b3"
+      }
+    ]
+  },
+  "metric_scope": "Original geometry and UV coordinate/chart counts retained; local chin/collar UV samples changed within15% per material. Not concept pixel similarity. Stats, abilities and backpacks unchanged."
+}

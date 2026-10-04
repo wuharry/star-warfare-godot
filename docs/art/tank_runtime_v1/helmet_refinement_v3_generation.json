@@ -1,0 +1,223 @@
+[
+  {
+    "label": "head",
+    "variant": "helmet_refinement_v3",
+    "selected": false,
+    "rejection_reason": "Imagegen retained four transverse black slots on the actual bottom crown strip and painted an extra false central spine on the side chart. Requires targeted retry.",
+    "prompt": "docs/art/tank_runtime_v1/prompts/head_diffuse_helmet_refinement_v3.txt",
+    "prompt_sha256": "d05081ba08c8493db956a3a8227934d07726e3f6f63bad8329f8ca946040daf4",
+    "base_prompt": "docs/art/armor_style_unification_v1/tank_helmet_refinement_prompt.txt",
+    "base_prompt_sha256": "d85c8df4ed5129144bce91567967d8cd9bd901562a8d89da7521727847d67844",
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v3\\head_style_v2_edit_target.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v3/head_style_v2_edit_target.png",
+        "role": "edit_target",
+        "sha256": "a7f1e5a2ff91ae4663e3ea40fcb6a6f599e8536b1cb544cba65b1abc1b1fa1dd"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v3\\latest_user_helmet_reference.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v3/latest_user_helmet_reference.png",
+        "role": "design_authority",
+        "sha256": "e005a0fb50e04f8b3f25a91a379d2124802ba82a1c206294c232dc6dfde8ad73"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v3\\actual_head_uv_semantics.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v3/actual_head_uv_semantics.png",
+        "role": "technical_uv_guide",
+        "sha256": "fb03c24f9b86494c9b2db127b1b351e5fce70fc09ab5db64a50d5d14d2679973"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v3\\new_geometry_quarter_old_paint.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v3/new_geometry_quarter_old_paint.png",
+        "role": "actual_geometry_only_not_paint_authority",
+        "sha256": "1314a0ebc46b91b55d5e03ef7e337073cd9073bc35e555b737b3434e61e97d2a"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v3\\original_head_paint.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v3/original_head_paint.png",
+        "role": "original_style_and_layout",
+        "sha256": "93d71adfd46866b2cb26aa22bd5993377c584924d5a5a9e652ef1a1216cf765c"
+      }
+    ],
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v3\\head_style_v2_edit_target.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v3\\latest_user_helmet_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v3\\actual_head_uv_semantics.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v3\\new_geometry_quarter_old_paint.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v3\\original_head_paint.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f43f928b-f63d-4e1f-9e42-976370e33aeb.png",
+    "archive": "docs/art/tank_runtime_v1/generated/head_diffuse_helmet_refinement_v3.png",
+    "output": "assets/armors/tank_v1/head_diffuse.png",
+    "archive_sha256": "9577c52ff4359dce9786fbf9b864c8ff444a64c530b29605d44ccf153f561e20",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; native PNG bytes copied unchanged",
+    "date": "2026-10-04",
+    "user_authorized_engineering_limit": 0.2,
+    "sha256": "9577c52ff4359dce9786fbf9b864c8ff444a64c530b29605d44ccf153f561e20",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "status": "rejected_preserved",
+    "additional_uv_changes": 0
+  },
+  {
+    "label": "head",
+    "variant": "helmet_refinement_v4",
+    "selected": false,
+    "prompt": "docs/art/tank_runtime_v1/prompts/head_diffuse_helmet_refinement_v4.txt",
+    "prompt_sha256": "77442a02cd476aa244d1489a17dcfd005c3f861c7f0fd766f74f6a98435d82aa",
+    "base_prompt": "docs/art/armor_style_unification_v1/tank_helmet_refinement_prompt.txt",
+    "base_prompt_sha256": "d85c8df4ed5129144bce91567967d8cd9bd901562a8d89da7521727847d67844",
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v4\\previous_attempt_edit_target.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v4/previous_attempt_edit_target.png",
+        "role": "edit_target_previous_attempt",
+        "sha256": "9577c52ff4359dce9786fbf9b864c8ff444a64c530b29605d44ccf153f561e20"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v4\\approved_reference.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v4/approved_reference.png",
+        "role": "design_authority",
+        "sha256": "e005a0fb50e04f8b3f25a91a379d2124802ba82a1c206294c232dc6dfde8ad73"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v4\\actual_uv_semantics.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v4/actual_uv_semantics.png",
+        "role": "technical_uv_guide",
+        "sha256": "fb03c24f9b86494c9b2db127b1b351e5fce70fc09ab5db64a50d5d14d2679973"
+      }
+    ],
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v4\\previous_attempt_edit_target.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v4\\approved_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v4\\actual_uv_semantics.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-01ee3dbd-6d9a-4780-b3ff-7eb2950aa40b.png",
+    "archive": "docs/art/tank_runtime_v1/generated/head_diffuse_helmet_refinement_v4.png",
+    "archive_sha256": "c2ce6bd7d18d9eca41ddbd3d3e6a2a8f099e7e20f30c86d7cb856bc4561790c4",
+    "output": "assets/armors/tank_v1/head_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; native PNG bytes copied unchanged",
+    "date": "2026-10-04",
+    "user_authorized_engineering_limit": 0.2,
+    "additional_uv_changes": 0,
+    "geometry_stage": "head-only candidate; actual final measurements recorded separately",
+    "source_attempt": "helmet_refinement_v3",
+    "sha256": "c2ce6bd7d18d9eca41ddbd3d3e6a2a8f099e7e20f30c86d7cb856bc4561790c4",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "status": "rejected_preserved",
+    "additional_vertex_position_changes": 86,
+    "note": "Latest user helmet reference integrated with head-surface0 geometry refinement and native v4 atlas. Original-total displacement11.8456%, Ydimension2.4218%, all UV/body/limb/shared neck exact against frozen stylev2. Low-poly facets and some contact edges remain; user art review pending.",
+    "rejection_reason": "Actual rear UV samples fell into black padding; targeted coverage repair required."
+  },
+  {
+    "label": "head",
+    "variant": "helmet_refinement_v5",
+    "selected": false,
+    "prompt": "docs/art/tank_runtime_v1/prompts/head_diffuse_helmet_refinement_v5.txt",
+    "prompt_sha256": "1f99e63f6e74f2ace051944a84158a67a6974797dc2cc6f855a53be445e5246c",
+    "base_prompt": "docs/art/armor_style_unification_v1/tank_helmet_refinement_prompt.txt",
+    "base_prompt_sha256": "d85c8df4ed5129144bce91567967d8cd9bd901562a8d89da7521727847d67844",
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v5\\v4_edit_target.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v5/v4_edit_target.png",
+        "role": "edit_target_previous_attempt",
+        "sha256": "c2ce6bd7d18d9eca41ddbd3d3e6a2a8f099e7e20f30c86d7cb856bc4561790c4"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v5\\actual_rear_coverage_guide.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v5/actual_rear_coverage_guide.png",
+        "role": "technical_rear_uv_coverage",
+        "sha256": "ab828efa93b711184c4ffad75690b71e02751baac61f7120940b59cbb512eef1"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v5\\v4_rear_defect.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v5/v4_rear_defect.png",
+        "role": "runtime_rear_defect_only",
+        "sha256": "7c0ab74e1c9f4c70c26e1c31e4b773eed4c38804610e2e0f2fa53b48af5d86d5"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v5\\approved_reference.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v5/approved_reference.png",
+        "role": "design_authority",
+        "sha256": "e005a0fb50e04f8b3f25a91a379d2124802ba82a1c206294c232dc6dfde8ad73"
+      }
+    ],
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v5\\v4_edit_target.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v5\\actual_rear_coverage_guide.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v5\\v4_rear_defect.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v5\\approved_reference.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-03477400-7ba6-4ab5-b83a-da221d84a70b.png",
+    "archive": "docs/art/tank_runtime_v1/generated/head_diffuse_helmet_refinement_v5.png",
+    "archive_sha256": "7f5c2652e58c08c2d751d7d47007b29080d9c88261c479b250ba76d77c795a60",
+    "output": "assets/armors/tank_v1/head_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; native PNG bytes copied unchanged",
+    "date": "2026-10-04",
+    "user_authorized_engineering_limit": 0.2,
+    "source_attempt": "helmet_refinement_v4",
+    "status": "rejected_preserved",
+    "rejection_reason": "Coverage samples still fell into background; native padding fill retry selected instead. UV candidate not used.",
+    "sha256": "7f5c2652e58c08c2d751d7d47007b29080d9c88261c479b250ba76d77c795a60",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "additional_uv_changes": 0
+  },
+  {
+    "label": "head",
+    "variant": "helmet_refinement_v6",
+    "selected": true,
+    "prompt": "docs/art/tank_runtime_v1/prompts/head_diffuse_helmet_refinement_v6.txt",
+    "prompt_sha256": "c7840c7b06579ad2671fd0d1a9c257117589070f7031e267c8eed219a770df31",
+    "base_prompt": "docs/art/armor_style_unification_v1/tank_helmet_refinement_prompt.txt",
+    "base_prompt_sha256": "d85c8df4ed5129144bce91567967d8cd9bd901562a8d89da7521727847d67844",
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v6\\v5_edit_target.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v6/v5_edit_target.png",
+        "role": "edit_target_previous_attempt",
+        "sha256": "7f5c2652e58c08c2d751d7d47007b29080d9c88261c479b250ba76d77c795a60"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v6\\actual_rear_guide.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/helmet_refinement_v6/actual_rear_guide.png",
+        "role": "technical_coverage_only",
+        "sha256": "ab828efa93b711184c4ffad75690b71e02751baac61f7120940b59cbb512eef1"
+      }
+    ],
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v6\\v5_edit_target.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\input_snapshots\\helmet_refinement_v6\\actual_rear_guide.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-bc13ea56-ee58-4c35-a221-8fd460580dce.png",
+    "archive": "docs/art/tank_runtime_v1/generated/head_diffuse_helmet_refinement_v6.png",
+    "archive_sha256": "cb9b267677e802d29236c7cd92f8d556e50acb39b5ef6cab9ec8d9aea2e96e1e",
+    "output": "assets/armors/tank_v1/head_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; native PNG bytes copied unchanged",
+    "date": "2026-10-04",
+    "user_authorized_engineering_limit": 0.2,
+    "additional_uv_changes": 0,
+    "source_attempt": "helmet_refinement_v5",
+    "status": "runtime_integrated_pending_user_art_review",
+    "padding_repair": "Native steel-blue full-canvas padding fills actual missing original UV coverage; chart layout/UV unchanged",
+    "sha256": "cb9b267677e802d29236c7cd92f8d556e50acb39b5ef6cab9ec8d9aea2e96e1e",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "note": "Native full-canvas blue padding removes mapped rear black gaps; geometry head-only original-total11.8456%, currentUV exact v2. All engineering checks and fresh64normalANGLE capture PASS. Thin dark trims/low-poly facets remain, user art review pending."
+  }
+]

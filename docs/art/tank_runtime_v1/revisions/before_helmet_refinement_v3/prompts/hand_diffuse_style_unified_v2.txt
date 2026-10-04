@@ -1,0 +1,37 @@
+Use case: style-transfer (controlled existing game texture edit)
+Asset type: production diffuse/albedo UV atlas for Star Warfare Godot armor, not a concept illustration.
+
+PRIMARY REQUEST
+Unify the supplied current armor texture with the broad, soft hand-painted surface rendering of the original in-game armor. Preserve the accepted NEW armor design. Change surface painting only. The model, UV coordinates, triangle indices, skin, bones, animation tracks, attachment points and armor ID are locked for this pass. Do not interpret 15% as a repaint-area allowance or an art-similarity target. This pass permits ZERO additional geometry or UV edits relative to the current accepted runtime asset.
+
+INPUT ROLES AND AUTHORITY
+Image 1: EDIT TARGET, the current runtime UV atlas. It exclusively defines canvas layout, all UV-island positions, scale, orientation, mirrored edges, padding, panel shapes, openings, color-block boundaries and the accepted new armor identity.
+Image 2: ORIGINAL GAME STYLE REFERENCE. Use only its broad highlights, shadow softness, edge treatment, restrained saturation and wear scale. Never copy its old helmet, nose piece, emblem, panel layout or UV-island placement into Image 1.
+Additional input, when supplied: current neutral runtime render / approved helmet, DESIGN AND MAPPING CHECK only. Keep that accepted shape and read; do not render this view into the atlas.
+
+SURFACE PAINTING RULES
+Keep the armor's existing palette family and large panel/color configuration. Make the main painted highlight broad and restrained, with a soft transition across a low-poly plate. Use a consistent gentle upper-facing highlight direction compatible with the original game. Retain readable darker side planes without creating a shiny photoreal metal effect.
+Suppress continuous thin bright-white outlines around every panel. Give selected exposed edges subtle wider color-tinted highlights; inner plate edges must not all glow. Preserve functional opening locations while softening excessively black, thick panel seams and their contrast.
+Use sparse, deliberate wear on exposed corners and contact edges. Avoid uniformly distributed fine scratches, noisy crack networks or detail that disappears at the normal gameplay distance. Preserve the texture's resolution and useful painting detail; do not apply a global blur.
+Paint flexible joints as understated dark neutral cloth/rubber with broad folds. Do not add extra ribbing, machinery or deep false geometry.
+Render visor glass as a continuous colored surface with one broad soft reflection. Keep the accepted visor border and facets. Never add two bright vertical columns, a center black split, a new nose button, an eye pair, excessive bloom, photographic reflections, or a mirror-like highlight. Do not make the glass the brightest patch on every armor part.
+The image will be used by the current unshaded game material: these painted highlights remain visible without dynamic lighting. Do not rely on roughness, metallic or normal maps to correct painted brightness.
+
+UV AND OUTPUT INVARIANTS
+Return only the edited flat square UV atlas in the SAME framing and orientation. No 3D character, turntable, ground plane, perspective, lighting rig, labels, grids, UV guide lines, text, logo, watermark, decorative background, additional parts or cropped islands. Retain opaque atlas padding and existing unused-space background; do not introduce transparency.
+Every island, panel boundary and silhouette must remain registered to Image 1, including mirrored face edges and shared chest seams. Do not move, repack, scale, rotate, split, merge or invent islands to make the painting easier. Do not add model thickness by painting fictitious plates that conflict with the existing cage.
+
+REQUIRED PER-ASSET ADDENDUM
+Specify armor identity, material label, exact target/reference paths and their roles, accepted features that must remain, island-specific seam hazards and the precise painting change. Save this common base plus the addendum as the complete prompt actually sent for each output, including any rejected attempt.
+
+ACCEPTANCE AFTER GENERATION (verification, not an image instruction)
+Inspect the atlas and apply it to the existing runtime mesh. Compare pre-pass and new front/quarter/side/rear views with the same camera and material, plus gameplay distance, idle, run and reload. Check for shifted visor/chest details, UV seams, stretched paint and lost accepted features. Confirm target positions/UVs/indices/bones/weights match the pre-pass snapshot exactly. A technically passing asset is pending user art review; do not claim an objective style score or guaranteed 15%-similar appearance.
+
+ARMOR-SPECIFIC ADDENDUM — TANK / C-03 CAIRN / visual ID 02 / HAND/ARM AND SHARED NECK / style_unified_v2
+Image 1 (docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_target.png): exact EDIT TARGET; authoritative layout, every panel/color boundary and shared regions.
+Image 2 (docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_original_style.png): original Tank STYLE ONLY.
+Image 3 (docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_fortune_style.png): CURRENT FORTUNE shared-family broad painted lighting/wear STYLE ONLY, never its different gauntlet design.
+Image 4 (docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png): Tank design/mapping check.
+Keep current blue gauntlet, sage upper cuff, blue lower wrist/knuckle plates, dark glove and lower-left separate dark palm patch. The long TOP STRIP is also sampled by Tank helmet surface 1 as NECK UNDERSUIT: retain all existing boundaries and keep its existing cloth fields very dark neutral brown/charcoal; do not convert them to shiny armor or a bright collar. The shared neck surface actually samples approximately u=.0075–.3871, v=.0082–.1190; preserve its current sampling and dark-cloth appearance exactly. Existing tiny blue/green end pieces remain where they are. Keep folds readable, subdued and broad; avoid high contrast dense weave.
+Use wider softer blue plate highlights matching Fortune and the original, restrained sage cuff shading and a few contact wear marks. Remove repeated white panel tracing and any tiny bright scratches; keep real panel joints without glowing seams. The mirrored gauntlet center must not become two bright columns or a doubled center plate. Do not add holes, extra finger pads, decorative machinery or new islands.
+Output only the opaque flat atlas in exact target framing. ZERO additional geometry/UV changes in this pass; any separately needed engineering edit would use the user's new 20% total ceiling.

@@ -1,0 +1,119 @@
+{
+  "body": {
+    "guide": "body_placement_v3.png",
+    "cyan": "broad blue front chest / remove lower green at v=.65",
+    "sage": "target U collar, falls to center mirror seam; continuous paint not UV seam or triangle outlines",
+    "pink": "target DARK chest inset at v=.602–.636, crossing left mirror seam",
+    "white_dashed": "technical mirror seam u=.029, not artwork",
+    "collar_polygon": [
+      [
+        0.029,
+        0.51
+      ],
+      [
+        0.055,
+        0.493
+      ],
+      [
+        0.1,
+        0.468
+      ],
+      [
+        0.16,
+        0.428
+      ],
+      [
+        0.2,
+        0.415
+      ],
+      [
+        0.202,
+        0.454
+      ],
+      [
+        0.163,
+        0.477
+      ],
+      [
+        0.107,
+        0.513
+      ],
+      [
+        0.06,
+        0.548
+      ],
+      [
+        0.029,
+        0.557
+      ]
+    ],
+    "vent_polygon": [
+      [
+        0.025,
+        0.602
+      ],
+      [
+        0.103,
+        0.602
+      ],
+      [
+        0.119,
+        0.619
+      ],
+      [
+        0.103,
+        0.636
+      ],
+      [
+        0.025,
+        0.636
+      ]
+    ]
+  },
+  "head": {
+    "guide": "head_vent_v2.png",
+    "pink": "target DARK lower vent, must cross white source mirror seam to avoid two separate slots",
+    "white_dashed": "real front chin mirror seam, not artwork",
+    "vent_polygon": [
+      [
+        0.034,
+        0.705
+      ],
+      [
+        0.091,
+        0.705
+      ],
+      [
+        0.096,
+        0.71
+      ],
+      [
+        0.096,
+        0.724
+      ],
+      [
+        0.091,
+        0.729
+      ],
+      [
+        0.034,
+        0.729
+      ]
+    ],
+    "mirror_seam": [
+      [
+        0.0635,
+        0.5553
+      ],
+      [
+        0.04425,
+        0.64625
+      ],
+      [
+        0.04,
+        0.7358
+      ]
+    ]
+  },
+  "uv_changed": false
+}

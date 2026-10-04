@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "scope": "Head surface0 geometry refinement against frozen stylev2: exact UV loops, polygons/materials, weights, rest rig/transforms; only head surface0 positions/normals allowed. True original-total20 percent independently measured. Art likeness awaits user review.",
+  "before_scene_sha256": "0cd3bc22bee11bb21cb8a0daaea304745123ae731994cef6d226b07a9029adf8",
+  "current_scene_sha256": "daa91815d79c729bf767a05f247e1dffa840edb620023e38b078f2db7c1b5af8",
+  "before_target_sha256": "cf79528dfb54a3ae8f2403035fb08ab31b8ba35f6a52b554ff7a0e36e6f2a2de",
+  "scene_invariants": "review/helmet_refinement_scene_invariants.json",
+  "scene_invariants_sha256": "33443ae82ea00d779c0264998bccdc9fa4c8932e35787d37b951d953a12f0a93",
+  "scene_records": [
+    {
+      "head_surface0_positions_normals_only": true,
+      "head_surface1_all_arrays_exact": true,
+      "part": "ArmorHead_02",
+      "surfaces": 2,
+      "uv_indices_weights_bone_arrays_skin_transform_material_parameters_exact": true
+    },
+    {
+      "all_mesh_arrays_transform_skeleton_skin_material_parameters_exact": true,
+      "part": "ArmorBody_02",
+      "surfaces": 2,
+      "uv_indices_weights_bone_arrays_skin_transform_material_parameters_exact": true
+    },
+    {
+      "all_mesh_arrays_transform_skeleton_skin_material_parameters_exact": true,
+      "part": "ArmorHand_02",
+      "surfaces": 1,
+      "uv_indices_weights_bone_arrays_skin_transform_material_parameters_exact": true
+    },
+    {
+      "all_mesh_arrays_transform_skeleton_skin_material_parameters_exact": true,
+      "part": "ArmorFoot_02",
+      "surfaces": 1,
+      "uv_indices_weights_bone_arrays_skin_transform_material_parameters_exact": true
+    }
+  ],
+  "material_parameters_preserved": true,
+  "baseline_snapshot_sha256": "2235a24b261d60b58c1f0f87c115518cc0723f5406e3a24c4b2a3411b7eb157f",
+  "baseline_master": "docs/art/tank_runtime_v1/revisions/before_helmet_refinement_v3/delivery/tank_master.blend",
+  "baseline_master_sha256": "16d820760149dba2735543729a897c221611579a2fb0c8d76e6955cf42f17d01",
+  "master_sha256": "4127dc7460f25c54e1b7afd4d2fdf33bad02b46ec7ccb74127726414e64d1cc0",
+  "source_sha256": "fb4371b450799b9038d6ef04bf3dc44bcc629ab7520834768decab5908917000",
+  "target_sha256": "77d972fae0128a8a66c8c9d23ea5028bfe8539a4a8f0f5352e38477967b22460",
+  "geometry_sha256": "2c408d92ed69a466520b2a820ef71fbdb747a159411474e570e61f593408f487",
+  "additional_vertex_position_changes": 86,
+  "additional_uv_changes": 0,
+  "positions_changed_parts": [
+    "ArmorHead_02"
+  ],
+  "allowed_geometry_scope": "ArmorHead_02 surface 0 positions and normals only",
+  "original_total_limit": 0.2,
+  "original_max_rest_displacement_fraction": 0.11845645044148163,
+  "original_dimension_delta_fraction": [
+    4.440892098500626e-16,
+    0.024218352973500723,
+    2.220446049250313e-16
+  ],
+  "packed_meshes": 4,
+  "packed_rigs": 1
+}

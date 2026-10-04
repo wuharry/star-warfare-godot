@@ -1,0 +1,503 @@
+{
+	"canonical_diffuse_sha256_at_start": {
+		"body": "a92ae9149165beec2afb7e23a339cfdc13380ae4da71f6ab1d576c15b2a4eac4",
+		"foot": "e8a16ff8e61c0fe04ee9f766a9ffb3d04459ce773e0f5ce5dc44d55db8f5e2be",
+		"hand": "6bf882758297af2c789b61d602cf39dbfd797e81320fd11fee8f03dee2aac79d",
+		"head": "a7f1e5a2ff91ae4663e3ea40fcb6a6f599e8536b1cb544cba65b1abc1b1fa1dd",
+		"shoulder": "4905a54b926654a52e8f63d06b4ac51bc65396db023f4684c1150ee5969df3db"
+	},
+	"capture_sha256": {
+		"res://docs/art/tank_runtime_v1/review/engine/family_original_01_front.png": "664a2dbf2b478c88941a774fb48c6a6ccf646a5a190966df4bf3da0ce9e1ad2c",
+		"res://docs/art/tank_runtime_v1/review/engine/family_original_06_front.png": "8caa62dc3aa0dded257e1a286a74e1d5d54d4af008b59d860ef57d4e422348d8",
+		"res://docs/art/tank_runtime_v1/review/engine/new_clay_front.png": "8ca4b72fbaf7fc84bf14725e4b03e64e8d23d10127a2df5ca639e149d7f34a53",
+		"res://docs/art/tank_runtime_v1/review/engine/new_clay_quarter.png": "09e7e7847c007ae2072bf6bf06cb8c9523e5ae15339fe9e1f15210c7ad1c2ba4",
+		"res://docs/art/tank_runtime_v1/review/engine/new_clay_rear.png": "ff0b4e5067fa6ef0b5e95de8ff94d5e94a993796aeddbdb1a77cbbfef02d1821",
+		"res://docs/art/tank_runtime_v1/review/engine/new_clay_side.png": "f0bde581a39947ed2ca7b9b0cb68df296cf24db33114c0e148d1d80398d870d2",
+		"res://docs/art/tank_runtime_v1/review/engine/new_diffuse_front.png": "3196be89490f542b7b7794e9cb98ad0a9cad6bd35604828cbfe91a75a484f76a",
+		"res://docs/art/tank_runtime_v1/review/engine/new_diffuse_quarter.png": "60438b9aaa38ae951292a256ef4f17f6c86c21f7234bf245da677864a5d4cc71",
+		"res://docs/art/tank_runtime_v1/review/engine/new_diffuse_rear.png": "fe51d3344dd37f551ffd026d2cb0858d9280b95157d74c2873fcbdc94bfb8338",
+		"res://docs/art/tank_runtime_v1/review/engine/new_diffuse_side.png": "09c9e2246d163fdb7c7c8d27994e1a1d61647a043733dae0781c695e33826f07",
+		"res://docs/art/tank_runtime_v1/review/engine/new_head_front.png": "07563e08a1290f5c191d5d7a8e638ce6d753b242a8eab4861cc7d28b4a52c1df",
+		"res://docs/art/tank_runtime_v1/review/engine/new_head_quarter.png": "eda2c318aab453c38a756bc8c1fc4d561f13948391e09b0697127be68f9d67a4",
+		"res://docs/art/tank_runtime_v1/review/engine/new_head_rear.png": "faa434a6bd923f0d582a352341a53ae67b1d6520b497cd59feef311fcac34c97",
+		"res://docs/art/tank_runtime_v1/review/engine/new_head_side.png": "3bef19eb094ad1de4133fc699d97e196bd38247836a0e9df424297389a2aaf87",
+		"res://docs/art/tank_runtime_v1/review/engine/new_idle_rifle.png": "bc65be476900e837b9502a539c0b72afab9c76623d38d5131af174bcb842d104",
+		"res://docs/art/tank_runtime_v1/review/engine/new_level_01_front.png": "f2ca024fe4af95c0ad5cbd6f218fedc84376a0db0ac8b9665b75510ae5ac0ae9",
+		"res://docs/art/tank_runtime_v1/review/engine/new_level_01_gameplay.png": "4ae84ad7ce6680db1a282f7a6b7479cd0d341e906a5e1e4453a6415aeef5b114",
+		"res://docs/art/tank_runtime_v1/review/engine/new_level_08_front.png": "e56d2a6fef085a7168dff01425466a67ccbe36df191a319f4fdadfa1a92ee808",
+		"res://docs/art/tank_runtime_v1/review/engine/new_level_08_gameplay.png": "f5a63ff94664bedda0628456dd48107a15baed0673a764c2730593a30009872c",
+		"res://docs/art/tank_runtime_v1/review/engine/new_painted_front.png": "3196be89490f542b7b7794e9cb98ad0a9cad6bd35604828cbfe91a75a484f76a",
+		"res://docs/art/tank_runtime_v1/review/engine/new_painted_quarter.png": "60438b9aaa38ae951292a256ef4f17f6c86c21f7234bf245da677864a5d4cc71",
+		"res://docs/art/tank_runtime_v1/review/engine/new_painted_rear.png": "fe51d3344dd37f551ffd026d2cb0858d9280b95157d74c2873fcbdc94bfb8338",
+		"res://docs/art/tank_runtime_v1/review/engine/new_painted_side.png": "09c9e2246d163fdb7c7c8d27994e1a1d61647a043733dae0781c695e33826f07",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_00.png": "c7095310cbf9add526c7ae32fb9fc1acc4e678e8c7f9ff922daa666b67e1fc3f",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_01.png": "98e4ffbd939b4a6eb164cf1c4969f25287c739a8661dc5ea61a3d5ba99f9d88b",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_02.png": "2189e0618c4a8e8be901a9b5c16dd3ac9ebac2b60b44f73c08a55da765b75781",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_03.png": "014c3e3372f2c04ccb80713edf95ed923406750e4dcc01b56b163a38d404d90c",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_04.png": "ca09b2a43d3a0a9e30c3dc35cfcac47e6d4af99c20592308f9b04aa15cc97a04",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_05.png": "85f14996610354ff5b678e38a3bba029d57c406e2d5f9909c7adf55ad99b35a6",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_06.png": "fd95c4efae52c6e53b0e5116beb642b6f863eb7b82070dcde05c90d4c822dd0a",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_07.png": "1ca1f9447b30421650e7a6dcf0ea63401d7a429f7c64867c2fadbe79ca47e93b",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_08.png": "f6f1934b8481be381ac70b196ed17e6ea6c66997f20b3083257f3de057d039f0",
+		"res://docs/art/tank_runtime_v1/review/engine/new_run_rifle.png": "c7b82e2d0e73a9c659b33fbb2f4bfcb0aa3ccad59f6801c65749e59a003baa4d",
+		"res://docs/art/tank_runtime_v1/review/engine/original_clay_front.png": "cd9f0d0812e61a11f7376602bbe5ddd2ed0851f9b6a56d305e549160d6950705",
+		"res://docs/art/tank_runtime_v1/review/engine/original_clay_quarter.png": "ab54c03a0044a9ff1dc743a8daaba06b1c34d750b34b1508abfc265d149b3829",
+		"res://docs/art/tank_runtime_v1/review/engine/original_clay_rear.png": "89da7b0793590695c96e3f22fa2ff881e570eec2532bb0d1aceafc06224a687c",
+		"res://docs/art/tank_runtime_v1/review/engine/original_clay_side.png": "20c46db5a0d91b33cd02ec5811091b67a71fbfb8b8d9bcdbbc3f99d6f114d438",
+		"res://docs/art/tank_runtime_v1/review/engine/original_diffuse_front.png": "92b3b59e185207fd4b1566bc53967673bfde0db1cc896b9c6e12858a664ea468",
+		"res://docs/art/tank_runtime_v1/review/engine/original_diffuse_quarter.png": "c91374780b952bc2b7bd20e150f47b58b0b370740c89479e93e3cb72912cc2f7",
+		"res://docs/art/tank_runtime_v1/review/engine/original_diffuse_rear.png": "b40561c0254664ca3d0269e92cc2d3585ddb493e5ccceda531aa0451d33231c5",
+		"res://docs/art/tank_runtime_v1/review/engine/original_diffuse_side.png": "a63b25a14dc1422c3389abb8709ef69a8b6222864e270b7b710b2a5a7d7abe6f",
+		"res://docs/art/tank_runtime_v1/review/engine/original_head_front.png": "f372c25c9f4a9abc34b0273a0ed1ff0d9ddcba62bbe73bd90202ca06e0b7a532",
+		"res://docs/art/tank_runtime_v1/review/engine/original_head_quarter.png": "d2dc7321fc4377354b839dd1caac5c0f286d68a2d056a970d9976db7663424b6",
+		"res://docs/art/tank_runtime_v1/review/engine/original_head_rear.png": "c9eeac98bcfbe788aecebc055d4c2e52b771c43665c3232f0c85b990c558cc21",
+		"res://docs/art/tank_runtime_v1/review/engine/original_head_side.png": "c5d51ca0a24a3294dae0f1bdec053e70b251de82517176621835a451ed3ba733",
+		"res://docs/art/tank_runtime_v1/review/engine/original_idle_rifle.png": "5a6db3222346c3d79e725ff4fbd3f9a4435846c5ec28ab02c743229031e4bce2",
+		"res://docs/art/tank_runtime_v1/review/engine/original_level_01_front.png": "feebedfec1e3842a9d7e691b19ff08a37a8a3a9982d5214acecebc933f8921a4",
+		"res://docs/art/tank_runtime_v1/review/engine/original_level_01_gameplay.png": "fcded099627675cd72fd9858f06f6a4f5c68682b28bd5c3d24f857c4aa342507",
+		"res://docs/art/tank_runtime_v1/review/engine/original_level_08_front.png": "87b099c146a157ec6ee0518132024d5b5f5f395d5c04075d54530518ea6ceac1",
+		"res://docs/art/tank_runtime_v1/review/engine/original_level_08_gameplay.png": "6c9eb18ad7ec082ce01d461a0a0dece9a41879cea98ed7a766d65acafdd31ab9",
+		"res://docs/art/tank_runtime_v1/review/engine/original_painted_front.png": "2a0b1ba645a161cd9f77d727182e36047679db90b91a841e2b8bb1a5047161ce",
+		"res://docs/art/tank_runtime_v1/review/engine/original_painted_quarter.png": "ed61d068dcf947f25a3266af9868997ff9b12bce91bd87046b649af0f2f521d1",
+		"res://docs/art/tank_runtime_v1/review/engine/original_painted_rear.png": "a4307f69b7195a73428ec932247f9206248c9b8473da6c5a507c1ef483ed72b1",
+		"res://docs/art/tank_runtime_v1/review/engine/original_painted_side.png": "013aa2654b55822ac910c70aaa20366536a57a818f1ec8eb2a9d4ded81b630b5",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_00.png": "711ecced62af1c9c4002b5efccb9e6abc5f14dca91d8dccff519960b38ef6f1b",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_01.png": "6311f24074cd0c291f9019f2f9b9db305eb4485f2a6699355b3c910dd80bfaef",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_02.png": "5a075baf9d0b23eb540c25cfe7a6b0efe3e49e6d94d0e7648b95f6231206fce4",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_03.png": "eb18ac8f194ed7529971ebc293422050ea67d82ad5fececc439fb015540b5b41",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_04.png": "5274a153e766284b9d25508ee2cba1ba7dfdda62e5e1c0207590bb7ebf097061",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_05.png": "6a10eda5086737a50af3fef6c353208df251594bacc0429ca345ecc2333c2b29",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_06.png": "a190235467e2cd2056dbb83f0ea3d04ecab19c4365a3fcf71b2d2c9267d8c053",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_07.png": "e904e05bf63f73186cf8faba624bd5785ffdf0668198d091a7c4ba7eb9ff4060",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_08.png": "0a92c7a72327612b96dc0bba6930afae88a1d2aabfd921f5e42efe72b5cdce4a",
+		"res://docs/art/tank_runtime_v1/review/engine/original_run_rifle.png": "56b6f1b33dfd9893157df08d97befb74599be54a3ac8687246d46cda08dd72eb"
+	},
+	"diffuse_views": "White material tint for both versions, so original painted greys can be compared without the original material tint. Painted views retain original imported tint. This affects captures only, not source assets or gameplay defaults.",
+	"engine_arguments": [
+		"tools/tank_runtime_v1/capture.tscn"
+	],
+	"files": [
+		"res://docs/art/tank_runtime_v1/review/engine/original_clay_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_clay_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_painted_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_painted_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_diffuse_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_diffuse_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_clay_side.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_clay_side.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_painted_side.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_painted_side.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_diffuse_side.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_diffuse_side.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_clay_rear.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_clay_rear.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_painted_rear.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_painted_rear.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_diffuse_rear.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_diffuse_rear.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_clay_quarter.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_clay_quarter.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_painted_quarter.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_painted_quarter.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_diffuse_quarter.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_diffuse_quarter.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_head_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_head_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_head_side.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_head_side.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_head_rear.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_head_rear.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_head_quarter.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_head_quarter.png",
+		"res://docs/art/tank_runtime_v1/review/engine/family_original_01_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/family_original_06_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_idle_rifle.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_idle_rifle.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_run_rifle.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_run_rifle.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_00.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_00.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_01.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_01.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_02.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_02.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_03.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_03.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_04.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_04.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_05.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_05.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_06.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_06.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_07.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_07.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_08.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_08.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_level_01_gameplay.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_level_01_gameplay.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_level_01_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_level_01_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_level_08_gameplay.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_level_08_gameplay.png",
+		"res://docs/art/tank_runtime_v1/review/engine/original_level_08_front.png",
+		"res://docs/art/tank_runtime_v1/review/engine/new_level_08_front.png"
+	],
+	"full_body_framing": {
+		"front": {
+			"center": [
+				-0.000000774860382080078,
+				0.96279913187027,
+				-0.0669015049934387
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					491.805786132813,
+					655.459289550781
+				],
+				"min": [
+					148.194198608398,
+					64.5407485961914
+				]
+			},
+			"same_camera_for_original_and_new": true
+		},
+		"quarter": {
+			"center": [
+				0.0541169010102749,
+				0.945420026779175,
+				-0.0397439226508141
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					473.899536132813,
+					659.100158691406
+				],
+				"min": [
+					166.100677490234,
+					60.8999404907227
+				]
+			},
+			"same_camera_for_original_and_new": true
+		},
+		"rear": {
+			"center": [
+				-0.000000238418579101563,
+				0.96279913187027,
+				-0.0669015049934387
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					491.805786132813,
+					655.459289550781
+				],
+				"min": [
+					148.194198608398,
+					64.5407485961914
+				]
+			},
+			"same_camera_for_original_and_new": true
+		},
+		"side": {
+			"center": [
+				-0.000000238418579101563,
+				0.96279913187027,
+				-0.0669018030166626
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					421.771301269531,
+					655.459289550781
+				],
+				"min": [
+					218.228698730469,
+					64.5407485961914
+				]
+			},
+			"same_camera_for_original_and_new": true
+		}
+	},
+	"image_dimensions": {
+		"res://docs/art/tank_runtime_v1/review/engine/family_original_01_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/family_original_06_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_clay_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_clay_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_clay_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_clay_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_diffuse_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_diffuse_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_diffuse_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_diffuse_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_head_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_head_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_head_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_head_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_idle_rifle.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_level_01_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_level_01_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_level_08_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_level_08_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_painted_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_painted_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_painted_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_painted_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_00.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_01.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_02.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_03.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_04.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_05.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_06.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_07.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_reload_08.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/new_run_rifle.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_clay_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_clay_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_clay_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_clay_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_diffuse_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_diffuse_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_diffuse_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_diffuse_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_head_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_head_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_head_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_head_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_idle_rifle.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_level_01_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_level_01_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_level_08_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_level_08_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_painted_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_painted_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_painted_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_painted_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_00.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_01.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_02.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_03.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_04.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_05.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_06.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_07.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_reload_08.png": [
+			640,
+			720
+		],
+		"res://docs/art/tank_runtime_v1/review/engine/original_run_rifle.png": [
+			640,
+			720
+		]
+	},
+	"note": "One new model for all views; each full-body camera fits the original and candidate posed vertices together with KEEP_HEIGHT and a shared margin. Original raw mesh/skin preserved for comparison. Poses use actual player and reload fixture; two real levels also captured.",
+	"renderer": "gl_compatibility",
+	"resource_mode": "normal_imported_resources",
+	"runtime_scene_sha256": "0cd3bc22bee11bb21cb8a0daaea304745123ae731994cef6d226b07a9029adf8",
+	"save_unchanged": true,
+	"scene_sha256_at_start": "0cd3bc22bee11bb21cb8a0daaea304745123ae731994cef6d226b07a9029adf8",
+	"target_sha256": "cf79528dfb54a3ae8f2403035fb08ab31b8ba35f6a52b554ff7a0e36e6f2a2de",
+	"target_sha256_at_start": "cf79528dfb54a3ae8f2403035fb08ab31b8ba35f6a52b554ff7a0e36e6f2a2de",
+	"viewports": {
+		"gameplay": [
+			1280,
+			720
+		],
+		"review": [
+			640,
+			720
+		]
+	}
+}

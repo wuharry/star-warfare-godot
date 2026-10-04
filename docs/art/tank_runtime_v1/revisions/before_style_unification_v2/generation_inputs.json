@@ -1,0 +1,411 @@
+[
+  {
+    "label": "head",
+    "prompt": "docs/art/tank_runtime_v1/prompts/head_diffuse_v1.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\head_27f2a32dc8b6_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\head_uv.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_head_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f87cb276-cf09-4cd4-92e5-2eefdd354d83.png",
+    "selected": false,
+    "output": "assets/armors/tank_v1/head_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "note": "",
+    "archive": "docs/art/tank_runtime_v1/generated/head_diffuse_v1.png",
+    "sha256": "78277e53bfa0091d92d8b3cc603bb8cd10cf2c223ae833bbde5be1f992c39d43",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\head_27f2a32dc8b6_2x.png",
+        "sha256": "93d71adfd46866b2cb26aa22bd5993377c584924d5a5a9e652ef1a1216cf765c"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+        "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\head_uv.png",
+        "sha256": "55bdee490a2a319483c6ded694ab88aaffa19eaa83301e41195a317c47f4af45"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_head_front.png",
+        "sha256": "fdf8d13526e9f23c25fa380c68345f76bf888e40c7ef3f75e05636f0062db8a9"
+      }
+    ],
+    "superseded_by": "tank_head_v2"
+  },
+  {
+    "label": "body",
+    "prompt": "docs/art/tank_runtime_v1/prompts/body_diffuse_v1.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\body_ed36db00f85b_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\body_uv.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-e96c4280-3de7-4f83-86ab-c978eb380f3e.png",
+    "selected": false,
+    "output": "assets/armors/tank_v1/body_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "note": "",
+    "archive": "docs/art/tank_runtime_v1/generated/body_diffuse_v1.png",
+    "sha256": "41de11e0dac02837046db29c06e545873ce29bfb8f476b71f5f5e5f07cfab122",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\body_ed36db00f85b_2x.png",
+        "sha256": "98a1803ffa1838c4fd39223dd302de4a0725684404dd7bdf5cc3d87e4cd14104"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+        "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\body_uv.png",
+        "sha256": "ebc10295d1f3ef2af4848b710e86c990757ba18679a0994f3158f27dd686a78f"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png",
+        "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521"
+      }
+    ],
+    "superseded_by": "body_diffuse_v2"
+  },
+  {
+    "label": "shoulder",
+    "prompt": "docs/art/tank_runtime_v1/prompts/shoulder_diffuse_v1.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\jian_077c0f9d616a_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\shoulder_uv.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-efec810b-73ed-4fb4-94f1-979826088940.png",
+    "selected": false,
+    "output": null,
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "note": "Generated a part-design sheet instead of a compatible shoulder UV atlas; user chose it as new design reference. Not a runtime texture.",
+    "archive": "docs/art/tank_runtime_v1/generated/shoulder_diffuse_v1.png",
+    "sha256": "fe5044af9119879a0cb240ba6f7137b4673ba370822b4045f81b587d33ccc362",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\jian_077c0f9d616a_2x.png",
+        "sha256": "7572036a24caf732eabff2629c0ab7364d89a267a825a41342b17f99afdca67f"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+        "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\shoulder_uv.png",
+        "sha256": "41f6319f28ef856c6407dccd601136bcd3a9bca1140b5547a6263bf98bc430da"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png",
+        "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521"
+      }
+    ]
+  },
+  {
+    "label": "hand",
+    "prompt": "docs/art/tank_runtime_v1/prompts/hand_diffuse_v1.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\hand_e05d06ac0d12_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\hand_uv.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-bdbb92d6-410b-4dcc-baae-9ef8b28459a4.png",
+    "selected": true,
+    "output": "assets/armors/tank_v1/hand_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "note": "",
+    "archive": "docs/art/tank_runtime_v1/generated/hand_diffuse_v1.png",
+    "sha256": "b1e31fb647f6cceb0f44477190e1adbe63e63c3b55bddc9e577efe1b6a96f05e",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\hand_e05d06ac0d12_2x.png",
+        "sha256": "82cdcfea69c126971e52f3221da8823d901d26f9f80a4c5337f640b55ccf34a3"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+        "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\hand_uv.png",
+        "sha256": "e13745fc5b14f896422e5dc986408b5dc5b9638bdf533b442ee4ea2d4606948e"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png",
+        "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521"
+      }
+    ]
+  },
+  {
+    "label": "foot",
+    "prompt": "docs/art/tank_runtime_v1/prompts/foot_diffuse_v1.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\foot_31083bd2d7d1_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\foot_uv.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f974d4b7-1e9c-4d34-8d5c-56fb13120f5e.png",
+    "selected": true,
+    "output": "assets/armors/tank_v1/foot_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "note": "",
+    "archive": "docs/art/tank_runtime_v1/generated/foot_diffuse_v1.png",
+    "sha256": "09528411436cbd609da4917ca3974f6eece628c2dcdb22f279a898ca1d149112",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\foot_31083bd2d7d1_2x.png",
+        "sha256": "8e5dde835854e66f41577e4c21fa5f4d37b5522f99237a1671cee6e7c15fcf3d"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c03_tank_fusion.jpg",
+        "sha256": "791fa9ca0081d7cf1b9e394b2ab90b377f72945f61d7b80ad6676f275b82fd49"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\foot_uv.png",
+        "sha256": "443826d41c9a4b5fd431aa0e9b53252041fa3006d03fbef84855cd00b5bfdead"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png",
+        "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521"
+      }
+    ]
+  },
+  {
+    "key": "tank_body_v2",
+    "suit": "tank",
+    "label": "body",
+    "prompt": "docs/art/tank_runtime_v1/prompts/body_diffuse_v2.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\tank_v1\\body_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\body_front_regions.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-bd6502d9-a32a-477e-93e4-15dd40f579ca.png",
+    "selected": false,
+    "output": "assets/armors/tank_v1/body_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\tank_v1\\body_diffuse.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\generated\\body_diffuse_v1.png",
+        "sha256": "41de11e0dac02837046db29c06e545873ce29bfb8f476b71f5f5e5f07cfab122"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png",
+        "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\body_front_regions.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\body_front_regions.png",
+        "sha256": "7b31470addd38bedd29902293b0af39bf11b10a49797f8deaabfedb085580fb5"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png",
+        "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521"
+      }
+    ],
+    "archive": "docs/art/tank_runtime_v1/generated/body_diffuse_v2.png",
+    "sha256": "7828b6ec8ff7f7ae1b71dd2c329b7d21f3f18ccbd8e7c9402b27c0f35c4b2e3d",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "superseded_by": "tank_body_v4"
+  },
+  {
+    "key": "tank_shoulder_v2",
+    "suit": "tank",
+    "label": "shoulder",
+    "prompt": "docs/art/tank_runtime_v1/prompts/shoulder_diffuse_v2.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\jian_077c0f9d616a_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\shoulder_uv.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-43a24eec-a777-4247-8c2f-28fca2a70222.png",
+    "selected": true,
+    "output": "assets/armors/tank_v1/shoulder_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\jian_077c0f9d616a_2x.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\jian_077c0f9d616a_2x.png",
+        "sha256": "7572036a24caf732eabff2629c0ab7364d89a267a825a41342b17f99afdca67f"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png",
+        "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\shoulder_uv.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\shoulder_uv.png",
+        "sha256": "41f6319f28ef856c6407dccd601136bcd3a9bca1140b5547a6263bf98bc430da"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\review\\baseline\\original_diffuse_front.png",
+        "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521"
+      }
+    ],
+    "archive": "docs/art/tank_runtime_v1/generated/shoulder_diffuse_v2.png",
+    "sha256": "903fb418276ce29a25cc25ac4e92ca9f56d57320334a2c3855db72bf3b1e7adb",
+    "dimensions": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "label": "tank_body_v3",
+    "prompt": "docs/art/tank_runtime_v1/prompts/body_diffuse_v3.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\tank_v1\\body_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\body_placement_v3.png"
+    ],
+    "references": [
+      {
+        "path": "assets/armors/tank_v1/body_diffuse.png",
+        "sha256": "7828b6ec8ff7f7ae1b71dd2c329b7d21f3f18ccbd8e7c9402b27c0f35c4b2e3d",
+        "snapshot": "docs/art/tank_runtime_v1/generated/body_diffuse_v2.png"
+      },
+      {
+        "path": "docs/art/tank_runtime_v1/approved_parts_reference.png",
+        "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12"
+      },
+      {
+        "path": "docs/art/tank_runtime_v1/guides/body_placement_v3.png",
+        "sha256": "6e8bc192823f4af7d246ac1926ce4e5b862f605a569e97078f86f0990f403bea"
+      }
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-d0282485-3a1a-4f40-90be-f3bf4bd47198.png",
+    "selected": false,
+    "output": null,
+    "archive": "docs/art/tank_runtime_v1/generated/body_diffuse_v3.png",
+    "sha256": "67deceee326859fa201f3a2beb621c65af1b6cb3f230979fc6daea09dc2c0a82",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "rejection_reason": "Image retained the misplaced lower green collar and high black chest vent; did not follow engine-verified semantic placement guide. Kept as unused generation."
+  },
+  {
+    "label": "tank_head_v2",
+    "prompt": "docs/art/tank_runtime_v1/prompts/head_diffuse_v2.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\tank_v1\\head_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\head_vent_v2.png"
+    ],
+    "references": [
+      {
+        "path": "assets/armors/tank_v1/head_diffuse.png",
+        "sha256": "78277e53bfa0091d92d8b3cc603bb8cd10cf2c223ae833bbde5be1f992c39d43",
+        "snapshot": "docs/art/tank_runtime_v1/generated/head_diffuse_v1.png"
+      },
+      {
+        "path": "docs/art/tank_runtime_v1/approved_parts_reference.png",
+        "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12"
+      },
+      {
+        "path": "docs/art/tank_runtime_v1/guides/head_vent_v2.png",
+        "sha256": "6651ec9a4efbdc1d86708d9bf2569c117baa27eb25dcf370301a0ab8e6df55dc"
+      }
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-acbd9be0-2bdb-4b97-a074-4cf5ec908adf.png",
+    "selected": true,
+    "output": "assets/armors/tank_v1/head_diffuse.png",
+    "archive": "docs/art/tank_runtime_v1/generated/head_diffuse_v2.png",
+    "sha256": "85b42fdcdb953b30cb36c21ff0f7c23293cd795bcf9d324e8caeeeeaaf8986c4",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03"
+  },
+  {
+    "label": "tank_body_v4",
+    "prompt": "docs/art/tank_runtime_v1/prompts/body_diffuse_v4.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\guides\\body_placement_v3.png",
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\tank_v1\\body_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\tank_runtime_v1\\approved_parts_reference.png"
+    ],
+    "references": [
+      {
+        "path": "docs/art/tank_runtime_v1/guides/body_placement_v3.png",
+        "sha256": "6e8bc192823f4af7d246ac1926ce4e5b862f605a569e97078f86f0990f403bea"
+      },
+      {
+        "path": "assets/armors/tank_v1/body_diffuse.png",
+        "sha256": "7828b6ec8ff7f7ae1b71dd2c329b7d21f3f18ccbd8e7c9402b27c0f35c4b2e3d",
+        "snapshot": "docs/art/tank_runtime_v1/generated/body_diffuse_v2.png"
+      },
+      {
+        "path": "docs/art/tank_runtime_v1/approved_parts_reference.png",
+        "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12"
+      }
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-8f0cb55a-36f4-4afd-9a49-2820068a901b.png",
+    "selected": true,
+    "output": "assets/armors/tank_v1/body_diffuse.png",
+    "archive": "docs/art/tank_runtime_v1/generated/body_diffuse_v4.png",
+    "sha256": "4ab7e617dab966f4a9505a0793066c1010b001431232564ab1b6cd44832b5075",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03"
+  }
+]
