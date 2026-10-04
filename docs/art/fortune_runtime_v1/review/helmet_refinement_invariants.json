@@ -1,0 +1,127 @@
+{
+	"additional_uv_changes": 0,
+	"before_scene_sha256": "e4114718906e372c921d0f364e5c86f82bfd3b7a87a96e94be23c475f5d64a13",
+	"current_scene_sha256": "499da48815ccf3eb140355b3ab16bcea2549603abfb5b91a26f06357ab80b724",
+	"errors": [],
+	"geometry": {
+		"bounds_game": {
+			"max": [
+				0.253794103860855,
+				1.8860000371933,
+				0.241938188672066
+			],
+			"min": [
+				-0.253796547651291,
+				1.215536236763,
+				-0.324999988079071
+			]
+		},
+		"dimension_delta_fraction": [
+			0.0,
+			0.0396669040069528,
+			0.0768259580782072
+		],
+		"max_displacement_fraction_of_smallest_dimension": 0.14736285830119,
+		"max_rest_displacement": 0.0748000092537929,
+		"original_bounds": {
+			"max": [
+				0.253794103860855,
+				1.91369378566742,
+				0.241938188672066
+			],
+			"min": [
+				-0.253796547651291,
+				1.215536236763,
+				-0.372180223464966
+			]
+		},
+		"original_uv_charts": 4.0,
+		"original_uv_coordinate_count": 157.0,
+		"shape_quality": {
+			"coincident_seam_max_rest_gap": 0.0,
+			"note": "Original coincident positions and triangle orientation compared in Godot rest space.",
+			"reversed_triangles": 0.0,
+			"zero_area_triangles": 0.0
+		},
+		"triangles": 170.0,
+		"uv_by_surface": [
+			{
+				"label": "head",
+				"uv_changed_count": 22.0,
+				"uv_charts": 4.0,
+				"uv_coordinate_count": 157.0
+			}
+		],
+		"uv_changed_count": 22.0,
+		"uv_changed_fraction": 0.140127388535032,
+		"uv_charts": 4.0,
+		"uv_coordinate_count": 157.0,
+		"uv_max_displacement_from_original": 0.0850000017618432,
+		"uv_preserved": false,
+		"uv_rms_displacement_from_original": 0.0318185533165127,
+		"weight_source": "original, unchanged"
+	},
+	"head_normals_change_allowed": true,
+	"incremental": [
+		{
+			"changed_rest_vertices": 83,
+			"part": "ArmorHead_01",
+			"surface": 0
+		},
+		{
+			"changed_rest_vertices": 0,
+			"part": "ArmorBody_01",
+			"surface": 0
+		},
+		{
+			"changed_rest_vertices": 0,
+			"part": "ArmorBody_01",
+			"surface": 1
+		},
+		{
+			"changed_rest_vertices": 0,
+			"part": "ArmorHand_01",
+			"surface": 0
+		},
+		{
+			"changed_rest_vertices": 0,
+			"part": "ArmorFoot_01",
+			"surface": 0
+		}
+	],
+	"limitation": "Engineering invariants only; neither approved art similarity nor full-frame animation verification.",
+	"master_sha256": "531b22061a36d98b5981105d9a9c5f21d343507aa046871d199bb3711599b1ef",
+	"positions_changed": [
+		"ArmorHead_01"
+	],
+	"records": [
+		{
+			"changed_actual_scn_vertices": 83,
+			"max_incremental_rest_displacement_m": 0.0180000066757202,
+			"part": "ArmorHead_01",
+			"uv_indices_weights_bone_arrays_and_skin_exact": true
+		},
+		{
+			"changed_actual_scn_vertices": 0,
+			"max_incremental_rest_displacement_m": 0.0,
+			"part": "ArmorBody_01",
+			"uv_indices_weights_bone_arrays_and_skin_exact": true
+		},
+		{
+			"changed_actual_scn_vertices": 0,
+			"max_incremental_rest_displacement_m": 0.0,
+			"part": "ArmorHand_01",
+			"uv_indices_weights_bone_arrays_and_skin_exact": true
+		},
+		{
+			"changed_actual_scn_vertices": 0,
+			"max_incremental_rest_displacement_m": 0.0,
+			"part": "ArmorFoot_01",
+			"uv_indices_weights_bone_arrays_and_skin_exact": true
+		}
+	],
+	"scope": "Actual final SCN arrays against immutable v7 SCN: only head vertex positions/normals may change; all UV/index/weights/bones/skin and all body/limb arrays exact. Original total 15% displacement/dimensions checked, not an incremental allowance.",
+	"source_sha256": "932227eab68d09f5a3b1778ff43090ab07a3b629ed365a8c0a79e827cef81132",
+	"status": "PASS",
+	"target_sha256": "be84f2dd32bb6ae6189ebc77dae049cee2882d5d7c68f656aad62f8a9813e8f3"
+}

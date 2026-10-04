@@ -1,0 +1,956 @@
+[
+  {
+    "label": "body",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/body_diffuse_v1.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\body_aa8d1a1b3465_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\body_uv.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-b9e99923-7254-4dc3-86b0-ff47d968714a.png",
+    "selected": false,
+    "output": "assets/armors/fortune_v1/body_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "archive": "docs/art/fortune_runtime_v1/generated/body_diffuse_v1.png",
+    "sha256": "94dc5dbe8219883906c6d8f0abfc9be3235dc3400a27574ebb424823563c9ef2",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\body_aa8d1a1b3465_2x.png",
+        "sha256": "be886fb5ade5992ea9955c2ff746ea6011af4a4ec8e02782eed8fdede0b26703"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+        "sha256": "3789fe9fa9d292cb12ba7f7f967854be864018d08cf1403a204817f54731b91a"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\body_uv.png",
+        "sha256": "42f6ca15ff8a7b7a80a018a21b082c1db6a6b4479a72d71035bad998ef7670ea"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_diffuse_front.png",
+        "sha256": "0720ddf1169ff2a7e7e20334268b109f3a2f5b98a6ab662fff18adcf4410e671"
+      }
+    ],
+    "superseded_by": "body_diffuse_v2"
+  },
+  {
+    "label": "shoulder",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/shoulder_diffuse_v1.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\jian_0811a86c44a4_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\shoulder_uv.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f5b7bf33-20fc-4782-942f-6829f80be012.png",
+    "selected": false,
+    "output": "assets/armors/fortune_v1/shoulder_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "archive": "docs/art/fortune_runtime_v1/generated/shoulder_diffuse_v1.png",
+    "sha256": "fc12af555a24fbd4597491196552b448ae2c7f4a41967269451dbe2fb82660b9",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\jian_0811a86c44a4_2x.png",
+        "sha256": "760ead8a16cb3c733e0281a02fec766673d413e0b999ad7d8fc95e4d5ec0a7db"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+        "sha256": "3789fe9fa9d292cb12ba7f7f967854be864018d08cf1403a204817f54731b91a"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\shoulder_uv.png",
+        "sha256": "9d8a8f255b6f5aeba6a6caa2b1a4e1dc4333fdefdc4c4612e1a31087591a786a"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_diffuse_front.png",
+        "sha256": "0720ddf1169ff2a7e7e20334268b109f3a2f5b98a6ab662fff18adcf4410e671"
+      }
+    ],
+    "superseded_by": "shoulder_diffuse_style_v2",
+    "previously_selected_before_style_pass": true
+  },
+  {
+    "label": "foot",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/foot_diffuse_v1.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\foot_8288ab97aa55_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\foot_uv.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-b3e842e5-54f2-4223-a4fd-4836b598a7d2.png",
+    "selected": false,
+    "output": "assets/armors/fortune_v1/foot_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "archive": "docs/art/fortune_runtime_v1/generated/foot_diffuse_v1.png",
+    "sha256": "f46d311399b74528c939acf4f018837c15f0b292fa3002a5499b3a4fd0625487",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\foot_8288ab97aa55_2x.png",
+        "sha256": "bae7671a5b99d7d1b7f1a2c69f17a996110e078702b27f0a08039d1f248aa74a"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+        "sha256": "3789fe9fa9d292cb12ba7f7f967854be864018d08cf1403a204817f54731b91a"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\foot_uv.png",
+        "sha256": "1dcbab748d7b277e88155953c3de9c1465c54709278a45fad4e392020e48d276"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_diffuse_front.png",
+        "sha256": "0720ddf1169ff2a7e7e20334268b109f3a2f5b98a6ab662fff18adcf4410e671"
+      }
+    ],
+    "superseded_by": "foot_diffuse_style_v2",
+    "previously_selected_before_style_pass": true
+  },
+  {
+    "label": "hand",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/hand_diffuse_v1.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\hand_6ef14752ec18_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\hand_uv.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_diffuse_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-2f78769f-9b3d-4b02-a4bb-bf42a5f4403e.png",
+    "selected": false,
+    "output": "assets/armors/fortune_v1/hand_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "archive": "docs/art/fortune_runtime_v1/generated/hand_diffuse_v1.png",
+    "sha256": "ae546ed74628f59666ca6dd8f8a45c4782535757e155d11f10a777dce6809423",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\hand_6ef14752ec18_2x.png",
+        "sha256": "332a67e3e8df17d6a6cdaa3825a86cdd3dc48cb72fa2923c16fb6e18332698a4"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+        "sha256": "3789fe9fa9d292cb12ba7f7f967854be864018d08cf1403a204817f54731b91a"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\hand_uv.png",
+        "sha256": "bbe50183b6e2390213db7d58831eec8296ffaaabe35f8a3de7f80ac246da897b"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_diffuse_front.png",
+        "sha256": "0720ddf1169ff2a7e7e20334268b109f3a2f5b98a6ab662fff18adcf4410e671"
+      }
+    ],
+    "superseded_by": "hand_diffuse_style_v2",
+    "previously_selected_before_style_pass": true
+  },
+  {
+    "label": "head",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_v1.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\head_669b47fdd3fe_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\head_uv.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_head_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-6ae86916-f3b1-44d7-9c98-2abe8e438601.png",
+    "selected": false,
+    "output": "assets/armors/fortune_v1/head_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "archive": "docs/art/fortune_runtime_v1/generated/head_diffuse_v1.png",
+    "sha256": "53cbe3d791f82aceaa4e26902a4f201c5a74477a160e03c9c17db604fb2173ea",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\head_669b47fdd3fe_2x.png",
+        "sha256": "4bd8d7a44e3e665ec589d1d4bd70cde5073c40b2f92a41a628aa35df1c058fb8"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+        "sha256": "3789fe9fa9d292cb12ba7f7f967854be864018d08cf1403a204817f54731b91a"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\head_uv.png",
+        "sha256": "b495a676c9779b8099d5e3cc69070e3d44a3a3df45ad24c07c980bc162860781"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_head_front.png",
+        "sha256": "dab1e9cbea4a143bb810824998c6d6a005f1a5056f1e7ec1c404f85bf12b83e5"
+      }
+    ],
+    "rejection_reason": "Original forehead badge and central nose plug remained; targeted correction requested."
+  },
+  {
+    "label": "head",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_v2.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\fortune_v1\\head_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\head_uv.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_head_front.png"
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\fortune_v1\\head_diffuse.png",
+        "sha256": "53cbe3d791f82aceaa4e26902a4f201c5a74477a160e03c9c17db604fb2173ea",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\generated\\head_diffuse_v1.png"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+        "sha256": "3789fe9fa9d292cb12ba7f7f967854be864018d08cf1403a204817f54731b91a",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\head_uv.png",
+        "sha256": "b495a676c9779b8099d5e3cc69070e3d44a3a3df45ad24c07c980bc162860781",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\head_uv.png"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_head_front.png",
+        "sha256": "dab1e9cbea4a143bb810824998c6d6a005f1a5056f1e7ec1c404f85bf12b83e5",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\baseline\\original_head_front.png"
+      }
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-def85add-d815-4212-9345-d2b98b5db674.png",
+    "tool": "built-in image_gen",
+    "date": "2026-10-03",
+    "postprocessing": "none",
+    "selected": false,
+    "output": "assets/armors/fortune_v1/head_diffuse.png",
+    "archive": "docs/art/fortune_runtime_v1/generated/head_diffuse_v2.png",
+    "sha256": "12f24c286d0ad3ab8993f1f9018561247113be62a2b7ee55003cb6160755a4b2",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "superseded_by": "head_diffuse_v3"
+  },
+  {
+    "key": "fortune_body_v2",
+    "suit": "fortune",
+    "label": "body",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/body_diffuse_v2.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\fortune_v1\\body_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\body_front_regions.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\first_material\\new_diffuse_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-a8eed554-ebc6-4aa1-8fd0-4e07ff013bec.png",
+    "selected": false,
+    "output": "assets/armors/fortune_v1/body_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\fortune_v1\\body_diffuse.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\generated\\body_diffuse_v1.png",
+        "sha256": "94dc5dbe8219883906c6d8f0abfc9be3235dc3400a27574ebb424823563c9ef2"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+        "sha256": "3789fe9fa9d292cb12ba7f7f967854be864018d08cf1403a204817f54731b91a"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\body_front_regions.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\body_front_regions.png",
+        "sha256": "f2957044e322f95ffacddb7f559cfd841beaefc0c4d75f71b18fa478f251c74f"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\first_material\\new_diffuse_front.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\first_material\\new_diffuse_front.png",
+        "sha256": "8de1abcf8061a15e3b587aa452a82b1390778da832507a2d6347d6f7c135882f"
+      }
+    ],
+    "archive": "docs/art/fortune_runtime_v1/generated/body_diffuse_v2.png",
+    "sha256": "ce4a193fe7018d8dd8ca4c29a0d320e25b6551f30bdf0dd9392b4e9ecf1bc22e",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "superseded_by": "body_diffuse_style_v3",
+    "previously_selected_before_style_pass": true
+  },
+  {
+    "label": "head",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_v3.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\fortune_v1\\head_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\head_front_regions.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\head_v2_preview\\new_head_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-8509f51f-e4c0-41b7-92f4-4fdb1a99bdc3.png",
+    "selected": false,
+    "output": "assets/armors/fortune_v1/head_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-03",
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\fortune_v1\\head_diffuse.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\generated\\head_diffuse_v2.png",
+        "sha256": "12f24c286d0ad3ab8993f1f9018561247113be62a2b7ee55003cb6160755a4b2"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fusion_v2_generated\\c02_fortune_fusion.jpg",
+        "sha256": "3789fe9fa9d292cb12ba7f7f967854be864018d08cf1403a204817f54731b91a"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\head_front_regions.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\head_front_regions.png",
+        "sha256": "8ef732ea1b9360b348f9a38dc2bbdcfd1e2a24de8c901e215876d800f86ea7ed"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\head_v2_preview\\new_head_front.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\head_v2_preview\\new_head_front.png",
+        "sha256": "adc025c8f4aef10f48b7f0c64cc95420eee075956de582cb4a6dabe4ecdf3576"
+      }
+    ],
+    "archive": "docs/art/fortune_runtime_v1/generated/head_diffuse_v3.png",
+    "sha256": "d44a5ff23b2a8613bd900d15b47bb5a9964b9f37a49cc47ee69327c47c84833f",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "superseded_by": "fortune_head_v4"
+  },
+  {
+    "label": "head",
+    "generation_variant": "fortune_head_v4",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_v4.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\head_semantic_authored_v4.png",
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\fortune_v1\\head_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\approved_helmet_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\head_semantic_front_v4.png"
+    ],
+    "references": [
+      {
+        "path": "docs/art/fortune_runtime_v1/guides/head_semantic_authored_v4.png",
+        "sha256": "11a0a46d62761f1cea5d97172e31ffcb11f87698e9c9f23b66a740998dd0a969"
+      },
+      {
+        "path": "assets/armors/fortune_v1/head_diffuse.png",
+        "sha256": "d44a5ff23b2a8613bd900d15b47bb5a9964b9f37a49cc47ee69327c47c84833f",
+        "snapshot": "docs/art/fortune_runtime_v1/generated/head_diffuse_v3.png"
+      },
+      {
+        "path": "docs/art/fortune_runtime_v1/approved_helmet_reference.png",
+        "sha256": "1e2a0e1faadf5b29d696fea1394ff54591ce3819ce41e460167334e858c610f2"
+      },
+      {
+        "path": "docs/art/fortune_runtime_v1/guides/head_semantic_front_v4.png",
+        "sha256": "3c5a7b73a66c3e8ce2b154f941c90892824a5d0c53ae59e7ae70e9149bf4d7b7"
+      }
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-d959d6a4-0741-4935-914f-63c1b354f9a2.png",
+    "selected": false,
+    "output": "assets/armors/fortune_v1/head_diffuse.png",
+    "archive": "docs/art/fortune_runtime_v1/generated/head_diffuse_v4.png",
+    "sha256": "d62b53e8cb2a91da9b923f495f61ae7be701f501f434737cb24f0476be0d2b57",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-04",
+    "superseded_by": "fortune_head_v5",
+    "rejection_reason": "User identified the mirrored double bright columns and dark central seam as two unfinished halves; visor sampling and dark neck are corrected in v5."
+  },
+  {
+    "label": "head",
+    "generation_variant": "fortune_head_v5",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_v5.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\fortune_v1\\head_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\head_visor_neck_semantic_v5.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\approved_helmet_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\head_v4_material_preview\\new_head_front.png"
+    ],
+    "references": [
+      {
+        "path": "assets/armors/fortune_v1/head_diffuse.png",
+        "sha256": "d62b53e8cb2a91da9b923f495f61ae7be701f501f434737cb24f0476be0d2b57",
+        "snapshot": "docs/art/fortune_runtime_v1/generated/head_diffuse_v4.png"
+      },
+      {
+        "path": "docs/art/fortune_runtime_v1/guides/head_visor_neck_semantic_v5.png",
+        "sha256": "8db7e5d9d4de139a3db3131fdc08c203854bf59dda8b3791955bd4230620f9f5"
+      },
+      {
+        "path": "docs/art/fortune_runtime_v1/approved_helmet_reference.png",
+        "sha256": "1e2a0e1faadf5b29d696fea1394ff54591ce3819ce41e460167334e858c610f2"
+      },
+      {
+        "path": "docs/art/fortune_runtime_v1/review/head_v4_material_preview/new_head_front.png",
+        "sha256": "99405de2d18f4c0e90e8cd93a55ca994268ccf1ad7ff2cb7ae14da8e27ea52c4"
+      }
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-525b388f-c030-4453-a5a8-47ae1dfdd152.png",
+    "selected": false,
+    "output": "assets/armors/fortune_v1/head_diffuse.png",
+    "archive": "docs/art/fortune_runtime_v1/generated/head_diffuse_v5.png",
+    "sha256": "558ede3a8196dc84261e3e95ad4a6d604c3e5b02262b6966623e21bc0f29cbef",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-04",
+    "superseded_by": "fortune_head_v6",
+    "rejection_reason": "Visual QA still showed paired bright columns after mirrored sampling; v6 uses a broader continuous purple front plane through the true center seam."
+  },
+  {
+    "label": "head",
+    "generation_variant": "fortune_head_v6",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_v6.txt",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\guides\\head_visor_neck_semantic_v6.png",
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\fortune_v1\\head_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\approved_helmet_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\review\\head_v5_material_preview\\new_head_front.png"
+    ],
+    "references": [
+      {
+        "path": "docs/art/fortune_runtime_v1/guides/head_visor_neck_semantic_v6.png",
+        "sha256": "f88078045a169395062b97eb3701c47655a0ed2c607966b6923186f02f73c3e4"
+      },
+      {
+        "path": "assets/armors/fortune_v1/head_diffuse.png",
+        "sha256": "558ede3a8196dc84261e3e95ad4a6d604c3e5b02262b6966623e21bc0f29cbef",
+        "snapshot": "docs/art/fortune_runtime_v1/generated/head_diffuse_v5.png"
+      },
+      {
+        "path": "docs/art/fortune_runtime_v1/approved_helmet_reference.png",
+        "sha256": "1e2a0e1faadf5b29d696fea1394ff54591ce3819ce41e460167334e858c610f2"
+      },
+      {
+        "path": "docs/art/fortune_runtime_v1/review/head_v5_material_preview/new_head_front.png",
+        "sha256": "6e2903ae45f17ef0ffce33fc58b4d09d88cbb28c6f8404c81002e9a13b9388ff"
+      }
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-5c48f71d-53ed-4b40-b7d6-9f12f1d5cad7.png",
+    "selected": false,
+    "output": "assets/armors/fortune_v1/head_diffuse.png",
+    "archive": "docs/art/fortune_runtime_v1/generated/head_diffuse_v6.png",
+    "sha256": "4c77cef6a13566ef2f7a464d1b1d2ef1a43931fa7de2312154c6aa78e44468bc",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "tool": "built-in image_gen",
+    "postprocessing": "none",
+    "date": "2026-10-04",
+    "superseded_by": "head_diffuse_style_v7",
+    "previously_selected_before_style_pass": true
+  },
+  {
+    "label": "head",
+    "variant": "style_unified_v7",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_style_v7.txt",
+    "prompt_sha256": "35c9b4717f7d903b1ce1f16ccbda13679d37c3aefe7688e069f5df0dcc5757e1",
+    "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+    "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\atlases\\head_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\head_669b47fdd3fe_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\review\\head_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a10633-ce59-71d2-9da2-d4b6a2210b7f\\exec-eea16fd8-144c-4940-83b3-b8a0f380a1e5.png",
+    "selected": false,
+    "output": "assets/armors/fortune_v1/head_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; byte-for-byte copy",
+    "date": "2026-10-04",
+    "generated_file_modified_at_utc": "2026-10-04T09:19:25.774271+00:00",
+    "recorded_at_utc": "2026-10-04T09:26:38.919867+00:00",
+    "archive": "docs/art/fortune_runtime_v1/generated/head_diffuse_style_v7.png",
+    "sha256": "0a13ecd117776e7db757f2021c09106a8a5c4386dd4b352bbb218d562fc410c0",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\atlases\\head_diffuse.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\style_unified\\head\\1_head_diffuse.png",
+        "sha256": "4c77cef6a13566ef2f7a464d1b1d2ef1a43931fa7de2312154c6aa78e44468bc",
+        "role": "edit_target"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\head_669b47fdd3fe_2x.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\style_unified\\head\\2_head_669b47fdd3fe_2x.png",
+        "sha256": "4bd8d7a44e3e665ec589d1d4bd70cde5073c40b2f92a41a628aa35df1c058fb8",
+        "role": "original_style_only"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\review\\head_front.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\style_unified\\head\\3_head_front.png",
+        "sha256": "69b9be3c85b6ae284f32177e1a9e00655bbf3bae09ed81b86f10fa2e2bf0e377",
+        "role": "accepted_runtime_mapping"
+      }
+    ],
+    "constraints": "Texture surface paint only; accepted v6 helmet/v2 body identity and all normalized atlas layout remain authoritative. No additional mesh or UV edits.",
+    "superseded_by": "helmet_refinement_v11",
+    "previously_selected_before_helmet_refinement": true
+  },
+  {
+    "label": "body",
+    "variant": "style_unified_v3",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/body_diffuse_style_v3.txt",
+    "prompt_sha256": "e4f51793985e49d65991126f8014d32208ebaec3405477af8a3c979aeb0e8f39",
+    "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+    "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\atlases\\body_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\body_aa8d1a1b3465_2x.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\review\\diffuse_front.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a10633-ce59-71d2-9da2-d4b6a2210b7f\\exec-e3851cdc-5313-4f06-adb1-77f4813cc032.png",
+    "selected": true,
+    "output": "assets/armors/fortune_v1/body_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; byte-for-byte copy",
+    "date": "2026-10-04",
+    "generated_file_modified_at_utc": "2026-10-04T09:21:13.664219+00:00",
+    "recorded_at_utc": "2026-10-04T09:26:38.948694+00:00",
+    "archive": "docs/art/fortune_runtime_v1/generated/body_diffuse_style_v3.png",
+    "sha256": "492467eb209e1846665063634c05a9298a33cc2763cf2afa8921a0c968883df6",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\atlases\\body_diffuse.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\style_unified\\body\\1_body_diffuse.png",
+        "sha256": "ce4a193fe7018d8dd8ca4c29a0d320e25b6551f30bdf0dd9392b4e9ecf1bc22e",
+        "role": "edit_target"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\body_aa8d1a1b3465_2x.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\style_unified\\body\\2_body_aa8d1a1b3465_2x.png",
+        "sha256": "be886fb5ade5992ea9955c2ff746ea6011af4a4ec8e02782eed8fdede0b26703",
+        "role": "original_style_only"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\review\\diffuse_front.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\style_unified\\body\\3_diffuse_front.png",
+        "sha256": "63e434f341a8b348f29b151249abdd1844bb81740f69e402cc98ee631b80a74c",
+        "role": "accepted_runtime_mapping"
+      }
+    ],
+    "constraints": "Texture surface paint only; accepted v6 helmet/v2 body identity and all normalized atlas layout remain authoritative. No additional mesh or UV edits."
+  },
+  {
+    "label": "shoulder",
+    "variant": "style_unified_v2",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/shoulder_diffuse_style_v2.txt",
+    "prompt_sha256": "6f8131564ae575ba2e9551deb32f195a32db43b7211fe6f16173d1cc6de4cacc",
+    "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+    "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\atlases\\shoulder_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\jian_0811a86c44a4_2x.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a10633-ce59-71d2-9da2-d4b6a2210b7f\\exec-9ae0c5fe-0539-4e11-b962-cd9116180aa4.png",
+    "selected": true,
+    "output": "assets/armors/fortune_v1/shoulder_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; byte-for-byte copy",
+    "date": "2026-10-04",
+    "generated_file_modified_at_utc": "2026-10-04T09:22:21.107433+00:00",
+    "recorded_at_utc": "2026-10-04T09:26:38.976023+00:00",
+    "archive": "docs/art/fortune_runtime_v1/generated/shoulder_diffuse_style_v2.png",
+    "sha256": "a4aae6d7fdc44c2fec61236a885335df2476da4895cb14c30e723cadcb2215ba",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\atlases\\shoulder_diffuse.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\style_unified\\shoulder\\1_shoulder_diffuse.png",
+        "sha256": "fc12af555a24fbd4597491196552b448ae2c7f4a41967269451dbe2fb82660b9",
+        "role": "edit_target"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\jian_0811a86c44a4_2x.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\style_unified\\shoulder\\2_jian_0811a86c44a4_2x.png",
+        "sha256": "760ead8a16cb3c733e0281a02fec766673d413e0b999ad7d8fc95e4d5ec0a7db",
+        "role": "original_style_only"
+      }
+    ],
+    "constraints": "Texture surface paint only; accepted v6 helmet/v2 body identity and all normalized atlas layout remain authoritative. No additional mesh or UV edits."
+  },
+  {
+    "label": "hand",
+    "variant": "style_unified_v2",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/hand_diffuse_style_v2.txt",
+    "prompt_sha256": "1a25583f92e4e6acfaa71d15bac63d239c73e260f412235463e204e7a080a1f7",
+    "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+    "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\atlases\\hand_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\hand_6ef14752ec18_2x.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a10633-ce59-71d2-9da2-d4b6a2210b7f\\exec-d9f1dae8-ed5c-4a17-9969-61980a0b906b.png",
+    "selected": true,
+    "output": "assets/armors/fortune_v1/hand_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; byte-for-byte copy",
+    "date": "2026-10-04",
+    "generated_file_modified_at_utc": "2026-10-04T09:23:40.774593+00:00",
+    "recorded_at_utc": "2026-10-04T09:26:38.998907+00:00",
+    "archive": "docs/art/fortune_runtime_v1/generated/hand_diffuse_style_v2.png",
+    "sha256": "afd6260186294173a4a45a513fa541574f651ca490c6a42616900ba3ba876d92",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\atlases\\hand_diffuse.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\style_unified\\hand\\1_hand_diffuse.png",
+        "sha256": "ae546ed74628f59666ca6dd8f8a45c4782535757e155d11f10a777dce6809423",
+        "role": "edit_target"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\hand_6ef14752ec18_2x.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\style_unified\\hand\\2_hand_6ef14752ec18_2x.png",
+        "sha256": "332a67e3e8df17d6a6cdaa3825a86cdd3dc48cb72fa2923c16fb6e18332698a4",
+        "role": "original_style_only"
+      }
+    ],
+    "constraints": "Texture surface paint only; accepted v6 helmet/v2 body identity and all normalized atlas layout remain authoritative. No additional mesh or UV edits."
+  },
+  {
+    "label": "foot",
+    "variant": "style_unified_v2",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/foot_diffuse_style_v2.txt",
+    "prompt_sha256": "a7e829fb0f4bcbcd28baa7ea94ea8ef8ddbdb14be2d46f1f4a2a0639c7a38762",
+    "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+    "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\atlases\\foot_diffuse.png",
+      "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\foot_8288ab97aa55_2x.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a10633-ce59-71d2-9da2-d4b6a2210b7f\\exec-66b67ae6-94ce-4825-b0b1-0aa7f413538c.png",
+    "selected": true,
+    "output": "assets/armors/fortune_v1/foot_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; byte-for-byte copy",
+    "date": "2026-10-04",
+    "generated_file_modified_at_utc": "2026-10-04T09:24:47.433827+00:00",
+    "recorded_at_utc": "2026-10-04T09:26:39.027601+00:00",
+    "archive": "docs/art/fortune_runtime_v1/generated/foot_diffuse_style_v2.png",
+    "sha256": "58ded7a38496e334af747d8035c9a9c07f81c862de2cdbf54dade6797f220f17",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\armor_style_unification_v1\\before\\fortune\\atlases\\foot_diffuse.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\style_unified\\foot\\1_foot_diffuse.png",
+        "sha256": "f46d311399b74528c939acf4f018837c15f0b292fa3002a5499b3a4fd0625487",
+        "role": "edit_target"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\models\\player\\animated\\armor_textures\\foot_8288ab97aa55_2x.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\style_unified\\foot\\2_foot_8288ab97aa55_2x.png",
+        "sha256": "bae7671a5b99d7d1b7f1a2c69f17a996110e078702b27f0a08039d1f248aa74a",
+        "role": "original_style_only"
+      }
+    ],
+    "constraints": "Texture surface paint only; accepted v6 helmet/v2 body identity and all normalized atlas layout remain authoritative. No additional mesh or UV edits."
+  },
+  {
+    "label": "head",
+    "variant": "helmet_refinement_v8",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_refinement_v8.txt",
+    "prompt_sha256": "29ef751d2fa95843598f1c3948759044a056559c8ee178b329ac273eca76eb6d",
+    "base_prompt": "docs/art/armor_style_unification_v1/helmet_refinement_prompt.txt",
+    "base_prompt_sha256": "2c6168151c76324d55049aa9284405e9df151050b66d646ae7d24622948faeb6",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\1_head_style_v7.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\2_approved_helmet_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\3_existing_uv_semantics.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\4_original_style.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\5_rejected_head_v7_side.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-66268259-c452-48bd-805f-b189d014d54d.png",
+    "selected": false,
+    "pending_runtime_review": false,
+    "output": "assets/armors/fortune_v1/head_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; byte-for-byte copy",
+    "date": "2026-10-04",
+    "generated_file_modified_at_utc": "2026-10-04T10:52:13.175866+00:00",
+    "recorded_at_utc": "2026-10-04T10:58:38.190246+00:00",
+    "archive": "docs/art/fortune_runtime_v1/generated/head_diffuse_refinement_v8.png",
+    "sha256": "c2e34ad0ceb6ed604de1817faf6ff4f58d5d10e28cefeeb585d20bf1a7f39efd",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\1_head_style_v7.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\1_head_style_v7.png",
+        "sha256": "0a13ecd117776e7db757f2021c09106a8a5c4386dd4b352bbb218d562fc410c0",
+        "role": "edit_target"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\2_approved_helmet_reference.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\2_approved_helmet_reference.png",
+        "sha256": "1e2a0e1faadf5b29d696fea1394ff54591ce3819ce41e460167334e858c610f2",
+        "role": "approved_design"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\3_existing_uv_semantics.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\3_existing_uv_semantics.png",
+        "sha256": "855c5b0f064dd47f345f6e8de155e858a5ebb9f302993bb1afd0829a5338882f",
+        "role": "uv_region_guide"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\4_original_style.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\4_original_style.png",
+        "sha256": "4bd8d7a44e3e665ec589d1d4bd70cde5073c40b2f92a41a628aa35df1c058fb8",
+        "role": "original_style_only"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\5_rejected_head_v7_side.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\5_rejected_head_v7_side.png",
+        "sha256": "48cd41353a52c802446d9fb32aea5e7f1d1516115402a7bb16d3d77fef3e13c1",
+        "role": "rejected_runtime_view"
+      }
+    ],
+    "rejection_reason": "Misplaced rear ear-cover painting, retained long blue belts, and dark triangular decoration at mirrored visor center. Not adopted."
+  },
+  {
+    "label": "head",
+    "variant": "helmet_refinement_v9",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_refinement_v9.txt",
+    "prompt_sha256": "554945c6791aaffaa292214d7d99574fbea5d33cffae238fef8a956ccdcae777",
+    "base_prompt": "docs/art/armor_style_unification_v1/helmet_refinement_prompt.txt",
+    "base_prompt_sha256": "2c6168151c76324d55049aa9284405e9df151050b66d646ae7d24622948faeb6",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\6_attempt_v8_edit_target.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\2_approved_helmet_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\3_existing_uv_semantics.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\4_original_style.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\5_rejected_head_v7_side.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-73abde51-b31c-4705-87cf-bf7f262f731a.png",
+    "selected": false,
+    "pending_runtime_review": false,
+    "output": "assets/armors/fortune_v1/head_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; byte-for-byte copy",
+    "date": "2026-10-04",
+    "generated_file_modified_at_utc": "2026-10-04T10:55:47.840337+00:00",
+    "recorded_at_utc": "2026-10-04T10:58:38.199689+00:00",
+    "archive": "docs/art/fortune_runtime_v1/generated/head_diffuse_refinement_v9.png",
+    "sha256": "4bd67da1f623298d99534c952774c69e246f936e3a25f007663e17056ad82b95",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\6_attempt_v8_edit_target.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\6_attempt_v8_edit_target.png",
+        "sha256": "c2e34ad0ceb6ed604de1817faf6ff4f58d5d10e28cefeeb585d20bf1a7f39efd",
+        "role": "edit_target"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\2_approved_helmet_reference.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\2_approved_helmet_reference.png",
+        "sha256": "1e2a0e1faadf5b29d696fea1394ff54591ce3819ce41e460167334e858c610f2",
+        "role": "approved_design"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\3_existing_uv_semantics.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\3_existing_uv_semantics.png",
+        "sha256": "855c5b0f064dd47f345f6e8de155e858a5ebb9f302993bb1afd0829a5338882f",
+        "role": "uv_region_guide"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\4_original_style.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\4_original_style.png",
+        "sha256": "4bd8d7a44e3e665ec589d1d4bd70cde5073c40b2f92a41a628aa35df1c058fb8",
+        "role": "original_style_only"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\5_rejected_head_v7_side.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\5_rejected_head_v7_side.png",
+        "sha256": "48cd41353a52c802446d9fb32aea5e7f1d1516115402a7bb16d3d77fef3e13c1",
+        "role": "rejected_runtime_view"
+      }
+    ],
+    "rejection_reason": "Actual side ear-cover improved, but forward blue brow was accidentally green and unwanted rear blue band remained. Replaced by targeted atlas v10."
+  },
+  {
+    "label": "head",
+    "variant": "helmet_refinement_v10",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_refinement_v10.txt",
+    "prompt_sha256": "f926a5b9415629e165e24878c6f2a824848812fca50f53e6225a3a22f2d79adf",
+    "base_prompt": "docs/art/armor_style_unification_v1/helmet_refinement_prompt.txt",
+    "base_prompt_sha256": "2c6168151c76324d55049aa9284405e9df151050b66d646ae7d24622948faeb6",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\7_attempt_v9_edit_target.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\2_approved_helmet_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\3_existing_uv_semantics.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\1_head_style_v7.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\8_attempt_v9_side.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-36975c94-93c7-4a4c-b609-add459567a8e.png",
+    "selected": false,
+    "pending_runtime_review": false,
+    "output": "assets/armors/fortune_v1/head_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; byte-for-byte copy",
+    "date": "2026-10-04",
+    "generated_file_modified_at_utc": "2026-10-04T11:03:18.177698+00:00",
+    "recorded_at_utc": "2026-10-04T11:05:55.709187+00:00",
+    "archive": "docs/art/fortune_runtime_v1/generated/head_diffuse_refinement_v10.png",
+    "sha256": "0624d181d39fa5b26dd13b6bc72130bbb9c983f612572df92676ed0e5e02c78f",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\7_attempt_v9_edit_target.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\7_attempt_v9_edit_target.png",
+        "sha256": "4bd67da1f623298d99534c952774c69e246f936e3a25f007663e17056ad82b95",
+        "role": "edit_target"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\2_approved_helmet_reference.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\2_approved_helmet_reference.png",
+        "sha256": "1e2a0e1faadf5b29d696fea1394ff54591ce3819ce41e460167334e858c610f2",
+        "role": "approved_design"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\3_existing_uv_semantics.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\3_existing_uv_semantics.png",
+        "sha256": "855c5b0f064dd47f345f6e8de155e858a5ebb9f302993bb1afd0829a5338882f",
+        "role": "existing_uv_guide"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\1_head_style_v7.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\1_head_style_v7.png",
+        "sha256": "0a13ecd117776e7db757f2021c09106a8a5c4386dd4b352bbb218d562fc410c0",
+        "role": "front_brow_layout_only"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\8_attempt_v9_side.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\8_attempt_v9_side.png",
+        "sha256": "28474ece23c1f8fd2a754c01613ecf34b4f275f30e2041e8cbeffd67fef2f497",
+        "role": "rejected_runtime_side"
+      }
+    ],
+    "rejection_reason": "Mapped brow/ear-cover improved; upper crown still too flat and old rear central seam remained visible. Superseded by softer crown painting and rear shared-edge bleed correction."
+  },
+  {
+    "label": "head",
+    "variant": "helmet_refinement_v11",
+    "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_refinement_v11.txt",
+    "prompt_sha256": "00ed2a747bdad37f63cab00616c3dc645657fa3d128d2495441b64a3d2bb5f9e",
+    "base_prompt": "docs/art/armor_style_unification_v1/helmet_refinement_prompt.txt",
+    "base_prompt_sha256": "2c6168151c76324d55049aa9284405e9df151050b66d646ae7d24622948faeb6",
+    "reference_images": [
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\9_attempt_v10_edit_target.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\2_approved_helmet_reference.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\10_actual_uv_semantics_v10.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\11_attempt_v10_front.png",
+      "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\12_attempt_v10_rear.png"
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-7d4bfda1-aa58-4003-965e-67c72d6cff63.png",
+    "selected": true,
+    "pending_runtime_review": false,
+    "output": "assets/armors/fortune_v1/head_diffuse.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; byte-for-byte copy",
+    "date": "2026-10-04",
+    "generated_file_modified_at_utc": "2026-10-04T11:11:45.611428+00:00",
+    "recorded_at_utc": "2026-10-04T11:13:42.741254+00:00",
+    "archive": "docs/art/fortune_runtime_v1/generated/head_diffuse_refinement_v11.png",
+    "sha256": "10d07e20bd3955fdee018b8b16a9994d3dc511990af6d60cf5cfe88ed886b0cf",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\9_attempt_v10_edit_target.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\9_attempt_v10_edit_target.png",
+        "sha256": "0624d181d39fa5b26dd13b6bc72130bbb9c983f612572df92676ed0e5e02c78f",
+        "role": "edit_target"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\2_approved_helmet_reference.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\2_approved_helmet_reference.png",
+        "sha256": "1e2a0e1faadf5b29d696fea1394ff54591ce3819ce41e460167334e858c610f2",
+        "role": "approved_design"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\10_actual_uv_semantics_v10.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\10_actual_uv_semantics_v10.png",
+        "sha256": "da2abf5521fc3436a66bba12c5b9fbea73bdae586e3783ae3cb9b36dcf813f4e",
+        "role": "current_geometry_uv_semantic_guide"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\11_attempt_v10_front.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\11_attempt_v10_front.png",
+        "sha256": "c761af53c379ffd7a9a30ed788c0897b81fb86f2744086b9b361a3b5bf526690",
+        "role": "runtime_front_mapping"
+      },
+      {
+        "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\12_attempt_v10_rear.png",
+        "snapshot": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\fortune_runtime_v1\\input_snapshots\\helmet_refinement_v8\\12_attempt_v10_rear.png",
+        "sha256": "0047970bc023c2bbabcc6e64c2cc998f8de3064abb95bac939a913428e844e5d",
+        "role": "runtime_rear_shared_seam_mapping"
+      }
+    ],
+    "art_acceptance": "pending user review",
+    "known_visual_limitations": [
+      "Rear center dark seam remains; sparse crown retains faceted profile."
+    ]
+  }
+]

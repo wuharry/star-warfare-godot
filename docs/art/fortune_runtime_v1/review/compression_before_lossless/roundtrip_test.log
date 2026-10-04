@@ -1,0 +1,15 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: FORTUNE_V1: GLB has stale/different neck pixels at (113, 1084) (RGB difference 0.08627)
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _check (res://tests/fortune_v1_test.gd:17)
+       [1] _verify_head_atlas (res://tests/fortune_v1_roundtrip.gd:80)
+       [2] _run (res://tests/fortune_v1_roundtrip.gd:15)
+ERROR: FORTUNE_V1: GLB has stale/different neck pixels at (501, 1128) (RGB difference 0.05098)
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _check (res://tests/fortune_v1_test.gd:17)
+       [1] _verify_head_atlas (res://tests/fortune_v1_roundtrip.gd:80)
+       [2] _run (res://tests/fortune_v1_roundtrip.gd:15)
+FORTUNE_ROUNDTRIP_FAIL failures=2 poses=9

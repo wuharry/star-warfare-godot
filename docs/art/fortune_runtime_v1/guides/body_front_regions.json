@@ -1,0 +1,34 @@
+{
+  "scope": "technical image generation guide, not diffuse art",
+  "coordinate_system": "normalized top-left origin, original Godot texture UV",
+  "note": "Godot SVG rasterization renders the colored polygons and lines but omits SVG text. The colors carry the regions.",
+  "green_region": "front chest inner panel and center seam; remove original silver center stripe",
+  "silver_blue_region": "outer vertical side of the U and lower horizontal crossbar; mirror atlas half across character center",
+  "front_chest_bounds": {
+    "min": [
+      0.0288,
+      0.3404
+    ],
+    "max": [
+      0.2228,
+      0.5184
+    ]
+  },
+  "center_top": [
+    0.0288,
+    0.3766
+  ],
+  "center_bottom": [
+    0.0307,
+    0.5184
+  ],
+  "outside_top": [
+    0.1998,
+    0.3404
+  ],
+  "outside_bottom": [
+    0.1764,
+    0.514
+  ],
+  "uv_edit_fraction": 0
+}
