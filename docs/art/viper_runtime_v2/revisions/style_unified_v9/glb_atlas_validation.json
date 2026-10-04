@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "scope": "Read-only native canonical PNG vs Godot portable copy vs embedded GLB RGBA pixels, no output bitmap editing. PNG compression bytes may differ.",
+  "glb_sha256": "78c83da630f88ecc024851935e838a2622335903387efbb622346da85bb3540e",
+  "images": [
+    {
+      "label": "head",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "embedded_png_sha256": "06611ab4a02e4f124b7546a9d0ee5b49f0d49e42d2a038ce78b88ad97b7f4797",
+      "canonical_png_sha256": "a1221cefc4ce785b05fe40dcd927010dafae9990332aad12c984c9c96308b0dc",
+      "portable_png_sha256": "06611ab4a02e4f124b7546a9d0ee5b49f0d49e42d2a038ce78b88ad97b7f4797",
+      "canonical_portable_embedded_RGBA_exact": true
+    },
+    {
+      "label": "body",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "embedded_png_sha256": "b3d3166c7c472f6e57ccc19b9c796714bd42f57387f4f986e555115e22b6f14b",
+      "canonical_png_sha256": "0bbd05125ae61c081c207a1f814bdcfb4ab2bd94613afb36210dd9296b64eeba",
+      "portable_png_sha256": "b3d3166c7c472f6e57ccc19b9c796714bd42f57387f4f986e555115e22b6f14b",
+      "canonical_portable_embedded_RGBA_exact": true
+    },
+    {
+      "label": "shoulder",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "embedded_png_sha256": "4ab882acde6c8e4cc133e8b4f11395439427ac0856c068dc220d5688b3d7dd19",
+      "canonical_png_sha256": "963ed30b4a109b6dd4a5b2b2e993fd0f29e0e468928d053875ed3e49e9e1e860",
+      "portable_png_sha256": "4ab882acde6c8e4cc133e8b4f11395439427ac0856c068dc220d5688b3d7dd19",
+      "canonical_portable_embedded_RGBA_exact": true
+    },
+    {
+      "label": "hand",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "embedded_png_sha256": "608da61ee82e91bf8e4acd98c78453bc699f79de425cb5b3dcf442b33cbcfe80",
+      "canonical_png_sha256": "53a5d1bddd101de3db5652a2eb7343fbd48a40678b449900a09c5e979ab7fa62",
+      "portable_png_sha256": "608da61ee82e91bf8e4acd98c78453bc699f79de425cb5b3dcf442b33cbcfe80",
+      "canonical_portable_embedded_RGBA_exact": true
+    },
+    {
+      "label": "foot",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "embedded_png_sha256": "4c8c8068bff08db0300558e5176e1959c99f72c39fafda0e22f199c8c69ad82c",
+      "canonical_png_sha256": "ae7e71a599d5ede22021fae67bd7ad3d3f90ec6f6dfb020b3cbeca387236e849",
+      "portable_png_sha256": "4c8c8068bff08db0300558e5176e1959c99f72c39fafda0e22f199c8c69ad82c",
+      "canonical_portable_embedded_RGBA_exact": true
+    }
+  ]
+}

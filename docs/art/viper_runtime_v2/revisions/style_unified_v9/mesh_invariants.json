@@ -1,0 +1,72 @@
+{
+	"before_scene_sha256": "0af1d0267d80e3c9e7ce401e5661e5f087b984f35114c1072bfb1e6374fc6bfd",
+	"current_scene_sha256": "2b475fbb1f515555bbb602dbb300087a51c2f3b0ed7cc8acf7b94325858e46e6",
+	"failures": [],
+	"parts": [
+		{
+			"exact": true,
+			"part": "ArmorHead_00",
+			"skin_exact": true,
+			"surfaces": [
+				{
+					"all_mesh_arrays_exact": true,
+					"material_mode_exact": true,
+					"surface": 0,
+					"triangles": 136,
+					"vertices": 130
+				}
+			]
+		},
+		{
+			"exact": true,
+			"part": "ArmorBody_00",
+			"skin_exact": true,
+			"surfaces": [
+				{
+					"all_mesh_arrays_exact": true,
+					"material_mode_exact": true,
+					"surface": 0,
+					"triangles": 214,
+					"vertices": 221
+				},
+				{
+					"all_mesh_arrays_exact": true,
+					"material_mode_exact": true,
+					"surface": 1,
+					"triangles": 84,
+					"vertices": 74
+				}
+			]
+		},
+		{
+			"exact": true,
+			"part": "ArmorHand_00",
+			"skin_exact": true,
+			"surfaces": [
+				{
+					"all_mesh_arrays_exact": true,
+					"material_mode_exact": true,
+					"surface": 0,
+					"triangles": 112,
+					"vertices": 120
+				}
+			]
+		},
+		{
+			"exact": true,
+			"part": "ArmorFoot_00",
+			"skin_exact": true,
+			"surfaces": [
+				{
+					"all_mesh_arrays_exact": true,
+					"material_mode_exact": true,
+					"surface": 0,
+					"triangles": 136,
+					"vertices": 122
+				}
+			]
+		}
+	],
+	"scope": "Exact prepass/current mesh arrays, transforms, skeleton paths, skin binds and material mode. Pixel painting changes are intentional and not measured as a similarity score.",
+	"status": "PASS"
+}

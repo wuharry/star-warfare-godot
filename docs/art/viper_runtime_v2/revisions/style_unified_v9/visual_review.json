@@ -1,0 +1,17 @@
+{
+  "status": "mapped_visual_inspection_completed_pending_user_art_review",
+  "scope": "Human-like model visual judgment of actual Godot captures, not an objective likeness or style score.",
+  "inspected_views": ["new_diffuse_front", "new_head_front", "new_diffuse_side", "new_diffuse_rear", "new_idle_rifle", "new_run_rifle", "new_reload_04", "new_level_01_gameplay"],
+  "improvements": [
+    "The hard narrow central visor stripe is replaced by one broad soft purple reflection. Continuous purple glass and its accepted lower facet seam remain readable; no dark W split or eye-pair was introduced.",
+    "Cap, chest, back, forearm and leg plates use broader soft highlights with quieter fine bright-edge tracing. Long thin crack/scratch emphasis was reduced.",
+    "Accepted black horizontal brow, blue brow block, sloped chin, two chest ports, layered abdomen, blue thigh blocks and four blue back panels retain their current mapped location and identity."
+  ],
+  "mapping_observations": "No newly shifted visor/chest openings or obvious new seam break seen in inspected front/side/rear and posed captures. Exact mesh/UV invariants are separately checked numerically; image observations do not substitute for that check.",
+  "residual_limits": [
+    "Chest strap buckles and the chin contact edge still have brighter painted outlines than the broad original plate shading; this is a remaining art decision, not solved by lower UV-change percentages.",
+    "The accepted low-poly shell, large side-ear mass and plane transitions remain. Surface painting cannot replace a physical silhouette or thickness.",
+    "This pass unifies rendering style while preserving design. It does not add the larger shoulder/back signatures needed to make this a clearly separate armor identity from original Viper."
+  ],
+  "bitmap_editing": "Five built-in image_gen outputs copied byte-for-byte into the game. No programmatic recolor, blur, resize, crop or composition was performed."
+}

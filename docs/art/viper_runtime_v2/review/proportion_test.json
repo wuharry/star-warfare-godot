@@ -1,7 +1,8 @@
 {
   "status": "PASS",
   "scope": "Geometry silhouettes only; does not measure texture likeness or artistic approval.",
-  "limit": 0.2,
+  "limit": 0.15,
+  "local_geometry_change_limit": 0.15,
   "silhouettes": [
     {
       "view": "front",
@@ -88,7 +89,21 @@
         "uv_changed_fraction": 0.10847457627118644,
         "uv_max_displacement_from_original": 0.1989864767081163,
         "uv_rms_displacement_from_original": 0.04821368587089638,
-        "weight_source": "original, unchanged"
+        "weight_source": "original, unchanged",
+        "uv_by_material": [
+          {
+            "label": "body",
+            "uv_coordinate_count": 221,
+            "uv_changed_count": 32,
+            "uv_changed_fraction": 0.14479638009049775
+          },
+          {
+            "label": "shoulder",
+            "uv_coordinate_count": 74,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
       },
       "ArmorFoot_00": {
         "bounds_game": {
@@ -132,7 +147,15 @@
         "uv_changed_fraction": 0.0,
         "uv_max_displacement_from_original": 0.0,
         "uv_rms_displacement_from_original": 0.0,
-        "weight_source": "original, unchanged"
+        "weight_source": "original, unchanged",
+        "uv_by_material": [
+          {
+            "label": "foot",
+            "uv_coordinate_count": 122,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
       },
       "ArmorHand_00": {
         "bounds_game": {
@@ -176,7 +199,15 @@
         "uv_changed_fraction": 0.0,
         "uv_max_displacement_from_original": 0.0,
         "uv_rms_displacement_from_original": 0.0,
-        "weight_source": "original, unchanged"
+        "weight_source": "original, unchanged",
+        "uv_by_material": [
+          {
+            "label": "hand",
+            "uv_coordinate_count": 120,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
       },
       "ArmorHead_00": {
         "bounds_game": {
@@ -220,10 +251,24 @@
         "uv_changed_fraction": 0.13846153846153847,
         "uv_max_displacement_from_original": 0.3152343467662682,
         "uv_rms_displacement_from_original": 0.05936348528516494,
-        "weight_source": "original, unchanged"
+        "weight_source": "original, unchanged",
+        "uv_by_material": [
+          {
+            "label": "head",
+            "uv_coordinate_count": 130,
+            "uv_changed_count": 18,
+            "uv_changed_fraction": 0.13846153846153847
+          }
+        ]
       }
     },
-    "constraint": "Local shape/dimension changes <=20%; changed UV coordinates <=20% per part, only visor and front chest/abdomen; original chart/coordinate count and skin retained. Absolute UV displacement is recorded separately."
+    "limits": {
+      "local_geometry_change_fraction": 0.15,
+      "uv_changed_coordinate_fraction": 0.15,
+      "uv_count_scope": "per_material_surface",
+      "uv_chart_count_change_fraction": 0.0
+    },
+    "constraint": "Local shape/dimension changes <=15%; changed UV coordinates <=15% per material surface, only visor and front chest/abdomen; original chart/coordinate count and skin retained. Absolute UV displacement is recorded separately."
   },
   "inferred": "Local chin/cheek/brow depth inferred from selected perspective art; original mesh owns game scale, hidden rear and all joint positions."
 }

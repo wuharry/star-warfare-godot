@@ -6,10 +6,11 @@
 :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0d151e;color:#e9eff4;font:16px/1.65 system-ui,sans-serif}main{max-width:1480px;margin:auto;padding:32px 24px 70px}h1{font-size:30px;margin:0 0 8px}h2{font-size:21px;margin-top:36px}p{color:#b8c7d4;max-width:1000px}a{color:#8ed7ff}nav,.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:20px 0}select,button{font:inherit;background:#1d2b39;color:#eaf2f7;border:1px solid #40566b;border-radius:6px;padding:6px 12px}input{accent-color:#8ed7ff}figure{margin:0;background:#101c27;border:1px solid #344758;border-radius:10px;overflow:hidden}figcaption{padding:12px 16px;color:#d8e7f1}.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}.pair img{width:100%;display:block;object-fit:contain;background:#0a1015;max-height:650px}.concepts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}.concepts img{width:100%;height:460px;object-fit:contain;background:#0a1015;display:block}.stats{display:flex;flex-wrap:wrap;gap:12px}.stats span{border:1px solid #344758;padding:7px 12px;border-radius:7px;color:#bdd3e2}.atlas{position:relative;aspect-ratio:1}.atlas img{width:100%;height:100%;max-height:none}.atlas .wire{position:absolute;inset:0;opacity:.38;mix-blend-mode:screen;pointer-events:none}.hidden{display:none!important}small{color:#a4b9ca}.note{border-left:3px solid #78bbdf;padding-left:14px}@media(max-width:800px){.pair,.concepts{grid-template-columns:1fr}.concepts img{height:400px}main{padding:20px 14px}}
 </style></head>
 <body><main>
-<h1>Viper · 完整裝甲概念與遊戲素材</h1>
-<p>整套以指定美術圖的鋼藍護板、黑肩頂、胸窗、腹甲、腿甲與最新版紫色面甲為目標，沿用原版短壯比例、四個換裝部件和五張 UV 配置。原版與本輪使用相同相機、骨架、動作時間點；也可切換修訂前 v7，檢視這次貼圖調整。</p>
+<h1>Viper · 畫法統一後的遊戲素材 v9</h1>
+<p>保留已確認的新版黑眉、紫色連續面甲、胸窗、腹甲、腿甲與背甲，只調整五張 diffuse 的高光、描邊與磨損畫法。本輪相對 v8 的模型與 UV 新增改動均為 0；沿用原版短壯比例、骨架、四個換裝部件。原版與本輪使用同一相機與動作時間點。</p>
+<p><a href="../armor_style_unification_v1/index.html">查看 v8 → v9 畫法統一前後比較</a> · <a href="../armor_style_unification_v1/base_prompt.txt">後續優化必用基底 prompt</a> · <a href="revisions/style_unified_v9/generation_inputs.json">本輪五張實際生成輸入與 SHA</a></p>
 <nav><a href="../original_armors_v1/index.html">← 全系列</a><a href="../../../assets/armors/viper_v2/viper.glb">下載 GLB</a><a href="../../../assets/armors/viper_v2/viper.scn">Godot 四部件 scene</a><a href="build/viper_master.blend">Blender master</a><a href="README.md">製作紀錄</a><a href="manifest.json">素材清單</a></nav>
-<div class="stats"><span>682 tris · 維持原版</span><span>28 bones · 原 Skin／權重</span><span>胸腹 UV 32／221 · 改動比例 14.48%</span><span>頭盔 UV 18／130 · 改動比例 13.85%</span></div>
+<div class="stats"><span>682 tris · 維持原版</span><span>28 bones · 原 Skin／權重</span><span>本輪模型／UV 新增改動 0</span><span>原版累計胸腹 UV 32／221 · 14.48%</span><span>原版累計頭盔 UV 18／130 · 13.85%</span></div>
 <h2>指定的完整裝甲美術</h2>
 <div class="concepts">
 <figure><img src="../fusion_v2_generated/c01_viper_fusion.jpg" alt="使用者指定 Viper 完整裝甲美術"><figcaption>指定稿 · 全套護板、配色與最新版頭盔<br><small>設計套進原版遊戲比例；美術圖的成人肢體長度不移植。</small></figcaption></figure>
@@ -30,10 +31,10 @@
 <p id="pose-note">原版與本輪全身圖使用共同計算的相機，保留頭頂與鞋底空間。</p>
 <h2>五張貼圖 · 原 UV 分區，局部面甲與胸腹採樣</h2>
 <p>左右分別顯示原版與目前 UV。頭盔18／130個面甲座標改為完整正面展開；胸甲20個、腹甲12個座標調整到新貼圖的胸窗、肩帶與黑色腹芯，合計32／221個身體貼圖座標。其餘座標保持原值，肩甲、手臂與靴子的 UV 完全相同。每個部位的座標總數和分區數量均不變，線圖沒有畫進貼圖。</p>
-<p>20% 上限按各部位「改動的原 UV 座標比例」驗證，胸腹每個座標的位移也控制在 .20 atlas 單位內；整套共50／667個座標改動（7.50%）。貼圖可完整重畫來接近指定美術，不受重畫20%的限制；實際美術效果請透過上方遊戲畫面比對。</p>
+<p>15% 上限按每個材質（肩甲不併入身體分母）「改動的原 UV 座標比例」驗證，胸腹每個座標的位移也控制在 .20 atlas 單位內；整套共50／667個座標改動（7.50%）。貼圖可完整重畫來接近指定美術，不受重畫面積的限制；實際美術效果請透過上方遊戲畫面比對。</p>
 <div class="controls"><label>部位 <select id="atlas-part"><option value="head">頭盔</option><option value="body">身體</option><option value="shoulder">肩甲</option><option value="hand">手臂／手套</option><option value="foot">腿部／靴子</option></select></label><label><input id="wire-toggle" type="checkbox" checked> 顯示各自 UV 線圖</label></div>
 <div class="pair"><figure><div class="atlas"><img id="old-atlas" alt="原版 diffuse"><img id="old-wire" class="wire" alt="原版 UV 線圖"></div><figcaption>原版 · 512 × 512</figcaption></figure><figure><div class="atlas"><img id="new-atlas" alt="新版 diffuse"><img id="new-wire" class="wire" alt="新版 UV 線圖"></div><figcaption>新版 · 1254 × 1254 · 分區不變 · 面甲與胸腹局部調整</figcaption></figure></div>
-<p class="note">頭盔採指定新版；胸腹局部調整貼圖採樣位置，身體、肩甲、手臂與靴子保持原幾何。黑眉沿、紫色面甲、鋼藍與炭黑護板均來自指定稿；原版的低面數輪廓、肢體長度與骨架保留。這些是實際可套用的遊戲素材，仍可依你的美術評價繼續調整。</p>
+<p class="note">本輪只重畫表面畫法，沒有再次修改面甲與胸腹 UV。黑眉沿、紫色面甲、鋼藍與炭黑護板都保留已確認的新版；減弱連續細白邊與長裂痕，以較寬柔和的高光表現甲片。這些是實際可套用的遊戲素材，美術評價仍待確認。</p>
 <nav><a href="review/runtime_test.json">動作／UV／混搭／商店檢查</a><a href="review/proportion_test.json">輪廓與尺寸測量</a><a href="review/roundtrip_test.json">GLB 動作回讀</a><a href="review/blender_validate.json">Blender 檢查</a><a href="../original_armors_v1/revisions/c01_game_proportions_20261002/index.html">先前比例探索稿</a></nav>
 </main>
 <script>

@@ -3,6 +3,8 @@ extends Node3D
 const Visuals = preload("res://scripts/game/armor_visuals.gd")
 const Fixture = preload("res://tests/reload_catalog_fixture.gd")
 const PREFIXES := ["ArmorHead_", "ArmorBody_", "ArmorHand_", "ArmorFoot_"]
+const LOCAL_GEOMETRY_CHANGE_LIMIT := .15
+const UV_CHANGED_COORDINATE_LIMIT := .15
 var failures: Array[String] = []
 var records: Array[Dictionary] = []
 
@@ -41,6 +43,7 @@ func _run() -> void:
 	_check(parts.size()==4,"Expected four modular parts")
 	var triangles := 0
 	var uv_records: Dictionary = {}
+	var rest_geometry_records: Dictionary = {}
 	for part: MeshInstance3D in parts:
 		var baseline:=source.find_child(str(part.name),true,false) as MeshInstance3D
 		_check(part.get_meta("armor_rework","")=="viper_runtime_v2","Wrong asset revision")
@@ -57,11 +60,25 @@ func _run() -> void:
 				_check(part.skin.get_bind_pose(i).is_equal_approx(expected_bind),"Changed source bind")
 		var expected: Dictionary=geometry.parts[str(part.name)].bounds_game
 		var actual := _posed_bounds(part,skeleton)
+		var old_rest := _posed_bounds(baseline,skeleton)
+		var dimension_deltas: Array[float] = []
+		for axis: int in 3:
+			var relative := absf(actual.size[axis]/old_rest.size[axis]-1.0)
+			dimension_deltas.append(relative)
+			_check(relative<=LOCAL_GEOMETRY_CHANGE_LIMIT,"Runtime rest dimensions exceed original 15% budget")
+		var original_points := _posed_vertices(baseline,skeleton)
+		var actual_points := _posed_vertices(part,skeleton)
+		_check(actual_points.size()==original_points.size(),"Runtime rest vertex count changed")
+		var max_rest_displacement := 0.0
+		for vertex_index: int in mini(actual_points.size(),original_points.size()):
+			max_rest_displacement=maxf(max_rest_displacement,actual_points[vertex_index].distance_to(original_points[vertex_index]))
+		var displacement_fraction := max_rest_displacement/minf(old_rest.size.x,minf(old_rest.size.y,old_rest.size.z))
+		_check(displacement_fraction<=LOCAL_GEOMETRY_CHANGE_LIMIT,"Runtime rest vertex displacement exceeds original 15% budget")
+		rest_geometry_records[str(part.name)]={"dimension_delta_fraction":dimension_deltas,"max_rest_displacement":max_rest_displacement,"max_displacement_fraction_of_smallest_dimension":displacement_fraction}
 		if part.name=="ArmorHead_00":
 			_check(actual.position.distance_to(Vector3(expected.min[0],expected.min[1],expected.min[2]))<.001,"Authored head shifted")
 			_check(actual.end.distance_to(Vector3(expected.max[0],expected.max[1],expected.max[2]))<.001,"Authored head scaled")
 		elif part.name in ["ArmorBody_00","ArmorHand_00","ArmorFoot_00"]:
-			var old_rest:=_posed_bounds(baseline,skeleton)
 			_check(actual.position.distance_to(old_rest.position)<.001 and actual.end.distance_to(old_rest.end)<.001,"Original limb rest geometry changed")
 		for sid: int in part.mesh.get_surface_count():
 			var arrays:=part.mesh.surface_get_arrays(sid)
@@ -93,7 +110,7 @@ func _run() -> void:
 								abdomen_uv+=1
 								_check(absf(new_uv.x-old_uv.x)<.000001 and new_uv.y>=.64 and new_uv.y<=.86,"Front-abdomen UV escaped selected belly paint or shifted horizontally")
 							_check(new_uv.distance_to(old_uv)<=.20,"Torso UV moved more than .20 atlas units")
-				_check(float(changed_uv)/raw[Mesh.ARRAY_TEX_UV].size()<=.20,"More than20% of local material UV coordinates moved")
+				_check(float(changed_uv)/raw[Mesh.ARRAY_TEX_UV].size()<=UV_CHANGED_COORDINATE_LIMIT,"More than 15% of local material UV coordinates moved")
 				if part.name=="ArmorBody_00":
 					_check(changed_uv==(32 if sid==0 else 0),"Expected exactly32 front-torso edits and original shoulder UV")
 					_check(chest_uv==(20 if sid==0 else 0) and abdomen_uv==(12 if sid==0 else 0),"Expected20 chest and12 abdomen coordinates only")
@@ -157,7 +174,7 @@ func _run() -> void:
 	_check(_hash(real_save)==before,"Real save modified")
 	GameState.save_path=real_save
 	var report:=FileAccess.open("res://docs/art/viper_runtime_v2/review/runtime_test.json",FileAccess.WRITE)
-	report.store_string(JSON.stringify({"status":"PASS" if failures.is_empty() else "FAIL","failures":failures,"triangles":triangles,"poses":records,"uv_edits":uv_records,"save_unchanged":_hash(real_save)==before,"user_args":OS.get_cmdline_user_args(),"viper_scene":Visuals.reworked_scene_path(0)},"\t"))
+	report.store_string(JSON.stringify({"status":"PASS" if failures.is_empty() else "FAIL","failures":failures,"triangles":triangles,"poses":records,"uv_edits":uv_records,"rest_geometry":rest_geometry_records,"limits":{"uv_changed_coordinate_fraction":UV_CHANGED_COORDINATE_LIMIT,"uv_count_scope":"per_material_surface","local_geometry_change_fraction":LOCAL_GEOMETRY_CHANGE_LIMIT,"torso_uv_max_displacement_atlas_units":.20},"target_sha256":_hash("res://docs/art/viper_runtime_v2/build/target.json"),"runtime_scene_sha256":_hash(Visuals.reworked_scene_path(0)),"save_unchanged":_hash(real_save)==before,"user_args":OS.get_cmdline_user_args(),"viper_scene":Visuals.reworked_scene_path(0)},"\t"))
 	print("VIPER_V2_TEST_%s failures=%d samples=%d triangles=%d save_unchanged=%s"%["PASS" if failures.is_empty() else "FAIL",failures.size(),records.size(),triangles,str(_hash(real_save)==before)])
 	get_tree().quit(0 if failures.is_empty() else 1)
 
@@ -174,18 +191,25 @@ func _check_pose(parts: Array[MeshInstance3D], skeleton: Skeleton3D, source: Nod
 			var original:=source.find_child(str(part.name),true,false) as MeshInstance3D
 			var previous:=_posed_bounds(original,skeleton)
 			var relative:=maxf(bounds.position.distance_to(previous.position),bounds.end.distance_to(previous.end))/minf(previous.size.x,minf(previous.size.y,previous.size.z))
-			_check(relative<=.15,"Head deformation exceeds original 15% local budget")
+			_check(relative<=LOCAL_GEOMETRY_CHANGE_LIMIT,"Head deformation exceeds original 15% local budget")
 			pose_record.head_bounds_delta_fraction=relative
 		pose_record.bounds[str(part.name)]={"min":str(bounds.position),"max":str(bounds.end)}
 	records.append(pose_record)
 
 func _posed_bounds(part: MeshInstance3D, skeleton: Skeleton3D) -> AABB:
+	var first:=true
+	var box:=AABB()
+	for point: Vector3 in _posed_vertices(part,skeleton):
+		box=AABB(point,Vector3.ZERO) if first else box.expand(point)
+		first=false
+	return box
+
+func _posed_vertices(part: MeshInstance3D, skeleton: Skeleton3D) -> PackedVector3Array:
 	var transforms: Array[Transform3D]=[]
 	for bind: int in part.skin.get_bind_count():
 		var bone:=skeleton.find_bone(part.skin.get_bind_name(bind))
 		transforms.append(skeleton.get_bone_global_pose(bone)*part.skin.get_bind_pose(bind))
-	var first:=true
-	var box:=AABB()
+	var points := PackedVector3Array()
 	for sid: int in part.mesh.get_surface_count():
 		var arrays:=part.mesh.surface_get_arrays(sid)
 		for i: int in arrays[Mesh.ARRAY_VERTEX].size():
@@ -193,9 +217,8 @@ func _posed_bounds(part: MeshInstance3D, skeleton: Skeleton3D) -> AABB:
 			for j: int in 4:
 				point+=(transforms[arrays[Mesh.ARRAY_BONES][i*4+j]]*arrays[Mesh.ARRAY_VERTEX][i])*arrays[Mesh.ARRAY_WEIGHTS][i*4+j]
 			_check(point.is_finite(),"Non-finite posed vertex")
-			box=AABB(point,Vector3.ZERO) if first else box.expand(point)
-			first=false
-	return box
+			points.append(point)
+	return points
 
 func _visible(player: WarfarePlayer) -> Array[MeshInstance3D]:
 	var result: Array[MeshInstance3D]=[]

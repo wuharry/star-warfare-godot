@@ -1,5 +1,11 @@
 {
 	"failures": [],
+	"limits": {
+		"local_geometry_change_fraction": 0.15,
+		"torso_uv_max_displacement_atlas_units": 0.2,
+		"uv_changed_coordinate_fraction": 0.15,
+		"uv_count_scope": "per_material_surface"
+	},
 	"poses": [
 		{
 			"bounds": {
@@ -347,8 +353,48 @@
 			"time": 0.95
 		}
 	],
+	"rest_geometry": {
+		"ArmorBody_00": {
+			"dimension_delta_fraction": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"max_displacement_fraction_of_smallest_dimension": 0.0,
+			"max_rest_displacement": 0.0
+		},
+		"ArmorFoot_00": {
+			"dimension_delta_fraction": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"max_displacement_fraction_of_smallest_dimension": 0.0,
+			"max_rest_displacement": 0.0
+		},
+		"ArmorHand_00": {
+			"dimension_delta_fraction": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"max_displacement_fraction_of_smallest_dimension": 0.0,
+			"max_rest_displacement": 0.0
+		},
+		"ArmorHead_00": {
+			"dimension_delta_fraction": [
+				0.0,
+				0.0,
+				0.0499840292482334
+			],
+			"max_displacement_fraction_of_smallest_dimension": 0.102376431976927,
+			"max_rest_displacement": 0.0530640780925751
+		}
+	},
+	"runtime_scene_sha256": "2b475fbb1f515555bbb602dbb300087a51c2f3b0ed7cc8acf7b94325858e46e6",
 	"save_unchanged": true,
 	"status": "PASS",
+	"target_sha256": "1749913da13117b97419480de6390ce0bd1cd48d77ca77d5d4bd61b38d258f45",
 	"triangles": 682,
 	"user_args": [],
 	"uv_edits": {

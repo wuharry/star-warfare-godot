@@ -1,0 +1,163 @@
+{
+  "revision": "style_unified_v9",
+  "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+  "zero_additional_geometry_or_uv_edits": true,
+  "entries": [
+    {
+      "label": "head",
+      "variant": "style_unified_v9",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/head_diffuse_style_unified_v9.txt",
+      "input_paths": [
+        "docs/art/armor_style_unification_v1/before/viper/atlases/head_diffuse.png",
+        "assets/models/player/animated/armor_textures/head_22f92a18e5f8_2x.png",
+        "docs/art/armor_style_unification_v1/before/viper/review/head_front.png"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/before/viper/atlases/head_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/assets/models/player/animated/armor_textures/head_22f92a18e5f8_2x.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/before/viper/review/head_front.png"
+      ],
+      "input_sha256": [
+        "b19e5ef331cf3a9a0619c5ce7ec8c3cb08251588d1d194f8dce4fad4cd8b2964",
+        "1c18a72b2c12aa70ba7697924b21d3bfaa34f3e2c5ede8354c366962700eb5f9",
+        "3a300209d58defc2cedfbeb097c7337cbd6c510037cdfa2ea2bca9282e3a8729"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/style_unified_v9/generated/head_diffuse.png",
+      "output_sha256": "a1221cefc4ce785b05fe40dcd927010dafae9990332aad12c984c9c96308b0dc",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generator": "image_gen",
+      "generated_at": "2026-10-04T09:18:50.517657+00:00",
+      "generated_at_basis": "native generated output file modification time UTC",
+      "original_generation_path": "C:/Users/whw88/.codex/generated_images/01a10633-4d5d-7c52-86e0-fb30d66eda96/exec-776c4a12-6122-466d-b50b-fab19876829f.png",
+      "notes": "Texture-only broad soft hand-painted style unification. Input1 exact immutable prepass runtime atlas; input2 original atlas style only; input3 accepted runtime design and mapping check. Actual native generated PNG copied byte-for-byte; no pixel transformation. Pending runtime mapped inspection and user art approval."
+    },
+    {
+      "label": "body",
+      "variant": "style_unified_v9",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/body_diffuse_style_unified_v9.txt",
+      "input_paths": [
+        "docs/art/armor_style_unification_v1/before/viper/atlases/body_diffuse.png",
+        "assets/models/player/animated/armor_textures/body_41c59e886aaa_2x.png",
+        "docs/art/armor_style_unification_v1/before/viper/review/diffuse_front.png"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/before/viper/atlases/body_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/assets/models/player/animated/armor_textures/body_41c59e886aaa_2x.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/before/viper/review/diffuse_front.png"
+      ],
+      "input_sha256": [
+        "83701b740e31ecf124f288e0428f1ea55bdf73f202cfb6616ab66950394b957a",
+        "1e1dee320b11a5c15f2a59c7fa89faa140033d3e2076a9db2fd7139dd1188e00",
+        "f1b5dff4e42e162373d3d92eff1918208e70d902e7ce9d45727ff1ce67461acf"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/style_unified_v9/generated/body_diffuse.png",
+      "output_sha256": "0bbd05125ae61c081c207a1f814bdcfb4ab2bd94613afb36210dd9296b64eeba",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generator": "image_gen",
+      "generated_at": "2026-10-04T09:20:32.577420+00:00",
+      "generated_at_basis": "native generated output file modification time UTC",
+      "original_generation_path": "C:/Users/whw88/.codex/generated_images/01a10633-4d5d-7c52-86e0-fb30d66eda96/exec-e244d236-fdb9-4ad7-9f4c-68bb93c8a369.png",
+      "notes": "Texture-only broad soft hand-painted style unification. Input1 exact immutable prepass runtime atlas; input2 original atlas style only; input3 accepted runtime design and mapping check. Actual native generated PNG copied byte-for-byte; no pixel transformation. Pending runtime mapped inspection and user art approval."
+    },
+    {
+      "label": "shoulder",
+      "variant": "style_unified_v9",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/shoulder_diffuse_style_unified_v9.txt",
+      "input_paths": [
+        "docs/art/armor_style_unification_v1/before/viper/atlases/shoulder_diffuse.png",
+        "assets/models/player/animated/armor_textures/jian_6847836cc115_2x.png",
+        "docs/art/armor_style_unification_v1/before/viper/review/diffuse_front.png"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/before/viper/atlases/shoulder_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/assets/models/player/animated/armor_textures/jian_6847836cc115_2x.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/before/viper/review/diffuse_front.png"
+      ],
+      "input_sha256": [
+        "162ca5bb1de8533e7637ca7aba0464feb11e225b19ba8b63adfd60d3a56ccc90",
+        "35aa9e729484f61e5eea046c2e1a222483f338e621a6f989303821d962502f61",
+        "f1b5dff4e42e162373d3d92eff1918208e70d902e7ce9d45727ff1ce67461acf"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/style_unified_v9/generated/shoulder_diffuse.png",
+      "output_sha256": "963ed30b4a109b6dd4a5b2b2e993fd0f29e0e468928d053875ed3e49e9e1e860",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generator": "image_gen",
+      "generated_at": "2026-10-04T09:21:43.327518+00:00",
+      "generated_at_basis": "native generated output file modification time UTC",
+      "original_generation_path": "C:/Users/whw88/.codex/generated_images/01a10633-4d5d-7c52-86e0-fb30d66eda96/exec-c6e1fadd-f9bd-476c-ae23-0becfdd99c4f.png",
+      "notes": "Texture-only broad soft hand-painted style unification. Input1 exact immutable prepass runtime atlas; input2 original atlas style only; input3 accepted runtime design and mapping check. Actual native generated PNG copied byte-for-byte; no pixel transformation. Pending runtime mapped inspection and user art approval."
+    },
+    {
+      "label": "hand",
+      "variant": "style_unified_v9",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/hand_diffuse_style_unified_v9.txt",
+      "input_paths": [
+        "docs/art/armor_style_unification_v1/before/viper/atlases/hand_diffuse.png",
+        "assets/models/player/animated/armor_textures/hand_f539ff620e61_2x.png",
+        "docs/art/armor_style_unification_v1/before/viper/review/diffuse_front.png"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/before/viper/atlases/hand_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/assets/models/player/animated/armor_textures/hand_f539ff620e61_2x.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/before/viper/review/diffuse_front.png"
+      ],
+      "input_sha256": [
+        "d1023bdedbe824dbac3d1c62717eb3703c4f54acf4cb3c0c6c36a6ab98ebfa5f",
+        "a6af731e037f3779d9fc99bcdc55cd7cb8645d04508c398ff9a7d284f30a97c2",
+        "f1b5dff4e42e162373d3d92eff1918208e70d902e7ce9d45727ff1ce67461acf"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/style_unified_v9/generated/hand_diffuse.png",
+      "output_sha256": "53a5d1bddd101de3db5652a2eb7343fbd48a40678b449900a09c5e979ab7fa62",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generator": "image_gen",
+      "generated_at": "2026-10-04T09:23:00.332522+00:00",
+      "generated_at_basis": "native generated output file modification time UTC",
+      "original_generation_path": "C:/Users/whw88/.codex/generated_images/01a10633-4d5d-7c52-86e0-fb30d66eda96/exec-fa87ecd6-53ef-470f-bb5b-05b59a09ad64.png",
+      "notes": "Texture-only broad soft hand-painted style unification. Input1 exact immutable prepass runtime atlas; input2 original atlas style only; input3 accepted runtime design and mapping check. Actual native generated PNG copied byte-for-byte; no pixel transformation. Pending runtime mapped inspection and user art approval."
+    },
+    {
+      "label": "foot",
+      "variant": "style_unified_v9",
+      "prompt_path": "docs/art/viper_runtime_v2/prompts/foot_diffuse_style_unified_v9.txt",
+      "input_paths": [
+        "docs/art/armor_style_unification_v1/before/viper/atlases/foot_diffuse.png",
+        "assets/models/player/animated/armor_textures/foot_3d4c778949e5_2x.png",
+        "docs/art/armor_style_unification_v1/before/viper/review/diffuse_front.png"
+      ],
+      "actual_input_paths": [
+        "E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/before/viper/atlases/foot_diffuse.png",
+        "E:/Star-Warfare-Godot-Restoration/assets/models/player/animated/armor_textures/foot_3d4c778949e5_2x.png",
+        "E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/before/viper/review/diffuse_front.png"
+      ],
+      "input_sha256": [
+        "340cec30ec508a82fc0c73de9c4fadef4210730d5286616e65a9b1194153e2a5",
+        "ac77dc34c29e6d09d37d146374772d5d18a2dd6f380da01c20c945fe744bf8d3",
+        "f1b5dff4e42e162373d3d92eff1918208e70d902e7ce9d45727ff1ce67461acf"
+      ],
+      "output_path": "docs/art/viper_runtime_v2/revisions/style_unified_v9/generated/foot_diffuse.png",
+      "output_sha256": "ae7e71a599d5ede22021fae67bd7ad3d3f90ec6f6dfb020b3cbeca387236e849",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generator": "image_gen",
+      "generated_at": "2026-10-04T09:24:15.217424+00:00",
+      "generated_at_basis": "native generated output file modification time UTC",
+      "original_generation_path": "C:/Users/whw88/.codex/generated_images/01a10633-4d5d-7c52-86e0-fb30d66eda96/exec-8fb0827a-25d6-4f79-88a1-a5974b7cd3b5.png",
+      "notes": "Texture-only broad soft hand-painted style unification. Input1 exact immutable prepass runtime atlas; input2 original atlas style only; input3 accepted runtime design and mapping check. Actual native generated PNG copied byte-for-byte; no pixel transformation. Pending runtime mapped inspection and user art approval."
+    }
+  ],
+  "archived_attempts": []
+}

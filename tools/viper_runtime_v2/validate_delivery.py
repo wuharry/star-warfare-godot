@@ -27,6 +27,8 @@ LABELS = {
     "ArmorFoot_00": ["foot"],
 }
 EPSILON = 0.000001
+LOCAL_GEOMETRY_CHANGE_LIMIT = 0.15
+UV_CHANGED_COORDINATE_LIMIT = 0.15
 
 
 def sha256(data: bytes) -> str:
@@ -91,6 +93,7 @@ def main() -> None:
         authored_uv = [uv for row in authored_rows for uv in row["uv"]]
         original_uv = [uv for row in original_rows for uv in row["uv"]]
         authored_positions = [point for row in authored_rows for point in row["positions"]]
+        original_positions = [point for row in original_rows for point in row["positions"]]
         check(len(authored_uv) == len(original_uv), f"{name}: UV coordinate count changed")
         check(len(mesh.vertices) == len(authored_uv), f"{name}: master vertex count differs from authored UV count")
         check(len(mesh.materials) == len(labels), f"{name}: material surface count changed")
@@ -131,6 +134,17 @@ def main() -> None:
             # Same Godot-to-Blender conversion used by build.py: (-x,z,y).
             max_position_error = max(max_position_error, (vertex.co - Vector((-x, z, y))).length)
         check(max_position_error <= EPSILON, f"{name}: packed master position differs from authored cage")
+        actual_positions = [(-vertex.co.x, vertex.co.z, vertex.co.y) for vertex in mesh.vertices]
+        check(len(actual_positions) == len(original_positions), f"{name}: original vertex count changed")
+        original_size = [max(point[axis] for point in original_positions) - min(point[axis] for point in original_positions)
+                         for axis in range(3)]
+        actual_size = [max(point[axis] for point in actual_positions) - min(point[axis] for point in actual_positions)
+                       for axis in range(3)]
+        dimension_delta = [abs(new / old - 1.0) for old, new in zip(original_size, actual_size)]
+        max_rest_displacement = max(math.dist(old, new) for old, new in zip(original_positions, actual_positions))
+        displacement_fraction = max_rest_displacement / min(original_size)
+        check(max(dimension_delta) <= LOCAL_GEOMETRY_CHANGE_LIMIT, f"{name}: dimensions exceed 15% of original")
+        check(displacement_fraction <= LOCAL_GEOMETRY_CHANGE_LIMIT, f"{name}: rest displacement exceeds 15% of original smallest dimension")
 
         uv_displacements = [math.dist(a, b) for a, b in zip(original_uv, authored_uv)]
         changed = sum(distance > EPSILON for distance in uv_displacements)
@@ -143,6 +157,8 @@ def main() -> None:
         for surface, (old_row, new_row) in enumerate(zip(original_rows, authored_rows)):
             distances = [math.dist(a, b) for a, b in zip(old_row["uv"], new_row["uv"])]
             moved = sum(distance > EPSILON for distance in distances)
+            check(moved / len(old_row["uv"]) <= UV_CHANGED_COORDINATE_LIMIT,
+                  f"{labels[surface]}: changed UV coordinate count exceeds 15% of material surface")
             surface_uv_records.append({
                 "surface": surface, "label": labels[surface],
                 "original_uv_coordinates": len(old_row["uv"]),
@@ -176,7 +192,7 @@ def main() -> None:
                 surface_uv_records[-1]["changed_chest_coordinates"] = chest_moved
                 surface_uv_records[-1]["changed_abdomen_coordinates"] = abdomen_moved
         if name in ("ArmorHead_00", "ArmorBody_00"):
-            check(changed / len(original_uv) <= 0.20, f"{name}: changed UV coordinate count exceeds 20%")
+            check(changed / len(original_uv) <= UV_CHANGED_COORDINATE_LIMIT, f"{name}: changed UV coordinate count exceeds 15%")
         else:
             check(changed == 0, f"{name}: original limb UV changed")
 
@@ -226,6 +242,9 @@ def main() -> None:
             "rms_uv_displacement_from_original": math.sqrt(sum(value * value for value in uv_displacements) / len(uv_displacements)),
             "maximum_master_uv_error_from_authored": max_uv_error,
             "maximum_master_position_error_from_authored": max_position_error,
+            "dimension_delta_fraction": dimension_delta,
+            "max_rest_displacement": max_rest_displacement,
+            "max_displacement_fraction_of_smallest_dimension": displacement_fraction,
             "original_uv_charts": original_chart_count,
             "authored_uv_charts": authored_chart_count,
             "uv_by_surface": surface_uv_records,
@@ -253,8 +272,11 @@ def main() -> None:
         "original_uv_coordinate_count": total_uv_coordinates,
         "changed_uv_coordinate_count": total_changed_coordinates,
         "changed_uv_coordinate_fraction": total_changed_coordinates / total_uv_coordinates,
-        "uv_count_limit": 0.20,
-        "uv_metric_note": "The 20% limit counts original coordinates changed per head/body part; the body edit is limited to20 chest and12 abdomen coordinates, at most .20 atlas units each. Coordinate/chart counts and topology remain unchanged. Inherited head atlas displacement is reported separately.",
+        "uv_count_limit": UV_CHANGED_COORDINATE_LIMIT,
+        "uv_count_scope": "per_material_surface",
+        "local_geometry_change_limit": LOCAL_GEOMETRY_CHANGE_LIMIT,
+        "torso_uv_max_displacement_atlas_units": 0.20,
+        "uv_metric_note": "The 15% limit counts original coordinates changed independently per material surface. The separate torso distance guard remains .20 atlas units, with 20 chest and 12 abdomen edits. Coordinate/chart counts and topology remain unchanged. Inherited head atlas displacement is reported separately.",
         "meshes": mesh_records, "images": image_records,
         "previous_source_geometry_warnings": previous["summary"]["warn"],
         "previous_warning_note": "Prior general Blender validation warnings are retained here for context, not recomputed by this focused validator.",
