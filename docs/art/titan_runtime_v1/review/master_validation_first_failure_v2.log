@@ -1,0 +1,17 @@
+Actual Blender validation output, latest head/hand v2, captured from exec result:
+Command: Blender5.1 --background --python-exit-code 1 --python tools/armor_runtime_v1/validate_delivery.py -- --armor titan
+Exit code: 1
+
+Traceback (most recent call last):
+  File "E:\Star-Warfare-Godot-Restoration\tools\armor_runtime_v1\validate_delivery.py", line 200, in <module>
+    main()
+    ~~~~^^
+  File "E:\Star-Warfare-Godot-Restoration\tools\armor_runtime_v1\validate_delivery.py", line 187, in main
+    "changed_uv_coordinate_count": changed_coordinates, "changed_uv_coordinate_fraction": changed_coordinates / coordinates,
+                                                                                          ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+ZeroDivisionError: division by zero
+
+Error: script failed, file: 'tools/armor_runtime_v1/validate_delivery.py', exiting.
+Blender 5.1.0 (hash adfe2921d5f3 built 2026-03-17 01:37:32)
+
+Blender quit

@@ -1,0 +1,143 @@
+{
+  "status": "FAIL",
+  "errors": [
+    "Wrong loaded master",
+    "Four original modular parts required",
+    "One original 28-bone armature required",
+    "Original total topology/surface/coordinate count changed",
+    "Exactly five canonical packed PNGs required"
+  ],
+  "scope": "Read-only first-integration packed master, true original indices/weights/rig and original-total20% geometry/UV. No artistic likeness score.",
+  "master": "docs/art/titan_runtime_v1/build/titan_master.blend",
+  "master_sha256": "763f6b3fa13836d8846b3949ec485cf779c398bb431471e002ea738df8e3c8e0",
+  "loaded_master": "",
+  "source_sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
+  "target_sha256": "a0e870d66cc0ec5639e5450f7fefcd1629b19ffa26a641d7749be508f86a9177",
+  "geometry_sha256": "b1c18aa8a59a224b30e28641f53c35a768528e5d9772fa02e888874375aa3bda",
+  "blender": "5.1.0",
+  "original_source_snapshot_sha256": "1d2883a7123e3297245ee9845569335981d82f26842b661ca98393fd6a3ff0cc",
+  "original_node_ids": {
+    "ArmorHead_05": 50,
+    "ArmorBody_05": 51,
+    "ArmorHand_05": 52,
+    "ArmorFoot_05": 53
+  },
+  "mesh_count": 1,
+  "surface_count": 0,
+  "bone_count": null,
+  "actual_mesh_names": [
+    "Cube"
+  ],
+  "expected_mesh_names": [
+    "ArmorBody_05",
+    "ArmorFoot_05",
+    "ArmorHand_05",
+    "ArmorHead_05"
+  ],
+  "triangle_count": 0,
+  "packed_diffuse_count": 0,
+  "original_uv_coordinate_count": 0,
+  "changed_uv_coordinate_count": 0,
+  "changed_uv_coordinate_fraction": null,
+  "uv_count_limit": 0.2,
+  "uv_count_scope": "per_material_surface",
+  "local_geometry_change_limit": 0.2,
+  "original_topology_indices_weights_rig_verified": false,
+  "original_metrics": {
+    "original_measurements": [
+      {
+        "part": "ArmorBody_05",
+        "original_total_limit": 0.2,
+        "original_max_rest_displacement_fraction": 9.095843481806661e-15,
+        "original_dimension_delta_fractions": [
+          2.220446049250313e-16,
+          2.220446049250313e-16,
+          7.771561172376096e-16
+        ],
+        "original_uv_changed_fraction": 0.0,
+        "surfaces": [
+          {
+            "surface": 0,
+            "label": "shoulder",
+            "uv_coordinate_count": 334,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          },
+          {
+            "surface": 1,
+            "label": "body",
+            "uv_coordinate_count": 464,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
+      },
+      {
+        "part": "ArmorFoot_05",
+        "original_total_limit": 0.2,
+        "original_max_rest_displacement_fraction": 1.3978468570097316e-15,
+        "original_dimension_delta_fractions": [
+          0.0,
+          4.440892098500626e-16,
+          1.7763568394002505e-15
+        ],
+        "original_uv_changed_fraction": 0.0,
+        "surfaces": [
+          {
+            "surface": 0,
+            "label": "foot",
+            "uv_coordinate_count": 258,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
+      },
+      {
+        "part": "ArmorHand_05",
+        "original_total_limit": 0.2,
+        "original_max_rest_displacement_fraction": 1.735483901366589e-14,
+        "original_dimension_delta_fractions": [
+          0.0,
+          2.886579864025407e-15,
+          9.992007221626409e-16
+        ],
+        "original_uv_changed_fraction": 0.0,
+        "surfaces": [
+          {
+            "surface": 0,
+            "label": "hand",
+            "uv_coordinate_count": 257,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
+      },
+      {
+        "part": "ArmorHead_05",
+        "original_total_limit": 0.2,
+        "original_max_rest_displacement_fraction": 0.10308802403500102,
+        "original_dimension_delta_fractions": [
+          8.881784197001252e-16,
+          2.886579864025407e-15,
+          8.881784197001252e-16
+        ],
+        "original_uv_changed_fraction": 0.0,
+        "surfaces": [
+          {
+            "surface": 0,
+            "label": "head",
+            "uv_coordinate_count": 294,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
+      }
+    ],
+    "triangles": 700,
+    "surfaces": 5,
+    "uv_coordinates": 1607,
+    "uv_charts": 16
+  },
+  "meshes": [],
+  "images": {}
+}

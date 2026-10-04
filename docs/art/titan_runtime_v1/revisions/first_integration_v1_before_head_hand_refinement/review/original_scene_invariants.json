@@ -1,0 +1,51 @@
+{
+	"current_scene_sha256": "c78da2a8b743f60c0b7f4dd902413e60c096932c2ed922aa7e2ae49529f1ba37",
+	"errors": [],
+	"geometry_sha256": "b1c18aa8a59a224b30e28641f53c35a768528e5d9772fa02e888874375aa3bda",
+	"original_bones": 28,
+	"original_node_ids": {
+		"ArmorBody_05": 51.0,
+		"ArmorFoot_05": 53.0,
+		"ArmorHand_05": 52.0,
+		"ArmorHead_05": 50.0
+	},
+	"original_source_snapshot_sha256": "1d2883a7123e3297245ee9845569335981d82f26842b661ca98393fd6a3ff0cc",
+	"records": [
+		{
+			"body_limbs_all_arrays_exact": null,
+			"indices_skin_weights_bones_topology_exact": true,
+			"max_rest_error_m": 0.0000000298023223876953,
+			"part": "ArmorHead_05",
+			"rest_position_uv_verified_against_target": true,
+			"surfaces": 1
+		},
+		{
+			"body_limbs_all_arrays_exact": true,
+			"indices_skin_weights_bones_topology_exact": true,
+			"max_rest_error_m": 0.0,
+			"part": "ArmorBody_05",
+			"rest_position_uv_verified_against_target": true,
+			"surfaces": 2
+		},
+		{
+			"body_limbs_all_arrays_exact": true,
+			"indices_skin_weights_bones_topology_exact": true,
+			"max_rest_error_m": 0.0,
+			"part": "ArmorHand_05",
+			"rest_position_uv_verified_against_target": true,
+			"surfaces": 1
+		},
+		{
+			"body_limbs_all_arrays_exact": true,
+			"indices_skin_weights_bones_topology_exact": true,
+			"max_rest_error_m": 0.0,
+			"part": "ArmorFoot_05",
+			"rest_position_uv_verified_against_target": true,
+			"surfaces": 1
+		}
+	],
+	"scope": "Actual SCN arrays versus current true original player.gltf: only configured head positions/normals may differ; all UV, indices, skin binds, weights, bone indices, topology and body/limb arrays exact. Authored rest-space target verified vertex by vertex.",
+	"source_sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
+	"status": "PASS",
+	"target_sha256": "a0e870d66cc0ec5639e5450f7fefcd1629b19ffa26a641d7749be508f86a9177"
+}

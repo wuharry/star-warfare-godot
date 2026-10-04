@@ -1,0 +1,150 @@
+{
+  "status": "PASS",
+  "scope": "Full native RGB pixels plus original triangle UV/skin/normalized-weight identity in the portable GLB. SCN original quantized weights stay exact; exchange weights are necessarily normalized by glTF export.",
+  "glb_sha256": "f366d0563bdf4314d6fbec0e1406b89317b6177ca6242498461688b78c8b6378",
+  "source_sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
+  "target_sha256": "a0e870d66cc0ec5639e5450f7fefcd1629b19ffa26a641d7749be508f86a9177",
+  "original_source_snapshot_sha256": "1d2883a7123e3297245ee9845569335981d82f26842b661ca98393fd6a3ff0cc",
+  "original_node_ids": {
+    "ArmorHead_05": 50,
+    "ArmorBody_05": 51,
+    "ArmorHand_05": 52,
+    "ArmorFoot_05": 53
+  },
+  "original_bones": 28,
+  "original_topology_skin_weights_verified": true,
+  "primitives": [
+    {
+      "part": "ArmorHead_05",
+      "surface": 0,
+      "label": "head",
+      "original_triangle_count": 124,
+      "original_triangle_uv_skin_weight_identity_verified": true,
+      "max_uv_error": 6.280369834735101e-16,
+      "max_normalized_weight_error": 0.0
+    },
+    {
+      "part": "ArmorBody_05",
+      "surface": 0,
+      "label": "shoulder",
+      "original_triangle_count": 152,
+      "original_triangle_uv_skin_weight_identity_verified": true,
+      "max_uv_error": 6.280369834735101e-16,
+      "max_normalized_weight_error": 2.8526491058222803e-08
+    },
+    {
+      "part": "ArmorBody_05",
+      "surface": 1,
+      "label": "body",
+      "original_triangle_count": 200,
+      "original_triangle_uv_skin_weight_identity_verified": true,
+      "max_uv_error": 6.280369834735101e-16,
+      "max_normalized_weight_error": 4.596072455953504e-08
+    },
+    {
+      "part": "ArmorHand_05",
+      "surface": 0,
+      "label": "hand",
+      "original_triangle_count": 108,
+      "original_triangle_uv_skin_weight_identity_verified": true,
+      "max_uv_error": 7.065416064076988e-16,
+      "max_normalized_weight_error": 0.0
+    },
+    {
+      "part": "ArmorFoot_05",
+      "surface": 0,
+      "label": "foot",
+      "original_triangle_count": 116,
+      "original_triangle_uv_skin_weight_identity_verified": true,
+      "max_uv_error": 6.684427777288335e-16,
+      "max_normalized_weight_error": 0.0
+    }
+  ],
+  "images": {
+    "head": {
+      "node": "ArmorHead_05",
+      "node_index": 30,
+      "mesh_index": 0,
+      "surface": 0,
+      "material_index": 0,
+      "texture_index": 0,
+      "image_index": 0,
+      "canonical_sha256": "74f4d91763ca15fda108e97fb3e6c0ea8f1c1117503f1e8bc5363179a07dc53f",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "compared_rgb_pixels": 1572516,
+      "max_channel_error_8bit": 0,
+      "pixels_equal": true
+    },
+    "shoulder": {
+      "node": "ArmorBody_05",
+      "node_index": 31,
+      "mesh_index": 1,
+      "surface": 0,
+      "material_index": 1,
+      "texture_index": 1,
+      "image_index": 1,
+      "canonical_sha256": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "compared_rgb_pixels": 1572516,
+      "max_channel_error_8bit": 0,
+      "pixels_equal": true
+    },
+    "body": {
+      "node": "ArmorBody_05",
+      "node_index": 31,
+      "mesh_index": 1,
+      "surface": 1,
+      "material_index": 2,
+      "texture_index": 2,
+      "image_index": 2,
+      "canonical_sha256": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "compared_rgb_pixels": 1572516,
+      "max_channel_error_8bit": 0,
+      "pixels_equal": true
+    },
+    "hand": {
+      "node": "ArmorHand_05",
+      "node_index": 32,
+      "mesh_index": 2,
+      "surface": 0,
+      "material_index": 3,
+      "texture_index": 3,
+      "image_index": 3,
+      "canonical_sha256": "31aa6a47039ef532f88e3d67500204fcfac906231c651bb4ab973edffa8a31f6",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "compared_rgb_pixels": 1572516,
+      "max_channel_error_8bit": 0,
+      "pixels_equal": true
+    },
+    "foot": {
+      "node": "ArmorFoot_05",
+      "node_index": 33,
+      "mesh_index": 3,
+      "surface": 0,
+      "material_index": 4,
+      "texture_index": 4,
+      "image_index": 4,
+      "canonical_sha256": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "compared_rgb_pixels": 1572516,
+      "max_channel_error_8bit": 0,
+      "pixels_equal": true
+    }
+  }
+}

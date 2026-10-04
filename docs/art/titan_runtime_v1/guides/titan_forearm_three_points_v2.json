@@ -1,0 +1,182 @@
+{
+  "status": "TECHNICAL_GUIDE_ONLY_NOT_ARTWORK",
+  "source": {
+    "path": "docs/art/titan_runtime_v1/build/source.json",
+    "sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b"
+  },
+  "target": {
+    "path": "docs/art/titan_runtime_v1/build/target.json",
+    "sha256": "a0e870d66cc0ec5639e5450f7fefcd1629b19ffa26a641d7749be508f86a9177"
+  },
+  "authority": {
+    "path": "docs/art/original_armors_v1/images/c06_concept.png",
+    "sha256": "54cb4073c1f482e072e23aa344dc4fff300e5157191dcd7b3e82f68ced75fc49"
+  },
+  "part": "ArmorHand_05",
+  "surface": 0,
+  "vertex_records": 257,
+  "triangles": 108,
+  "uv_exact_source": true,
+  "coordinate_system": "Top-left UV origin; full mirrored HALF_ATLAS. Front = rest negative z.",
+  "method": "Cast orthographic front rays at chosen forearm rest x/y; select the minimum z surface hit. Reuse barycentric weights to project UV. Independently verify both mirrored UV hits are frontmost.",
+  "atlas_point_count": 3,
+  "runtime_point_count_after_mirror": 6,
+  "arrangement": "One upper centre point, two lower points; paint only these three on front forearm plate.",
+  "suggested_point_diameter_1254_pixels": 16,
+  "points": [
+    {
+      "label": "1 top",
+      "rest": [
+        0.49,
+        0.89,
+        -0.0005367379348792738
+      ],
+      "triangle": 85,
+      "indices": [
+        190,
+        191,
+        192
+      ],
+      "barycentric": [
+        0.2889380403004949,
+        0.26864311788377876,
+        0.4424188418157264
+      ],
+      "uv": [
+        0.5678897191073582,
+        0.307606245836724
+      ],
+      "pixel_1254": [
+        712.1337077606272,
+        385.7382322792519
+      ],
+      "pixel_1024": [
+        581.5190723659348,
+        314.9887957368054
+      ],
+      "mirror_uv_hits": [
+        {
+          "triangle": 85,
+          "rest": [
+            0.49,
+            0.8899999999999999,
+            -0.0005367379348792748
+          ]
+        },
+        {
+          "triangle": 105,
+          "rest": [
+            -0.4900003670485791,
+            0.8899986085005432,
+            -0.004085695475086389
+          ]
+        }
+      ],
+      "frontmost_both_sides": true,
+      "margin_to_triangle_edge_1254_pixels": 48.05140751885334
+    },
+    {
+      "label": "2 lower inner",
+      "rest": [
+        0.47,
+        0.85,
+        -0.0039008571351184344
+      ],
+      "triangle": 82,
+      "indices": [
+        181,
+        182,
+        183
+      ],
+      "barycentric": [
+        0.38346118798892453,
+        0.5327944839587702,
+        0.08374432805230536
+      ],
+      "uv": [
+        0.5894500896975732,
+        0.3673230636319813
+      ],
+      "pixel_1254": [
+        739.1704124807568,
+        460.6231217945046
+      ],
+      "pixel_1024": [
+        603.5968918503149,
+        376.13881715914886
+      ],
+      "mirror_uv_hits": [
+        {
+          "triangle": 82,
+          "rest": [
+            0.47,
+            0.8500000000000001,
+            -0.0039008571351184327
+          ]
+        },
+        {
+          "triangle": 102,
+          "rest": [
+            -0.47000024458287726,
+            0.8499986607875953,
+            -0.003902051126181006
+          ]
+        }
+      ],
+      "frontmost_both_sides": true,
+      "margin_to_triangle_edge_1254_pixels": 15.052996083607411
+    },
+    {
+      "label": "3 lower outer",
+      "rest": [
+        0.51,
+        0.85,
+        0.0017464300204543747
+      ],
+      "triangle": 85,
+      "indices": [
+        190,
+        191,
+        192
+      ],
+      "barycentric": [
+        0.4795552413361039,
+        0.261728863770636,
+        0.2587158948932601
+      ],
+      "uv": [
+        0.5336677408060659,
+        0.3629942989274513
+      ],
+      "pixel_1254": [
+        669.2193469708067,
+        455.1948508550239
+      ],
+      "pixel_1024": [
+        546.4757665854115,
+        371.7061621017101
+      ],
+      "mirror_uv_hits": [
+        {
+          "triangle": 85,
+          "rest": [
+            0.51,
+            0.8500000000000001,
+            0.0017464300204543726
+          ]
+        },
+        {
+          "triangle": 105,
+          "rest": [
+            -0.5100002584945263,
+            0.8499985428032499,
+            -0.0017112633499353994
+          ]
+        }
+      ],
+      "frontmost_both_sides": true,
+      "margin_to_triangle_edge_1254_pixels": 46.81467514060848
+    }
+  ],
+  "limits": "Guide only. No native atlas, source, target, UV, model or runtime edited. Front visibility confirmed in rest pose; final actual pose verification belongs to the pipeline. Current rest target is not perfectly symmetric, but UV maps each dot once to each front arm."
+}

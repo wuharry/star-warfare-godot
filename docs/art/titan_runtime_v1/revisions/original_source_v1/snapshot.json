@@ -1,0 +1,136 @@
+{
+  "status": "FROZEN_TRUE_ORIGINAL_SOURCE",
+  "created_at_utc": "2026-10-04T15:03:09.503023+00:00",
+  "runtime_id": 5,
+  "used_nodes": [
+    "ArmorHead_05",
+    "ArmorBody_05",
+    "ArmorHand_05",
+    "ArmorFoot_05"
+  ],
+  "original_scene": "res://assets/models/player/animated/player.gltf",
+  "original_scene_sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
+  "files": {
+    "source.json": {
+      "source": "docs/art/titan_runtime_v1/build/source.json",
+      "sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
+      "bytes": 1042332
+    },
+    "atlases/head.png": {
+      "source": "assets/models/player/animated/armor_textures/r_tou_54434b4b8e32_2x.png",
+      "sha256": "a131e4a51e90518915f0060b203ff322c45b032640d5bc860a58d58ad5960dba",
+      "bytes": 290078
+    },
+    "guides/head_uv.svg": {
+      "source": "docs/art/titan_runtime_v1/guides/head_uv.svg",
+      "sha256": "aa234cb83d61e8734927a10135c860c85fd1221925dd81ced39920e39c8b6f30",
+      "bytes": 14155
+    },
+    "atlases/shoulder.png": {
+      "source": "assets/models/player/animated/armor_textures/r_shou_a_fef419c461f1_2x.png",
+      "sha256": "6c91c18cd86a56d37cca6e259692839143b9714828a0dc5a5c044d1f0ec8dd65",
+      "bytes": 288676
+    },
+    "guides/shoulder_uv.svg": {
+      "source": "docs/art/titan_runtime_v1/guides/shoulder_uv.svg",
+      "sha256": "e3bf2eb35bd8f7ff2779a44c058e99cf824455dacb7dcd042789b9dd58324536",
+      "bytes": 17212
+    },
+    "atlases/body.png": {
+      "source": "assets/models/player/animated/armor_textures/r_shen_bb94860740e4_2x.png",
+      "sha256": "38be6a3f31ba2c844dffd70f9a9ba3311dc58aa59b771fa93dab3a855dae5282",
+      "bytes": 298874
+    },
+    "guides/body_uv.svg": {
+      "source": "docs/art/titan_runtime_v1/guides/body_uv.svg",
+      "sha256": "58251dbcc02f39e7555bbf09a2adef3a1405ab054500f4c26931cd7c9620f651",
+      "bytes": 22720
+    },
+    "atlases/hand.png": {
+      "source": "assets/models/player/animated/armor_textures/r_shou_03cec9a53dd6_2x.png",
+      "sha256": "59e0c53028b36fd59bbb51e9bece5ca194e6dd017413a7e86013d47e76e3c1c8",
+      "bytes": 255230
+    },
+    "guides/hand_uv.svg": {
+      "source": "docs/art/titan_runtime_v1/guides/hand_uv.svg",
+      "sha256": "c2319a2cf61375c866558399db8d10b39bdaf602e5e03f9e162af34f720ca59c",
+      "bytes": 12314
+    },
+    "atlases/foot.png": {
+      "source": "assets/models/player/animated/armor_textures/r_jiao_962a757faf32_2x.png",
+      "sha256": "272a0e1bb485c4438d6b32e4b580d1a2493506633272178f7b09603cf0ad2a39",
+      "bytes": 226902
+    },
+    "guides/foot_uv.svg": {
+      "source": "docs/art/titan_runtime_v1/guides/foot_uv.svg",
+      "sha256": "3840ffbb02db65bf174dfa10d0987fda77cecbb5f636ec67709c6cd4044ee598",
+      "bytes": 13240
+    },
+    "runtime_config.json": {
+      "source": "docs/art/titan_runtime_v1/runtime_config.json",
+      "sha256": "92609c48d01e8112eff4bac09bb565ef493088be77ecd5a3b989f4c9a2349efb",
+      "bytes": 3178
+    },
+    "scripts/inspect_sources.gd": {
+      "source": "tools/armor_runtime_v1/inspect_sources.gd",
+      "sha256": "71995ecdbfd426b0b99503f856909b26f3ea489ee01b7811947d7c8909c08ff5",
+      "bytes": 4261
+    }
+  },
+  "texture_slots": {
+    "head": {
+      "node": "ArmorHead_05",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/r_tou_54434b4b8e32_2x.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/original_source_v1/atlases/head.png",
+      "original_sha256": "a131e4a51e90518915f0060b203ff322c45b032640d5bc860a58d58ad5960dba",
+      "coordinates": 294,
+      "charts": 3,
+      "triangles": 124
+    },
+    "shoulder": {
+      "node": "ArmorBody_05",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/r_shou_a_fef419c461f1_2x.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+      "original_sha256": "6c91c18cd86a56d37cca6e259692839143b9714828a0dc5a5c044d1f0ec8dd65",
+      "coordinates": 334,
+      "charts": 4,
+      "triangles": 152
+    },
+    "body": {
+      "node": "ArmorBody_05",
+      "surface": 1,
+      "original_texture": "assets/models/player/animated/armor_textures/r_shen_bb94860740e4_2x.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/original_source_v1/atlases/body.png",
+      "original_sha256": "38be6a3f31ba2c844dffd70f9a9ba3311dc58aa59b771fa93dab3a855dae5282",
+      "coordinates": 464,
+      "charts": 4,
+      "triangles": 200
+    },
+    "hand": {
+      "node": "ArmorHand_05",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/r_shou_03cec9a53dd6_2x.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+      "original_sha256": "59e0c53028b36fd59bbb51e9bece5ca194e6dd017413a7e86013d47e76e3c1c8",
+      "coordinates": 257,
+      "charts": 3,
+      "triangles": 108
+    },
+    "foot": {
+      "node": "ArmorFoot_05",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/r_jiao_962a757faf32_2x.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+      "original_sha256": "272a0e1bb485c4438d6b32e4b580d1a2493506633272178f7b09603cf0ad2a39",
+      "coordinates": 258,
+      "charts": 2,
+      "triangles": 116
+    }
+  },
+  "original_triangles": 700,
+  "original_bones": 28,
+  "original_uv_coordinate_count": 1607,
+  "authoring_budget_from_original": 0.2
+}
