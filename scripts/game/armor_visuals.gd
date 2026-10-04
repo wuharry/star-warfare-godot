@@ -5,6 +5,11 @@ const ORIGINAL_PART_PREFIXES := ["ArmorHead_", "ArmorBody_", "ArmorHand_", "Armo
 const CONCEPT_ARMOR_DIR := "res://assets/armors/concept_runtime/"
 const REWORKED_SCENES := {
 	0: "res://assets/armors/viper_v2/viper.scn",
+	1: "res://assets/armors/fortune_v1/fortune.scn",
+	2: "res://assets/armors/tank_v1/tank.scn",
+	3: "res://assets/armors/hydra_v1/hydra.scn",
+	4: "res://assets/armors/strike_v1/strike.scn",
+	5: "res://assets/armors/titan_v1/titan.scn",
 	6: "res://assets/armors/thunder/thunder.scn",
 	11: "res://assets/armors/cygni_v2/cygni.scn",
 }

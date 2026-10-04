@@ -36,6 +36,9 @@ func _run() -> void:
 			# all other refinement-only sets keep the original strict assertions.
 			_check(Visuals.REWORKED_SCENES.get(6, "") == "res://assets/armors/thunder/thunder.scn", "Thunder redesign lost its dedicated runtime mapping")
 			continue
+		if id in [1, 2]:
+			var adopted_name := "fortune" if id == 1 else "tank"
+			_check(Visuals.reworked_scene_path(id) == "res://assets/armors/%s_v1/%s.scn" % [adopted_name, adopted_name], "Adopted %s lost its default mapping" % adopted_name)
 		checked_armor_sets += 1
 		var original: Node = original_avatar
 		if id >= Catalog.CALLOFMINI_FIRST_ID:
@@ -49,6 +52,9 @@ func _run() -> void:
 			_check(part.skin != null, "missing original skin " + str(part.name))
 			_validate_mesh(part.mesh, str(part.name), skeleton.get_bone_count())
 			var source_part := original.find_child(str(part.name), true, false) as MeshInstance3D
+			if id in [1, 2]:
+				_validate_adopted_part(part, source_part, skeleton, id)
+				continue
 			var approved_tint: Variant = null
 			if str(part.name) == "ArmorHead_08":
 				var body := original.find_child("ArmorBody_08", true, false) as MeshInstance3D
@@ -73,15 +79,20 @@ func _run() -> void:
 					var refined := avatar.find_child(name_key, true, false) as MeshInstance3D
 					var before := _posed_bounds(source, skeleton)
 					var after := _posed_bounds(refined, skeleton)
-					_check(before.position.distance_to(after.position) < .025 and before.end.distance_to(after.end) < .025, "posed silhouette changed %s %s %.2f" % [name_key, pose, time])
+					var tolerance := _silhouette_tolerance(source, skeleton, id)
+					var delta := maxf(before.position.distance_to(after.position), before.end.distance_to(after.end))
+					_check(delta <= tolerance if id in [1, 2] else delta < tolerance, "posed silhouette changed %s %s %.2f" % [name_key, pose, time])
 		fixture.begin("gun00", 0)
 		for fraction in [0.15, 0.35, 0.35]:
 			fixture.step(fixture.duration * fraction)
 			for prefix in Visuals.ORIGINAL_PART_PREFIXES:
 				var name_key: String = prefix + "%02d" % id
-				var before := _posed_bounds(original.find_child(name_key, true, false), skeleton)
+				var source := original.find_child(name_key, true, false) as MeshInstance3D
+				var before := _posed_bounds(source, skeleton)
 				var after := _posed_bounds(avatar.find_child(name_key, true, false), skeleton)
-				_check(before.position.distance_to(after.position) < .025 and before.end.distance_to(after.end) < .025, "reload silhouette changed " + name_key)
+				var tolerance := _silhouette_tolerance(source, skeleton, id)
+				var delta := maxf(before.position.distance_to(after.position), before.end.distance_to(after.end))
+				_check(delta <= tolerance if id in [1, 2] else delta < tolerance, "reload silhouette changed " + name_key)
 		if original != original_avatar: original.free()
 	original_avatar.free()
 	var manifest: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(Refined.ROOT + "manifest.json"))
@@ -121,12 +132,21 @@ func _run() -> void:
 	print("EQUIPMENT_REFINEMENT_TEST_PASS armor_sets=%d weapon_meshes=%d armor_textures=%d thunder=dedicated_test" % [checked_armor_sets, checked_models.size(), checked_armor_textures.size()] if failures.is_empty() else "EQUIPMENT_REFINEMENT_TEST_FAIL count=%d" % failures.size())
 	get_tree().quit(0 if failures.is_empty() else 1)
 
-func _posed_bounds(instance: MeshInstance3D, skeleton: Skeleton3D) -> AABB:
+func _silhouette_tolerance(source: MeshInstance3D, skeleton: Skeleton3D, id: int) -> float:
+	if id not in [1, 2]:
+		return .025
+	var rest_size := _posed_bounds(source, skeleton, true).size
+	var minimum_dimension := minf(rest_size.x, minf(rest_size.y, rest_size.z))
+	_check(rest_size.is_finite() and minimum_dimension > 0, "invalid original rest bounds " + str(source.name))
+	return minimum_dimension * .15
+
+func _posed_bounds(instance: MeshInstance3D, skeleton: Skeleton3D, rest_pose: bool = false) -> AABB:
 	var transforms: Array[Transform3D] = []
 	for bind in instance.skin.get_bind_count():
 		var bone := skeleton.find_bone(instance.skin.get_bind_name(bind))
 		if bone < 0: bone = instance.skin.get_bind_bone(bind)
-		transforms.append(skeleton.get_bone_global_pose(bone) * instance.skin.get_bind_pose(bind))
+		var bone_pose := skeleton.get_bone_global_rest(bone) if rest_pose else skeleton.get_bone_global_pose(bone)
+		transforms.append(bone_pose * instance.skin.get_bind_pose(bind))
 	var bounds := AABB()
 	var started := false
 	for surface in instance.mesh.get_surface_count():
@@ -179,6 +199,50 @@ func _validate_material(source: Material, refined: Material, label: String, appr
 			_check(actual != null and actual.resource_path == Refined.texture_path(source.albedo_texture.resource_path), "incorrect refined atlas " + label)
 			if actual != null and label.begins_with("Armor"):
 				_validate_armor_texture(actual)
+
+
+func _validate_adopted_part(part: MeshInstance3D, source: MeshInstance3D, skeleton: Skeleton3D, id: int) -> void:
+	var asset_name := "fortune" if id == 1 else "tank"
+	var label := str(part.name)
+	_check(source != null, "missing original adopted armor " + label)
+	if source == null or part.skin == null:
+		return
+	_check(part.get_meta("armor_rework", "") == asset_name + "_runtime_v1", "incorrect adopted revision " + label)
+	_check(part.get_node_or_null(part.skeleton) == skeleton and part.transform.is_equal_approx(source.transform), "adopted armor attachment changed " + label)
+	_check(part.skin.get_bind_count() == source.skin.get_bind_count(), "adopted armor bind count changed " + label)
+	for bind in mini(part.skin.get_bind_count(), source.skin.get_bind_count()):
+		_check(part.skin.get_bind_name(bind) == source.skin.get_bind_name(bind) and part.skin.get_bind_pose(bind).is_equal_approx(source.skin.get_bind_pose(bind)), "adopted armor binding changed " + label)
+	var labels: Array[String] = ["head"]
+	if id == 2 and label.begins_with("ArmorHead_"): labels.append("hand")
+	if label.begins_with("ArmorBody_"): labels = ["body", "shoulder"]
+	if label.begins_with("ArmorHand_"): labels = ["hand"]
+	if label.begins_with("ArmorFoot_"): labels = ["foot"]
+	_check(part.mesh.get_surface_count() == source.mesh.get_surface_count() and part.mesh.get_surface_count() == labels.size(), "adopted armor surface mapping changed " + label)
+	for surface in mini(part.mesh.get_surface_count(), mini(source.mesh.get_surface_count(), labels.size())):
+		var actual := part.mesh.surface_get_arrays(surface)
+		var original := source.mesh.surface_get_arrays(surface)
+		for attribute in [Mesh.ARRAY_INDEX, Mesh.ARRAY_BONES, Mesh.ARRAY_WEIGHTS]:
+			_check(actual[attribute] == original[attribute], "adopted armor topology or skin changed " + label)
+		var uv: PackedVector2Array = actual[Mesh.ARRAY_TEX_UV]
+		var original_uv: PackedVector2Array = original[Mesh.ARRAY_TEX_UV]
+		_check(uv.size() == original_uv.size(), "adopted armor UV count changed " + label)
+		var changed := 0
+		for vertex in mini(uv.size(), original_uv.size()):
+			if uv[vertex].distance_to(original_uv[vertex]) > 0.000001: changed += 1
+		_check(not original_uv.is_empty() and float(changed) / max(1, original_uv.size()) <= 0.15, "adopted armor surface exceeds 15% changed UV coordinates " + label)
+		var material := part.get_active_material(surface) as StandardMaterial3D
+		_check(material != null and material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, "incorrect adopted material " + label)
+		if material == null: continue
+		var path := "res://assets/armors/%s_v1/%s_diffuse.png" % [asset_name, labels[surface]]
+		var canonical := load(path) as Texture2D
+		_check(canonical != null and material.albedo_texture == canonical and material.albedo_color.is_equal_approx(Color.WHITE), "incorrect adopted canonical atlas " + label + " surface %d" % surface)
+		if canonical == null or material.albedo_texture == null or checked_armor_textures.has(path): continue
+		checked_armor_textures[path] = true
+		var source_image := Image.load_from_file(ProjectSettings.globalize_path(path))
+		var runtime_image := material.albedo_texture.get_image()
+		_check(source_image != null and runtime_image != null and source_image.get_size() == runtime_image.get_size(), "cannot inspect adopted canonical pixels " + path)
+		if source_image != null and runtime_image != null:
+			_check(_visible_pixels(source_image) == _visible_pixels(runtime_image), "adopted armor texture cache differs from canonical PNG " + path)
 
 
 func _validate_armor_texture(texture: Texture2D) -> void:
