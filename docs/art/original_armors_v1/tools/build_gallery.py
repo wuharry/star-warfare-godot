@@ -4,6 +4,13 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[4]
 ART=ROOT/'docs/art/original_armors_v1'
 WORK=ART
+SELECTED_RECORD_STATUSES = {
+    'visually_reviewed_pending_user_selection',
+    'visually_checked_from_adopted_helmet_direction',
+    'visually_checked_color_correction_pending_user_review',
+    'user_selected_concept_adopted',
+    'visually_checked_supporting_sheet_for_adopted_direction',
+}
 def read(path): return json.loads(path.read_text(encoding='utf-8-sig'))
 def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
 def formal_ref(path,kind='halo'): return 'references/'+kind+'/'+Path(path).name
@@ -25,7 +32,7 @@ for path in sorted((WORK/'generation_records').glob('*.json')):
     r=read(path)
     if 'not_selected' in r.get('status','') or '_v1' in path.stem: continue
     if not r.get('visual_review') or not (ART/r['path']).is_file(): continue
-    if r.get('status')!='visually_reviewed_pending_user_selection': continue
+    if r.get('status') not in SELECTED_RECORD_STATUSES: continue
     r['generation_record']='generation_records/'+path.name;r['sha256']=sha(ART/r['path']);r['dimensions']=png_size(ART/r['path'])
     r['bytes']=(ART/r['path']).stat().st_size;r['prompt_sha256']=sha(ART/r['prompt'])
     r['reference_sha256']={ref:sha(ART/ref) for ref in r.get('reference_images',[])}
@@ -70,6 +77,9 @@ for kind,entries in [('armor',mapping['armor_mappings']),('backpack',mapping['ba
             item['user_review']=metadata['user_review']
         if metadata.get('helmet_art'):
             item['helmet_art']=metadata['helmet_art']
+        for key in ('helmet_studies', 'runtime_delivery'):
+            if metadata.get(key):
+                item[key]=metadata[key]
         catalog.append(item)
 template=(ART/'tools/gallery.template.html').read_text(encoding='utf-8')
 assert template.count('__CATALOG_JSON__')==1
@@ -82,7 +92,7 @@ for path in sorted((ART/'references').rglob('*')):
 archived=[]
 for path in sorted((WORK/'generation_records').glob('*.json')) + sorted((ART/'revisions').rglob('*.json')):
     r=read(path)
-    if isinstance(r,dict) and r.get('path') and r.get('prompt') and r.get('status') and r['status']!='visually_reviewed_pending_user_selection':
+    if isinstance(r,dict) and r.get('path') and r.get('prompt') and r.get('status') and r['status'] not in SELECTED_RECORD_STATUSES:
         r['record_path']=path.relative_to(ART).as_posix();archived.append(r)
 expected_keys={(f'C-{i:02d}',kind) for i in range(1,22) for kind in ('concept','turnaround','construction')} | {(f'B-{i:02d}','design_sheet') for i in range(1,26)}
 complete=len(assets)==88 and {(a['design_id'],a['kind']) for a in assets}==expected_keys

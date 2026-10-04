@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "design_id": "C-02",
-  "runtime_id": null,
+  "runtime_id": 1,
   "working_name_zh": "行囊",
   "working_name_en": "WAYFARER",
   "status": "concept_ready_for_user_review",
-  "runtime_implemented": false,
+  "runtime_implemented": true,
   "proposed_role_replacement": {
     "legacy_visual_id": 1,
     "legacy_set_name": "Fortune",
@@ -107,10 +107,10 @@
     "concept": "generated_and_visually_checked_pending_user_review",
     "turnaround": "generated_and_visually_checked_pending_user_review",
     "construction": "generated_and_visually_checked_pending_user_review",
-    "original_mesh": "not_started",
-    "uv_atlas": "not_started",
-    "runtime_textures": "not_started",
-    "rig_skinning": "not_started",
+    "original_mesh": "original_model_retained_head_refinement_v11_within_total_15_percent",
+    "uv_atlas": "original_charts_and_counts_retained_previous_22_chin_coordinates_no_added_uv_edits_in_head_refinement",
+    "runtime_textures": "five_diffuse_maps_integrated_head_refinement_v11_verified",
+    "rig_skinning": "original_skin_preserved_and_pose_verified",
     "abilities": "proposal_only"
   },
   "images": {
@@ -297,12 +297,90 @@
     "scope": "helmet_only",
     "status": "user_requested_helmet_reference",
     "date_added": "2026-10-02",
-    "note": "以這張圖的頭盔作本次修改參考；可切換全身原圖。既有全身概念、三視與拆解尚未同步這次頭盔。",
+    "note": "本次附圖指定的頭頂、面甲與短下巴已重畫並套用到 Fortune ID 1。下方「新版 Fortune／原版／UV／遊戲動作比較」預設顯示頭盔近照，並保留本輪附圖作比對基準。原概念、三視與拆解圖保留原檔。",
     "visual_review": "已目視：綠色圓冠、鋼藍連續眉框、紫色面窗、短綠色下顎及斜切護頰。來源為使用者指定提交中的完整人物 JPG；本次直接引用原檔，沒有合成或重新生成。",
     "generation": {
       "tool": null,
       "prompt": null,
       "status": "not_recorded_in_source_commit"
+    }
+  },
+  "helmet_studies": {
+    "comparison_page": "../fortune_runtime_v1/index.html",
+    "link_label": "新版 Fortune／原版／UV／遊戲動作比較 ↗",
+    "latest_variant": "fortune_runtime_v1_helmet_refinement_v11_body_style_v3",
+    "status": "runtime_integrated_pending_user_art_review",
+    "scope": "helmet_geometry_and_diffuse_refinement_preserved_uv_rig_body_and_limbs",
+    "note": "依使用者回饋重做局部冠頂、薄眉、面罩下緣與短下巴，重畫正側面分色及耳罩陰影。UV沿用前版，總原版頭部最大位移14.7363%；保留身甲與四肢。低面數頂冠折角與後腦暗縫仍可見，待使用者評價。",
+    "style_comparison_page": "../armor_style_unification_v1/index.html#fortune",
+    "mandatory_style_prompt": "../armor_style_unification_v1/base_prompt.txt",
+    "mandatory_helmet_prompt": "../armor_style_unification_v1/helmet_refinement_prompt.txt",
+    "helmet_mapping_notes": "../armor_style_unification_v1/helmet_mapping_notes.md"
+  },
+  "runtime_delivery": {
+    "status": "runtime_integrated_pending_user_art_review",
+    "scope": "visual_assets_only_stats_and_abilities_remain_proposals",
+    "runtime_id": 1,
+    "scene": "assets/armors/fortune_v1/fortune.scn",
+    "comparison_page": "../fortune_runtime_v1/index.html",
+    "manifest": "../fortune_runtime_v1/manifest.json",
+    "reference_art": "../fortune_runtime_v1/approved_helmet_reference.png",
+    "uv_limit": 0.15,
+    "uv_changed_coordinates_by_material": {
+      "head": [
+        22,
+        157
+      ],
+      "body": [
+        0,
+        207
+      ],
+      "shoulder": [
+        0,
+        74
+      ],
+      "hand": [
+        0,
+        113
+      ],
+      "foot": [
+        0,
+        122
+      ]
+    },
+    "head_maximum_local_displacement_ratio": 0.14736285830118964,
+    "original_bones_weights_skin_retained": true,
+    "date": "2026-10-04",
+    "selected_head_generation": "fortune_head_refinement_v11",
+    "style_optimization": {
+      "status": "runtime_integrated_pending_user_art_review",
+      "comparison_page": "../armor_style_unification_v1/index.html#fortune",
+      "mandatory_prompt": "../armor_style_unification_v1/helmet_refinement_prompt.txt",
+      "added_geometry_changes": 83,
+      "added_uv_changes": 0,
+      "verification": "../armor_style_unification_v1/validate.json",
+      "stage": "helmet_geometry_and_texture_refinement_after_style_painting"
+    },
+    "helmet_refinement": {
+      "variant": "helmet_refinement_v11",
+      "actual_prompt": "../fortune_runtime_v1/prompts/head_diffuse_refinement_v11.txt",
+      "verification": "../fortune_runtime_v1/review/helmet_refinement_invariants.json",
+      "before_snapshot": "../armor_style_unification_v1/revisions/fortune_head_v7_before_refinement/snapshot.json",
+      "additional_uv_changes": 0,
+      "changed_head_rest_vertex_entries": 83,
+      "incremental_head_max_displacement_m": 0.018000006675720215,
+      "original_total_max_displacement_fraction": 0.14736285830118964,
+      "original_dimension_delta_fractions": [
+        0.0,
+        0.03966690400695283,
+        0.07682595807820725
+      ],
+      "rig_and_non_head_parts_unchanged": true,
+      "art_acceptance": "pending_user_review",
+      "remaining_issues": [
+        "low_polygon_crown_facets",
+        "inherited_rear_central_dark_texture_seam"
+      ]
     }
   }
 }

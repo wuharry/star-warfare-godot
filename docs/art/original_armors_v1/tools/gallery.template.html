@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>原裝甲 × Halo｜融合設計圖集</title>
+<title>科幻裝甲｜融合設計圖集</title>
 <style>
 :root{--bg:#101519;--panel:#171e23;--panel2:#1c252b;--line:#35434c;--text:#e5ecee;--muted:#a7b6bd;--accent:#81d1be;--warm:#e1b27a;--selected:#223b3b;--radius:14px}
 *{box-sizing:border-box}
@@ -123,8 +123,8 @@ dialog::backdrop{background:rgba(0,0,0,.86)}
   <div class="header-row">
     <div>
       <p class="eyebrow">Star Warfare · Armor Fusion Study</p>
-      <h1>原裝甲 × Halo｜融合設計圖集</h1>
-      <p class="intro">每套從對應的原遊戲裝備出發，結合相近的 Halo 非士官長款式，重新整理頭盔、護甲與背包的穿戴結構。</p>
+      <h1>科幻裝甲｜融合設計圖集</h1>
+      <p class="intro">每套從對應的原遊戲裝備出發，參考 Halo、Destiny 2 等款式，重新整理頭盔、護甲與背包的穿戴結構。</p>
     </div>
     <div id="summary-count" class="summary-count" aria-label="圖集完成進度"></div>
   </div>
@@ -140,7 +140,7 @@ dialog::backdrop{background:rgba(0,0,0,.86)}
           <button class="filter" data-kind="backpack" aria-pressed="false" type="button">背包</button>
         </div>
         <div>
-          <label class="search-label" for="search">搜尋原名、設計編號或 Halo 款式</label>
+          <label class="search-label" for="search">搜尋原名、設計編號或參考款式</label>
           <input id="search" type="search" placeholder="例如 Viper、B-01、ODST" autocomplete="off" spellcheck="false">
         </div>
       </div>
@@ -166,8 +166,9 @@ dialog::backdrop{background:rgba(0,0,0,.86)}
         <a id="source-file" class="detail-link">完整設計資料 ↗</a>
       </div>
       <p id="user-review-note" class="figure-note" hidden></p>
+      <p id="helmet-studies-note" class="figure-note" hidden><a id="helmet-studies-link">頭盔版本比較 ↗</a></p>
       <div class="halo-line"><span>融合參考：</span><strong id="halo-variant"></strong><span id="halo-game"></span> <a id="halo-source" target="_blank" rel="noopener noreferrer">查看來源 ↗</a></div>
-      <div class="compare-heading"><h3>原圖、Halo 參考與新稿對照</h3><p class="compare-hint">點圖片放大；切換下方按鈕看不同視角。</p></div>
+      <div class="compare-heading"><h3>原圖、設計參考與新稿對照</h3><p class="compare-hint">點圖片放大；切換下方按鈕看不同視角。</p></div>
       <section class="comparison" aria-label="三方美術比較">
         <figure class="figure-card" id="legacy-card">
           <figcaption class="figure-title"><strong>01 · 原遊戲裝備</strong><span id="legacy-caption"></span></figcaption>
@@ -177,17 +178,17 @@ dialog::backdrop{background:rgba(0,0,0,.86)}
           <div class="figure-controls"><div class="reference-options" id="legacy-options" role="group" aria-label="原裝備參考視角"></div><p class="figure-note" id="legacy-view-note"></p></div>
         </figure>
         <figure class="figure-card" id="halo-card">
-          <figcaption class="figure-title"><strong>02 · Halo 款式參考</strong><span id="halo-caption"></span></figcaption>
-          <button class="image-button" id="halo-image-button" type="button" aria-label="放大 Halo 參考圖">
-            <img id="halo-image" alt="" hidden><p class="empty-art" id="halo-empty">Halo 參考圖待補。</p>
+          <figcaption class="figure-title"><strong>02 · 設計參考</strong><span id="halo-caption"></span></figcaption>
+          <button class="image-button" id="halo-image-button" type="button" aria-label="放大設計參考圖">
+            <img id="halo-image" alt="" hidden><p class="empty-art" id="halo-empty">設計參考圖待補。</p>
           </button>
-          <div class="figure-controls"><div class="reference-options" id="halo-options" role="group" aria-label="Halo 參考視角"></div><p class="figure-note" id="halo-view-note"></p></div>
+          <div class="figure-controls"><div class="reference-options" id="halo-options" role="group" aria-label="設計參考視角"></div><p class="figure-note" id="halo-view-note"></p></div>
         </figure>
         <figure class="figure-card result" id="result-card">
           <figcaption class="figure-title"><strong>03 · 融合後的新設計</strong><span id="result-caption"></span></figcaption>
           <div id="result-image-panel">
           <button class="image-button" id="result-image-button" type="button" aria-label="放大新設計圖" aria-describedby="result-caption">
-            <img id="result-image" alt="" hidden><p class="empty-art" id="result-empty"><strong>新稿尚未完成</strong>先查看原裝備、Halo 參考與下方融合方案。</p>
+            <img id="result-image" alt="" hidden><p class="empty-art" id="result-empty"><strong>新稿尚未完成</strong>先查看原裝備、設計參考與下方融合方案。</p>
           </button>
           </div>
           <div class="figure-controls"><div class="view-tabs" id="view-tabs" role="tablist" aria-label="新設計視圖"></div><div id="helmet-controls" class="helmet-controls" role="group" aria-label="新版頭盔顯示範圍" hidden><button id="helmet-focus" class="reference-option" type="button" aria-pressed="true">頭盔放大</button><button id="helmet-full" class="reference-option" type="button" aria-pressed="false">全身原圖</button></div><button id="toggle-previous" class="reference-option" type="button" hidden>查看修改前</button><p class="figure-note" id="result-view-note"></p></div>
@@ -197,7 +198,7 @@ dialog::backdrop{background:rgba(0,0,0,.86)}
         <h3 id="fusion-heading">這套如何結合與優化</h3>
         <div class="fusion-grid">
           <div><h4>保留原裝備的辨識點</h4><div id="fusion-retained"></div></div>
-          <div><h4>結合 Halo 的結構</h4><div id="fusion-borrowed"></div></div>
+          <div><h4>取用的參考結構</h4><div id="fusion-borrowed"></div></div>
           <div><h4>重新整理與優化</h4><div id="fusion-optimized"></div></div>
         </div>
       </section>
@@ -239,7 +240,7 @@ const helmetArt = item => cleanPath(item.helmet_art?.path)?item.helmet_art:null;
 const displayImages = item => ({...(helmetArt(item)?{helmet_reference:helmetArt(item).path}:{}),...(preferredArt(item)?{preferred_concept:preferredArt(item).path}:{}),...item.images});
 const availableViews = item => viewOrder.filter(key=>cleanPath(displayImages(item)?.[key]));
 const viewLabel = (item,key) => key==='helmet_reference'?viewLabels[key]:(preferredArt(item)&&key!=='preferred_concept'?'未採用版本 · ':helmetArt(item)&&key!=='preferred_concept'?'既有版本 · ':'')+(viewLabels[key]||key);
-const reviewLabel = item => helmetArt(item)?'已加入新版頭盔':preferredArt(item)?'保留舊稿':item.user_review?.status==='keep_current_design'?'保留目前設計':item.user_review?.status==='helmet_revision_pending_user_review'?'頭盔已改稿，待評價':'';
+const reviewLabel = item => helmetArt(item)?'已加入新版頭盔':preferredArt(item)?'保留舊稿':item.user_review?.status==='keep_current_design'?'保留目前設計':item.user_review?.status==='helmet_color_corrected'?'頭盔配色已修正':item.user_review?.status==='helmet_direction_adopted'?'已採用頭盔方向':item.user_review?.status==='helmet_revision_pending_user_review'?'頭盔已改稿，待評價':'';
 const asArray = value => Array.isArray(value)?value:[];
 const plain = value => {
   if(value==null)return '';
@@ -336,7 +337,7 @@ function selectView(key,{focus=false,previous=false}={}){
   setHelmetFocus(state.helmetFocus!==false);
   const name=item.working_name_zh||item.legacy_name;
   setImage('result',path,name+'｜'+(state.previous?'修改前 · ':'')+(state.view?viewLabel(item,state.view):'新設計'));
-  if(!path)element('result-empty').innerHTML='<strong>新稿尚未完成</strong>先查看原裝備、Halo 參考與下方融合方案。';
+  if(!path)element('result-empty').innerHTML='<strong>新稿尚未完成</strong>先查看原裝備、設計參考與下方融合方案。';
   text('result-caption',(state.previous?'修改前 · ':'')+(state.view?viewLabel(item,state.view):'尚未生成'));
   text('result-view-note',state.previous?'修改前版本：'+(item.user_review?.feedback||'已由本輪修訂取代。'):isHelmet?helmetArt(item).note:preferredArt(item)?(state.view==='preferred_concept'?preferredArt(item).note:'此圖屬未採用的 C-07 融合方案，保留作歷史比較。'):helmetArt(item)?'既有配套圖，尚未同步新版頭盔；可切回「新版頭盔」查看本次參考。':path?'概念參考，尚非遊戲模型或 UV 貼圖。':'完成後會在此顯示新稿。');
   if(views.length)element('result-image-panel').setAttribute('role','tabpanel');else element('result-image-panel').removeAttribute('role');
@@ -354,13 +355,14 @@ function selectDesign(id,{updateHash=true}={}){
   text('mapping',item.legacy_name+' · '+kindLabel(item.kind)+' ID '+item.legacy_id+' → '+item.design_id);
   text('name-zh',item.working_name_zh||item.legacy_name);text('name-en',item.working_name_en||'');text('design-code',item.design_id+' · '+kindLabel(item.kind));
   const views=availableViews(item),expected=item.kind==='backpack'?1:3,delivered=Object.values(item.images||{}).filter(cleanPath).length;
-  const status=element('image-status');status.className='tag '+(views.length?'ready':'pending');status.textContent=helmetArt(item)?'新版頭盔已加入 · 配套圖待同步':preferredArt(item)?'舊概念已恢復 · 配套三視待同步':views.length?'新稿 '+delivered+' / '+expected+' 張':'待重新生成';
+  const status=element('image-status');status.className='tag '+(views.length?'ready':'pending');status.textContent=item.runtime_delivery?.status==='runtime_integrated_pending_user_art_review'?`已套用遊戲 · ${Math.round((item.runtime_delivery.uv_limit??0.15)*100)}% 驗收通過`:helmetArt(item)?'新版頭盔已加入 · 配套圖待同步':preferredArt(item)?'舊概念已恢復 · 配套三視待同步':views.length?'新稿 '+delivered+' / '+expected+' 張':'待重新生成';
   const review=element('user-review-status');review.textContent=reviewLabel(item);review.hidden=!review.textContent;review.title=helmetArt(item)?.note||item.user_review?.feedback||'';
   const reviewNote=element('user-review-note');reviewNote.textContent=helmetArt(item)?.note||item.user_review?.action||'';reviewNote.hidden=!reviewNote.textContent;
-  text('halo-variant',item.halo?.variant||'Halo 款式待補');text('halo-game',item.halo?.game?' · '+item.halo.game:'');link('halo-source',item.halo?.url);link('source-file',item.source_file);
+  text('helmet-studies-link',item.helmet_studies?.link_label||'頭盔版本比較 ↗');link('helmet-studies-link',item.helmet_studies?.comparison_page);element('helmet-studies-note').hidden=!cleanPath(item.helmet_studies?.comparison_page);
+  text('halo-variant',item.halo?.variant||'參考款式待補');text('halo-game',item.halo?.game?' · '+item.halo.game:'');link('halo-source',item.halo?.url);link('source-file',item.source_file);
   text('legacy-caption',item.legacy_name+' · ID '+item.legacy_id);text('halo-caption',(item.halo?.game?item.halo.game+' · ':'')+(item.halo?.variant||'待補'));
-  renderReferences('legacy',item.legacy_refs,item.legacy_name+' 原遊戲');
-  renderReferences('halo',item.halo?.reference_images,item.halo?.variant||'Halo',preferredArt(item)?'未採用融合稿的歷史參考；目前以保留舊稿為準。':item.halo?.reference_note||'');
+  renderReferences('legacy',item.legacy_refs,item.legacy_name+' 原遊戲',item.legacy_reference_note||'');
+  renderReferences('halo',item.halo?.reference_images,item.halo?.variant||'設計參考',preferredArt(item)?'未採用融合稿的歷史參考；目前以保留舊稿為準。':item.halo?.reference_note||'');
   renderFusion('fusion-retained',item.fusion?.retained);renderFusion('fusion-borrowed',item.fusion?.borrowed);renderFusion('fusion-optimized',item.fusion?.optimized);
   const preferred=preferredArt(item);link('preferred-art-source',preferred?.provenance);link('runtime-preview',item.user_review?.runtime_preview);element('preferred-art-note').hidden=!preferred;text('preferred-art-note',preferred?.note||'');
   element('fusion-heading').closest('section').hidden=!!preferred;

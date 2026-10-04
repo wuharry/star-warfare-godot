@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "design_id": "C-04",
-  "runtime_id": null,
+  "runtime_id": 3,
   "working_name_zh": "躍浪",
   "working_name_en": "SKIPJACK",
   "status": "concept_ready_for_user_review",
-  "runtime_implemented": false,
+  "runtime_implemented": true,
   "proposed_role_replacement": {
     "legacy_visual_id": 3,
     "legacy_set_name": "Hydra",
@@ -94,10 +94,10 @@
     "concept": "generated_and_visually_checked_pending_user_review",
     "turnaround": "generated_and_visually_checked_pending_user_review",
     "construction": "generated_and_visually_checked_pending_user_review",
-    "original_mesh": "not_started",
-    "uv_atlas": "not_started",
-    "runtime_textures": "not_started",
-    "rig_skinning": "not_started",
+    "original_mesh": "original_model_retained_with_measured_local_head_refinement",
+    "uv_atlas": "original_uv_coordinates_charts_counts_unchanged",
+    "runtime_textures": "five_native_diffuse_maps_integrated_and_verified",
+    "rig_skinning": "original_28_bone_skin_and_animation_preserved_and_pose_verified",
     "abilities": "proposal_only"
   },
   "images": {
@@ -272,5 +272,91 @@
       }
     },
     "runtime_implemented": false
+  },
+  "runtime_delivery": {
+    "status": "runtime_integrated_pending_user_art_review",
+    "scope": "visual_assets_only_stats_and_abilities_remain_proposals",
+    "runtime_id": 3,
+    "scene": "assets/armors/hydra_v1/hydra.scn",
+    "comparison_page": "../hydra_runtime_v1/index.html",
+    "manifest": "../hydra_runtime_v1/manifest.json",
+    "reference_art": "images/c04_concept.png",
+    "body_reference_art": "images/c04_concept.png",
+    "uv_limit": 0.2,
+    "actual_original_validation_limit": 0.2,
+    "uv_changed_coordinates_by_surface": {
+      "ArmorBody_03:0": [
+        0,
+        214
+      ],
+      "ArmorBody_03:1": [
+        0,
+        114
+      ],
+      "ArmorFoot_03:0": [
+        0,
+        124
+      ],
+      "ArmorHand_03:0": [
+        0,
+        113
+      ],
+      "ArmorHead_03:0": [
+        0,
+        161
+      ]
+    },
+    "additional_uv_changes": 0,
+    "head_maximum_local_displacement_ratio": 0.14743986641374077,
+    "head_dimension_delta_fraction": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "original_bones_weights_skin_retained": true,
+    "original_vertex_uv_triangle_counts_retained": true,
+    "date": "2026-10-05",
+    "selected_head_generation": "original_integration_v2_head",
+    "selected_native_generations": {
+      "body": "original_integration_v1",
+      "shoulder": "original_integration_v1",
+      "hand": "original_integration_v1",
+      "foot": "original_integration_v1",
+      "head": "original_integration_v2_head"
+    },
+    "original_source_snapshot": "../hydra_runtime_v1/revisions/original_source_v1/snapshot.json",
+    "runtime_loader": "scripts/game/armor_visuals.gd",
+    "engineering_status": "PASS",
+    "art_review_status": "pending_user_review",
+    "style_optimization": {
+      "status": "runtime_integrated_pending_user_art_review",
+      "stage": "first_runtime_integration_with_head_refinement",
+      "comparison_page": "../armor_style_unification_v1/index.html#hydra",
+      "mandatory_prompt": "../armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "prompt_set": [
+        "../hydra_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+        "../hydra_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+        "../hydra_runtime_v1/prompts/hand_diffuse_original_integration_v1.txt",
+        "../hydra_runtime_v1/prompts/head_diffuse_original_integration_v2_head.txt",
+        "../hydra_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt"
+      ],
+      "latest_variant": "original_integration_v2_head",
+      "added_uv_changes": 0,
+      "user_authorized_original_ceiling": 0.2,
+      "actual_original_validation_limit": 0.2,
+      "baseline": "../hydra_runtime_v1/revisions/original_source_v1/snapshot.json",
+      "verification": "../armor_style_unification_v1/hydra_first_integration_validate.json",
+      "note": "依C04大面罩概念縮短下巴，v2頭部把鏡像兩個鏡頭修成中央單鏡頭，保留黃綠大玻璃、藍冠及綠框。原肩UV的兩項v=-0.0021精確繼承，未新增越界或UV差異；玻璃鏡像反光、部分低模折面與接觸邊仍待美術評價。"
+    }
+  },
+  "helmet_studies": {
+    "comparison_page": "../hydra_runtime_v1/index.html",
+    "link_label": "Hydra · 原版／新版／UV／動作比對 ↗",
+    "latest_variant": "original_integration_v2_head",
+    "status": "runtime_integrated_pending_user_art_review",
+    "scope": "first_runtime_integration_with_head_refinement",
+    "note": "依C04大面罩概念縮短下巴，v2頭部把鏡像兩個鏡頭修成中央單鏡頭，保留黃綠大玻璃、藍冠及綠框。原肩UV的兩項v=-0.0021精確繼承，未新增越界或UV差異；玻璃鏡像反光、部分低模折面與接觸邊仍待美術評價。",
+    "style_comparison_page": "../armor_style_unification_v1/index.html#hydra",
+    "mandatory_style_prompt": "../armor_style_unification_v1/armor_runtime_integration_prompt.txt"
   }
 }
