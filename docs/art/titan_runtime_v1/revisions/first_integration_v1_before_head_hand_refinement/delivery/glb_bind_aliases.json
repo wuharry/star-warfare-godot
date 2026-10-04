@@ -1,0 +1,6 @@
+{
+  "original_bones": 28,
+  "aliases": [],
+  "schema": "https://raw.githubusercontent.com/KhronosGroup/glTF/main/specification/2.0/schema/skin.schema.json",
+  "rule": "skin.joints uniqueItems=true; identity children preserve parent global pose"
+}

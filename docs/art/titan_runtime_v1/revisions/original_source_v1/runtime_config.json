@@ -1,0 +1,85 @@
+{
+  "runtime_id": 5,
+  "design_id": "C-06",
+  "name": "Titan",
+  "slug": "titan",
+  "work": "docs/art/titan_runtime_v1",
+  "asset": "assets/armors/titan_v1",
+  "source": "docs/art/titan_runtime_v1/build/source.json",
+  "original_source_snapshot": "docs/art/titan_runtime_v1/revisions/original_source_v1/snapshot.json",
+  "parts": {
+    "ArmorHead_05": [
+      "head"
+    ],
+    "ArmorBody_05": [
+      "shoulder",
+      "body"
+    ],
+    "ArmorHand_05": [
+      "hand"
+    ],
+    "ArmorFoot_05": [
+      "foot"
+    ]
+  },
+  "original_triangles": 700,
+  "original_bones": 28,
+  "original_surface_count": 5,
+  "original_uv_coordinate_count": 1607,
+  "original_total_geometry_limit": 0.2,
+  "original_total_uv_changed_fraction_per_surface_limit": 0.2,
+  "texture_slots": {
+    "head": {
+      "node": "ArmorHead_05",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/r_tou_54434b4b8e32_2x.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/original_source_v1/atlases/head.png",
+      "original_sha256": "a131e4a51e90518915f0060b203ff322c45b032640d5bc860a58d58ad5960dba",
+      "coordinates": 294,
+      "charts": 3,
+      "triangles": 124
+    },
+    "shoulder": {
+      "node": "ArmorBody_05",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/r_shou_a_fef419c461f1_2x.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+      "original_sha256": "6c91c18cd86a56d37cca6e259692839143b9714828a0dc5a5c044d1f0ec8dd65",
+      "coordinates": 334,
+      "charts": 4,
+      "triangles": 152
+    },
+    "body": {
+      "node": "ArmorBody_05",
+      "surface": 1,
+      "original_texture": "assets/models/player/animated/armor_textures/r_shen_bb94860740e4_2x.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/original_source_v1/atlases/body.png",
+      "original_sha256": "38be6a3f31ba2c844dffd70f9a9ba3311dc58aa59b771fa93dab3a855dae5282",
+      "coordinates": 464,
+      "charts": 4,
+      "triangles": 200
+    },
+    "hand": {
+      "node": "ArmorHand_05",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/r_shou_03cec9a53dd6_2x.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+      "original_sha256": "59e0c53028b36fd59bbb51e9bece5ca194e6dd017413a7e86013d47e76e3c1c8",
+      "coordinates": 257,
+      "charts": 3,
+      "triangles": 108
+    },
+    "foot": {
+      "node": "ArmorFoot_05",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/r_jiao_962a757faf32_2x.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+      "original_sha256": "272a0e1bb485c4438d6b32e4b580d1a2493506633272178f7b09603cf0ad2a39",
+      "coordinates": 258,
+      "charts": 2,
+      "triangles": 116
+    }
+  },
+  "accepted_art_status": "pending_root_latest_reference_selection",
+  "geometry_authoring": "No local changes yet; each armor must use its own original source and approved art."
+}

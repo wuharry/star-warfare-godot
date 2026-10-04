@@ -1,0 +1,457 @@
+{
+  "status": "FROZEN_ACTUAL_FIRST_INTEGRATION_V1_BEFORE_REFINEMENT",
+  "created_at_utc": "2026-10-04T16:49:14.784549+00:00",
+  "scope": "Current original-source20%, head geometry v1/native head and hand v1; SCN/GLB/master/5maps/full64actualcaptures+allreports frozen before root native head/hand refinement. Does not certify user art approval.",
+  "files": {
+    "delivery/titan.scn": {
+      "source": "assets/armors/titan_v1/titan.scn",
+      "sha256": "c78da2a8b743f60c0b7f4dd902413e60c096932c2ed922aa7e2ae49529f1ba37",
+      "bytes": 94813
+    },
+    "delivery/titan.glb": {
+      "source": "assets/armors/titan_v1/titan.glb",
+      "sha256": "f366d0563bdf4314d6fbec0e1406b89317b6177ca6242498461688b78c8b6378",
+      "bytes": 10097140
+    },
+    "delivery/head_diffuse.png": {
+      "source": "assets/armors/titan_v1/head_diffuse.png",
+      "sha256": "74f4d91763ca15fda108e97fb3e6c0ea8f1c1117503f1e8bc5363179a07dc53f",
+      "bytes": 2102694
+    },
+    "delivery/body_diffuse.png": {
+      "source": "assets/armors/titan_v1/body_diffuse.png",
+      "sha256": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
+      "bytes": 2197699
+    },
+    "delivery/shoulder_diffuse.png": {
+      "source": "assets/armors/titan_v1/shoulder_diffuse.png",
+      "sha256": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
+      "bytes": 2212474
+    },
+    "delivery/hand_diffuse.png": {
+      "source": "assets/armors/titan_v1/hand_diffuse.png",
+      "sha256": "31aa6a47039ef532f88e3d67500204fcfac906231c651bb4ab973edffa8a31f6",
+      "bytes": 2004752
+    },
+    "delivery/foot_diffuse.png": {
+      "source": "assets/armors/titan_v1/foot_diffuse.png",
+      "sha256": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a",
+      "bytes": 1716767
+    },
+    "delivery/source.json": {
+      "source": "docs/art/titan_runtime_v1/build/source.json",
+      "sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
+      "bytes": 1042332
+    },
+    "delivery/target.json": {
+      "source": "docs/art/titan_runtime_v1/build/target.json",
+      "sha256": "a0e870d66cc0ec5639e5450f7fefcd1629b19ffa26a641d7749be508f86a9177",
+      "bytes": 379136
+    },
+    "delivery/geometry.json": {
+      "source": "docs/art/titan_runtime_v1/build/geometry.json",
+      "sha256": "b1c18aa8a59a224b30e28641f53c35a768528e5d9772fa02e888874375aa3bda",
+      "bytes": 6335
+    },
+    "delivery/titan_master.blend": {
+      "source": "docs/art/titan_runtime_v1/build/titan_master.blend",
+      "sha256": "840b6eefeee5da974d69c4cc74ae061ce69034b3be2ff0b9042ef9fd0c7e8fab",
+      "bytes": 10302360
+    },
+    "delivery/glb_bind_aliases.json": {
+      "source": "docs/art/titan_runtime_v1/build/glb_bind_aliases.json",
+      "sha256": "004c995124954fcca9f9127656aba45772066414bb1e408f179bdf35a09d0682",
+      "bytes": 251
+    },
+    "generation_inputs.json": {
+      "source": "docs/art/titan_runtime_v1/generation_inputs.json",
+      "sha256": "69eb913048c455c7fd51a5b6d55dec173df06a0efb5ea01a100482d09e3a9ae9",
+      "bytes": 15577
+    },
+    "manifest.json": {
+      "source": "docs/art/titan_runtime_v1/manifest.json",
+      "sha256": "661a0fbeedada9cfe09b190834cbd558f6a55ef45ef8894c2a003d78d5ada349",
+      "bytes": 59122
+    },
+    "README.md": {
+      "source": "docs/art/titan_runtime_v1/README.md",
+      "sha256": "dae35ca044e329b93f5f3b456a88bf6270aa0f66beda1cc8dd1aee7dd9d229e4",
+      "bytes": 2416
+    },
+    "index.html": {
+      "source": "docs/art/titan_runtime_v1/index.html",
+      "sha256": "a6ab5b4436ea986cc5bf4706dd78cbdde2cd8f8b021631593ace7666517d06a1",
+      "bytes": 8921
+    },
+    "runtime_config.json": {
+      "source": "docs/art/titan_runtime_v1/runtime_config.json",
+      "sha256": "68815e34e05a8759493e51fc5d8821511eaaf94bb120c209db4424a5e3df78e3",
+      "bytes": 3639
+    },
+    "review/delivery_validate.json": {
+      "source": "docs/art/titan_runtime_v1/review/delivery_validate.json",
+      "sha256": "a9587a85cf4feeb71ccbede59e86069d1853396c796c73e36513be2e6da0588d",
+      "bytes": 8617
+    },
+    "review/failed_scene_reencoding_history.json": {
+      "source": "docs/art/titan_runtime_v1/review/failed_scene_reencoding_history.json",
+      "sha256": "8a8c250d1dcdf7c4567b4b878e5c8025f80e4ef84c7087c7946c186537d4edcb",
+      "bytes": 2336
+    },
+    "review/glb_images_test.json": {
+      "source": "docs/art/titan_runtime_v1/review/glb_images_test.json",
+      "sha256": "32771d2a81c9b7bd4e32a41a2dfcfbdb4e78cb86f2e90a0d16c938b4918fc33e",
+      "bytes": 4655
+    },
+    "review/original_scene_invariants.json": {
+      "source": "docs/art/titan_runtime_v1/review/original_scene_invariants.json",
+      "sha256": "042b7cd856f6e01ec37b1ecfc2d08d61e8a6a567059e5c95a4b146c3bdd0ddb5",
+      "bytes": 1856
+    },
+    "review/proportion_test.json": {
+      "source": "docs/art/titan_runtime_v1/review/proportion_test.json",
+      "sha256": "f42cab76da763a3984747c097884ff9e8e774054726c9966980d663e8765b7c8",
+      "bytes": 8005
+    },
+    "review/roundtrip_test.json": {
+      "source": "docs/art/titan_runtime_v1/review/roundtrip_test.json",
+      "sha256": "573a972b5e50979a60515021194afc5259c9d8e795b8cac7279885c6ea601ac1",
+      "bytes": 11935
+    },
+    "review/runtime_test.json": {
+      "source": "docs/art/titan_runtime_v1/review/runtime_test.json",
+      "sha256": "3748231ff55ef65a33b5f09b676bafeff81e7a2478b923e4adc23df5b0032820",
+      "bytes": 11348
+    },
+    "review/original_integration_angle_capture.log": {
+      "source": "docs/art/titan_runtime_v1/review/original_integration_angle_capture.log",
+      "sha256": "cd0fc0b5551240bfb14b81b839206b306bc85e74cac79236ba29d35a69f481fa",
+      "bytes": 351
+    },
+    "review/engine/capture.json": {
+      "source": "docs/art/titan_runtime_v1/review/engine/capture.json",
+      "sha256": "9664b1f47725a393b41953022ce49b87cd4cb933bf1307c1bbaa84e84c8bad74",
+      "bytes": 23601
+    },
+    "review/engine/family_original_01_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/family_original_01_front.png",
+      "sha256": "c9dbaad8f868a6005c5d29205fb800b829276c29e3669c5b6c8a1df3ce8ab1c0",
+      "bytes": 226792
+    },
+    "review/engine/family_original_06_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/family_original_06_front.png",
+      "sha256": "20a31e6e266ce22dc290aa2eaffe4f1b62426744aacc493eb84beff887da5c77",
+      "bytes": 244733
+    },
+    "review/engine/new_clay_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_clay_front.png",
+      "sha256": "f63c76fd0f6d395e012226a7f6bf652ebe05ae8b6c4bc36955101484c1d3095f",
+      "bytes": 35885
+    },
+    "review/engine/new_clay_quarter.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_clay_quarter.png",
+      "sha256": "0d3b76516040840e8bc43504e0ff1ae381d25dc3cbbcb81b451bf4c557e59042",
+      "bytes": 35904
+    },
+    "review/engine/new_clay_rear.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_clay_rear.png",
+      "sha256": "5b52240715dd6d6a9883a6179fa18a98c0a8282a20d254ae74b71acdf09dfe6a",
+      "bytes": 34608
+    },
+    "review/engine/new_clay_side.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_clay_side.png",
+      "sha256": "dff0a0a1984c3a23a5020f26971ee7ca85fa53970a7ad16c659afad77b3028fd",
+      "bytes": 23639
+    },
+    "review/engine/new_diffuse_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_diffuse_front.png",
+      "sha256": "545f27d252bea9a1aa7c7da43237d369941404d567f86f93d7a53c731d9917c7",
+      "bytes": 317046
+    },
+    "review/engine/new_diffuse_quarter.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "sha256": "86490669433cf2c3809ef5ddec52d90c59498973a1ff4f5296b4caec57d9392b",
+      "bytes": 328058
+    },
+    "review/engine/new_diffuse_rear.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_diffuse_rear.png",
+      "sha256": "290755557d3f12c3b85b2f7c2f9cb01dce09caaa5a108cbb4485dd777d4522cf",
+      "bytes": 304440
+    },
+    "review/engine/new_diffuse_side.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_diffuse_side.png",
+      "sha256": "85fbcf45e2e06bb47b891dd6c02c40369a65887c7ca48c532fedc84c6e15d018",
+      "bytes": 193252
+    },
+    "review/engine/new_head_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_head_front.png",
+      "sha256": "aa155a2c4dbdb625fcd033d44b19d3b5231d9f5cc4f0e5ed7afd2b6f588f8b47",
+      "bytes": 627238
+    },
+    "review/engine/new_head_quarter.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_head_quarter.png",
+      "sha256": "94c9ad6c796593418bd5316c904fd0b6036852dcce1098bf5ede6bf3fa537ffb",
+      "bytes": 649547
+    },
+    "review/engine/new_head_rear.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_head_rear.png",
+      "sha256": "982b35d300124a7f2aea03701f29edcd8ed1bb98a82abb5d3806a292047b659a",
+      "bytes": 603867
+    },
+    "review/engine/new_head_side.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_head_side.png",
+      "sha256": "e045f9bf9f901dc82ad632eed508153b0c7c2284b586a96d02a151090958bfdf",
+      "bytes": 567533
+    },
+    "review/engine/new_idle_rifle.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_idle_rifle.png",
+      "sha256": "0bef388f4533ebfd19249083c8a423375c5f4207edc49f3f151bfba6707ac3c7",
+      "bytes": 259464
+    },
+    "review/engine/new_level_01_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_level_01_front.png",
+      "sha256": "eb83144cf5fe62cf5e2995f9b5a1e5c827219da6b79e8bcd87715c3680b3d16d",
+      "bytes": 1111906
+    },
+    "review/engine/new_level_01_gameplay.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "sha256": "589e13abf1b7182cc84036af191ae3f60d71c7a8ed0d566f6d7d6ab76283326c",
+      "bytes": 1469125
+    },
+    "review/engine/new_level_08_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_level_08_front.png",
+      "sha256": "42c7cc864829b4161e28280fd956a6a9b91da2e51cf21ed6dd3bc3d69fbfaca8",
+      "bytes": 941268
+    },
+    "review/engine/new_level_08_gameplay.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "sha256": "502451c68a9847003b2c9eb678a402cf43992942f0d86316645f2394ddd5b14a",
+      "bytes": 1025774
+    },
+    "review/engine/new_painted_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_painted_front.png",
+      "sha256": "545f27d252bea9a1aa7c7da43237d369941404d567f86f93d7a53c731d9917c7",
+      "bytes": 317046
+    },
+    "review/engine/new_painted_quarter.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_painted_quarter.png",
+      "sha256": "86490669433cf2c3809ef5ddec52d90c59498973a1ff4f5296b4caec57d9392b",
+      "bytes": 328058
+    },
+    "review/engine/new_painted_rear.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_painted_rear.png",
+      "sha256": "290755557d3f12c3b85b2f7c2f9cb01dce09caaa5a108cbb4485dd777d4522cf",
+      "bytes": 304440
+    },
+    "review/engine/new_painted_side.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_painted_side.png",
+      "sha256": "85fbcf45e2e06bb47b891dd6c02c40369a65887c7ca48c532fedc84c6e15d018",
+      "bytes": 193252
+    },
+    "review/engine/new_reload_00.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_reload_00.png",
+      "sha256": "e0c029a61a41ef63afd4634d2f4ec7599585d25e43b5e85aec97116ce1edbe0e",
+      "bytes": 247724
+    },
+    "review/engine/new_reload_01.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_reload_01.png",
+      "sha256": "8fc08a376139c019e373364cbb05f73fdcada33219c90cfd7a75d51c9c4d4608",
+      "bytes": 233421
+    },
+    "review/engine/new_reload_02.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_reload_02.png",
+      "sha256": "a8ca92376f49025ec35530899ae8017dca012c227191266d2f85f6542e4d9abd",
+      "bytes": 240533
+    },
+    "review/engine/new_reload_03.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_reload_03.png",
+      "sha256": "f7d4b27a96e6f47459a9ceb4763b096568b10efea795459787036a0a5cf588ed",
+      "bytes": 234023
+    },
+    "review/engine/new_reload_04.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_reload_04.png",
+      "sha256": "e5b463095c7b235773ef9b43f3fb6b653d397e75c960a9991c4eb00165c420f2",
+      "bytes": 243063
+    },
+    "review/engine/new_reload_05.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_reload_05.png",
+      "sha256": "b23fe7a16a3a4acc7507426dd4ef1811b6d82a82e3173bef005bc34f2fa02ce2",
+      "bytes": 243704
+    },
+    "review/engine/new_reload_06.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_reload_06.png",
+      "sha256": "694424bcd8ec58b6c63289af0f1e452759f1a158d02509702012e4df7264b5b8",
+      "bytes": 239166
+    },
+    "review/engine/new_reload_07.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_reload_07.png",
+      "sha256": "b37e6373258dfd3fd18d658309c81c8c79b4b7ae138967554bbc7cfba1a18951",
+      "bytes": 234251
+    },
+    "review/engine/new_reload_08.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_reload_08.png",
+      "sha256": "4217e19e637f5f26505b39f88cb1c9e1e740c5a879350b790faa3300d53e4161",
+      "bytes": 248942
+    },
+    "review/engine/new_run_rifle.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/new_run_rifle.png",
+      "sha256": "2340eb43d2ad806f7cf289926146aa668b69396b3d9ed34ff19dc21463357b16",
+      "bytes": 236065
+    },
+    "review/engine/original_clay_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_clay_front.png",
+      "sha256": "1520da1eddc15a2706bcf40fa027bce919edea3219b29a42fe2a1659359f8a2d",
+      "bytes": 36023
+    },
+    "review/engine/original_clay_quarter.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_clay_quarter.png",
+      "sha256": "440c0692876e829b03eca717a5693a2f335d55aec95c7a5c61f8c0a199154fc4",
+      "bytes": 36097
+    },
+    "review/engine/original_clay_rear.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_clay_rear.png",
+      "sha256": "5b52240715dd6d6a9883a6179fa18a98c0a8282a20d254ae74b71acdf09dfe6a",
+      "bytes": 34608
+    },
+    "review/engine/original_clay_side.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_clay_side.png",
+      "sha256": "1dd436c3efbebdea94ef77a5dc4386af29b4f9de963bb4f529be2e6faae86baa",
+      "bytes": 23818
+    },
+    "review/engine/original_diffuse_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_diffuse_front.png",
+      "sha256": "0ac0d1d8a8593e4e0976b6fd1b9562b1472c1d22e33238efddb480a0b343805c",
+      "bytes": 269494
+    },
+    "review/engine/original_diffuse_quarter.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_diffuse_quarter.png",
+      "sha256": "80d2c82786c8b910b5b7933e18255ab9025913d295f391d7d4277406189fc599",
+      "bytes": 279470
+    },
+    "review/engine/original_diffuse_rear.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_diffuse_rear.png",
+      "sha256": "4f1bb4ac635c057632359411278b6203ba045db6a4e520aaa14b3259cd6607a3",
+      "bytes": 262554
+    },
+    "review/engine/original_diffuse_side.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_diffuse_side.png",
+      "sha256": "473bf36bd8114ededd26c7e1c6f7d1c931ace6c801c37ac5a6f03561ad2fedb1",
+      "bytes": 167972
+    },
+    "review/engine/original_head_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_head_front.png",
+      "sha256": "5a61e455dd9348f929a1fcfc614c3e83a6e50e3ef58cbf82685578ad847e4809",
+      "bytes": 537934
+    },
+    "review/engine/original_head_quarter.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_head_quarter.png",
+      "sha256": "e5f878d6b66018e101bd1cf926aa5b7e5616bda295173c376f6942c3fab98106",
+      "bytes": 565895
+    },
+    "review/engine/original_head_rear.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_head_rear.png",
+      "sha256": "7e43547cc3c97ce52b4ff7f4e7f6113832a96a66b7e2cb100eb7dae944415351",
+      "bytes": 522165
+    },
+    "review/engine/original_head_side.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_head_side.png",
+      "sha256": "bdcf6580fe7eac8b9237bc2ab0d641b975e92c69924ff602673aadbc557ec27d",
+      "bytes": 494136
+    },
+    "review/engine/original_idle_rifle.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_idle_rifle.png",
+      "sha256": "f232a966f9abd46b093bac8687b610b2a36ae81fa8ab726a80e9dc22aa9fb566",
+      "bytes": 222567
+    },
+    "review/engine/original_level_01_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_level_01_front.png",
+      "sha256": "56b9582989d83614e248fc7023bf76fa82e796a1c556bb62b759449a8b90406f",
+      "bytes": 1084924
+    },
+    "review/engine/original_level_01_gameplay.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_level_01_gameplay.png",
+      "sha256": "f1cd550f2392c419eb2d47102b3eda5047270920b0d0f87eb60d6d745729351f",
+      "bytes": 1432291
+    },
+    "review/engine/original_level_08_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_level_08_front.png",
+      "sha256": "dc168bfd45941c4c07c0233b457575ba45fd14a1e060914dfbec6f6755504d3e",
+      "bytes": 918236
+    },
+    "review/engine/original_level_08_gameplay.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_level_08_gameplay.png",
+      "sha256": "c95623e8b24fd6fcf1e3e0370c3d11d9da2dbc1f48493cf191f233ab857df753",
+      "bytes": 990291
+    },
+    "review/engine/original_painted_front.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_painted_front.png",
+      "sha256": "e4b2a2e8a06bc8613621102826a077e876e6da0210c8aa3e07c045ce1fb3ff05",
+      "bytes": 252098
+    },
+    "review/engine/original_painted_quarter.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_painted_quarter.png",
+      "sha256": "2c4717410b42e7fcc8a683ab85cf8adbc261a0230cf26b5ee0e28144c4bb7b8d",
+      "bytes": 261253
+    },
+    "review/engine/original_painted_rear.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_painted_rear.png",
+      "sha256": "34f81a5118baabf8069130c805de0ba1a22f9753c5d607968d3b4bdf05177aa2",
+      "bytes": 244561
+    },
+    "review/engine/original_painted_side.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_painted_side.png",
+      "sha256": "f007385616d365aa709065d4e7b5367dcadcb118dae2ed3b58dbcdd19e456cb2",
+      "bytes": 157770
+    },
+    "review/engine/original_reload_00.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_reload_00.png",
+      "sha256": "9c2b9940bce74ecf6f516e1573ee94e39719b22cbf2907cfcd59697aa2e3fb32",
+      "bytes": 213764
+    },
+    "review/engine/original_reload_01.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_reload_01.png",
+      "sha256": "c4d23fcf9a4d5e041d8093cb0967eb3cd370634807b224900393de902174fb91",
+      "bytes": 198656
+    },
+    "review/engine/original_reload_02.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_reload_02.png",
+      "sha256": "fa959544092d80efaf782ea053c1b175266b5049a94f3f5428fc853ab6d04efc",
+      "bytes": 204156
+    },
+    "review/engine/original_reload_03.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_reload_03.png",
+      "sha256": "6f9272a2701f9075fd072db9a40952693cd2a4357aa176c4cf51eda01a1ac126",
+      "bytes": 200443
+    },
+    "review/engine/original_reload_04.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_reload_04.png",
+      "sha256": "f7e53ed2bf309a3893616618c0e78e09cec0ce05be99b6955b2ea11b222535e6",
+      "bytes": 208929
+    },
+    "review/engine/original_reload_05.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_reload_05.png",
+      "sha256": "684d52e29f965267578b2d132005ac9155b82dda72133be3d135b406b648b194",
+      "bytes": 207916
+    },
+    "review/engine/original_reload_06.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_reload_06.png",
+      "sha256": "b7dd49dc6f032f874c148cfb32457b79010fd3165063eeef0d03170d462841d0",
+      "bytes": 205255
+    },
+    "review/engine/original_reload_07.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_reload_07.png",
+      "sha256": "d73b557742243ed2cb2a09286d7eda7512ce8310229c2df98c6b222b4fa1fb63",
+      "bytes": 202690
+    },
+    "review/engine/original_reload_08.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_reload_08.png",
+      "sha256": "7aed994dbb8b3e978311c765af2b18ab78587dae9b33e52df79d860b6fd36f7b",
+      "bytes": 215182
+    },
+    "review/engine/original_run_rifle.png": {
+      "source": "docs/art/titan_runtime_v1/review/engine/original_run_rifle.png",
+      "sha256": "3161ad53f3e009952296b08cf6639f59325508db7b6704dfb1dcbaab3ac685ad",
+      "bytes": 200469
+    }
+  }
+}
