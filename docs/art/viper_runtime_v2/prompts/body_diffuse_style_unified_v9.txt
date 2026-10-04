@@ -1,0 +1,37 @@
+Use case: style-transfer (controlled existing game texture edit)
+Asset type: production diffuse/albedo UV atlas for Star Warfare Godot armor, not a concept illustration.
+
+PRIMARY REQUEST
+Unify the supplied current armor texture with the broad, soft hand-painted surface rendering of the original in-game armor. Preserve the accepted NEW armor design. Change surface painting only. The model, UV coordinates, triangle indices, skin, bones, animation tracks, attachment points and armor ID are locked for this pass. Do not interpret 15% as a repaint-area allowance or an art-similarity target. This pass permits ZERO additional geometry or UV edits relative to the current accepted runtime asset.
+
+INPUT ROLES AND AUTHORITY
+Image 1: EDIT TARGET, the current runtime UV atlas. It exclusively defines canvas layout, all UV-island positions, scale, orientation, mirrored edges, padding, panel shapes, openings, color-block boundaries and the accepted new armor identity.
+Image 2: ORIGINAL GAME STYLE REFERENCE. Use only its broad highlights, shadow softness, edge treatment, restrained saturation and wear scale. Never copy its old helmet, nose piece, emblem, panel layout or UV-island placement into Image 1.
+Additional input, when supplied: current neutral runtime render / approved helmet, DESIGN AND MAPPING CHECK only. Keep that accepted shape and read; do not render this view into the atlas.
+
+SURFACE PAINTING RULES
+Keep the armor's existing palette family and large panel/color configuration. Make the main painted highlight broad and restrained, with a soft transition across a low-poly plate. Use a consistent gentle upper-facing highlight direction compatible with the original game. Retain readable darker side planes without creating a shiny photoreal metal effect.
+Suppress continuous thin bright-white outlines around every panel. Give selected exposed edges subtle wider color-tinted highlights; inner plate edges must not all glow. Preserve functional opening locations while softening excessively black, thick panel seams and their contrast.
+Use sparse, deliberate wear on exposed corners and contact edges. Avoid uniformly distributed fine scratches, noisy crack networks or detail that disappears at the normal gameplay distance. Preserve the texture's resolution and useful painting detail; do not apply a global blur.
+Paint flexible joints as understated dark neutral cloth/rubber with broad folds. Do not add extra ribbing, machinery or deep false geometry.
+Render visor glass as a continuous colored surface with one broad soft reflection. Keep the accepted visor border and facets. Never add two bright vertical columns, a center black split, a new nose button, an eye pair, excessive bloom, photographic reflections, or a mirror-like highlight. Do not make the glass the brightest patch on every armor part.
+The image will be used by the current unshaded game material: these painted highlights remain visible without dynamic lighting. Do not rely on roughness, metallic or normal maps to correct painted brightness.
+
+UV AND OUTPUT INVARIANTS
+Return only the edited flat square UV atlas in the SAME framing and orientation. No 3D character, turntable, ground plane, perspective, lighting rig, labels, grids, UV guide lines, text, logo, watermark, decorative background, additional parts or cropped islands. Retain opaque atlas padding and existing unused-space background; do not introduce transparency.
+Every island, panel boundary and silhouette must remain registered to Image 1, including mirrored face edges and shared chest seams. Do not move, repack, scale, rotate, split, merge or invent islands to make the painting easier. Do not add model thickness by painting fictitious plates that conflict with the existing cage.
+
+REQUIRED PER-ASSET ADDENDUM
+Specify armor identity, material label, exact target/reference paths and their roles, accepted features that must remain, island-specific seam hazards and the precise painting change. Save this common base plus the addendum as the complete prompt actually sent for each output, including any rejected attempt.
+
+ACCEPTANCE AFTER GENERATION (verification, not an image instruction)
+Inspect the atlas and apply it to the existing runtime mesh. Compare pre-pass and new front/quarter/side/rear views with the same camera and material, plus gameplay distance, idle, run and reload. Check for shifted visor/chest details, UV seams, stretched paint and lost accepted features. Confirm target positions/UVs/indices/bones/weights match the pre-pass snapshot exactly. A technically passing asset is pending user art review; do not claim an objective style score or guaranteed 15%-similar appearance.
+
+PER-ASSET ADDENDUM — VIPER / BODY / STYLE_UNIFIED_V9
+Armor: Viper visual ID 00. Retain its accepted NEW dual wide angular charcoal chest windows, layered blue abdominal plates with dark central recess, blue groin, blue thigh panel blocks and four blue back plates with central dark spine gap. Keep exact existing panel boundaries and large blue/charcoal color blocks.
+Image 1 EDIT TARGET: E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/before/viper/atlases/body_diffuse.png.
+Image 2 ORIGINAL STYLE ONLY: E:/Star-Warfare-Godot-Restoration/assets/models/player/animated/armor_textures/body_41c59e886aaa_2x.png.
+Image 3 CURRENT ACCEPTED DESIGN AND MAPPING CHECK ONLY: E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/before/viper/review/diffuse_front.png.
+Only repaint Image 1. The tall left island contains the mirrored front torso, belly and thighs. Preserve every chest port, strap buckle, belly opening, groin blue plate and folded edge at the EXACT target location, especially the left-border mirrored center seam. The separate upper-right island is the accepted back plate layout: keep its blue plates and charcoal slots, do not restore the original dark shoulder/back painted layout. The lower-right small plate and thin vertical segmented charcoal strip stay registered and the same shape. Keep opaque dark blue background and island padding.
+Make the blue panels muted steel blue, broad restrained soft highlight patches as Image 2, not cyan-white edge strips. Suppress the bright continuous white outlines around every blue panel and silver buckle; selected outer contact corners may retain tiny sparse muted wear. Replace uniform crack noise on broad flat plates with quiet hand-painted gradients, retaining painting detail without global blur. Charcoal ports stay their existing size but soften black seam contrast and use dark gray planes. Keep flexible brown-charcoal folds broad and quiet; do not add ribbing or micro-machinery. Do not relocate or repack panels, invent extra plates or cutouts, or put old original panel identities back. This pass changes surface treatment only, with ZERO UV/model changes.
+

@@ -10,6 +10,8 @@ var dimensions: Dictionary={}
 var capture_viewport: SubViewport
 var review_points: Array[Vector3]=[]
 var framing: Dictionary={}
+var texture_sha256: Dictionary={}
+var model_sha256 := ""
 
 func _ready() -> void:
 	_run.call_deferred()
@@ -18,6 +20,9 @@ func _run() -> void:
 	if "--baseline-only" in OS.get_cmdline_user_args():OUT="res://docs/art/viper_runtime_v2/review/baseline/"
 	if "--geometry-review" in OS.get_cmdline_user_args():OUT="res://docs/art/viper_runtime_v2/review/pretexture/"
 	if "--face-review" in OS.get_cmdline_user_args():OUT="res://docs/art/viper_runtime_v2/review/face_geometry/"
+	for label: String in ["head", "body", "shoulder", "hand", "foot"]:
+		texture_sha256[label] = FileAccess.get_sha256("res://assets/armors/viper_v2/" + label + "_diffuse.png")
+	model_sha256 = FileAccess.get_sha256("res://assets/armors/viper_v2/viper.scn")
 	get_tree().root.size=Vector2i(640,720)
 	capture_viewport=SubViewport.new()
 	capture_viewport.size=Vector2i(640,720)
@@ -148,7 +153,9 @@ func _run() -> void:
 	var unchanged:=_hash(real_save)==before
 	GameState.save_path=real_save
 	var report:=FileAccess.open(OUT+"capture.json",FileAccess.WRITE)
-	report.store_string(JSON.stringify({"viewports":{"review":[640,720],"gameplay":[1280,720]},"image_dimensions":dimensions,"renderer":RenderingServer.get_current_rendering_method(),"files":files,"save_unchanged":unchanged,"full_body_framing":framing,"note":"One new model for all views; each full-body camera fits the original and candidate posed vertices together with KEEP_HEIGHT and a shared margin. Original raw mesh/skin preserved for comparison. Poses use actual player and reload fixture; two real levels also captured.","diffuse_views":"White material tint for both versions, so original painted greys can be compared without the glTF pink head tint. Painted views retain original imported tint. This affects captures only, not source assets or gameplay defaults."},"\t"))
+	var file_sha256: Dictionary={}
+	for filename: String in files:file_sha256[filename] = FileAccess.get_sha256(filename)
+	report.store_string(JSON.stringify({"viewports":{"review":[640,720],"gameplay":[1280,720]},"image_dimensions":dimensions,"renderer":RenderingServer.get_current_rendering_method(),"configured_windows_driver":ProjectSettings.get_setting("rendering/gl_compatibility/driver.windows"),"runtime_scene_sha256":model_sha256,"texture_sha256":texture_sha256,"file_sha256":file_sha256,"files":files,"save_unchanged":unchanged,"full_body_framing":framing,"note":"One new model for all views; each full-body camera fits the original and candidate posed vertices together with KEEP_HEIGHT and a shared margin. Original raw mesh/skin preserved for comparison. Poses use actual player and reload fixture; two real levels also captured. Actual rendering driver/device is recorded in the capture execution stdout, configured_windows_driver is configuration only.","diffuse_views":"White material tint for both versions, so original painted greys can be compared without the glTF pink head tint. Painted views retain original imported tint. This affects captures only, not source assets or gameplay defaults."},"\t"))
 	print("VIPER_CAPTURE_%s files=%d save_unchanged=%s"%["PASS" if unchanged else "FAIL",files.size(),str(unchanged)])
 	get_tree().quit(0 if unchanged else 1)
 

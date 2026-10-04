@@ -16,6 +16,8 @@ SOURCE = json.loads((WORK/'build/source.json').read_text())
 C = Matrix(((-1,0,0,0),(0,0,1,0),(0,1,0,0),(0,0,0,1)))
 LABELS = {'ArmorHead_00':['head'], 'ArmorBody_00':['body','shoulder'],
           'ArmorHand_00':['hand'], 'ArmorFoot_00':['foot']}
+LOCAL_GEOMETRY_CHANGE_LIMIT = .15
+UV_CHANGED_COORDINATE_LIMIT = .15
 
 
 def reshape(name, point):
@@ -48,7 +50,7 @@ def reshape(name, point):
 
 
 def adjusted_uv(name, point, uv, surface_id=0):
-    # User allows local helmet UV changes (20%); keep the original four chart
+    # User allows local helmet UV changes (15%); keep the original four chart
     # regions and source geometry topology. Only the 18 existing visor coordinates move.
     if name == 'ArmorHead_00' and uv[0] > .59 and uv[1] > .69:
         x,y,_ = point
@@ -108,7 +110,11 @@ def main():
         if row['parent']>=0:bone.parent=arm.edit_bones[SOURCE['bones'][row['parent']]['name']]
     bpy.ops.object.mode_set(mode='OBJECT'); rig.select_set(False)
     target={'revision':'viper_runtime_v2','id':0,'parts':{}}
-    geometry={'parts':{}, 'constraint':'Local shape/dimension changes <=20%; changed UV coordinates <=20% per part, only visor and front chest/abdomen; original chart/coordinate count and skin retained. Absolute UV displacement is recorded separately.'}
+    geometry={'parts':{},
+              'limits':{'local_geometry_change_fraction':LOCAL_GEOMETRY_CHANGE_LIMIT,
+                        'uv_changed_coordinate_fraction':UV_CHANGED_COORDINATE_LIMIT,
+                        'uv_count_scope':'per_material_surface', 'uv_chart_count_change_fraction':0.0},
+              'constraint':'Local shape/dimension changes <=15%; changed UV coordinates <=15% per material surface, only visor and front chest/abdomen; original chart/coordinate count and skin retained. Absolute UV displacement is recorded separately.'}
     for name,part in SOURCE['parts'].items():
         points=[]; uv=[]; weights=[]; bone_names=[]; faces=[]; mids=[]; offsets=[]; target_surfaces=[]
         deltas=[]
@@ -149,7 +155,15 @@ def main():
         original_uv=[t for row in part['surfaces'] for t in row['uv']]
         uv_displacements=[(Vector(a)-Vector(b)).length for a,b in zip(uv,original_uv)]
         changed_uv=sum(distance > .000001 for distance in uv_displacements)
-        assert len(uv) == len(original_uv) and changed_uv/len(original_uv) <= .20
+        assert len(uv) == len(original_uv) and changed_uv/len(original_uv) <= UV_CHANGED_COORDINATE_LIMIT
+        material_uv=[]
+        for sid,row in enumerate(part['surfaces']):
+            distances=[(Vector(a)-Vector(b)).length for a,b in zip(target_surfaces[sid]['uv'],row['uv'])]
+            moved=sum(distance > .000001 for distance in distances)
+            fraction=moved/len(row['uv'])
+            assert fraction <= UV_CHANGED_COORDINATE_LIMIT, f'{LABELS[name][sid]}: changed UV coordinates exceed 15%'
+            material_uv.append({'label':LABELS[name][sid], 'uv_coordinate_count':len(row['uv']),
+                                'uv_changed_count':moved, 'uv_changed_fraction':fraction})
         old=[Vector(p) for row in part['surfaces'] for p in row['positions']]
         new=[C.inverted()@p for p in points]
         bounds=lambda ps:{'min':[min(p[i] for p in ps) for i in range(3)],'max':[max(p[i] for p in ps) for i in range(3)]}
@@ -157,8 +171,9 @@ def main():
         ratios=[abs((after['max'][i]-after['min'][i])/(before['max'][i]-before['min'][i])-1) for i in range(3)]
         max_delta=max(deltas)
         normalizer=min(before['max'][i]-before['min'][i] for i in range(3))
-        assert max(ratios)<=.20 and max_delta/normalizer<=.20
+        assert max(ratios)<=LOCAL_GEOMETRY_CHANGE_LIMIT and max_delta/normalizer<=LOCAL_GEOMETRY_CHANGE_LIMIT
         geometry['parts'][name]={'bounds_game':after,'original_bounds':before,'dimension_delta_fraction':ratios,'max_rest_displacement':max_delta,'max_displacement_fraction_of_smallest_dimension':max_delta/normalizer,'triangles':len(faces),'uv_preserved':changed_uv==0, 'original_uv_charts':original_charts,'uv_charts':edited_charts,'uv_coordinate_count':len(uv), 'original_uv_coordinate_count':len(original_uv), 'uv_changed_count':changed_uv, 'uv_changed_fraction':changed_uv/len(original_uv), 'uv_max_displacement_from_original':max(uv_displacements), 'uv_rms_displacement_from_original':math.sqrt(sum(distance*distance for distance in uv_displacements)/len(uv_displacements)), 'weight_source':'original, unchanged'}
+        geometry['parts'][name]['uv_by_material']=material_uv
         # Exact continuous UV chart wire guides; technical edges are never paint edges.
         for sid,row in enumerate(part['surfaces']):
             label=LABELS[name][sid]; paths=[]
@@ -172,6 +187,6 @@ def main():
     scene.view_settings.view_transform='Standard'
     bpy.ops.file.pack_all()
     bpy.ops.wm.save_as_mainfile(filepath=str(WORK/'build/viper_master.blend'))
-    print('VIPER_BUILD_PASS local edits within20%, triangles='+str(sum(p['triangles'] for p in geometry['parts'].values())))
+    print('VIPER_BUILD_PASS local edits within 15%, UV measured per material, triangles='+str(sum(p['triangles'] for p in geometry['parts'].values())))
 
 if __name__=='__main__':main()

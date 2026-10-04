@@ -1,20 +1,16 @@
 {
   "revision": "viper_runtime_v2",
-  "date": "2026-10-03",
+  "date": "2026-10-04",
   "legacy_name": "Viper",
   "visual_id": 0,
   "design_id": "C-01",
   "status": "runtime_integrated_pending_user_art_review",
   "runtime_scene": "assets/armors/viper_v2/viper.scn",
   "base_prompt": {
-    "path": "docs/art/viper_runtime_v2/prompts/base_prompt_snapshot.txt",
-    "sha256": "de445a88ca6c06ae90c567e188461f9b823157f767b46145fbb4eb8901f6c7e2",
-    "bytes": 8150
+    "path": "docs/art/armor_style_unification_v1/base_prompt.txt",
+    "sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+    "bytes": 4668
   },
-  "base_prompt_commits": [
-    "13d6836708418208a2d5c8318fb0e3260c4a2bfc",
-    "48f0a12adba5c71abde2ac9c9d7513edfabdc20e"
-  ],
   "selected_helmet_reference": {
     "path": "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
     "sha256": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
@@ -36,17 +32,18 @@
     "sha256": "9b1b4a428ae59b19d361f42f8aee762c608d9f174e535e125e0354f37a4c105d",
     "bytes": 2424908
   },
-  "construction": "Full-concept diffuse repaint on the existing Viper v2 indexed cages. Four modular parts, five material surfaces, original indices/bones/weights/Skin binds. Body, shoulder, hand and foot geometry remain exact to the original. Front chest and abdomen UV remap 32 of 221 body-material coordinates; shoulder, hand and foot UVs remain exact. The inherited v7 helmet retains 18 locally changed visor coordinates out of 130. Original UV chart and coordinate counts remain unchanged.",
+  "construction": "Texture-only repaint on the accepted concept_match_v8 cages. Five native image_gen PNG diffuse maps, packed master, original runtime material mode and original topology/skin/bones/weights retained. Authored target and geometry JSON are byte-identical to the immutable prepass snapshot. No additional position, UV, index, skin or animation edits in this revision.",
   "budget": {
     "triangles": 682,
     "bones": 28,
     "surfaces": 5,
-    "local_geometry_change_limit": 0.2,
+    "local_geometry_change_limit": 0.15,
+    "silhouette_change_limit": 0.15,
     "head_uv_coordinate_count": 130,
     "original_head_uv_coordinate_count": 130,
     "head_uv_changed_coordinates": 18,
     "head_uv_changed_fraction": 0.13846153846153847,
-    "uv_chart_count_change_limit": 0.2,
+    "uv_chart_count_change_limit": 0.0,
     "body_material_uv_coordinate_count": 221,
     "body_material_uv_changed_coordinates": 32,
     "body_material_uv_changed_fraction": 0.14479638009049775,
@@ -58,11 +55,13 @@
     "total_uv_changed_fraction": 0.07496251874062969,
     "head_uv_chart_count": 4,
     "original_head_uv_chart_count": 4,
-    "uv_changed_coordinate_fraction_limit": 0.2,
+    "uv_changed_coordinate_fraction_limit": 0.15,
+    "uv_count_scope": "per_material_surface",
+    "torso_uv_max_displacement_atlas_units": 0.2,
     "body_uv_exact": false,
     "shoulder_hand_foot_uv_exact": true,
     "body_shoulder_hand_foot_geometry_exact": true,
-    "additional_uv_coordinates_changed_this_revision": 32,
+    "additional_uv_coordinates_changed_this_revision": 0,
     "uv_material_measurements": {
       "body": {
         "uv_coordinate_count": 221,
@@ -134,21 +133,22 @@
         "original_uv_charts": 4
       }
     },
-    "uv_tolerance_definition": "Fraction of original UV coordinates that changed, independently capped at 20% per head/body material; not a normalized per-point displacement limit."
+    "uv_tolerance_definition": "Fraction of original UV coordinates that changed, independently capped at 15% per material surface; not a normalized per-point displacement limit.",
+    "additional_geometry_changes_this_revision": 0
   },
   "selected_generations": [
-    "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/body_diffuse_v8c.png",
-    "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/hand_diffuse.png",
-    "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/foot_diffuse.png",
-    "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/shoulder_diffuse.png",
-    "docs/art/viper_runtime_v2/revisions/concept_match_v8/generated/head_diffuse.png"
+    "docs/art/viper_runtime_v2/revisions/style_unified_v9/generated/head_diffuse.png",
+    "docs/art/viper_runtime_v2/revisions/style_unified_v9/generated/body_diffuse.png",
+    "docs/art/viper_runtime_v2/revisions/style_unified_v9/generated/shoulder_diffuse.png",
+    "docs/art/viper_runtime_v2/revisions/style_unified_v9/generated/hand_diffuse.png",
+    "docs/art/viper_runtime_v2/revisions/style_unified_v9/generated/foot_diffuse.png"
   ],
   "generation_records": "build/generation.json",
   "outputs": [
     {
       "path": "assets/armors/viper_v2/body_diffuse.png",
-      "sha256": "83701b740e31ecf124f288e0428f1ea55bdf73f202cfb6616ab66950394b957a",
-      "bytes": 2001984,
+      "sha256": "0bbd05125ae61c081c207a1f814bdcfb4ab2bd94613afb36210dd9296b64eeba",
+      "bytes": 1843529,
       "dimensions": [
         1254,
         1254
@@ -156,8 +156,8 @@
     },
     {
       "path": "assets/armors/viper_v2/foot_diffuse.png",
-      "sha256": "340cec30ec508a82fc0c73de9c4fadef4210730d5286616e65a9b1194153e2a5",
-      "bytes": 1657785,
+      "sha256": "ae7e71a599d5ede22021fae67bd7ad3d3f90ec6f6dfb020b3cbeca387236e849",
+      "bytes": 1660493,
       "dimensions": [
         1254,
         1254
@@ -165,8 +165,8 @@
     },
     {
       "path": "assets/armors/viper_v2/hand_diffuse.png",
-      "sha256": "d1023bdedbe824dbac3d1c62717eb3703c4f54acf4cb3c0c6c36a6ab98ebfa5f",
-      "bytes": 1558635,
+      "sha256": "53a5d1bddd101de3db5652a2eb7343fbd48a40678b449900a09c5e979ab7fa62",
+      "bytes": 1603882,
       "dimensions": [
         1254,
         1254
@@ -174,8 +174,8 @@
     },
     {
       "path": "assets/armors/viper_v2/head_diffuse.png",
-      "sha256": "b19e5ef331cf3a9a0619c5ce7ec8c3cb08251588d1d194f8dce4fad4cd8b2964",
-      "bytes": 1992201,
+      "sha256": "a1221cefc4ce785b05fe40dcd927010dafae9990332aad12c984c9c96308b0dc",
+      "bytes": 1937976,
       "dimensions": [
         1254,
         1254
@@ -183,8 +183,8 @@
     },
     {
       "path": "assets/armors/viper_v2/shoulder_diffuse.png",
-      "sha256": "162ca5bb1de8533e7637ca7aba0464feb11e225b19ba8b63adfd60d3a56ccc90",
-      "bytes": 1705494,
+      "sha256": "963ed30b4a109b6dd4a5b2b2e993fd0f29e0e468928d053875ed3e49e9e1e860",
+      "bytes": 1791235,
       "dimensions": [
         1254,
         1254
@@ -192,18 +192,18 @@
     },
     {
       "path": "assets/armors/viper_v2/viper.glb",
-      "sha256": "c9730193213d0f5314ccc1edbff9c386fee3c43bd1b87f6493d1809dc6d70fd3",
-      "bytes": 8755100
+      "sha256": "78c83da630f88ecc024851935e838a2622335903387efbb622346da85bb3540e",
+      "bytes": 8622700
     },
     {
       "path": "assets/armors/viper_v2/viper.scn",
-      "sha256": "38f38699fd9f668915a185fc13c3e3846c45c79523a774bd249d54c06e3e1181",
+      "sha256": "2b475fbb1f515555bbb602dbb300087a51c2f3b0ed7cc8acf7b94325858e46e6",
       "bytes": 53106
     },
     {
       "path": "assets/armors/viper_v2/viper_body_diffuse.png",
-      "sha256": "1879c33cc0c09ae9d2ceb39edafecd34b5af5dfb569978e9f88b7afe28e2c194",
-      "bytes": 1979966,
+      "sha256": "b3d3166c7c472f6e57ccc19b9c796714bd42f57387f4f986e555115e22b6f14b",
+      "bytes": 1818626,
       "dimensions": [
         1254,
         1254
@@ -211,8 +211,8 @@
     },
     {
       "path": "assets/armors/viper_v2/viper_foot_diffuse.png",
-      "sha256": "bfe9b23ed748e7c553517db855cd7e64dfda2db056c73e15479cd9c58bd99d89",
-      "bytes": 1612967,
+      "sha256": "4c8c8068bff08db0300558e5176e1959c99f72c39fafda0e22f199c8c69ad82c",
+      "bytes": 1608302,
       "dimensions": [
         1254,
         1254
@@ -220,8 +220,8 @@
     },
     {
       "path": "assets/armors/viper_v2/viper_hand_diffuse.png",
-      "sha256": "f1324a4273290714fc644e97210faefe56999b96d4c2a4f7e6b70c7463ce3871",
-      "bytes": 1528828,
+      "sha256": "608da61ee82e91bf8e4acd98c78453bc699f79de425cb5b3dcf442b33cbcfe80",
+      "bytes": 1560512,
       "dimensions": [
         1254,
         1254
@@ -229,8 +229,8 @@
     },
     {
       "path": "assets/armors/viper_v2/viper_head_diffuse.png",
-      "sha256": "6d66cad43ab711cdb36299860eae3725bb2aaa9e18ea129cfd946c2740d38f65",
-      "bytes": 1934036,
+      "sha256": "06611ab4a02e4f124b7546a9d0ee5b49f0d49e42d2a038ce78b88ad97b7f4797",
+      "bytes": 1871762,
       "dimensions": [
         1254,
         1254
@@ -238,8 +238,8 @@
     },
     {
       "path": "assets/armors/viper_v2/viper_shoulder_diffuse.png",
-      "sha256": "a4a6ec77a40c439d038dc401fdbe3b362c5796497408d068524724d20d2fcc23",
-      "bytes": 1624351,
+      "sha256": "4ab882acde6c8e4cc133e8b4f11395439427ac0856c068dc220d5688b3d7dd19",
+      "bytes": 1688546,
       "dimensions": [
         1254,
         1254
@@ -247,13 +247,13 @@
     },
     {
       "path": "docs/art/viper_runtime_v2/build/viper_master.blend",
-      "sha256": "878a521e07489a58ffe187e7792c7b0a10697a16e59ef26e60b99754a92a35b8",
-      "bytes": 8978095
+      "sha256": "9a3340b033739c36cff57bbf3ee02ac93eb7efc7f0c8c0b2020c6edd567423ab",
+      "bytes": 8899121
     },
     {
       "path": "docs/art/viper_runtime_v2/review/delivery_validate.json",
-      "sha256": "ea4345ae3b46cfb42ae7fe83dc2b96a9e301f9efa7c80c275617505c61a23362",
-      "bytes": 8213
+      "sha256": "56e5aada6d5d132c762fa3400484c90a9f6a2bcc044d1d6c301b25369a7dafb6",
+      "bytes": 9418
     }
   ],
   "verification": {
@@ -262,12 +262,40 @@
     "geometry": "review/proportion_test.json",
     "delivery": "review/delivery_validate.json",
     "historical_blender": "review/blender_validate.json",
-    "historical_blender_roundtrip": "review/blender_roundtrip/roundtrip.json"
+    "historical_blender_roundtrip": "review/blender_roundtrip/roundtrip.json",
+    "texture_only": {
+      "target_sha256": "1749913da13117b97419480de6390ce0bd1cd48d77ca77d5d4bd61b38d258f45",
+      "geometry_sha256": "e56dab06e42a2adad9a7168fee06bd2d1ce81839fafa9fdc76c55e4f16f6ee5d",
+      "additional_geometry_changes": 0,
+      "additional_uv_coordinate_changes": 0,
+      "target_and_geometry_byte_exact_to_prepass": true,
+      "capture": {
+        "path": "docs/art/viper_runtime_v2/review/engine/capture.json",
+        "sha256": "5b31ead696740d625ba2721b68305d34a9096cc17ac2318ea9cdad38492c16cf",
+        "bytes": 22970
+      },
+      "mesh_invariants": {
+        "path": "docs/art/viper_runtime_v2/revisions/style_unified_v9/mesh_invariants.json",
+        "sha256": "55894b14b2e8020ede6f0684c2c2ad79352a6256dfdc06ff521e159a9728478c",
+        "bytes": 1543
+      },
+      "glb_atlas_validation": {
+        "path": "docs/art/viper_runtime_v2/revisions/style_unified_v9/glb_atlas_validation.json",
+        "sha256": "8767ec40a533512da0e051564105bad353122d4d393801136c8db275c3bd4c71",
+        "bytes": 2543
+      },
+      "snapshot_manifest": {
+        "path": "docs/art/armor_style_unification_v1/before/viper/delivery/manifest.json",
+        "sha256": "a9264b1c43b493d84f0c0d5c64583b031f22868d2fa12b50bcf29cdb0b9bc5b7",
+        "bytes": 11636
+      }
+    },
+    "capture": "review/engine/capture.json"
   },
-  "visual_review": "The complete steel-blue and charcoal armor in the user-selected concept is the design authority. The new five diffuse outputs are attributed to their actual prompts and immutable image inputs; the previous v7 outputs remain archived. The latest continuous purple faceplate is retained. See the comparison page and capture/test reports for actual runtime results; user art approval remains pending.",
-  "inferred": "Original hidden rear/neck/joint construction and game proportions remain authoritative. Perspective art does not establish exact hidden surface depth. Front chest and abdomen UV corrections sample the regenerated blue plates, black chest insets and longer abdominal core while retaining original mesh topology. Original chunky proportions and chest-window width remain constrained by the existing low-poly mirrored cage. The 20% limit is the cap on changed source UV coordinate count fraction, measured independently for head and body material, not a per-point UV distance bound.",
-  "current_variant": "concept_match_v8",
-  "generation_inputs": "revisions/concept_match_v8/generation_inputs.json",
+  "visual_review": "Retains the accepted new helmet, black brow, continuous purple visor, chest ports, abdomen, thigh and back-panel design. Softens continuous thin white outlines and crack noise, paints broader softer blue/charcoal highlights, and replaces the visor central hard stripe with one broad reflection. Actual mapped views, idle/run/reload and both game levels are recaptured. User art approval remains pending; no objective style-similarity score is claimed.",
+  "inferred": "Original atlas is a surface-style reference only. Approved prepass runtime atlas owns new panel design, color blocks and exact normalized island registration. Existing original-source engineering15% limits remain satisfied, while this pass adds zero UV or geometric change. Painted albedo is used by the existing unshaded material; this is not PBR roughness measurement.",
+  "current_variant": "style_unified_v9",
+  "generation_inputs": "revisions/style_unified_v9/generation_inputs.json",
   "selected_armor_reference": {
     "path": "docs/art/fusion_v2_generated/c01_viper_fusion.jpg",
     "sha256": "bc9d6c4a82def7b88f9840076bc13becceb8d180f0dcc6db0ce8da41e425eeed",
@@ -283,5 +311,46 @@
     "delivery": "Read-only packed-master identity, PNG bytes, original topology/rig, and authored UV/position consistency. Does not measure artistic likeness or certify fresh engine captures.",
     "historical_blender": "Previous source-geometry warning checks retained for context; not a freshly rerun general validator for this revision.",
     "historical_blender_roundtrip": "Prior Blender roundtrip evidence; current packed images and authored UVs are checked by delivery_validate.json."
+  },
+  "historical_design_base_prompt": {
+    "path": "docs/art/viper_runtime_v2/prompts/base_prompt_snapshot.txt",
+    "sha256": "de445a88ca6c06ae90c567e188461f9b823157f767b46145fbb4eb8901f6c7e2",
+    "bytes": 8150
+  },
+  "historical_design_base_prompt_commits": [
+    "13d6836708418208a2d5c8318fb0e3260c4a2bfc",
+    "48f0a12adba5c71abde2ac9c9d7513edfabdc20e"
+  ],
+  "required_style_prompt": {
+    "path": "docs/art/armor_style_unification_v1/base_prompt.txt",
+    "sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584",
+    "bytes": 4668
+  },
+  "style_pass": {
+    "target_sha256": "1749913da13117b97419480de6390ce0bd1cd48d77ca77d5d4bd61b38d258f45",
+    "geometry_sha256": "e56dab06e42a2adad9a7168fee06bd2d1ce81839fafa9fdc76c55e4f16f6ee5d",
+    "additional_geometry_changes": 0,
+    "additional_uv_coordinate_changes": 0,
+    "target_and_geometry_byte_exact_to_prepass": true,
+    "capture": {
+      "path": "docs/art/viper_runtime_v2/review/engine/capture.json",
+      "sha256": "5b31ead696740d625ba2721b68305d34a9096cc17ac2318ea9cdad38492c16cf",
+      "bytes": 22970
+    },
+    "mesh_invariants": {
+      "path": "docs/art/viper_runtime_v2/revisions/style_unified_v9/mesh_invariants.json",
+      "sha256": "55894b14b2e8020ede6f0684c2c2ad79352a6256dfdc06ff521e159a9728478c",
+      "bytes": 1543
+    },
+    "glb_atlas_validation": {
+      "path": "docs/art/viper_runtime_v2/revisions/style_unified_v9/glb_atlas_validation.json",
+      "sha256": "8767ec40a533512da0e051564105bad353122d4d393801136c8db275c3bd4c71",
+      "bytes": 2543
+    },
+    "snapshot_manifest": {
+      "path": "docs/art/armor_style_unification_v1/before/viper/delivery/manifest.json",
+      "sha256": "a9264b1c43b493d84f0c0d5c64583b031f22868d2fa12b50bcf29cdb0b9bc5b7",
+      "bytes": 11636
+    }
   }
 }
