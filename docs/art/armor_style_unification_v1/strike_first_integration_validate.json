@@ -1,0 +1,241 @@
+{
+  "status": "PASS",
+  "name": "strike",
+  "scope": "first approved-concept integration against true original source; positions/normals/UV permitted within original-total20%; topology, indices, skin, weights and 28-bone rig preserved",
+  "user_authorized_original_ceiling": 0.2,
+  "actual_delivery_original_limit": 0.2,
+  "prior_runtime_zero_geometry_contract_applies": false,
+  "original_source_snapshot_records_verified": 13,
+  "original_source_snapshot_sha256": "e2f7bacad42e4525de219f682b12ddb75cdd32d22e14f394692ed7b1ebe51533",
+  "original_node_index_sha256": "a91476b5e3afdca7aea1cf65462ffdd0b43a2276167caa21d7b5ae467bb4401e",
+  "used_node_ids": {
+    "ArmorHead_04": 46,
+    "ArmorBody_04": 47,
+    "ArmorHand_04": 48,
+    "ArmorFoot_04": 49
+  },
+  "original_measurements": [
+    {
+      "part": "ArmorBody_04",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 8.470368201228872e-15,
+      "original_dimension_delta_fractions": [
+        8.881784197001252e-16,
+        1.6653345369377348e-15,
+        3.3306690738754696e-16
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "body",
+          "uv_coordinate_count": 207,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        },
+        {
+          "surface": 1,
+          "label": "shoulder",
+          "uv_coordinate_count": 76,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "part": "ArmorFoot_04",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 1.6032941151174794e-15,
+      "original_dimension_delta_fractions": [
+        1.1102230246251565e-15,
+        1.1102230246251565e-16,
+        6.661338147750939e-16
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "foot",
+          "uv_coordinate_count": 122,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "part": "ArmorHand_04",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 2.022596478247045e-14,
+      "original_dimension_delta_fractions": [
+        4.440892098500626e-16,
+        4.6629367034256575e-15,
+        4.440892098500626e-16
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "hand",
+          "uv_coordinate_count": 106,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "part": "ArmorHead_04",
+      "original_total_limit": 0.2,
+      "original_max_rest_displacement_fraction": 0.09291058284059162,
+      "original_dimension_delta_fractions": [
+        7.771561172376096e-16,
+        6.772360450213455e-15,
+        6.661338147750939e-16
+      ],
+      "original_uv_changed_fraction": 0.0,
+      "surfaces": [
+        {
+          "surface": 0,
+          "label": "head",
+          "uv_coordinate_count": 198,
+          "uv_changed_count": 0,
+          "uv_changed_fraction": 0.0
+        }
+      ]
+    }
+  ],
+  "triangles": 722,
+  "surfaces": 5,
+  "uv_coordinates": 709,
+  "uv_charts": 23,
+  "images": [
+    {
+      "label": "body",
+      "canonical_sha256": "8f27c361ddb22de381daadb36da55614325a7b4a264f43a3d10875b1737d3048",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/strike_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "shoulder",
+      "canonical_sha256": "760d86b1e026916e938ad52d3ed5066460896f9e5c4a5e855f18df1a134913ac",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/strike_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "hand",
+      "canonical_sha256": "ccc60e5e1f080528629d79178761c1bc33d791d04c7da2fb7fcf7e8ef3217d52",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/strike_runtime_v1/prompts/hand_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "foot",
+      "canonical_sha256": "9dd8c2ca7c0de439788a2c3e002a13a3371911d4de086032cd0b2c596c319ce3",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/strike_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; native PNG bytes"
+    },
+    {
+      "label": "head",
+      "canonical_sha256": "07a4243cc973748b08417fabedc7150f3258de9c17f7b5d208a478c92c9cccbf",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "native_generator_path_available": true,
+      "prompt": "docs/art/strike_runtime_v1/prompts/head_diffuse_original_integration_v3_head.txt",
+      "postprocessing": "none; native PNG bytes"
+    }
+  ],
+  "reports": {
+    "runtime": "docs/art/strike_runtime_v1/review/runtime_test.json",
+    "roundtrip": "docs/art/strike_runtime_v1/review/roundtrip_test.json",
+    "master": "docs/art/strike_runtime_v1/review/delivery_validate.json",
+    "proportion": "docs/art/strike_runtime_v1/review/proportion_test.json",
+    "glb_images": "docs/art/strike_runtime_v1/review/glb_images_test.json",
+    "scene": "docs/art/strike_runtime_v1/review/original_scene_invariants.json"
+  },
+  "captures": [
+    {
+      "view": "diffuse_front",
+      "sha256": "523ada5812cc7e994132923965ea8984814bb76ce77c5199808c90384c60ae47"
+    },
+    {
+      "view": "diffuse_quarter",
+      "sha256": "defd2c46a30f1b340824b3d1b6a231e2d0fbedae6895fb0afc3e2c73ae286393"
+    },
+    {
+      "view": "diffuse_side",
+      "sha256": "dc7bc87c890cebe54fc6573b621a7d3bb8d5b5cf7695497b3559f7b80bdf3ade"
+    },
+    {
+      "view": "diffuse_rear",
+      "sha256": "2b685da0220db1dca64df87026d9f8e6a46d8a486ae73fd9e029fb276bc2923f"
+    },
+    {
+      "view": "head_front",
+      "sha256": "9d3d2f08ff14236390b4c869dc68217bf71e3e415b108fef42c38246ed5733c6"
+    },
+    {
+      "view": "head_quarter",
+      "sha256": "fe4cd3461c6298792e88b84df158c533eb591898954f9fd4e13b69dd2e48b594"
+    },
+    {
+      "view": "head_side",
+      "sha256": "96d0d3c931fb95afea443fab93d8cd56860fb7f8d57da112e136f082d4d175a8"
+    },
+    {
+      "view": "head_rear",
+      "sha256": "a9904c755851afee52abfddf7a59246a3665a4df6a5d2af05af6e7e474d83513"
+    },
+    {
+      "view": "clay_front",
+      "sha256": "74168fee5290c5e12e0a227afa9b02ea7aa72fa9544361a159bfef3394a5e386"
+    },
+    {
+      "view": "clay_side",
+      "sha256": "f0c573e47307668145a0c680fc468366a91ac6a7a9dd3c9bed2b757532d29e61"
+    },
+    {
+      "view": "level_01_gameplay",
+      "sha256": "52c408bc10c6d6d0def57e981acfe65b0d8987295f79d32579737d754e53e2bf"
+    },
+    {
+      "view": "level_08_gameplay",
+      "sha256": "ec8f324865ee4122613f40c7a734bf063ebc4eae81a8e9ac1a86ad1660946abb"
+    },
+    {
+      "view": "idle_rifle",
+      "sha256": "5ff11b576f5b3f0e0351fdbd2e0b01eb810415e3f3a50e4721da917ad943d305"
+    },
+    {
+      "view": "run_rifle",
+      "sha256": "c9b6d7cc1c407bc2cfdfa1c58d7c837fe6a3de795475e1cc11d6b789a815adf7"
+    },
+    {
+      "view": "reload_04",
+      "sha256": "7c15dd7fcd82d3677db232932c12d4f9491bb10df97ad90923e1d4b06d1f7c68"
+    }
+  ],
+  "capture_execution": "docs/art/strike_runtime_v1/review/original_integration_angle_capture.log",
+  "scope_note": "Independent current armor verification; combined current six-armor PASS is also available.",
+  "combined_current_report": "docs/art/armor_style_unification_v1/validate.json",
+  "combined_current_report_sha256": "9263a1619cf78cb9bad0495805bce1d6260581f36646236d6f4fa67b85987d8b"
+}

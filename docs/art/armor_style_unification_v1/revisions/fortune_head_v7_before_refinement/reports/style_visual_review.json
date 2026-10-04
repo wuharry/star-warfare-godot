@@ -1,0 +1,74 @@
+{
+  "status": "VISUALLY_REVIEWED_PENDING_USER_ART_ACCEPTANCE",
+  "reviewed_at_utc": "2026-10-04T09:40:46.320459+00:00",
+  "method": "Native PNG inspection, no image manipulation. Controlled neutral full-body/head and actual action/gameplay images; compared immutable pre-paint full front/rear/head rear/gameplay source images.",
+  "observations": {
+    "identity_retained": [
+      "Continuous purple visor without twin bright columns or W-shaped central split",
+      "Olive crown, thin blue brow, short solid green chin and side vents retained",
+      "U chest frame and large green/silver-blue panel layout retained"
+    ],
+    "surface_improvement": [
+      "Knee/shin pale crack lines reduced into broad matte plane highlights",
+      "Arm rim/green panel thin edging reduced to restrained corner wear",
+      "Shoulder scratch/outline contrast reduced and broad blue highlight retained"
+    ],
+    "remaining": [
+      "Head brow/chin and chest U-frame still have comparatively bright edge treatment: conservative first painting pass, further art review needed",
+      "Rear crown original central fine slit remains from accepted pre-paint design; this pass does not modify its geometry or UVs",
+      "Major shoulder/body silhouette and rear layout intentionally remain locked; this pass alone does not establish a distinct new armor identity"
+    ],
+    "seams_and_actions": "No new visible mapping split or disconnected visor in inspected head views. Existing registration and movement remain consistent in inspected idle, run, reload midpoint and two gameplay environments; exact mesh/UV contracts are verified separately."
+  },
+  "images": [
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_head_front.png",
+      "sha256": "8bb51b97021844a1a661ef4b492b625b763055058bd07c8ceb918cdb1f8491a3"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_head_side.png",
+      "sha256": "48cd41353a52c802446d9fb32aea5e7f1d1516115402a7bb16d3d77fef3e13c1"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_head_rear.png",
+      "sha256": "e8728c9629c2b612eaa72bd9f127134057f6bca96fb6dcce3e55de6a5e406866"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_diffuse_front.png",
+      "sha256": "e06f4f8fa2a1f67806c83ba4d792ecdde69e0b3810670092b1e9639a2a6fd761"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "sha256": "5b6105e47a6724ef967f828536214f4027c05acb78e7ab32b7469538a20ab072"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_diffuse_side.png",
+      "sha256": "98e8abb04ee04600bf92729474e6a019779d693a87c8bcbf3e88cb63321cfd26"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_diffuse_rear.png",
+      "sha256": "ce1f13ce9802dcb169cdac3084c0e352b21579e9998a763fdc6255969654dda1"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_idle_rifle.png",
+      "sha256": "f660b8307372518c74c8bbbf74bead121ce14b193b835cef90db25b6ae40dcc7"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_run_rifle.png",
+      "sha256": "d94461a29bc7c603a90445243b5cfb60614a38a28a5f241c315a1f06d6fe8d6b"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_reload_04.png",
+      "sha256": "7e2cceea05a096f739989e69d0c1bdf55cf8e311ea48900682c3dfd352d14745"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "sha256": "e7e59e8ec082db3cf2973349e4cdc1a46f04126776dddc8fe154705e26f25757"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "sha256": "d2fc29f990c99afb8ade0219190ccb919a0bf945231fd004ba5768d8de3d8505"
+    }
+  ],
+  "limits": "Subjective art inspection only; no blind player study, quantified style-similarity score, all-frame motion certification or PBR-material test."
+}

@@ -1,0 +1,478 @@
+{
+  "status": "FROZEN_STYLE_V2_BEFORE_HELMET_REFINEMENT",
+  "created_at_utc": "2026-10-04T14:45:48.579600+00:00",
+  "files": {
+    "delivery/tank.scn": {
+      "source": "assets/armors/tank_v1/tank.scn",
+      "sha256": "0cd3bc22bee11bb21cb8a0daaea304745123ae731994cef6d226b07a9029adf8",
+      "bytes": 57193
+    },
+    "delivery/tank.glb": {
+      "source": "assets/armors/tank_v1/tank.glb",
+      "sha256": "b0c78967f646d5a7e8c3d7ef685d3f188be0d238744bed4da20c246059d881aa",
+      "bytes": 7492608
+    },
+    "delivery/tank_master.blend": {
+      "source": "docs/art/tank_runtime_v1/build/tank_master.blend",
+      "sha256": "16d820760149dba2735543729a897c221611579a2fb0c8d76e6955cf42f17d01",
+      "bytes": 7718425
+    },
+    "delivery/source.json": {
+      "source": "docs/art/tank_runtime_v1/build/source.json",
+      "sha256": "fb4371b450799b9038d6ef04bf3dc44bcc629ab7520834768decab5908917000",
+      "bytes": 533101
+    },
+    "delivery/target.json": {
+      "source": "docs/art/tank_runtime_v1/build/target.json",
+      "sha256": "cf79528dfb54a3ae8f2403035fb08ab31b8ba35f6a52b554ff7a0e36e6f2a2de",
+      "bytes": 173378
+    },
+    "delivery/geometry.json": {
+      "source": "docs/art/tank_runtime_v1/build/geometry.json",
+      "sha256": "e455eee7ed29aa081579e988169b06940f3c90751852ff1310b98c0cd1026dfc",
+      "bytes": 6465
+    },
+    "delivery/texture_sources.json": {
+      "source": "docs/art/tank_runtime_v1/build/texture_sources.json",
+      "sha256": "8a16016a064f486fcbe5bd0ace637d5759eb55109de94839142ccf2f849eb21e",
+      "bytes": 4671
+    },
+    "atlases/head_diffuse.png": {
+      "source": "assets/armors/tank_v1/head_diffuse.png",
+      "sha256": "a7f1e5a2ff91ae4663e3ea40fcb6a6f599e8536b1cb544cba65b1abc1b1fa1dd",
+      "bytes": 1736304,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "atlases/body_diffuse.png": {
+      "source": "assets/armors/tank_v1/body_diffuse.png",
+      "sha256": "a92ae9149165beec2afb7e23a339cfdc13380ae4da71f6ab1d576c15b2a4eac4",
+      "bytes": 1517695,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "atlases/shoulder_diffuse.png": {
+      "source": "assets/armors/tank_v1/shoulder_diffuse.png",
+      "sha256": "4905a54b926654a52e8f63d06b4ac51bc65396db023f4684c1150ee5969df3db",
+      "bytes": 1525086,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "atlases/hand_diffuse.png": {
+      "source": "assets/armors/tank_v1/hand_diffuse.png",
+      "sha256": "6bf882758297af2c789b61d602cf39dbfd797e81320fd11fee8f03dee2aac79d",
+      "bytes": 1407615,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "atlases/foot_diffuse.png": {
+      "source": "assets/armors/tank_v1/foot_diffuse.png",
+      "sha256": "e8a16ff8e61c0fe04ee9f766a9ffb3d04459ce773e0f5ce5dc44d55db8f5e2be",
+      "bytes": 1465043,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "scripts/build.py": {
+      "source": "tools/tank_runtime_v1/build.py",
+      "sha256": "74f76cb2adb874f53b9803e90faea90d40ac20159029c1b2d84e6a5e3a1034bb",
+      "bytes": 11099
+    },
+    "scripts/capture.gd": {
+      "source": "tools/tank_runtime_v1/capture.gd",
+      "sha256": "8e047cbf649ef8748a4905e106d3b8860765303afe7988d57eb441092c3f5baa",
+      "bytes": 16663
+    },
+    "scripts/capture.tscn": {
+      "source": "tools/tank_runtime_v1/capture.tscn",
+      "sha256": "e415412cdc8255ac767a84e73479a84a833e31139e8434f51b1937a0290c44ec",
+      "bytes": 189
+    },
+    "scripts/compile.gd": {
+      "source": "tools/tank_runtime_v1/compile.gd",
+      "sha256": "c3374303d2d89ff7aaebb610c615621c7ba638840767a43f8557c02a6ed6ef0e",
+      "bytes": 4850
+    },
+    "scripts/glb_unique_joints.py": {
+      "source": "tools/tank_runtime_v1/glb_unique_joints.py",
+      "sha256": "4d6a10e6edbf0da831ec2ea74b3cfc8ac1e4fd2fc7863d6d6f7e1fb81dcf1ba5",
+      "bytes": 2144
+    },
+    "scripts/inspect.gd": {
+      "source": "tools/tank_runtime_v1/inspect.gd",
+      "sha256": "6038d102ae497074780bb9b1e86715bfefd86c72931b36e44c4796d961fa9c97",
+      "bytes": 3596
+    },
+    "scripts/measure.py": {
+      "source": "tools/tank_runtime_v1/measure.py",
+      "sha256": "e956c85b203bb307bcb0bcb2e6e4cf0117b20a0027cde8777454cca85a84de6b",
+      "bytes": 1638
+    },
+    "scripts/provenance.py": {
+      "source": "tools/tank_runtime_v1/provenance.py",
+      "sha256": "0951f815ed247b33da06c8b6666cc88a02f50d673ce7afd04336e87e621fac59",
+      "bytes": 11731
+    },
+    "scripts/render_regions.gd": {
+      "source": "tools/tank_runtime_v1/render_regions.gd",
+      "sha256": "64a2e0d7c96c62d9643d334cf804824720e4d59e76e7db0551fc82ab71137cd3",
+      "bytes": 469
+    },
+    "scripts/render_uv.gd": {
+      "source": "tools/tank_runtime_v1/render_uv.gd",
+      "sha256": "f6b42ee1c25548784e8f5fe6a3b5138df95ba4431f35bc4f89c1c187e34cb21e",
+      "bytes": 481
+    },
+    "scripts/review.py": {
+      "source": "tools/tank_runtime_v1/review.py",
+      "sha256": "1721913a44678c1754df3894686776f37965c62170f5f9b6f68ec749a3f705ee",
+      "bytes": 1046
+    },
+    "scripts/review_template.html": {
+      "source": "tools/tank_runtime_v1/review_template.html",
+      "sha256": "72f8552d9aa81cd30730c8c62f6bebe233e174dadc180325ace3ed174fc4ca7a",
+      "bytes": 8477
+    },
+    "scripts/validate_delivery.py": {
+      "source": "tools/tank_runtime_v1/validate_delivery.py",
+      "sha256": "60672a28be7126c14602f034bab6940152cfa6477bc9e1ec47063a3bda3fabb4",
+      "bytes": 15672
+    },
+    "scripts/validate_glb_images.py": {
+      "source": "tools/tank_runtime_v1/validate_glb_images.py",
+      "sha256": "df51588504b0c05c6f4345bcaa1a1574fd1f7d1705ebae4c27e0ea548d570df4",
+      "bytes": 4158
+    },
+    "scripts/validate_style_pass.py": {
+      "source": "tools/tank_runtime_v1/validate_style_pass.py",
+      "sha256": "6ca86037746cd62592fb4fdafbae1709992618fa9cf4dda28d21a90e1b679af5",
+      "bytes": 5632
+    },
+    "scripts/validate_style_pass_scene.gd": {
+      "source": "tools/tank_runtime_v1/validate_style_pass_scene.gd",
+      "sha256": "a438e34ebd2c105062832be40954ca67a8777239ae558ebd20fea6e80dca0107",
+      "bytes": 4369
+    },
+    "tests/tank_v1_roundtrip.gd": {
+      "source": "tests/tank_v1_roundtrip.gd",
+      "sha256": "e979f97df6cc888be6adf7340e08d8f46a37e563dcb16290b2b0a7d0a6f37f17",
+      "bytes": 6654
+    },
+    "tests/tank_v1_roundtrip.tscn": {
+      "source": "tests/tank_v1_roundtrip.tscn",
+      "sha256": "00214646876727b3a774011f9b1c0f54230a9497744a31a7b90cd80054b43c82",
+      "bytes": 187
+    },
+    "tests/tank_v1_test.gd": {
+      "source": "tests/tank_v1_test.gd",
+      "sha256": "d5b03364e37de16073bc5a40573121eb13182f4ff2c0ab8d2bf41940a3cfc29d",
+      "bytes": 15182
+    },
+    "tests/tank_v1_test.tscn": {
+      "source": "tests/tank_v1_test.tscn",
+      "sha256": "3e9f1665c70d366a2c88b1ea14a4a9661e0266e67e43ddd09dff16044de310a0",
+      "bytes": 177
+    },
+    "review/delivery_validate.json": {
+      "source": "docs/art/tank_runtime_v1/review/delivery_validate.json",
+      "sha256": "ca1780c1fb76da2b9bec95118305dfa8ecb26265273dd44ba7b785324287b02b",
+      "bytes": 8840
+    },
+    "review/glb_images_test.json": {
+      "source": "docs/art/tank_runtime_v1/review/glb_images_test.json",
+      "sha256": "bc98a5dc63533f8e0739d0224d8074b35413395182488f1577b250d5b7c02f38",
+      "bytes": 2742
+    },
+    "review/proportion_test.json": {
+      "source": "docs/art/tank_runtime_v1/review/proportion_test.json",
+      "sha256": "0b13ff0b68e4b0632feaa649bc9c02218f6367aea1ba8562a4dd00c079bb80aa",
+      "bytes": 8127
+    },
+    "review/roundtrip_test.json": {
+      "source": "docs/art/tank_runtime_v1/review/roundtrip_test.json",
+      "sha256": "5a33d80f750f121d7a9a098426759089cf91abe9d3ea4c269a13612248d6d0a6",
+      "bytes": 12181
+    },
+    "review/runtime_test.json": {
+      "source": "docs/art/tank_runtime_v1/review/runtime_test.json",
+      "sha256": "aef79a458c0c44e4506154d151c0575815b2758e2db0267686ba68c27cddae23",
+      "bytes": 11496
+    },
+    "review/style_pass_invariants.json": {
+      "source": "docs/art/tank_runtime_v1/review/style_pass_invariants.json",
+      "sha256": "2efdbfa63d31e24ab9ee3cc979baca36cc24b0f3b916b922241fd3aba7f44d79",
+      "bytes": 2222
+    },
+    "review/style_pass_scene_invariants.json": {
+      "source": "docs/art/tank_runtime_v1/review/style_pass_scene_invariants.json",
+      "sha256": "89096e95e26d44c6358c6fdea17187d679bc31b5b353209dbc18478a2699560f",
+      "bytes": 1392
+    },
+    "review/capture.json": {
+      "source": "docs/art/tank_runtime_v1/review/engine/capture.json",
+      "sha256": "430e16d99fb3db4a1139d8d5b1167c57da4d6cdd864d47ba6823e62ad608fbd0",
+      "bytes": 23032
+    },
+    "review/final_angle_capture.log": {
+      "source": "docs/art/tank_runtime_v1/review/final_angle_capture.log",
+      "sha256": "11ed05e8995f9895dc4eed3ec8f1d217beb2775112dab9d4c25244ba91315ca9",
+      "bytes": 350
+    },
+    "manifest.json": {
+      "source": "docs/art/tank_runtime_v1/manifest.json",
+      "sha256": "228f38d97f4921994ec8091c6c5cbafd693e139e59e83b9f9e5688ed18cf8f4d",
+      "bytes": 86986
+    },
+    "generation_inputs.json": {
+      "source": "docs/art/tank_runtime_v1/generation_inputs.json",
+      "sha256": "73e55f07940a14c517f67a48a320654bce5236faf19b8744f95fd4b918338062",
+      "bytes": 39602
+    },
+    "style_unified_v2_generation.json": {
+      "source": "docs/art/tank_runtime_v1/style_unified_v2_generation.json",
+      "sha256": "d8ab2af76fd58dfb4cd0fde685de55db2e7c48bd0f71bccbe184891255e99072",
+      "bytes": 18365
+    },
+    "README.md": {
+      "source": "docs/art/tank_runtime_v1/README.md",
+      "sha256": "a60c583bb3cd61978b08755dc43eaa1cc9c6866f237d69fd4f2296816d943ba1",
+      "bytes": 6574
+    },
+    "index.html": {
+      "source": "docs/art/tank_runtime_v1/index.html",
+      "sha256": "51e0bce5faf394fa884782ba87bcf3a8c6b62f87f87cd34a968dfb18036a540a",
+      "bytes": 8916
+    },
+    "asset-brief.md": {
+      "source": "docs/art/tank_runtime_v1/asset-brief.md",
+      "sha256": "bc64ebd2e510acdd350b665ebb0102a5aa9ec32743624877e1c2abbb7f6fc87f",
+      "bytes": 2534
+    },
+    "approved_parts_reference.png": {
+      "source": "docs/art/tank_runtime_v1/approved_parts_reference.png",
+      "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12",
+      "bytes": 2335456,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/head_diffuse_style_unified_v2.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/head_diffuse_style_unified_v2.txt",
+      "sha256": "1fe7dfd68840bfd6aa8ba051d6231a0de42660ca6100206302338b8c27d2b40d",
+      "bytes": 7221
+    },
+    "generated/head_diffuse_style_unified_v2.png": {
+      "source": "docs/art/tank_runtime_v1/generated/head_diffuse_style_unified_v2.png",
+      "sha256": "a7f1e5a2ff91ae4663e3ea40fcb6a6f599e8536b1cb544cba65b1abc1b1fa1dd",
+      "bytes": 1736304,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/body_diffuse_style_unified_v2.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/body_diffuse_style_unified_v2.txt",
+      "sha256": "533db9b236f2f1ad0e335f5da0d8d2cc8edf7aae4768ffe8851c28ea2118c735",
+      "bytes": 6765
+    },
+    "generated/body_diffuse_style_unified_v2.png": {
+      "source": "docs/art/tank_runtime_v1/generated/body_diffuse_style_unified_v2.png",
+      "sha256": "a92ae9149165beec2afb7e23a339cfdc13380ae4da71f6ab1d576c15b2a4eac4",
+      "bytes": 1517695,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/shoulder_diffuse_style_unified_v2.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/shoulder_diffuse_style_unified_v2.txt",
+      "sha256": "df0f7e259e86985db9ad77af55164fdb1d8e19e5595a6fb2daf65f2548292782",
+      "bytes": 6481
+    },
+    "generated/shoulder_diffuse_style_unified_v2.png": {
+      "source": "docs/art/tank_runtime_v1/generated/shoulder_diffuse_style_unified_v2.png",
+      "sha256": "4905a54b926654a52e8f63d06b4ac51bc65396db023f4684c1150ee5969df3db",
+      "bytes": 1525086,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/hand_diffuse_style_unified_v2.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/hand_diffuse_style_unified_v2.txt",
+      "sha256": "4470a31d4c6156f7044efe6e5e7816035ee380f2b9c0bc095fd7ec88e766e855",
+      "bytes": 6641
+    },
+    "generated/hand_diffuse_style_unified_v2.png": {
+      "source": "docs/art/tank_runtime_v1/generated/hand_diffuse_style_unified_v2.png",
+      "sha256": "6bf882758297af2c789b61d602cf39dbfd797e81320fd11fee8f03dee2aac79d",
+      "bytes": 1407615,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "prompts/foot_diffuse_style_unified_v2.txt": {
+      "source": "docs/art/tank_runtime_v1/prompts/foot_diffuse_style_unified_v2.txt",
+      "sha256": "bc92e5d3db06c829136059204faabc2f4fc815c820acab09b925f56a8f059052",
+      "bytes": 6416
+    },
+    "generated/foot_diffuse_style_unified_v2.png": {
+      "source": "docs/art/tank_runtime_v1/generated/foot_diffuse_style_unified_v2.png",
+      "sha256": "e8a16ff8e61c0fe04ee9f766a9ffb3d04459ce773e0f5ce5dc44d55db8f5e2be",
+      "bytes": 1465043,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    "review/engine/new_diffuse_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_diffuse_front.png",
+      "sha256": "3196be89490f542b7b7794e9cb98ad0a9cad6bd35604828cbfe91a75a484f76a",
+      "bytes": 267885,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_diffuse_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "sha256": "60438b9aaa38ae951292a256ef4f17f6c86c21f7234bf245da677864a5d4cc71",
+      "bytes": 279128,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_diffuse_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_diffuse_side.png",
+      "sha256": "09c9e2246d163fdb7c7c8d27994e1a1d61647a043733dae0781c695e33826f07",
+      "bytes": 182081,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_diffuse_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_diffuse_rear.png",
+      "sha256": "fe51d3344dd37f551ffd026d2cb0858d9280b95157d74c2873fcbdc94bfb8338",
+      "bytes": 257785,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_head_front.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_head_front.png",
+      "sha256": "07563e08a1290f5c191d5d7a8e638ce6d753b242a8eab4861cc7d28b4a52c1df",
+      "bytes": 484497,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_head_quarter.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_head_quarter.png",
+      "sha256": "eda2c318aab453c38a756bc8c1fc4d561f13948391e09b0697127be68f9d67a4",
+      "bytes": 516784,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_head_side.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_head_side.png",
+      "sha256": "3bef19eb094ad1de4133fc699d97e196bd38247836a0e9df424297389a2aaf87",
+      "bytes": 496008,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_head_rear.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_head_rear.png",
+      "sha256": "faa434a6bd923f0d582a352341a53ae67b1d6520b497cd59feef311fcac34c97",
+      "bytes": 471604,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_idle_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_idle_rifle.png",
+      "sha256": "bc65be476900e837b9502a539c0b72afab9c76623d38d5131af174bcb842d104",
+      "bytes": 228740,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_run_rifle.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_run_rifle.png",
+      "sha256": "c7b82e2d0e73a9c659b33fbb2f4bfcb0aa3ccad59f6801c65749e59a003baa4d",
+      "bytes": 214519,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_reload_00.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_00.png",
+      "sha256": "c7095310cbf9add526c7ae32fb9fc1acc4e678e8c7f9ff922daa666b67e1fc3f",
+      "bytes": 220298,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_reload_04.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_04.png",
+      "sha256": "ca09b2a43d3a0a9e30c3dc35cfcac47e6d4af99c20592308f9b04aa15cc97a04",
+      "bytes": 216091,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_reload_08.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_reload_08.png",
+      "sha256": "f6f1934b8481be381ac70b196ed17e6ea6c66997f20b3083257f3de057d039f0",
+      "bytes": 221384,
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    "review/engine/new_level_01_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "sha256": "4ae84ad7ce6680db1a282f7a6b7479cd0d341e906a5e1e4453a6415aeef5b114",
+      "bytes": 1454657,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    "review/engine/new_level_08_gameplay.png": {
+      "source": "docs/art/tank_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "sha256": "f5a63ff94664bedda0628456dd48107a15baed0673a764c2730593a30009872c",
+      "bytes": 1008403,
+      "dimensions": [
+        1280,
+        720
+      ]
+    }
+  },
+  "capture_index_scope": "15 canonical review shots copied; full original64 SHA and source mappings preserved in review/capture.json and manifest.json",
+  "user_authorized_original_total_limit": 0.2,
+  "planned_scope": "Head surface0 geometry+head atlas only; body/limbs/shared neck/all UV/topology/Skin exact against this snapshot unless explicit documented per-head-coordinate adjustment remains within original20%."
+}

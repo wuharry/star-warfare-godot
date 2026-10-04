@@ -1,0 +1,529 @@
+{
+  "revision": "2026-10-04",
+  "goal": "同一款遊戲的美術風格，但能明顯辨認為不同裝甲",
+  "scope": "原版 player.gltf 對照畫法統一前的 Viper v8／Fortune head v6；本頁固定為該次基準，不跟隨後續貼圖替換",
+  "conclusion": "兩套新版都保留同系列的短壯厚甲與配色；近看已能辨識改動，但目前整體仍偏向同型裝甲改款。主要缺口是肩部、側面與背面的大分區，而非貼圖精細度。",
+  "comparison_protocol": {
+    "neutral": "全身 diffuse／頭部近照：原、新同相機、同構圖、UN_SHADED；原版使用白色 material tint，排除匯入材質染色。適合比較貼圖的設計與筆觸。",
+    "actual": "實際第三人稱畫面保留遊戲材質 tint 與場景。適合判讀玩家視角的辨識度，不能把明暗差直接當成貼圖或 PBR 材質差。",
+    "clay": "灰模只比較外殼與真實形狀；新版畫出的甲片邊線不等於新增立體板件。",
+    "limits": "15% 是 UV 改動座標數占比及以原部件尺寸正規化的局部模型位移等工程上限，不是風格差異、相似度或新裝甲辨識率。",
+    "judgment": "部位的辨識影響與『改款／不同裝甲』結論是同圖目視判讀，未做玩家盲測、客觀相似度評分或 PBR 粗糙度量測。『亮、硬、霧面』在中性貼圖圖中指畫出的明暗與筆觸。",
+    "traceability": "Fortune 正式64圖記錄啟動SCN／貼圖SHA並匹配當前資產。Viper 既有64圖未記錄啟動SHA；現runtime與manifest可核對，截圖追溯證據較弱。兩套圖均取正式review/engine，不使用試稿。"
+  },
+  "armors": [
+    {
+      "id": "viper",
+      "name": "Viper",
+      "game_visual_id": 0,
+      "runtime_dir": "viper_runtime_v2",
+      "variant": "concept_match_v8",
+      "overall": {
+        "judgment": "面甲、腹甲和大腿可辨；整體仍較像 Viper 改款。",
+        "style_evidence": [
+          "鋼藍／炭黑／紫玻璃的配色身份相同。",
+          "同樣短壯、大頭、厚肩、分離式硬甲與柔性關節。",
+          "低面數殼型、貼圖畫高光與磨邊的做法延續。"
+        ],
+        "identity_evidence": [
+          "黑橫眉、玻璃折線和斜削下巴是新頭盔的核心。",
+          "腹部層疊甲片、大腿由大黑區改成大藍板；背部新四片板能提供另一套配置。",
+          "肩甲分色和雙胸黑窗仍相同；大輪廓保持，遠距容易讀成同款。"
+        ],
+        "style_shift": "新版更亮、更銳，細白邊與強黑縫遍布全身；原版較多柔和大漸層。筆觸差異比外殼差異更容易被注意到。",
+        "view_reading": [
+          [
+            "頭盔正面",
+            "差異清楚",
+            "黑眉、切面紫窗及下巴。"
+          ],
+          [
+            "全身正面",
+            "部分可辨",
+            "腹甲、大腿分色有改，雙胸窗及肩部相似。"
+          ],
+          [
+            "全身側面",
+            "接近原版",
+            "肩峰、耳部體積、四肢外輪廓仍接近。"
+          ],
+          [
+            "全身背面",
+            "部分可辨",
+            "新版四片背甲有作用；同肩與同外殼削弱獨立身份。"
+          ]
+        ]
+      },
+      "parts": [
+        {
+          "part": "頭頂",
+          "original": "中央長黑槽，藍色柔弧漸層。",
+          "updated": "中央藍甲條，左右窄黑槽與清晰板邊。",
+          "style": "相同藍色冠殼、大頭與頂點。",
+          "identity": "近看可辨；輪廓仍近。",
+          "priority": "保留新分板"
+        },
+        {
+          "part": "眉沿",
+          "original": "寬藍眉，和帽殼連成一體。",
+          "updated": "大黑橫眉，中央藍凸塊。",
+          "style": "低額、厚防護結構一致。",
+          "identity": "清楚的新身份特徵。",
+          "priority": "優先保留"
+        },
+        {
+          "part": "面甲",
+          "original": "紫色平順窗，中央柔亮斑。",
+          "updated": "紫色切面窗，下段有折線。",
+          "style": "紫玻璃及寬面窗一致。",
+          "identity": "形狀有改；光亮度不算身份。",
+          "priority": "統一高光畫法"
+        },
+        {
+          "part": "臉頰／下巴",
+          "original": "寬厚近水平藍框，黑耳區大。",
+          "updated": "斜削前端、藍頰框小黑窗、耳後窄槽。",
+          "style": "仍是藍色包框頭盔。",
+          "identity": "近照較清楚，側向輪廓差小。",
+          "priority": "保留斜削下巴"
+        },
+        {
+          "part": "胸甲",
+          "original": "左右胸片，各一細長黑斜窗。",
+          "updated": "加寬角形黑窗、厚藍框、尖折下緣與肩帶扣。",
+          "style": "同樣雙胸片與黑窗。",
+          "identity": "仍很像同款；是主要重複配置。",
+          "priority": "改一個大分區"
+        },
+        {
+          "part": "腹／腰",
+          "original": "長黑區與連續藍色外殼。",
+          "updated": "層疊藍腹甲、中央黑直槽、小藍節點。",
+          "style": "深色內襯和硬甲分離一致。",
+          "identity": "有效的大板件差異。",
+          "priority": "強化並保留"
+        },
+        {
+          "part": "肩甲",
+          "original": "黑上肩＋藍下帶、厚圓肩峰。",
+          "updated": "同分色與體積，增加硬邊與磨痕。",
+          "style": "厚肩身份一致。",
+          "identity": "最強的『同款改良』訊號。",
+          "priority": "優先加大分區差異"
+        },
+        {
+          "part": "前臂",
+          "original": "大塊藍甲，分件簡單。",
+          "updated": "藍框黑矩形、黑皺褶、細白邊。",
+          "style": "輪廓和腕部仍一致。",
+          "identity": "主要近距細節；小圖會消失。",
+          "priority": "選一塊大面板"
+        },
+        {
+          "part": "腿／靴",
+          "original": "大腿正面大片黑斜區，單純膝甲。",
+          "updated": "大藍腿板、黑膝板、直向小腿黑板。",
+          "style": "同厚腿及靴輪廓。",
+          "identity": "大腿色塊可辨；靴型未變。",
+          "priority": "保留大腿差異"
+        },
+        {
+          "part": "背部",
+          "original": "中央直脊，左右小黑窗。",
+          "updated": "上下四片藍板、中央細縫、橫腰褶；後腦兩窄槽。",
+          "style": "同藍黑甲殼與肩膀。",
+          "identity": "背板配置有用，仍需縮小檢查。",
+          "priority": "讓四片板在小圖清楚"
+        }
+      ],
+      "recommendations": [
+        {
+          "priority": 1,
+          "title": "統一表面畫法",
+          "description": "保留新版板件，將大藍板改回較柔的寬高光；減少每條邊都一樣亮的細白線。目標是同一遊戲的畫法，無需改 UV 或模型。"
+        },
+        {
+          "priority": 2,
+          "title": "建立一個胸／肩大辨識",
+          "description": "黑眉與斜削下巴保留；胸甲或肩甲選一處改成明顯不同的大分區。避免繼續靠相同雙黑窗＋相同肩帶分色來區分。這是提案，需另行定稿與驗收。"
+        },
+        {
+          "priority": 3,
+          "title": "加強第三人稱背視",
+          "description": "保留新四片背甲、腹甲和大腿色塊；把大分區對比拉清楚，先用小圖檢查，再決定是否需要局部改形。"
+        }
+      ],
+      "metrics": {
+        "uv": [
+          {
+            "label": "頭部",
+            "changed": 18,
+            "total": 130,
+            "percent": 13.846153846153847
+          },
+          {
+            "label": "胸腹",
+            "changed": 32,
+            "total": 221,
+            "percent": 14.479638009049776
+          },
+          {
+            "label": "肩",
+            "changed": 0,
+            "total": 74,
+            "percent": 0
+          },
+          {
+            "label": "手臂",
+            "changed": 0,
+            "total": 120,
+            "percent": 0
+          },
+          {
+            "label": "腿／靴",
+            "changed": 0,
+            "total": 122,
+            "percent": 0
+          }
+        ],
+        "head_geometry": [
+          {
+            "label": "最大局部位移",
+            "percent": 10.237625
+          },
+          {
+            "label": "寬度尺寸差",
+            "percent": 0
+          },
+          {
+            "label": "高度尺寸差",
+            "percent": 0
+          },
+          {
+            "label": "深度尺寸差",
+            "percent": 4.998403
+          }
+        ],
+        "silhouette": [
+          {
+            "label": "正面",
+            "percent": 0
+          },
+          {
+            "label": "側面",
+            "percent": 1.428294
+          },
+          {
+            "label": "背面",
+            "percent": 0
+          },
+          {
+            "label": "斜前",
+            "percent": 0.244366
+          }
+        ],
+        "topology": {
+          "triangles": 682,
+          "parts": 4,
+          "surfaces": 5,
+          "bones": 28,
+          "uv_total": 667,
+          "uv_charts": 19,
+          "uv_changed": 50
+        },
+        "texture": {
+          "original": [
+            512,
+            512
+          ],
+          "updated": [
+            1254,
+            1254
+          ]
+        },
+        "head_max_displacement_m": 0.053063989,
+        "head_original_shortest_dimension_m": 0.518323213,
+        "head_signed_size_delta_percent": [
+          0,
+          0,
+          4.998403
+        ],
+        "runtime_pose_samples": 15,
+        "glb_pose_samples": 9
+      },
+      "sources": {
+        "original_scene": "assets/models/player/animated/player.gltf",
+        "source_report": "docs/art/viper_runtime_v2/build/source.json",
+        "geometry_report": "docs/art/armor_style_unification_v1/before/viper/delivery/geometry.json",
+        "silhouette_report": "docs/art/viper_runtime_v2/review/proportion_test.json",
+        "runtime_report": "docs/art/viper_runtime_v2/review/runtime_test.json",
+        "manifest": "docs/art/armor_style_unification_v1/before/viper/delivery/manifest.json",
+        "runtime_scene": "docs/art/armor_style_unification_v1/before/viper/delivery/viper.scn",
+        "scene_sha256": "0af1d0267d80e3c9e7ce401e5661e5f087b984f35114c1072bfb1e6374fc6bfd",
+        "head_sha256": "b19e5ef331cf3a9a0619c5ce7ec8c3cb08251588d1d194f8dce4fad4cd8b2964",
+        "head_atlas_snapshot": "docs/art/armor_style_unification_v1/before/viper/atlases/head_diffuse.png"
+      },
+      "capture_base": "snapshots/viper/"
+    },
+    {
+      "id": "fortune",
+      "name": "Fortune",
+      "game_visual_id": 1,
+      "runtime_dir": "fortune_runtime_v1",
+      "variant": "head_v6 / body_v2",
+      "overall": {
+        "judgment": "新版頭盔與 U 胸框清楚可辨；肩、四肢及背部仍較像 Fortune 改款。",
+        "style_evidence": [
+          "綠／銀藍大色塊、深色關節與紫色玻璃延續。",
+          "同樣短壯厚甲、圓肩及低面數切面。",
+          "高光、陰影與磨損仍畫在 diffuse 中。"
+        ],
+        "identity_evidence": [
+          "無額徽、薄藍眉、大紫面甲、短綠下巴的新頭盔已與原版不同。",
+          "胸部從 Y 形線變成粗 U 框是第二個清楚的主識別。",
+          "腹部五角甲、肩部三色帶、腿板與背部配置仍沿用。"
+        ],
+        "style_shift": "新版的紫窗更亮，邊線更硬；原版較柔和。整體仍同系列，畫法應再統一，而不是加更多細孔。",
+        "view_reading": [
+          [
+            "頭盔正面",
+            "差異清楚",
+            "去額徽、去圓鼻突、大紫窗、短下巴。"
+          ],
+          [
+            "全身正面",
+            "部分可辨",
+            "新版頭盔和 U 胸框清楚；其餘大圖形沿用。"
+          ],
+          [
+            "全身側面",
+            "部分可辨",
+            "下巴縮短內收；肩峰與四肢仍很接近。"
+          ],
+          [
+            "全身背面",
+            "接近原版",
+            "中央背甲、綠側板及頭後藍帶配置近似。"
+          ]
+        ]
+      },
+      "parts": [
+        {
+          "part": "頭頂",
+          "original": "深綠冠、黑盾形額徽、兩側上孔。",
+          "updated": "完整橄欖綠冠，移除徽與上孔。",
+          "style": "大頭、綠色冠頂、切面保留。",
+          "identity": "正面頭頂主圖形已不同。",
+          "priority": "保留核准新冠"
+        },
+        {
+          "part": "眉沿",
+          "original": "厚銀藍雙隆眉，中央下垂。",
+          "updated": "薄連續銀藍橫帶。",
+          "style": "仍是銀藍防護邊。",
+          "identity": "清楚的大比例差異。",
+          "priority": "保留薄眉"
+        },
+        {
+          "part": "面甲",
+          "original": "暗棕紫窄窗、中央圓鼻突。",
+          "updated": "亮紫大連續面、深紫側折、小藍下唇。",
+          "style": "紫玻璃面窗與包框一致。",
+          "identity": "最清楚的新頭盔身份。",
+          "priority": "保留連續紫面"
+        },
+        {
+          "part": "臉頰／下巴",
+          "original": "長綠護頦、中間藍槽、大頰塊。",
+          "updated": "短實心綠頦、兩側小縱槽、較窄頰塊。",
+          "style": "綠＋銀藍的硬甲下巴。",
+          "identity": "側面也能看到縮短內收。",
+          "priority": "保留封閉短頦"
+        },
+        {
+          "part": "胸甲",
+          "original": "銀藍 Y 形線及中央垂片。",
+          "updated": "粗 U 框、兩片綠胸板。",
+          "style": "銀藍框＋綠胸甲一致。",
+          "identity": "有效的新主板配置。",
+          "priority": "保留 U 框"
+        },
+        {
+          "part": "腹／腰",
+          "original": "中央銀藍五角腹甲、棕內衣、小綠骨盆甲。",
+          "updated": "基本同圖形，只更清晰。",
+          "style": "延續原硬甲與內襯層次。",
+          "identity": "仍是同款訊號。",
+          "priority": "改大型板件配置"
+        },
+        {
+          "part": "肩甲",
+          "original": "圓多面肩罩，藍／綠／棕三帶。",
+          "updated": "同形與分帶，邊線更硬。",
+          "style": "同厚圓肩。",
+          "identity": "外側與側面身份不足。",
+          "priority": "優先改大分區"
+        },
+        {
+          "part": "前臂",
+          "original": "綠面板配藍外框。",
+          "updated": "仍同配置，新增小矩形孔及描邊。",
+          "style": "同分色與前臂比例。",
+          "identity": "小細節不足以區分。",
+          "priority": "選一塊大型色塊"
+        },
+        {
+          "part": "腿／靴",
+          "original": "綠大腿＋藍框、六角膝甲、綠靴。",
+          "updated": "主要圖形相同，增加擦傷與硬邊。",
+          "style": "保留原綠銀藍身份。",
+          "identity": "遠距仍像原版。",
+          "priority": "分區而非增加磨損"
+        },
+        {
+          "part": "背部",
+          "original": "銀藍中央梯形背板、綠側板、棕凹隙。",
+          "updated": "中央背板節奏相同；後腦雙藍帶／綠中帶仍在。",
+          "style": "同背甲與色塊節奏。",
+          "identity": "新舊最容易混淆的方向。",
+          "priority": "建立新的背板主圖形"
+        }
+      ],
+      "recommendations": [
+        {
+          "priority": 1,
+          "title": "保留新版頭盔與 U 胸框",
+          "description": "這兩處已形成清楚身份。不要再加中央鼻甲或亮柱，避免破壞已核准的大連續面甲。"
+        },
+        {
+          "priority": 2,
+          "title": "優先改肩甲與背甲的主圖形",
+          "description": "重排大塊分板與分色，讓側／背面也能辨識；只增加刮痕或通風孔無法形成另一套裝甲。局部改形是否可行須從原版重新量測 15%。"
+        },
+        {
+          "priority": 3,
+          "title": "選腹甲或小腿再做一個大型差異",
+          "description": "保留綠／銀藍系列配色，改中央腹板的節奏或小腿主板。不要所有地方同時堆細節；先統一大甲片的柔高光畫法。"
+        }
+      ],
+      "metrics": {
+        "uv": [
+          {
+            "label": "頭部",
+            "changed": 22,
+            "total": 157,
+            "percent": 14.012738853503185
+          },
+          {
+            "label": "胸腹",
+            "changed": 0,
+            "total": 207,
+            "percent": 0
+          },
+          {
+            "label": "肩",
+            "changed": 0,
+            "total": 74,
+            "percent": 0
+          },
+          {
+            "label": "手臂",
+            "changed": 0,
+            "total": 113,
+            "percent": 0
+          },
+          {
+            "label": "腿／靴",
+            "changed": 0,
+            "total": 122,
+            "percent": 0
+          }
+        ],
+        "head_geometry": [
+          {
+            "label": "最大局部位移",
+            "percent": 14.326267
+          },
+          {
+            "label": "寬度尺寸差",
+            "percent": 0
+          },
+          {
+            "label": "高度尺寸差",
+            "percent": 1.998747
+          },
+          {
+            "label": "深度尺寸差",
+            "percent": 5.728571
+          }
+        ],
+        "silhouette": [
+          {
+            "label": "正面",
+            "percent": 0.204854
+          },
+          {
+            "label": "側面",
+            "percent": 2.884055
+          },
+          {
+            "label": "背面",
+            "percent": 0.204856
+          },
+          {
+            "label": "斜前",
+            "percent": 0.34259
+          }
+        ],
+        "topology": {
+          "triangles": 720,
+          "parts": 4,
+          "surfaces": 5,
+          "bones": 28,
+          "uv_total": 673,
+          "uv_charts": 19,
+          "uv_changed": 22
+        },
+        "texture": {
+          "original": [
+            512,
+            512
+          ],
+          "updated": [
+            1254,
+            1254
+          ]
+        },
+        "head_max_displacement_m": 0.072718792,
+        "head_original_shortest_dimension_m": 0.507590652,
+        "head_signed_size_delta_percent": [
+          0,
+          -1.998747,
+          -5.728571
+        ],
+        "runtime_pose_samples": 15,
+        "glb_pose_samples": 9
+      },
+      "sources": {
+        "original_scene": "assets/models/player/animated/player.gltf",
+        "source_report": "docs/art/fortune_runtime_v1/build/source.json",
+        "geometry_report": "docs/art/armor_style_unification_v1/before/fortune/delivery/geometry.json",
+        "silhouette_report": "docs/art/fortune_runtime_v1/review/proportion_test.json",
+        "runtime_report": "docs/art/fortune_runtime_v1/review/runtime_test.json",
+        "manifest": "docs/art/armor_style_unification_v1/before/fortune/delivery/manifest.json",
+        "runtime_scene": "docs/art/armor_style_unification_v1/before/fortune/delivery/fortune.scn",
+        "scene_sha256": "d1d6d56f14ca9b2958c7e80df7d833235b50484b0241f2e65008de2e8db0522d",
+        "head_sha256": "4c77cef6a13566ef2f7a464d1b1d2ef1a43931fa7de2312154c6aa78e44468bc",
+        "head_atlas_snapshot": "docs/art/armor_style_unification_v1/before/fortune/atlases/head_diffuse.png"
+      },
+      "capture_base": "snapshots/fortune/"
+    }
+  ],
+  "metric_definitions": {
+    "uv": "改動的原 UV 座標數／各材質原座標數 ×100；數量與 chart 總數完全保留。",
+    "head": "對應頂點最大 rest 位移／原完整頭部包圍盒最短邊 ×100；含頸部，不是面罩單獨尺寸。",
+    "silhouette": "(1 − 原新遮罩交集／聯集) ×100，同相機640×720全身灰模；不包含配色、貼圖或辨識率。",
+    "dimensions": "各軸新舊包圍盒尺寸差的絕對比例；Fortune 高及深縮短，Viper 深增加。",
+    "texture": "512²→1254² 只代表素材尺寸；不能稱為品質或辨識度提升六倍。"
+  }
+}

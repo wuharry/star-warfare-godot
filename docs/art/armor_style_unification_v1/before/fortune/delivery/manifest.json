@@ -1,0 +1,439 @@
+{
+  "revision": "fortune_runtime_v1",
+  "game_visual_id": 1,
+  "concept_design_id": "C-02",
+  "name": "Fortune",
+  "status": "runtime_integrated_pending_user_art_review",
+  "concept": "docs/art/fortune_runtime_v1/approved_helmet_reference.png",
+  "concept_sha256": "1e2a0e1faadf5b29d696fea1394ff54591ce3819ce41e460167334e858c610f2",
+  "historical_concept": "docs/art/fusion_v2_generated/c02_fortune_fusion.jpg",
+  "original_scene": "assets/models/player/animated/player.gltf",
+  "checked_at_utc": "2026-10-04T02:14:48.404288+00:00",
+  "limits": {
+    "uv_changed_coordinate_fraction_per_material": 0.15,
+    "local_geometry_fraction": 0.15,
+    "silhouette_changed_fraction": 0.15,
+    "coordinate_and_chart_counts": "exactly original",
+    "note": "Limits measure UV counts and geometry against original. Texture repaint area and concept likeness are separate."
+  },
+  "topology": {
+    "triangles": 720,
+    "modular_parts": 4,
+    "surfaces": 5,
+    "bones": 28,
+    "uv_coordinates": 673,
+    "uv_charts": 19,
+    "weights_and_indices": "original unchanged"
+  },
+  "geometry": {
+    "parts": {
+      "ArmorBody_01": {
+        "bounds_game": {
+          "min": [
+            -0.5331000089645386,
+            0.3294879198074341,
+            -0.3079003095626831
+          ],
+          "max": [
+            0.5330986976623535,
+            1.4158469438552856,
+            0.26273828744888306
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5331000089645386,
+            0.3294879198074341,
+            -0.3079003095626831
+          ],
+          "max": [
+            0.5330986976623535,
+            1.4158469438552856,
+            0.26273828744888306
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 298,
+        "uv_preserved": true,
+        "original_uv_charts": 8,
+        "uv_charts": 8,
+        "uv_coordinate_count": 281,
+        "original_uv_coordinate_count": 281,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_by_surface": [
+          {
+            "label": "body",
+            "uv_coordinate_count": 207,
+            "uv_changed_count": 0,
+            "uv_charts": 5
+          },
+          {
+            "label": "shoulder",
+            "uv_coordinate_count": 74,
+            "uv_changed_count": 0,
+            "uv_charts": 3
+          }
+        ],
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "weight_source": "original, unchanged"
+      },
+      "ArmorFoot_01": {
+        "bounds_game": {
+          "min": [
+            -0.397440642118454,
+            0.0029639985878020525,
+            -0.2698812484741211
+          ],
+          "max": [
+            0.39744269847869873,
+            0.44778555631637573,
+            0.2247302383184433
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.397440642118454,
+            0.0029639985878020525,
+            -0.2698812484741211
+          ],
+          "max": [
+            0.39744269847869873,
+            0.44778555631637573,
+            0.2247302383184433
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 136,
+        "uv_preserved": true,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 122,
+        "original_uv_coordinate_count": 122,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_by_surface": [
+          {
+            "label": "foot",
+            "uv_coordinate_count": 122,
+            "uv_changed_count": 0,
+            "uv_charts": 4
+          }
+        ],
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "weight_source": "original, unchanged"
+      },
+      "ArmorHand_01": {
+        "bounds_game": {
+          "min": [
+            -0.5551272630691528,
+            0.5388153791427612,
+            -0.04859189689159393
+          ],
+          "max": [
+            0.5551267862319946,
+            1.0495296716690063,
+            0.17523746192455292
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5551272630691528,
+            0.5388153791427612,
+            -0.04859189689159393
+          ],
+          "max": [
+            0.5551267862319946,
+            1.0495296716690063,
+            0.17523746192455292
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 116,
+        "uv_preserved": true,
+        "original_uv_charts": 3,
+        "uv_charts": 3,
+        "uv_coordinate_count": 113,
+        "original_uv_coordinate_count": 113,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_by_surface": [
+          {
+            "label": "hand",
+            "uv_coordinate_count": 113,
+            "uv_changed_count": 0,
+            "uv_charts": 3
+          }
+        ],
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "weight_source": "original, unchanged"
+      },
+      "ArmorHead_01": {
+        "bounds_game": {
+          "min": [
+            -0.2537965476512909,
+            1.2155362367630005,
+            -0.3370000123977661
+          ],
+          "max": [
+            0.2537941038608551,
+            1.899739384651184,
+            0.24193818867206573
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.2537965476512909,
+            1.2155362367630005,
+            -0.3721802234649658
+          ],
+          "max": [
+            0.2537941038608551,
+            1.9136937856674194,
+            0.24193818867206573
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.01998746706690091,
+          0.05728571293731177
+        ],
+        "max_rest_displacement": 0.0727187920154976,
+        "max_displacement_fraction_of_smallest_dimension": 0.14326267002527238,
+        "triangles": 170,
+        "uv_preserved": false,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 157,
+        "original_uv_coordinate_count": 157,
+        "uv_changed_count": 22,
+        "uv_changed_fraction": 0.14012738853503184,
+        "uv_by_surface": [
+          {
+            "label": "head",
+            "uv_coordinate_count": 157,
+            "uv_changed_count": 22,
+            "uv_charts": 4
+          }
+        ],
+        "uv_max_displacement_from_original": 0.08500000176184316,
+        "uv_rms_displacement_from_original": 0.03181855331651273,
+        "weight_source": "original, unchanged",
+        "shape_quality": {
+          "reversed_triangles": 0,
+          "zero_area_triangles": 0,
+          "coincident_seam_max_rest_gap": 0.0,
+          "note": "Original coincident positions and triangle orientation compared in Godot rest space."
+        }
+      }
+    },
+    "constraint": "Local shape/dimension changes <=15%; changed UV coordinates <=15% per material surface, front chin only; original chart/coordinate count and skin retained. Absolute UV displacement is recorded separately."
+  },
+  "diffuse_maps": {
+    "head": {
+      "path": "assets/armors/fortune_v1/head_diffuse.png",
+      "sha256": "4c77cef6a13566ef2f7a464d1b1d2ef1a43931fa7de2312154c6aa78e44468bc",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generation": "docs/art/fortune_runtime_v1/generated/head_diffuse_v6.png",
+      "prompt": "docs/art/fortune_runtime_v1/prompts/head_diffuse_v6.txt",
+      "tool": "built-in image_gen",
+      "postprocessing": "none"
+    },
+    "body": {
+      "path": "assets/armors/fortune_v1/body_diffuse.png",
+      "sha256": "ce4a193fe7018d8dd8ca4c29a0d320e25b6551f30bdf0dd9392b4e9ecf1bc22e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generation": "docs/art/fortune_runtime_v1/generated/body_diffuse_v2.png",
+      "prompt": "docs/art/fortune_runtime_v1/prompts/body_diffuse_v2.txt",
+      "tool": "built-in image_gen",
+      "postprocessing": "none"
+    },
+    "shoulder": {
+      "path": "assets/armors/fortune_v1/shoulder_diffuse.png",
+      "sha256": "fc12af555a24fbd4597491196552b448ae2c7f4a41967269451dbe2fb82660b9",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generation": "docs/art/fortune_runtime_v1/generated/shoulder_diffuse_v1.png",
+      "prompt": "docs/art/fortune_runtime_v1/prompts/shoulder_diffuse_v1.txt",
+      "tool": "built-in image_gen",
+      "postprocessing": "none"
+    },
+    "hand": {
+      "path": "assets/armors/fortune_v1/hand_diffuse.png",
+      "sha256": "ae546ed74628f59666ca6dd8f8a45c4782535757e155d11f10a777dce6809423",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generation": "docs/art/fortune_runtime_v1/generated/hand_diffuse_v1.png",
+      "prompt": "docs/art/fortune_runtime_v1/prompts/hand_diffuse_v1.txt",
+      "tool": "built-in image_gen",
+      "postprocessing": "none"
+    },
+    "foot": {
+      "path": "assets/armors/fortune_v1/foot_diffuse.png",
+      "sha256": "f46d311399b74528c939acf4f018837c15f0b292fa3002a5499b3a4fd0625487",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generation": "docs/art/fortune_runtime_v1/generated/foot_diffuse_v1.png",
+      "prompt": "docs/art/fortune_runtime_v1/prompts/foot_diffuse_v1.txt",
+      "tool": "built-in image_gen",
+      "postprocessing": "none"
+    }
+  },
+  "asset_sha256": {
+    "docs/art/fortune_runtime_v1/build/fortune_master.blend": "1ec7206cdf8d7301cacfd4d97701158db2964589b2f0ab974e292a2a3682c784",
+    "assets/armors/fortune_v1/fortune.scn": "d1d6d56f14ca9b2958c7e80df7d833235b50484b0241f2e65008de2e8db0522d",
+    "assets/armors/fortune_v1/fortune.glb": "e9ac35c8035a677125bca9526d35387dd2deb84d41c9037087f40a63c7e59e1c",
+    "docs/art/fortune_runtime_v1/build/source.json": "932227eab68d09f5a3b1778ff43090ab07a3b629ed365a8c0a79e827cef81132",
+    "docs/art/fortune_runtime_v1/build/target.json": "b0bacfa96e4c57b2a2bb01b6024c5f97d3d9e31f28a32f665dd8b13e434af010"
+  },
+  "reports": {
+    "runtime": {
+      "status": "PASS",
+      "path": "review/runtime_test.json"
+    },
+    "roundtrip": {
+      "status": "PASS",
+      "path": "review/roundtrip_test.json"
+    },
+    "proportion": {
+      "status": "PASS",
+      "path": "review/proportion_test.json"
+    },
+    "master": {
+      "status": "PASS",
+      "path": "review/delivery_validate.json"
+    }
+  },
+  "glb_embedded_images": {
+    "status": "PASS",
+    "path": "review/glb_images_test.json"
+  },
+  "capture": {
+    "path": "review/engine/capture.json",
+    "renderer": "gl_compatibility",
+    "driver": "opengl3_angle",
+    "driver_evidence": {
+      "path": "review/final_angle_capture.log",
+      "sha256": "dfbe82ff384954a17e958dcd7c615346f26915201b160adfacf11cf70fb8be04",
+      "renderer_banner": "OpenGL API OpenGL ES 3.0 (ANGLE 2.1.1 git hash: aaebda1c5a40) - Compatibility - Using Device: Google Inc. (NVIDIA) - ANGLE (NVIDIA, NVIDIA GeForce RTX 4080 Laptop GPU (0x000027A0) Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.9579)"
+    },
+    "engine_arguments": [
+      "res://tools/fortune_runtime_v1/capture.tscn"
+    ],
+    "argument_note": "Godot OS.get_cmdline_args omits parsed engine flags; driver is verified from this capture's startup banner.",
+    "images": 64,
+    "save_unchanged": true
+  },
+  "capture_sha256": {
+    "docs/art/fortune_runtime_v1/review/engine/original_clay_front.png": "dc81a2a9272864b80ff417a2c728ebf029a96b1add7edbc73f283dc86bc847ab",
+    "docs/art/fortune_runtime_v1/review/engine/new_clay_front.png": "bb6b5112dc5212f8f8fc093d9de29375ec10354d87074c8c4c8434c3a8f82ef8",
+    "docs/art/fortune_runtime_v1/review/engine/original_painted_front.png": "01bb0c266692e2e34cb9bfcae41be0619ba60f58c03008a4bd376cc342279012",
+    "docs/art/fortune_runtime_v1/review/engine/new_painted_front.png": "63e434f341a8b348f29b151249abdd1844bb81740f69e402cc98ee631b80a74c",
+    "docs/art/fortune_runtime_v1/review/engine/original_diffuse_front.png": "ddf4591475dc9729051502e2197caf55ee67ca98573f171d0df5d04192262207",
+    "docs/art/fortune_runtime_v1/review/engine/new_diffuse_front.png": "63e434f341a8b348f29b151249abdd1844bb81740f69e402cc98ee631b80a74c",
+    "docs/art/fortune_runtime_v1/review/engine/original_clay_side.png": "cca4a19f0f338e6ae2e9da9efb24b0d87cd2e40fc24d698c51dd2e2b6613cfa7",
+    "docs/art/fortune_runtime_v1/review/engine/new_clay_side.png": "ed96ee5f519087d0c320f86e1e889b1df8ab66e48d713aaaadf073cb2e29f81d",
+    "docs/art/fortune_runtime_v1/review/engine/original_painted_side.png": "460179c825fdc9e69e74fe607863bf7e51cfa7b658851f8d4c1a033bd8ecf432",
+    "docs/art/fortune_runtime_v1/review/engine/new_painted_side.png": "46b32deaa03f9d1c49417c9c43fe8defd16b40956b632d1d70beec534f4cd41c",
+    "docs/art/fortune_runtime_v1/review/engine/original_diffuse_side.png": "3ed30147435a4df2ed1fd4eb1a42eb6f4bdaa57677353900365acbaefba66aeb",
+    "docs/art/fortune_runtime_v1/review/engine/new_diffuse_side.png": "46b32deaa03f9d1c49417c9c43fe8defd16b40956b632d1d70beec534f4cd41c",
+    "docs/art/fortune_runtime_v1/review/engine/original_clay_rear.png": "b2d0a699cfe311e0a1b42108e834927ec86d7b482619afad359b81345beb5485",
+    "docs/art/fortune_runtime_v1/review/engine/new_clay_rear.png": "a92c6ac8fae5bd836c78ca11b0c85be15435cb33518297d540b9e3d3ee6ec2be",
+    "docs/art/fortune_runtime_v1/review/engine/original_painted_rear.png": "76cc6db5f77d32d740d98813f024bd51491c19deaf0c7245a3714da98e49574e",
+    "docs/art/fortune_runtime_v1/review/engine/new_painted_rear.png": "a2f45eebc94eed17828feb20bfd9795401d1684107b7cf493a6991c085e5136f",
+    "docs/art/fortune_runtime_v1/review/engine/original_diffuse_rear.png": "21e88cfadb5fd68d5fcdf87a0cbd5ae64b71340aa55220f97f23943725f90c66",
+    "docs/art/fortune_runtime_v1/review/engine/new_diffuse_rear.png": "a2f45eebc94eed17828feb20bfd9795401d1684107b7cf493a6991c085e5136f",
+    "docs/art/fortune_runtime_v1/review/engine/original_clay_quarter.png": "f9954678b2273238cf099b8d19f155e9d2d647ba1a4f88fab1d0a159e865071f",
+    "docs/art/fortune_runtime_v1/review/engine/new_clay_quarter.png": "30f210b1bdfa8b3b02e5b6d31d4fb4665472c68bc2382bd375ba3e5b7d5064ca",
+    "docs/art/fortune_runtime_v1/review/engine/original_painted_quarter.png": "48a7360c6b0f0f627d03955e5463600e54578aff396bf8f7a50fae5a7410506e",
+    "docs/art/fortune_runtime_v1/review/engine/new_painted_quarter.png": "b814eda2dba13d020c7b09c36ab6d0b26ef392238290368830cecfc08abfa57d",
+    "docs/art/fortune_runtime_v1/review/engine/original_diffuse_quarter.png": "ec2a5be9b5de7a2955a842481660f017ffbe509df9a3bef527b67ac06f02799d",
+    "docs/art/fortune_runtime_v1/review/engine/new_diffuse_quarter.png": "b814eda2dba13d020c7b09c36ab6d0b26ef392238290368830cecfc08abfa57d",
+    "docs/art/fortune_runtime_v1/review/engine/original_head_front.png": "13c40db8b71b70e2b3e560fe776f033a55b660d5a471f9e2d9814acd43c8d464",
+    "docs/art/fortune_runtime_v1/review/engine/new_head_front.png": "69b9be3c85b6ae284f32177e1a9e00655bbf3bae09ed81b86f10fa2e2bf0e377",
+    "docs/art/fortune_runtime_v1/review/engine/original_head_side.png": "57f31046c9c6b7ee0eb63863f9f5b1833f21261c238519927e9e6fdb308139bc",
+    "docs/art/fortune_runtime_v1/review/engine/new_head_side.png": "416b849c03bf7628bb95fe2cc7a01c9cab5bf35d12acc3feba46f33c4ba68219",
+    "docs/art/fortune_runtime_v1/review/engine/original_head_rear.png": "176b27479c01d5da7687ded4b7c19d68352eb905088a6e47fe05b573812df354",
+    "docs/art/fortune_runtime_v1/review/engine/new_head_rear.png": "3e8acdca77672202a89de6a4b20b67e2ac3ab3722a5e5cb7c01873cc5490aae0",
+    "docs/art/fortune_runtime_v1/review/engine/original_head_quarter.png": "3598d3199f01678202596befd203f9947871ec7baaa5a553dee21dd6382e6926",
+    "docs/art/fortune_runtime_v1/review/engine/new_head_quarter.png": "0962b38b495478b77e98804d11c6637fe0262c19f1448a9baacdaa5b5d7d9d08",
+    "docs/art/fortune_runtime_v1/review/engine/family_original_00_front.png": "b6002509dd13ea98e04864168eea70daff63cda9fb2bda29c7fc4eca7d76eac8",
+    "docs/art/fortune_runtime_v1/review/engine/family_original_06_front.png": "d36ecedc721f95713f557012298638324fae600cd4e164e00f257f61c44fffdc",
+    "docs/art/fortune_runtime_v1/review/engine/original_idle_rifle.png": "d237de8e11d821c0cb3ee6b046c81c06cdde6adb39d2f0f3979b93a5a074333f",
+    "docs/art/fortune_runtime_v1/review/engine/new_idle_rifle.png": "4a07c8047b17041f9fadc33ef2b34830d76a79b2b3730cceef35fbbe41b8bd90",
+    "docs/art/fortune_runtime_v1/review/engine/original_run_rifle.png": "a8a48c8e1102277fc2ef9967c4d38b6fd9f1fd8a76f9e915ccadf52106bb3a0f",
+    "docs/art/fortune_runtime_v1/review/engine/new_run_rifle.png": "232d51381592cc0489f6aed1183d224e9c623d1daa706d349c3f4de26764879a",
+    "docs/art/fortune_runtime_v1/review/engine/original_reload_00.png": "9bbe9f79b5aa36c381453dc990fd19da381857e37b91da73cf49e153fc42fbe7",
+    "docs/art/fortune_runtime_v1/review/engine/new_reload_00.png": "0721f71aeff8d77fdb3ceed3ea8d29859a017497cef6f3580f62a713e973a85a",
+    "docs/art/fortune_runtime_v1/review/engine/original_reload_01.png": "a48f64dbb15fd8b434167ca140bc89fefdf8078439f6f03d80dcea587b8891f2",
+    "docs/art/fortune_runtime_v1/review/engine/new_reload_01.png": "eceebd1c55135e78d0c1cca4a376376b6c0e33ca408a1a74d173c497bc490c15",
+    "docs/art/fortune_runtime_v1/review/engine/original_reload_02.png": "0fa320089ca1fe8f685cebf926c3e693053205a72d234f64bccb18cba304580f",
+    "docs/art/fortune_runtime_v1/review/engine/new_reload_02.png": "c8441be4f9a2e014ac49f9116e6bb230d15d4bc225a391b5fdae9f64d0552a6a",
+    "docs/art/fortune_runtime_v1/review/engine/original_reload_03.png": "6dda3c59a45facbd30546e414c9a7e01faa6703690ae9ff518162569942fe1f0",
+    "docs/art/fortune_runtime_v1/review/engine/new_reload_03.png": "d87bf6e3c02066af0b8af3292f23866795dc0ba0f3c666b667c4039eb869059f",
+    "docs/art/fortune_runtime_v1/review/engine/original_reload_04.png": "d7af3c723c4230404100eda4522b73eecd37687e84cfe077c43a301988103f67",
+    "docs/art/fortune_runtime_v1/review/engine/new_reload_04.png": "71199c992778eb67630286313206fbe62cfb70f4f305f003ed700e7fc2db7946",
+    "docs/art/fortune_runtime_v1/review/engine/original_reload_05.png": "63183c97f00a0906e4e9fa4cca0f24cc4e9bd77dd18281f5e1ebce7b8d4e5657",
+    "docs/art/fortune_runtime_v1/review/engine/new_reload_05.png": "8076ce199a97b8d81f2aba13e8ce14e5252e66a002349433ac09f40e7d4f2a0d",
+    "docs/art/fortune_runtime_v1/review/engine/original_reload_06.png": "480a17f061d52900c9e31d8d9c0e5fc387e07fff303fa59017e35de23cd2f67d",
+    "docs/art/fortune_runtime_v1/review/engine/new_reload_06.png": "6e5ab029f80feba4ef786e5ac1af29dc5b877ac322a735410ad9e3dfbbfc87aa",
+    "docs/art/fortune_runtime_v1/review/engine/original_reload_07.png": "10921dc92ff22340e1babb55f55876b9a61f56696c0043dd526d1486c6df8a99",
+    "docs/art/fortune_runtime_v1/review/engine/new_reload_07.png": "d4ea1c9a375db2e965a9daf4b73b55d44a2cbb49ef533aeb2d52c717f7c422f5",
+    "docs/art/fortune_runtime_v1/review/engine/original_reload_08.png": "d28f5360968fdc17aa9c9f689dc80d2f94bc98cfaddde93453764839fa330cc3",
+    "docs/art/fortune_runtime_v1/review/engine/new_reload_08.png": "b9eb4fe4fc4011b86aaf51e043dc30350ca9903456d5c3c847fbacc0e4e433a6",
+    "docs/art/fortune_runtime_v1/review/engine/original_level_01_gameplay.png": "13c285ed5707bca57a12582b0e9eaf6ba80792fb8273ae84ceefa51a3917b631",
+    "docs/art/fortune_runtime_v1/review/engine/new_level_01_gameplay.png": "7d276e44d6f91cc4d5bb3dac962457b8a99ca3a65ab196e6012bc9962423168c",
+    "docs/art/fortune_runtime_v1/review/engine/original_level_01_front.png": "a5d55526763c71ff4f0a997ba6ef594394a5205b50300561b8dc7f88dea86158",
+    "docs/art/fortune_runtime_v1/review/engine/new_level_01_front.png": "9681275af36ede21b4a40ae5d98abda4c617806c04d9b402a991ac443601a961",
+    "docs/art/fortune_runtime_v1/review/engine/original_level_08_gameplay.png": "bf97cb37a6caa54982179db5733f887b00865a91be2f1046e02b8e646c91ed72",
+    "docs/art/fortune_runtime_v1/review/engine/new_level_08_gameplay.png": "151234f61cc2254b3f3ce40e95c1a1edca701341849332e936a5eaf65cf6b86c",
+    "docs/art/fortune_runtime_v1/review/engine/original_level_08_front.png": "a8781ceac95f5cab2431fb9f5b0b2d317f1ee1528ea4bfc3a0933c077250122d",
+    "docs/art/fortune_runtime_v1/review/engine/new_level_08_front.png": "bf0e5626ef882684dacf9fa98623ed702257afffd99cc09ea11fcd76d5f347c7"
+  },
+  "drafts": [
+    "review/first_material",
+    "review/head_v2_preview",
+    "review/head_v2_body_v2_preview",
+    "review/head_v3_before_shape",
+    "review/head_v3_shape_v1_preview",
+    "review/head_v3_chin_uv_preview",
+    "review/head_v4_shape_preview",
+    "review/head_v4_material_preview",
+    "review/head_v5_material_preview",
+    "review/head_v5_flat_visor_preview",
+    "review/head_v6_material_preview"
+  ]
+}

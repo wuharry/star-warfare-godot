@@ -1,0 +1,294 @@
+[
+  {
+    "label": "head",
+    "prompt": "docs/art/tank_runtime_v1/prompts/head_diffuse_style_unified_v2.txt",
+    "reference_images": [
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_target.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_original_style.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_fortune_style.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_head_quarter.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/approved_parts_reference.png"
+    ],
+    "references": [
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_target.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_target.png",
+        "role": "edit_target",
+        "sha256": "85b42fdcdb953b30cb36c21ff0f7c23293cd795bcf9d324e8caeeeeaaf8986c4"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_original_style.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_original_style.png",
+        "role": "original_game_style_only",
+        "sha256": "93d71adfd46866b2cb26aa22bd5993377c584924d5a5a9e652ef1a1216cf765c"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_fortune_style.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/head_fortune_style.png",
+        "role": "current_fortune_family_style_only",
+        "sha256": "10d07e20bd3955fdee018b8b16a9994d3dc511990af6d60cf5cfe88ed886b0cf"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_head_quarter.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_head_quarter.png",
+        "role": "current_runtime_mapping_design_check",
+        "sha256": "055a3d8331672135ad6348266dd3d6c0adf6831412f8c51369a8d1462db13740"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/approved_parts_reference.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/approved_parts_reference.png",
+        "role": "approved_tank_design_only_not_uv_layout",
+        "sha256": "252b30319f66fcbd71d416cb5c9fa8df66a3f4d94b43665dbe126972b9f9de12"
+      }
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-b1b813f2-59c8-48da-9c26-e14b7913a701.png",
+    "selected": true,
+    "output": "assets/armors/tank_v1/head_diffuse.png",
+    "archive": "docs/art/tank_runtime_v1/generated/head_diffuse_style_unified_v2.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; native PNG bytes copied unchanged",
+    "date": "2026-10-04",
+    "variant": "style_unified_v2",
+    "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+    "additional_uv_changes": 0,
+    "additional_geometry_changes": 0,
+    "user_authorized_engineering_limit": 0.2,
+    "status": "runtime_integrated_pending_user_art_review",
+    "note": "Selected after direct PNG mapping review and validated runtime integration; five-map style pass retains exact current geometry and UV. Partial bright contact edges and inherited low-poly rear crown facets remain. User art review pending.",
+    "sha256": "a7f1e5a2ff91ae4663e3ea40fcb6a6f599e8536b1cb544cba65b1abc1b1fa1dd",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "prompt_sha256": "1fe7dfd68840bfd6aa8ba051d6231a0de42660ca6100206302338b8c27d2b40d",
+    "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584"
+  },
+  {
+    "label": "body",
+    "prompt": "docs/art/tank_runtime_v1/prompts/body_diffuse_style_unified_v2.txt",
+    "reference_images": [
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_target.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_original_style.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_fortune_style.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png"
+    ],
+    "references": [
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_target.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_target.png",
+        "role": "edit_target",
+        "sha256": "4ab7e617dab966f4a9505a0793066c1010b001431232564ab1b6cd44832b5075"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_original_style.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_original_style.png",
+        "role": "original_game_style_only",
+        "sha256": "98a1803ffa1838c4fd39223dd302de4a0725684404dd7bdf5cc3d87e4cd14104"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_fortune_style.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/body_fortune_style.png",
+        "role": "current_fortune_family_style_only",
+        "sha256": "492467eb209e1846665063634c05a9298a33cc2763cf2afa8921a0c968883df6"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png",
+        "role": "current_runtime_mapping_design_check",
+        "sha256": "9468ce1ce84a28e6502777be8bd35940c3e703bdf350072c4df42f9f15315076"
+      }
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-f9ab540e-7c0e-4c42-b514-a95fd29271b2.png",
+    "selected": true,
+    "output": "assets/armors/tank_v1/body_diffuse.png",
+    "archive": "docs/art/tank_runtime_v1/generated/body_diffuse_style_unified_v2.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; native PNG bytes copied unchanged",
+    "date": "2026-10-04",
+    "variant": "style_unified_v2",
+    "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+    "additional_uv_changes": 0,
+    "additional_geometry_changes": 0,
+    "user_authorized_engineering_limit": 0.2,
+    "status": "runtime_integrated_pending_user_art_review",
+    "note": "Selected after direct PNG mapping review and validated runtime integration; five-map style pass retains exact current geometry and UV. Partial bright contact edges and inherited low-poly rear crown facets remain. User art review pending.",
+    "sha256": "a92ae9149165beec2afb7e23a339cfdc13380ae4da71f6ab1d576c15b2a4eac4",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "prompt_sha256": "533db9b236f2f1ad0e335f5da0d8d2cc8edf7aae4768ffe8851c28ea2118c735",
+    "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584"
+  },
+  {
+    "label": "shoulder",
+    "prompt": "docs/art/tank_runtime_v1/prompts/shoulder_diffuse_style_unified_v2.txt",
+    "reference_images": [
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_target.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_original_style.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_fortune_style.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png"
+    ],
+    "references": [
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_target.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_target.png",
+        "role": "edit_target",
+        "sha256": "903fb418276ce29a25cc25ac4e92ca9f56d57320334a2c3855db72bf3b1e7adb"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_original_style.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_original_style.png",
+        "role": "original_game_style_only",
+        "sha256": "7572036a24caf732eabff2629c0ab7364d89a267a825a41342b17f99afdca67f"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_fortune_style.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/shoulder_fortune_style.png",
+        "role": "current_fortune_family_style_only",
+        "sha256": "a4aae6d7fdc44c2fec61236a885335df2476da4895cb14c30e723cadcb2215ba"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png",
+        "role": "current_runtime_mapping_design_check",
+        "sha256": "9468ce1ce84a28e6502777be8bd35940c3e703bdf350072c4df42f9f15315076"
+      }
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-75e1f84f-da8b-4bd9-b598-08de76f4b955.png",
+    "selected": true,
+    "output": "assets/armors/tank_v1/shoulder_diffuse.png",
+    "archive": "docs/art/tank_runtime_v1/generated/shoulder_diffuse_style_unified_v2.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; native PNG bytes copied unchanged",
+    "date": "2026-10-04",
+    "variant": "style_unified_v2",
+    "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+    "additional_uv_changes": 0,
+    "additional_geometry_changes": 0,
+    "user_authorized_engineering_limit": 0.2,
+    "status": "runtime_integrated_pending_user_art_review",
+    "note": "Selected after direct PNG mapping review and validated runtime integration; five-map style pass retains exact current geometry and UV. Partial bright contact edges and inherited low-poly rear crown facets remain. User art review pending.",
+    "sha256": "4905a54b926654a52e8f63d06b4ac51bc65396db023f4684c1150ee5969df3db",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "prompt_sha256": "df0f7e259e86985db9ad77af55164fdb1d8e19e5595a6fb2daf65f2548292782",
+    "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584"
+  },
+  {
+    "label": "hand",
+    "prompt": "docs/art/tank_runtime_v1/prompts/hand_diffuse_style_unified_v2.txt",
+    "reference_images": [
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_target.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_original_style.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_fortune_style.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png"
+    ],
+    "references": [
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_target.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_target.png",
+        "role": "edit_target",
+        "sha256": "b1e31fb647f6cceb0f44477190e1adbe63e63c3b55bddc9e577efe1b6a96f05e"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_original_style.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_original_style.png",
+        "role": "original_game_style_only",
+        "sha256": "82cdcfea69c126971e52f3221da8823d901d26f9f80a4c5337f640b55ccf34a3"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_fortune_style.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/hand_fortune_style.png",
+        "role": "current_fortune_family_style_only",
+        "sha256": "afd6260186294173a4a45a513fa541574f651ca490c6a42616900ba3ba876d92"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png",
+        "role": "current_runtime_mapping_design_check",
+        "sha256": "9468ce1ce84a28e6502777be8bd35940c3e703bdf350072c4df42f9f15315076"
+      }
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-116f60d5-fe48-45ac-96ac-2953524eeef8.png",
+    "selected": true,
+    "output": "assets/armors/tank_v1/hand_diffuse.png",
+    "archive": "docs/art/tank_runtime_v1/generated/hand_diffuse_style_unified_v2.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; native PNG bytes copied unchanged",
+    "date": "2026-10-04",
+    "variant": "style_unified_v2",
+    "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+    "additional_uv_changes": 0,
+    "additional_geometry_changes": 0,
+    "user_authorized_engineering_limit": 0.2,
+    "status": "runtime_integrated_pending_user_art_review",
+    "note": "Selected after direct PNG mapping review and validated runtime integration; five-map style pass retains exact current geometry and UV. Partial bright contact edges and inherited low-poly rear crown facets remain. User art review pending.",
+    "sha256": "6bf882758297af2c789b61d602cf39dbfd797e81320fd11fee8f03dee2aac79d",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "prompt_sha256": "4470a31d4c6156f7044efe6e5e7816035ee380f2b9c0bc095fd7ec88e766e855",
+    "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584"
+  },
+  {
+    "label": "foot",
+    "prompt": "docs/art/tank_runtime_v1/prompts/foot_diffuse_style_unified_v2.txt",
+    "reference_images": [
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_target.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_original_style.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_fortune_style.png",
+      "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png"
+    ],
+    "references": [
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_target.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_target.png",
+        "role": "edit_target",
+        "sha256": "09528411436cbd609da4917ca3974f6eece628c2dcdb22f279a898ca1d149112"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_original_style.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_original_style.png",
+        "role": "original_game_style_only",
+        "sha256": "8e5dde835854e66f41577e4c21fa5f4d37b5522f99237a1671cee6e7c15fcf3d"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_fortune_style.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/foot_fortune_style.png",
+        "role": "current_fortune_family_style_only",
+        "sha256": "58ded7a38496e334af747d8035c9a9c07f81c862de2cdbf54dade6797f220f17"
+      },
+      {
+        "path": "E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png",
+        "snapshot": "docs/art/tank_runtime_v1/input_snapshots/style_unified_v2/current_full_quarter.png",
+        "role": "current_runtime_mapping_design_check",
+        "sha256": "9468ce1ce84a28e6502777be8bd35940c3e703bdf350072c4df42f9f15315076"
+      }
+    ],
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-be6c0887-4040-4ce8-90f5-23f6e4e1f022.png",
+    "selected": true,
+    "output": "assets/armors/tank_v1/foot_diffuse.png",
+    "archive": "docs/art/tank_runtime_v1/generated/foot_diffuse_style_unified_v2.png",
+    "tool": "built-in image_gen",
+    "postprocessing": "none; native PNG bytes copied unchanged",
+    "date": "2026-10-04",
+    "variant": "style_unified_v2",
+    "base_prompt": "docs/art/armor_style_unification_v1/base_prompt.txt",
+    "additional_uv_changes": 0,
+    "additional_geometry_changes": 0,
+    "user_authorized_engineering_limit": 0.2,
+    "status": "runtime_integrated_pending_user_art_review",
+    "note": "Selected after direct PNG mapping review and validated runtime integration; five-map style pass retains exact current geometry and UV. Partial bright contact edges and inherited low-poly rear crown facets remain. User art review pending.",
+    "sha256": "e8a16ff8e61c0fe04ee9f766a9ffb3d04459ce773e0f5ce5dc44d55db8f5e2be",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "prompt_sha256": "bc92e5d3db06c829136059204faabc2f4fc815c820acab09b925f56a8f059052",
+    "base_prompt_sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584"
+  }
+]

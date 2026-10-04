@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "scope": "Tank helmet refinement pending; historical v2 baseline only, no new-head engineering or art acceptance claimed",
+  "index_sha256": "ccaacea61142bf95b5843dcf79c6ddcd2b59cc9d3c99ffb91639faf9ed32cd9c",
+  "head_views": [
+    {
+      "view": "front",
+      "original_before": "PASS",
+      "after_pending": true
+    },
+    {
+      "view": "quarter",
+      "original_before": "PASS",
+      "after_pending": true
+    },
+    {
+      "view": "side",
+      "original_before": "PASS",
+      "after_pending": true
+    },
+    {
+      "view": "rear",
+      "original_before": "PASS",
+      "after_pending": true
+    }
+  ],
+  "existing_front_regressions": [
+    {
+      "id": "viper",
+      "status": "PASS"
+    },
+    {
+      "id": "fortune",
+      "status": "PASS"
+    }
+  ],
+  "widths": [
+    {
+      "width": 390,
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "reference": {
+    "status": "PASS",
+    "path": "docs/art/tank_runtime_v1/approved_helmet_reference.png",
+    "sha256": "e005a0fb50e04f8b3f25a91a379d2124802ba82a1c206294c232dc6dfde8ad73",
+    "zoom": true
+  }
+}

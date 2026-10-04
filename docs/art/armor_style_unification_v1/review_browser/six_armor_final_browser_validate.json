@@ -1,0 +1,3524 @@
+{
+  "status": "PASS",
+  "scope": "six armors; actual original/before/current PNGs; no subjective art score",
+  "index_sha256": "d41b2b54b14223ccbffa446865aec6b76584c2ea774cfb301d4f0d1514112b84",
+  "comparison_sha256": "43f76373b0ba7ca25159ae7a76dce67fb9c1b235ad0fa23716e44d2b034efb87",
+  "validate_sha256": "9263a1619cf78cb9bad0495805bce1d6260581f36646236d6f4fa67b85987d8b",
+  "image_checks": [
+    {
+      "armor": "viper",
+      "scope": "body",
+      "view": "front",
+      "version": "original",
+      "path": "original/viper/review/diffuse_front.png",
+      "sha256": "97762e45d046d44d84ae903d413fe16d856520a60f86d6097c83bc441b531c4c",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "body",
+      "view": "front",
+      "version": "before",
+      "path": "before/viper/review/diffuse_front.png",
+      "sha256": "f1b5dff4e42e162373d3d92eff1918208e70d902e7ce9d45727ff1ce67461acf",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "body",
+      "view": "front",
+      "version": "after",
+      "path": "after/viper/review/diffuse_front.png",
+      "sha256": "ef946b7c996c3b089a35b187351f45a74c6651cca8b835bdc3ca2b1be19b2425",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "body",
+      "view": "quarter",
+      "version": "original",
+      "path": "original/viper/review/diffuse_quarter.png",
+      "sha256": "f5f00547f8bd879a5c3ca8841b6dc0cb8cb1e38ac832a8f667e18efbb625e0a4",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "body",
+      "view": "quarter",
+      "version": "before",
+      "path": "before/viper/review/diffuse_quarter.png",
+      "sha256": "d85ca62a086c792d73a42fc8f895b383ccd318a19748fdeb3768c2febfd05183",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "body",
+      "view": "quarter",
+      "version": "after",
+      "path": "after/viper/review/diffuse_quarter.png",
+      "sha256": "3a35dfda90b29c894d0550e0399dc1484b68c9713a3a3585d7911dc86c85eaab",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "body",
+      "view": "side",
+      "version": "original",
+      "path": "original/viper/review/diffuse_side.png",
+      "sha256": "1b9f553e5e4c9357434539fd13a3278a3b7874fe76a8953420473a49ad10c50a",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "body",
+      "view": "side",
+      "version": "before",
+      "path": "before/viper/review/diffuse_side.png",
+      "sha256": "30e861260326273aea0159bb4922842c4eb105afed91d77d41c219dcb9eb28ee",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "body",
+      "view": "side",
+      "version": "after",
+      "path": "after/viper/review/diffuse_side.png",
+      "sha256": "e6bcec10d50f145373526517f7fae8f87d09cd31530b1db7da9bb31835fa0e23",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "body",
+      "view": "rear",
+      "version": "original",
+      "path": "original/viper/review/diffuse_rear.png",
+      "sha256": "57d720011d5ffb6c31450c0b2a9880a3403dec5742ed71360600808dbd88a440",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "body",
+      "view": "rear",
+      "version": "before",
+      "path": "before/viper/review/diffuse_rear.png",
+      "sha256": "7eb54ba39d93d777f33b8930df6d3487e24616a3b2baab659cc3c5d19fffe6a9",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "body",
+      "view": "rear",
+      "version": "after",
+      "path": "after/viper/review/diffuse_rear.png",
+      "sha256": "44631e34d70b7065374b4f4e15e0453c5912695ba77889318b57b3d6f2b261d1",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "front",
+      "version": "original",
+      "path": "original/viper/review/head_front.png",
+      "sha256": "4aff21281644a3c1d84f5e1e13184f901cbde520d1c6c9ef438b22e7d18198fb",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "front",
+      "version": "before",
+      "path": "before/viper/review/head_front.png",
+      "sha256": "3a300209d58defc2cedfbeb097c7337cbd6c510037cdfa2ea2bca9282e3a8729",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "front",
+      "version": "after",
+      "path": "after/viper/review/head_front.png",
+      "sha256": "125eb4a2cfff4dfacef009749d294af9b210cf936d36c1275b910fde9db4085b",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "quarter",
+      "version": "original",
+      "path": "original/viper/review/head_quarter.png",
+      "sha256": "745b1e1e1002d3b0039181085287a218eaae471b63ffd7a9a46f5a0e9edd0f08",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "quarter",
+      "version": "before",
+      "path": "before/viper/review/head_quarter.png",
+      "sha256": "dc85a7f43d052f04501c85d0c5f3f8ce59a2d447b5d6714f20b6ebbd542f7434",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "quarter",
+      "version": "after",
+      "path": "after/viper/review/head_quarter.png",
+      "sha256": "c7b34d5326c5c0140c7f52971e9c49481b96c421b0cecaef765ccf427eb88858",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "side",
+      "version": "original",
+      "path": "original/viper/review/head_side.png",
+      "sha256": "dbd81cbfbb719de17786031a72ec789ef17b3aaa852b9fafea4ac4c47baade6a",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "side",
+      "version": "before",
+      "path": "before/viper/review/head_side.png",
+      "sha256": "cffda61ca9cbb15807ca7d3c1c8bcffce15541791e652bcd01feea31088a4d27",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "side",
+      "version": "after",
+      "path": "after/viper/review/head_side.png",
+      "sha256": "947f7a6b3605f757542971c395a4688ba1eea993b7a6b0063beece9e6bd8f040",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "rear",
+      "version": "original",
+      "path": "original/viper/review/head_rear.png",
+      "sha256": "b2ecfd5b254b3db0e27e0ee27390c586faa6f5bc6175efd155fe5959a4fa9057",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "rear",
+      "version": "before",
+      "path": "before/viper/review/head_rear.png",
+      "sha256": "c4a1ad54876d4de62344cd7a670347adba532140010170b5c5bb5eaa842fcf31",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "head",
+      "view": "rear",
+      "version": "after",
+      "path": "after/viper/review/head_rear.png",
+      "sha256": "040eb4a8402b1b8284521e2ce1f7c995bd5cfa16cd74ac7645b2ac6b2a6fc568",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "clay",
+      "view": "front",
+      "version": "original",
+      "path": "original/viper/review/clay_front.png",
+      "sha256": "43e5ca9a9e055cf34bdf66e41860c5df5b2268dec9032585490cc321ea4a94df",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "clay",
+      "view": "front",
+      "version": "before",
+      "path": "before/viper/review/clay_front.png",
+      "sha256": "cd7f54d90d504c215ce4d678e16e545022bb8d7e0c7283e01341135a654895d3",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "clay",
+      "view": "front",
+      "version": "after",
+      "path": "after/viper/review/clay_front.png",
+      "sha256": "94e07ccc067d4f8b472a6f44987ed0629c7ef02a36763f475aebe32ef69f1175",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "clay",
+      "view": "side",
+      "version": "original",
+      "path": "original/viper/review/clay_side.png",
+      "sha256": "9c4b96ccd7c37fe04b200f5c60f913ac3c248391e353c62ddceab822df280d5f",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "clay",
+      "view": "side",
+      "version": "before",
+      "path": "before/viper/review/clay_side.png",
+      "sha256": "d202479ad626ece5f3c2e62a02230dff20f013771c4fda793710ce2ebd15b93d",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "clay",
+      "view": "side",
+      "version": "after",
+      "path": "after/viper/review/clay_side.png",
+      "sha256": "3be25f7cfdb363154d77187bd55e1d667a9f649ba41239221f6592adae2f6212",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "original",
+      "path": "original/viper/review/level_01_gameplay.png",
+      "sha256": "1e318e5bdb869fe82a7b2207078ccd55a9ad64854126003e79aa0d7f971f1bba",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "before",
+      "path": "before/viper/review/level_01_gameplay.png",
+      "sha256": "a99f7de65156b70a543555a1e7e893aa48a8197e83baed9cd2366ef68a22d40a",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "after",
+      "path": "after/viper/review/level_01_gameplay.png",
+      "sha256": "2812cca3b9f48a8d9164deaa8846bc14919f6feb150b01aad2453f072f993ecb",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "original",
+      "path": "original/viper/review/level_08_gameplay.png",
+      "sha256": "6e991f8a18fffee4fb30bc802de2d0b802ca08ac4026ad6f7a79800a3de46416",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "before",
+      "path": "before/viper/review/level_08_gameplay.png",
+      "sha256": "0caa51b90d2ab34f242bd8890aaa5f96c87571e11a14848ed5c3ba4be8f050f7",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "after",
+      "path": "after/viper/review/level_08_gameplay.png",
+      "sha256": "95e512a067668ccdcb08a6e7bf2ef639cec3584cc7e8da19d735692e9ba08825",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "original",
+      "path": "original/viper/review/idle_rifle.png",
+      "sha256": "b71d5c46483c982f3d0b47c913ae8551752d62088c1a574c70f12ee21212d26c",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "before",
+      "path": "before/viper/review/idle_rifle.png",
+      "sha256": "6ee4d151902d68257a89a5a05e669175fbbe79150e247604cfbdb4a56e8d0ffa",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "after",
+      "path": "after/viper/review/idle_rifle.png",
+      "sha256": "a3c928463306d0cf360257fd82d53ec3ef112b2499a64241a119ac9e603a21fd",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "original",
+      "path": "original/viper/review/run_rifle.png",
+      "sha256": "986d43fec6783d9c9a0b16ad1d93674431ebd1e6bd5527c2eaf63b1684639828",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "before",
+      "path": "before/viper/review/run_rifle.png",
+      "sha256": "6e2cbf240e3ac9a7730b73b0e9ee1eb4400b99243f96520dec7f2b5101098793",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "after",
+      "path": "after/viper/review/run_rifle.png",
+      "sha256": "b2626b44b0e76cef1439f7be61819c5f0ffc7c7506eff5f86011e617c4f121d8",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "original",
+      "path": "original/viper/review/reload_04.png",
+      "sha256": "512ecea9524fe8787ce245146af0d515d3c389adf469ae699a7dbaa1c93bb8ea",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "before",
+      "path": "before/viper/review/reload_04.png",
+      "sha256": "c74d22b654e13a9347aaf5a33cf94833072ef71209caef13c75dae604e5f6d9a",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "viper",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "after",
+      "path": "after/viper/review/reload_04.png",
+      "sha256": "84ad3fb73cf45422cfabc35455ca6796b361520d6b9c2ffc76cf9e292ce16178",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "body",
+      "view": "front",
+      "version": "original",
+      "path": "original/fortune/review/diffuse_front.png",
+      "sha256": "ddf4591475dc9729051502e2197caf55ee67ca98573f171d0df5d04192262207",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "body",
+      "view": "front",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/diffuse_front.png",
+      "sha256": "e06f4f8fa2a1f67806c83ba4d792ecdde69e0b3810670092b1e9639a2a6fd761",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "body",
+      "view": "front",
+      "version": "after",
+      "path": "after/fortune/review/diffuse_front.png",
+      "sha256": "037c2bb580dc977e400a383c44e487edb865c13c7c1475bc4ed9f457fdeb2bb4",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "body",
+      "view": "quarter",
+      "version": "original",
+      "path": "original/fortune/review/diffuse_quarter.png",
+      "sha256": "ec2a5be9b5de7a2955a842481660f017ffbe509df9a3bef527b67ac06f02799d",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "body",
+      "view": "quarter",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/diffuse_quarter.png",
+      "sha256": "5b6105e47a6724ef967f828536214f4027c05acb78e7ab32b7469538a20ab072",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "body",
+      "view": "quarter",
+      "version": "after",
+      "path": "after/fortune/review/diffuse_quarter.png",
+      "sha256": "bcb4144cb6cf3d00ad040f47338e9880b1f0b8d263c5bc7f80be244be7212231",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "body",
+      "view": "side",
+      "version": "original",
+      "path": "original/fortune/review/diffuse_side.png",
+      "sha256": "3ed30147435a4df2ed1fd4eb1a42eb6f4bdaa57677353900365acbaefba66aeb",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "body",
+      "view": "side",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/diffuse_side.png",
+      "sha256": "98e8abb04ee04600bf92729474e6a019779d693a87c8bcbf3e88cb63321cfd26",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "body",
+      "view": "side",
+      "version": "after",
+      "path": "after/fortune/review/diffuse_side.png",
+      "sha256": "32dc69ebc41e8d7662fee1186d8f82942564c63d5d3202f78849d5c049b65cdb",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "body",
+      "view": "rear",
+      "version": "original",
+      "path": "original/fortune/review/diffuse_rear.png",
+      "sha256": "21e88cfadb5fd68d5fcdf87a0cbd5ae64b71340aa55220f97f23943725f90c66",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "body",
+      "view": "rear",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/diffuse_rear.png",
+      "sha256": "ce1f13ce9802dcb169cdac3084c0e352b21579e9998a763fdc6255969654dda1",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "body",
+      "view": "rear",
+      "version": "after",
+      "path": "after/fortune/review/diffuse_rear.png",
+      "sha256": "763d665c367473b3be4326ae721431fad8e48dc792b187f83ac2c7e24eebfc31",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "front",
+      "version": "original",
+      "path": "original/fortune/review/head_front.png",
+      "sha256": "13c40db8b71b70e2b3e560fe776f033a55b660d5a471f9e2d9814acd43c8d464",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "front",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/head_front.png",
+      "sha256": "8bb51b97021844a1a661ef4b492b625b763055058bd07c8ceb918cdb1f8491a3",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "front",
+      "version": "after",
+      "path": "after/fortune/review/head_front.png",
+      "sha256": "41008b56fbe71109f044a6a188be5c2abc1bba9eb974a108f0bb13add204766a",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "quarter",
+      "version": "original",
+      "path": "original/fortune/review/head_quarter.png",
+      "sha256": "3598d3199f01678202596befd203f9947871ec7baaa5a553dee21dd6382e6926",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "quarter",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/head_quarter.png",
+      "sha256": "faa624c49693dcf1782bc60090b98f9b3b6ddec3163a638890b6648aac4c80af",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "quarter",
+      "version": "after",
+      "path": "after/fortune/review/head_quarter.png",
+      "sha256": "88cbc393e7b25a2dc70e57deac0a1d579cf2342fb80a8ff67fd64e6f479efe72",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "side",
+      "version": "original",
+      "path": "original/fortune/review/head_side.png",
+      "sha256": "57f31046c9c6b7ee0eb63863f9f5b1833f21261c238519927e9e6fdb308139bc",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "side",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/head_side.png",
+      "sha256": "48cd41353a52c802446d9fb32aea5e7f1d1516115402a7bb16d3d77fef3e13c1",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "side",
+      "version": "after",
+      "path": "after/fortune/review/head_side.png",
+      "sha256": "e7ec9f18c40eeb749e7f697550673ed06491aa8b26108f34c422eefe4ea012f6",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "rear",
+      "version": "original",
+      "path": "original/fortune/review/head_rear.png",
+      "sha256": "176b27479c01d5da7687ded4b7c19d68352eb905088a6e47fe05b573812df354",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "rear",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/head_rear.png",
+      "sha256": "e8728c9629c2b612eaa72bd9f127134057f6bca96fb6dcce3e55de6a5e406866",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "head",
+      "view": "rear",
+      "version": "after",
+      "path": "after/fortune/review/head_rear.png",
+      "sha256": "22c5c6585472ba1f0f5494819533046fd9f5df3d68492815ee0822778a2359b3",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "clay",
+      "view": "front",
+      "version": "original",
+      "path": "original/fortune/review/clay_front.png",
+      "sha256": "dc81a2a9272864b80ff417a2c728ebf029a96b1add7edbc73f283dc86bc847ab",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "clay",
+      "view": "front",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/clay_front.png",
+      "sha256": "bb6b5112dc5212f8f8fc093d9de29375ec10354d87074c8c4c8434c3a8f82ef8",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "clay",
+      "view": "front",
+      "version": "after",
+      "path": "after/fortune/review/clay_front.png",
+      "sha256": "ab0b1b15535268d96d2e13be3c56bbc954e0f0ce8c4285aa1323508a7cacfdbb",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "clay",
+      "view": "side",
+      "version": "original",
+      "path": "original/fortune/review/clay_side.png",
+      "sha256": "cca4a19f0f338e6ae2e9da9efb24b0d87cd2e40fc24d698c51dd2e2b6613cfa7",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "clay",
+      "view": "side",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/clay_side.png",
+      "sha256": "ed96ee5f519087d0c320f86e1e889b1df8ab66e48d713aaaadf073cb2e29f81d",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "clay",
+      "view": "side",
+      "version": "after",
+      "path": "after/fortune/review/clay_side.png",
+      "sha256": "e2dcf5a788fb39586292f3acbb3e39c0e2bb37c803ee5987fb51ff273707c033",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "original",
+      "path": "original/fortune/review/level_01_gameplay.png",
+      "sha256": "0273928dd4973c59fb7f92a0518449b4bf255f8209145642d25cb1f56d96280d",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/level_01_gameplay.png",
+      "sha256": "e7e59e8ec082db3cf2973349e4cdc1a46f04126776dddc8fe154705e26f25757",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "after",
+      "path": "after/fortune/review/level_01_gameplay.png",
+      "sha256": "e11afbb69b7b4be582f4b23cae5a4b3ee89a5991958556955e6ba50dcb192ada",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "original",
+      "path": "original/fortune/review/level_08_gameplay.png",
+      "sha256": "8c63fd3eed61479b2a70cda7f82fe59bd7ccc84a9acd7efc62e4f7ac627d7cc2",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/level_08_gameplay.png",
+      "sha256": "d2fc29f990c99afb8ade0219190ccb919a0bf945231fd004ba5768d8de3d8505",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "after",
+      "path": "after/fortune/review/level_08_gameplay.png",
+      "sha256": "6bbc58a875b1e7aa9913a321f1fbccf52690fa94eed33428d6849d6eb1939e01",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "original",
+      "path": "original/fortune/review/idle_rifle.png",
+      "sha256": "a70b9f9024909fcac308e5fd2fb1cf6b0c8221f0361c882bf4378fe3ba77c699",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/idle_rifle.png",
+      "sha256": "f660b8307372518c74c8bbbf74bead121ce14b193b835cef90db25b6ae40dcc7",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "after",
+      "path": "after/fortune/review/idle_rifle.png",
+      "sha256": "bd097de996e6eec931c26edcb96ede40ea107cab1632986d6c38d83a6a30b243",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "original",
+      "path": "original/fortune/review/run_rifle.png",
+      "sha256": "53e8db8963f9df475d10f0f6942f118bfe706c38e1006a3bb912327fbcfa62c6",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/run_rifle.png",
+      "sha256": "d94461a29bc7c603a90445243b5cfb60614a38a28a5f241c315a1f06d6fe8d6b",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "after",
+      "path": "after/fortune/review/run_rifle.png",
+      "sha256": "2fbc439b3f496b0b738774319d57da4c32101f42d0b56f3409b322ea8476ea39",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "original",
+      "path": "original/fortune/review/reload_04.png",
+      "sha256": "07b60698de03af50b8b5cffe3b60410895c58da52e9e7be714de50299f6e5d93",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "before",
+      "path": "revisions/fortune_head_v7_before_refinement/review/reload_04.png",
+      "sha256": "7e2cceea05a096f739989e69d0c1bdf55cf8e311ea48900682c3dfd352d14745",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "fortune",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "after",
+      "path": "after/fortune/review/reload_04.png",
+      "sha256": "c48a5ba541474ef017514da08fcfe864f617dccd0ea161e8389960042adaa5ea",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "body",
+      "view": "front",
+      "version": "original",
+      "path": "original/tank/review/diffuse_front.png",
+      "sha256": "36aff0a1b5d5722643bed35430216899e537f720f0b5805eb2763b2368745521",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "body",
+      "view": "front",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/diffuse_front.png",
+      "sha256": "3196be89490f542b7b7794e9cb98ad0a9cad6bd35604828cbfe91a75a484f76a",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "body",
+      "view": "front",
+      "version": "after",
+      "path": "after/tank/review/diffuse_front.png",
+      "sha256": "66532ea501ae81aa08c1d7a8b9532d19ed6bc2df3ce732ff1b174fe2fbb030f5",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "body",
+      "view": "quarter",
+      "version": "original",
+      "path": "original/tank/review/diffuse_quarter.png",
+      "sha256": "d044809fec207b38f86e652e2f8fac681b2bd820446a53e9a46c6f125bf98c90",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "body",
+      "view": "quarter",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/diffuse_quarter.png",
+      "sha256": "60438b9aaa38ae951292a256ef4f17f6c86c21f7234bf245da677864a5d4cc71",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "body",
+      "view": "quarter",
+      "version": "after",
+      "path": "after/tank/review/diffuse_quarter.png",
+      "sha256": "8c7081d5f3d0fcee1f0779e99d0c2e76349f134cdf09aee64590d7ec889c6073",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "body",
+      "view": "side",
+      "version": "original",
+      "path": "original/tank/review/diffuse_side.png",
+      "sha256": "f7d3f240951129df46869453ed3169d6aec1660410aa068e77543de8f8751ace",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "body",
+      "view": "side",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/diffuse_side.png",
+      "sha256": "09c9e2246d163fdb7c7c8d27994e1a1d61647a043733dae0781c695e33826f07",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "body",
+      "view": "side",
+      "version": "after",
+      "path": "after/tank/review/diffuse_side.png",
+      "sha256": "c17cee1812f8645eee1e6af59d451a85bbcb9526ef02ba43227ef682b7c3c10a",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "body",
+      "view": "rear",
+      "version": "original",
+      "path": "original/tank/review/diffuse_rear.png",
+      "sha256": "bb31295041b6427f22fa16b75f9a9405444ce2c244a5ea500a9ec1b9b5f7e7c0",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "body",
+      "view": "rear",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/diffuse_rear.png",
+      "sha256": "fe51d3344dd37f551ffd026d2cb0858d9280b95157d74c2873fcbdc94bfb8338",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "body",
+      "view": "rear",
+      "version": "after",
+      "path": "after/tank/review/diffuse_rear.png",
+      "sha256": "010b61f5ffb60d84c6aba2a3e44cf517cd60d7aaf9419981cdea3ab03292e848",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "head",
+      "view": "front",
+      "version": "original",
+      "path": "original/tank/review/head_front.png",
+      "sha256": "fdf8d13526e9f23c25fa380c68345f76bf888e40c7ef3f75e05636f0062db8a9",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "head",
+      "view": "front",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/head_front.png",
+      "sha256": "07563e08a1290f5c191d5d7a8e638ce6d753b242a8eab4861cc7d28b4a52c1df",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "head",
+      "view": "front",
+      "version": "after",
+      "path": "after/tank/review/head_front.png",
+      "sha256": "dfdd7858bccc5ac0b8f67d92298b4083c5cb422f6c456add7bf5602917fda37b",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "head",
+      "view": "quarter",
+      "version": "original",
+      "path": "original/tank/review/head_quarter.png",
+      "sha256": "7c0cf13bbc304114c88b6dbea6dbbfbaee9a728e4c3631e956a357cc014c0b6a",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "head",
+      "view": "quarter",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/head_quarter.png",
+      "sha256": "eda2c318aab453c38a756bc8c1fc4d561f13948391e09b0697127be68f9d67a4",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "head",
+      "view": "quarter",
+      "version": "after",
+      "path": "after/tank/review/head_quarter.png",
+      "sha256": "4da5dd466eef1b7dce73f6247e713f55643b3984d447aab86d935b89562262fd",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "head",
+      "view": "side",
+      "version": "original",
+      "path": "original/tank/review/head_side.png",
+      "sha256": "2d2bc3af8ad5c850a8fea9d5d8a01dc55fd66c5a0e7c5b25659e2dd186b1b315",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "head",
+      "view": "side",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/head_side.png",
+      "sha256": "3bef19eb094ad1de4133fc699d97e196bd38247836a0e9df424297389a2aaf87",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "head",
+      "view": "side",
+      "version": "after",
+      "path": "after/tank/review/head_side.png",
+      "sha256": "384396c64fde58a4dde4c47e106b914ec675bd8d1b6f12603e16420e71926763",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "head",
+      "view": "rear",
+      "version": "original",
+      "path": "original/tank/review/head_rear.png",
+      "sha256": "bae36f6333a69296ac8231abd3b6b4a2664f2f400111937186bb25698e2d51f1",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "head",
+      "view": "rear",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/head_rear.png",
+      "sha256": "faa434a6bd923f0d582a352341a53ae67b1d6520b497cd59feef311fcac34c97",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "head",
+      "view": "rear",
+      "version": "after",
+      "path": "after/tank/review/head_rear.png",
+      "sha256": "fca14e9adbaeaaf6f54fc37714ed53934e62c3d6b38a10621461e9ba73d2037a",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "clay",
+      "view": "front",
+      "version": "original",
+      "path": "original/tank/review/clay_front.png",
+      "sha256": "bb5234671aa5a2e4c40e77ecd868ac18bb142583ffdd6911a9bcc063dec612a3",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "clay",
+      "view": "front",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/clay_front.png",
+      "sha256": "8ca4b72fbaf7fc84bf14725e4b03e64e8d23d10127a2df5ca639e149d7f34a53",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "clay",
+      "view": "front",
+      "version": "after",
+      "path": "after/tank/review/clay_front.png",
+      "sha256": "afe604afecd3e7784e42f07df414c581c7880358ec7cfb80058b9198449e1084",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "clay",
+      "view": "side",
+      "version": "original",
+      "path": "original/tank/review/clay_side.png",
+      "sha256": "f1dd54a3ba4201c400c8865037054a32d219a406db8f5d73bbcced080696a77a",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "clay",
+      "view": "side",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/clay_side.png",
+      "sha256": "f0bde581a39947ed2ca7b9b0cb68df296cf24db33114c0e148d1d80398d870d2",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "clay",
+      "view": "side",
+      "version": "after",
+      "path": "after/tank/review/clay_side.png",
+      "sha256": "31298a9e265fa7bad49be81a4f90bc5186009f253da6f7dd5fe725c06097fc14",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "original",
+      "path": "original/tank/review/level_01_gameplay.png",
+      "sha256": "9f58b39d2c0d2e21850095a43fff252036d73ee4998354e929148011c6d99ba9",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/level_01_gameplay.png",
+      "sha256": "4ae84ad7ce6680db1a282f7a6b7479cd0d341e906a5e1e4453a6415aeef5b114",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "after",
+      "path": "after/tank/review/level_01_gameplay.png",
+      "sha256": "1229af2b2fb810dfe9b101c3ebede75ca488005adbb05a00bac2c21b0d70e100",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "original",
+      "path": "original/tank/review/level_08_gameplay.png",
+      "sha256": "27a89374d786aae9bfcc225bd93ffcf2cf9168662a615c328da8db22730820c1",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/level_08_gameplay.png",
+      "sha256": "f5a63ff94664bedda0628456dd48107a15baed0673a764c2730593a30009872c",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "after",
+      "path": "after/tank/review/level_08_gameplay.png",
+      "sha256": "f31d90c706f56d1009cebb4b667dbafe99a3291257d3da2a81a33ba529c1c977",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "original",
+      "path": "original/tank/review/idle_rifle.png",
+      "sha256": "59f5123c4d8a582f1c1915fdd898b345e1cb29985ebcffa306118c49a05001d1",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/idle_rifle.png",
+      "sha256": "bc65be476900e837b9502a539c0b72afab9c76623d38d5131af174bcb842d104",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "after",
+      "path": "after/tank/review/idle_rifle.png",
+      "sha256": "b0f8303da44eaebe6592294fa0f1480dd0841e32aef71afc6be0d08cdfaf4ae8",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "original",
+      "path": "original/tank/review/run_rifle.png",
+      "sha256": "42cadffa645b236a505b5a76d5729ce20aa96d3b2a7c80c45ed42d870b9eec95",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/run_rifle.png",
+      "sha256": "c7b82e2d0e73a9c659b33fbb2f4bfcb0aa3ccad59f6801c65749e59a003baa4d",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "after",
+      "path": "after/tank/review/run_rifle.png",
+      "sha256": "47155f78b90d2f6cd16515bc0d5a918413a5273c510a4760893338dc6a86de17",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "original",
+      "path": "original/tank/review/reload_04.png",
+      "sha256": "aea00a89d42eebda336010eec3e4e565d881ebe38206b9122ca35b3db94b0bc5",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "before",
+      "path": "revisions/tank_style_v2_before_helmet_refinement/review/reload_04.png",
+      "sha256": "ca09b2a43d3a0a9e30c3dc35cfcac47e6d4af99c20592308f9b04aa15cc97a04",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "tank",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "after",
+      "path": "after/tank/review/reload_04.png",
+      "sha256": "8ddb9508b31d8da1011e0f71da2d522139d107ce09ef3725c7339f31f2dc1d25",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "body",
+      "view": "front",
+      "version": "original",
+      "path": "original/hydra/review/diffuse_front.png",
+      "sha256": "98c547d00f54700af3c3a49f72fbe395376f925d1151d14aa63ff85758de4c7c",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "body",
+      "view": "front",
+      "version": "after",
+      "path": "after/hydra/review/diffuse_front.png",
+      "sha256": "ca4a1dca1c058c02d6164ee125e7dcec15ce336b6aa3bd89f639ff75d547978b",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "body",
+      "view": "quarter",
+      "version": "original",
+      "path": "original/hydra/review/diffuse_quarter.png",
+      "sha256": "fb21ae88b59e2cb37e7806b8d6b5e44be34b34a1b3fb852d6097ed6ea6e80259",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "body",
+      "view": "quarter",
+      "version": "after",
+      "path": "after/hydra/review/diffuse_quarter.png",
+      "sha256": "cee53a2605a7622b75ef97cb792c46a4d80b6d0b55c67519224364d62d91984f",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "body",
+      "view": "side",
+      "version": "original",
+      "path": "original/hydra/review/diffuse_side.png",
+      "sha256": "069b7377dc256d591147d02e18df9d833357ce2fc1ce9856486e805020507706",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "body",
+      "view": "side",
+      "version": "after",
+      "path": "after/hydra/review/diffuse_side.png",
+      "sha256": "223bd185611e1959ed8d44fef1b90034e538b62ebcb31d4e74b6c4933de63f64",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "body",
+      "view": "rear",
+      "version": "original",
+      "path": "original/hydra/review/diffuse_rear.png",
+      "sha256": "4f5f3d3a341a438431f6dfa6144ead0891a6f7b2d959d3d43a954727300e8ffe",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "body",
+      "view": "rear",
+      "version": "after",
+      "path": "after/hydra/review/diffuse_rear.png",
+      "sha256": "7b9394a7e3d744c9fac116aa01ca237a1550965dbed06c71d2613e8ce55d4e39",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "head",
+      "view": "front",
+      "version": "original",
+      "path": "original/hydra/review/head_front.png",
+      "sha256": "464ee135a054ced65051a8422c9719ccdd332f6a8ac4dccc91de7ffa0b2e9ceb",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "head",
+      "view": "front",
+      "version": "after",
+      "path": "after/hydra/review/head_front.png",
+      "sha256": "8ba7dea57a092e23bb067807af79cafac9dfa535390fcbbda5474121c07db0d5",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "head",
+      "view": "quarter",
+      "version": "original",
+      "path": "original/hydra/review/head_quarter.png",
+      "sha256": "3a8c5f6868e95281405c721cc59ce4a23cdea8464bfa65193e582defe88b2808",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "head",
+      "view": "quarter",
+      "version": "after",
+      "path": "after/hydra/review/head_quarter.png",
+      "sha256": "7b2e98408e9a6d200c3c8aa79eede437597e48893b9087fa0ca6863830233dc9",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "head",
+      "view": "side",
+      "version": "original",
+      "path": "original/hydra/review/head_side.png",
+      "sha256": "d9ca64167c148a76da83ef52af0068d6d8487d2e2e6ce88b5d397b9189877151",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "head",
+      "view": "side",
+      "version": "after",
+      "path": "after/hydra/review/head_side.png",
+      "sha256": "d47c25530c6c0d0ca35062fd905b04d347f859a2d6a37d4bdb050c040978810a",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "head",
+      "view": "rear",
+      "version": "original",
+      "path": "original/hydra/review/head_rear.png",
+      "sha256": "93c50384a21e13639e3d4a9b5a5421a06588b46e5b7adc15126611e9600d4e74",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "head",
+      "view": "rear",
+      "version": "after",
+      "path": "after/hydra/review/head_rear.png",
+      "sha256": "0b56bfefaaf24507028ad4a3ff341d481c35910ab257bb7e5be397713f1494b4",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "clay",
+      "view": "front",
+      "version": "original",
+      "path": "original/hydra/review/clay_front.png",
+      "sha256": "b57b2a2e33daeaaeab0a6e6091d52f6824f1b7ebbd05641df82de2babc479e18",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "clay",
+      "view": "front",
+      "version": "after",
+      "path": "after/hydra/review/clay_front.png",
+      "sha256": "fcf617939222700453b0e0beba26913a90e87cadfdd37b605d0fe7cf36d9e656",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "clay",
+      "view": "side",
+      "version": "original",
+      "path": "original/hydra/review/clay_side.png",
+      "sha256": "e1afc68e6a345f35568b5c3cccf0d2aaecda16d1ea9c520acc0d983b4f042b82",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "clay",
+      "view": "side",
+      "version": "after",
+      "path": "after/hydra/review/clay_side.png",
+      "sha256": "f15816070a439449bc150400b415209f74be8ba1165a4acd898fdb6e466d40ae",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "original",
+      "path": "original/hydra/review/level_01_gameplay.png",
+      "sha256": "e8c45e75da44b36fa00c8553c2cf76617bff5e0ef6e579088b54d4a21a7ea827",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "after",
+      "path": "after/hydra/review/level_01_gameplay.png",
+      "sha256": "dcf958aa90f1b6ced9229bffdabee9a42585e56fbdf3b7f52aed74ae005d4774",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "original",
+      "path": "original/hydra/review/level_08_gameplay.png",
+      "sha256": "d8d2fa1a380619cdc566cb6080479f82399905d3f35014c9c78c4a1912565183",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "after",
+      "path": "after/hydra/review/level_08_gameplay.png",
+      "sha256": "424cc4f00538aa8196d7bae628aa793a17e9a784b6dd0eddd7baedbf8b138e9c",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "original",
+      "path": "original/hydra/review/idle_rifle.png",
+      "sha256": "25b3da95b541d76071fccfe9b4d2db326ea57c8feaef5fe905e3de8410624f80",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "after",
+      "path": "after/hydra/review/idle_rifle.png",
+      "sha256": "93c73903a08cebb7ff8b2df199948fdff317b350eee17977471b8cf6bdee94d4",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "original",
+      "path": "original/hydra/review/run_rifle.png",
+      "sha256": "5870e909dc6ac68459998fe30cf2ea61eed0a1e4a37d28d882c6f23b7828ea5e",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "after",
+      "path": "after/hydra/review/run_rifle.png",
+      "sha256": "427b32eb8574e4afcdbfef6672446491f4823c00741f958694b71dce6ea8af14",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "original",
+      "path": "original/hydra/review/reload_04.png",
+      "sha256": "03a25c8f0318582a255d08975fa945a7d252cbc5b06f197a8dcb26ede56dfa8e",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "hydra",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "after",
+      "path": "after/hydra/review/reload_04.png",
+      "sha256": "05001db401468b514432a25405c8a3ee9f837190cbeeb668c9465d5daafcc4fb",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "body",
+      "view": "front",
+      "version": "original",
+      "path": "original/strike/review/diffuse_front.png",
+      "sha256": "f377e1b59fc7d5ddb858a24ee699f7ecc6a008e026779eb5a6f95add29323dc7",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "body",
+      "view": "front",
+      "version": "after",
+      "path": "after/strike/review/diffuse_front.png",
+      "sha256": "523ada5812cc7e994132923965ea8984814bb76ce77c5199808c90384c60ae47",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "body",
+      "view": "quarter",
+      "version": "original",
+      "path": "original/strike/review/diffuse_quarter.png",
+      "sha256": "d3e8afcd9715108138c89d19b4497bb258ff1ac5d8deddd7f489d5426f9737aa",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "body",
+      "view": "quarter",
+      "version": "after",
+      "path": "after/strike/review/diffuse_quarter.png",
+      "sha256": "defd2c46a30f1b340824b3d1b6a231e2d0fbedae6895fb0afc3e2c73ae286393",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "body",
+      "view": "side",
+      "version": "original",
+      "path": "original/strike/review/diffuse_side.png",
+      "sha256": "4e78eb2d8d8206b91c2108a84b0b4f760ed494cd3921c3196adcb0ee14f7a41a",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "body",
+      "view": "side",
+      "version": "after",
+      "path": "after/strike/review/diffuse_side.png",
+      "sha256": "dc7bc87c890cebe54fc6573b621a7d3bb8d5b5cf7695497b3559f7b80bdf3ade",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "body",
+      "view": "rear",
+      "version": "original",
+      "path": "original/strike/review/diffuse_rear.png",
+      "sha256": "48f5705c5670ced229456732d19ebfa4dd99d1ca06ad8eec5fe7880f2cec36b9",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "body",
+      "view": "rear",
+      "version": "after",
+      "path": "after/strike/review/diffuse_rear.png",
+      "sha256": "2b685da0220db1dca64df87026d9f8e6a46d8a486ae73fd9e029fb276bc2923f",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "head",
+      "view": "front",
+      "version": "original",
+      "path": "original/strike/review/head_front.png",
+      "sha256": "fd1dc5380edd5aaa4d59238374155d1ee5fb8e2a52d18db8f5d58ab92dd5d2e2",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "head",
+      "view": "front",
+      "version": "after",
+      "path": "after/strike/review/head_front.png",
+      "sha256": "9d3d2f08ff14236390b4c869dc68217bf71e3e415b108fef42c38246ed5733c6",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "head",
+      "view": "quarter",
+      "version": "original",
+      "path": "original/strike/review/head_quarter.png",
+      "sha256": "92e37f6b7e7eb618e792d4224e109ce5e299af4520a5f633e873b296df9e2eae",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "head",
+      "view": "quarter",
+      "version": "after",
+      "path": "after/strike/review/head_quarter.png",
+      "sha256": "fe4cd3461c6298792e88b84df158c533eb591898954f9fd4e13b69dd2e48b594",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "head",
+      "view": "side",
+      "version": "original",
+      "path": "original/strike/review/head_side.png",
+      "sha256": "cb98f3f4a4f013ab887bf0da257cdb67960c1dc17e53ca8c159429ba175ed854",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "head",
+      "view": "side",
+      "version": "after",
+      "path": "after/strike/review/head_side.png",
+      "sha256": "96d0d3c931fb95afea443fab93d8cd56860fb7f8d57da112e136f082d4d175a8",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "head",
+      "view": "rear",
+      "version": "original",
+      "path": "original/strike/review/head_rear.png",
+      "sha256": "8d91b33809baa6019b459e47ab12596b1f1ab318164e9a481bfd63c266e25e7b",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "head",
+      "view": "rear",
+      "version": "after",
+      "path": "after/strike/review/head_rear.png",
+      "sha256": "a9904c755851afee52abfddf7a59246a3665a4df6a5d2af05af6e7e474d83513",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "clay",
+      "view": "front",
+      "version": "original",
+      "path": "original/strike/review/clay_front.png",
+      "sha256": "db36b7dbaf1cbe4511e30c8a254e2bcdc7be169a36a32786e6d965e0a862380e",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "clay",
+      "view": "front",
+      "version": "after",
+      "path": "after/strike/review/clay_front.png",
+      "sha256": "74168fee5290c5e12e0a227afa9b02ea7aa72fa9544361a159bfef3394a5e386",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "clay",
+      "view": "side",
+      "version": "original",
+      "path": "original/strike/review/clay_side.png",
+      "sha256": "aa0820030442b26bd161de83ed96b8a91e436cb1218e2a35d4c489c308336a7d",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "clay",
+      "view": "side",
+      "version": "after",
+      "path": "after/strike/review/clay_side.png",
+      "sha256": "f0c573e47307668145a0c680fc468366a91ac6a7a9dd3c9bed2b757532d29e61",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "original",
+      "path": "original/strike/review/level_01_gameplay.png",
+      "sha256": "e7de3ffcb64b8f11ceca50dbda46ee58e819e94bd91343efb5ab516cef3f179d",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "after",
+      "path": "after/strike/review/level_01_gameplay.png",
+      "sha256": "52c408bc10c6d6d0def57e981acfe65b0d8987295f79d32579737d754e53e2bf",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "original",
+      "path": "original/strike/review/level_08_gameplay.png",
+      "sha256": "4bf73ff22bb17270499037f000dc4da57caa46361ece57e10bbb24701b2cc8d7",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "after",
+      "path": "after/strike/review/level_08_gameplay.png",
+      "sha256": "ec8f324865ee4122613f40c7a734bf063ebc4eae81a8e9ac1a86ad1660946abb",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "original",
+      "path": "original/strike/review/idle_rifle.png",
+      "sha256": "92f0f43a6b5248bfe6869496e45f1c6d2db4f6da6ef41c5d9b526dfc57b80979",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "after",
+      "path": "after/strike/review/idle_rifle.png",
+      "sha256": "5ff11b576f5b3f0e0351fdbd2e0b01eb810415e3f3a50e4721da917ad943d305",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "original",
+      "path": "original/strike/review/run_rifle.png",
+      "sha256": "2bbd213e0399a55fb6d742917cd81e0fd7a5cc6cd700992d67d71972b0e42d5e",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "after",
+      "path": "after/strike/review/run_rifle.png",
+      "sha256": "c9b6d7cc1c407bc2cfdfa1c58d7c837fe6a3de795475e1cc11d6b789a815adf7",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "original",
+      "path": "original/strike/review/reload_04.png",
+      "sha256": "fed780523607534223795091230dbc8599dbbd905e7193f83c622c543795a9fe",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "strike",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "after",
+      "path": "after/strike/review/reload_04.png",
+      "sha256": "7c15dd7fcd82d3677db232932c12d4f9491bb10df97ad90923e1d4b06d1f7c68",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "body",
+      "view": "front",
+      "version": "original",
+      "path": "original/titan/review/diffuse_front.png",
+      "sha256": "0ac0d1d8a8593e4e0976b6fd1b9562b1472c1d22e33238efddb480a0b343805c",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "body",
+      "view": "front",
+      "version": "after",
+      "path": "after/titan/review/diffuse_front.png",
+      "sha256": "598062d49af957060750ae1539054cab039ad0efb02214529641e1bf519fe026",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "body",
+      "view": "quarter",
+      "version": "original",
+      "path": "original/titan/review/diffuse_quarter.png",
+      "sha256": "80d2c82786c8b910b5b7933e18255ab9025913d295f391d7d4277406189fc599",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "body",
+      "view": "quarter",
+      "version": "after",
+      "path": "after/titan/review/diffuse_quarter.png",
+      "sha256": "2fff3f37dee0b28fe9f3a2ef6c42381c34b84dbca4840e5e6a9655ad511ea16d",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "body",
+      "view": "side",
+      "version": "original",
+      "path": "original/titan/review/diffuse_side.png",
+      "sha256": "473bf36bd8114ededd26c7e1c6f7d1c931ace6c801c37ac5a6f03561ad2fedb1",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "body",
+      "view": "side",
+      "version": "after",
+      "path": "after/titan/review/diffuse_side.png",
+      "sha256": "9e7a2ea614e0fa165ac7d72a62d34a507742303aab92d5c31d6e9f4f70775955",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "body",
+      "view": "rear",
+      "version": "original",
+      "path": "original/titan/review/diffuse_rear.png",
+      "sha256": "4f1bb4ac635c057632359411278b6203ba045db6a4e520aaa14b3259cd6607a3",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "body",
+      "view": "rear",
+      "version": "after",
+      "path": "after/titan/review/diffuse_rear.png",
+      "sha256": "6556605ff904caf9229496aba4817921d6e4127bc0680be50de2d3c50bf8f2f8",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "head",
+      "view": "front",
+      "version": "original",
+      "path": "original/titan/review/head_front.png",
+      "sha256": "5a61e455dd9348f929a1fcfc614c3e83a6e50e3ef58cbf82685578ad847e4809",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "head",
+      "view": "front",
+      "version": "after",
+      "path": "after/titan/review/head_front.png",
+      "sha256": "aa33b150c21f9265d913ee39cdc8b656ec6dfd26befaa70ca6a88ea452e6f674",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "head",
+      "view": "quarter",
+      "version": "original",
+      "path": "original/titan/review/head_quarter.png",
+      "sha256": "e5f878d6b66018e101bd1cf926aa5b7e5616bda295173c376f6942c3fab98106",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "head",
+      "view": "quarter",
+      "version": "after",
+      "path": "after/titan/review/head_quarter.png",
+      "sha256": "e2320f1cc480d0cc0f52490817a02209b7964637db619fb8dca3abc1b4d69a63",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "head",
+      "view": "side",
+      "version": "original",
+      "path": "original/titan/review/head_side.png",
+      "sha256": "bdcf6580fe7eac8b9237bc2ab0d641b975e92c69924ff602673aadbc557ec27d",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "head",
+      "view": "side",
+      "version": "after",
+      "path": "after/titan/review/head_side.png",
+      "sha256": "2643d9c67a78e89cd30d1833e98a6f74c876815e660db7bd0a07d91b4fa9adea",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "head",
+      "view": "rear",
+      "version": "original",
+      "path": "original/titan/review/head_rear.png",
+      "sha256": "7e43547cc3c97ce52b4ff7f4e7f6113832a96a66b7e2cb100eb7dae944415351",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "head",
+      "view": "rear",
+      "version": "after",
+      "path": "after/titan/review/head_rear.png",
+      "sha256": "96cc33e73d39159f760b0d9bd2b628bc4cd778edfc321809b5c474297438ccaa",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "clay",
+      "view": "front",
+      "version": "original",
+      "path": "original/titan/review/clay_front.png",
+      "sha256": "1520da1eddc15a2706bcf40fa027bce919edea3219b29a42fe2a1659359f8a2d",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "clay",
+      "view": "front",
+      "version": "after",
+      "path": "after/titan/review/clay_front.png",
+      "sha256": "f63c76fd0f6d395e012226a7f6bf652ebe05ae8b6c4bc36955101484c1d3095f",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "clay",
+      "view": "side",
+      "version": "original",
+      "path": "original/titan/review/clay_side.png",
+      "sha256": "1dd436c3efbebdea94ef77a5dc4386af29b4f9de963bb4f529be2e6faae86baa",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "clay",
+      "view": "side",
+      "version": "after",
+      "path": "after/titan/review/clay_side.png",
+      "sha256": "dff0a0a1984c3a23a5020f26971ee7ca85fa53970a7ad16c659afad77b3028fd",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "original",
+      "path": "original/titan/review/level_01_gameplay.png",
+      "sha256": "464e569dda8aea7d417ca617e381684f56c86098f9853752c9c1440f98f9e1b4",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "gameplay",
+      "view": "01",
+      "version": "after",
+      "path": "after/titan/review/level_01_gameplay.png",
+      "sha256": "9739de8219a5a4cfd9034965d27dc5f5b643464ad6249f4f10b84321cad746c6",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "original",
+      "path": "original/titan/review/level_08_gameplay.png",
+      "sha256": "254e33afd850811571563b2e8d2a5eb2b80b8bfce3284577af1786f14ed5b953",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "gameplay",
+      "view": "08",
+      "version": "after",
+      "path": "after/titan/review/level_08_gameplay.png",
+      "sha256": "6bf27ddd4cac8ee670dc976399dd4f4d630d117afab92c70094b6de39df8e59a",
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "original",
+      "path": "original/titan/review/idle_rifle.png",
+      "sha256": "f232a966f9abd46b093bac8687b610b2a36ae81fa8ab726a80e9dc22aa9fb566",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "animation",
+      "view": "idle_rifle",
+      "version": "after",
+      "path": "after/titan/review/idle_rifle.png",
+      "sha256": "a242a3991e46996c3d1c9296a98318ea959dfe1e089c9061d113b088ba4f7f69",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "original",
+      "path": "original/titan/review/run_rifle.png",
+      "sha256": "3161ad53f3e009952296b08cf6639f59325508db7b6704dfb1dcbaab3ac685ad",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "animation",
+      "view": "run_rifle",
+      "version": "after",
+      "path": "after/titan/review/run_rifle.png",
+      "sha256": "e2298548f085bd75ca24c7aac8b92ffbc8704246b5c497ba712206b7b072a00b",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "original",
+      "path": "original/titan/review/reload_04.png",
+      "sha256": "37ed5d96b594e5aa960745c59cfbe7f7e453f0baabb36809de9c513f8377e8ff",
+      "dimensions": [
+        640,
+        720
+      ]
+    },
+    {
+      "armor": "titan",
+      "scope": "animation",
+      "view": "reload_04",
+      "version": "after",
+      "path": "after/titan/review/reload_04.png",
+      "sha256": "0851c35f45e7fef5e1b51cd882bd73637a9b15b8cb4f6951466262acc48d1e21",
+      "dimensions": [
+        640,
+        720
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "armor": "viper",
+      "label": "後續必要基底 Prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/base_prompt.txt",
+      "sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584"
+    },
+    {
+      "armor": "viper",
+      "label": "本輪交付說明",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/README.md",
+      "sha256": "0f61e8d789970fa7f67e36ec2ecfcd6aabc2bebaf4e89ea954241f155f3b138a"
+    },
+    {
+      "armor": "viper",
+      "label": "前一輪風格與工程比較",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_comparison_v1/index.html",
+      "sha256": "91693e7f21539fa7431e8bb916d5a4810151cf015ef09316f017e63bc9282478"
+    },
+    {
+      "armor": "viper",
+      "label": "本頁比較資料",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/comparison.json",
+      "sha256": "43f76373b0ba7ca25159ae7a76dce67fb9c1b235ad0fa23716e44d2b034efb87"
+    },
+    {
+      "armor": "viper",
+      "label": "Viper 本次實際生成 Prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/prompts/head_diffuse_style_unified_v9.txt",
+      "sha256": "ab958a2979b8b1202c17bfb313279fd500d56e3ae6237f624cd4aa19ad6abb0b"
+    },
+    {
+      "armor": "viper",
+      "label": "修改前快照索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/baseline_snapshot.json",
+      "sha256": "513c47e8a6213811a4d8cc07c58271f77ca75e55565b481b4376896f6b63c868"
+    },
+    {
+      "armor": "viper",
+      "label": "該裝甲完整素材頁",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/index.html",
+      "sha256": "144ae111dbc0455d46fb84c965113e4db16a974e4af0b0ab410288c279a63551"
+    },
+    {
+      "armor": "viper",
+      "label": "實送 body prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/prompts/body_diffuse_style_unified_v9.txt",
+      "sha256": "f05a99c6395ed4014d15208607632dbd589201148fd06566bafaeae69cac90f2"
+    },
+    {
+      "armor": "viper",
+      "label": "實送 shoulder prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/prompts/shoulder_diffuse_style_unified_v9.txt",
+      "sha256": "2129e4888843f7627dfe200c099b9e8460d926e2d8c8c63d385aa6b97ab63b6a"
+    },
+    {
+      "armor": "viper",
+      "label": "實送 hand prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/prompts/hand_diffuse_style_unified_v9.txt",
+      "sha256": "f0025185a82a908ff5525c5128c62acf67989eb250b21ba9ca56a14f6ceb690d"
+    },
+    {
+      "armor": "viper",
+      "label": "實送 foot prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/viper_runtime_v2/prompts/foot_diffuse_style_unified_v9.txt",
+      "sha256": "24b37dc6097208b9c5aabe7d9c738269fbd859a2165e408fdfb1a847b950c236"
+    },
+    {
+      "armor": "fortune",
+      "label": "畫法基底 Prompt（純貼圖用途）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/base_prompt.txt",
+      "sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584"
+    },
+    {
+      "armor": "fortune",
+      "label": "本輪交付說明",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/README.md",
+      "sha256": "0f61e8d789970fa7f67e36ec2ecfcd6aabc2bebaf4e89ea954241f155f3b138a"
+    },
+    {
+      "armor": "fortune",
+      "label": "前一輪風格與工程比較",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_comparison_v1/index.html",
+      "sha256": "91693e7f21539fa7431e8bb916d5a4810151cf015ef09316f017e63bc9282478"
+    },
+    {
+      "armor": "fortune",
+      "label": "本頁比較資料",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/comparison.json",
+      "sha256": "43f76373b0ba7ca25159ae7a76dce67fb9c1b235ad0fa23716e44d2b034efb87"
+    },
+    {
+      "armor": "fortune",
+      "label": "Fortune 本次實際生成 Prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/fortune_runtime_v1/prompts/head_diffuse_refinement_v11.txt",
+      "sha256": "00ed2a747bdad37f63cab00616c3dc645657fa3d128d2495441b64a3d2bb5f9e"
+    },
+    {
+      "armor": "fortune",
+      "label": "頭盔形狀／貼圖修正基底 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/helmet_refinement_prompt.txt",
+      "sha256": "2c6168151c76324d55049aa9284405e9df151050b66d646ae7d24622948faeb6"
+    },
+    {
+      "armor": "fortune",
+      "label": "頭盔 UV 區域與鏡像取樣筆記",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/helmet_mapping_notes.md",
+      "sha256": "a6efe154b2d6feed71cf4b3ac77e581ae0acbf5792b6e70cfc196fd89beecd51"
+    },
+    {
+      "armor": "fortune",
+      "label": "修正前 v7 凍結索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/revisions/fortune_head_v7_before_refinement/snapshot.json",
+      "sha256": "e795ca0e868f8fb2b7c34d89f505948af98cca8ba5fd8da8686a8926511e197e"
+    },
+    {
+      "armor": "fortune",
+      "label": "第一輪畫法前快照索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/baseline_snapshot.json",
+      "sha256": "513c47e8a6213811a4d8cc07c58271f77ca75e55565b481b4376896f6b63c868"
+    },
+    {
+      "armor": "fortune",
+      "label": "該裝甲完整素材頁",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/fortune_runtime_v1/index.html",
+      "sha256": "c6de92fd73ab56e7f59c0bbb14cabc023f0af2b3bf1418d64df7181d625450c5"
+    },
+    {
+      "armor": "fortune",
+      "label": "頭盔實送 prompt v8（未採用候選）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/fortune_runtime_v1/prompts/head_diffuse_refinement_v8.txt",
+      "sha256": "29ef751d2fa95843598f1c3948759044a056559c8ee178b329ac273eca76eb6d"
+    },
+    {
+      "armor": "fortune",
+      "label": "頭盔實送 prompt v9（未採用候選）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/fortune_runtime_v1/prompts/head_diffuse_refinement_v9.txt",
+      "sha256": "554945c6791aaffaa292214d7d99574fbea5d33cffae238fef8a956ccdcae777"
+    },
+    {
+      "armor": "fortune",
+      "label": "頭盔實送 prompt v10（未採用候選）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/fortune_runtime_v1/prompts/head_diffuse_refinement_v10.txt",
+      "sha256": "f926a5b9415629e165e24878c6f2a824848812fca50f53e6225a3a22f2d79adf"
+    },
+    {
+      "armor": "fortune",
+      "label": "實送 body prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/fortune_runtime_v1/prompts/body_diffuse_style_v3.txt",
+      "sha256": "e4f51793985e49d65991126f8014d32208ebaec3405477af8a3c979aeb0e8f39"
+    },
+    {
+      "armor": "fortune",
+      "label": "實送 shoulder prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/fortune_runtime_v1/prompts/shoulder_diffuse_style_v2.txt",
+      "sha256": "6f8131564ae575ba2e9551deb32f195a32db43b7211fe6f16173d1cc6de4cacc"
+    },
+    {
+      "armor": "fortune",
+      "label": "實送 hand prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/fortune_runtime_v1/prompts/hand_diffuse_style_v2.txt",
+      "sha256": "1a25583f92e4e6acfaa71d15bac63d239c73e260f412235463e204e7a080a1f7"
+    },
+    {
+      "armor": "fortune",
+      "label": "實送 foot prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/fortune_runtime_v1/prompts/foot_diffuse_style_v2.txt",
+      "sha256": "a7e829fb0f4bcbcd28baa7ea94ea8ef8ddbdb14be2d46f1f4a2a0639c7a38762"
+    },
+    {
+      "armor": "fortune",
+      "label": "本輪 after 實機圖 SHA 索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/fortune_head_refinement_after_snapshot.json",
+      "sha256": "4d214cb50351f8b4ce30d006fdec391e99be5860b32735d6f31ad71df7e52b36"
+    },
+    {
+      "armor": "tank",
+      "label": "後續畫法基底 Prompt（純貼圖用途）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/base_prompt.txt",
+      "sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584"
+    },
+    {
+      "armor": "tank",
+      "label": "本輪交付說明",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/README.md",
+      "sha256": "0f61e8d789970fa7f67e36ec2ecfcd6aabc2bebaf4e89ea954241f155f3b138a"
+    },
+    {
+      "armor": "tank",
+      "label": "前一輪風格與工程比較",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_comparison_v1/index.html",
+      "sha256": "91693e7f21539fa7431e8bb916d5a4810151cf015ef09316f017e63bc9282478"
+    },
+    {
+      "armor": "tank",
+      "label": "本頁比較資料",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/comparison.json",
+      "sha256": "43f76373b0ba7ca25159ae7a76dce67fb9c1b235ad0fa23716e44d2b034efb87"
+    },
+    {
+      "armor": "tank",
+      "label": "Tank 最新頭盔參考圖（使用者附圖）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/approved_helmet_reference.png",
+      "sha256": "e005a0fb50e04f8b3f25a91a379d2124802ba82a1c206294c232dc6dfde8ad73"
+    },
+    {
+      "armor": "tank",
+      "label": "頭盔修正前 v2 固定 SHA 索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/revisions/tank_style_v2_before_helmet_refinement/snapshot.json",
+      "sha256": "cca5d8ef43bce685a19be82e912e2d52776a36a3739d424addea64ca583d1390"
+    },
+    {
+      "armor": "tank",
+      "label": "完整 runtime 修正前 73 檔索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/revisions/before_helmet_refinement_v3/snapshot.json",
+      "sha256": "2235a24b261d60b58c1f0f87c115518cc0723f5406e3a24c4b2a3411b7eb157f"
+    },
+    {
+      "armor": "tank",
+      "label": "v2 歷史純貼圖驗證",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/revisions/tank_style_v2_before_helmet_refinement/metadata/shared_validate.json",
+      "sha256": "260e4d1552092283c22c461a5b004fb766d92970f49d36125a9624b9a583da26"
+    },
+    {
+      "armor": "tank",
+      "label": "v2 原始輸出與參考 SHA",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/revisions/tank_style_v2_before_helmet_refinement/style_unified_v2_generation.json",
+      "sha256": "d8ab2af76fd58dfb4cd0fde685de55db2e7c48bd0f71bccbe184891255e99072"
+    },
+    {
+      "armor": "tank",
+      "label": "v2 五圖前原始 shared46 快照",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/tank_baseline_snapshot.json",
+      "sha256": "afbf42ffad85137a2360286679d91cc61f8222eefc1c471606c8e52478046d27"
+    },
+    {
+      "armor": "tank",
+      "label": "v2 五圖前原始 runtime319 快照",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/revisions/before_style_unification_v2/snapshot.json",
+      "sha256": "5cc171e01d5e58663e0f5e93632da9f156f765c7ebc526e0eda126d98a8e5dbf"
+    },
+    {
+      "armor": "tank",
+      "label": "Tank 最新完整素材頁（v6 正式工程通過）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/index.html",
+      "sha256": "deb5f8236b6f9a21e0d4fa1ed88a01ce455ef43ee406897440595b8254212b69"
+    },
+    {
+      "armor": "tank",
+      "label": "head v2 實送 prompt（歷史畫法版）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/revisions/tank_style_v2_before_helmet_refinement/prompts/head_diffuse_style_unified_v2.txt",
+      "sha256": "1fe7dfd68840bfd6aa8ba051d6231a0de42660ca6100206302338b8c27d2b40d"
+    },
+    {
+      "armor": "tank",
+      "label": "body v2 實送 prompt（歷史畫法版）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/revisions/tank_style_v2_before_helmet_refinement/prompts/body_diffuse_style_unified_v2.txt",
+      "sha256": "533db9b236f2f1ad0e335f5da0d8d2cc8edf7aae4768ffe8851c28ea2118c735"
+    },
+    {
+      "armor": "tank",
+      "label": "shoulder v2 實送 prompt（歷史畫法版）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/revisions/tank_style_v2_before_helmet_refinement/prompts/shoulder_diffuse_style_unified_v2.txt",
+      "sha256": "df0f7e259e86985db9ad77af55164fdb1d8e19e5595a6fb2daf65f2548292782"
+    },
+    {
+      "armor": "tank",
+      "label": "hand v2 實送 prompt（歷史畫法版）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/revisions/tank_style_v2_before_helmet_refinement/prompts/hand_diffuse_style_unified_v2.txt",
+      "sha256": "4470a31d4c6156f7044efe6e5e7816035ee380f2b9c0bc095fd7ec88e766e855"
+    },
+    {
+      "armor": "tank",
+      "label": "foot v2 實送 prompt（歷史畫法版）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/revisions/tank_style_v2_before_helmet_refinement/prompts/foot_diffuse_style_unified_v2.txt",
+      "sha256": "bc92e5d3db06c829136059204faabc2f4fc815c820acab09b925f56a8f059052"
+    },
+    {
+      "armor": "tank",
+      "label": "v6 頭部實送完整 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/prompts/head_diffuse_helmet_refinement_v6.txt",
+      "sha256": "c7840c7b06579ad2671fd0d1a9c257117589070f7031e267c8eed219a770df31"
+    },
+    {
+      "armor": "tank",
+      "label": "v3–v6 原始生成與未採用歷程",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/helmet_refinement_v3_generation.json",
+      "sha256": "84d50af03f13ddfeefcf36c8e3f89cac7792440a39121cdf79f09492ca2ad9aa"
+    },
+    {
+      "armor": "tank",
+      "label": "本輪正式 after15 SHA 索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/tank_helmet_refinement_after_snapshot.json",
+      "sha256": "02fef1a859ce1d22d1e4d78235ef8a5f37a8b9dbeb3da5f14e9e09481e162c99"
+    },
+    {
+      "armor": "tank",
+      "label": "本輪頭部不變量／工程上限",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/review/helmet_refinement_invariants.json",
+      "sha256": "8790b7338bc262530bcd835a4d818e52ca63834adc27c9529ab3e27c138ca54d"
+    },
+    {
+      "armor": "tank",
+      "label": "本輪正常資源 64 圖來源",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/review/engine/capture.json",
+      "sha256": "b24a5b339450f9de0fa870467f51637671f760abf549e67c2b88c9dea6425f1e"
+    },
+    {
+      "armor": "tank",
+      "label": "首輪擷取儲存檢查失敗（歷史）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/tank_runtime_v1/review/failed_capture_v6_savecheck/capture.json",
+      "sha256": "f591612f68e06067242ac1a56ad21f35a6583b33b357ab47d6753372820e10e2"
+    },
+    {
+      "armor": "tank",
+      "label": "Tank v6 嚴格來源 helper（獨立 PASS）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/tank_helmet_refinement_validate.json",
+      "sha256": "1c2d57db8e8447d185fb28b87a0f0f557d71d4222a8ddbe946863bb4d70c6feb"
+    },
+    {
+      "armor": "hydra",
+      "label": "後續必要基底 Prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/base_prompt.txt",
+      "sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584"
+    },
+    {
+      "armor": "hydra",
+      "label": "本輪交付說明",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/README.md",
+      "sha256": "0f61e8d789970fa7f67e36ec2ecfcd6aabc2bebaf4e89ea954241f155f3b138a"
+    },
+    {
+      "armor": "hydra",
+      "label": "前一輪風格與工程比較",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_comparison_v1/index.html",
+      "sha256": "91693e7f21539fa7431e8bb916d5a4810151cf015ef09316f017e63bc9282478"
+    },
+    {
+      "armor": "hydra",
+      "label": "本頁比較資料",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/comparison.json",
+      "sha256": "43f76373b0ba7ca25159ae7a76dce67fb9c1b235ad0fa23716e44d2b034efb87"
+    },
+    {
+      "armor": "hydra",
+      "label": "C-04 設計與使用者回饋",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/c04_skipjack.json",
+      "sha256": "55f1977dba7a8f77d3e9601904f8f889fd12e3df84aa0b245332c4215d37b19b"
+    },
+    {
+      "armor": "hydra",
+      "label": "Hydra 已確認概念圖",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/images/c04_concept.png",
+      "sha256": "5004fa2f4159308607266f3cebcfa6477db27e84db814b8a6a656e6dc5fd20cc"
+    },
+    {
+      "armor": "hydra",
+      "label": "目前三視參考",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/images/c04_turnaround.png",
+      "sha256": "98f2a68ad3c081bdc065d536ee702364201a8be755a771893e4e3bcceb2fffd8"
+    },
+    {
+      "armor": "hydra",
+      "label": "遊戲裝甲與獨立背包ID對照",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/runtime_mapping.json",
+      "sha256": "fa08084821a3786505d479252dae250bdaf142206edfe895a7551c939d3da7d6"
+    },
+    {
+      "armor": "hydra",
+      "label": "原版材質與量測歷史索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/legacy_armor_base_v2/inventory.json",
+      "sha256": "48206e28cf81a0fd27a930c033e72702a4590441b85864983384660fde135803"
+    },
+    {
+      "armor": "hydra",
+      "label": "Hydra 正式素材頁",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/hydra_runtime_v1/index.html",
+      "sha256": "f2df960ea2f42be409eddd85fcb9615a8bd75aa96a82a6dd9ca3f4073c4fb265"
+    },
+    {
+      "armor": "hydra",
+      "label": "Hydra 最新交付與原版總量測",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/hydra_runtime_v1/manifest.json",
+      "sha256": "9296a125ebac679470d34713ce005e3a0c6e8526f2991be63b83d8880735005d"
+    },
+    {
+      "armor": "hydra",
+      "label": "真原版來源固定快照",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/hydra_runtime_v1/revisions/original_source_v1/snapshot.json",
+      "sha256": "a7b7060b098baa898dd222317c435f3fca4101e13f105ed50b13292ea5004922"
+    },
+    {
+      "armor": "hydra",
+      "label": "本頁原版／首版30圖 SHA 索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/hydra_first_runtime_snapshot.json",
+      "sha256": "b1d20d078ac8c1b70815e7811f33d6963ca58270dcec01d61ae852d3983b0ee1"
+    },
+    {
+      "armor": "hydra",
+      "label": "Hydra 原始生成／採用與未採用資料",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/hydra_runtime_v1/generation_inputs.json",
+      "sha256": "df8b78a517fe25260d2d449bb125b9aba88690dc9a48c686d8cbaf44a4b17a68"
+    },
+    {
+      "armor": "hydra",
+      "label": "body 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/hydra_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+      "sha256": "0f2c8c32eedc3f9f22db4595ad5d8d1b61d223eb18313c37fc3174f00ca33183"
+    },
+    {
+      "armor": "hydra",
+      "label": "shoulder 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/hydra_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+      "sha256": "8c0182177ce81c4ea0fbeba091c399738d09a6a17a733bb0f211035de2bdc4d5"
+    },
+    {
+      "armor": "hydra",
+      "label": "hand 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/hydra_runtime_v1/prompts/hand_diffuse_original_integration_v1.txt",
+      "sha256": "51a3e455fc7702a8deae00b6973b1b9433b52c9682a04bf35229367b8369fc96"
+    },
+    {
+      "armor": "hydra",
+      "label": "foot 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/hydra_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+      "sha256": "84639c837135721d11e360e36e7f2b8436eb057f0a6d24c46c33b298b633b0cf"
+    },
+    {
+      "armor": "hydra",
+      "label": "head 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/hydra_runtime_v1/prompts/head_diffuse_original_integration_v2_head.txt",
+      "sha256": "fd8b93d44ddcd56757cb050faaaa9c294ea7b45e962c8d03b598c04182167947"
+    },
+    {
+      "armor": "hydra",
+      "label": "Hydra v2 嚴格來源 helper（獨立 PASS）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/hydra_first_integration_validate.json",
+      "sha256": "d374f9ac01e49bb6d70a748d955aa8ab337af7584c68e4057728490120c4ec81"
+    },
+    {
+      "armor": "strike",
+      "label": "後續必要基底 Prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/base_prompt.txt",
+      "sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584"
+    },
+    {
+      "armor": "strike",
+      "label": "本輪交付說明",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/README.md",
+      "sha256": "0f61e8d789970fa7f67e36ec2ecfcd6aabc2bebaf4e89ea954241f155f3b138a"
+    },
+    {
+      "armor": "strike",
+      "label": "前一輪風格與工程比較",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_comparison_v1/index.html",
+      "sha256": "91693e7f21539fa7431e8bb916d5a4810151cf015ef09316f017e63bc9282478"
+    },
+    {
+      "armor": "strike",
+      "label": "本頁比較資料",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/comparison.json",
+      "sha256": "43f76373b0ba7ca25159ae7a76dce67fb9c1b235ad0fa23716e44d2b034efb87"
+    },
+    {
+      "armor": "strike",
+      "label": "C-05 設計與使用者回饋",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/c05_breachline.json",
+      "sha256": "00836ea0b18c0dc69b5cf99b3e989f8a143d5f8b8a9b16db2db9052461dcdbfe"
+    },
+    {
+      "armor": "strike",
+      "label": "Strike 最新頭盔參考",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/fusion_v2_generated/c05_strike_fusion.jpg",
+      "sha256": "9157b428f382ed6548050aeaec2e8c0f1e499bc51f43d49c51662535d01fe201"
+    },
+    {
+      "armor": "strike",
+      "label": "目前全身概念（設計用途）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/images/c05_concept.png",
+      "sha256": "c894b46d61df08369d920a2daf1b262f5702835c2abbfa9d085a73db14e28af1"
+    },
+    {
+      "armor": "strike",
+      "label": "目前三視參考",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/images/c05_turnaround.png",
+      "sha256": "fa6a7be3696d421e7d6ed8fa3a9491b344e9f7f847314c6185cc00af94e0ff8d"
+    },
+    {
+      "armor": "strike",
+      "label": "遊戲裝甲與獨立背包ID對照",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/runtime_mapping.json",
+      "sha256": "fa08084821a3786505d479252dae250bdaf142206edfe895a7551c939d3da7d6"
+    },
+    {
+      "armor": "strike",
+      "label": "原版材質與量測歷史索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/legacy_armor_base_v2/inventory.json",
+      "sha256": "48206e28cf81a0fd27a930c033e72702a4590441b85864983384660fde135803"
+    },
+    {
+      "armor": "strike",
+      "label": "Strike 最新正式素材頁",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/strike_runtime_v1/index.html",
+      "sha256": "a5d70993e5db7705ea730fb5d3c2d1a5a56852ae8457ac3ec69aad431478dfeb"
+    },
+    {
+      "armor": "strike",
+      "label": "最新交付與真正原版量測",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/strike_runtime_v1/manifest.json",
+      "sha256": "0cc23201b8b29e52ab318e3522e450de994f01e8e33571728bd86e86a25e7728"
+    },
+    {
+      "armor": "strike",
+      "label": "真原版來源固定快照",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/strike_runtime_v1/revisions/original_source_v1/snapshot.json",
+      "sha256": "e2f7bacad42e4525de219f682b12ddb75cdd32d22e14f394692ed7b1ebe51533"
+    },
+    {
+      "armor": "strike",
+      "label": "原版／首版30圖 SHA 索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/strike_first_runtime_snapshot.json",
+      "sha256": "b12d000af0e6adc10dc879bbf3209bdc85a4e07480e3d18c90f43125d4131ed0"
+    },
+    {
+      "armor": "strike",
+      "label": "原始生成／採用與未採用資料",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/strike_runtime_v1/generation_inputs.json",
+      "sha256": "16756dcc32ac5ddd1c6fe9862f1696df5fa24628fb6661e78859dd29f76ce303"
+    },
+    {
+      "armor": "strike",
+      "label": "冠線／兩點實際 UV 技術導引（非美術）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/strike_runtime_v1/guides/strike_crown_longitudinal_v2.json",
+      "sha256": "3fe71d1eddfe80e233d68b461404f77eb4d326eac5b709ebe9ff469d84201686"
+    },
+    {
+      "armor": "strike",
+      "label": "body 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/strike_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+      "sha256": "f94a596d0bdb0c80b75792b28fc122b47c012271f71ed0e5078b80dcbbd42770"
+    },
+    {
+      "armor": "strike",
+      "label": "shoulder 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/strike_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+      "sha256": "065fd241b8887796e5e6595e66601158e12cc4f3f3120d76ad768773f4ce589a"
+    },
+    {
+      "armor": "strike",
+      "label": "hand 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/strike_runtime_v1/prompts/hand_diffuse_original_integration_v1.txt",
+      "sha256": "f789572364709ba3a68774ddd56b4a06e68b9cf22b46bce6a6396714e25699af"
+    },
+    {
+      "armor": "strike",
+      "label": "foot 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/strike_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+      "sha256": "063787e383c0a8d4890f9e3bcaa07eec5fe6d87c1e3dcc8e56ff668a46ab5e8c"
+    },
+    {
+      "armor": "strike",
+      "label": "head 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/strike_runtime_v1/prompts/head_diffuse_original_integration_v3_head.txt",
+      "sha256": "d9ba118cd9408a28be2da1f566deee02c3af08627f2772d45917e19c8c780f3f"
+    },
+    {
+      "armor": "strike",
+      "label": "Strike 最新嚴格來源 helper（PASS）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/strike_first_integration_validate.json",
+      "sha256": "9c69fd034497f6a902edc53e2dd99bf7d0c8b14852631e587bf86a439a80e8f5"
+    },
+    {
+      "armor": "titan",
+      "label": "後續必要基底 Prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/base_prompt.txt",
+      "sha256": "8a03a352a30424dff058e9694555455263134576bc111803c37863cd661b5584"
+    },
+    {
+      "armor": "titan",
+      "label": "本輪交付說明",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/README.md",
+      "sha256": "0f61e8d789970fa7f67e36ec2ecfcd6aabc2bebaf4e89ea954241f155f3b138a"
+    },
+    {
+      "armor": "titan",
+      "label": "前一輪風格與工程比較",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_comparison_v1/index.html",
+      "sha256": "91693e7f21539fa7431e8bb916d5a4810151cf015ef09316f017e63bc9282478"
+    },
+    {
+      "armor": "titan",
+      "label": "本頁比較資料",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/comparison.json",
+      "sha256": "43f76373b0ba7ca25159ae7a76dce67fb9c1b235ad0fa23716e44d2b034efb87"
+    },
+    {
+      "armor": "titan",
+      "label": "C-06 設計與使用者回饋",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/c06_patchwork.json",
+      "sha256": "c658a40a8b957b13080e9792c0d331363ca37e2a98e58bbd657626cee70f5aa7"
+    },
+    {
+      "armor": "titan",
+      "label": "Titan 目前設計參考",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/images/c06_concept.png",
+      "sha256": "54cb4073c1f482e072e23aa344dc4fff300e5157191dcd7b3e82f68ced75fc49"
+    },
+    {
+      "armor": "titan",
+      "label": "目前三視參考",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/images/c06_turnaround.png",
+      "sha256": "0cbb614bf9984e416cdaf995c0555e89aabcba709ac6e80f6745236a28059105"
+    },
+    {
+      "armor": "titan",
+      "label": "遊戲裝甲與獨立背包ID對照",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/original_armors_v1/runtime_mapping.json",
+      "sha256": "fa08084821a3786505d479252dae250bdaf142206edfe895a7551c939d3da7d6"
+    },
+    {
+      "armor": "titan",
+      "label": "原版材質與量測歷史索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/legacy_armor_base_v2/inventory.json",
+      "sha256": "48206e28cf81a0fd27a930c033e72702a4590441b85864983384660fde135803"
+    },
+    {
+      "armor": "titan",
+      "label": "Titan 最新正式素材頁",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/index.html",
+      "sha256": "3f90fb30e3fa1796d5bee29c53bfb3e60300b5d82558b0ca9a2a32cb260a7343"
+    },
+    {
+      "armor": "titan",
+      "label": "最新交付與真正原版量測",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/manifest.json",
+      "sha256": "f90cb2cc6540d41059a4905051bb8321251debc9b1f75fe74bb6b7ecdb6529d1"
+    },
+    {
+      "armor": "titan",
+      "label": "真原版來源固定快照",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/revisions/original_source_v1/snapshot.json",
+      "sha256": "1d2883a7123e3297245ee9845569335981d82f26842b661ca98393fd6a3ff0cc"
+    },
+    {
+      "armor": "titan",
+      "label": "原版／首版30圖 SHA 索引",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/titan_first_runtime_snapshot.json",
+      "sha256": "1a3e50571c1463fac728c71f1d8a6aebb55cbf31ea206ab950ad00df1f196f59"
+    },
+    {
+      "armor": "titan",
+      "label": "原始生成／採用與未採用資料",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/generation_inputs.json",
+      "sha256": "2a408776aa335a30e25c1a30a6fc06fce6ce8cdb76dca76ad52e4199c86aa7de"
+    },
+    {
+      "armor": "titan",
+      "label": "前臂三點實際 UV 技術導引（非美術）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/guides/titan_forearm_three_points_v2.json",
+      "sha256": "046d5ee0d6c13c01125821957ad1d4ee332bab35a44ecf55a2383e4652de74db"
+    },
+    {
+      "armor": "titan",
+      "label": "body 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+      "sha256": "9c01471281e03464a91612b4a2f360d2ce50f37197fa53bc2eeb0d45137c48ab"
+    },
+    {
+      "armor": "titan",
+      "label": "shoulder 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+      "sha256": "8d29a091f6e07eec855757ba5c3e598834ef1b1a8ae4d06ebe18c8d928423c79"
+    },
+    {
+      "armor": "titan",
+      "label": "foot 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+      "sha256": "a16c613b8c9cd0f60fabab941da5b6920a6c7eebcea8504c703c88afdcf8f543"
+    },
+    {
+      "armor": "titan",
+      "label": "head 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/prompts/head_diffuse_original_integration_v2_head.txt",
+      "sha256": "3725f74aaa3285c2ef71c9adf026ba20dc4e17363b2456452d9961ce3dc69ed6"
+    },
+    {
+      "armor": "titan",
+      "label": "hand 採用版本完整實送 prompt",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/prompts/hand_diffuse_original_integration_v2_hand.txt",
+      "sha256": "49a93505aaa96f9f501e04c1c38030e20b415f9e359434165c08be70ce890db2"
+    },
+    {
+      "armor": "titan",
+      "label": "Titan 最新嚴格來源 helper（PASS）",
+      "href": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/titan_first_integration_validate.json",
+      "sha256": "4ada1f5c1a2c5edb4d3102e0835f9ac4b4cbdd16672d95fb6cd931ccab5e92f8"
+    }
+  ],
+  "interactions": [
+    "viper original zoom PASS",
+    "viper before zoom PASS",
+    "viper after zoom PASS",
+    "viper before/current wipe PASS",
+    "viper compact PASS",
+    "fortune original zoom PASS",
+    "fortune before zoom PASS",
+    "fortune after zoom PASS",
+    "fortune before/current wipe PASS",
+    "fortune compact PASS",
+    "tank original zoom PASS",
+    "tank before zoom PASS",
+    "tank after zoom PASS",
+    "tank reference zoom PASS",
+    "tank before/current wipe PASS",
+    "tank compact PASS",
+    "hydra original zoom PASS",
+    "hydra after zoom PASS",
+    "hydra reference zoom PASS",
+    "hydra compact PASS",
+    "strike original zoom PASS",
+    "strike after zoom PASS",
+    "strike reference zoom PASS",
+    "strike compact PASS",
+    "titan original zoom PASS",
+    "titan after zoom PASS",
+    "titan reference zoom PASS",
+    "titan compact PASS"
+  ],
+  "mobile": [
+    {
+      "armor": "viper",
+      "width": 390,
+      "overflow": false,
+      "columns": 1
+    },
+    {
+      "armor": "viper",
+      "width": 320,
+      "overflow": false,
+      "columns": 1
+    },
+    {
+      "armor": "fortune",
+      "width": 390,
+      "overflow": false,
+      "columns": 1
+    },
+    {
+      "armor": "fortune",
+      "width": 320,
+      "overflow": false,
+      "columns": 1
+    },
+    {
+      "armor": "tank",
+      "width": 390,
+      "overflow": false,
+      "columns": 1
+    },
+    {
+      "armor": "tank",
+      "width": 320,
+      "overflow": false,
+      "columns": 1
+    },
+    {
+      "armor": "hydra",
+      "width": 390,
+      "overflow": false,
+      "columns": 1
+    },
+    {
+      "armor": "hydra",
+      "width": 320,
+      "overflow": false,
+      "columns": 1
+    },
+    {
+      "armor": "strike",
+      "width": 390,
+      "overflow": false,
+      "columns": 1
+    },
+    {
+      "armor": "strike",
+      "width": 320,
+      "overflow": false,
+      "columns": 1
+    },
+    {
+      "armor": "titan",
+      "width": 390,
+      "overflow": false,
+      "columns": 1
+    },
+    {
+      "armor": "titan",
+      "width": 320,
+      "overflow": false,
+      "columns": 1
+    }
+  ],
+  "screens": [
+    "six_viper_head_desktop.png",
+    "six_fortune_head_desktop.png",
+    "six_tank_head_desktop.png",
+    "six_tank_head_390.png",
+    "six_hydra_head_desktop.png",
+    "six_hydra_head_390.png",
+    "six_strike_head_desktop.png",
+    "six_strike_head_390.png",
+    "six_titan_head_desktop.png",
+    "six_titan_head_390.png"
+  ],
+  "errors": []
+}
