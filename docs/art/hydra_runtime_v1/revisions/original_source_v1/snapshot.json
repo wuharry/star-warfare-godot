@@ -1,0 +1,136 @@
+{
+  "status": "FROZEN_TRUE_ORIGINAL_SOURCE",
+  "created_at_utc": "2026-10-04T15:03:09.066888+00:00",
+  "runtime_id": 3,
+  "used_nodes": [
+    "ArmorHead_03",
+    "ArmorBody_03",
+    "ArmorHand_03",
+    "ArmorFoot_03"
+  ],
+  "original_scene": "res://assets/models/player/animated/player.gltf",
+  "original_scene_sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
+  "files": {
+    "source.json": {
+      "source": "docs/art/hydra_runtime_v1/build/source.json",
+      "sha256": "2f0411d4c44673ed0604e971d16de8c17be63096c7814ae27ed95211d93257fa",
+      "bytes": 526866
+    },
+    "atlases/head.png": {
+      "source": "assets/models/player/animated/armor_textures/head_9d25898f6b16_2x.png",
+      "sha256": "1275f49dc08d07bb9f673defb6b0310c1d82e8fe336450cc3bcf0efe581d8d5f",
+      "bytes": 280690
+    },
+    "guides/head_uv.svg": {
+      "source": "docs/art/hydra_runtime_v1/guides/head_uv.svg",
+      "sha256": "b217d82fcf9f65e7e3537507367b91ce987baf64d0b576e56a4e195bc1ebb493",
+      "bytes": 21109
+    },
+    "atlases/body.png": {
+      "source": "assets/models/player/animated/armor_textures/body_bd16b9436c5e_2x.png",
+      "sha256": "90878024c950f285b302841e25be651ad6610865887ceffba4e84065309da0a6",
+      "bytes": 221972
+    },
+    "guides/body_uv.svg": {
+      "source": "docs/art/hydra_runtime_v1/guides/body_uv.svg",
+      "sha256": "cdd41350c9abcde405dfa28fd50140449a2ac33e6bc0d40c864b43e42711a476",
+      "bytes": 24252
+    },
+    "atlases/shoulder.png": {
+      "source": "assets/models/player/animated/armor_textures/jian_496b2bbd770e_2x.png",
+      "sha256": "aa7560b374160584f627b68ca30d1b4b2516f8fdc0cde706996e50ef7331c7d5",
+      "bytes": 261511
+    },
+    "guides/shoulder_uv.svg": {
+      "source": "docs/art/hydra_runtime_v1/guides/shoulder_uv.svg",
+      "sha256": "4fc646842cc070bb6f3e4b3e1b48d524ad53f4f63e013eb9a523b4c72f8b4a52",
+      "bytes": 13218
+    },
+    "atlases/hand.png": {
+      "source": "assets/models/player/animated/armor_textures/hand_c974522680fe_2x.png",
+      "sha256": "ed9ff2b8bc216f802e77802c507611119b038c6ffd6bd8e3e634433b3fc30511",
+      "bytes": 215185
+    },
+    "guides/hand_uv.svg": {
+      "source": "docs/art/hydra_runtime_v1/guides/hand_uv.svg",
+      "sha256": "0dff1897a79e25358dc6ff9d2cb32b23124b4c6b11e059cd9ca5d057f425a204",
+      "bytes": 12300
+    },
+    "atlases/foot.png": {
+      "source": "assets/models/player/animated/armor_textures/foot_ee6e6e462c68_2x.png",
+      "sha256": "0c38d3f243cec54d5f99bb826efd047492c2d8025c41304afa5ba52197678cf3",
+      "bytes": 233184
+    },
+    "guides/foot_uv.svg": {
+      "source": "docs/art/hydra_runtime_v1/guides/foot_uv.svg",
+      "sha256": "4fce9a1465f3f7e87a52875b5fb92b6a6319ea31d1a27d4680d8243e803f7de4",
+      "bytes": 15493
+    },
+    "runtime_config.json": {
+      "source": "docs/art/hydra_runtime_v1/runtime_config.json",
+      "sha256": "fa55622101631c417a036aa116f26e5912d58389b0b170232e8354ad8799e289",
+      "bytes": 3166
+    },
+    "scripts/inspect_sources.gd": {
+      "source": "tools/armor_runtime_v1/inspect_sources.gd",
+      "sha256": "71995ecdbfd426b0b99503f856909b26f3ea489ee01b7811947d7c8909c08ff5",
+      "bytes": 4261
+    }
+  },
+  "texture_slots": {
+    "head": {
+      "node": "ArmorHead_03",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/head_9d25898f6b16_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/head.png",
+      "original_sha256": "1275f49dc08d07bb9f673defb6b0310c1d82e8fe336450cc3bcf0efe581d8d5f",
+      "coordinates": 161,
+      "charts": 4,
+      "triangles": 186
+    },
+    "body": {
+      "node": "ArmorBody_03",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/body_bd16b9436c5e_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/body.png",
+      "original_sha256": "90878024c950f285b302841e25be651ad6610865887ceffba4e84065309da0a6",
+      "coordinates": 214,
+      "charts": 5,
+      "triangles": 214
+    },
+    "shoulder": {
+      "node": "ArmorBody_03",
+      "surface": 1,
+      "original_texture": "assets/models/player/animated/armor_textures/jian_496b2bbd770e_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+      "original_sha256": "aa7560b374160584f627b68ca30d1b4b2516f8fdc0cde706996e50ef7331c7d5",
+      "coordinates": 114,
+      "charts": 5,
+      "triangles": 116
+    },
+    "hand": {
+      "node": "ArmorHand_03",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/hand_c974522680fe_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+      "original_sha256": "ed9ff2b8bc216f802e77802c507611119b038c6ffd6bd8e3e634433b3fc30511",
+      "coordinates": 113,
+      "charts": 3,
+      "triangles": 108
+    },
+    "foot": {
+      "node": "ArmorFoot_03",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/foot_ee6e6e462c68_2x.png",
+      "snapshot": "docs/art/hydra_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+      "original_sha256": "0c38d3f243cec54d5f99bb826efd047492c2d8025c41304afa5ba52197678cf3",
+      "coordinates": 124,
+      "charts": 4,
+      "triangles": 136
+    }
+  },
+  "original_triangles": 760,
+  "original_bones": 28,
+  "original_uv_coordinate_count": 726,
+  "authoring_budget_from_original": 0.2
+}

@@ -1,0 +1,27 @@
+{
+  "scope": "Technical true original UV mirror centerline. No paint edit.",
+  "original_source_sha256": "2f0411d4c44673ed0604e971d16de8c17be63096c7814ae27ed95211d93257fa",
+  "mirror_join": [
+    [
+      0.1691,
+      0.2165
+    ],
+    [
+      0.2411,
+      0.145
+    ]
+  ],
+  "center_candidate": [
+    0.185,
+    0.201
+  ],
+  "source_center_vertex_indices": [
+    28,
+    37,
+    67,
+    82,
+    99,
+    139
+  ],
+  "instruction": "A single central camera requires one half-lens touching the actual diagonal x=0 mirror join, rather than a complete lens within each half UV."
+}
