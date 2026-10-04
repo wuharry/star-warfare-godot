@@ -35,3 +35,27 @@ For a bounded graphical probe:
 Local diagnostic logs from the reproduction and successful comparison are in
 `test_output/editor_startup/`. The previous armor and lighting changes remain
 in place; no import cache or `.import` sidecar was manually rewritten.
+
+## Windows renderer initialization crash (2026-10-04)
+
+Rule: Keep `rendering/gl_compatibility/driver.windows="opengl3_angle"` in
+`project.godot`. Restart an already-open project to load this startup setting.
+
+Why: The latest three Windows Application Error events point to NVIDIA
+`nvoglv64.dll` (32.0.15.9579), exception `0xc00000fd`, during Godot 4.7.2
+startup. The game log stops after the engine banner, before renderer or game
+script initialization. The same project and armor resources start and run with
+ANGLE over Direct3D 11. Asset decoding, skinning and source hashes remain valid.
+
+How: Select ANGLE as the Windows Compatibility driver in the project settings.
+Keep the Compatibility renderer, CPU texture compression and artwork. The
+existing Godot native-driver fallback remains available; no driver installation
+or system settings are required. Other platform drivers keep their defaults.
+See [Godot's Windows Compatibility driver documentation](https://docs.godotengine.org/en/stable/classes/class_projectsettings.html#class-projectsettings-property-rendering-gl-compatibility-driver-windows).
+
+Verification: Use the normal graphical engine without `--rendering-driver`.
+The project main scene, `tests/menu_equipment_test.tscn` and
+`tests/smoke_test.tscn` all exit 0 and show ANGLE/Direct3D 11 in their startup
+banners. The editor is checked separately with a bounded graphical startup.
+Evidence, process arguments, exit codes and original crash events are retained
+in `test_output/startup_crash_20261004/`; real save-file hashes are checked.
