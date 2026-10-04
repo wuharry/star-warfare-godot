@@ -1,0 +1,23 @@
+{
+	"errors": [],
+	"gpu_memory_measurement": "NOT RUN; lossless import uses uncompressed GPU texels rather than BC texture blocks, exact additional runtime VRAM has not been measured",
+	"method": "Temporary registered EditorImportPlugin callback + append_import_external_resource, no manual metadata editing",
+	"records": [
+		{
+			"compress_mode": 0,
+			"import_metadata_sha256": "25c433bbe4d2ea7294c2382bdea1bf6d8066db817e02b917800eae3679e7a605",
+			"mipmaps": true,
+			"path": "res://assets/armors/fortune_v1/head_diffuse.png",
+			"png_sha256": "10d07e20bd3955fdee018b8b16a9994d3dc511990af6d60cf5cfe88ed886b0cf"
+		},
+		{
+			"compress_mode": 0,
+			"import_metadata_sha256": "d3d1b65251bd3ff91ed8859cfe1df4c41121b752b5d11ddec297be83dfb0a698",
+			"mipmaps": true,
+			"path": "res://assets/armors/fortune_v1/fortune_head_diffuse.png",
+			"png_sha256": "d2c90cf25a101af78eee748d2397de7c8b07f4e47197f495d6a6572c13555f0b"
+		}
+	],
+	"source": "https://docs.godotengine.org/en/4.7/classes/class_editorimportplugin.html#class-editorimportplugin-method-append-import-external-resource",
+	"status": "PASS"
+}

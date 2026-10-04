@@ -1,0 +1,38 @@
+{
+  "source": "res://assets/models/player/animated/player.gltf",
+  "source_snapshot_sha256": "932227eab68d09f5a3b1778ff43090ab07a3b629ed365a8c0a79e827cef81132",
+  "game_visual_id": 1,
+  "concept_design_id": "C-02",
+  "original_name": "Fortune",
+  "canonical_concept": "docs/art/fusion_v2_generated/c02_fortune_fusion.jpg",
+  "limit_fraction": 0.15,
+  "limit_definition": {
+    "uv": "number of original coordinates moved / original coordinate count per material, with coordinate/chart count unchanged",
+    "geometry": "part dimension delta and maximum rest vertex displacement normalized to smallest original part dimension",
+    "silhouette": "one minus IoU at identical Godot cameras; textures excluded"
+  },
+  "bones": 28,
+  "parts": {
+    "ArmorBody_01": {
+      "surface_count": 2,
+      "triangle_count": 298,
+      "uv_coordinate_count": 281
+    },
+    "ArmorFoot_01": {
+      "surface_count": 1,
+      "triangle_count": 136,
+      "uv_coordinate_count": 122
+    },
+    "ArmorHand_01": {
+      "surface_count": 1,
+      "triangle_count": 116,
+      "uv_coordinate_count": 113
+    },
+    "ArmorHead_01": {
+      "surface_count": 1,
+      "triangle_count": 170,
+      "uv_coordinate_count": 157
+    }
+  },
+  "stage": "runtime built and verified; user art review pending"
+}

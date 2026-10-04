@@ -1,0 +1,80 @@
+{
+  "status": "VISUALLY_REVIEWED_PENDING_USER_ART_ACCEPTANCE",
+  "reviewed_at_utc": "2026-10-04T11:51:53.020495+00:00",
+  "method": "Native final normal-resource PNG inspection without image manipulation. All four head views, four full-body views, idle, run, reload midpoint and two gameplay environments. Actual SCN invariants verify changes separately.",
+  "observations": {
+    "identity_retained": [
+      "Continuous purple visor without twin bright columns or W central split",
+      "Olive crown, forward thin blue brow, short solid green chin and side vents retained",
+      "U chest and all four body/limb atlases unchanged from v7 style pass"
+    ],
+    "helmet_correction": [
+      "Forward blue brow painted at actual UV coordinates instead of rear blue belt",
+      "Side ear cover moved to the actual side samples; long blue side bands largely replaced with green plating",
+      "Tiny blue nose triangle removed and lower visor lip lifted to near level",
+      "Brow/visor/chin projection reduced; upper ring chosen at 14 mm below prior shape as compromise"
+    ],
+    "remaining": [
+      "Crown still visibly faceted in the sparse original cage; final compromise does not completely reproduce rounded concept crown",
+      "Rear central dark slit remains despite generated atlas bleed attempt",
+      "General body edge treatment retains prior style pass; not a measured style-similarity score"
+    ],
+    "seams_and_actions": "No newly disconnected visor or geometry tear visible in inspected head/action captures. Rear dark slit is a visible texture residual; coincident seam position gap remains zero. Motion and deformation are additionally checked by unchanged runtime/GLB tests."
+  },
+  "images": [
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_head_front.png",
+      "sha256": "41008b56fbe71109f044a6a188be5c2abc1bba9eb974a108f0bb13add204766a"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_head_quarter.png",
+      "sha256": "88cbc393e7b25a2dc70e57deac0a1d579cf2342fb80a8ff67fd64e6f479efe72"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_head_side.png",
+      "sha256": "e7ec9f18c40eeb749e7f697550673ed06491aa8b26108f34c422eefe4ea012f6"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_head_rear.png",
+      "sha256": "22c5c6585472ba1f0f5494819533046fd9f5df3d68492815ee0822778a2359b3"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_diffuse_front.png",
+      "sha256": "037c2bb580dc977e400a383c44e487edb865c13c7c1475bc4ed9f457fdeb2bb4"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "sha256": "bcb4144cb6cf3d00ad040f47338e9880b1f0b8d263c5bc7f80be244be7212231"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_diffuse_side.png",
+      "sha256": "32dc69ebc41e8d7662fee1186d8f82942564c63d5d3202f78849d5c049b65cdb"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_diffuse_rear.png",
+      "sha256": "763d665c367473b3be4326ae721431fad8e48dc792b187f83ac2c7e24eebfc31"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_idle_rifle.png",
+      "sha256": "bd097de996e6eec931c26edcb96ede40ea107cab1632986d6c38d83a6a30b243"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_run_rifle.png",
+      "sha256": "2fbc439b3f496b0b738774319d57da4c32101f42d0b56f3409b322ea8476ea39"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_reload_04.png",
+      "sha256": "c48a5ba541474ef017514da08fcfe864f617dccd0ea161e8389960042adaa5ea"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "sha256": "e11afbb69b7b4be582f4b23cae5a4b3ee89a5991958556955e6ba50dcb192ada"
+    },
+    {
+      "path": "docs/art/fortune_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "sha256": "6bbc58a875b1e7aa9913a321f1fbccf52690fa94eed33428d6849d6eb1939e01"
+    }
+  ],
+  "limits": "Subjective art inspection only; no blind player study, quantified style-similarity score, all-frame motion certification or PBR-material test.",
+  "revision": "helmet_refinement_v11_upper_ring_14mm"
+}
