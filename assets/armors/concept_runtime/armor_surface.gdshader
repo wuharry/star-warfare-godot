@@ -15,10 +15,10 @@ void fragment() {
     // Fixed, subtle painted grain; UV addressing avoids motion-dependent noise.
     float wear = grain(floor(UV * 256.0));
     float finish = 0.975 + wear * 0.025;
-    ALBEDO = COLOR.rgb * finish;
-    ROUGHNESS = cloth ? 0.92 : (glass ? 0.22 : 0.55);
-    METALLIC = cloth ? 0.0 : (glass ? 0.45 : 0.12);
-    SPECULAR = glass ? 0.65 : 0.32;
-    // Small neutral fill keeps paint readable under the game's indoor lights.
-    EMISSION = COLOR.rgb * (lamp ? 0.8 : (cloth ? 0.03 : 0.08));
+    // Harmonize lighting ratio and suppress specular glare.
+    ALBEDO = COLOR.rgb * 0.25 * finish;
+    ROUGHNESS = cloth ? 0.95 : (glass ? 0.45 : 0.85);
+    METALLIC = cloth ? 0.0 : (glass ? 0.04 : 0.0);
+    SPECULAR = glass ? 0.18 : 0.06;
+    EMISSION = COLOR.rgb * (lamp ? 0.85 : (cloth ? 0.72 : 0.75));
 }

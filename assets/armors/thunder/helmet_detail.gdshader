@@ -43,11 +43,12 @@ void fragment() {
 	float glass_u = clamp((UV.x - center_u) / (edge_u - center_u), 0.0, 1.0);
 	vec2 glass_uv = vec2(0.5 + glass_u * 0.5, 0.15 + glass_v * 0.7);
 	surface = mix(surface, texture(visor_paint_texture, glass_uv).rgb, glass);
-	ALBEDO = surface * 0.72;
-	EMISSION = surface * mix(0.28 + amber * 0.13, 0.40, glass) + emitted * 0.025 * (1.0 - glass);
+	// Harmonize lighting ratio and suppress specular glare to match the retro aesthetic.
+	ALBEDO = surface * 0.25;
+	EMISSION = surface * mix(0.75, 0.80, glass) + emitted * 0.025 * (1.0 - glass);
 	NORMAL_MAP = texture(normal_texture, UV).rgb;
-	NORMAL_MAP_DEPTH = normal_strength * (1.0 - glass);
-	ROUGHNESS = mix(mix(0.72, 0.48, amber), 0.30, glass);
-	METALLIC = mix(0.06, 0.12, glass);
-	SPECULAR = mix(0.18, 0.5, glass);
+	NORMAL_MAP_DEPTH = normal_strength * 0.35 * (1.0 - glass);
+	ROUGHNESS = mix(mix(0.85, 0.72, amber), 0.45, glass);
+	METALLIC = mix(0.0, 0.02, glass);
+	SPECULAR = mix(0.06, 0.18, glass);
 }

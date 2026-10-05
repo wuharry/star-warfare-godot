@@ -10,11 +10,10 @@ void fragment() {
 	float amber = amber_visor * smoothstep(0.05, 0.20, paint.r - paint.b)
 		* smoothstep(0.04, 0.14, paint.g) * (1.0 - smoothstep(0.35, 0.65, paint.b));
 	paint = mix(paint, min(paint * vec3(1.22, 1.52, 1.1), vec3(1.0)), amber * 0.8);
-	// Original atlases contain their own painted lighting. Preserve that read
-	// while the new raised shells supply real highlights and silhouette.
-	ALBEDO = paint * 0.55;
-	EMISSION = paint * 0.45;
-	ROUGHNESS = 0.72;
-	METALLIC = 0.05;
-	SPECULAR = 0.16;
+	// Harmonize lighting ratio and suppress specular noise to match the legacy hand-painted aesthetic.
+	ALBEDO = paint * 0.25;
+	EMISSION = paint * 0.75;
+	ROUGHNESS = 0.82;
+	METALLIC = 0.0;
+	SPECULAR = 0.06;
 }

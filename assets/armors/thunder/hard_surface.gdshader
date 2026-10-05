@@ -19,14 +19,14 @@ void fragment() {
 	// in a common perceptual space so the tile never clamps to one flat value.
 	grain_luma = OUTPUT_IS_SRGB ? grain_luma : pow(grain_luma, 1.0 / 2.2);
 	float grain = clamp(grain_luma / 0.32, 0.70, 1.35);
-	surface_color *= mix(1.0, grain, paint_detail * 0.60);
+	// Harmonize lighting ratio, soften grain noise, and suppress specular glare.
+	surface_color *= mix(1.0, grain, paint_detail * 0.20);
 	// Explicit visor UVs carry its painted amber border and warm yellow center.
 	surface_color = mix(surface_color, texture(visor_paint_texture, UV).rgb, visor_finish);
-	ALBEDO = surface_color * (1.0 - readability_fill);
-	METALLIC = metalness;
-	ROUGHNESS = surface_roughness;
-	SPECULAR = mix(0.18, 0.32, visor_finish);
-	// A small fill keeps the blue shell legible in the game's dim arenas.
-	// Only visor material uses an actual glow contribution.
-	EMISSION = surface_color * (readability_fill + glow_strength);
+	float harmonized_fill = mix(0.75, 0.90, readability_fill);
+	ALBEDO = surface_color * (1.0 - harmonized_fill);
+	METALLIC = mix(0.0, 0.02, metalness);
+	ROUGHNESS = mix(0.82, surface_roughness, visor_finish * 0.3);
+	SPECULAR = mix(0.06, 0.16, visor_finish);
+	EMISSION = surface_color * (harmonized_fill + glow_strength);
 }
