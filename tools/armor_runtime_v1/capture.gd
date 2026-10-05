@@ -41,6 +41,7 @@ func _run() -> void:
 	OUT=work_path+"review/engine/"
 	if "--material-preview" in OS.get_cmdline_user_args():OUT=work_path+"review/placement_v4_preview/"
 	if "--head-preview" in OS.get_cmdline_user_args():OUT=work_path+"review/head_v2_preview/"
+	if "--visor-coverage" in OS.get_cmdline_user_args():OUT=work_path+"review/helmet_v4_coverage/"
 	if "--baseline-only" in OS.get_cmdline_user_args():OUT=work_path+"review/baseline/"
 	if "--geometry-review" in OS.get_cmdline_user_args():OUT=work_path+"review/pretexture/"
 	if "--face-review" in OS.get_cmdline_user_args():OUT=work_path+"review/face_geometry/"
@@ -109,6 +110,30 @@ func _run() -> void:
 		baseline.free();candidate.free();fixture.cleanup();GameState.save_path=real_save
 		AudioDirector.stop_all_sfx()
 		print("TANK_MATERIAL_PREVIEW_PASS direct PNG / authored UV / files=%d save_unchanged=%s"%[files.size(),str(_hash(real_save)==before)])
+		get_tree().quit(0 if _hash(real_save)==before else 1)
+		return
+	if "--visor-coverage" in OS.get_cmdline_user_args():
+		_set_ortho(fixture.view_camera,"front")
+		var center:=Vector3(0,1.58,-.07)
+		var direction:=fixture.view_camera.global_basis.z
+		fixture.view_camera.size=.83
+		fixture.view_camera.global_position=center+direction*7
+		fixture.view_camera.look_at(center)
+		_apply(player.recovered_avatar,"new",false,true)
+		for mesh: MeshInstance3D in player.recovered_avatar.find_children("*","MeshInstance3D",true,false):
+			mesh.visible=str(mesh.name)=="ArmorHead_%02d"%id
+		await _capture("visor_front_color")
+		var head:=player.recovered_avatar.find_child("ArmorHead_%02d"%id,true,false) as MeshInstance3D
+		var mask_material:=StandardMaterial3D.new()
+		mask_material.shading_mode=BaseMaterial3D.SHADING_MODE_UNSHADED
+		mask_material.albedo_color=Color.WHITE
+		head.material_override=mask_material
+		await _capture("visor_front_mask")
+		var report:=FileAccess.open(OUT+"capture.json",FileAccess.WRITE)
+		report.store_string(JSON.stringify({"runtime_scene_sha256":_hash(scene_path),"target_sha256":_hash(target_path),"canonical_diffuse_sha256_at_start":texture_sha256,"capture_sha256":capture_sha256,"files":files,"image_dimensions":dimensions,"renderer":RenderingServer.get_current_rendering_method(),"resource_mode":"normal_imported_resources","view":"orthographic front; whole ArmorHead mesh only, identical camera for painted and white silhouette passes","engine_arguments":OS.get_cmdline_args(),"save_unchanged":_hash(real_save)==before,"real_save_sha256_at_start":before,"real_save_sha256_at_end":_hash(real_save),"isolated_save_path_at_end":GameState.save_path,"save_change_first_capture":save_change_first_capture},"\t"))
+		baseline.free();candidate.free();fixture.cleanup();GameState.save_path=real_save
+		AudioDirector.stop_all_sfx()
+		print("ARMOR_VISOR_COVERAGE_CAPTURE_PASS helmet-only white mask and actual canonical atlas")
 		get_tree().quit(0 if _hash(real_save)==before else 1)
 		return
 	if "--head-preview" in OS.get_cmdline_user_args():

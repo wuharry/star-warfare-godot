@@ -13,6 +13,9 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import importlib.util
+import sys
+from functools import lru_cache
 from pathlib import Path
 
 
@@ -589,10 +592,27 @@ def verify_tank_style_v2_history() -> dict:
             "comparison_snapshot_sha256": TANK_SHARED_STYLE_V2_SNAPSHOT_SHA256}
 
 
-def verify_titan_v1_history(runtime: Path) -> dict:
+@lru_cache(maxsize=1)
+def titan_refinement_validator():
+    """Load the dedicated read-only contract without running its report writer."""
+    folder = ROOT / "tools/armor_runtime_v1"
+    if str(folder) not in sys.path:
+        sys.path.insert(0, str(folder))
+    spec = importlib.util.spec_from_file_location("titan_helmet_delivery_contract", folder / "validate_titan_helmet.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def verify_titan_v1_history(runtime: Path, refined: bool = False) -> dict:
     """Keep the actual completed v1 immutable through head/hand atlas retries."""
     frozen = runtime / "revisions/first_integration_v1_before_head_hand_refinement"
-    assert digest(frozen / "snapshot.json") == TITAN_FIRST_V1_SNAPSHOT_SHA256
+    helper = titan_refinement_validator() if refined else None
+    if helper:
+        helper.verify_baselines()
+        helper.hash_matches(frozen / "snapshot.json", TITAN_FIRST_V1_SNAPSHOT_SHA256, historical=True)
+    else:
+        assert digest(frozen / "snapshot.json") == TITAN_FIRST_V1_SNAPSHOT_SHA256
     snapshot = read(frozen / "snapshot.json")
     expected = {
         "generation_inputs.json", "manifest.json", "README.md", "index.html", "runtime_config.json",
@@ -606,9 +626,12 @@ def verify_titan_v1_history(runtime: Path) -> dict:
     for relative, record in snapshot["files"].items():
         path = frozen / relative
         assert path.resolve().is_relative_to(frozen.resolve())
-        assert digest(path) == record["sha256"] and path.stat().st_size == record["bytes"]
+        if helper:
+            assert len(helper.matched_bytes(path, record["sha256"], historical=True)) == record["bytes"]
+        else:
+            assert digest(path) == record["sha256"] and path.stat().st_size == record["bytes"]
     # v2 is an atlas correction: the original v1 geometry and UV remain locked.
-    for filename in ["source.json", "target.json", "geometry.json"]:
+    for filename in (["source.json"] if refined else ["source.json", "target.json", "geometry.json"]):
         assert digest(runtime / "build" / filename) == digest(frozen / "delivery" / filename)
     for label in ["body", "shoulder", "foot"]:
         assert digest(ROOT / f"assets/armors/titan_v1/{label}_diffuse.png") == digest(frozen / f"delivery/{label}_diffuse.png")
@@ -617,12 +640,19 @@ def verify_titan_v1_history(runtime: Path) -> dict:
             "titan_v2_additional_geometry_uv_changes": 0}
 
 
-def verify_first_source(name: str) -> tuple[dict, dict]:
+def verify_first_source(name: str, titan_refined: bool = False) -> tuple[dict, dict]:
     """Validate each first integration against its own immutable true source."""
     spec = FIRST_INTEGRATIONS[name]
     runtime = ROOT / f"docs/art/{name}_runtime_v1"
     frozen = runtime / "revisions/original_source_v1"
-    assert digest(frozen / "snapshot.json") == spec["snapshot_sha256"]
+    assert not titan_refined or name == "titan"
+    helper = titan_refinement_validator() if titan_refined else None
+    if helper:
+        helper.active_version(read(runtime / "runtime_config.json"))
+        helper.verify_baselines()
+        helper.hash_matches(frozen / "snapshot.json", spec["snapshot_sha256"], historical=True)
+    else:
+        assert digest(frozen / "snapshot.json") == spec["snapshot_sha256"]
     snapshot = read(frozen / "snapshot.json")
     assert len(snapshot["files"]) == 13 and snapshot["runtime_id"] == spec["id"]
     expected_files = {"source.json", "runtime_config.json", "scripts/inspect_sources.gd",
@@ -631,7 +661,10 @@ def verify_first_source(name: str) -> tuple[dict, dict]:
     for relative, record in snapshot["files"].items():
         path = frozen / relative
         assert path.resolve().is_relative_to(frozen.resolve())
-        assert digest(path) == record["sha256"] and path.stat().st_size == record["bytes"]
+        if helper:
+            assert len(helper.matched_bytes(path, record["sha256"], historical=True)) == record["bytes"]
+        else:
+            assert digest(path) == record["sha256"] and path.stat().st_size == record["bytes"]
     assert (runtime / "build/source.json").read_bytes() == (frozen / "source.json").read_bytes()
     source = read(frozen / "source.json")
     nodes = {f"Armor{part}_{spec['id']:02d}": 42 + (spec["id"] - 3) * 4 + index
@@ -641,7 +674,10 @@ def verify_first_source(name: str) -> tuple[dict, dict]:
     assert original == ROOT / "assets/models/player/animated/player.gltf"
     assert digest(original) == source["original_scene_sha256"] == snapshot["original_scene_sha256"]
     index_path = frozen / "source_node_index.json"
-    assert digest(index_path) == spec["node_index_sha256"]
+    if helper:
+        helper.hash_matches(index_path, spec["node_index_sha256"], historical=True)
+    else:
+        assert digest(index_path) == spec["node_index_sha256"]
     index = read(index_path)
     assert index["original_source_snapshot_sha256"] == spec["snapshot_sha256"]
     assert index["runtime_id"] == spec["id"] and index["node_ids"] == nodes
@@ -690,7 +726,7 @@ def verify_first_source(name: str) -> tuple[dict, dict]:
         assert digest(ROOT / slot["original_texture"]) == digest(frozen / f"atlases/{label}.png") == slot["original_sha256"]
         assert len(surface["uv"]) == slot["coordinates"] and uv_chart_count([surface]) == slot["charts"]
         assert len(surface["indices"]) // 3 == slot["triangles"]
-    history = verify_titan_v1_history(runtime) if name == "titan" else {}
+    history = verify_titan_v1_history(runtime, refined=titan_refined) if name == "titan" else {}
     return source, {"original_source_snapshot_records_verified": 13,
                     "original_source_snapshot_sha256": spec["snapshot_sha256"],
                     "original_node_index_sha256": spec["node_index_sha256"], "used_node_ids": nodes, **history}
@@ -789,8 +825,235 @@ def verify_first_generation(name: str, runtime: Path, assets: Path) -> list[dict
     return images
 
 
+def verify_titan_refinement() -> dict:
+    """Dedicated active v3/v4 contract; do not recertify the v1 target as current."""
+    helper = titan_refinement_validator()
+    config = read(ROOT / "docs/art/titan_runtime_v1/runtime_config.json")
+    version = helper.active_version(config)
+    source, historical = verify_first_source("titan", titan_refined=True)
+    runtime, assets = ROOT / "docs/art/titan_runtime_v1", ROOT / "assets/armors/titan_v1"
+    before = helper.verify_before(version)
+    if version == 3:
+        helper.verify_before(4)
+    target, geometry = read(runtime / "build/target.json"), read(runtime / "build/geometry.json")
+    contract = helper.verify_target(config, source, target, before)
+    measured = helper.verify_geometry(config, source, target)
+    textures = {label: assets / filename for label, filename in config["texture_files"].items()}
+    images = helper.verify_generation(config, textures, before)
+    image_sha = {row["label"]: row["canonical_sha256"] for row in images}
+    paths = {"scene": assets / "titan.scn", "glb": assets / "titan.glb", "source": runtime / "build/source.json",
+             "target": runtime / "build/target.json", "geometry": runtime / "build/geometry.json", "master": runtime / "build/titan_master.blend"}
+    hashes = {key: digest(path) for key, path in paths.items()}
+    filenames = {"runtime": "runtime_test.json", "roundtrip": "roundtrip_test.json", "scene": "original_scene_invariants.json",
+                 "master": f"helmet_v{version}_master_test.json", "glb_images": f"helmet_v{version}_glb_test.json",
+                 "guards": f"helmet_v{version}_contract_and_guards_test.json"}
+    if version == 4:
+        filenames["proportion"] = "helmet_v4_proportion_test.json"
+        filenames["visor_coverage"] = "helmet_v4_visor_coverage.json"
+    reports = {key: read(runtime / "review" / filename) for key, filename in filenames.items()}
+    for label, report in reports.items():
+        assert report["status"] == "PASS" and not report.get("errors", report.get("failures", [])), f"Titan v{version}: failed {label}"
+    def report_hash(report, field, key):
+        assert helper.hash_matches(paths[key], report[field], historical=version == 3), f"Titan v{version}: stale {field}"
+    scene = reports["scene"]
+    assert scene["current_scene_sha256"] == hashes["scene"] and scene["original_bones"] == 28
+    for key in ("source", "target", "geometry"):
+        report_hash(scene, f"{key}_sha256", key)
+    helper.hash_matches(runtime / "revisions/original_source_v1/snapshot.json", scene["original_source_snapshot_sha256"], historical=True)
+    assert scene["original_node_ids"] == historical["used_node_ids"]
+    assert len(scene["records"]) == 4 and {row["part"] for row in scene["records"]} == set(source["parts"])
+    assert sum(row["surfaces"] for row in scene["records"]) == 5
+    for row in scene["records"]:
+        assert row["rest_position_uv_verified_against_target"] and row["max_rest_error_m"] < 1e-6
+        if row["part"] == "ArmorHead_05":
+            assert row["refinement_contract_verified"] is True and row["surfaces"] == 1
+        else:
+            assert row["body_limbs_all_arrays_exact"] is True and row["indices_skin_weights_bones_topology_exact"] is True
+    master, glb = reports["master"], reports["glb_images"]
+    for report in (master, glb):
+        assert report["revision"] == config["active_helmet_revision"]
+        for key in ("source", "target"):
+            report_hash(report, f"{key}_sha256", key)
+        if version == 4:
+            for key in ("scene", "geometry"):
+                report_hash(report, "current_scene_sha256" if key == "scene" else "geometry_sha256", key)
+            assert report["canonical_diffuse_sha256"] == image_sha
+            assert report["head_contract"] == contract and report["original_metrics"] == measured
+            assert report["before_revision_snapshot_sha256"] == helper.BEFORE_INDEX_SHA[version]
+            assert report["original_source_snapshot_sha256"] == FIRST_INTEGRATIONS["titan"]["snapshot_sha256"]
+    assert master["master_sha256"] == hashes["master"] and master["triangles"] == measured["triangles"] and master["bones"] == 28
+    assert master["authored_uv_indices_weights_verified"] and master["five_packed_native_pngs_exact"]
+    assert glb["glb_sha256"] == hashes["glb"] and glb["authored_triangle_uv_normalized_skin_verified"]
+    assert set(glb["images"]) == LABELS
+    for image in images:
+        row = glb["images"][image["label"]]
+        assert row["canonical_sha256"] == image["canonical_sha256"] and row["dimensions"] == image["dimensions"] and row["rgb_exact"]
+    # Read the actual export as well: the report cannot hide an altered image,
+    # primitive index, UV coordinate or normalized joint weight.
+    actual_glb = helper.verify_glb(config, source, target, textures)
+    assert actual_glb["glb_sha256"] == hashes["glb"] and actual_glb["images"] == glb["images"]
+    runtime_report, roundtrip = reports["runtime"], reports["roundtrip"]
+    for report in (runtime_report, roundtrip):
+        assert report["runtime_scene_sha256"] == hashes["scene"] and report["save_unchanged"]
+        report_hash(report, "target_sha256", "target")
+    expected_runtime_poses = {(clip, time) for clip in ("idle_rifle", "run_rifle") for time in (0, .15, .30, .5, .75)} | {("reload", time) for time in (.15, .35, .55, .75, .95)}
+    expected_export_poses = {(clip, time) for clip in ("idle_rifle", "run_rifle") for time in (0, .25, .5)} | {("reload", time) for time in (.25, .5, .75)}
+    assert len(runtime_report["poses"]) == 15 and {(row["clip"], round(row["time"], 2)) for row in runtime_report["poses"]} == expected_runtime_poses
+    assert len(roundtrip["poses"]) == 9 and {(row["clip"], round(row["time"], 2)) for row in roundtrip["poses"]} == expected_export_poses
+    assert runtime_report["triangles"] == measured["triangles"] and runtime_report["limits"] == {"local_geometry_change_fraction": .20, "uv_changed_coordinate_fraction": .20, "uv_count_scope": "per_material_surface"}
+    assert roundtrip["glb_sha256"] == hashes["glb"] and roundtrip["original_bones"] == 28 and roundtrip["bind_aliases"] == 0
+    assert all(row["head_bounds_delta_fraction"] <= .20 for row in runtime_report["poses"])
+    assert all(row["max_bounds_difference"] < .001 for row in roundtrip["poses"])
+    head = roundtrip["head_atlas_pixels"]
+    assert head["status"] == "PASS" and head["canonical_sha256"] == image_sha["head"]
+    assert head["codec_rgb_error_limit"] == .05 and head["max_rgb_error"] <= .05 and len(head["samples"]) == 30
+    assert all(row["max_rgb_error"] <= .05 for row in head["samples"])
+    # Explicit guards must execute the compiler/adoption/provenance/review
+    # refusal paths and the actual Godot corruption-negative contract test.
+    guards = reports["guards"]
+    assert guards["revision"] == config["active_helmet_revision"] and guards["resource_files_unchanged"]
+    checked = guards["checked_resource_sha256"]
+    for key in ("scene", "glb"):
+        assert checked[paths[key].relative_to(ROOT).as_posix()] == hashes[key]
+    for path in textures.values():
+        assert checked[path.relative_to(ROOT).as_posix()] == digest(path)
+    if version == 4:
+        # No circular current identity check on the later-written manifest,
+        # README or HTML. They are still required to be unchanged DURING the
+        # actual guard executions, as the complete before/after maps prove.
+        assert guards["checked_resource_sha256_after"] == checked and not guards["changed_resource_files"]
+        hard_resources = [*paths.values(), runtime / "runtime_config.json", runtime / "generation_inputs.json", ROOT / config["generation_record"]]
+        for path in hard_resources:
+            # The unchanged first-integration generation index has two
+            # already pinned historical EOL forms. Active v4 files remain raw.
+            helper.hash_matches(path, checked[path.relative_to(ROOT).as_posix()],
+                                historical=path == runtime / "generation_inputs.json")
+    assert len(guards["checks"]) == 5
+    commands = [" ".join(row["command"]) for row in guards["checks"]]
+    for token in ("adopt.py", "provenance.py", "review.py", "compile.gd", "armor_head_refinement_contract_test.gd"):
+        selected = [row for row, command in zip(guards["checks"], commands) if token in command]
+        assert len(selected) == 1
+        row = selected[0]
+        expected = 0 if "contract_test.gd" in token else 1
+        assert row["status"] == "PASS" and row["exit_code"] == row["expected_exit_code"] == expected
+        if expected == 0:
+            assert "ARMOR_HEAD_REFINEMENT_CONTRACT_PASS" in row["stdout"]
+        else:
+            assert row["stderr"], "Refusal guard did not record its reason"
+    capture_folder = runtime / f"review/helmet_v{version}_final"
+    capture = read(capture_folder / "capture.json")
+    assert capture["runtime_scene_sha256"] == capture["scene_sha256_at_start"] == hashes["scene"]
+    for field in ("target_sha256", "target_sha256_at_start"):
+        assert helper.hash_matches(paths["target"], capture[field], historical=version == 3)
+    assert capture["canonical_diffuse_sha256_at_start"] == image_sha
+    assert capture["renderer"] == "gl_compatibility" and capture["resource_mode"] == "normal_imported_resources" and capture["save_unchanged"]
+    assert len(capture["real_save_sha256_at_start"]) == 64 and capture["real_save_sha256_at_start"] == capture["real_save_sha256_at_end"]
+    assert capture["real_save_path"] == "user://star_warfare_save.json" and capture["isolated_save_path_at_end"] == "user://titan_v1_capture_profile.json"
+    prefix = capture_folder.relative_to(ROOT).as_posix()
+    expected_files = {f"res://{prefix}/{filename}" for filename in EXPECTED_CAPTURE_NAMES}
+    assert len(capture["files"]) == len(capture["capture_sha256"]) == 64 and set(capture["files"]) == set(capture["capture_sha256"]) == expected_files
+    for filename in capture["files"]:
+        assert digest(ROOT / filename.removeprefix("res://")) == capture["capture_sha256"][filename]
+    silhouettes = []
+    from PIL import Image
+    def silhouette(path):
+        with Image.open(path) as image:
+            rgb = image.convert("RGB")
+            background = rgb.getpixel((0, 0))
+            return rgb.size, {i for i, pixel in enumerate(rgb.getdata()) if max(abs(pixel[c] - background[c]) for c in range(3)) > 18}
+    for view in ("front", "side", "rear", "quarter"):
+        size, original_mask = silhouette(capture_folder / f"original_clay_{view}.png")
+        current_size, current_mask = silhouette(capture_folder / f"new_clay_{view}.png")
+        assert size == current_size and original_mask | current_mask
+        changed = 1 - len(original_mask & current_mask) / len(original_mask | current_mask)
+        assert changed <= .20 and capture["full_body_framing"][view]["same_camera_for_original_and_new"]
+        silhouettes.append({"view": view, "silhouette_changed_fraction": changed})
+    if version == 4:
+        proportion = reports["proportion"]
+        assert proportion["limit"] == .20 and proportion["geometry"] == geometry
+        assert proportion["capture_matches_current_resources"] and proportion["capture_summary_sha256"] == digest(capture_folder / "capture.json")
+        assert proportion["current_scene_sha256"] == hashes["scene"] and proportion["canonical_diffuse_sha256"] == image_sha
+        for key in ("source", "target", "geometry"):
+            report_hash(proportion, f"{key}_sha256", key)
+        assert len(proportion["silhouettes"]) == 4
+        for measured_view in silhouettes:
+            row = next(r for r in proportion["silhouettes"] if r["view"] == measured_view["view"])
+            assert row["camera_identical"] and abs(row["silhouette_changed_fraction"] - measured_view["silhouette_changed_fraction"]) < 1e-7
+        coverage = reports["visor_coverage"]
+        coverage_dir = runtime / "review/helmet_v4_coverage"
+        coverage_summary_path = coverage_dir / "capture.json"
+        coverage_summary = read(coverage_summary_path)
+        assert coverage["minimum_fraction"] == .50
+        assert coverage["classification"] == "mask RGB channels >=224; amber r>g>b, r-g>=7, g-b>=9, r-b>=35; fixed for selected amber/steel-blue palette"
+        assert "Not UV area, total 3D surface area, roundness or artistic likeness." in coverage["definition"]
+        assert "ArmorHead_05" in coverage["definition"] and "body, neck" not in coverage["definition"].lower() and "neck excluded" not in coverage["definition"].lower(), "Whole ArmorHead mesh mask cannot claim that its neck geometry was excluded"
+        assert coverage["capture_summary_sha256"] == digest(coverage_summary_path)
+        assert coverage["current_scene_sha256"] == coverage_summary["runtime_scene_sha256"] == hashes["scene"]
+        assert coverage["canonical_head_sha256"] == coverage_summary["canonical_diffuse_sha256_at_start"]["head"] == image_sha["head"]
+        assert coverage_summary["resource_mode"] == "normal_imported_resources" and coverage_summary["renderer"] == "gl_compatibility"
+        assert coverage_summary["save_unchanged"] and coverage_summary["real_save_sha256_at_start"] == coverage_summary["real_save_sha256_at_end"]
+        assert len(coverage_summary["real_save_sha256_at_start"]) == 64 and coverage_summary["isolated_save_path_at_end"] == "user://titan_v1_capture_profile.json"
+        assert coverage_summary["view"] == "orthographic front; whole ArmorHead mesh only, identical camera for painted and white silhouette passes"
+        for key in ("target", "geometry"):
+            report_hash(coverage, f"{key}_sha256", key)
+        assert coverage_summary["target_sha256"] == hashes["target"]
+        expected_coverage_files = {"res://" + (coverage_dir / f"visor_front_{name}.png").relative_to(ROOT).as_posix() for name in ("color", "mask")}
+        assert set(coverage_summary["files"]) == set(coverage_summary["capture_sha256"]) == expected_coverage_files and len(coverage_summary["files"]) == 2
+        assert set(coverage["capture_sha256"]) == {"color", "mask"}
+        pixel_images = {}
+        for name in ("color", "mask"):
+            path = coverage_dir / f"visor_front_{name}.png"
+            assert digest(path) == coverage["capture_sha256"][name] == coverage_summary["capture_sha256"]["res://" + path.relative_to(ROOT).as_posix()]
+            with Image.open(path) as image:
+                assert image.size == (640, 720)
+                pixel_images[name] = list(image.convert("RGB").getdata())
+        silhouette_pixels = glass_pixels = 0
+        bounds = [640, 720, -1, -1]
+        for i, (mask, color) in enumerate(zip(pixel_images["mask"], pixel_images["color"])):
+            if min(mask) < 224:
+                continue
+            silhouette_pixels += 1
+            x, y = i % 640, i // 640
+            bounds = [min(bounds[0], x), min(bounds[1], y), max(bounds[2], x), max(bounds[3], y)]
+            r, g, b = color
+            glass_pixels += int(r > g > b and r - g >= 7 and g - b >= 9 and r - b >= 35)
+        assert silhouette_pixels > 0 and bounds[0] > 1 and bounds[1] > 1 and bounds[2] < 638 and bounds[3] < 718, "Coverage mask empty or clipped"
+        fraction = glass_pixels / silhouette_pixels
+        assert coverage["visor_pixels"] == glass_pixels and coverage["helmet_silhouette_pixels"] == silhouette_pixels and coverage["helmet_bounds_px"] == bounds
+        assert abs(coverage["projected_front_visor_fraction"] - fraction) < 1e-12 and fraction >= .50, "Measured projected amber visor is below requested50%"
+        log_path = runtime / "review/helmet_v4_angle_capture.log"
+        log = log_path.read_text(encoding="utf-8-sig")
+        assert "ANGLE" in log and "Direct3D11" in log and "ARMOR_CAPTURE_PASS files=64 save_unchanged=true" in log
+    else:
+        # The existing v3 was captured on Mac. Its pinned report+64 files
+        # constitute historical proof; never infer a Windows driver for it.
+        old_capture = runtime / "revisions/before_helmet_refinement_v4/docs/art/titan_runtime_v1/review/helmet_v3_final/capture.json"
+        assert read(old_capture) == capture
+        log_path = None
+    captures = []
+    for suffix in SUFFIXES:
+        current = capture_folder / f"new_{suffix}.png"
+        copied = WORK / f"after/titan/review/{suffix}.png"
+        assert digest(current) == digest(copied), f"Titan {config['active_helmet_revision']}: stale comparison {suffix}"
+        captures.append({"view": suffix, "sha256": digest(copied)})
+    return {"name": "titan", "scope": f"explicit head refinement from true original source; original-total20% shape/UV-prefix limit; v{version} head-only original-edge subdivisions within{config['head_refinement']['count_growth_ceiling']:.0%} count growth; original weights/bones and body/limbs unchanged",
+            "active_helmet_revision": config["active_helmet_revision"], "user_authorized_original_ceiling": .20,
+            "actual_delivery_original_limit": .20, "head_count_growth_ceiling": config["head_refinement"]["count_growth_ceiling"],
+            "prior_runtime_zero_geometry_contract_applies": False, **historical, **contract, **measured,
+            "before_revision_snapshot_sha256": helper.BEFORE_INDEX_SHA[version],
+            "images": images, "reports": {key: (runtime / "review" / filename).relative_to(ROOT).as_posix() for key, filename in filenames.items()},
+            "capture_summary": (capture_folder / "capture.json").relative_to(ROOT).as_posix(),
+            "capture_summary_sha256": digest(capture_folder / "capture.json"), "current_artifact_sha256": hashes,
+            "silhouettes": silhouettes, "captures": captures,
+            "capture_execution": log_path.relative_to(ROOT).as_posix() if log_path else "pinned historical Mac v3 capture"}
+
+
 def verify_first_integration(name: str) -> dict:
     """Shared current-delivery checks for a first integration, not a paint-only pass."""
+    if name == "titan":
+        config = read(ROOT / "docs/art/titan_runtime_v1/runtime_config.json")
+        if "head_refinement" in config or "active_helmet_revision" in config:
+            return verify_titan_refinement()
     source, snapshot = verify_first_source(name)
     spec = FIRST_INTEGRATIONS[name]
     runtime, assets = ROOT / f"docs/art/{name}_runtime_v1", ROOT / f"assets/armors/{name}_v1"
@@ -1155,7 +1418,7 @@ def main() -> None:
     result["prior_pending_combined_report_sha256"] = digest(pending_combined)
     (WORK / "validate.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     tank_scope = "Tank head refinement within original20%, zero additional UV, immutable v2 paint-only history" if tank_refinement else "Tank paint only within original15%, user20% ceiling"
-    print(f"ARMOR_DELIVERY_VALIDATE_PASS: Viper paint only; Fortune head refinement within original15%; {tank_scope}; Hydra/Strike/Titan first integration within original20%; 90 current comparison captures")
+    print(f"ARMOR_DELIVERY_VALIDATE_PASS: Viper paint only; Fortune head refinement within original15%; {tank_scope}; Hydra/Strike first integration within original20%; Titan active helmet refinement within explicit original-source limits; 90 current comparison captures")
 
 
 if __name__ == "__main__":

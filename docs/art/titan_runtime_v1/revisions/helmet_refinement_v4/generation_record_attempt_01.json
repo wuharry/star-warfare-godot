@@ -1,0 +1,49 @@
+{
+  "tool": "image_gen.imagegen",
+  "attempt": 1,
+  "use_case": "precise-object-edit",
+  "prompt_path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/head_diffuse_prompt.txt",
+  "prompt_sha256": "1ba3ed7f67e050d65ca307602a30fa505eaa6801e567c18cea4c8e8b230ff073",
+  "references": [
+    {
+      "path": "assets/armors/titan_v1/titan_head_diffuse.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/ref/edit_target.png",
+      "role": "edit_target",
+      "sha256": "5f628b7172b3cb43954b7810824d603dc827fa953bec60bda76e465b69d5450d"
+    },
+    {
+      "path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v3/ref/approved_concept.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/ref/approved_concept.png",
+      "role": "approved_helmet_design",
+      "sha256": "54cb4073c1f482e072e23aa344dc4fff300e5157191dcd7b3e82f68ced75fc49"
+    },
+    {
+      "path": "docs/art/titan_runtime_v1/review/helmet_v3_final/new_head_front.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/ref/before_front.png",
+      "role": "actual_runtime_diagnostic",
+      "sha256": "140839e8e86c0392a2f20a7df5c98864ec1fce1b4093ac7215506264326ebb3a"
+    },
+    {
+      "path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v3/ref/original_uv_semantics.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/ref/original_uv_semantics.png",
+      "role": "technical_uv_semantics",
+      "sha256": "961c5c6f50152d041706dc76e5cafa17d4e02cc88560f1ced4b396983ab5ec11"
+    }
+  ],
+  "native_output_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-1a6c6344-b24a-4bd5-8064-17cf1a08dd87.png",
+  "native_output_sha256": "ae479ea82fa99a9ffb7ec7fd70b2c6a2166933f72e1ca1f731e756a0e50aedb4",
+  "archive_path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/head_diffuse_attempt_01.png",
+  "canonical_path": "assets/armors/titan_v1/titan_head_diffuse.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "processing": "byte-for-byte native copy; no painting, recoloring, crop, resize or compositing",
+  "status": "native_adopted_pending_runtime_visual_review",
+  "model_revision": "helmet_refinement_v4",
+  "uv_post_adoption": "Preserve v3 302 head coordinates, 132 triangles, three charts and ten inherited original UV edits; no additional UV edits"
+}

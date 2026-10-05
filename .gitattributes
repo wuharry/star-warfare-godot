@@ -14,3 +14,15 @@
 # Preserve the exact prompts recorded for the Viper image-generation calls.
 /docs/art/viper_runtime_v2/prompts/*.txt text eol=lf
 /docs/art/original_armors_v1/revisions/c01_game_proportions_20261002/*.txt text eol=lf
+
+# Titan v4 provenance pins raw bytes, including the frozen Windows snapshot.
+/docs/art/titan_runtime_v1/** -text
+/docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v4/** -text
+/docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/*.txt text eol=lf
+/docs/art/armor_style_unification_v1/validate.json -text
+/docs/art/armor_style_unification_v1/revisions/titan_v2_before_helmet_refinement_v4/** -text
+/docs/art/armor_style_unification_v1/titan_helmet_refinement_v4_after_snapshot.json -text
+/docs/art/armor_style_unification_v1/review_browser/titan_helmet_v4_final_browser_validate.json -text
+/docs/art/armor_style_unification_v1/index.html text eol=lf
+/docs/art/original_armors_v1/index.html text eol=lf
+/docs/art/original_armors_v1/mapping_current_source_audit.json text eol=lf

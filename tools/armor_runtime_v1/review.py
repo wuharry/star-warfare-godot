@@ -19,7 +19,8 @@ def main():
     work = ROOT / f'docs/art/{slug}_runtime_v1'
     config = json.loads((work / 'runtime_config.json').read_text())
     if config.get('head_refinement'):
-        raise SystemExit('The first-integration review template assumes unchanged UVs. Open revisions/helmet_refinement_v3/index.html for the active helmet review.')
+        revision = config['active_helmet_revision']
+        raise SystemExit(f'The first-integration review template assumes unchanged UVs. Open revisions/{revision}/index.html for the active helmet review.')
     manifest = json.loads((work / 'manifest.json').read_text())
     source = json.loads((work / 'build/source.json').read_text())
     inputs = json.loads((work / 'generation_inputs.json').read_text())

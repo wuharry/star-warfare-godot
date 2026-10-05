@@ -23,7 +23,7 @@ ART = Path(__file__).resolve().parents[1]
 ROOT = ART.parents[2]
 REVIEWED = 'visually_reviewed_pending_user_selection'
 PRODUCTION_REVIEWED = 'generated_and_visually_checked_pending_user_review'
-SOURCE_AUDIT_SHA256 = '5e40d557237172f1e3354c940f623b337fafa3e407b5dead335006431c28b17c'
+SOURCE_AUDIT_SHA256 = '59b2d953748a0ecaf2995900a9f56332a9c45fb56a25ac98d547140a4a762ca0'
 APPROVED_CURRENT_SOURCES = {
     'scripts/core/game_state.gd': 'b1b36ce8073c9a47b4cc8e469b67520f2ad4066af3d65445448f31fbb53a60f0',
     'scripts/game/player.gd': '6b68ee86ffb5c407ea78e196598c6ddd7390170c69bd3619503f42769f7d3d49',
@@ -321,9 +321,15 @@ class Validator:
         row = self.runtime_contracts().get(name)
         if not self.check(row is not None, 'runtime_current_proof', did, 'Corresponding current six-armor proof is required'):
             return
+        texture_names = {label: f'{label}_diffuse.png' for label in ('head', 'body', 'shoulder', 'hand', 'foot')}
+        if name == 'titan' and row.get('active_helmet_revision') in ('helmet_refinement_v3', 'helmet_refinement_v4'):
+            config = self.load(ROOT / f'docs/art/{folder}/runtime_config.json')
+            self.check(config.get('texture_files', {}).get('head') == 'titan_head_diffuse.png',
+                       'runtime_refined_head_map', did, 'Refined Titan requires its verified canonical head atlas')
+            texture_names['head'] = 'titan_head_diffuse.png'
         master_path = f'docs/art/{folder}/build/{name}_master.blend'
         required = {scene_relative, f'assets/armors/{asset_folder}/{name}.glb', master_path,
-                    *(f'assets/armors/{asset_folder}/{label}_diffuse.png' for label in ('head', 'body', 'shoulder', 'hand', 'foot'))}
+                    *(f'assets/armors/{asset_folder}/{texture_names[label]}' for label in texture_names)}
         self.check(required.issubset(files), 'runtime_manifest_files', did, 'Manifest must fingerprint current SCN/GLB/master and five maps')
         for relative in sorted(required):
             path = self.local(relative, f'{did}/runtime artifact', ROOT)
@@ -341,7 +347,7 @@ class Validator:
                    and runtime_test.get('runtime_scene_sha256') == self.digest(ROOT / scene_relative),
                    'runtime_source_sha', did, 'Fresh source/target/master/scene SHA must agree with actual files')
         for image in row['images']:
-            relative = f'assets/armors/{asset_folder}/{image["label"]}_diffuse.png'
+            relative = f'assets/armors/{asset_folder}/{texture_names[image["label"]]}'
             self.check(files.get(relative, {}).get('sha256') == image['canonical_sha256'],
                        'runtime_native_selected', relative, 'Latest manifest and verified selected native atlas differ')
         for image in row['captures']:
