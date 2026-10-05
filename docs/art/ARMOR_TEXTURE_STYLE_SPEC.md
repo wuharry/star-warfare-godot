@@ -275,6 +275,32 @@ Cygni 原件的頭部為 238 tris，最大連續頭殼 166 tris；貼圖上的�
 - 可用 Blender 局部改造原 mesh：縮短下巴、內收頰部、調整頭冠／側翼；保留遊戲尺寸、原骨架、掛點與可用權重，保存可編輯 `.blend` 和改動前後對照。這是使用者要求的建模做法，不限於換貼圖。
 - 先檢查灰模、棋盤格與接縫，再把實際 UV／區域圖交給圖片生成器；生成器不負責展 UV。
 
+### Titan：大片玻璃與局部圓弧（2026-10-05）
+
+**本次 Titan 以草稿的大片金色玻璃面罩為主；圓弧必須做到 3D 輪廓，藍色只作外圍護框。** 使用者允許這套頭盔小幅增加 UV／幾何切分，但仍禁止數量翻倍或把主頭殼切碎；這項放寬只適用本次指定的 Titan。
+
+- 在原有弧線邊緣加入少量頂點，延用相同骨架權重與連續 UV；只補貼圖高光不能修正側面折角。
+- 分別量測三角形、UV 座標及連續 UV 區域；三者不能混稱「UV 面數」。本次頭盔為 124 → 132 tris、294 → 302 個 UV 座標，連續區域維持 3。原 UV 中只調整 10 個取樣座標，避免共用中線採到 atlas 邊框而變成面罩中央的尖角。
+- 原三角形須有可追溯的切分關係，不能遺失或重複面；新增頂點繼承同一原邊的權重。這次採取 10% 的面數／座標增量上限作為實作預算，不是給其他套裝的新授權。
+- 大頭短身、身體與四肢、武器／背包掛點仍以實際原模型為準。草稿只有斜視圖，側後方深度需標示為推測；遊戲可用與使用者美術接受分開記錄。
+
+套裝附加 prompt（搭配基底、實際 UV 與選定草稿）：
+
+```text
+TITAN HELMET: the front is predominantly one continuous convex amber-gold
+glass faceplate, extending up into the forehead dome and wrapping toward the
+temples. A shallow steel-blue perimeter frame supports it. Preserve the game's
+large-head proportions and hand-painted diffuse style. The mesh silhouette must
+carry the curvature; a painted highlight cannot replace curved geometry.
+Use a few local edge subdivisions only when required. Keep the broad connected
+UV charts and mirrored reuse, and report triangle/UV-coordinate/chart counts
+separately. Never turn the shell into many outlined fragments or double counts.
+The shared face-center seam is glass interior, not an external black rim, blue
+nose or vertical highlight. Check the actual wrapped model before delivery.
+```
+
+實際素材、實送 prompt、變更前快照與驗證見 [Titan README](titan_runtime_v1/README.md)。
+
 ### 整合基底 prompt（直接複製）
 
 **這段是後續生成應使用的共用開頭；再接套裝條件與實際輸出類型。** 原版全套分析已濃縮在其中，生成一套時附目標套與相近套的參考即可，不必把所有 29 套同時混進生成圖片。可單獨取用 [base_prompt.txt](legacy_armor_base_v2/base_prompt.txt)。

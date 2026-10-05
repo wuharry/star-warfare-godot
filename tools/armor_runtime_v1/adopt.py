@@ -18,6 +18,9 @@ def main():
     parser.add_argument('--armor', choices=['hydra', 'strike', 'titan'], required=True)
     slug = parser.parse_args().armor
     work = ROOT / 'docs/art' / f'{slug}_runtime_v1'
+    config = json.loads((work / 'runtime_config.json').read_text())
+    if config.get('head_refinement'):
+        raise SystemExit('First-integration adoption would restore the old head PNG. Use the active helmet generation_record.json and README workflow.')
     records = json.loads((work / 'generation_inputs.json').read_text())
     selected = [r for r in records if r['selected']]
     assert len(selected) == 5 and {r['label'] for r in selected} == {'head', 'body', 'shoulder', 'hand', 'foot'}

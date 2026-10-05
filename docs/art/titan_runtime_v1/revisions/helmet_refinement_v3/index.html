@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Titan · 玻璃面罩圓弧修正</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:#0b1118;color:#e4eaf0}body{margin:0}main{max-width:1250px;margin:auto;padding:32px 24px 64px}h1{font-size:clamp(24px,4vw,40px);margin:12px 0}h2{margin-top:36px}p{line-height:1.7;color:#afbfcd}.eyebrow{color:#e9b65c;letter-spacing:.12em}a{color:#8dcaf4}.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:22px 0}button,select{font:inherit;border:1px solid #364656;border-radius:8px;padding:10px 16px;background:#17232e;color:#d8e4ee;cursor:pointer}button[aria-pressed="true"]{background:#b98a35;color:#10151b;border-color:#ecc77e}.pair,.poses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}figure{margin:0;background:#101922;border:1px solid #293747;border-radius:12px;overflow:hidden}figcaption{padding:14px 18px;color:#cad8e5}figure img{width:100%;display:block;background:#090e12}.facts{display:flex;gap:12px;flex-wrap:wrap}.facts span{padding:12px 18px;border:1px solid #31414e;border-radius:8px;background:#14212c}.facts b{color:#f5c978}.note{border-left:3px solid #e0ad50;padding-left:16px}details{background:#111d27;padding:18px;border:1px solid #2b3b49;border-radius:10px;margin-top:24px}summary{cursor:pointer;font-weight:600}.concept{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:16px}.concept img{width:100%;max-height:760px;object-fit:contain}.poses{grid-template-columns:repeat(3,minmax(0,1fr))}table{width:100%;border-collapse:collapse;margin:18px 0}th,td{padding:12px;text-align:left;border-bottom:1px solid #2b3a47}th{color:#a0b3c5}.wide{margin-top:18px}.wide img{width:100%;display:block}@media(max-width:650px){main{padding:20px 12px 40px}.pair,.poses,.concept{grid-template-columns:1fr}table{font-size:14px}button,select{padding:9px}}
+</style>
+<main>
+<div class="eyebrow">TITAN · C-06 / 遊戲 ID 5</div>
+<h1>大片玻璃面罩，圓弧做到模型上</h1>
+<p>金色玻璃延伸到上額，藍色收成外圍護框。保留遊戲的大頭比例，局部切分上弧與前緣；下緣的中央尖角已修正。</p>
+<div class="facts"><span>頭盔 <b>124 → 132 tris</b></span><span>UV 座標 <b>294 → 302</b></span><span>連續 UV <b>3 → 3</b></span><span>原 UV 局部改動 <b>10 / 294</b></span></div>
+<div class="controls"><select id="baseline" aria-label="左側比對版本"><option value="before">修正前的新版 Titan</option><option value="original">真正原版 Titan</option></select><button data-view="front" aria-pressed="false">正面</button><button data-view="quarter" aria-pressed="true">斜視</button><button data-view="side" aria-pressed="false">側面圓弧</button></div>
+<section class="pair"><figure><img id="left" src="../../review/before_helmet_v3/new_head_quarter.png" alt="修正前 Titan 頭盔"><figcaption id="leftLabel">修正前 · 寬眉甲、長 V 面罩</figcaption></figure><figure><img id="right" src="../../review/helmet_v3_final/new_head_quarter.png" alt="新版 Titan 金色玻璃面罩"><figcaption>本版 · 大片玻璃、短護框、局部 3D 圓弧</figcaption></figure></section>
+<p class="note">以上是同相機／姿勢的 Godot 模型擷取。工程檢查已通過，美術效果仍待你評價；沒有量測「風格相似率」。</p>
+<h2>持槍與換彈</h2>
+<section class="poses"><figure><img src="../../review/helmet_v3_final/new_idle_rifle.png" alt="待機持槍"><figcaption>持槍待機</figcaption></figure><figure><img src="../../review/helmet_v3_final/new_run_rifle.png" alt="跑動"><figcaption>跑動姿勢</figcaption></figure><figure><img src="../../review/helmet_v3_final/new_reload_04.png" alt="換彈中段"><figcaption>換彈中段</figcaption></figure></section>
+<h2>遊戲場景</h2>
+<p>在商店／配裝選 Titan 即會載入本版。以下是遊戲場景的展示相機擷取，拍攝時停止戰鬥；實機手機效能尚未量測。</p>
+<figure class="wide"><img src="../../review/helmet_v3_final/new_level_01_front.png" alt="Titan 在遊戲場景中的正面展示"><figcaption>區域 01 · 遊戲場景展示</figcaption></figure>
+<details><summary>草稿與製作紀錄</summary><div class="concept"><img src="../../input_snapshots/original_integration_v2_head/approved_helmet.png" alt="指定 Titan 草稿"><div><p>草稿決定大片金色玻璃、壓力頭盔的包覆感與鋼藍護框；遊戲原模型決定體格、原骨架、掛點與低多邊形密度。</p><p>草稿僅有斜視圖，側後方深度由原頭殼推測。仍可見少量低模折面，沒有套用草稿的成人長腿比例。</p><p><a href="../../README.md">素材與驗證 README</a> · <a href="generation_record.json">實送 prompt／原生生成紀錄</a> · <a href="head_diffuse_prompt_attempt_04.txt">最後一次圖片編修 prompt</a></p></div></div></details>
+<h2>檢查摘要</h2>
+<table><thead><tr><th>項目</th><th>結果</th><th>範圍</th></tr></thead><tbody><tr><td>遊戲換裝與動作</td><td>PASS</td><td>15 個姿勢、混搭與商店／配裝入口</td></tr><tr><td>GLB 回讀</td><td>PASS</td><td>9 個姿勢、28 原骨架、五張內嵌 RGB 零差異</td></tr><tr><td>切分與來源</td><td>PASS</td><td>原父面覆蓋；原權重保留；其他三部件全 arrays 精確相同</td></tr><tr><td>圖片與模型</td><td>PASS</td><td>原生 PNG 未後製；Blender 內嵌五張同位元組貼圖</td></tr><tr><td>手機效能／使用者美術接受</td><td>NOT RUN</td><td>保留給實機量測與你的評價</td></tr></tbody></table>
+<p>Godot 4.7.2 · Compatibility / Apple M4 · 640×720 頭部／姿勢、1280×720 遊戲場景。</p>
+</main>
+<script>
+let view='quarter';const base=document.getElementById('baseline');
+function render(){const before=base.value==='before';document.getElementById('left').src=before?'../../review/before_helmet_v3/new_head_'+view+'.png':'../../review/helmet_v3_final/original_head_'+view+'.png';document.getElementById('leftLabel').textContent=before?'修正前 · 寬眉甲、長 V 面罩':'真正原版 · 原素材／原模型';document.getElementById('right').src='../../review/helmet_v3_final/new_head_'+view+'.png';document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));}
+base.addEventListener('change',render);document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{view=b.dataset.view;render()}));
+</script></html>
