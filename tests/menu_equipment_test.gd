@@ -246,7 +246,7 @@ func _run() -> void:
 			var grip := preview.to_global(-offset)
 			_check(grip.distance_to((preview.get_parent() as Node3D).global_position) < 0.001, weapon_id + " preview grip floats away from its socket")
 			var scabbard := shell.preview_root.find_child("WeaponScabbard", true, false)
-			_check((scabbard != null) == (str(weapon.kind) == "sword"), weapon_id + " preview scabbard does not match the equipped weapon")
+			_check(scabbard == null, weapon_id + " preview added a scabbard absent from the original equipment")
 		shell._select_item("gun23", false)
 		var customize_additive := _first_preview_mesh(shell.preview_root)
 		_check(customize_additive != null, "Customize additive weapon preview is missing")
@@ -299,6 +299,15 @@ func _run() -> void:
 						var cygni_part := cygni_template.find_child(str(armor_mesh.name), true, false) as MeshInstance3D
 						_check(cygni_part != null and armor_mesh.mesh == cygni_part.mesh and material == cygni_part.get_active_material(surface_index), "shop preview lost adopted Cygni geometry/material")
 						cygni_template.free()
+					elif int(str(armor_mesh.name).right(2)) in [1, 2, 3, 4, 5]:
+						# Adopted painted suits use their authored scene materials,
+						# rather than the legacy refinement shader used below.
+						var runtime_path := ArmorVisuals.reworked_scene_path(int(str(armor_mesh.name).right(2)))
+						var runtime_template := (load(runtime_path) as PackedScene).instantiate()
+						var runtime_part := runtime_template.find_child(str(armor_mesh.name), true, false) as MeshInstance3D
+						_check(runtime_part != null and armor_mesh.mesh == runtime_part.mesh and material == runtime_part.get_active_material(surface_index), "shop preview lost adopted armor geometry/material")
+						_check(material is BaseMaterial3D and material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, "shop preview lost adopted armor painted diffuse")
+						runtime_template.free()
 					elif armor_mesh.has_meta("armor_rework") and int(str(armor_mesh.name).right(2)) < 21:
 						_check(material is ShaderMaterial and material.shader.resource_path == "res://assets/equipment_refined/painted_equipment.gdshader", "shop preview lost refined armor material")
 					else:

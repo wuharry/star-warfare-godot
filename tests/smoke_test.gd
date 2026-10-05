@@ -62,6 +62,9 @@ func _run() -> void:
 	world.player.set_touch_move(Vector2(0.5, -0.25))
 	_check(world.player.touch_move.is_equal_approx(Vector2(0.5, -0.25)), "touch movement input was not accepted")
 
+	# This loop checks base weapon costs. The autoload may already have loaded
+	# a real profile's energy modifiers before the test redirects save_path.
+	world.player.armor_skills = {}
 	for weapon_id: String in GameState.get_weapon_ids():
 		world.player.equip_weapon(weapon_id, false)
 		_check(world.player.current_weapon_id == weapon_id, "%s could not be equipped" % weapon_id)
