@@ -51,7 +51,8 @@ func _verify_head_atlas(imported: Node) -> Dictionary:
 	_check(material != null and material.albedo_texture != null, "GLB head diffuse missing")
 	if material == null or material.albedo_texture == null: return {"status":"FAIL"}
 	var actual := material.albedo_texture.get_image()
-	var expected := Image.load_from_file(ProjectSettings.globalize_path(asset_path+"head_diffuse.png"))
+	var head_texture_path := asset_path + str(config.get("texture_files", {}).get("head", "head_diffuse.png"))
+	var expected := Image.load_from_file(ProjectSettings.globalize_path(head_texture_path))
 	_check(actual != null and expected != null, "Cannot decode imported/canonical head atlas")
 	if actual == null or expected == null: return {"status":"FAIL"}
 	if actual.is_compressed(): _check(actual.decompress() == OK, "Cannot decompress GLB head")
@@ -81,7 +82,7 @@ func _verify_head_atlas(imported: Node) -> Dictionary:
 		maximum = maxf(maximum,error)
 		_check(error <= .05,"GLB imported head differs at %s RGBerror %.5f" % [pixel,error])
 		samples.append({"uv":[uv.x,uv.y],"pixel":[pixel.x,pixel.y],"canonical_rgb":[b.r,b.g,b.b],"glb_rgb":[a.r,a.g,a.b],"max_rgb_error":error})
-	return {"status":"PASS" if maximum <= .05 else "FAIL","canonical_sha256":_hash(asset_path+"head_diffuse.png"),"logical_size":[logical.x,logical.y],"block_decoded_size":[actual.get_width(),actual.get_height()],"codec_rgb_error_limit":.05,"max_rgb_error":maximum,"samples":samples,"scope":"Thirty actual imported head-material samples versus current canonical; standalone full-five-image RGB equality separately requires zero error."}
+	return {"status":"PASS" if maximum <= .05 else "FAIL","canonical_sha256":_hash(head_texture_path),"logical_size":[logical.x,logical.y],"block_decoded_size":[actual.get_width(),actual.get_height()],"codec_rgb_error_limit":.05,"max_rgb_error":maximum,"samples":samples,"scope":"Thirty actual imported head-material samples versus current canonical; standalone full-five-image RGB equality separately requires zero error."}
 
 func _compare(parts: Array[MeshInstance3D], source_sk: Skeleton3D, imported: Node, sk: Skeleton3D, clip: String, time: float) -> void:
 	sk.clear_bones_global_pose_override()

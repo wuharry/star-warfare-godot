@@ -19,6 +19,9 @@ var ribbon_material: ShaderMaterial
 var flares: Array[MeshInstance3D] = []
 var ring_mesh: MeshInstance3D
 var detail := "high"
+var blade_base := Vector3.ZERO
+var blade_tip := Vector3.ZERO
+var blade_bases: Array[Vector3] = []
 
 static func _create(parent: Node, kind: String) -> WeaponVfxPolish:
 	var quality := str(GameState.settings.get("quality", "high"))
@@ -77,6 +80,24 @@ static func burst(parent: Node, at: Vector3, normal: Vector3, color: Color, radi
 	effect.ring_mesh.look_at(at + axis, Vector3.RIGHT if absf(axis.dot(Vector3.UP)) > 0.98 else Vector3.UP)
 	if effect.detail != "low":
 		effect._sparks(at, axis, color)
+	return effect
+
+static func slash(blade: MeshInstance3D, color: Color, duration: float) -> WeaponVfxPolish:
+	var parent := blade.get_tree().current_scene
+	if parent == null:
+		parent = blade.get_parent()
+	var effect := _create(parent, "slash")
+	if effect == null:
+		return null
+	effect.source = weakref(blade)
+	var bounds := preload("res://scripts/core/equipment_refinement.gd").authored_bounds(blade.mesh)
+	effect.blade_base = Vector3(bounds.get_center().x, maxf(0, bounds.position.y), 0)
+	effect.blade_tip = Vector3(bounds.get_center().x, bounds.end.y, 0)
+	effect.lifetime = clampf(duration, 0.14, 0.55)
+	effect.tail_lifetime = 0.12
+	effect._build_ribbon(color)
+	effect.ribbon_material.set_shader_parameter("core_strength", 0.35)
+	effect._update_slash()
 	return effect
 
 func _build_ribbon(color: Color) -> void:
@@ -154,6 +175,11 @@ func _sample_position(at: Vector3) -> void:
 func _process(delta: float) -> void:
 	elapsed += delta
 	var fade := clampf(1.0 - elapsed / lifetime, 0.0, 1.0)
+	if mode == "slash":
+		_update_slash()
+		if elapsed >= lifetime or not is_instance_valid(source.get_ref()):
+			queue_free()
+		return
 	if mode == "trail":
 		var target: Node3D = source.get_ref() as Node3D
 		if is_instance_valid(target) and not target.is_queued_for_deletion():
@@ -181,6 +207,34 @@ func _process(delta: float) -> void:
 			flare.global_basis = camera.global_basis.orthonormalized()
 	if mode != "trail" and elapsed >= lifetime:
 		queue_free()
+
+func _update_slash() -> void:
+	var blade := source.get_ref() as MeshInstance3D
+	if is_instance_valid(blade) and blade.is_inside_tree() and not blade.is_queued_for_deletion():
+		var tip := blade.to_global(blade_tip)
+		if points.is_empty() or points[-1].distance_squared_to(tip) > 0.0001:
+			points.append(tip)
+			blade_bases.append(blade.to_global(blade_base))
+			times.append(elapsed)
+	while not times.is_empty() and (elapsed - times[0] > tail_lifetime or points.size() > MAX_POINTS):
+		points.pop_front()
+		blade_bases.pop_front()
+		times.pop_front()
+	ribbon.clear_surfaces()
+	if points.size() < 2:
+		return
+	ribbon_material.set_shader_parameter("age", elapsed)
+	ribbon.surface_begin(Mesh.PRIMITIVE_TRIANGLES, ribbon_material)
+	for i in range(points.size() - 1):
+		var a := clampf(1.0 - (elapsed - times[i]) / tail_lifetime, 0, 1)
+		var b := clampf(1.0 - (elapsed - times[i + 1]) / tail_lifetime, 0, 1)
+		_vertex(blade_bases[i], Vector2(0, 0), a)
+		_vertex(points[i], Vector2(0, 1), a)
+		_vertex(points[i + 1], Vector2(1, 1), b)
+		_vertex(blade_bases[i], Vector2(0, 0), a)
+		_vertex(points[i + 1], Vector2(1, 1), b)
+		_vertex(blade_bases[i + 1], Vector2(1, 0), b)
+	ribbon.surface_end()
 
 func _draw_ribbon() -> void:
 	ribbon.clear_surfaces()

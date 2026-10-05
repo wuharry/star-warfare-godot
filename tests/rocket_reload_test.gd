@@ -18,7 +18,10 @@ func _ready() -> void:
 	var body := player.gun_mount.get_node("WeaponVisual/Recovered_gun11") as MeshInstance3D
 	var rocket := player.attached_reload_part.get_node("OriginalMagazine") as MeshInstance3D
 	_check(rocket.global_transform.is_equal_approx(body.global_transform), "assembled rocket changed original origin or scale")
-	_check(body.mesh.resource_path.ends_with("gun11_body.obj") and rocket.mesh.resource_path.ends_with("gun11_rocket.obj"), "launcher still uses whole mesh or fabricated rocket")
+	# Refinement already supplies .res versions of these original split parts.
+	# Verify the actual resources, rather than the obsolete OBJ-only suffix.
+	var refinement = preload("res://scripts/core/equipment_refinement.gd")
+	_check(body.mesh == refinement.weapon_mesh("gun11_body") and rocket.mesh == refinement.weapon_mesh("gun11_rocket") and body.mesh != refinement.weapon_mesh("gun11"), "launcher still uses whole mesh or fabricated rocket")
 	for variant in range(2):
 		for walking in [false, true]:
 			moving = walking

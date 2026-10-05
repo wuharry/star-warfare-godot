@@ -29,7 +29,9 @@ func _ready() -> void:
 	var light := DirectionalLight3D.new()
 	light.rotation_degrees = Vector3(-30, -25, 0)
 	add_child(light)
-	_label("BLUE LASER / ENERGY FLOW", Vector3(-4, 4.0, 0))
+	var cannon_review := "--cannon-review" in OS.get_cmdline_user_args()
+	var laser_weapon: Dictionary = GameState.WEAPONS["gun21" if cannon_review else "gun17"]
+	_label("LASER CANNON / ENERGY FLOW" if cannon_review else "BLUE LASER / ENERGY FLOW", Vector3(-4, 4.0, 0))
 	_label("PLASMA / CURVED AFTERIMAGE", Vector3(-4, 1.7, 0))
 	_label("RPG / HOT EXHAUST TRAIL", Vector3(-4, -0.7, 0))
 	var bolts: Array[WarfareProjectile] = []
@@ -46,8 +48,8 @@ func _ready() -> void:
 			if index == 0:
 				bolts[index].position.y = 0.6 + sin(frame * 0.14) * 0.32
 		await get_tree().create_timer(0.016).timeout
-	world.spawn_tracer(Vector3(-5.2, 3.0, 0), Vector3(5.2, 3.0, 0), Color(0.08, 0.7, 1), "laser")
-	world.spawn_impact(Vector3(5.2, 3.0, 0), Vector3.LEFT, Color(0.08, 0.7, 1), "laser")
+	world.spawn_tracer(Vector3(-5.2, 3.0, 0), Vector3(5.2, 3.0, 0), laser_weapon.color, laser_weapon.tracer_style)
+	world.spawn_impact(Vector3(5.2, 3.0, 0), Vector3.LEFT, laser_weapon.color, laser_weapon.tracer_style)
 	# Hold a readable beam pose while the real particle renderer warms up.
 	for tween in get_tree().get_processed_tweens(): tween.pause()
 	for effect in get_tree().get_nodes_in_group("weapon_vfx_polish"):
@@ -60,6 +62,8 @@ func _ready() -> void:
 		get_tree().quit(1)
 		return
 	var suffix := "before" if "--before" in OS.get_cmdline_user_args() else "after"
+	if cannon_review:
+		suffix = "cannon"
 	var result := get_viewport().get_texture().get_image().save_png("res://test_output/weapon_polish_%s.png" % suffix)
 	print("WEAPON_POLISH_CAPTURE_PASS " + suffix if result == OK else "WEAPON_POLISH_CAPTURE_FAIL")
 	get_tree().quit(0 if result == OK else 1)

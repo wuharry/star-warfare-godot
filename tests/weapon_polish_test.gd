@@ -50,6 +50,21 @@ func _run() -> void:
 	trail._process(0.4)
 	_check(trail.is_queued_for_deletion(), "detached trail leaks after fade")
 	await get_tree().process_frame
+	var blade := MeshInstance3D.new()
+	blade.mesh = preload("res://scripts/core/equipment_refinement.gd").weapon_mesh("gun28")
+	add_child(blade)
+	var slash := WeaponVfxPolish.slash(blade, Color.CYAN, 0.3)
+	slash.set_process(false)
+	for step in 6:
+		blade.rotation.z = float(step) * 0.12
+		slash._process(0.016)
+	_check(slash.ribbon.get_surface_count() == 1 and slash.points.size() > 2, "blade swing has no swept afterimage")
+	_check(slash.points[0] != blade.to_global(slash.blade_tip), "blade afterimage moves with the current tip")
+	_check(slash.find_children("*", "CollisionObject3D", true, false).is_empty(), "blade afterimage changes damage collisions")
+	blade.free()
+	slash._process(0.016)
+	_check(slash.is_queued_for_deletion(), "weapon switch leaves an orphaned blade afterimage")
+	await get_tree().process_frame
 	var burst := WeaponVfxPolish.burst(self, Vector3.ZERO, Vector3.UP, Color.CYAN)
 	burst.set_process(false)
 	var particles := burst.get_node("EnergyMotes") as CPUParticles3D

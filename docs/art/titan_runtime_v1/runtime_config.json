@@ -81,7 +81,7 @@
     }
   },
   "accepted_art_status": "engineering_integrated_pending_user_art_review",
-  "geometry_authoring": "True-source head-only front-height remap; latest head/hand atlas revisions preserve target/source/geometry bytes exact to frozen v1.",
+  "geometry_authoring": "helmet_refinement_v3: pressure-helmet visor arcs subdivided locally; three UV charts retained, ten original UV samples adjusted; original bones and non-head parts retained",
   "source_node_index": "docs/art/titan_runtime_v1/revisions/original_source_v1/source_node_index.json",
   "source_node_index_sha256": "ec6be5fe46fc753ed75c850e95d088f5ed6e961af0170995af95cb2b00a116da",
   "original_node_ids": {
@@ -92,6 +92,22 @@
   },
   "shape_file": "tools/armor_runtime_v1/shapes/titan.py",
   "art_residuals": [
-    "連續金色全罩及兩前臂各三點已映射；原有頭部低模折面、盒形耳護及少量亮色接觸邊仍存在，未聲稱概念球形完整還原。"
-  ]
+    "Only quarter-view concept exists; side/back structure inferred within original cage. Gameplay chibi proportions deliberately retained; art review pending."
+  ],
+  "texture_files": {
+    "head": "titan_head_diffuse.png",
+    "body": "body_diffuse.png",
+    "shoulder": "shoulder_diffuse.png",
+    "hand": "hand_diffuse.png",
+    "foot": "foot_diffuse.png"
+  },
+  "active_helmet_revision": "helmet_refinement_v3",
+  "generation_record": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v3/generation_record.json",
+  "before_revision_snapshot": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v3/snapshot.json",
+  "head_refinement": {
+    "vertices": 302,
+    "triangles": 132,
+    "count_growth_ceiling": 0.1,
+    "scope": "Titan helmet only; chosen conservative implementation budget, not a general permission for other armors"
+  }
 }

@@ -15,6 +15,7 @@ const RocketReloadPose = preload("res://scripts/game/rocket_reload_pose.gd")
 const WeaponReloadPose = preload("res://scripts/game/weapon_reload_pose.gd")
 const WeaponOptics = preload("res://scripts/core/weapon_optics.gd")
 const WeaponSpread = preload("res://scripts/core/weapon_spread.gd")
+const WeaponVisualPose = preload("res://scripts/core/weapon_visual_pose.gd")
 const ARMOR_HP_SCALE := 1.0
 const CAMERA_BASE_HEIGHT := 1.683712
 const FLY_CAMERA_OFFSET := 0.25
@@ -432,7 +433,7 @@ func _add_recovered_backpack() -> void:
 	backpack_visual = MeshInstance3D.new()
 	backpack_visual.name = "RecoveredBackpack"
 	backpack_visual.mesh = load(backpack_path)
-	preload("res://scripts/game/armor_visuals.gd").restore_starter_backpack(backpack_visual, bag_id)
+	preload("res://scripts/game/armor_visuals.gd").restore_backpack_materials(backpack_visual)
 	# AvatarBuilder placed the independent Bag prefab at fly_bag in world space
 	# before parenting it. Its prefab root rotation is already baked into the
 	# recovered OBJ, so cancel the socket's rest basis instead of applying the
@@ -568,6 +569,8 @@ func _build_gun_visual() -> void:
 		child.queue_free()
 	var data: Dictionary = GameState.WEAPONS.get(current_weapon_id, GameState.WEAPONS.gun00)
 	_prepare_weapon_mount(int(data.id))
+	if is_instance_valid(recovered_avatar):
+		WeaponVisualPose.refresh_scabbard(recovered_avatar, data)
 	var weapon_color: Color = data.color
 	var metal := _material(Color(0.06, 0.075, 0.09), 0.43, 0.73)
 	var accent := _material(weapon_color.darkened(0.15), 0.28, 0.62, weapon_color * 0.5)
@@ -595,9 +598,7 @@ func _build_gun_visual() -> void:
 			var restored := MeshInstance3D.new()
 			restored.name = "Recovered_%s" % str(data.model)
 			restored.mesh = restored_mesh
-			var bounds := preload("res://scripts/core/equipment_refinement.gd").authored_bounds(restored_mesh)
-			var longest := maxf(bounds.size.x, maxf(bounds.size.y, bounds.size.z))
-			var factor := size.z / longest if longest > 0.001 else 1.0
+			var factor := WeaponVisualPose.scale_factor(data, restored_mesh)
 			reload_prop_scale = factor
 			if data.has("reload_body_model"):
 				# Both parts keep the original gun's coordinates and scale. Measuring
@@ -608,7 +609,7 @@ func _build_gun_visual() -> void:
 			restored.scale = Vector3.ONE * factor
 			# The prefab converter already preserves the old model's grip origin.
 			# Centering here made every recovered gun float away from the hand.
-			restored.position = Vector3(data.get("reload_model_offset", Vector3.ZERO)) * factor
+			restored.position = WeaponVisualPose.grip_offset(data, restored_mesh) * factor
 			_repair_recovered_weapon_materials(restored, int(data.id))
 			visual_root.add_child(restored)
 			added_restored_visual = true
@@ -619,7 +620,13 @@ func _build_gun_visual() -> void:
 	muzzle = Marker3D.new()
 	muzzle.name = "Muzzle"
 	muzzle.position = Vector3(0, 0, -size.z * 0.62)
-	gun_mount.add_child(muzzle)
+	if added_restored_visual:
+		# The actual mesh owns its muzzle. A separate fixed rifle-length marker
+		# used to emit bullets from the stock of long or rotated weapons.
+		muzzle.position = WeaponVisualPose.muzzle_position(data, preload("res://scripts/core/equipment_refinement.gd").weapon_mesh(str(data.model)))
+		visual_root.add_child(muzzle)
+	else:
+		gun_mount.add_child(muzzle)
 	muzzle_light = OmniLight3D.new()
 	muzzle_light.light_color = weapon_color
 	muzzle_light.light_energy = 0.0
@@ -627,7 +634,7 @@ func _build_gun_visual() -> void:
 	muzzle.add_child(muzzle_light)
 
 func _prepare_weapon_mount(weapon_id: int) -> void:
-	var use_left_hand := weapon_id in [22, 29, 44]
+	var use_left_hand := WeaponVisualPose.uses_left_hand(GameState.WEAPONS.get("gun%02d" % weapon_id, {}))
 	var target_socket: Node = left_gun_socket if use_left_hand and is_instance_valid(left_gun_socket) else gun_socket
 	if is_instance_valid(target_socket) and gun_mount.get_parent() != target_socket:
 		gun_mount.get_parent().remove_child(gun_mount)
@@ -644,18 +651,7 @@ func _prepare_weapon_mount(weapon_id: int) -> void:
 
 func _weapon_authored_rotation(weapon_id: int) -> Vector3:
 	var weapon: Dictionary = GameState.WEAPONS.get("gun%02d" % weapon_id, {})
-	if weapon.has("model_rotation"):
-		return Vector3(weapon.model_rotation)
-	# Exact combat cases from Unity WeaponResourceConfig.RotateGun. Most legacy
-	# rifles need the authored -90° X bridge; bows, fists and several special
-	# weapons were already authored in hand-space and must not receive it.
-	if weapon_id in [22, 23, 24, 25, 28, 31, 32, 39, 41, 45, 46]:
-		return Vector3.ZERO
-	if weapon_id == 36:
-		return Vector3(0.0, 90.0, -90.0)
-	if weapon_id == 44:
-		return Vector3(90.0, 0.0, 0.0)
-	return Vector3(-90.0, 0.0, 0.0)
+	return WeaponVisualPose.rotation(weapon)
 
 func _repair_recovered_weapon_materials(instance: MeshInstance3D, weapon_id: int) -> void:
 	# Unity's additive/glow shaders were reduced to OBJ/MTL. Godot's OBJ
@@ -1127,14 +1123,23 @@ func _current_shot_interval() -> float:
 const SHOOT_ANIMATION_RATE_MIN := 0.45
 const SHOOT_ANIMATION_RATE_MAX := 2.4
 
+func _shoot_pose_duration() -> float:
+	return maxf(0.14, minf(0.55, _current_shot_interval()))
+
 func _shoot_animation_rate(animation_name: String) -> float:
-	if not bool(current_weapon.get("automatic", false)) or not recovered_animation_player:
-		return 1.0
-	var interval := _current_shot_interval()
-	if interval <= 0.0:
+	if not recovered_animation_player:
 		return 1.0
 	var clip := recovered_animation_player.get_animation(animation_name)
 	if clip == null or clip.length <= 0.0:
+		return 1.0
+	if str(current_weapon.get("kind", "")) == "sword":
+		# The recovered swing includes wind-up, cut and recovery over 1.2 s.
+		# Its 0.3 s combat state used to exit before the cut finished.
+		return clip.length / _shoot_pose_duration()
+	if not bool(current_weapon.get("automatic", false)):
+		return 1.0
+	var interval := _current_shot_interval()
+	if interval <= 0.0:
 		return 1.0
 	return clampf(clip.length / interval, SHOOT_ANIMATION_RATE_MIN, SHOOT_ANIMATION_RATE_MAX)
 
@@ -1163,11 +1168,13 @@ func _try_fire() -> void:
 		if _magazine_rounds() <= 0:
 			auto_reload_left = maxf(float(current_weapon.get("cooldown", 0.1)), 0.12)
 	shot_cooldown = _current_shot_interval()
-	shoot_pose_left = maxf(0.14, minf(0.55, shot_cooldown))
+	shoot_pose_left = _shoot_pose_duration()
 	# One-shot clips must restart on every successful trigger pull. Automatic
 	# clips deliberately remain continuous while the button is held.
 	restart_shoot_animation_requested = not bool(current_weapon.get("automatic", false))
-	muzzle_light.light_energy = 5.0
+	var kind := str(current_weapon.kind)
+	var uses_recoil := str(current_weapon.get("animation", "rifle")) not in ["jian", "bow", "fist"]
+	muzzle_light.light_energy = 5.0 if uses_recoil else 0.0
 	var fired_muzzle_light_id: int = muzzle_light.get_instance_id()
 	get_tree().create_timer(0.045).timeout.connect(func():
 		var light: OmniLight3D = instance_from_id(fired_muzzle_light_id) as OmniLight3D
@@ -1179,11 +1186,11 @@ func _try_fire() -> void:
 		_play_weapon_fire_sound()
 	if weapon_recoil_tween and weapon_recoil_tween.is_valid():
 		weapon_recoil_tween.kill()
-	gun_mount.position = gun_mount_rest_position + gun_recoil_offset * float(current_weapon.get("recoil_strength", 1.0))
-	weapon_recoil_tween = create_tween()
-	weapon_recoil_tween.tween_property(gun_mount, "position", gun_mount_rest_position, clampf(shot_cooldown * 0.65, 0.045, 0.22)).set_trans(Tween.TRANS_QUAD)
-
-	var kind := str(current_weapon.kind)
+	gun_mount.position = gun_mount_rest_position
+	if uses_recoil:
+		gun_mount.position += gun_recoil_offset * float(current_weapon.get("recoil_strength", 1.0))
+		weapon_recoil_tween = create_tween()
+		weapon_recoil_tween.tween_property(gun_mount, "position", gun_mount_rest_position, clampf(shot_cooldown * 0.65, 0.045, 0.22)).set_trans(Tween.TRANS_QUAD)
 	if kind == "sword":
 		_fire_melee()
 	elif kind in ["rocket", "grenade", "fly_grenade", "plasma", "arrow", "energy_fist", "tracking", "ricochet", "spring"]:
@@ -1215,15 +1222,28 @@ func _fire_hitscan() -> void:
 		query.exclude = [get_rid()]
 		var result := space.intersect_ray(query)
 		var hit_position := end
-		if not result.is_empty():
+		var damaged: Dictionary = {}
+		# Cannon beams pass through damage bodies, but stop at level geometry.
+		# Exclude each RID and deduplicate resolved actors (walking body/hitbox).
+		while not result.is_empty():
 			hit_position = result.position
 			var collider = EnemyHitGeometry.resolve(result.collider)
-			if is_instance_valid(collider) and collider.has_method("take_damage"):
-				collider.take_damage(_current_weapon_damage(), result.position, self)
+			var damageable := is_instance_valid(collider) and collider.has_method("take_damage")
+			var pierces := str(current_weapon.kind) == "beam" and damageable
+			if damageable:
+				if not damaged.has(collider):
+					damaged[collider] = true
+					collider.take_damage(_current_weapon_damage(), result.position, self)
+			if get_parent().has_method("spawn_impact"):
+				get_parent().spawn_impact(result.position, result.normal, current_weapon.color, tracer_style)
+			if not pierces:
+				break
+			query.exclude = query.exclude + [result.rid]
+			result = space.intersect_ray(query)
+			if result.is_empty():
+				hit_position = end
 		if show_tracer and get_parent().has_method("spawn_tracer"):
 			get_parent().spawn_tracer(muzzle.global_position, hit_position, current_weapon.color, tracer_style)
-		if not result.is_empty() and get_parent().has_method("spawn_impact"):
-			get_parent().spawn_impact(hit_position, result.normal, current_weapon.color, tracer_style)
 
 func _consume_tracer_slot(tracer_style: String, every: int) -> bool:
 	if tracer_style not in ["rifle", "machinegun"]:
@@ -1358,6 +1378,9 @@ func apply_touch_look(value: Vector2) -> void:
 	_apply_look_delta(value)
 
 func _fire_melee() -> void:
+	var blade := gun_mount.get_node_or_null("WeaponVisual/Recovered_" + current_weapon_id) as MeshInstance3D
+	if blade != null:
+		WeaponVfxPolish.slash(blade, current_weapon.color, shoot_pose_left)
 	if current_weapon_id == "gun33":
 		_fire_projectile("windblade")
 	var forward := -camera.global_transform.basis.z

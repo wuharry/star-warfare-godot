@@ -2,6 +2,11 @@ extends Node
 
 var failures: Array[String] = []
 
+class BeamTarget extends StaticBody3D:
+	var hits := 0
+	func take_damage(_amount: float, _position: Vector3, _attacker: Node) -> void:
+		hits += 1
+
 func _ready() -> void:
 	call_deferred("_run")
 
@@ -11,6 +16,7 @@ func _check(condition: bool, message: String) -> void:
 		push_error("PROJECTILE VFX TEST: " + message)
 
 func _run() -> void:
+	GameState.save_path = GameState.TEST_SAVE_PATH
 	_test_weapon_groups()
 	_test_tracer_cadence()
 	_test_hd_assets()
@@ -29,7 +35,7 @@ func _test_weapon_groups() -> void:
 	for gun_id in [24, 25, 39]:
 		var data: Dictionary = GameState.WEAPONS["gun%02d" % gun_id]
 		_check(data.tracer_style == "machinegun" and int(data.tracer_every) == 5, "gun%02d is not a modern machinegun tracer" % gun_id)
-	for gun_id in [17, 18, 19, 26]:
+	for gun_id in [17, 18, 19, 21, 26]:
 		var data: Dictionary = GameState.WEAPONS["gun%02d" % gun_id]
 		_check(data.tracer_style == "laser" and int(data.tracer_every) == 1, "gun%02d is not a modern blue laser" % gun_id)
 	for gun_id in [34, 35, 43]:
@@ -85,6 +91,7 @@ func _test_runtime_visuals() -> void:
 	await get_tree().process_frame
 	world.completed = true
 	_test_rocket_shots(world)
+	await _test_cannon_penetration(world)
 	var from := Vector3(0.0, 2.0, 0.0)
 	var to := Vector3(0.0, 2.0, -30.0)
 	var rifle := world.spawn_tracer(from, to, Color(1.0, 0.64, 0.08), "rifle")
@@ -125,6 +132,85 @@ func _test_runtime_visuals() -> void:
 		audio.stop()
 	world.free()
 	AudioDirector.stop_all_sfx()
+	await get_tree().process_frame
+
+func _test_cannon_penetration(world: WarfareGameWorld) -> void:
+	var player := world.player
+	player.set_physics_process(false)
+	player.global_position = Vector3(0, 100, 0)
+	player.equip_weapon("gun21", false)
+	# SpringArm3D can still update its child camera with player physics paused.
+	# Give this isolated firing lane a camera with a fixed world-space ray.
+	var lane_camera := Camera3D.new()
+	world.add_child(lane_camera)
+	lane_camera.global_position = Vector3(0, 102, 0)
+	lane_camera.current = true
+	player.camera = lane_camera
+	await get_tree().physics_frame
+	await get_tree().process_frame
+	var aim := player.get_shot_aim_solution(float(player.current_weapon.range))
+	var origin: Vector3 = aim.origin
+	var direction: Vector3 = aim.direction
+	var targets: Array[BeamTarget] = []
+	for distance in [4.0, 8.0, 16.0]:
+		var target := BeamTarget.new()
+		target.collision_layer = 2
+		target.collision_mask = 0
+		world.add_child(target)
+		target.global_position = origin + direction * distance
+		var collision := CollisionShape3D.new()
+		var shape := SphereShape3D.new()
+		shape.radius = 0.6
+		collision.shape = shape
+		target.add_child(collision)
+		targets.append(target)
+	# A second damage body resolving to the same actor must not double damage.
+	var hitbox := EnemyHitGeometry.new()
+	hitbox.collision_layer = 2
+	targets[0].add_child(hitbox)
+	var extra_shape := CollisionShape3D.new()
+	extra_shape.shape = SphereShape3D.new()
+	extra_shape.shape.radius = 0.4
+	hitbox.add_child(extra_shape)
+	var wall := StaticBody3D.new()
+	wall.collision_layer = 1
+	world.add_child(wall)
+	wall.global_position = origin + direction * 12.0
+	var wall_shape := CollisionShape3D.new()
+	wall_shape.shape = BoxShape3D.new()
+	wall_shape.shape.size = Vector3(4, 4, 0.5)
+	wall.add_child(wall_shape)
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().process_frame
+	player._fire_hitscan()
+	_check(targets[0].hits == 1 and targets[1].hits == 1, "cannon does not pierce two actors exactly once")
+	_check(targets[2].hits == 0, "cannon pierces level walls")
+	var cannon_flash := world.effects_root.get_node_or_null("RecoveredGunFireLaser")
+	_check(cannon_flash != null, "cannon still emits a powder muzzle flash")
+	_check(world.effects_root.get_node_or_null("ModernImpact_laser") != null, "cannon has no laser hit spot")
+	var tracer := world.effects_root.get_node_or_null("ModernBlueLaser")
+	var wall_query := PhysicsRayQueryParameters3D.create(origin, origin + direction * float(player.current_weapon.range), 1)
+	var wall_hit := player.get_world_3d().direct_space_state.intersect_ray(wall_query)
+	_check(not wall_hit.is_empty(), "cannon fixture wall does not intersect the firing ray")
+	if tracer != null and not wall_hit.is_empty():
+		_check(is_equal_approx(float(tracer.get_meta("segment_length")), player.muzzle.global_position.distance_to(wall_hit.position)), "cannon beam stops at its first victim")
+	else:
+		_check(false, "cannon did not create its layered beam")
+	for target in targets: target.hits = 0
+	player.equip_weapon("gun00", false)
+	player._fire_hitscan()
+	_check(targets[0].hits == 1 and targets[1].hits == 0 and targets[2].hits == 0, "ordinary rifle gained cannon penetration")
+	for target in targets: target.hits = 0
+	wall.collision_layer = 0
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	player.equip_weapon("gun21", false)
+	player._fire_hitscan()
+	_check(targets.all(func(target): return target.hits == 1), "unblocked cannon does not pierce all three actors")
+	for target in targets: target.free()
+	wall.free()
+	for effect in world.effects_root.get_children(): effect.queue_free()
 	await get_tree().process_frame
 
 func _test_rocket_shots(world: WarfareGameWorld) -> void:

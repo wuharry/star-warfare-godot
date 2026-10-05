@@ -65,6 +65,21 @@ func _run() -> void:
 	_check(player.backpack_visual.basis.get_scale().is_equal_approx(Vector3.ONE * 0.96), "bag 14 default body multiplier is incorrect")
 	GameState.equipped_armor = original_armor
 	player._refresh_recovered_backpack()
+	for bag_index in range(25):
+		GameState.equipped_armor.bag = "armor_bag_%02d" % bag_index
+		player._refresh_recovered_backpack()
+		var bag := player.backpack_visual
+		_check(bag != null and bag.mesh != null, "bag %d did not attach" % bag_index)
+		if bag == null or bag.mesh == null:
+			continue
+		for surface in bag.mesh.get_surface_count():
+			var material := bag.get_active_material(surface) as BaseMaterial3D
+			var source := bag.mesh.surface_get_material(surface) as BaseMaterial3D
+			_check(material != null and material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, "bag %d surface %d still darkens indoors" % [bag_index, surface])
+			_check(material != null and material.albedo_color.is_equal_approx(Color.WHITE), "bag %d surface %d retained the gray tint" % [bag_index, surface])
+			_check(material != null and source != null and material.albedo_texture == source.albedo_texture, "bag %d surface %d lost its own texture" % [bag_index, surface])
+	GameState.equipped_armor = original_armor
+	player._refresh_recovered_backpack()
 
 	# A smaller bag limits the live combat selector without deleting the saved
 	# loadout, so re-equipping a larger pack restores the hidden slots.
@@ -98,7 +113,7 @@ func _run() -> void:
 	await get_tree().create_timer(0.06).timeout
 	_check(is_equal_approx(replacement_muzzle_light.light_energy, 7.0), "old muzzle-flash timeout modified the newly equipped weapon")
 
-	var pose_weapons := ["gun00", "gun06", "gun11", "gun22", "gun23", "gun24", "gun29", "gun34", "gun36", "gun37", "gun44"]
+	var pose_weapons := ["gun00", "gun06", "gun11", "gun22", "gun23", "gun24", "gun25", "gun27", "gun28", "gun29", "gun33", "gun34", "gun36", "gun37", "gun39", "gun44"]
 	for weapon_id in pose_weapons:
 		player.equip_weapon(weapon_id, false)
 		var weapon_index := int(weapon_id.trim_prefix("gun"))
@@ -107,21 +122,29 @@ func _run() -> void:
 		_check(player.gun_mount.get_node_or_null("WeaponVisual") != null, "%s has no recovered weapon visual" % weapon_id)
 		player.shot_cooldown = 0.0
 		player.shoot_pose_left = 0.0
-		for _frame in range(3):
+		# Let the real 80 ms weapon-switch animation blend finish before
+		# measuring the destination pose's bow plane and barrel direction.
+		for _frame in range(8):
 			await get_tree().process_frame
 			await get_tree().physics_frame
 		_assert_special_weapon_materials(player, weapon_id)
 		var idle_direction := -player.gun_mount.global_transform.basis.z.normalized()
 		var character_forward := -player.model.global_transform.basis.z.normalized()
 		var idle_dot := idle_direction.dot(character_forward)
-		_check(idle_dot > 0.45, "%s idle weapon points away from character aim (dot %.3f)" % [weapon_id, idle_dot])
+		if str(player.current_weapon.kind) != "sword":
+			_check(idle_dot > 0.45, "%s idle weapon points away from character aim (dot %.3f)" % [weapon_id, idle_dot])
+		_assert_special_weapon_geometry(player, weapon_id)
 
 		player._try_fire()
+		if str(player.current_weapon.animation) in ["jian", "bow", "fist"]:
+			_check(player.gun_mount.position.is_equal_approx(player.gun_mount_rest_position), "%s still uses firearm kickback" % weapon_id)
+			_check(is_zero_approx(player.muzzle_light.light_energy), "%s still flashes like a firearm" % weapon_id)
 		await get_tree().process_frame
 		await get_tree().physics_frame
 		var fire_direction := -player.gun_mount.global_transform.basis.z.normalized()
 		var fire_dot := fire_direction.dot(character_forward)
-		_check(fire_dot > 0.55, "%s firing weapon points away from character aim (dot %.3f)" % [weapon_id, fire_dot])
+		if str(player.current_weapon.kind) != "sword":
+			_check(fire_dot > 0.55, "%s firing weapon points away from character aim (dot %.3f)" % [weapon_id, fire_dot])
 		_check("shoot" in player.recovered_animation_name.to_lower(), "%s did not enter its recovered firing animation" % weapon_id)
 		print("WEAPON_POSE %s idle_dot=%.3f fire_dot=%.3f animation=%s" % [weapon_id, idle_dot, fire_dot, player.recovered_animation_name])
 
@@ -139,6 +162,29 @@ func _run() -> void:
 	else:
 		print("WEAPON_POSE_TEST_FAIL: %s" % ", ".join(failures))
 		get_tree().quit(1)
+
+func _assert_special_weapon_geometry(player: WarfarePlayer, weapon_id: String) -> void:
+	var mesh := player.gun_mount.get_node("WeaponVisual/Recovered_" + weapon_id) as MeshInstance3D
+	var bounds := preload("res://scripts/core/equipment_refinement.gd").authored_bounds(mesh.mesh)
+	var longest := maxf(bounds.size.x, maxf(bounds.size.y, bounds.size.z)) * mesh.scale.x
+	if weapon_id in ["gun24", "gun25", "gun39"]:
+		var barrel := -mesh.global_basis.z.normalized()
+		var aim := -player.gun_mount.global_basis.z.normalized()
+		_check(barrel.dot(aim) > 0.99, "%s barrel and aiming marker diverge" % weapon_id)
+		var muzzle_local := mesh.to_local(player.muzzle.global_position)
+		_check(is_equal_approx(muzzle_local.z, bounds.position.z), "%s fires from its stock instead of its barrel" % weapon_id)
+	if weapon_id in ["gun22", "gun29", "gun44"]:
+		_check(absf(mesh.global_basis.y.normalized().dot(Vector3.UP)) < 0.3, "%s bow lost its horizontal hold" % weapon_id)
+		_check((-mesh.global_basis.z.normalized()).dot(-player.gun_mount.global_basis.z.normalized()) > 0.99, "%s bow arrow axis diverges from the aiming marker" % weapon_id)
+		var grip := mesh.to_global(Vector3(bounds.get_center().x, 0, 0))
+		_check(grip.distance_to(player.gun_mount.global_position) < 0.01, "%s grip floats away from the left hand" % weapon_id)
+		_check(longest <= 1.46, "%s still uses a rifle size" % weapon_id)
+	if weapon_id in ["gun23", "gun36"]:
+		_check(longest <= 0.49, "%s fist weapon is longer than the forearm" % weapon_id)
+		var wrist := mesh.to_global(Vector3(bounds.get_center().x, bounds.get_center().y, bounds.end.z - 0.08))
+		_check(wrist.distance_to(player.gun_mount.global_position) < 0.01, "%s cuff is detached from the hand" % weapon_id)
+	var sheath := player.recovered_avatar.find_child("WeaponScabbard", true, false)
+	_check((sheath != null) == (str(player.current_weapon.kind) == "sword"), "%s has the wrong scabbard visibility" % weapon_id)
 
 func _assert_special_weapon_materials(player: WarfarePlayer, weapon_id: String) -> void:
 	var cases := {

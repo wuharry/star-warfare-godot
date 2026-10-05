@@ -169,13 +169,13 @@
     "ArmorHead_05": {
       "bounds_game": {
         "min": [
-          -0.3191111385822296,
-          1.2624017000198364,
-          -0.32116401195526123
+          -0.27918338775634766,
+          1.2635904550552368,
+          -0.32117050886154175
         ],
         "max": [
-          0.3191086947917938,
-          1.9349820613861084,
+          0.27918294072151184,
+          1.9359806776046753,
           0.27827975153923035
         ]
       },
@@ -192,29 +192,29 @@
         ]
       },
       "dimension_delta_fraction": [
-        0.0,
-        0.0,
-        0.0
+        0.1251191215321672,
+        0.00028270051841428057,
+        1.0838224828058074e-05
       ],
-      "max_rest_displacement": 0.06179547339633082,
-      "max_displacement_fraction_of_smallest_dimension": 0.10308802453142658,
-      "triangles": 124,
-      "uv_preserved": true,
+      "max_rest_displacement": 0.1096138432503531,
+      "max_displacement_fraction_of_smallest_dimension": 0.18285926041060627,
+      "triangles": 132,
+      "uv_preserved": false,
       "original_uv_charts": 3,
       "uv_charts": 3,
-      "uv_coordinate_count": 294,
+      "uv_coordinate_count": 302,
       "original_uv_coordinate_count": 294,
-      "uv_changed_count": 0,
-      "uv_changed_fraction": 0.0,
-      "uv_max_displacement_from_original": 0.0,
-      "uv_rms_displacement_from_original": 0.0,
+      "uv_changed_count": 10,
+      "uv_changed_fraction": 0.034013605442176874,
+      "uv_max_displacement_from_original": 0.08925091771096753,
+      "uv_rms_displacement_from_original": 0.01494353745473214,
       "uv_by_surface": [
         {
           "surface": 0,
           "label": "head",
-          "uv_coordinate_count": 294,
-          "uv_changed_count": 0,
-          "uv_changed_fraction": 0.0
+          "uv_coordinate_count": 302,
+          "uv_changed_count": 10,
+          "uv_changed_fraction": 0.034013605442176874
         }
       ],
       "weight_source": "original, unchanged",
@@ -222,11 +222,13 @@
         "reversed_triangles": 0,
         "zero_area_triangles": 0,
         "coincident_seam_max_rest_gap": 0.0,
-        "min_triangle_normal_cosine_from_original": 0.982919842004776
-      }
+        "min_triangle_normal_cosine_from_original": 0.8874558173120022
+      },
+      "added_vertex_count": 8,
+      "triangle_growth_fraction": 0.06451612903225801
     }
   },
-  "stage": "original_integration_v1",
-  "constraint": "True original-total shape/dimensions/UV20% per surface; original chart/count/topology/Skin retained. No UV edits in first integration.",
+  "stage": "helmet_refinement_v3",
+  "constraint": "Original-total20% shape/dimensions; only explicitly configured visor edges may be subdivided. Broad chart count and original rig retained.",
   "user_authorized_original_total_limit": 0.2
 }

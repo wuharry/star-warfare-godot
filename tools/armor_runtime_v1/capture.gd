@@ -50,7 +50,7 @@ func _run() -> void:
 			assert(revision.is_valid_filename())
 			OUT=work_path+"review/" + revision + "/"
 	for label: String in ["head","body","shoulder","hand","foot"]:
-		texture_sha256[label] = _hash(asset_path + label + "_diffuse.png")
+		texture_sha256[label] = _hash(_texture_path(label))
 	scene_sha256_at_start = _hash(scene_path)
 	target_sha256_at_start = _hash(target_path)
 	get_tree().root.size=Vector2i(640,720)
@@ -63,7 +63,7 @@ func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT))
 	if "--direct-textures" in OS.get_cmdline_user_args():
 		for label: String in ["head","body","shoulder","hand","foot"]:
-			var pixels:=Image.load_from_file(ProjectSettings.globalize_path(asset_path+label+"_diffuse.png"))
+			var pixels:=Image.load_from_file(ProjectSettings.globalize_path(_texture_path(label)))
 			assert(pixels!=null)
 			pixels.generate_mipmaps()
 			preview_textures[label]=ImageTexture.create_from_image(pixels)
@@ -120,7 +120,7 @@ func _run() -> void:
 			fixture.view_camera.global_position=center+direction*7
 			fixture.view_camera.look_at(center)
 			for version: String in ["original","new"]:
-				_apply(player.recovered_avatar,version,false,true)
+				_apply(player.recovered_avatar,version,"--head-clay" in OS.get_cmdline_user_args(),true)
 				await _capture("%s_head_%s"%[version,view])
 		baseline.free();candidate.free();fixture.cleanup();GameState.save_path=real_save
 		AudioDirector.stop_all_sfx()
@@ -249,6 +249,9 @@ func _apply(avatar: Node3D, version: String, clay: bool, neutral: bool=false) ->
 				material.shading_mode=BaseMaterial3D.SHADING_MODE_UNSHADED
 				if neutral:material.albedo_color=Color.WHITE
 				target.set_surface_override_material(sid,material)
+
+func _texture_path(label: String) -> String:
+	return asset_path + str(config.get("texture_files", {}).get(label, label + "_diffuse.png"))
 
 func _set_ortho(camera: Camera3D, view: String) -> void:
 	var directions:={"front":Vector3(0,0,-1),"side":Vector3(1,0,0),"rear":Vector3(0,0,1),"quarter":Vector3(.55,.15,-1)}

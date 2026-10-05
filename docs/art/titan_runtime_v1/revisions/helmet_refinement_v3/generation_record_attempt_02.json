@@ -1,0 +1,40 @@
+{
+  "tool": "image_gen.imagegen",
+  "attempt": 2,
+  "use_case": "precise-object-edit",
+  "prompt_path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v3/head_diffuse_prompt_attempt_02.txt",
+  "prompt_sha256": "376d466b9522ec9db5f7bb6b8889b8bfb9d8495f4aca4c7bafb60a9bdea0753f",
+  "references": [
+    {
+      "path": "/Users/harvey/repo/star-warfare-godot/assets/armors/titan_v1/titan_head_diffuse.png",
+      "sha256": "b0b484476340f7fe2041bea9ab5e90847f218cc8a699d2f925e06ecf07f3b25c",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v3/head_diffuse_attempt_01.png"
+    },
+    {
+      "path": "/Users/harvey/repo/star-warfare-godot/docs/art/titan_runtime_v1/input_snapshots/original_integration_v2_head/approved_helmet.png",
+      "sha256": "54cb4073c1f482e072e23aa344dc4fff300e5157191dcd7b3e82f68ced75fc49"
+    },
+    {
+      "path": "/Users/harvey/repo/star-warfare-godot/docs/art/titan_runtime_v1/guides/head_semantics.png",
+      "sha256": "961c5c6f50152d041706dc76e5cafa17d4e02cc88560f1ced4b396983ab5ec11"
+    },
+    {
+      "path": "/Users/harvey/repo/star-warfare-godot/docs/art/titan_runtime_v1/review/helmet_v3_material/new_head_front.png",
+      "sha256": "ee05f1c50e4315f84f68eb91f23d367b6463b444ac165e2aa4afc9016ecc8480"
+    }
+  ],
+  "native_output_path": "/Users/harvey/.codex/generated_images/01a0a2a2-a4a3-7480-bf53-517678c5db25/exec-f1d39a0f-7c6a-46e9-8fe6-b7b7581991e2.png",
+  "native_output_sha256": "6e5924848b243cddc808f462177be826284bf14cc557baf9860d07840ad59999",
+  "archive_path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v3/head_diffuse_attempt_02.png",
+  "canonical_path": "assets/armors/titan_v1/titan_head_diffuse.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "processing": "byte-for-byte native copy; no image paint, resize or recolor",
+  "status": "native_adopted_pending_3d_review"
+}

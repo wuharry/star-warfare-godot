@@ -1606,7 +1606,7 @@ func _attach_preview_weapon(avatar: Node3D, weapon: Dictionary, weapon_mesh: Mes
 	if skeleton == null:
 		return
 	var weapon_id := int(weapon.id)
-	var bone_name := "l hand gun" if weapon_id in [22, 29, 44] else "r hand gun"
+	var bone_name := "l hand gun" if preload("res://scripts/core/weapon_visual_pose.gd").uses_left_hand(weapon) else "r hand gun"
 	if skeleton.find_bone(bone_name) < 0:
 		bone_name = "Bip01 R Hand"
 	if skeleton.find_bone(bone_name) < 0:
@@ -1622,33 +1622,14 @@ func _attach_preview_weapon(avatar: Node3D, weapon: Dictionary, weapon_mesh: Mes
 	preview.name = "SelectedWeapon"
 	preview.mesh = weapon_mesh
 	_prepare_preview_materials(preview, Color(weapon.color), 0.04, weapon_id)
-	var kind := str(weapon.get("kind", "hitscan"))
-	var target_length := 1.25
-	if kind in ["shotgun", "shockwave"]:
-		target_length = 1.3
-	elif kind in ["rocket", "grenade", "fly_grenade"]:
-		target_length = 1.42
-	elif kind in ["sniper", "reflection"]:
-		target_length = 1.62
-	elif kind == "sword":
-		target_length = 1.55
-	var bounds := weapon_mesh.get_aabb()
-	var longest := maxf(bounds.size.x, maxf(bounds.size.y, bounds.size.z))
-	preview.scale = Vector3.ONE * (target_length / longest if longest > 0.001 else 1.0)
-	var authored_basis := Basis.from_euler(_preview_weapon_rotation(weapon_id) * (PI / 180.0))
+	var pose = preload("res://scripts/core/weapon_visual_pose.gd")
+	var factor: float = pose.scale_factor(weapon, weapon_mesh)
+	preview.scale = Vector3.ONE * factor
+	var authored_basis := Basis.from_euler(pose.rotation(weapon) * (PI / 180.0))
 	preview.basis = mount.basis.inverse() * authored_basis.scaled(preview.scale)
+	preview.position = mount.basis.inverse() * authored_basis * pose.grip_offset(weapon, weapon_mesh) * factor
 	mount.add_child(preview)
-
-
-func _preview_weapon_rotation(weapon_id: int) -> Vector3:
-	# WeaponResourceConfig.RotateGun cases used by the original player preview.
-	if weapon_id in [22, 23, 24, 25, 28, 31, 32, 39, 41, 45, 46]:
-		return Vector3.ZERO
-	if weapon_id == 36:
-		return Vector3(0.0, 90.0, -90.0)
-	if weapon_id == 44:
-		return Vector3(90.0, 0.0, 0.0)
-	return Vector3(-90.0, 0.0, 0.0)
+	pose.refresh_scabbard(avatar, weapon)
 
 
 func _build_armor_preview() -> void:
@@ -1695,7 +1676,7 @@ func _build_bag_preview() -> void:
 	preview.name = bag_name
 	preview.mesh = mesh
 	_prepare_preview_materials(preview, Color.WHITE, 0.0)
-	preload("res://scripts/game/armor_visuals.gd").restore_starter_backpack(preview, visual_id)
+	preload("res://scripts/game/armor_visuals.gd").restore_backpack_materials(preview)
 	display.add_child(preview)
 	if not _normalize_preview_node(display, 3.55):
 		display.queue_free()

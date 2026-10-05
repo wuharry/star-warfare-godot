@@ -649,7 +649,7 @@ func _apply_preview_armor_visibility(avatar: Node3D) -> void:
 			if bone >= 0:
 				mesh.basis = skeleton.get_bone_global_rest(bone).basis.inverse() * Basis.from_scale(Vector3.ONE * authored_scale)
 			attachment.add_child(mesh)
-			ArmorVisuals.restore_starter_backpack(mesh, int(bag.visual_id))
+			ArmorVisuals.restore_backpack_materials(mesh)
 
 
 func _fit_preview_camera() -> void:
