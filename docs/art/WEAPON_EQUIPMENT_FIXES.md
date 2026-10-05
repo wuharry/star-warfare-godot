@@ -42,7 +42,7 @@ godot --headless --path . res://tests/reload_system_test.tscn
 godot --headless --path . res://tests/rocket_reload_test.tscn
 ```
 
-行為斷言通過。Godot 日誌仍有部分材質為 null 與退出時資源未釋放訊息，不能視為無警告的執行；已修掉切換武器後殘影讀取離開 SceneTree 的模型所產生的 global_transform 錯誤。`rocket_reload_test` 原先限定 `.obj` 副檔名，但 HEAD 早已使用精修 `.res` 部件，改為比對原始拆分槍身／火箭的实际資源，仍排除整支槍模型。
+行為斷言通過。Godot 日誌仍有部分材質為 null 與退出時資源未釋放訊息，不能視為無警告的執行；已修掉切換武器後殘影讀取離開 SceneTree 的模型所產生的 global_transform 錯誤。`rocket_reload_test` 原先限定 `.obj` 副檔名，但修復前的 `2684dbc` 已使用精修 `.res` 部件，改為比對原始拆分槍身／火箭的實際資源，仍排除整支槍模型。最終複驗通過移動中換彈、換彈取消與原始拆分資源檢查。
 
 ```sh
 godot --path . --rendering-method gl_compatibility res://tests/special_weapon_visual_capture.tscn -- --family=machinegun
