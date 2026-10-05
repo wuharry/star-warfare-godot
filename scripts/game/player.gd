@@ -569,8 +569,6 @@ func _build_gun_visual() -> void:
 		child.queue_free()
 	var data: Dictionary = GameState.WEAPONS.get(current_weapon_id, GameState.WEAPONS.gun00)
 	_prepare_weapon_mount(int(data.id))
-	if is_instance_valid(recovered_avatar):
-		WeaponVisualPose.refresh_scabbard(recovered_avatar, data)
 	var weapon_color: Color = data.color
 	var metal := _material(Color(0.06, 0.075, 0.09), 0.43, 0.73)
 	var accent := _material(weapon_color.darkened(0.15), 0.28, 0.62, weapon_color * 0.5)
@@ -1026,6 +1024,11 @@ func _update_combat_aim_pose(delta: float) -> void:
 	var target := Vector3(aim.target)
 	if gun_mount.global_position.distance_squared_to(target) > 0.0001:
 		gun_mount.look_at(target, Vector3.UP)
+		if str(current_weapon.get("kind", "")) == "arrow":
+			# look_at restores an upright firearm basis. Keep the bow limbs
+			# horizontal without changing its -Z arrow axis or camera pitch.
+			# Start from look_at every frame so the roll cannot accumulate.
+			gun_mount.rotate_object_local(Vector3.FORWARD, PI * 0.5)
 
 func _handle_weapon_input() -> void:
 	if Input.is_action_just_pressed("weapon_1"):

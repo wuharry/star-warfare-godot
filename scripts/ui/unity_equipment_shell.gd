@@ -1629,7 +1629,6 @@ func _attach_preview_weapon(avatar: Node3D, weapon: Dictionary, weapon_mesh: Mes
 	preview.basis = mount.basis.inverse() * authored_basis.scaled(preview.scale)
 	preview.position = mount.basis.inverse() * authored_basis * pose.grip_offset(weapon, weapon_mesh) * factor
 	mount.add_child(preview)
-	pose.refresh_scabbard(avatar, weapon)
 
 
 func _build_armor_preview() -> void:

@@ -23,11 +23,11 @@ ART = Path(__file__).resolve().parents[1]
 ROOT = ART.parents[2]
 REVIEWED = 'visually_reviewed_pending_user_selection'
 PRODUCTION_REVIEWED = 'generated_and_visually_checked_pending_user_review'
-SOURCE_AUDIT_SHA256 = 'ba00397ac3e529498af803ee75ac038d9c0cb3d331b34fab32174d7535456c9e'
+SOURCE_AUDIT_SHA256 = '5e40d557237172f1e3354c940f623b337fafa3e407b5dead335006431c28b17c'
 APPROVED_CURRENT_SOURCES = {
-    'scripts/core/game_state.gd': '51f798ec5faa80f87729fbf783474e22c8bdcea390a8e4b21d36f07a575f28e5',
-    'scripts/game/player.gd': '69ebc3d519d61c8855ba8296e261dcdf8606eef3582087e414379d0fbb655bcd',
-    'scripts/game/armor_visuals.gd': 'de8b9fc4e0840fb2eae879299c42008ebe44aaff5791e9a2756495a5014dfad5',
+    'scripts/core/game_state.gd': 'b1b36ce8073c9a47b4cc8e469b67520f2ad4066af3d65445448f31fbb53a60f0',
+    'scripts/game/player.gd': '6b68ee86ffb5c407ea78e196598c6ddd7390170c69bd3619503f42769f7d3d49',
+    'scripts/game/armor_visuals.gd': 'a8419a603e0e0018f359a0f830b91f994ef0e85d500bd6db359274b39186ae00',
 }
 HISTORICAL_MAPPING_SOURCES = {
     'scripts/core/armor_catalog.gd': '010e2f4104f14138154f1587c822bf7fce5c9ba536b70206a7b1f98187e70884',
