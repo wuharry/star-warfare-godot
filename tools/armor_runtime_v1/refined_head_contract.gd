@@ -12,8 +12,11 @@ static func verify(actual: Array, original: Array, authored: Dictionary, budget:
 	if authored.positions.size()!=count or authored.uv.size()!=count or authored.triangle_parents.size()!=triangles:
 		errors.append("Refined head metadata length mismatch")
 		return errors
-	if float(count) / original_count > 1.10 or float(triangles) / (original[Mesh.ARRAY_INDEX].size() / 3) > 1.10:
-		errors.append("Refined head exceeds this iteration's 10% count growth ceiling")
+	var ceiling := float(budget.get("count_growth_ceiling", 0.10))
+	if ceiling not in [0.10, 0.35] or (ceiling == 0.35 and budget.get("revision") != "helmet_refinement_v4"):
+		errors.append("Unknown head subdivision count budget")
+	if float(count) / original_count > 1.0 + ceiling or float(triangles) / (original[Mesh.ARRAY_INDEX].size() / 3) > 1.0 + ceiling:
+		errors.append("Refined head exceeds its explicit original-count growth ceiling")
 	if actual[Mesh.ARRAY_INDEX] != PackedInt32Array(authored.indices):
 		errors.append("Refined head indices differ from authored subdivision")
 	if actual[Mesh.ARRAY_BONES].slice(0, original_count * 4) != original[Mesh.ARRAY_BONES] or actual[Mesh.ARRAY_WEIGHTS].slice(0, original_count * 4) != original[Mesh.ARRAY_WEIGHTS]:

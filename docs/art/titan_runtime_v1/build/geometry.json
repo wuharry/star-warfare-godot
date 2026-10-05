@@ -171,11 +171,11 @@
         "min": [
           -0.27918338775634766,
           1.2635904550552368,
-          -0.32117050886154175
+          -0.3425171375274658
         ],
         "max": [
           0.27918294072151184,
-          1.9359806776046753,
+          1.9450000524520874,
           0.27827975153923035
         ]
       },
@@ -193,16 +193,16 @@
       },
       "dimension_delta_fraction": [
         0.1251191215321672,
-        0.00028270051841428057,
-        1.0838224828058074e-05
+        0.013127406831568766,
+        0.03562156597930932
       ],
-      "max_rest_displacement": 0.1096138432503531,
-      "max_displacement_fraction_of_smallest_dimension": 0.18285926041060627,
-      "triangles": 132,
+      "max_rest_displacement": 0.1156517307446435,
+      "max_displacement_fraction_of_smallest_dimension": 0.19293174403958285,
+      "triangles": 164,
       "uv_preserved": false,
       "original_uv_charts": 3,
       "uv_charts": 3,
-      "uv_coordinate_count": 302,
+      "uv_coordinate_count": 334,
       "original_uv_coordinate_count": 294,
       "uv_changed_count": 10,
       "uv_changed_fraction": 0.034013605442176874,
@@ -212,7 +212,7 @@
         {
           "surface": 0,
           "label": "head",
-          "uv_coordinate_count": 302,
+          "uv_coordinate_count": 334,
           "uv_changed_count": 10,
           "uv_changed_fraction": 0.034013605442176874
         }
@@ -222,13 +222,13 @@
         "reversed_triangles": 0,
         "zero_area_triangles": 0,
         "coincident_seam_max_rest_gap": 0.0,
-        "min_triangle_normal_cosine_from_original": 0.861985488794744
+        "min_triangle_normal_cosine_from_original": 0.09939166344702244
       },
-      "added_vertex_count": 8,
-      "triangle_growth_fraction": 0.06451612903225801
+      "added_vertex_count": 40,
+      "triangle_growth_fraction": 0.32258064516129026
     }
   },
-  "stage": "helmet_refinement_v3",
+  "stage": "helmet_refinement_v4",
   "constraint": "Original-total20% shape/dimensions; only explicitly configured visor edges may be subdivided. Broad chart count and original rig retained.",
   "user_authorized_original_total_limit": 0.2
 }

@@ -1,0 +1,17 @@
+{
+  "source": "Direct user instruction in current chat",
+  "request": [
+    "不對 還是不夠圓",
+    "面罩至少要佔據50%的面積的那種",
+    "要跟草稿圖完全一致 這邊可以改多一點UV 但是不能變成1.6-2倍",
+    "看看能不能達成"
+  ],
+  "chosen_implementation_budget": {
+    "original_total_shape_limit": 0.2,
+    "original_head_count_growth_ceiling": 0.35,
+    "original_uv_changed_fraction_per_material": 0.2,
+    "original_uv_chart_count": 3,
+    "front_projected_visor_minimum_fraction": 0.5
+  },
+  "interpretation": "Increase only head arc subdivision/UV interpolation to approach the reference; 1.35x head count is a chosen budget below the rejected 1.6-2x, not a claim of exact artistic matching or broader asset permission."
+}

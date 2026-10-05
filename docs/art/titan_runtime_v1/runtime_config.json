@@ -81,7 +81,7 @@
     }
   },
   "accepted_art_status": "engineering_integrated_pending_user_art_review",
-  "geometry_authoring": "helmet_refinement_v3: pressure-helmet visor arcs subdivided locally; three UV charts retained, ten original UV samples adjusted; original bones and non-head parts retained",
+  "geometry_authoring": "Round pressure-glass visor from the approved design; additional local arc cuts inherit original UV edges and bindings, capped at 1.35x original head coordinates/triangles; original-total 20% shape and 28-bone rig remain constraints.",
   "source_node_index": "docs/art/titan_runtime_v1/revisions/original_source_v1/source_node_index.json",
   "source_node_index_sha256": "ec6be5fe46fc753ed75c850e95d088f5ed6e961af0170995af95cb2b00a116da",
   "original_node_ids": {
@@ -92,7 +92,8 @@
   },
   "shape_file": "tools/armor_runtime_v1/shapes/titan.py",
   "art_residuals": [
-    "Only quarter-view concept exists; side/back structure inferred within original cage. Gameplay chibi proportions deliberately retained; art review pending."
+    "Approved reference has only a quarter view; side and rear inferred from the original head shell.",
+    "Original chibi body and non-head assets retained; art acceptance and mobile memory not measured."
   ],
   "texture_files": {
     "head": "titan_head_diffuse.png",
@@ -101,13 +102,14 @@
     "hand": "hand_diffuse.png",
     "foot": "foot_diffuse.png"
   },
-  "active_helmet_revision": "helmet_refinement_v3",
-  "generation_record": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v3/generation_record.json",
-  "before_revision_snapshot": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v3/snapshot.json",
+  "active_helmet_revision": "helmet_refinement_v4",
+  "generation_record": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/generation_record.json",
+  "before_revision_snapshot": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v4/snapshot.json",
   "head_refinement": {
-    "vertices": 302,
-    "triangles": 132,
-    "count_growth_ceiling": 0.1,
-    "scope": "Titan helmet only; chosen conservative implementation budget, not a general permission for other armors"
+    "vertices": 334,
+    "triangles": 164,
+    "count_growth_ceiling": 0.35,
+    "scope": "Titan helmet only: user requested additional UV/arc cuts below 1.6-2x; choose 1.35x original count ceiling, preserve original-total20% geometry.",
+    "revision": "helmet_refinement_v4"
   }
 }
