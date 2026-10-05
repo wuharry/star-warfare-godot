@@ -171,17 +171,16 @@ static func _restore_original_materials(avatar: Node3D) -> void:
 	avatar.set_meta("unity_armor_materials_restored", true)
 
 
-static func restore_starter_backpack(instance: MeshInstance3D, visual_id: int) -> void:
-	if visual_id != 0 or instance.mesh == null:
+static func restore_backpack_materials(instance: MeshInstance3D) -> void:
+	if instance.mesh == null:
 		return
-	# Unity Avatar/01/Bag uses Material/01.mat -> SolidAndAlphaTexture_Bright.
-	# That pass is unlit and uses white _TintColor; the serialized gray _Color
-	# copied into OBJ's Kd is ignored by the source shader. Other bags have
-	# separate animated/additive/built-in shaders and retain their own rules.
-	var source := instance.get_active_material(0) as BaseMaterial3D
-	if source == null:
-		return
-	var material := source.duplicate() as BaseMaterial3D
-	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	material.albedo_color = Color.WHITE
-	instance.material_override = material
+	# Repair surfaces separately: multi-material bags keep their own textures,
+	# alpha and blend modes instead of inheriting surface zero's material.
+	for surface in instance.mesh.get_surface_count():
+		var source := instance.get_active_material(surface) as BaseMaterial3D
+		if source == null:
+			continue
+		var material := source.duplicate() as BaseMaterial3D
+		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		material.albedo_color = Color(1, 1, 1, source.albedo_color.a)
+		instance.set_surface_override_material(surface, material)

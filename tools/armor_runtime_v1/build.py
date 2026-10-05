@@ -31,6 +31,8 @@ def reshape(name, point, surface_id=0):
     return Vector(shape.reshape(list(p),surface_id)) if name==HEAD and shape else p
 
 def adjusted_uv(name, point, uv, surface_id=0):
+    if name == HEAD and shape and hasattr(shape, 'adjust_uv'):
+        return shape.adjust_uv(list(point), list(uv))
     return list(uv) # All five authored maps use unchanged true original UV.
 
 
@@ -74,43 +76,53 @@ def main():
         bone.head=m.translation; bone.tail=bone.head+(m.to_3x3()@Vector((0,.06,0)))
         if row['parent']>=0:bone.parent=arm.edit_bones[SOURCE['bones'][row['parent']]['name']]
     bpy.ops.object.mode_set(mode='OBJECT'); rig.select_set(False)
-    target={'revision':slug+'_runtime_v1','id':CONFIG['runtime_id'],'parts':{}}
+    target={'revision':CONFIG.get('active_helmet_revision',slug+'_runtime_v1'),'id':CONFIG['runtime_id'],'parts':{}}
     guide_polygons={}
-    geometry={'parts':{},'stage':'original_integration_v1','constraint':'True original-total shape/dimensions/UV20% per surface; original chart/count/topology/Skin retained. No UV edits in first integration.','user_authorized_original_total_limit':.20}
+    geometry={'parts':{},'stage':CONFIG.get('active_helmet_revision','original_integration_v1'),'constraint':'Original-total20% shape/dimensions; only explicitly configured visor edges may be subdivided. Broad chart count and original rig retained.','user_authorized_original_total_limit':.20}
 
     for name,part in SOURCE['parts'].items():
         points=[]; uv=[]; weights=[]; bone_names=[]; faces=[]; mids=[]; offsets=[]; target_surfaces=[]
         deltas=[]; uv_by_surface=[]
         for sid,row in enumerate(part['surfaces']):
+            original_row=row
             offset=len(points); offsets.append(offset)
             authored=[reshape(name,p,sid) for p in row['positions']]
             authored_uv=[adjusted_uv(name,p,t,sid) for p,t in zip(authored,row['uv'])]
+            if name == HEAD and shape and hasattr(shape, 'refine_surface'):
+                row, authored_list=shape.refine_surface(row,[list(p) for p in authored],authored_uv)
+                authored=[Vector(p) for p in authored_list]; authored_uv=row['uv']
             points.extend(C@p for p in authored); uv.extend(authored_uv)
             weights.extend(row['weights']); bone_names.extend(row['bone_names'])
             # Engine winding differs under the handedness conversion C.
             for i in range(0,len(row['indices']),3):
                 faces.append(tuple(offset+j for j in reversed(row['indices'][i:i+3]))); mids.append(sid)
-            target_surfaces.append({'positions':[list(p) for p in authored], 'uv':authored_uv, 'label':LABELS[name][sid]})
+            target_row={'positions':[list(p) for p in authored], 'uv':authored_uv, 'label':LABELS[name][sid]}
+            if 'added_vertices' in row:
+                for field in ['indices','bone_indices','bone_names','weights','triangle_parents','added_vertices']:
+                    target_row[field]=row[field]
+                target_row['baseline_positions']=row['positions']
+            target_surfaces.append(target_row)
             deltas.extend((p-Vector(old)).length for p,old in zip(authored,row['positions']))
-            changed=sum((Vector(a)-Vector(b)).length>.000001 for a,b in zip(authored_uv,row['uv']))
-            assert changed/len(row['uv'])<=.20, (name,sid,'material UV budget exceeded')
+            changed=sum((Vector(a)-Vector(b)).length>.000001 for a,b in zip(authored_uv,original_row['uv']))
+            assert changed/len(original_row['uv'])<=.20, (name,sid,'material UV budget exceeded')
             uv_by_surface.append({'surface':sid,'label':LABELS[name][sid],
                                   'uv_coordinate_count':len(row['uv']),
                                   'uv_changed_count':changed,
-                                  'uv_changed_fraction':changed/len(row['uv'])})
+                                  'uv_changed_fraction':changed/len(original_row['uv'])})
             def signed_area(coords,tri):
                 a,b,c=[coords[index] for index in tri]
                 return (b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])
-            for start in range(0,len(row['indices']),3):
-                tri=row['indices'][start:start+3]
-                before=signed_area(row['uv'],tri);after=signed_area(authored_uv,tri)
+            for start in range(0,len(original_row['indices']),3):
+                tri=original_row['indices'][start:start+3]
+                before=signed_area(original_row['uv'],tri);after=signed_area(authored_uv,tri)
                 assert abs(before)<=1e-8 or before*after>0, (name,sid,start//3,'UV triangle folded')
         mesh=bpy.data.meshes.new(name); mesh.from_pydata(points,[],faces); mesh.update()
         ob=bpy.data.objects.new(name,mesh); low.objects.link(ob)
         layer=mesh.uv_layers.new(name='OriginalUV_LocalFrontSampling')
         for sid,row in enumerate(part['surfaces']):
             label=LABELS[name][sid]; src=ROOT/row['texture'].removeprefix('res://')
-            delivered=ROOT/CONFIG['asset']/f'{label}_diffuse.png'
+            texture_name=CONFIG.get('texture_files',{}).get(label,f'{label}_diffuse.png')
+            delivered=ROOT/CONFIG['asset']/texture_name
             mesh.materials.append(material(label,delivered if delivered.exists() else src))
         for poly,sid in zip(mesh.polygons,mids):
             poly.material_index=sid
@@ -126,12 +138,12 @@ def main():
         ob.parent=rig
         target['parts'][name]={'surfaces':target_surfaces}
         original_charts=uv_components(part['surfaces'])
-        edited_charts=uv_components([{**row,'uv':target_surfaces[sid]['uv']} for sid,row in enumerate(part['surfaces'])])
+        edited_charts=uv_components([{**row,**target_surfaces[sid]} for sid,row in enumerate(part['surfaces'])])
         assert edited_charts == original_charts
         original_uv=[t for row in part['surfaces'] for t in row['uv']]
         uv_displacements=[(Vector(a)-Vector(b)).length for a,b in zip(uv,original_uv)]
         changed_uv=sum(distance > .000001 for distance in uv_displacements)
-        assert len(uv) == len(original_uv) and changed_uv/len(original_uv) <= .20
+        assert len(uv) <= len(original_uv)*(1.20 if name==HEAD else 1) and changed_uv/len(original_uv) <= .20
         old=[Vector(p) for row in part['surfaces'] for p in row['positions']]
         new=[C.inverted()@p for p in points]
         bounds=lambda ps:{'min':[min(p[i] for p in ps) for i in range(3)],'max':[max(p[i] for p in ps) for i in range(3)]}
@@ -145,9 +157,14 @@ def main():
             row=part['surfaces'][0]; candidate=target_surfaces[0]['positions']
             reversed_triangles=0;zero_area=0;cosines=[];groups={}
             for index,point in enumerate(row['positions']):groups.setdefault(tuple(point),[]).append(index)
-            for offset in range(0,len(row['indices']),3):
-                ids=row['indices'][offset:offset+3]
-                old_points=[Vector(row['positions'][i]) for i in ids]
+            head_target=target_surfaces[0]
+            refined_indices=head_target.get('indices',row['indices'])
+            parent_triangles=head_target.get('triangle_parents',list(range(len(row['indices'])//3)))
+            for offset in range(0,len(refined_indices),3):
+                ids=refined_indices[offset:offset+3]
+                parent=parent_triangles[offset//3]
+                old_ids=row['indices'][parent*3:parent*3+3]
+                old_points=[Vector(row['positions'][i]) for i in old_ids]
                 new_points=[Vector(candidate[i]) for i in ids]
                 a=(old_points[1]-old_points[0]).cross(old_points[2]-old_points[0])
                 b=(new_points[1]-new_points[0]).cross(new_points[2]-new_points[0])
@@ -155,14 +172,20 @@ def main():
                 if a.length>1e-10 and b.length>1e-10:
                     cosine=a.normalized().dot(b.normalized());cosines.append(cosine)
                     if cosine<0:reversed_triangles+=1
+            for index in range(len(row['positions']),len(candidate)):
+                groups.setdefault(tuple(head_target['baseline_positions'][index]),[]).append(index)
             seam=max((Vector(candidate[a])-Vector(candidate[b])).length for group in groups.values() for a in group for b in group)
             geometry['parts'][name]['shape_quality']={'reversed_triangles':reversed_triangles,'zero_area_triangles':zero_area,'coincident_seam_max_rest_gap':seam,'min_triangle_normal_cosine_from_original':min(cosines)}
+            geometry['parts'][name]['added_vertex_count']=len(candidate)-len(row['positions'])
+            geometry['parts'][name]['triangle_growth_fraction']=len(faces)/(len(row['indices'])/3)-1
+            geometry['parts'][name]['weight_source']='Original vertices unchanged; arc midpoint vertices inherit identical parent binds and weights'
             assert reversed_triangles==0 and zero_area==0 and seam==0
         # Exact continuous UV chart wire guides; technical edges are never paint edges.
         for sid,row in enumerate(part['surfaces']):
             label=LABELS[name][sid]; paths=[]
-            for j in range(0,len(row['indices']),3):
-                coords=[target_surfaces[sid]['uv'][idx] for idx in row['indices'][j:j+3]]
+            authored_indices=target_surfaces[sid].get('indices',row['indices'])
+            for j in range(0,len(authored_indices),3):
+                coords=[target_surfaces[sid]['uv'][idx] for idx in authored_indices[j:j+3]]
                 paths.append('<polygon points="'+' '.join(f'{u*1024:.3f},{v*1024:.3f}' for u,v in coords)+'" fill="none" stroke="#9ad9e8" stroke-width="1"/>')
             # Preserve the immutable original guides used by image generation.
             guide_name=f'{label}_authored_uv'

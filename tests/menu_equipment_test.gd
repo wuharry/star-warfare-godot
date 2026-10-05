@@ -232,6 +232,21 @@ func _run() -> void:
 			var customize_effect := customize_weapon.get_surface_override_material(1) as StandardMaterial3D
 			_check(customize_solid != null and customize_solid.transparency == BaseMaterial3D.TRANSPARENCY_DISABLED, "Customize weapon solid material became transparent")
 			_check(customize_effect != null and customize_effect.transparency == BaseMaterial3D.TRANSPARENCY_ALPHA, "Customize weapon effect material lost alpha blending")
+		for weapon_id in ["gun22", "gun23", "gun24", "gun27", "gun28", "gun29", "gun33", "gun36", "gun39", "gun44"]:
+			shell._select_item(weapon_id, false)
+			await get_tree().process_frame
+			var preview := shell.preview_root.find_child("SelectedWeapon", true, false) as MeshInstance3D
+			_check(preview != null, weapon_id + " has no equipped weapon preview")
+			if preview == null:
+				continue
+			var weapon: Dictionary = GameState.WEAPONS[weapon_id]
+			var factor := preload("res://scripts/core/weapon_visual_pose.gd").scale_factor(weapon, preview.mesh)
+			_check(preview.scale.is_equal_approx(Vector3.ONE * factor), weapon_id + " shop/gameplay sizes diverge")
+			var offset := preload("res://scripts/core/weapon_visual_pose.gd").grip_offset(weapon, preview.mesh)
+			var grip := preview.to_global(-offset)
+			_check(grip.distance_to((preview.get_parent() as Node3D).global_position) < 0.001, weapon_id + " preview grip floats away from its socket")
+			var scabbard := shell.preview_root.find_child("WeaponScabbard", true, false)
+			_check((scabbard != null) == (str(weapon.kind) == "sword"), weapon_id + " preview scabbard does not match the equipped weapon")
 		shell._select_item("gun23", false)
 		var customize_additive := _first_preview_mesh(shell.preview_root)
 		_check(customize_additive != null, "Customize additive weapon preview is missing")
@@ -348,6 +363,11 @@ func _run() -> void:
 		var bag_visual_id := int(GameState.get_armor_item(preview_bag_key).get("visual_id", 0))
 		var bag_mesh_name := "ArmorBag_%02d" % bag_visual_id
 		_check(shell.preview_root.find_child(bag_mesh_name, true, false) is MeshInstance3D, "bag preview did not load " + bag_mesh_name + ".obj")
+		var advanced_bag := shell.preview_root.find_child(bag_mesh_name, true, false) as MeshInstance3D
+		if advanced_bag != null:
+			for surface in advanced_bag.mesh.get_surface_count():
+				var material := advanced_bag.get_active_material(surface) as BaseMaterial3D
+				_check(material != null and material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED and material.albedo_color.is_equal_approx(Color.WHITE), "advanced backpack preview still darkens indoors")
 		var bag_bounds := _visible_preview_bounds(shell.preview_root)
 		_check(not bag_bounds.size.is_zero_approx(), "bag preview has no visible geometry")
 		_check((bag_bounds.position + bag_bounds.size * 0.5).length() < 0.05, "bag preview is not centered on the turntable")

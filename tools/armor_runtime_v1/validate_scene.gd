@@ -58,7 +58,10 @@ func _run() -> void:
 			_check(maximum_rest_error<=.000001,"Actual scene rest position differs from target")
 			var material:=part.get_active_material(sid) as BaseMaterial3D
 			_check(material!=null and material.shading_mode==BaseMaterial3D.SHADING_MODE_UNSHADED,"Generated diffuse rendering context changed")
-			if material!=null:_check(material.albedo_texture.resource_path=="res://"+str(config.asset)+"/"+str(config.parts[name_key][sid])+"_diffuse.png","Wrong canonical texture slot")
+			if material!=null:
+				var label := str(config.parts[name_key][sid])
+				var filename := str(config.get("texture_files", {}).get(label, label+"_diffuse.png"))
+				_check(material.albedo_texture.resource_path=="res://"+str(config.asset)+"/"+filename,"Wrong canonical texture slot")
 		var ok:=errors.size()==previous
 		records.append({"part":name_key,"surfaces":raw.mesh.get_surface_count(),"indices_skin_weights_bones_topology_exact":ok,"rest_position_uv_verified_against_target":ok,"max_rest_error_m":maximum_rest_error,"body_limbs_all_arrays_exact":ok if not name_key.begins_with("ArmorHead_") else null})
 	var frozen_path := work+"revisions/original_source_v1/source.json"

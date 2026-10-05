@@ -143,9 +143,43 @@ func _run() -> void:
 		print(line)
 	print("distinct rates: %d of %d automatic weapons" % [distinct.size(), rates.size()])
 
+	await _test_sword_swing(player)
 	world.free()
 	AudioDirector.stop_all_sfx()
 	await get_tree().process_frame
 	if failures.is_empty():
 		print("WEAPON_FIRE_FEEDBACK_TEST_PASS checks=%d" % checks)
 	get_tree().quit(0 if failures.is_empty() else 1)
+
+func _test_sword_swing(player: WarfarePlayer) -> void:
+	player.set_physics_process(false)
+	player.recovered_animation_player.callback_mode_process = AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_MANUAL
+	for weapon_id in ["gun27", "gun28", "gun33"]:
+		player.equip_weapon(weapon_id, false)
+		player.armor_skills = {}
+		player.energy = player.max_energy
+		player.shot_cooldown = 0
+		player._try_fire()
+		player._update_recovered_animation(0)
+		_check(player.recovered_animation_name == "stand_shoot_jian", weapon_id + " does not play the recovered slash")
+		var animation := player.recovered_animation_player
+		var clip := animation.get_animation("stand_shoot_jian")
+		var duration := player.shoot_pose_left
+		var blade := player.gun_mount.get_node("WeaponVisual/Recovered_" + weapon_id) as MeshInstance3D
+		var bounds := preload("res://scripts/core/equipment_refinement.gd").authored_bounds(blade.mesh)
+		var tip_local := Vector3(bounds.get_center().x, bounds.end.y, 0)
+		var previous := blade.to_global(tip_local)
+		var travel := 0.0
+		for frame in 18:
+			animation.advance(duration / 18.0)
+			player.recovered_skeleton.force_update_all_bone_transforms()
+			await get_tree().process_frame
+			var tip := blade.to_global(tip_local)
+			travel += previous.distance_to(tip)
+			previous = tip
+			var grip := blade.to_global(Vector3(bounds.get_center().x, 0, 0))
+			_check(grip.distance_to(player.gun_mount.global_position) < 0.01, weapon_id + " blade grip separates from the hand during the swing")
+			_check(player.gun_mount.position.is_equal_approx(player.gun_mount_rest_position), weapon_id + " swing is interrupted by firearm recoil")
+		_check(animation.current_animation_position >= clip.length - 0.02, weapon_id + " swing is truncated before recovery")
+		_check(travel > 1.5, weapon_id + " blade does not sweep a melee arc")
+		print("SWORD_SWING %s clip=%.2f duration=%.2f rate=%.2f tip_travel=%.3f" % [weapon_id, clip.length, duration, player.recovered_animation_speed, travel])

@@ -278,6 +278,7 @@ func _weapon_profile(type_id: int, gun_id: int, weapon_name: String) -> Dictiona
 			profile.automatic = true
 			profile.kind = "snow" if gun_id == 38 else "beam"
 			profile.animation = "rifle" if gun_id == 38 else "laser"
+			profile.tracer_style = "legacy" if gun_id == 38 else "laser"
 			profile.sound = ""
 			profile.loop_sound = "snowgun/Snow_Start.wav" if gun_id == 38 else "lasergun/laser_fire.wav"
 			profile.color = Color(0.55, 0.9, 1.0) if gun_id == 38 else Color(1.0, 0.12, 0.08)
