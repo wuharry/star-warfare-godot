@@ -13,11 +13,12 @@ void fragment() {
 	if (use_texture) {
 		paint *= texture(albedo_texture, UV).rgb;
 	}
-	// Real bevel normals now provide most of the armor's light response.
-	ALBEDO = paint * (1.0 - readable_fill);
-	EMISSION = paint * readable_fill;
+	// Harmonize lighting ratio and suppress specular noise to match the retro aesthetic.
+	float harmonized_fill = mix(0.75, 0.85, readable_fill);
+	ALBEDO = paint * (1.0 - harmonized_fill);
+	EMISSION = paint * harmonized_fill;
 	float brightness = dot(paint, vec3(0.2126, 0.7152, 0.0722));
-	ROUGHNESS = clamp(surface_roughness + (1.0 - brightness) * 0.12, 0.45, 0.86);
-	METALLIC = 0.08;
-	SPECULAR = surface_specular;
+	ROUGHNESS = clamp(surface_roughness + (1.0 - brightness) * 0.12, 0.80, 0.95);
+	METALLIC = 0.0;
+	SPECULAR = min(surface_specular, 0.06);
 }

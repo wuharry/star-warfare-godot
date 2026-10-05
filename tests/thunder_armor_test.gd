@@ -76,7 +76,7 @@ func _run() -> void:
 	_check(triangle_count > 0, "mesh validation did not count any triangles")
 	_check_visible(avatar, ["ArmorHead_06", "ArmorBody_06", "ArmorHand_06", "ArmorFoot_06"])
 	# An ordinary set must retain its own mesh; only Thunder receives this redesign.
-	var legacy_template := (load("res://assets/equipment_refined/armors/armor_02.scn") as PackedScene).instantiate() as Node3D
+	var legacy_template := (load(Visuals.reworked_scene_path(2)) as PackedScene).instantiate() as Node3D
 	for cycle in range(3):
 		GameState.equipped_armor = {"head": "armor_head_06", "body": "armor_body_00", "arms": "armor_arms_21", "legs": "armor_legs_02", "bag": "armor_bag_00"}
 		player._apply_recovered_armor_visibility()
