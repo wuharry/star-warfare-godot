@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-05",
+  "tool": "built-in image_gen.imagegen",
+  "mode": "edit/style-transfer",
+  "runtime_kind": "crawler",
+  "source_monster_id": 0,
+  "geometry_changed": false,
+  "calls": [
+    {
+      "prompt": "prompts/warrior_atlas.txt",
+      "references": [
+        {
+          "path": "assets/models/enemies/concept/warrior/warrior_anatomy_v4.png",
+          "role": "edit target",
+          "sha256": "9c40ce2e837f0bc1eefb5690ba60e95f26858065b655c34002e1fc389dbc1325"
+        },
+        {
+          "path": "assets/models/enemies/animated/bug01/bug_01.png",
+          "role": "original enemy paint style only",
+          "sha256": "40dc098f5270f87a13464762f679469bac6e87ef3762b26e09b12aec4b715b23"
+        },
+        {
+          "path": "assets/models/enemies/animated/bug03/bug_3.png",
+          "role": "original enemy paint style only",
+          "sha256": "c9eb90737c0bf27677390b1f3519773516c1d026d7ebb5eb93014cc364da4378"
+        }
+      ],
+      "raw_output": "warrior_atlas_generated.png",
+      "raw_output_sha256": "08d94a33bf9e4c8409e411abe21e055a241cda4fe6c1237edb210df57dd35825",
+      "selection": "rejected as final: paint strokes still too faceted"
+    },
+    {
+      "prompt": "prompts/warrior_atlas_soft_pass.txt",
+      "references": [
+        {
+          "path": "docs/art/warrior_bug_runtime_v1/revisions/style_unified_v6/warrior_atlas_generated.png",
+          "role": "edit target",
+          "sha256": "08d94a33bf9e4c8409e411abe21e055a241cda4fe6c1237edb210df57dd35825"
+        },
+        {
+          "path": "assets/models/enemies/animated/bug01/bug_01.png",
+          "role": "original enemy paint style only",
+          "sha256": "40dc098f5270f87a13464762f679469bac6e87ef3762b26e09b12aec4b715b23"
+        },
+        {
+          "path": "assets/models/enemies/animated/bug03/bug_3.png",
+          "role": "original enemy paint style only",
+          "sha256": "c9eb90737c0bf27677390b1f3519773516c1d026d7ebb5eb93014cc364da4378"
+        }
+      ],
+      "raw_output": "warrior_atlas_soft_generated.png",
+      "raw_output_sha256": "bb6c56a19e95787d86e1bf7cacdc1ffec7941c9f1152ebc334371e2ea2d00770",
+      "selection": "selected; soften gradients and golden borders"
+    }
+  ],
+  "final_texture": {
+    "path": "assets/models/enemies/concept/warrior/warrior_anatomy_v6.png",
+    "sha256": "bb6c56a19e95787d86e1bf7cacdc1ffec7941c9f1152ebc334371e2ea2d00770",
+    "processing": "byte-for-byte copy of selected generated PNG; no cropping, resizing, recolouring or UV reprojection",
+    "size": [
+      1024,
+      1536
+    ],
+    "fully_opaque": true
+  },
+  "material_processing": {
+    "ridge_base_linear": [
+      0.075,
+      0.03,
+      0.013
+    ],
+    "fissure_base_linear": [
+      0.08,
+      0.016,
+      0.1
+    ],
+    "ridge_and_fissure_emission": false,
+    "shell_painted_fill": 0.65,
+    "recess_painted_fill": 0.3
+  },
+  "original_assets_modified": false,
+  "gameplay_balance_modified_by_this_task": false,
+  "visual_style_match": "observational review only; no numeric similarity or 100 percent same-author guarantee"
+}

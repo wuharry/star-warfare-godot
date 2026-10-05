@@ -2,7 +2,7 @@
 
 Run Blender 5.1 --background --python tools/enemy_concept/build_warrior.py.
 Only writes the concept warrior model and its scratch diagnostics; source assets
-and the supplied warrior_anatomy_v4.png are read-only inputs.
+and the supplied warrior_anatomy_v6.png are read-only inputs.
 """
 import bpy
 import json
@@ -18,7 +18,7 @@ SCRATCH = ROOT / 'test_output/enemy_concept_runtime/model_build'
 DEST.mkdir(parents=True, exist_ok=True)
 SCRATCH.mkdir(parents=True, exist_ok=True)
 (SCRATCH / '.gdignore').write_text('')
-ALBEDO = DEST / 'warrior_anatomy_v4.png'
+ALBEDO = DEST / 'warrior_anatomy_v6.png'
 albedo_hash_before = hashlib.sha256(ALBEDO.read_bytes()).hexdigest()
 doc = json.loads(SOURCE.read_text(encoding='utf-8'))
 for key in ('extensionsRequired', 'extensionsUsed'):
@@ -129,8 +129,8 @@ dark = material('warrior_recess', (.014,.007,.022), .14)
 joint_tex = dark.node_tree.nodes.new('ShaderNodeTexImage')
 joint_tex.image = tex.image
 dark.node_tree.links.new(joint_tex.outputs['Color'], dark.node_tree.nodes['Principled BSDF'].inputs['Base Color'])
-gold = material('warrior_chitin_ridge', (.15,.060,.015), .10)
-purple = material('warrior_purple_fissure', (.28,.012,.55), .55)
+gold = material('warrior_chitin_ridge', (.075,.030,.013))
+purple = material('warrior_purple_fissure', (.080,.016,.100))
 green = material('warrior_six_green_eyes', (.10,.43,.014), .18)
 green_shader=green.node_tree.nodes['Principled BSDF']
 green_shader.inputs['Base Color'].default_value = (1,1,1,1)
@@ -711,7 +711,9 @@ report={'source':str(SOURCE.relative_to(ROOT)),'output':str((DEST/'warrior.gltf'
  'parts':part_ranges,'clips':animation_report,'export_clips':[a['name'] for a in export_doc.get('animations',[])],
  'materials':[m.name for m in materials],'albedo_path':ALBEDO.relative_to(ROOT).as_posix(),'albedo_sha256':albedo_hash_before,
  'albedo_unchanged':hashlib.sha256(ALBEDO.read_bytes()).hexdigest()==albedo_hash_before,
- 'palette':{'revision':'anatomy_atlas_v4','attribute':'COLOR_0','shell_emission':.12,'specular_ior_level':.10,
+ 'palette':{'revision':'style_unified_v6','attribute':'COLOR_0','shell_emission':.12,'specular_ior_level':.10,
+            'ridge_base_linear':[.075,.030,.013],'fissure_base_linear':[.080,.016,.100],
+            'ridge_emission':0.0,'fissure_emission':0.0,
             'zones':['plum recesses','mahogany panels','amber ridge accents','violet seams','green eyes']},
  'atlas':{'grid':[2,3],'margin':.035,'tiles':['hood','abdomen','limb','blade','face','joint'],
           'source':'built-in imagegen','runtime_uses_full_color':True},

@@ -3,7 +3,7 @@ extends Node3D
 const Catalog = preload("res://scripts/core/monster_catalog.gd")
 const CONCEPT_PATH := "res://assets/models/enemies/concept/warrior/warrior.gltf"
 const ORIGINAL_PATH := "res://assets/models/enemies/animated/bug01/bug01.gltf"
-const TEXTURE_PATH := "res://assets/models/enemies/concept/warrior/warrior_anatomy_v4.png"
+const TEXTURE_PATH := "res://assets/models/enemies/concept/warrior/warrior_anatomy_v6.png"
 const REQUIRED_CLIPS := ["idle", "run", "run01", "run02", "attack", "attacked", "dead", "dead01"]
 
 var failures: Array[String] = []
@@ -13,6 +13,10 @@ var rays := 0
 
 func _ready() -> void:
 	GameState.save_path = GameState.TEST_SAVE_PATH
+	# The two specimens must carry identical gameplay fields. Veteran and elite
+	# give every swarm bug its own speed within +-0.5 on purpose, so compare on
+	# the source tier where a crawler's stats are fixed.
+	GameState.settings.difficulty = "recruit"
 	call_deferred("_run")
 
 
@@ -197,6 +201,8 @@ func _run() -> void:
 			var palette_enabled := false
 			if material is BaseMaterial3D:
 				texture = material.albedo_texture
+				if material.resource_name in ["warrior_chitin_ridge", "warrior_purple_fissure"]:
+					_check(not material.emission_enabled, "chitin edge/tissue unexpectedly emits light: " + material.resource_name)
 				if material.resource_name == "warrior_six_green_eyes" and material.vertex_color_use_as_albedo:
 					var eye_colors: PackedColorArray = mesh.mesh.surface_get_arrays(surface)[Mesh.ARRAY_COLOR]
 					if not eye_colors.is_empty():

@@ -61,7 +61,7 @@ func _run() -> void:
 	world.set_physics_process(false)
 	world.player.set_physics_process(false)
 	_check(world.player.max_health == 1400.0, "Viper plus starter backpack HP must be 350 + 400 + 200 + 250 + 200, without the old 1/100 scale")
-	var expected := {"crawler": [0, 45, 4, 70, 90, 10], "spitter": [2, 35, 3, 100, 160, 15], "brute": [3, 25, 6, 300, 130, 20], "boss": [10, 80000, 3, 700, 299999, 60000]}
+	var expected := {"crawler": [0, 45, 4, 70, 90, 10], "pouncer": [1, 60, 7, 90, 250, 25], "spitter": [2, 35, 3, 100, 160, 15], "brute": [3, 25, 6, 300, 130, 20], "boss": [10, 80000, 3, 700, 299999, 60000]}
 	for kind: String in expected:
 		var enemy := world._spawn_enemy(kind, false)
 		enemy.set_physics_process(false)
@@ -80,6 +80,10 @@ func _run() -> void:
 			_check(world.battle_credits == 90 and GameState.experience == 10 and world.kills == 1, "kill did not award original cash/XP exactly once")
 		if kind == "spitter":
 			_check(enemy.attack_interval == 5.0 and enemy.attack_range == 18.0 and enemy.projectile_speed == 14.0, "Scorpion attack table is not used")
+		if kind == "pouncer":
+			_check(enemy.pounce_damage == 130.0 and enemy.pounce_interval == 8.0 and enemy.pounce_range == 8.0, "High-speed bug 扑击 table is not used")
+		if kind == "brute":
+			_check(enemy.blast_damage == 300.0 and enemy.blast_radius == 4.0, "Suicide bug 自爆 table is not used")
 	var elite := world._spawn_enemy("crawler", true)
 	_check(is_equal_approx(elite.max_health, 45.0 * 1.65) and elite.experience_value == 20 and elite.reward == 180, "elite modifiers were lost or doubled")
 	world.free()

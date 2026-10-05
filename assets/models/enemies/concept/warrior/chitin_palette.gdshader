@@ -4,7 +4,7 @@ render_mode cull_disabled, diffuse_burley, specular_disabled;
 uniform sampler2D chitin_texture : source_color, filter_linear_mipmap, repeat_enable;
 // Painted occlusion and edge accents come from the anatomical atlas itself.
 // Keep that RGB information intact in the recovered baked-light arenas.
-uniform float painted_fill : hint_range(0.0, 2.0) = 0.45;
+uniform float painted_fill : hint_range(0.0, 2.0) = 0.65;
 uniform float palette_weight : hint_range(0.0, 1.0) = 0.06;
 varying vec3 plate_tint;
 

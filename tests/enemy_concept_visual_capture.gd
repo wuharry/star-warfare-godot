@@ -239,6 +239,8 @@ func _run() -> void:
 	camera.look_at(Vector3(0, 1.15, 0), Vector3.UP)
 	caption.text = "ORIGINAL (left)  /  CONCEPT PROTOTYPE (right)\nSame 2 m posed height; new texture, body silhouette and articulated scythes."
 	await _save("comparison_front.png", {"view": "comparison_front", "left": "original", "right": "concept", "orthographic_size": camera.size})
+	if "--family" in OS.get_cmdline_user_args():
+		await _capture_family()
 	var file := FileAccess.open(OUTPUT_DIR.path_join("manifest.json"), FileAccess.WRITE)
 	if file == null:
 		push_error("Could not write capture manifest")
@@ -267,6 +269,42 @@ func _start_interactive_clip(clip: String) -> void:
 		animator.play(clip, 0.0)
 		animator.seek(0.0, true)
 	_update_interactive_caption()
+
+
+func _capture_family() -> void:
+	# Share the stage, exposure and camera: material consistency cannot be
+	# judged from independently lit portraits or resized concept illustrations.
+	var saved_transform := camera.transform
+	var saved_size := camera.size
+	var saved_caption := caption.text
+	var saved_positions: Array[Vector3] = [specimens[0].position, specimens[1].position]
+	var family: Array[WarfareEnemy] = [specimens[0], specimens[1]]
+	for kind in ["spitter", "brute"]:
+		var enemy := WarfareEnemy.new()
+		enemy.use_concept_visuals = false
+		enemy.configure_recovered(null, kind)
+		stage.add_child(enemy)
+		enemy.set_physics_process(false)
+		enemy.spawn_left = 0.0
+		enemy.model.position = Vector3.ZERO
+		_hide_spawn_effect(enemy)
+		family.append(enemy)
+	for index in range(family.size()):
+		family[index].visible = true
+		family[index].position = Vector3(4.8 - float(index) * 3.2, 0, 0)
+		_pose(family[index], "idle", 0.0)
+	camera.size = 8.3
+	camera.position = Vector3(0, 3.8, -16)
+	camera.look_at(Vector3(0, 1.0, 0), Vector3.UP)
+	caption.text = "ORIGINAL CRAWLER  /  LIVE WORKER  /  ORIGINAL SPITTER  /  ORIGINAL BRUTE\nSame camera, authored runtime sizes, shared lighting and exposure."
+	await _save("family_idle.png", {"view": "enemy_family", "kinds": ["legacy_crawler", "crawler", "spitter", "brute"], "orthographic_size": camera.size, "size_policy": "unchanged runtime target heights"})
+	for index in range(2, family.size()):
+		family[index].free()
+	for index in range(specimens.size()):
+		specimens[index].position = saved_positions[index]
+	camera.transform = saved_transform
+	camera.size = saved_size
+	caption.text = saved_caption
 
 
 func _update_interactive_caption() -> void:
@@ -370,4 +408,22 @@ func _capture_gameplay() -> void:
 	game_camera.look_at(enemy.global_position + Vector3.UP * 1.0, Vector3.UP)
 	game_camera.current = true
 	await _save("after_level01_gameplay.png", {"variant": "after", "view": "live_game_world_closeup", "level": 1, "spawn_api": "WarfareGameWorld._spawn_enemy", "scene": enemy.recovered_enemy.scene_file_path, "seed": 1633, "scene_time_seconds": 0.0, "lighting": "level01_fixed_baked_lighting", "spawn_position": [enemy.global_position.x, enemy.global_position.y, enemy.global_position.z], "camera_position": [fixed_camera.x, fixed_camera.y, fixed_camera.z]})
+	if "--player-view" in OS.get_cmdline_user_args():
+		var player_position := world._snap_enemy_spawn_to_ground(Vector3(fixed_camera.x, fixed_spawn.y, fixed_camera.z))
+		if player_position == Vector3.INF:
+			push_error("Cannot ground the player for the gameplay-camera capture")
+			failed = true
+		else:
+			world.player.global_position = player_position
+			var direction := enemy.global_position - player_position
+			world.player.camera_yaw = atan2(-direction.x, -direction.z)
+			world.player.camera_rig.rotation.y = world.player.camera_yaw
+			world.player.model.rotation.y = world.player.camera_yaw
+			world.player.camera.fov = world.player.get_hip_fov()
+			world.player.visible = true
+			world.hud.visible = true
+			world.player.camera.current = true
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			await _save("after_level01_player_view.png", {"variant": "after", "view": "actual_player_camera", "level": 1, "spawn_api": "WarfareGameWorld._spawn_enemy", "scene": enemy.recovered_enemy.scene_file_path, "fov": world.player.camera.fov, "spring_length": world.player.spring_arm.spring_length, "player_enemy_distance": direction.length(), "hud_visible": true, "player_visible": true, "actors_frozen": true})
 	await _release_scene(world)

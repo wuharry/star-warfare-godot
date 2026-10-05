@@ -58,6 +58,34 @@ var attack_tokens: Array[int] = []
 var max_attack_tokens := 99
 var difficulty_profile: Dictionary = {}
 
+# Surround spawning (veteran/elite). Authored EnemySpawnPoint markers cover a
+# single quadrant around the start on sectors 3 and 7, so waypoints -- which
+# sit on walkable routes in every sector -- are candidates too. The first group
+# comes from where the player is looking so the wave reads as arriving; every
+# later group takes the bearing furthest from those already used, preferring
+# ground the player cannot see.
+const SURROUND_MIN_DISTANCE := 14.0
+const SURROUND_MAX_DISTANCE := 45.0
+var wave_spawn_bearings: Array[float] = []
+
+# Pacing director (veteran/elite), after Left 4 Dead: pressure builds from
+# damage taken and bugs at close range and bleeds off over time. Past the peak
+# the rest of the wave waits until the player has breathed, capped so a wave
+# never stalls, and a hard wave earns a longer break before the next one.
+const INTENSITY_PEAK := 70.0
+const INTENSITY_CALM := 30.0
+const INTENSITY_DECAY := 6.0
+const INTENSITY_PER_HEALTH := 150.0
+const INTENSITY_PER_CLOSE_BUG := 3.0
+const CLOSE_BUG_RANGE := 6.0
+const RELAX_MAX_HOLD := 8.0
+const WAVE_BREAK := 2.1
+const WAVE_BREAK_AFTER_PEAK := 4.0
+var intensity := 0.0
+var relax_hold_left := 0.0
+var peak_ready := true
+var _last_player_pool := -1.0
+
 func _ready() -> void:
 	level_data = GameState.get_level_data(GameState.selected_level)
 	pvp_arena = bool(level_data.get("pvp", false))
@@ -79,6 +107,37 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not completed:
 		elapsed_time += delta
+		_update_director(delta)
+
+func _update_director(delta: float) -> void:
+	if not bool(difficulty_profile.get("pacing_director", false)) or not is_instance_valid(player):
+		return
+	var pool := player.health + player.shield
+	if _last_player_pool >= 0.0 and pool < _last_player_pool:
+		var pool_max := maxf(1.0, player.max_health + player.max_shield)
+		intensity += (_last_player_pool - pool) / pool_max * INTENSITY_PER_HEALTH
+	_last_player_pool = pool
+	var close_bugs := 0
+	var origin := player.global_position
+	for node in get_tree().get_nodes_in_group("enemies"):
+		var enemy := node as WarfareEnemy
+		if enemy and not enemy.dead and enemy.global_position.distance_squared_to(origin) <= CLOSE_BUG_RANGE * CLOSE_BUG_RANGE:
+			close_bugs += 1
+	intensity = clampf(intensity + (close_bugs * INTENSITY_PER_CLOSE_BUG - INTENSITY_DECAY) * delta, 0.0, 100.0)
+	if relax_hold_left > 0.0:
+		relax_hold_left = maxf(0.0, relax_hold_left - delta)
+		if intensity <= INTENSITY_CALM:
+			relax_hold_left = 0.0
+	# One hold per peak: after a capped hold the swarm resumes even if the
+	# player is still under pressure, and only calming down re-arms it.
+	if intensity <= INTENSITY_CALM:
+		peak_ready = true
+	elif peak_ready and spawning and intensity >= INTENSITY_PEAK:
+		peak_ready = false
+		relax_hold_left = RELAX_MAX_HOLD
+
+func _director_holds_spawns() -> bool:
+	return relax_hold_left > 0.0
 
 func _is_pvp_arena() -> bool:
 	return pvp_arena or bool(level_data.get("pvp", false)) or str(level_data.get("mode", "")) == "pvp"
@@ -259,10 +318,11 @@ func _start_next_wave() -> void:
 	var boss_wave := bool(level_data.boss) and current_wave == int(level_data.waves)
 	var count := _wave_enemy_count(boss_wave)
 	var group_origin := Vector3.INF
+	wave_spawn_bearings.clear()
 	for i in range(count):
 		if completed:
 			break
-		while alive_enemies >= MAX_ACTIVE_ENEMIES and not completed:
+		while (alive_enemies >= MAX_ACTIVE_ENEMIES or _director_holds_spawns()) and not completed:
 			await get_tree().create_timer(0.18).timeout
 		if completed:
 			break
@@ -275,7 +335,8 @@ func _start_next_wave() -> void:
 		var spawn_position := _choose_restored_enemy_spawn("boss") if kind == "boss" else _swarm_spawn_position(group_origin, i % SWARM_GROUP_SIZE)
 		_spawn_enemy(kind, i > 0 and current_wave >= 3 and i % 7 == 0, spawn_position)
 		if i < count - 1:
-			var interval := SWARM_GROUP_INTERVAL if (i + 1) % SWARM_GROUP_SIZE == 0 else SWARM_MEMBER_INTERVAL
+			var group_interval := float(difficulty_profile.get("group_interval", SWARM_GROUP_INTERVAL))
+			var interval := group_interval if (i + 1) % SWARM_GROUP_SIZE == 0 else SWARM_MEMBER_INTERVAL
 			await get_tree().create_timer(interval).timeout
 	spawning = false
 	_check_wave_complete()
@@ -287,6 +348,10 @@ func _wave_enemy_count(boss_wave: bool) -> int:
 	return maxi(8, roundi(float(count) * 0.36)) if boss_wave else count
 
 func _choose_swarm_group_origin(previous_origin: Vector3) -> Vector3:
+	if bool(difficulty_profile.get("surround_spawns", false)):
+		var surround := _choose_surround_group_origin()
+		if surround != Vector3.INF:
+			return surround
 	# Use the nearest safe lane, then switch lanes for the next group. Some
 	# restored maps have markers more than 100 metres apart; rolling any marker
 	# makes most of a wave spend its first moments outside the fight.
@@ -303,6 +368,56 @@ func _choose_swarm_group_origin(previous_origin: Vector3) -> Vector3:
 	if nearest != Vector3.INF:
 		return nearest
 	return _choose_restored_enemy_spawn("crawler")
+
+func _choose_surround_group_origin() -> Vector3:
+	if not is_instance_valid(player):
+		return Vector3.INF
+	var origin := player.global_position
+	var view := _player_view_direction()
+	var candidates: Array[Vector3] = enemy_spawn_points.duplicate()
+	candidates.append_array(waypoint_positions)
+	var best := Vector3.INF
+	var best_bearing := 0.0
+	var best_score := -INF
+	for candidate in candidates:
+		var offset := Vector2(candidate.x - origin.x, candidate.z - origin.z)
+		var distance := offset.length()
+		if distance < SURROUND_MIN_DISTANCE or distance > SURROUND_MAX_DISTANCE:
+			continue
+		var grounded := _snap_enemy_spawn_to_ground(candidate)
+		if grounded == Vector3.INF:
+			continue
+		var direction := offset / distance
+		var facing := direction.dot(view)
+		var candidate_score := facing
+		if not wave_spawn_bearings.is_empty():
+			candidate_score = _bearing_gap(atan2(direction.x, direction.y))
+			if facing < 0.2:
+				candidate_score += 0.6
+			if not _has_clear_static_path(grounded, origin):
+				candidate_score += 0.3
+		candidate_score -= (distance - SURROUND_MIN_DISTANCE) / (SURROUND_MAX_DISTANCE - SURROUND_MIN_DISTANCE) * 0.4
+		candidate_score += rng.randf() * 0.15
+		if candidate_score > best_score:
+			best_score = candidate_score
+			best = grounded
+			best_bearing = atan2(direction.x, direction.y)
+	if best != Vector3.INF:
+		wave_spawn_bearings.append(best_bearing)
+	return best
+
+func _bearing_gap(bearing: float) -> float:
+	var gap := PI
+	for used in wave_spawn_bearings:
+		gap = minf(gap, absf(wrapf(bearing - used, -PI, PI)))
+	return gap
+
+func _player_view_direction() -> Vector2:
+	var forward := -player.global_transform.basis.z
+	if is_instance_valid(player.camera):
+		forward = -player.camera.global_transform.basis.z
+	var planar := Vector2(forward.x, forward.z)
+	return planar.normalized() if planar.length_squared() > 0.0001 else Vector2(0.0, -1.0)
 
 func _swarm_spawn_position(origin: Vector3, slot: int) -> Vector3:
 	if origin == Vector3.INF or slot == 0:
@@ -326,13 +441,17 @@ func _choose_enemy_kind(index: int, boss_wave: bool) -> String:
 		return "spitter"
 	if current_wave >= 3 and index % 7 == 4:
 		return "brute"
+	# Pouncers only exist for the tactical brain; recruit keeps the source mix.
+	if current_wave >= 2 and index % 6 == 5 and bool(difficulty_profile.get("tactical", false)):
+		return "pouncer"
 	return "crawler"
 
 func _spawn_enemy(kind: String, elite: bool, position_override: Vector3 = Vector3.INF) -> WarfareEnemy:
 	if _is_pvp_arena():
 		return null
 	var enemy := EnemyScript.new()
-	var health_scale := float(level_data.get("enemy_health_scale", 1.0)) * (1.0 + maxi(0, current_wave - 1) * 0.12)
+	var wave_growth := float(difficulty_profile.get("wave_health_growth", 0.12))
+	var health_scale := float(level_data.get("enemy_health_scale", 1.0)) * (1.0 + maxi(0, current_wave - 1) * wave_growth)
 	enemy.configure_recovered(player, kind, health_scale, elite)
 	add_child(enemy)
 	var spawn_position := position_override if position_override != Vector3.INF else _choose_restored_enemy_spawn(kind)
@@ -378,7 +497,10 @@ func _check_wave_complete() -> void:
 		_victory()
 	else:
 		hud.announce(tr("WAVE CLEAR"), 1.3)
-		await get_tree().create_timer(2.1).timeout
+		var wave_break := WAVE_BREAK
+		if bool(difficulty_profile.get("pacing_director", false)):
+			wave_break += WAVE_BREAK_AFTER_PEAK * intensity / 100.0
+		await get_tree().create_timer(wave_break).timeout
 		_start_next_wave()
 
 func _victory() -> void:

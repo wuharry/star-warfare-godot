@@ -3,8 +3,11 @@ extends RefCounted
 const Source = preload("res://scripts/core/recovered_game_data.gd")
 # Match the recovered models, not the restoration's descriptive AI aliases.
 # Unity GameWorld maps bug01..08 to EnemyType 0..7 and boss01 to Dragon (10).
-const RUNTIME_IDS := {"crawler": 0, "spitter": 2, "brute": 3, "boss": 10}
-const RUNTIME_MODELS := {"crawler": "bug01", "spitter": "bug03", "brute": "bug04", "boss": "boss01"}
+# "brute" is the recovered 自爆虫 (bug04); the tactical tiers give it its source
+# self-destruct. "pouncer" is 高速虫, whose bug02 model was never recovered, so it
+# borrows the original bug01 mesh that live crawlers no longer show.
+const RUNTIME_IDS := {"crawler": 0, "pouncer": 1, "spitter": 2, "brute": 3, "boss": 10}
+const RUNTIME_MODELS := {"crawler": "bug01", "pouncer": "bug01", "spitter": "bug03", "brute": "bug04", "boss": "boss01"}
 
 # Concept prototypes replace the visual scene only. Source monster IDs, stats
 # and behaviour still come from the recovered catalog above.

@@ -79,8 +79,21 @@ const QUALITY_ORDER := ["low", "medium", "high"]
 # Three combat tiers. "recruit" is the original beeline AI kept untouched so the
 # old balance stays playable; "veteran" and "elite" switch enemies over to the
 # tactical brain in enemy.gd (flanking, attack tokens, telegraphed strikes,
-# predictive fire). Every field is a behaviour knob, not a stat multiplier —
-# the difficulty comes from how the pack fights, not from inflated numbers.
+# predictive fire, pouncers and detonating bombers).
+#
+# Threat comes from what it costs the player to back away, not from inflated
+# HP. Source crawlers walk at 4 m/s against a player at 8.2, so retreating
+# while firing beat every wave. swarm_speed sets crawlers, bombers and pouncers
+# to the median full-armor speed (8.2; the 29 sets run 6.2-10.2, firing never slows
+# the player, heavy weapons cost 1-2.5), +-speed_jitter per bug, so fast armor
+# still outruns the swarm and a slow suit gets caught. 0 keeps source speed.
+# wave_health_growth replaces the old fixed +12% HP per wave: fodder stays
+# quick to kill and later waves press harder through count and composition.
+# surround_spawns brings each group in from a new bearing, preferring ground
+# the player cannot see. group_interval spreads those groups out so a wave
+# closes in over several seconds instead of landing at once, which leaves the
+# pacing_director something to hold: past the peak the rest of the wave waits,
+# and a hard wave earns a longer break.
 const DIFFICULTY_PROFILES := {
 	"recruit": {
 		"tactical": false,
@@ -95,6 +108,12 @@ const DIFFICULTY_PROFILES := {
 		"suppression": 0.0,
 		"sight_check": false,
 		"attack_speed": 1.0,
+		"swarm_speed": 0.0,
+		"speed_jitter": 0.0,
+		"wave_health_growth": 0.12,
+		"group_interval": 0.32,
+		"surround_spawns": false,
+		"pacing_director": false,
 	},
 	"veteran": {
 		"tactical": true,
@@ -109,6 +128,12 @@ const DIFFICULTY_PROFILES := {
 		"suppression": 0.5,
 		"sight_check": true,
 		"attack_speed": 0.92,
+		"swarm_speed": 8.2,
+		"speed_jitter": 0.5,
+		"wave_health_growth": 0.0,
+		"group_interval": 1.2,
+		"surround_spawns": true,
+		"pacing_director": true,
 	},
 	"elite": {
 		"tactical": true,
@@ -123,6 +148,12 @@ const DIFFICULTY_PROFILES := {
 		"suppression": 0.8,
 		"sight_check": true,
 		"attack_speed": 0.82,
+		"swarm_speed": 8.6,
+		"speed_jitter": 0.5,
+		"wave_health_growth": 0.0,
+		"group_interval": 0.9,
+		"surround_spawns": true,
+		"pacing_director": true,
 	},
 }
 const DIFFICULTY_ORDER := ["recruit", "veteran", "elite"]

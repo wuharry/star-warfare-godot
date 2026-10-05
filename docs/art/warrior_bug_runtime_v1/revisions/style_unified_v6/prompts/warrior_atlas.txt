@@ -1,0 +1,33 @@
+Use case: style-transfer / precise-object-edit
+Asset type: opaque UV diffuse atlas for the existing worker-insect / crawler game model.
+
+Image 1 is the EDIT TARGET: the current 1024x1536 atlas, two columns by three
+rows. Retain every cell boundary, major plate outline, centre ridge and recessed
+area at exactly its existing location. Its six cells are hood, abdomen, limb,
+blade, face and joint. This is a texture sheet, never a creature render.
+Images 2 and 3 are STYLE REFERENCES ONLY: the original game's bug01 and bug03
+diffuse atlases. Do not copy their UV layout, anatomy, eyes or old creature design.
+
+Repaint image 1 to look painted by the same artist as images 2 and 3. Use large,
+simple, soft hand-painted shading masses and rounded matte chitin surfaces,
+with broad subdued reflections and smooth dark-to-light transitions. Preserve
+the existing rusty red-brown shell and dark plum recesses. Use muted warm
+ochre only as a small soft highlight, never as a shiny gold rim.
+
+The present texture is excessively scratched, carved and metallic. Remove the
+dense hairline scratches, rock-like cracks, brush streaks and repeated thin
+golden outlines. Simplify secondary grooves while retaining the primary plate
+boundaries and central ridges. Paint shading into the diffuse as on the old
+mobile-game enemies, with light from above/front. Keep moderate contrast:
+recesses dark burgundy/plum rather than pure black, outer shell smoothly shaded
+russet, highlights broad and muted. No photorealism, no chrome, no PBR maps.
+
+Purple is a restrained recessed tissue accent, not neon light. No new eyes,
+teeth, ornaments, labels, logos or extra anatomy. The six green eyes are separate
+model geometry and must not be painted into this atlas.
+
+Return ONE flattened, fully opaque 1024x1536 atlas with the same edge-to-edge
+six-cell layout, no borders, no gaps, no checkerboard, no transparency, no
+background scene, no lighting cast outside the painted surfaces. Match the
+reference's coarse readable detail at mobile gameplay scale; do not add detail
+merely because the output resolution is higher.
