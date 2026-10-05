@@ -2,6 +2,7 @@ extends Node3D
 
 const Visuals = preload("res://scripts/game/armor_visuals.gd")
 const Fixture = preload("res://tests/reload_catalog_fixture.gd")
+const HeadContract = preload("res://tools/armor_runtime_v1/refined_head_contract.gd")
 const PREFIXES := ["ArmorHead_", "ArmorBody_", "ArmorHand_", "ArmorFoot_"]
 const LOCAL_GEOMETRY_CHANGE_LIMIT := .20 # Latest authorized original-total head limit; unchanged body/limbs independently exact.
 const UV_CHANGED_COORDINATE_LIMIT := .20 # Per-surface original total; this iteration also requires exact v2 UV.
@@ -95,7 +96,8 @@ func _run() -> void:
 			_check(relative<=LOCAL_GEOMETRY_CHANGE_LIMIT,"Runtime rest dimensions exceed original20% head budget")
 		var original_points := _posed_vertices(baseline,skeleton)
 		var actual_points := _posed_vertices(part,skeleton)
-		_check(actual_points.size()==original_points.size(),"Runtime rest vertex count changed")
+		var is_refined_head := part.name==head_name and config.has("head_refinement")
+		_check(actual_points.size()==(int(config.head_refinement.vertices) if is_refined_head else original_points.size()),"Runtime rest vertex count differs from explicit budget")
 		var max_rest_displacement := 0.0
 		for vertex_index: int in mini(actual_points.size(),original_points.size()):
 			max_rest_displacement=maxf(max_rest_displacement,actual_points[vertex_index].distance_to(original_points[vertex_index]))
@@ -110,7 +112,11 @@ func _run() -> void:
 		for sid: int in part.mesh.get_surface_count():
 			var arrays:=part.mesh.surface_get_arrays(sid)
 			var raw:=baseline.mesh.surface_get_arrays(sid)
-			_check(arrays[Mesh.ARRAY_TEX_UV].size()==raw[Mesh.ARRAY_TEX_UV].size(),"Changed UV coordinate count")
+			if is_refined_head:
+				for error: String in HeadContract.verify(arrays, raw, authored.parts[str(part.name)].surfaces[sid], config.head_refinement):
+					_check(false,error)
+			else:
+				_check(arrays[Mesh.ARRAY_TEX_UV].size()==raw[Mesh.ARRAY_TEX_UV].size(),"Changed UV coordinate count")
 			var moved:=0
 			var maximum_uv_displacement:=0.0
 			for index: int in raw[Mesh.ARRAY_TEX_UV].size():
@@ -122,15 +128,16 @@ func _run() -> void:
 				maximum_uv_displacement=maxf(maximum_uv_displacement,distance)
 				if distance>.000001:
 					moved+=1
-					_check(false,"First integration must retain every original UV coordinate")
+					_check(is_refined_head,"First integration must retain every original UV coordinate")
 			var fraction: float=float(moved)/raw[Mesh.ARRAY_TEX_UV].size()
 			_check(fraction<=UV_CHANGED_COORDINATE_LIMIT,"UV changes exceed20% of material surface")
 			var original_charts:=_uv_charts(raw)
 			var authored_charts:=_uv_charts(arrays)
 			_check(original_charts==authored_charts,"Original UV chart count changed")
 			uv_records["%s_surface_%d"%[part.name,sid]]={"coordinates":raw[Mesh.ARRAY_TEX_UV].size(),"changed":moved,"changed_fraction":fraction,"maximum_uv_displacement":maximum_uv_displacement,"original_charts":original_charts,"authored_charts":authored_charts}
-			_check(arrays[Mesh.ARRAY_INDEX]==raw[Mesh.ARRAY_INDEX],"Reordered original triangles")
-			_check(arrays[Mesh.ARRAY_BONES]==raw[Mesh.ARRAY_BONES] and arrays[Mesh.ARRAY_WEIGHTS]==raw[Mesh.ARRAY_WEIGHTS],"Changed original rig weights")
+			if not is_refined_head:
+				_check(arrays[Mesh.ARRAY_INDEX]==raw[Mesh.ARRAY_INDEX],"Reordered original triangles")
+				_check(arrays[Mesh.ARRAY_BONES]==raw[Mesh.ARRAY_BONES] and arrays[Mesh.ARRAY_WEIGHTS]==raw[Mesh.ARRAY_WEIGHTS],"Changed original rig weights")
 			if part.name!=head_name:_check(arrays[Mesh.ARRAY_VERTEX]==raw[Mesh.ARRAY_VERTEX],"Untouched body/limb geometry changed")
 			triangles+=arrays[Mesh.ARRAY_INDEX].size()/3
 			var material:=part.get_active_material(sid) as StandardMaterial3D
@@ -139,7 +146,7 @@ func _run() -> void:
 			if material!=null and material.albedo_texture!=null:_check(material.albedo_texture.get_width()>=512 and material.albedo_texture.get_width()==material.albedo_texture.get_height(),"Diffuse must be a square texture at least 512 pixels")
 			for index: int in arrays[Mesh.ARRAY_TEX_UV].size():
 				var uv: Vector2=arrays[Mesh.ARRAY_TEX_UV][index]
-				var source_uv: Vector2=raw[Mesh.ARRAY_TEX_UV][index]
+				var source_uv: Vector2=raw[Mesh.ARRAY_TEX_UV][index] if index<raw[Mesh.ARRAY_TEX_UV].size() else Vector2(INF,INF)
 				var in_range:=uv.x>=0 and uv.x<=1 and uv.y>=0 and uv.y<=1
 				_check(uv.is_finite() and (in_range or uv==source_uv),"New UV outside atlas; only exact inherited original outliers permitted")
 				if not in_range:legacy_out_of_range_uv.append({"part":str(part.name),"surface":sid,"index":index,"source_uv":[source_uv.x,source_uv.y],"current_uv":[uv.x,uv.y],"source_exact":uv==source_uv})
@@ -150,7 +157,10 @@ func _run() -> void:
 					_check(arrays[Mesh.ARRAY_BONES][i*4+j]>=0 and arrays[Mesh.ARRAY_BONES][i*4+j]<part.skin.get_bind_count(),"Invalid skin index")
 					total+=arrays[Mesh.ARRAY_WEIGHTS][i*4+j]
 				_check(absf(total-1)<.001,"Weights not normalized")
-	_check(triangles==int(config.original_triangles),"Original triangle topology changed")
+	var expected_triangles := int(config.original_triangles)
+	if config.has("head_refinement"):
+		expected_triangles += int(config.head_refinement.triangles)-int(config.texture_slots.head.triangles)
+	_check(triangles==expected_triangles,"Triangle topology differs from explicit head refinement budget")
 	player.recovered_animation_tree.active=false
 	for clip: String in ["idle_rifle","run_rifle"]:
 		player._play_recovered_animation(clip,0,true)

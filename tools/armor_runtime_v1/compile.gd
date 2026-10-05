@@ -13,6 +13,10 @@ func _run() -> void:
 		if argument.begins_with("--armor="):slug=argument.trim_prefix("--armor=")
 	assert(slug in ["hydra","strike","titan"])
 	config=JSON.parse_string(FileAccess.get_file_as_string("res://docs/art/"+slug+"_runtime_v1/runtime_config.json"))
+	if config.has("head_refinement"):
+		push_error("Titan visor subdivision uses update_titan_helmet.gd; the first-integration compiler cannot replace its expanded head.")
+		quit(1)
+		return
 	OUT="res://"+str(config.asset)+"/";WORK="res://"+str(config.work)+"/build/"
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT))
 	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(WORK+"target.json"))

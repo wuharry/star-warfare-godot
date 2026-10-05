@@ -33,6 +33,8 @@ def main():
     slug = parser.parse_args().armor
     work = ROOT / f'docs/art/{slug}_runtime_v1'
     config = load(work / 'runtime_config.json')
+    if config.get('head_refinement'):
+        raise SystemExit('First-integration provenance does not certify the refined head. Use validate_titan_helmet.py and the active revision manifest.')
     assets = ROOT / config['asset']
     source_path, target_path = work / 'build/source.json', work / 'build/target.json'
     scene, glb, master = assets / f'{slug}.scn', assets / f'{slug}.glb', work / f'build/{slug}_master.blend'

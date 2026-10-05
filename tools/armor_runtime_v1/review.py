@@ -17,9 +17,11 @@ def main():
     parser.add_argument('--armor', choices=['hydra', 'strike', 'titan'], required=True)
     slug = parser.parse_args().armor
     work = ROOT / f'docs/art/{slug}_runtime_v1'
+    config = json.loads((work / 'runtime_config.json').read_text())
+    if config.get('head_refinement'):
+        raise SystemExit('The first-integration review template assumes unchanged UVs. Open revisions/helmet_refinement_v3/index.html for the active helmet review.')
     manifest = json.loads((work / 'manifest.json').read_text())
     source = json.loads((work / 'build/source.json').read_text())
-    config = json.loads((work / 'runtime_config.json').read_text())
     inputs = json.loads((work / 'generation_inputs.json').read_text())
     head = next(r for r in inputs if r['selected'] and r['label'] == 'head')
     part = manifest['geometry']['parts'][f"ArmorHead_{config['runtime_id']:02}"]

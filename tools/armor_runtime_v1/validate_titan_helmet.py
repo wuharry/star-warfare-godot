@@ -53,9 +53,15 @@ def inputs():
             assert digest(path) == prior["sha256"], label + " was modified"
     for name, part in target["parts"].items():
         for authored, original in zip(part["surfaces"], source["parts"][name]["surfaces"]):
-            assert authored["uv"] == original["uv"]
             if name != "ArmorHead_05":
-                assert authored["positions"] == original["positions"]
+                assert authored["uv"] == original["uv"]
+                assert max(math.dist(a, b) for a, b in zip(authored["positions"], original["positions"])) < 1e-12
+            else:
+                assert len(authored["uv"]) == config["head_refinement"]["vertices"]
+                assert len(authored["indices"]) // 3 == config["head_refinement"]["triangles"]
+                for added in authored["added_vertices"]:
+                    a, b = added["parents"]
+                    assert authored["uv"][added["index"]] == [(u + v) / 2 for u, v in zip(authored["uv"][a], authored["uv"][b])]
     return config, source, target, textures
 
 
@@ -85,15 +91,16 @@ def verify_master(config, source, target, textures):
         offset = 0
         faces, slots = [], []
         for sid, (original, authored) in enumerate(zip(source["parts"][name]["surfaces"], target["parts"][name]["surfaces"])):
-            for start in range(0, len(original["indices"]), 3):
-                faces.append(tuple(offset + i for i in reversed(original["indices"][start:start + 3])))
+            topology = authored.get("indices", original["indices"])
+            for start in range(0, len(topology), 3):
+                faces.append(tuple(offset + i for i in reversed(topology[start:start + 3])))
                 slots.append(sid)
             for i, position in enumerate(authored["positions"]):
                 vertex = obj.data.vertices[offset + i]
                 x, y, z = position
                 assert (vertex.co - Vector((-x, z, y))).length < 1e-6
                 expected = {}
-                for bone, weight in zip(original["bone_names"][i], original["weights"][i]):
+                for bone, weight in zip(authored.get("bone_names", original["bone_names"])[i], authored.get("weights", original["weights"])[i]):
                     if weight > 0:
                         expected[bone] = expected.get(bone, 0) + weight
                 actual = {obj.vertex_groups[group.group].name: group.weight for group in vertex.groups if group.weight > 0}
@@ -112,9 +119,9 @@ def verify_master(config, source, target, textures):
             assert len(images) == 1 and images[0].packed_file
             assert hashlib.sha256(bytes(images[0].packed_file.data)).hexdigest() == digest(textures[label])
         triangles += len(faces)
-    assert triangles == 700
+    assert triangles == 700 - 124 + config["head_refinement"]["triangles"]
     return {"master_sha256": digest(master), "triangles": triangles, "bones": 28,
-            "original_uv_indices_weights_verified": True, "five_packed_native_pngs_exact": True}
+            "authored_uv_indices_weights_verified": True, "five_packed_native_pngs_exact": True}
 
 
 def verify_glb(config, source, target, textures):
@@ -143,17 +150,20 @@ def verify_glb(config, source, target, textures):
             original = source["parts"][name]["surfaces"][sid]
             uv = read_accessor(gltf, binary, primitive["attributes"]["TEXCOORD_0"])
             indices = [r[0] for r in read_accessor(gltf, binary, primitive["indices"])]
-            assert len(uv) == len(original["uv"]) and len(indices) == len(original["indices"])
-            assert all(math.dist(a, b) < 1e-6 for a, b in zip(uv, original["uv"]))
-            assert all(indices[i:i + 3] == list(reversed(original["indices"][i:i + 3])) for i in range(0, len(indices), 3))
+            authored = target["parts"][name]["surfaces"][sid]
+            topology = authored.get("indices", original["indices"])
+            assert len(uv) == len(authored["uv"]) and len(indices) == len(topology)
+            assert all(math.dist(a, b) < 1e-6 for a, b in zip(uv, authored["uv"]))
+            assert all(indices[i:i + 3] == list(reversed(topology[i:i + 3])) for i in range(0, len(indices), 3))
             binds = read_accessor(gltf, binary, primitive["attributes"]["JOINTS_0"])
             weights = read_accessor(gltf, binary, primitive["attributes"]["WEIGHTS_0"])
             assert len(binds) == len(weights) == len(uv)
             for i, (bones, values) in enumerate(zip(binds, weights)):
                 expected, actual = {}, {}
-                for bone, value in zip(original["bone_names"][i], original["weights"][i]):
+                source_weights = authored.get("weights", original["weights"])[i]
+                for bone, value in zip(authored.get("bone_names", original["bone_names"])[i], source_weights):
                     if value > 0:
-                        expected[bone] = expected.get(bone, 0) + value / sum(original["weights"][i])
+                        expected[bone] = expected.get(bone, 0) + value / sum(source_weights)
                 for bone, value in zip(bones, values):
                     if value > 0:
                         actual[joints[bone]] = actual.get(joints[bone], 0) + value
@@ -169,7 +179,7 @@ def verify_glb(config, source, target, textures):
             canonical = Image.open(textures[label]).convert("RGB")
             assert embedded.size == canonical.size and ImageChops.difference(embedded, canonical).getbbox() is None
             records[label] = {"canonical_sha256": digest(textures[label]), "dimensions": list(canonical.size), "rgb_exact": True}
-    return {"glb_sha256": digest(path), "original_triangle_uv_normalized_skin_verified": True, "images": records}
+    return {"glb_sha256": digest(path), "authored_triangle_uv_normalized_skin_verified": True, "images": records}
 
 
 def main():
