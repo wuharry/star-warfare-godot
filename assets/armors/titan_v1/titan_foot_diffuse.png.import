@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbyvxxm77s02o"
-path="res://.godot/imported/titan_foot_diffuse.png-14151f9e06a8b51d172104d6cb9686c8.ctex"
+path.s3tc="res://.godot/imported/titan_foot_diffuse.png-14151f9e06a8b51d172104d6cb9686c8.s3tc.ctex"
+path.etc2="res://.godot/imported/titan_foot_diffuse.png-14151f9e06a8b51d172104d6cb9686c8.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "3d8989bf352c850c7b7ffe5f307f9567"
@@ -14,11 +16,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/armors/titan_v1/titan_foot_diffuse.png"
-dest_files=["res://.godot/imported/titan_foot_diffuse.png-14151f9e06a8b51d172104d6cb9686c8.ctex"]
+dest_files=["res://.godot/imported/titan_foot_diffuse.png-14151f9e06a8b51d172104d6cb9686c8.s3tc.ctex", "res://.godot/imported/titan_foot_diffuse.png-14151f9e06a8b51d172104d6cb9686c8.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +42,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
