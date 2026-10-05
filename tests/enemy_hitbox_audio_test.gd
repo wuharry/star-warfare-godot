@@ -45,11 +45,14 @@ func _run() -> void:
 		_check(not enemy.dead, "%s nonlethal damage killed the test enemy" % kind)
 		_check_only_impact("enemy_hit_light.wav", kind + " nonlethal heavy damage")
 		# Kill confirmation must replace the light sound even in the same frame.
+		# On the tactical tiers a bomber bursts when it dies; that blast is its own
+		# positional event, not a duplicate of the HUD confirmation.
+		var burst := "grenade_launcher_boom.wav" if kind == "brute" and bool(world.difficulty_profile.get("tactical", false)) else ""
 		enemy.take_damage(enemy.health + 1.0, enemy.global_position + Vector3.UP, player)
 		_check(enemy.dead, "%s lethal damage failed to kill" % kind)
-		_check_only_impact("enemy_hit_heavy_or_lethal.wav", kind + " HUD kill")
+		_check_only_impact("enemy_hit_heavy_or_lethal.wav", kind + " HUD kill", burst)
 		enemy.take_damage(10.0, enemy.global_position + Vector3.UP, player)
-		_check_only_impact("enemy_hit_heavy_or_lethal.wav", kind + " already dead")
+		_check_only_impact("enemy_hit_heavy_or_lethal.wav", kind + " already dead", burst)
 		AudioDirector.stop_all_sfx()
 		enemy.queue_free()
 		await get_tree().process_frame
@@ -72,12 +75,17 @@ func _run() -> void:
 	else:
 		get_tree().quit(1)
 
-func _check_only_impact(expected_file: String, context: String) -> void:
+func _check_only_impact(expected_file: String, context: String, positional_event := "") -> void:
 	# Check the full audio mix, including accidental 3D copies and old UI cues.
 	var playing_count := 0
+	var event_heard := false
 	for audio in AudioDirector.get_children():
 		if (audio is AudioStreamPlayer or audio is AudioStreamPlayer3D) and audio.playing and audio.stream != null:
+			if not positional_event.is_empty() and audio is AudioStreamPlayer3D and audio.stream.resource_path.ends_with(positional_event):
+				event_heard = true
+				continue
 			playing_count += 1
 			_check(audio is AudioStreamPlayer, "%s confirmation must be non-positional" % context)
 			_check(audio.stream.resource_path.ends_with(expected_file), "%s played unexpected audio: %s" % [context, audio.stream.resource_path])
 	_check(playing_count == 1, "%s should play exactly one impact, got %d" % [context, playing_count])
+	_check(positional_event.is_empty() or event_heard, "%s must sound its %s" % [context, positional_event])

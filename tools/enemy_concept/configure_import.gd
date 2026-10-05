@@ -14,7 +14,7 @@ func _initialize() -> void:
 	# A custom shader does not reliably trigger Godot's automatic 3D texture
 	# detection. Explicit mipmaps keep painted ridges stable at game distance.
 	var texture_config := ConfigFile.new()
-	var texture_path := "res://assets/models/enemies/concept/warrior/warrior_anatomy_v4.png.import"
+	var texture_path := "res://assets/models/enemies/concept/warrior/warrior_anatomy_v6.png.import"
 	error = texture_config.load(texture_path)
 	if error == OK:
 		texture_config.set_value("params", "mipmaps/generate", true)

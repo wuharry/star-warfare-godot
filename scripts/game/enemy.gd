@@ -10,6 +10,7 @@ const FLESH_HIT_LIGHT := "res://assets/audio/non_original/enemy_hit_light.wav"
 const FLESH_HIT_HEAVY := "res://assets/audio/non_original/enemy_hit_heavy_or_lethal.wav"
 const HITBOX_PROFILES := {
 	"crawler": Vector2(0.95, 2.00),
+	"pouncer": Vector2(0.80, 1.70),
 	"spitter": Vector2(1.00, 2.00),
 	"brute": Vector2(1.00, 2.00),
 	"boss": Vector2(1.80, 3.60),
@@ -20,6 +21,7 @@ const HITBOX_PROFILES := {
 # is 1.82m tall, so a warrior reads as marginally taller than the player.
 const TARGET_HEIGHTS := {
 	"crawler": 2.00,
+	"pouncer": 1.70,
 	"spitter": 2.05,
 	"brute": 2.10,
 	"boss": 3.20,
@@ -30,6 +32,28 @@ const TARGET_HEIGHTS := {
 # Two thresholds keep an enemy pacing the boundary from flipping every frame.
 const HULL_NEAR_DISTANCE := 26.0
 const HULL_FAR_DISTANCE := 32.0
+
+# Tactical bomber (自爆虫). It skips the attack-token queue because it is the
+# price of letting the swarm reach you; the swelling fuse is the dodge window.
+# Shot inside a pack it bursts anyway and takes its neighbours with it.
+const BOMBER_FUSE := 0.7
+const BLAST_FULL_RADIUS := 1.5
+const BLAST_EDGE_SCALE := 0.3
+
+# Tactical pouncer (高速虫). It commits to a leap at where the player will be,
+# so backing away in a straight line gets caught, while a sideways dash during
+# the flight makes it miss and land exposed. Damage, cooldown and the 8 m reach
+# come from the source 扑击 attack; the rest is restoration tuning. A player
+# backing off at 8.2 m/s gains 2.9 m during the wind-up, so from the edge of
+# reach the leap must cover ~17 m: 22 m/s over at most 0.85 s does.
+const POUNCE_WINDUP := 0.35
+const POUNCE_MIN_RANGE := 3.5
+const POUNCE_LEAP_SPEED := 22.0
+const POUNCE_MAX_FLIGHT := 0.85
+const POUNCE_HIT_RADIUS := 1.6
+const POUNCE_RECOVERY := 0.6
+# A leap or a landing must not ease in over a second like ordinary steering.
+const SNAP_ACCELERATION := 400.0
 
 var target: WarfarePlayer
 var enemy_kind := "crawler"
@@ -100,6 +124,18 @@ var token_hold_left := 0.0
 var holds_attack_token := false
 var target_velocity := Vector3.ZERO
 var last_target_position := Vector3.INF
+var blast_damage := 0.0
+var blast_radius := 4.0
+var fuse_left := 0.0
+var exploded := false
+var pounce_damage := 0.0
+var pounce_range := 8.0
+var pounce_interval := 8.0
+var pounce_cooldown_left := 0.0
+var pounce_windup_left := 0.0
+var pounce_flight_left := 0.0
+var pounce_recovery_left := 0.0
+var pounce_velocity := Vector3.ZERO
 
 func configure(player: WarfarePlayer, kind: String, health_value: float, is_elite := false) -> void:
 	target = player
@@ -114,6 +150,13 @@ func configure(player: WarfarePlayer, kind: String, health_value: float, is_elit
 		attack_interval = 2.0
 		reward = 24
 		score_value = 140
+	elif kind == "pouncer":
+		max_health *= 1.3
+		speed = 7.0
+		attack_damage = 14.0
+		attack_interval = 1.1
+		reward = 30
+		score_value = 180
 	elif kind == "brute":
 		max_health *= 2.25
 		speed = 2.7
@@ -136,6 +179,10 @@ func configure(player: WarfarePlayer, kind: String, health_value: float, is_elit
 		attack_damage *= 1.35
 		reward *= 2
 		score_value *= 2
+	# Only bombers and pouncers use these; configure_recovered replaces both
+	# with the source attack tables.
+	blast_damage = attack_damage
+	pounce_damage = attack_damage * 1.4
 	health = max_health
 	_apply_difficulty_profile()
 
@@ -161,6 +208,7 @@ func configure_recovered(player: WarfarePlayer, kind: String, health_scale := 1.
 		projectile_splash = float(attack[4])
 	reward = int(data.credits)
 	experience_value = int(data.experience)
+	_apply_swarm_speed()
 	elite = is_elite
 	if elite:
 		max_health *= 1.65
@@ -169,7 +217,28 @@ func configure_recovered(player: WarfarePlayer, kind: String, health_scale := 1.
 		reward *= 2
 		experience_value *= 2
 		score_value *= 2
+	if kind == "brute":
+		blast_damage = attack_damage
+		blast_radius = maxf(1.0, float(attack[4]))
+	if kind == "pouncer" and data.attacks.size() > 1:
+		var pounce: Array = data.attacks[1]
+		pounce_damage = float(pounce[1]) * (1.35 if elite else 1.0)
+		pounce_interval = float(pounce[2]) * float(GameState.get_difficulty_profile().get("attack_speed", 1.0))
+		pounce_range = float(pounce[3])
 	health = max_health
+
+func _apply_swarm_speed() -> void:
+	# Crawlers, bombers and pouncers are the swarm the player must not simply
+	# walk away from. Spitters hold their firing band, so they keep the source
+	# pace.
+	if not enemy_kind in ["crawler", "brute", "pouncer"]:
+		return
+	var profile := GameState.get_difficulty_profile()
+	var swarm_speed := float(profile.get("swarm_speed", 0.0))
+	if swarm_speed <= 0.0:
+		return
+	var jitter := float(profile.get("speed_jitter", 0.0))
+	speed = swarm_speed + randf_range(-jitter, jitter)
 
 func _apply_difficulty_profile() -> void:
 	var profile := GameState.get_difficulty_profile()
@@ -386,6 +455,7 @@ func _build_audio() -> void:
 	voice.volume_db = -8.0
 	var recovered := {
 		"crawler": "res://assets/original/audio/enemy/gongchong.wav",
+		"pouncer": "res://assets/original/audio/enemy/gaosuchong.wav",
 		"spitter": "res://assets/original/audio/enemy/xeiweichong.wav",
 		"brute": "res://assets/original/audio/enemy/daxingjiachong.wav",
 		"boss": "res://assets/original/audio/enemy/mantis/feixingtanglang_fly_idle.wav"
@@ -446,8 +516,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		_face_planar_direction(planar)
 		desired = _legacy_step(distance, planar)
-	velocity.x = move_toward(velocity.x, desired.x, 16.0 * delta)
-	velocity.z = move_toward(velocity.z, desired.z, 16.0 * delta)
+	var acceleration := SNAP_ACCELERATION if pounce_flight_left > 0.0 or pounce_recovery_left > 0.0 else 16.0
+	velocity.x = move_toward(velocity.x, desired.x, acceleration * delta)
+	velocity.z = move_toward(velocity.z, desired.z, acceleration * delta)
 	if is_on_floor():
 		velocity.y = -0.4
 	else:
@@ -521,6 +592,10 @@ func _tactical_step(delta: float, offset: Vector3, distance: float, planar: Vect
 		return _tactical_boss(distance, planar, los)
 	if enemy_kind == "spitter":
 		return _tactical_ranged(distance, planar, los)
+	if enemy_kind == "brute":
+		return _tactical_bomber(delta, distance, planar, los)
+	if enemy_kind == "pouncer":
+		return _tactical_pouncer(delta, distance, planar, los)
 	return _tactical_melee(distance, planar, los)
 
 func _tactical_melee(distance: float, planar: Vector3, los: bool) -> Vector3:
@@ -568,6 +643,118 @@ func _tactical_boss(distance: float, planar: Vector3, los: bool) -> Vector3:
 		return Vector3.ZERO
 	var direction := _approach_velocity(planar, los, attack_range * 0.8)
 	return direction * (2.1 if charge_timer > 0.0 else 1.0)
+
+func _tactical_bomber(delta: float, distance: float, planar: Vector3, los: bool) -> Vector3:
+	if fuse_left > 0.0:
+		fuse_left = maxf(0.0, fuse_left - delta)
+		if fuse_left <= 0.0:
+			_detonate()
+		return Vector3.ZERO
+	if distance <= attack_range and los:
+		_light_fuse()
+		return Vector3.ZERO
+	return _approach_velocity(planar, los, 1.2)
+
+func _light_fuse() -> void:
+	fuse_left = BOMBER_FUSE
+	_play_recovered_animation("attack", 0.04, true)
+	AudioDirector.play_3d("enemy/zibaochong.wav", global_position, -5.0, randf_range(1.05, 1.2))
+	var tween := create_tween()
+	tween.tween_property(model, "scale", Vector3.ONE * 1.3, BOMBER_FUSE).set_trans(Tween.TRANS_QUAD)
+
+func _blast_falloff(distance: float) -> float:
+	if distance > blast_radius:
+		return 0.0
+	if distance <= BLAST_FULL_RADIUS:
+		return 1.0
+	var edge := (distance - BLAST_FULL_RADIUS) / maxf(0.01, blast_radius - BLAST_FULL_RADIUS)
+	return lerpf(1.0, BLAST_EDGE_SCALE, edge)
+
+func _detonate() -> void:
+	if exploded:
+		return
+	exploded = true
+	var world := get_parent()
+	if world and world.has_method("spawn_explosion"):
+		world.spawn_explosion(global_position + Vector3.UP * 0.6, Color(0.95, 0.55, 0.12), blast_radius)
+	if is_instance_valid(target) and not target.dead:
+		var player_scale := _blast_falloff(global_position.distance_to(target.global_position))
+		if player_scale > 0.0:
+			target.take_damage(blast_damage * player_scale, target.global_position, self)
+	# Neighbours die with it: a bomber shot inside a pack clears the pack.
+	for other_node in get_tree().get_nodes_in_group("enemies"):
+		var other := other_node as WarfareEnemy
+		if other == null or other == self or other.dead:
+			continue
+		var other_scale := _blast_falloff(global_position.distance_to(other.global_position))
+		if other_scale > 0.0:
+			other.take_damage(blast_damage * other_scale, other.global_position + Vector3.UP * 0.8, self)
+	if not dead:
+		_die(null)
+
+func _tactical_pouncer(delta: float, distance: float, planar: Vector3, los: bool) -> Vector3:
+	pounce_cooldown_left = maxf(0.0, pounce_cooldown_left - delta)
+	if pounce_flight_left > 0.0:
+		return _pounce_flight(delta)
+	if pounce_recovery_left > 0.0:
+		pounce_recovery_left = maxf(0.0, pounce_recovery_left - delta)
+		return Vector3.ZERO
+	if pounce_windup_left > 0.0:
+		pounce_windup_left = maxf(0.0, pounce_windup_left - delta)
+		if pounce_windup_left <= 0.0:
+			_launch_pounce()
+		return Vector3.ZERO
+	if los and pounce_cooldown_left <= 0.0 and distance >= POUNCE_MIN_RANGE and distance <= pounce_range and _claim_attack_token():
+		_begin_pounce()
+		return Vector3.ZERO
+	# Inside the leap's minimum reach, or while it recharges, it bites like a
+	# crawler.
+	return _tactical_melee(distance, planar, los)
+
+func _begin_pounce() -> void:
+	pounce_windup_left = POUNCE_WINDUP
+	pounce_cooldown_left = pounce_interval
+	_play_recovered_animation("attack", 0.04, true)
+	AudioDirector.play_3d("enemy/gaosuchong.wav", global_position, -5.0, randf_range(1.1, 1.25))
+	# Rear back: the crouch plus the shriek is the tell.
+	var tween := create_tween()
+	tween.tween_property(model, "position:z", 0.4, POUNCE_WINDUP)
+
+func _launch_pounce() -> void:
+	var tween := create_tween()
+	tween.tween_property(model, "position:z", 0.0, 0.12)
+	if not is_instance_valid(target) or target.dead:
+		_release_attack_token()
+		return
+	# Aim where the player will be on landing. Each pass refines the flight time
+	# for the new range; four passes converge for any player slower than the leap.
+	var aim := target.global_position
+	for _pass in range(4):
+		var flight_time := global_position.distance_to(aim) / POUNCE_LEAP_SPEED
+		aim = target.global_position + target_velocity * flight_time
+	var to_aim := Vector3(aim.x - global_position.x, 0.0, aim.z - global_position.z)
+	if to_aim.length_squared() < 0.01:
+		_release_attack_token()
+		return
+	pounce_velocity = to_aim.normalized() * POUNCE_LEAP_SPEED
+	pounce_flight_left = clampf(to_aim.length() / POUNCE_LEAP_SPEED, 0.2, POUNCE_MAX_FLIGHT)
+
+func _pounce_flight(delta: float) -> Vector3:
+	pounce_flight_left = maxf(0.0, pounce_flight_left - delta)
+	if is_instance_valid(target) and not target.dead and global_position.distance_to(target.global_position) <= POUNCE_HIT_RADIUS:
+		target.take_damage(pounce_damage, target.global_position, self)
+		AudioDirector.play_3d("enemies_smash1.wav", global_position, -6.0, randf_range(0.92, 1.07))
+		_end_pounce()
+		return Vector3.ZERO
+	if pounce_flight_left <= 0.0:
+		_end_pounce()
+		return Vector3.ZERO
+	return pounce_velocity
+
+func _end_pounce() -> void:
+	pounce_flight_left = 0.0
+	pounce_recovery_left = POUNCE_RECOVERY
+	_release_attack_token()
 
 func _approach_velocity(planar: Vector3, los: bool, band: float) -> Vector3:
 	var direction := Vector3.ZERO
@@ -838,6 +1025,8 @@ func _die(killer: Node = null) -> void:
 	# Death audio comes from the player's HUD or the non-player world impact.
 	_play_recovered_animation("dead", 0.04)
 	died.emit(self, global_position, reward, score_value)
+	if tactical and enemy_kind == "brute":
+		_detonate()
 	var tween := create_tween()
 	tween.tween_interval(1.15 if recovered_animation_player else 0.18)
 	tween.tween_property(model, "position:y", -0.65, 0.42).set_trans(Tween.TRANS_QUAD)
@@ -848,6 +1037,8 @@ func _update_animation(delta: float, movement: float) -> void:
 		var animation_name := ""
 		if hit_reaction_left > 0.0:
 			animation_name = "attacked"
+		elif fuse_left > 0.0 or pounce_windup_left > 0.0 or pounce_flight_left > 0.0:
+			animation_name = "attack"
 		elif attack_cooldown > attack_interval * 0.7:
 			animation_name = "attack"
 		else:

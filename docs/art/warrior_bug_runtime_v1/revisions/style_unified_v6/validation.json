@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-05",
+  "engine": "Godot 4.7.2",
+  "renderer": "gl_compatibility",
+  "viewport": [
+    1280,
+    720
+  ],
+  "checks": {
+    "model_material_authoring": {
+      "status": "PASS",
+      "tool": "Blender 5.1.0",
+      "geometry_export_shipped": false,
+      "notes": "Preserve initial geometry byte-for-byte after cross-platform normal drift in rebuilt output"
+    },
+    "final_asset_integrity": {
+      "status": "PASS",
+      "opaque": true,
+      "png_size": [
+        1024,
+        1536
+      ],
+      "original_mesh_uv_skin_and_animations_unchanged": true
+    },
+    "enemy_concept_test": {
+      "status": "PASS",
+      "checks": 131,
+      "rays": 27
+    },
+    "enemy_animation_test": {
+      "status": "PASS",
+      "enemy_kinds": 4
+    },
+    "engine_visual_capture": {
+      "status": "PASS",
+      "frames": 23,
+      "before_after_camera_and_spawn_equal": true
+    },
+    "visual_inspection": {
+      "status": "observed",
+      "views": [
+        "head_threequarter",
+        "idle_front/family",
+        "idle_side",
+        "run_side",
+        "attack_front",
+        "dead_side",
+        "level01_closeup",
+        "level01_player_camera"
+      ],
+      "observations": [
+        "Broad smooth chitin highlights replace fine scratches and sharp gold edge painting",
+        "Six green eyes remain readable",
+        "Purple tissue no longer self-emits light",
+        "No new geometric or UV break observed in sampled poses"
+      ],
+      "user_art_acceptance": "pending"
+    },
+    "comparison_page_static": {
+      "status": "PASS",
+      "local_references": 11,
+      "dynamic_views": 5,
+      "javascript_syntax": "PASS"
+    },
+    "comparison_page_browser": {
+      "status": "NOT RUN",
+      "reason": "Local HTTP server unavailable; browser policy rejected file:// navigation. No bypass attempted."
+    },
+    "harness_integrity": {
+      "status": "PASS",
+      "application_validation": "covered only by the explicit tests above"
+    },
+    "crowd_performance_and_mobile_device": {
+      "status": "NOT RUN"
+    }
+  }
+}
