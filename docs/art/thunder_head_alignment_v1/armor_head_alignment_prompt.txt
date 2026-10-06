@@ -1,0 +1,34 @@
+Use case: precise-object-edit / existing-game-asset helmet alignment.
+Asset: Thunder, legacy game visual ID 6, four separately equipped parts with an independent backpack. This request changes the current approved default Thunder A helmet; it does not replace the body or implement proposed skills.
+
+Design authority and input roles:
+1. HELMET ONLY: docs/art/fusion_v2_generated/c07_thunder_fusion.jpg, the later helmet reference the user explicitly requested from commit 25f11d9a52ab1bc2c4f63dc509f1fcb0943589f5. The entire JPG is retained unchanged for provenance, but only its helmet design is adopted. Do not import its adult body proportions, shoulders, chest, limbs or pose.
+2. BODY / PRIOR APPROVAL HISTORY: docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png. Keep its body direction as implemented in the current default Thunder A. Its previous helmet is not the final authority for this request.
+3. TECHNICAL EDIT TARGET: the actual frozen current Thunder A mesh, existing UV/material mapping and actual current runtime captures supplied to the call. Inspect the current front, quarter, side and rear views before painting or changing geometry. Do not treat a character concept image as a UV atlas.
+
+Helmet target:
+- A compact human-worn science-fiction helmet in the same thick armor and painted broad-shape style as the existing game series.
+- A low rear-swept central crest, shorter and quieter than the current tall crown. Preserve Thunder's recognizable swept crown, not a tall thin fin or a generic smooth dome.
+- One continuous narrow horizontal amber-gold viewing window under a controlled dark brow. Keep the window wider than it is tall, with a short downward center profile only as present in the designated reference. No two deep yellow grooves, eyes, duplicated lights, separated left/right glass halves or overly tall pressure canopy.
+- Compact round ear discs with a gold outer ring; the side transitions follow the designated blue cheek plates and slim gold trim. Do not fake a new round ear by drawing an ellipse onto a large unmodified rectangular plate if the actual silhouette needs a permitted local adjustment.
+- Short blue chin guard, restrained central lower plate and short protected cheeks. Avoid an extended respirator, skull nose/mouth, large projecting block or silver badge copied from another armor.
+- Muted steel-blue armor, warm gold accents and dark cloth/neck seal. Use broad painted gradients and restrained edge wear; avoid fluorescent cyan, dense micro-scratches or new decorative logos.
+- A single front-quarter design reference cannot prove exact rear geometry. Keep the actual approved rear shell and record inferred side/rear changes honestly.
+
+Production restrictions:
+- After changing geometry, recompute custom split normals within the original smooth/hard-border groups and rebuild UV tangents. Old custom normals describe the old shape; do not reuse them on a deformed helmet.
+- Preserve the current approved A body's meshes, UV, materials/textures, part transforms, equipment ID and animation routing. Backpack remains independent.
+- Keep the current A helmet triangle count, UV coordinates, chart structure and index topology. This iteration adds zero UV coordinates and zero triangles. Preserve the original 28 named bones, skin bindings and established animation compatibility.
+- Measure head changes against the immutable current-approved-A snapshot using the explicit current-A total 20% shape budget. Separately disclose existing differences against the original classic SW1 source. The current A already contains the SW2-derived high-triangle head; do not call current A the untouched classic original or claim classic-original 15–20% count compliance.
+- For image generation, edit only the explicitly supplied production bitmap target, preserve its exact dimensions, chart positions, island outlines, padding, seams and meaningful alpha/material-mask semantics. Inspect mirrored UV seams to avoid doubled decorations. Do not relocate painted front features onto the rear chart.
+- Save the full actual prompt, every native output including unselected attempts, immutable input images, generator record and raw SHA256. No programmatic repainting, recoloring, resizing or compositing of generated art. Engine-generated texture resources must remain bound to the chosen native bitmap and documented material inputs.
+
+Acceptance and evidence:
+- Rebuild and load the actual runtime scene through the same ArmorVisuals / WarfarePlayer equipment route used by gameplay and store previews. A screenshot of a concept or a flat billboard is not an integration result. Bind the scene_test.json, actual scene_arrays.json, build_measure.json, generation.json and final validate.json to the actual current resources.
+- Verify the current-A head geometry budget, unchanged UV/index topology, original bones/weights, non-head arrays/materials and all selected native texture references. Independently report the original-source deltas rather than substituting a new baseline.
+- Check the existing idle, running and reloading behavior, seams and head/weapon/body intersections. Capture twenty-seven controlled studio/pose pairs using the identical stored camera, lighting, viewport and pose. The three live gameplay views have nondeterministic NPC/clock state; label these as readability previews rather than identical-scene pixel comparisons.
+- Produce thirty actual normal-imported-resource before/after view pairs with resource SHA bindings and the real save unchanged. The immutable before manifest belongs at before/resources/test_output/thunder_helmet_comparison/sw2/manifest.json; the latest after manifest and raw PNGs belong at after/manifest.json and after/. Never populate a final after view with an intermediate candidate screenshot.
+- Do not infer frame rate, GPU cost, mobile suitability, user art approval or perfect concept likeness from passing structural tests. Mark these as NOT RUN unless measured or explicitly accepted.
+
+Deliverable review layout:
+Show current approved A before and actual new helmet after; show the preserved body concept and the later helmet-only concept separately with explicit captions. Preserve historical versions and unselected native attempts. Update the C07 runtime metadata only after actual current resources and fresh reports are available.

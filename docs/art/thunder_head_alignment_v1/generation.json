@@ -1,0 +1,46 @@
+{
+  "mode": "builtin_image_gen",
+  "date": "2026-10-07",
+  "attempts": [
+    {
+      "prompt": "prompts/helmet_atlas_attempt_01.txt",
+      "prompt_sha256": "3657a883d5618469a7ddde4f0b367211dbe880a38cac0f8ac28682222f8afa33",
+      "native_archive": "generated/helmet_atlas_attempt_01.png",
+      "native_sha256": "b71d418ac90aa5dae1d3a5635eb178793a4091f1684a8bed9d7eec42843d6645",
+      "selected_asset": null,
+      "selected_sha256": null,
+      "operation": "byte copy; no painting/resampling/compositing after imagegen",
+      "referenced_image_paths": [
+        "assets/armors/thunder/textures/helmet_detail_albedo.png",
+        "docs/art/fusion_v2_generated/c07_thunder_fusion.jpg"
+      ],
+      "transparent_background": false,
+      "status": "superseded: forehead gold too ornate",
+      "reference_sha256": {
+        "assets/armors/thunder/textures/helmet_detail_albedo.png": "3ecbcbeb9376bab75458c17f8a4fbdf069fe3a94b7ec4c531d481ecc4397287d",
+        "docs/art/fusion_v2_generated/c07_thunder_fusion.jpg": "c5e647dfc186e63bf529be00fd6796489c3819a74c76a469c6d1ec1907e7b4e1"
+      },
+      "generated_filename": "C:/Users/whw88/.codex/generated_images/01a0d34a-7c78-72d0-b7ae-7c134c979b6f/exec-95459fa3-2b2e-4441-ad15-c9c942c9c095.png"
+    },
+    {
+      "prompt": "prompts/helmet_atlas_attempt_02.txt",
+      "prompt_sha256": "d921f1461feb0077e26c4ed43d2e0e634ddae9fe2a1cadcaaa2e764216c7d82e",
+      "native_archive": "generated/helmet_atlas_attempt_02.png",
+      "native_sha256": "b87fd217420db21b9042b240ea21284b3e048dca0c8f0c3048db1fe9b7f6fd93",
+      "selected_asset": "assets/armors/thunder/textures/helmet_aligned_albedo.png",
+      "selected_sha256": "b87fd217420db21b9042b240ea21284b3e048dca0c8f0c3048db1fe9b7f6fd93",
+      "operation": "byte copy; no painting/resampling/compositing after imagegen",
+      "referenced_image_paths": [
+        "docs/art/thunder_head_alignment_v1/generated/helmet_atlas_attempt_01.png",
+        "docs/art/fusion_v2_generated/c07_thunder_fusion.jpg"
+      ],
+      "transparent_background": false,
+      "status": "selected",
+      "reference_sha256": {
+        "docs/art/thunder_head_alignment_v1/generated/helmet_atlas_attempt_01.png": "b71d418ac90aa5dae1d3a5635eb178793a4091f1684a8bed9d7eec42843d6645",
+        "docs/art/fusion_v2_generated/c07_thunder_fusion.jpg": "c5e647dfc186e63bf529be00fd6796489c3819a74c76a469c6d1ec1907e7b4e1"
+      },
+      "generated_filename": "C:/Users/whw88/.codex/generated_images/01a0d34a-7c78-72d0-b7ae-7c134c979b6f/exec-d1d5018d-d16b-4b21-b40d-4a85d6494ca4.png"
+    }
+  ]
+}

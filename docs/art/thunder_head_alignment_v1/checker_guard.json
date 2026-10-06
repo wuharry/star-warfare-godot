@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "scope": "Synthetic corruption tests only, not a real engine or artwork validation",
+  "valid_identity_and_consistent_motion_accepted": true,
+  "rejected_cases": [
+    {
+      "mutation": "uv_changed",
+      "rejected": true,
+      "errors": [
+        "Head immutable array changed: surface0/uv"
+      ]
+    },
+    {
+      "mutation": "skin_changed",
+      "rejected": true,
+      "errors": [
+        "Head immutable array changed: surface0/bones"
+      ]
+    },
+    {
+      "mutation": "physical_seam_split",
+      "rejected": true,
+      "errors": [
+        "UV-split physical vertices separate after deformation"
+      ]
+    },
+    {
+      "mutation": "non_head_changed",
+      "rejected": true,
+      "errors": [
+        "Non-head arrays or material properties changed: ArmorBody_06"
+      ]
+    },
+    {
+      "mutation": "over_budget",
+      "rejected": true,
+      "errors": [
+        "Head displacement exceeds integrated-before 20%"
+      ]
+    },
+    {
+      "mutation": "face_flipped",
+      "rejected": true,
+      "errors": [
+        "Head displacement exceeds integrated-before 20%",
+        "Head dimensions exceed integrated-before 20%",
+        "UV-split physical vertices separate after deformation",
+        "Head introduces flipped or degenerate faces"
+      ]
+    },
+    {
+      "mutation": "duplicated_triangle",
+      "rejected": true,
+      "errors": [
+        "Head immutable array changed: surface0/indices"
+      ]
+    },
+    {
+      "mutation": "lost_face",
+      "rejected": true,
+      "errors": [
+        "Head surface count changed; cannot align unchanged surface order"
+      ]
+    }
+  ]
+}
