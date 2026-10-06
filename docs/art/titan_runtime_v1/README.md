@@ -8,6 +8,8 @@
 
 ## 預覽與版本
 
+**2026-10-06 已另完成 Mac 最新檢查與收小耳甲／下框的獨立試作。** [開啟本次對照](review/draft_alignment_20261006/index.html)；正式遊戲仍使用以下 v4。修正了原 glTF 的 LF／CRLF 跨平台誤判，內容變更仍會失敗；詳細新證據與重現步驟見試作 README。
+
 [開啟真原版／上一版 v3／本輪 v4 比對](revisions/helmet_refinement_v4/index.html)。可切四向、選兩版或三版並排及放大原圖；第三欄是 Windows ANGLE 正常資源的最新 v4 原始擷取，可另展開全部 64 圖。
 
 - 「真原版」指遊戲原素材與原模型。

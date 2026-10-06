@@ -262,6 +262,18 @@ SW 的 `_2x` 是匯出器做的 LANCZOS 放大；100 張為 512²、R.O.M.E 的 
 
 ### 原版的連續頭殼與 UV 方法（2026-10-02 更新）
 
+**局部輪廓調整先使用既有頂點與 UV，避免為收小耳甲或護框再拆出新區域（Titan 2026-10-06 補充）。** 共用幾何位置與鏡像接縫一起移動；已有切分中點跟隨父邊的位移，保留原 UV／權重。以灰模和完成貼圖比對後才決定是否需要更多切分。Titan 最新獨立試作維持 v4 的 164 tris／334 UV 座標／3 區域，沒有新生貼圖或替換正式裝備，見 [本次對照](titan_runtime_v1/review/draft_alignment_20261006/index.html)。
+
+```text
+LOCAL GEOMETRY REVIEW ADD-ON: first try moving existing shell vertices while
+keeping the current UVs, broad chart count, topology and skin weights locked.
+Move shared physical seam instances and mirrored pairs together. Existing arc
+midpoints follow their parent edge displacement; do not leave them behind.
+Review clay, painted, side and moving poses using the same model and camera.
+Only add cuts when the existing cage cannot express the needed silhouette.
+Keep inferred adjustments separate from measured reference dimensions.
+```
+
 **使用者要求：新版必須非常接近對應原版，只接受局部改動；不得大幅重做後失去原版風格。** 保留主要輪廓、遊戲比例、連續體積、分片密度與 UV 共用方式。新概念只轉換已指定的局部；例如 Cygni 可縮短下巴、內收頰甲及改金 T 面罩，不因此把整個頭盔換成大量獨立甲片。這項範圍優先於早期「新概念決定新造型」的泛用措辭。
 
 **新版沿用原版的製作方法：完整主頭殼、大片連續 UV、對稱部分共用貼圖；新概念仍決定輪廓與面罩。** 眉甲與頰甲先接成完整體積，細縫、淺層分片及倒角亮邊由 diffuse 表現；只有影響外輪廓、動作或必要厚度的附件另外建模。適用到其他套裝時先查該套原件，不把 Cygni 的配置硬套給所有裝甲。

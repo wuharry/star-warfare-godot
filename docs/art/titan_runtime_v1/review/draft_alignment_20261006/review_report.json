@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "date": "2026-10-06",
+  "scope": "Latest v4 review and independent geometry-only candidate; no newly generated atlas or gameplay replacement.",
+  "current_glb_and_texture_check": {
+    "path": "docs/art/titan_runtime_v1/review/draft_alignment_20261006/current_asset_test.json",
+    "sha256": "ddc24d56b537ac3d6203a88bdd425bcea0bb70eb3eaf6cba7b3b6073c0af16fe",
+    "bytes": 2786
+  },
+  "current_pose_reports": [
+    {
+      "path": "docs/art/titan_runtime_v1/review/draft_alignment_20261006/current_runtime_test.json",
+      "sha256": "1c2529112241086433c52d6c6a8172b689c6dcfc4919d068629dc874b15cdabb",
+      "bytes": 11440
+    },
+    {
+      "path": "docs/art/titan_runtime_v1/review/draft_alignment_20261006/current_roundtrip_test.json",
+      "sha256": "85beacf47fe30cf710e09fefdbf52c87fdcb7abdb273a441fb1ed895b1e7d703",
+      "bytes": 11831
+    }
+  ],
+  "candidate_reports": [
+    {
+      "path": "docs/art/titan_runtime_v1/review/draft_alignment_20261006/candidate_scene_test.json",
+      "sha256": "d6c86f52bda8a0aeaf147e8518ae1e3184dc9580bf3bac236079042b1843bacc",
+      "bytes": 547
+    },
+    {
+      "path": "docs/art/titan_runtime_v1/review/draft_alignment_20261006/candidate_master_test.json",
+      "sha256": "9ac1a49759d256196b047976edfa4f1ea6dfc16f856cbfbbfeb4469cf57b6448",
+      "bytes": 738
+    }
+  ],
+  "eol_regression": {
+    "command": "python3 tests/test_titan_provenance_eol.py",
+    "status": "PASS",
+    "tests": 4,
+    "original_gltf_raw_sha256": "15dbc5e532878e7fbc961a8bed45986f7b6a53a1fde5c955c66cfef806eee5bd",
+    "historical_sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
+    "exact_CRLF_reconstruction": true
+  },
+  "active_geometry_sha256": "987f11a44868ea02e33f77d58c0fe0878869ec2c12e1bd6db31aeb974c93d1df",
+  "active_scene_sha256": "a088dd10f1ce0c6226bf2a6aacff5cff9165625392854fe743107c1bdcb363bb",
+  "candidate_scope": "Separate SCN and editable Blender master, actual engine captures; no candidate GLB or new material generation.",
+  "not_run": [
+    "user art acceptance",
+    "mobile performance",
+    "candidate visor coverage",
+    "candidate GLB export",
+    "comparison page browser layout and interaction (local file:// blocked)"
+  ],
+  "comparison_page_static_check": {
+    "status": "PASS",
+    "local_links_checked": 11,
+    "head_views": [
+      "front",
+      "quarter",
+      "side",
+      "rear"
+    ],
+    "javascript_syntax": "node --check",
+    "browser_layout_and_interaction": "NOT RUN",
+    "browser_reason": "Browser security policy rejected the local file:// URL; no browser workaround used."
+  }
+}

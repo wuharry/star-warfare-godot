@@ -9,7 +9,19 @@ func _initialize() -> void:
 	_run.call_deferred()
 
 func _run() -> void:
-	var target: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(WORK + "build/target.json"))
+	var target_path := WORK + "build/target.json"
+	var preview_output := ""
+	for argument: String in OS.get_cmdline_user_args():
+		if argument.begins_with("--preview-target="):
+			target_path=argument.trim_prefix("--preview-target=")
+		if argument.begins_with("--preview-output="):
+			preview_output=argument.trim_prefix("--preview-output=")
+	if not preview_output.is_empty():
+		assert(preview_output.begins_with(WORK+"review/") and preview_output.ends_with(".scn"))
+		assert(target_path.begins_with(WORK+"review/") and target_path.ends_with(".json") and FileAccess.file_exists(target_path))
+	else:
+		assert(target_path==WORK+"build/target.json", "An alternate target requires a separate review output")
+	var target: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(target_path))
 	var original := (load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate()
 	root.add_child(original)
 	var current := (load(ASSET + "titan.scn") as PackedScene).instantiate()
@@ -99,7 +111,13 @@ func _run() -> void:
 	head.mesh = mesh
 	var packed := PackedScene.new()
 	assert(packed.pack(current) == OK)
-	assert(ResourceSaver.save(packed, ASSET + "titan.scn") == OK)
+	assert(ResourceSaver.save(packed, ASSET + "titan.scn" if preview_output.is_empty() else preview_output) == OK)
+	if not preview_output.is_empty():
+		current.free()
+		original.free()
+		print("TITAN_HELMET_PREVIEW_PASS separate scene / active SCN and GLB untouched")
+		quit()
+		return
 	# Export the same actual runtime meshes with the original skeleton.
 	for part: MeshInstance3D in current.get_children():
 		var original_part := original.find_child(str(part.name), true, false) as MeshInstance3D
