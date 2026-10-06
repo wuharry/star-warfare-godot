@@ -1,5 +1,5 @@
 {
-  "design": "Thunder helmet v5 / sw2 shell, inward cheek armor, narrow engraved trapezoid",
+  "design": "Thunder v5 body / later C07 helmet alignment v1",
   "revision": "thunder_helmet_v5_sw2",
   "concept": "docs\\art\\thunder_mk_comparison_v1\\images\\b_mk1_reference_helmet_v2.png",
   "concept_sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
@@ -16,7 +16,7 @@
         ],
         [
           1.1799999475479126,
-          1.9326679706573486
+          1.9750182628631592
         ],
         [
           -0.3205100893974304,
@@ -92,8 +92,19 @@
     "helmet_detail_albedo.png": "3ecbcbeb9376bab75458c17f8a4fbdf069fe3a94b7ec4c531d481ecc4397287d",
     "helmet_detail_emission.png": "054fbc63bd4e6fdb17a3ddc0c5950ddf4b56ed9edbeefbec7c4bc8c33279e844",
     "helmet_detail_normal.png": "469f75d674c64f93fd71aeb3e6b435305e20207b8ad21c427e833009e9b29f0d",
-    "helmet_source_albedo.png": "10771919f82e5f787cb9d73bdd4e06af086d6e24f36d04fc8896909835f2240c"
+    "helmet_source_albedo.png": "10771919f82e5f787cb9d73bdd4e06af086d6e24f36d04fc8896909835f2240c",
+    "helmet_aligned_albedo.png": "b87fd217420db21b9042b240ea21284b3e048dca0c8f0c3048db1fe9b7f6fd93"
   },
-  "scope": "sw2 helmet base with narrowed visor and fitted cheek armor; unchanged v4 body and original bind pose; set06 only",
-  "head_source_sha256": "20bfa8c70bd1c25f34c48c7653505c76a56f524b2f821b18568c05eaee9485a3"
+  "scope": "New head only; old approved body arrays/materials, UV/topology and 28 named binds unchanged",
+  "head_source_sha256": "20bfa8c70bd1c25f34c48c7653505c76a56f524b2f821b18568c05eaee9485a3",
+  "head_revision": "thunder_head_alignment_v1",
+  "head_reference": {
+    "path": "docs/art/fusion_v2_generated/c07_thunder_fusion.jpg",
+    "sha256": "c5e647dfc186e63bf529be00fd6796489c3819a74c76a469c6d1ec1907e7b4e1",
+    "scope": "helmet_only"
+  },
+  "head_alignment_report": {
+    "path": "docs/art/thunder_head_alignment_v1/validate.json",
+    "sha256": "32bdc2273d3b9ca4b8422ad68f8cd7ad35c7c7d04c16a8c42a97e4c947f23fc3"
+  }
 }

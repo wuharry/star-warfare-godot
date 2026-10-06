@@ -1,0 +1,800 @@
+{
+  "status": "PASS",
+  "date": "2026-10-07",
+  "scope": "Thunder ID6 default head integration; current approved A before baseline",
+  "runtime_scene_sha256": "f112a62eec04a097d084cd0cf7b9ea630f504bcdf620c3523afad600165c5497",
+  "head_revision": "thunder_head_alignment_v1",
+  "geometry": {
+    "baseline": "pinned already-integrated SW2 Thunder SCN",
+    "geometry_limit_against_integrated_before": 0.2,
+    "seam_tolerance_m": 1e-06,
+    "unused_tangent_baseline_findings": [
+      {
+        "part": "ArmorBody_06",
+        "surface": 0,
+        "material": "ThunderPainted_body",
+        "shader_uses_normal_map": false,
+        "non_orthonormal_frames": 1,
+        "first_vertex": 2338,
+        "maximum_abs_normal_tangent_dot": 0.3814338949224584,
+        "scope": "Unused tangent data; preservation is verified by exact immutable array comparison"
+      },
+      {
+        "part": "ArmorBody_06",
+        "surface": 2,
+        "material": "Thunder_NavyShell",
+        "shader_uses_normal_map": false,
+        "non_orthonormal_frames": 2047,
+        "first_vertex": 30,
+        "maximum_abs_normal_tangent_dot": 0.9999800927515742,
+        "scope": "Unused tangent data; preservation is verified by exact immutable array comparison"
+      },
+      {
+        "part": "ArmorBody_06",
+        "surface": 3,
+        "material": "Thunder_DarkJoint",
+        "shader_uses_normal_map": false,
+        "non_orthonormal_frames": 312,
+        "first_vertex": 18,
+        "maximum_abs_normal_tangent_dot": 0.989954291983919,
+        "scope": "Unused tangent data; preservation is verified by exact immutable array comparison"
+      },
+      {
+        "part": "ArmorHand_06",
+        "surface": 1,
+        "material": "Thunder_NavyShell",
+        "shader_uses_normal_map": false,
+        "non_orthonormal_frames": 686,
+        "first_vertex": 54,
+        "maximum_abs_normal_tangent_dot": 0.997992039465287,
+        "scope": "Unused tangent data; preservation is verified by exact immutable array comparison"
+      },
+      {
+        "part": "ArmorFoot_06",
+        "surface": 1,
+        "material": "Thunder_NavyShell",
+        "shader_uses_normal_map": false,
+        "non_orthonormal_frames": 996,
+        "first_vertex": 84,
+        "maximum_abs_normal_tangent_dot": 0.99955546640205,
+        "scope": "Unused tangent data; preservation is verified by exact immutable array comparison"
+      }
+    ],
+    "unused_tangent_current_findings": [
+      {
+        "part": "ArmorBody_06",
+        "surface": 0,
+        "material": "ThunderPainted_body",
+        "shader_uses_normal_map": false,
+        "non_orthonormal_frames": 1,
+        "first_vertex": 2338,
+        "maximum_abs_normal_tangent_dot": 0.3814338949224584,
+        "scope": "Unused tangent data; preservation is verified by exact immutable array comparison"
+      },
+      {
+        "part": "ArmorBody_06",
+        "surface": 2,
+        "material": "Thunder_NavyShell",
+        "shader_uses_normal_map": false,
+        "non_orthonormal_frames": 2047,
+        "first_vertex": 30,
+        "maximum_abs_normal_tangent_dot": 0.9999800927515742,
+        "scope": "Unused tangent data; preservation is verified by exact immutable array comparison"
+      },
+      {
+        "part": "ArmorBody_06",
+        "surface": 3,
+        "material": "Thunder_DarkJoint",
+        "shader_uses_normal_map": false,
+        "non_orthonormal_frames": 312,
+        "first_vertex": 18,
+        "maximum_abs_normal_tangent_dot": 0.989954291983919,
+        "scope": "Unused tangent data; preservation is verified by exact immutable array comparison"
+      },
+      {
+        "part": "ArmorHand_06",
+        "surface": 1,
+        "material": "Thunder_NavyShell",
+        "shader_uses_normal_map": false,
+        "non_orthonormal_frames": 686,
+        "first_vertex": 54,
+        "maximum_abs_normal_tangent_dot": 0.997992039465287,
+        "scope": "Unused tangent data; preservation is verified by exact immutable array comparison"
+      },
+      {
+        "part": "ArmorFoot_06",
+        "surface": 1,
+        "material": "Thunder_NavyShell",
+        "shader_uses_normal_map": false,
+        "non_orthonormal_frames": 996,
+        "first_vertex": 84,
+        "maximum_abs_normal_tangent_dot": 0.99955546640205,
+        "scope": "Unused tangent data; preservation is verified by exact immutable array comparison"
+      }
+    ],
+    "normal_map_tangent_contract": "Complete finite orthonormal frames required on every surface whose actual shader assigns NORMAL_MAP; unchanged unused tangent defects are reported separately",
+    "status": "PASS",
+    "errors": [],
+    "head_surfaces": [
+      {
+        "surface": 0,
+        "vertices_before": 84,
+        "vertices_after": 84,
+        "triangles_before": 28,
+        "triangles_after": 28,
+        "uv_exact": true,
+        "skin_arrays_exact": true,
+        "indices_exact": true
+      },
+      {
+        "surface": 1,
+        "vertices_before": 6732,
+        "vertices_after": 6732,
+        "triangles_before": 2244,
+        "triangles_after": 2244,
+        "uv_exact": true,
+        "skin_arrays_exact": true,
+        "indices_exact": true
+      },
+      {
+        "surface": 2,
+        "vertices_before": 11064,
+        "vertices_after": 11064,
+        "triangles_before": 3688,
+        "triangles_after": 3688,
+        "uv_exact": true,
+        "skin_arrays_exact": true,
+        "indices_exact": true
+      },
+      {
+        "surface": 3,
+        "vertices_before": 144,
+        "vertices_after": 144,
+        "triangles_before": 48,
+        "triangles_after": 48,
+        "uv_exact": true,
+        "skin_arrays_exact": true,
+        "indices_exact": true
+      },
+      {
+        "surface": 4,
+        "vertices_before": 204,
+        "vertices_after": 204,
+        "triangles_before": 68,
+        "triangles_after": 68,
+        "uv_exact": true,
+        "skin_arrays_exact": true,
+        "indices_exact": true
+      },
+      {
+        "surface": 5,
+        "vertices_before": 624,
+        "vertices_after": 624,
+        "triangles_before": 208,
+        "triangles_after": 208,
+        "uv_exact": true,
+        "skin_arrays_exact": true,
+        "indices_exact": true
+      }
+    ],
+    "head_vertices_before": 18852,
+    "head_vertices_after": 18852,
+    "head_added_vertices": 0,
+    "head_triangles_before": 6284,
+    "head_triangles_after": 6284,
+    "head_added_triangles": 0,
+    "head_uv_changed_coordinates": 0,
+    "unique_before_physical_points": 3201,
+    "max_displacement_m": 0.10398241575453335,
+    "before_smallest_axis_m": 0.5720903277397156,
+    "max_displacement_fraction": 0.1817587375849541,
+    "dimension_delta_fraction": [
+      0.0,
+      0.056266894441525814,
+      0.0
+    ],
+    "before_bounds": {
+      "minimum": [
+        -0.2860451638698578,
+        1.1799999475479126,
+        -0.3205100893974304
+      ],
+      "maximum": [
+        0.2860451638698578,
+        1.9326679706573486,
+        0.25644949078559875
+      ],
+      "size": [
+        0.5720903277397156,
+        0.752668023109436,
+        0.5769595801830292
+      ]
+    },
+    "after_bounds": {
+      "minimum": [
+        -0.2860451638698578,
+        1.1799999475479126,
+        -0.3205100893974304
+      ],
+      "maximum": [
+        0.2860451638698578,
+        1.9750182628631592,
+        0.25644949078559875
+      ],
+      "size": [
+        0.5720903277397156,
+        0.7950183153152466,
+        0.5769595801830292
+      ]
+    },
+    "max_seam_gap_m": 0.0,
+    "flipped_faces": 0,
+    "new_degenerate_faces": 0,
+    "inherited_degenerate_faces": 0,
+    "non_head_parts": [
+      {
+        "part": "ArmorBody_06",
+        "arrays_materials_skin_exact": true
+      },
+      {
+        "part": "ArmorHand_06",
+        "arrays_materials_skin_exact": true
+      },
+      {
+        "part": "ArmorFoot_06",
+        "arrays_materials_skin_exact": true
+      }
+    ],
+    "named_game_skin_binds": 28,
+    "scene_provenance": {
+      "before_scene_sha256": "9f939667c6516ee3e2335cb973abeb7805d6865fd4df6b97821303bcd2661df5",
+      "current_scene_sha256": "f112a62eec04a097d084cd0cf7b9ea630f504bcdf620c3523afad600165c5497",
+      "snapshot_sha256": "2ecb0ec87ae0e24172f2b3002c00c2d25155fa37d054cd5aaa157cfe1e2f8201",
+      "before_arrays_sha256": "cbb74b901c37547e5aa050f019dc58c4c62f68b15ac3b545753834ea808ac2ce",
+      "after_arrays_sha256": "0c3835c1ee8f1138df680d4333d18a2cc907edd5ea3813aaf0a72582421e599f",
+      "engine_report_sha256": "11911dff66311b0d10cfc07d2a279f0d2a77a8ebb48befd62bd4b790d9d382ed"
+    },
+    "old_shared_dependencies": {
+      "status": "PASS",
+      "count": 21,
+      "records": [
+        {
+          "path": "assets/armors/thunder/hard_surface.gdshader",
+          "sha256": "c350d4479c31205743a17b2e5d2fe4c0e629e4f5307786c6f52ae82042093ddc"
+        },
+        {
+          "path": "assets/armors/thunder/helmet_detail.gdshader",
+          "sha256": "43d7b2d8d842e05f89ceb3e361015477b8c95f0dafda67effd93fad1b2efda50"
+        },
+        {
+          "path": "assets/armors/thunder/painted_armor.gdshader",
+          "sha256": "d06e63dbd06da0a3731968f6e655b348e7e1e4853d1544883e0d443ffc3c0bc6"
+        },
+        {
+          "path": "assets/armors/thunder/source_sw2/sw_06_head_d.png",
+          "sha256": "10771919f82e5f787cb9d73bdd4e06af086d6e24f36d04fc8896909835f2240c"
+        },
+        {
+          "path": "assets/armors/thunder/source_sw2/sw_06_head_l.png",
+          "sha256": "054fbc63bd4e6fdb17a3ddc0c5950ddf4b56ed9edbeefbec7c4bc8c33279e844"
+        },
+        {
+          "path": "assets/armors/thunder/source_sw2/sw_06_head_n.png",
+          "sha256": "469f75d674c64f93fd71aeb3e6b435305e20207b8ad21c427e833009e9b29f0d"
+        },
+        {
+          "path": "assets/armors/thunder/textures/14ceb45bf36d.png",
+          "sha256": "d0868b7e939df0aeebdf303b488b6b3ca127158028acba9d743fea9fc63b50a4"
+        },
+        {
+          "path": "assets/armors/thunder/textures/amber_visor_paint.png",
+          "sha256": "bfb941bd6bbb5abcd0d3e59f00c55a9b5dccce5881c8861006a53edba6123fb2"
+        },
+        {
+          "path": "assets/armors/thunder/textures/blue_shell_paint.png",
+          "sha256": "132e9dd5547c570079e8747324662f3072401083e8500845cfd069be0a656b99"
+        },
+        {
+          "path": "assets/armors/thunder/textures/d6da6925f6b4.png",
+          "sha256": "0c17892c2a354118a7c7fe2688d48c5a38cf5f16a55b3c0f11c6e0a19add3949"
+        },
+        {
+          "path": "assets/armors/thunder/textures/dce7a1446714.png",
+          "sha256": "436b752b94895b8a7bb5df6cc283db3457a0d518eaefa6862b061aadae1f2e4d"
+        },
+        {
+          "path": "assets/armors/thunder/textures/df2d0a0b46da.png",
+          "sha256": "32cfab203a11e94fd0bf80c42e4f36f5b1475c8739e97dca0b527a685d539989"
+        },
+        {
+          "path": "assets/armors/thunder/textures/helmet_detail_albedo.png",
+          "sha256": "3ecbcbeb9376bab75458c17f8a4fbdf069fe3a94b7ec4c531d481ecc4397287d"
+        },
+        {
+          "path": "assets/armors/thunder/textures/helmet_detail_albedo.res",
+          "sha256": "83a86b7a0572440e79ced2cce5d6ff9c8a8085ab9eca10634f35ee1a545277de"
+        },
+        {
+          "path": "assets/armors/thunder/textures/helmet_detail_emission.png",
+          "sha256": "054fbc63bd4e6fdb17a3ddc0c5950ddf4b56ed9edbeefbec7c4bc8c33279e844"
+        },
+        {
+          "path": "assets/armors/thunder/textures/helmet_detail_emission.res",
+          "sha256": "cda178d14ed02dbc9e42070b22670d5e79312579516040480cedbd267ce8cefa"
+        },
+        {
+          "path": "assets/armors/thunder/textures/helmet_detail_normal.png",
+          "sha256": "469f75d674c64f93fd71aeb3e6b435305e20207b8ad21c427e833009e9b29f0d"
+        },
+        {
+          "path": "assets/armors/thunder/textures/helmet_detail_normal.res",
+          "sha256": "33bfc513732b3be40bd0a43d7a6c1458dc1e9527dab09a24c6181123818a1936"
+        },
+        {
+          "path": "assets/armors/thunder/textures/helmet_source_albedo.png",
+          "sha256": "10771919f82e5f787cb9d73bdd4e06af086d6e24f36d04fc8896909835f2240c"
+        },
+        {
+          "path": "assets/armors/thunder/textures/helmet_source_albedo.res",
+          "sha256": "504c09d94363ca8215906f8a103ba028d55affb53b6e87e906089d29920abb35"
+        },
+        {
+          "path": "assets/equipment_refined/textures/f8d96c60d30f.png",
+          "sha256": "5d4366851a1c5cef348129d691349bd9d1c9f1e067785ba1be38a8db224a00cc"
+        }
+      ]
+    },
+    "original_sw2_source_statistics": {
+      "scope": "Informational raw SW2 source comparison; different topology and rig from integrated head",
+      "source": "assets/armors/thunder/source_sw2/modern_head.json",
+      "sha256": "20bfa8c70bd1c25f34c48c7653505c76a56f524b2f821b18568c05eaee9485a3",
+      "raw_source_coordinates": 775,
+      "raw_source_triangles": 974,
+      "raw_source_named_binds": 8,
+      "raw_source_bounds": {
+        "minimum": [
+          -0.2860451638698578,
+          1.2943429946899414,
+          -0.3455100953578949
+        ],
+        "maximum": [
+          0.2860451638698578,
+          2.0878262519836426,
+          0.25644949078559875
+        ],
+        "size": [
+          0.5720903277397156,
+          0.7934832572937012,
+          0.6019595861434937
+        ]
+      },
+      "current_unrolled_surface_coordinates": 18852,
+      "current_integrated_triangles": 6284,
+      "current_triangle_count_factor_vs_raw_sw2": 6.4517453798767965,
+      "raw_source_geometry_budget_validation": "NOT APPLICABLE: no source-vertex lineage for added neck/respirator and prior shell subdivision",
+      "classic_sw1_head_geometry_equivalence": "NOT RUN"
+    },
+    "not_run": [
+      "Artistic concept likeness",
+      "Classic SW1 original-head geometry equivalence",
+      "Animation/gameplay captures",
+      "Mobile performance"
+    ]
+  },
+  "tests": {
+    "default_runtime": {
+      "status": "PASS",
+      "log": "logs/thunder_head_alignment_default_test.log",
+      "sha256": "f8ff4e1a0ebe7c6ca8a63fec3b249c8c25f7a179e10a0e13d723084aae64742a"
+    },
+    "alternate_prototype": {
+      "status": "PASS",
+      "log": "logs/thunder_head_alignment_prototype_test.log",
+      "sha256": "6f85cb2625efc5bf7f0450327bd4d087fe960b58b3a42effb713d61efcaed2c2"
+    },
+    "compiler_guards": {
+      "status": "PASS",
+      "log": "logs/thunder_head_alignment_compiler_guard.log",
+      "sha256": "609fe5cf8981f7d419d4dd76a47a73523875ab5f56cc0bb1152642fbf92ef41b"
+    },
+    "normal_capture": {
+      "status": "PASS",
+      "log": "logs/thunder_head_alignment_capture.log",
+      "sha256": "5d26d166bb00c760b61f87ec312a1d0729cfaab33bbe0d121c8e543a3db6b0fa"
+    },
+    "actual_scene": {
+      "status": "PASS",
+      "log": "logs/thunder_head_alignment_scene_test.log",
+      "sha256": "bd68453c177b460096732e2fe735f3868504a3e1910eb3e95fa8df6bfad0739b"
+    },
+    "blender_build": {
+      "status": "PASS",
+      "log": "logs/thunder_head_alignment_build.log",
+      "sha256": "390363310507b75d9f81f7ae627e9012859289b45b6045d262c82119c94fa591"
+    },
+    "head_compile": {
+      "status": "PASS",
+      "log": "logs/thunder_head_alignment_compile.log",
+      "sha256": "d987eba2a08fb690557852ed34a8382e43cf9677a505a83ac268e75e2afbe954"
+    }
+  },
+  "captures": {
+    "status": "PASS",
+    "manifest": "after/manifest.json",
+    "manifest_sha256": "74bd2c96a950a0e97977b4fe2628fda9bf7a0b9c7e9e12994ed3ec065f391f7e",
+    "count": 30,
+    "controlled_studio_and_pose": 27,
+    "live_game_non_deterministic": 3,
+    "save_unchanged": true,
+    "images": [
+      {
+        "path": "after/full_front.png",
+        "sha256": "999674ab7a783341edd6eced1c259f8abd72014e9cce5fc36a91ec5e252990a9",
+        "bytes": 791779,
+        "category": "studio",
+        "file": "full_front.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "front",
+        "width": 1200
+      },
+      {
+        "path": "after/full_three_quarter.png",
+        "sha256": "40f770f4a3c1ffe9f274e5440e3651944aca8d83a03bbe428b5634ad84f642a8",
+        "bytes": 913229,
+        "category": "studio",
+        "file": "full_three_quarter.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "three_quarter",
+        "width": 1200
+      },
+      {
+        "path": "after/full_side.png",
+        "sha256": "ce8f84428164f19bcb12e98990d5bc624986fa4fe5b5774a2b18de3d7eb27ee3",
+        "bytes": 865625,
+        "category": "studio",
+        "file": "full_side.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "side",
+        "width": 1200
+      },
+      {
+        "path": "after/full_rear.png",
+        "sha256": "c324f885835ef7706cd0c50e1767cb4e65c8926b6081c9c6dc2d846549cbae5a",
+        "bytes": 849860,
+        "category": "studio",
+        "file": "full_rear.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "rear",
+        "width": 1200
+      },
+      {
+        "path": "after/full_low_front.png",
+        "sha256": "2456aaf50dad2859b14b977e808aad5da01e1966e9be58526a345d3908f47bff",
+        "bytes": 710098,
+        "category": "studio",
+        "file": "full_low_front.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "low_front",
+        "width": 1200
+      },
+      {
+        "path": "after/helmet_front.png",
+        "sha256": "0fbb1e196e5a696697aeadfe377d3a4b4fe2d3f2424928444c402fdf9b667560",
+        "bytes": 1435658,
+        "category": "helmet",
+        "file": "helmet_front.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "front",
+        "width": 1200
+      },
+      {
+        "path": "after/helmet_three_quarter.png",
+        "sha256": "2320e5b07903445245f0691fc75c7747e8442711d0e72997498adec58ed347f0",
+        "bytes": 1471864,
+        "category": "helmet",
+        "file": "helmet_three_quarter.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "three_quarter",
+        "width": 1200
+      },
+      {
+        "path": "after/helmet_side.png",
+        "sha256": "8b8f1ce9c74f9d55a1d4b6a05ae20c3523abb6acace50d22411fe29e33551bb8",
+        "bytes": 1446115,
+        "category": "helmet",
+        "file": "helmet_side.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "side",
+        "width": 1200
+      },
+      {
+        "path": "after/helmet_rear.png",
+        "sha256": "2fa8603cf336f2f220ab03fbd39ef9830a9b7562aedf1ad0c69b9ffdfa074dba",
+        "bytes": 1321771,
+        "category": "helmet",
+        "file": "helmet_rear.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "rear",
+        "width": 1200
+      },
+      {
+        "path": "after/helmet_low_front.png",
+        "sha256": "ca170338c3b4aed380885559f2321a2727e500ad6e14b3e088016571de37ff10",
+        "bytes": 1422679,
+        "category": "helmet",
+        "file": "helmet_low_front.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "low_front",
+        "width": 1200
+      },
+      {
+        "path": "after/detail_crown.png",
+        "sha256": "b805c6e17b0e577004253c5f8b85671f35acaa5e96d92b40ba7eae3935a96deb",
+        "bytes": 1463767,
+        "category": "detail",
+        "file": "detail_crown.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "crown",
+        "width": 1200
+      },
+      {
+        "path": "after/detail_visor.png",
+        "sha256": "a6079a3079ba4be818c1fab1a0ac491d3aee5d4863054addf9c7d3f76273291d",
+        "bytes": 1666248,
+        "category": "detail",
+        "file": "detail_visor.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "visor",
+        "width": 1200
+      },
+      {
+        "path": "after/detail_respirator.png",
+        "sha256": "3e809a860e51a83ba890390e27c6fd0f820cd148b4ae13e0f174c7718dc90fbd",
+        "bytes": 1269437,
+        "category": "detail",
+        "file": "detail_respirator.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "respirator",
+        "width": 1200
+      },
+      {
+        "path": "after/detail_chest.png",
+        "sha256": "2b34db976fbf45fff86712e46681137a2c6bfe4c3521e6448872779bbc5990a0",
+        "bytes": 1980854,
+        "category": "detail",
+        "file": "detail_chest.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "chest",
+        "width": 1200
+      },
+      {
+        "path": "after/detail_shoulder.png",
+        "sha256": "48ed626a28ab16c2d6b18df695ffc1e9adc110531f352bf63e67c0121866bc67",
+        "bytes": 1210971,
+        "category": "detail",
+        "file": "detail_shoulder.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "shoulder",
+        "width": 1200
+      },
+      {
+        "path": "after/detail_forearm.png",
+        "sha256": "e81d0a57aac22819d03b7aa4f987480d6df7ba3ffc0d2fb73b705e01dcbcefe3",
+        "bytes": 1646332,
+        "category": "detail",
+        "file": "detail_forearm.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "forearm",
+        "width": 1200
+      },
+      {
+        "path": "after/detail_legs.png",
+        "sha256": "aed7a4b832ed43192cd03c718ed4274be67ef8490eebd7e6334f209f88ef8d55",
+        "bytes": 1597591,
+        "category": "detail",
+        "file": "detail_legs.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "legs",
+        "width": 1200
+      },
+      {
+        "path": "after/armed_idle.png",
+        "sha256": "a0c55ed99cc04e2c440a1c8083ccfe60a102d4d46bc5afdc1e086432b7d6ee98",
+        "bytes": 946909,
+        "category": "motion",
+        "file": "armed_idle.png",
+        "height": 1440,
+        "pose": "idle_rifle",
+        "time": 0.0,
+        "view": "three_quarter",
+        "width": 1200
+      },
+      {
+        "path": "after/reload_20_three_quarter.png",
+        "sha256": "5e02fe930a263387647100dc61a817b8277f3ac789d5cf3a03adff1f69011188",
+        "bytes": 818042,
+        "category": "motion",
+        "file": "reload_20_three_quarter.png",
+        "height": 1440,
+        "pose": "moving_gun00_reload_variant_0",
+        "time": 0.354,
+        "view": "three_quarter",
+        "width": 1200
+      },
+      {
+        "path": "after/reload_20_side.png",
+        "sha256": "809788d7447c5dc473da86b7a811c28761bc69e8d25919f7d1c37d108060a0e0",
+        "bytes": 774962,
+        "category": "motion",
+        "file": "reload_20_side.png",
+        "height": 1440,
+        "pose": "moving_gun00_reload_variant_0",
+        "time": 0.354,
+        "view": "side",
+        "width": 1200
+      },
+      {
+        "path": "after/reload_20_rear.png",
+        "sha256": "4882a5556148a5bac99f8f34f2358d480ef3c8ebdc6b8f84f6f1d787ce4c33b7",
+        "bytes": 901646,
+        "category": "motion",
+        "file": "reload_20_rear.png",
+        "height": 1440,
+        "pose": "moving_gun00_reload_variant_0",
+        "time": 0.354,
+        "view": "rear",
+        "width": 1200
+      },
+      {
+        "path": "after/reload_52_three_quarter.png",
+        "sha256": "09e67829fa653405337970f915be5fcd119e156b1ebf71e0d2cdae33eb98be59",
+        "bytes": 854841,
+        "category": "motion",
+        "file": "reload_52_three_quarter.png",
+        "height": 1440,
+        "pose": "moving_gun00_reload_variant_0",
+        "time": 0.9204,
+        "view": "three_quarter",
+        "width": 1200
+      },
+      {
+        "path": "after/reload_52_side.png",
+        "sha256": "43778d5c3188ab8efed529234b0d36e052f26471b893b17cfdd298596f0c216d",
+        "bytes": 822660,
+        "category": "motion",
+        "file": "reload_52_side.png",
+        "height": 1440,
+        "pose": "moving_gun00_reload_variant_0",
+        "time": 0.9204,
+        "view": "side",
+        "width": 1200
+      },
+      {
+        "path": "after/reload_52_rear.png",
+        "sha256": "f714a9fa003f2f69dcf5c05d98e2211c83c93ecab9d3fcf1ff8cf7bb72f40b30",
+        "bytes": 918036,
+        "category": "motion",
+        "file": "reload_52_rear.png",
+        "height": 1440,
+        "pose": "moving_gun00_reload_variant_0",
+        "time": 0.9204,
+        "view": "rear",
+        "width": 1200
+      },
+      {
+        "path": "after/reload_85_three_quarter.png",
+        "sha256": "af12e604e4fa1347457a0d96a5cce0619528239c86ec49a36fb093b8180f13d6",
+        "bytes": 862903,
+        "category": "motion",
+        "file": "reload_85_three_quarter.png",
+        "height": 1440,
+        "pose": "moving_gun00_reload_variant_0",
+        "time": 1.5045,
+        "view": "three_quarter",
+        "width": 1200
+      },
+      {
+        "path": "after/reload_85_side.png",
+        "sha256": "7a0c09380c3b9e578a19850437ac9c7df916fdd2f3ac9352e3ef85cc59ab292a",
+        "bytes": 821994,
+        "category": "motion",
+        "file": "reload_85_side.png",
+        "height": 1440,
+        "pose": "moving_gun00_reload_variant_0",
+        "time": 1.5045,
+        "view": "side",
+        "width": 1200
+      },
+      {
+        "path": "after/reload_85_rear.png",
+        "sha256": "05528d94a6f4d850c4176eb847c7fabecb45157d66a3df8a31bd9f18d3695a31",
+        "bytes": 936987,
+        "category": "motion",
+        "file": "reload_85_rear.png",
+        "height": 1440,
+        "pose": "moving_gun00_reload_variant_0",
+        "time": 1.5045,
+        "view": "rear",
+        "width": 1200
+      },
+      {
+        "path": "after/game_level_1.png",
+        "sha256": "67f53e12401167a09fca55cfd657c37dd5c063b2af5b19c610ffbd30f1a0263f",
+        "bytes": 2126767,
+        "category": "game",
+        "file": "game_level_1.png",
+        "height": 900,
+        "pose": "live_game",
+        "time": 0.0,
+        "view": "game_camera",
+        "width": 1600
+      },
+      {
+        "path": "after/game_level_3.png",
+        "sha256": "982c20accf87bd0f9dc4ccec6fe9155b21c66cb287ddcdcc043ec58bc1d5c19a",
+        "bytes": 1530806,
+        "category": "game",
+        "file": "game_level_3.png",
+        "height": 900,
+        "pose": "live_game",
+        "time": 0.0,
+        "view": "game_camera",
+        "width": 1600
+      },
+      {
+        "path": "after/game_level_3_low_front.png",
+        "sha256": "56071c27098b778471d13940b5a5d33399ea4cf50db3e4a58bd4a2b3d2fd9cc2",
+        "bytes": 2090167,
+        "category": "game",
+        "file": "game_level_3_low_front.png",
+        "height": 900,
+        "pose": "live_game",
+        "time": 0.0,
+        "view": "inspection_low_front",
+        "width": 1600
+      }
+    ]
+  },
+  "prototype_unchanged": "7c37b7917eb161d05c414799abf7981768ef9b76b81f1123f73397e60e5185b3",
+  "generation_record_sha256": "c8aedba01cb2a040d362fa2b4905a455d38d7f73ae1d788f6c267c058075870e",
+  "not_run": [
+    "User art acceptance",
+    "Mobile performance",
+    "Interactive browser QA",
+    "Classic SW1 geometry equivalence"
+  ]
+}
