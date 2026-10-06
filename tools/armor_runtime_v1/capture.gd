@@ -38,6 +38,20 @@ func _run() -> void:
 	id=int(config.runtime_id);LABELS=config.parts;NAMES.assign(config.parts.keys())
 	work_path="res://"+str(config.work)+"/";asset_path="res://"+str(config.asset)+"/"
 	scene_path=asset_path+slug+".scn";target_path=work_path+"build/target.json"
+	# A review candidate stays separate from the configured gameplay asset.
+	# Its resource hashes are captured via the same fields as the live scene.
+	var candidate_scene_supplied := false
+	var candidate_target_supplied := false
+	for argument: String in OS.get_cmdline_user_args():
+		if argument.begins_with("--candidate-scene="):
+			candidate_scene_supplied=true
+			scene_path=argument.trim_prefix("--candidate-scene=")
+			assert(scene_path.begins_with("res://") and scene_path.ends_with(".scn") and FileAccess.file_exists(scene_path))
+		if argument.begins_with("--candidate-target="):
+			candidate_target_supplied=true
+			target_path=argument.trim_prefix("--candidate-target=")
+			assert(target_path.begins_with("res://") and target_path.ends_with(".json") and FileAccess.file_exists(target_path))
+	assert(candidate_scene_supplied==candidate_target_supplied, "A review candidate requires both its scene and authored target")
 	OUT=work_path+"review/engine/"
 	if "--material-preview" in OS.get_cmdline_user_args():OUT=work_path+"review/placement_v4_preview/"
 	if "--head-preview" in OS.get_cmdline_user_args():OUT=work_path+"review/head_v2_preview/"
@@ -147,9 +161,11 @@ func _run() -> void:
 			for version: String in ["original","new"]:
 				_apply(player.recovered_avatar,version,"--head-clay" in OS.get_cmdline_user_args(),true)
 				await _capture("%s_head_%s"%[version,view])
+		var report:=FileAccess.open(OUT+"capture.json",FileAccess.WRITE)
+		report.store_string(JSON.stringify({"candidate_scene_path":scene_path,"candidate_target_path":target_path,"preview_not_applied_to_gameplay":scene_path!=asset_path+slug+".scn","runtime_scene_sha256":_hash(scene_path),"target_sha256":_hash(target_path),"canonical_diffuse_sha256_at_start":texture_sha256,"capture_sha256":capture_sha256,"files":files,"image_dimensions":dimensions,"renderer":RenderingServer.get_current_rendering_method(),"resource_mode":"normal_imported_resources" if preview_textures.is_empty() else "raw_png_preview","view":"same original skeleton and fixed orthographic front/side/rear/quarter cameras","engine_arguments":OS.get_cmdline_args(),"save_unchanged":_hash(real_save)==before},"\t"))
 		baseline.free();candidate.free();fixture.cleanup();GameState.save_path=real_save
 		AudioDirector.stop_all_sfx()
-		print("ARMOR_HEAD_PREVIEW_PASS direct PNG / authored UV / files=%d save_unchanged=%s"%[files.size(),str(_hash(real_save)==before)])
+		print("ARMOR_HEAD_PREVIEW_PASS %s / authored UV / files=%d save_unchanged=%s"%["normal imported resources" if preview_textures.is_empty() else "direct PNG",files.size(),str(_hash(real_save)==before)])
 		get_tree().quit(0 if _hash(real_save)==before else 1)
 		return
 	for view: String in ["front","side","rear","quarter"]:

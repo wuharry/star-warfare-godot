@@ -129,7 +129,12 @@ def verify_baselines():
     index = read(index_path)
     source = read(original.parent / "source.json")
     original_scene = ROOT / source["original_scene"].removeprefix("res://")
-    assert digest(original_scene) == source["original_scene_sha256"] == index["original_gltf_sha256"]
+    assert source["original_scene_sha256"] == index["original_gltf_sha256"]
+    # Git may check out the live text glTF with LF while this fixed Windows
+    # snapshot pins CRLF. Accept only an exact reconstruction of that pinned
+    # text; node records and binary mesh buffers remain independently exact.
+    _authorize_text(original_scene, source["original_scene_sha256"])
+    hash_matches(original_scene, source["original_scene_sha256"], historical=True)
     assert index["node_ids"] == {"ArmorHead_05": 50, "ArmorBody_05": 51, "ArmorHand_05": 52, "ArmorFoot_05": 53}
     assert index["original_source_snapshot_sha256"] == SOURCE_INDEX_SHA and index["runtime_id"] == 5
     gltf = read(original_scene)
