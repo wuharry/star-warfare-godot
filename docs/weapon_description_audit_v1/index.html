@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>
+  :root{color-scheme:light;padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0)}
+  body{margin:0;font:14px/1.5 system-ui,-apple-system,sans-serif}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+<title>武器描述對照表</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  /* Layout: fixed summary band over one wide scrolling audit table. */
+  :root{
+    --bg:#f4f2ee; --panel:#ffffff; --fg:#1c1a16; --muted:#6b655c; --line:#ddd8cf;
+    --accent:#b25a00; --fail:#b3261e; --pass:#2a6b35; --minor:#8a6a00; --none:#6b655c;
+    --fail-bg:#fbe9e7; --pass-bg:#e7f2e9; --minor-bg:#faf0d6; --none-bg:#eeebe5;
+    --font-sans:"IBM Plex Sans",system-ui,-apple-system,"Noto Sans TC",sans-serif;
+    --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#15140f; --panel:#1e1c17; --fg:#eae6dd; --muted:#9a9388; --line:#322e26;
+    --accent:#f0a24a; --fail:#f2857c; --pass:#8ed39c; --minor:#e3c268; --none:#9a9388;
+    --fail-bg:#3a1c19; --pass-bg:#18301d; --minor-bg:#332a10; --none-bg:#26231d;
+    color-scheme:dark;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#15140f; --panel:#1e1c17; --fg:#eae6dd; --muted:#9a9388; --line:#322e26;
+    --accent:#f0a24a; --fail:#f2857c; --pass:#8ed39c; --minor:#e3c268; --none:#9a9388;
+    --fail-bg:#3a1c19; --pass-bg:#18301d; --minor-bg:#332a10; --none-bg:#26231d;
+    color-scheme:dark;
+  }
+  body{background:var(--bg);color:var(--fg);font-family:var(--font-sans);line-height:1.6}
+  .wrap{max-width:1500px;margin:0 auto;padding-inline:20px;padding-block:32px 56px}
+  header{border-bottom:2px solid var(--fg);padding-bottom:18px;margin-bottom:24px}
+  h1{margin:0 0 6px;font-size:clamp(22px,3.4vw,32px);font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+  .sub{margin:0;color:var(--muted);font-size:14px;max-width:62ch}
+  .tally{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:22px 0}
+  .tile{background:var(--panel);border:1px solid var(--line);padding:12px 14px}
+  .tile .n{font-family:var(--font-mono);font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.2}
+  .tile .l{font-size:12px;color:var(--muted);letter-spacing:.04em}
+  .tile.f .n{color:var(--fail)} .tile.p .n{color:var(--pass)} .tile.m .n{color:var(--minor)}
+  .bar{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+  .bar button{font:500 13px/1 var(--font-sans);color:var(--fg);background:var(--panel);
+    border:1px solid var(--line);padding:8px 13px;cursor:pointer}
+  .bar button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+  .bar button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .scroll{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+  table{border-collapse:collapse;width:100%;min-width:1180px;font-size:13px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{position:sticky;top:0;background:var(--panel);font-size:11px;letter-spacing:.06em;
+    color:var(--muted);font-weight:600;text-transform:uppercase;border-bottom:1.5px solid var(--fg);z-index:1}
+  td.m{font-family:var(--font-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  td.id{font-family:var(--font-mono);color:var(--muted)}
+  td.nm{font-weight:500;white-space:nowrap}
+  .kind{font-family:var(--font-mono);font-size:11.5px;color:var(--accent)}
+  .tag{display:inline-block;font-size:11px;font-weight:600;padding:2px 7px;white-space:nowrap}
+  .tag.fail{background:var(--fail-bg);color:var(--fail)}
+  .tag.pass{background:var(--pass-bg);color:var(--pass)}
+  .tag.minor{background:var(--minor-bg);color:var(--minor)}
+  .tag.none{background:var(--none-bg);color:var(--none)}
+  tr.fail td:first-child{box-shadow:inset 3px 0 0 var(--fail)}
+  tr.pass td:first-child{box-shadow:inset 3px 0 0 var(--pass)}
+  tr.minor td:first-child{box-shadow:inset 3px 0 0 var(--minor)}
+  .claim{min-width:270px;max-width:360px}
+  .ev{min-width:290px;max-width:400px;color:var(--muted);font-size:12.5px}
+  .ev code{font-family:var(--font-mono);font-size:11.5px;color:var(--fg)}
+  .fx{text-align:center;color:var(--accent);font-family:var(--font-mono)}
+  .fx.no{color:var(--line)}
+  h2{font-size:17px;font-weight:600;margin:36px 0 10px;letter-spacing:-.01em}
+  .notes{background:var(--panel);border:1px solid var(--line);padding:16px 18px}
+  .notes ol{margin:0;padding-left:20px}
+  .notes li{margin-bottom:7px;font-size:13.5px}
+  .notes li:last-child{margin-bottom:0}
+  .notes code{font-family:var(--font-mono);font-size:12px}
+  footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
+  @media (max-width:640px){.wrap{padding-block:22px 40px}.tally{gap:8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>武器描述對照表</h1>
+  <p class="sub">Star Warfare 還原專案：47 條原版商店描述逐條比對 Godot 實作。數值取自
+  <code>recovered_game_data.gd</code>，描述取自 <code>sw1_store_layout.gd</code>，判定依據為
+  <code>player.gd</code> 與 <code>projectile.gd</code> 的實際分支。</p>
+</header>
+
+<div class="tally">
+  <div class="tile"><div class="n" id="t-all">47</div><div class="l">武器總數</div></div>
+  <div class="tile f"><div class="n" id="t-fail">10</div><div class="l">機制對不上</div></div>
+  <div class="tile p"><div class="n" id="t-pass">8</div><div class="l">機制已實作</div></div>
+  <div class="tile m"><div class="n" id="t-minor">3</div><div class="l">數字小出入</div></div>
+  <div class="tile"><div class="n" id="t-fx">17</div><div class="l">有原版特效</div></div>
+</div>
+
+<div class="bar" role="group" aria-label="篩選">
+  <button data-f="all" aria-pressed="true">全部 47</button>
+  <button data-f="fail" aria-pressed="false">機制對不上 10</button>
+  <button data-f="pass" aria-pressed="false">機制已實作 8</button>
+  <button data-f="minor" aria-pressed="false">小出入 3</button>
+  <button data-f="none" aria-pressed="false">僅相對形容 26</button>
+  <button data-f="fx" aria-pressed="false">有原版特效 17</button>
+</div>
+
+<div class="scroll">
+<table>
+  <thead><tr>
+    <th>ID</th><th>名稱</th><th>kind</th><th>POW</th><th>FIRERATE</th><th>ENG</th>
+    <th>射程</th><th>範圍</th><th>彈丸</th><th>特效</th><th class="claim">描述的機制主張</th>
+    <th>判定</th><th class="ev">依據</th>
+  </tr></thead>
+  <tbody id="rows"></tbody>
+</table>
+</div>
+
+<h2>需要注意的細節</h2>
+<div class="notes"><ol>
+  <li><strong>只有 <code>beam</code> 會貫穿。</strong><code>player.gd</code> 的 <code>_fire_hitscan()</code> 裡
+    <code>pierces</code> 的條件是 <code>kind == "beam"</code>，而 <code>beam</code> 只有 gun21 Laser Cannon 一把。
+    gun17／gun18 的 <code>laser</code> kind 打中第一個目標就 <code>break</code>。</li>
+  <li><strong>持續傷害區只接了兩個地方。</strong><code>OriginalWeaponArea</code> 只由 <code>fly_grenade</code>（gun45）
+    和 gun41 的 <code>joke_variant == 2</code> 建立。描述裡同樣寫「pollutes a small area」的
+    gun20、gun31、gun44 都沒有接。</li>
+  <li><strong>多發分支只有兩把。</strong><code>_fire_projectile()</code> 的 <code>directions</code> 陣列只對
+    gun29（3 個方向）和 gun42（5 個方向）展開。gun30 描述說三發，實際走單發路徑。</li>
+  <li><strong>全專案沒有充能，也沒有緩速。</strong><code>charge</code> 與武器用的 <code>slow</code>／<code>stun</code>
+    都查無實作。gun21 的「5s cool down」與資料裡的 0.2 秒差了 25 倍。</li>
+  <li><strong>gun14 與 gun15 的範圍半徑同為 3.0</strong>，描述卻分別寫「not bad splash radius」和
+    「low splash radius」。不是實作錯，是兩條描述對同一個數字給了不同評價。</li>
+</ol></div>
+
+<footer>
+  判定只涵蓋描述裡可驗證的機制主張。傷害／射速／能量的高低屬於相對形容，數值順序經核對後方向一致，不列入對錯。
+  POW／FIRERATE／ENG 沿用遊戲商店介面自己的欄位名；FIRERATE 欄位在原版顯示的是冷卻秒數，數字越小越快。
+</footer>
+</div>
+
+<script>
+const W = [
+ ["gun00","FR28a","hitscan",20,0.24,5,105,"—",1,0,"低傷害、尚可射速、低耗能","none","相對形容，無可驗證機制"],
+ ["gun01","MA72","hitscan",30,0.23,7,105,"—",1,0,"低傷害、不錯射速、低耗能","none","相對形容，無可驗證機制"],
+ ["gun02","MS06","hitscan",36,0.2,8,105,"—",1,0,"中傷害、極佳射速、中耗能","none","相對形容，無可驗證機制"],
+ ["gun03","FR43C","hitscan",48,0.23,11,105,"—",1,0,"中傷害、不錯射速、中耗能","none","相對形容，無可驗證機制"],
+ ["gun04","FL334AR","hitscan",68,0.25,14,105,"—",1,0,"高傷害、不錯射速、高耗能","none","相對形容，無可驗證機制"],
+ ["gun05","TB10-LW","hitscan",100,0.24,18,105,"—",1,0,"高傷害、極佳射速、極高耗能","none","相對形容，無可驗證機制"],
+ ["gun06","TSG-03","hitscan",90,0.85,18,8,5,8,0,"散彈：威力弱、射程短、射速低、耗能低","none","8 顆彈丸與 8 公尺射程皆存在，其餘為相對形容"],
+ ["gun07","SD58","hitscan",130,0.95,22,10,7,8,0,"比 TSG-03 更高威力、更低射速","none","130 > 90、0.95 > 0.85，方向一致"],
+ ["gun08","WD03S","hitscan",170,0.75,26,12,4,8,0,"經濟型，威力與成本平衡","none","相對形容，無可驗證機制"],
+ ["gun09","S92M","hitscan",260,1.05,32,12,9,8,0,"威力與射程不錯、射速低、耗能高","none","相對形容，無可驗證機制"],
+ ["gun10","T740","hitscan",320,0.9,50,10,7,8,0,"高威力、中射速、較高耗能","none","相對形容，無可驗證機制"],
+ ["gun11","RPG-21","rocket",250,1.4,120,105,7,1,1,"標準 AOE 武器","pass","splash 7.0，爆炸範圍傷害成立"],
+ ["gun12","RPG-24","rocket",450,1.7,220,105,9,1,1,"威力強但發射耗能大","none","相對形容，無可驗證機制"],
+ ["gun13","RPG-31","rocket",750,1.2,350,105,8.5,1,1,"大規模毀滅，耗能極高","none","相對形容，無可驗證機制"],
+ ["gun14","Vox-07","grenade",80,0.5,20,50,3,1,1,"低傷害、範圍半徑尚可、低耗能","minor","半徑 3.0，與 gun15 同值卻被描述為較好"],
+ ["gun15","M347","grenade",192,0.45,50,50,3,1,1,"中傷害、範圍半徑小、射速不錯","minor","半徑 3.0，與 gun14 同值卻被描述為較差"],
+ ["gun16","Ge09x","grenade",220,0.45,60,50,3.5,1,1,"高傷害、範圍半徑完美、中射速、高耗能","none","半徑 3.5 確實最大，其餘為相對形容"],
+ ["gun17","LG002B","laser",50,0.3,22,105,"—",1,0,"能貫穿數名敵人後才消散","fail","kind 是 laser，不是 beam。_fire_hitscan() 的 pierces 只在 beam 成立，打中第一個就 break"],
+ ["gun18","M2456s","laser",90,0.3,30,105,"—",1,0,"高傷害，能貫穿更多敵人","fail","同樣不貫穿；而且程式裡沒有任何貫穿數量可以比 gun17 多"],
+ ["gun19","NOVA27","laser",140,0.25,45,105,"—",1,0,"同類中最強的一把","none","相對形容，無可驗證機制"],
+ ["gun20","Plasma Neo","plasma",90,0.35,35,35,"—",1,0,"電漿球污染小範圍，傷害所有經過的敵人","fail","projectile.gd 的 plasma 分支只加兩張 billboard 與一盞燈；splash 為 0，也沒有接 OriginalWeaponArea"],
+ ["gun21","Laser Cannon","beam",300,0.2,100,20,"—",1,0,"撕裂路徑上所有敵人；有短暫充能與 5 秒冷卻","fail","貫穿有（唯一的 beam），但全專案查無 charge 機制，冷卻是 0.2 秒不是 5 秒"],
+ ["gun22","Light Bow","arrow",100,0.5,40,105,3,1,1,"能量箭撞擊爆炸，傷害範圍內敵人","pass","splash 3.0，arrow 投射物撞擊觸發範圍傷害"],
+ ["gun23","Energy Glove","energy_fist",250,0.5,60,30,4,1,1,"It's Hand of God（純風味）","none","無可驗證主張"],
+ ["gun24","MCP76","machinegun",120,0.2,15,105,"—",1,0,"威力不錯、射速高、迅速耗盡能量","none","相對形容，無可驗證機制"],
+ ["gun25","M-27B1","machinegun",200,0.17,40,105,"—",1,0,"You are the terminator（純風味）","none","無可驗證主張"],
+ ["gun26","LIT07","laser",190,0.28,65,105,"—",1,0,"基於外星科技的新型光束武器","none","未承諾貫穿，與 gun17／18 不同"],
+ ["gun27","Cutter","sword",60,0.3,0,3.1,"—",1,0,"標準近戰，能量用盡時可用","none","range 3.1、energy 0，與描述一致但無特殊機制"],
+ ["gun28","Passer","sword",200,0.3,0,3.1,"—",1,0,"比 CUTTER 更強，可省彈藥","none","200 > 60，方向一致"],
+ ["gun29","Trinity","arrow",150,0.65,130,105,2.5,1,1,"三連箭攻擊","pass","_fire_projectile() 對 gun29 展開 3 個方向，±5°"],
+ ["gun30","BLACK STARS","rocket",240,1.8,280,105,7,1,1,"每次射擊發射三枚火箭","fail","directions 陣列只對 gun29 與 gun42 展開，gun30 走單發路徑"],
+ ["gun31","Crab","plasma",200,0.3,90,40,"—",1,0,"能丟出更強力的電漿球","fail","威力部分成立（200 > 90），但與 gun20 同樣沒有污染區域"],
+ ["gun32","Morpheus","shockwave",800,1,100,100,"—",12,0,"每發射出八道光束，雷射版散彈槍","minor","實作是 12 顆彈丸，描述寫 octuple（8）"],
+ ["gun33","WINDBLADE","sword",250,0.3,0,3.1,"—",1,1,"每次揮擊釋放風刃，不接觸也能攻擊","pass","gun33 額外呼叫 _fire_projectile(\"windblade\")，速度 30、傷害 ×0.4"],
+ ["gun34","R100-RAILGUN","sniper",1000,1.5,120,180,"—",1,0,"遠距離狙殺，One shot One Kill","none","射程 180 最遠，其餘為風味"],
+ ["gun35","R700-AA","sniper",1400,1.4,150,180,"—",1,0,"具備暈眩系統，命中後減緩敵人","fail","scripts/game 與 scripts/core 皆無武器用的 slow 或 stun；唯一的 slows 在裝甲技能描述字串裡"],
+ ["gun36","WHITE DRILL","tracking",180,0.5,45,105,2,1,1,"射出會追蹤的釘子","pass","kind 為 tracking，projectile.gd 有追蹤分支"],
+ ["gun37","BLACK DISK","ricochet",760,1.5,280,105,4,1,1,"能量圓鋸一路摧毀路徑上的東西","pass","kind 為 ricochet，三段彈跳並各自播放對應音效"],
+ ["gun38","XMAX-TREE","snow",176,0.2,16,20,"—",1,0,"It doesn't what looks like（純風味）","none","無可驗證主張"],
+ ["gun39","M-Z7B2","machinegun",275,0.17,80,105,"—",1,0,"拿得動就是終極武器（純風味）","none","無可驗證主張"],
+ ["gun40","AST-KK","hitscan",150,0.15,55,105,"—",1,0,"高傷害、改良射擊系統、射速驚人、耗能略高","none","0.15 冷卻確為全部步槍最快，其餘為相對形容"],
+ ["gun41","J.O.K.E","grenade",270,0.4,120,50,4,1,1,"每 2 秒發射特殊榴彈，生成持續傷害的電漿場","fail","持續傷害場有做（joke_variant == 2 建立 OriginalWeaponArea），但間隔寫死 5000 ms，不是 2 秒"],
+ ["gun42","Spring","spring",30,0.6,180,105,2,1,1,"射出 5 支能量箭","pass","directions 展開 5 個方向，含隨機抖動"],
+ ["gun43","Reflection","reflection",1200,1.5,220,180,"—",1,0,"跳躍光束，命中一個後轉向追擊下一個","fail","projectile.gd 沒有 reflection 分支，player.gd 的投射物 kind 清單也不含它，實際是純 hitscan"],
+ ["gun44","TheArrow","arrow",210,0.5,200,105,3.5,1,1,"特殊電漿能量球污染小範圍，傷害所有經過的敵人","fail","splash 3.5 是撞擊當下的範圍傷害，沒有持續區域；OriginalWeaponArea 未接到 arrow"],
+ ["gun45","U.F.O","fly_grenade",300,1.5,330,50,4,1,1,"榴彈浮空、尋找敵人、在其頭頂釋放能量雨","pass","kind 為 fly_grenade：浮空、追蹤與 OriginalWeaponArea 全部接上"],
+ ["gun46","Spreader","shockwave",850,1,100,100,"—",12,0,"每發射出數道高能光束，雷射版散彈槍","none","描述只說「數道」，12 顆彈丸不構成矛盾"],
+];
+const LABEL={fail:"對不上",pass:"已實作",minor:"小出入",none:"無機制主張"};
+const tb=document.getElementById("rows");
+function render(f){
+  tb.textContent="";
+  for(const w of W){
+    const [id,nm,kind,pow,cd,eng,rng,sp,pel,fx,claim,v,ev]=w;
+    if(f==="fx"? !fx : (f!=="all" && v!==f)) continue;
+    const tr=document.createElement("tr");
+    tr.className=v;
+    tr.innerHTML=
+      `<td class="id">${id}</td><td class="nm">${nm}</td>`+
+      `<td><span class="kind">${kind}</span></td>`+
+      `<td class="m">${pow}</td><td class="m">${cd}</td><td class="m">${eng}</td>`+
+      `<td class="m">${rng}</td><td class="m">${sp}</td><td class="m">${pel}</td>`+
+      `<td class="fx${fx?"":" no"}">${fx?"●":"○"}</td>`+
+      `<td class="claim">${claim}</td>`+
+      `<td><span class="tag ${v}">${LABEL[v]}</span></td>`+
+      `<td class="ev">${ev}</td>`;
+    tb.appendChild(tr);
+  }
+}
+render("all");
+for(const b of document.querySelectorAll(".bar button")){
+  b.addEventListener("click",()=>{
+    for(const o of document.querySelectorAll(".bar button")) o.setAttribute("aria-pressed","false");
+    b.setAttribute("aria-pressed","true");
+    render(b.dataset.f);
+  });
+}
+</script>
+</body>
+</html>
