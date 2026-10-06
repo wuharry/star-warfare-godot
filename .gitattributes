@@ -26,3 +26,9 @@
 /docs/art/armor_style_unification_v1/index.html text eol=lf
 /docs/art/original_armors_v1/index.html text eol=lf
 /docs/art/original_armors_v1/mapping_current_source_audit.json text eol=lf
+
+# Titan v5 retains byte identities for its before/current proof.
+/docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/*.txt text eol=lf
+/docs/art/armor_style_unification_v1/revisions/titan_v4_before_helmet_refinement_v5/** -text
+/docs/art/armor_style_unification_v1/titan_helmet_refinement_v5_after_snapshot.json -text
+/docs/art/armor_style_unification_v1/review_browser/titan_helmet_v5_final_browser_validate.json -text

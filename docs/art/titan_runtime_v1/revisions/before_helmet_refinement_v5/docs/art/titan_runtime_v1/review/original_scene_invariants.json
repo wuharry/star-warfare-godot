@@ -1,0 +1,59 @@
+{
+	"current_scene_sha256": "a088dd10f1ce0c6226bf2a6aacff5cff9165625392854fe743107c1bdcb363bb",
+	"errors": [],
+	"geometry_sha256": "3a84145456a007e98d5def9bfe9e4f87a473b90b1405f34475abbb3d147d4556",
+	"original_bones": 28,
+	"original_node_ids": {
+		"ArmorBody_05": 51.0,
+		"ArmorFoot_05": 53.0,
+		"ArmorHand_05": 52.0,
+		"ArmorHead_05": 50.0
+	},
+	"original_source_snapshot_sha256": "1d2883a7123e3297245ee9845569335981d82f26842b661ca98393fd6a3ff0cc",
+	"records": [
+		{
+			"body_limbs_all_arrays_exact": null,
+			"indices_skin_weights_bones_topology_exact": null,
+			"max_rest_error_m": 0.000000122934579849243,
+			"original_indices_skin_weights_topology_exact": null,
+			"part": "ArmorHead_05",
+			"refinement_contract_verified": true,
+			"rest_position_uv_verified_against_target": true,
+			"surfaces": 1
+		},
+		{
+			"body_limbs_all_arrays_exact": true,
+			"indices_skin_weights_bones_topology_exact": true,
+			"max_rest_error_m": 0.0,
+			"original_indices_skin_weights_topology_exact": true,
+			"part": "ArmorBody_05",
+			"refinement_contract_verified": null,
+			"rest_position_uv_verified_against_target": true,
+			"surfaces": 2
+		},
+		{
+			"body_limbs_all_arrays_exact": true,
+			"indices_skin_weights_bones_topology_exact": true,
+			"max_rest_error_m": 0.0,
+			"original_indices_skin_weights_topology_exact": true,
+			"part": "ArmorHand_05",
+			"refinement_contract_verified": null,
+			"rest_position_uv_verified_against_target": true,
+			"surfaces": 1
+		},
+		{
+			"body_limbs_all_arrays_exact": true,
+			"indices_skin_weights_bones_topology_exact": true,
+			"max_rest_error_m": 0.0,
+			"original_indices_skin_weights_topology_exact": true,
+			"part": "ArmorFoot_05",
+			"refinement_contract_verified": null,
+			"rest_position_uv_verified_against_target": true,
+			"surfaces": 1
+		}
+	],
+	"scope": "Actual SCN versus current original player.gltf. Body/limb arrays and all skin binds exact; explicit head subdivision budget, parent weights, UVs and authored rest positions checked.",
+	"source_sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
+	"status": "PASS",
+	"target_sha256": "987f11a44868ea02e33f77d58c0fe0878869ec2c12e1bd6db31aeb974c93d1df"
+}

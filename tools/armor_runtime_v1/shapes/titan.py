@@ -1,4 +1,4 @@
-"""Titan helmet v4: an elliptical pressure visor with a small curved frame.
+"""Titan helmet: an elliptical pressure visor with a small curved frame.
 
 The approved C-06 concept supplies the forms; the original cage supplies the
 game's head scale, UVs and rig. Coordinates are in original Godot rest space.
@@ -7,6 +7,8 @@ to the original-total 20% envelope. Only front visor/frame edges receive small
 subdivisions, within 1.35 times the original head counts. Original UV charts,
 vertex/weight prefixes and the hidden rear are retained. New UVs are original
 edge midpoints; the front glass is a curved surface rather than a painted dome.
+The v5 ear and lower-frame offsets adopt the checked 2026-10-06 alignment
+candidate. Their direction is inferred from the single quarter-view concept.
 """
 import copy
 import math
@@ -31,6 +33,51 @@ RIM_SOURCE_KEYS = {
     (.14712, 1.45000, -.18251), (.09627, 1.35253, -.14850),
     (.13121, 1.35791, -.14800), (0.0, 1.29936, -.22336),
 }
+
+# Checked draft_alignment_20261006 offsets in original Godot rest space.
+# Physical keys, rather than the authored positions or UV indices, identify
+# every original seam duplicate and mirrored counterpart. The comments retain
+# the original representative IDs recorded by that separate review candidate.
+DRAFT_ALIGNMENT_OFFSETS = {
+    (.3171, 1.6063, -.0178): (-.012, .024, .020),  # 126: lower ear corner
+    (.2329, 1.5495, -.0134): (-.004, .030, .025),  # 129: lower ear connector
+    (.3191, 1.7001, -.0387): (-.010, 0, .010),     # 130
+    (.3028, 1.6950, .0929): (-.007, 0, .007),      # 128
+    (.3027, 1.7579, .0691): (-.007, 0, .007),      # 136
+    (0.0, 1.2994, -.2234): (0, 0, .015),          # 194: central lower lip
+    (.0963, 1.3525, -.1485): (0, 0, .012),        # 80
+    (.1312, 1.3579, -.1480): (0, 0, .012),        # 84
+    (.1471, 1.4500, -.1825): (0, 0, .008),        # 81
+}
+
+
+def align_ear_and_lower_frame(original, authored, added):
+    """Apply the checked candidate without changing UVs, faces or bindings."""
+    before = copy.deepcopy(authored)
+    for index, point in enumerate(original['positions']):
+        key = tuple(round(abs(value) if axis == 0 else value, 4)
+                    for axis, value in enumerate(point))
+        delta = DRAFT_ALIGNMENT_OFFSETS.get(key)
+        if delta is None:
+            continue
+        dx, dy, dz = delta
+        authored[index] = [
+            before[index][0] + dx*(1 if point[0] > 0 else -1)
+            if abs(point[0]) > 1e-5 else before[index][0],
+            before[index][1] + dy,
+            before[index][2] + dz,
+        ]
+    for record in added:
+        index = record['index']
+        a, b = record['parents']
+        authored[index] = [
+            before[index][axis] + ((authored[a][axis]-before[a][axis])
+                                    + (authored[b][axis]-before[b][axis]))/2
+            for axis in range(3)
+        ]
+        record['bend'] = [authored[index][axis]
+                          - (authored[a][axis]+authored[b][axis])/2
+                          for axis in range(3)]
 
 
 def ellipse_rim(point):
@@ -167,6 +214,7 @@ def refine_surface(original, positions, uv):
         row['indices'], parents = indices, next_parents
     assert len(row['indices']) <= len(original['indices']) * 1.35
     assert len(row['uv']) <= len(original['uv']) * 1.35
+    align_ear_and_lower_frame(original, authored, added)
     row['triangle_parents'], row['added_vertices'] = parents, added
     return row, authored
 

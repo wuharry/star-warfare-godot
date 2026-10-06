@@ -826,7 +826,7 @@ def verify_first_generation(name: str, runtime: Path, assets: Path) -> list[dict
 
 
 def verify_titan_refinement() -> dict:
-    """Dedicated active v3/v4 contract; do not recertify the v1 target as current."""
+    """Dedicated active v3/v4/v5 contract; do not recertify the v1 target as current."""
     helper = titan_refinement_validator()
     config = read(ROOT / "docs/art/titan_runtime_v1/runtime_config.json")
     version = helper.active_version(config)
@@ -847,9 +847,9 @@ def verify_titan_refinement() -> dict:
     filenames = {"runtime": "runtime_test.json", "roundtrip": "roundtrip_test.json", "scene": "original_scene_invariants.json",
                  "master": f"helmet_v{version}_master_test.json", "glb_images": f"helmet_v{version}_glb_test.json",
                  "guards": f"helmet_v{version}_contract_and_guards_test.json"}
-    if version == 4:
-        filenames["proportion"] = "helmet_v4_proportion_test.json"
-        filenames["visor_coverage"] = "helmet_v4_visor_coverage.json"
+    if version >= 4:
+        filenames["proportion"] = f"helmet_v{version}_proportion_test.json"
+        filenames["visor_coverage"] = f"helmet_v{version}_visor_coverage.json"
     reports = {key: read(runtime / "review" / filename) for key, filename in filenames.items()}
     for label, report in reports.items():
         assert report["status"] == "PASS" and not report.get("errors", report.get("failures", [])), f"Titan v{version}: failed {label}"
@@ -874,7 +874,7 @@ def verify_titan_refinement() -> dict:
         assert report["revision"] == config["active_helmet_revision"]
         for key in ("source", "target"):
             report_hash(report, f"{key}_sha256", key)
-        if version == 4:
+        if version >= 4:
             for key in ("scene", "geometry"):
                 report_hash(report, "current_scene_sha256" if key == "scene" else "geometry_sha256", key)
             assert report["canonical_diffuse_sha256"] == image_sha
@@ -917,7 +917,7 @@ def verify_titan_refinement() -> dict:
         assert checked[paths[key].relative_to(ROOT).as_posix()] == hashes[key]
     for path in textures.values():
         assert checked[path.relative_to(ROOT).as_posix()] == digest(path)
-    if version == 4:
+    if version >= 4:
         # No circular current identity check on the later-written manifest,
         # README or HTML. They are still required to be unchanged DURING the
         # actual guard executions, as the complete before/after maps prove.
@@ -925,7 +925,7 @@ def verify_titan_refinement() -> dict:
         hard_resources = [*paths.values(), runtime / "runtime_config.json", runtime / "generation_inputs.json", ROOT / config["generation_record"]]
         for path in hard_resources:
             # The unchanged first-integration generation index has two
-            # already pinned historical EOL forms. Active v4 files remain raw.
+            # already pinned historical EOL forms. Active v4/v5 files remain raw.
             helper.hash_matches(path, checked[path.relative_to(ROOT).as_posix()],
                                 historical=path == runtime / "generation_inputs.json")
     assert len(guards["checks"]) == 5
@@ -968,7 +968,7 @@ def verify_titan_refinement() -> dict:
         changed = 1 - len(original_mask & current_mask) / len(original_mask | current_mask)
         assert changed <= .20 and capture["full_body_framing"][view]["same_camera_for_original_and_new"]
         silhouettes.append({"view": view, "silhouette_changed_fraction": changed})
-    if version == 4:
+    if version >= 4:
         proportion = reports["proportion"]
         assert proportion["limit"] == .20 and proportion["geometry"] == geometry
         assert proportion["capture_matches_current_resources"] and proportion["capture_summary_sha256"] == digest(capture_folder / "capture.json")
@@ -980,7 +980,7 @@ def verify_titan_refinement() -> dict:
             row = next(r for r in proportion["silhouettes"] if r["view"] == measured_view["view"])
             assert row["camera_identical"] and abs(row["silhouette_changed_fraction"] - measured_view["silhouette_changed_fraction"]) < 1e-7
         coverage = reports["visor_coverage"]
-        coverage_dir = runtime / "review/helmet_v4_coverage"
+        coverage_dir = runtime / f"review/helmet_v{version}_coverage"
         coverage_summary_path = coverage_dir / "capture.json"
         coverage_summary = read(coverage_summary_path)
         assert coverage["minimum_fraction"] == .50
@@ -1021,7 +1021,7 @@ def verify_titan_refinement() -> dict:
         fraction = glass_pixels / silhouette_pixels
         assert coverage["visor_pixels"] == glass_pixels and coverage["helmet_silhouette_pixels"] == silhouette_pixels and coverage["helmet_bounds_px"] == bounds
         assert abs(coverage["projected_front_visor_fraction"] - fraction) < 1e-12 and fraction >= .50, "Measured projected amber visor is below requested50%"
-        log_path = runtime / "review/helmet_v4_angle_capture.log"
+        log_path = runtime / f"review/helmet_v{version}_angle_capture.log"
         log = log_path.read_text(encoding="utf-8-sig")
         assert "ANGLE" in log and "Direct3D11" in log and "ARMOR_CAPTURE_PASS files=64 save_unchanged=true" in log
     else:

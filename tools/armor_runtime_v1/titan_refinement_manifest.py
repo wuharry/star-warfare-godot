@@ -1,4 +1,4 @@
-"""Publish Titan v4 metadata from fresh, independently generated evidence.
+"""Publish Titan v5 metadata from fresh, independently generated evidence.
 
 Run only after the actual scene/GLB/master tests and normal-renderer capture.
 This does not create tests, approve art, or alter any historical snapshot.
@@ -11,7 +11,7 @@ from provenance import describe
 
 ROOT = Path(__file__).resolve().parents[2]
 WORK = ROOT / "docs/art/titan_runtime_v1"
-REVISION = "helmet_refinement_v4"
+REVISION = "helmet_refinement_v5"
 LABELS = ("head", "body", "shoulder", "hand", "foot")
 
 
@@ -31,9 +31,9 @@ def main():
     tests = {}
     reports = {}
     names = ("original_scene_invariants", "runtime_test", "roundtrip_test",
-             "helmet_v4_glb_test", "helmet_v4_master_test",
-             "helmet_v4_contract_and_guards_test", "helmet_v4_proportion_test",
-             "helmet_v4_visor_coverage", "helmet_v4_lossless_import")
+             "helmet_v5_glb_test", "helmet_v5_master_test",
+             "helmet_v5_contract_and_guards_test", "helmet_v5_proportion_test",
+             "helmet_v5_visor_coverage", "helmet_v5_lossless_import")
     for name in names:
         path = WORK / "review" / (name + ".json")
         report = read(path)
@@ -52,9 +52,9 @@ def main():
     assert roundtrip["glb_sha256"] == describe(assets / "titan.glb")["sha256"]
     pixels = roundtrip["head_atlas_pixels"]
     assert len(pixels["samples"]) == 30 and pixels["max_rgb_error"] <= .05
-    coverage = reports["helmet_v4_visor_coverage"]
+    coverage = reports["helmet_v5_visor_coverage"]
     assert coverage["minimum_fraction"] == .50 and coverage["projected_front_visor_fraction"] >= .50
-    folder = WORK / "review/helmet_v4_final"
+    folder = WORK / "review/helmet_v5_final"
     capture = read(folder / "capture.json")
     assert capture["runtime_scene_sha256"] == capture["scene_sha256_at_start"] == scene["sha256"]
     assert capture["target_sha256"] == capture["target_sha256_at_start"] == target["sha256"]
@@ -66,11 +66,11 @@ def main():
         record = describe(filename.removeprefix("res://"))
         assert record["sha256"] == capture["capture_sha256"][filename]
         captures.append(record)
-    log = (WORK / "review/helmet_v4_angle_capture.log").read_text(encoding="utf-8-sig")
+    log = (WORK / "review/helmet_v5_angle_capture.log").read_text(encoding="utf-8-sig")
     banner = next(line for line in log.splitlines() if line.startswith("OpenGL API "))
     assert "ANGLE" in banner and "Direct3D11" in banner
     assert "ARMOR_CAPTURE_PASS files=64 save_unchanged=true" in log
-    frozen = WORK / "revisions/before_helmet_refinement_v4"
+    frozen = WORK / "revisions/before_helmet_refinement_v5"
     historical_path = frozen / "docs/art/titan_runtime_v1/manifest.json"
     manifest = read(historical_path)
     head = geometry["parts"]["ArmorHead_05"]
@@ -99,7 +99,7 @@ def main():
     assert maps["head"]["sha256"] == generation["native_output_sha256"]
     manifest["generation"].update(current_head=describe(record_path), head_output=maps["head"],
                                   native_archive=describe(generation["archive_path"]))
-    old_paths = [r["path"].replace("helmet_refinement_v3", REVISION) for r in manifest["files"]]
+    old_paths = [r["path"].replace("helmet_refinement_v4", REVISION).replace("/helmet_refinement_v5/asset-brief.md", "/helmet_refinement_v5/asset_brief.md") for r in manifest["files"]]
     extra = ["tools/armor_runtime_v1/measure_titan_visor.py",
              "tools/armor_runtime_v1/test_titan_helmet_guards.py",
              "tools/armor_runtime_v1/reimport_titan_head_lossless.gd",
@@ -110,14 +110,14 @@ def main():
     manifest["roundtrip_summary"].update(poses=len(roundtrip["poses"]), save_unchanged=roundtrip["save_unchanged"], max_sample_rgb_error=pixels["max_rgb_error"], all_five_embedded_glb_rgb_exact=True)
     manifest["capture_driver_evidence"].update(platform="Windows", device="NVIDIA GeForce RTX 4080 Laptop GPU", renderer_banner=banner, file_count=len(captures), save_unchanged=capture["save_unchanged"])
     manifest["visor_coverage_summary"] = coverage
-    manifest["proportion_summary"] = reports["helmet_v4_proportion_test"]["silhouettes"]
+    manifest["proportion_summary"] = reports["helmet_v5_proportion_test"]["silhouettes"]
     manifest["review_page"] = describe(WORK / "revisions" / REVISION / "index.html")
     manifest["metric_scope"] = "Original-total geometry/UV/counts and rendered geometry silhouettes are measured, not artistic similarity. Visor coverage is amber pixels divided by the isolated full head's projected front silhouette, not total 3D surface area. Original body, limbs and skin binds remain exact."
     manifest["not_run"] = {"user_art_acceptance": "NOT RUN", "mobile_performance": "NOT RUN", "exported_product_smoke": "NOT RUN"}
     manifest["residuals"] = ["Only the approved quarter concept exists; side and rear surfaces are inferred.", "The original short game proportions and low polygon ear/crown structure remain; this is not a pixel-exact match to the adult concept.", "Lossless head import preserves RGB; its exact GPU memory cost has not been measured on mobile."]
     manifest["editor_import_log_limitations"] = "Editor import exits successfully but emits the existing audio-missing-archive-tfpon_0v directory warning; the transient import helper also logs editor shutdown RID cleanup warnings. These are not counted as a clean editor log."
     (WORK / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print("TITAN_REFINEMENT_MANIFEST_PASS fresh v4 evidence / 64 normal captures / user art review pending")
+    print("TITAN_REFINEMENT_MANIFEST_PASS fresh v5 evidence / 64 normal captures / user art review pending")
 
 
 if __name__ == "__main__":

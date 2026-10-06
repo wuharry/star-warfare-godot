@@ -1,18 +1,18 @@
 {
   "title": "Viper／Fortune／Tank／Hydra／Strike／Titan 裝甲實機比較",
-  "date": "2026-10-05",
-  "status": "六套保留工程證據；Titan目前v4正常資源及面罩覆蓋PASS，美術待使用者評價",
-  "summary": "Viper／Fortune／Tank／Hydra／Strike 的圖仍保留。此頁 Titan 圖為早期 v2 歷史整合，最新 v4 面罩與下護框已另建原版／v3／v4 比對入口；不能用本頁 v2 圖或歷史工程 PASS 代表目前 v4。",
+  "date": "2026-10-06",
+  "status": "六套保留工程證據；Titan 目前 v5 最新正常資源與工程 PASS，美術待使用者評價",
+  "summary": "Viper／Fortune／Tank／Hydra／Strike 的圖與工程資料保持。Titan 目前 after15 為本輪 v5，另有真原版／固定 v4／本輪 v5 頭盔三欄比對；最早 v2 和上一版 v4 擷取留在固定歷史。",
   "base_prompt": "base_prompt.txt",
   "protocol": [
     "原版：原始遊戲裝甲同相機擷取，使用此頁保留的原始 PNG。",
     "修改前：Viper 是畫法調整前的新設計；Fortune 是凍結的頭盔 v7；Tank 是本次頭盔修正前的 style_unified_v2。各套獨立快照均保留原始 PNG 位元組。",
-    "所有模型圖均為normal imported resources的正式Godot擷取；Titan目前after15已切換v4，綁定最新SCN／native／capture SHA。v2首版固定歷史與original15保留；舊六套helper不自動代表v4，最新共享來源覆驗由交付驗證另行確認。",
+    "所有模型圖均為正常引擎匯入資源的正式 Godot 擷取；Titan 目前 after15 為 v5，綁定最新 SCN／native／capture SHA。v2 首版、v4 前版固定歷史與 original15 保留；最新共用來源覆驗與工程報告另行核對。",
     "中性 diffuse 與頭部擷取使用白色 tint／UN_SHADED；灰模查看外殼；遊戲及動作圖保留實際材質口徑。",
     "Viper 維持純貼圖畫法調整；Fortune 本次包含頭盔局部形狀修正及貼圖。Fortune 形狀總改動仍按原版 15% 預算驗收，不是再增加 15%，且不新增 UV、拓撲或骨架。耳蓋只是在既有側板上的貼圖細節。",
     "工程驗證不代表使用者接受美術，也沒有客觀風格相似度評分。歷史 paint-only PASS 僅適用凍結的 v7，不能沿用為候選的新模型結論。",
     "Tank 本次可修頭部形狀與頭部貼圖，按真正原版總 20% 上限驗收；身體／肩／手／靴四張貼圖及其他部件保持，UV 預期本輪不再追加。這不是再增加 20% 額度。前一輪 v2 純貼圖的新增模型 0 結論只適用歷史凍結版，不能套用本次頭盔修正。Viper／Fortune 各自 15% 契約不變。",
-    "Hydra／Strike／Titan為原版／目前runtime兩欄加設計參考；Titan最新v4按20%原版總形狀與35%頭部計數上限驗收，非頭部模型與四图保留v3。其真原版／v3／v4頭部三欄在獨立頁。Thunder ID6不在本輪範圍。"
+    "Hydra／Strike／Titan 為原版／目前 runtime 兩欄加設計參考；Titan v5 按真正原版總 20% 形狀與 35% 頭部計數上限驗收。UV／拓撲和 v4 相同，非頭部模型與四圖保留。真原版／固定 v4／v5 頭部三欄在獨立頁；Thunder ID6 不在本輪範圍。"
   ],
   "armors": [
     {
@@ -991,76 +991,76 @@
       "game_visual_id": 5,
       "design_id": "C-06",
       "comparison_mode": "first_runtime",
-      "variant_after": "helmet_refinement_v4",
-      "status": "Titan v4 最新圓弧面罩正常資源與工程 PASS；正面覆蓋54.81%，美術接受與手機效能 NOT RUN",
+      "variant_after": "helmet_refinement_v5",
+      "status": "Titan v5 最新正常資源與工程 PASS；正面覆蓋 58.0930%，美術接受與手機效能 NOT RUN",
       "after_ready": true,
       "original_prefix": "original/titan/review/",
       "after_prefix": "after/titan/review/",
-      "change_scope": "頭盔圓弧模型＋原生attempt2頭圖；非頭部四圖與模型保留v3",
-      "scope_description": "真正原版總形狀位移19.2932%，尺寸差寬12.5119%／高1.3127%／深3.5622%，整體灰模最大3.6761%，均低於20%。頭部164 tris／334 UV，對原版124／294增長32.2581%／13.6054%，在單獨35%計數上限內；10/294原UV改動承襲v3，新增40個中點繼承原父面的UV與綁定，3 charts／28骨架保持。正面玻璃投影覆蓋54.8105%，分母為整個頭盔mesh（包含其頸部），不是3D表面面積或美術相似率。",
-      "review_status": "Titan v4 · 工程 PASS／正面面罩54.81% · 美術待評",
+      "change_scope": "耳側／下框既有形狀小收＋原生 attempt 3 頭圖；UV／拓撲和非頭部四圖保留 v4",
+      "scope_description": "真正原版總位移 19.4967%，尺寸差寬 15.6456%／高 1.3127%／深 3.5622%，整體灰模最大 3.7609%，均低於 20%。164 tris／334 UV／3 charts，與 v4 完全相同；對原版仍 +32.2581%／+13.6054%，在 35% 計數上限內。原 UV 修改 10／294，新增40個原邊中點均承襲 v4，骨架28。正面玻璃投影 58.0930%；分母為整個頭盔 mesh，包含頸部，不是美術相似率。",
+      "review_status": "Titan v5 · 工程 PASS／正面面罩 58.0930% · 美術待評",
       "column_labels": {
         "after": {
-          "title": "Titan v4 遊戲素材",
-          "description": "圓弧壓力面罩／連續鋼藍下框 · 最新normal resources"
+          "title": "Titan v5 遊戲素材",
+          "description": "連續玻璃反光／耳側下框小收 · 最新正常資源"
         }
       },
       "reference_art": {
         "path": "../original_armors_v1/images/c06_concept.png",
         "title": "Titan 目前設計參考",
-        "description": "沿用C06設計與指定壓力面罩參考；v4工程完成，美術待使用者評價。"
+        "description": "C06 指定壓力面罩設計；v5 工程完成，冠頂／側板等仍有原低面數差異，美術待使用者評價。"
       },
-      "summary": "在v3上用局部圓弧切分改善頭冠與玻璃邊界，採用原生attempt2煙燻琥珀面罩；正面玻璃佔整個頭盔mesh投影54.8105%。下護框為連續鋼藍色，取消鏡像兩眼斑、中央標記和雙銀扣。其他四圖、身體比例與每側前臂三金點保留v3。低面數冠頂／耳殼與推定側後方仍有差異，不宣稱逐像素還原或已獲使用者接受。",
+      "summary": "在固定 v4 上小收耳側／下框，採用原生 attempt 3 的連續琥珀玻璃上緣反光與細橫線；正面玻璃投影 58.0930%。與 v4 的 UV、三角形數和索引相同；其他四圖、非頭部模型及前臂三點保留。冠頂與側板仍有低面數切面，沒有概念中的獨立小圓耳或單一銀扣，不宣稱完美或逐像素還原。",
       "changes": [
         {
-          "part": "圓弧頭冠／大面罩",
-          "before": "真正原版小窗與厚頭冠；v2歷史首版仍為明顯多角面罩。",
-          "after": "v4局部圓弧切分至164tris／334UV；煙燻琥珀玻璃正面投影覆蓋54.8105%。",
-          "preserved": "原版總20%形狀預算、3個UV區域、原父面綁定與28骨架；新增計數另按35%上限。"
+          "part": "面罩上緣反光／細橫線",
+          "before": "固定 v4 的玻璃較不透明，反光與低模表面一起讀成金色板。",
+          "after": "原生 attempt 3 使用較寬連續上緣反光與細橫線，正面投影 58.0930%。",
+          "preserved": "圓弧玻璃本體、原 UV 鏡像；沒有實際透明材質。"
         },
         {
-          "part": "下護框與反光細節",
-          "before": "v3／未採用attempt1仍有明顯護框、雙銀扣或對稱反光斑。",
-          "after": "原生attempt2改為連續鋼藍下護框，取消雙銀扣、中央標記與鏡像眼斑。",
-          "preserved": "低面數耳殼與原遊戲短比例；不宣稱概念中的單扣完全還原。"
+          "part": "耳側與短下框",
+          "before": "固定 v4 的耳側甲面較寬、下框較突出。",
+          "after": "既有座標局部小收，冠部／下框鋼藍分色更連續。",
+          "preserved": "164 tris／334 UV／3 charts 與 v4 相同；低面數冠頂／側板仍保留。"
         },
         {
           "part": "胸肩／前臂三點／腿靴",
-          "before": "v3沿用已採用四張非頭部native atlas。",
-          "after": "四圖位元組與v3固定快照相同，非頭部模型arrays與skin保留。",
-          "preserved": "每側前臂三金點、C06身甲配色、遊戲ID5、技能與背包對應。"
+          "before": "v4 採用的四張非頭部 atlas 與非頭部模型。",
+          "after": "四張圖位元組、非頭部 arrays 與 skin 完全保留。",
+          "preserved": "每側前臂三金點、遊戲 ID5、28 骨架、技能與獨立背包對應。"
         }
       ],
       "verification": [
         {
           "label": "原版總形狀／尺寸",
-          "result": "19.2932%位移；20%上限 PASS",
+          "result": "19.4967% 位移；20% 上限 PASS",
           "evidence": "../titan_runtime_v1/build/geometry.json"
         },
         {
-          "label": "頭部局部切分／UV",
-          "result": "164 tris／334 UV／3 charts；計數增長32.2581%／13.6054% ≤35%；原UV改動10/294",
-          "evidence": "../titan_runtime_v1/review/helmet_v4_contract_and_guards_test.json"
+          "label": "本輪 UV／拓撲",
+          "result": "164 tris／334 UV／3 charts；與固定 v4 相同，新 UV 0",
+          "evidence": "../titan_runtime_v1/review/helmet_v5_contract_and_guards_test.json"
         },
         {
-          "label": "正面面罩覆蓋",
-          "result": "54.8105% ≥50%；PASS（正面投影，非美術分數）",
-          "evidence": "../titan_runtime_v1/review/helmet_v4_visor_coverage.json"
+          "label": "正面面罩投影",
+          "result": "58.0930% ≥50%；PASS（整個頭盔 mesh 投影）",
+          "evidence": "../titan_runtime_v1/review/helmet_v5_visor_coverage.json"
         },
         {
           "label": "四向整體灰模",
-          "result": "最大1−IoU＝3.6761%；20%上限 PASS",
-          "evidence": "../titan_runtime_v1/review/helmet_v4_proportion_test.json"
+          "result": "最大1−IoU 3.7609%；20% 上限 PASS",
+          "evidence": "../titan_runtime_v1/review/helmet_v5_proportion_test.json"
         },
         {
-          "label": "runtime／回讀／五圖",
-          "result": "15 runtime＋9 GLB；五圖RGB0／master5／SCN及guards5 PASS",
+          "label": "runtime／GLB／五圖",
+          "result": "15 runtime＋9 GLB；五圖 RGB／packed master／SCN／guards PASS",
           "evidence": "../titan_runtime_v1/manifest.json"
         },
         {
           "label": "正式擷取／存檔",
-          "result": "64 Windows ANGLE正常資源；currentSHA／save_unchanged PASS",
-          "evidence": "../titan_runtime_v1/review/helmet_v4_final/capture.json"
+          "result": "64 Windows ANGLE 正常資源；當前 SHA／存檔不變 PASS",
+          "evidence": "../titan_runtime_v1/review/helmet_v5_final/capture.json"
         },
         {
           "label": "使用者美術／手機效能",
@@ -1078,8 +1078,8 @@
       },
       "sources": [
         {
-          "label": "Titan v4 真原版／v3／最新版三欄比對",
-          "path": "../titan_runtime_v1/revisions/helmet_refinement_v4/index.html"
+          "label": "Titan v5 真原版／固定 v4／本輪三欄比對",
+          "path": "../titan_runtime_v1/revisions/helmet_refinement_v5/index.html"
         },
         {
           "label": "C-06 設計與使用者回饋",
@@ -1106,11 +1106,11 @@
           "path": "../legacy_armor_base_v2/inventory.json"
         },
         {
-          "label": "Titan 目前版本入口（v4）",
+          "label": "Titan 目前版本入口（v5）",
           "path": "../titan_runtime_v1/index.html"
         },
         {
-          "label": "Titan v4 最新正式工程與素材manifest",
+          "label": "Titan v5 最新正式工程與素材 manifest",
           "path": "../titan_runtime_v1/manifest.json"
         },
         {
@@ -1166,8 +1166,8 @@
           "path": "../titan_runtime_v1/revisions/helmet_refinement_v4/generation_record.json"
         },
         {
-          "label": "v4目前after15 exact SHA索引",
-          "path": "titan_helmet_refinement_v4_after_snapshot.json"
+          "label": "v4 前版固定15圖",
+          "path": "revisions/titan_v4_before_helmet_refinement_v5/snapshot.json"
         },
         {
           "label": "v2首版15圖／舊30圖index固定歷史",
@@ -1178,14 +1178,46 @@
           "path": "../titan_runtime_v1/review/helmet_v4_visor_coverage.json"
         },
         {
-          "label": "v3本輪前模型／atlas／擷取快照",
+          "label": "v4 當時開始前 v3 固定快照",
           "path": "../titan_runtime_v1/revisions/before_helmet_refinement_v4/snapshot.json"
+        },
+        {
+          "label": "v5 採用 attempt 3 完整實送 prompt",
+          "path": "../titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_prompt_attempt_03.txt"
+        },
+        {
+          "label": "v5 原生生成與完整 reference 記錄",
+          "path": "../titan_runtime_v1/revisions/helmet_refinement_v5/generation_record.json"
+        },
+        {
+          "label": "v5 未採用 attempt 1",
+          "path": "../titan_runtime_v1/revisions/helmet_refinement_v5/generation_record_attempt_01.json"
+        },
+        {
+          "label": "v5 未採用 attempt 2",
+          "path": "../titan_runtime_v1/revisions/helmet_refinement_v5/generation_record_attempt_02.json"
+        },
+        {
+          "label": "本輪後續優化必要 prompt",
+          "path": "../titan_runtime_v1/revisions/helmet_refinement_v5/asset_brief.md"
+        },
+        {
+          "label": "v5 本輪前固定 v4 素材與報告",
+          "path": "../titan_runtime_v1/revisions/before_helmet_refinement_v5/snapshot.json"
+        },
+        {
+          "label": "v5 最新 after15 SHA 索引",
+          "path": "titan_helmet_refinement_v5_after_snapshot.json"
+        },
+        {
+          "label": "v5 正面面罩實測",
+          "path": "../titan_runtime_v1/review/helmet_v5_visor_coverage.json"
         }
       ],
       "engineering_details": {
-        "head_max_displacement_fraction": 0.19293174403958285,
+        "head_max_displacement_fraction": 0.19496740509866334,
         "head_dimensions_absolute_delta_fraction": [
-          0.1251191215321672,
+          0.15645625629462268,
           0.013127406831568766,
           0.03562156597930932
         ],
@@ -1196,8 +1228,8 @@
         "head_uv_coordinate_growth_fraction": 0.1360544217687074,
         "head_triangle_growth_fraction": 0.32258064516129026,
         "head_uv_charts": 3,
-        "max_wholebody_gray_1_minus_iou": 0.03676082959381788,
-        "projected_front_visor_fraction": 0.5481045515747976,
+        "max_wholebody_gray_1_minus_iou": 0.03760945315212216,
+        "projected_front_visor_fraction": 0.580930083568084,
         "topology": {
           "triangles": 740,
           "original_triangles": 700,
@@ -1212,31 +1244,31 @@
         },
         "user_authorized_original_ceiling": 0.2,
         "head_count_growth_ceiling": 0.35,
-        "head_scene_sha256": "a088dd10f1ce0c6226bf2a6aacff5cff9165625392854fe743107c1bdcb363bb",
+        "head_scene_sha256": "fe77152022e2a685832de8f850186a4a8ed274f91a10daee7f4bf3f3913e1756",
         "canonical_diffuse_sha256": {
           "body": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
           "foot": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a",
           "hand": "511a205683e0e98bd9f8468edebf5a73052085e49e7fed66bd98ac3328ea74ec",
-          "head": "feef79c197fdb4970c362132e14c6387418015d2f6af53806be8f73f0fc19179",
+          "head": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
           "shoulder": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4"
         },
         "capture_resource_mode": "normal_imported_resources",
         "current_capture_save_unchanged": true
       },
       "art_residuals": [
-        "原遊戲短比例與低面數冠頂／耳殼保留，仍非成人概念逐像素還原。",
-        "只有批准的斜視概念；側後方根據原頭殼推定。",
-        "lossless頭圖的手機GPU記憶體成本未量測；美術接受與手機效能NOT RUN。"
+        "原遊戲短比例、冠頂與側板仍有低面數切面，沒有概念中的獨立圓耳／中心銀扣。",
+        "只有指定斜視概念；側後方依原頭殼推定，並非逐像素還原。",
+        "反光是 opaque diffuse 畫法；使用者美術接受與手機 GPU 記憶體／效能 NOT RUN。"
       ],
       "latest_revision": {
-        "variant": "helmet_refinement_v4",
+        "variant": "helmet_refinement_v5",
         "status": "engineering_PASS_pending_user_art_review",
         "after_ready": true,
-        "comparison_page": "../titan_runtime_v1/revisions/helmet_refinement_v4/index.html",
-        "generation_record": "../titan_runtime_v1/revisions/helmet_refinement_v4/generation_record.json",
-        "selected_native_attempt": 2,
-        "selected_native_prompt": "../titan_runtime_v1/revisions/helmet_refinement_v4/head_diffuse_prompt_attempt_02.txt",
-        "selected_native_head_sha256": "feef79c197fdb4970c362132e14c6387418015d2f6af53806be8f73f0fc19179",
+        "comparison_page": "../titan_runtime_v1/revisions/helmet_refinement_v5/index.html",
+        "generation_record": "../titan_runtime_v1/revisions/helmet_refinement_v5/generation_record.json",
+        "selected_native_attempt": 3,
+        "selected_native_prompt": "../titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_prompt_attempt_03.txt",
+        "selected_native_head_sha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
         "source_geometry": "../titan_runtime_v1/build/geometry.json",
         "source_config": "../titan_runtime_v1/runtime_config.json",
         "original_head_triangles": 124,
@@ -1251,25 +1283,25 @@
         "added_head_coordinates_vs_original": 40,
         "uv_charts": 3,
         "original_bones": 28,
-        "head_max_original_displacement_fraction": 0.19293174403958285,
+        "head_max_original_displacement_fraction": 0.19496740509866334,
         "head_dimension_absolute_delta_fraction": [
-          0.1251191215321672,
+          0.15645625629462268,
           0.013127406831568766,
           0.03562156597930932
         ],
         "geometry_original_total_ceiling": 0.2,
         "visor_projected_frontal_coverage_target_fraction": 0.5,
-        "visor_projected_frontal_coverage_measured_fraction": 0.5481045515747976,
+        "visor_projected_frontal_coverage_measured_fraction": 0.580930083568084,
         "candidate_whole_triangles": 740,
         "candidate_whole_uv_coordinates": 1647,
         "fresh_capture_status": "PASS",
         "fresh_engineering_status": "PASS",
         "user_art_acceptance": "NOT RUN",
         "mobile_performance": "NOT RUN",
-        "note": "v4目前欄已更新成最新正式擷取；v2首版15圖與舊30圖index保留獨立固定歷史。工程PASS與54.8105%覆蓋不代表逐像素還原、美術接受或手機效能。",
-        "max_wholebody_gray_1_minus_iou": 0.03676082959381788,
-        "scene_sha256": "a088dd10f1ce0c6226bf2a6aacff5cff9165625392854fe743107c1bdcb363bb",
-        "capture_summary_sha256": "82765ccd96ffeaf306829eb77cae3bed424ae3109a97a3814633131f0a261c68"
+        "note": "目前欄為正式 v5；v2／v4 固定15圖與真原版保留。UV／三角形索引和 v4 相同。工程 PASS 與覆蓋比例不代表完美、藝術接受或手機效能。",
+        "max_wholebody_gray_1_minus_iou": 0.03760945315212216,
+        "scene_sha256": "fe77152022e2a685832de8f850186a4a8ed274f91a10daee7f4bf3f3913e1756",
+        "capture_summary_sha256": "9b66f54028b9bcb0840a592b9b56222707fd3705341d12afd4d3bd75fd94832f"
       }
     }
   ]
