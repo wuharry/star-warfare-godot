@@ -1,0 +1,124 @@
+{
+  "status": "PASS",
+  "revision": "helmet_refinement_v5",
+  "scope": "Current revision; exact source snapshot, actual SCN original-array check, preserved non-head textures and native generation provenance. Historical integration hashes are not recertified.",
+  "source_sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
+  "target_sha256": "4dd127a135f0585d6c5d229864eb40dc49246c5f3ce130eae7ae5d8abc2b7acf",
+  "geometry_sha256": "9945a3d0a48371c28ed32296701ec6e087552cce3e33a0948fadf44ed228253f",
+  "current_scene_sha256": "fe77152022e2a685832de8f850186a4a8ed274f91a10daee7f4bf3f3913e1756",
+  "original_source_snapshot_sha256": "1d2883a7123e3297245ee9845569335981d82f26842b661ca98393fd6a3ff0cc",
+  "before_revision_snapshot_sha256": "1f4781ca2c5c8564c57dd153a621bb92f82ff36879b5eab19764dd3b1d454bd5",
+  "canonical_diffuse_sha256": {
+    "head": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
+    "body": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
+    "shoulder": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
+    "hand": "511a205683e0e98bd9f8468edebf5a73052085e49e7fed66bd98ac3328ea74ec",
+    "foot": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a"
+  },
+  "head_contract": {
+    "original_head_vertices": 294,
+    "head_vertices": 334,
+    "original_head_triangles": 124,
+    "head_triangles": 164,
+    "changed_original_head_uv": 10,
+    "original_head_uv_fraction": 0.034013605442176874,
+    "additional_uv_changes": 0,
+    "additional_head_uv_coordinates": 0,
+    "additional_head_triangles": 0,
+    "user_constraints": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/user_constraints.json",
+    "user_constraints_sha256": "d7c6bbb758585ac1f97d08549376dfe9e87f2473d3977341f8ce6c266540a0c0",
+    "head_count_growth_ceiling": 0.35,
+    "front_projected_visor_minimum_fraction": 0.5
+  },
+  "original_metrics": {
+    "original_measurements": [
+      {
+        "part": "ArmorBody_05",
+        "original_max_rest_displacement_fraction": 9.095843481806661e-15,
+        "original_dimension_delta_fractions": [
+          2.220446049250313e-16,
+          2.220446049250313e-16,
+          7.771561172376096e-16
+        ],
+        "original_uv_changed_count": 0
+      },
+      {
+        "part": "ArmorFoot_05",
+        "original_max_rest_displacement_fraction": 1.3978468570097316e-15,
+        "original_dimension_delta_fractions": [
+          0.0,
+          4.440892098500626e-16,
+          1.7763568394002505e-15
+        ],
+        "original_uv_changed_count": 0
+      },
+      {
+        "part": "ArmorHand_05",
+        "original_max_rest_displacement_fraction": 1.735483901366589e-14,
+        "original_dimension_delta_fractions": [
+          0.0,
+          2.886579864025407e-15,
+          9.992007221626409e-16
+        ],
+        "original_uv_changed_count": 0
+      },
+      {
+        "part": "ArmorHead_05",
+        "original_max_rest_displacement_fraction": 0.19496740815465188,
+        "original_dimension_delta_fractions": [
+          0.15645625629462345,
+          0.013127406831571875,
+          0.03562156597931043
+        ],
+        "original_uv_changed_count": 10
+      }
+    ],
+    "triangles": 740,
+    "surfaces": 5,
+    "uv_coordinates": 1647
+  },
+  "glb_sha256": "59831832459b7b60bbdecca0833d3e653ca2ae5015c8dcf230ce5ff50672e5a3",
+  "authored_triangle_uv_normalized_skin_verified": true,
+  "images": {
+    "head": {
+      "canonical_sha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgb_exact": true
+    },
+    "shoulder": {
+      "canonical_sha256": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgb_exact": true
+    },
+    "body": {
+      "canonical_sha256": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgb_exact": true
+    },
+    "hand": {
+      "canonical_sha256": "511a205683e0e98bd9f8468edebf5a73052085e49e7fed66bd98ac3328ea74ec",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgb_exact": true
+    },
+    "foot": {
+      "canonical_sha256": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgb_exact": true
+    }
+  }
+}

@@ -1,70 +1,66 @@
-# Titan · C-06 · 圓弧面罩與下護框修正 v4
+# Titan · C-06 · 玻璃與護框修正版 v5
 
-**本輪以 v3 為基礎，增加頭盔的局部圓弧切分，採用煙燻琥珀面罩與連續鋼藍下護框。** 次要金色側翼已收小，正式擷取與模型／貼圖檢查已完成。修改只涉及頭盔模型與原生頭圖；肩、胸、手、靴四張貼圖、其他三部件與 28 原骨架保留 v3。Titan 遊戲 ID 5、四件裝備與獨立背包對應不變。
+**本輪採用原生 attempt 3 頭圖，收整耳側與下護框，面罩上緣反光更連續、玻璃的細橫線更克制。** v4 的大面罩已達工程門檻，這次修正較不透明的玻璃畫法與硬側框。肩、胸、手、靴四張貼圖與非頭部模型保留 v4；遊戲 ID 5、四件裝備、獨立背包與 28 原骨架對應不變。
 
-**最新要求是面罩更圓，且至少佔正面頭盔投影面積的 50%。** 圓弧已透過模型切分調整；正式正面投影量測為 **54.8105%**，達到 50% 的工程門檻。這是可見琥珀玻璃像素／整個頭盔 mesh 正面投影的比例（包含該 mesh 的頸部），不是 3D 表面面積、圓度評分或美術相似率。
+**v5 是可用的本輪修正版；工程 PASS，使用者美術接受與手機效能仍為 NOT RUN。** 不宣稱完美或與成人概念逐像素重合。冠頂與耳側仍可見原低面數切面，沒有新增概念中的獨立小圓耳與單一中心銀扣，側後方由指定斜視概念和原頭殼推定。
 
-**v4 最新工程檢查 PASS；使用者美術接受與手機效能均為 NOT RUN。** 15 個 runtime 姿勢、9 個 GLB 姿勢、五圖 RGB 一致、packed master、SCN 不變量、五項契約／故意破壞防護、四向整體灰模、正面 coverage 及正常資源 64 圖均有最新報告；不引用 v3 PASS 作本輪證據。
+## 比對與歷史
 
-## 預覽與版本
+[開啟真原版／固定 v4／本輪 v5 比對](revisions/helmet_refinement_v5/index.html)。四向、兩版／三版並排與大圖使用正式 PNG 和各自 SHA；第三欄為本輪最新 Windows ANGLE 正常資源擷取，可展開全部 64 圖。
 
-**2026-10-06 已另完成 Mac 最新檢查與收小耳甲／下框的獨立試作。** [開啟本次對照](review/draft_alignment_20261006/index.html)；正式遊戲仍使用以下 v4。修正了原 glTF 的 LF／CRLF 跨平台誤判，內容變更仍會失敗；詳細新證據與重現步驟見試作 README。
+- 真原版是遊戲原素材與原模型；上一版 v4 不是原版。
+- [本輪前固定 v4 快照](revisions/before_helmet_refinement_v5/snapshot.json)保留素材、模型、報告與擷取；[v4 歷史頁](revisions/helmet_refinement_v4/index.html)與 [v3 歷史頁](revisions/helmet_refinement_v3/index.html)沒有覆寫。
+- [系列比對頁](../armor_style_unification_v1/index.html#titan)的 Titan after15 已切換 v5；[前一版 v4 固定15圖](../armor_style_unification_v1/revisions/titan_v4_before_helmet_refinement_v5/snapshot.json)與[最早 v2 首版歷史](../armor_style_unification_v1/revisions/titan_v2_before_helmet_refinement_v4/snapshot.json)保留。
+- [C06 原概念圖庫](../original_armors_v1/index.html#C-06)仍是設計參考；技能提案與背包設計沒有因此實作或更改。
+- 2026-10-06 的 [Mac 草稿對齊試作](review/draft_alignment_20261006/index.html)另保留當時狀態；正式 v5 使用下面的新工程與視覺證據。
 
-[開啟真原版／上一版 v3／本輪 v4 比對](revisions/helmet_refinement_v4/index.html)。可切四向、選兩版或三版並排及放大原圖；第三欄是 Windows ANGLE 正常資源的最新 v4 原始擷取，可另展開全部 64 圖。
+## 模型、UV 與面罩覆蓋
 
-- 「真原版」指遊戲原素材與原模型。
-- 「上一版 v3」引用 [本輪開始前的固定快照](revisions/before_helmet_refinement_v4/snapshot.json)，並非真原版。
-- [v3 歷史頁](revisions/helmet_refinement_v3/index.html)保留當時的模型擷取、生成與工程結果；不覆寫。
-- [C06 原概念圖庫](../original_armors_v1/index.html#C-06)與[系列早期風格對照](../armor_style_unification_v1/index.html#titan)保留原設計及歷史參考。
+**本輪沒有再增加 UV 或三角形；334 個頭部 UV 與索引和固定 v4 逐項相同。** 十個原 UV 改動、40 個原邊中點均承襲上一版，3 個連續 UV 區域保持。只收整既有耳側與下框座標，形狀仍從真正原版計算總 20% 上限，頭部計數仍按原版 35% 上限。
 
-## 模型與 UV 的實際預算
-
-**v4 本次新增局部圓弧切分，頭盔面數與 UV 座標數按真正原版的 35% 增幅上限檢查；形狀位移仍按原版總 20% 上限。** 新中點從原父面繼承 UV 邊與骨架綁定，保留 3 個連續 UV 區域。十個原有 UV 取樣修改承襲 v3；新增座標數與「原有座標被移動的數量」分開計算，不能把本次描述為 UV／拓撲完全未增加。
-
-| 實測項目 | 真正原版 | 上一版 v3 | v4 正式模型 |
+| 實測項目 | 真正原版 | 固定 v4 | 本輪 v5 |
 | --- | ---: | ---: | ---: |
-| 頭盔三角形 | 124 | 132 | 164（對原版 +32.2581%） |
-| 頭盔 UV 座標 | 294 | 302 | 334（對原版 +13.6054%） |
+| 頭盔三角形 | 124 | 164 | 164（對原版 +32.2581%） |
+| 頭盔 UV 座標 | 294 | 334 | 334（對原版 +13.6054%） |
 | 頭盔連續 UV 區域 | 3 | 3 | 3 |
-| 原頭盔 UV 取樣修改 | — | 10 / 294 | 10 / 294（3.401%；承襲 v3） |
-| 對原版新增頭部座標 | — | 8 | 40；各繼承父面的 UV 與綁定 |
-| 整套三角形／UV 座標 | 700／1607 | 708／1615 | 740／1647 |
+| 原頭盔 UV 修改 | — | 10／294 | 10／294（3.4014%）；本輪新增 0 |
+| 對原版新增頭部座標 | — | 40 | 40；繼承原父面 UV 與綁定 |
+| 整套三角形／UV | 700／1607 | 740／1647 | 740／1647 |
 | 原骨架 | 28 bones | 28 bones | 28 bones |
 
-目前 [geometry.json](build/geometry.json) 的模型量測：頭部最大局部位移為原最短邊的 **19.2932%**，低於真原版總 20% 上限；頭部寬度差 12.5119%、高度差 1.3127%、深度差 3.5622%。面數與座標數的增幅均低於 35% 計數上限。最新逐頂點、權重與資源檢查已通過。四向整體灰模的最大 1−IoU 為 **3.6761%**；上述數字均屬工程量測，並非風格相似率。
+[最新幾何](build/geometry.json)的原版總最大位移為 **19.4967%**，寬／高／深度差為 **15.6456%／1.3127%／3.5622%**。反轉與零面積三角形均為 0，接縫間隙 0。四向整體灰模最大 1−IoU 為 **3.7609%**；上述均是工程量測，不能當作風格相似率。
 
-## 原生美術與歷史來源
+**正面玻璃投影覆蓋為 58.0930%，達到至少 50% 門檻。** [覆蓋報告](review/helmet_v5_visor_coverage.json)用本輪正式材質與相同相機的白色 silhouette，計算可見琥珀玻璃像素／整個頭盔 mesh 的正面投影；分母包含該 mesh 的頸部。固定顏色分類沒有因本輪調高或放寬；這不是 3D 表面面積、圓度評分或美術接受。
 
-**v4 頭圖採用實際 image_gen 的原生輸出，沒有程式重畫、改色、縮放或合成。** 本輪 PNG 與採用生成原圖位元組相同；其他四張 diffuse 已驗證與凍結 v3 位元組相同。
+## 原生貼圖與必要 prompt
 
-- [採用 attempt 2 的完整實送頭圖 prompt](revisions/helmet_refinement_v4/head_diffuse_prompt_attempt_02.txt)。沒有 attempt 3；正式採用圖為 attempt 2。
-- [生成器、參考輸入、採用原圖與 SHA 紀錄](revisions/helmet_refinement_v4/generation_record.json)。
-- [目前 runtime 設定](runtime_config.json)、[幾何量測](build/geometry.json)與[目前 manifest](manifest.json)。
-- [真正原版固定快照](revisions/original_source_v1/snapshot.json)與 [v3 本輪前快照](revisions/before_helmet_refinement_v4/snapshot.json)保持不變。
+**採用頭圖為 1254×1254 的 opaque 原生 PNG，和 image_gen attempt 3 輸出位元組相同。** 沒有程式重畫、改色、縮放或合成；alpha 仍為 255。玻璃質感是 diffuse 中的反光畫法，沒有新增實際透明材質。其他四張 diffuse 與 v4 固定快照完全相同。
 
-沿用專案既有的素材來源與授權假設；本次製作不新增原素材授權證明。C06 概念、技能提案與背包設計不因此修改。
+- [採用 attempt 3 完整實送 prompt](revisions/helmet_refinement_v5/head_diffuse_prompt_attempt_03.txt)與[完整生成記錄](revisions/helmet_refinement_v5/generation_record.json)。
+- [未採用 attempt 1 記錄](revisions/helmet_refinement_v5/generation_record_attempt_01.json)與[未採用 attempt 2 記錄](revisions/helmet_refinement_v5/generation_record_attempt_02.json)及各自原生 PNG／實送 prompt 全部保留。
+- [後續頭盔優化的必要 prompt 條件](revisions/helmet_refinement_v5/asset_brief.md)：UV 鏡像取樣、連續反光、冠部與護框畫法、原版預算、原生來源及驗收流程。
+- [目前設定](runtime_config.json)與[目前 manifest](manifest.json)記錄實際遊戲素材；[真正原版固定來源](revisions/original_source_v1/snapshot.json)不變。
 
-## 本輪驗證
+## 本輪實際驗證
 
-**新 v4 工程證據已確認。** 擷取平台為 Windows Compatibility／ANGLE／RTX 4080 Laptop GPU；頭部與姿勢為 640×720，遊戲場景為 1280×720。64 張使用正常引擎匯入資源，實際存檔前後 SHA 相同。遊戲場景為停止戰鬥的鏡頭擷取，未量測手機效能；v3 歷史頁的 Apple M4 結果只代表該歷史版本。
+**下面所有 PASS 均使用本輪新素材與新報告，沒有引用 v4 PASS。** 平台為 Windows Compatibility／ANGLE／RTX 4080 Laptop GPU；頭部／姿勢 640×720，遊戲場景 1280×720。64 張使用正常引擎匯入資源，存檔前後 SHA 相同。遊戲場景為停止戰鬥的鏡頭擷取，不是效能測量。
 
-| 檢查 | v4 狀態 | 範圍 |
+| 檢查 | v5 狀態 | 實際範圍 |
 | --- | --- | --- |
-| SCN／原件／模型目標 | PASS | 頭部符合最新目標；其他三部件 arrays、skin、掛點保留 |
-| 頭盔切分／UV 契約 | PASS | 164 tris／334 UV／3 區域；35% 計數上限，20% 形狀上限；原父面與原權重繼承 |
-| 面罩正面投影覆蓋 | PASS | 54.8105% ≥ 50%；[coverage 定義與報告](review/helmet_v4_visor_coverage.json) |
-| 遊戲換裝與動作 | PASS | 15 個實際姿勢及換裝入口 |
-| GLB 回讀 | PASS | 9 姿勢、最新五圖／UV／28 原骨架 |
-| Blender master | PASS | 最新目標與五張內嵌原生 PNG |
-| 正常資源擷取 | PASS | Windows ANGLE 最新 64 圖、資源 SHA 與真實存檔不變 |
-| 使用者美術接受 | NOT RUN | 待使用者評價面罩、護框及整體風格 |
-| 手機效能 | NOT RUN | 未進行實機 profiler 或量測 |
+| SCN／原部件／模型目標 | PASS | 頭部符合目標；其他三部件 arrays、skin、掛點保留 |
+| UV／拓撲／綁定契約 | PASS | 164 tris／334 UV／3 區域；與 v4 UV／索引相同 |
+| 正面面罩投影 | PASS | 58.0930% ≥50%；整個頭盔 mesh 投影 |
+| 遊戲換裝與動作 | PASS | 15 個 runtime 姿勢，真實存檔不變 |
+| GLB 回讀 | PASS | 9 姿勢；頭圖 30 RGB 取樣誤差 0，容差仍 0.05 |
+| 五圖／packed master | PASS | 五張 canonical／GLB／master 原生圖與模型目標 |
+| 防護與故意破壞契約 | PASS | 五項工具防護與實際契約測試 |
+| 四向整體灰模 | PASS | 最大差 3.7609%，相機一致 |
+| 正常資源擷取 | PASS | 最新64圖、SCN／target／貼圖 SHA 及存檔綁定 |
+| 使用者美術接受 | NOT RUN | 待使用者評價玻璃、冠部、耳側與整體風格 |
+| 手機效能 | NOT RUN | 未進行實機 profiler 或 GPU 記憶體量測 |
 
-草稿只有斜視圖，側後方深度由原頭殼推測。新局部圓弧仍受遊戲原比例與 35% 計數上限約束，不宣稱完全還原概念或已達成使用者美術接受。系列比對頁目前 after 已更新為正式 v4。原 v2 首版另保存 [固定 15 圖及舊索引](../armor_style_unification_v1/revisions/titan_v2_before_helmet_refinement_v4/snapshot.json)；[v4 after15 索引](../armor_style_unification_v1/titan_helmet_refinement_v4_after_snapshot.json) 綁定當前 SCN／貼圖／capture SHA，original15 沒有替換。
+- [最新64圖與資源／存檔綁定](review/helmet_v5_final/capture.json)
+- [GLB](review/helmet_v5_glb_test.json)、[packed master](review/helmet_v5_master_test.json)、[五項防護](review/helmet_v5_contract_and_guards_test.json)
+- [四向灰模](review/helmet_v5_proportion_test.json)、[正面覆蓋](review/helmet_v5_visor_coverage.json)、[lossless 引擎匯入](review/helmet_v5_lossless_import.json)
 
-Lossless 引擎匯入使正式 GLB 頭圖 30 個 RGB 取樣誤差為 0；早期壓縮取樣 0.06667 曾超過 0.05，改用高保真匯入後通過，沒有提高容差。仍保留低面數冠頂與耳殼及原遊戲短比例；只有斜視概念，側後方為推定，不宣稱逐像素還原成人概念。
-
-- [最新 64 圖與存檔／資源綁定](review/helmet_v4_final/capture.json)
-- [頭盔切分與五項防護](review/helmet_v4_contract_and_guards_test.json)
-- [五圖 GLB](review/helmet_v4_glb_test.json)、[packed master](review/helmet_v4_master_test.json)、[lossless 匯入](review/helmet_v4_lossless_import.json)
-- [四向灰模](review/helmet_v4_proportion_test.json)、[正面玻璃覆蓋](review/helmet_v4_visor_coverage.json)
+Lossless 匯入讓頭圖 30 個 GLB RGB 取樣誤差為 0；手機 GPU 記憶體成本未量測。沿用專案既有素材來源與授權假設，本次製作不新增原素材授權證明。

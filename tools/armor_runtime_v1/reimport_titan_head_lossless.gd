@@ -6,7 +6,7 @@ extends SceneTree
 # It is registered only in this editor process; project.godot is unchanged.
 const REQUEST := "res://tools/armor_runtime_v1/head_lossless.titan_head_reimport"
 const TARGETS: Array[String] = ["res://assets/armors/titan_v1/titan_titan_head_diffuse.png"]
-const REPORT := "res://docs/art/titan_runtime_v1/review/helmet_v4_lossless_import.json"
+var report_path := ""
 
 class HeadImporter extends EditorImportPlugin:
 	var imported_paths: Array[String] = []
@@ -45,6 +45,10 @@ func _begin() -> void:
 		_run()
 
 func _run() -> void:
+	var config: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://docs/art/titan_runtime_v1/runtime_config.json"))
+	var revision := int(str(config.active_helmet_revision).trim_prefix("helmet_refinement_v"))
+	assert(revision in [4, 5])
+	report_path = "res://docs/art/titan_runtime_v1/review/helmet_v%d_lossless_import.json" % revision
 	for path: String in TARGETS: hashes[path] = FileAccess.get_sha256(path)
 	importer = HeadImporter.new()
 	registration = EditorPlugin.new()
@@ -69,7 +73,7 @@ func _import_request() -> void:
 		if config.get_value("params", "compress/mode", -1) != 0: errors.append("Lossless import failed " + path)
 		if FileAccess.get_sha256(path) != hashes[path]: errors.append("PNG bytes changed " + path)
 		records.append({"path":path,"png_sha256":FileAccess.get_sha256(path),"import_metadata_sha256":FileAccess.get_sha256(path + ".import"),"compress_mode":config.get_value("params","compress/mode",-1),"mipmaps":config.get_value("params","mipmaps/generate",false)})
-	var report := FileAccess.open(REPORT, FileAccess.WRITE)
+	var report := FileAccess.open(report_path, FileAccess.WRITE)
 	report.store_string(JSON.stringify({"status":"PASS" if errors.is_empty() else "FAIL","errors":errors,"method":"Temporary registered EditorImportPlugin callback + append_import_external_resource, no manual metadata editing","records":records,"gpu_memory_measurement":"NOT RUN; lossless import uses uncompressed GPU texels rather than BC texture blocks, exact additional runtime VRAM has not been measured","source":"https://docs.godotengine.org/en/4.7/classes/class_editorimportplugin.html#class-editorimportplugin-method-append-import-external-resource"},"\t"))
 	registration.remove_import_plugin(importer)
 	registration.free()

@@ -1,0 +1,53 @@
+{
+  "tool": "image_gen.imagegen",
+  "attempt": 1,
+  "use_case": "precise-object-edit",
+  "prompt_path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_prompt.txt",
+  "prompt_sha256": "253cdbe76d489e95cb6c7a9c15048c5e1c5b5a1bbc2808605c7f83b70fc684e2",
+  "references": [
+    {
+      "path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/ref/edit_target.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/ref/edit_target.png",
+      "role": "edit_target",
+      "sha256": "feef79c197fdb4970c362132e14c6387418015d2f6af53806be8f73f0fc19179"
+    },
+    {
+      "path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/ref/approved_concept.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/ref/approved_concept.png",
+      "role": "approved_helmet_design",
+      "sha256": "54cb4073c1f482e072e23aa344dc4fff300e5157191dcd7b3e82f68ced75fc49"
+    },
+    {
+      "path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/ref/before_head_quarter.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/ref/before_head_quarter.png",
+      "role": "actual_runtime_diagnostic",
+      "sha256": "b6d60b90ec2e34d77e3e29c0671dd2e7e7be9fb1253bbc763b821dfb5cbaac1d"
+    },
+    {
+      "path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/ref/original_uv_semantics.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/ref/original_uv_semantics.png",
+      "role": "technical_uv_semantics",
+      "sha256": "961c5c6f50152d041706dc76e5cafa17d4e02cc88560f1ced4b396983ab5ec11"
+    }
+  ],
+  "native_output_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-88695856-95c8-4a18-9175-c51372d93952.png",
+  "native_output_sha256": "d36416fee18f5e6ee3f9abb3d8bb4931d374bc2950e206c2ca805ef67e3367b5",
+  "archive_path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_attempt_01.png",
+  "canonical_path": "assets/armors/titan_v1/titan_head_diffuse.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "processing": "byte-for-byte native copy; no painting, recoloring, crop, resize or compositing",
+  "status": "candidate_pending_runtime_validation",
+  "model_revision": "helmet_refinement_v5",
+  "previous_revision_record": {
+    "path": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/generation_record.json",
+    "sha256": "a190094ae904f630c53fce95e062a1e48aecfa40ca3b2d7ec41e2d20f9a6bd00"
+  },
+  "uv_post_adoption": "Exact v4 334 UV coordinates, 164 triangles, 3 charts and original 28-bone bindings; geometry only ear/lower-frame small adjustments."
+}

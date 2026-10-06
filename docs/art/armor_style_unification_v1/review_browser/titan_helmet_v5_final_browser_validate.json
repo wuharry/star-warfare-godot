@@ -1,0 +1,1706 @@
+{
+  "schema_version": 1,
+  "status": "PASS_STATIC_BROWSER_NOT_RUN",
+  "checked_at_utc": "2026-10-06T15:25:01.422331+00:00",
+  "scope": "Read-only static Titan v5 QA: current64 + frozen-original/v4/current head12 + current shared15 + C06 source/embedded mapping",
+  "baseline_commit": "c76e8093e9f815239ced569ee084849647e4da43",
+  "browser_status": "NOT RUN",
+  "browser_environment": {
+    "tool": "mcp__cua_repl",
+    "inventory": {
+      "apps": [],
+      "browsers": [
+        "Codex In-app Browser",
+        "Codex MCP Apps"
+      ]
+    },
+    "attempted": {
+      "api": "cua.createBrowserTab('chrome', 'file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/index.html', {sessionName: 'Titan v5 QA'})",
+      "result": "Browser is not available: chrome"
+    },
+    "limitation": "No Windows Chrome or native app surface was exposed. No prior v4 browser results reused as v5 proof."
+  },
+  "source": {
+    "scene_sha256": "fe77152022e2a685832de8f850186a4a8ed274f91a10daee7f4bf3f3913e1756",
+    "head_sha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
+    "target_sha256": "4dd127a135f0585d6c5d229864eb40dc49246c5f3ce130eae7ae5d8abc2b7acf",
+    "capture_summary_sha256": "9b66f54028b9bcb0840a592b9b56222707fd3705341d12afd4d3bd75fd94832f",
+    "runtime_page_sha256": "6ea581845f581a9f166a8da4608a4be43e8b88af29f31b0be85547d6ebc3f3d5",
+    "shared_page_sha256": "70948075ec1105d536ccd4c31ce444e266aa60ffaffe7695d01c7b869b21ee7f",
+    "shared_source_sha256": "f5ca69c22bb6f5aa4d1c51a404ff280a81891d68b2072b0e706f4527725acc43",
+    "gallery_page_sha256": "0a98ff08a7f3a1d1101e442723fddc339cb45a7bed912fe983e870c29d9c3296",
+    "c06_source_sha256": "54b19398ee4ed8181d83db8cbba4a9c3b2a9457515615e43b90b06e1c75f53f9",
+    "manifest_sha256": "d55b434d5cd5b852592012cf755b9df58e661d5eabc9684a7f5d67ef7dc24723",
+    "manifest_revision": "helmet_refinement_v5"
+  },
+  "resourceBindings": {
+    "scene_sha256": {
+      "path": "assets/armors/titan_v1/titan.scn",
+      "sha256": "fe77152022e2a685832de8f850186a4a8ed274f91a10daee7f4bf3f3913e1756",
+      "exact": true
+    },
+    "target_sha256": {
+      "path": "docs/art/titan_runtime_v1/build/target.json",
+      "sha256": "4dd127a135f0585d6c5d229864eb40dc49246c5f3ce130eae7ae5d8abc2b7acf",
+      "exact": true
+    },
+    "capture_summary_sha256": {
+      "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/capture.json",
+      "sha256": "9b66f54028b9bcb0840a592b9b56222707fd3705341d12afd4d3bd75fd94832f",
+      "exact": true
+    },
+    "coverage_report_sha256": {
+      "path": "docs/art/titan_runtime_v1/review/helmet_v5_visor_coverage.json",
+      "sha256": "33123a57bfcb28c8bc3c4919bc19f9607f6b33930815d3b08c5b68994085bfcf",
+      "exact": true
+    },
+    "canonical_head": {
+      "path": "assets/armors/titan_v1/titan_head_diffuse.png",
+      "sha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
+      "exact": true
+    },
+    "canonical_body": {
+      "path": "assets/armors/titan_v1/body_diffuse.png",
+      "sha256": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
+      "exact": true
+    },
+    "canonical_shoulder": {
+      "path": "assets/armors/titan_v1/shoulder_diffuse.png",
+      "sha256": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
+      "exact": true
+    },
+    "canonical_hand": {
+      "path": "assets/armors/titan_v1/hand_diffuse.png",
+      "sha256": "511a205683e0e98bd9f8468edebf5a73052085e49e7fed66bd98ac3328ea74ec",
+      "exact": true
+    },
+    "canonical_foot": {
+      "path": "assets/armors/titan_v1/foot_diffuse.png",
+      "sha256": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a",
+      "exact": true
+    }
+  },
+  "nativeAttempt3": {
+    "canonical_path": {
+      "path": "E:\\Star-Warfare-Godot-Restoration\\assets\\armors\\titan_v1\\titan_head_diffuse.png",
+      "sha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
+      "byte_exact": true
+    },
+    "archive_path": {
+      "path": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\titan_runtime_v1\\revisions\\helmet_refinement_v5\\head_diffuse_attempt_03.png",
+      "sha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
+      "byte_exact": true
+    },
+    "native_output_path": {
+      "path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-c3290b0e-556a-4bf8-a269-7bc5822b13dc.png",
+      "sha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
+      "byte_exact": true
+    }
+  },
+  "readiness": {
+    "engineeringReady": true,
+    "capturesReady": true,
+    "scope": "page data flags; actual engine runs belong to referenced engineering reports"
+  },
+  "currentCaptures64": {
+    "status": "PASS",
+    "count": 64,
+    "allShaExact": true,
+    "allDecoded": true,
+    "allDimensionsExact": true,
+    "exactCaptureJsonMembership": true,
+    "records": [
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_clay_front.png",
+        "sha256": "7973634dbbc3d0d93e9573a56a9214eb1756783ba331fb4d9b6c806316febe5a",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_clay_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_clay_front.png",
+        "sha256": "a6214849d7e963d3101a32cad72faf5592ce6b30a96cf360e493a28e47a26452",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_clay_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_painted_front.png",
+        "sha256": "628974a9f2136481e9cb1e74fd94503ddabf5afbf634c2baf78bc7dc84f2ea60",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_painted_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_painted_front.png",
+        "sha256": "813c16fb853930d87f1e70af57f12e3acfa660379ee05849d9618df1ecfc9172",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_painted_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_diffuse_front.png",
+        "sha256": "7a2743f3e7794678bb6dc2f57c315ae3a56b5764afd99f34685d901a3a61d889",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_diffuse_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_diffuse_front.png",
+        "sha256": "813c16fb853930d87f1e70af57f12e3acfa660379ee05849d9618df1ecfc9172",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_diffuse_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_clay_side.png",
+        "sha256": "5a766ee3af2be90e4e058d9806e27e607ea78fe6fa9d945b87c2cabef609408e",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_clay_side"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_clay_side.png",
+        "sha256": "0a6a66e8cde386e1802875639812513bfe684f88f4396bda697581c98766e216",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_clay_side"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_painted_side.png",
+        "sha256": "ea96ba1906be1adf1c86358fc0ffc282036346bb9e5dcb4bdd0be422be33dda9",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_painted_side"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_painted_side.png",
+        "sha256": "99aa59e0e71db4530382e0f256bfef93a9c40a579ee4d27b249d4256cff7e7f6",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_painted_side"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_diffuse_side.png",
+        "sha256": "1ba12016bab7f4a94d564af37c946b4fbd3b37250c5b5da8d1c09804dad40ac2",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_diffuse_side"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_diffuse_side.png",
+        "sha256": "99aa59e0e71db4530382e0f256bfef93a9c40a579ee4d27b249d4256cff7e7f6",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_diffuse_side"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_clay_rear.png",
+        "sha256": "35381626f8c749636700455535b4f8e885838b1592295f51be52958ae3913947",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_clay_rear"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_clay_rear.png",
+        "sha256": "32e806bce26f842819fa4ecdcb7b8aa13701d13cf52c986cbff0d16123144d03",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_clay_rear"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_painted_rear.png",
+        "sha256": "eda6c3cfb24b8a956c862d32ab7c264932e5ff0e078864785a89432c860ee858",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_painted_rear"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_painted_rear.png",
+        "sha256": "03f3a1482d7c70a345b521b5251c198c75f509f2424114fa5d75af78a2d817fe",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_painted_rear"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_diffuse_rear.png",
+        "sha256": "d7c419002d7aa37fb74b10092e1e71d2e70f0e478ca02654b596be1a60b49776",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_diffuse_rear"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_diffuse_rear.png",
+        "sha256": "03f3a1482d7c70a345b521b5251c198c75f509f2424114fa5d75af78a2d817fe",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_diffuse_rear"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_clay_quarter.png",
+        "sha256": "a967e3a0815d0f97f887b9c4e08b3bd9441da15590e9101eedd38fb6019ace38",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_clay_quarter"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_clay_quarter.png",
+        "sha256": "6796f6d8c77710eb9082ddb7cc18cbdeb60f977cee7635e39216fd6bf6842aeb",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_clay_quarter"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_painted_quarter.png",
+        "sha256": "c433f0c1dac78f4b26a2985cd97e33af89a404befe472d39dbcd334b59650b45",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_painted_quarter"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_painted_quarter.png",
+        "sha256": "613e865355035b8e82e9e56c56c11db682f2804de4bc1347ff0bbb5e1f1805e8",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_painted_quarter"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_diffuse_quarter.png",
+        "sha256": "ae337aeead11d71780864fd98397d0af222f9845c4511e29caac7c26e8d907b4",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_diffuse_quarter"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_diffuse_quarter.png",
+        "sha256": "613e865355035b8e82e9e56c56c11db682f2804de4bc1347ff0bbb5e1f1805e8",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_diffuse_quarter"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_head_front.png",
+        "sha256": "5a61e455dd9348f929a1fcfc614c3e83a6e50e3ef58cbf82685578ad847e4809",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_head_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_front.png",
+        "sha256": "b27002fa0af4960d30ae7f79062581a8b51c3ed4cf854861f498a74d98537782",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_head_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_head_side.png",
+        "sha256": "bdcf6580fe7eac8b9237bc2ab0d641b975e92c69924ff602673aadbc557ec27d",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_head_side"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_side.png",
+        "sha256": "ed18b9042d2d5d98f462a28e6f97d0d8413a573d0d57b24b5ae8e21c2a54712d",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_head_side"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_head_rear.png",
+        "sha256": "7e43547cc3c97ce52b4ff7f4e7f6113832a96a66b7e2cb100eb7dae944415351",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_head_rear"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_rear.png",
+        "sha256": "2abc2d04276d300088dfedaff59291155b58bc945d76a3db5dc7a68fae0a045b",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_head_rear"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_head_quarter.png",
+        "sha256": "e5f878d6b66018e101bd1cf926aa5b7e5616bda295173c376f6942c3fab98106",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_head_quarter"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_quarter.png",
+        "sha256": "50ed3623d01cc5c4d3dc48e9dc0951ef5cde67dbd94b72ee382fd19e5bcce878",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_head_quarter"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/family_original_01_front.png",
+        "sha256": "7179157fd181029e6905871981871cc896e0d028b821989e3aa0cfe1717d6c49",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "family_original_01_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/family_original_06_front.png",
+        "sha256": "31b5fc1e956a883b997b14142e20153e8f5c89541553b88a114b82b7ffacd921",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "family_original_06_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_idle_rifle.png",
+        "sha256": "f232a966f9abd46b093bac8687b610b2a36ae81fa8ab726a80e9dc22aa9fb566",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_idle_rifle"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_idle_rifle.png",
+        "sha256": "210c711bf93187c2e135812dd2f8f412a1cdacc651c7e67a7c46784c65c72a24",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_idle_rifle"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_run_rifle.png",
+        "sha256": "3161ad53f3e009952296b08cf6639f59325508db7b6704dfb1dcbaab3ac685ad",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_run_rifle"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_run_rifle.png",
+        "sha256": "b82821bfbec50e3f71c96365d8d40c2e926e623341aee1264770c6c4ec39e98a",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_run_rifle"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_reload_00.png",
+        "sha256": "9c2b9940bce74ecf6f516e1573ee94e39719b22cbf2907cfcd59697aa2e3fb32",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_reload_00"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_reload_00.png",
+        "sha256": "78b757dcbcf94f157d93c6b66e3516436c2c748ceb103acb3fb144f0cf83648f",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_reload_00"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_reload_01.png",
+        "sha256": "c4d23fcf9a4d5e041d8093cb0967eb3cd370634807b224900393de902174fb91",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_reload_01"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_reload_01.png",
+        "sha256": "63d3b6cef75411f062695f99b2fc695cbcc12278b39757355885c4046dc4d125",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_reload_01"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_reload_02.png",
+        "sha256": "570af922775b81154ddccd6b592cbf5c36240c82f34037ede4061e6cb6bc502b",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_reload_02"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_reload_02.png",
+        "sha256": "6accb167102f66b91d32d70e5674de8da7afda5eb0e1bfafb052a02ae1c0ed37",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_reload_02"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_reload_03.png",
+        "sha256": "b54f9365a9a3f9e99cfc59d12ff2e6b1137ab68bec56efc0512b1b826f36ad0a",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_reload_03"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_reload_03.png",
+        "sha256": "edc493c8e43ef122cef6f6cc000f40f92af40c5f067a1f7e215fc126446b0ec1",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_reload_03"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_reload_04.png",
+        "sha256": "24da7f18467b561b86f641014dd35249d62414d6904b6c7bedcc50371b68b2ae",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_reload_04"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_reload_04.png",
+        "sha256": "8d147eb512687ac253bbd0bca34109d33b4936f35d36421375f6b893e1174eaa",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_reload_04"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_reload_05.png",
+        "sha256": "8a7622fb1bfcb4f5adc372db8ce897890ca1664e2e8ececb558a31e942123ff9",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_reload_05"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_reload_05.png",
+        "sha256": "11f8a0b0fa9b0f5c684ac7ea88d109eab79e088b865cb25dd2c88fc594c2440a",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_reload_05"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_reload_06.png",
+        "sha256": "1f3488ac836859a3ac662d475ad83d5ddc998c8c533beccb111a58b7837f8243",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_reload_06"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_reload_06.png",
+        "sha256": "cd260554f0622b164526b175bca86258c17c0c4905d77627c9edff4a86a2d33c",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_reload_06"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_reload_07.png",
+        "sha256": "b14bdc17ddc1113514f5e4ceb0572fa1101d1153e410d617a6d93c60ab682835",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_reload_07"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_reload_07.png",
+        "sha256": "f853ee9b4f3e8c5b53700b7172e038c4dfc6d57eb2f9e509eae045e63c3eec58",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_reload_07"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_reload_08.png",
+        "sha256": "7aed994dbb8b3e978311c765af2b18ab78587dae9b33e52df79d860b6fd36f7b",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_reload_08"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_reload_08.png",
+        "sha256": "c2baecb0b677c7557eb4c676741b0757901f0f6ec2e530420df3f571fbb6dc5d",
+        "dimensions": [
+          640,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_reload_08"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_level_01_gameplay.png",
+        "sha256": "34b5b822f9150891aa2d3b849324f141662e0f27c577a3bc65f0ec5322945d06",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_level_01_gameplay"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_level_01_gameplay.png",
+        "sha256": "d10fe98d7716361f63507007c043bffe89dd5a1ddc8145639c5178b239192183",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_level_01_gameplay"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_level_01_front.png",
+        "sha256": "8b04a8966b71a975c2581d806821b53a6f6f59c121c25bad16c9f384ff5fe8e8",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_level_01_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_level_01_front.png",
+        "sha256": "b2071e75e0cec28b2ab8953cf5d92b3a575332885d6e6e4ec4008f2ed99dd2e0",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_level_01_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_level_08_gameplay.png",
+        "sha256": "ad566550a97fdb88078ad65ed196a34cd3e0613da37eade0cf2459131f4392da",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_level_08_gameplay"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_level_08_gameplay.png",
+        "sha256": "922fbaf151d96f9b9388901a8a646fbe360fc7fea0b7d117c92116b0cbcc5508",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_level_08_gameplay"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/original_level_08_front.png",
+        "sha256": "5bc1675977b4c7c9e8425b170c166605dea01946d729e72e6ccf87e1b65a3faa",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "original_level_08_front"
+      },
+      {
+        "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_level_08_front.png",
+        "sha256": "20b3b3e0e474507a17da4c2d46033691637d8417284c90b4efca7ef05012b31e",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "mode": "RGBA",
+        "decoded": true,
+        "label": "new_level_08_front"
+      }
+    ]
+  },
+  "headViews": [
+    {
+      "view": "front",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/original_head_front.png",
+          "sha256": "5a61e455dd9348f929a1fcfc614c3e83a6e50e3ef58cbf82685578ad847e4809",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/original_head_front.png?rev=5a61e455dd9348f9"
+        },
+        {
+          "path": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/new_head_front.png",
+          "sha256": "ccbebef66f064648fadfddf0d5829053f1df522b41c96b8d4abadf264eb2746f",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "before",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/new_head_front.png?rev=ccbebef66f064648"
+        },
+        {
+          "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_front.png",
+          "sha256": "b27002fa0af4960d30ae7f79062581a8b51c3ed4cf854861f498a74d98537782",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_front.png?rev=b27002fa0af4960d"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "view": "quarter",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/original_head_quarter.png",
+          "sha256": "e5f878d6b66018e101bd1cf926aa5b7e5616bda295173c376f6942c3fab98106",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/original_head_quarter.png?rev=e5f878d6b66018e1"
+        },
+        {
+          "path": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/new_head_quarter.png",
+          "sha256": "b6d60b90ec2e34d77e3e29c0671dd2e7e7be9fb1253bbc763b821dfb5cbaac1d",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "before",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/new_head_quarter.png?rev=b6d60b90ec2e34d7"
+        },
+        {
+          "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_quarter.png",
+          "sha256": "50ed3623d01cc5c4d3dc48e9dc0951ef5cde67dbd94b72ee382fd19e5bcce878",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_quarter.png?rev=50ed3623d01cc5c4"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "view": "side",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/original_head_side.png",
+          "sha256": "bdcf6580fe7eac8b9237bc2ab0d641b975e92c69924ff602673aadbc557ec27d",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/original_head_side.png?rev=bdcf6580fe7eac8b"
+        },
+        {
+          "path": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/new_head_side.png",
+          "sha256": "a034af64b0bc3504e47e74d54a73ff55e8d784af58f17bd2b3274db0430fc231",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "before",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/new_head_side.png?rev=a034af64b0bc3504"
+        },
+        {
+          "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_side.png",
+          "sha256": "ed18b9042d2d5d98f462a28e6f97d0d8413a573d0d57b24b5ae8e21c2a54712d",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_side.png?rev=ed18b9042d2d5d98"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "view": "rear",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/original_head_rear.png",
+          "sha256": "7e43547cc3c97ce52b4ff7f4e7f6113832a96a66b7e2cb100eb7dae944415351",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/original_head_rear.png?rev=7e43547cc3c97ce5"
+        },
+        {
+          "path": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/new_head_rear.png",
+          "sha256": "14b2bd46516d8969f7068286df2d0b5a12f326f5192d5082a4ce12fd83b8fda9",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "before",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/review/helmet_v4_final/new_head_rear.png?rev=14b2bd46516d8969"
+        },
+        {
+          "path": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_rear.png",
+          "sha256": "2abc2d04276d300088dfedaff59291155b58bc945d76a3db5dc7a68fae0a045b",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_rear.png?rev=2abc2d04276d3000"
+        }
+      ],
+      "browser_clicked": false
+    }
+  ],
+  "runtimeLinks": {
+    "status": "PASS",
+    "count": 19,
+    "allExist": true,
+    "records": [
+      {
+        "href": "../../review/helmet_v5_visor_coverage.json",
+        "exists": true
+      },
+      {
+        "href": "../../README.md",
+        "exists": true
+      },
+      {
+        "href": "../../manifest.json",
+        "exists": true
+      },
+      {
+        "href": "asset_brief.md",
+        "exists": true
+      },
+      {
+        "href": "generation_record.json",
+        "exists": true
+      },
+      {
+        "href": "head_diffuse_prompt_attempt_03.txt",
+        "exists": true
+      },
+      {
+        "href": "generation_record_attempt_01.json",
+        "exists": true
+      },
+      {
+        "href": "generation_record_attempt_02.json",
+        "exists": true
+      },
+      {
+        "href": "../before_helmet_refinement_v5/snapshot.json",
+        "exists": true
+      },
+      {
+        "href": "../helmet_refinement_v4/index.html",
+        "exists": true
+      },
+      {
+        "href": "../helmet_refinement_v3/index.html",
+        "exists": true
+      },
+      {
+        "href": "../original_source_v1/snapshot.json",
+        "exists": true
+      },
+      {
+        "href": "../../runtime_config.json",
+        "exists": true
+      },
+      {
+        "href": "../../build/geometry.json",
+        "exists": true
+      },
+      {
+        "href": "../../review/helmet_v5_final/capture.json",
+        "exists": true
+      },
+      {
+        "href": "../../review/helmet_v5_proportion_test.json",
+        "exists": true
+      },
+      {
+        "href": "../../review/helmet_v5_contract_and_guards_test.json",
+        "exists": true
+      },
+      {
+        "href": "../../../original_armors_v1/index.html#C-06",
+        "exists": true
+      },
+      {
+        "href": "../../../armor_style_unification_v1/index.html#titan",
+        "exists": true
+      }
+    ]
+  },
+  "sharedViews": [
+    {
+      "suffix": "diffuse_front",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/diffuse_front.png",
+          "sha256": "0ac0d1d8a8593e4e0976b6fd1b9562b1472c1d22e33238efddb480a0b343805c",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/diffuse_front.png?rev=0ac0d1d8a8593e4e"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/diffuse_front.png",
+          "sha256": "813c16fb853930d87f1e70af57f12e3acfa660379ee05849d9618df1ecfc9172",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/diffuse_front.png?rev=813c16fb853930d8",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_diffuse_front.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "diffuse_quarter",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/diffuse_quarter.png",
+          "sha256": "80d2c82786c8b910b5b7933e18255ab9025913d295f391d7d4277406189fc599",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/diffuse_quarter.png?rev=80d2c82786c8b910"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/diffuse_quarter.png",
+          "sha256": "613e865355035b8e82e9e56c56c11db682f2804de4bc1347ff0bbb5e1f1805e8",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/diffuse_quarter.png?rev=613e865355035b8e",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_diffuse_quarter.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "diffuse_side",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/diffuse_side.png",
+          "sha256": "473bf36bd8114ededd26c7e1c6f7d1c931ace6c801c37ac5a6f03561ad2fedb1",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/diffuse_side.png?rev=473bf36bd8114ede"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/diffuse_side.png",
+          "sha256": "99aa59e0e71db4530382e0f256bfef93a9c40a579ee4d27b249d4256cff7e7f6",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/diffuse_side.png?rev=99aa59e0e71db453",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_diffuse_side.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "diffuse_rear",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/diffuse_rear.png",
+          "sha256": "4f1bb4ac635c057632359411278b6203ba045db6a4e520aaa14b3259cd6607a3",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/diffuse_rear.png?rev=4f1bb4ac635c0576"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/diffuse_rear.png",
+          "sha256": "03f3a1482d7c70a345b521b5251c198c75f509f2424114fa5d75af78a2d817fe",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/diffuse_rear.png?rev=03f3a1482d7c70a3",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_diffuse_rear.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "head_front",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/head_front.png",
+          "sha256": "5a61e455dd9348f929a1fcfc614c3e83a6e50e3ef58cbf82685578ad847e4809",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/head_front.png?rev=5a61e455dd9348f9"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/head_front.png",
+          "sha256": "b27002fa0af4960d30ae7f79062581a8b51c3ed4cf854861f498a74d98537782",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/head_front.png?rev=b27002fa0af4960d",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_front.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "head_quarter",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/head_quarter.png",
+          "sha256": "e5f878d6b66018e101bd1cf926aa5b7e5616bda295173c376f6942c3fab98106",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/head_quarter.png?rev=e5f878d6b66018e1"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/head_quarter.png",
+          "sha256": "50ed3623d01cc5c4d3dc48e9dc0951ef5cde67dbd94b72ee382fd19e5bcce878",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/head_quarter.png?rev=50ed3623d01cc5c4",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_quarter.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "head_side",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/head_side.png",
+          "sha256": "bdcf6580fe7eac8b9237bc2ab0d641b975e92c69924ff602673aadbc557ec27d",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/head_side.png?rev=bdcf6580fe7eac8b"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/head_side.png",
+          "sha256": "ed18b9042d2d5d98f462a28e6f97d0d8413a573d0d57b24b5ae8e21c2a54712d",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/head_side.png?rev=ed18b9042d2d5d98",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_side.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "head_rear",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/head_rear.png",
+          "sha256": "7e43547cc3c97ce52b4ff7f4e7f6113832a96a66b7e2cb100eb7dae944415351",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/head_rear.png?rev=7e43547cc3c97ce5"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/head_rear.png",
+          "sha256": "2abc2d04276d300088dfedaff59291155b58bc945d76a3db5dc7a68fae0a045b",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/head_rear.png?rev=2abc2d04276d3000",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_head_rear.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "clay_front",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/clay_front.png",
+          "sha256": "1520da1eddc15a2706bcf40fa027bce919edea3219b29a42fe2a1659359f8a2d",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/clay_front.png?rev=1520da1eddc15a27"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/clay_front.png",
+          "sha256": "a6214849d7e963d3101a32cad72faf5592ce6b30a96cf360e493a28e47a26452",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/clay_front.png?rev=a6214849d7e963d3",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_clay_front.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "clay_side",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/clay_side.png",
+          "sha256": "1dd436c3efbebdea94ef77a5dc4386af29b4f9de963bb4f529be2e6faae86baa",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/clay_side.png?rev=1dd436c3efbebdea"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/clay_side.png",
+          "sha256": "0a6a66e8cde386e1802875639812513bfe684f88f4396bda697581c98766e216",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/clay_side.png?rev=0a6a66e8cde386e1",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_clay_side.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "level_01_gameplay",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/level_01_gameplay.png",
+          "sha256": "464e569dda8aea7d417ca617e381684f56c86098f9853752c9c1440f98f9e1b4",
+          "dimensions": [
+            1280,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/level_01_gameplay.png?rev=464e569dda8aea7d"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/level_01_gameplay.png",
+          "sha256": "d10fe98d7716361f63507007c043bffe89dd5a1ddc8145639c5178b239192183",
+          "dimensions": [
+            1280,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/level_01_gameplay.png?rev=d10fe98d7716361f",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_level_01_gameplay.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "level_08_gameplay",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/level_08_gameplay.png",
+          "sha256": "254e33afd850811571563b2e8d2a5eb2b80b8bfce3284577af1786f14ed5b953",
+          "dimensions": [
+            1280,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/level_08_gameplay.png?rev=254e33afd8508115"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/level_08_gameplay.png",
+          "sha256": "922fbaf151d96f9b9388901a8a646fbe360fc7fea0b7d117c92116b0cbcc5508",
+          "dimensions": [
+            1280,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/level_08_gameplay.png?rev=922fbaf151d96f9b",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_level_08_gameplay.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "idle_rifle",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/idle_rifle.png",
+          "sha256": "f232a966f9abd46b093bac8687b610b2a36ae81fa8ab726a80e9dc22aa9fb566",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/idle_rifle.png?rev=f232a966f9abd46b"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/idle_rifle.png",
+          "sha256": "210c711bf93187c2e135812dd2f8f412a1cdacc651c7e67a7c46784c65c72a24",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/idle_rifle.png?rev=210c711bf93187c2",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_idle_rifle.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "run_rifle",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/run_rifle.png",
+          "sha256": "3161ad53f3e009952296b08cf6639f59325508db7b6704dfb1dcbaab3ac685ad",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/run_rifle.png?rev=3161ad53f3e00995"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/run_rifle.png",
+          "sha256": "b82821bfbec50e3f71c96365d8d40c2e926e623341aee1264770c6c4ec39e98a",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/run_rifle.png?rev=b82821bfbec50e3f",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_run_rifle.png"
+        }
+      ],
+      "browser_clicked": false
+    },
+    {
+      "suffix": "reload_04",
+      "static_bindings_exact": true,
+      "images": [
+        {
+          "path": "docs/art/armor_style_unification_v1/original/titan/review/reload_04.png",
+          "sha256": "37ed5d96b594e5aa960745c59cfbe7f7e453f0baabb36809de9c513f8377e8ff",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "original",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/original/titan/review/reload_04.png?rev=37ed5d96b594e5aa"
+        },
+        {
+          "path": "docs/art/armor_style_unification_v1/after/titan/review/reload_04.png",
+          "sha256": "8d147eb512687ac253bbd0bca34109d33b4936f35d36421375f6b893e1174eaa",
+          "dimensions": [
+            640,
+            720
+          ],
+          "mode": "RGBA",
+          "decoded": true,
+          "version": "after",
+          "uri": "file:///E:/Star-Warfare-Godot-Restoration/docs/art/armor_style_unification_v1/after/titan/review/reload_04.png?rev=8d147eb512687ac2",
+          "exact_official_v5_source": "docs/art/titan_runtime_v1/review/helmet_v5_final/new_reload_04.png"
+        }
+      ],
+      "browser_clicked": false
+    }
+  ],
+  "sharedSourceAndEmbedded": {
+    "status": "PASS",
+    "sourcePropertiesEqual": true,
+    "enrichmentProperties": [
+      "capture_images",
+      "reference_image"
+    ],
+    "currentAfter15ExactOfficialV5Pngs": true,
+    "allThirtyOriginalAfterImageRevisionsExact": true,
+    "historicalPathsExist": true
+  },
+  "otherFiveEmbeddedObjectsExact": true,
+  "galleryC06": {
+    "status": "PASS",
+    "runtimeId": 5,
+    "currentRevision": "helmet_refinement_v5",
+    "selectedHeadGeneration": "helmet_refinement_v5_attempt_03",
+    "nativeHeadSha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
+    "helmetLink": "../titan_runtime_v1/revisions/helmet_refinement_v5/index.html",
+    "metadataSync": true,
+    "headUV": 334,
+    "headTris": 164,
+    "countsRetained": false,
+    "nonHeadRetained": true,
+    "other45EntriesExactAgainstHEAD": true,
+    "designConceptFeedbackFieldsExactAgainstHEAD": true,
+    "changedTopLevelSourceKeys": [
+      "helmet_studies",
+      "production_status",
+      "runtime_delivery"
+    ]
+  },
+  "javascriptSyntax": [
+    {
+      "page": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/index.html",
+      "command": "node --check < inline script source",
+      "exit_code": 0,
+      "status": "PASS",
+      "scope": "JavaScript syntax only; no DOM execution"
+    },
+    {
+      "page": "docs/art/armor_style_unification_v1/index.html",
+      "command": "node --check < inline script source",
+      "exit_code": 0,
+      "status": "PASS",
+      "scope": "JavaScript syntax only; no DOM execution"
+    },
+    {
+      "page": "docs/art/original_armors_v1/index.html",
+      "command": "node --check < inline script source",
+      "exit_code": 0,
+      "status": "PASS",
+      "scope": "JavaScript syntax only; no DOM execution"
+    }
+  ],
+  "runtimeInteractions": {
+    "status": "NOT RUN",
+    "requested": [
+      "four head directions",
+      "three baseline modes",
+      "image zoom/lightbox",
+      "reference zoom",
+      "close dialog"
+    ],
+    "staticHandlersPresent": true
+  },
+  "sharedInteractions": {
+    "status": "NOT RUN",
+    "requested": [
+      "head/body/gameplay switching",
+      "image zoom/lightbox",
+      "compact layout"
+    ],
+    "reason": "No available Windows Chrome browser surface"
+  },
+  "mobile": [
+    {
+      "page": "runtime",
+      "width": 390,
+      "status": "NOT RUN",
+      "noOverflow": null,
+      "reason": "No browser viewport measurement performed"
+    },
+    {
+      "page": "runtime",
+      "width": 320,
+      "status": "NOT RUN",
+      "noOverflow": null,
+      "reason": "No browser viewport measurement performed"
+    },
+    {
+      "page": "shared",
+      "width": 390,
+      "status": "NOT RUN",
+      "noOverflow": null,
+      "reason": "No browser viewport measurement performed"
+    },
+    {
+      "page": "shared",
+      "width": 320,
+      "status": "NOT RUN",
+      "noOverflow": null,
+      "reason": "No browser viewport measurement performed"
+    },
+    {
+      "page": "gallery",
+      "width": 390,
+      "status": "NOT RUN",
+      "noOverflow": null,
+      "reason": "No browser viewport measurement performed"
+    },
+    {
+      "page": "gallery",
+      "width": 320,
+      "status": "NOT RUN",
+      "noOverflow": null,
+      "reason": "No browser viewport measurement performed"
+    }
+  ],
+  "responsiveCssInspection": {
+    "status": "PASS_STATIC_ONLY",
+    "runtimeSingleColumnAt800Px": true,
+    "measuredViewportOverflow": null,
+    "measurementStatus": "NOT RUN",
+    "note": "Presence of responsive rules cannot prove measured no-overflow."
+  },
+  "javascriptErrors": {
+    "status": "NOT RUN",
+    "errors": null,
+    "reason": "No browser runtime or console inspection performed; node --check only verifies syntax"
+  },
+  "screenshots": [],
+  "userArtAcceptance": "NOT RUN",
+  "mobilePerformance": "NOT RUN",
+  "not_run": [
+    "Browser DOM execution and clicking",
+    "390/320 viewport layout or overflow measurement",
+    "Browser console/runtime errors",
+    "New browser screenshots",
+    "User artwork acceptance",
+    "Mobile hardware performance"
+  ],
+  "notes": [
+    "All PNG work in this report is read-only decode and hash inspection; no image editing or engine operations.",
+    "Static engine-capture binding checks do not substitute for root-owned Godot/Blender tests.",
+    "Original/current shared Titan uses first_runtime two-column layout; no before/after wipe expected.",
+    "No artwork is labeled perfect, exact concept reconstruction, or user-approved."
+  ]
+}

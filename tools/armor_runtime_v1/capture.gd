@@ -55,7 +55,9 @@ func _run() -> void:
 	OUT=work_path+"review/engine/"
 	if "--material-preview" in OS.get_cmdline_user_args():OUT=work_path+"review/placement_v4_preview/"
 	if "--head-preview" in OS.get_cmdline_user_args():OUT=work_path+"review/head_v2_preview/"
-	if "--visor-coverage" in OS.get_cmdline_user_args():OUT=work_path+"review/helmet_v4_coverage/"
+	if "--visor-coverage" in OS.get_cmdline_user_args():
+		assert(slug == "titan")
+		OUT = work_path + "review/helmet_v%d_coverage/" % int(str(config.active_helmet_revision).trim_prefix("helmet_refinement_v"))
 	if "--baseline-only" in OS.get_cmdline_user_args():OUT=work_path+"review/baseline/"
 	if "--geometry-review" in OS.get_cmdline_user_args():OUT=work_path+"review/pretexture/"
 	if "--face-review" in OS.get_cmdline_user_args():OUT=work_path+"review/face_geometry/"

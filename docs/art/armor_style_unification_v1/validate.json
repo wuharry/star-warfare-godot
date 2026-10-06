@@ -1012,8 +1012,8 @@
     },
     {
       "name": "titan",
-      "scope": "explicit head refinement from true original source; original-total20% shape/UV-prefix limit; v4 head-only original-edge subdivisions within35% count growth; original weights/bones and body/limbs unchanged",
-      "active_helmet_revision": "helmet_refinement_v4",
+      "scope": "explicit head refinement from true original source; original-total20% shape/UV-prefix limit; v5 head-only original-edge subdivisions within35% count growth; original weights/bones and body/limbs unchanged",
+      "active_helmet_revision": "helmet_refinement_v5",
       "user_authorized_original_ceiling": 0.2,
       "actual_delivery_original_limit": 0.2,
       "head_count_growth_ceiling": 0.35,
@@ -1037,8 +1037,8 @@
       "changed_original_head_uv": 10,
       "original_head_uv_fraction": 0.034013605442176874,
       "additional_uv_changes": 0,
-      "additional_head_uv_coordinates": 32,
-      "additional_head_triangles": 32,
+      "additional_head_uv_coordinates": 0,
+      "additional_head_triangles": 0,
       "user_constraints": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/user_constraints.json",
       "user_constraints_sha256": "d7c6bbb758585ac1f97d08549376dfe9e87f2473d3977341f8ce6c266540a0c0",
       "front_projected_visor_minimum_fraction": 0.5,
@@ -1075,9 +1075,9 @@
         },
         {
           "part": "ArmorHead_05",
-          "original_max_rest_displacement_fraction": 0.19293174720012224,
+          "original_max_rest_displacement_fraction": 0.19496740815465188,
           "original_dimension_delta_fractions": [
-            0.12511912153216798,
+            0.15645625629462345,
             0.013127406831571875,
             0.03562156597931043
           ],
@@ -1087,16 +1087,16 @@
       "triangles": 740,
       "surfaces": 5,
       "uv_coordinates": 1647,
-      "before_revision_snapshot_sha256": "0328e353a7843e0e5f85e8bd5c9b54b274860b2fc7668b62988882a7170562c3",
+      "before_revision_snapshot_sha256": "1f4781ca2c5c8564c57dd153a621bb92f82ff36879b5eab19764dd3b1d454bd5",
       "images": [
         {
           "label": "head",
-          "canonical_sha256": "feef79c197fdb4970c362132e14c6387418015d2f6af53806be8f73f0fc19179",
+          "canonical_sha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
           "dimensions": [
             1254,
             1254
           ],
-          "prompt": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/head_diffuse_prompt_attempt_02.txt",
+          "prompt": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_prompt_attempt_03.txt",
           "postprocessing": "none; native PNG bytes"
         },
         {
@@ -1144,103 +1144,103 @@
         "runtime": "docs/art/titan_runtime_v1/review/runtime_test.json",
         "roundtrip": "docs/art/titan_runtime_v1/review/roundtrip_test.json",
         "scene": "docs/art/titan_runtime_v1/review/original_scene_invariants.json",
-        "master": "docs/art/titan_runtime_v1/review/helmet_v4_master_test.json",
-        "glb_images": "docs/art/titan_runtime_v1/review/helmet_v4_glb_test.json",
-        "guards": "docs/art/titan_runtime_v1/review/helmet_v4_contract_and_guards_test.json",
-        "proportion": "docs/art/titan_runtime_v1/review/helmet_v4_proportion_test.json",
-        "visor_coverage": "docs/art/titan_runtime_v1/review/helmet_v4_visor_coverage.json"
+        "master": "docs/art/titan_runtime_v1/review/helmet_v5_master_test.json",
+        "glb_images": "docs/art/titan_runtime_v1/review/helmet_v5_glb_test.json",
+        "guards": "docs/art/titan_runtime_v1/review/helmet_v5_contract_and_guards_test.json",
+        "proportion": "docs/art/titan_runtime_v1/review/helmet_v5_proportion_test.json",
+        "visor_coverage": "docs/art/titan_runtime_v1/review/helmet_v5_visor_coverage.json"
       },
-      "capture_summary": "docs/art/titan_runtime_v1/review/helmet_v4_final/capture.json",
-      "capture_summary_sha256": "82765ccd96ffeaf306829eb77cae3bed424ae3109a97a3814633131f0a261c68",
+      "capture_summary": "docs/art/titan_runtime_v1/review/helmet_v5_final/capture.json",
+      "capture_summary_sha256": "9b66f54028b9bcb0840a592b9b56222707fd3705341d12afd4d3bd75fd94832f",
       "current_artifact_sha256": {
-        "scene": "a088dd10f1ce0c6226bf2a6aacff5cff9165625392854fe743107c1bdcb363bb",
-        "glb": "770d64e0203fbd4d874c53879a8fc7ad8c5620bf97b3d8e8bdf5202dab22a65a",
+        "scene": "fe77152022e2a685832de8f850186a4a8ed274f91a10daee7f4bf3f3913e1756",
+        "glb": "59831832459b7b60bbdecca0833d3e653ca2ae5015c8dcf230ce5ff50672e5a3",
         "source": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
-        "target": "987f11a44868ea02e33f77d58c0fe0878869ec2c12e1bd6db31aeb974c93d1df",
-        "geometry": "3a84145456a007e98d5def9bfe9e4f87a473b90b1405f34475abbb3d147d4556",
-        "master": "dc634bf15dd2cfdff9772fdc32eeac9ed7b37ceb14954f0c8e8706fb33488cb0"
+        "target": "4dd127a135f0585d6c5d229864eb40dc49246c5f3ce130eae7ae5d8abc2b7acf",
+        "geometry": "9945a3d0a48371c28ed32296701ec6e087552cce3e33a0948fadf44ed228253f",
+        "master": "6a8de725f60468439bc2ca08c1e6927534c68b2ef23e765ed1bd4bcc9a7e1f47"
       },
       "silhouettes": [
         {
           "view": "front",
-          "silhouette_changed_fraction": 0.019040048451813174
+          "silhouette_changed_fraction": 0.022704216821863854
         },
         {
           "view": "side",
-          "silhouette_changed_fraction": 0.03676082959381788
+          "silhouette_changed_fraction": 0.03760945315212216
         },
         {
           "view": "rear",
-          "silhouette_changed_fraction": 0.019039616028101447
+          "silhouette_changed_fraction": 0.02270370118022913
         },
         {
           "view": "quarter",
-          "silhouette_changed_fraction": 0.009558316847089188
+          "silhouette_changed_fraction": 0.009550978067575544
         }
       ],
       "captures": [
         {
           "view": "diffuse_front",
-          "sha256": "0b3e39b254e6bb11d946d7a7f9b83b15ac5b1cf8e709b681f52d4f6435ee34c2"
+          "sha256": "813c16fb853930d87f1e70af57f12e3acfa660379ee05849d9618df1ecfc9172"
         },
         {
           "view": "diffuse_quarter",
-          "sha256": "b59fd37e3706932a7f32878e5ebac71d056d52718cb43684df59135f42066c61"
+          "sha256": "613e865355035b8e82e9e56c56c11db682f2804de4bc1347ff0bbb5e1f1805e8"
         },
         {
           "view": "diffuse_side",
-          "sha256": "bc5990b1e536e7995b012b8c848ef20236d9767781fe265903b95bfbf94562f2"
+          "sha256": "99aa59e0e71db4530382e0f256bfef93a9c40a579ee4d27b249d4256cff7e7f6"
         },
         {
           "view": "diffuse_rear",
-          "sha256": "e59ae8c3df05ea1f42fa4daa07538dcfd2478f0ad41e36183388a78a27b9bf26"
+          "sha256": "03f3a1482d7c70a345b521b5251c198c75f509f2424114fa5d75af78a2d817fe"
         },
         {
           "view": "head_front",
-          "sha256": "ccbebef66f064648fadfddf0d5829053f1df522b41c96b8d4abadf264eb2746f"
+          "sha256": "b27002fa0af4960d30ae7f79062581a8b51c3ed4cf854861f498a74d98537782"
         },
         {
           "view": "head_quarter",
-          "sha256": "b6d60b90ec2e34d77e3e29c0671dd2e7e7be9fb1253bbc763b821dfb5cbaac1d"
+          "sha256": "50ed3623d01cc5c4d3dc48e9dc0951ef5cde67dbd94b72ee382fd19e5bcce878"
         },
         {
           "view": "head_side",
-          "sha256": "a034af64b0bc3504e47e74d54a73ff55e8d784af58f17bd2b3274db0430fc231"
+          "sha256": "ed18b9042d2d5d98f462a28e6f97d0d8413a573d0d57b24b5ae8e21c2a54712d"
         },
         {
           "view": "head_rear",
-          "sha256": "14b2bd46516d8969f7068286df2d0b5a12f326f5192d5082a4ce12fd83b8fda9"
+          "sha256": "2abc2d04276d300088dfedaff59291155b58bc945d76a3db5dc7a68fae0a045b"
         },
         {
           "view": "clay_front",
-          "sha256": "94cb3decca39ecbf929e41a1b00c05336794a6f247a355a632765387fcadc957"
+          "sha256": "a6214849d7e963d3101a32cad72faf5592ce6b30a96cf360e493a28e47a26452"
         },
         {
           "view": "clay_side",
-          "sha256": "265bc0349968113b5d781f6b0398c2f66911515b59bd864025ac41a893dc0053"
+          "sha256": "0a6a66e8cde386e1802875639812513bfe684f88f4396bda697581c98766e216"
         },
         {
           "view": "level_01_gameplay",
-          "sha256": "533130ea586baa8b45575211d2fa10cf35dd626470f427ed8aeea090c128dde3"
+          "sha256": "d10fe98d7716361f63507007c043bffe89dd5a1ddc8145639c5178b239192183"
         },
         {
           "view": "level_08_gameplay",
-          "sha256": "1d1e49284fa32f80555ead7e023bb7e6f829d8119936e3de3dc1d410775a7239"
+          "sha256": "922fbaf151d96f9b9388901a8a646fbe360fc7fea0b7d117c92116b0cbcc5508"
         },
         {
           "view": "idle_rifle",
-          "sha256": "c945605beba744f9c2e6126435898f53e824b2a63937748d3bed140cd87fa41f"
+          "sha256": "210c711bf93187c2e135812dd2f8f412a1cdacc651c7e67a7c46784c65c72a24"
         },
         {
           "view": "run_rifle",
-          "sha256": "cf6396d1054bb1fcf6f8b607d5a15bb204110f177b6e2f4f3b860fa82a92d3c2"
+          "sha256": "b82821bfbec50e3f71c96365d8d40c2e926e623341aee1264770c6c4ec39e98a"
         },
         {
           "view": "reload_04",
-          "sha256": "d3736a4f809beba71f76f055a9ed6ddc6d6b2932e34ddbc6042b82e534a9ca95"
+          "sha256": "8d147eb512687ac253bbd0bca34109d33b4936f35d36421375f6b893e1174eaa"
         }
       ],
-      "capture_execution": "docs/art/titan_runtime_v1/review/helmet_v4_angle_capture.log"
+      "capture_execution": "docs/art/titan_runtime_v1/review/helmet_v5_angle_capture.log"
     }
   ],
   "art_review": "runtime-verified first pass; pending user preference review; no objective style score",

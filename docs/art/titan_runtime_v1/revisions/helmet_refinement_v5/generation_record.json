@@ -1,0 +1,66 @@
+{
+  "tool": "image_gen.imagegen",
+  "attempt": 3,
+  "use_case": "precise-object-edit",
+  "prompt_path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_prompt_attempt_03.txt",
+  "prompt_sha256": "f117d0dbeb885838cdb85f639cb3f5f2e60ab06ef89f023877f1ffa301b11c3a",
+  "references": [
+    {
+      "path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_attempt_02.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_attempt_02.png",
+      "role": "edit_target",
+      "sha256": "2171b5f39f8233ab3dd6e4eb9ca7969436bc91addbaefffdb482f5e281f6550d"
+    },
+    {
+      "path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/ref/attempt_02_wrapped_front.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/ref/attempt_02_wrapped_front.png",
+      "role": "actual_runtime_diagnostic",
+      "sha256": "5896ed298204495d4722cf557b74033757529c8fa1d1f7d1718ce8dd57f8aaf2"
+    },
+    {
+      "path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/ref/approved_concept.png",
+      "snapshot": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/ref/approved_concept.png",
+      "role": "approved_helmet_design",
+      "sha256": "54cb4073c1f482e072e23aa344dc4fff300e5157191dcd7b3e82f68ced75fc49"
+    }
+  ],
+  "native_output_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-c3290b0e-556a-4bf8-a269-7bc5822b13dc.png",
+  "native_output_sha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
+  "archive_path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_attempt_03.png",
+  "canonical_path": "assets/armors/titan_v1/titan_head_diffuse.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "processing": "byte-for-byte native copy; no painting, recoloring, crop, resize or compositing",
+  "status": "runtime_integrated_pending_user_art_review",
+  "model_revision": "helmet_refinement_v5",
+  "previous_revision_record": {
+    "path": "docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v5/docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/generation_record.json",
+    "sha256": "a190094ae904f630c53fce95e062a1e48aecfa40ca3b2d7ec41e2d20f9a6bd00"
+  },
+  "uv_post_adoption": "Exact v4 334 UV coordinates, 164 triangles, 3 charts and original 28-bone bindings; geometry only ear/lower-frame small adjustments.",
+  "previous_attempt_record": {
+    "path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/generation_record_attempt_02.json",
+    "sha256": "8daf373601bbaf6f463f16bb8d7aaab87cdbf0963acb217049c59061392a5f9c"
+  },
+  "runtime_visual_review": {
+    "capture_directory": "docs/art/titan_runtime_v1/review/helmet_v5_final",
+    "observed_views": [
+      "front",
+      "quarter",
+      "side",
+      "rear",
+      "idle_rifle",
+      "run_rifle",
+      "reload_04",
+      "level_01_gameplay",
+      "level_08_front"
+    ],
+    "result": "Third native iteration removes the mirrored dark central pillar and paired rectangular reflections. Continuous warm amber pressure glass with broad soft upper reflection; ear/lower-frame offsets adopted from checked review candidate. No observed open UV seams, dual eye highlights or detached glass/frame. Low polygon and mirrored UV reflection contours remain; side/rear inferred from one approved quarter view. No pixel-exact concept reconstruction or user artistic acceptance claimed."
+  }
+}

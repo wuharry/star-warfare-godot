@@ -94,7 +94,7 @@
     "turnaround": "generated_and_visually_checked_pending_user_review",
     "construction": "generated_and_visually_checked_pending_user_review",
     "original_mesh": "original_model_retained_with_measured_local_head_refinement",
-    "uv_atlas": "original_uv_coordinates_charts_counts_unchanged",
+    "uv_atlas": "existing_v4_uv_layout_and_counts_retained",
     "runtime_textures": "five_native_diffuse_maps_integrated_and_verified",
     "rig_skinning": "original_28_bone_skin_and_animation_preserved_and_pose_verified",
     "abilities": "proposal_only"
@@ -288,21 +288,21 @@
       ]
     },
     "additional_uv_changes": 0,
-    "head_maximum_local_displacement_ratio": 0.19293174403958285,
+    "head_maximum_local_displacement_ratio": 0.19496740509866334,
     "head_dimension_delta_fraction": [
-      0.1251191215321672,
+      0.15645625629462268,
       0.013127406831568766,
       0.03562156597930932
     ],
     "original_bones_weights_skin_retained": true,
     "original_vertex_uv_triangle_counts_retained": false,
     "date": "2026-10-06",
-    "selected_head_generation": "helmet_refinement_v4",
+    "selected_head_generation": "helmet_refinement_v5",
     "selected_native_generations": {
       "body": "original_integration_v1",
       "shoulder": "original_integration_v1",
       "foot": "original_integration_v1",
-      "head": "helmet_refinement_v4_attempt_02",
+      "head": "helmet_refinement_v5_attempt_03",
       "hand": "original_integration_v2_hand"
     },
     "original_source_snapshot": "../titan_runtime_v1/revisions/original_source_v1/snapshot.json",
@@ -311,25 +311,26 @@
     "art_review_status": "pending_user_review",
     "style_optimization": {
       "status": "runtime_integrated_pending_user_art_review",
-      "stage": "helmet_refinement_v4",
+      "stage": "helmet_refinement_v5",
       "comparison_page": "../armor_style_unification_v1/index.html#titan",
       "mandatory_prompt": "../armor_style_unification_v1/armor_runtime_integration_prompt.txt",
       "prompt_set": [
         "../titan_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
         "../titan_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
         "../titan_runtime_v1/prompts/hand_diffuse_original_integration_v2_hand.txt",
-        "../titan_runtime_v1/revisions/helmet_refinement_v4/head_diffuse_prompt_attempt_02.txt",
+        "../titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_prompt_attempt_03.txt",
         "../titan_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt"
       ],
-      "latest_variant": "helmet_refinement_v4",
+      "latest_variant": "helmet_refinement_v5",
       "added_uv_changes": 0,
       "user_authorized_original_ceiling": 0.2,
       "actual_original_validation_limit": 0.2,
       "baseline": "../titan_runtime_v1/revisions/original_source_v1/snapshot.json",
       "verification": "../titan_runtime_v1/manifest.json",
-      "note": "在v3上用局部圓弧切分改善頭冠與玻璃邊界，採用原生attempt2煙燻琥珀面罩；正面玻璃佔整個頭盔mesh投影54.8105%。下護框為連續鋼藍色，取消鏡像兩眼斑、中央標記和雙銀扣。其他四圖、身體比例與每側前臂三金點保留v3。低面數冠頂／耳殼與推定側後方仍有差異，不宣稱逐像素還原或已獲使用者接受。",
+      "note": "在固定 v4 上小收耳側／下框，採用原生 attempt 3 的連續琥珀玻璃上緣反光與細橫線；正面玻璃投影 58.0930%。與 v4 的 UV、三角形數和索引相同；其他四圖、非頭部模型及前臂三點保留。冠頂與側板仍有低面數切面，沒有概念中的獨立小圓耳或單一銀扣，不宣稱完美或逐像素還原。",
       "added_head_uv_coordinates": 40,
-      "head_count_growth_limit": 0.35
+      "head_count_growth_limit": 0.35,
+      "helmet_prompt_requirements": "../titan_runtime_v1/revisions/helmet_refinement_v5/asset_brief.md"
     },
     "non_head_vertex_uv_triangle_counts_retained": true,
     "head_triangles": 164,
@@ -342,17 +343,17 @@
     "head_triangle_growth_fraction": 0.32258064516129026,
     "head_uv_coordinate_growth_fraction": 0.1360544217687074,
     "added_uv_coordinates": 40,
-    "projected_front_visor_fraction": 0.5481045515747976,
+    "projected_front_visor_fraction": 0.580930083568084,
     "user_art_acceptance": "NOT RUN",
     "mobile_performance": "NOT RUN"
   },
   "helmet_studies": {
-    "comparison_page": "../titan_runtime_v1/revisions/helmet_refinement_v4/index.html",
-    "link_label": "Titan v4 · 真原版／v3／最新版頭盔比對 ↗",
-    "latest_variant": "helmet_refinement_v4",
+    "comparison_page": "../titan_runtime_v1/revisions/helmet_refinement_v5/index.html",
+    "link_label": "Titan v5 · 真原版／固定 v4／本輪頭盔比對 ↗",
+    "latest_variant": "helmet_refinement_v5",
     "status": "runtime_integrated_pending_user_art_review",
     "scope": "head_geometry_and_native_paint_refinement",
-    "note": "在v3上用局部圓弧切分改善頭冠與玻璃邊界，採用原生attempt2煙燻琥珀面罩；正面玻璃佔整個頭盔mesh投影54.8105%。下護框為連續鋼藍色，取消鏡像兩眼斑、中央標記和雙銀扣。其他四圖、身體比例與每側前臂三金點保留v3。低面數冠頂／耳殼與推定側後方仍有差異，不宣稱逐像素還原或已獲使用者接受。",
+    "note": "在固定 v4 上小收耳側／下框，採用原生 attempt 3 的連續琥珀玻璃上緣反光與細橫線；正面玻璃投影 58.0930%。與 v4 的 UV、三角形數和索引相同；其他四圖、非頭部模型及前臂三點保留。冠頂與側板仍有低面數切面，沒有概念中的獨立小圓耳或單一銀扣，不宣稱完美或逐像素還原。",
     "style_comparison_page": "../armor_style_unification_v1/index.html#titan",
     "mandatory_style_prompt": "../armor_style_unification_v1/armor_runtime_integration_prompt.txt"
   }

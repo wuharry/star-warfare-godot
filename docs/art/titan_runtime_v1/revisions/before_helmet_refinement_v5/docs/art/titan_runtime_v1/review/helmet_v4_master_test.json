@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "revision": "helmet_refinement_v4",
+  "scope": "Current revision; exact source snapshot, actual SCN original-array check, preserved non-head textures and native generation provenance. Historical integration hashes are not recertified.",
+  "source_sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
+  "target_sha256": "987f11a44868ea02e33f77d58c0fe0878869ec2c12e1bd6db31aeb974c93d1df",
+  "geometry_sha256": "3a84145456a007e98d5def9bfe9e4f87a473b90b1405f34475abbb3d147d4556",
+  "current_scene_sha256": "a088dd10f1ce0c6226bf2a6aacff5cff9165625392854fe743107c1bdcb363bb",
+  "original_source_snapshot_sha256": "1d2883a7123e3297245ee9845569335981d82f26842b661ca98393fd6a3ff0cc",
+  "before_revision_snapshot_sha256": "0328e353a7843e0e5f85e8bd5c9b54b274860b2fc7668b62988882a7170562c3",
+  "canonical_diffuse_sha256": {
+    "head": "feef79c197fdb4970c362132e14c6387418015d2f6af53806be8f73f0fc19179",
+    "body": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
+    "shoulder": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
+    "hand": "511a205683e0e98bd9f8468edebf5a73052085e49e7fed66bd98ac3328ea74ec",
+    "foot": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a"
+  },
+  "head_contract": {
+    "original_head_vertices": 294,
+    "head_vertices": 334,
+    "original_head_triangles": 124,
+    "head_triangles": 164,
+    "changed_original_head_uv": 10,
+    "original_head_uv_fraction": 0.034013605442176874,
+    "additional_uv_changes": 0,
+    "additional_head_uv_coordinates": 32,
+    "additional_head_triangles": 32,
+    "user_constraints": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/user_constraints.json",
+    "user_constraints_sha256": "d7c6bbb758585ac1f97d08549376dfe9e87f2473d3977341f8ce6c266540a0c0",
+    "head_count_growth_ceiling": 0.35,
+    "front_projected_visor_minimum_fraction": 0.5
+  },
+  "original_metrics": {
+    "original_measurements": [
+      {
+        "part": "ArmorBody_05",
+        "original_max_rest_displacement_fraction": 9.095843481806661e-15,
+        "original_dimension_delta_fractions": [
+          2.220446049250313e-16,
+          2.220446049250313e-16,
+          7.771561172376096e-16
+        ],
+        "original_uv_changed_count": 0
+      },
+      {
+        "part": "ArmorFoot_05",
+        "original_max_rest_displacement_fraction": 1.3978468570097316e-15,
+        "original_dimension_delta_fractions": [
+          0.0,
+          4.440892098500626e-16,
+          1.7763568394002505e-15
+        ],
+        "original_uv_changed_count": 0
+      },
+      {
+        "part": "ArmorHand_05",
+        "original_max_rest_displacement_fraction": 1.735483901366589e-14,
+        "original_dimension_delta_fractions": [
+          0.0,
+          2.886579864025407e-15,
+          9.992007221626409e-16
+        ],
+        "original_uv_changed_count": 0
+      },
+      {
+        "part": "ArmorHead_05",
+        "original_max_rest_displacement_fraction": 0.19293174720012224,
+        "original_dimension_delta_fractions": [
+          0.12511912153216798,
+          0.013127406831571875,
+          0.03562156597931043
+        ],
+        "original_uv_changed_count": 10
+      }
+    ],
+    "triangles": 740,
+    "surfaces": 5,
+    "uv_coordinates": 1647
+  },
+  "master_sha256": "dc634bf15dd2cfdff9772fdc32eeac9ed7b37ceb14954f0c8e8706fb33488cb0",
+  "triangles": 740,
+  "bones": 28,
+  "authored_uv_indices_weights_verified": true,
+  "five_packed_native_pngs_exact": true
+}

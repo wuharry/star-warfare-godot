@@ -23,7 +23,7 @@ ART = Path(__file__).resolve().parents[1]
 ROOT = ART.parents[2]
 REVIEWED = 'visually_reviewed_pending_user_selection'
 PRODUCTION_REVIEWED = 'generated_and_visually_checked_pending_user_review'
-SOURCE_AUDIT_SHA256 = '59b2d953748a0ecaf2995900a9f56332a9c45fb56a25ac98d547140a4a762ca0'
+SOURCE_AUDIT_SHA256 = '09c8c87c80868d9402db9f4fe25b491362677ef93a23d19bf9f18824a3b23983'
 APPROVED_CURRENT_SOURCES = {
     'scripts/core/game_state.gd': 'b1b36ce8073c9a47b4cc8e469b67520f2ad4066af3d65445448f31fbb53a60f0',
     'scripts/game/player.gd': '6b68ee86ffb5c407ea78e196598c6ddd7390170c69bd3619503f42769f7d3d49',
@@ -322,7 +322,7 @@ class Validator:
         if not self.check(row is not None, 'runtime_current_proof', did, 'Corresponding current six-armor proof is required'):
             return
         texture_names = {label: f'{label}_diffuse.png' for label in ('head', 'body', 'shoulder', 'hand', 'foot')}
-        if name == 'titan' and row.get('active_helmet_revision') in ('helmet_refinement_v3', 'helmet_refinement_v4'):
+        if name == 'titan' and row.get('active_helmet_revision') in ('helmet_refinement_v3', 'helmet_refinement_v4', 'helmet_refinement_v5'):
             config = self.load(ROOT / f'docs/art/{folder}/runtime_config.json')
             self.check(config.get('texture_files', {}).get('head') == 'titan_head_diffuse.png',
                        'runtime_refined_head_map', did, 'Refined Titan requires its verified canonical head atlas')

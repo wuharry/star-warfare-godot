@@ -133,8 +133,8 @@
     "Player visual IDs are read from equipped head/body/arms/legs catalog items and mapped to head/body/hand/foot mesh names. Backpack visual_id comes from the independently equipped bag and attaches to fly_bag.",
     "ArmorVisuals uses exact approved scene routes for IDs0-5, preserves existing Thunder6 and Cygni11 routes, and keeps the generic visual_id fallback. Replacements preserve original part node names, mesh Skin and transform for animation and mixed equipment.",
     "Re-audited the three current scripts after upstream difficulty/weapon updates and the bow look_at roll correction. GameState armor equip/bag functions and ArmorVisuals scene/part routes remain byte-exact. The backpack function only switches to per-surface restore_backpack_materials; bag visual_id, fly_bag attachment and transforms remain unchanged. The bow roll affects only arrow weapon alignment, outside armor/backpack mapping. Historical mapping evidence and the other seven audited function hashes remain unchanged. The procedural scabbard refresh call is also removed; armor/backpack mapping functions are unchanged.",
-    "Titan ID5 now uses helmet_refinement_v4, verified against the frozen original head with the explicit 35% head-count ceiling and original-total20% shape/UV ceilings. The current six-armor proof includes its 64 normal-renderer captures and independent projected visor coverage of 54.8105%. These asset changes do not modify the three audited mapping scripts, armor IDs, stats, skills or backpack routes."
+    "Re-audited the same three pinned current script versions: visual IDs 0-5 remain on approved armor routes, including Titan v5 at ID 5. Source function, visual route, original part/bone and independent bag evidence remain unchanged. Fresh shared delivery checks bind Titan native attempt 3, unchanged v4 UV/topology, and current normal-resource captures."
   ],
   "runtime_verification": "docs/art/armor_style_unification_v1/validate.json",
-  "runtime_verification_sha256": "9626caa187e26fa45ed74e52a7d2819dff60f9708348e359cd46e6e0485ba129"
+  "runtime_verification_sha256": "0eba10674bc6be968044dec37084495d20d89d31118827395cd1df4e09d77112"
 }

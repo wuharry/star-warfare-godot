@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 WORK = ROOT / "docs/art/titan_runtime_v1"
 LABELS = ("head", "body", "shoulder", "hand", "foot")
-REVISIONS = {"helmet_refinement_v3": 3, "helmet_refinement_v4": 4}
+REVISIONS = {"helmet_refinement_v3": 3, "helmet_refinement_v4": 4, "helmet_refinement_v5": 5}
 
 
 def digest(path):
@@ -93,7 +93,7 @@ def main():
     config = json.loads((WORK / "runtime_config.json").read_text(encoding="utf-8"))
     revision = config.get("active_helmet_revision")
     if revision not in REVISIONS:
-        parser.error("Only helmet_refinement_v3 and helmet_refinement_v4 are supported")
+        parser.error("Only helmet_refinement_v3, helmet_refinement_v4 and helmet_refinement_v5 are supported")
     if not config.get("head_refinement"):
         parser.error("Titan refinement guard requires the existing head_refinement contract")
 
