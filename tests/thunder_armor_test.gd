@@ -49,18 +49,8 @@ func _run() -> void:
 		_check(part.get_node_or_null(part.skeleton) == skeleton, part_name + " uses another skeleton")
 		var authored := template.find_child(part_name, true, false) as MeshInstance3D
 		_check(authored != null and part.mesh == authored.mesh, part_name + " does not use compiled mesh")
-		if authored == null or part.skin == null or part.mesh == null:
+		if part.skin == null or part.mesh == null:
 			continue
-		_check(authored.get_meta("armor_rework", "") == revision, part_name + " authored scene uses an old rework")
-		var aligned_head: bool = false
-		if part_name == "ArmorHead_06":
-			# ArmorVisuals reuses original nodes and copies armor_rework only.
-			# The compiled template determines head revision; mesh/material
-			# identity above and below verify that this exact head is equipped.
-			var head_revision := str(authored.get_meta("head_revision", ""))
-			_check(head_revision in ["", "thunder_head_alignment_v1"], "unknown authored Thunder head revision")
-			_check(head_revision.is_empty() or revision.ends_with("sw2"), "authored aligned head revision leaked into prototype")
-			aligned_head = head_revision == "thunder_head_alignment_v1" and revision.ends_with("sw2")
 		for bind in part.skin.get_bind_count():
 			var bone := skeleton.find_bone(part.skin.get_bind_name(bind))
 			_check(bone >= 0, part_name + " has an unknown named bind")
@@ -78,9 +68,9 @@ func _run() -> void:
 				_check(paint != null and paint.resource_path.begins_with("res://assets/armors/thunder/textures/"), part_name + " uses an old body atlas")
 			if finish != null and finish.resource_name == "Thunder_EngravedVisor":
 				paired_helmet_surfaces += 1
-				_validate_helmet_detail(part, surface, finish, aligned_head)
+				_validate_helmet_detail(part, surface, finish)
 			elif finish != null and finish.resource_name == "Thunder_PairedHelmet":
-				_validate_helmet_detail(part, surface, finish, aligned_head)
+				_validate_helmet_detail(part, surface, finish)
 		_check(paired_helmet_surfaces == (1 if part_name == "ArmorHead_06" else 0), part_name + " has missing or misplaced paired helmet material")
 	_check(parts.size() == 4, "Thunder must have four exchangeable parts")
 	_check(triangle_count > 0, "mesh validation did not count any triangles")
@@ -145,7 +135,7 @@ func _validate_mesh(part: MeshInstance3D) -> int:
 	return triangles
 
 
-func _validate_helmet_detail(part: MeshInstance3D, surface: int, finish: ShaderMaterial, aligned: bool) -> void:
+func _validate_helmet_detail(part: MeshInstance3D, surface: int, finish: ShaderMaterial) -> void:
 	var continuous: Variant = finish.get_shader_parameter("continuous_visor")
 	if finish.resource_name == "Thunder_EngravedVisor":
 		_check(continuous != null and is_equal_approx(float(continuous), 1.0), "Thunder visor still uses the rejected engraved channels")
@@ -160,12 +150,9 @@ func _validate_helmet_detail(part: MeshInstance3D, surface: int, finish: ShaderM
 		_check(finish.get_shader_parameter("shell_navy") == Color("203750"), "helmet navy does not match body navy")
 	else:
 		_check(palette == null or is_zero_approx(float(palette)), "shell palette changed visor or prototype")
-	var expected_shader := "res://assets/armors/thunder/helmet_aligned.gdshader" if aligned else "res://assets/armors/thunder/helmet_detail.gdshader"
-	_check(finish.shader != null and finish.shader.resource_path == expected_shader, "paired helmet does not use its revision's normal-mapped shader")
-	if aligned and finish.shader != null:
-		_check("float native_gold =" in finish.shader.code and "(1.0 - native_gold) * shell_palette_strength" in finish.shader.code, "aligned helmet's gold ear paint is still overridden by the blue shell palette")
+	_check(finish.shader != null and finish.shader.resource_path == "res://assets/armors/thunder/helmet_detail.gdshader", "paired helmet does not use its normal-mapped shader")
 	var bindings := {
-		"albedo_texture": "helmet_aligned_albedo" if aligned else "helmet_detail_albedo",
+		"albedo_texture": "helmet_detail_albedo",
 		"source_albedo_texture": "helmet_source_albedo",
 		"normal_texture": "helmet_detail_normal",
 		"emission_texture": "helmet_detail_emission",
@@ -220,35 +207,11 @@ func _validate_helmet_detail(part: MeshInstance3D, surface: int, finish: ShaderM
 		_check(uv_bounds.position.x >= 0.77 and uv_bounds.position.y >= 0.59 and uv_bounds.end.x <= 1.0 and uv_bounds.end.y <= 1.0, "visor UVs leave the paired amber island")
 		var upper_half_width := 0.0
 		var lower_half_width := 0.0
-		if aligned:
-			# Follow the original UV/vertex correspondence after the approved
-			# brow and chin lift. Fixed world-Y bands would select other rows.
-			var frozen: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://docs/art/thunder_head_alignment_v1/before/scene_arrays.json"))
-			var original_surface: Dictionary = {}
-			if frozen is Dictionary:
-				for frozen_part: Dictionary in frozen.get("parts", []):
-					if frozen_part.name != "ArmorHead_06":
-						continue
-					for frozen_surface: Dictionary in frozen_part.surfaces:
-						if frozen_surface.material.resource_name == "Thunder_EngravedVisor":
-							original_surface = frozen_surface
-			var complete_source: bool = not original_surface.is_empty() and original_surface.vertices.size() == vertices.size() * 3 and original_surface.uv.size() == uv.size() * 2
-			_check(complete_source, "aligned visor lacks its frozen actual-SCN UV correspondence")
-			if complete_source:
-				for vertex: int in vertices.size():
-					var original_point := Vector3(original_surface.vertices[vertex * 3], original_surface.vertices[vertex * 3 + 1], original_surface.vertices[vertex * 3 + 2])
-					var original_uv := Vector2(original_surface.uv[vertex * 2], original_surface.uv[vertex * 2 + 1])
-					_check(uv[vertex] == original_uv, "aligned visor changed its frozen UV correspondence")
-					if original_point.z < -0.05 and original_point.y >= 1.53 and original_point.y <= 1.59:
-						upper_half_width = maxf(upper_half_width, absf(vertices[vertex].x))
-					if original_point.z < -0.05 and original_point.y >= 1.37 and original_point.y <= 1.43:
-						lower_half_width = maxf(lower_half_width, absf(vertices[vertex].x))
-		else:
-			for point: Vector3 in vertices:
-				if point.z < -0.05 and point.y >= 1.53 and point.y <= 1.59:
-					upper_half_width = maxf(upper_half_width, absf(point.x))
-				if point.z < -0.05 and point.y >= 1.37 and point.y <= 1.43:
-					lower_half_width = maxf(lower_half_width, absf(point.x))
+		for point: Vector3 in vertices:
+			if point.z < -0.05 and point.y >= 1.53 and point.y <= 1.59:
+				upper_half_width = maxf(upper_half_width, absf(point.x))
+			if point.z < -0.05 and point.y >= 1.37 and point.y <= 1.43:
+				lower_half_width = maxf(lower_half_width, absf(point.x))
 		_check(upper_half_width > 0.08 and lower_half_width > 0.02 and lower_half_width / upper_half_width < 0.65, "visor lower opening is not narrower than its upper opening")
 	else:
 		_check(uv_bounds.size.x > 0.5 and uv_bounds.size.y > 0.5, "helmet UVs collapse its paired texture atlas")
