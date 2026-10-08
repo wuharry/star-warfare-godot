@@ -11,6 +11,8 @@ const REWORKED_SCENES := {
 	4: "res://assets/armors/strike_v1/strike.scn",
 	5: "res://assets/armors/titan_v1/titan.scn",
 	6: "res://assets/armors/thunder/thunder.scn",
+	7: "res://assets/armors/atom_v1/atom.scn",
+	8: "res://assets/armors/pegasus_v1/pegasus.scn",
 	11: "res://assets/armors/cygni_v2/cygni.scn",
 }
 

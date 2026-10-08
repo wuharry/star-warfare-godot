@@ -1,0 +1,132 @@
+{
+  "status": "FROZEN_TRUE_ORIGINAL_SOURCE",
+  "created_at_utc": "2026-10-08T15:02:20.813874+00:00",
+  "runtime_id": 7,
+  "used_nodes": [
+    "ArmorHead_07",
+    "ArmorBody_07",
+    "ArmorHand_07",
+    "ArmorFoot_07"
+  ],
+  "original_scene": "res://assets/models/player/animated/player.gltf",
+  "original_scene_sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
+  "files": {
+    "source.json": {
+      "source": "docs/art/atom_runtime_v1/build/source.json",
+      "sha256": "9301bc56cebea872d086c8ad31308b11537d210cb0629916ff93eefe34b04c43",
+      "bytes": 559350
+    },
+    "scripts/inspect_sources.gd": {
+      "source": "tools/armor_runtime_v1/inspect_sources.gd",
+      "sha256": "4a1c1e291b0c9a330dfbca87495cb412eff8b582dfee0de24bfe567dc3bdccc9",
+      "bytes": 4861
+    },
+    "atlases/shoulder.png": {
+      "source": "assets/models/player/animated/armor_textures/jian_aa13458c0049_2x.png",
+      "sha256": "70aa31f956d00d4d7847de840f3be6fea0a7d06ba41d90fd34d04d93ef863d47",
+      "bytes": 355617
+    },
+    "guides/shoulder_uv.svg": {
+      "source": "docs/art/atom_runtime_v1/guides/shoulder_uv.svg",
+      "sha256": "2497deadf442ae26aa8383130f53697441bae6d5dc76dcb4152c9e71146e3668",
+      "bytes": 18450
+    },
+    "atlases/body.png": {
+      "source": "assets/models/player/animated/armor_textures/body_1b6b8f34e05d_2x.png",
+      "sha256": "2ee571cd15d4bad6e003bfbbda1a913fd7847f736b23428e4ba1bb4bb3f1908f",
+      "bytes": 356427
+    },
+    "guides/body_uv.svg": {
+      "source": "docs/art/atom_runtime_v1/guides/body_uv.svg",
+      "sha256": "4050c3846aa5580bc78264161e9ced5c6936248340d701b33f4b51684b15df78",
+      "bytes": 28106
+    },
+    "atlases/foot.png": {
+      "source": "assets/models/player/animated/armor_textures/foot_2d50e768959c_2x.png",
+      "sha256": "05309542695bc332278871c11f415b4dfc3c6b8e08f58fa5183f36ebac7517a7",
+      "bytes": 352719
+    },
+    "guides/foot_uv.svg": {
+      "source": "docs/art/atom_runtime_v1/guides/foot_uv.svg",
+      "sha256": "047c6dc89ea303209e79a77128c71f259f5b47f91b2b93566a6130f83351f9d9",
+      "bytes": 17942
+    },
+    "atlases/hand.png": {
+      "source": "assets/models/player/animated/armor_textures/hand_0fc9da36fa37_2x.png",
+      "sha256": "a8ae7a58c8536045fe8ff6a423a155723d9b387414d73033401498001fff368a",
+      "bytes": 317401
+    },
+    "guides/hand_uv.svg": {
+      "source": "docs/art/atom_runtime_v1/guides/hand_uv.svg",
+      "sha256": "119da742ac15b55611692d8dc0aa3bbc35a2117a8339fefa4a80233454221ca5",
+      "bytes": 16354
+    },
+    "atlases/head.png": {
+      "source": "assets/models/player/animated/armor_textures/head_bb67000287dd_2x.png",
+      "sha256": "2fca1535c7ff1c03a0b915ec4609f700009b8c9326754e60a5a28763f2f228dc",
+      "bytes": 365968
+    },
+    "guides/head_uv.svg": {
+      "source": "docs/art/atom_runtime_v1/guides/head_uv.svg",
+      "sha256": "1c1b363ba44221bf2c8bcfcf06f439ff5f61ad1cd10b29bf19448df986141695",
+      "bytes": 32304
+    },
+    "runtime_config.json": {
+      "source": "docs/art/atom_runtime_v1/runtime_config.json",
+      "sha256": "105d2a7f889c169b6ac954a116040c43c1c2abe251b9a67dafed14dcab8e5fef",
+      "bytes": 3621
+    }
+  },
+  "texture_slots": {
+    "shoulder": {
+      "node": "ArmorBody_07",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/jian_aa13458c0049_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+      "original_sha256": "70aa31f956d00d4d7847de840f3be6fea0a7d06ba41d90fd34d04d93ef863d47",
+      "coordinates": 130,
+      "charts": 5,
+      "triangles": 140
+    },
+    "body": {
+      "node": "ArmorBody_07",
+      "surface": 1,
+      "original_texture": "assets/models/player/animated/armor_textures/body_1b6b8f34e05d_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/body.png",
+      "original_sha256": "2ee571cd15d4bad6e003bfbbda1a913fd7847f736b23428e4ba1bb4bb3f1908f",
+      "coordinates": 210,
+      "charts": 5,
+      "triangles": 214
+    },
+    "foot": {
+      "node": "ArmorFoot_07",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/foot_2d50e768959c_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+      "original_sha256": "05309542695bc332278871c11f415b4dfc3c6b8e08f58fa5183f36ebac7517a7",
+      "coordinates": 122,
+      "charts": 4,
+      "triangles": 136
+    },
+    "hand": {
+      "node": "ArmorHand_07",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/hand_0fc9da36fa37_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+      "original_sha256": "a8ae7a58c8536045fe8ff6a423a155723d9b387414d73033401498001fff368a",
+      "coordinates": 118,
+      "charts": 3,
+      "triangles": 124
+    },
+    "head": {
+      "node": "ArmorHead_07",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/head_bb67000287dd_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/head.png",
+      "original_sha256": "2fca1535c7ff1c03a0b915ec4609f700009b8c9326754e60a5a28763f2f228dc",
+      "coordinates": 192,
+      "charts": 4,
+      "triangles": 246
+    }
+  }
+}

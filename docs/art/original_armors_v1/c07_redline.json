@@ -264,7 +264,7 @@
   },
   "helmet_art": {
     "path": "../fusion_v2_generated/c07_thunder_fusion.jpg",
-    "label": "Thunder · 新版頭盔",
+    "label": "Thunder · 歷史頭盔參考",
     "source_commit": "25f11d9a52ab1bc2c4f63dc509f1fcb0943589f5",
     "source_repo_path": "docs/art/fusion_v2_generated/c07_thunder_fusion.jpg",
     "sha256": "c5e647dfc186e63bf529be00fd6796489c3819a74c76a469c6d1ec1907e7b4e1",
@@ -274,14 +274,28 @@
     ],
     "bytes": 607737,
     "scope": "helmet_only",
-    "status": "user_requested_helmet_reference",
+    "status": "historical_superseded_by_original_based_head",
     "date_added": "2026-10-02",
-    "note": "以這張圖的頭盔作本次修改參考；可切換全身原圖。既有全身概念、三視與拆解尚未同步這次頭盔。",
+    "note": "歷史來源保留；最新使用者要求以真正原版 Thunder 頭部生成素材，已由 original_based_runtime 所連結的本輪原版基底頭部取代，不再作目前頭盔設計權威。既有身甲偏好概念可作保留身甲參考。",
     "visual_review": "已目視：藍金配色、後掠中央冠脊、金框圓耳、連續橙金面窗與短護頰。來源為使用者指定提交中的完整人物 JPG；本次直接引用原檔，沒有合成或重新生成。",
     "generation": {
       "tool": null,
       "prompt": null,
       "status": "not_recorded_in_source_commit"
     }
+  },
+  "original_based_runtime": {
+    "status": "runtime_integrated_pending_user_art_review",
+    "scope": "visual_assets_only_stats_and_abilities_remain_proposals",
+    "runtime_id": 6,
+    "date": "2026-10-09",
+    "scene": "assets/armors/thunder/thunder.scn",
+    "scene_sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7",
+    "comparison_page": "../armor_original_based_v2/index.html#thunder",
+    "manifest": "../thunder_original_v2/manifest.json",
+    "manifest_sha256": "a28ad071fc88598e07187151ecc861a9714edf6b91b7b06dd2ad4b645f04af48",
+    "original_based": true,
+    "art_acceptance": "pending_user_review",
+    "note": "以真正原版 Thunder 頭部重新生成貼圖；修改前身甲保留。"
   }
 }

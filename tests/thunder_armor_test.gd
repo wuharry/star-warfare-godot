@@ -4,6 +4,7 @@ const Visuals = preload("res://scripts/game/armor_visuals.gd")
 const Catalog = preload("res://scripts/core/armor_catalog.gd")
 var scene_path := Visuals.reworked_scene_path(6)
 var revision := "thunder_helmet_v5_prototype" if "--thunder-helmet=prototype" in OS.get_cmdline_user_args() else "thunder_helmet_v5_sw2"
+var original_head_default := scene_path == "res://assets/armors/thunder/thunder.scn"
 var failures: Array[String] = []
 
 
@@ -44,7 +45,7 @@ func _run() -> void:
 		if part == null:
 			continue
 		parts.append(part)
-		_check(part.get_meta("armor_rework", "") == revision, part_name + " uses an old rework")
+		_check(part.get_meta("armor_rework", "") == _expected_revision(part_name), part_name + " uses an old rework")
 		_check(part.visible and part.skin != null, part_name + " is hidden or has no skin")
 		_check(part.get_node_or_null(part.skeleton) == skeleton, part_name + " uses another skeleton")
 		var authored := template.find_child(part_name, true, false) as MeshInstance3D
@@ -56,7 +57,8 @@ func _run() -> void:
 			_check(bone >= 0, part_name + " has an unknown named bind")
 			if bone >= 0:
 				var identity := skeleton.get_bone_global_rest(bone) * part.skin.get_bind_pose(bind)
-				_check(identity.is_equal_approx(Transform3D.IDENTITY), part_name + " changes the skeleton rest pose")
+				if not (original_head_default and part_name == "ArmorHead_06"):
+					_check(identity.is_equal_approx(Transform3D.IDENTITY), part_name + " changes the skeleton rest pose")
 		triangle_count += _validate_mesh(part)
 		var paired_helmet_surfaces := 0
 		for surface in part.mesh.get_surface_count():
@@ -71,7 +73,10 @@ func _run() -> void:
 				_validate_helmet_detail(part, surface, finish)
 			elif finish != null and finish.resource_name == "Thunder_PairedHelmet":
 				_validate_helmet_detail(part, surface, finish)
-		_check(paired_helmet_surfaces == (1 if part_name == "ArmorHead_06" else 0), part_name + " has missing or misplaced paired helmet material")
+		var expected_paired := 1 if part_name == "ArmorHead_06" and not original_head_default else 0
+		_check(paired_helmet_surfaces == expected_paired, part_name + " has missing or misplaced paired helmet material")
+		if original_head_default and part_name == "ArmorHead_06":
+			_validate_original_helmet(part)
 	_check(parts.size() == 4, "Thunder must have four exchangeable parts")
 	_check(triangle_count > 0, "mesh validation did not count any triangles")
 	_check_visible(avatar, ["ArmorHead_06", "ArmorBody_06", "ArmorHand_06", "ArmorFoot_06"])
@@ -133,6 +138,50 @@ func _validate_mesh(part: MeshInstance3D) -> int:
 				total += weights[index]
 			_check(absf(total - 1.0) < 0.0001, str(part.name) + " has unnormalized weights")
 	return triangles
+
+
+func _expected_revision(part_name: String) -> String:
+	return "thunder_original_head_v2" if original_head_default and part_name == "ArmorHead_06" else revision
+
+
+func _validate_original_helmet(part: MeshInstance3D) -> void:
+	# Detailed source/body raw-buffer invariants and moving reload are covered
+	# by thunder_original_v2_test.tscn. Keep the historical alternate assertions
+	# below intact; only the actual new default takes this dedicated branch.
+	_check(part.mesh.get_surface_count() == 1, "default Thunder must retain the original single head surface")
+	_check(part.skin.get_bind_count() == 28, "default Thunder changed original head Skin bind count")
+	# Original glTF bind-space includes its source-axis conversion; unlike
+	# authored SW2 rest-space vertices, its bind transform is not identity.
+	var original := (load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate() as Node3D
+	var source_head := original.find_child("ArmorHead_06", true, false) as MeshInstance3D
+	_check(part.transform == source_head.transform, "default Thunder changed original head transform")
+	if part.skin.get_bind_count() == source_head.skin.get_bind_count():
+		for bind: int in source_head.skin.get_bind_count():
+			_check(part.skin.get_bind_name(bind) == source_head.skin.get_bind_name(bind) and part.skin.get_bind_bone(bind) == source_head.skin.get_bind_bone(bind) and part.skin.get_bind_pose(bind) == source_head.skin.get_bind_pose(bind), "default Thunder changed original head Skin bind")
+	original.free()
+	if part.mesh.get_surface_count() != 1:
+		return
+	var arrays := part.mesh.surface_get_arrays(0)
+	_check(arrays[Mesh.ARRAY_VERTEX].size() == 147 and arrays[Mesh.ARRAY_TEX_UV].size() == 147, "default Thunder changed original 147 head vertices/UVs")
+	_check(arrays[Mesh.ARRAY_INDEX] != null and arrays[Mesh.ARRAY_INDEX].size() == 196 * 3, "default Thunder changed original 196 head triangles")
+	var finish := part.get_active_material(0) as ShaderMaterial
+	_check(finish != null and finish.resource_name == "ThunderOriginalHeadV2", "default Thunder is missing its original-head paint material")
+	if finish == null:
+		return
+	_check(finish.shader != null and "render_mode unshaded, cull_disabled;" in finish.shader.code and "ALBEDO = texture(albedo_texture, UV).rgb;" in finish.shader.code, "default Thunder does not retain the original unlit diffuse rendering")
+	var texture := finish.get_shader_parameter("albedo_texture") as Texture2D
+	_check(texture != null and texture.resource_path == "res://assets/armors/thunder/textures/original_head_v2.res", "default Thunder loads the wrong new head atlas")
+	if texture == null:
+		return
+	var source := Image.new()
+	var decoded := source.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/armors/thunder/textures/original_head_v2.png"))
+	_check(decoded == OK, "cannot decode original-head native PNG")
+	var runtime := texture.get_image()
+	_check(runtime != null and not runtime.is_empty(), "default Thunder has no runtime head pixels")
+	if decoded != OK or runtime == null or runtime.is_empty():
+		return
+	_check(runtime.get_format() == source.get_format() and runtime.get_size() == source.get_size() and runtime.get_data() == source.get_data(), "default Thunder portable head texture changed native pixels")
+	_check(not runtime.has_mipmaps() and not runtime.is_compressed(), "default Thunder changed native head image channels")
 
 
 func _validate_helmet_detail(part: MeshInstance3D, surface: int, finish: ShaderMaterial) -> void:
@@ -233,7 +282,7 @@ func _validate_store_preview(template: Node3D) -> void:
 			_check(preview != null and preview.visible, mode + " preview is missing " + part_name)
 			if preview == null:
 				continue
-			_check(preview.get_meta("armor_rework", "") == revision and preview.mesh == authored.mesh, mode + " preview uses old " + part_name)
+			_check(preview.get_meta("armor_rework", "") == _expected_revision(part_name) and preview.mesh == authored.mesh, mode + " preview uses old " + part_name)
 			for surface in preview.mesh.get_surface_count():
 				_check(preview.get_active_material(surface) == authored.get_active_material(surface), mode + " preview overwrote " + part_name + " material")
 	shell.queue_free()

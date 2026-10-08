@@ -1,0 +1,59 @@
+{
+	"current_scene_sha256": "971733e8ab5da401c32cb81eb6f858075ed15d2c1a81370732c51061ded65cf4",
+	"errors": [],
+	"geometry_sha256": "752d22b6dbaa04380a5fff7308b2d9a0813265634829a819455bd452144a3581",
+	"original_bones": 28,
+	"original_node_ids": {
+		"ArmorBody_08": 63.0,
+		"ArmorFoot_08": 65.0,
+		"ArmorHand_08": 64.0,
+		"ArmorHead_08": 62.0
+	},
+	"original_source_snapshot_sha256": "6866d0c6e0096aac19df0dbb966c407054776de26523d198d2031007e9209ed5",
+	"records": [
+		{
+			"body_limbs_all_arrays_exact": true,
+			"indices_skin_weights_bones_topology_exact": true,
+			"max_rest_error_m": 0.0,
+			"original_indices_skin_weights_topology_exact": true,
+			"part": "ArmorBody_08",
+			"refinement_contract_verified": null,
+			"rest_position_uv_verified_against_target": true,
+			"surfaces": 2
+		},
+		{
+			"body_limbs_all_arrays_exact": true,
+			"indices_skin_weights_bones_topology_exact": true,
+			"max_rest_error_m": 0.0,
+			"original_indices_skin_weights_topology_exact": true,
+			"part": "ArmorFoot_08",
+			"refinement_contract_verified": null,
+			"rest_position_uv_verified_against_target": true,
+			"surfaces": 1
+		},
+		{
+			"body_limbs_all_arrays_exact": true,
+			"indices_skin_weights_bones_topology_exact": true,
+			"max_rest_error_m": 0.0,
+			"original_indices_skin_weights_topology_exact": true,
+			"part": "ArmorHand_08",
+			"refinement_contract_verified": null,
+			"rest_position_uv_verified_against_target": true,
+			"surfaces": 1
+		},
+		{
+			"body_limbs_all_arrays_exact": null,
+			"indices_skin_weights_bones_topology_exact": true,
+			"max_rest_error_m": 0.0,
+			"original_indices_skin_weights_topology_exact": true,
+			"part": "ArmorHead_08",
+			"refinement_contract_verified": null,
+			"rest_position_uv_verified_against_target": true,
+			"surfaces": 1
+		}
+	],
+	"scope": "Actual SCN versus current original player.gltf. Body/limb arrays and all skin binds exact; explicit head subdivision budget, parent weights, UVs and authored rest positions checked.",
+	"source_sha256": "0575a8b0c0b5674f0770636ea8d4520af3b8242253ffe2adfeeb594010f68b64",
+	"status": "PASS",
+	"target_sha256": "3ca1147883913e43bd13ab860fdbf8563f1baab1ab90cfb3ea42814d360482b0"
+}

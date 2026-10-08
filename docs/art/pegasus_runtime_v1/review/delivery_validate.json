@@ -1,0 +1,280 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "scope": "Read-only first-integration packed master, true original indices/weights/rig and original-total20% geometry/UV. No artistic likeness score.",
+  "master": "docs/art/pegasus_runtime_v1/build/pegasus_master.blend",
+  "master_sha256": "a01e1559b3548a69ccfec86584af3d0e87f44e3d22963b3a725e33c514d9d324",
+  "loaded_master": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\pegasus_runtime_v1\\build\\pegasus_master.blend",
+  "source_sha256": "0575a8b0c0b5674f0770636ea8d4520af3b8242253ffe2adfeeb594010f68b64",
+  "target_sha256": "3ca1147883913e43bd13ab860fdbf8563f1baab1ab90cfb3ea42814d360482b0",
+  "geometry_sha256": "752d22b6dbaa04380a5fff7308b2d9a0813265634829a819455bd452144a3581",
+  "blender": "5.1.0",
+  "original_source_snapshot_sha256": "6866d0c6e0096aac19df0dbb966c407054776de26523d198d2031007e9209ed5",
+  "original_node_ids": {
+    "ArmorHead_08": 62,
+    "ArmorBody_08": 63,
+    "ArmorHand_08": 64,
+    "ArmorFoot_08": 65
+  },
+  "mesh_count": 4,
+  "surface_count": 5,
+  "bone_count": 28,
+  "actual_mesh_names": [
+    "ArmorBody_08",
+    "ArmorFoot_08",
+    "ArmorHand_08",
+    "ArmorHead_08"
+  ],
+  "expected_mesh_names": [
+    "ArmorBody_08",
+    "ArmorFoot_08",
+    "ArmorHand_08",
+    "ArmorHead_08"
+  ],
+  "triangle_count": 1128,
+  "packed_diffuse_count": 5,
+  "original_uv_coordinate_count": 1096,
+  "changed_uv_coordinate_count": 0,
+  "changed_uv_coordinate_fraction": 0.0,
+  "uv_count_limit": 0.2,
+  "uv_count_scope": "per_material_surface",
+  "local_geometry_change_limit": 0.2,
+  "original_topology_indices_weights_rig_verified": true,
+  "original_metrics": {
+    "original_measurements": [
+      {
+        "part": "ArmorBody_08",
+        "original_total_limit": 0.2,
+        "original_max_rest_displacement_fraction": 0.0,
+        "original_dimension_delta_fractions": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original_uv_changed_fraction": 0.0,
+        "surfaces": [
+          {
+            "surface": 0,
+            "label": "body",
+            "uv_coordinate_count": 348,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          },
+          {
+            "surface": 1,
+            "label": "shoulder",
+            "uv_coordinate_count": 202,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
+      },
+      {
+        "part": "ArmorFoot_08",
+        "original_total_limit": 0.2,
+        "original_max_rest_displacement_fraction": 0.0,
+        "original_dimension_delta_fractions": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original_uv_changed_fraction": 0.0,
+        "surfaces": [
+          {
+            "surface": 0,
+            "label": "foot",
+            "uv_coordinate_count": 226,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
+      },
+      {
+        "part": "ArmorHand_08",
+        "original_total_limit": 0.2,
+        "original_max_rest_displacement_fraction": 0.0,
+        "original_dimension_delta_fractions": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original_uv_changed_fraction": 0.0,
+        "surfaces": [
+          {
+            "surface": 0,
+            "label": "hand",
+            "uv_coordinate_count": 148,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
+      },
+      {
+        "part": "ArmorHead_08",
+        "original_total_limit": 0.2,
+        "original_max_rest_displacement_fraction": 0.0,
+        "original_dimension_delta_fractions": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original_uv_changed_fraction": 0.0,
+        "surfaces": [
+          {
+            "surface": 0,
+            "label": "head",
+            "uv_coordinate_count": 172,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
+      }
+    ],
+    "triangles": 1128,
+    "surfaces": 5,
+    "uv_coordinates": 1096,
+    "uv_charts": 19
+  },
+  "meshes": [
+    {
+      "name": "ArmorBody_08",
+      "vertices": 550,
+      "triangles": 520,
+      "surfaces": 2,
+      "maximum_master_position_error_from_authored": 0.0,
+      "maximum_master_uv_error_from_authored": 6.280369834735101e-16,
+      "maximum_original_weight_error": 4.996003610813204e-16,
+      "original_topology_indices_material_assignments_verified": true,
+      "uv_by_surface": [
+        {
+          "surface": 0,
+          "label": "body",
+          "original_uv_coordinates": 348,
+          "changed_uv_coordinates": 0,
+          "changed_uv_coordinate_fraction": 0.0
+        },
+        {
+          "surface": 1,
+          "label": "shoulder",
+          "original_uv_coordinates": 202,
+          "changed_uv_coordinates": 0,
+          "changed_uv_coordinate_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "name": "ArmorFoot_08",
+      "vertices": 226,
+      "triangles": 244,
+      "surfaces": 1,
+      "maximum_master_position_error_from_authored": 0.0,
+      "maximum_master_uv_error_from_authored": 6.684427777288335e-16,
+      "maximum_original_weight_error": 2.7755575615628914e-16,
+      "original_topology_indices_material_assignments_verified": true,
+      "uv_by_surface": [
+        {
+          "surface": 0,
+          "label": "foot",
+          "original_uv_coordinates": 226,
+          "changed_uv_coordinates": 0,
+          "changed_uv_coordinate_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "name": "ArmorHand_08",
+      "vertices": 148,
+      "triangles": 148,
+      "surfaces": 1,
+      "maximum_master_position_error_from_authored": 0.0,
+      "maximum_master_uv_error_from_authored": 6.183017822721088e-16,
+      "maximum_original_weight_error": 2.7755575615628914e-16,
+      "original_topology_indices_material_assignments_verified": true,
+      "uv_by_surface": [
+        {
+          "surface": 0,
+          "label": "hand",
+          "original_uv_coordinates": 148,
+          "changed_uv_coordinates": 0,
+          "changed_uv_coordinate_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "name": "ArmorHead_08",
+      "vertices": 172,
+      "triangles": 216,
+      "surfaces": 1,
+      "maximum_master_position_error_from_authored": 0.0,
+      "maximum_master_uv_error_from_authored": 6.938893903907228e-16,
+      "maximum_original_weight_error": 0.0,
+      "original_topology_indices_material_assignments_verified": true,
+      "uv_by_surface": [
+        {
+          "surface": 0,
+          "label": "head",
+          "original_uv_coordinates": 172,
+          "changed_uv_coordinates": 0,
+          "changed_uv_coordinate_fraction": 0.0
+        }
+      ]
+    }
+  ],
+  "images": {
+    "body": {
+      "material": "body",
+      "image": "body_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "canonical_sha256": "2b1b18f1644dc9a21c08147d2831eb87d9bd5d841655502a70b728ebd20e510d",
+      "packed_sha256": "2b1b18f1644dc9a21c08147d2831eb87d9bd5d841655502a70b728ebd20e510d",
+      "byte_identical": true
+    },
+    "shoulder": {
+      "material": "shoulder",
+      "image": "shoulder_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "canonical_sha256": "7848f6b144f11cb446bc10def77646a3951ea59c9952080597d13e56bb806a19",
+      "packed_sha256": "7848f6b144f11cb446bc10def77646a3951ea59c9952080597d13e56bb806a19",
+      "byte_identical": true
+    },
+    "foot": {
+      "material": "foot",
+      "image": "foot_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "canonical_sha256": "61d40e0ad0a52bbbf6a11981541b1a0b8f11b6b6fbd1c73b06ededcc4f6fe48c",
+      "packed_sha256": "61d40e0ad0a52bbbf6a11981541b1a0b8f11b6b6fbd1c73b06ededcc4f6fe48c",
+      "byte_identical": true
+    },
+    "hand": {
+      "material": "hand",
+      "image": "hand_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "canonical_sha256": "596f8e8095ae38728b15af92b938e9210371038e69a43636afd41c93722347eb",
+      "packed_sha256": "596f8e8095ae38728b15af92b938e9210371038e69a43636afd41c93722347eb",
+      "byte_identical": true
+    },
+    "head": {
+      "material": "head",
+      "image": "head_diffuse.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "canonical_sha256": "3db5d7e5daec768592cba87259a0fee66ad1fbf4a2e48b358254bdc27bd61f8b",
+      "packed_sha256": "3db5d7e5daec768592cba87259a0fee66ad1fbf4a2e48b358254bdc27bd61f8b",
+      "byte_identical": true
+    }
+  }
+}

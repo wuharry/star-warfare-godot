@@ -2,6 +2,7 @@ extends SceneTree
 
 var WORK := ""
 const ARMORS := {3:"hydra",4:"strike",5:"titan"}
+const ADDITIONAL_ARMORS := {7:"atom",8:"pegasus"}
 
 func _initialize() -> void:
 	_run.call_deferred()
@@ -11,8 +12,18 @@ func _run() -> void:
 	var source := (load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate()
 	root.add_child(source)
 	var sk := source.find_children("*", "Skeleton3D", true, false)[0] as Skeleton3D
-	for id: int in ARMORS:
-		WORK="res://docs/art/"+str(ARMORS[id])+"_runtime_v1/build/"
+	var selected: Dictionary = ARMORS.duplicate()
+	for argument: String in OS.get_cmdline_user_args():
+		if argument.begins_with("--armor="):
+			var requested := argument.trim_prefix("--armor=")
+			selected.clear()
+			var available := ARMORS.duplicate()
+			available.merge(ADDITIONAL_ARMORS)
+			for id: int in available:
+				if available[id] == requested:selected[id] = requested
+			assert(not selected.is_empty(), "Unsupported original armor: "+requested)
+	for id: int in selected:
+		WORK="res://docs/art/"+str(selected[id])+"_runtime_v1/build/"
 		DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(WORK))
 		_export(source,sk,id)
 	source.free()
@@ -63,4 +74,5 @@ func _export(source: Node, sk: Skeleton3D, id: int) -> void:
 		data.parts[name_key] = {"surfaces": surfaces, "skin_binds": part.skin.get_bind_count(), "bind_records":bind_records, "original_node_path":str(source.get_path_to(part)), "skeleton_path":str(part.skeleton), "transform":[[part.transform.basis.x.x,part.transform.basis.y.x,part.transform.basis.z.x,part.transform.origin.x],[part.transform.basis.x.y,part.transform.basis.y.y,part.transform.basis.z.y,part.transform.origin.y],[part.transform.basis.x.z,part.transform.basis.y.z,part.transform.basis.z.z,part.transform.origin.z],[0,0,0,1]]}
 	var file := FileAccess.open(WORK+"source.json",FileAccess.WRITE)
 	file.store_string(JSON.stringify(data,"\t"))
-	print("ARMOR_SOURCE_PASS id=%d name=%s bones=%d parts=%d" % [id,ARMORS[id],data.bones.size(),data.parts.size()])
+	var name_key: String = str(ARMORS.get(id, ADDITIONAL_ARMORS.get(id, "unknown")))
+	print("ARMOR_SOURCE_PASS id=%d name=%s bones=%d parts=%d" % [id,name_key,data.bones.size(),data.parts.size()])

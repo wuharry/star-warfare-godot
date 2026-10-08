@@ -33,7 +33,7 @@ func _ready() -> void:
 func _run() -> void:
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--armor="):slug=argument.trim_prefix("--armor=")
-	assert(slug in ["hydra","strike","titan"])
+	assert(slug in ["hydra","strike","titan","atom","pegasus"])
 	config=JSON.parse_string(FileAccess.get_file_as_string("res://docs/art/"+slug+"_runtime_v1/runtime_config.json"))
 	id=int(config.runtime_id);LABELS=config.parts;NAMES.assign(config.parts.keys())
 	work_path="res://"+str(config.work)+"/";asset_path="res://"+str(config.asset)+"/"

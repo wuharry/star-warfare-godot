@@ -1,0 +1,104 @@
+{
+  "runtime_id": 7,
+  "design_id": "C-08",
+  "name": "Atom",
+  "slug": "atom",
+  "work": "docs/art/atom_runtime_v1",
+  "asset": "assets/armors/atom_v1",
+  "source": "docs/art/atom_runtime_v1/build/source.json",
+  "original_source_snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/snapshot.json",
+  "source_node_index": "docs/art/atom_runtime_v1/revisions/original_source_v1/source_node_index.json",
+  "original_node_ids": {
+    "ArmorHead_07": 58,
+    "ArmorBody_07": 59,
+    "ArmorHand_07": 60,
+    "ArmorFoot_07": 61
+  },
+  "parts": {
+    "ArmorBody_07": [
+      "shoulder",
+      "body"
+    ],
+    "ArmorFoot_07": [
+      "foot"
+    ],
+    "ArmorHand_07": [
+      "hand"
+    ],
+    "ArmorHead_07": [
+      "head"
+    ]
+  },
+  "texture_slots": {
+    "shoulder": {
+      "node": "ArmorBody_07",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/jian_aa13458c0049_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+      "original_sha256": "70aa31f956d00d4d7847de840f3be6fea0a7d06ba41d90fd34d04d93ef863d47",
+      "coordinates": 130,
+      "charts": 5,
+      "triangles": 140
+    },
+    "body": {
+      "node": "ArmorBody_07",
+      "surface": 1,
+      "original_texture": "assets/models/player/animated/armor_textures/body_1b6b8f34e05d_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/body.png",
+      "original_sha256": "2ee571cd15d4bad6e003bfbbda1a913fd7847f736b23428e4ba1bb4bb3f1908f",
+      "coordinates": 210,
+      "charts": 5,
+      "triangles": 214
+    },
+    "foot": {
+      "node": "ArmorFoot_07",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/foot_2d50e768959c_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+      "original_sha256": "05309542695bc332278871c11f415b4dfc3c6b8e08f58fa5183f36ebac7517a7",
+      "coordinates": 122,
+      "charts": 4,
+      "triangles": 136
+    },
+    "hand": {
+      "node": "ArmorHand_07",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/hand_0fc9da36fa37_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+      "original_sha256": "a8ae7a58c8536045fe8ff6a423a155723d9b387414d73033401498001fff368a",
+      "coordinates": 118,
+      "charts": 3,
+      "triangles": 124
+    },
+    "head": {
+      "node": "ArmorHead_07",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/head_bb67000287dd_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/head.png",
+      "original_sha256": "2fca1535c7ff1c03a0b915ec4609f700009b8c9326754e60a5a28763f2f228dc",
+      "coordinates": 192,
+      "charts": 4,
+      "triangles": 246
+    }
+  },
+  "original_triangles": 860,
+  "original_bones": 28,
+  "original_surface_count": 5,
+  "original_uv_coordinate_count": 772,
+  "original_total_geometry_limit": 0.2,
+  "original_total_uv_changed_fraction_per_surface_limit": 0.2,
+  "shape_file": "tools/armor_runtime_v1/shapes/atom.py",
+  "preserve_all_geometry": true,
+  "accepted_art_status": "runtime_integrated_engineering_candidate_pending_user_art_review",
+  "geometry_authoring": "Texture-only first integration: all original position, UV, index, bone and weight arrays must remain exact.",
+  "art_residuals": [
+    "原幾何／UV 全保留，所以 Atom 長下巴、平多角耳蓋及長肩刺仍在；概念短頜、圓耳與較收斂肩部尚未完整形成。",
+    "青玻璃中心為亮 V 反射，未見黑色拼接裂縫；其亮度與對稱高光較概念硬，仍待使用者美術評價。",
+    "前胸已是單一直立青窄窗，但尺寸與高度受原短壯胸部 UV 面積限制，外框形狀較概念成人版狹長。",
+    "後背雙盒已移除，中央改為不發光鋼藍板；不是原圓燈的完全恢復。",
+    "部分白色磨邊及紫色裂紋較概念密，和 Viper/Fortune 的柔和大色塊仍有細節密度差異。",
+    "動畫只核對待機／跑動各一張與換彈九張固定取樣；未見新增破裂，不代表完整連續動畫或手機效能全面驗收。"
+  ],
+  "original_source_snapshot_sha256": "73f3272363d1b345858f83874d922a8d6a7b22c93d64aa5fe43ae87e75f0347d",
+  "source_node_index_sha256": "07ed03b1149f1c2371c27a7039b371e27efdbefb363d62f6cf2d0aa37cbe485f"
+}

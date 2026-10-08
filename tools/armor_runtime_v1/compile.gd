@@ -11,7 +11,7 @@ func _initialize() -> void:
 func _run() -> void:
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--armor="):slug=argument.trim_prefix("--armor=")
-	assert(slug in ["hydra","strike","titan"])
+	assert(slug in ["hydra","strike","titan","atom","pegasus"])
 	config=JSON.parse_string(FileAccess.get_file_as_string("res://docs/art/"+slug+"_runtime_v1/runtime_config.json"))
 	if config.has("head_refinement"):
 		push_error("Titan visor subdivision uses update_titan_helmet.gd; the first-integration compiler cannot replace its expanded head.")
@@ -33,6 +33,7 @@ func _run() -> void:
 		var preserved_surfaces: Array=[]
 		for sid: int in old.mesh.get_surface_count():
 			var a := old.mesh.surface_get_arrays(sid).duplicate(true)
+			var geometry_changed := false
 			var source_normals: PackedVector3Array = a[Mesh.ARRAY_NORMAL].duplicate()
 			var row: Dictionary = data.parts[name_key].surfaces[sid]
 			assert(row.positions.size() == a[Mesh.ARRAY_VERTEX].size())
@@ -50,11 +51,14 @@ func _run() -> void:
 				var delta := target-rest
 				# Preserve exact legacy bind-space coordinates on untouched parts.
 				if delta.length() > .000001:
+					geometry_changed = true
 					a[Mesh.ARRAY_VERTEX][i] += basis.inverse()*delta
 			assert(row.uv.size() == a[Mesh.ARRAY_TEX_UV].size())
 			for uv_index: int in row.uv.size():
 				a[Mesh.ARRAY_TEX_UV][uv_index] = Vector2(row.uv[uv_index][0],row.uv[uv_index][1])
-			if name_key == "ArmorHead_%02d" % int(config.runtime_id):
+			# Texture-only Atom/Pegasus keep original normal/tangent buffers too.
+			var regenerate_head := name_key == "ArmorHead_%02d" % int(config.runtime_id) and (geometry_changed or slug not in ["atom", "pegasus"])
+			if regenerate_head:
 				var sums := PackedVector3Array()
 				sums.resize(a[Mesh.ARRAY_VERTEX].size())
 				var indices: PackedInt32Array = a[Mesh.ARRAY_INDEX]
@@ -81,7 +85,7 @@ func _run() -> void:
 			# Preserve the engine's actual serialized buffers, editing only the
 			# allowed head position bytes and four-byte encoded normal entries.
 			var raw_surface: Dictionary=(old.mesh.get("_surfaces") as Array)[sid].duplicate(true)
-			if name_key == "ArmorHead_%02d" % int(config.runtime_id):
+			if regenerate_head:
 				var generated:=RenderingServer.mesh_get_surface(mesh.get_rid(),sid)
 				assert(raw_surface.format==generated.format)
 				var source_bytes: PackedByteArray=raw_surface.vertex_data.duplicate()

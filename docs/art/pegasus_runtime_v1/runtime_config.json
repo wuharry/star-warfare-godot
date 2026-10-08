@@ -1,0 +1,104 @@
+{
+  "runtime_id": 8,
+  "design_id": "C-09",
+  "name": "Pegasus",
+  "slug": "pegasus",
+  "work": "docs/art/pegasus_runtime_v1",
+  "asset": "assets/armors/pegasus_v1",
+  "source": "docs/art/pegasus_runtime_v1/build/source.json",
+  "original_source_snapshot": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/snapshot.json",
+  "source_node_index": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/source_node_index.json",
+  "original_node_ids": {
+    "ArmorHead_08": 62,
+    "ArmorBody_08": 63,
+    "ArmorHand_08": 64,
+    "ArmorFoot_08": 65
+  },
+  "parts": {
+    "ArmorBody_08": [
+      "body",
+      "shoulder"
+    ],
+    "ArmorFoot_08": [
+      "foot"
+    ],
+    "ArmorHand_08": [
+      "hand"
+    ],
+    "ArmorHead_08": [
+      "head"
+    ]
+  },
+  "texture_slots": {
+    "body": {
+      "node": "ArmorBody_08",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/09_body_078a88725c3f_2x.png",
+      "snapshot": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/atlases/body.png",
+      "original_sha256": "c87d8c1d190fc1bd8ccf0300c9af9f53f416bd2fbf46ffb799a72154ec3b0ec7",
+      "coordinates": 348,
+      "charts": 6,
+      "triangles": 340
+    },
+    "shoulder": {
+      "node": "ArmorBody_08",
+      "surface": 1,
+      "original_texture": "assets/models/player/animated/armor_textures/09_jian_3d289fdf8273_2x.png",
+      "snapshot": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+      "original_sha256": "c8b05308d3db988c7ef519a73c846ff5661e08207fb8af944aa8b3e4fa74980d",
+      "coordinates": 202,
+      "charts": 3,
+      "triangles": 180
+    },
+    "foot": {
+      "node": "ArmorFoot_08",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/09_foot_4c47253ee54a_2x.png",
+      "snapshot": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+      "original_sha256": "9f2323e5cf358ab63501ad1d4ad7fdb03048f5f27abff9618099e68b39399fc5",
+      "coordinates": 226,
+      "charts": 4,
+      "triangles": 244
+    },
+    "hand": {
+      "node": "ArmorHand_08",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/09_hand_5cfca001cbd7_2x.png",
+      "snapshot": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+      "original_sha256": "19d2e2aa005ab811d81af910d2b2563e405fb24b0fb510727d4813ffbb501300",
+      "coordinates": 148,
+      "charts": 3,
+      "triangles": 148
+    },
+    "head": {
+      "node": "ArmorHead_08",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/09_head_7f3e9b9b23ec_2x.png",
+      "snapshot": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/atlases/head.png",
+      "original_sha256": "69eed4b716b846ba0042b5e334006872a8368400acbe6a9e40c68201b276b0ed",
+      "coordinates": 172,
+      "charts": 3,
+      "triangles": 216
+    }
+  },
+  "original_triangles": 1128,
+  "original_bones": 28,
+  "original_surface_count": 5,
+  "original_uv_coordinate_count": 1096,
+  "original_total_geometry_limit": 0.2,
+  "original_total_uv_changed_fraction_per_surface_limit": 0.2,
+  "shape_file": "tools/armor_runtime_v1/shapes/pegasus.py",
+  "preserve_all_geometry": true,
+  "accepted_art_status": "runtime_integrated_engineering_candidate_pending_user_art_review",
+  "geometry_authoring": "Texture-only first integration: all original position, UV, index, bone and weight arrays must remain exact.",
+  "art_residuals": [
+    "原頂點／UV 全保留，所以雙冠較概念高、前頜較尖長，概念低冠與短頜未完整形成；目前是原遊戲比例的貼圖轉譯。",
+    "前胸仍保留原五角中央件和藍領區，與概念黑色矩形胸槽不同；這輪 body prompt 以原胸板重整為範圍，沒有要求新增發光服務盒。",
+    "藍色外緣線與磨損比原版更清楚，部分仍有亮白磨邊。全身大色塊與深色關節符合共同方向，細節密度是否足夠接近 Viper/Fortune 仍待使用者美術評價。",
+    "後腦與腳跟保留原深藍技術紋理，概念只展示斜正面，背面做法屬原版基底延伸。",
+    "區域 08 雪地降低白灰外殼背景對比；目前沒有手機螢幕與效能實測，不將實機擷取視為行動裝置驗收。",
+    "動畫是待機／跑動各一張與換彈九張固定取樣，未見新增破裂，不代表完整連續動畫所有角度皆已驗證。"
+  ],
+  "original_source_snapshot_sha256": "6866d0c6e0096aac19df0dbb966c407054776de26523d198d2031007e9209ed5",
+  "source_node_index_sha256": "8092256974d6cd2001033210fa57367dcfb49592e98acff750edae799597e3c7"
+}

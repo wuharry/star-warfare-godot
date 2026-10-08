@@ -77,14 +77,14 @@ for kind,entries in [('armor',mapping['armor_mappings']),('backpack',mapping['ba
             item['user_review']=metadata['user_review']
         if metadata.get('helmet_art'):
             item['helmet_art']=metadata['helmet_art']
-        for key in ('helmet_studies', 'runtime_delivery'):
+        for key in ('helmet_studies', 'runtime_delivery', 'original_based_runtime'):
             if metadata.get(key):
                 item[key]=metadata[key]
         catalog.append(item)
 template=(ART/'tools/gallery.template.html').read_text(encoding='utf-8')
 assert template.count('__CATALOG_JSON__')==1
 embedded=json.dumps(catalog,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')
-(ART/'index.html').write_text(template.replace('__CATALOG_JSON__',embedded),encoding='utf-8')
+(ART/'index.html').write_text(template.replace('__CATALOG_JSON__',embedded),encoding='utf-8',newline='\n')
 sources=[]
 for path in sorted((ART/'references').rglob('*')):
     if path.is_file():

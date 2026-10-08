@@ -48,9 +48,11 @@ def read_accessor(gltf, binary, number):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--armor", required=True, choices=["hydra", "strike", "titan"])
+    parser.add_argument("--armor", required=True, choices=["hydra", "strike", "titan", "atom", "pegasus"])
     slug = parser.parse_args().armor
-    spec = importlib.util.spec_from_file_location("armor_source_contract", ROOT / "tools/armor_style_unification_v1/validate.py")
+    contract_path = ROOT / ("tools/armor_runtime_v1/first_integration_contract.py"
+                            if slug in ["atom", "pegasus"] else "tools/armor_style_unification_v1/validate.py")
+    spec = importlib.util.spec_from_file_location("armor_source_contract", contract_path)
     validator = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(validator)
     source, snapshot = validator.verify_first_source(slug)

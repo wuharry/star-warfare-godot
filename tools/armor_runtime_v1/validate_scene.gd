@@ -10,7 +10,7 @@ func _run() -> void:
 	var slug := ""
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--armor="):slug=argument.trim_prefix("--armor=")
-	assert(slug in ["hydra","strike","titan"])
+	assert(slug in ["hydra","strike","titan","atom","pegasus"])
 	var work := "res://docs/art/"+slug+"_runtime_v1/"
 	var config: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(work+"runtime_config.json"))
 	var source: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(work+"build/source.json"))
@@ -45,7 +45,7 @@ func _run() -> void:
 				errors.append_array(HeadContract.verify(b, a, authored, config.head_refinement))
 			for channel: int in Mesh.ARRAY_MAX:
 				if refined:continue # Full head subdivision/bind/UV contract above; other parts stay exact.
-				if is_head and channel in [Mesh.ARRAY_VERTEX,Mesh.ARRAY_NORMAL]:continue
+				if is_head and not config.get("preserve_all_geometry", false) and channel in [Mesh.ARRAY_VERTEX,Mesh.ARRAY_NORMAL]:continue
 				_check(a[channel]==b[channel],"Changed original array %s/%d/channel%d"%[name_key,sid,channel])
 			if not refined:
 				_check(b[Mesh.ARRAY_VERTEX].size()==a[Mesh.ARRAY_VERTEX].size(),"Changed vertex count")

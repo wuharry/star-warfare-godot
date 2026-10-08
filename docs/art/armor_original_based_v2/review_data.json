@@ -1,0 +1,1606 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "title": "Thunder／Atom／Pegasus · 原版基底遊戲素材",
+  "browser_interaction": "NOT RUN",
+  "browser_limitation": "NOT RUN：本輪 CUA 預覽被安全政策拒絕，file:// 協定不受支援；未以 HTTP 或其他介面繞過。已檢查 JavaScript 語法與本機資源 SHA。",
+  "armors": [
+    {
+      "key": "thunder",
+      "name": "Thunder",
+      "design_id": "C-07",
+      "runtime_id": 6,
+      "status": "已套用正式素材・工程紀錄通過・待美術評價",
+      "ready": true,
+      "scope": "以真正原版 Thunder 頭部重新生成貼圖；修改前身甲保留。",
+      "captures": {
+        "head_front": {
+          "label": "頭盔・正面",
+          "scope": "head",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_head_front.png",
+            "sha256": "0c2217317e24df85c7d17513c8936d5bffb53c520bb0cacae2742bdc111251f1",
+            "bytes": 621129,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_head_front.png",
+            "sha256": "1cba4a5080b48f512d6625397a0b1bd9c03df02c1e3d993898df94d29204641b",
+            "bytes": 641477,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_head_front.png",
+            "sha256": "0aa0456eacbe31dd52a7f2cae3a97a80b13f41c88b58a650dc25e402cf566e65",
+            "bytes": 687031,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "head_quarter": {
+          "label": "頭盔・斜前",
+          "scope": "head",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_head_quarter.png",
+            "sha256": "bc75600cfd1c2e02eb58d961e39a5864aa9da7c3d7b30bbda0dd957ef88387d2",
+            "bytes": 658379,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_head_quarter.png",
+            "sha256": "9781bc797bce3e1ddf558bfa06dbdf091e03145141c5c26d4e45d23cfbcc1d92",
+            "bytes": 682819,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_head_quarter.png",
+            "sha256": "de52c48acc7a27b819f6f54aa06786c0ec29fae34256363a6347fb239c069ea9",
+            "bytes": 726103,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "head_side": {
+          "label": "頭盔・側面",
+          "scope": "head",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_head_side.png",
+            "sha256": "c1245e477583f1de2191b69131930a012b04a1e699bb9679686de2293f8c87b5",
+            "bytes": 685258,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_head_side.png",
+            "sha256": "b06cce8c1f1a861e6f17f89cbc636472f1e7df2264c96dd9863548aeec660876",
+            "bytes": 699203,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_head_side.png",
+            "sha256": "130044bab506b3dcc9b45a3adfad3613648ec7c8f64ed0607cfd94cc8f85b2b5",
+            "bytes": 714645,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "head_rear": {
+          "label": "頭盔・背面",
+          "scope": "head",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_head_rear.png",
+            "sha256": "1b00746499fc5ad06648eff36ca93a510c35e72b082763e451897a13fd92124f",
+            "bytes": 562236,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_head_rear.png",
+            "sha256": "6db3820857ffa6ebad539ba598281987aec04d29aaa4012c4411700944080f53",
+            "bytes": 584420,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_head_rear.png",
+            "sha256": "af4452af79d1318fc6dcdaa0bc30aab5e92eee9adda02d5b0ee60008ca7f0810",
+            "bytes": 688044,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "diffuse_front": {
+          "label": "全身・正面",
+          "scope": "body",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_full_front.png",
+            "sha256": "fb9a1c2ff913ad173fff0a794eccbc8e50a7279d31ff7f8ab95e40389aa3bd3d",
+            "bytes": 316153,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_full_front.png",
+            "sha256": "253daa9b2711e1489c2f1ab4ffcc62526436a4bc863f25a350c3c74560400f7d",
+            "bytes": 339645,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_full_front.png",
+            "sha256": "87d63ad9f7b382f3a78617917b8978c61126fc1b6bfb9c651dbb35abef547eee",
+            "bytes": 349348,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "diffuse_quarter": {
+          "label": "全身・斜前",
+          "scope": "body",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_full_quarter.png",
+            "sha256": "4aa0853f9f269470059a9e9bf1d0679285c2be6026b22a66cf13bc983087e81d",
+            "bytes": 373369,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_full_quarter.png",
+            "sha256": "d4de479af02b79dda89692d4f078da84aa6836af547f988059c2b8a66213aa93",
+            "bytes": 407296,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_full_quarter.png",
+            "sha256": "2828cd4513a5953525cc93b97d61a9937fe37b625a0cdea7e862a2f3d2d6c17e",
+            "bytes": 415215,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "diffuse_side": {
+          "label": "全身・側面",
+          "scope": "body",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_full_side.png",
+            "sha256": "f2b15366948eca90966228c09909e524d1cc15ee8dfe04e7944f112e91a0778c",
+            "bytes": 357410,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_full_side.png",
+            "sha256": "4acc4c892d9a76b0c348f969b97ba5340cac976530dfa516cc8640ddff31bdd7",
+            "bytes": 393754,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_full_side.png",
+            "sha256": "b662d19467f6017fce005d3073df7c6a058119aa51b6b13874ebea9c3a2d2279",
+            "bytes": 392387,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "diffuse_rear": {
+          "label": "全身・背面",
+          "scope": "body",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_full_rear.png",
+            "sha256": "c02e416ab570ccbef1ff32ec137fd90298d8a92cdb3ffeefdea1a857ca57861b",
+            "bytes": 297182,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_full_rear.png",
+            "sha256": "4ab6027858fa0d08666d99d8f7258f94a9006cd05584a8f908dc1fb88502ccb0",
+            "bytes": 332888,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_full_rear.png",
+            "sha256": "69fd471964c9c65868f210b25cbc98652b159e87f6ee823e7f72ae870e56fca9",
+            "bytes": 354077,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "clay_front": {
+          "label": "灰模・正面",
+          "scope": "clay",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_clay_front.png",
+            "sha256": "da4a307e7396ca03217a5a888859070d78146fd5c1abce8b015f3db2c32e82ab",
+            "bytes": 39347,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_clay_front.png",
+            "sha256": "67c193af9906b0331faf953bc426c6ca97030e123cc5a4150ea70e929ebf6127",
+            "bytes": 49068,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_clay_front.png",
+            "sha256": "6cd66fc939df7ea4ce7865402f5837aa92d44d71f2ee79887468659e2932ccb1",
+            "bytes": 53728,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "clay_side": {
+          "label": "灰模・側面",
+          "scope": "clay",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_clay_side.png",
+            "sha256": "552fa25dd06e38645e1fd47e10d487dc0a73ca1d19a68f9c25e94a54a4e4c561",
+            "bytes": 46846,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_clay_side.png",
+            "sha256": "ba871f8f9a838d1e118771f11055b55ac0aeb86b3701442bd39a3d43225dbd01",
+            "bytes": 58394,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_clay_side.png",
+            "sha256": "a0aea08c1f9c747346a98900fc8013b0e17234f830c9e6c2feeb56cadd9f3bb5",
+            "bytes": 64429,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "idle_rifle": {
+          "label": "持槍待機",
+          "scope": "animation",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_idle.png",
+            "sha256": "ef64c88259f2e514c1403f0cb274d62cd671214a6482bb19a4814e06c6d506bf",
+            "bytes": 395892,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_idle.png",
+            "sha256": "3459fb6bff98e834079319870cf5bec85240ca1cc4260f2ad4f68008f4dfb381",
+            "bytes": 424780,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_idle.png",
+            "sha256": "b5251e4b2eb443796b685066514ba5df5c64bbf91e8a96162e12a0c7e825bf9f",
+            "bytes": 432999,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "run_rifle": {
+          "label": "持槍跑動",
+          "scope": "animation",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_run.png",
+            "sha256": "1b7be063c348aa3a561d65c38b1ab67ae1579d8f5c546b748c6f9a2029d0213b",
+            "bytes": 417201,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_run.png",
+            "sha256": "6d2036a6d4354373871014984892d3255962e59f11127288ea84eab1c3c31ade",
+            "bytes": 439430,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_run.png",
+            "sha256": "891d31cae7bea5e735261e73d54379d6b169abdab9b2c9faf181d46f6f8f0eba",
+            "bytes": 448751,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "reload_04": {
+          "label": "換彈中段",
+          "scope": "animation",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_reload.png",
+            "sha256": "750655d0749289774adb6bb517fad3fbe99b7f7827996f62297d3e160c952a54",
+            "bytes": 424986,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_reload.png",
+            "sha256": "21c8915dd79518f485bda0d23b057526ad5a614532c53fe34d958e5186985319",
+            "bytes": 438355,
+            "dimensions": [
+              800,
+              960
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_reload.png",
+            "sha256": "dfc855570eb6cfd2dfed40b44cbe6429748ac4ab92d41a06ff4c53ce027c37a6",
+            "bytes": 433712,
+            "dimensions": [
+              800,
+              960
+            ]
+          }
+        },
+        "level_01_gameplay": {
+          "label": "區域 01・遊戲",
+          "scope": "gameplay",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_game_level_1.png",
+            "sha256": "97628ffee32f108c5b7c544c14a797eddddc4238ee358afc6a71b66dd5698e4f",
+            "bytes": 1406892,
+            "dimensions": [
+              1280,
+              720
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_game_level_1.png",
+            "sha256": "0d7c0329e882295a06196822931a42a7884767dee7d05217957cacafa34e610a",
+            "bytes": 1423997,
+            "dimensions": [
+              1280,
+              720
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_game_level_1.png",
+            "sha256": "544c874e8c1c29786d7d2baad1d4884b54785630cb0014c559ecac6cf90f865c",
+            "bytes": 1432629,
+            "dimensions": [
+              1280,
+              720
+            ]
+          }
+        },
+        "level_08_gameplay": {
+          "label": "區域 03・遊戲",
+          "scope": "gameplay",
+          "original": {
+            "path": "../thunder_original_v2/review/engine/original_game_level_3.png",
+            "sha256": "d83df88d49cba75ac71ef5d1bb13d609089ba9d7814eae59eeded0a09c2516ee",
+            "bytes": 1012213,
+            "dimensions": [
+              1280,
+              720
+            ]
+          },
+          "after": {
+            "path": "../thunder_original_v2/review/engine/new_game_level_3.png",
+            "sha256": "b02341cf2b057d63684b6ef75591e562169e1a7ab266a6e8195261463859364e",
+            "bytes": 1027294,
+            "dimensions": [
+              1280,
+              720
+            ]
+          },
+          "before": {
+            "path": "../thunder_original_v2/review/engine/before_game_level_3.png",
+            "sha256": "bbcd48c44ead11f0eb2f4f9769e751fd8d36e5fc84effbad6e0bb9de91815191",
+            "bytes": 1033809,
+            "dimensions": [
+              1280,
+              720
+            ]
+          }
+        }
+      },
+      "metrics": [
+        {
+          "label": "頭部相對原版最大位移",
+          "value": "0.000%",
+          "note": "按原頭部最小軸尺寸正規化；不是概念圖相似率。"
+        },
+        {
+          "label": "UV 座標變更",
+          "value": "0",
+          "note": "原版頭部座標數 147；以工程報告為準。"
+        },
+        {
+          "label": "模型三角形",
+          "value": "6574",
+          "note": "整套包含 bef5b833 身甲，不宣稱真正原版全套幾何改動為 0%。"
+        },
+        {
+          "label": "原骨架",
+          "value": "28",
+          "note": "部件裝配與動作驗證另列。"
+        }
+      ],
+      "tests": [
+        {
+          "label": "compile_original_head_and_preserved_body",
+          "status": "PASS",
+          "evidence": {
+            "path": "../thunder_original_v2/build/compile_report.json",
+            "sha256": "2d40e757e1c946f51486596f4474e2848e26a6927e8ea9b6a850c6a0357b33d4",
+            "bytes": 1729
+          }
+        },
+        {
+          "label": "runtime_equips_skin_uv_store_and_animation",
+          "status": "PASS",
+          "evidence": {
+            "path": "../thunder_original_v2/review/runtime_test.json",
+            "sha256": "b508b390a214b11d6afac599f253d3562005f8b2b8916635d43c304419041817",
+            "bytes": 2805
+          }
+        }
+      ],
+      "residuals": [
+        "這輪保留真正原版的高鰭冠與 V 形壓眉，外形改動為 0；是原版頭盔的貼圖整理，不是新的低冠概念頭盔。",
+        "新頭圖比原版更乾淨、藍色更明亮；局部亮邊磨損仍較銳，冠頂／下框的塗裝可再減淡。",
+        "面窗是單片連續金橙色，亮 V 形反光較強；不是兩道深色凹槽，但玻璃反光強度仍待使用者評價。",
+        "身甲保持 bef5b833 的切面、白邊磨損與黑褐軟衣；目前頭身整體不是對真正原版全套的 0% 或 20% 量測。",
+        "這次只看固定待機／跑動／換彈取樣和兩關畫面；完整動畫影片、使用者美術接受與手機效能尚未驗證。"
+      ],
+      "sources": [
+        {
+          "path": "../thunder_original_v2/manifest.json",
+          "sha256": "a28ad071fc88598e07187151ecc861a9714edf6b91b7b06dd2ad4b645f04af48",
+          "bytes": 24582,
+          "label": "完整素材與工程 manifest"
+        },
+        {
+          "path": "../thunder_original_v2/review/engine/capture.json",
+          "sha256": "2fffad8c3248a07244c24ddb517bb97b8021bb089143a2b2dd5f024022e64295",
+          "bytes": 34952,
+          "label": "正常引擎擷取紀錄"
+        },
+        {
+          "path": "../thunder_original_v2/visual_review.json",
+          "sha256": "6906118e2a9c7f0baed4d7282e0cf11b95d3aca36ff2f67579689a1d9472c4b9",
+          "bytes": 25297,
+          "label": "逐張實際目視紀錄"
+        },
+        {
+          "path": "../thunder_original_v2/generation_inputs.json",
+          "sha256": "ca273b1bfd429f9610a6fe8562f9db5f95e581cd330d1bdf5a1d47da98c1329e",
+          "bytes": 6502,
+          "label": "生成圖、實送 Prompt 與來源"
+        },
+        {
+          "path": "../thunder_original_v2/prompts/head_attempt_01.txt",
+          "sha256": "e74a706b81ab80582c3f9375798e1bfc8ac392af4bdaadf446fe70919ebd695d",
+          "bytes": 3298,
+          "label": "原版頭盔實送 Prompt"
+        }
+      ],
+      "art_acceptance": "NOT RUN・等待使用者美術評價",
+      "browser_interaction": "NOT RUN",
+      "visual_inspection": "VISUALLY_REVIEWED_PENDING_USER_REVIEW",
+      "reference": {
+        "path": "../original_armors_v1/references/legacy/c07_front.png",
+        "sha256": "a43239dfa7720cca97de8ed8af4b13aa3c93435670bce412ee25ca0e1a4dac8b",
+        "bytes": 356771,
+        "label": "本輪頭盔基底：真正原版 Thunder",
+        "note": "新版頭部從原版模型、UV 與 atlas 直接製作。身甲保留修改前版本；其配色概念另列，概念中的低冠頭盔不作目標。"
+      },
+      "body_reference": {
+        "path": "../thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png",
+        "sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
+        "bytes": 1584536
+      },
+      "legacy_reference": {
+        "path": "../original_armors_v1/references/legacy/c07_front.png",
+        "sha256": "a43239dfa7720cca97de8ed8af4b13aa3c93435670bce412ee25ca0e1a4dac8b",
+        "bytes": 356771,
+        "label": "真正原遊戲造型參考"
+      },
+      "scene": {
+        "path": "../../../assets/armors/thunder/thunder.scn",
+        "sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7",
+        "bytes": 869138
+      }
+    },
+    {
+      "key": "atom",
+      "name": "Atom",
+      "design_id": "C-08",
+      "runtime_id": 7,
+      "status": "已套用正式素材・工程紀錄通過・待美術評價",
+      "ready": true,
+      "scope": "以真正原版四部件與 UV 為基底，轉譯既有裝甲概念。",
+      "captures": {
+        "head_front": {
+          "label": "頭盔・正面",
+          "scope": "head",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_head_front.png",
+            "sha256": "b696071bb54ed214625108a5088391067bf18e2e5af4d0f3348a47fa73abcd5f",
+            "bytes": 493953,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_head_front.png",
+            "sha256": "fe6e4ee9c3469420c2c1c521ee96d07f46f78f4aab805d1a522a4d4de94f6508",
+            "bytes": 579375,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "head_quarter": {
+          "label": "頭盔・斜前",
+          "scope": "head",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_head_quarter.png",
+            "sha256": "e5a72b58f6bc7ffb9d0d225bd57588dbd4b6234084bf1dab543fd49f0c51f62b",
+            "bytes": 523775,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_head_quarter.png",
+            "sha256": "d1c2c04c33b469afc8e84793c5ea15a63f3e4de3b0c4f4911ba70c54c6ca27b5",
+            "bytes": 596133,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "head_side": {
+          "label": "頭盔・側面",
+          "scope": "head",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_head_side.png",
+            "sha256": "bdab305db555357fdd97b620e69dde0d806f4aa4213624fda9c13d5e8448366e",
+            "bytes": 469880,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_head_side.png",
+            "sha256": "90a7eb420e52f4f65031246b5d2466bb525fc759cbcce006c21bd69a17366188",
+            "bytes": 520767,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "head_rear": {
+          "label": "頭盔・背面",
+          "scope": "head",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_head_rear.png",
+            "sha256": "869a2a72e37ed1783e67cc144162130b9f17e4f1172adaf60e58a1b24002401b",
+            "bytes": 505488,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_head_rear.png",
+            "sha256": "47315de4089066d9a6ab2244ec269f492c13543a4cddce563f012add616f3383",
+            "bytes": 560898,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "diffuse_front": {
+          "label": "全身・正面",
+          "scope": "body",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_diffuse_front.png",
+            "sha256": "e4c8d23355173e6013f1c99d5550a5d62fc58305c53647cdc6d0f4a017ec3bbd",
+            "bytes": 254131,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_diffuse_front.png",
+            "sha256": "a5a591782428a3171907bd9fdaf4e3659d2ce5a4c5175a673f15b99a9205217a",
+            "bytes": 302793,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "diffuse_quarter": {
+          "label": "全身・斜前",
+          "scope": "body",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_diffuse_quarter.png",
+            "sha256": "c36225c8fd1c29a5654ddfe872f8990adc5f7bb73d75145e7b04a94d4cee9b42",
+            "bytes": 262791,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_diffuse_quarter.png",
+            "sha256": "4912a0f4640023d299bbda41a279c9ab6d12bc034ed392618397568640f6c784",
+            "bytes": 311729,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "diffuse_side": {
+          "label": "全身・側面",
+          "scope": "body",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_diffuse_side.png",
+            "sha256": "3d7fd0b35ee324c070157130c67d1d70d3d4215eb6128d8bbd4c988595c0b284",
+            "bytes": 165495,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_diffuse_side.png",
+            "sha256": "8efdc99cb6e3905f7fb5b78c444f50b8dad85ccf222a06186740b02545e4200a",
+            "bytes": 191467,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "diffuse_rear": {
+          "label": "全身・背面",
+          "scope": "body",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_diffuse_rear.png",
+            "sha256": "123c4b1fb5cc1fc469c1171f4095f29a0c511763f33abccffa0bcb75620b16ca",
+            "bytes": 249056,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_diffuse_rear.png",
+            "sha256": "63daa6b9b68ee617c990dbe5cc58d21da20438e5d574497fccdbfabb9982cf08",
+            "bytes": 292111,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "clay_front": {
+          "label": "灰模・正面",
+          "scope": "clay",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_clay_front.png",
+            "sha256": "d66d9aa8b25ff37e09a47975c847e0159d9f8e7e3c30213089e0a6413ff44dc9",
+            "bytes": 44194,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_clay_front.png",
+            "sha256": "d66d9aa8b25ff37e09a47975c847e0159d9f8e7e3c30213089e0a6413ff44dc9",
+            "bytes": 44194,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "clay_side": {
+          "label": "灰模・側面",
+          "scope": "clay",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_clay_side.png",
+            "sha256": "c4370ca35a89f8051a7aeda527f95ebdbf2a801b74c118bbe2c5f53e727b1bf6",
+            "bytes": 27993,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_clay_side.png",
+            "sha256": "c4370ca35a89f8051a7aeda527f95ebdbf2a801b74c118bbe2c5f53e727b1bf6",
+            "bytes": 27993,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "idle_rifle": {
+          "label": "持槍待機",
+          "scope": "animation",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_idle_rifle.png",
+            "sha256": "bd69405f8dbff3c505951f102121d247beeb237f3c2c61e46b4eca813d97b644",
+            "bytes": 211623,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_idle_rifle.png",
+            "sha256": "d0881fa513d62188bb4235791c50f7a6260a92afa094814ee6288b9d22d31240",
+            "bytes": 246466,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "run_rifle": {
+          "label": "持槍跑動",
+          "scope": "animation",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_run_rifle.png",
+            "sha256": "6064422666fb98e317c1fc61403f724e4914af1df39f6dff57c00ba1fa983bf2",
+            "bytes": 193291,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_run_rifle.png",
+            "sha256": "a55f48e993cbe3adaf38dc688915f711844d2354a0aeb79a5aa26711fe7a3f59",
+            "bytes": 227982,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "reload_04": {
+          "label": "換彈中段",
+          "scope": "animation",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_reload_04.png",
+            "sha256": "82982adaedff50c8446980932c5358a5e6a79a7e45edc234ddafb33e863fd98b",
+            "bytes": 197523,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_reload_04.png",
+            "sha256": "f1b3c8ff13ac764c26d640441f018be79539d1535f4e3431404e9ed51a21fe1f",
+            "bytes": 230344,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "level_01_gameplay": {
+          "label": "區域 01・遊戲",
+          "scope": "gameplay",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_level_01_gameplay.png",
+            "sha256": "427444757a77a1ea214dd9572075897b5edd37d9df2536f5ac8aa987c24800ef",
+            "bytes": 1438666,
+            "dimensions": [
+              1280,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_level_01_gameplay.png",
+            "sha256": "66497440a9cd9f76b16065e53e521f25152378b1a94ceb66454f7f022a1a2e7a",
+            "bytes": 1472868,
+            "dimensions": [
+              1280,
+              720
+            ]
+          },
+          "before": null
+        },
+        "level_08_gameplay": {
+          "label": "區域 08・遊戲",
+          "scope": "gameplay",
+          "original": {
+            "path": "../atom_runtime_v1/review/engine/original_level_08_gameplay.png",
+            "sha256": "09767ad95f4bc720fd0708ac4382d69dae55c9ea2913fcbc11adb61ad641326c",
+            "bytes": 994333,
+            "dimensions": [
+              1280,
+              720
+            ]
+          },
+          "after": {
+            "path": "../atom_runtime_v1/review/engine/new_level_08_gameplay.png",
+            "sha256": "08b888d6c205a85ff2f47e84912b699900283314eb44e8d9fdeeab2ae3062c55",
+            "bytes": 1026663,
+            "dimensions": [
+              1280,
+              720
+            ]
+          },
+          "before": null
+        }
+      },
+      "metrics": [
+        {
+          "label": "頭部相對原版最大位移",
+          "value": "0.000%",
+          "note": "按原頭部最小軸尺寸正規化；不是概念圖相似率。"
+        },
+        {
+          "label": "UV 座標變更",
+          "value": "0",
+          "note": "原版座標數 772；以工程報告為準。"
+        },
+        {
+          "label": "模型三角形",
+          "value": "860",
+          "note": "四部件合計；幾何數量不代表美術精細度。"
+        },
+        {
+          "label": "原骨架",
+          "value": "28",
+          "note": "部件裝配與動作驗證另列。"
+        }
+      ],
+      "tests": [
+        {
+          "label": "runtime_test",
+          "status": "PASS",
+          "evidence": {
+            "path": "../atom_runtime_v1/review/runtime_test.json",
+            "sha256": "ead18256973d2d36f167698b80299cd1ad0d00cac88fb0a9cd23cb588754db6e",
+            "bytes": 11129
+          }
+        },
+        {
+          "label": "roundtrip_test",
+          "status": "PASS",
+          "evidence": {
+            "path": "../atom_runtime_v1/review/roundtrip_test.json",
+            "sha256": "67ad74f0dc58b80cdcfa6f1e2af5b29e0586a9d97d1ca22aac9be8c494e0bd60",
+            "bytes": 11901
+          }
+        },
+        {
+          "label": "proportion_test",
+          "status": "PASS",
+          "evidence": {
+            "path": "../atom_runtime_v1/review/proportion_test.json",
+            "sha256": "5cc75aa8a9bd7589848e975379778b0c20afa941ab950d302c3e8ec0f23df146",
+            "bytes": 9064
+          }
+        },
+        {
+          "label": "delivery_validate",
+          "status": "PASS",
+          "evidence": {
+            "path": "../atom_runtime_v1/review/delivery_validate.json",
+            "sha256": "4dd2c82f094d28017b1089edfd1faa55e252cb1f9686da165334b73405290bf3",
+            "bytes": 8705
+          }
+        },
+        {
+          "label": "original_scene_invariants",
+          "status": "PASS",
+          "evidence": {
+            "path": "../atom_runtime_v1/review/original_scene_invariants.json",
+            "sha256": "611a1049b80d4ed4576c56c1747a17c5e994725101d778675fe503bbf21876e9",
+            "bytes": 2155
+          }
+        },
+        {
+          "label": "glb_images_test",
+          "status": "PASS",
+          "evidence": {
+            "path": "../atom_runtime_v1/review/glb_images_test.json",
+            "sha256": "8be4be84d35198ccdfa547d46f25c094b623cd58598497cea54bc20cc260b5f8",
+            "bytes": 4672
+          }
+        }
+      ],
+      "residuals": [
+        "原幾何／UV 全保留，所以 Atom 長下巴、平多角耳蓋及長肩刺仍在；概念短頜、圓耳與較收斂肩部尚未完整形成。",
+        "青玻璃中心為亮 V 反射，未見黑色拼接裂縫；其亮度與對稱高光較概念硬，仍待使用者美術評價。",
+        "前胸已是單一直立青窄窗，但尺寸與高度受原短壯胸部 UV 面積限制，外框形狀較概念成人版狹長。",
+        "後背雙盒已移除，中央改為不發光鋼藍板；不是原圓燈的完全恢復。",
+        "部分白色磨邊及紫色裂紋較概念密，和 Viper/Fortune 的柔和大色塊仍有細節密度差異。",
+        "動畫只核對待機／跑動各一張與換彈九張固定取樣；未見新增破裂，不代表完整連續動畫或手機效能全面驗收。"
+      ],
+      "sources": [
+        {
+          "path": "../atom_runtime_v1/manifest.json",
+          "sha256": "53386d2991243706da3caf07236f7bb88cb91a09632f1846fedc5a0aa769eb0b",
+          "bytes": 75571,
+          "label": "完整素材與工程 manifest"
+        },
+        {
+          "path": "../atom_runtime_v1/review/engine/capture.json",
+          "sha256": "7201bc40ba97a1deeb43513892e9d8358551d25ac6172af9609b70201a4d82a6",
+          "bytes": 23403,
+          "label": "正常引擎擷取紀錄"
+        },
+        {
+          "path": "../atom_runtime_v1/review/visual_review.json",
+          "sha256": "0d0affaa7e155fd3a4d1381a03a75870e1cf78896e392f4b797c45ebc067adf0",
+          "bytes": 40654,
+          "label": "逐張實際目視紀錄"
+        },
+        {
+          "path": "../atom_runtime_v1/index.html",
+          "sha256": "17a9dff1440fe0e7fb347d8092b7cc2711c665bea2fc57fc151ce89194dceab8",
+          "bytes": 9555,
+          "label": "各套獨立比對頁"
+        },
+        {
+          "path": "../atom_runtime_v1/generation_inputs.json",
+          "sha256": "45cb57615ed21f976bff54c83c84de6ef0a8f7ec1750c5f360315e95ed64296a",
+          "bytes": 23140,
+          "label": "生成圖、實送 Prompt 與來源"
+        },
+        {
+          "path": "../atom_runtime_v1/prompts/head_attempt_01.txt",
+          "sha256": "c9417e377f8df2764aa88c5bae9d88d889900d1f35a1f157804cb69d31873105",
+          "bytes": 6423,
+          "label": "原版頭盔實送 Prompt"
+        },
+        {
+          "path": "../atom_runtime_v1/revisions/original_source_v1/snapshot.json",
+          "sha256": "73f3272363d1b345858f83874d922a8d6a7b22c93d64aa5fe43ae87e75f0347d",
+          "bytes": 5461,
+          "label": "原版來源凍結紀錄"
+        }
+      ],
+      "art_acceptance": "NOT RUN・等待使用者美術評價",
+      "browser_interaction": "NOT RUN",
+      "visual_inspection": "ENGINEERING_CANDIDATE_PENDING_USER_ART_REVIEW",
+      "reference": {
+        "path": "../original_armors_v1/images/c08_concept.png",
+        "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+        "bytes": 2019010,
+        "label": "目前裝甲設計參考",
+        "note": "概念圖只用來看設計，不是同相機遊戲擷取，也不是本輪生成的貼圖。"
+      },
+      "legacy_reference": {
+        "path": "../original_armors_v1/references/legacy/c08_front.png",
+        "sha256": "46609c0bf9c87f09a1eb4fa2b510bb58abf4ec90ad5763a4d3060fac96705378",
+        "bytes": 385584,
+        "label": "真正原遊戲造型參考"
+      },
+      "scene": {
+        "path": "../../../assets/armors/atom_v1/atom.scn",
+        "sha256": "a8f70bdf81ed11aeccc1834be6a7b542599335f4b283e8988922a1ca299fc638",
+        "bytes": 63846
+      }
+    },
+    {
+      "key": "pegasus",
+      "name": "Pegasus",
+      "design_id": "C-09",
+      "runtime_id": 8,
+      "status": "已套用正式素材・工程紀錄通過・待美術評價",
+      "ready": true,
+      "scope": "以真正原版四部件與 UV 為基底，轉譯既有裝甲概念。",
+      "captures": {
+        "head_front": {
+          "label": "頭盔・正面",
+          "scope": "head",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_head_front.png",
+            "sha256": "64cceae444dff069d5704d92455e02181952994d13f955ae7f1f3c055bdb97ca",
+            "bytes": 540735,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_head_front.png",
+            "sha256": "13a2ba72ea88bac7bad291e71c8bdde0e4052d7abed6fd49412d4768b5e5339e",
+            "bytes": 607386,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "head_quarter": {
+          "label": "頭盔・斜前",
+          "scope": "head",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_head_quarter.png",
+            "sha256": "369a4a22fa97bfb8385cd7777dd9f3fab8ffa49127b08abbe05a2ab2804d16e7",
+            "bytes": 535737,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_head_quarter.png",
+            "sha256": "90f0c06d4eaffda4458226e10088f2ad38d14cda6acd6733894b8e02bc206481",
+            "bytes": 598273,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "head_side": {
+          "label": "頭盔・側面",
+          "scope": "head",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_head_side.png",
+            "sha256": "4f74f2baa963dcf710bd935b719472ce687798d765a96fcbbb1b32e2daafd1a9",
+            "bytes": 494756,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_head_side.png",
+            "sha256": "f90718d604139322b862c28fe20043d4a27f6d6907c14069345a26a3d2090cbf",
+            "bytes": 546098,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "head_rear": {
+          "label": "頭盔・背面",
+          "scope": "head",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_head_rear.png",
+            "sha256": "b94e4ac58d1f36d0a54f4112efc41236ba3d7f8d546efdff0bc4983ab0e13a0e",
+            "bytes": 462648,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_head_rear.png",
+            "sha256": "92a33358ebce209d48fefd2697c6ddc447715826136937418d0956d3d46ef477",
+            "bytes": 536633,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "diffuse_front": {
+          "label": "全身・正面",
+          "scope": "body",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_diffuse_front.png",
+            "sha256": "8e2fa3dfccd9ee1c1b5688b91a7dd117f005d68ef2e0c36339c558a886e6d6ab",
+            "bytes": 255264,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_diffuse_front.png",
+            "sha256": "652c287d25cad957e9d891057c6caa5a1941522733fc01faee7fb70a9e363110",
+            "bytes": 302879,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "diffuse_quarter": {
+          "label": "全身・斜前",
+          "scope": "body",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_diffuse_quarter.png",
+            "sha256": "39183b2a1888ce855ecda77c5dfddc2120d3ae0ebb8a4b716ceb325b22df9ab6",
+            "bytes": 257320,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_diffuse_quarter.png",
+            "sha256": "3bfcc38939ec33e287faf6b5b84ca28bbc062db004dfbd88c5c2b3a85b3122d3",
+            "bytes": 308454,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "diffuse_side": {
+          "label": "全身・側面",
+          "scope": "body",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_diffuse_side.png",
+            "sha256": "54469ca0c9d6c1ba8c821d92fd7b0935b9f160d5bf144bae045a91de80173759",
+            "bytes": 166946,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_diffuse_side.png",
+            "sha256": "7dcc0d32cf6f8aa97b37c92ddc05e456451b899ca6b487a92beb5ee973c9bfbf",
+            "bytes": 195019,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "diffuse_rear": {
+          "label": "全身・背面",
+          "scope": "body",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_diffuse_rear.png",
+            "sha256": "3d31dca5653e3cccc2c831a4c200fec923c69f6016435d995e3f07ba66d0220d",
+            "bytes": 245566,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_diffuse_rear.png",
+            "sha256": "29599fb29d13e86dd22ed82566fb2b2fa946ef570c1539fbe72fbbfa22bf5e7e",
+            "bytes": 291468,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "clay_front": {
+          "label": "灰模・正面",
+          "scope": "clay",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_clay_front.png",
+            "sha256": "cc3140b7446625cc92e4f365bed5a6de97e3bbc9f1f304ae291abc7d285c4ca4",
+            "bytes": 47418,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_clay_front.png",
+            "sha256": "cc3140b7446625cc92e4f365bed5a6de97e3bbc9f1f304ae291abc7d285c4ca4",
+            "bytes": 47418,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "clay_side": {
+          "label": "灰模・側面",
+          "scope": "clay",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_clay_side.png",
+            "sha256": "b6a8c021d541454472a49bdaba657bbbe00d5273835d35880fdb9cd83d41f180",
+            "bytes": 31071,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_clay_side.png",
+            "sha256": "b6a8c021d541454472a49bdaba657bbbe00d5273835d35880fdb9cd83d41f180",
+            "bytes": 31071,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "idle_rifle": {
+          "label": "持槍待機",
+          "scope": "animation",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_idle_rifle.png",
+            "sha256": "b4674f9a18c1ac47fc3b353cdf78269db3a86e06228e2bd889f2898f12d9f91b",
+            "bytes": 190065,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_idle_rifle.png",
+            "sha256": "745af58bf0c045f041af319e8e63496ff7834d07669dd5a9eb11bea9f44fadd3",
+            "bytes": 246793,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "run_rifle": {
+          "label": "持槍跑動",
+          "scope": "animation",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_run_rifle.png",
+            "sha256": "a5830bc57ee0aeb2ca03e0564d6c4f6cfbf4ace640df02397d9131584e781bf7",
+            "bytes": 173812,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_run_rifle.png",
+            "sha256": "189549fb2184be82952ad1bf481d29d031e24616ca866a867973f88aeaf6c51e",
+            "bytes": 230606,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "reload_04": {
+          "label": "換彈中段",
+          "scope": "animation",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_reload_04.png",
+            "sha256": "8b10cd822e975460f16c6509a643719cf33b7baf31a59f36df4dfe84d72c671e",
+            "bytes": 182875,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_reload_04.png",
+            "sha256": "ee7669d7832420ace1d9b256dcd4c9c204c57983f8f36804875b1675834d35af",
+            "bytes": 232249,
+            "dimensions": [
+              640,
+              720
+            ]
+          },
+          "before": null
+        },
+        "level_01_gameplay": {
+          "label": "區域 01・遊戲",
+          "scope": "gameplay",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_level_01_gameplay.png",
+            "sha256": "aa9aab295a11e2f734d45279026e1c610bd03c8aa5150bd297f9d14632104032",
+            "bytes": 1412862,
+            "dimensions": [
+              1280,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_level_01_gameplay.png",
+            "sha256": "8d7e0a285a51decc86c9dd8f42810b2751aa23fe17ecb4adb376f3e8e510229d",
+            "bytes": 1462986,
+            "dimensions": [
+              1280,
+              720
+            ]
+          },
+          "before": null
+        },
+        "level_08_gameplay": {
+          "label": "區域 08・遊戲",
+          "scope": "gameplay",
+          "original": {
+            "path": "../pegasus_runtime_v1/review/engine/original_level_08_gameplay.png",
+            "sha256": "7add97d0758ef86011ef9d51f3b5cf765e860ad6e6ea801c4de8092193813faa",
+            "bytes": 967039,
+            "dimensions": [
+              1280,
+              720
+            ]
+          },
+          "after": {
+            "path": "../pegasus_runtime_v1/review/engine/new_level_08_gameplay.png",
+            "sha256": "c308f9c6b3ffdb7d87df15d90bf39fde8843df62e635c1228d39050d575df64f",
+            "bytes": 1017683,
+            "dimensions": [
+              1280,
+              720
+            ]
+          },
+          "before": null
+        }
+      },
+      "metrics": [
+        {
+          "label": "頭部相對原版最大位移",
+          "value": "0.000%",
+          "note": "按原頭部最小軸尺寸正規化；不是概念圖相似率。"
+        },
+        {
+          "label": "UV 座標變更",
+          "value": "0",
+          "note": "原版座標數 1096；以工程報告為準。"
+        },
+        {
+          "label": "模型三角形",
+          "value": "1128",
+          "note": "四部件合計；幾何數量不代表美術精細度。"
+        },
+        {
+          "label": "原骨架",
+          "value": "28",
+          "note": "部件裝配與動作驗證另列。"
+        }
+      ],
+      "tests": [
+        {
+          "label": "runtime_test",
+          "status": "PASS",
+          "evidence": {
+            "path": "../pegasus_runtime_v1/review/runtime_test.json",
+            "sha256": "db9ccb91ba9fcb58d7839077bd5dbc4107bcf0912212d6eff4ff1c4678d80530",
+            "bytes": 11128
+          }
+        },
+        {
+          "label": "roundtrip_test",
+          "status": "PASS",
+          "evidence": {
+            "path": "../pegasus_runtime_v1/review/roundtrip_test.json",
+            "sha256": "11802118df101f417f438ef969fdc07017faeb993be672dbc36de13a46f13316",
+            "bytes": 11740
+          }
+        },
+        {
+          "label": "proportion_test",
+          "status": "PASS",
+          "evidence": {
+            "path": "../pegasus_runtime_v1/review/proportion_test.json",
+            "sha256": "c8b971414fe73fa71494a7b4c86334f5a94e882120f8bc3060ef044420bd9247",
+            "bytes": 9085
+          }
+        },
+        {
+          "label": "delivery_validate",
+          "status": "PASS",
+          "evidence": {
+            "path": "../pegasus_runtime_v1/review/delivery_validate.json",
+            "sha256": "bc32978550c0baf7424d1cce8ff929fc44a79114570f621e3c081ed28a038acc",
+            "bytes": 8721
+          }
+        },
+        {
+          "label": "original_scene_invariants",
+          "status": "PASS",
+          "evidence": {
+            "path": "../pegasus_runtime_v1/review/original_scene_invariants.json",
+            "sha256": "2f00704d99c1ac521b0738960c65a1482d6e4fbe2a405fd5b311732d0b0decd5",
+            "bytes": 2155
+          }
+        },
+        {
+          "label": "glb_images_test",
+          "status": "PASS",
+          "evidence": {
+            "path": "../pegasus_runtime_v1/review/glb_images_test.json",
+            "sha256": "78305fb0494f8526def121f71d8b75faf305bde2be12cf69ff20cc9b8ab9666a",
+            "bytes": 4675
+          }
+        }
+      ],
+      "residuals": [
+        "原頂點／UV 全保留，所以雙冠較概念高、前頜較尖長，概念低冠與短頜未完整形成；目前是原遊戲比例的貼圖轉譯。",
+        "前胸仍保留原五角中央件和藍領區，與概念黑色矩形胸槽不同；這輪 body prompt 以原胸板重整為範圍，沒有要求新增發光服務盒。",
+        "藍色外緣線與磨損比原版更清楚，部分仍有亮白磨邊。全身大色塊與深色關節符合共同方向，細節密度是否足夠接近 Viper/Fortune 仍待使用者美術評價。",
+        "後腦與腳跟保留原深藍技術紋理，概念只展示斜正面，背面做法屬原版基底延伸。",
+        "區域 08 雪地降低白灰外殼背景對比；目前沒有手機螢幕與效能實測，不將實機擷取視為行動裝置驗收。",
+        "動畫是待機／跑動各一張與換彈九張固定取樣，未見新增破裂，不代表完整連續動畫所有角度皆已驗證。"
+      ],
+      "sources": [
+        {
+          "path": "../pegasus_runtime_v1/manifest.json",
+          "sha256": "1c41a1e180b1fa1b82882cd1607d2386388a586d72e2fbdb078d3cda49ab55cc",
+          "bytes": 58934,
+          "label": "完整素材與工程 manifest"
+        },
+        {
+          "path": "../pegasus_runtime_v1/review/engine/capture.json",
+          "sha256": "e2bb142a2941180f3c1270708d22eae8c7df1cb690a7b1767af0e4f1b9c14b9a",
+          "bytes": 23987,
+          "label": "正常引擎擷取紀錄"
+        },
+        {
+          "path": "../pegasus_runtime_v1/review/visual_review.json",
+          "sha256": "cdfce5de923fa4298df8f6166810faa9edc828315423cab44408357ddace29c0",
+          "bytes": 40162,
+          "label": "逐張實際目視紀錄"
+        },
+        {
+          "path": "../pegasus_runtime_v1/index.html",
+          "sha256": "f462a7bcf3ea5d28ae8903f7eeec242acbfdcb1fbf7d2c0f889d1c1278d3c678",
+          "bytes": 9762,
+          "label": "各套獨立比對頁"
+        },
+        {
+          "path": "../pegasus_runtime_v1/generation_inputs.json",
+          "sha256": "ebe85505b014816580bcf007211b3d16b548a727746538b68704a4247485d09a",
+          "bytes": 13162,
+          "label": "生成圖、實送 Prompt 與來源"
+        },
+        {
+          "path": "../pegasus_runtime_v1/prompts/head_attempt_01.txt",
+          "sha256": "7d8d81600bc6f8503b2580545281b72b8ec7592c1c662c489b1d95c3f7eb32c2",
+          "bytes": 6170,
+          "label": "原版頭盔實送 Prompt"
+        },
+        {
+          "path": "../pegasus_runtime_v1/revisions/original_source_v1/snapshot.json",
+          "sha256": "6866d0c6e0096aac19df0dbb966c407054776de26523d198d2031007e9209ed5",
+          "bytes": 5527,
+          "label": "原版來源凍結紀錄"
+        }
+      ],
+      "art_acceptance": "NOT RUN・等待使用者美術評價",
+      "browser_interaction": "NOT RUN",
+      "visual_inspection": "ENGINEERING_CANDIDATE_PENDING_USER_ART_REVIEW",
+      "reference": {
+        "path": "../original_armors_v1/images/c09_concept.png",
+        "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+        "bytes": 1956621,
+        "label": "目前裝甲設計參考",
+        "note": "概念圖只用來看設計，不是同相機遊戲擷取，也不是本輪生成的貼圖。"
+      },
+      "legacy_reference": {
+        "path": "../original_armors_v1/references/legacy/c09_front.png",
+        "sha256": "b2eb41d018c71542056bcde82a83913cfaadf7de5694a31895fdd76f18436084",
+        "bytes": 329509,
+        "label": "真正原遊戲造型參考"
+      },
+      "scene": {
+        "path": "../../../assets/armors/pegasus_v1/pegasus.scn",
+        "sha256": "971733e8ab5da401c32cb81eb6f858075ed15d2c1a81370732c51061ded65cf4",
+        "bytes": 81438
+      }
+    }
+  ]
+}

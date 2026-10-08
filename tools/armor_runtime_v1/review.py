@@ -9,12 +9,14 @@ DESCRIPTIONS = {
     'hydra': 'Hydra保留黃綠大型面甲與藍綠装甲，中央單鏡頭相機、縮短藍色下巴。',
     'strike': 'Strike採最新頭盔的雙青色縱向冠線與小點，保留青面甲與鋼藍裝甲。',
     'titan': 'Titan採連續金色全罩面甲、鋼藍护框與厚甲，兩側前臂各映射三個金點。',
+    'atom': 'Atom以真正原版四部件與五張UV貼圖為基底，轉譯C-08身甲及指定新版頭盔；初版保持原幾何。',
+    'pegasus': 'Pegasus以真正原版四部件與五張UV貼圖為基底，轉譯C-09白灰裝甲、深色V面甲及藍色細節；初版保持原幾何。',
 }
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--armor', choices=['hydra', 'strike', 'titan'], required=True)
+    parser.add_argument('--armor', choices=['hydra', 'strike', 'titan', 'atom', 'pegasus'], required=True)
     slug = parser.parse_args().armor
     work = ROOT / f'docs/art/{slug}_runtime_v1'
     config = json.loads((work / 'runtime_config.json').read_text())
