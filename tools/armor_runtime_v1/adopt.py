@@ -15,7 +15,7 @@ def sha(path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--armor', choices=['hydra', 'strike', 'titan'], required=True)
+    parser.add_argument('--armor', choices=['hydra', 'strike', 'titan', 'atom', 'pegasus'], required=True)
     slug = parser.parse_args().armor
     work = ROOT / 'docs/art' / f'{slug}_runtime_v1'
     config = json.loads((work / 'runtime_config.json').read_text())

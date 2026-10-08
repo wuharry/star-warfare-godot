@@ -1,0 +1,977 @@
+{
+  "status": "ENGINEERING_CANDIDATE_PENDING_USER_ART_REVIEW",
+  "date": "2026-10-09",
+  "armor": "Pegasus",
+  "design_id": "C-09",
+  "runtime_id": 8,
+  "reviewer": "Codex visual inspection through view_image of all 64 actual PNG files; 31 matched original/new pairs plus 2 original family references",
+  "capture_summary": {
+    "path": "docs/art/pegasus_runtime_v1/review/engine/capture.json",
+    "sha256": "e2bb142a2941180f3c1270708d22eae8c7df1cb690a7b1767af0e4f1b9c14b9a",
+    "bytes": 23987
+  },
+  "runtime_scene": {
+    "path": "assets/armors/pegasus_v1/pegasus.scn",
+    "sha256": "971733e8ab5da401c32cb81eb6f858075ed15d2c1a81370732c51061ded65cf4",
+    "bytes": 81438
+  },
+  "capture_runtime_scene_sha256": "971733e8ab5da401c32cb81eb6f858075ed15d2c1a81370732c51061ded65cf4",
+  "actual_images_inspected": 64,
+  "matched_view_pairs": 31,
+  "images": [
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/family_original_01_front.png",
+      "sha256": "c001c084d2f93f58fac64f09b0f4803ca1b64bd34702c906973820b7e38d41a1",
+      "bytes": 226642,
+      "version": "family_original",
+      "view": "family_original_01_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": false,
+      "observation": "原版 Fortune 同家族的短壯比例和手繪分片參照，不冒充 Pegasus 的前版。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/family_original_06_front.png",
+      "sha256": "83d14707387894ce712e7ee8cd8132d9c159ac5607100c485e72da7527a51cd7",
+      "bytes": 244189,
+      "version": "family_original",
+      "view": "family_original_06_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": false,
+      "observation": "原版 Thunder 同家族的高冠與金面罩參照；Pegasus 白灰雙冠／深鏡與其辨識分開。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_clay_front.png",
+      "sha256": "cc3140b7446625cc92e4f365bed5a6de97e3bbc9f1f304ae291abc7d285c4ca4",
+      "bytes": 47418,
+      "version": "new",
+      "view": "clay_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原／新灰模 SHA 完全一致，雙冠、大頭短壯比例與肩板輪廓未修改；此圖不代表新外形設計已完成。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_clay_quarter.png",
+      "sha256": "eb93f3d878e994b88d56aa094d76e9ace74115ee9a1ec92924caa371891e4b2d",
+      "bytes": 46196,
+      "version": "new",
+      "view": "clay_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原／新灰模 SHA 完全一致，原多角板造型保留。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_clay_rear.png",
+      "sha256": "fdb25dca1bc3f329e8f39f6522582f4ee0dbd12710a418bfd505b020366b13e9",
+      "bytes": 50148,
+      "version": "new",
+      "view": "clay_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原／新灰模 SHA 完全一致，沒有新增背部體積或更動肢體。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_clay_side.png",
+      "sha256": "b6a8c021d541454472a49bdaba657bbbe00d5273835d35880fdb9cd83d41f180",
+      "bytes": 31071,
+      "version": "new",
+      "view": "clay_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原／新灰模 SHA 完全一致；較尖長下巴與高冠的概念殘差由原幾何保留造成。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_diffuse_front.png",
+      "sha256": "652c287d25cad957e9d891057c6caa5a1941522733fc01faee7fb70a9e363110",
+      "bytes": 302879,
+      "version": "new",
+      "view": "diffuse_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "白灰大胸板、肩板、手腳與低飽和藍線對比清楚，前胸鏡像拼接沒有黑裂縫；原胸中央五角件及藍領區仍在，與概念矩形胸槽不同。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "sha256": "3bfcc38939ec33e287faf6b5b84ca28bbc062db004dfbd88c5c2b3a85b3122d3",
+      "bytes": 308454,
+      "version": "new",
+      "view": "diffuse_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "白灰主色和深色內襯統一，原短壯比例及多層肩板保留；手繪磨損比原版銳利，尚待使用者風格評價。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_diffuse_rear.png",
+      "sha256": "29599fb29d13e86dd22ed82566fb2b2fa946ef570c1539fbe72fbbfa22bf5e7e",
+      "bytes": 291468,
+      "version": "new",
+      "view": "diffuse_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "背部原單一圓形模組及放射板位置保留，沒有 Atom 首稿錯位雙盒；深色背布的原電路紋已改成較寬分片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_diffuse_side.png",
+      "sha256": "7dcc0d32cf6f8aa97b37c92ddc05e456451b899ca6b487a92beb5ee973c9bfbf",
+      "bytes": 195019,
+      "version": "new",
+      "view": "diffuse_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "頭身輪廓與原版一致；原側肩的層疊板仍完整，沒有新增錯位或 UV 空洞。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_head_front.png",
+      "sha256": "13a2ba72ea88bac7bad291e71c8bdde0e4052d7abed6fd49412d4768b5e5339e",
+      "bytes": 607386,
+      "version": "new",
+      "view": "head_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "白灰頭殼已和身甲同色系，深藍黑 V 面罩連續，沒有紅色殼、雙眼或中心黑裂縫；原版較高雙冠與多層額板仍保留。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_head_quarter.png",
+      "sha256": "90f0c06d4eaffda4458226e10088f2ad38d14cda6acd6733894b8e02bc206481",
+      "bytes": 598273,
+      "version": "new",
+      "view": "head_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "新版白灰頰板和額板連接清楚，鏡面反光較克制；原版尖頜仍長於 C09 概念短頜，不宣稱輪廓完全還原。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_head_rear.png",
+      "sha256": "92a33358ebce209d48fefd2697c6ddc447715826136937418d0956d3d46ef477",
+      "bytes": 536633,
+      "version": "new",
+      "view": "head_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "後腦白灰側殼及原深藍中央模組位置正確；沒有正面面罩誤畫到後腦。保留原後腦電路線語彙，非概念已展示的背面。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_head_side.png",
+      "sha256": "f90718d604139322b862c28fe20043d4a27f6d6907c14069345a26a3d2090cbf",
+      "bytes": 546098,
+      "version": "new",
+      "view": "head_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原版側輪廓、外側冠與下巴前突保留；未見新頭部穿肩，白灰殼符合最新修正。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_idle_rifle.png",
+      "sha256": "745af58bf0c045f041af319e8e63496ff7834d07669dd5a9eb11bea9f44fadd3",
+      "bytes": 246793,
+      "version": "new",
+      "view": "idle_rifle",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同持槍待機取樣中，頭、雙肩、手掌和武器位置對應原版，未見新板件脫離。前胸被步槍遮住，不能由此圖驗收全部胸部。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_level_01_front.png",
+      "sha256": "6cdf2ed8bd76cdeac0f835fe3d77f2261a9850173bfa2c389ae01ccada636a0b",
+      "bytes": 1110663,
+      "version": "new",
+      "view": "level_01_front",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 01 實機正視中白灰頭殼與身甲一致，深色面罩可讀；較原版紅頭更接近 C09 指定配色。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "sha256": "8d7e0a285a51decc86c9dd8f42810b2751aa23fe17ecb4adb376f3e8e510229d",
+      "bytes": 1462986,
+      "version": "new",
+      "view": "level_01_gameplay",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 01 實機背側視角中白灰後腦與肩板可讀，原背包位置保留，未看到新材質缺失。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_level_08_front.png",
+      "sha256": "11580f0427cced3838204b4413814b84dcf11cdf15fd2fd18183584be467d3d0",
+      "bytes": 936752,
+      "version": "new",
+      "view": "level_08_front",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 08 明亮雪景中白灰角色仍由深色內襯和面罩分區辨識；亮背景會降低外殼對比，未實測手機螢幕效果。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "sha256": "c308f9c6b3ffdb7d87df15d90bf39fde8843df62e635c1228d39050d575df64f",
+      "bytes": 1017683,
+      "version": "new",
+      "view": "level_08_gameplay",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 08 遊戲背側白灰頭肩輪廓完整，保留原背包和原模型尺寸。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_painted_front.png",
+      "sha256": "652c287d25cad957e9d891057c6caa5a1941522733fc01faee7fb70a9e363110",
+      "bytes": 302879,
+      "version": "new",
+      "view": "painted_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "保留原材質 tint 時舊版頭殼為紅色，新版為白灰；此色差來自材質 tint／新素材，不把白化 diffuse 原版冒充原實機配色。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_painted_quarter.png",
+      "sha256": "3bfcc38939ec33e287faf6b5b84ca28bbc062db004dfbd88c5c2b3a85b3122d3",
+      "bytes": 308454,
+      "version": "new",
+      "view": "painted_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "舊版紅頭與新版白頭差異清楚；新版頭盔和胸肩在同一白灰明度家族。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_painted_rear.png",
+      "sha256": "29599fb29d13e86dd22ed82566fb2b2fa946ef570c1539fbe72fbbfa22bf5e7e",
+      "bytes": 291468,
+      "version": "new",
+      "view": "painted_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "新版後腦殼也已白灰化，非只修改正臉；背部未見錯島或額外虛構發光器。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_painted_side.png",
+      "sha256": "7dcc0d32cf6f8aa97b37c92ddc05e456451b899ca6b487a92beb5ee973c9bfbf",
+      "bytes": 195019,
+      "version": "new",
+      "view": "painted_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "舊版紅頭保持作真實原材質比較；新版白灰頭殼未遺漏側板，原版下巴輪廓仍在。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_00.png",
+      "sha256": "09cf51b8cee3554e6cf61fb81d36af1b1994ddaad8ef027aa07ef67802312ec1",
+      "bytes": 238826,
+      "version": "new",
+      "view": "reload_00",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_01.png",
+      "sha256": "5c1fafbc328c9a4efb71438e61badcc767a5b1cc7087544ef5f550d16ae4ee48",
+      "bytes": 223744,
+      "version": "new",
+      "view": "reload_01",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_02.png",
+      "sha256": "3c9b8bb42a8a3f0268c551f52f4a0562f25e0ff21dc22efdfc7562786601de26",
+      "bytes": 228682,
+      "version": "new",
+      "view": "reload_02",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_03.png",
+      "sha256": "45c42f1332321f62c79ce64dff06d75e2c76e50f38da9b9c902b81941193bc3f",
+      "bytes": 226372,
+      "version": "new",
+      "view": "reload_03",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_04.png",
+      "sha256": "ee7669d7832420ace1d9b256dcd4c9c204c57983f8f36804875b1675834d35af",
+      "bytes": 232249,
+      "version": "new",
+      "view": "reload_04",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_05.png",
+      "sha256": "5411d6c708f2c1cff0d579ded17c0a747218d14abc3772d23ffe489967e28d63",
+      "bytes": 235716,
+      "version": "new",
+      "view": "reload_05",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_06.png",
+      "sha256": "ed41f41094a3934143166b0086c9dbea52bc3365d5b0f2f2269d017dbc0c2334",
+      "bytes": 229596,
+      "version": "new",
+      "view": "reload_06",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_07.png",
+      "sha256": "117f1ee7c43b3bd9e6ab897c68dcf2f272947fcf96b15d933955649ef8243807",
+      "bytes": 224093,
+      "version": "new",
+      "view": "reload_07",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_08.png",
+      "sha256": "7bff1c8a48e547d96f299e17012d00bcb29a8e64ab430b2e3103bead993481b3",
+      "bytes": 239976,
+      "version": "new",
+      "view": "reload_08",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_run_rifle.png",
+      "sha256": "189549fb2184be82952ad1bf481d29d031e24616ca866a867973f88aeaf6c51e",
+      "bytes": 230606,
+      "version": "new",
+      "view": "run_rifle",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同跑動取樣中頭與肩、肘、膝連接完整，原抬腿姿勢相符；未見新增爆開或倒置紋理。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_clay_front.png",
+      "sha256": "cc3140b7446625cc92e4f365bed5a6de97e3bbc9f1f304ae291abc7d285c4ca4",
+      "bytes": 47418,
+      "version": "original",
+      "view": "clay_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原／新灰模 SHA 完全一致，雙冠、大頭短壯比例與肩板輪廓未修改；此圖不代表新外形設計已完成。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_clay_quarter.png",
+      "sha256": "eb93f3d878e994b88d56aa094d76e9ace74115ee9a1ec92924caa371891e4b2d",
+      "bytes": 46196,
+      "version": "original",
+      "view": "clay_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原／新灰模 SHA 完全一致，原多角板造型保留。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_clay_rear.png",
+      "sha256": "fdb25dca1bc3f329e8f39f6522582f4ee0dbd12710a418bfd505b020366b13e9",
+      "bytes": 50148,
+      "version": "original",
+      "view": "clay_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原／新灰模 SHA 完全一致，沒有新增背部體積或更動肢體。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_clay_side.png",
+      "sha256": "b6a8c021d541454472a49bdaba657bbbe00d5273835d35880fdb9cd83d41f180",
+      "bytes": 31071,
+      "version": "original",
+      "view": "clay_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原／新灰模 SHA 完全一致；較尖長下巴與高冠的概念殘差由原幾何保留造成。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_diffuse_front.png",
+      "sha256": "8e2fa3dfccd9ee1c1b5688b91a7dd117f005d68ef2e0c36339c558a886e6d6ab",
+      "bytes": 255264,
+      "version": "original",
+      "view": "diffuse_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "白灰大胸板、肩板、手腳與低飽和藍線對比清楚，前胸鏡像拼接沒有黑裂縫；原胸中央五角件及藍領區仍在，與概念矩形胸槽不同。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_diffuse_quarter.png",
+      "sha256": "39183b2a1888ce855ecda77c5dfddc2120d3ae0ebb8a4b716ceb325b22df9ab6",
+      "bytes": 257320,
+      "version": "original",
+      "view": "diffuse_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "白灰主色和深色內襯統一，原短壯比例及多層肩板保留；手繪磨損比原版銳利，尚待使用者風格評價。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_diffuse_rear.png",
+      "sha256": "3d31dca5653e3cccc2c831a4c200fec923c69f6016435d995e3f07ba66d0220d",
+      "bytes": 245566,
+      "version": "original",
+      "view": "diffuse_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "背部原單一圓形模組及放射板位置保留，沒有 Atom 首稿錯位雙盒；深色背布的原電路紋已改成較寬分片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_diffuse_side.png",
+      "sha256": "54469ca0c9d6c1ba8c821d92fd7b0935b9f160d5bf144bae045a91de80173759",
+      "bytes": 166946,
+      "version": "original",
+      "view": "diffuse_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "頭身輪廓與原版一致；原側肩的層疊板仍完整，沒有新增錯位或 UV 空洞。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_head_front.png",
+      "sha256": "64cceae444dff069d5704d92455e02181952994d13f955ae7f1f3c055bdb97ca",
+      "bytes": 540735,
+      "version": "original",
+      "view": "head_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "白灰頭殼已和身甲同色系，深藍黑 V 面罩連續，沒有紅色殼、雙眼或中心黑裂縫；原版較高雙冠與多層額板仍保留。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_head_quarter.png",
+      "sha256": "369a4a22fa97bfb8385cd7777dd9f3fab8ffa49127b08abbe05a2ab2804d16e7",
+      "bytes": 535737,
+      "version": "original",
+      "view": "head_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "新版白灰頰板和額板連接清楚，鏡面反光較克制；原版尖頜仍長於 C09 概念短頜，不宣稱輪廓完全還原。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_head_rear.png",
+      "sha256": "b94e4ac58d1f36d0a54f4112efc41236ba3d7f8d546efdff0bc4983ab0e13a0e",
+      "bytes": 462648,
+      "version": "original",
+      "view": "head_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "後腦白灰側殼及原深藍中央模組位置正確；沒有正面面罩誤畫到後腦。保留原後腦電路線語彙，非概念已展示的背面。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_head_side.png",
+      "sha256": "4f74f2baa963dcf710bd935b719472ce687798d765a96fcbbb1b32e2daafd1a9",
+      "bytes": 494756,
+      "version": "original",
+      "view": "head_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原版側輪廓、外側冠與下巴前突保留；未見新頭部穿肩，白灰殼符合最新修正。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_idle_rifle.png",
+      "sha256": "b4674f9a18c1ac47fc3b353cdf78269db3a86e06228e2bd889f2898f12d9f91b",
+      "bytes": 190065,
+      "version": "original",
+      "view": "idle_rifle",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同持槍待機取樣中，頭、雙肩、手掌和武器位置對應原版，未見新板件脫離。前胸被步槍遮住，不能由此圖驗收全部胸部。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_level_01_front.png",
+      "sha256": "0820cc57a212371322d5d4fc91fdb6037e4ad3d59b49680d19e889aff3c8cce4",
+      "bytes": 1072129,
+      "version": "original",
+      "view": "level_01_front",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 01 實機正視中白灰頭殼與身甲一致，深色面罩可讀；較原版紅頭更接近 C09 指定配色。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_level_01_gameplay.png",
+      "sha256": "aa9aab295a11e2f734d45279026e1c610bd03c8aa5150bd297f9d14632104032",
+      "bytes": 1412862,
+      "version": "original",
+      "view": "level_01_gameplay",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 01 實機背側視角中白灰後腦與肩板可讀，原背包位置保留，未看到新材質缺失。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_level_08_front.png",
+      "sha256": "47b74695f61642a6fd55477cf61c83bd2efaa1951419a3646db64718e8e5bda0",
+      "bytes": 903487,
+      "version": "original",
+      "view": "level_08_front",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 08 明亮雪景中白灰角色仍由深色內襯和面罩分區辨識；亮背景會降低外殼對比，未實測手機螢幕效果。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_level_08_gameplay.png",
+      "sha256": "7add97d0758ef86011ef9d51f3b5cf765e860ad6e6ea801c4de8092193813faa",
+      "bytes": 967039,
+      "version": "original",
+      "view": "level_08_gameplay",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 08 遊戲背側白灰頭肩輪廓完整，保留原背包和原模型尺寸。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_painted_front.png",
+      "sha256": "58dd014b1a06f8261af3eb903ea426809bcbc6580008979dd9b94607b2f8202f",
+      "bytes": 212264,
+      "version": "original",
+      "view": "painted_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "保留原材質 tint 時舊版頭殼為紅色，新版為白灰；此色差來自材質 tint／新素材，不把白化 diffuse 原版冒充原實機配色。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_painted_quarter.png",
+      "sha256": "3ce395263a382994c1ec8a8ce9ee251596e9f4e8675fafdb26d388b12f3c8120",
+      "bytes": 215734,
+      "version": "original",
+      "view": "painted_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "舊版紅頭與新版白頭差異清楚；新版頭盔和胸肩在同一白灰明度家族。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_painted_rear.png",
+      "sha256": "eec802a38452aee4c667bbcd9e81b9c80f0a16da011fd1138d62e6f5e0d5282d",
+      "bytes": 207702,
+      "version": "original",
+      "view": "painted_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "新版後腦殼也已白灰化，非只修改正臉；背部未見錯島或額外虛構發光器。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_painted_side.png",
+      "sha256": "d788447d335294b25515a1789b05a596817e615e892b04205c2916faa48b3cbb",
+      "bytes": 132744,
+      "version": "original",
+      "view": "painted_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "舊版紅頭保持作真實原材質比較；新版白灰頭殼未遺漏側板，原版下巴輪廓仍在。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_00.png",
+      "sha256": "5b8ffb08226eac65424e804f47a58d3fb276915bb4344290f6c43790f3b29d97",
+      "bytes": 186807,
+      "version": "original",
+      "view": "reload_00",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_01.png",
+      "sha256": "f7ca6f7f8dcd8c7c2e43b5edf20968266d213875a43a5797bc922979c2b715c8",
+      "bytes": 173852,
+      "version": "original",
+      "view": "reload_01",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_02.png",
+      "sha256": "cabe772a7f404cc97665f5cba80ed4ec9a11f0e61b85983c3e3f93a19869a84d",
+      "bytes": 177913,
+      "version": "original",
+      "view": "reload_02",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_03.png",
+      "sha256": "c5768f28cd9a9a6f8a8af0867a8b3e00db82daf4d2a1ffaae2cdc2eb0df2be24",
+      "bytes": 179321,
+      "version": "original",
+      "view": "reload_03",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_04.png",
+      "sha256": "8b10cd822e975460f16c6509a643719cf33b7baf31a59f36df4dfe84d72c671e",
+      "bytes": 182875,
+      "version": "original",
+      "view": "reload_04",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_05.png",
+      "sha256": "20612126f17c41b0f0f058f786a826576161c52d3bf3feca063011af7404ae7f",
+      "bytes": 185981,
+      "version": "original",
+      "view": "reload_05",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_06.png",
+      "sha256": "f93aadc4a4fe08f4e9fac2befc81c73a0da419526f24b3302e06b302cd23653f",
+      "bytes": 182168,
+      "version": "original",
+      "view": "reload_06",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_07.png",
+      "sha256": "4819cee47640e2034ef6e2806b5b1da798cef7425cb316d5f246667851d3b311",
+      "bytes": 177892,
+      "version": "original",
+      "view": "reload_07",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_08.png",
+      "sha256": "79336696e2a9e2756cbfbd4e16a8d560a5980d254e4860cf975b18952f127f53",
+      "bytes": 187496,
+      "version": "original",
+      "view": "reload_08",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，白灰頭殼、手臂、肩板與武器位置相符，未見新增斷肢或 UV 倒置；畫面掉落彈匣是兩版皆有的原換彈流程。僅審此張固定取樣，未把單圖當成完整動畫影片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_run_rifle.png",
+      "sha256": "a5830bc57ee0aeb2ca03e0564d6c4f6cfbf4ace640df02397d9131584e781bf7",
+      "bytes": 173812,
+      "version": "original",
+      "view": "run_rifle",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同跑動取樣中頭與肩、肘、膝連接完整，原抬腿姿勢相符；未見新增爆開或倒置紋理。"
+    }
+  ],
+  "approved_concept": {
+    "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_1_c09_concept.png",
+    "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+    "bytes": 1956621,
+    "role": "Latest C09 white/light-gray shell concept; original short stocky runtime proportions retained"
+  },
+  "engineering_evidence": [
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/runtime_test.json",
+      "sha256": "db9ccb91ba9fcb58d7839077bd5dbc4107bcf0912212d6eff4ff1c4678d80530",
+      "bytes": 11128,
+      "reported_status": "PASS",
+      "scope": "producer report read only; visual reviewer did not run engines"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/roundtrip_test.json",
+      "sha256": "11802118df101f417f438ef969fdc07017faeb993be672dbc36de13a46f13316",
+      "bytes": 11740,
+      "reported_status": "PASS",
+      "scope": "producer report read only; visual reviewer did not run engines"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/glb_images_test.json",
+      "sha256": "78305fb0494f8526def121f71d8b75faf305bde2be12cf69ff20cc9b8ab9666a",
+      "bytes": 4675,
+      "reported_status": "PASS",
+      "scope": "producer report read only; visual reviewer did not run engines"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/delivery_validate.json",
+      "sha256": "bc32978550c0baf7424d1cce8ff929fc44a79114570f621e3c081ed28a038acc",
+      "bytes": 8721,
+      "reported_status": "PASS",
+      "scope": "producer report read only; visual reviewer did not run engines"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/original_scene_invariants.json",
+      "sha256": "2f00704d99c1ac521b0738960c65a1482d6e4fbe2a405fd5b311732d0b0decd5",
+      "bytes": 2155,
+      "reported_status": "PASS",
+      "scope": "producer report read only; visual reviewer did not run engines"
+    }
+  ],
+  "blocking_findings": [],
+  "art_verdict": "白灰頭盔／身甲、深色單片面罩、原肩層與藍色細節可作首輪工程候選；沒有發現必須重生的貼錯島或鏡像裂縫。保留原頭形的高冠和尖頜仍與概念有差，不宣稱完全還原或使用者已核准。",
+  "residuals": [
+    "原頂點／UV 全保留，所以雙冠較概念高、前頜較尖長，概念低冠與短頜未完整形成；目前是原遊戲比例的貼圖轉譯。",
+    "前胸仍保留原五角中央件和藍領區，與概念黑色矩形胸槽不同；這輪 body prompt 以原胸板重整為範圍，沒有要求新增發光服務盒。",
+    "藍色外緣線與磨損比原版更清楚，部分仍有亮白磨邊。全身大色塊與深色關節符合共同方向，細節密度是否足夠接近 Viper/Fortune 仍待使用者美術評價。",
+    "後腦與腳跟保留原深藍技術紋理，概念只展示斜正面，背面做法屬原版基底延伸。",
+    "區域 08 雪地降低白灰外殼背景對比；目前沒有手機螢幕與效能實測，不將實機擷取視為行動裝置驗收。",
+    "動畫是待機／跑動各一張與換彈九張固定取樣，未見新增破裂，不代表完整連續動畫所有角度皆已驗證。"
+  ],
+  "user_art_approval": "NOT_RUN",
+  "browser_interaction": "NOT_RUN",
+  "mobile_performance": "NOT_RUN",
+  "engine_run_by_reviewer": false,
+  "revalidation_rule": "If runtime scene, any atlas, or capture summary changes, this visual review must be re-bound only after actual inspection of replacement captures."
+}

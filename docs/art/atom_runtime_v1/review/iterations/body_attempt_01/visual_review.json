@@ -1,0 +1,1152 @@
+{
+  "status": "NEEDS_ART_REVISION",
+  "date": "2026-10-09",
+  "armor": "Atom",
+  "design_id": "C-08",
+  "runtime_id": 7,
+  "reviewer": "Codex visual inspection through view_image of all 64 actual PNG files; 31 matched original/new pairs plus 2 original family references",
+  "capture_summary": {
+    "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/capture.json",
+    "sha256": "e5b0aa8ca81ab618db6c60c3e1a8c70017e999627ba20e7d5abae868b40a2d2d",
+    "bytes": 23403
+  },
+  "capture_runtime_scene_sha256": "660a885ee4a325e5a7f93095378a897a95c660d6f66f0c144ecde8e91fb1eb0e",
+  "images": [
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/family_original_01_front.png",
+      "sha256": "154b241c14d0b70b5407948f676335df72f3b0537efe7cb1bf927492c331d406",
+      "bytes": 226782,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/family_original_01_front.png",
+      "version": "family_original",
+      "view": "family_original_01_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": false,
+      "observation": "原版 Fortune 家族參照，以相同短壯比例與手繪大色塊作風格比較；不冒充 Atom 的前版。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/family_original_06_front.png",
+      "sha256": "7c3e7b99a68d4508dce73cf27f7fedeadcc84819b01b61770286344f8fdf244a",
+      "bytes": 244546,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/family_original_06_front.png",
+      "version": "family_original",
+      "view": "family_original_06_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": false,
+      "observation": "原版 Thunder 家族參照，高冠和琥珀面罩與 Atom 紫殼青鏡可辨別；不作 Atom 的設計目標。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_clay_front.png",
+      "sha256": "d66d9aa8b25ff37e09a47975c847e0159d9f8e7e3c30213089e0a6413ff44dc9",
+      "bytes": 44194,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_clay_front.png",
+      "version": "new",
+      "view": "clay_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原版與新版灰模影像 SHA 完全一致；這次不宣稱有新外形設計，灰模只證明既有輪廓保留。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_clay_quarter.png",
+      "sha256": "96940c460bd1f766f3845ec3e6a8fe341bba639a6254cb5a0d553602d9991d17",
+      "bytes": 43925,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_clay_quarter.png",
+      "version": "new",
+      "view": "clay_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原版與新版灰模影像 SHA 完全一致；比例與原肩刺輪廓保留。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_clay_rear.png",
+      "sha256": "13a57117cadef586422ae3b7c476affd6316d0003a3b4be41f3ecd5365205ea8",
+      "bytes": 46643,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_clay_rear.png",
+      "version": "new",
+      "view": "clay_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原版與新版灰模影像 SHA 完全一致；沒有新增背部體積或新身體輪廓。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_clay_side.png",
+      "sha256": "c4370ca35a89f8051a7aeda527f95ebdbf2a801b74c118bbe2c5f53e727b1bf6",
+      "bytes": 27993,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_clay_side.png",
+      "version": "new",
+      "view": "clay_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原版與新版灰模影像 SHA 完全一致；長下巴殘差來自原版幾何，不會靠重畫 atlas 消失。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_diffuse_front.png",
+      "sha256": "4dc6d9281a2accb65a770b48f6d89a54844d10382caec915a7e19c0020074b9a",
+      "bytes": 302515,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_diffuse_front.png",
+      "version": "new",
+      "view": "diffuse_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "紫／鋼藍／青色辨識清楚；正胸仍為菱形燈，缺少 C08 單一直立矩形胸匣。白色邊磨損與密裂紋比概念更密。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_diffuse_quarter.png",
+      "sha256": "972ffe23fbaae9f27bfe0ebcdc13cfa46eb5d2645e5a8fd666394102a0e706ca",
+      "bytes": 311204,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "version": "new",
+      "view": "diffuse_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原肩刺及短壯比例保留；胸前仍為原菱燈，body 設計未完成概念指定胸匣。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_diffuse_rear.png",
+      "sha256": "b7587a6c03e1251e158de3d5e7a80a8717d13873ad75d962300c2c0839a23144",
+      "bytes": 291741,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_diffuse_rear.png",
+      "version": "new",
+      "view": "diffuse_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "阻擋項：C08 前胸單一矩形盒被畫到後背接縫旁，鏡像成兩個完整青色直立盒。原背部中央半圓燈遭替換。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_diffuse_side.png",
+      "sha256": "2b9f246acbc8471bdf3df89574442abf1991a619df8f62c5eb9ce1de837d6caa",
+      "bytes": 191757,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_diffuse_side.png",
+      "version": "new",
+      "view": "diffuse_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原版肢體與頭頜輪廓保留，未見新伸長／錯位；背部直立盒在側視可辨為上背裝置。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_head_front.png",
+      "sha256": "0bda687db00dea4f4f329c0bc1b71a0302774024eae002a663397e59d986ecb3",
+      "bytes": 575433,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_head_front.png",
+      "version": "new",
+      "view": "head_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "紫色頭殼、鋼藍額軌與三個青燈保留 Atom 身分；玻璃中心是明亮 V 反射，未見黑色鏡像裂縫。原幾何長下巴仍高插入面罩，未達 C08 短下巴。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_head_quarter.png",
+      "sha256": "9afe151e42385debcf2bc395315e9ca11c04a8680fcb4d6e1cf7a70751e02603",
+      "bytes": 593682,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_head_quarter.png",
+      "version": "new",
+      "view": "head_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "青色玻璃連續；原版平多角耳蓋及長下巴保留，未重做成概念圓耳／短頜。額燈為中央一顆加左右各一顆。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_head_rear.png",
+      "sha256": "98f857ffe9c1b6517b68fbcccd3fa910139bd4cd79563559bb1da7b729600055",
+      "bytes": 563209,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_head_rear.png",
+      "version": "new",
+      "view": "head_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "後腦仍為單一大青色同心圓和左右側燈，未把正面畫到後腦。上背可見錯放的雙直立盒，屬 body atlas 問題。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_head_side.png",
+      "sha256": "a544f161eb8591a10003b439bb439f3886d99d864f22c093064bf5a3861d4864",
+      "bytes": 523349,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_head_side.png",
+      "version": "new",
+      "view": "head_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "頭殼側輪廓與原版相同；鋼藍側耳仍為扁平多角塊，概念的圓耳硬體及青色頰燈尚未形成。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_idle_rifle.png",
+      "sha256": "678b8e68de77b171d77473be76e734143921bbd498135f83b595ac3327b4ddc2",
+      "bytes": 245940,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_idle_rifle.png",
+      "version": "new",
+      "view": "idle_rifle",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同待機取樣中，槍械、手掌、頭和肩位置相符；未見新增手臂爆開。步槍遮住前胸，不能用此圖驗收胸匣。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_level_01_front.png",
+      "sha256": "a9799d9c51405a65f105d788fc8f2d01daf4a19721c0b61eab7ea1b86996f29c",
+      "bytes": 1107777,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_level_01_front.png",
+      "version": "new",
+      "view": "level_01_front",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 01 正視實機的紫殼／青玻璃清楚；步槍遮住大部分胸部，不能用此圖證明胸匣正確。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_level_01_gameplay.png",
+      "sha256": "e972a9489944559658cd7883afc526a32a3ff3dff79e199ee8e49c797c0a64c4",
+      "bytes": 1472403,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "version": "new",
+      "view": "level_01_gameplay",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 01 背側遊戲鏡頭的後腦同心圓及紫肩可辨，背包維持原設定；未看到新資源缺失。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_level_08_front.png",
+      "sha256": "5218c10bfbe81141d50b22877fb69e98d23b75a3d3f8ce03ec6dbe4116d45f7e",
+      "bytes": 935943,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_level_08_front.png",
+      "version": "new",
+      "view": "level_08_front",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 08 明亮場景下保留 Atom 紫／鋼藍／青色識別；胸部仍由武器遮蔽。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_level_08_gameplay.png",
+      "sha256": "ad48d8c21784f8e86cc2a093210c514dce217531d7a91cc0bf07823e1077ad8c",
+      "bytes": 1028061,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "version": "new",
+      "view": "level_08_gameplay",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 08 背側遊戲鏡頭保留原頭身比例和背包位置；青色後腦燈較原版亮。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_painted_front.png",
+      "sha256": "4dc6d9281a2accb65a770b48f6d89a54844d10382caec915a7e19c0020074b9a",
+      "bytes": 302515,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_painted_front.png",
+      "version": "new",
+      "view": "painted_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "保留原材質 tint 的原版比較較暗，新版與 diffuse 檔位元相同；正胸菱燈未替換，是美術身分未達標而非材質未載入。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_painted_quarter.png",
+      "sha256": "972ffe23fbaae9f27bfe0ebcdc13cfa46eb5d2645e5a8fd666394102a0e706ca",
+      "bytes": 311204,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_painted_quarter.png",
+      "version": "new",
+      "view": "painted_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "持續可見紫／鋼藍色塊；比原版更銳利的白邊與密集磨痕屬美術殘差。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_painted_rear.png",
+      "sha256": "b7587a6c03e1251e158de3d5e7a80a8717d13873ad75d962300c2c0839a23144",
+      "bytes": 291741,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_painted_rear.png",
+      "version": "new",
+      "view": "painted_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "和 diffuse 一樣明確顯示錯放於背部的雙直立盒；需重新生成 body atlas。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_painted_side.png",
+      "sha256": "2b9f246acbc8471bdf3df89574442abf1991a619df8f62c5eb9ce1de837d6caa",
+      "bytes": 191757,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_painted_side.png",
+      "version": "new",
+      "view": "painted_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "肩／肘／膝位置與原版一致；無新增 UV 裂口，但單圖無法保證完整連續動畫。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_reload_00.png",
+      "sha256": "56096e63190a92e12ff63ed08fa15d0d6b6e490d1c98acad57dc8a041cd0d27c",
+      "bytes": 234569,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_reload_00.png",
+      "version": "new",
+      "view": "reload_00",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_reload_01.png",
+      "sha256": "d97b4a4f3dd23869d6f07f7cbf4a9abc680b7f39bc1d0837f9c79f33d8001b10",
+      "bytes": 221125,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_reload_01.png",
+      "version": "new",
+      "view": "reload_01",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_reload_02.png",
+      "sha256": "8fa9a9c218721b96c461504df780f9cdfdd10870428e728c791583fc49451f6c",
+      "bytes": 223896,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_reload_02.png",
+      "version": "new",
+      "view": "reload_02",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_reload_03.png",
+      "sha256": "4689f63cf3b05ca8c18a24e4c9f2076aa88ad5c397b93c31615c74a8ba0e0671",
+      "bytes": 222769,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_reload_03.png",
+      "version": "new",
+      "view": "reload_03",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_reload_04.png",
+      "sha256": "6198fdfa43ca8b8ebc5c90029ca4db8cd1d2f753bcbc68ab4d4c694b70b69f1b",
+      "bytes": 230151,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_reload_04.png",
+      "version": "new",
+      "view": "reload_04",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_reload_05.png",
+      "sha256": "4b286ae6095224983b2c3cb9f6fdc28fe980f4b343cb47cd92e42e0e880093b6",
+      "bytes": 231650,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_reload_05.png",
+      "version": "new",
+      "view": "reload_05",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_reload_06.png",
+      "sha256": "6869308bce794dfa79e23c6b64f74a6eec806c42311972ce2dfcd90f8f3bc88f",
+      "bytes": 226166,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_reload_06.png",
+      "version": "new",
+      "view": "reload_06",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_reload_07.png",
+      "sha256": "38ed40c57b16b24376d637ace31add6ec77522d8c0cd9fe8c98bd187b0b41123",
+      "bytes": 221871,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_reload_07.png",
+      "version": "new",
+      "view": "reload_07",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_reload_08.png",
+      "sha256": "43e2c9cde578d103d217287d71d2c4d2b46b9209d3520f12b8cf91e00fc93b37",
+      "bytes": 235141,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_reload_08.png",
+      "version": "new",
+      "view": "reload_08",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/new_run_rifle.png",
+      "sha256": "601d6c4ba094c2893353eb17404f90c96fc7aa9508ed8869d596c3b64a0974ce",
+      "bytes": 227800,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/new_run_rifle.png",
+      "version": "new",
+      "view": "run_rifle",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同跑動取樣中頭、肩刺與四肢連接完整；未見新增穿出或倒置貼圖。僅核對這張固定取樣。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_clay_front.png",
+      "sha256": "d66d9aa8b25ff37e09a47975c847e0159d9f8e7e3c30213089e0a6413ff44dc9",
+      "bytes": 44194,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_clay_front.png",
+      "version": "original",
+      "view": "clay_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原版與新版灰模影像 SHA 完全一致；這次不宣稱有新外形設計，灰模只證明既有輪廓保留。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_clay_quarter.png",
+      "sha256": "96940c460bd1f766f3845ec3e6a8fe341bba639a6254cb5a0d553602d9991d17",
+      "bytes": 43925,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_clay_quarter.png",
+      "version": "original",
+      "view": "clay_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原版與新版灰模影像 SHA 完全一致；比例與原肩刺輪廓保留。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_clay_rear.png",
+      "sha256": "13a57117cadef586422ae3b7c476affd6316d0003a3b4be41f3ecd5365205ea8",
+      "bytes": 46643,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_clay_rear.png",
+      "version": "original",
+      "view": "clay_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原版與新版灰模影像 SHA 完全一致；沒有新增背部體積或新身體輪廓。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_clay_side.png",
+      "sha256": "c4370ca35a89f8051a7aeda527f95ebdbf2a801b74c118bbe2c5f53e727b1bf6",
+      "bytes": 27993,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_clay_side.png",
+      "version": "original",
+      "view": "clay_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原版與新版灰模影像 SHA 完全一致；長下巴殘差來自原版幾何，不會靠重畫 atlas 消失。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_diffuse_front.png",
+      "sha256": "e4c8d23355173e6013f1c99d5550a5d62fc58305c53647cdc6d0f4a017ec3bbd",
+      "bytes": 254131,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_diffuse_front.png",
+      "version": "original",
+      "view": "diffuse_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "紫／鋼藍／青色辨識清楚；正胸仍為菱形燈，缺少 C08 單一直立矩形胸匣。白色邊磨損與密裂紋比概念更密。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_diffuse_quarter.png",
+      "sha256": "c36225c8fd1c29a5654ddfe872f8990adc5f7bb73d75145e7b04a94d4cee9b42",
+      "bytes": 262791,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_diffuse_quarter.png",
+      "version": "original",
+      "view": "diffuse_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原肩刺及短壯比例保留；胸前仍為原菱燈，body 設計未完成概念指定胸匣。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_diffuse_rear.png",
+      "sha256": "123c4b1fb5cc1fc469c1171f4095f29a0c511763f33abccffa0bcb75620b16ca",
+      "bytes": 249056,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_diffuse_rear.png",
+      "version": "original",
+      "view": "diffuse_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "阻擋項：C08 前胸單一矩形盒被畫到後背接縫旁，鏡像成兩個完整青色直立盒。原背部中央半圓燈遭替換。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_diffuse_side.png",
+      "sha256": "3d7fd0b35ee324c070157130c67d1d70d3d4215eb6128d8bbd4c988595c0b284",
+      "bytes": 165495,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_diffuse_side.png",
+      "version": "original",
+      "view": "diffuse_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "原版肢體與頭頜輪廓保留，未見新伸長／錯位；背部直立盒在側視可辨為上背裝置。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_head_front.png",
+      "sha256": "b696071bb54ed214625108a5088391067bf18e2e5af4d0f3348a47fa73abcd5f",
+      "bytes": 493953,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_head_front.png",
+      "version": "original",
+      "view": "head_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "紫色頭殼、鋼藍額軌與三個青燈保留 Atom 身分；玻璃中心是明亮 V 反射，未見黑色鏡像裂縫。原幾何長下巴仍高插入面罩，未達 C08 短下巴。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_head_quarter.png",
+      "sha256": "e5a72b58f6bc7ffb9d0d225bd57588dbd4b6234084bf1dab543fd49f0c51f62b",
+      "bytes": 523775,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_head_quarter.png",
+      "version": "original",
+      "view": "head_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "青色玻璃連續；原版平多角耳蓋及長下巴保留，未重做成概念圓耳／短頜。額燈為中央一顆加左右各一顆。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_head_rear.png",
+      "sha256": "869a2a72e37ed1783e67cc144162130b9f17e4f1172adaf60e58a1b24002401b",
+      "bytes": 505488,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_head_rear.png",
+      "version": "original",
+      "view": "head_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "後腦仍為單一大青色同心圓和左右側燈，未把正面畫到後腦。上背可見錯放的雙直立盒，屬 body atlas 問題。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_head_side.png",
+      "sha256": "bdab305db555357fdd97b620e69dde0d806f4aa4213624fda9c13d5e8448366e",
+      "bytes": 469880,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_head_side.png",
+      "version": "original",
+      "view": "head_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "頭殼側輪廓與原版相同；鋼藍側耳仍為扁平多角塊，概念的圓耳硬體及青色頰燈尚未形成。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_idle_rifle.png",
+      "sha256": "bd69405f8dbff3c505951f102121d247beeb237f3c2c61e46b4eca813d97b644",
+      "bytes": 211623,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_idle_rifle.png",
+      "version": "original",
+      "view": "idle_rifle",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同待機取樣中，槍械、手掌、頭和肩位置相符；未見新增手臂爆開。步槍遮住前胸，不能用此圖驗收胸匣。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_level_01_front.png",
+      "sha256": "fb2241e999fa7a9cb1b71ac6b217f84d6730999376aafbd27536f02d684b5a4b",
+      "bytes": 1085948,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_level_01_front.png",
+      "version": "original",
+      "view": "level_01_front",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 01 正視實機的紫殼／青玻璃清楚；步槍遮住大部分胸部，不能用此圖證明胸匣正確。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_level_01_gameplay.png",
+      "sha256": "2048912df826d32e76c7e74bb248c5b0692a1f7f891dae1192efc68acc86eed6",
+      "bytes": 1438818,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_level_01_gameplay.png",
+      "version": "original",
+      "view": "level_01_gameplay",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 01 背側遊戲鏡頭的後腦同心圓及紫肩可辨，背包維持原設定；未看到新資源缺失。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_level_08_front.png",
+      "sha256": "a02b094f8b2e86b06a25ec912b6c2e942a16888a5541a8090776536574fe0935",
+      "bytes": 915921,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_level_08_front.png",
+      "version": "original",
+      "view": "level_08_front",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 08 明亮場景下保留 Atom 紫／鋼藍／青色識別；胸部仍由武器遮蔽。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_level_08_gameplay.png",
+      "sha256": "cf131cbac800095c7db43acd08f2631212ca5cda320aee3fbd3f6f7ed354430c",
+      "bytes": 993473,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_level_08_gameplay.png",
+      "version": "original",
+      "view": "level_08_gameplay",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "區域 08 背側遊戲鏡頭保留原頭身比例和背包位置；青色後腦燈較原版亮。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_painted_front.png",
+      "sha256": "c90f4e51559181adda7b2d36e55d9750cd59f6f8d46ba5d57e5657da1069a290",
+      "bytes": 241696,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_painted_front.png",
+      "version": "original",
+      "view": "painted_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "保留原材質 tint 的原版比較較暗，新版與 diffuse 檔位元相同；正胸菱燈未替換，是美術身分未達標而非材質未載入。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_painted_quarter.png",
+      "sha256": "7a4007b68a7a7058c13352a64961f49d53e11b837547464240e3c93620ad65ab",
+      "bytes": 249266,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_painted_quarter.png",
+      "version": "original",
+      "view": "painted_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "持續可見紫／鋼藍色塊；比原版更銳利的白邊與密集磨痕屬美術殘差。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_painted_rear.png",
+      "sha256": "69c3dad009d54c5cea28ad04798fe2b3e3a4689da41ca5981a26c3373c39f70e",
+      "bytes": 236780,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_painted_rear.png",
+      "version": "original",
+      "view": "painted_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "和 diffuse 一樣明確顯示錯放於背部的雙直立盒；需重新生成 body atlas。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_painted_side.png",
+      "sha256": "f0769914b9aed3ca4c04bd789ef7c126401a83b8843e6551c8328aa322ab2cf1",
+      "bytes": 157303,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_painted_side.png",
+      "version": "original",
+      "view": "painted_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "肩／肘／膝位置與原版一致；無新增 UV 裂口，但單圖無法保證完整連續動畫。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_reload_00.png",
+      "sha256": "4c0c748c36a32999fabf147bcc03968457a3e52723c63c05dd4e872f1f9f2bee",
+      "bytes": 203433,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_reload_00.png",
+      "version": "original",
+      "view": "reload_00",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_reload_01.png",
+      "sha256": "09880c8c4b45fc870951e1ae4d0470c6318f3b512e4cc9289e98b7be9f688bf1",
+      "bytes": 189522,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_reload_01.png",
+      "version": "original",
+      "view": "reload_01",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_reload_02.png",
+      "sha256": "b60686ea56e79109aeeceec0dc0b6cb45f87dcdc75f305ea33a4fc2993de4a68",
+      "bytes": 191792,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_reload_02.png",
+      "version": "original",
+      "view": "reload_02",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_reload_03.png",
+      "sha256": "6d3193eb6e08648101668c5ebcda68611f5fb2dc43650ff4d5641afae43dc1d5",
+      "bytes": 191658,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_reload_03.png",
+      "version": "original",
+      "view": "reload_03",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_reload_04.png",
+      "sha256": "587f290be1f55e4dfd786e81b0541a5cccb78af733ec88abdcc5ba46a9b60970",
+      "bytes": 197937,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_reload_04.png",
+      "version": "original",
+      "view": "reload_04",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_reload_05.png",
+      "sha256": "5b8d51c74b4cba0cb879a1476118f2de73c766bdab8c8d95439cb8ce52a35b4e",
+      "bytes": 200028,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_reload_05.png",
+      "version": "original",
+      "view": "reload_05",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_reload_06.png",
+      "sha256": "6dd95977f6bdec5f6569f8abdcc2f5e080e5dafc59b939b578ca51cca9dda231",
+      "bytes": 194815,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_reload_06.png",
+      "version": "original",
+      "view": "reload_06",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_reload_07.png",
+      "sha256": "028e4d7ed291451f2d7b87c98facfe76b0b2e3437b99cfd070378f17297cf85a",
+      "bytes": 192985,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_reload_07.png",
+      "version": "original",
+      "view": "reload_07",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_reload_08.png",
+      "sha256": "b97a9f8fde2a9417f1130a2081210dfa9da8ce9ececab0e6a9df59d367c9ee48",
+      "bytes": 204020,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_reload_08.png",
+      "version": "original",
+      "view": "reload_08",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同換彈固定取樣中，頭、肩、手臂與武器位置對應原版；未見新增斷肢或貼圖倒置。畫面中的彈匣掉落是兩版皆有的原換彈流程；單張取樣不代表連續動畫全面驗收。"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_run_rifle.png",
+      "sha256": "6064422666fb98e317c1fc61403f724e4914af1df39f6dff57c00ba1fa983bf2",
+      "bytes": 193291,
+      "captured_path": "docs/art/atom_runtime_v1/review/engine/original_run_rifle.png",
+      "version": "original",
+      "view": "run_rifle",
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA",
+      "controlled_pair": true,
+      "observation": "相同跑動取樣中頭、肩刺與四肢連接完整；未見新增穿出或倒置貼圖。僅核對這張固定取樣。"
+    }
+  ],
+  "matched_view_pairs": 31,
+  "actual_images_inspected": 64,
+  "approved_concept": {
+    "path": "docs/art/atom_runtime_v1/input_snapshots/body_1_c08_concept.png",
+    "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+    "bytes": 2019010,
+    "role": "C08 design identity reference; retain original stocky runtime proportions"
+  },
+  "engineering_evidence": [
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/runtime_test.json",
+      "sha256": "a3ed35084f194ea5080a842ddebba0de68e86e7ad7462804ffde306969fe7739",
+      "bytes": 11129,
+      "reported_status": "PASS",
+      "scope": "producer report read only; no engine rerun by visual reviewer"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/roundtrip_test.json",
+      "sha256": "56bd32d6529d9aa5cc17812464d1f10c0813545350d62149e9705261a3cac932",
+      "bytes": 11901,
+      "reported_status": "PASS",
+      "scope": "producer report read only; no engine rerun by visual reviewer"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/glb_images_test.json",
+      "sha256": "1f80262d97b2caa2c053dbc4b76e744ed38c7ef94cd6117c439d2a57da398758",
+      "bytes": 4672,
+      "reported_status": "PASS",
+      "scope": "producer report read only; no engine rerun by visual reviewer"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/delivery_validate.json",
+      "sha256": "82a8c314239fb6489fe93d4b67c69020eae63bb74cd8c838fdc19903e19f38e8",
+      "bytes": 8705,
+      "reported_status": "PASS",
+      "scope": "producer report read only; no engine rerun by visual reviewer"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/proportion_test.json",
+      "sha256": "0b83a7cc2cdd1c3b434aef4ac299ba5cdde93d966fdfa8c2f9a6a6a91ec2d35a",
+      "bytes": 9064,
+      "reported_status": "PASS",
+      "scope": "producer report read only; no engine rerun by visual reviewer"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/iterations/body_attempt_01/original_scene_invariants.json",
+      "sha256": "73bdefebddd2957e5cd5a061e53bc0594a96b23b281b8a76dfc64603f3b0e844",
+      "bytes": 2155,
+      "reported_status": "PASS",
+      "scope": "producer report read only; no engine rerun by visual reviewer"
+    }
+  ],
+  "art_verdict": "工程候選可載入，但 body 胸匣錯島且鏡像成雙盒，必須修正後重新捕圖；目前不宣稱概念完全還原或使用者已核准。",
+  "blocking_findings": [
+    {
+      "id": "ATOM-BODY-001",
+      "priority": 1,
+      "summary": "前胸單一青色直立胸匣被畫到後背，且在鏡像接縫旁重複成兩個。",
+      "evidence": [
+        "new_diffuse_front.png",
+        "new_diffuse_rear.png",
+        "new_painted_rear.png"
+      ],
+      "expected": "C08 前胸中心一個矩形青色服務窗；後背保持原中央圓燈語彙。",
+      "actual": "正胸仍是原菱形青燈；背中央為兩個獨立直立青色盒。",
+      "fix": "只重生成 body atlas，使用實際 mirrored front/back join 座標；保留 UV／頂點／權重及其它四張 atlas。"
+    }
+  ],
+  "source_uv_mapping": {
+    "source": {
+      "path": "docs/art/atom_runtime_v1/build/source.json",
+      "sha256": "9301bc56cebea872d086c8ad31308b11537d210cb0629916ff93eefe34b04c43",
+      "bytes": 559350
+    },
+    "node": "ArmorBody_07",
+    "surface": 1,
+    "coordinate_origin": "atlas top-left; u rightward, v downward; no v flip",
+    "front_center_join": {
+      "u": 0.0288,
+      "v_range": [
+        0.3766,
+        0.7677
+      ],
+      "world_z": "negative (front)",
+      "samples": [
+        {
+          "vertex": 126,
+          "position": [
+            0,
+            1.2188,
+            -0.2425
+          ],
+          "uv": [
+            0.0288,
+            0.5184
+          ]
+        },
+        {
+          "vertex": 77,
+          "position": [
+            0,
+            1.0903,
+            -0.3041
+          ],
+          "uv": [
+            0.0288,
+            0.6043
+          ]
+        },
+        {
+          "vertex": 133,
+          "position": [
+            0,
+            0.98,
+            -0.2641
+          ],
+          "uv": [
+            0.0288,
+            0.6768
+          ]
+        }
+      ]
+    },
+    "recommended_front_half_box": {
+      "frame_region": [
+        0.0288,
+        0.52,
+        0.072,
+        0.62
+      ],
+      "cyan_half_window_region": [
+        0.0288,
+        0.54,
+        0.052,
+        0.6
+      ],
+      "join_rule": "paint half box flush against u=.0288; no dark boundary on this edge; mirrored halves must read as one centered module"
+    },
+    "remove_original_front_diamond_region": [
+      0.0288,
+      0.64,
+      0.1,
+      0.71
+    ],
+    "back_center_join": {
+      "u_approx": 0.552,
+      "v_range": [
+        0.3676,
+        0.7357
+      ],
+      "world_z": "positive (back)"
+    },
+    "remove_wrong_back_rectangle_region": [
+      0.5,
+      0.4,
+      0.552,
+      0.52
+    ],
+    "restore_original_back_half_round_light": {
+      "center": [
+        0.552,
+        0.447
+      ],
+      "rule": "paint a half round lamp touching u=.552 mirrored joining edge; no separate full rectangles beside seam"
+    }
+  },
+  "residuals": [
+    "頭部三顆額燈正確，青色玻璃沒有黑色中心裂縫；亮 V 反射較概念硬，但不是破裂。",
+    "geometry 0 / UV 0 保留原版長下巴與扁平多角耳蓋。概念的短頜／圓耳／頰青條未完整形成；若後續要求外形一致，需要單獨量測的小幅頭部幾何修改。",
+    "新版白色邊磨損及紫色表面裂紋密度較概念高，和 Viper/Fortune 的柔和大色塊仍有殘差。",
+    "固定動畫與遊戲取樣未見新增斷肢、明顯 UV 缺口或錯位；沒有以單圖宣稱完整連續動畫全部無問題。"
+  ],
+  "user_art_approval": "NOT_RUN",
+  "browser_interaction": "NOT_RUN",
+  "engine_run_by_reviewer": false,
+  "revalidation_rule": "This iteration is archived historical evidence. Any replacement body atlas or runtime scene invalidates these captures for current certification and requires new engine captures plus actual visual inspection."
+}

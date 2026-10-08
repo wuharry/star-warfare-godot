@@ -229,7 +229,7 @@ const text = (id,value) => {element(id).textContent=value == null?'':String(valu
 const kindLabel = kind => kind==='backpack'?'背包':'裝甲';
 const cleanPath = value => typeof value==='string'&&value.trim()&&!/^(javascript|data|vbscript):/i.test(value.trim())?value.trim():'';
 const preferredArt = item => item.user_review?.preferred_art;
-const helmetArt = item => cleanPath(item.helmet_art?.path)?item.helmet_art:null;
+const helmetArt = item => item.helmet_art?.status!=='historical_superseded_by_original_based_head'&&cleanPath(item.helmet_art?.path)?item.helmet_art:null;
 const displayImages = item => ({...(helmetArt(item)?{helmet_reference:helmetArt(item).path}:{}),...(preferredArt(item)?{preferred_concept:preferredArt(item).path}:{}),...item.images});
 const availableViews = item => viewOrder.filter(key=>cleanPath(displayImages(item)?.[key]));
 const viewLabel = (item,key) => key==='helmet_reference'?viewLabels[key]:(preferredArt(item)&&key!=='preferred_concept'?'未採用版本 · ':helmetArt(item)&&key!=='preferred_concept'?'既有版本 · ':'')+(viewLabels[key]||key);
@@ -348,15 +348,15 @@ function selectDesign(id,{updateHash=true}={}){
   text('mapping',item.legacy_name+' · '+kindLabel(item.kind)+' ID '+item.legacy_id+' → '+item.design_id);
   text('name-zh',item.working_name_zh||item.legacy_name);text('name-en',item.working_name_en||'');text('design-code',item.design_id+' · '+kindLabel(item.kind));
   const views=availableViews(item),expected=item.kind==='backpack'?1:2,delivered=Object.entries(item.images||{}).filter(([key,path])=>viewOrder.includes(key)&&cleanPath(path)).length;
-  const status=element('image-status');status.className='tag '+(views.length?'ready':'pending');status.textContent=item.runtime_delivery?.status==='runtime_integrated_pending_user_art_review'?`已套用遊戲 · ${Math.round((item.runtime_delivery.uv_limit??0.15)*100)}% 驗收通過`:helmetArt(item)?'新版頭盔已加入 · 配套圖待同步':preferredArt(item)?'舊概念已恢復':views.length?'新稿 '+delivered+' / '+expected+' 張':'待重新生成';
+  const status=element('image-status');status.className='tag '+(views.length?'ready':'pending');status.textContent=item.original_based_runtime?.status==='runtime_integrated_pending_user_art_review'?'原版基底素材已套用 · 待美術評價':item.runtime_delivery?.status==='runtime_integrated_pending_user_art_review'?`已套用遊戲 · ${Math.round((item.runtime_delivery.uv_limit??0.15)*100)}% 驗收通過`:helmetArt(item)?'新版頭盔已加入 · 配套圖待同步':preferredArt(item)?'舊概念已恢復':views.length?'新稿 '+delivered+' / '+expected+' 張':'待重新生成';
   const review=element('user-review-status');review.textContent=reviewLabel(item);review.hidden=!review.textContent;review.title=helmetArt(item)?.note||item.user_review?.feedback||'';
   const reviewNote=element('user-review-note');reviewNote.textContent=helmetArt(item)?.note||item.user_review?.action||'';reviewNote.hidden=!reviewNote.textContent;
-  text('helmet-studies-link',item.helmet_studies?.link_label||'頭盔版本比較 ↗');link('helmet-studies-link',item.helmet_studies?.comparison_page);element('helmet-studies-note').hidden=!cleanPath(item.helmet_studies?.comparison_page);
+  const runtimePage=item.original_based_runtime?.comparison_page;const studyPage=runtimePage||item.helmet_studies?.comparison_page;text('helmet-studies-link',runtimePage?'原版／新版遊戲素材比較 ↗':item.helmet_studies?.link_label||'頭盔版本比較 ↗');link('helmet-studies-link',studyPage);element('helmet-studies-note').hidden=!cleanPath(studyPage);
   text('halo-variant',item.halo?.variant||'參考款式待補');text('halo-game',item.halo?.game?' · '+item.halo.game:'');link('halo-source',item.halo?.url);link('source-file',item.source_file);
   text('legacy-caption',item.legacy_name+' · ID '+item.legacy_id);
   renderReferences('legacy',item.legacy_refs,item.legacy_name+' 原遊戲',item.legacy_reference_note||'');
   renderFusion('fusion-retained',item.fusion?.retained);renderFusion('fusion-borrowed',item.fusion?.borrowed);renderFusion('fusion-optimized',item.fusion?.optimized);
-  const preferred=preferredArt(item);link('preferred-art-source',preferred?.provenance);link('runtime-preview',item.user_review?.runtime_preview);element('preferred-art-note').hidden=!preferred;text('preferred-art-note',preferred?.note||'');
+  const preferred=preferredArt(item);link('preferred-art-source',preferred?.provenance);link('runtime-preview',runtimePage||item.user_review?.runtime_preview);element('preferred-art-note').hidden=!preferred;text('preferred-art-note',preferred?.note||'');
   element('fusion-heading').closest('section').hidden=!!preferred;
   renderStats(item);selectView(previousView);
   for(const card of document.querySelectorAll('.catalog-card'))card.setAttribute('aria-pressed',String(card.dataset.id===id));

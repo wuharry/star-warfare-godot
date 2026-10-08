@@ -15,7 +15,7 @@ from mathutils import Matrix, Vector
 ROOT = Path(__file__).resolve().parents[2]
 args=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
 slug=next((a.split('=',1)[1] for a in args if a.startswith('--armor=')),None)
-assert slug in ['hydra','strike','titan'], 'Pass -- --armor=hydra/strike/titan'
+assert slug in ['hydra','strike','titan','atom','pegasus'], 'Pass -- --armor=hydra/strike/titan/atom/pegasus'
 CONFIG=json.loads((ROOT/'docs/art'/f'{slug}_runtime_v1/runtime_config.json').read_text())
 WORK=ROOT/CONFIG['work'];SOURCE=json.loads((ROOT/CONFIG['source']).read_text())
 C = Matrix(((-1,0,0,0),(0,0,1,0),(0,1,0,0),(0,0,0,1)))
@@ -97,6 +97,14 @@ def main():
             for i in range(0,len(row['indices']),3):
                 faces.append(tuple(offset+j for j in reversed(row['indices'][i:i+3]))); mids.append(sid)
             target_row={'positions':[list(p) for p in authored], 'uv':authored_uv, 'label':LABELS[name][sid]}
+            if CONFIG.get('preserve_all_geometry'):
+                assert all((point-Vector(old)).length == 0 for point,old in zip(authored,original_row['positions'])), (name,sid,'Texture-only source positions changed')
+                # Godot JSON decimal text differs from mathutils float32 by
+                # about 5e-15; preserve original JSON samples for exact source
+                # provenance after proving the actual Blender values are equal.
+                target_row['positions'] = original_row['positions']
+                assert authored_uv == original_row['uv'], (name,sid,'Texture-only source UV changed')
+                assert row['indices'] == original_row['indices'], (name,sid,'Texture-only topology changed')
             if 'added_vertices' in row:
                 for field in ['indices','bone_indices','bone_names','weights','triangle_parents','added_vertices']:
                     target_row[field]=row[field]

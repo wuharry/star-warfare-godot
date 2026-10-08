@@ -5,6 +5,7 @@ builds/
 test_output/*
 !test_output/.gdignore
 tools/**/__pycache__/
+/docs/art/*/__pycache__/
 tools/unity_exporter/.work/
 tools/unity_exporter/*.log
 
@@ -19,3 +20,6 @@ StarWarfare2_*.zip
 /assets/素材暫存區/
 *.xapk
 *.apk
+
+# Engine sidecars left by the reverted, rejected Thunder helmet revision.
+/docs/art/thunder_head_alignment_v1/

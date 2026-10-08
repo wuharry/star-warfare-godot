@@ -1,0 +1,296 @@
+{
+  "status": "PASS",
+  "scope": "Geometry silhouettes only; does not measure texture likeness or artistic approval.",
+  "limit": 0.2,
+  "silhouettes": [
+    {
+      "view": "front",
+      "silhouette_iou": 1.0,
+      "silhouette_changed_fraction": 0.0,
+      "camera_identical": true,
+      "pixels": [
+        640,
+        720
+      ]
+    },
+    {
+      "view": "side",
+      "silhouette_iou": 1.0,
+      "silhouette_changed_fraction": 0.0,
+      "camera_identical": true,
+      "pixels": [
+        640,
+        720
+      ]
+    },
+    {
+      "view": "rear",
+      "silhouette_iou": 1.0,
+      "silhouette_changed_fraction": 0.0,
+      "camera_identical": true,
+      "pixels": [
+        640,
+        720
+      ]
+    },
+    {
+      "view": "quarter",
+      "silhouette_iou": 1.0,
+      "silhouette_changed_fraction": 0.0,
+      "camera_identical": true,
+      "pixels": [
+        640,
+        720
+      ]
+    }
+  ],
+  "inferred": "Head-only source deformation guided by approved design. Original mesh owns game scale, hidden rear, UV charts and joints; all body/limbs exact.",
+  "capture_directory": "docs\\art\\atom_runtime_v1\\review\\engine",
+  "capture_summary_sha256": "e5b0aa8ca81ab618db6c60c3e1a8c70017e999627ba20e7d5abae868b40a2d2d",
+  "current_scene_sha256": "660a885ee4a325e5a7f93095378a897a95c660d6f66f0c144ecde8e91fb1eb0e",
+  "target_sha256": "776604659d9b231f2a44937bca84bcd5e4f39085fe9182ce2081aae7263caca5",
+  "canonical_diffuse_sha256": {
+    "head": "50ab1708ac87ebbbcb91bb5ec1d37dcbb3aebb58a9a5c6632e0e92b2a77cd183",
+    "body": "b48c5bf078b8fd57355031decbf573aa8d7ab92205a8a4324478fbac7ba0a563",
+    "shoulder": "ffceadf3bfff19a5270c3642e1c0c07a73e454441423ece86336b9be904405e1",
+    "hand": "1e39d4dc9b6cc9a393ca3b1972f5486fa9a7b794eebad19d56f0de3469d0bf1f",
+    "foot": "1f4d440764d94c879ca13e463d1285bd0b69435f70134398a1ee46e27ca815f5"
+  },
+  "capture_matches_current_resources": true,
+  "geometry": {
+    "parts": {
+      "ArmorBody_07": {
+        "bounds_game": {
+          "min": [
+            -0.631988525390625,
+            0.3317036032676697,
+            -0.3040539622306824
+          ],
+          "max": [
+            0.6319862008094788,
+            1.5065566301345825,
+            0.26520925760269165
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.631988525390625,
+            0.3317036032676697,
+            -0.3040539622306824
+          ],
+          "max": [
+            0.6319862008094788,
+            1.5065566301345825,
+            0.26520925760269165
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 354,
+        "uv_preserved": true,
+        "original_uv_charts": 10,
+        "uv_charts": 10,
+        "uv_coordinate_count": 340,
+        "original_uv_coordinate_count": 340,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "shoulder",
+            "uv_coordinate_count": 130,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          },
+          {
+            "surface": 1,
+            "label": "body",
+            "uv_coordinate_count": 210,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      },
+      "ArmorFoot_07": {
+        "bounds_game": {
+          "min": [
+            -0.3963319659233093,
+            0.005678439512848854,
+            -0.24055488407611847
+          ],
+          "max": [
+            0.3963339030742645,
+            0.44935646653175354,
+            0.2527317702770233
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.3963319659233093,
+            0.005678439512848854,
+            -0.24055488407611847
+          ],
+          "max": [
+            0.3963339030742645,
+            0.44935646653175354,
+            0.2527317702770233
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 136,
+        "uv_preserved": true,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 122,
+        "original_uv_coordinate_count": 122,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "foot",
+            "uv_coordinate_count": 122,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      },
+      "ArmorHand_07": {
+        "bounds_game": {
+          "min": [
+            -0.5564590692520142,
+            0.5403313040733337,
+            -0.0485774427652359
+          ],
+          "max": [
+            0.5564584732055664,
+            1.05312979221344,
+            0.17660044133663177
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5564590692520142,
+            0.5403313040733337,
+            -0.0485774427652359
+          ],
+          "max": [
+            0.5564584732055664,
+            1.05312979221344,
+            0.17660044133663177
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 124,
+        "uv_preserved": true,
+        "original_uv_charts": 3,
+        "uv_charts": 3,
+        "uv_coordinate_count": 118,
+        "original_uv_coordinate_count": 118,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "hand",
+            "uv_coordinate_count": 118,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged"
+      },
+      "ArmorHead_07": {
+        "bounds_game": {
+          "min": [
+            -0.3075985014438629,
+            1.228413701057434,
+            -0.3641605079174042
+          ],
+          "max": [
+            0.3075961768627167,
+            1.89548921585083,
+            0.21956589818000793
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.3075985014438629,
+            1.228413701057434,
+            -0.3641605079174042
+          ],
+          "max": [
+            0.3075961768627167,
+            1.89548921585083,
+            0.21956589818000793
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 246,
+        "uv_preserved": true,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 192,
+        "original_uv_coordinate_count": 192,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "head",
+            "uv_coordinate_count": 192,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "Original vertices unchanged; arc midpoint vertices inherit identical parent binds and weights",
+        "shape_quality": {
+          "reversed_triangles": 0,
+          "zero_area_triangles": 0,
+          "coincident_seam_max_rest_gap": 0.0,
+          "min_triangle_normal_cosine_from_original": 0.9999997948762029
+        },
+        "added_vertex_count": 0,
+        "triangle_growth_fraction": 0.0
+      }
+    },
+    "stage": "original_integration_v1",
+    "constraint": "Original-total20% shape/dimensions; only explicitly configured visor edges may be subdivided. Broad chart count and original rig retained.",
+    "user_authorized_original_total_limit": 0.2
+  },
+  "geometry_sha256": "23edc756da52e41e58462e21e82aa2e739cc96791fc69ba7482b4799da59adcd",
+  "source_sha256": "9301bc56cebea872d086c8ad31308b11537d210cb0629916ff93eefe34b04c43"
+}

@@ -11,7 +11,7 @@ import struct
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
-parser=argparse.ArgumentParser();parser.add_argument("--armor",choices=["hydra","strike","titan"],required=True)
+parser=argparse.ArgumentParser();parser.add_argument("--armor",choices=["hydra","strike","titan","atom","pegasus"],required=True)
 slug=parser.parse_args().armor
 config=json.loads((ROOT/f"docs/art/{slug}_runtime_v1/runtime_config.json").read_text())
 path=ROOT/config["asset"]/f"{slug}.glb"

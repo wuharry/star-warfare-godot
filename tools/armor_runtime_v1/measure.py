@@ -40,7 +40,7 @@ def mask(path):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--armor',choices=['hydra','strike','titan'],required=True)
+    parser.add_argument('--armor',choices=['hydra','strike','titan','atom','pegasus'],required=True)
     parser.add_argument('--capture-dir',help='Capture directory; default review/engine. Explicit captures must match current SCN, target and five maps.')
     parser.add_argument('--report',help='Report path, or a filename within this armor review directory.')
     args=parser.parse_args();slug=args.armor

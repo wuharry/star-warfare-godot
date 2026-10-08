@@ -1,4 +1,11 @@
-"""Build the full reference Thunder helmet and armor on the existing rig.
+"""Rebuild the historical SW2/prototype Thunder alternatives on the existing rig.
+
+This is not the authoring pipeline for the current original-SW1-head default.
+That default is compiled by tools/thunder_original_v2/compile.gd from the true
+original player.gltf head plus the pinned bef5b833 body. The historical
+compile_thunder.gd --helmet=sw2 also writes thunder.scn; after intentionally
+rebuilding that alternate, rerun the original-v2 compiler to restore the current
+default. See assets/armors/thunder/README.md before invoking either pipeline.
 
 Blender --background --python tools/armor_rework/build_thunder.py
 godot --headless --path . --script tools/armor_rework/compile_thunder.gd

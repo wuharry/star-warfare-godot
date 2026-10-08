@@ -29,7 +29,7 @@ def load(path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--armor', choices=['hydra', 'strike', 'titan'], required=True)
+    parser.add_argument('--armor', choices=['hydra', 'strike', 'titan', 'atom', 'pegasus'], required=True)
     slug = parser.parse_args().armor
     work = ROOT / f'docs/art/{slug}_runtime_v1'
     config = load(work / 'runtime_config.json')

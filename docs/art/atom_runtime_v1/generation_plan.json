@@ -1,0 +1,183 @@
+[
+  {
+    "label": "head",
+    "prompt": "docs/art/atom_runtime_v1/prompts/head_attempt_01.txt",
+    "prompt_sha256": "c9417e377f8df2764aa88c5bae9d88d889900d1f35a1f157804cb69d31873105",
+    "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+    "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+    "references": [
+      {
+        "path": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/head.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_0_head.png",
+        "sha256": "2fca1535c7ff1c03a0b915ec4609f700009b8c9326754e60a5a28763f2f228dc",
+        "role": "edit_target"
+      },
+      {
+        "path": "docs/art/original_armors_v1/images/c08_concept.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_1_c08_concept.png",
+        "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+        "role": "helmet_design_authority"
+      },
+      {
+        "path": "assets/armors/viper_v2/head_diffuse.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_2_head_diffuse.png",
+        "sha256": "a1221cefc4ce785b05fe40dcd927010dafae9990332aad12c984c9c96308b0dc",
+        "role": "approved_surface_style_only"
+      },
+      {
+        "path": "docs/art/atom_runtime_v1/guides/head_uv.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_3_head_uv.png",
+        "sha256": "de17745ba0149cae75cf9ffd183b5c9aa3acf97434b8afe28b5f068070d270e3",
+        "role": "technical_uv_guide"
+      }
+    ],
+    "reference_images": [
+      "docs/art/atom_runtime_v1/input_snapshots/head_0_head.png",
+      "docs/art/atom_runtime_v1/input_snapshots/head_1_c08_concept.png",
+      "docs/art/atom_runtime_v1/input_snapshots/head_2_head_diffuse.png",
+      "docs/art/atom_runtime_v1/input_snapshots/head_3_head_uv.png"
+    ]
+  },
+  {
+    "label": "body",
+    "prompt": "docs/art/atom_runtime_v1/prompts/body_attempt_05.txt",
+    "prompt_sha256": "3e5bfee11167fa08f560b6dc6d5598d9d812057cebf22c7f6f6ee228997b3192",
+    "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+    "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+    "references": [
+      {
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_04.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry5_0_body_attempt_04.png",
+        "sha256": "349bec3172f9d1d1a43f7cdaac1c286ec03384c74c0889b618932a42811c9710",
+        "role": "edit_target_previous_attempt"
+      },
+      {
+        "path": "docs/art/original_armors_v1/images/c08_concept.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry5_1_c08_concept.png",
+        "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+        "role": "approved_body_design"
+      }
+    ],
+    "reference_images": [
+      "docs/art/atom_runtime_v1/input_snapshots/body_retry5_0_body_attempt_04.png",
+      "docs/art/atom_runtime_v1/input_snapshots/body_retry5_1_c08_concept.png"
+    ]
+  },
+  {
+    "label": "shoulder",
+    "prompt": "docs/art/atom_runtime_v1/prompts/shoulder_attempt_01.txt",
+    "prompt_sha256": "f69446a5f2819610de7d166b0acf1409e4028def9f425e68569aa4a79c573635",
+    "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+    "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+    "references": [
+      {
+        "path": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_0_shoulder.png",
+        "sha256": "70aa31f956d00d4d7847de840f3be6fea0a7d06ba41d90fd34d04d93ef863d47",
+        "role": "edit_target"
+      },
+      {
+        "path": "docs/art/original_armors_v1/images/c08_concept.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_1_c08_concept.png",
+        "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+        "role": "approved_body_design"
+      },
+      {
+        "path": "assets/armors/viper_v2/shoulder_diffuse.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_2_shoulder_diffuse.png",
+        "sha256": "963ed30b4a109b6dd4a5b2b2e993fd0f29e0e468928d053875ed3e49e9e1e860",
+        "role": "approved_surface_style_only"
+      },
+      {
+        "path": "docs/art/atom_runtime_v1/guides/shoulder_uv.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_3_shoulder_uv.png",
+        "sha256": "a7754db40c737e10f12f7ec38bb22fdff34b53ad8f58a90f2981472857041882",
+        "role": "technical_uv_guide"
+      }
+    ],
+    "reference_images": [
+      "docs/art/atom_runtime_v1/input_snapshots/shoulder_0_shoulder.png",
+      "docs/art/atom_runtime_v1/input_snapshots/shoulder_1_c08_concept.png",
+      "docs/art/atom_runtime_v1/input_snapshots/shoulder_2_shoulder_diffuse.png",
+      "docs/art/atom_runtime_v1/input_snapshots/shoulder_3_shoulder_uv.png"
+    ]
+  },
+  {
+    "label": "hand",
+    "prompt": "docs/art/atom_runtime_v1/prompts/hand_attempt_01.txt",
+    "prompt_sha256": "7b0043465168571ee2c4942d643c99056553d501ff8f759c6b8ce072210fffe9",
+    "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+    "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+    "references": [
+      {
+        "path": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/hand_0_hand.png",
+        "sha256": "a8ae7a58c8536045fe8ff6a423a155723d9b387414d73033401498001fff368a",
+        "role": "edit_target"
+      },
+      {
+        "path": "docs/art/original_armors_v1/images/c08_concept.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/hand_1_c08_concept.png",
+        "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+        "role": "approved_body_design"
+      },
+      {
+        "path": "assets/armors/viper_v2/hand_diffuse.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/hand_2_hand_diffuse.png",
+        "sha256": "53a5d1bddd101de3db5652a2eb7343fbd48a40678b449900a09c5e979ab7fa62",
+        "role": "approved_surface_style_only"
+      },
+      {
+        "path": "docs/art/atom_runtime_v1/guides/hand_uv.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/hand_3_hand_uv.png",
+        "sha256": "0d1542fd7b5e3c75e602620a750abfd61f158aa76da70677a9a61fb69f242dc6",
+        "role": "technical_uv_guide"
+      }
+    ],
+    "reference_images": [
+      "docs/art/atom_runtime_v1/input_snapshots/hand_0_hand.png",
+      "docs/art/atom_runtime_v1/input_snapshots/hand_1_c08_concept.png",
+      "docs/art/atom_runtime_v1/input_snapshots/hand_2_hand_diffuse.png",
+      "docs/art/atom_runtime_v1/input_snapshots/hand_3_hand_uv.png"
+    ]
+  },
+  {
+    "label": "foot",
+    "prompt": "docs/art/atom_runtime_v1/prompts/foot_attempt_01.txt",
+    "prompt_sha256": "5e6ddf06750f72fc266333191fc55dabee319acc5ab5c6172db6706c085752a4",
+    "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+    "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+    "references": [
+      {
+        "path": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/foot_0_foot.png",
+        "sha256": "05309542695bc332278871c11f415b4dfc3c6b8e08f58fa5183f36ebac7517a7",
+        "role": "edit_target"
+      },
+      {
+        "path": "docs/art/original_armors_v1/images/c08_concept.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/foot_1_c08_concept.png",
+        "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+        "role": "approved_body_design"
+      },
+      {
+        "path": "assets/armors/viper_v2/foot_diffuse.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/foot_2_foot_diffuse.png",
+        "sha256": "ae7e71a599d5ede22021fae67bd7ad3d3f90ec6f6dfb020b3cbeca387236e849",
+        "role": "approved_surface_style_only"
+      },
+      {
+        "path": "docs/art/atom_runtime_v1/guides/foot_uv.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/foot_3_foot_uv.png",
+        "sha256": "2d1dc487ed88fb0bde0f7608b0ffa85d3086513c698baa83132e126979fe5919",
+        "role": "technical_uv_guide"
+      }
+    ],
+    "reference_images": [
+      "docs/art/atom_runtime_v1/input_snapshots/foot_0_foot.png",
+      "docs/art/atom_runtime_v1/input_snapshots/foot_1_c08_concept.png",
+      "docs/art/atom_runtime_v1/input_snapshots/foot_2_foot_diffuse.png",
+      "docs/art/atom_runtime_v1/input_snapshots/foot_3_foot_uv.png"
+    ]
+  }
+]

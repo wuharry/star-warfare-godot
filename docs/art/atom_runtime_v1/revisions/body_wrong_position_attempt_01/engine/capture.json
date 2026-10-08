@@ -1,0 +1,508 @@
+{
+	"canonical_diffuse_sha256_at_start": {
+		"body": "b48c5bf078b8fd57355031decbf573aa8d7ab92205a8a4324478fbac7ba0a563",
+		"foot": "1f4d440764d94c879ca13e463d1285bd0b69435f70134398a1ee46e27ca815f5",
+		"hand": "1e39d4dc9b6cc9a393ca3b1972f5486fa9a7b794eebad19d56f0de3469d0bf1f",
+		"head": "50ab1708ac87ebbbcb91bb5ec1d37dcbb3aebb58a9a5c6632e0e92b2a77cd183",
+		"shoulder": "ffceadf3bfff19a5270c3642e1c0c07a73e454441423ece86336b9be904405e1"
+	},
+	"capture_sha256": {
+		"res://docs/art/atom_runtime_v1/review/engine/family_original_01_front.png": "154b241c14d0b70b5407948f676335df72f3b0537efe7cb1bf927492c331d406",
+		"res://docs/art/atom_runtime_v1/review/engine/family_original_06_front.png": "7c3e7b99a68d4508dce73cf27f7fedeadcc84819b01b61770286344f8fdf244a",
+		"res://docs/art/atom_runtime_v1/review/engine/new_clay_front.png": "d66d9aa8b25ff37e09a47975c847e0159d9f8e7e3c30213089e0a6413ff44dc9",
+		"res://docs/art/atom_runtime_v1/review/engine/new_clay_quarter.png": "96940c460bd1f766f3845ec3e6a8fe341bba639a6254cb5a0d553602d9991d17",
+		"res://docs/art/atom_runtime_v1/review/engine/new_clay_rear.png": "13a57117cadef586422ae3b7c476affd6316d0003a3b4be41f3ecd5365205ea8",
+		"res://docs/art/atom_runtime_v1/review/engine/new_clay_side.png": "c4370ca35a89f8051a7aeda527f95ebdbf2a801b74c118bbe2c5f53e727b1bf6",
+		"res://docs/art/atom_runtime_v1/review/engine/new_diffuse_front.png": "4dc6d9281a2accb65a770b48f6d89a54844d10382caec915a7e19c0020074b9a",
+		"res://docs/art/atom_runtime_v1/review/engine/new_diffuse_quarter.png": "972ffe23fbaae9f27bfe0ebcdc13cfa46eb5d2645e5a8fd666394102a0e706ca",
+		"res://docs/art/atom_runtime_v1/review/engine/new_diffuse_rear.png": "b7587a6c03e1251e158de3d5e7a80a8717d13873ad75d962300c2c0839a23144",
+		"res://docs/art/atom_runtime_v1/review/engine/new_diffuse_side.png": "2b9f246acbc8471bdf3df89574442abf1991a619df8f62c5eb9ce1de837d6caa",
+		"res://docs/art/atom_runtime_v1/review/engine/new_head_front.png": "0bda687db00dea4f4f329c0bc1b71a0302774024eae002a663397e59d986ecb3",
+		"res://docs/art/atom_runtime_v1/review/engine/new_head_quarter.png": "9afe151e42385debcf2bc395315e9ca11c04a8680fcb4d6e1cf7a70751e02603",
+		"res://docs/art/atom_runtime_v1/review/engine/new_head_rear.png": "98f857ffe9c1b6517b68fbcccd3fa910139bd4cd79563559bb1da7b729600055",
+		"res://docs/art/atom_runtime_v1/review/engine/new_head_side.png": "a544f161eb8591a10003b439bb439f3886d99d864f22c093064bf5a3861d4864",
+		"res://docs/art/atom_runtime_v1/review/engine/new_idle_rifle.png": "678b8e68de77b171d77473be76e734143921bbd498135f83b595ac3327b4ddc2",
+		"res://docs/art/atom_runtime_v1/review/engine/new_level_01_front.png": "a9799d9c51405a65f105d788fc8f2d01daf4a19721c0b61eab7ea1b86996f29c",
+		"res://docs/art/atom_runtime_v1/review/engine/new_level_01_gameplay.png": "e972a9489944559658cd7883afc526a32a3ff3dff79e199ee8e49c797c0a64c4",
+		"res://docs/art/atom_runtime_v1/review/engine/new_level_08_front.png": "5218c10bfbe81141d50b22877fb69e98d23b75a3d3f8ce03ec6dbe4116d45f7e",
+		"res://docs/art/atom_runtime_v1/review/engine/new_level_08_gameplay.png": "ad48d8c21784f8e86cc2a093210c514dce217531d7a91cc0bf07823e1077ad8c",
+		"res://docs/art/atom_runtime_v1/review/engine/new_painted_front.png": "4dc6d9281a2accb65a770b48f6d89a54844d10382caec915a7e19c0020074b9a",
+		"res://docs/art/atom_runtime_v1/review/engine/new_painted_quarter.png": "972ffe23fbaae9f27bfe0ebcdc13cfa46eb5d2645e5a8fd666394102a0e706ca",
+		"res://docs/art/atom_runtime_v1/review/engine/new_painted_rear.png": "b7587a6c03e1251e158de3d5e7a80a8717d13873ad75d962300c2c0839a23144",
+		"res://docs/art/atom_runtime_v1/review/engine/new_painted_side.png": "2b9f246acbc8471bdf3df89574442abf1991a619df8f62c5eb9ce1de837d6caa",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_00.png": "56096e63190a92e12ff63ed08fa15d0d6b6e490d1c98acad57dc8a041cd0d27c",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_01.png": "d97b4a4f3dd23869d6f07f7cbf4a9abc680b7f39bc1d0837f9c79f33d8001b10",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_02.png": "8fa9a9c218721b96c461504df780f9cdfdd10870428e728c791583fc49451f6c",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_03.png": "4689f63cf3b05ca8c18a24e4c9f2076aa88ad5c397b93c31615c74a8ba0e0671",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_04.png": "6198fdfa43ca8b8ebc5c90029ca4db8cd1d2f753bcbc68ab4d4c694b70b69f1b",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_05.png": "4b286ae6095224983b2c3cb9f6fdc28fe980f4b343cb47cd92e42e0e880093b6",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_06.png": "6869308bce794dfa79e23c6b64f74a6eec806c42311972ce2dfcd90f8f3bc88f",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_07.png": "38ed40c57b16b24376d637ace31add6ec77522d8c0cd9fe8c98bd187b0b41123",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_08.png": "43e2c9cde578d103d217287d71d2c4d2b46b9209d3520f12b8cf91e00fc93b37",
+		"res://docs/art/atom_runtime_v1/review/engine/new_run_rifle.png": "601d6c4ba094c2893353eb17404f90c96fc7aa9508ed8869d596c3b64a0974ce",
+		"res://docs/art/atom_runtime_v1/review/engine/original_clay_front.png": "d66d9aa8b25ff37e09a47975c847e0159d9f8e7e3c30213089e0a6413ff44dc9",
+		"res://docs/art/atom_runtime_v1/review/engine/original_clay_quarter.png": "96940c460bd1f766f3845ec3e6a8fe341bba639a6254cb5a0d553602d9991d17",
+		"res://docs/art/atom_runtime_v1/review/engine/original_clay_rear.png": "13a57117cadef586422ae3b7c476affd6316d0003a3b4be41f3ecd5365205ea8",
+		"res://docs/art/atom_runtime_v1/review/engine/original_clay_side.png": "c4370ca35a89f8051a7aeda527f95ebdbf2a801b74c118bbe2c5f53e727b1bf6",
+		"res://docs/art/atom_runtime_v1/review/engine/original_diffuse_front.png": "e4c8d23355173e6013f1c99d5550a5d62fc58305c53647cdc6d0f4a017ec3bbd",
+		"res://docs/art/atom_runtime_v1/review/engine/original_diffuse_quarter.png": "c36225c8fd1c29a5654ddfe872f8990adc5f7bb73d75145e7b04a94d4cee9b42",
+		"res://docs/art/atom_runtime_v1/review/engine/original_diffuse_rear.png": "123c4b1fb5cc1fc469c1171f4095f29a0c511763f33abccffa0bcb75620b16ca",
+		"res://docs/art/atom_runtime_v1/review/engine/original_diffuse_side.png": "3d7fd0b35ee324c070157130c67d1d70d3d4215eb6128d8bbd4c988595c0b284",
+		"res://docs/art/atom_runtime_v1/review/engine/original_head_front.png": "b696071bb54ed214625108a5088391067bf18e2e5af4d0f3348a47fa73abcd5f",
+		"res://docs/art/atom_runtime_v1/review/engine/original_head_quarter.png": "e5a72b58f6bc7ffb9d0d225bd57588dbd4b6234084bf1dab543fd49f0c51f62b",
+		"res://docs/art/atom_runtime_v1/review/engine/original_head_rear.png": "869a2a72e37ed1783e67cc144162130b9f17e4f1172adaf60e58a1b24002401b",
+		"res://docs/art/atom_runtime_v1/review/engine/original_head_side.png": "bdab305db555357fdd97b620e69dde0d806f4aa4213624fda9c13d5e8448366e",
+		"res://docs/art/atom_runtime_v1/review/engine/original_idle_rifle.png": "bd69405f8dbff3c505951f102121d247beeb237f3c2c61e46b4eca813d97b644",
+		"res://docs/art/atom_runtime_v1/review/engine/original_level_01_front.png": "fb2241e999fa7a9cb1b71ac6b217f84d6730999376aafbd27536f02d684b5a4b",
+		"res://docs/art/atom_runtime_v1/review/engine/original_level_01_gameplay.png": "2048912df826d32e76c7e74bb248c5b0692a1f7f891dae1192efc68acc86eed6",
+		"res://docs/art/atom_runtime_v1/review/engine/original_level_08_front.png": "a02b094f8b2e86b06a25ec912b6c2e942a16888a5541a8090776536574fe0935",
+		"res://docs/art/atom_runtime_v1/review/engine/original_level_08_gameplay.png": "cf131cbac800095c7db43acd08f2631212ca5cda320aee3fbd3f6f7ed354430c",
+		"res://docs/art/atom_runtime_v1/review/engine/original_painted_front.png": "c90f4e51559181adda7b2d36e55d9750cd59f6f8d46ba5d57e5657da1069a290",
+		"res://docs/art/atom_runtime_v1/review/engine/original_painted_quarter.png": "7a4007b68a7a7058c13352a64961f49d53e11b837547464240e3c93620ad65ab",
+		"res://docs/art/atom_runtime_v1/review/engine/original_painted_rear.png": "69c3dad009d54c5cea28ad04798fe2b3e3a4689da41ca5981a26c3373c39f70e",
+		"res://docs/art/atom_runtime_v1/review/engine/original_painted_side.png": "f0769914b9aed3ca4c04bd789ef7c126401a83b8843e6551c8328aa322ab2cf1",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_00.png": "4c0c748c36a32999fabf147bcc03968457a3e52723c63c05dd4e872f1f9f2bee",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_01.png": "09880c8c4b45fc870951e1ae4d0470c6318f3b512e4cc9289e98b7be9f688bf1",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_02.png": "b60686ea56e79109aeeceec0dc0b6cb45f87dcdc75f305ea33a4fc2993de4a68",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_03.png": "6d3193eb6e08648101668c5ebcda68611f5fb2dc43650ff4d5641afae43dc1d5",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_04.png": "587f290be1f55e4dfd786e81b0541a5cccb78af733ec88abdcc5ba46a9b60970",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_05.png": "5b8d51c74b4cba0cb879a1476118f2de73c766bdab8c8d95439cb8ce52a35b4e",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_06.png": "6dd95977f6bdec5f6569f8abdcc2f5e080e5dafc59b939b578ca51cca9dda231",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_07.png": "028e4d7ed291451f2d7b87c98facfe76b0b2e3437b99cfd070378f17297cf85a",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_08.png": "b97a9f8fde2a9417f1130a2081210dfa9da8ce9ececab0e6a9df59d367c9ee48",
+		"res://docs/art/atom_runtime_v1/review/engine/original_run_rifle.png": "6064422666fb98e317c1fc61403f724e4914af1df39f6dff57c00ba1fa983bf2"
+	},
+	"diffuse_views": "White material tint for both versions, so original painted greys can be compared without the original material tint. Painted views retain original imported tint. This affects captures only, not source assets or gameplay defaults.",
+	"engine_arguments": [
+		"res://tools/armor_runtime_v1/capture.tscn"
+	],
+	"files": [
+		"res://docs/art/atom_runtime_v1/review/engine/original_clay_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_clay_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_painted_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_painted_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_diffuse_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_diffuse_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_clay_side.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_clay_side.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_painted_side.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_painted_side.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_diffuse_side.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_diffuse_side.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_clay_rear.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_clay_rear.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_painted_rear.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_painted_rear.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_diffuse_rear.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_diffuse_rear.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_clay_quarter.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_clay_quarter.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_painted_quarter.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_painted_quarter.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_diffuse_quarter.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_diffuse_quarter.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_head_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_head_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_head_side.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_head_side.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_head_rear.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_head_rear.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_head_quarter.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_head_quarter.png",
+		"res://docs/art/atom_runtime_v1/review/engine/family_original_01_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/family_original_06_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_idle_rifle.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_idle_rifle.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_run_rifle.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_run_rifle.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_00.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_00.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_01.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_01.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_02.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_02.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_03.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_03.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_04.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_04.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_05.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_05.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_06.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_06.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_07.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_07.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_08.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_08.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_level_01_gameplay.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_level_01_gameplay.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_level_01_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_level_01_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_level_08_gameplay.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_level_08_gameplay.png",
+		"res://docs/art/atom_runtime_v1/review/engine/original_level_08_front.png",
+		"res://docs/art/atom_runtime_v1/review/engine/new_level_08_front.png"
+	],
+	"full_body_framing": {
+		"front": {
+			"center": [
+				-0.00000172853469848633,
+				0.950583815574646,
+				-0.0494756400585175
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					513.630187988281,
+					649.5029296875
+				],
+				"min": [
+					126.369842529297,
+					70.4970550537109
+				]
+			},
+			"same_camera_for_original_and_new": true
+		},
+		"quarter": {
+			"center": [
+				0.0460190549492836,
+				0.932094216346741,
+				-0.0269379410892725
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					492.870849609375,
+					653.343200683594
+				],
+				"min": [
+					147.129180908203,
+					66.6569061279297
+				]
+			},
+			"same_camera_for_original_and_new": true
+		},
+		"rear": {
+			"center": [
+				-0.00000119209289550781,
+				0.950583815574646,
+				-0.0494756400585175
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					513.630187988281,
+					649.5029296875
+				],
+				"min": [
+					126.369842529297,
+					70.4970550537109
+				]
+			},
+			"same_camera_for_original_and_new": true
+		},
+		"side": {
+			"center": [
+				-0.00000119209289550781,
+				0.950583815574646,
+				-0.0494759082794189
+			],
+			"keep_aspect": "KEEP_HEIGHT",
+			"orthographic_size": 2.34999990463257,
+			"projected_bounds_px": {
+				"max": [
+					416.414093017578,
+					649.5029296875
+				],
+				"min": [
+					223.585906982422,
+					70.4970550537109
+				]
+			},
+			"same_camera_for_original_and_new": true
+		}
+	},
+	"image_dimensions": {
+		"res://docs/art/atom_runtime_v1/review/engine/family_original_01_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/family_original_06_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_clay_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_clay_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_clay_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_clay_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_diffuse_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_diffuse_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_diffuse_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_diffuse_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_head_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_head_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_head_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_head_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_idle_rifle.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_level_01_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_level_01_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_level_08_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_level_08_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_painted_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_painted_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_painted_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_painted_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_00.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_01.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_02.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_03.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_04.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_05.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_06.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_07.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_reload_08.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/new_run_rifle.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_clay_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_clay_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_clay_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_clay_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_diffuse_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_diffuse_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_diffuse_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_diffuse_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_head_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_head_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_head_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_head_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_idle_rifle.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_level_01_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_level_01_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_level_08_front.png": [
+			1280,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_level_08_gameplay.png": [
+			1280,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_painted_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_painted_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_painted_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_painted_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_00.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_01.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_02.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_03.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_04.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_05.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_06.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_07.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_reload_08.png": [
+			640,
+			720
+		],
+		"res://docs/art/atom_runtime_v1/review/engine/original_run_rifle.png": [
+			640,
+			720
+		]
+	},
+	"isolated_save_path_at_end": "user://atom_v1_capture_profile.json",
+	"note": "One current configured armor model for all views; each full-body camera fits the original and candidate posed vertices together with KEEP_HEIGHT and a shared margin. Original raw mesh/skin preserved for comparison. Poses use actual player and reload fixture; two real levels also captured.",
+	"real_save_path": "user://star_warfare_save.json",
+	"real_save_sha256_at_end": "9430dcfff0406db757079fa9ff2034db86b2688a0acab94c8446532694e946e2",
+	"real_save_sha256_at_start": "9430dcfff0406db757079fa9ff2034db86b2688a0acab94c8446532694e946e2",
+	"renderer": "gl_compatibility",
+	"resource_mode": "normal_imported_resources",
+	"runtime_scene_sha256": "660a885ee4a325e5a7f93095378a897a95c660d6f66f0c144ecde8e91fb1eb0e",
+	"save_change_first_capture": "",
+	"save_unchanged": true,
+	"scene_sha256_at_start": "660a885ee4a325e5a7f93095378a897a95c660d6f66f0c144ecde8e91fb1eb0e",
+	"target_sha256": "776604659d9b231f2a44937bca84bcd5e4f39085fe9182ce2081aae7263caca5",
+	"target_sha256_at_start": "776604659d9b231f2a44937bca84bcd5e4f39085fe9182ce2081aae7263caca5",
+	"viewports": {
+		"gameplay": [
+			1280,
+			720
+		],
+		"review": [
+			640,
+			720
+		]
+	}
+}

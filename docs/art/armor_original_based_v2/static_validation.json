@@ -1,0 +1,37 @@
+{
+  "status": "PASS_STATIC_BROWSER_NOT_RUN",
+  "pages": [
+    {
+      "path": "docs/art/armor_original_based_v2/index.html",
+      "sha256": "b4de4a328b8da9651112a63405f34d0bc548f8b51403a2ff10fd7e0888f3b034",
+      "javascript_syntax": "PASS"
+    },
+    {
+      "path": "docs/art/original_armors_v1/index.html",
+      "sha256": "6bcd9c6f6ab0624d66736d515b2b4098abf08954d45fd3deadd034de8ae0fc2f",
+      "javascript_syntax": "PASS"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/index.html",
+      "sha256": "17a9dff1440fe0e7fb347d8092b7cc2711c665bea2fc57fc151ce89194dceab8",
+      "javascript_syntax": "PASS"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/index.html",
+      "sha256": "f462a7bcf3ea5d28ae8903f7eeec242acbfdcb1fbf7d2c0f889d1c1278d3c678",
+      "javascript_syntax": "PASS"
+    }
+  ],
+  "unrelated_catalog_rows_unchanged": 43,
+  "ready_armors": [
+    "thunder",
+    "atom",
+    "pegasus"
+  ],
+  "runtime_captures_sha_verified": true,
+  "protected_hooks_and_harness": "UNCHANGED",
+  "browser_interaction": "NOT RUN",
+  "browser_reason": "The browser tool rejected file:// navigation; no workaround attempted.",
+  "whitespace_note": "Two frozen copies of the original inspect_sources.gd retain the source tab-only line 11. Exact sent prompts retain intentional original terminal newline bytes. Other changed source passes diff whitespace checks.",
+  "checkout_byte_stability": "LF-normalized catalog files match declared eol=lf; delivery snapshots and sent prompts retain raw bytes."
+}

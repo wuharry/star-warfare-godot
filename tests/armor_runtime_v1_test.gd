@@ -19,7 +19,7 @@ var non_head_names: Array[String] = []
 func _configure() -> void:
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--armor="):slug=argument.trim_prefix("--armor=")
-	assert(slug in ["hydra","strike","titan"])
+	assert(slug in ["hydra","strike","titan","atom","pegasus"])
 	config=JSON.parse_string(FileAccess.get_file_as_string("res://docs/art/"+slug+"_runtime_v1/runtime_config.json"))
 	id=int(config.runtime_id)
 	work_path="res://"+str(config.work)+"/";asset_path="res://"+str(config.asset)+"/"
@@ -139,6 +139,9 @@ func _run() -> void:
 				_check(arrays[Mesh.ARRAY_INDEX]==raw[Mesh.ARRAY_INDEX],"Reordered original triangles")
 				_check(arrays[Mesh.ARRAY_BONES]==raw[Mesh.ARRAY_BONES] and arrays[Mesh.ARRAY_WEIGHTS]==raw[Mesh.ARRAY_WEIGHTS],"Changed original rig weights")
 			if part.name!=head_name:_check(arrays[Mesh.ARRAY_VERTEX]==raw[Mesh.ARRAY_VERTEX],"Untouched body/limb geometry changed")
+			if config.get("preserve_all_geometry", false):
+				for channel: int in Mesh.ARRAY_MAX:
+					_check(arrays[channel]==raw[channel], "Texture-only integration changed original mesh array %s/%d/%d" % [part.name,sid,channel])
 			triangles+=arrays[Mesh.ARRAY_INDEX].size()/3
 			var material:=part.get_active_material(sid) as StandardMaterial3D
 			_check(material!=null and material.shading_mode==BaseMaterial3D.SHADING_MODE_UNSHADED,"Wrong painted rendering context")
