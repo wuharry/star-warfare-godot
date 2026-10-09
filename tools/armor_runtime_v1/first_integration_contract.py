@@ -19,6 +19,9 @@ ORIGINAL_TRIANGLES = {"atom": 860, "pegasus": 1128}
 BASE_PROMPT_SHA256 = "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9"
 TEXTURE_HISTORY_SHA256 = {"atom":"b11f3dbef7eb700e02dfef178703d1828e700f06c4d51aa1332211e169db1d6d",
                          "pegasus":"5f750a59cfbf2c5093f7701e89e25b9de430cfef5a0e4b7fe5a8d51dd1879f23"}
+REFINEMENT_HISTORY_SHA256 = {"atom":"dceb6a0fc6706e3a82aaf97ac9f0b50ae0a9d613902be7626a8223c7b0a358fb",
+                            "pegasus":"30d280ef5defb7d5f30b2b48fa5b97f6315e0d9f203f49943452fa54b49a6252"}
+REFINEMENT_HISTORY_COMMIT = "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9"
 
 
 def read(path):
@@ -42,6 +45,26 @@ def verify_texture_history(slug):
         path=ROOT/row["snapshot_path"]
         assert path.resolve().is_relative_to(frozen.resolve())
         assert path.stat().st_size==row["bytes"] and digest(path)==row["sha256"], "Frozen previous delivery bytes changed: "+row["snapshot_path"]
+    return {"path":index.relative_to(ROOT).as_posix(),"sha256":digest(index),"files_verified":96,"source_commit":snapshot["source_commit"]}
+
+
+def verify_refinement_history(slug):
+    """Append a pinned v2-model delivery without replacing the f943 history."""
+    previous=ROOT/f"docs/art/{slug}_runtime_v1/revisions/before_draft_refinement_v2/snapshot.json"
+    assert digest(previous)==TEXTURE_HISTORY_SHA256[slug], "Frozen texture-only index changed"
+    original_paths={row["original_path"] for row in read(previous)["files"]}
+    frozen=ROOT/f"docs/art/{slug}_runtime_v1/revisions/before_draft_refinement_v3"
+    index=frozen/"snapshot.json"
+    assert digest(index)==REFINEMENT_HISTORY_SHA256[slug], "Frozen v2 refinement index changed"
+    snapshot=read(index)
+    assert snapshot["source_commit"]==REFINEMENT_HISTORY_COMMIT
+    assert snapshot["status"]=="FROZEN_DRAFT_REFINEMENT_V2_BASELINE" and len(snapshot["files"])==96
+    assert len(original_paths)==96 and {row["original_path"] for row in snapshot["files"]}==original_paths
+    for row in snapshot["files"]:
+        path=ROOT/row["snapshot_path"]
+        assert row["snapshot_path"]==(frozen/row["original_path"]).relative_to(ROOT).as_posix()
+        assert path.resolve().is_relative_to(frozen.resolve())
+        assert path.stat().st_size==row["bytes"] and digest(path)==row["sha256"], "Frozen v2 refinement bytes changed: "+row["snapshot_path"]
     return {"path":index.relative_to(ROOT).as_posix(),"sha256":digest(index),"files_verified":96,"source_commit":snapshot["source_commit"]}
 
 
@@ -319,6 +342,7 @@ def verify_first_source(slug):
     assert config["slug"] == slug and config["runtime_id"] == armor_id
     geometry_parts(config, source["parts"])
     history=verify_texture_history(slug) if config.get("geometry_mode")=="original_source_bounded_refinement" else None
+    refinement_history=verify_refinement_history(slug) if config.get("geometry_mode")=="original_source_bounded_refinement" else None
     assert config["original_triangles"] == ORIGINAL_TRIANGLES[slug]
     assert config["original_bones"] == 28 and config["original_surface_count"] == 5
     assert config["original_total_geometry_limit"] == config["original_total_uv_changed_fraction_per_surface_limit"] == .20
@@ -336,7 +360,8 @@ def verify_first_source(slug):
         triangle_count += slot["triangles"]
     assert coordinate_count == config["original_uv_coordinate_count"] and triangle_count == config["original_triangles"]
     return source, {"original_source_snapshot_records_verified": 13, "original_source_snapshot_sha256": digest(snapshot_path),
-                    "original_node_index_sha256": digest(index_path), "used_node_ids": nodes,"previous_texture_only_delivery":history}
+                    "original_node_index_sha256": digest(index_path), "used_node_ids": nodes,"previous_texture_only_delivery":history,
+                    "previous_draft_refinement_delivery":refinement_history}
 
 
 def verify_first_generation(slug, work, assets):

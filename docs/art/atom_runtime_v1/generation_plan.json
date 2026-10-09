@@ -1,81 +1,116 @@
 [
   {
     "label": "head",
-    "prompt": "docs/art/atom_runtime_v1/prompts/head_attempt_03.txt",
-    "prompt_sha256": "f84e6914ad50ca247a1eecbe32a11637861b74edc199d935b2cf477114d3a253",
+    "prompt": "docs/art/atom_runtime_v1/prompts/head_attempt_05.txt",
+    "prompt_sha256": "aa891995d1c2578910a80e9ebd244ebdae11b98b4654be95a94dda62763d3523",
     "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
     "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
     "references": [
       {
-        "path": "docs/art/atom_runtime_v1/generated/head_attempt_02.png",
-        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_ear_retry3_0_head_attempt_02.png",
-        "sha256": "fb70541f295a6e8973350e9a0810388acb410f1fab7d806776cb5dba6b13bad8",
+        "path": "docs/art/atom_runtime_v1/generated/head_attempt_04.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_v3_5_0_head_attempt_04.png",
+        "sha256": "699b47ec21f99c384b905bb0ce0b43c67e814c5a24b980f541244a3170bd348d",
         "role": "edit_target_previous_attempt"
       },
       {
         "path": "docs/art/original_armors_v1/images/c08_concept.png",
-        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_ear_retry3_1_c08_concept.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_v3_5_1_c08_concept.png",
         "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
         "role": "helmet_design_authority"
+      },
+      {
+        "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_head_quarter.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_v3_5_2_new_head_quarter.png",
+        "sha256": "d4b3a8dd364fe811c3308ccad9c0d2d66153680d00535f913f7c653f091c896f",
+        "role": "previous_runtime_mapping_diagnostic_not_design_authority"
+      },
+      {
+        "path": "docs/art/atom_runtime_v1/guides/head_design_v3_glass.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_v3_5_3_head_design_v3_glass.png",
+        "sha256": "34e98821f369571902dfc8ce4d33913094ef136c27e407dd85bc0462532722bb",
+        "role": "technical_uv_placement_guide_not_output_art"
       }
     ],
     "reference_images": [
-      "docs/art/atom_runtime_v1/input_snapshots/head_ear_retry3_0_head_attempt_02.png",
-      "docs/art/atom_runtime_v1/input_snapshots/head_ear_retry3_1_c08_concept.png"
+      "docs/art/atom_runtime_v1/input_snapshots/head_v3_5_0_head_attempt_04.png",
+      "docs/art/atom_runtime_v1/input_snapshots/head_v3_5_1_c08_concept.png",
+      "docs/art/atom_runtime_v1/input_snapshots/head_v3_5_2_new_head_quarter.png",
+      "docs/art/atom_runtime_v1/input_snapshots/head_v3_5_3_head_design_v3_glass.png"
     ],
-    "variant": "draft_refinement_v2"
+    "variant": "draft_refinement_v3"
   },
   {
     "label": "body",
-    "prompt": "docs/art/atom_runtime_v1/prompts/body_attempt_11.txt",
-    "prompt_sha256": "a5d11ed3ab2204bf25d94b8c6d5930cb69e3ec7dcb8681138556e2cde574484c",
+    "prompt": "docs/art/atom_runtime_v1/prompts/body_attempt_12.txt",
+    "prompt_sha256": "a3dc3ba927fbc8a80a2eeef4940c8ebf1d542fd0b2b5492121260489056fb06d",
     "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
     "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
     "references": [
       {
         "path": "docs/art/atom_runtime_v1/generated/body_attempt_10.png",
-        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry11_0_body_attempt_10.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_v3_12_0_body_attempt_10.png",
         "sha256": "616151182a74871e3f399ed1df4b3baa1f2edc6bc79ed8998bedcd25004aa15e",
         "role": "edit_target_previous_attempt"
       },
       {
         "path": "docs/art/original_armors_v1/images/c08_concept.png",
-        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry11_1_c08_concept.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_v3_12_1_c08_concept.png",
         "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
         "role": "approved_body_design"
+      },
+      {
+        "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_painted_quarter.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_v3_12_2_new_painted_quarter.png",
+        "sha256": "200e6c04e652a004d5d48d2a9fa6cb23fbbb80c21ae685e661171af93e84896b",
+        "role": "previous_runtime_mapping_diagnostic_not_design_authority"
+      },
+      {
+        "path": "docs/art/atom_runtime_v1/guides/body_design_v3_aligned.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_v3_12_3_body_design_v3_aligned.png",
+        "sha256": "4fa357698e78a4ade7a4df4e6c818f083895ea9550b6f05ec9c447881a2e7d10",
+        "role": "technical_uv_placement_guide_not_output_art"
       }
     ],
     "reference_images": [
-      "docs/art/atom_runtime_v1/input_snapshots/body_retry11_0_body_attempt_10.png",
-      "docs/art/atom_runtime_v1/input_snapshots/body_retry11_1_c08_concept.png"
+      "docs/art/atom_runtime_v1/input_snapshots/body_v3_12_0_body_attempt_10.png",
+      "docs/art/atom_runtime_v1/input_snapshots/body_v3_12_1_c08_concept.png",
+      "docs/art/atom_runtime_v1/input_snapshots/body_v3_12_2_new_painted_quarter.png",
+      "docs/art/atom_runtime_v1/input_snapshots/body_v3_12_3_body_design_v3_aligned.png"
     ],
-    "variant": "draft_refinement_v2"
+    "variant": "draft_refinement_v3"
   },
   {
     "label": "shoulder",
-    "prompt": "docs/art/atom_runtime_v1/prompts/shoulder_attempt_03.txt",
-    "prompt_sha256": "37cb49f494bf40f3ada3abb4b089f9ade5af789917f65aeacf7ce44760fdbe78",
+    "prompt": "docs/art/atom_runtime_v1/prompts/shoulder_attempt_04.txt",
+    "prompt_sha256": "5e0e3849403aa3a26d502803cdabcafdc90f36ac698a5f67888878b1057ac9c0",
     "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
     "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
     "references": [
       {
-        "path": "docs/art/atom_runtime_v1/generated/shoulder_attempt_02.png",
-        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_retry3_0_shoulder_attempt_02.png",
-        "sha256": "6d1ac11987aa4d73c3d458e064236d7823fb9e3c344ad5b0e3826b9bf29f7c63",
+        "path": "docs/art/atom_runtime_v1/generated/shoulder_attempt_03.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_v3_4_0_shoulder_attempt_03.png",
+        "sha256": "9232eaeb7d2daedb8a2ca7f776137b61057c8265ebe237f78f0c8f74552a23d0",
         "role": "edit_target_previous_attempt"
       },
       {
         "path": "docs/art/original_armors_v1/images/c08_concept.png",
-        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_retry3_1_c08_concept.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_v3_4_1_c08_concept.png",
         "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
         "role": "approved_body_design"
+      },
+      {
+        "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_painted_quarter.png",
+        "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_v3_4_2_new_painted_quarter.png",
+        "sha256": "200e6c04e652a004d5d48d2a9fa6cb23fbbb80c21ae685e661171af93e84896b",
+        "role": "previous_runtime_mapping_diagnostic_not_design_authority"
       }
     ],
     "reference_images": [
-      "docs/art/atom_runtime_v1/input_snapshots/shoulder_retry3_0_shoulder_attempt_02.png",
-      "docs/art/atom_runtime_v1/input_snapshots/shoulder_retry3_1_c08_concept.png"
+      "docs/art/atom_runtime_v1/input_snapshots/shoulder_v3_4_0_shoulder_attempt_03.png",
+      "docs/art/atom_runtime_v1/input_snapshots/shoulder_v3_4_1_c08_concept.png",
+      "docs/art/atom_runtime_v1/input_snapshots/shoulder_v3_4_2_new_painted_quarter.png"
     ],
-    "variant": "draft_refinement_v2"
+    "variant": "draft_refinement_v3"
   },
   {
     "label": "hand",

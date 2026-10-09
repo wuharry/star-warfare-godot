@@ -1,0 +1,38 @@
+{
+	"body_baseline": {
+		"commit": "bef5b833a3559519a59c8ff35dbacd9cdb51004c",
+		"scene_sha256": "9f939667c6516ee3e2335cb973abeb7805d6865fd4df6b97821303bcd2661df5",
+		"three_parts_native_buffers_materials_skin_transform_unchanged": true
+	},
+	"errors": [],
+	"native_png_sha256": "55ab873f422aff2b2e79a5efce7ab676198bdc3da6f7010389deb11bfc28bd30",
+	"native_size": [
+		1254,
+		1254
+	],
+	"pixel_bytes_preserved": true,
+	"portable_texture_sha256": "edc0ce3c9bbcf8885b99b60c261fae9b00c300088d6d2f33a671e36c1792c2fc",
+	"protected_alternates": {
+		"res://assets/armors/thunder/thunder_prototype.scn": "7c37b7917eb161d05c414799abf7981768ef9b76b81f1123f73397e60e5185b3",
+		"res://assets/armors/thunder/thunder_sw2.scn": "9f939667c6516ee3e2335cb973abeb7805d6865fd4df6b97821303bcd2661df5"
+	},
+	"revision": "thunder_original_head_v2",
+	"runtime_triangle_counts": {
+		"current_original_head": 196,
+		"current_whole_suit": 6574,
+		"restored_before_head": 6284,
+		"restored_before_whole_suit": 12662
+	},
+	"scene_sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7",
+	"scope": "Original SW1 head geometry, UV, topology, skin and transform remain exact; body and limbs inherit the restored bef5b833 scene unchanged. No original-whole-suit percentage is claimed.",
+	"shader_code": "shader_type spatial;\nrender_mode unshaded, cull_disabled;\nuniform sampler2D albedo_texture : source_color, filter_linear, repeat_disable;\nvoid fragment() {\n    ALBEDO = texture(albedo_texture, UV).rgb;\n}\n",
+	"status": "PASS",
+	"true_original_head": {
+		"all_native_surface_buffers_unchanged": true,
+		"geometry_displacement_fraction": 0.0,
+		"skin_binds": 28,
+		"triangles": 196,
+		"uv_changed_fraction": 0.0,
+		"uv_coordinates": 147
+	}
+}

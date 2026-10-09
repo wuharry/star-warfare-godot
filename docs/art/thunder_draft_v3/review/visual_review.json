@@ -1,0 +1,834 @@
+{
+  "status": "ENGINEERING_CANDIDATE_PENDING_USER_ART_REVIEW",
+  "date": "2026-10-09",
+  "armor": "Thunder",
+  "design_id": "C07",
+  "runtime_id": 6,
+  "revision": "thunder_draft_v3",
+  "shape_iteration": 2,
+  "native_attempt": 3,
+  "reviewer": "independent_codex_subagent_actual_individual_view_image",
+  "capture_summary": {
+    "path": "docs/art/thunder_draft_v3/review/engine/capture.json",
+    "sha256": "34e37be9ba290a15719da321efdf915bf66b93eb8284526e40ffb09b0acf07e8",
+    "bytes": 35876
+  },
+  "runtime_scene": {
+    "path": "assets/armors/thunder/thunder.scn",
+    "sha256": "c7762f82a92a12c25e120c1f6e2a751d7a117212554c21c110a376b37a4a9b84",
+    "bytes": 869080
+  },
+  "capture_runtime_scene_sha256": "c7762f82a92a12c25e120c1f6e2a751d7a117212554c21c110a376b37a4a9b84",
+  "actual_images_inspected": 45,
+  "matched_view_pairs": 30,
+  "matched_view_triplets": 15,
+  "images": [
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_full_front.png",
+      "sha256": "fb9a1c2ff913ad173fff0a794eccbc8e50a7279d31ff7f8ab95e40389aa3bd3d",
+      "bytes": 316153,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "full_front",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版全身正向視圖：高單鰭冠、厚 V 眉框及金色玻璃；原版身體貼圖較柔和，甲片與四肢完整。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_full_front.png",
+      "sha256": "c59861d418021a5ff66ff92c556a746eadc73baff91413a6aee43ec30e626ce1",
+      "bytes": 339652,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "full_front",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 全身正向視圖：頭頂仍是高單鰭冠，金色 V 面窗清晰；身甲有較細甲片線和藍金配色。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_full_front.png",
+      "sha256": "3bb8758092aca48f6757336d3690e424ea8d10121c9b4ad32a032165f111f835",
+      "bytes": 351098,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "full_front",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版全身正向視圖：高單鰭改為低寬冠殼，金窗與黑色小下巴模組可辨識；胸肩手腳外觀與 before 保持，未見新增破片。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_full_side.png",
+      "sha256": "f2b15366948eca90966228c09909e524d1cc15ee8dfe04e7944f112e91a0778c",
+      "bytes": 357410,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "full_side",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版全身側視：長三角冠鰭向後上方伸出，頭盔下半較長；手臂和腿部維持原版折面輪廓。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_full_side.png",
+      "sha256": "5ed1a0bc930ec198276fd5c27a8fd9eac35da92fa43f778c59ec248e00954652",
+      "bytes": 393759,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "full_side",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 全身側視：高薄冠鰭與長下框仍在；身甲線條較清晰，裸露的頸部和關節為深色。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_full_side.png",
+      "sha256": "2bff484d5c46de31f8cc3c2b383e14c5a1d4fb5afbc8980ce8f2b6582a78eb0a",
+      "bytes": 401662,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "full_side",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版全身側視：明顯大尖鰭消除，冠部接近低弧殼；後緣仍有極細微尖端，下框縮短，頸部為黑色而無第二稿灰 padding 大塊。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_full_rear.png",
+      "sha256": "c02e416ab570ccbef1ff32ec137fd90298d8a92cdb3ffeefdea1a857ca57861b",
+      "bytes": 297182,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "full_rear",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版全身背視：後腦上方大三角鰭與金色內面可見；背甲和四肢無缺片。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_full_rear.png",
+      "sha256": "bed6d21d52a61ea9b26b341cf971d7d20433e01b358a391eeda5e598055ef1ff",
+      "bytes": 332896,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "full_rear",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 全身背視：舊高三角鰭仍突出，背甲／肩／腿藍金細節清晰；後頸為黑色。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_full_rear.png",
+      "sha256": "d5216e1a9e005101b986d176fd27b9c48c9658e6fc2fcf8a6dc677dc778324a7",
+      "bytes": 344019,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "full_rear",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版全身背視：三角高冠縮入低冠輪廓，後腦藍甲與金線連續；黑色後頸沒有灰色錯貼塊，身背肩腿與 before 一致。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_full_quarter.png",
+      "sha256": "3c0c24330ae8c7c7377d951a8401c8a709050763f5bfcb215f33ab0f7cc78ee1",
+      "bytes": 373367,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "full_quarter",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版全身四分之三視：高冠、較長下框及原版金面窗讀取明確，身體線條較柔和。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_full_quarter.png",
+      "sha256": "a23cee4e99e9bc75eaad357306fbcab5ed5ce28b8572b8d2c323ca6e16b5d769",
+      "bytes": 407304,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "full_quarter",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 全身四分之三視：高冠尖頂仍是主要輪廓，金窗亮，身甲線與關節完整。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_full_quarter.png",
+      "sha256": "0395bc11f837023a2781d3c57b6a1191d8e6c9997e3c603c0e7fc2575e9a8806",
+      "bytes": 418067,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "full_quarter",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版全身四分之三視：低寬冠頂、較短下框與金面窗形成緊湊頭盔，與 before 身甲風格一致；冠殼仍是原拓樸的明顯折面。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_head_front.png",
+      "sha256": "d21fb4f16a429ba4b5775145d633df70fafa79f1fba5ce26adf6cbe6fe79febd",
+      "bytes": 621026,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "head_front",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版頭部正向近景：大單鰭尖頂、整條厚 V 眉框與柔和金色窗；下巴較長，耳蓋完整。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_head_front.png",
+      "sha256": "d4f50849a8d8115e02becb80c59cb02fed1081b597dd6b82a0924ab478fdf938",
+      "bytes": 635538,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "head_front",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 頭部正向近景：同樣的高尖鰭与厚 V 眉沿，金窗的亮 V 反光較強；下框為藍甲片。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_head_front.png",
+      "sha256": "8eb95ffbca35d91de8e2e302409ae97230536866bf49dc97536a9e3b212e8c38",
+      "bytes": 695375,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "head_front",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版頭部正向近景：高尖頂已收成低寬頂面，中央藍冠帶、兩側金燈與金色窗清楚，短下巴黑框無缺片；中央 V 眉帶仍較 B 草稿寬，金窗上緣比例仍不完全相同。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_head_side.png",
+      "sha256": "7407bff7cde9ae3ef736a4e1fca563bae7febee30c950cccab15f382d6c700b3",
+      "bytes": 673150,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "head_side",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版頭部側近景：上方薄三角冠鰭突出，圓耳蓋及長下框可見，底部為深色頸部。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_head_side.png",
+      "sha256": "7097e4990038f96983ee3dc0c111218481a39147b8b9fd673b6c702b1f1e4763",
+      "bytes": 684234,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "head_side",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 頭部側近景：高三角鰭、清楚的圓耳蓋與長下框；黑頸接合完整。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_head_side.png",
+      "sha256": "9c676c9c6561761171f8cbd57676b15ebe2cdfdd824b6ed9a08cce1b9e258b71",
+      "bytes": 731435,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "head_side",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版頭部側近景：大三角棚頂已消除，主冠殼為連續低折面，圓耳蓋與金窗保留；極細後緣尖端仍在。原第二稿後頸灰大塊已修為黑色，不見灰 padding 或新增破片。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_head_rear.png",
+      "sha256": "507c436b2d6e73c4ef69f633872a6cd1f1e584d7136ea5b3f9b1f123cf98e506",
+      "bytes": 564383,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "head_rear",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版頭部背近景：高三角冠內側金色面，後腦金線與黑色下緣完整。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_head_rear.png",
+      "sha256": "777b2e44fb40171d28bf361d783263b8653b872329c0cee527aecf2f20162222",
+      "bytes": 583056,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "head_rear",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 頭部背近景：仍有高三角金鰭，後腦中央板與金色折線清楚；後頸保持黑色。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_head_rear.png",
+      "sha256": "27ef274bb2a93c201497a1101e2e4fef3f97f3ca6c069e028ccc647195fabcc0",
+      "bytes": 639428,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "head_rear",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版頭部背近景：高三角冠不再突出，低冠中央板、金線及黑色後頸連續；第三稿已移除第二稿明顯灰留白錯貼。頂邊仍可辨少量細尖輪廓。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_head_quarter.png",
+      "sha256": "2f193a9eb846fd045841fea1b657982d2b05ae9d6a2d5267aa5e0ee0e53e0ca3",
+      "bytes": 644340,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "head_quarter",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版頭部四分之三近景：高鰭與厚 V 框壓住金窗上緣，原貼圖有柔和手繪磨痕。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_head_quarter.png",
+      "sha256": "009f08244cbbc5ebd440e8f689c0858ed6367dc0b02d492f88e8f35d87290d90",
+      "bytes": 666586,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "head_quarter",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 頭部四分之三近景：高尖鰭與長下框，藍甲線及亮金 V 反光更清晰。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_head_quarter.png",
+      "sha256": "2606b11c7fe87a4798d2cd1b8d3b24eacff8b0952627631fb0f83aed1ab68a6f",
+      "bytes": 722597,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "head_quarter",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版頭部四分之三近景：低冠中央帶與金色面窗、兩耳和短下巴保持可辨，未見左右玻璃裂開或錯貼；冠頂和額甲折面、V 眉帶及黑下巴仍較 B 草稿厚重。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_clay_front.png",
+      "sha256": "da4a307e7396ca03217a5a888859070d78146fd5c1abce8b015f3db2c32e82ab",
+      "bytes": 39347,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "clay_front",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版正向灰模：高冠尖頂與基本甲殼輪廓完整，紋理移除後顯示較簡單原身體表面。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_clay_front.png",
+      "sha256": "67c193af9906b0331faf953bc426c6ca97030e123cc5a4150ea70e929ebf6127",
+      "bytes": 49068,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "clay_front",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 正向灰模：高冠保留，身甲為既有较多甲片及折面；此視圖使用中性灰材質，不代表正式貼圖。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_clay_front.png",
+      "sha256": "14f64f9419e1c8ee96bedd23e6dd1b73a37e898452ba500af7a61d38a7414b72",
+      "bytes": 48690,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "clay_front",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版正向灰模：高冠明顯降低且外形收寬，下巴短化；body／arms／legs 保持 before 的折面及姿勢，未見新增缺口。低頂面仍較 B 草稿的圓滑殼角化。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_clay_side.png",
+      "sha256": "552fa25dd06e38645e1fd47e10d487dc0a73ca1d19a68f9c25e94a54a4e4c561",
+      "bytes": 46846,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "clay_side",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版側灰模：三角鰭高伸、原頭框較長；原身體輪廓完整。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_clay_side.png",
+      "sha256": "ba871f8f9a838d1e118771f11055b55ac0aeb86b3701442bd39a3d43225dbd01",
+      "bytes": 58394,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "clay_side",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 側灰模：高薄鰭與长下框仍在，身甲既有折面可見。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_clay_side.png",
+      "sha256": "48fcf9a6e882d7c1f4134db4dba4ac043d9e868bfbabbfced0dc22acb07f9000",
+      "bytes": 56853,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "clay_side",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版側灰模：原高薄鰭收成低輪廓，下框回縮，肩腿為 before 幾何；後頂極小尖端仍可見。此項只檢查真實幾何，不宣稱完全光滑圓冠。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_idle.png",
+      "sha256": "ef64c88259f2e514c1403f0cb274d62cd671214a6482bb19a4814e06c6d506bf",
+      "bytes": 395892,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "idle",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版持槍待機：高冠與金窗保持，步槍遮擋部分胸手；未見頭部離位。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_idle.png",
+      "sha256": "7e1de28f850102764f3aaa3e5afb3a1e047e541ea14d4f2fd41e3844e3a07721",
+      "bytes": 424784,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "idle",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 持槍待機：高冠清楚，身甲與槍械持握完整，金窗亮。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_idle.png",
+      "sha256": "b1f1dca49d023d1d6b1883900f9913282ebcd5d51f4cc99eff413975b8e11624",
+      "bytes": 435377,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "idle",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版持槍待機：低冠、金窗及短下巴在持槍姿勢可辨，頸部深色，沒有新頭部漂移或明顯槍頭穿插。這是單一固定待機時刻。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_run.png",
+      "sha256": "1b7be063c348aa3a561d65c38b1ab67ae1579d8f5c546b748c6f9a2029d0213b",
+      "bytes": 417201,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "run",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版跑步採樣：高尖冠、金面窗和持槍可見，膝腿在既有跑步彎曲姿勢。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_run.png",
+      "sha256": "6d2036a6d4354373871014984892d3255962e59f11127288ea84eab1c3c31ade",
+      "bytes": 439430,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "run",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 跑步採樣：高冠、藍金身甲與槍械清楚，腿部甲片保持既有動作。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_run.png",
+      "sha256": "b34e539a71b4bf1aade38009e97c91ef2207b67042586c67a935faf8d5dcfbe3",
+      "bytes": 452500,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "run",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版跑步採樣：低冠金窗與黑下巴隨頭部移動，身手腿位置與 before 的樣本一致；未見新增頭部拉裂或脱骨。僅此跑步時刻，不代表完整循環驗收。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_reload.png",
+      "sha256": "6b9631adf4276ceebb7b8c10f76c48dfdbae37609e2c3151c8c8fb55677e674d",
+      "bytes": 419291,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "original",
+      "view": "reload",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "真正原版換彈採樣：高冠頭部俯向紫步槍，掉落彈匣可見，非裝甲缺片；手臂在換彈位置。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_reload.png",
+      "sha256": "fca1e63ca214b5daa8c75184115a9a7b474924193ca6d872a2d86276bac56011",
+      "bytes": 438656,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "before",
+      "view": "reload",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "凍結 3ed 換彈採樣：舊高冠、身甲與槍械完整；畫面外側獨立方塊為掉落彈匣，其時鐘位置不作像素比較。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_reload.png",
+      "sha256": "5818f7a108e63ba726f307de45eea93c32f169c17254508063d89765093f472b",
+      "bytes": 444989,
+      "dimensions": [
+        800,
+        960
+      ],
+      "version": "new",
+      "view": "reload",
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版換彈採樣：低冠、耳蓋與金窗隨頭姿保持，未見新穿插／拉裂；外側方塊為彈匣，與其他版本不同落點不能解讀為裝甲破片。僅此固定換彈採樣。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_game_level_1.png",
+      "sha256": "05b0f5183f8fe530c4d7f9d532a7f783c446c98c84dbbcc2d7361d952fa761f8",
+      "bytes": 1406302,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "version": "original",
+      "view": "game_level_1",
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "真正原版區域 01 實機背視：高冠後鰭、背甲與肩甲可辨；暖色場景、HUD 與既有背包正常顯示。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_game_level_1.png",
+      "sha256": "7b7e1eb67b38f113a5a03187d875a3fb6c62643206f6d1df4361abab3ccefcd1",
+      "bytes": 1423089,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "version": "before",
+      "view": "game_level_1",
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "凍結 3ed 區域 01 實機背視：舊高冠仍突出，較細藍金身甲在暖景讀取清楚；HUD 和背包正常。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_game_level_1.png",
+      "sha256": "7b45d8660a466626fe73810d2e203e1f88278eda26f89ce51e84c8a70ea93b71",
+      "bytes": 1421307,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "version": "new",
+      "view": "game_level_1",
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "新版區域 01 實機背視：低冠輪廓與後腦金線清楚，黑後頸沒有灰錯貼，身甲/HUD/背包仍完整。僅作實機可讀性，不作全場景逐像素相等比較。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_game_level_3.png",
+      "sha256": "aef66dee3173f0bb71cae1357f55e6e06bce9f425c44893a68aa4b46abcb0c95",
+      "bytes": 1011829,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "version": "original",
+      "view": "game_level_3",
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "真正原版區域 03 實機背視：高冠後鰭與較柔和藍金背甲，在冷色太空站場景可辨，HUD 正常。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_game_level_3.png",
+      "sha256": "8b600c1bf6904bcdc1548c9d81bd4e800a9b5b206cd7766546ac6fa9b418a861",
+      "bytes": 1027081,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "version": "before",
+      "view": "game_level_3",
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "凍結 3ed 區域 03 實機背視：高冠仍可見，較細藍金背甲和肩甲、既有背包顯示正常。"
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_game_level_3.png",
+      "sha256": "e198488c950e355bc9b797985071c4ed236c97158b45503f253a5fd8a709ff66",
+      "bytes": 1026243,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "version": "new",
+      "view": "game_level_3",
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "新版區域 03 實機背視：低冠與金色後腦折線保持讀取，後頸為黑色，身甲未被替換，HUD 正常；未見新增缺片。僅此關卡實機視角。"
+    }
+  ],
+  "reference_images_inspected": [
+    {
+      "path": "docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png",
+      "sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
+      "bytes": 1584536,
+      "dimensions": [
+        1145,
+        1374
+      ]
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_head_front.png",
+      "sha256": "d4f50849a8d8115e02becb80c59cb02fed1081b597dd6b82a0924ab478fdf938",
+      "bytes": 635538,
+      "dimensions": [
+        800,
+        960
+      ]
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_head_side.png",
+      "sha256": "7097e4990038f96983ee3dc0c111218481a39147b8b9fd673b6c702b1f1e4763",
+      "bytes": 684234,
+      "dimensions": [
+        800,
+        960
+      ]
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_head_rear.png",
+      "sha256": "777b2e44fb40171d28bf361d783263b8653b872329c0cee527aecf2f20162222",
+      "bytes": 583056,
+      "dimensions": [
+        800,
+        960
+      ]
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_head_quarter.png",
+      "sha256": "009f08244cbbc5ebd440e8f689c0858ed6367dc0b02d492f88e8f35d87290d90",
+      "bytes": 666586,
+      "dimensions": [
+        800,
+        960
+      ]
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_full_front.png",
+      "sha256": "c59861d418021a5ff66ff92c556a746eadc73baff91413a6aee43ec30e626ce1",
+      "bytes": 339652,
+      "dimensions": [
+        800,
+        960
+      ]
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_full_quarter.png",
+      "sha256": "a23cee4e99e9bc75eaad357306fbcab5ed5ce28b8572b8d2c323ca6e16b5d769",
+      "bytes": 407304,
+      "dimensions": [
+        800,
+        960
+      ]
+    }
+  ],
+  "approved_concept": {
+    "path": "docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png",
+    "sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
+    "bytes": 1584536,
+    "dimensions": [
+      1145,
+      1374
+    ],
+    "role": "CURRENT_GALLERY_DESIGN_AUTHORITY_SELECTED_BY_USER_NOT_RUNTIME_ART_APPROVAL"
+  },
+  "before_3ed_baseline": {
+    "path": "docs/art/thunder_draft_v3/revisions/before_draft_v3/assets/armors/thunder/thunder.scn",
+    "sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7",
+    "bytes": 869138,
+    "commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
+    "role": "FROZEN_ORIGINAL_BASED_THUNDER_V2_HEAD_AND_INHERITED_BODY"
+  },
+  "native_selected": {
+    "path": "docs/art/thunder_draft_v3/generated/head_attempt_03.png",
+    "sha256": "c1c7aa218f76a83cb4fad514fcbb72e3e4857029a6a6822f513d5a8a9cd38765",
+    "bytes": 1927963,
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "attempt": 3
+  },
+  "runtime_native": {
+    "path": "assets/armors/thunder/textures/draft_head_v3.png",
+    "sha256": "c1c7aa218f76a83cb4fad514fcbb72e3e4857029a6a6822f513d5a8a9cd38765",
+    "bytes": 1927963,
+    "dimensions": [
+      1254,
+      1254
+    ]
+  },
+  "portable_texture": {
+    "path": "assets/armors/thunder/textures/draft_head_v3.res",
+    "sha256": "08f7169587f597d09c3510339c5e3b62a8375171d502aaf0847ad41f9e02ca1a",
+    "bytes": 3263624
+  },
+  "target": {
+    "path": "docs/art/thunder_draft_v3/build/head_target.json",
+    "sha256": "7057674caeb8fe17697763b8b499fd766e33c45e30c4189b586a6aee7fdfed4b",
+    "bytes": 69530
+  },
+  "geometry_analysis": {
+    "path": "docs/art/thunder_draft_v3/build/shape_analysis.json",
+    "sha256": "68ed2197fcf8b574329b09a2720fadec8f5febef67bdf6633bb478a2e66494ae",
+    "bytes": 4025
+  },
+  "runtime_test": {
+    "path": "docs/art/thunder_draft_v3/review/runtime_test.json",
+    "sha256": "fb7b0ce0a6cada9ade6ff3475a9f9f02b336d666e5b264292478185b771ac388",
+    "bytes": 4002
+  },
+  "comparison_summary": [
+    "與真正原版以及 3ed 頭盔對比，高單鰭從主輪廓退下，冠頂降低、相鄰殼升高形成低寬冠；下巴較短，原耳蓋保留，仍讀成同系列藍金厚甲。",
+    "與使用者指定圖集 B 對比，整體低冠／藍色中脊／金色面窗／緊湊下框方向更接近；但低拓樸折面、V 眉沿與黑下巴仍有差異，因此維持工程候選待使用者美術評價。",
+    "第 1 候選大三角棚頂與第 2 native 後頸灰 padding 兩個阻斷問題已分別在 geometry 02 和 native 03 修正；本次只綁 native 03 的 fresh 45 capture。",
+    "當前 45 圖沒有觀察到新增玻璃分裂、明顯 UV 錯貼、灰 padding、大冠鰭、部件漂移或拉裂。身甲差異是原版到既有 3ed 的历史差異，不歸因本次頭部工作。"
+  ],
+  "blocking_findings": [],
+  "blocking_scope": "Only currently bound 45 engine screenshots and pinned runtime reports; this does not assert exact B-concept reconstruction or user approval.",
+  "art_verdict": "ENGINEERING_CANDIDATE_WITH_VISIBLE_CONCEPT_RESIDUALS_PENDING_USER_ART_REVIEW",
+  "residuals": [
+    "冠頂及額甲仍受真正原版 147 頂點／196 三角形限制，存在明顯折面和較平頂段；B 草稿的流暢圓殼曲面未完全重建。",
+    "大尖三角後鰭已去除，但側／背近景仍可见極細後冠邊尖端，尚非完全貼合的圓滑冠帶。",
+    "金色面窗上緣、整條 V 眉帶與 B 草稿的細中央冠舌仍不同；不能宣稱面窗面積或輪廓完全一致。",
+    "下巴黑框已較之前緊湊，但黑色矩形排氣模組和藍色周框仍比 B 草稿厚重。",
+    "後頸灰 padding 錯貼已修正；黑色頸區與棕色既有領口仍是簡單原模型接合，沒有製成 B 草稿完整分層頸環。",
+    "身甲、手與腿嚴格繼承 3ed 凍結版本，本輪只改頭部，沒有把 B 全身概念重新塑形成全套遊戲模型。",
+    "僅檢查 45 張静態採樣及已有 9 個姿勢工程採樣，尚未完成玩家實際全動畫／所有武器／所有光照和行動裝置評價。"
+  ],
+  "user_art_approval": "PENDING_NOT_CLAIMED",
+  "browser_interaction": "NOT_RUN_BY_THIS_REVIEWER",
+  "browser_limitation": "Review uses individual actual engine PNGs, not browser screenshots, contact sheets or edited composites.",
+  "mobile_performance": "NOT_RUN",
+  "engine_run_by_reviewer": false,
+  "blender_run_by_reviewer": false,
+  "renderer": "gl_compatibility",
+  "resource_mode": "normal_imported_resources",
+  "viewports": {
+    "gameplay": [
+      1280,
+      720
+    ],
+    "studio": [
+      800,
+      960
+    ]
+  },
+  "save_unchanged": true,
+  "real_save_sha256": {
+    "start": "9430dcfff0406db757079fa9ff2034db86b2688a0acab94c8446532694e946e2",
+    "end": "9430dcfff0406db757079fa9ff2034db86b2688a0acab94c8446532694e946e2"
+  },
+  "head_budget_scope": {
+    "source": "True SW1 player.gltf ArmorHead_06",
+    "max_original_head_displacement_fraction": 0.194507724298923,
+    "original_head_dimension_change_fractions_raw_axes": [
+      0.0,
+      0.0,
+      0.141312931145869
+    ],
+    "original_head_uv_coordinate_count": 147,
+    "original_head_triangles": 196,
+    "uv_changed_fraction": 0,
+    "whole_suit_percentage": "NOT_CLAIMED_BODY_INHERITS_3ED"
+  },
+  "capture_bindings_verified": true,
+  "revalidation_rule": "Changing the selected native PNG, geometry target, SCN, inherited body resources, before baseline or any capture PNG invalidates this review; rebuild/capture and individual review must bind fresh bytes."
+}

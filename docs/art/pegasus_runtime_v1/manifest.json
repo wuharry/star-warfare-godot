@@ -4,11 +4,11 @@
   "runtime_id": 8,
   "name": "Pegasus",
   "revision": "pegasus_runtime_v1",
-  "texture_surface_revision": "draft_refinement_v2",
+  "texture_surface_revision": "draft_refinement_v3",
   "status": "runtime_integrated_pending_user_art_review",
-  "checked_at_utc": "2026-10-09T03:26:42.986932+00:00",
+  "checked_at_utc": "2026-10-09T05:12:45.723526+00:00",
   "design_authority": {
-    "path": "docs/art/pegasus_runtime_v1/input_snapshots/body_draft3_1_c09_concept.png",
+    "path": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_6_1_c09_concept.png",
     "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
     "bytes": 1956621,
     "dimensions": [
@@ -18,7 +18,7 @@
     "mode": "RGB"
   },
   "helmet_design_authority": {
-    "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_draft2_1_c09_concept.png",
+    "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_1_c09_concept.png",
     "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
     "bytes": 1956621,
     "dimensions": [
@@ -75,8 +75,8 @@
           0.0,
           0.017685762462227972
         ],
-        "max_rest_displacement": 0.02715033699927287,
-        "max_displacement_fraction_of_smallest_dimension": 0.048283261821288746,
+        "max_rest_displacement": 0.06022906339977516,
+        "max_displacement_fraction_of_smallest_dimension": 0.10710937538124207,
         "triangles": 520,
         "uv_preserved": true,
         "original_uv_charts": 9,
@@ -109,7 +109,7 @@
           "new_degenerate_triangles": 0,
           "inherited_degenerate_triangles": 0,
           "coincident_seam_max_rest_gap": 0.0,
-          "min_triangle_normal_cosine_from_original": 0.9888339355239825
+          "min_triangle_normal_cosine_from_original": 0.9126979711958487
         },
         "added_vertex_count": 0,
         "triangle_growth_fraction": 0,
@@ -244,13 +244,13 @@
       "ArmorHead_08": {
         "bounds_game": {
           "min": [
-            -0.270517498254776,
+            -0.26825809478759766,
             1.234439730644226,
-            -0.36516323685646057
+            -0.336587131023407
           ],
           "max": [
-            0.27051493525505066,
-            1.8528510332107544,
+            0.26825588941574097,
+            1.842725396156311,
             0.24996443092823029
           ]
         },
@@ -267,12 +267,12 @@
           ]
         },
         "dimension_delta_fraction": [
-          0.0,
-          0.12482977772919102,
-          0.04031888630778935
+          0.008351531306867499,
+          0.13915949000125516,
+          0.08490141853173472
         ],
-        "max_rest_displacement": 0.09483595190127457,
-        "max_displacement_fraction_of_smallest_dimension": 0.17528699949843596,
+        "max_rest_displacement": 0.1043674948290379,
+        "max_displacement_fraction_of_smallest_dimension": 0.19290432211610156,
         "triangles": 216,
         "uv_preserved": true,
         "original_uv_charts": 3,
@@ -298,14 +298,14 @@
           "new_degenerate_triangles": 0,
           "inherited_degenerate_triangles": 0,
           "coincident_seam_max_rest_gap": 0.0,
-          "min_triangle_normal_cosine_from_original": 0.9364424998875344
+          "min_triangle_normal_cosine_from_original": 0.21049886246009863
         },
         "added_vertex_count": 0,
         "triangle_growth_fraction": 0,
         "geometry_changed": true
       }
     },
-    "stage": "approved_draft_refinement_v2",
+    "stage": "approved_draft_refinement_v3",
     "constraint": "True original source cumulative20% per-part rest displacement/dimensions; exact original UV0, indices, vertex counts, rig and weights.",
     "user_authorized_original_total_limit": 0.2,
     "geometry_mode": "original_source_bounded_refinement",
@@ -331,23 +331,23 @@
   "files": [
     {
       "path": "assets/armors/pegasus_v1/pegasus.scn",
-      "sha256": "ae114acb94c13fc46725905d62545f74fce14aea367b5c2af913249992270f9f",
+      "sha256": "78b44feaf346f8e134f65a9915195b35a7e2e366d675cbf4eed27ddb25390dc0",
       "bytes": 81438
     },
     {
       "path": "assets/armors/pegasus_v1/pegasus.glb",
-      "sha256": "92a002e0db8d1155c307568f37a4a8f624c155668f3aa3a6792cfff013390464",
-      "bytes": 9130720
+      "sha256": "35c5780678195572966828f16208d9bfa2e86db09e2ce2a9a1aa4b76c8af79a3",
+      "bytes": 8961920
     },
     {
       "path": "docs/art/pegasus_runtime_v1/build/pegasus_master.blend",
-      "sha256": "15fc4ee5eaa2ea229ae02f1b6af1e505ce5ce7c8f240339467d166afaa02f83d",
-      "bytes": 9481130
+      "sha256": "9802960f564f5f9f8d7d4d1edee6155ec9dc92b47e8315db97de157bc7d921bb",
+      "bytes": 9289397
     },
     {
       "path": "assets/armors/pegasus_v1/body_diffuse.png",
-      "sha256": "f9e669332c16e13ed4ad4aaa17c639e9eed933eea6d8539ba6b4e8200cf39b94",
-      "bytes": 2137142,
+      "sha256": "45538c0c770395e09afb438cef3199de985b6a250241c9cb47487eafa6834758",
+      "bytes": 2100622,
       "dimensions": [
         1254,
         1254
@@ -376,8 +376,8 @@
     },
     {
       "path": "assets/armors/pegasus_v1/head_diffuse.png",
-      "sha256": "1be6f576be497cd26d29a17b5d7277173ff1c668767dd60ed8cace106cdf8793",
-      "bytes": 2053221,
+      "sha256": "5064cde404739d1d731efd6589738a4be3ff825ff004fb181a1a9ebc055e7683",
+      "bytes": 1929170,
       "dimensions": [
         1254,
         1254
@@ -814,7 +814,7 @@
       ],
       "output": "assets/armors/pegasus_v1/hand_diffuse.png",
       "user_authorized_engineering_limit": 0.2,
-      "status": "runtime_integrated_pending_user_art_review",
+      "status": "native_adopted_pending_runtime_visual_review",
       "canonical": {
         "path": "assets/armors/pegasus_v1/hand_diffuse.png",
         "sha256": "596f8e8095ae38728b15af92b938e9210371038e69a43636afd41c93722347eb",
@@ -930,7 +930,7 @@
       ],
       "output": "assets/armors/pegasus_v1/foot_diffuse.png",
       "user_authorized_engineering_limit": 0.2,
-      "status": "runtime_integrated_pending_user_art_review",
+      "status": "native_adopted_pending_runtime_visual_review",
       "canonical": {
         "path": "assets/armors/pegasus_v1/foot_diffuse.png",
         "sha256": "61d40e0ad0a52bbbf6a11981541b1a0b8f11b6b6fbd1c73b06ededcc4f6fe48c",
@@ -993,7 +993,7 @@
       ],
       "variant": "draft_refinement_v2",
       "tool": "builtin.image_gen",
-      "selected": true,
+      "selected": false,
       "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a11c03-f354-7f82-9539-4f818f8c4ad7\\exec-7e407ed9-68a0-4626-9dd4-5e5c913993b8.png",
       "archive": {
         "path": "docs/art/pegasus_runtime_v1/generated/head_attempt_02.png",
@@ -1012,18 +1012,7 @@
       ],
       "output": "assets/armors/pegasus_v1/head_diffuse.png",
       "user_authorized_engineering_limit": 0.2,
-      "status": "runtime_integrated_pending_user_art_review",
-      "canonical": {
-        "path": "assets/armors/pegasus_v1/head_diffuse.png",
-        "sha256": "1be6f576be497cd26d29a17b5d7277173ff1c668767dd60ed8cace106cdf8793",
-        "bytes": 2053221,
-        "dimensions": [
-          1254,
-          1254
-        ],
-        "mode": "RGB"
-      },
-      "runtime_label": "head"
+      "status": "runtime_integrated_pending_user_art_review"
     },
     {
       "label": "body",
@@ -1165,7 +1154,7 @@
       ],
       "output": "assets/armors/pegasus_v1/shoulder_diffuse.png",
       "user_authorized_engineering_limit": 0.2,
-      "status": "runtime_integrated_pending_user_art_review",
+      "status": "native_adopted_pending_runtime_visual_review",
       "canonical": {
         "path": "assets/armors/pegasus_v1/shoulder_diffuse.png",
         "sha256": "ecb0a8acf6e50a7b0a2498cea73c08b2c5d1456aa82925dfa6f3a2c42e4741e1",
@@ -1228,7 +1217,7 @@
       ],
       "variant": "draft_refinement_v2",
       "tool": "builtin.image_gen",
-      "selected": true,
+      "selected": false,
       "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a11c03-f354-7f82-9539-4f818f8c4ad7\\exec-4e778682-1330-49f8-8243-87bd280fd35e.png",
       "archive": {
         "path": "docs/art/pegasus_runtime_v1/generated/body_attempt_03.png",
@@ -1247,11 +1236,601 @@
       ],
       "output": "assets/armors/pegasus_v1/body_diffuse.png",
       "user_authorized_engineering_limit": 0.2,
-      "status": "runtime_integrated_pending_user_art_review",
+      "status": "native_adopted_pending_runtime_visual_review"
+    },
+    {
+      "label": "head",
+      "prompt": {
+        "path": "docs/art/pegasus_runtime_v1/prompts/head_attempt_03.txt",
+        "sha256": "6eac09b69febc69c463eef6366ce42d5db20b088444da407b90e455c13dad733",
+        "bytes": 7012
+      },
+      "prompt_sha256": "6eac09b69febc69c463eef6366ce42d5db20b088444da407b90e455c13dad733",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/pegasus_runtime_v1/generated/head_attempt_02.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_3_0_head_attempt_02.png",
+          "sha256": "1be6f576be497cd26d29a17b5d7277173ff1c668767dd60ed8cace106cdf8793",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_3_0_head_attempt_02.png",
+            "sha256": "1be6f576be497cd26d29a17b5d7277173ff1c668767dd60ed8cace106cdf8793",
+            "bytes": 2053221,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c09_concept.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_3_1_c09_concept.png",
+          "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+          "role": "helmet_design_authority",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_3_1_c09_concept.png",
+            "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+            "bytes": 1956621,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_head_quarter.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_3_2_new_head_quarter.png",
+          "sha256": "29709f74a4b8cabe40692fddd0c609493a0bc68323073fa1303f152729bb061a",
+          "role": "previous_runtime_mapping_diagnostic_not_design_authority",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_3_2_new_head_quarter.png",
+            "sha256": "29709f74a4b8cabe40692fddd0c609493a0bc68323073fa1303f152729bb061a",
+            "bytes": 562773,
+            "dimensions": [
+              640,
+              720
+            ],
+            "mode": "RGBA"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_3_0_head_attempt_02.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_3_1_c09_concept.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_3_2_new_head_quarter.png"
+      ],
+      "variant": "draft_refinement_v3",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-66890647-366e-4ca1-8903-2844ba583c70.png",
+      "archive": {
+        "path": "docs/art/pegasus_runtime_v1/generated/head_attempt_03.png",
+        "sha256": "a35a143c3985f45b32e590d972bd41da5c5b4eb18478d8898ea90d50b5e1fdd0",
+        "bytes": 2114566,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "a35a143c3985f45b32e590d972bd41da5c5b4eb18478d8898ea90d50b5e1fdd0",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/pegasus_v1/head_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_generated_pending_runtime_visual_review"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/pegasus_runtime_v1/prompts/body_attempt_04.txt",
+        "sha256": "be580331693b4726e76bedbaa0d4ac63de6e53a9fbbcf95f8629f290bea86ce6",
+        "bytes": 6508
+      },
+      "prompt_sha256": "be580331693b4726e76bedbaa0d4ac63de6e53a9fbbcf95f8629f290bea86ce6",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/pegasus_runtime_v1/generated/body_attempt_03.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_4_0_body_attempt_03.png",
+          "sha256": "f9e669332c16e13ed4ad4aaa17c639e9eed933eea6d8539ba6b4e8200cf39b94",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_4_0_body_attempt_03.png",
+            "sha256": "f9e669332c16e13ed4ad4aaa17c639e9eed933eea6d8539ba6b4e8200cf39b94",
+            "bytes": 2137142,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c09_concept.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_4_1_c09_concept.png",
+          "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_4_1_c09_concept.png",
+            "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+            "bytes": 1956621,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_painted_quarter.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_4_2_new_painted_quarter.png",
+          "sha256": "4c6327a4109e3aae718b57bf5be8568e634e5c35f648c178ad37f48baa55f422",
+          "role": "previous_runtime_mapping_diagnostic_not_design_authority",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_4_2_new_painted_quarter.png",
+            "sha256": "4c6327a4109e3aae718b57bf5be8568e634e5c35f648c178ad37f48baa55f422",
+            "bytes": 301759,
+            "dimensions": [
+              640,
+              720
+            ],
+            "mode": "RGBA"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_4_0_body_attempt_03.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_4_1_c09_concept.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_4_2_new_painted_quarter.png"
+      ],
+      "variant": "draft_refinement_v3",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-dc8f2852-ecd5-4f4d-8637-5e0f609f5d68.png",
+      "archive": {
+        "path": "docs/art/pegasus_runtime_v1/generated/body_attempt_04.png",
+        "sha256": "dec1df0c9d2bdb4a8c3308990536931399a0f722d54724fb1f1e11f63e5835cf",
+        "bytes": 2157311,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "dec1df0c9d2bdb4a8c3308990536931399a0f722d54724fb1f1e11f63e5835cf",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/pegasus_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "rejected_service_slot_not_relocated"
+    },
+    {
+      "label": "head",
+      "prompt": {
+        "path": "docs/art/pegasus_runtime_v1/prompts/head_attempt_04.txt",
+        "sha256": "ccf8055a4a97abb3e12ade1e39445f4f7601bde70c7254cb02a7b3ea241f623a",
+        "bytes": 6967
+      },
+      "prompt_sha256": "ccf8055a4a97abb3e12ade1e39445f4f7601bde70c7254cb02a7b3ea241f623a",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/pegasus_runtime_v1/generated/head_attempt_03.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_4_0_head_attempt_03.png",
+          "sha256": "a35a143c3985f45b32e590d972bd41da5c5b4eb18478d8898ea90d50b5e1fdd0",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_4_0_head_attempt_03.png",
+            "sha256": "a35a143c3985f45b32e590d972bd41da5c5b4eb18478d8898ea90d50b5e1fdd0",
+            "bytes": 2114566,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c09_concept.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_4_1_c09_concept.png",
+          "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+          "role": "helmet_design_authority",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_4_1_c09_concept.png",
+            "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+            "bytes": 1956621,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_head_quarter.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_4_2_new_head_quarter.png",
+          "sha256": "29709f74a4b8cabe40692fddd0c609493a0bc68323073fa1303f152729bb061a",
+          "role": "previous_runtime_mapping_diagnostic_not_design_authority",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_4_2_new_head_quarter.png",
+            "sha256": "29709f74a4b8cabe40692fddd0c609493a0bc68323073fa1303f152729bb061a",
+            "bytes": 562773,
+            "dimensions": [
+              640,
+              720
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "docs/art/pegasus_runtime_v1/guides/head_rail_vents_v3.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_4_3_head_rail_vents_v3.png",
+          "sha256": "36611ece59a62f5441dc3025159bcd41add8b4bbfd26ee98ffa595d5a3c58f18",
+          "role": "technical_uv_placement_guide_not_output_art",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_4_3_head_rail_vents_v3.png",
+            "sha256": "36611ece59a62f5441dc3025159bcd41add8b4bbfd26ee98ffa595d5a3c58f18",
+            "bytes": 45050,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_4_0_head_attempt_03.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_4_1_c09_concept.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_4_2_new_head_quarter.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_4_3_head_rail_vents_v3.png"
+      ],
+      "variant": "draft_refinement_v3",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-4e16b37f-3730-4dc5-8264-65ad15a36272.png",
+      "archive": {
+        "path": "docs/art/pegasus_runtime_v1/generated/head_attempt_04.png",
+        "sha256": "93a85cd4e04245a7451d016853897ae4359b78ab454adbb47b9e21e027324666",
+        "bytes": 2030123,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "93a85cd4e04245a7451d016853897ae4359b78ab454adbb47b9e21e027324666",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/pegasus_v1/head_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/pegasus_runtime_v1/prompts/body_attempt_05.txt",
+        "sha256": "558752e12b1d6b1a387a57be21d1c569797ab6eae423a5772577742e5e367f2c",
+        "bytes": 6398
+      },
+      "prompt_sha256": "558752e12b1d6b1a387a57be21d1c569797ab6eae423a5772577742e5e367f2c",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/pegasus_runtime_v1/generated/body_attempt_03.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_5_0_body_attempt_03.png",
+          "sha256": "f9e669332c16e13ed4ad4aaa17c639e9eed933eea6d8539ba6b4e8200cf39b94",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_5_0_body_attempt_03.png",
+            "sha256": "f9e669332c16e13ed4ad4aaa17c639e9eed933eea6d8539ba6b4e8200cf39b94",
+            "bytes": 2137142,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c09_concept.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_5_1_c09_concept.png",
+          "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_5_1_c09_concept.png",
+            "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+            "bytes": 1956621,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_painted_quarter.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_5_2_new_painted_quarter.png",
+          "sha256": "4c6327a4109e3aae718b57bf5be8568e634e5c35f648c178ad37f48baa55f422",
+          "role": "previous_runtime_mapping_diagnostic_not_design_authority",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_5_2_new_painted_quarter.png",
+            "sha256": "4c6327a4109e3aae718b57bf5be8568e634e5c35f648c178ad37f48baa55f422",
+            "bytes": 301759,
+            "dimensions": [
+              640,
+              720
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "docs/art/pegasus_runtime_v1/guides/body_service_v3.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_5_3_body_service_v3.png",
+          "sha256": "b44718396dd2880bfd9ac80fe43d529e62b257cded3ec8dfc85f591713719039",
+          "role": "technical_uv_placement_guide_not_output_art",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_5_3_body_service_v3.png",
+            "sha256": "b44718396dd2880bfd9ac80fe43d529e62b257cded3ec8dfc85f591713719039",
+            "bytes": 44885,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_5_0_body_attempt_03.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_5_1_c09_concept.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_5_2_new_painted_quarter.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_5_3_body_service_v3.png"
+      ],
+      "variant": "draft_refinement_v3",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-e941d4c8-328e-48dc-b042-85a949ad625a.png",
+      "archive": {
+        "path": "docs/art/pegasus_runtime_v1/generated/body_attempt_05.png",
+        "sha256": "081b12c1c5686cec11e974ba8c2257d5e65add83ae8ecd253214a755fe56cf29",
+        "bytes": 2130969,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "081b12c1c5686cec11e974ba8c2257d5e65add83ae8ecd253214a755fe56cf29",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/pegasus_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review"
+    },
+    {
+      "label": "head",
+      "prompt": {
+        "path": "docs/art/pegasus_runtime_v1/prompts/head_attempt_05.txt",
+        "sha256": "a634949b1ff3a40051e75372dc90ad3008a3019a4f45901e7107404afe257e1e",
+        "bytes": 6502
+      },
+      "prompt_sha256": "a634949b1ff3a40051e75372dc90ad3008a3019a4f45901e7107404afe257e1e",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/pegasus_runtime_v1/generated/head_attempt_04.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_0_head_attempt_04.png",
+          "sha256": "93a85cd4e04245a7451d016853897ae4359b78ab454adbb47b9e21e027324666",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_0_head_attempt_04.png",
+            "sha256": "93a85cd4e04245a7451d016853897ae4359b78ab454adbb47b9e21e027324666",
+            "bytes": 2030123,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c09_concept.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_1_c09_concept.png",
+          "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+          "role": "helmet_design_authority",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_1_c09_concept.png",
+            "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+            "bytes": 1956621,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_head_quarter.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_2_new_head_quarter.png",
+          "sha256": "29709f74a4b8cabe40692fddd0c609493a0bc68323073fa1303f152729bb061a",
+          "role": "previous_runtime_mapping_diagnostic_not_design_authority",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_2_new_head_quarter.png",
+            "sha256": "29709f74a4b8cabe40692fddd0c609493a0bc68323073fa1303f152729bb061a",
+            "bytes": 562773,
+            "dimensions": [
+              640,
+              720
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "docs/art/pegasus_runtime_v1/guides/head_central_board_v4.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_3_head_central_board_v4.png",
+          "sha256": "e1766036bcf1b3ecc5e8a38af30d1ed2402cb1521e4ced8d6891c1e3e0b9db90",
+          "role": "technical_uv_placement_guide_not_output_art",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_3_head_central_board_v4.png",
+            "sha256": "e1766036bcf1b3ecc5e8a38af30d1ed2402cb1521e4ced8d6891c1e3e0b9db90",
+            "bytes": 43214,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_0_head_attempt_04.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_1_c09_concept.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_2_new_head_quarter.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/head_v3_5_3_head_central_board_v4.png"
+      ],
+      "variant": "draft_refinement_v3",
+      "tool": "builtin.image_gen",
+      "selected": true,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-0dcbaaa2-5d33-43c7-b727-1bdc276a0cd8.png",
+      "archive": {
+        "path": "docs/art/pegasus_runtime_v1/generated/head_attempt_05.png",
+        "sha256": "5064cde404739d1d731efd6589738a4be3ff825ff004fb181a1a9ebc055e7683",
+        "bytes": 1929170,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "5064cde404739d1d731efd6589738a4be3ff825ff004fb181a1a9ebc055e7683",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/pegasus_v1/head_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review",
+      "canonical": {
+        "path": "assets/armors/pegasus_v1/head_diffuse.png",
+        "sha256": "5064cde404739d1d731efd6589738a4be3ff825ff004fb181a1a9ebc055e7683",
+        "bytes": 1929170,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "head"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/pegasus_runtime_v1/prompts/body_attempt_06.txt",
+        "sha256": "a0447e92b169a336ea738a39dd13778f640b8f729bd9d02745f8944149e7ec40",
+        "bytes": 6046
+      },
+      "prompt_sha256": "a0447e92b169a336ea738a39dd13778f640b8f729bd9d02745f8944149e7ec40",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/pegasus_runtime_v1/generated/body_attempt_05.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_6_0_body_attempt_05.png",
+          "sha256": "081b12c1c5686cec11e974ba8c2257d5e65add83ae8ecd253214a755fe56cf29",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_6_0_body_attempt_05.png",
+            "sha256": "081b12c1c5686cec11e974ba8c2257d5e65add83ae8ecd253214a755fe56cf29",
+            "bytes": 2130969,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c09_concept.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_6_1_c09_concept.png",
+          "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_6_1_c09_concept.png",
+            "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+            "bytes": 1956621,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_painted_quarter.png",
+          "snapshot": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_6_2_new_painted_quarter.png",
+          "sha256": "4c6327a4109e3aae718b57bf5be8568e634e5c35f648c178ad37f48baa55f422",
+          "role": "previous_runtime_mapping_diagnostic_not_design_authority",
+          "immutable_file": {
+            "path": "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_6_2_new_painted_quarter.png",
+            "sha256": "4c6327a4109e3aae718b57bf5be8568e634e5c35f648c178ad37f48baa55f422",
+            "bytes": 301759,
+            "dimensions": [
+              640,
+              720
+            ],
+            "mode": "RGBA"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_6_0_body_attempt_05.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_6_1_c09_concept.png",
+        "docs/art/pegasus_runtime_v1/input_snapshots/body_v3_6_2_new_painted_quarter.png"
+      ],
+      "variant": "draft_refinement_v3",
+      "tool": "builtin.image_gen",
+      "selected": true,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-9b2727a5-4067-4aeb-a3fd-4e773f2520a3.png",
+      "archive": {
+        "path": "docs/art/pegasus_runtime_v1/generated/body_attempt_06.png",
+        "sha256": "45538c0c770395e09afb438cef3199de985b6a250241c9cb47487eafa6834758",
+        "bytes": 2100622,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "45538c0c770395e09afb438cef3199de985b6a250241c9cb47487eafa6834758",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/pegasus_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review",
       "canonical": {
         "path": "assets/armors/pegasus_v1/body_diffuse.png",
-        "sha256": "f9e669332c16e13ed4ad4aaa17c639e9eed933eea6d8539ba6b4e8200cf39b94",
-        "bytes": 2137142,
+        "sha256": "45538c0c770395e09afb438cef3199de985b6a250241c9cb47487eafa6834758",
+        "bytes": 2100622,
         "dimensions": [
           1254,
           1254
@@ -1265,7 +1844,7 @@
     "runtime_test": {
       "file": {
         "path": "docs/art/pegasus_runtime_v1/review/runtime_test.json",
-        "sha256": "0ee8dff4220645d47df79059977f27ee336783aee3566b140b69462b54c92037",
+        "sha256": "622f7785c1a86aab9c17e363392c7b78f5d33c72096d6749f1b06d8925b1a871",
         "bytes": 12580
       },
       "status": "PASS"
@@ -1273,40 +1852,40 @@
     "roundtrip_test": {
       "file": {
         "path": "docs/art/pegasus_runtime_v1/review/roundtrip_test.json",
-        "sha256": "39014e9dfc0240d90dd77ed2d7ac3e08477ed7978a2b5a9c4aa74ab01648d374",
-        "bytes": 11734
+        "sha256": "b270e8e44225f36fcc7a18b4ab808fc54550681f59fa11bd6369c9098517782a",
+        "bytes": 11813
       },
       "status": "PASS"
     },
     "proportion_test": {
       "file": {
         "path": "docs/art/pegasus_runtime_v1/review/proportion_test.json",
-        "sha256": "acae7a469f3f508edd215a1e23a856377edf59cdf4783c2dbb21880ed4e4a74e",
-        "bytes": 11201
+        "sha256": "dbbbcfa0e996ef838db1514fb1a573e6faeb3a293c90a49e887cb3b6af1aa623",
+        "bytes": 11212
       },
       "status": "PASS"
     },
     "delivery_validate": {
       "file": {
         "path": "docs/art/pegasus_runtime_v1/review/delivery_validate.json",
-        "sha256": "53dd0ecece9de54393a321849188e0221be095fbdb96625716d81b1c1dec9a47",
-        "bytes": 10114
+        "sha256": "1c809f0e0d0ef927e17b7734b66fe085284bd60bc081de1af2961589b1e53eb0",
+        "bytes": 10113
       },
       "status": "PASS"
     },
     "original_scene_invariants": {
       "file": {
         "path": "docs/art/pegasus_runtime_v1/review/original_scene_invariants.json",
-        "sha256": "b17e47873ebad9319d6482ac2d8275b7a63ba7c1bca11a530eaedc3ee7c9cd84",
-        "bytes": 3200
+        "sha256": "31e07f9103f746a3770968710770dc71610f9e455b45e36f7188a836c57ed362",
+        "bytes": 3202
       },
       "status": "PASS"
     },
     "glb_images_test": {
       "file": {
         "path": "docs/art/pegasus_runtime_v1/review/glb_images_test.json",
-        "sha256": "74681f86f0d51dfb5f45d327ec79378732dc99f5341ddd875d3e231e7b2bd456",
-        "bytes": 9200
+        "sha256": "5ba906cd0e0f0fb413db1a29e5abe3aa1acb6124aa91364f1186e982271ba015",
+        "bytes": 9197
       },
       "status": "PASS"
     }
@@ -1324,8 +1903,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_clay_front.png",
-      "sha256": "2a81718328f0dc215b01d048c535dd81906acaff6f94ca6fceb701718622f16e",
-      "bytes": 45923,
+      "sha256": "51fc72b36fd8d43bf9204ecd7ac1b741734046ccd0d261b7ef20fe2d309c7e42",
+      "bytes": 45388,
       "dimensions": [
         640,
         720
@@ -1344,8 +1923,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_painted_front.png",
-      "sha256": "1c92975297c3d7aa1dbb7387d03b691810a4581eba3f56ecc4ae073d57783e88",
-      "bytes": 295124,
+      "sha256": "bc6c8c48500e15fa169d9b36ac6689e108a637e39b9f926f206e30773b6d8d2d",
+      "bytes": 286637,
       "dimensions": [
         640,
         720
@@ -1364,8 +1943,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_diffuse_front.png",
-      "sha256": "1c92975297c3d7aa1dbb7387d03b691810a4581eba3f56ecc4ae073d57783e88",
-      "bytes": 295124,
+      "sha256": "bc6c8c48500e15fa169d9b36ac6689e108a637e39b9f926f206e30773b6d8d2d",
+      "bytes": 286637,
       "dimensions": [
         640,
         720
@@ -1384,8 +1963,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_clay_side.png",
-      "sha256": "d763a609e66661a128bbc7c316899e2fdaca6dd449ae369e3a9c0c9a60ba6620",
-      "bytes": 30257,
+      "sha256": "d4ec9d9829663482a89d859b7742bbb271a7e3d72d174c28d51b3f8dd012d909",
+      "bytes": 29756,
       "dimensions": [
         640,
         720
@@ -1404,8 +1983,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_painted_side.png",
-      "sha256": "1cff74d56f3e1c71be7acf65cbc4bf9c9756f22ea9f4b1c2e04ca63e60324f09",
-      "bytes": 185794,
+      "sha256": "b0879ebdd217a37a030f70eedb71a68b3c9c57f350cbe5acb0334abdb93d1fb1",
+      "bytes": 177811,
       "dimensions": [
         640,
         720
@@ -1424,8 +2003,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_diffuse_side.png",
-      "sha256": "1cff74d56f3e1c71be7acf65cbc4bf9c9756f22ea9f4b1c2e04ca63e60324f09",
-      "bytes": 185794,
+      "sha256": "b0879ebdd217a37a030f70eedb71a68b3c9c57f350cbe5acb0334abdb93d1fb1",
+      "bytes": 177811,
       "dimensions": [
         640,
         720
@@ -1444,8 +2023,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_clay_rear.png",
-      "sha256": "56f711e3596fb3423916abb6b93a52a91193006e3e3f0a731b7c79340e9ad5ff",
-      "bytes": 48550,
+      "sha256": "c04a30bc629c83ce0c53d9793a4f4471e684b62e6d740f69ddb2f0cd36657678",
+      "bytes": 48645,
       "dimensions": [
         640,
         720
@@ -1464,8 +2043,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_painted_rear.png",
-      "sha256": "ba73e59a38092d03bb2f0fd7b2b4abb4682c1362e3b7b4cd4fe73f7d04e013c7",
-      "bytes": 286170,
+      "sha256": "e0c72f121da2941d456a40f8ea75fa9044e5723c68f13f891750e30dfed8924a",
+      "bytes": 281289,
       "dimensions": [
         640,
         720
@@ -1484,8 +2063,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_diffuse_rear.png",
-      "sha256": "ba73e59a38092d03bb2f0fd7b2b4abb4682c1362e3b7b4cd4fe73f7d04e013c7",
-      "bytes": 286170,
+      "sha256": "e0c72f121da2941d456a40f8ea75fa9044e5723c68f13f891750e30dfed8924a",
+      "bytes": 281289,
       "dimensions": [
         640,
         720
@@ -1504,8 +2083,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_clay_quarter.png",
-      "sha256": "49e6a6e488dd789a7da6bc478c00aadac03ef1a3d6f9ee2c61a17a49509d13d6",
-      "bytes": 45086,
+      "sha256": "4acd63b4c304a4bcb1f9e9075b1e4efd38b127aeeeb246588a4ce465194a8288",
+      "bytes": 44174,
       "dimensions": [
         640,
         720
@@ -1524,8 +2103,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_painted_quarter.png",
-      "sha256": "4c6327a4109e3aae718b57bf5be8568e634e5c35f648c178ad37f48baa55f422",
-      "bytes": 301759,
+      "sha256": "321776284d7ec42d13e7a84b13d23fd3f14da66041cbdff1b63344021305e7c3",
+      "bytes": 294879,
       "dimensions": [
         640,
         720
@@ -1544,8 +2123,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_diffuse_quarter.png",
-      "sha256": "4c6327a4109e3aae718b57bf5be8568e634e5c35f648c178ad37f48baa55f422",
-      "bytes": 301759,
+      "sha256": "321776284d7ec42d13e7a84b13d23fd3f14da66041cbdff1b63344021305e7c3",
+      "bytes": 294879,
       "dimensions": [
         640,
         720
@@ -1564,8 +2143,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_head_front.png",
-      "sha256": "b402bbdf74493c22dd7b58360f706f6ddac60f7ed61404de0b2a84c37bb2923f",
-      "bytes": 554511,
+      "sha256": "a791e4d895830cde60d2ae7be3da5671981b90fac93e88d900818871f0e00c92",
+      "bytes": 498015,
       "dimensions": [
         640,
         720
@@ -1584,8 +2163,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_head_side.png",
-      "sha256": "67cf5d5120e6814cdeec392f9d800ecc86faf7caa56232f5a57a10dd133ff5c5",
-      "bytes": 497381,
+      "sha256": "b51a1a33dc34bf6540da0c98e2685e84035529624ecbbe9fc989d8fcacb68592",
+      "bytes": 443768,
       "dimensions": [
         640,
         720
@@ -1604,8 +2183,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_head_rear.png",
-      "sha256": "b7b549c649938ee9e937e5d08ca90f5759e55f4f4a3b3df9bbe3d285fe416e80",
-      "bytes": 498845,
+      "sha256": "3e8f5ccc1057c760536aa4ab31e9539910f44a47795e5cc17b56e9ffbaf3be87",
+      "bytes": 464323,
       "dimensions": [
         640,
         720
@@ -1624,8 +2203,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_head_quarter.png",
-      "sha256": "29709f74a4b8cabe40692fddd0c609493a0bc68323073fa1303f152729bb061a",
-      "bytes": 562773,
+      "sha256": "ff1897ea8f4cc80416b3bbf5a350787de9322d19ab8a66af59df1a4c097b48f7",
+      "bytes": 516114,
       "dimensions": [
         640,
         720
@@ -1664,8 +2243,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_idle_rifle.png",
-      "sha256": "f7e0e5c1c3c37e6c22055f42fa04ca575403851d20facd15e1817010c8ab87b3",
-      "bytes": 243920,
+      "sha256": "0c6f0a17d388ae0100bbb74086204fbc3cb76be1b7e18804b96d47a0ffb0dfa2",
+      "bytes": 238570,
       "dimensions": [
         640,
         720
@@ -1684,8 +2263,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_run_rifle.png",
-      "sha256": "18f260a9d88085240051a8839909a6652fe7e688e9f59bd9b98eff5f204c8b4c",
-      "bytes": 225889,
+      "sha256": "f82575eec7d6e84a300f6f8b553ca24088473a47225c2e20e643f32c822e31b4",
+      "bytes": 220447,
       "dimensions": [
         640,
         720
@@ -1704,8 +2283,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_00.png",
-      "sha256": "31a0ef1baf33104fa8a8880ee86d942011235aa465d0363118a3b3c121939850",
-      "bytes": 234051,
+      "sha256": "c3811ac998594c0ce7ad51222f51b905f99603c0eed60ca6b828cbf9a26c75bf",
+      "bytes": 229176,
       "dimensions": [
         640,
         720
@@ -1724,8 +2303,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_01.png",
-      "sha256": "57794853de395c1814d998ad876bfaedc2ed88debfd443d135369b49ed0a9308",
-      "bytes": 219136,
+      "sha256": "971558bf9c06db99f33f3de61fca947351286e9353467f1514a4b5c247942159",
+      "bytes": 213848,
       "dimensions": [
         640,
         720
@@ -1734,8 +2313,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_02.png",
-      "sha256": "5d79f409209bf7718ad1f5f6dd8487ff3862ab47836b4f4dbf0286d525ad9544",
-      "bytes": 177071,
+      "sha256": "2b12266c0a9febf6e971ac2732896758cc1c8b6e86fec9d7d90d56b6b7feb399",
+      "bytes": 177111,
       "dimensions": [
         640,
         720
@@ -1744,8 +2323,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_02.png",
-      "sha256": "fd68ed887e0b23e715c0895f64eb88f89d0b1e8ca26fcfc0d26edeab20a7372d",
-      "bytes": 223559,
+      "sha256": "c165d2facf0680721b84886549e8eb108107465db755124105c8e4effa27d247",
+      "bytes": 218338,
       "dimensions": [
         640,
         720
@@ -1754,8 +2333,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_03.png",
-      "sha256": "b3194728b86bcde0dd5a200f6ec927aaefc4721e12409b890c1135567a72c2c4",
-      "bytes": 178451,
+      "sha256": "156ed001d0925cf122309bce9daad32f3b5fab59e3594674a5230fa39211f51b",
+      "bytes": 177954,
       "dimensions": [
         640,
         720
@@ -1764,8 +2343,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_03.png",
-      "sha256": "8cc89d8eb01951f907a2fb78225e1d4a1987958c326add4aedcbc370d68e1c73",
-      "bytes": 223782,
+      "sha256": "715b16740d8432ea9b4d78850742503503be6f310082f707115cba1d2b47cc85",
+      "bytes": 217581,
       "dimensions": [
         640,
         720
@@ -1774,8 +2353,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_04.png",
-      "sha256": "d3b6a7f8aad063ff6e40ca4d7ee6eaaa9b66d04d2f6967eefe69921bb4e095d9",
-      "bytes": 184987,
+      "sha256": "c3e1f787914447668e5aa3fe2e7ee7e5495c7bf2a559e7f82793ca8fd06b7cb4",
+      "bytes": 183945,
       "dimensions": [
         640,
         720
@@ -1784,8 +2363,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_04.png",
-      "sha256": "4017fb5015877a905f35d98a212fb000cd183a0921a36d3226087944103da1c5",
-      "bytes": 229062,
+      "sha256": "a7f3c86d9ae23e5fbe57d796c73a1a5be0c365db60069ca38099acb930742427",
+      "bytes": 225280,
       "dimensions": [
         640,
         720
@@ -1794,8 +2373,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_05.png",
-      "sha256": "238bb8d3b3d345ba4d79517209576eacb7d86c62e5cb73ea98ce4318777081bf",
-      "bytes": 186160,
+      "sha256": "d9d59f5292c67328afaf788acd27cfa7c9c8e53e9b47baf6c26d2b3a48a6090d",
+      "bytes": 187127,
       "dimensions": [
         640,
         720
@@ -1804,8 +2383,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_05.png",
-      "sha256": "b7d5941cb3a65b19ee65b40e56bbc1a17303e4ba7bba9f8368fa60bb887136c3",
-      "bytes": 227945,
+      "sha256": "0cfcb6a8c1753e837a1eee0b8e4b63c5bd0a27ccd5ffe650539a8367e4675639",
+      "bytes": 226838,
       "dimensions": [
         640,
         720
@@ -1814,8 +2393,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_06.png",
-      "sha256": "5fd8d75563d9bba29e243b55cce7e652f3f91e305d70386d5a287dfd73aa5901",
-      "bytes": 177646,
+      "sha256": "78712d74945ee5c112dbde9eb7730a50c38623a99846415e3817e3b52899b989",
+      "bytes": 180737,
       "dimensions": [
         640,
         720
@@ -1824,8 +2403,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_06.png",
-      "sha256": "1ea711d12d27168698c296c59deb209448d3bb0b0eaa2994fcdeba7aa44724a5",
-      "bytes": 221397,
+      "sha256": "c8a69c50664c5b7360758dd0843073659974ef18c8def3e5a2e38df16f054fcf",
+      "bytes": 218624,
       "dimensions": [
         640,
         720
@@ -1834,8 +2413,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_07.png",
-      "sha256": "f6b1c77654911cb39b2a0de6d6457ddcf687b61bf30966e9bca0a687cb13b5d2",
-      "bytes": 173426,
+      "sha256": "b8d508c19538809c30551c4032aad471e8994cb5c90a1043ea4a11236b5ccbe7",
+      "bytes": 174407,
       "dimensions": [
         640,
         720
@@ -1844,8 +2423,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_07.png",
-      "sha256": "f0b047b1f96585ef619bd3afdecb2799c4dd96746bc807a18e05f0ba90216a91",
-      "bytes": 219493,
+      "sha256": "1ff33b7a7bcecfe70ae36fb73225d9edeab3cb48ed87b2ff289e504a49bc59c8",
+      "bytes": 214544,
       "dimensions": [
         640,
         720
@@ -1864,8 +2443,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_08.png",
-      "sha256": "f34a91f2d6e75af9fc264130cc13801ff639a7ccea54d0aa334174e25ab72bad",
-      "bytes": 235063,
+      "sha256": "4f7750751ea76cd377edd264419a41a5d6659cc0b3d8f64098895dadcc0a44b6",
+      "bytes": 230379,
       "dimensions": [
         640,
         720
@@ -1874,8 +2453,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/original_level_01_gameplay.png",
-      "sha256": "7cc024c16f2fcf636027c0e4b511f076663b5a07379fd932df252daeebfdeabc",
-      "bytes": 1412658,
+      "sha256": "f27ecbc74b18c4b215caef41bfbf216772d5b29c9ac8a0992c531dfa82d6b3b7",
+      "bytes": 1412694,
       "dimensions": [
         1280,
         720
@@ -1884,8 +2463,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_level_01_gameplay.png",
-      "sha256": "7746035f1f971b31a1f1a6a085e7f32a3399f4804fbdf248798dc3ec01f576f7",
-      "bytes": 1464801,
+      "sha256": "46b9ed0755a3251d23d6d20f20053e0544ddad97c51e968760abc2640b4a6a32",
+      "bytes": 1461284,
       "dimensions": [
         1280,
         720
@@ -1894,8 +2473,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/original_level_01_front.png",
-      "sha256": "31f9f2c87676ede364795a7f90eb3199f5d9966b9028f3deea8c58f479703983",
-      "bytes": 1072084,
+      "sha256": "0ade1c04a0e5207b80ef91509f57783adbbc0004b6cf5bc3ed937a83bffe883e",
+      "bytes": 1072292,
       "dimensions": [
         1280,
         720
@@ -1904,8 +2483,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_level_01_front.png",
-      "sha256": "f6a3a4cdae8db40b91d85776b75d17df13490e8af856949bef201841a319721c",
-      "bytes": 1108113,
+      "sha256": "e8fd175b1c858f87970f90a9441888b6ab0d654bc5af72bb99c788ab8c5bfd3f",
+      "bytes": 1105154,
       "dimensions": [
         1280,
         720
@@ -1914,8 +2493,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/original_level_08_gameplay.png",
-      "sha256": "33a001b79566d7c71edee3160ee8ea2d6c1f56f7f0d6f71f9240adcbb642fa21",
-      "bytes": 966507,
+      "sha256": "fe183271f40d65c64047f8c0f1e32bb38ba59de250a845325b02237b1e398cf6",
+      "bytes": 966917,
       "dimensions": [
         1280,
         720
@@ -1924,8 +2503,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_level_08_gameplay.png",
-      "sha256": "9e0c564bb61934f4b528b08c1b6136693b7e20062f843d9f35e36f6a674ce7e7",
-      "bytes": 1016901,
+      "sha256": "c622096f9f94b538154c1409c563be2929124e8e20146a6d2eb2d884f55dda18",
+      "bytes": 1011952,
       "dimensions": [
         1280,
         720
@@ -1934,8 +2513,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/original_level_08_front.png",
-      "sha256": "9ed0116ff57695b12bf4c167e03f4f8938a59126527f0d5e7f10d530c0519b39",
-      "bytes": 903666,
+      "sha256": "8ca17bdbd15eaafb3da41c14935ec85ad98fccaec66e7aa76fa445692491ab00",
+      "bytes": 903250,
       "dimensions": [
         1280,
         720
@@ -1944,8 +2523,8 @@
     },
     {
       "path": "docs/art/pegasus_runtime_v1/review/engine/new_level_08_front.png",
-      "sha256": "22b927238da7a0295f809428f8b843fb95cea04c0ee3bb69578b09db29d0aa6f",
-      "bytes": 935285,
+      "sha256": "134ffc9a4efccbea3583941ce441ce7056dd00b46f7626e33cb6e86fd1907eab",
+      "bytes": 932015,
       "dimensions": [
         1280,
         720
@@ -1955,7 +2534,7 @@
   ],
   "capture_summary": {
     "path": "docs/art/pegasus_runtime_v1/review/engine/capture.json",
-    "sha256": "d1bf53a60b8e13930216bad6e955c02f30f4e62b24cb10f684e62e651fa439c4",
+    "sha256": "90773d30ec3cd3c664d181fd557aff15b9e129add6f1a9d3206b7277f78db8de",
     "bytes": 23987
   },
   "capture_driver_evidence": {
@@ -2016,7 +2595,7 @@
   },
   "inherited_out_of_range_uv": [],
   "geometry_mode": "original_source_bounded_refinement",
-  "geometry_revision": "approved_draft_refinement_v2",
+  "geometry_revision": "approved_draft_refinement_v3",
   "geometry_parts": [
     "ArmorHead_08",
     "ArmorBody_08"
@@ -2026,7 +2605,7 @@
       {
         "part": "ArmorBody_08",
         "original_total_limit": 0.2,
-        "original_max_rest_displacement_fraction": 0.04828326164722079,
+        "original_max_rest_displacement_fraction": 0.10710937473086242,
         "original_dimension_delta_fractions": [
           0.03842265807229217,
           4.3298697960381105e-15,
@@ -2093,11 +2672,11 @@
       {
         "part": "ArmorHead_08",
         "original_total_limit": 0.2,
-        "original_max_rest_displacement_fraction": 0.17528699895077207,
+        "original_max_rest_displacement_fraction": 0.19290432233823038,
         "original_dimension_delta_fractions": [
-          6.661338147750939e-16,
-          0.12482977772919568,
-          0.04031888630778968
+          0.008351531306868165,
+          0.1391594900012597,
+          0.08490141853173505
         ],
         "original_uv_changed_fraction": 0.0,
         "surfaces": [
@@ -2126,7 +2705,7 @@
         "new_degenerate_triangles": 0,
         "inherited_degenerate_triangles": 0,
         "coincident_seam_max_rest_gap": 0.0,
-        "min_triangle_normal_cosine_from_original": 0.9888339355239825
+        "min_triangle_normal_cosine_from_original": 0.9126979711958487
       },
       "ArmorFoot_08": {
         "reversed_triangles": 0,
@@ -2147,7 +2726,7 @@
         "new_degenerate_triangles": 0,
         "inherited_degenerate_triangles": 0,
         "coincident_seam_max_rest_gap": 0.0,
-        "min_triangle_normal_cosine_from_original": 0.9364424998875344
+        "min_triangle_normal_cosine_from_original": 0.21049886246009863
       }
     }
   },
@@ -2166,15 +2745,22 @@
       "sha256": "5f750a59cfbf2c5093f7701e89e25b9de430cfef5a0e4b7fe5a8d51dd1879f23",
       "files_verified": 96,
       "source_commit": "f94323e40b3e7002268b39944bdcb58c2737c41f"
+    },
+    "previous_draft_refinement_delivery": {
+      "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v3/snapshot.json",
+      "sha256": "30d280ef5defb7d5f30b2b48fa5b97f6315e0d9f203f49943452fa54b49a6252",
+      "files_verified": 96,
+      "source_commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9"
     }
   },
   "metric_scope": "True original source cumulative per-part20% positions/dimensions; configured parts ArmorHead_08, ArmorBody_08 may change positions and recalculated normal/tangent frames. Every unchanged surface array, all original UV0, topology, skin, weights and transforms stay exact. GLB exporter normalizes exchange weights, per-triangle identity independently verified. Artistic similarity is not measured by20%; pending user review.",
   "residuals": [
-    "雙冠與下巴已由原頂點縮低、內收；冠頂仍是較寬側眉蓋與中央V階梯，和草稿窄鈍雙軌仍有差距。",
-    "深色面窗連續，前頜已縮短；厚眉與護唇仍佔較大比例，未宣稱草稿逐形一致。",
-    "白領／黑頸與中央黑直槽、藍肩橫帶已套用；胸槽較靠領口且保留共享中分線，槽下白件仍為原長五角輪廓。",
-    "外大腿白板稍延長，但正面黑布露出仍比草稿多；遊戲原短壯比例保留，未改成人比例。",
-    "側背是依原版與草稿延伸，概念只展示斜正面；保留原後腦與腳跟技術紋理。",
-    "15裝備姿勢／9GLB姿勢及64張ANGLE擷取通過；未做完整連續動畫全角度或手機效能實測，美術仍待使用者審閱。"
+    "中央上額板已由分層 V 改成較連續白面，但最低眉下仍留一個小 V 片／黑影；雙外額翼仍是尖厚楔形，未等同草稿低窄鈍雙軌與單一簡潔額面。",
+    "冠上黑通風孔仍較靠屋頂面，未精準落在真正 rail strip；側耳外殼在正側面仍是大塊多邊白板／黑直縫，沒有草稿明確圓耳輪廓。",
+    "面窗讀成一片連續深黑玻璃，下頜較短；厚眉沿、護唇及淺 V 窗形仍占臉較多，沒有宣稱與草稿逐形一致。",
+    "body06 的共享白中隔在無武器前面近照已消失，胸槽讀成一個黑開口；仍可見極細暗中線，槽框／槽體偏高長收腰，槽下白件仍較長五角形，未形成草稿較短矩形服務槽和胸腹比例。",
+    "外大腿白殼下緣稍延長，但正面仍露出較多黑布、仍有原版髖大腿分區；未達草稿較大白甲覆蓋。原短壯比例保留。",
+    "白甲磨邊與細線較銳利；是否足夠接近 Viper／Fortune 的共同手繪風格仍待使用者評價。草稿沒有背面，後腦、背甲與腳跟僅驗收連貫性。",
+    "待機、跑動及九個換彈時間點與區域01／08畫面未見新增甲片飛離或明顯破洞；槍會遮住胸口，未檢查完整連續動畫全角度、手機螢幕與 GPU 效能。"
   ]
 }

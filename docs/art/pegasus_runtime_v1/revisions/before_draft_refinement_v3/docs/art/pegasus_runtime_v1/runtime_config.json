@@ -1,0 +1,111 @@
+{
+  "runtime_id": 8,
+  "design_id": "C-09",
+  "name": "Pegasus",
+  "slug": "pegasus",
+  "work": "docs/art/pegasus_runtime_v1",
+  "asset": "assets/armors/pegasus_v1",
+  "source": "docs/art/pegasus_runtime_v1/build/source.json",
+  "original_source_snapshot": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/snapshot.json",
+  "source_node_index": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/source_node_index.json",
+  "original_node_ids": {
+    "ArmorHead_08": 62,
+    "ArmorBody_08": 63,
+    "ArmorHand_08": 64,
+    "ArmorFoot_08": 65
+  },
+  "parts": {
+    "ArmorBody_08": [
+      "body",
+      "shoulder"
+    ],
+    "ArmorFoot_08": [
+      "foot"
+    ],
+    "ArmorHand_08": [
+      "hand"
+    ],
+    "ArmorHead_08": [
+      "head"
+    ]
+  },
+  "texture_slots": {
+    "body": {
+      "node": "ArmorBody_08",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/09_body_078a88725c3f_2x.png",
+      "snapshot": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/atlases/body.png",
+      "original_sha256": "c87d8c1d190fc1bd8ccf0300c9af9f53f416bd2fbf46ffb799a72154ec3b0ec7",
+      "coordinates": 348,
+      "charts": 6,
+      "triangles": 340
+    },
+    "shoulder": {
+      "node": "ArmorBody_08",
+      "surface": 1,
+      "original_texture": "assets/models/player/animated/armor_textures/09_jian_3d289fdf8273_2x.png",
+      "snapshot": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+      "original_sha256": "c8b05308d3db988c7ef519a73c846ff5661e08207fb8af944aa8b3e4fa74980d",
+      "coordinates": 202,
+      "charts": 3,
+      "triangles": 180
+    },
+    "foot": {
+      "node": "ArmorFoot_08",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/09_foot_4c47253ee54a_2x.png",
+      "snapshot": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+      "original_sha256": "9f2323e5cf358ab63501ad1d4ad7fdb03048f5f27abff9618099e68b39399fc5",
+      "coordinates": 226,
+      "charts": 4,
+      "triangles": 244
+    },
+    "hand": {
+      "node": "ArmorHand_08",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/09_hand_5cfca001cbd7_2x.png",
+      "snapshot": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+      "original_sha256": "19d2e2aa005ab811d81af910d2b2563e405fb24b0fb510727d4813ffbb501300",
+      "coordinates": 148,
+      "charts": 3,
+      "triangles": 148
+    },
+    "head": {
+      "node": "ArmorHead_08",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/09_head_7f3e9b9b23ec_2x.png",
+      "snapshot": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/atlases/head.png",
+      "original_sha256": "69eed4b716b846ba0042b5e334006872a8368400acbe6a9e40c68201b276b0ed",
+      "coordinates": 172,
+      "charts": 3,
+      "triangles": 216
+    }
+  },
+  "original_triangles": 1128,
+  "original_bones": 28,
+  "original_surface_count": 5,
+  "original_uv_coordinate_count": 1096,
+  "original_total_geometry_limit": 0.2,
+  "original_total_uv_changed_fraction_per_surface_limit": 0.2,
+  "shape_file": "tools/armor_runtime_v1/shapes/pegasus.py",
+  "preserve_all_geometry": false,
+  "accepted_art_status": "runtime_integrated_pending_user_art_review",
+  "geometry_authoring": "Draft-driven head and torso/shoulder fitting from the immutable true original source; topology/UV/skin preserved, total position/dimension budget20%.",
+  "art_residuals": [
+    "雙冠與下巴已由原頂點縮低、內收；冠頂仍是較寬側眉蓋與中央V階梯，和草稿窄鈍雙軌仍有差距。",
+    "深色面窗連續，前頜已縮短；厚眉與護唇仍佔較大比例，未宣稱草稿逐形一致。",
+    "白領／黑頸與中央黑直槽、藍肩橫帶已套用；胸槽較靠領口且保留共享中分線，槽下白件仍為原長五角輪廓。",
+    "外大腿白板稍延長，但正面黑布露出仍比草稿多；遊戲原短壯比例保留，未改成人比例。",
+    "側背是依原版與草稿延伸，概念只展示斜正面；保留原後腦與腳跟技術紋理。",
+    "15裝備姿勢／9GLB姿勢及64張ANGLE擷取通過；未做完整連續動畫全角度或手機效能實測，美術仍待使用者審閱。"
+  ],
+  "original_source_snapshot_sha256": "6866d0c6e0096aac19df0dbb966c407054776de26523d198d2031007e9209ed5",
+  "source_node_index_sha256": "8092256974d6cd2001033210fa57367dcfb49592e98acff750edae799597e3c7",
+  "geometry_mode": "original_source_bounded_refinement",
+  "geometry_parts": [
+    "ArmorHead_08",
+    "ArmorBody_08"
+  ],
+  "active_helmet_revision": "pegasus_runtime_v1",
+  "active_geometry_revision": "approved_draft_refinement_v2"
+}

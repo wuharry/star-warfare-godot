@@ -1,0 +1,111 @@
+{
+  "runtime_id": 7,
+  "design_id": "C-08",
+  "name": "Atom",
+  "slug": "atom",
+  "work": "docs/art/atom_runtime_v1",
+  "asset": "assets/armors/atom_v1",
+  "source": "docs/art/atom_runtime_v1/build/source.json",
+  "original_source_snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/snapshot.json",
+  "source_node_index": "docs/art/atom_runtime_v1/revisions/original_source_v1/source_node_index.json",
+  "original_node_ids": {
+    "ArmorHead_07": 58,
+    "ArmorBody_07": 59,
+    "ArmorHand_07": 60,
+    "ArmorFoot_07": 61
+  },
+  "parts": {
+    "ArmorBody_07": [
+      "shoulder",
+      "body"
+    ],
+    "ArmorFoot_07": [
+      "foot"
+    ],
+    "ArmorHand_07": [
+      "hand"
+    ],
+    "ArmorHead_07": [
+      "head"
+    ]
+  },
+  "texture_slots": {
+    "shoulder": {
+      "node": "ArmorBody_07",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/jian_aa13458c0049_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+      "original_sha256": "70aa31f956d00d4d7847de840f3be6fea0a7d06ba41d90fd34d04d93ef863d47",
+      "coordinates": 130,
+      "charts": 5,
+      "triangles": 140
+    },
+    "body": {
+      "node": "ArmorBody_07",
+      "surface": 1,
+      "original_texture": "assets/models/player/animated/armor_textures/body_1b6b8f34e05d_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/body.png",
+      "original_sha256": "2ee571cd15d4bad6e003bfbbda1a913fd7847f736b23428e4ba1bb4bb3f1908f",
+      "coordinates": 210,
+      "charts": 5,
+      "triangles": 214
+    },
+    "foot": {
+      "node": "ArmorFoot_07",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/foot_2d50e768959c_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+      "original_sha256": "05309542695bc332278871c11f415b4dfc3c6b8e08f58fa5183f36ebac7517a7",
+      "coordinates": 122,
+      "charts": 4,
+      "triangles": 136
+    },
+    "hand": {
+      "node": "ArmorHand_07",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/hand_0fc9da36fa37_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+      "original_sha256": "a8ae7a58c8536045fe8ff6a423a155723d9b387414d73033401498001fff368a",
+      "coordinates": 118,
+      "charts": 3,
+      "triangles": 124
+    },
+    "head": {
+      "node": "ArmorHead_07",
+      "surface": 0,
+      "original_texture": "assets/models/player/animated/armor_textures/head_bb67000287dd_2x.png",
+      "snapshot": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/head.png",
+      "original_sha256": "2fca1535c7ff1c03a0b915ec4609f700009b8c9326754e60a5a28763f2f228dc",
+      "coordinates": 192,
+      "charts": 4,
+      "triangles": 246
+    }
+  },
+  "original_triangles": 860,
+  "original_bones": 28,
+  "original_surface_count": 5,
+  "original_uv_coordinate_count": 772,
+  "original_total_geometry_limit": 0.2,
+  "original_total_uv_changed_fraction_per_surface_limit": 0.2,
+  "shape_file": "tools/armor_runtime_v1/shapes/atom.py",
+  "preserve_all_geometry": false,
+  "accepted_art_status": "runtime_integrated_pending_user_art_review",
+  "geometry_authoring": "Draft-driven head and torso/shoulder fitting from the immutable true original source; topology/UV/skin preserved, total position/dimension budget20%.",
+  "art_residuals": [
+    "原頭部已縮短下巴、壓低冠頂，六點耳蓋側視比例從約1.96:1改為1.19:1；金屬耳盤已畫回真正耳蓋，仍保留低多邊形外殼輪廓。",
+    "紫頂／鋼藍冠燈、三額燈與青玻璃已呈現；中央鋼藍冠區較草稿短，玻璃的V形對稱反光較強，缺少草稿的獨立青色頰窗。",
+    "長肩刺改成較短厚的楔形鰭，前面青燈可見但小且靠根，仍較草稿外張，未宣稱草稿肩部逐形一致。",
+    "body10實機是一個高胸青服務模組，已非舊領口燈或低胸燈；相對理想UV標示仍偏高，胸甲放射分片與下方五角板保留較多原版特色。",
+    "前臂圓燈改為矩形窗；白色磨邊與紫裂紋仍較草稿密。背面沿原版推定，概念未展示隱藏側背，不能稱完全還原。",
+    "15裝備姿勢／9GLB姿勢及64張ANGLE擷取通過；未做完整連續動畫全角度或手機效能實測，美術仍待使用者審閱。"
+  ],
+  "original_source_snapshot_sha256": "73f3272363d1b345858f83874d922a8d6a7b22c93d64aa5fe43ae87e75f0347d",
+  "source_node_index_sha256": "07ed03b1149f1c2371c27a7039b371e27efdbefb363d62f6cf2d0aa37cbe485f",
+  "geometry_mode": "original_source_bounded_refinement",
+  "geometry_parts": [
+    "ArmorHead_07",
+    "ArmorBody_07"
+  ],
+  "active_helmet_revision": "atom_runtime_v1",
+  "active_geometry_revision": "approved_draft_refinement_v2"
+}

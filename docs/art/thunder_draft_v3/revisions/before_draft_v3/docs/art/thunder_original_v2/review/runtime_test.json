@@ -1,0 +1,124 @@
+{
+	"actual_default_loader": true,
+	"animation_samples": [
+		{
+			"clip": "idle_rifle",
+			"parts_checked": 4,
+			"time": 0.0
+		},
+		{
+			"clip": "idle_rifle",
+			"parts_checked": 4,
+			"time": 0.2
+		},
+		{
+			"clip": "idle_rifle",
+			"parts_checked": 4,
+			"time": 0.5
+		},
+		{
+			"clip": "run_rifle",
+			"parts_checked": 4,
+			"time": 0.0
+		},
+		{
+			"clip": "run_rifle",
+			"parts_checked": 4,
+			"time": 0.2
+		},
+		{
+			"clip": "run_rifle",
+			"parts_checked": 4,
+			"time": 0.5
+		},
+		{
+			"clip": "actual_gun00_moving_reload_variant_0",
+			"fraction": 0.2,
+			"parts_checked": 4,
+			"time": 0.354
+		},
+		{
+			"clip": "actual_gun00_moving_reload_variant_0",
+			"fraction": 0.52,
+			"parts_checked": 4,
+			"time": 0.9204
+		},
+		{
+			"clip": "actual_gun00_moving_reload_variant_0",
+			"fraction": 0.85,
+			"parts_checked": 4,
+			"time": 1.5045
+		}
+	],
+	"body_buffers_materials_skin_transform_vs_bef5b833_exact": true,
+	"checks": 163,
+	"default_scene_sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7",
+	"errors": [],
+	"head_geometry_displacement_fraction": 0.0,
+	"head_triangles": 196,
+	"head_uv_changed_fraction": 0.0,
+	"head_uv_coordinate_count": 147,
+	"mixed_equipment_cycles": 3,
+	"negative_guards": [
+		"original_transform",
+		"original_skin_bind",
+		"original_uv"
+	],
+	"protected_alternates": {
+		"res://assets/armors/thunder/thunder_prototype.scn": "7c37b7917eb161d05c414799abf7981768ef9b76b81f1123f73397e60e5185b3",
+		"res://assets/armors/thunder/thunder_sw2.scn": "9f939667c6516ee3e2335cb973abeb7805d6865fd4df6b97821303bcd2661df5"
+	},
+	"real_save": {
+		"after": "9430dcfff0406db757079fa9ff2034db86b2688a0acab94c8446532694e946e2",
+		"before": "9430dcfff0406db757079fa9ff2034db86b2688a0acab94c8446532694e946e2",
+		"save_path": "user://star_warfare_save.json",
+		"unchanged": true
+	},
+	"repeated_equips": 10,
+	"revision": "thunder_original_head_v2",
+	"status": "PASS",
+	"store_customize_samples": [
+		{
+			"mesh_skin_material_match": true,
+			"mode": "store",
+			"part": "ArmorHead_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "store",
+			"part": "ArmorBody_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "store",
+			"part": "ArmorHand_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "store",
+			"part": "ArmorFoot_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "customize",
+			"part": "ArmorHead_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "customize",
+			"part": "ArmorBody_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "customize",
+			"part": "ArmorHand_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "customize",
+			"part": "ArmorFoot_06"
+		}
+	],
+	"true_original_geometry_uv_topology_skin_transform_exact": true,
+	"visual_acceptance": "NOT_RUN_IN_THIS_LOGIC_TEST"
+}

@@ -4,19 +4,19 @@
   "armor": "Atom",
   "design_id": "C-08",
   "runtime_id": 7,
-  "revision": "draft_refinement_v2",
-  "reviewer": "Codex visual inspection through view_image of each of all 64 untouched actual PNG files; no contact sheet, raster repaint, engine run or Blender run by reviewer",
+  "revision": "draft_refinement_v3",
+  "reviewer": "Codex visual inspection through view_image of each of all 64 untouched actual PNG files plus approved C08 and four frozen 3ed1c291 references; no contact sheet, raster editing, engine run or Blender run by reviewer",
   "capture_summary": {
     "path": "docs/art/atom_runtime_v1/review/engine/capture.json",
-    "sha256": "2eb9ba50868965fc1108912bde1adbb2b0bb3530ce09d29c186d8d1b1726e34a",
+    "sha256": "ba8bb01fc5229407bf1c3ab83c5029e25092f747859e143bd357234ba1d2a26a",
     "bytes": 23403
   },
   "runtime_scene": {
     "path": "assets/armors/atom_v1/atom.scn",
-    "sha256": "4cc7e88aa5f70c8c93331699d29a93042c1c4ab53891cd7eaad7512ed9efaad8",
+    "sha256": "094cdf8fe9061c1ca9d8bb8e914ea23083168b79d6b2d89f94fe0809d6ce0dda",
     "bytes": 63846
   },
-  "capture_runtime_scene_sha256": "4cc7e88aa5f70c8c93331699d29a93042c1c4ab53891cd7eaad7512ed9efaad8",
+  "capture_runtime_scene_sha256": "094cdf8fe9061c1ca9d8bb8e914ea23083168b79d6b2d89f94fe0809d6ce0dda",
   "actual_images_inspected": 64,
   "matched_view_pairs": 31,
   "images": [
@@ -36,8 +36,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_clay_front.png",
-      "sha256": "1d1e56fd6bd4423cb21c0ceba41504d38fd02701aa15f19ad0fb5e90dbaf43f9",
-      "bytes": 44205,
+      "sha256": "bc4288abb69d4d60645a8f9b9e6f8a6b9e9f24e53e85c831106e9646678d4a94",
+      "bytes": 44258,
       "version": "new",
       "view": "clay_front",
       "dimensions": [
@@ -46,7 +46,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新正面灰模：下頜縮短、頂部較平圓，肩鰭縮短並加寬成斜向短條；身體、四肢未見新增缺片或裂縫。"
+      "observation": "新正面灰模：下巴縮短、頭頂較低平；肩鰭由根到端形成連續的上斜寬楔，取代原版外張細尖刺，未見前版 L 形突然直立段。軀幹與四肢未見新增缺片。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_painted_front.png",
@@ -64,8 +64,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_painted_front.png",
-      "sha256": "90ccbf558896834e1e51831617ce5c0ef16ea51412cba76ca30f5d27251be6c8",
-      "bytes": 300236,
+      "sha256": "3f5d32099121a6c8090f7be67dd20f1fd85aa3efcb17b187b2410d98eefdc72b",
+      "bytes": 304243,
       "version": "new",
       "view": "painted_front",
       "dimensions": [
@@ -74,7 +74,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新帶材質正面：紫／鋼藍、三前額燈與連續青面罩一致；高胸中央青色直式服務模組已成形，耳盤邊緣及前向肩鰭燈可見，無顯見新裂口。"
+      "observation": "新正面帶材質：body12 改成成對的大鋼藍胸面，中央青直式服務模組已從前版高位置下移到胸甲中段；額盔藍冠脊、三額燈、獨立頰窗與肩鰭長燈可辨。斜楔由根至端連續，仍較概念外偏，未見新增裂口。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_diffuse_front.png",
@@ -92,8 +92,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_diffuse_front.png",
-      "sha256": "90ccbf558896834e1e51831617ce5c0ef16ea51412cba76ca30f5d27251be6c8",
-      "bytes": 300236,
+      "sha256": "3f5d32099121a6c8090f7be67dd20f1fd85aa3efcb17b187b2410d98eefdc72b",
+      "bytes": 304243,
       "version": "new",
       "view": "diffuse_front",
       "dimensions": [
@@ -102,7 +102,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新純貼圖正面：胸前中央黑邊青服務模組清楚，位置在高胸；短下巴、耳盤與較短肩鰭可辨，保留原版短壯比例，未見新增破裂。"
+      "observation": "新正面純貼圖：body12 改成成對的大鋼藍胸面，中央青直式服務模組已從前版高位置下移到胸甲中段；額盔藍冠脊、三額燈、獨立頰窗與肩鰭長燈可辨。斜楔由根至端連續，仍較概念外偏，未見新增裂口。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_clay_side.png",
@@ -120,8 +120,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_clay_side.png",
-      "sha256": "77d817d5b2c5830da407b0cb2110ca1936cb67b48c4d71d2f78da5df5ffe8729",
-      "bytes": 28434,
+      "sha256": "4f8fa024f907657eafc8d5ba2053a781459bdcc8a4e1c30d859b744800e4a0cc",
+      "bytes": 28658,
       "version": "new",
       "view": "clay_side",
       "dimensions": [
@@ -130,7 +130,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新側面灰模：下巴明顯內收縮短、頭頂降低，耳側外鼓較收斂；胸腹與四肢輪廓連續，未見新裂縫。"
+      "observation": "新側面灰模：下頜上收，耳側與冠頂仍有原低多邊形折面；肩根到鰭尖為連續斜面，胸前略前凸，未見新增頭頸裂口。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_painted_side.png",
@@ -148,8 +148,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_painted_side.png",
-      "sha256": "b5ef35cc3ecfebcd50fd0e5bbed503a011998af7ceda162b2c3839d4b708fe04",
-      "bytes": 184696,
+      "sha256": "52c5c1792f87f8127196c887c70f7f328ee68310473e4f7562721532b8d29d55",
+      "bytes": 188407,
       "version": "new",
       "view": "painted_side",
       "dimensions": [
@@ -158,7 +158,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新帶材質側面：真耳位形成深色中心圓耳盤，面罩及下巴縮短，前臂長方青模組可讀；肩前緣燈此角度不突出，未見新裂口。"
+      "observation": "新側面帶材質：全頂藍冠脊、真耳盤、耳前頰窗與短頜完整；肩鰭前燈在純側視受角度遮擋，原肩外圓燈與前臂矩形窗可見。胸部前凸與甲片層次連續，未見新增破片。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_diffuse_side.png",
@@ -176,8 +176,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_diffuse_side.png",
-      "sha256": "b5ef35cc3ecfebcd50fd0e5bbed503a011998af7ceda162b2c3839d4b708fe04",
-      "bytes": 184696,
+      "sha256": "52c5c1792f87f8127196c887c70f7f328ee68310473e4f7562721532b8d29d55",
+      "bytes": 188407,
       "version": "new",
       "view": "diffuse_side",
       "dimensions": [
@@ -186,7 +186,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新純貼圖側面：圓耳盤正確落在耳側，後腦為鋼藍甲；短下頜和青色面罩連續，未見新增破裂，仍有低面數折角。"
+      "observation": "新側面純貼圖：全頂藍冠脊、真耳盤、耳前頰窗與短頜完整；肩鰭前燈在純側視受角度遮擋，原肩外圓燈與前臂矩形窗可見。胸部前凸與甲片層次連續，未見新增破片。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_clay_rear.png",
@@ -204,8 +204,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_clay_rear.png",
-      "sha256": "b12b5ab6cb6003cf87f043174969ff7a40a69ff46ff38f1f2a722fce20ad4c8d",
-      "bytes": 47100,
+      "sha256": "3abcd66889910a0584c51817e17a1eeb5cb88a728d87d601a0dc46be38d0d624",
+      "bytes": 47577,
       "version": "new",
       "view": "clay_rear",
       "dimensions": [
@@ -214,7 +214,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新背面灰模：肩鰭較短厚、頭頂降低；背部與四肢保持原版輪廓，未見新裂縫。"
+      "observation": "新背面灰模：較低冠頂與上斜寬肩鰭可辨；肩根連續、後腦與背體完整，無新增飛片或缺面。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_painted_rear.png",
@@ -232,8 +232,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_painted_rear.png",
-      "sha256": "a1e701e63689c9468132deb6fee05f8c207481796eba8b8b7a69c6c5d87eea5b",
-      "bytes": 285759,
+      "sha256": "170155e50faad711b141f986e3a20ed6874390614d4fd6c2d608fe3cc5abb877",
+      "bytes": 289899,
       "version": "new",
       "view": "painted_rear",
       "dimensions": [
@@ -242,7 +242,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新帶材質背面：後腦改為封閉鋼藍後蓋、兩側原青細節保留；紫背甲、下緣雙燈、足跟燈連續，未見新破裂。"
+      "observation": "新背面帶材質：藍後腦封閉蓋、紫背甲与中央藍背板、左右小青燈與腳後圓燈可辨；上斜寬肩鰭連接完整。原後腦及背板中央圓燈被封閉板取代，未見新增開裂；背面僅作一致性判斷。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_diffuse_rear.png",
@@ -260,8 +260,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_diffuse_rear.png",
-      "sha256": "a1e701e63689c9468132deb6fee05f8c207481796eba8b8b7a69c6c5d87eea5b",
-      "bytes": 285759,
+      "sha256": "170155e50faad711b141f986e3a20ed6874390614d4fd6c2d608fe3cc5abb877",
+      "bytes": 289899,
       "version": "new",
       "view": "diffuse_rear",
       "dimensions": [
@@ -270,7 +270,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新純貼圖背面：封閉鋼藍後蓋、紫背甲及雙小燈連貫，沒有錯貼的後腦耳環；背部中心接縫可見但無新增開裂。"
+      "observation": "新背面純貼圖：藍後腦封閉蓋、紫背甲与中央藍背板、左右小青燈與腳後圓燈可辨；上斜寬肩鰭連接完整。原後腦及背板中央圓燈被封閉板取代，未見新增開裂；背面僅作一致性判斷。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_clay_quarter.png",
@@ -288,8 +288,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_clay_quarter.png",
-      "sha256": "30c3358a9d4db44522c1645f75c175d3e7699da8b992757c340bedb40ff21535",
-      "bytes": 43424,
+      "sha256": "5f24b667b0cd38664e14ba9a203aacb50fb53aae12b56bba7709a7cc100f6c7a",
+      "bytes": 43620,
       "version": "new",
       "view": "clay_quarter",
       "dimensions": [
@@ -298,7 +298,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新四分之三灰模：縮短內收下巴及較短厚肩鰭是實際幾何改變；原身體四肢比例保留，未見缺片。"
+      "observation": "新四分之三灰模：短下巴、較低頭頂與整片上斜楔形鰭均有形體差異，根部到頂端保持連續；原低面數四肢輪廓保留。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_painted_quarter.png",
@@ -316,8 +316,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_painted_quarter.png",
-      "sha256": "200e6c04e652a004d5d48d2a9fa6cb23fbbb80c21ae685e661171af93e84896b",
-      "bytes": 308625,
+      "sha256": "436398802cc2e218f8ec2e203c23d05c2237667cb971b07fde52cba562765084",
+      "bytes": 313505,
       "version": "new",
       "view": "painted_quarter",
       "dimensions": [
@@ -326,7 +326,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新帶材質四分之三：圓耳盤、三前額燈、短頜、胸前直式服務模組及小肩鰭燈落地；肩鰭仍外張偏窄長，未完全成為概念短直立厚楔。"
+      "observation": "新四分之三帶材質：成對寬藍胸面與下移的中央青服務模組清楚，頭頂藍冠脊、真耳圓盤、頰窗及肩鰭長燈同时可見。肩鰭為連續上斜楔，仍有較外偏根底和低面數輪廓；未見新增裂口。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_diffuse_quarter.png",
@@ -344,8 +344,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_diffuse_quarter.png",
-      "sha256": "200e6c04e652a004d5d48d2a9fa6cb23fbbb80c21ae685e661171af93e84896b",
-      "bytes": 308625,
+      "sha256": "436398802cc2e218f8ec2e203c23d05c2237667cb971b07fde52cba562765084",
+      "bytes": 313505,
       "version": "new",
       "view": "diffuse_quarter",
       "dimensions": [
@@ -354,7 +354,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新純貼圖四分之三：高胸青模組明確可讀，耳盤位於耳側，肩燈較小且靠近根部；紫／鋼藍層次連續，未見新增裂縫。"
+      "observation": "新四分之三純貼圖：成對寬藍胸面與下移的中央青服務模組清楚，頭頂藍冠脊、真耳圓盤、頰窗及肩鰭長燈同时可見。肩鰭為連續上斜楔，仍有較外偏根底和低面數輪廓；未見新增裂口。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_head_front.png",
@@ -372,8 +372,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_head_front.png",
-      "sha256": "f227525f63be5ef4118616d4ddd81951d5d594362c7fbfc24d95a4a674473ce1",
-      "bytes": 554861,
+      "sha256": "037ea0f950ea5afcc9e78965544889a72e1ca51c3e10df338d3852e65fa7d9c1",
+      "bytes": 555963,
       "version": "new",
       "view": "head_front",
       "dimensions": [
@@ -382,7 +382,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新頭正面：三燈及連續青面罩清楚，中央鋼藍下巴變短、兩頰改分層鋼藍件；圓耳盤邊可見。面罩仍較草稿淺扁，V形亮紋是反光圖案而非裂縫；下方黑頸內襯露出。"
+      "observation": "新頭正面：鋼藍中央冠面已延伸到頂，三額燈和左右獨立青頰窗清楚；金屬耳盤邊可見、中央下巴短而完整。青玻璃仍有明顯對稱亮 V，紫眉沿與現有玻璃上緣保留，未完成要求的上移玻璃邊界；未見中心開裂。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_head_side.png",
@@ -400,8 +400,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_head_side.png",
-      "sha256": "5a9e8afc04fb114a551ca2e861770f3669bf9ba17636064f5da7efe596555267",
-      "bytes": 489916,
+      "sha256": "42377e55312d02e2dd8eded742196ecb200f8de624a5adaa0285fc4cf066aabb",
+      "bytes": 506786,
       "version": "new",
       "view": "head_side",
       "dimensions": [
@@ -410,7 +410,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新頭側面：暗中心同心圓耳盤位於真正耳蓋，後腦為藍甲；下巴內收縮短、頰板連續，無青矩形誤占耳盤。輪廓仍有原版折面，概念頰側青窗未重建。"
+      "observation": "新頭側面：整頂鋼藍冠脊從前额沿頂曲線延伸至後側；暗中心同心圓金屬耳盤正確位於耳側，青頰窗位於耳前、玻璃下方。下巴較短，紫殼仍偏平且有折面；肩鰭遮住耳盤下緣的一部分，未見新破口。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_head_rear.png",
@@ -428,8 +428,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_head_rear.png",
-      "sha256": "67d9baa503d4eac110f7bec8ca0c2c73ba58d7879bc4386af45f1d2c73849269",
-      "bytes": 527245,
+      "sha256": "f2ebe693f4c45820f8e9304a6e54489fb38424a81469fedd5c9ce839ddb9bc51",
+      "bytes": 532478,
       "version": "new",
       "view": "head_rear",
       "dimensions": [
@@ -438,7 +438,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新頭背面：中央改封閉鋼藍後蓋，兩側青件保留；中央黑線為板縫並無開口，頂後紫甲一致，未見錯置耳環或新裂縫。"
+      "observation": "新頭背面：冠脊藍帶延伸到頂後，後腦為封閉鋼藍甲片、左右青件保留；中央舊圓青燈已改封閉後蓋。中央板縫可見但沒有露底開口；概念未提供背面，不作逐形還原判定。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_head_quarter.png",
@@ -456,8 +456,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_head_quarter.png",
-      "sha256": "d4b3a8dd364fe811c3308ccad9c0d2d66153680d00535f913f7c653f091c896f",
-      "bytes": 582892,
+      "sha256": "13c4f31ece7d5a3780c0792cbede8faf77abdf9ed56f4c57f92a98c757446b9a",
+      "bytes": 589026,
       "version": "new",
       "view": "head_quarter",
       "dimensions": [
@@ -466,7 +466,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新頭四分之三：短下巴與同心耳盤改善明確，三額燈及紫／鋼藍分層完整；面罩仍偏淺扁、中央反光V較強，額盔仍有原拓撲折角，未見新破片。"
+      "observation": "新頭四分之三：全頂鋼藍冠脊、前額燈、真耳圓盤與獨立頰窗能一起讀出；下巴內收，藍頰板連續。玻璃仍偏矮、亮 V 反光顯著，紫殼與冠脊低面數折角、白磨邊尚比草稿銳利。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/family_original_01_front.png",
@@ -512,8 +512,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_idle_rifle.png",
-      "sha256": "1da81cde23918513aaa24a209ec0c33565da8111085226c0503f93e5065903b0",
-      "bytes": 244090,
+      "sha256": "7db4a93b283965ded1d35097deb0619e0f0ada4883944724e1c7ad1d4fa7789c",
+      "bytes": 247072,
       "version": "new",
       "view": "idle_rifle",
       "dimensions": [
@@ -522,7 +522,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新版步槍待機：短頜、圓耳盤及肩燈可見，武器遮胸，臂腿與肩部未見新增裂縫或飛片。"
+      "observation": "新步槍待機：短頜、真耳盤、頰燈與連續斜楔肩鰭的長青燈帶可辨，原短壯比例保留。大型步槍遮住胸模組；肩、肘、腿及頭頸未見新增分離。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_run_rifle.png",
@@ -540,8 +540,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_run_rifle.png",
-      "sha256": "69606ce3664d54ebfb34198ee1f1c5376f536474f0ec9151bacdd1011c3d67e6",
-      "bytes": 225215,
+      "sha256": "f5aca41df721b97a2fd28e33c901e6600f64b14ca320f9fb756577d7333906bd",
+      "bytes": 228846,
       "version": "new",
       "view": "run_rifle",
       "dimensions": [
@@ -550,7 +550,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新版步槍跑動取樣：縮短下巴、耳盤及短厚肩鰭可辨，屈肘、膝踝及頭頸未見新增分離；此單張不代表完整跑動驗收。"
+      "observation": "新步槍跑動取樣：冠脊、頰燈、圓耳盤、肩燈隨頭肩姿勢保持完整；膝踝與前臂相連，未見新增飛片。單張姿勢不能代表完整連續跑動驗收。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_reload_00.png",
@@ -568,8 +568,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_reload_00.png",
-      "sha256": "6bd94ba8946d9af76ce5e356c972390657f61ef0c2d7a3316e9575182a578447",
-      "bytes": 232763,
+      "sha256": "c597b0bcb73fb1b0574bd98aea27736585068279075de0d1ebf1444719176dae",
+      "bytes": 237017,
       "version": "new",
       "view": "reload_00",
       "dimensions": [
@@ -578,7 +578,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新版換彈 00 取樣：武器遮胸；頭部、肩鰭與前臂連接可見，未見顯見新增裂口或飛片。"
+      "observation": "新換彈 00 取樣：步槍橫在胸前，冠脊、耳盤與頰燈清楚，肩鰭燈帶完整；胸部遮擋較多，未見新增頭頸或臂腿裂口。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_reload_01.png",
@@ -596,8 +596,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_reload_01.png",
-      "sha256": "518caca7d74a7aec83b40fe7acc3d4d376de08b2e8cc19fcf3599d94f376c1f6",
-      "bytes": 218879,
+      "sha256": "d27e79a4db427139d1d65750e6e0904700106e42564980d15efcf1d98d2870c0",
+      "bytes": 222885,
       "version": "new",
       "view": "reload_01",
       "dimensions": [
@@ -606,12 +606,12 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新版換彈 01 取樣：武器抬高，青面罩、圓耳盤及前臂燈可見；肘、頭頸和雙腿未見新增裂縫。"
+      "observation": "新換彈 01 取樣：抬高的槍身遮住大部分胸部與一側頰窗，另一側耳盤、額燈及長肩燈可辨；屈肘、膝踝未見新增分離。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_reload_02.png",
-      "sha256": "e360d1b57fa60ce9f37b857879e38e7d7df67aad1d2a40c6d159e2bffa13e62d",
-      "bytes": 191604,
+      "sha256": "6f1178bde7db9a4a18b265d5bd6d219b4b934df775af6e847b7d4511ce4c6629",
+      "bytes": 191766,
       "version": "original",
       "view": "reload_02",
       "dimensions": [
@@ -624,8 +624,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_reload_02.png",
-      "sha256": "2a9111d2f05245c07d7f20ee2504cb07032bb80e2cfb87a06cef51d8fcd39dda",
-      "bytes": 222727,
+      "sha256": "2c5cf6395d28ad1083ae8b3fadb5cf1e109b242fed00a82cecf464c74066b007",
+      "bytes": 227008,
       "version": "new",
       "view": "reload_02",
       "dimensions": [
@@ -634,12 +634,12 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新版換彈 02 取樣：左前臂轉出時黑內襯與甲片相連，頭盔及肩鰭保持完整，未見新增飛片。"
+      "observation": "新換彈 02 取樣：前臂向外转、彈匣靠近腹側，黑內襯與甲片仍相連；冠脊、耳盤和肩鰭保持完整，未見新增裝甲碎片。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_reload_03.png",
-      "sha256": "f631bd58127b0617de7bd8a6a9e584804434dd9460118fe10103e0aacf8680de",
-      "bytes": 191788,
+      "sha256": "1348d8de66b3f012fc5eac637512f055e7d1623974085881ebb9a0b85f0bfc03",
+      "bytes": 192437,
       "version": "original",
       "view": "reload_03",
       "dimensions": [
@@ -652,8 +652,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_reload_03.png",
-      "sha256": "8327614e4b5cb293c2373218b1d24b8ac3c5122a1f9f123bea42e9eab3382c2e",
-      "bytes": 222690,
+      "sha256": "2650790e92fdbd5788f1bcd7be76b190175c89074c98b4496f5c47cf5573a3f5",
+      "bytes": 226590,
       "version": "new",
       "view": "reload_03",
       "dimensions": [
@@ -662,12 +662,12 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新版換彈 03 取樣：同樣有正常換彈彈匣離槍；紫肩甲、青前臂模組及頭頸保持連接，未見新增裝甲飛片。"
+      "observation": "新換彈 03 取樣：獨立深紫長方彈匣出現在腿外，原版同時有此換彈物件，並非裝甲飛片。頭盔、肩鰭與前臂甲片連接完整。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_reload_04.png",
-      "sha256": "530111c8a260efca34cb8c8f418d7544717ec67d5822a88911b6fcec34b340da",
-      "bytes": 199243,
+      "sha256": "37899861678a222b8f09614de473e58bb244e8d660fd592cc2e10bb29501fc23",
+      "bytes": 197949,
       "version": "original",
       "view": "reload_04",
       "dimensions": [
@@ -680,8 +680,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_reload_04.png",
-      "sha256": "8518d765f4f13626fc73378c154f4aee4280b66c6d394fff2df308e9d3bdc147",
-      "bytes": 228968,
+      "sha256": "ff457a27841ab5519cefd0baf2ace9ac4fe2a1aee2aec0a547f18de79cabcb3e",
+      "bytes": 232724,
       "version": "new",
       "view": "reload_04",
       "dimensions": [
@@ -690,12 +690,12 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新版換彈 04 取樣：腿外紫長方件與原版同屬換彈彈匣；前臂及肩甲連接未新增開裂，槍身遮住胸模組。"
+      "observation": "新換彈 04 取樣：彈匣下落在腿外，前臂重新抬起；耳盤、青面罩與肩鰭長燈正常，未見新增肩肘或頭頸裂口。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_reload_05.png",
-      "sha256": "68cd967081500b02dfeb271d45c3ac483e327f343fd66d022654316507291530",
-      "bytes": 199433,
+      "sha256": "ea272019e2df4e03ab3078fc0495d18d16e64f4c062265731d346820ceed6a57",
+      "bytes": 200685,
       "version": "original",
       "view": "reload_05",
       "dimensions": [
@@ -708,8 +708,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_reload_05.png",
-      "sha256": "1d5bbefbf8cb76373dec50e02aaa0aeac6ad6caf17e7b3ea6892ed8f35d7f6de",
-      "bytes": 228331,
+      "sha256": "99d4a93c191da8976a60cc81f6ec500a386d914477c8cd53d34e52255e8d6003",
+      "bytes": 233248,
       "version": "new",
       "view": "reload_05",
       "dimensions": [
@@ -718,12 +718,12 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新版換彈 05 取樣：離槍彈匣為正常動畫件；縮短頭盔、肩鰭與屈肘內襯未見新增缺片或分離。"
+      "observation": "新換彈 05 取樣：下落彈匣位於膝外，槍身遮胸與下頰；紫肩、青前臂窗、藍胸腹甲和腿甲未見新增分離。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_reload_06.png",
-      "sha256": "8a07ce676504f83e371e4f35de6c0c8956b5500df002f683f6020b16b6e9e876",
-      "bytes": 194472,
+      "sha256": "fb0f6add602bc965c7ad7e3ff9683b8ac0352775b6802c2f5dd897525bf965e7",
+      "bytes": 194811,
       "version": "original",
       "view": "reload_06",
       "dimensions": [
@@ -736,8 +736,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_reload_06.png",
-      "sha256": "d5be67cf908464aa4b8c83bb6ff97871f8c5e60b941882940cd19898bafd1928",
-      "bytes": 224569,
+      "sha256": "2e865b18cf3404506aaaaa44ae08af5f830378dcfcf6a01fc571c7b942925a96",
+      "bytes": 228542,
       "version": "new",
       "view": "reload_06",
       "dimensions": [
@@ -746,7 +746,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新版換彈 06 取樣：彈匣在畫面底邊為動畫狀態；全身裝甲輪廓未裁切，頭頸及屈肘未見新增裂縫。"
+      "observation": "新換彈 06 取樣：彈匣已落到腳邊、部分接近畫框底部；肩燈、耳盤與腿甲保持完整，外部彈匣不是裝甲碎片。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_reload_07.png",
@@ -764,8 +764,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_reload_07.png",
-      "sha256": "fc8e5a1a6c92a4af9cfe3de273af8629384df1a1ddf353309017a4acc2c62c8d",
-      "bytes": 219925,
+      "sha256": "136e4f6dca5effd2cc62feb5f52a4c2129e1c51a2b3421c1dec42349cb99292c",
+      "bytes": 224063,
       "version": "new",
       "view": "reload_07",
       "dimensions": [
@@ -774,7 +774,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新版換彈 07 取樣：雙臂回抱槍身，圓耳盤、短頜與短肩鰭可讀，未見新增裝甲飛片或接縫開裂。"
+      "observation": "新換彈 07 取樣：槍口回落、前臂靠回槍身，耳盤與頰窗重新清楚；肩根、頭頸與雙腿未見新增裂口。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_reload_08.png",
@@ -792,8 +792,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_reload_08.png",
-      "sha256": "629f027b8ebe390fe247e5d56e70f8b08b5e3cdcd3fae6c65db4ceb016a888dc",
-      "bytes": 233198,
+      "sha256": "706ba92bba5dbada17475624f7ef9c58788edfc48ad0b872e4cde02eb70452a8",
+      "bytes": 237413,
       "version": "new",
       "view": "reload_08",
       "dimensions": [
@@ -802,12 +802,12 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "新版換彈 08 取樣：回持槍角度時短頜、肩鰭及臂腿連接連續；武器遮胸，未見新增裂縫。"
+      "observation": "新換彈 08 取樣：接近待機姿势，冠脊、頰燈、真耳盤與長肩燈可辨；胸部仍被槍遮擋，未見新增甲片分離。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_level_01_gameplay.png",
-      "sha256": "60b826909afcc583e44741a4383ec4c103fc5013b64e062f292cd2131cb97f82",
-      "bytes": 1438878,
+      "sha256": "99736e085852f2d70ace4a5ce7547fb41b1003dfffe2c8b6af71be6b217c22d7",
+      "bytes": 1438750,
       "version": "original",
       "view": "level_01_gameplay",
       "dimensions": [
@@ -820,8 +820,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_level_01_gameplay.png",
-      "sha256": "db0027a4fb98f981185aabea94965343c724a5f84caeab59c0298f6bb41ca18f",
-      "bytes": 1467384,
+      "sha256": "39675addf90916d1a71484fffea987ad9e53d7f280a8a3bc2e1eff9b195b4867",
+      "bytes": 1466823,
       "version": "new",
       "view": "level_01_gameplay",
       "dimensions": [
@@ -830,12 +830,12 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "區域01新版實際背後遊戲視角：封閉後蓋、較短肩鰭及紫背甲與背包並存，材質正常、無顯見新增破裂；此視角不驗收正面胸模組。"
+      "observation": "新關卡 01 第三人稱實機：封閉藍後腦、紫肩與藍冠後段在橘色場景中可讀，背包正常遮住背部；頭肩、髖部未見新增裂口。此後視無法判定正面玻璃或胸模組。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_level_01_front.png",
-      "sha256": "6e42aee3e22939825fd6a62072cac35987481b09ffe5b7f27153e4bc70b40cb5",
-      "bytes": 1085744,
+      "sha256": "11b1e405717a8fd42c091374d79f593e4c8ef455f093a716bf5be7e5d90f4030",
+      "bytes": 1086088,
       "version": "original",
       "view": "level_01_front",
       "dimensions": [
@@ -848,8 +848,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_level_01_front.png",
-      "sha256": "f8e7a8d710c37798bd4e02f550f294e06b4417e974879dc04adf8455ad2bb166",
-      "bytes": 1107081,
+      "sha256": "953837b1a7784b54550c7785f430a1fdef3a8cee127183f162464a0715aed29f",
+      "bytes": 1107297,
       "version": "new",
       "view": "level_01_front",
       "dimensions": [
@@ -858,12 +858,12 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "區域01新版正面關卡取樣：青面罩、圓耳盤及紫／鋼藍輪廓在暖色場景仍清楚；胸模組被槍遮擋，未見新增裂縫或飛片。"
+      "observation": "新關卡 01 正向實機：青玻璃、額燈、頰窗與肩燈在原遊戲短壯比例下可讀，槍身遮胸；原場景光線與背景中未見新增飛片。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_level_08_gameplay.png",
-      "sha256": "5efafd636e93ed4a06162afc4d348ab5b506287cb672906cf5a7d9501fb1906f",
-      "bytes": 993910,
+      "sha256": "47d633d53ba3a916e85d3e206bbb500fb11e4e878ac2cb37b0a80fb617cf7fdb",
+      "bytes": 994702,
       "version": "original",
       "view": "level_08_gameplay",
       "dimensions": [
@@ -876,8 +876,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_level_08_gameplay.png",
-      "sha256": "1d0ae5a5ccd4a9949084d76558d4257803151dc27ee528268d70bbfcf9d9c7a0",
-      "bytes": 1019646,
+      "sha256": "948117dec247bb33b084ff11b39e0d13b93ac8f3dc215b1591d1fa335c07ef01",
+      "bytes": 1020776,
       "version": "new",
       "view": "level_08_gameplay",
       "dimensions": [
@@ -886,12 +886,12 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "區域08新版背後遊戲視角：封閉藍後蓋、紫頂、短肩鰭及背包正常可讀，雪地中未見新增材質遺失或裂片；不代表手機效能已驗證。"
+      "observation": "新關卡 08 第三人稱實機：冰雪藍白背景下封閉後腦、紫肩和藍甲仍可辨，背包保持連接；未見新增裂口，正面設計受視角遮蔽。"
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/original_level_08_front.png",
-      "sha256": "d5b4d4ea4db9a2da6a183e60f80f6044eed165c10660fe8ea4028a2164c0b72f",
-      "bytes": 916432,
+      "sha256": "8fd8b9bc0d0763d388d557714d53ab1f7c9b5e6757d6bcc8b0909da56fd60a86",
+      "bytes": 916808,
       "version": "original",
       "view": "level_08_front",
       "dimensions": [
@@ -904,8 +904,8 @@
     },
     {
       "path": "docs/art/atom_runtime_v1/review/engine/new_level_08_front.png",
-      "sha256": "cf0b500ac950b16bfc22bfb764f17004e9470fc0d3761d7f908082b0296c690b",
-      "bytes": 933058,
+      "sha256": "61e8d3c2be9b0344f02bb23365dbf25a402c1f9ccd84fa283c7d4b7f0fdaa68b",
+      "bytes": 935931,
       "version": "new",
       "view": "level_08_front",
       "dimensions": [
@@ -914,7 +914,7 @@
       ],
       "visually_inspected": true,
       "controlled_pair": true,
-      "observation": "區域08新版正面關卡取樣：青面罩與額燈、圓耳盤及紫／鋼藍甲在亮場景可辨；肩燈尺寸仍小，武器遮胸，未見新增破裂。"
+      "observation": "新關卡 08 正向實機：明亮雪地中青面罩、耳盤、頰窗和長肩燈可讀，雙腿與肩臂相連；槍身遮住胸模組，單張不能證明全關卡運行。"
     }
   ],
   "reference_images_inspected": [
@@ -923,35 +923,60 @@
       "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
       "bytes": 2019010,
       "role": "approved_C08_concept",
-      "observation": "紫／鋼藍裝甲、三額燈、圓金屬耳盤、短下巴、青面罩及頰窗、短直立厚楔肩鰭與青燈、胸前青直式服務件；成人概念身高不作遊戲比例目標。"
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "visually_inspected": true,
+      "observation": "紫弧形頭殼、全頂鋼藍冠脊、三額燈、圓金屬耳盤、高青面窗與独立頰窗、短下巴、肩根附近短厚直立斜楔與前燈、雙藍胸面和中央大黑框青服務件；成人概念比例不替換原遊戲短壯比例。"
     },
     {
-      "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_head_front.png",
-      "sha256": "fe6e4ee9c3469420c2c1c521ee96d07f46f78f4aab805d1a522a4d4de94f6508",
-      "bytes": 579375,
-      "role": "f94323e4_texture_only_baseline",
-      "observation": "已實看前版頭正面：大鋼藍頂片、三額燈、青面罩與長中央下巴，耳側仍是大甲塊。"
+      "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_head_front.png",
+      "sha256": "f227525f63be5ef4118616d4ddd81951d5d594362c7fbfc24d95a4a674473ce1",
+      "bytes": 554861,
+      "role": "3ed1c291_draft_refinement_v2_baseline",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "observation": "已實看 3ed1c291 前版頭正面：紫頂中央只有孤立藍冠燈徽片，青面罩有強 V 反光，下巴較短但兩頰無獨立青窗。"
     },
     {
-      "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_head_side.png",
-      "sha256": "90a7eb420e52f4f65031246b5d2466bb525fc759cbcce006c21bd69a17366188",
-      "bytes": 520767,
-      "role": "f94323e4_texture_only_baseline",
-      "observation": "已實看前版頭側面：長下頜、大塊耳蓋，尚未形成真正耳側同心圓金屬耳盤。"
+      "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_head_side.png",
+      "sha256": "5a9e8afc04fb114a551ca2e861770f3669bf9ba17636064f5da7efe596555267",
+      "bytes": 489916,
+      "role": "3ed1c291_draft_refinement_v2_baseline",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "observation": "已實看 3ed1c291 前版頭側面：真耳金屬圓盤已存在，冠頂仍主要紫色且較平折；耳前頰板沒有青窗，側視下巴比本輪長。"
     },
     {
-      "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_diffuse_front.png",
-      "sha256": "a5a591782428a3171907bd9fdaf4e3659d2ce5a4c5175a673f15b99a9205217a",
-      "bytes": 302793,
-      "role": "f94323e4_texture_only_baseline",
-      "observation": "已實看前版全身正面：原版長細外伸肩刺、長下巴，中央直式青燈仍在較低胸腹位置。"
+      "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_diffuse_front.png",
+      "sha256": "90ccbf558896834e1e51831617ce5c0ef16ea51412cba76ca30f5d27251be6c8",
+      "bytes": 300236,
+      "role": "3ed1c291_draft_refinement_v2_baseline",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "observation": "已實看 3ed1c291 前版全身正面：兩肩為外張斜細鰭、小燈不顯，胸甲有横向紫色放射分條、服務窗偏高；低面數短壯比例為後續受控基準。"
     },
     {
-      "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_diffuse_quarter.png",
-      "sha256": "4912a0f4640023d299bbda41a279c9ab6d12bc034ed392618397568640f6c784",
-      "bytes": 311729,
-      "role": "f94323e4_texture_only_baseline",
-      "observation": "已實看前版全身四分之三：尖肩刺、長下頜及塊狀耳蓋；較低中央青燈與現版高胸服務模組形成配置差異。"
+      "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "sha256": "200e6c04e652a004d5d48d2a9fa6cb23fbbb80c21ae685e661171af93e84896b",
+      "bytes": 308625,
+      "role": "3ed1c291_draft_refinement_v2_baseline",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "observation": "已實看 3ed1c291 前版全身四分之三：肩鰭向外細長、中央短藍冠徽、胸部紫斜帶和高青窗清楚；真耳盤已有，頰燈尚未加入。"
     }
   ],
   "approved_concept": {
@@ -970,40 +995,20 @@
       "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/visual_review.json",
       "sha256": "0d0affaa7e155fd3a4d1381a03a75870e1cf78896e392f4b797c45ebc067adf0",
       "bytes": 40654
-    }
+    },
+    "inspected_this_revision": false,
+    "role": "Historical f943 provenance only; current visual comparison uses the 3ed1c291 draft_refinement_baseline."
   },
   "selected_native_atlases": {
-    "head": {
-      "path": "assets/armors/atom_v1/head_diffuse.png",
-      "sha256": "9d4f789427199081bd038b62301fbf82e67842d2a98e2677655099e77f7931d2",
-      "bytes": 1971931,
-      "selected_attempt": 3,
+    "foot": {
+      "path": "assets/armors/atom_v1/foot_diffuse.png",
+      "sha256": "1f4d440764d94c879ca13e463d1285bd0b69435f70134398a1ee46e27ca815f5",
+      "bytes": 2260175,
+      "selected_attempt": 1,
       "generated_source": {
-        "path": "docs/art/atom_runtime_v1/generated/head_attempt_03.png",
-        "sha256": "9d4f789427199081bd038b62301fbf82e67842d2a98e2677655099e77f7931d2",
-        "bytes": 1971931
-      }
-    },
-    "body": {
-      "path": "assets/armors/atom_v1/body_diffuse.png",
-      "sha256": "616151182a74871e3f399ed1df4b3baa1f2edc6bc79ed8998bedcd25004aa15e",
-      "bytes": 2058548,
-      "selected_attempt": 10,
-      "generated_source": {
-        "path": "docs/art/atom_runtime_v1/generated/body_attempt_10.png",
-        "sha256": "616151182a74871e3f399ed1df4b3baa1f2edc6bc79ed8998bedcd25004aa15e",
-        "bytes": 2058548
-      }
-    },
-    "shoulder": {
-      "path": "assets/armors/atom_v1/shoulder_diffuse.png",
-      "sha256": "9232eaeb7d2daedb8a2ca7f776137b61057c8265ebe237f78f0c8f74552a23d0",
-      "bytes": 2176980,
-      "selected_attempt": 3,
-      "generated_source": {
-        "path": "docs/art/atom_runtime_v1/generated/shoulder_attempt_03.png",
-        "sha256": "9232eaeb7d2daedb8a2ca7f776137b61057c8265ebe237f78f0c8f74552a23d0",
-        "bytes": 2176980
+        "path": "docs/art/atom_runtime_v1/generated/foot_attempt_01.png",
+        "sha256": "1f4d440764d94c879ca13e463d1285bd0b69435f70134398a1ee46e27ca815f5",
+        "bytes": 2260175
       }
     },
     "hand": {
@@ -1017,47 +1022,69 @@
         "bytes": 1994897
       }
     },
-    "foot": {
-      "path": "assets/armors/atom_v1/foot_diffuse.png",
-      "sha256": "1f4d440764d94c879ca13e463d1285bd0b69435f70134398a1ee46e27ca815f5",
-      "bytes": 2260175,
-      "selected_attempt": 1,
+    "body": {
+      "path": "assets/armors/atom_v1/body_diffuse.png",
+      "sha256": "919bf9e482e338e8d9c96533c2a1cf5fefb04cce94f363b07c18a4c13b9c50fb",
+      "bytes": 2120329,
+      "selected_attempt": 12,
       "generated_source": {
-        "path": "docs/art/atom_runtime_v1/generated/foot_attempt_01.png",
-        "sha256": "1f4d440764d94c879ca13e463d1285bd0b69435f70134398a1ee46e27ca815f5",
-        "bytes": 2260175
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_12.png",
+        "sha256": "919bf9e482e338e8d9c96533c2a1cf5fefb04cce94f363b07c18a4c13b9c50fb",
+        "bytes": 2120329
+      }
+    },
+    "head": {
+      "path": "assets/armors/atom_v1/head_diffuse.png",
+      "sha256": "699b47ec21f99c384b905bb0ce0b43c67e814c5a24b980f541244a3170bd348d",
+      "bytes": 1997459,
+      "selected_attempt": 4,
+      "generated_source": {
+        "path": "docs/art/atom_runtime_v1/generated/head_attempt_04.png",
+        "sha256": "699b47ec21f99c384b905bb0ce0b43c67e814c5a24b980f541244a3170bd348d",
+        "bytes": 1997459
+      }
+    },
+    "shoulder": {
+      "path": "assets/armors/atom_v1/shoulder_diffuse.png",
+      "sha256": "d7ed621cb4856938c5893900ade3d4fc5c88c20d4d7a473c759e8f183b6ab65c",
+      "bytes": 2158553,
+      "selected_attempt": 4,
+      "generated_source": {
+        "path": "docs/art/atom_runtime_v1/generated/shoulder_attempt_04.png",
+        "sha256": "d7ed621cb4856938c5893900ade3d4fc5c88c20d4d7a473c759e8f183b6ab65c",
+        "bytes": 2158553
       }
     }
   },
   "build_target": {
     "path": "docs/art/atom_runtime_v1/build/target.json",
-    "sha256": "340dfca8ed5474a7e5e8517cde2cf3f7079a6c94eb313e49ae605501a80e359e",
-    "bytes": 412316
+    "sha256": "a77ffd62243807477a375eb171a4978ffba2f07a6d78a0483687c69d6b3d597b",
+    "bytes": 412576
   },
   "comparison_summary": {
     "actual_model_changes_visible_in_clay": true,
-    "crown": "壓低後較平圓，但保留原拓撲折面；中央鋼藍冠燈片較概念短窄。",
-    "chin": "明顯縮短內收，鋼藍頰板與下巴連續，露出黑頸內襯；未見新增頭頸裂口。",
-    "ears": "head03同心圓暗中心金屬耳盤正確落在真正耳側；後腦改為普通鋼藍後蓋，沒有錯置後腦耳環。",
-    "visor": "青面罩連續、三額燈清楚；面罩仍偏淺扁且V形對稱反光較強，概念獨立頰側青窗未重建。",
-    "chest": "body10已是可辨識的高胸中央黑邊青直式服務模組；位置較概念高、體積較小，胸腹放射分片與下方五角板仍保留原版特徵。",
-    "shoulders": "實際肩鰭縮短加厚、前向小青燈可見；仍外張偏長，燈小且靠根，未完整成為概念短直立厚楔與端部矩形燈。",
-    "forearms": "原圓前臂燈改為青矩形服務窗；大腿與肩外圓燈保留家族辨識。",
-    "pose_integrity": "待機、跑動、9張換彈固定取樣與兩關卡4張實機未見顯見新增裝甲裂縫或飛片；換彈分離長方件在原版同樣存在，屬彈匣。"
+    "crown": "head04 藍冠脊由前額連續跨越整頂至後段，已非3ed版孤立藍燈徽；冠殼仍有低面數折角，與概念圓弧有差異。",
+    "chin": "中央下巴與外頰下沿進一步上收、短而連續；黑頸內襯露出，未見新增頭頸開裂。",
+    "ears": "金屬同心圓暗中心耳盤保持真耳位置，獨立青頰窗已在耳前玻璃下方可讀；沒有把頰燈畫在耳盤或後腦。",
+    "visor": "head04 現有青玻璃邊界保留；新增頰燈明確但面窗高度未完成上移，強亮V反光仍在。head05未採用，不引用舊玻璃+35%指標。",
+    "chest": "body12 寬藍成對胸面取代紫色放射斜條，中央青直式服務模組下移成胸中央，框體比概念較小簡化，仍保留紫領塊和五角腹甲。",
+    "shoulders": "整片由根到端為連續上斜寬楔，shoulder04 長青前灯沿實際窄前面可辨；比3ed版細外張鰭明顯改善，但根底外偏及扁片輪廓仍不同。",
+    "forearms": "原圓前臂燈已為青矩形窗，肩外與大腿圓青燈保持家族辨識；四肢幾何仍沿原版。",
+    "pose_integrity": "待機、跑動、9張換彈取樣及兩關卡4張實機未見顯見新增甲片裂口或飛片，外部彈匣是原版換彈物。單張取樣不代表全動畫覆蓋。"
   },
   "blocking_findings": [],
-  "blocking_scope": "No visible new runtime seam/fragmentation blocker in the 64 sampled PNGs; this does not certify exact draft design, unseen views or full continuous animation coverage.",
-  "art_verdict": "Visible draft-driven helmet, true-ear, shoulder and high-chest refinement compared with f94323e4. Suitable for user comparison as an engineering candidate; clear concept-shape and painted-detail residuals remain, not a complete concept reconstruction.",
+  "blocking_scope": "No visible new runtime seam, fragmentation or missing-face blocker in the 64 inspected sampled PNGs. Art residuals remain and exact concept reconstruction has not been accepted; unseen views and continuous animation are not certified.",
+  "art_verdict": "Visible full-crown, true-cheek, broad-paired-chest and continuous-fin refinement relative to the frozen 3ed1c291 draft v2. Engineering candidate for user comparison; glass height/reflection, low-poly curvature, fin angle/thickness and paint density remain visibly different from C08. Not a complete concept reconstruction or user art approval.",
   "residuals": [
-    "短下巴、圓耳盤及壓低冠頂已落地，但頭部仍為原低多邊形折面；中央鋼藍冠片較草稿短窄，圓潤度及面罩高度仍不同。",
-    "青面罩無新增中心裂縫，V形亮紋為貼圖反光；反光對稱較強，玻璃較淺扁，草稿獨立頰側青窗未實作。",
-    "原長肩刺已縮短加厚，前面青燈可見；肩鰭仍較外張、燈較小且靠根，與草稿短直立厚楔及端部矩形燈存在可見差異。",
-    "body10實機可辨識為高胸中央黑邊青服務模組，不將其誤判為頸燈；模組相對草稿偏高且較小，胸腹放射分片與下方五角板保留較多原版造型。",
-    "紫／鋼藍／青的共同畫風與原版短壯比例保留；白色磨邊、紫甲裂紋及黑分線較草稿密和銳，四肢仍有原版甲片輪廓。是否與已核准Viper/Fortune足夠一致仍待使用者評價。",
-    "概念沒有展示背面，後腦封閉後蓋與紫背甲只驗收連貫性；不宣稱隱藏側背完全還原。",
-    "11張動作固定取樣及兩關卡4張實機無顯見新增裝甲破裂，但武器遮胸；未檢查完整連續動畫所有角度、手機螢幕或GPU效能。"
+    "head04 已有全頂鋼藍冠脊、真耳圓盤與獨立青頰窗，下巴也縮短；紫殼及冠脊仍受原低多邊形折面影響，輪廓較草稿扁平、圓潤度不同。",
+    "面罩仍是原有繪製上緣和較矮的青面窗，中央強 V 形對稱反光未完全消除。head05 的過度玻璃稿未採用；未完成上緣移到新 UV polygon 的美術目標。舊「可見玻璃增加35%」指標已撤回，不能用作還原證據。",
+    "肩鰭已由整片原頂點改成連續上斜寬楔、長青前燈可辨，沒有舊 L 形突然直立段；根底仍較外偏、末端仍比草稿短厚直立片更扁，未宣稱逐形一致。",
+    "body12 已消除舊紫色放射胸條，形成雙大藍胸面與胸甲中央下移青服務件；服務框仍比概念簡化、較小，中央紫領塊與下方五角腹甲保留原版構造，不將現在模組誤判為頸燈。",
+    "紫／鋼藍／青配色連續、前臂矩形窗與腿側圓燈保留辨識；白磨邊、硬板縫與腿甲折角仍比草稿密／銳，四肢及原短壯比例尚有明顯原版特徵。",
+    "概念沒有展示背面；後腦封閉後蓋、藍背板與背側青件只檢查连貫性，不宣稱隱藏側背完全還原。",
+    "64張固定取樣沒有顯見新增裝甲裂口或飛片，換彈外部長方物是原版也有的彈匣；武器與背包遮住部分胸背，未檢查完整連續動畫全角度、手機螢幕或GPU效能。"
   ],
-  "user_art_approval": "NOT RUN",
+  "user_art_approval": "PENDING USER REVIEW",
   "browser_interaction": "NOT RUN",
   "browser_limitation": "This reviewer inspected native PNG evidence only; gallery browser interaction was outside this delegated review.",
   "mobile_performance": "NOT RUN",
@@ -1077,5 +1104,35 @@
   },
   "save_unchanged": true,
   "real_save_sha256": "9430dcfff0406db757079fa9ff2034db86b2688a0acab94c8446532694e946e2",
-  "revalidation_rule": "Any runtime scene, canonical texture, target, capture summary or PNG byte change invalidates this report and requires a fresh review of the affected evidence."
+  "revalidation_rule": "Any runtime scene, canonical texture, target, capture summary or PNG byte change invalidates this report and requires a fresh review of the affected evidence.",
+  "draft_refinement_baseline": {
+    "source_commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
+    "snapshot": {
+      "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v3/snapshot.json",
+      "sha256": "dceb6a0fc6706e3a82aaf97ac9f0b50ae0a9d613902be7626a8223c7b0a358fb",
+      "bytes": 33337
+    },
+    "previous_visual_review": {
+      "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/visual_review.json",
+      "sha256": "73f9b44aa8b73942add0593ae9bba72022de2bfe0459b5c406202b9d4d5e13d8",
+      "bytes": 43767
+    }
+  },
+  "glass_height_claim_retracted": {
+    "claim": "Painted visor height increased 35%",
+    "status": "RETRACTED",
+    "reason": "Old measurement sampled purple forehead instead of actual painted cyan glass; selected head04 does not achieve the requested upward glass-boundary repaint."
+  },
+  "geometry_analysis": {
+    "path": "docs/art/atom_runtime_v1/review/geometry_refinement_v3_analysis.json",
+    "sha256": "d7e4b5afac1bc2a555b64f6d524e569200be5644d8bc85d38efda077507a8251",
+    "bytes": 14342
+  },
+  "capture_bindings_verified": {
+    "scene_sha_matches_current": true,
+    "scene_sha_start_end_equal": true,
+    "target_sha_matches_current": true,
+    "canonical_native_sha_matches_capture_start": true,
+    "all_64_png_shas_and_dimensions_match_capture": true
+  }
 }

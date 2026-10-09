@@ -90,14 +90,15 @@
   "shape_file": "tools/armor_runtime_v1/shapes/pegasus.py",
   "preserve_all_geometry": false,
   "accepted_art_status": "runtime_integrated_pending_user_art_review",
-  "geometry_authoring": "Draft-driven head and torso/shoulder fitting from the immutable true original source; topology/UV/skin preserved, total position/dimension budget20%.",
+  "geometry_authoring": "Second draft-fidelity correction from immutable true original source; explicit head and torso/shoulder positions only, total source displacement/dimensions20%, exact UV0/topology/skin.",
   "art_residuals": [
-    "雙冠與下巴已由原頂點縮低、內收；冠頂仍是較寬側眉蓋與中央V階梯，和草稿窄鈍雙軌仍有差距。",
-    "深色面窗連續，前頜已縮短；厚眉與護唇仍佔較大比例，未宣稱草稿逐形一致。",
-    "白領／黑頸與中央黑直槽、藍肩橫帶已套用；胸槽較靠領口且保留共享中分線，槽下白件仍為原長五角輪廓。",
-    "外大腿白板稍延長，但正面黑布露出仍比草稿多；遊戲原短壯比例保留，未改成人比例。",
-    "側背是依原版與草稿延伸，概念只展示斜正面；保留原後腦與腳跟技術紋理。",
-    "15裝備姿勢／9GLB姿勢及64張ANGLE擷取通過；未做完整連續動畫全角度或手機效能實測，美術仍待使用者審閱。"
+    "中央上額板已由分層 V 改成較連續白面，但最低眉下仍留一個小 V 片／黑影；雙外額翼仍是尖厚楔形，未等同草稿低窄鈍雙軌與單一簡潔額面。",
+    "冠上黑通風孔仍較靠屋頂面，未精準落在真正 rail strip；側耳外殼在正側面仍是大塊多邊白板／黑直縫，沒有草稿明確圓耳輪廓。",
+    "面窗讀成一片連續深黑玻璃，下頜較短；厚眉沿、護唇及淺 V 窗形仍占臉較多，沒有宣稱與草稿逐形一致。",
+    "body06 的共享白中隔在無武器前面近照已消失，胸槽讀成一個黑開口；仍可見極細暗中線，槽框／槽體偏高長收腰，槽下白件仍較長五角形，未形成草稿較短矩形服務槽和胸腹比例。",
+    "外大腿白殼下緣稍延長，但正面仍露出較多黑布、仍有原版髖大腿分區；未達草稿較大白甲覆蓋。原短壯比例保留。",
+    "白甲磨邊與細線較銳利；是否足夠接近 Viper／Fortune 的共同手繪風格仍待使用者評價。草稿沒有背面，後腦、背甲與腳跟僅驗收連貫性。",
+    "待機、跑動及九個換彈時間點與區域01／08畫面未見新增甲片飛離或明顯破洞；槍會遮住胸口，未檢查完整連續動畫全角度、手機螢幕與 GPU 效能。"
   ],
   "original_source_snapshot_sha256": "6866d0c6e0096aac19df0dbb966c407054776de26523d198d2031007e9209ed5",
   "source_node_index_sha256": "8092256974d6cd2001033210fa57367dcfb49592e98acff750edae799597e3c7",
@@ -107,5 +108,5 @@
     "ArmorBody_08"
   ],
   "active_helmet_revision": "pegasus_runtime_v1",
-  "active_geometry_revision": "approved_draft_refinement_v2"
+  "active_geometry_revision": "approved_draft_refinement_v3"
 }

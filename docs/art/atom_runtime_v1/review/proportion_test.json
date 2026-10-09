@@ -5,8 +5,8 @@
   "silhouettes": [
     {
       "view": "front",
-      "silhouette_iou": 0.9846952164086242,
-      "silhouette_changed_fraction": 0.01530478359137577,
+      "silhouette_iou": 0.9664285714285714,
+      "silhouette_changed_fraction": 0.033571428571428585,
       "camera_identical": true,
       "pixels": [
         640,
@@ -15,8 +15,8 @@
     },
     {
       "view": "side",
-      "silhouette_iou": 0.9646903574951348,
-      "silhouette_changed_fraction": 0.035309642504865235,
+      "silhouette_iou": 0.9717443257588761,
+      "silhouette_changed_fraction": 0.02825567424112385,
       "camera_identical": true,
       "pixels": [
         640,
@@ -25,8 +25,8 @@
     },
     {
       "view": "rear",
-      "silhouette_iou": 0.9847616467580403,
-      "silhouette_changed_fraction": 0.015238353241959657,
+      "silhouette_iou": 0.9663707112067176,
+      "silhouette_changed_fraction": 0.03362928879328242,
       "camera_identical": true,
       "pixels": [
         640,
@@ -35,8 +35,8 @@
     },
     {
       "view": "quarter",
-      "silhouette_iou": 0.9851459931973907,
-      "silhouette_changed_fraction": 0.014854006802609288,
+      "silhouette_iou": 0.9709320159506627,
+      "silhouette_changed_fraction": 0.029067984049337303,
       "camera_identical": true,
       "pixels": [
         640,
@@ -51,13 +51,13 @@
     "ArmorBody_07"
   ],
   "capture_directory": "docs\\art\\atom_runtime_v1\\review\\engine",
-  "capture_summary_sha256": "2eb9ba50868965fc1108912bde1adbb2b0bb3530ce09d29c186d8d1b1726e34a",
-  "current_scene_sha256": "4cc7e88aa5f70c8c93331699d29a93042c1c4ab53891cd7eaad7512ed9efaad8",
-  "target_sha256": "340dfca8ed5474a7e5e8517cde2cf3f7079a6c94eb313e49ae605501a80e359e",
+  "capture_summary_sha256": "ba8bb01fc5229407bf1c3ab83c5029e25092f747859e143bd357234ba1d2a26a",
+  "current_scene_sha256": "094cdf8fe9061c1ca9d8bb8e914ea23083168b79d6b2d89f94fe0809d6ce0dda",
+  "target_sha256": "a77ffd62243807477a375eb171a4978ffba2f07a6d78a0483687c69d6b3d597b",
   "canonical_diffuse_sha256": {
-    "head": "9d4f789427199081bd038b62301fbf82e67842d2a98e2677655099e77f7931d2",
-    "body": "616151182a74871e3f399ed1df4b3baa1f2edc6bc79ed8998bedcd25004aa15e",
-    "shoulder": "9232eaeb7d2daedb8a2ca7f776137b61057c8265ebe237f78f0c8f74552a23d0",
+    "head": "699b47ec21f99c384b905bb0ce0b43c67e814c5a24b980f541244a3170bd348d",
+    "body": "919bf9e482e338e8d9c96533c2a1cf5fefb04cce94f363b07c18a4c13b9c50fb",
+    "shoulder": "d7ed621cb4856938c5893900ade3d4fc5c88c20d4d7a473c759e8f183b6ab65c",
     "hand": "2e02a9ed4cdc640720b7d669e4e88bb8b9a66923243f16b1d30673113fa4760b",
     "foot": "1f4d440764d94c879ca13e463d1285bd0b69435f70134398a1ee46e27ca815f5"
   },
@@ -67,13 +67,13 @@
       "ArmorBody_07": {
         "bounds_game": {
           "min": [
-            -0.5811006426811218,
+            -0.5919788479804993,
             0.3317036032676697,
-            -0.28902900218963623
+            -0.32126301527023315
           ],
           "max": [
-            0.5807197093963623,
-            1.518799901008606,
+            0.5916432738304138,
+            1.5853227376937866,
             0.26520925760269165
           ]
         },
@@ -90,12 +90,12 @@
           ]
         },
         "dimension_delta_fraction": [
-          0.08081994996033426,
-          0.010421108508077648,
-          0.026393695425191877
+          0.06357136952473352,
+          0.06704337117746273,
+          0.030230396835734252
         ],
-        "max_rest_displacement": 0.09015345384490432,
-        "max_displacement_fraction_of_smallest_dimension": 0.15836866093560842,
+        "max_rest_displacement": 0.11265344047957469,
+        "max_displacement_fraction_of_smallest_dimension": 0.1978934112633324,
         "triangles": 354,
         "uv_preserved": true,
         "original_uv_charts": 10,
@@ -128,7 +128,7 @@
           "new_degenerate_triangles": 0,
           "inherited_degenerate_triangles": 0,
           "coincident_seam_max_rest_gap": 0.0,
-          "min_triangle_normal_cosine_from_original": 0.8432524916361537
+          "min_triangle_normal_cosine_from_original": 0.6503730550354162
         },
         "added_vertex_count": 0,
         "triangle_growth_fraction": 0,
@@ -269,7 +269,7 @@
           ],
           "max": [
             0.295596182346344,
-            1.8694913387298584,
+            1.8799537420272827,
             0.21956589818000793
           ]
         },
@@ -287,11 +287,11 @@
         },
         "dimension_delta_fraction": [
           0.03901202315145036,
-          0.03897291467671937,
+          0.023288928283267785,
           0.0
         ],
-        "max_rest_displacement": 0.09140036173748978,
-        "max_displacement_fraction_of_smallest_dimension": 0.15658082413739033,
+        "max_rest_displacement": 0.07378931097490632,
+        "max_displacement_fraction_of_smallest_dimension": 0.12641078115385512,
         "triangles": 246,
         "uv_preserved": true,
         "original_uv_charts": 4,
@@ -324,7 +324,7 @@
         "geometry_changed": true
       }
     },
-    "stage": "approved_draft_refinement_v2",
+    "stage": "approved_draft_refinement_v3",
     "constraint": "True original source cumulative20% per-part rest displacement/dimensions; exact original UV0, indices, vertex counts, rig and weights.",
     "user_authorized_original_total_limit": 0.2,
     "geometry_mode": "original_source_bounded_refinement",
@@ -333,6 +333,6 @@
       "ArmorBody_07"
     ]
   },
-  "geometry_sha256": "bdab0086ba3544acfab0497dd2bc2a5f901261b82d2f5c1dc3a32370e0f7e017",
+  "geometry_sha256": "c373f525b9e57e5d1ea71065f5a832cdc6766e64fd2990e1e48bb1fbc2492be1",
   "source_sha256": "9301bc56cebea872d086c8ad31308b11537d210cb0629916ff93eefe34b04c43"
 }

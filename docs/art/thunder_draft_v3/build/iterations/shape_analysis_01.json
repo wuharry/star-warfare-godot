@@ -1,0 +1,109 @@
+{
+  "status": "PURE_PYTHON_SOURCE_GEOMETRY_PASSED_ENGINE_AND_ART_REVIEW_PENDING",
+  "revision": "thunder_draft_v3",
+  "source": {
+    "path": "docs/art/thunder_draft_v3/revisions/before_draft_v3/docs/art/thunder_original_v2/head_source.json",
+    "sha256": "0f705e2f53bc6f1d9499935f3d492d21b564d64ad6d9a7107ac507715d282be9"
+  },
+  "shape": {
+    "path": "tools/thunder_draft_v3/shape.py",
+    "sha256": "ad1797712dffe3fa7cc876ee768261e1e7bc3881ba74398b97880aba2a12463e"
+  },
+  "design_authority": {
+    "path": "docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png",
+    "sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c"
+  },
+  "raw_coordinate_convention": "[x, depth, -height]",
+  "physical_coordinate_convention": "[x, height, depth], front is negative depth",
+  "normalizer_original_smallest_dimension_m": 0.521798133850098,
+  "original_bounds": {
+    "min": [
+      -0.260899126529694,
+      1.20758295059204,
+      -0.384403496980667
+    ],
+    "max": [
+      0.260899126529694,
+      2.0508553981781,
+      0.239510923624039
+    ],
+    "size": [
+      0.521798253059388,
+      0.8432724475860602,
+      0.623914420604706
+    ]
+  },
+  "target_bounds": {
+    "min": [
+      -0.260899126529694,
+      1.22574830055237,
+      -0.3791276276111603
+    ],
+    "max": [
+      0.260899126529694,
+      1.9528553981781,
+      0.239510923624039
+    ],
+    "size": [
+      0.521798253059388,
+      0.7271070976257301,
+      0.6186385512351993
+    ]
+  },
+  "max_cumulative_source_displacement_m": 0.09914131328563293,
+  "max_cumulative_source_displacement_fraction": 0.18999936345903876,
+  "maximum_displacement_vertex_ids": [
+    2,
+    4,
+    12
+  ],
+  "head_dimension_absolute_delta_fraction": [
+    0.0,
+    0.13775541972569294,
+    0.008456078582689763
+  ],
+  "changed_vertices": 83,
+  "flipped_triangles": [],
+  "degenerate_triangles": [],
+  "minimum_normal_cosine": 0.8053973115722111,
+  "minimum_triangle_area_ratio": 0.3080565453035516,
+  "original_near_coincident_pairs_checked": 57,
+  "maximum_new_near_coincident_pair_gap_m": 0.0,
+  "triangles": 196,
+  "uv_coordinates": 147,
+  "skin_binds": 28,
+  "preserved_channels": [
+    "uv",
+    "indices",
+    "bone_indices",
+    "weights",
+    "binds"
+  ],
+  "crown_peak_before_m": [
+    0.0,
+    2.0508553981781,
+    0.0992550179362297
+  ],
+  "crown_peak_after_m": [
+    0.0,
+    1.9528553981781,
+    0.0842550179362297
+  ],
+  "peak_above_highest_neighbor_shell_before_m": 0.18346166610718018,
+  "peak_above_highest_neighbor_shell_after_m": 0.03715709684564872,
+  "design_changes": [
+    "Lower original central fin 98mm and move it forward 15mm; raise/widen original adjacent cap planes into a broad ellipsoid without adding topology.",
+    "Lift compact front jaw 58mm maximum and retract it 26mm; slightly lift the old center V-brow frame from original physical points.",
+    "Keep the source ear geometry and all UV, index, bone, weight and bind arrays; inherited body is outside this module and must remain frozen."
+  ],
+  "limits": [
+    "This measures only the true-original head; the inherited bef5b833 body is not covered by a whole-original 20% claim.",
+    "Low-poly triangles cannot exactly reconstruct the B concept dome curvature; this candidate requires actual engine front/side/quarter review.",
+    "Geometric brow displacement is not a painted visor size or concept-fidelity measurement.",
+    "No engine, Blender, texture modification, or asset compile was executed by this pure Python module."
+  ],
+  "target": {
+    "path": "docs/art/thunder_draft_v3/build/head_target.json",
+    "sha256": "25582560c7a174f450bec84312d000b94edcb7f022332150d6a84125fca692e6"
+  }
+}

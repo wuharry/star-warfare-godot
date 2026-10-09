@@ -392,6 +392,29 @@ class NextArmorPipelineTest(unittest.TestCase):
                 PREPARE.prepare("atom")
             self.assertEqual(sentinel.read_bytes(), b"existing original bytes")
 
+    def test_frozen_v2_model_delivery_is_append_only_and_keeps_v2_file_scope(self):
+        for slug in ["atom", "pegasus"]:
+            evidence = CONTRACT.verify_refinement_history(slug)
+            self.assertEqual(evidence["files_verified"], 96)
+            self.assertEqual(evidence["source_commit"], "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9")
+            self.assertEqual(CONTRACT.verify_texture_history(slug)["files_verified"], 96)
+
+    def test_frozen_v2_model_snapshot_index_hash_cannot_be_rebased(self):
+        index = ROOT / "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v3/snapshot.json"
+        original_digest = CONTRACT.digest
+        with patch.object(CONTRACT, "digest", side_effect=lambda path: "0" * 64 if Path(path) == index else original_digest(path)):
+            with self.assertRaisesRegex(AssertionError, "refinement index changed"):
+                CONTRACT.verify_refinement_history("atom")
+
+    def test_frozen_v2_model_image_hash_change_is_rejected_without_touching_history(self):
+        index = ROOT / "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v3/snapshot.json"
+        row = next(row for row in CONTRACT.read(index)["files"] if row["original_path"].endswith("new_head_front.png"))
+        image = ROOT / row["snapshot_path"]
+        original_digest = CONTRACT.digest
+        with patch.object(CONTRACT, "digest", side_effect=lambda path: "0" * 64 if Path(path) == image else original_digest(path)):
+            with self.assertRaisesRegex(AssertionError, "refinement bytes changed"):
+                CONTRACT.verify_refinement_history("pegasus")
+
     def test_stale_engine_export_cannot_create_a_baseline(self):
         output = ROOT / "test_output"
         output.mkdir(exist_ok=True)

@@ -1,0 +1,998 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "design_id": "C-07",
+  "runtime_id": 6,
+  "name": "Thunder",
+  "revision": "thunder_draft_v3",
+  "status": "runtime_integrated_pending_user_art_review",
+  "scope": "Only the true original SW1 head is position-refined within 20% of its original smallest AABB dimension and 20% per-axis dimensions; original UV/index/bones/weights/Skin/transforms remain exact. Body, hands and feet exactly inherit frozen 3ed1c291 (whose body derives from bef5b833); no original-whole-suit 20% claim.",
+  "files": [
+    {
+      "path": "assets/armors/thunder/thunder.scn",
+      "sha256": "c7762f82a92a12c25e120c1f6e2a751d7a117212554c21c110a376b37a4a9b84",
+      "bytes": 869080
+    },
+    {
+      "path": "assets/armors/thunder/textures/draft_head_v3.png",
+      "sha256": "c1c7aa218f76a83cb4fad514fcbb72e3e4857029a6a6822f513d5a8a9cd38765",
+      "bytes": 1927963,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/thunder/textures/draft_head_v3.res",
+      "sha256": "08f7169587f597d09c3510339c5e3b62a8375171d502aaf0847ad41f9e02ca1a",
+      "bytes": 3263624
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/runtime_config.json",
+      "sha256": "fcdbafcc57f2b04e41042e5a0bc4327966910eceaf1480e92b317cf9e68bb133",
+      "bytes": 5111
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/build/head_target.json",
+      "sha256": "7057674caeb8fe17697763b8b499fd766e33c45e30c4189b586a6aee7fdfed4b",
+      "bytes": 69530
+    },
+    {
+      "path": "tools/thunder_draft_v3/shape.py",
+      "sha256": "aa3ed970f48aa3106ba4ec1e905ddd99362c96f6688e5e2f42b453463dd366a8",
+      "bytes": 11348
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/revisions/before_draft_v3/docs/art/thunder_original_v2/head_source.json",
+      "sha256": "0f705e2f53bc6f1d9499935f3d492d21b564d64ad6d9a7107ac507715d282be9",
+      "bytes": 36024
+    },
+    {
+      "path": "assets/models/player/animated/player.gltf",
+      "sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
+      "bytes": 4894930
+    },
+    {
+      "path": "assets/models/player/animated/player.bin",
+      "sha256": "9b1b4a428ae59b19d361f42f8aee762c608d9f174e535e125e0354f37a4c105d",
+      "bytes": 2424908
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/revisions/before_draft_v3/assets/armors/thunder/thunder.scn",
+      "sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7",
+      "bytes": 869138
+    },
+    {
+      "path": "assets/armors/thunder/textures/dce7a1446714.png",
+      "sha256": "436b752b94895b8a7bb5df6cc283db3457a0d518eaefa6862b061aadae1f2e4d",
+      "bytes": 1799358,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets/armors/thunder/textures/d6da6925f6b4.png",
+      "sha256": "0c17892c2a354118a7c7fe2688d48c5a38cf5f16a55b3c0f11c6e0a19add3949",
+      "bytes": 1904308,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets/armors/thunder/textures/df2d0a0b46da.png",
+      "sha256": "32cfab203a11e94fd0bf80c42e4f36f5b1475c8739e97dca0b527a685d539989",
+      "bytes": 1805360,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/thunder/textures/14ceb45bf36d.png",
+      "sha256": "d0868b7e939df0aeebdf303b488b6b3ca127158028acba9d743fea9fc63b50a4",
+      "bytes": 1752445,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets/armors/thunder/textures/blue_shell_paint.png",
+      "sha256": "132e9dd5547c570079e8747324662f3072401083e8500845cfd069be0a656b99",
+      "bytes": 2220952,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/thunder/painted_armor.gdshader",
+      "sha256": "d06e63dbd06da0a3731968f6e655b348e7e1e4853d1544883e0d443ffc3c0bc6",
+      "bytes": 804
+    },
+    {
+      "path": "assets/armors/thunder/hard_surface.gdshader",
+      "sha256": "c350d4479c31205743a17b2e5d2fe4c0e629e4f5307786c6f52ae82042093ddc",
+      "bytes": 1830
+    },
+    {
+      "path": "assets/armors/thunder/thunder_sw2.scn",
+      "sha256": "9f939667c6516ee3e2335cb973abeb7805d6865fd4df6b97821303bcd2661df5",
+      "bytes": 1691983
+    },
+    {
+      "path": "assets/armors/thunder/thunder_prototype.scn",
+      "sha256": "7c37b7917eb161d05c414799abf7981768ef9b76b81f1123f73397e60e5185b3",
+      "bytes": 5201968
+    },
+    {
+      "path": "assets/armors/thunder/textures/original_head_v2.png",
+      "sha256": "55ab873f422aff2b2e79a5efce7ab676198bdc3da6f7010389deb11bfc28bd30",
+      "bytes": 1797950,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/thunder/textures/original_head_v2.res",
+      "sha256": "edc0ce3c9bbcf8885b99b60c261fae9b00c300088d6d2f33a671e36c1792c2fc",
+      "bytes": 3153402
+    }
+  ],
+  "generation": {
+    "path": "docs/art/thunder_draft_v3/generation_inputs.json",
+    "sha256": "339de9f0060e9fd5ff56354e7ea2c5599add047e941b5c8a7da052190fb0ba7f",
+    "bytes": 36247
+  },
+  "selected_generation": {
+    "label": "head",
+    "attempt": 3,
+    "selected": true,
+    "date": "2026-10-09",
+    "variant": "thunder_draft_v3",
+    "tool": "builtin.image_gen",
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-3af0aacd-c966-49a4-b114-e0864ee6f75a.png",
+    "native_generator_path_available": true,
+    "archive": {
+      "path": "docs/art/thunder_draft_v3/generated/head_attempt_03.png",
+      "sha256": "c1c7aa218f76a83cb4fad514fcbb72e3e4857029a6a6822f513d5a8a9cd38765",
+      "bytes": 1927963,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    "canonical": {
+      "path": "assets/armors/thunder/textures/draft_head_v3.png",
+      "sha256": "c1c7aa218f76a83cb4fad514fcbb72e3e4857029a6a6822f513d5a8a9cd38765",
+      "bytes": 1927963,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    "prompt": {
+      "path": "docs/art/thunder_draft_v3/prompts/head_attempt_03.txt",
+      "sha256": "9dd75badc0bfb9ddf254087880e891f2b728c91fe8875e26bb262c6c3bb7c841",
+      "bytes": 6919
+    },
+    "base_prompt": {
+      "path": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "bytes": 4680
+    },
+    "full_prompt": "Use case: precise-object-edit (first production integration of an approved armor design)\nAsset type: opaque flat diffuse/albedo UV atlas for an existing skinned game armor material.\n\nAUTHORITIES AND GOAL\nThe first reference is the immutable original-game atlas: it fixes UV island positions, outlines, scale, orientation, padding and the actual mesh sampling layout. The latest armor concept and any separately specified latest helmet reference fix design identity. Other approved runtime Viper/Fortune atlases fix the shared hand-painted visual language only; do not copy their identifying color or panel designs. Actual mesh-derived UV guides are technical references, never output colors. A whole-body concept is not itself a usable atlas.\nCreate a complete game-ready texture by painting the approved design into the existing original atlas. Retain recognizable differences among armors: dome, visor, guard, shoulder layers and color blocking. Reconstruct each part within the actual UV charts rather than drawing a second character or repacking charts. A newer helmet-only reference overrides an older body concept for the head alone.\n\nSHARED VISUAL LANGUAGE\nUse broad, softly shaded hand-painted armor planes, restrained edge accents and sparse corner wear. Retain readable dark cloth around human joints, separate helmet glass from opaque framing, and keep clear major color blocks at gameplay distance. Match current Viper/Fortune in contrast, highlight size and detail density while keeping this armor's approved identity. Avoid dense cracks, uniform bright white outlines, chrome, photographic reflections, high-frequency noisy wear or flat solid-color placeholder shading. Glass uses a controlled broad reflection without excessive bloom or multiple bright center columns.\n\nUV AND GEOMETRY CONTRACT\nKeep every original island in exactly the same normalized location, outline, orientation and scale. Preserve padding and mirrored joining-edge continuity. Do not repack, split, merge, rotate or invent islands. A mirrored shared join must not be painted as a dark exterior border. Paint design changes only within the actual relevant charts; do not transfer a helmet vent onto an ear or a forehead onto the rear.\nThe asset pipeline separately fits the existing head geometry where needed. Total differences must be measured against this armor's true original glTF source, not against another armor or an intermediate candidate. The allowed ceiling is 20% for original-normalized displacement, per-axis dimensions, gray silhouette difference and changed UV-coordinate fraction per material. This is a maximum engineering budget, not an additional20% per pass, an image-similarity score or a repaint-area restriction. Preserve original vertex/UV coordinate/chart counts, triangle indices, Skin binds, 28-bone rig, bone names, weights, transforms and original animation tracks. Prefer unchanged UV coordinates; only apply measured local changes if actually needed. Keep body/limb geometry unless a necessary design correction is separately measured and recorded. Do not change armor IDs, gameplay statistics, skills, inventory or backpack routing.\n\nNATIVE OUTPUT\nReturn only the full edited flat opaque square atlas at the target framing, retaining opaque padding and island outlines. No perspective, character render, turnaround, rearranged art sheet, technical lines/colors, captions, text, logos or watermark. Use painted brightness suitable for the existing unshaded diffuse material; do not rely on metalness, normal or roughness maps. Save all raw native generation attempts and copy selected PNG bytes unchanged without post-generation painting, tinting, cropping or resampling.\n\nREQUIRED PROVENANCE AND VERIFICATION\nSave this entire base plus the exact armor/material addendum as the actual prompt sent. Freeze all input images with SHA256 and explicit role, retain every attempt and the selected native source/archive hash, and map each of five atlases to the correct original node/surface. Validate the actual SCN, exported GLB embedded RGB and packed Blender master; do not certify an old build after a texture or geometry change. Inspect original/current front, quarter, side, rear, gameplay distance and idle/run/reload with matching camera and pose. Check original-source total20%, UV counts/layout, skeleton, weights, source/target consistency and topology quality. Update the production loader and the shared comparison page using real runtime captures. First integration has original-vs-new runtime comparison plus a separate design reference; never label a concept as an earlier runtime model. Engineering PASS and pending user art review remain separate.\n\n\nTHUNDER C07 — TARGETED BLACK NECK CHART COVERAGE REPAIR\nReferences: Image1 is the immutable TRUE ORIGINAL SW1 atlas and exact UV-layout authority. Image2 is the selected recent native atlas; preserve its blue crown, blue ear/gold service accents, warm orange visor, blue cheeks and compact chin unchanged. Image3 is the user-confirmed current-gallery B draft. Image4 is the actual rear model diagnosing a mapped-texture defect. Output only the complete square flat opaque atlas. Keep all original normalized UV charts, outlines, locations, orientations, scale, mirrored joins and padding. Do not crop, repack, move charts or render a character.\nMake one precise material correction to Image2: its bottom-right BLACK neck/underside rectangular chart is too short. The source chart's lower vertices reach normalized V=0.989; Image2's black ends around V=0.92 and leaves gray padding which becomes the BIG GRAY PANEL below the helmet on Image4. Restore the COMPLETE original black rectangle coverage: the entire lower-right region from normalized U=0.46 through 1.00 and V=0.84 through 1.00 must be opaque very dark charcoal/black like Image1, including the bottommost edge. This is an actual sampled black under-helmet/neck surface, not unused padding. Paint the whole rectangle with a continuous near-black charcoal base, only a subtle broad black cloth shadow if needed. No gray bottom strip, gray exposed gaps, blue or gold outlines, labels or background canvas inside this rectangle. Original neighboring left chin/cheek charts must remain unchanged.\nKeep Image2's rest of the blue/gold head atlas and its material sampling boundaries unchanged: do not repaint the crown, add fins, rearrange the visor or increase scratches. The geometry is already separately fitted and bounded. Gold glass remains ONE continuous warm orange-gold pane without two eye grooves or a center dark seam. Crown stays navy/steel blue, quiet softly shaded hand-painted planes in Viper/Fortune language. Keep original black padding opaque. Final image must be usable as game diffuse unchanged, with the exact original bottom-right rectangle fully black to avoid the visible gray-neck artifact. No technical marks, watermark, text or postprocessing required.\n",
+    "references": [
+      {
+        "input": {
+          "path": "assets/models/player/animated/armor_textures/09_head_1d5d05de7b53_2x.png",
+          "sha256": "f53dedd36d57f5f5613ef149370349944363fa76c61963b52f739911e72063bc",
+          "bytes": 316231,
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        "snapshot": {
+          "path": "docs/art/thunder_draft_v3/generation_references/attempt_03/0_09_head_1d5d05de7b53_2x.png",
+          "sha256": "f53dedd36d57f5f5613ef149370349944363fa76c61963b52f739911e72063bc",
+          "bytes": 316231,
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        "role": "true_original_uv_layout_authority"
+      },
+      {
+        "input": {
+          "path": "docs/art/thunder_draft_v3/generated/head_attempt_02.png",
+          "sha256": "93af5cadb454a77d6ff5d7b3a76161d616b8a6be83ed99c6abc2e090c595ad87",
+          "bytes": 1827476,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        "snapshot": {
+          "path": "docs/art/thunder_draft_v3/generation_references/attempt_03/1_head_attempt_02.png",
+          "sha256": "93af5cadb454a77d6ff5d7b3a76161d616b8a6be83ed99c6abc2e090c595ad87",
+          "bytes": 1827476,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB"
+        },
+        "role": "previous_native_atlas_material_mapping_only"
+      },
+      {
+        "input": {
+          "path": "docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png",
+          "sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
+          "bytes": 1584536,
+          "dimensions": [
+            1145,
+            1374
+          ],
+          "mode": "RGB"
+        },
+        "snapshot": {
+          "path": "docs/art/thunder_draft_v3/generation_references/attempt_03/2_b_mk1_reference_helmet_v2.png",
+          "sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
+          "bytes": 1584536,
+          "dimensions": [
+            1145,
+            1374
+          ],
+          "mode": "RGB"
+        },
+        "role": "current_gallery_preferred_art_design_authority"
+      },
+      {
+        "input": {
+          "path": "docs/art/thunder_draft_v3/review/iterations/attempt_02/engine/new_head_rear.png",
+          "sha256": "fc11b4473332cba4af74c8f7f472db861090b0d69f67bfc9b1fff6db165d9be9",
+          "bytes": 625801,
+          "dimensions": [
+            800,
+            960
+          ],
+          "mode": "RGBA"
+        },
+        "snapshot": {
+          "path": "docs/art/thunder_draft_v3/generation_references/attempt_03/3_new_head_rear.png",
+          "sha256": "fc11b4473332cba4af74c8f7f472db861090b0d69f67bfc9b1fff6db165d9be9",
+          "bytes": 625801,
+          "dimensions": [
+            800,
+            960
+          ],
+          "mode": "RGBA"
+        },
+        "role": "actual_previous_runtime_mapping_diagnostic"
+      }
+    ],
+    "postprocessing": "none; native PNG copied byte-for-byte to archive and canonical",
+    "status": "native_integrated_visually_reviewed_pending_user_art_review",
+    "scope": "true-original Thunder head only, exact UV/topology/skin; source position and dimension limit20%; body inherits frozen3ed unchanged, no original-whole-suit percentage",
+    "selection_reason": "Actual final45 ANGLE images reviewed; lower-right neck chart coverage repaired, no current integration blockers; B draft residuals retained in visual_review."
+  },
+  "design_authority": {
+    "path": "docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png",
+    "sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
+    "bytes": 1584536,
+    "dimensions": [
+      1145,
+      1374
+    ],
+    "mode": "RGB"
+  },
+  "previous_original_based_delivery": {
+    "path": "docs/art/thunder_draft_v3/revisions/before_draft_v3/snapshot.json",
+    "sha256": "8ef68f9c7d9e67b32d01c1632bdf765debc527117f872e1a56c8ab00c02c09fb",
+    "bytes": 42079,
+    "source_commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
+    "files_verified": 126
+  },
+  "geometry": {
+    "scope": "true_original_head_only",
+    "parts": {
+      "ArmorHead_06": {
+        "dimension_change_fractions": [
+          0.0,
+          0.0,
+          0.141312931145869
+        ],
+        "immutable_native_channels_and_serialized_buffers_exact": true,
+        "max_dimension_change_fraction": 0.141312931145869,
+        "max_displacement_fraction_of_smallest_dimension": 0.194507724298923,
+        "max_rest_displacement": 0.101493790745735,
+        "normalizer_original_smallest_dimension_m": 0.521798253059387,
+        "skin_binds": 28,
+        "triangles": 196,
+        "uv_changed_fraction": 0.0,
+        "uv_coordinates": 147
+      }
+    }
+  },
+  "uv_summary": {
+    "scope": "head_only",
+    "original_coordinate_count": 147,
+    "changed_coordinate_count": 0,
+    "changed_coordinate_fraction": 0.0
+  },
+  "topology": {
+    "triangles": 6574,
+    "head_triangles": 196,
+    "head_uv_coordinates": 147,
+    "original_bones": 28,
+    "parts": 4,
+    "note": "整套身甲沿用 3ed；20% 限制只衡量真正原版頭部的累積位移與軸尺寸。"
+  },
+  "body_baseline": {
+    "commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
+    "scene_sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7",
+    "three_parts_native_buffers_materials_skin_transform_unchanged": true
+  },
+  "metric_scope": "Head position/dimension budgets are cumulative from true-original SW1. All original head UV/index/skin/weights/transforms remain exact. Body/limbs match frozen 3ed; no original-whole-suit20% or concept-likeness percentage is claimed.",
+  "tests": {
+    "compile_bounded_head_and_preserved_body": {
+      "status": "PASS",
+      "file": {
+        "path": "docs/art/thunder_draft_v3/build/compile_report.json",
+        "sha256": "dd391d6aa4f9b3967bd5f942a294fb47876c89744e2013ae36e5a75c27ff04f6",
+        "bytes": 3099
+      }
+    },
+    "runtime_equips_skin_uv_store_and_animation": {
+      "status": "PASS",
+      "file": {
+        "path": "docs/art/thunder_draft_v3/review/runtime_test.json",
+        "sha256": "fb7b0ce0a6cada9ade6ff3475a9f9f02b336d666e5b264292478185b771ac388",
+        "bytes": 4002
+      }
+    },
+    "independent_original_source_target_contract": {
+      "status": "PASS",
+      "file": {
+        "path": "docs/art/thunder_draft_v3/review/independent_head_contract.json",
+        "sha256": "c67e1dbdf8f1ec2fbaf3a73cf0ca7c218a81d4f911b67b7e77cefc7817245f77",
+        "bytes": 1245
+      }
+    }
+  },
+  "captures": [
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_full_front.png",
+      "sha256": "fb9a1c2ff913ad173fff0a794eccbc8e50a7279d31ff7f8ab95e40389aa3bd3d",
+      "bytes": 316153,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "full_front",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_full_front.png",
+      "sha256": "c59861d418021a5ff66ff92c556a746eadc73baff91413a6aee43ec30e626ce1",
+      "bytes": 339652,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "full_front",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_full_front.png",
+      "sha256": "3bb8758092aca48f6757336d3690e424ea8d10121c9b4ad32a032165f111f835",
+      "bytes": 351098,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "full_front",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_full_side.png",
+      "sha256": "f2b15366948eca90966228c09909e524d1cc15ee8dfe04e7944f112e91a0778c",
+      "bytes": 357410,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "full_side",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_full_side.png",
+      "sha256": "5ed1a0bc930ec198276fd5c27a8fd9eac35da92fa43f778c59ec248e00954652",
+      "bytes": 393759,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "full_side",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_full_side.png",
+      "sha256": "2bff484d5c46de31f8cc3c2b383e14c5a1d4fb5afbc8980ce8f2b6582a78eb0a",
+      "bytes": 401662,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "full_side",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_full_rear.png",
+      "sha256": "c02e416ab570ccbef1ff32ec137fd90298d8a92cdb3ffeefdea1a857ca57861b",
+      "bytes": 297182,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "full_rear",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_full_rear.png",
+      "sha256": "bed6d21d52a61ea9b26b341cf971d7d20433e01b358a391eeda5e598055ef1ff",
+      "bytes": 332896,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "full_rear",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_full_rear.png",
+      "sha256": "d5216e1a9e005101b986d176fd27b9c48c9658e6fc2fcf8a6dc677dc778324a7",
+      "bytes": 344019,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "full_rear",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_full_quarter.png",
+      "sha256": "3c0c24330ae8c7c7377d951a8401c8a709050763f5bfcb215f33ab0f7cc78ee1",
+      "bytes": 373367,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "full_quarter",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_full_quarter.png",
+      "sha256": "a23cee4e99e9bc75eaad357306fbcab5ed5ce28b8572b8d2c323ca6e16b5d769",
+      "bytes": 407304,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "full_quarter",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_full_quarter.png",
+      "sha256": "0395bc11f837023a2781d3c57b6a1191d8e6c9997e3c603c0e7fc2575e9a8806",
+      "bytes": 418067,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "full_quarter",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_head_front.png",
+      "sha256": "d21fb4f16a429ba4b5775145d633df70fafa79f1fba5ce26adf6cbe6fe79febd",
+      "bytes": 621026,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "head_front",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_head_front.png",
+      "sha256": "d4f50849a8d8115e02becb80c59cb02fed1081b597dd6b82a0924ab478fdf938",
+      "bytes": 635538,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "head_front",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_head_front.png",
+      "sha256": "8eb95ffbca35d91de8e2e302409ae97230536866bf49dc97536a9e3b212e8c38",
+      "bytes": 695375,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "head_front",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_head_side.png",
+      "sha256": "7407bff7cde9ae3ef736a4e1fca563bae7febee30c950cccab15f382d6c700b3",
+      "bytes": 673150,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "head_side",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_head_side.png",
+      "sha256": "7097e4990038f96983ee3dc0c111218481a39147b8b9fd673b6c702b1f1e4763",
+      "bytes": 684234,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "head_side",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_head_side.png",
+      "sha256": "9c676c9c6561761171f8cbd57676b15ebe2cdfdd824b6ed9a08cce1b9e258b71",
+      "bytes": 731435,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "head_side",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_head_rear.png",
+      "sha256": "507c436b2d6e73c4ef69f633872a6cd1f1e584d7136ea5b3f9b1f123cf98e506",
+      "bytes": 564383,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "head_rear",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_head_rear.png",
+      "sha256": "777b2e44fb40171d28bf361d783263b8653b872329c0cee527aecf2f20162222",
+      "bytes": 583056,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "head_rear",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_head_rear.png",
+      "sha256": "27ef274bb2a93c201497a1101e2e4fef3f97f3ca6c069e028ccc647195fabcc0",
+      "bytes": 639428,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "head_rear",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_head_quarter.png",
+      "sha256": "2f193a9eb846fd045841fea1b657982d2b05ae9d6a2d5267aa5e0ee0e53e0ca3",
+      "bytes": 644340,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "head_quarter",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_head_quarter.png",
+      "sha256": "009f08244cbbc5ebd440e8f689c0858ed6367dc0b02d492f88e8f35d87290d90",
+      "bytes": 666586,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "head_quarter",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_head_quarter.png",
+      "sha256": "2606b11c7fe87a4798d2cd1b8d3b24eacff8b0952627631fb0f83aed1ab68a6f",
+      "bytes": 722597,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "head_quarter",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_clay_front.png",
+      "sha256": "da4a307e7396ca03217a5a888859070d78146fd5c1abce8b015f3db2c32e82ab",
+      "bytes": 39347,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "clay_front",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_clay_front.png",
+      "sha256": "67c193af9906b0331faf953bc426c6ca97030e123cc5a4150ea70e929ebf6127",
+      "bytes": 49068,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "clay_front",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_clay_front.png",
+      "sha256": "14f64f9419e1c8ee96bedd23e6dd1b73a37e898452ba500af7a61d38a7414b72",
+      "bytes": 48690,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "clay_front",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_clay_side.png",
+      "sha256": "552fa25dd06e38645e1fd47e10d487dc0a73ca1d19a68f9c25e94a54a4e4c561",
+      "bytes": 46846,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "clay_side",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_clay_side.png",
+      "sha256": "ba871f8f9a838d1e118771f11055b55ac0aeb86b3701442bd39a3d43225dbd01",
+      "bytes": 58394,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "clay_side",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_clay_side.png",
+      "sha256": "48fcf9a6e882d7c1f4134db4dba4ac043d9e868bfbabbfced0dc22acb07f9000",
+      "bytes": 56853,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "clay_side",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_idle.png",
+      "sha256": "ef64c88259f2e514c1403f0cb274d62cd671214a6482bb19a4814e06c6d506bf",
+      "bytes": 395892,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "idle",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_idle.png",
+      "sha256": "7e1de28f850102764f3aaa3e5afb3a1e047e541ea14d4f2fd41e3844e3a07721",
+      "bytes": 424784,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "idle",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_idle.png",
+      "sha256": "b1f1dca49d023d1d6b1883900f9913282ebcd5d51f4cc99eff413975b8e11624",
+      "bytes": 435377,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "idle",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_run.png",
+      "sha256": "1b7be063c348aa3a561d65c38b1ab67ae1579d8f5c546b748c6f9a2029d0213b",
+      "bytes": 417201,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "run",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_run.png",
+      "sha256": "6d2036a6d4354373871014984892d3255962e59f11127288ea84eab1c3c31ade",
+      "bytes": 439430,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "run",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_run.png",
+      "sha256": "b34e539a71b4bf1aade38009e97c91ef2207b67042586c67a935faf8d5dcfbe3",
+      "bytes": 452500,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "run",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_reload.png",
+      "sha256": "6b9631adf4276ceebb7b8c10f76c48dfdbae37609e2c3151c8c8fb55677e674d",
+      "bytes": 419291,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "reload",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_reload.png",
+      "sha256": "fca1e63ca214b5daa8c75184115a9a7b474924193ca6d872a2d86276bac56011",
+      "bytes": 438656,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "reload",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_reload.png",
+      "sha256": "5818f7a108e63ba726f307de45eea93c32f169c17254508063d89765093f472b",
+      "bytes": 444989,
+      "dimensions": [
+        800,
+        960
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "reload",
+      "controlled_pair": true
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_game_level_1.png",
+      "sha256": "05b0f5183f8fe530c4d7f9d532a7f783c446c98c84dbbcc2d7361d952fa761f8",
+      "bytes": 1406302,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "game_level_1",
+      "controlled_pair": false
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_game_level_1.png",
+      "sha256": "7b7e1eb67b38f113a5a03187d875a3fb6c62643206f6d1df4361abab3ccefcd1",
+      "bytes": 1423089,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "game_level_1",
+      "controlled_pair": false
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_game_level_1.png",
+      "sha256": "7b45d8660a466626fe73810d2e203e1f88278eda26f89ce51e84c8a70ea93b71",
+      "bytes": 1421307,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "game_level_1",
+      "controlled_pair": false
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/original_game_level_3.png",
+      "sha256": "aef66dee3173f0bb71cae1357f55e6e06bce9f425c44893a68aa4b46abcb0c95",
+      "bytes": 1011829,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "version": "original",
+      "view": "game_level_3",
+      "controlled_pair": false
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/before_game_level_3.png",
+      "sha256": "8b600c1bf6904bcdc1548c9d81bd4e800a9b5b206cd7766546ac6fa9b418a861",
+      "bytes": 1027081,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "version": "before",
+      "view": "game_level_3",
+      "controlled_pair": false
+    },
+    {
+      "path": "docs/art/thunder_draft_v3/review/engine/new_game_level_3.png",
+      "sha256": "e198488c950e355bc9b797985071c4ed236c97158b45503f253a5fd8a709ff66",
+      "bytes": 1026243,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "version": "new",
+      "view": "game_level_3",
+      "controlled_pair": false
+    }
+  ],
+  "capture_summary": {
+    "path": "docs/art/thunder_draft_v3/review/engine/capture.json",
+    "sha256": "34e37be9ba290a15719da321efdf915bf66b93eb8284526e40ffb09b0acf07e8",
+    "bytes": 35876
+  },
+  "visual_review": {
+    "path": "docs/art/thunder_draft_v3/review/visual_review.json",
+    "sha256": "fc1baf7b78b7e241e6b21072cb9768772b5964b4fb03faa3fb52cec37cfde3e1",
+    "bytes": 32230
+  },
+  "residuals": [
+    "冠頂及額甲仍受真正原版 147 頂點／196 三角形限制，存在明顯折面和較平頂段；B 草稿的流暢圓殼曲面未完全重建。",
+    "大尖三角後鰭已去除，但側／背近景仍可见極細後冠邊尖端，尚非完全貼合的圓滑冠帶。",
+    "金色面窗上緣、整條 V 眉帶與 B 草稿的細中央冠舌仍不同；不能宣稱面窗面積或輪廓完全一致。",
+    "下巴黑框已較之前緊湊，但黑色矩形排氣模組和藍色周框仍比 B 草稿厚重。",
+    "後頸灰 padding 錯貼已修正；黑色頸區與棕色既有領口仍是簡單原模型接合，沒有製成 B 草稿完整分層頸環。",
+    "身甲、手與腿嚴格繼承 3ed 凍結版本，本輪只改頭部，沒有把 B 全身概念重新塑形成全套遊戲模型。",
+    "僅檢查 45 張静態採樣及已有 9 個姿勢工程採樣，尚未完成玩家實際全動畫／所有武器／所有光照和行動裝置評價。"
+  ],
+  "art_acceptance": "NOT RUN",
+  "browser_interaction": "NOT RUN",
+  "mobile_performance": "NOT RUN",
+  "capture_driver_evidence": {
+    "driver": "opengl3_angle",
+    "renderer_banner": "OpenGL API OpenGL ES 3.0 (ANGLE 2.1.1 git hash: aaebda1c5a40) - Compatibility - Using Device: Google Inc. (NVIDIA) - ANGLE (NVIDIA, NVIDIA GeForce RTX 4080 Laptop GPU (0x000027A0) Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.9579)",
+    "log": {
+      "path": "docs/art/thunder_draft_v3/review/draft_v3_angle_capture.log",
+      "sha256": "0a5db537e0a835417a1f5d0c5a6e3d8465980c07a5b8b6f3b537fda402b8cf86",
+      "bytes": 359
+    }
+  }
+}

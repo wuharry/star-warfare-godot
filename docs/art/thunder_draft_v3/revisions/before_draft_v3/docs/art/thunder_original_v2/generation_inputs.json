@@ -1,0 +1,92 @@
+[
+  {
+    "label": "head",
+    "attempt": 1,
+    "selected": true,
+    "date": "2026-10-08",
+    "tool": "built-in image_gen.imagegen",
+    "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-53ceea1b-de51-4fa9-b90d-c955fe8a9141.png",
+    "native_generator_path_available": true,
+    "archive": {
+      "path": "docs/art/thunder_original_v2/generated/head_attempt_01.png",
+      "sha256": "55ab873f422aff2b2e79a5efce7ab676198bdc3da6f7010389deb11bfc28bd30",
+      "bytes": 1797950,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    "canonical": {
+      "path": "assets/armors/thunder/textures/original_head_v2.png",
+      "sha256": "55ab873f422aff2b2e79a5efce7ab676198bdc3da6f7010389deb11bfc28bd30",
+      "bytes": 1797950,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    "prompt": {
+      "path": "docs/art/thunder_original_v2/prompts/head_attempt_01.txt",
+      "sha256": "e74a706b81ab80582c3f9375798e1bfc8ac392af4bdaadf446fe70919ebd695d",
+      "bytes": 3298
+    },
+    "full_prompt": "Use case: precise-object-edit.\nAsset type: production opaque diffuse UV atlas for the ORIGINAL Star Warfare Thunder helmet, not concept art.\nPrimary request: derive a refreshed Thunder helmet texture directly from Image 1, the true original game atlas. Keep its distinctive original fin-crown helmet identity, orange-gold visor, steel/navy blue shell, circular ear device and gold rear accents. Make it feel like the same original game's hand-painted armor family, with cleaner and better considered panel treatment. The actual original low-poly mesh and all UV coordinates are locked. This is NOT the recently rejected rounded SW2 helmet redesign.\nInput images: Image 1 is the EDIT TARGET and sole layout/shape authority, assets/models/player/animated/armor_textures/09_head_1d5d05de7b53_2x.png. Image 2 is an approved Thunder whole-body palette and soft painted shading reference ONLY, docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png. Do not draw Image 2's character or transfer its helmet silhouette or proportions into the atlas.\nComposition: return only the same square flat atlas. Image 1 is a half-head side-oriented mirrored layout: FRONT visor at lower left; crown and long swept upper shell above it; circular ear in lower-middle-right; rear shell toward upper/right; lower left cheek/jaw below the visor. Keep every normalized outline, feature position, island, opening, seam and opaque unused padding registered exactly to Image 1. Do not repack, rotate, move, scale, split, invent or crop islands. Keep mirrored front edges continuous, no center black seam.\nDesign changes within existing panels: refine steel-blue shell planes with broader cleaner beveled panel shapes, soften thin high-contrast scratch networks, make ear hardware read as a compact blue circular fitting with restrained gold ring segments. Keep the existing compact covered chin and dark neck. Retain original crown fin and gold rear circuit-like accents, simplify them slightly without relocating them. No new forehead gold crest, respirator, mouth grille, huge chin or separate floating plates.\nVisor: preserve precisely the original single gold-orange glass area and boundary. Paint one continuous broad warm reflection and smooth amber lower shading. Remove any pair of dark golden curved grooves, eye-like indents, vertical twin columns, center black split or false raised bars. Do not paint unrelated blue panels over the visor.\nShared art style: broad softly shaded hand-painted low-poly armor planes, restrained exposed-edge accents, sparse deliberate corner wear, readable blue-vs-gold blocks at game distance, moderate contrast matching the approved Thunder body and current Viper/Fortune family. No photoreal chrome, dense grunge, fine noisy cracks, neon bloom or white outlines around every edge. Suitable for the existing UNLIT diffuse game material; brightness is painted, not dependent on normal/roughness maps.\nOutput: only the full edited flat square opaque atlas, high quality raster painting with the exact input framing. No 3D render, character, background scene, lighting rig, technical guide lines, labels, text, logo or watermark. Preserve original UV registration rather than redrawing a generic helmet. Return native image bytes for direct use on the original mesh.\n\r\n",
+    "references": [
+      {
+        "input": {
+          "path": "assets/models/player/animated/armor_textures/09_head_1d5d05de7b53_2x.png",
+          "sha256": "f53dedd36d57f5f5613ef149370349944363fa76c61963b52f739911e72063bc",
+          "bytes": 316231,
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        "snapshot": {
+          "path": "docs/art/thunder_original_v2/generation_references/original_head_atlas.png",
+          "sha256": "f53dedd36d57f5f5613ef149370349944363fa76c61963b52f739911e72063bc",
+          "bytes": 316231,
+          "dimensions": [
+            512,
+            512
+          ],
+          "mode": "RGBA"
+        },
+        "role": "sole_layout_shape_and_original_helmet_authority"
+      },
+      {
+        "input": {
+          "path": "docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png",
+          "sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
+          "bytes": 1584536,
+          "dimensions": [
+            1145,
+            1374
+          ],
+          "mode": "RGB"
+        },
+        "snapshot": {
+          "path": "docs/art/thunder_original_v2/generation_references/body_palette_reference.png",
+          "sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
+          "bytes": 1584536,
+          "dimensions": [
+            1145,
+            1374
+          ],
+          "mode": "RGB"
+        },
+        "role": "body_palette_and_soft_painted_shading_only_no_helmet_shape_transfer"
+      }
+    ],
+    "postprocessing": "none; native output copied byte-for-byte to archive and canonical PNG",
+    "visual_review": {
+      "path": "docs/art/thunder_original_v2/visual_review.json",
+      "sha256": "6906118e2a9c7f0baed4d7282e0cf11b95d3aca36ff2f67579689a1d9472c4b9",
+      "bytes": 25297
+    },
+    "scope": "native opaque diffuse atlas mapped onto unchanged true-original Thunder head geometry/UV"
+  }
+]

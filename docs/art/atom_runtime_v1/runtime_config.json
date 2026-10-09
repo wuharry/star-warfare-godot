@@ -89,15 +89,16 @@
   "original_total_uv_changed_fraction_per_surface_limit": 0.2,
   "shape_file": "tools/armor_runtime_v1/shapes/atom.py",
   "preserve_all_geometry": false,
-  "accepted_art_status": "runtime_integrated_pending_user_art_review",
-  "geometry_authoring": "Draft-driven head and torso/shoulder fitting from the immutable true original source; topology/UV/skin preserved, total position/dimension budget20%.",
+  "accepted_art_status": "engineering_candidate_pending_user_art_review",
+  "geometry_authoring": "Second draft-fidelity correction from immutable true original source; explicit head and torso/shoulder positions only, total source displacement/dimensions20%, exact UV0/topology/skin.",
   "art_residuals": [
-    "原頭部已縮短下巴、壓低冠頂，六點耳蓋側視比例從約1.96:1改為1.19:1；金屬耳盤已畫回真正耳蓋，仍保留低多邊形外殼輪廓。",
-    "紫頂／鋼藍冠燈、三額燈與青玻璃已呈現；中央鋼藍冠區較草稿短，玻璃的V形對稱反光較強，缺少草稿的獨立青色頰窗。",
-    "長肩刺改成較短厚的楔形鰭，前面青燈可見但小且靠根，仍較草稿外張，未宣稱草稿肩部逐形一致。",
-    "body10實機是一個高胸青服務模組，已非舊領口燈或低胸燈；相對理想UV標示仍偏高，胸甲放射分片與下方五角板保留較多原版特色。",
-    "前臂圓燈改為矩形窗；白色磨邊與紫裂紋仍較草稿密。背面沿原版推定，概念未展示隱藏側背，不能稱完全還原。",
-    "15裝備姿勢／9GLB姿勢及64張ANGLE擷取通過；未做完整連續動畫全角度或手機效能實測，美術仍待使用者審閱。"
+    "head04 已有全頂鋼藍冠脊、真耳圓盤與獨立青頰窗，下巴也縮短；紫殼及冠脊仍受原低多邊形折面影響，輪廓較草稿扁平、圓潤度不同。",
+    "面罩仍是原有繪製上緣和較矮的青面窗，中央強 V 形對稱反光未完全消除。head05 的過度玻璃稿未採用；未完成上緣移到新 UV polygon 的美術目標。舊「可見玻璃增加35%」指標已撤回，不能用作還原證據。",
+    "肩鰭已由整片原頂點改成連續上斜寬楔、長青前燈可辨，沒有舊 L 形突然直立段；根底仍較外偏、末端仍比草稿短厚直立片更扁，未宣稱逐形一致。",
+    "body12 已消除舊紫色放射胸條，形成雙大藍胸面與胸甲中央下移青服務件；服務框仍比概念簡化、較小，中央紫領塊與下方五角腹甲保留原版構造，不將現在模組誤判為頸燈。",
+    "紫／鋼藍／青配色連續、前臂矩形窗與腿側圓燈保留辨識；白磨邊、硬板縫與腿甲折角仍比草稿密／銳，四肢及原短壯比例尚有明顯原版特徵。",
+    "概念沒有展示背面；後腦封閉後蓋、藍背板與背側青件只檢查连貫性，不宣稱隱藏側背完全還原。",
+    "64張固定取樣沒有顯見新增裝甲裂口或飛片，換彈外部長方物是原版也有的彈匣；武器與背包遮住部分胸背，未檢查完整連續動畫全角度、手機螢幕或GPU效能。"
   ],
   "original_source_snapshot_sha256": "73f3272363d1b345858f83874d922a8d6a7b22c93d64aa5fe43ae87e75f0347d",
   "source_node_index_sha256": "07ed03b1149f1c2371c27a7039b371e27efdbefb363d62f6cf2d0aa37cbe485f",
@@ -107,5 +108,5 @@
     "ArmorBody_07"
   ],
   "active_helmet_revision": "atom_runtime_v1",
-  "active_geometry_revision": "approved_draft_refinement_v2"
+  "active_geometry_revision": "approved_draft_refinement_v3"
 }

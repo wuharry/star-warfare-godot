@@ -1,0 +1,338 @@
+{
+  "status": "PASS",
+  "scope": "Geometry silhouettes only; does not measure texture likeness or artistic approval.",
+  "limit": 0.2,
+  "silhouettes": [
+    {
+      "view": "front",
+      "silhouette_iou": 0.9727019543841701,
+      "silhouette_changed_fraction": 0.027298045615829936,
+      "camera_identical": true,
+      "pixels": [
+        640,
+        720
+      ]
+    },
+    {
+      "view": "side",
+      "silhouette_iou": 0.9513473812177085,
+      "silhouette_changed_fraction": 0.048652618782291546,
+      "camera_identical": true,
+      "pixels": [
+        640,
+        720
+      ]
+    },
+    {
+      "view": "rear",
+      "silhouette_iou": 0.9727017327335618,
+      "silhouette_changed_fraction": 0.027298267266438248,
+      "camera_identical": true,
+      "pixels": [
+        640,
+        720
+      ]
+    },
+    {
+      "view": "quarter",
+      "silhouette_iou": 0.9770128814759388,
+      "silhouette_changed_fraction": 0.022987118524061212,
+      "camera_identical": true,
+      "pixels": [
+        640,
+        720
+      ]
+    }
+  ],
+  "inferred": "Approved concept guides positions in the explicitly configured original parts: ArmorHead_08, ArmorBody_08. Their normal/tangent frames are recalculated; all other surface arrays and every original UV0, index, vertex count, skin, weight and transform stay exact. Per-part displacement/dimension budgets are cumulative from the true original source, never from the last revision. Hidden side/back forms remain inferred from the approved concept; image silhouette change is measured independently at the same four original cameras.",
+  "geometry_mode": "original_source_bounded_refinement",
+  "geometry_parts": [
+    "ArmorHead_08",
+    "ArmorBody_08"
+  ],
+  "capture_directory": "docs\\art\\pegasus_runtime_v1\\review\\engine",
+  "capture_summary_sha256": "d1bf53a60b8e13930216bad6e955c02f30f4e62b24cb10f684e62e651fa439c4",
+  "current_scene_sha256": "ae114acb94c13fc46725905d62545f74fce14aea367b5c2af913249992270f9f",
+  "target_sha256": "886ea9dac6e92272ebc540102d1a02159bf29dc337a089abeed9072668fe6bff",
+  "canonical_diffuse_sha256": {
+    "head": "1be6f576be497cd26d29a17b5d7277173ff1c668767dd60ed8cace106cdf8793",
+    "body": "f9e669332c16e13ed4ad4aaa17c639e9eed933eea6d8539ba6b4e8200cf39b94",
+    "shoulder": "ecb0a8acf6e50a7b0a2498cea73c08b2c5d1456aa82925dfa6f3a2c42e4741e1",
+    "hand": "596f8e8095ae38728b15af92b938e9210371038e69a43636afd41c93722347eb",
+    "foot": "61d40e0ad0a52bbbf6a11981541b1a0b8f11b6b6fbd1c73b06ededcc4f6fe48c"
+  },
+  "capture_matches_current_resources": true,
+  "geometry": {
+    "parts": {
+      "ArmorBody_08": {
+        "bounds_game": {
+          "min": [
+            -0.5255537033081055,
+            0.33087050914764404,
+            -0.28952476382255554
+          ],
+          "max": [
+            0.5255526900291443,
+            1.4153720140457153,
+            0.26284393668174744
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5465537309646606,
+            0.33087050914764404,
+            -0.2994697093963623
+          ],
+          "max": [
+            0.5465527176856995,
+            1.4153720140457153,
+            0.26284393668174744
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.03842265807229217,
+          0.0,
+          0.017685762462227972
+        ],
+        "max_rest_displacement": 0.02715033699927287,
+        "max_displacement_fraction_of_smallest_dimension": 0.048283261821288746,
+        "triangles": 520,
+        "uv_preserved": true,
+        "original_uv_charts": 9,
+        "uv_charts": 9,
+        "uv_coordinate_count": 550,
+        "original_uv_coordinate_count": 550,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "body",
+            "uv_coordinate_count": 348,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          },
+          {
+            "surface": 1,
+            "label": "shoulder",
+            "uv_coordinate_count": 202,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged",
+        "shape_quality": {
+          "reversed_triangles": 0,
+          "new_degenerate_triangles": 0,
+          "inherited_degenerate_triangles": 0,
+          "coincident_seam_max_rest_gap": 0.0,
+          "min_triangle_normal_cosine_from_original": 0.9888339355239825
+        },
+        "added_vertex_count": 0,
+        "triangle_growth_fraction": 0,
+        "geometry_changed": true
+      },
+      "ArmorFoot_08": {
+        "bounds_game": {
+          "min": [
+            -0.42327091097831726,
+            -0.0005616775015369058,
+            -0.2488330453634262
+          ],
+          "max": [
+            0.4232730567455292,
+            0.44767364859580994,
+            0.24749313294887543
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.42327091097831726,
+            -0.0005616775015369058,
+            -0.2488330453634262
+          ],
+          "max": [
+            0.4232730567455292,
+            0.44767364859580994,
+            0.24749313294887543
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 244,
+        "uv_preserved": true,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 226,
+        "original_uv_coordinate_count": 226,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "foot",
+            "uv_coordinate_count": 226,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged",
+        "shape_quality": {
+          "reversed_triangles": 0,
+          "new_degenerate_triangles": 0,
+          "inherited_degenerate_triangles": 0,
+          "coincident_seam_max_rest_gap": 0.0,
+          "min_triangle_normal_cosine_from_original": 0.9999999999999998
+        },
+        "added_vertex_count": 0,
+        "triangle_growth_fraction": 0,
+        "geometry_changed": false
+      },
+      "ArmorHand_08": {
+        "bounds_game": {
+          "min": [
+            -0.5962644815444946,
+            0.5429962873458862,
+            -0.05427418649196625
+          ],
+          "max": [
+            0.5962638258934021,
+            1.144597053527832,
+            0.17633967101573944
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5962644815444946,
+            0.5429962873458862,
+            -0.05427418649196625
+          ],
+          "max": [
+            0.5962638258934021,
+            1.144597053527832,
+            0.17633967101573944
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 148,
+        "uv_preserved": true,
+        "original_uv_charts": 3,
+        "uv_charts": 3,
+        "uv_coordinate_count": 148,
+        "original_uv_coordinate_count": 148,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "hand",
+            "uv_coordinate_count": 148,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged",
+        "shape_quality": {
+          "reversed_triangles": 0,
+          "new_degenerate_triangles": 0,
+          "inherited_degenerate_triangles": 0,
+          "coincident_seam_max_rest_gap": 0.0,
+          "min_triangle_normal_cosine_from_original": 0.9999999999999998
+        },
+        "added_vertex_count": 0,
+        "triangle_growth_fraction": 0,
+        "geometry_changed": false
+      },
+      "ArmorHead_08": {
+        "bounds_game": {
+          "min": [
+            -0.270517498254776,
+            1.234439730644226,
+            -0.36516323685646057
+          ],
+          "max": [
+            0.27051493525505066,
+            1.8528510332107544,
+            0.24996443092823029
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.270517498254776,
+            1.2161071300506592,
+            -0.3910064697265625
+          ],
+          "max": [
+            0.27051493525505066,
+            1.9227254390716553,
+            0.24996443092823029
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.12482977772919102,
+          0.04031888630778935
+        ],
+        "max_rest_displacement": 0.09483595190127457,
+        "max_displacement_fraction_of_smallest_dimension": 0.17528699949843596,
+        "triangles": 216,
+        "uv_preserved": true,
+        "original_uv_charts": 3,
+        "uv_charts": 3,
+        "uv_coordinate_count": 172,
+        "original_uv_coordinate_count": 172,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "head",
+            "uv_coordinate_count": 172,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged",
+        "shape_quality": {
+          "reversed_triangles": 0,
+          "new_degenerate_triangles": 0,
+          "inherited_degenerate_triangles": 0,
+          "coincident_seam_max_rest_gap": 0.0,
+          "min_triangle_normal_cosine_from_original": 0.9364424998875344
+        },
+        "added_vertex_count": 0,
+        "triangle_growth_fraction": 0,
+        "geometry_changed": true
+      }
+    },
+    "stage": "approved_draft_refinement_v2",
+    "constraint": "True original source cumulative20% per-part rest displacement/dimensions; exact original UV0, indices, vertex counts, rig and weights.",
+    "user_authorized_original_total_limit": 0.2,
+    "geometry_mode": "original_source_bounded_refinement",
+    "geometry_parts": [
+      "ArmorHead_08",
+      "ArmorBody_08"
+    ]
+  },
+  "geometry_sha256": "2b181462b298abc54847262ad8ccba363732442991ea2c19d8ae946b0918c0f9",
+  "source_sha256": "0575a8b0c0b5674f0770636ea8d4520af3b8242253ffe2adfeeb594010f68b64"
+}

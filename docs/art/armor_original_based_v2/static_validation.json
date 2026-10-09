@@ -1,10 +1,10 @@
 {
   "status": "PASS_STATIC_BROWSER_NOT_RUN",
-  "executed_at_utc": "2026-10-09T03:35:01.617458+00:00",
+  "executed_at_utc": "2026-10-09T06:19:42.125513+00:00",
   "validator": {
     "path": "docs/art/armor_original_based_v2/validate_review.py",
-    "sha256": "e91f40b529519868ec2232cf05015e18004620b76a0eaee36086d400a29398fd",
-    "bytes": 12305
+    "sha256": "263a1c64bda5e40bedaa9b3136a6f015c2a583ca888c7c9b973c0d8273206bda",
+    "bytes": 17120
   },
   "checks": {
     "javascript_syntax": {
@@ -13,8 +13,8 @@
       "pages": [
         {
           "path": "docs/art/armor_original_based_v2/index.html",
-          "sha256": "bc947e1dbf947a7884c8fcc95e57b1322d52a5ec3508075baa146856961644dd",
-          "bytes": 65608,
+          "sha256": "c81c26fe7dce25b6269e34812da9b8b1882c02b5e3072fb0e5b5776a52df1f33",
+          "bytes": 69462,
           "status": "PASS",
           "inline_scripts": [
             {
@@ -23,15 +23,15 @@
                 "C:\\nvm4w\\nodejs\\node.EXE",
                 "--check"
               ],
-              "stdin_sha256": "c9288b7450ed94b99a91b9ff55ecd4b9df0c6bbd56bdbd2d884d33828544047b",
+              "stdin_sha256": "0ae7a59fd1a7fc8586bb75cabe9453118223ed4235efca24d6e2c7944e702708",
               "exit_code": 0
             }
           ]
         },
         {
           "path": "docs/art/original_armors_v1/index.html",
-          "sha256": "abc22f65440266fb361460e06fe1acdd5d7980aff05ad6808d0168afe0cf5b9a",
-          "bytes": 307684,
+          "sha256": "100348bee70d5f6d3ea1e3af4c4ce948ee9f0812d6a0f46a189436d924fc4e82",
+          "bytes": 309035,
           "status": "PASS",
           "inline_scripts": [
             {
@@ -40,15 +40,15 @@
                 "C:\\nvm4w\\nodejs\\node.EXE",
                 "--check"
               ],
-              "stdin_sha256": "0555ff2e412f3c4b265606b0fbd9cbf4b1febd64659ad587461309ddb62fa26f",
+              "stdin_sha256": "2464a94698eae8ce29e23d059b43f6f74b95eba71f332f4471b4f633b59d6285",
               "exit_code": 0
             }
           ]
         },
         {
           "path": "docs/art/atom_runtime_v1/index.html",
-          "sha256": "e298feeb75cd5770e9af04af4e7b40f54920c2fa8225c9366355b706b76e74dd",
-          "bytes": 10002,
+          "sha256": "ababe2c9a03e8bf0f02946c10fc63bb2ea9c6d1a26fb5a39d085b7a47dbd6867",
+          "bytes": 10469,
           "status": "PASS",
           "inline_scripts": [
             {
@@ -57,15 +57,15 @@
                 "C:\\nvm4w\\nodejs\\node.EXE",
                 "--check"
               ],
-              "stdin_sha256": "f1f663089dff446b759a12a41de6320857f7ce69f4a7066e7363f84c9152c43d",
+              "stdin_sha256": "14e0a328ad80e1780f0f5d5f57203fa7aac5f4d2261b095df779b2eb4b4b4b2a",
               "exit_code": 0
             }
           ]
         },
         {
           "path": "docs/art/pegasus_runtime_v1/index.html",
-          "sha256": "2dde9932a7e9651385ab784ab31435fc4124ab36703fd77fe6afb2b005067551",
-          "bytes": 9881,
+          "sha256": "2bb9b05eb4fbec4e60772253f7fb217d2d2e09bc87a36a4db713a4b5115e335b",
+          "bytes": 10403,
           "status": "PASS",
           "inline_scripts": [
             {
@@ -74,7 +74,7 @@
                 "C:\\nvm4w\\nodejs\\node.EXE",
                 "--check"
               ],
-              "stdin_sha256": "1c0639de6e9f3ae5dbce1747138dba51e3c24a1a7f9af002df3d8e94fb6a0bef",
+              "stdin_sha256": "2954afee9b92b86f5a9f5852b6481af96ea0c9819643516faa2bcfbbd3aea81d",
               "exit_code": 0
             }
           ]
@@ -86,38 +86,99 @@
       "status": "PASS",
       "page": {
         "path": "docs/art/armor_original_based_v2/index.html",
-        "sha256": "bc947e1dbf947a7884c8fcc95e57b1322d52a5ec3508075baa146856961644dd",
-        "bytes": 65608
+        "sha256": "c81c26fe7dce25b6269e34812da9b8b1882c02b5e3072fb0e5b5776a52df1f33",
+        "bytes": 69462
       },
       "data": {
         "path": "docs/art/armor_original_based_v2/review_data.json",
-        "sha256": "bd87447405e09fd691510963103101fcd8f53b54ed78ac97594dc3c1642c1927",
-        "bytes": 76435
+        "sha256": "2169bc25e45282d1353e86ad4ba64fb2bbc74e9819665310992fbbc20632cc22",
+        "bytes": 79094
       },
       "three_stage_design_ids": [
+        "C-07",
         "C-08",
         "C-09"
       ]
     },
     "local_resource_sha": {
       "status": "PASS",
-      "resource_records_verified": 192,
-      "unique_local_files_verified": 185,
+      "resource_records_verified": 202,
+      "unique_local_files_verified": 193,
       "scope": "Every recursive path/SHA record in review_data.json, including the frozen before images."
+    },
+    "delivery_manifest_and_visual_evidence": {
+      "status": "PASS",
+      "deliveries": [
+        {
+          "armor": "thunder",
+          "manifest": {
+            "path": "docs/art/thunder_draft_v3/manifest.json",
+            "sha256": "378e082744e21dc59917e2554a5675bfbf8773bd8f1396b34e7782ee7e714235",
+            "bytes": 38434
+          },
+          "visual_review": {
+            "path": "docs/art/thunder_draft_v3/review/visual_review.json",
+            "sha256": "fc1baf7b78b7e241e6b21072cb9768772b5964b4fb03faa3fb52cec37cfde3e1",
+            "bytes": 32230
+          },
+          "actual_images_inspected": 45,
+          "engineering_reports_passed": 3,
+          "nested_resource_records_verified": 149
+        },
+        {
+          "armor": "atom",
+          "manifest": {
+            "path": "docs/art/atom_runtime_v1/manifest.json",
+            "sha256": "d919cdad4425fde9ce99d0b3cb73f96ea9ef0be225a59f2ffffd20ad38a018b2",
+            "bytes": 138321
+          },
+          "visual_review": {
+            "path": "docs/art/atom_runtime_v1/review/visual_review.json",
+            "sha256": "d385163a818716c211f518729c7da8528c1b4649e9e8b9008e6d54c0a16ea42a",
+            "bytes": 48081
+          },
+          "actual_images_inspected": 64,
+          "engineering_reports_passed": 6,
+          "nested_resource_records_verified": 375
+        },
+        {
+          "armor": "pegasus",
+          "manifest": {
+            "path": "docs/art/pegasus_runtime_v1/manifest.json",
+            "sha256": "01e7cddd9c3b5350cc1c9be08aae7563d8123e322f698b4ca798fec0375bd08f",
+            "bytes": 105351
+          },
+          "visual_review": {
+            "path": "docs/art/pegasus_runtime_v1/review/visual_review.json",
+            "sha256": "283b0b204ff3196fa993d350631fcac426c56b65defef5fdbe283a4683d03a9d",
+            "bytes": 48124
+          },
+          "actual_images_inspected": 64,
+          "engineering_reports_passed": 6,
+          "nested_resource_records_verified": 301
+        }
+      ],
+      "unique_local_files_verified": 508,
+      "scope": "Nested manifest and current visual-review path/SHA/byte records; all 173 actual capture images and engineering report statuses."
     },
     "metadata_catalog_consistency": {
       "status": "PASS",
       "metadata_catalog_design_ids": [
+        "C-07",
         "C-08",
         "C-09"
       ],
-      "unrelated_rows_deep_equal": 44,
-      "thunder_C07_unchanged": true,
-      "baseline_commit": "f94323e40b3e7002268b39944bdcb58c2737c41f",
+      "unrelated_rows_deep_equal": 43,
+      "selected_art_user_review_and_other_metadata_unchanged": [
+        "C-07",
+        "C-08",
+        "C-09"
+      ],
+      "baseline_commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
       "baseline_git_command": [
         "git",
         "show",
-        "f94323e40b3e7002268b39944bdcb58c2737c41f:docs/art/original_armors_v1/index.html"
+        "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9:docs/art/original_armors_v1/index.html"
       ],
       "catalog_rows": 46
     },
@@ -125,8 +186,8 @@
       "status": "PASS",
       "generation_report": {
         "path": "docs/art/armor_original_based_v2/page_validate.json",
-        "sha256": "8f437bb7ef16befb0f63daefb08ebde5504229563837e2260f22549363b825f4",
-        "bytes": 821
+        "sha256": "dd759b84682eecaf3be2cf73aa4275603c55cbcc7d2a6c1ead7bf2703a5ed538",
+        "bytes": 807
       },
       "page_and_data_sha_fresh": true
     }
