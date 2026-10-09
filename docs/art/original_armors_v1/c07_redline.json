@@ -290,12 +290,19 @@
     "runtime_id": 6,
     "date": "2026-10-09",
     "scene": "assets/armors/thunder/thunder.scn",
-    "scene_sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7",
+    "scene_sha256": "c7762f82a92a12c25e120c1f6e2a751d7a117212554c21c110a376b37a4a9b84",
     "comparison_page": "../armor_original_based_v2/index.html#thunder",
-    "manifest": "../thunder_original_v2/manifest.json",
-    "manifest_sha256": "a28ad071fc88598e07187151ecc861a9714edf6b91b7b06dd2ad4b645f04af48",
+    "manifest": "../thunder_draft_v3/manifest.json",
+    "manifest_sha256": "378e082744e21dc59917e2554a5675bfbf8773bd8f1396b34e7782ee7e714235",
     "original_based": true,
     "art_acceptance": "pending_user_review",
-    "note": "以真正原版 Thunder 頭部重新生成貼圖；修改前身甲保留。"
+    "revision": "draft_refinement_v3",
+    "note": "依目前圖集選定的 B 稿調整 Thunder 頭盔形狀與貼圖；保留真正原版頭部 UV、拓撲與骨架，身甲維持 3ed 版本。",
+    "previous_original_based_runtime": {
+      "source_commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
+      "snapshot": "../thunder_draft_v3/revisions/before_draft_v3/snapshot.json",
+      "snapshot_sha256": "8ef68f9c7d9e67b32d01c1632bdf765debc527117f872e1a56c8ab00c02c09fb",
+      "scene_sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7"
+    }
   }
 }

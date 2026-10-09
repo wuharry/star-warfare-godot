@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "scope": "Pure Python source/target geometry and immutable native resource pins; no engine or art acceptance.",
+  "source": {
+    "path": "docs/art/thunder_draft_v3/revisions/before_draft_v3/docs/art/thunder_original_v2/head_source.json",
+    "sha256": "0f705e2f53bc6f1d9499935f3d492d21b564d64ad6d9a7107ac507715d282be9",
+    "bytes": 36024
+  },
+  "target": {
+    "path": "docs/art/thunder_draft_v3/build/head_target.json",
+    "sha256": "7057674caeb8fe17697763b8b499fd766e33c45e30c4189b586a6aee7fdfed4b",
+    "bytes": 69530
+  },
+  "validator": {
+    "path": "tools/thunder_draft_v3/head_contract.py",
+    "sha256": "39ba2cf069602e9da4537cd7964d151407b31dd5de98beed993e0b4aad611254",
+    "bytes": 7534
+  },
+  "geometry": {
+    "normalizer_original_smallest_dimension_m": 0.521798253059388,
+    "max_rest_displacement": 0.10149384217774,
+    "max_displacement_fraction_of_smallest_dimension": 0.19450782286576299,
+    "dimension_change_fractions": [
+      0.0,
+      0.0,
+      0.14131298882283072
+    ],
+    "max_dimension_change_fraction": 0.14131298882283072,
+    "flipped_triangles": [],
+    "new_degenerate_triangles": [],
+    "seam_breaks": []
+  },
+  "engine_run_by_validator": false,
+  "art_acceptance": "NOT RUN"
+}

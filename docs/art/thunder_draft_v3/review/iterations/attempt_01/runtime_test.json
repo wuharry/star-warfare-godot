@@ -1,0 +1,152 @@
+{
+	"actual_default_loader": true,
+	"animation_samples": [
+		{
+			"clip": "idle_rifle",
+			"parts_checked": 4,
+			"time": 0.0
+		},
+		{
+			"clip": "idle_rifle",
+			"parts_checked": 4,
+			"time": 0.2
+		},
+		{
+			"clip": "idle_rifle",
+			"parts_checked": 4,
+			"time": 0.5
+		},
+		{
+			"clip": "run_rifle",
+			"parts_checked": 4,
+			"time": 0.0
+		},
+		{
+			"clip": "run_rifle",
+			"parts_checked": 4,
+			"time": 0.2
+		},
+		{
+			"clip": "run_rifle",
+			"parts_checked": 4,
+			"time": 0.5
+		},
+		{
+			"clip": "actual_gun00_moving_reload_variant_0",
+			"fraction": 0.2,
+			"parts_checked": 4,
+			"time": 0.354
+		},
+		{
+			"clip": "actual_gun00_moving_reload_variant_0",
+			"fraction": 0.52,
+			"parts_checked": 4,
+			"time": 0.9204
+		},
+		{
+			"clip": "actual_gun00_moving_reload_variant_0",
+			"fraction": 0.85,
+			"parts_checked": 4,
+			"time": 1.5045
+		}
+	],
+	"before_scene_sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7",
+	"body_baseline_commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
+	"body_buffers_materials_skin_transform_vs_3ed1c291_exact": true,
+	"checks": 172,
+	"default_scene_sha256": "c81cc2fd50ce1934a746409b29d16a0964a839f6cc6b1947904dd01f8abfca1a",
+	"errors": [],
+	"head_contract": {
+		"dimension_change_fractions": [
+			0.0,
+			0.00845604117717758,
+			0.137755478533569
+		],
+		"errors": [],
+		"flipped_triangles": [],
+		"max_dimension_change_fraction": 0.137755478533569,
+		"max_displacement_fraction_of_smallest_dimension": 0.189999422570931,
+		"max_rest_displacement": 0.0991413667798042,
+		"new_degenerate_triangles": [],
+		"normalizer_original_smallest_dimension_m": 0.521798253059387,
+		"seam_breaks": []
+	},
+	"head_geometry_displacement_fraction": 0.189999422570931,
+	"head_original_uv_topology_skin_transform_exact": true,
+	"head_positions_match_pinned_target": true,
+	"head_triangles": 196,
+	"head_uv_changed_fraction": 0.0,
+	"head_uv_coordinate_count": 147,
+	"mixed_equipment_cycles": 3,
+	"negative_guards": [
+		"original_transform",
+		"original_skin_bind",
+		"original_uv",
+		"original_indices",
+		"original_bones",
+		"original_weights",
+		"original_head_20_percent",
+		"source_rebase",
+		"delivered_target_mismatch"
+	],
+	"protected_alternates": {
+		"res://assets/armors/thunder/textures/original_head_v2.png": "55ab873f422aff2b2e79a5efce7ab676198bdc3da6f7010389deb11bfc28bd30",
+		"res://assets/armors/thunder/textures/original_head_v2.res": "edc0ce3c9bbcf8885b99b60c261fae9b00c300088d6d2f33a671e36c1792c2fc",
+		"res://assets/armors/thunder/thunder_prototype.scn": "7c37b7917eb161d05c414799abf7981768ef9b76b81f1123f73397e60e5185b3",
+		"res://assets/armors/thunder/thunder_sw2.scn": "9f939667c6516ee3e2335cb973abeb7805d6865fd4df6b97821303bcd2661df5"
+	},
+	"real_save": {
+		"after": "9430dcfff0406db757079fa9ff2034db86b2688a0acab94c8446532694e946e2",
+		"before": "9430dcfff0406db757079fa9ff2034db86b2688a0acab94c8446532694e946e2",
+		"save_path": "user://star_warfare_save.json",
+		"unchanged": true
+	},
+	"repeated_equips": 10,
+	"revision": "thunder_draft_v3",
+	"status": "PASS",
+	"store_customize_samples": [
+		{
+			"mesh_skin_material_match": true,
+			"mode": "store",
+			"part": "ArmorHead_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "store",
+			"part": "ArmorBody_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "store",
+			"part": "ArmorHand_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "store",
+			"part": "ArmorFoot_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "customize",
+			"part": "ArmorHead_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "customize",
+			"part": "ArmorBody_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "customize",
+			"part": "ArmorHand_06"
+		},
+		{
+			"mesh_skin_material_match": true,
+			"mode": "customize",
+			"part": "ArmorFoot_06"
+		}
+	],
+	"target_sha256": "25582560c7a174f450bec84312d000b94edcb7f022332150d6a84125fca692e6",
+	"visual_acceptance": "NOT_RUN_IN_THIS_LOGIC_TEST",
+	"whole_suit_original_percentage": "NOT_CLAIMED_BODY_INHERITS_3ED"
+}

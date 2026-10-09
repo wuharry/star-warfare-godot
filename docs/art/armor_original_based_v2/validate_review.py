@@ -17,7 +17,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[3]
 WORK = Path(__file__).resolve().parent
 ART = ROOT / 'docs/art/original_armors_v1'
-BASELINE_COMMIT = 'f94323e40b3e7002268b39944bdcb58c2737c41f'
+BASELINE_COMMIT = '3ed1c2911e1eea5162e30d0bab331fd41a1d29f9'
 PAGES = (
     WORK / 'index.html',
     ART / 'index.html',
@@ -117,24 +117,24 @@ def validate_embedded_data() -> dict:
     data = load(WORK / 'review_data.json')
     actual = embedded((WORK / 'index.html').read_text(encoding='utf-8'), 'review-data')
     require(actual == data, 'Aggregate embedded JSON differs from review_data.json')
-    require(data.get('schema_version') == 2, 'Aggregate is not the three-stage schema')
+    require(data.get('schema_version') == 3 and data.get('delivery_revision') == 'draft_refinement_v3',
+            'Aggregate is not the current v3 comparison schema')
     require([armor['key'] for armor in data['armors']] == ['thunder', 'atom', 'pegasus'],
             'Aggregate armor mappings are missing or out of order')
     for armor in data['armors']:
-        if armor['key'] not in {'atom', 'pegasus'}:
-            continue
-        require(armor.get('ready') and armor.get('model_refinement_observed'),
-                f"Refinement not ready or no head/body shape change: {armor['key']}")
+        require(armor.get('ready') and armor.get('model_refinement_observed') and
+                armor.get('changed_since_previous_delivery'),
+                f"Refinement not ready or no required shape change: {armor['key']}")
         require(armor['comparison_order'] == ['original', 'before', 'after'],
                 f"Incorrect three-stage comparison order: {armor['key']}")
-        require('f94323e4' in armor['stage_labels']['before']['title'], 'Incorrect baseline label')
+        require('3ed1c291' in armor['stage_labels']['before']['title'], 'Incorrect baseline label')
         require(armor['baseline']['source_commit'] == BASELINE_COMMIT, 'Incorrect baseline commit')
         require(len(armor['captures']) == 15 and all(
             row.get('original') and row.get('before') and row.get('after')
             for row in armor['captures'].values()), f"Missing three-stage views: {armor['key']}")
     require(data.get('browser_interaction') == 'NOT RUN', 'Browser state must remain NOT RUN')
     return {'page': record(WORK / 'index.html'), 'data': record(WORK / 'review_data.json'),
-            'three_stage_design_ids': ['C-08', 'C-09']}
+            'three_stage_design_ids': ['C-07', 'C-08', 'C-09']}
 
 
 def validate_resources() -> dict:
@@ -168,38 +168,113 @@ def validate_resources() -> dict:
             'scope': 'Every recursive path/SHA record in review_data.json, including the frozen before images.'}
 
 
+def validate_delivery_evidence() -> dict:
+    """Check the manifests' nested local evidence and every current QA image."""
+    deliveries = [
+        ('thunder', 'thunder_draft_v3', 'assets/armors/thunder/thunder.scn', 45),
+        ('atom', 'atom_runtime_v1', 'assets/armors/atom_v1/atom.scn', 64),
+        ('pegasus', 'pegasus_runtime_v1', 'assets/armors/pegasus_v1/pegasus.scn', 64),
+    ]
+    results = []
+    verified = set()
+
+    def inspect_records(value):
+        count = 0
+        if isinstance(value, dict):
+            if 'path' in value and 'sha256' in value:
+                path = (ROOT / value['path'].removeprefix('res://')).resolve()
+                require(path.is_relative_to(ROOT) and path.is_file(), f'Missing nonlocal evidence: {path}')
+                require(sha(path) == value['sha256'], f'Stale nested evidence: {path}')
+                if 'bytes' in value:
+                    require(path.stat().st_size == value['bytes'], f'Stale nested byte count: {path}')
+                verified.add(path)
+                count += 1
+            count += sum(inspect_records(child) for child in value.values())
+        elif isinstance(value, list):
+            count += sum(inspect_records(child) for child in value)
+        return count
+
+    for slug, directory, scene_path, expected_images in deliveries:
+        work = ROOT / 'docs/art' / directory
+        manifest_path = work / 'manifest.json'
+        manifest = load(manifest_path)
+        require(manifest['status'] == 'runtime_integrated_pending_user_art_review',
+                f'Incorrect runtime delivery status: {slug}')
+        visual_path = work / 'review/visual_review.json'
+        if not visual_path.is_file():
+            visual_path = work / 'visual_review.json'
+        visual = load(visual_path)
+        require(visual['status'] in {'VISUALLY_REVIEWED_PENDING_USER_REVIEW',
+                                    'ENGINEERING_CANDIDATE_PENDING_USER_ART_REVIEW'} and
+                not visual['blocking_findings'], f'Unresolved visual review: {slug}')
+        scene_sha = sha(ROOT / scene_path)
+        require(visual['runtime_scene']['sha256'] == scene_sha, f'Visual scene is stale: {slug}')
+        require(visual['capture_summary']['sha256'] == manifest['capture_summary']['sha256'],
+                f'Visual capture summary is stale: {slug}')
+        images = visual['images']
+        require(len(images) == expected_images and all(row.get('visually_inspected') for row in images),
+                f'Incomplete actual image review: {slug}')
+        require({(row['path'], row['sha256']) for row in images} ==
+                {(row['path'], row['sha256']) for row in manifest['captures']},
+                f'Manifest and reviewed capture files differ: {slug}')
+        for name, test in manifest['tests'].items():
+            require(test['status'] == 'PASS' and load(ROOT / test['file']['path'])['status'] == 'PASS',
+                    f'Actual engineering report failed: {slug}/{name}')
+        records = inspect_records(manifest) + inspect_records(visual)
+        results.append({'armor': slug, 'manifest': record(manifest_path),
+                        'visual_review': record(visual_path), 'actual_images_inspected': expected_images,
+                        'engineering_reports_passed': len(manifest['tests']),
+                        'nested_resource_records_verified': records})
+    return {'deliveries': results, 'unique_local_files_verified': len(verified),
+            'scope': 'Nested manifest and current visual-review path/SHA/byte records; all 173 actual capture images and engineering report statuses.'}
+
+
 def validate_catalog() -> dict:
     current = embedded((ART / 'index.html').read_text(encoding='utf-8'), 'catalog')
     command = ['git', 'show', BASELINE_COMMIT + ':docs/art/original_armors_v1/index.html']
     result = subprocess.run(command, cwd=ROOT, capture_output=True)
-    require(result.returncode == 0, 'Could not read the pinned f94323e4 gallery from Git')
+    require(result.returncode == 0, 'Could not read the pinned 3ed1c291 gallery from Git')
     baseline = embedded(result.stdout.decode('utf-8'), 'catalog')
     require(len(current) == 46 and len({r['design_id'] for r in current}) == 46,
             'Gallery rows are missing or duplicated')
-    changed_ids = {'C-08', 'C-09'}
+    changed_ids = {'C-07', 'C-08', 'C-09'}
     untouched = [row for row in current if row['design_id'] not in changed_ids]
     frozen = [row for row in baseline if row['design_id'] not in changed_ids]
-    require(len(untouched) == 44 and untouched == frozen,
-            'One or more of the other 44 gallery rows, including C07, differs from f94323e4')
+    require(len(untouched) == 43 and untouched == frozen,
+            'One or more of the other 43 gallery rows differs from 3ed1c291')
     data = load(WORK / 'review_data.json')
-    mapping = [('C-08', 'atom', 'c08_prism.json'), ('C-09', 'pegasus', 'c09_bulwark.json')]
+    mapping = [('C-07', 'thunder', 'c07_redline.json'), ('C-08', 'atom', 'c08_prism.json'),
+               ('C-09', 'pegasus', 'c09_bulwark.json')]
     for design_id, slug, filename in mapping:
         metadata = load(ART / filename)
         catalog_row = next(row for row in current if row['design_id'] == design_id)
+        original_row = next(row for row in baseline if row['design_id'] == design_id)
+        without_delivery = lambda row: {key: value for key, value in row.items()
+                                        if key != 'original_based_runtime'}
+        require(without_delivery(catalog_row) == without_delivery(original_row),
+                f'Selected art, user review or other non-delivery catalog fields changed: {design_id}')
+        old_metadata = subprocess.run(
+            ['git', 'show', BASELINE_COMMIT + ':docs/art/original_armors_v1/' + filename],
+            cwd=ROOT, capture_output=True, check=True)
+        require(without_delivery(metadata) == without_delivery(json.loads(old_metadata.stdout.decode('utf-8'))),
+                f'Non-delivery metadata changed: {design_id}')
         delivery = metadata['original_based_runtime']
         require(catalog_row['original_based_runtime'] == delivery,
                 f'Metadata / CATALOG delivery mismatch: {design_id}')
-        require(delivery.get('revision') == 'draft_refinement_v2', f'Old delivery revision: {design_id}')
+        require(delivery.get('revision') == 'draft_refinement_v3', f'Old delivery revision: {design_id}')
         armor = next(row for row in data['armors'] if row['key'] == slug)
         require(delivery['scene_sha256'] == armor['scene']['sha256'], f'Scene SHA mismatch: {design_id}')
         require(delivery['manifest_sha256'] == armor['sources'][0]['sha256'],
                 f'Manifest SHA mismatch: {design_id}')
-        require(delivery['previous_texture_only']['snapshot_sha256'] == armor['baseline']['snapshot']['sha256'],
+        history_key = ('previous_original_based_runtime' if slug == 'thunder' else
+                       'previous_draft_refinement')
+        require(delivery[history_key]['snapshot_sha256'] == armor['baseline']['snapshot']['sha256'],
                 f'Historical snapshot SHA mismatch: {design_id}')
         require((ART / delivery['comparison_page'].split('#')[0]).resolve() == WORK / 'index.html',
                 f'Incorrect comparison page: {design_id}')
-    return {'metadata_catalog_design_ids': sorted(changed_ids), 'unrelated_rows_deep_equal': 44,
-            'thunder_C07_unchanged': True, 'baseline_commit': BASELINE_COMMIT,
+    return {'metadata_catalog_design_ids': sorted(changed_ids), 'unrelated_rows_deep_equal': 43,
+            'selected_art_user_review_and_other_metadata_unchanged': sorted(changed_ids),
+            'baseline_commit': BASELINE_COMMIT,
             'baseline_git_command': command, 'catalog_rows': len(current)}
 
 
@@ -215,8 +290,8 @@ def validate_page_report() -> dict:
                 f'page_validate.json has stale {key} bytes / SHA')
     require(report.get('browser_interaction') == 'NOT RUN', 'False browser acceptance in page report')
     require(report.get('art_acceptance') == 'NOT RUN', 'Static report must not certify user art acceptance')
-    require(report.get('gallery', {}).get('updated_catalog_rows') == ['C-08', 'C-09'],
-            'Page report does not record C08/C09-only publication')
+    require(report.get('gallery', {}).get('updated_catalog_rows') == ['C-07', 'C-08', 'C-09'],
+            'Page report does not record C07/C08/C09-only publication')
     return {'generation_report': record(path), 'page_and_data_sha_fresh': True}
 
 
@@ -225,6 +300,7 @@ def main() -> None:
     for name, check in [('javascript_syntax', validate_javascript),
                         ('aggregate_embedded_data', validate_embedded_data),
                         ('local_resource_sha', validate_resources),
+                        ('delivery_manifest_and_visual_evidence', validate_delivery_evidence),
                         ('metadata_catalog_consistency', validate_catalog),
                         ('page_generation_report', validate_page_report)]:
         try:

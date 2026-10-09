@@ -1,6 +1,7 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "date": "2026-10-09",
+  "delivery_revision": "draft_refinement_v3",
   "title": "Thunder／Atom／Pegasus · 原版基底遊戲素材",
   "browser_interaction": "NOT RUN",
   "browser_limitation": "NOT RUN：本輪 CUA 預覽被安全政策拒絕，file:// 協定不受支援；未以 HTTP 或其他介面繞過。已檢查 JavaScript 語法與本機資源 SHA。",
@@ -12,33 +13,33 @@
       "runtime_id": 6,
       "status": "已套用正式素材・工程紀錄通過・待美術評價",
       "ready": true,
-      "scope": "以真正原版 Thunder 頭部重新生成貼圖；修改前身甲保留。",
+      "scope": "依目前圖集選定的 B 稿調整 Thunder 頭盔形狀與貼圖；保留真正原版頭部 UV、拓撲與骨架，身甲維持 3ed 版本。",
       "captures": {
         "head_front": {
           "label": "頭盔・正面",
           "scope": "head",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_head_front.png",
-            "sha256": "0c2217317e24df85c7d17513c8936d5bffb53c520bb0cacae2742bdc111251f1",
-            "bytes": 621129,
+            "path": "../thunder_draft_v3/review/engine/original_head_front.png",
+            "sha256": "d21fb4f16a429ba4b5775145d633df70fafa79f1fba5ce26adf6cbe6fe79febd",
+            "bytes": 621026,
             "dimensions": [
               800,
               960
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_head_front.png",
-            "sha256": "1cba4a5080b48f512d6625397a0b1bd9c03df02c1e3d993898df94d29204641b",
-            "bytes": 641477,
+            "path": "../thunder_draft_v3/review/engine/new_head_front.png",
+            "sha256": "8eb95ffbca35d91de8e2e302409ae97230536866bf49dc97536a9e3b212e8c38",
+            "bytes": 695375,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_head_front.png",
-            "sha256": "0aa0456eacbe31dd52a7f2cae3a97a80b13f41c88b58a650dc25e402cf566e65",
-            "bytes": 687031,
+            "path": "../thunder_draft_v3/review/engine/before_head_front.png",
+            "sha256": "d4f50849a8d8115e02becb80c59cb02fed1081b597dd6b82a0924ab478fdf938",
+            "bytes": 635538,
             "dimensions": [
               800,
               960
@@ -49,27 +50,27 @@
           "label": "頭盔・斜前",
           "scope": "head",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_head_quarter.png",
-            "sha256": "bc75600cfd1c2e02eb58d961e39a5864aa9da7c3d7b30bbda0dd957ef88387d2",
-            "bytes": 658379,
+            "path": "../thunder_draft_v3/review/engine/original_head_quarter.png",
+            "sha256": "2f193a9eb846fd045841fea1b657982d2b05ae9d6a2d5267aa5e0ee0e53e0ca3",
+            "bytes": 644340,
             "dimensions": [
               800,
               960
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_head_quarter.png",
-            "sha256": "9781bc797bce3e1ddf558bfa06dbdf091e03145141c5c26d4e45d23cfbcc1d92",
-            "bytes": 682819,
+            "path": "../thunder_draft_v3/review/engine/new_head_quarter.png",
+            "sha256": "2606b11c7fe87a4798d2cd1b8d3b24eacff8b0952627631fb0f83aed1ab68a6f",
+            "bytes": 722597,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_head_quarter.png",
-            "sha256": "de52c48acc7a27b819f6f54aa06786c0ec29fae34256363a6347fb239c069ea9",
-            "bytes": 726103,
+            "path": "../thunder_draft_v3/review/engine/before_head_quarter.png",
+            "sha256": "009f08244cbbc5ebd440e8f689c0858ed6367dc0b02d492f88e8f35d87290d90",
+            "bytes": 666586,
             "dimensions": [
               800,
               960
@@ -80,27 +81,27 @@
           "label": "頭盔・側面",
           "scope": "head",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_head_side.png",
-            "sha256": "c1245e477583f1de2191b69131930a012b04a1e699bb9679686de2293f8c87b5",
-            "bytes": 685258,
+            "path": "../thunder_draft_v3/review/engine/original_head_side.png",
+            "sha256": "7407bff7cde9ae3ef736a4e1fca563bae7febee30c950cccab15f382d6c700b3",
+            "bytes": 673150,
             "dimensions": [
               800,
               960
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_head_side.png",
-            "sha256": "b06cce8c1f1a861e6f17f89cbc636472f1e7df2264c96dd9863548aeec660876",
-            "bytes": 699203,
+            "path": "../thunder_draft_v3/review/engine/new_head_side.png",
+            "sha256": "9c676c9c6561761171f8cbd57676b15ebe2cdfdd824b6ed9a08cce1b9e258b71",
+            "bytes": 731435,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_head_side.png",
-            "sha256": "130044bab506b3dcc9b45a3adfad3613648ec7c8f64ed0607cfd94cc8f85b2b5",
-            "bytes": 714645,
+            "path": "../thunder_draft_v3/review/engine/before_head_side.png",
+            "sha256": "7097e4990038f96983ee3dc0c111218481a39147b8b9fd673b6c702b1f1e4763",
+            "bytes": 684234,
             "dimensions": [
               800,
               960
@@ -111,27 +112,27 @@
           "label": "頭盔・背面",
           "scope": "head",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_head_rear.png",
-            "sha256": "1b00746499fc5ad06648eff36ca93a510c35e72b082763e451897a13fd92124f",
-            "bytes": 562236,
+            "path": "../thunder_draft_v3/review/engine/original_head_rear.png",
+            "sha256": "507c436b2d6e73c4ef69f633872a6cd1f1e584d7136ea5b3f9b1f123cf98e506",
+            "bytes": 564383,
             "dimensions": [
               800,
               960
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_head_rear.png",
-            "sha256": "6db3820857ffa6ebad539ba598281987aec04d29aaa4012c4411700944080f53",
-            "bytes": 584420,
+            "path": "../thunder_draft_v3/review/engine/new_head_rear.png",
+            "sha256": "27ef274bb2a93c201497a1101e2e4fef3f97f3ca6c069e028ccc647195fabcc0",
+            "bytes": 639428,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_head_rear.png",
-            "sha256": "af4452af79d1318fc6dcdaa0bc30aab5e92eee9adda02d5b0ee60008ca7f0810",
-            "bytes": 688044,
+            "path": "../thunder_draft_v3/review/engine/before_head_rear.png",
+            "sha256": "777b2e44fb40171d28bf361d783263b8653b872329c0cee527aecf2f20162222",
+            "bytes": 583056,
             "dimensions": [
               800,
               960
@@ -142,7 +143,7 @@
           "label": "全身・正面",
           "scope": "body",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_full_front.png",
+            "path": "../thunder_draft_v3/review/engine/original_full_front.png",
             "sha256": "fb9a1c2ff913ad173fff0a794eccbc8e50a7279d31ff7f8ab95e40389aa3bd3d",
             "bytes": 316153,
             "dimensions": [
@@ -151,18 +152,18 @@
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_full_front.png",
-            "sha256": "253daa9b2711e1489c2f1ab4ffcc62526436a4bc863f25a350c3c74560400f7d",
-            "bytes": 339645,
+            "path": "../thunder_draft_v3/review/engine/new_full_front.png",
+            "sha256": "3bb8758092aca48f6757336d3690e424ea8d10121c9b4ad32a032165f111f835",
+            "bytes": 351098,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_full_front.png",
-            "sha256": "87d63ad9f7b382f3a78617917b8978c61126fc1b6bfb9c651dbb35abef547eee",
-            "bytes": 349348,
+            "path": "../thunder_draft_v3/review/engine/before_full_front.png",
+            "sha256": "c59861d418021a5ff66ff92c556a746eadc73baff91413a6aee43ec30e626ce1",
+            "bytes": 339652,
             "dimensions": [
               800,
               960
@@ -173,27 +174,27 @@
           "label": "全身・斜前",
           "scope": "body",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_full_quarter.png",
-            "sha256": "4aa0853f9f269470059a9e9bf1d0679285c2be6026b22a66cf13bc983087e81d",
-            "bytes": 373369,
+            "path": "../thunder_draft_v3/review/engine/original_full_quarter.png",
+            "sha256": "3c0c24330ae8c7c7377d951a8401c8a709050763f5bfcb215f33ab0f7cc78ee1",
+            "bytes": 373367,
             "dimensions": [
               800,
               960
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_full_quarter.png",
-            "sha256": "d4de479af02b79dda89692d4f078da84aa6836af547f988059c2b8a66213aa93",
-            "bytes": 407296,
+            "path": "../thunder_draft_v3/review/engine/new_full_quarter.png",
+            "sha256": "0395bc11f837023a2781d3c57b6a1191d8e6c9997e3c603c0e7fc2575e9a8806",
+            "bytes": 418067,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_full_quarter.png",
-            "sha256": "2828cd4513a5953525cc93b97d61a9937fe37b625a0cdea7e862a2f3d2d6c17e",
-            "bytes": 415215,
+            "path": "../thunder_draft_v3/review/engine/before_full_quarter.png",
+            "sha256": "a23cee4e99e9bc75eaad357306fbcab5ed5ce28b8572b8d2c323ca6e16b5d769",
+            "bytes": 407304,
             "dimensions": [
               800,
               960
@@ -204,7 +205,7 @@
           "label": "全身・側面",
           "scope": "body",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_full_side.png",
+            "path": "../thunder_draft_v3/review/engine/original_full_side.png",
             "sha256": "f2b15366948eca90966228c09909e524d1cc15ee8dfe04e7944f112e91a0778c",
             "bytes": 357410,
             "dimensions": [
@@ -213,18 +214,18 @@
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_full_side.png",
-            "sha256": "4acc4c892d9a76b0c348f969b97ba5340cac976530dfa516cc8640ddff31bdd7",
-            "bytes": 393754,
+            "path": "../thunder_draft_v3/review/engine/new_full_side.png",
+            "sha256": "2bff484d5c46de31f8cc3c2b383e14c5a1d4fb5afbc8980ce8f2b6582a78eb0a",
+            "bytes": 401662,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_full_side.png",
-            "sha256": "b662d19467f6017fce005d3073df7c6a058119aa51b6b13874ebea9c3a2d2279",
-            "bytes": 392387,
+            "path": "../thunder_draft_v3/review/engine/before_full_side.png",
+            "sha256": "5ed1a0bc930ec198276fd5c27a8fd9eac35da92fa43f778c59ec248e00954652",
+            "bytes": 393759,
             "dimensions": [
               800,
               960
@@ -235,7 +236,7 @@
           "label": "全身・背面",
           "scope": "body",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_full_rear.png",
+            "path": "../thunder_draft_v3/review/engine/original_full_rear.png",
             "sha256": "c02e416ab570ccbef1ff32ec137fd90298d8a92cdb3ffeefdea1a857ca57861b",
             "bytes": 297182,
             "dimensions": [
@@ -244,18 +245,18 @@
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_full_rear.png",
-            "sha256": "4ab6027858fa0d08666d99d8f7258f94a9006cd05584a8f908dc1fb88502ccb0",
-            "bytes": 332888,
+            "path": "../thunder_draft_v3/review/engine/new_full_rear.png",
+            "sha256": "d5216e1a9e005101b986d176fd27b9c48c9658e6fc2fcf8a6dc677dc778324a7",
+            "bytes": 344019,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_full_rear.png",
-            "sha256": "69fd471964c9c65868f210b25cbc98652b159e87f6ee823e7f72ae870e56fca9",
-            "bytes": 354077,
+            "path": "../thunder_draft_v3/review/engine/before_full_rear.png",
+            "sha256": "bed6d21d52a61ea9b26b341cf971d7d20433e01b358a391eeda5e598055ef1ff",
+            "bytes": 332896,
             "dimensions": [
               800,
               960
@@ -266,7 +267,7 @@
           "label": "灰模・正面",
           "scope": "clay",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_clay_front.png",
+            "path": "../thunder_draft_v3/review/engine/original_clay_front.png",
             "sha256": "da4a307e7396ca03217a5a888859070d78146fd5c1abce8b015f3db2c32e82ab",
             "bytes": 39347,
             "dimensions": [
@@ -275,18 +276,18 @@
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_clay_front.png",
-            "sha256": "67c193af9906b0331faf953bc426c6ca97030e123cc5a4150ea70e929ebf6127",
-            "bytes": 49068,
+            "path": "../thunder_draft_v3/review/engine/new_clay_front.png",
+            "sha256": "14f64f9419e1c8ee96bedd23e6dd1b73a37e898452ba500af7a61d38a7414b72",
+            "bytes": 48690,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_clay_front.png",
-            "sha256": "6cd66fc939df7ea4ce7865402f5837aa92d44d71f2ee79887468659e2932ccb1",
-            "bytes": 53728,
+            "path": "../thunder_draft_v3/review/engine/before_clay_front.png",
+            "sha256": "67c193af9906b0331faf953bc426c6ca97030e123cc5a4150ea70e929ebf6127",
+            "bytes": 49068,
             "dimensions": [
               800,
               960
@@ -297,7 +298,7 @@
           "label": "灰模・側面",
           "scope": "clay",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_clay_side.png",
+            "path": "../thunder_draft_v3/review/engine/original_clay_side.png",
             "sha256": "552fa25dd06e38645e1fd47e10d487dc0a73ca1d19a68f9c25e94a54a4e4c561",
             "bytes": 46846,
             "dimensions": [
@@ -306,18 +307,18 @@
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_clay_side.png",
-            "sha256": "ba871f8f9a838d1e118771f11055b55ac0aeb86b3701442bd39a3d43225dbd01",
-            "bytes": 58394,
+            "path": "../thunder_draft_v3/review/engine/new_clay_side.png",
+            "sha256": "48fcf9a6e882d7c1f4134db4dba4ac043d9e868bfbabbfced0dc22acb07f9000",
+            "bytes": 56853,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_clay_side.png",
-            "sha256": "a0aea08c1f9c747346a98900fc8013b0e17234f830c9e6c2feeb56cadd9f3bb5",
-            "bytes": 64429,
+            "path": "../thunder_draft_v3/review/engine/before_clay_side.png",
+            "sha256": "ba871f8f9a838d1e118771f11055b55ac0aeb86b3701442bd39a3d43225dbd01",
+            "bytes": 58394,
             "dimensions": [
               800,
               960
@@ -328,7 +329,7 @@
           "label": "持槍待機",
           "scope": "animation",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_idle.png",
+            "path": "../thunder_draft_v3/review/engine/original_idle.png",
             "sha256": "ef64c88259f2e514c1403f0cb274d62cd671214a6482bb19a4814e06c6d506bf",
             "bytes": 395892,
             "dimensions": [
@@ -337,18 +338,18 @@
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_idle.png",
-            "sha256": "3459fb6bff98e834079319870cf5bec85240ca1cc4260f2ad4f68008f4dfb381",
-            "bytes": 424780,
+            "path": "../thunder_draft_v3/review/engine/new_idle.png",
+            "sha256": "b1f1dca49d023d1d6b1883900f9913282ebcd5d51f4cc99eff413975b8e11624",
+            "bytes": 435377,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_idle.png",
-            "sha256": "b5251e4b2eb443796b685066514ba5df5c64bbf91e8a96162e12a0c7e825bf9f",
-            "bytes": 432999,
+            "path": "../thunder_draft_v3/review/engine/before_idle.png",
+            "sha256": "7e1de28f850102764f3aaa3e5afb3a1e047e541ea14d4f2fd41e3844e3a07721",
+            "bytes": 424784,
             "dimensions": [
               800,
               960
@@ -359,7 +360,7 @@
           "label": "持槍跑動",
           "scope": "animation",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_run.png",
+            "path": "../thunder_draft_v3/review/engine/original_run.png",
             "sha256": "1b7be063c348aa3a561d65c38b1ab67ae1579d8f5c546b748c6f9a2029d0213b",
             "bytes": 417201,
             "dimensions": [
@@ -368,18 +369,18 @@
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_run.png",
-            "sha256": "6d2036a6d4354373871014984892d3255962e59f11127288ea84eab1c3c31ade",
-            "bytes": 439430,
+            "path": "../thunder_draft_v3/review/engine/new_run.png",
+            "sha256": "b34e539a71b4bf1aade38009e97c91ef2207b67042586c67a935faf8d5dcfbe3",
+            "bytes": 452500,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_run.png",
-            "sha256": "891d31cae7bea5e735261e73d54379d6b169abdab9b2c9faf181d46f6f8f0eba",
-            "bytes": 448751,
+            "path": "../thunder_draft_v3/review/engine/before_run.png",
+            "sha256": "6d2036a6d4354373871014984892d3255962e59f11127288ea84eab1c3c31ade",
+            "bytes": 439430,
             "dimensions": [
               800,
               960
@@ -390,27 +391,27 @@
           "label": "換彈中段",
           "scope": "animation",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_reload.png",
-            "sha256": "750655d0749289774adb6bb517fad3fbe99b7f7827996f62297d3e160c952a54",
-            "bytes": 424986,
+            "path": "../thunder_draft_v3/review/engine/original_reload.png",
+            "sha256": "6b9631adf4276ceebb7b8c10f76c48dfdbae37609e2c3151c8c8fb55677e674d",
+            "bytes": 419291,
             "dimensions": [
               800,
               960
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_reload.png",
-            "sha256": "21c8915dd79518f485bda0d23b057526ad5a614532c53fe34d958e5186985319",
-            "bytes": 438355,
+            "path": "../thunder_draft_v3/review/engine/new_reload.png",
+            "sha256": "5818f7a108e63ba726f307de45eea93c32f169c17254508063d89765093f472b",
+            "bytes": 444989,
             "dimensions": [
               800,
               960
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_reload.png",
-            "sha256": "dfc855570eb6cfd2dfed40b44cbe6429748ac4ab92d41a06ff4c53ce027c37a6",
-            "bytes": 433712,
+            "path": "../thunder_draft_v3/review/engine/before_reload.png",
+            "sha256": "fca1e63ca214b5daa8c75184115a9a7b474924193ca6d872a2d86276bac56011",
+            "bytes": 438656,
             "dimensions": [
               800,
               960
@@ -421,27 +422,27 @@
           "label": "區域 01・遊戲",
           "scope": "gameplay",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_game_level_1.png",
-            "sha256": "97628ffee32f108c5b7c544c14a797eddddc4238ee358afc6a71b66dd5698e4f",
-            "bytes": 1406892,
+            "path": "../thunder_draft_v3/review/engine/original_game_level_1.png",
+            "sha256": "05b0f5183f8fe530c4d7f9d532a7f783c446c98c84dbbcc2d7361d952fa761f8",
+            "bytes": 1406302,
             "dimensions": [
               1280,
               720
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_game_level_1.png",
-            "sha256": "0d7c0329e882295a06196822931a42a7884767dee7d05217957cacafa34e610a",
-            "bytes": 1423997,
+            "path": "../thunder_draft_v3/review/engine/new_game_level_1.png",
+            "sha256": "7b45d8660a466626fe73810d2e203e1f88278eda26f89ce51e84c8a70ea93b71",
+            "bytes": 1421307,
             "dimensions": [
               1280,
               720
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_game_level_1.png",
-            "sha256": "544c874e8c1c29786d7d2baad1d4884b54785630cb0014c559ecac6cf90f865c",
-            "bytes": 1432629,
+            "path": "../thunder_draft_v3/review/engine/before_game_level_1.png",
+            "sha256": "7b7e1eb67b38f113a5a03187d875a3fb6c62643206f6d1df4361abab3ccefcd1",
+            "bytes": 1423089,
             "dimensions": [
               1280,
               720
@@ -452,27 +453,27 @@
           "label": "區域 03・遊戲",
           "scope": "gameplay",
           "original": {
-            "path": "../thunder_original_v2/review/engine/original_game_level_3.png",
-            "sha256": "d83df88d49cba75ac71ef5d1bb13d609089ba9d7814eae59eeded0a09c2516ee",
-            "bytes": 1012213,
+            "path": "../thunder_draft_v3/review/engine/original_game_level_3.png",
+            "sha256": "aef66dee3173f0bb71cae1357f55e6e06bce9f425c44893a68aa4b46abcb0c95",
+            "bytes": 1011829,
             "dimensions": [
               1280,
               720
             ]
           },
           "after": {
-            "path": "../thunder_original_v2/review/engine/new_game_level_3.png",
-            "sha256": "b02341cf2b057d63684b6ef75591e562169e1a7ab266a6e8195261463859364e",
-            "bytes": 1027294,
+            "path": "../thunder_draft_v3/review/engine/new_game_level_3.png",
+            "sha256": "e198488c950e355bc9b797985071c4ed236c97158b45503f253a5fd8a709ff66",
+            "bytes": 1026243,
             "dimensions": [
               1280,
               720
             ]
           },
           "before": {
-            "path": "../thunder_original_v2/review/engine/before_game_level_3.png",
-            "sha256": "bbcd48c44ead11f0eb2f4f9769e751fd8d36e5fc84effbad6e0bb9de91815191",
-            "bytes": 1033809,
+            "path": "../thunder_draft_v3/review/engine/before_game_level_3.png",
+            "sha256": "8b600c1bf6904bcdc1548c9d81bd4e800a9b5b206cd7766546ac6fa9b418a861",
+            "bytes": 1027081,
             "dimensions": [
               1280,
               720
@@ -483,7 +484,7 @@
       "metrics": [
         {
           "label": "頭部相對原版最大位移",
-          "value": "0.000%",
+          "value": "19.451%",
           "note": "按該原部件最小軸尺寸正規化；不是概念圖相似率。"
         },
         {
@@ -494,7 +495,7 @@
         {
           "label": "模型三角形",
           "value": "6574",
-          "note": "整套包含 bef5b833 身甲，不宣稱真正原版全套幾何改動為 0%。"
+          "note": "整套身甲沿用 3ed；20% 限制只衡量真正原版頭部的累積位移與軸尺寸。"
         },
         {
           "label": "原骨架",
@@ -504,67 +505,102 @@
       ],
       "tests": [
         {
-          "label": "compile_original_head_and_preserved_body",
+          "label": "compile_bounded_head_and_preserved_body",
           "status": "PASS",
           "evidence": {
-            "path": "../thunder_original_v2/build/compile_report.json",
-            "sha256": "2d40e757e1c946f51486596f4474e2848e26a6927e8ea9b6a850c6a0357b33d4",
-            "bytes": 1729
+            "path": "../thunder_draft_v3/build/compile_report.json",
+            "sha256": "dd391d6aa4f9b3967bd5f942a294fb47876c89744e2013ae36e5a75c27ff04f6",
+            "bytes": 3099
           }
         },
         {
           "label": "runtime_equips_skin_uv_store_and_animation",
           "status": "PASS",
           "evidence": {
-            "path": "../thunder_original_v2/review/runtime_test.json",
-            "sha256": "b508b390a214b11d6afac599f253d3562005f8b2b8916635d43c304419041817",
-            "bytes": 2805
+            "path": "../thunder_draft_v3/review/runtime_test.json",
+            "sha256": "fb7b0ce0a6cada9ade6ff3475a9f9f02b336d666e5b264292478185b771ac388",
+            "bytes": 4002
+          }
+        },
+        {
+          "label": "independent_original_source_target_contract",
+          "status": "PASS",
+          "evidence": {
+            "path": "../thunder_draft_v3/review/independent_head_contract.json",
+            "sha256": "c67e1dbdf8f1ec2fbaf3a73cf0ca7c218a81d4f911b67b7e77cefc7817245f77",
+            "bytes": 1245
           }
         }
       ],
       "residuals": [
-        "這輪保留真正原版的高鰭冠與 V 形壓眉，外形改動為 0；是原版頭盔的貼圖整理，不是新的低冠概念頭盔。",
-        "新頭圖比原版更乾淨、藍色更明亮；局部亮邊磨損仍較銳，冠頂／下框的塗裝可再減淡。",
-        "面窗是單片連續金橙色，亮 V 形反光較強；不是兩道深色凹槽，但玻璃反光強度仍待使用者評價。",
-        "身甲保持 bef5b833 的切面、白邊磨損與黑褐軟衣；目前頭身整體不是對真正原版全套的 0% 或 20% 量測。",
-        "這次只看固定待機／跑動／換彈取樣和兩關畫面；完整動畫影片、使用者美術接受與手機效能尚未驗證。"
+        "冠頂及額甲仍受真正原版 147 頂點／196 三角形限制，存在明顯折面和較平頂段；B 草稿的流暢圓殼曲面未完全重建。",
+        "大尖三角後鰭已去除，但側／背近景仍可见極細後冠邊尖端，尚非完全貼合的圓滑冠帶。",
+        "金色面窗上緣、整條 V 眉帶與 B 草稿的細中央冠舌仍不同；不能宣稱面窗面積或輪廓完全一致。",
+        "下巴黑框已較之前緊湊，但黑色矩形排氣模組和藍色周框仍比 B 草稿厚重。",
+        "後頸灰 padding 錯貼已修正；黑色頸區與棕色既有領口仍是簡單原模型接合，沒有製成 B 草稿完整分層頸環。",
+        "身甲、手與腿嚴格繼承 3ed 凍結版本，本輪只改頭部，沒有把 B 全身概念重新塑形成全套遊戲模型。",
+        "僅檢查 45 張静態採樣及已有 9 個姿勢工程採樣，尚未完成玩家實際全動畫／所有武器／所有光照和行動裝置評價。"
       ],
       "sources": [
+        {
+          "path": "../thunder_draft_v3/manifest.json",
+          "sha256": "378e082744e21dc59917e2554a5675bfbf8773bd8f1396b34e7782ee7e714235",
+          "bytes": 38434,
+          "label": "完整素材與工程 manifest"
+        },
+        {
+          "path": "../thunder_draft_v3/review/engine/capture.json",
+          "sha256": "34e37be9ba290a15719da321efdf915bf66b93eb8284526e40ffb09b0acf07e8",
+          "bytes": 35876,
+          "label": "正常引擎擷取紀錄"
+        },
+        {
+          "path": "../thunder_draft_v3/revisions/before_draft_v3/snapshot.json",
+          "sha256": "8ef68f9c7d9e67b32d01c1632bdf765debc527117f872e1a56c8ab00c02c09fb",
+          "bytes": 42079,
+          "label": "3ed1c291 上一版交付凍結清單"
+        },
+        {
+          "path": "../thunder_draft_v3/revisions/before_draft_v3/docs/art/thunder_original_v2/manifest.json",
+          "sha256": "a28ad071fc88598e07187151ecc861a9714edf6b91b7b06dd2ad4b645f04af48",
+          "bytes": 24582,
+          "label": "3ed1c291 素材與工程 manifest"
+        },
+        {
+          "path": "../thunder_draft_v3/revisions/before_draft_v3/docs/art/thunder_original_v2/review/engine/capture.json",
+          "sha256": "2fffad8c3248a07244c24ddb517bb97b8021bb089143a2b2dd5f024022e64295",
+          "bytes": 34952,
+          "label": "3ed1c291 引擎擷取紀錄"
+        },
         {
           "path": "../thunder_original_v2/manifest.json",
           "sha256": "a28ad071fc88598e07187151ecc861a9714edf6b91b7b06dd2ad4b645f04af48",
           "bytes": 24582,
-          "label": "完整素材與工程 manifest"
+          "label": "Thunder original_v2 歷史交付（保留）"
         },
         {
-          "path": "../thunder_original_v2/review/engine/capture.json",
-          "sha256": "2fffad8c3248a07244c24ddb517bb97b8021bb089143a2b2dd5f024022e64295",
-          "bytes": 34952,
-          "label": "正常引擎擷取紀錄"
-        },
-        {
-          "path": "../thunder_original_v2/visual_review.json",
-          "sha256": "6906118e2a9c7f0baed4d7282e0cf11b95d3aca36ff2f67579689a1d9472c4b9",
-          "bytes": 25297,
+          "path": "../thunder_draft_v3/review/visual_review.json",
+          "sha256": "fc1baf7b78b7e241e6b21072cb9768772b5964b4fb03faa3fb52cec37cfde3e1",
+          "bytes": 32230,
           "label": "逐張實際目視紀錄"
         },
         {
-          "path": "../thunder_original_v2/generation_inputs.json",
-          "sha256": "ca273b1bfd429f9610a6fe8562f9db5f95e581cd330d1bdf5a1d47da98c1329e",
-          "bytes": 6502,
+          "path": "../thunder_draft_v3/generation_inputs.json",
+          "sha256": "339de9f0060e9fd5ff56354e7ea2c5599add047e941b5c8a7da052190fb0ba7f",
+          "bytes": 36247,
           "label": "生成圖、實送 Prompt 與來源"
         },
         {
-          "path": "../thunder_original_v2/prompts/head_attempt_01.txt",
-          "sha256": "e74a706b81ab80582c3f9375798e1bfc8ac392af4bdaadf446fe70919ebd695d",
-          "bytes": 3298,
+          "path": "../thunder_draft_v3/prompts/head_attempt_01.txt",
+          "sha256": "95e29fd426665c42da89a3361a9e545275bb48dfb255fd3f506cb790fe6e82f2",
+          "bytes": 7560,
           "label": "原版頭盔實送 Prompt"
         }
       ],
       "comparison_order": [
         "original",
-        "after",
-        "before"
+        "before",
+        "after"
       ],
       "stage_labels": {
         "original": {
@@ -572,29 +608,24 @@
           "caption": "同一擷取管線的原始模型與貼圖。"
         },
         "before": {
-          "title": "修改前（已還原版本）",
-          "caption": "bef5b833 身甲與頭盔；不是本輪採用的新頭部。"
+          "title": "3ed1c291 · 上一版遊戲素材",
+          "caption": "上一輪原版頭部基底的貼圖版；從凍結場景重新擷取。"
         },
         "after": {
-          "title": "這輪 Thunder",
+          "title": "本輪 · 草稿再修版 v3",
           "caption": "實際正式模型與貼圖；外觀待使用者評價。"
         }
       },
-      "before_note": "Thunder 的第三欄為已還原的 bef5b833 版本；身甲與本輪相同，頭盔仍是舊低圓冠，可看出這輪只換回原版頭部基底。",
+      "before_note": "Thunder 的上一版為 3ed1c291 原版頭部基底交付；本輪按目前圖集選定的 B 稿實際改形。三組畫面由同一次擷取產生，身甲保持 3ed，不宣稱整套相對真正原版符合頭部的 20% 限制。",
       "art_acceptance": "NOT RUN・等待使用者美術評價",
       "browser_interaction": "NOT RUN",
-      "visual_inspection": "VISUALLY_REVIEWED_PENDING_USER_REVIEW",
+      "visual_inspection": "ENGINEERING_CANDIDATE_PENDING_USER_ART_REVIEW",
       "reference": {
-        "path": "../original_armors_v1/references/legacy/c07_front.png",
-        "sha256": "a43239dfa7720cca97de8ed8af4b13aa3c93435670bce412ee25ca0e1a4dac8b",
-        "bytes": 356771,
-        "label": "本輪頭盔基底：真正原版 Thunder",
-        "note": "新版頭部從原版模型、UV 與 atlas 直接製作。身甲保留修改前版本；其配色概念另列，概念中的低冠頭盔不作目標。"
-      },
-      "body_reference": {
         "path": "../thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png",
         "sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
-        "bytes": 1584536
+        "bytes": 1584536,
+        "label": "本輪 Thunder 設計參考：目前圖集 B 稿",
+        "note": "使用目前圖集保留的 B 新頭盔舊稿作形狀與配色目標；真正原版模型與 atlas 提供 UV、拓撲及動作基底。身甲維持 3ed。"
       },
       "legacy_reference": {
         "path": "../original_armors_v1/references/legacy/c07_front.png",
@@ -604,9 +635,34 @@
       },
       "scene": {
         "path": "../../../assets/armors/thunder/thunder.scn",
-        "sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7",
-        "bytes": 869138
-      }
+        "sha256": "c7762f82a92a12c25e120c1f6e2a751d7a117212554c21c110a376b37a4a9b84",
+        "bytes": 869080
+      },
+      "baseline": {
+        "source_commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
+        "scene": {
+          "path": "../thunder_draft_v3/revisions/before_draft_v3/assets/armors/thunder/thunder.scn",
+          "sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7",
+          "bytes": 869138
+        },
+        "snapshot": {
+          "path": "../thunder_draft_v3/revisions/before_draft_v3/snapshot.json",
+          "sha256": "8ef68f9c7d9e67b32d01c1632bdf765debc527117f872e1a56c8ab00c02c09fb",
+          "bytes": 42079
+        },
+        "manifest": {
+          "path": "../thunder_draft_v3/revisions/before_draft_v3/docs/art/thunder_original_v2/manifest.json",
+          "sha256": "a28ad071fc88598e07187151ecc861a9714edf6b91b7b06dd2ad4b645f04af48",
+          "bytes": 24582
+        },
+        "capture_summary": {
+          "path": "../thunder_draft_v3/revisions/before_draft_v3/docs/art/thunder_original_v2/review/engine/capture.json",
+          "sha256": "2fffad8c3248a07244c24ddb517bb97b8021bb089143a2b2dd5f024022e64295",
+          "bytes": 34952
+        }
+      },
+      "model_refinement_observed": true,
+      "changed_since_previous_delivery": true
     },
     {
       "key": "atom",
@@ -631,17 +687,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_head_front.png",
-            "sha256": "f227525f63be5ef4118616d4ddd81951d5d594362c7fbfc24d95a4a674473ce1",
-            "bytes": 554861,
+            "sha256": "037ea0f950ea5afcc9e78965544889a72e1ca51c3e10df338d3852e65fa7d9c1",
+            "bytes": 555963,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_head_front.png",
-            "sha256": "fe6e4ee9c3469420c2c1c521ee96d07f46f78f4aab805d1a522a4d4de94f6508",
-            "bytes": 579375,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_head_front.png",
+            "sha256": "f227525f63be5ef4118616d4ddd81951d5d594362c7fbfc24d95a4a674473ce1",
+            "bytes": 554861,
             "dimensions": [
               640,
               720
@@ -662,17 +718,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_head_quarter.png",
-            "sha256": "d4b3a8dd364fe811c3308ccad9c0d2d66153680d00535f913f7c653f091c896f",
-            "bytes": 582892,
+            "sha256": "13c4f31ece7d5a3780c0792cbede8faf77abdf9ed56f4c57f92a98c757446b9a",
+            "bytes": 589026,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_head_quarter.png",
-            "sha256": "d1c2c04c33b469afc8e84793c5ea15a63f3e4de3b0c4f4911ba70c54c6ca27b5",
-            "bytes": 596133,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_head_quarter.png",
+            "sha256": "d4b3a8dd364fe811c3308ccad9c0d2d66153680d00535f913f7c653f091c896f",
+            "bytes": 582892,
             "dimensions": [
               640,
               720
@@ -693,17 +749,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_head_side.png",
-            "sha256": "5a9e8afc04fb114a551ca2e861770f3669bf9ba17636064f5da7efe596555267",
-            "bytes": 489916,
+            "sha256": "42377e55312d02e2dd8eded742196ecb200f8de624a5adaa0285fc4cf066aabb",
+            "bytes": 506786,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_head_side.png",
-            "sha256": "90a7eb420e52f4f65031246b5d2466bb525fc759cbcce006c21bd69a17366188",
-            "bytes": 520767,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_head_side.png",
+            "sha256": "5a9e8afc04fb114a551ca2e861770f3669bf9ba17636064f5da7efe596555267",
+            "bytes": 489916,
             "dimensions": [
               640,
               720
@@ -724,17 +780,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_head_rear.png",
-            "sha256": "67d9baa503d4eac110f7bec8ca0c2c73ba58d7879bc4386af45f1d2c73849269",
-            "bytes": 527245,
+            "sha256": "f2ebe693f4c45820f8e9304a6e54489fb38424a81469fedd5c9ce839ddb9bc51",
+            "bytes": 532478,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_head_rear.png",
-            "sha256": "47315de4089066d9a6ab2244ec269f492c13543a4cddce563f012add616f3383",
-            "bytes": 560898,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_head_rear.png",
+            "sha256": "67d9baa503d4eac110f7bec8ca0c2c73ba58d7879bc4386af45f1d2c73849269",
+            "bytes": 527245,
             "dimensions": [
               640,
               720
@@ -755,17 +811,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_diffuse_front.png",
-            "sha256": "90ccbf558896834e1e51831617ce5c0ef16ea51412cba76ca30f5d27251be6c8",
-            "bytes": 300236,
+            "sha256": "3f5d32099121a6c8090f7be67dd20f1fd85aa3efcb17b187b2410d98eefdc72b",
+            "bytes": 304243,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_diffuse_front.png",
-            "sha256": "a5a591782428a3171907bd9fdaf4e3659d2ce5a4c5175a673f15b99a9205217a",
-            "bytes": 302793,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_diffuse_front.png",
+            "sha256": "90ccbf558896834e1e51831617ce5c0ef16ea51412cba76ca30f5d27251be6c8",
+            "bytes": 300236,
             "dimensions": [
               640,
               720
@@ -786,17 +842,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_diffuse_quarter.png",
-            "sha256": "200e6c04e652a004d5d48d2a9fa6cb23fbbb80c21ae685e661171af93e84896b",
-            "bytes": 308625,
+            "sha256": "436398802cc2e218f8ec2e203c23d05c2237667cb971b07fde52cba562765084",
+            "bytes": 313505,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_diffuse_quarter.png",
-            "sha256": "4912a0f4640023d299bbda41a279c9ab6d12bc034ed392618397568640f6c784",
-            "bytes": 311729,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_diffuse_quarter.png",
+            "sha256": "200e6c04e652a004d5d48d2a9fa6cb23fbbb80c21ae685e661171af93e84896b",
+            "bytes": 308625,
             "dimensions": [
               640,
               720
@@ -817,17 +873,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_diffuse_side.png",
-            "sha256": "b5ef35cc3ecfebcd50fd0e5bbed503a011998af7ceda162b2c3839d4b708fe04",
-            "bytes": 184696,
+            "sha256": "52c5c1792f87f8127196c887c70f7f328ee68310473e4f7562721532b8d29d55",
+            "bytes": 188407,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_diffuse_side.png",
-            "sha256": "8efdc99cb6e3905f7fb5b78c444f50b8dad85ccf222a06186740b02545e4200a",
-            "bytes": 191467,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_diffuse_side.png",
+            "sha256": "b5ef35cc3ecfebcd50fd0e5bbed503a011998af7ceda162b2c3839d4b708fe04",
+            "bytes": 184696,
             "dimensions": [
               640,
               720
@@ -848,17 +904,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_diffuse_rear.png",
-            "sha256": "a1e701e63689c9468132deb6fee05f8c207481796eba8b8b7a69c6c5d87eea5b",
-            "bytes": 285759,
+            "sha256": "170155e50faad711b141f986e3a20ed6874390614d4fd6c2d608fe3cc5abb877",
+            "bytes": 289899,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_diffuse_rear.png",
-            "sha256": "63daa6b9b68ee617c990dbe5cc58d21da20438e5d574497fccdbfabb9982cf08",
-            "bytes": 292111,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_diffuse_rear.png",
+            "sha256": "a1e701e63689c9468132deb6fee05f8c207481796eba8b8b7a69c6c5d87eea5b",
+            "bytes": 285759,
             "dimensions": [
               640,
               720
@@ -879,17 +935,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_clay_front.png",
-            "sha256": "1d1e56fd6bd4423cb21c0ceba41504d38fd02701aa15f19ad0fb5e90dbaf43f9",
-            "bytes": 44205,
+            "sha256": "bc4288abb69d4d60645a8f9b9e6f8a6b9e9f24e53e85c831106e9646678d4a94",
+            "bytes": 44258,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_clay_front.png",
-            "sha256": "d66d9aa8b25ff37e09a47975c847e0159d9f8e7e3c30213089e0a6413ff44dc9",
-            "bytes": 44194,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_clay_front.png",
+            "sha256": "1d1e56fd6bd4423cb21c0ceba41504d38fd02701aa15f19ad0fb5e90dbaf43f9",
+            "bytes": 44205,
             "dimensions": [
               640,
               720
@@ -910,17 +966,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_clay_side.png",
-            "sha256": "77d817d5b2c5830da407b0cb2110ca1936cb67b48c4d71d2f78da5df5ffe8729",
-            "bytes": 28434,
+            "sha256": "4f8fa024f907657eafc8d5ba2053a781459bdcc8a4e1c30d859b744800e4a0cc",
+            "bytes": 28658,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_clay_side.png",
-            "sha256": "c4370ca35a89f8051a7aeda527f95ebdbf2a801b74c118bbe2c5f53e727b1bf6",
-            "bytes": 27993,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_clay_side.png",
+            "sha256": "77d817d5b2c5830da407b0cb2110ca1936cb67b48c4d71d2f78da5df5ffe8729",
+            "bytes": 28434,
             "dimensions": [
               640,
               720
@@ -941,17 +997,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_idle_rifle.png",
-            "sha256": "1da81cde23918513aaa24a209ec0c33565da8111085226c0503f93e5065903b0",
-            "bytes": 244090,
+            "sha256": "7db4a93b283965ded1d35097deb0619e0f0ada4883944724e1c7ad1d4fa7789c",
+            "bytes": 247072,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_idle_rifle.png",
-            "sha256": "d0881fa513d62188bb4235791c50f7a6260a92afa094814ee6288b9d22d31240",
-            "bytes": 246466,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_idle_rifle.png",
+            "sha256": "1da81cde23918513aaa24a209ec0c33565da8111085226c0503f93e5065903b0",
+            "bytes": 244090,
             "dimensions": [
               640,
               720
@@ -972,17 +1028,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_run_rifle.png",
-            "sha256": "69606ce3664d54ebfb34198ee1f1c5376f536474f0ec9151bacdd1011c3d67e6",
-            "bytes": 225215,
+            "sha256": "f5aca41df721b97a2fd28e33c901e6600f64b14ca320f9fb756577d7333906bd",
+            "bytes": 228846,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_run_rifle.png",
-            "sha256": "a55f48e993cbe3adaf38dc688915f711844d2354a0aeb79a5aa26711fe7a3f59",
-            "bytes": 227982,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_run_rifle.png",
+            "sha256": "69606ce3664d54ebfb34198ee1f1c5376f536474f0ec9151bacdd1011c3d67e6",
+            "bytes": 225215,
             "dimensions": [
               640,
               720
@@ -994,8 +1050,8 @@
           "scope": "animation",
           "original": {
             "path": "../atom_runtime_v1/review/engine/original_reload_04.png",
-            "sha256": "530111c8a260efca34cb8c8f418d7544717ec67d5822a88911b6fcec34b340da",
-            "bytes": 199243,
+            "sha256": "37899861678a222b8f09614de473e58bb244e8d660fd592cc2e10bb29501fc23",
+            "bytes": 197949,
             "dimensions": [
               640,
               720
@@ -1003,17 +1059,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_reload_04.png",
-            "sha256": "8518d765f4f13626fc73378c154f4aee4280b66c6d394fff2df308e9d3bdc147",
-            "bytes": 228968,
+            "sha256": "ff457a27841ab5519cefd0baf2ace9ac4fe2a1aee2aec0a547f18de79cabcb3e",
+            "bytes": 232724,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_reload_04.png",
-            "sha256": "f1b3c8ff13ac764c26d640441f018be79539d1535f4e3431404e9ed51a21fe1f",
-            "bytes": 230344,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_reload_04.png",
+            "sha256": "8518d765f4f13626fc73378c154f4aee4280b66c6d394fff2df308e9d3bdc147",
+            "bytes": 228968,
             "dimensions": [
               640,
               720
@@ -1025,8 +1081,8 @@
           "scope": "gameplay",
           "original": {
             "path": "../atom_runtime_v1/review/engine/original_level_01_gameplay.png",
-            "sha256": "60b826909afcc583e44741a4383ec4c103fc5013b64e062f292cd2131cb97f82",
-            "bytes": 1438878,
+            "sha256": "99736e085852f2d70ace4a5ce7547fb41b1003dfffe2c8b6af71be6b217c22d7",
+            "bytes": 1438750,
             "dimensions": [
               1280,
               720
@@ -1034,17 +1090,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_level_01_gameplay.png",
-            "sha256": "db0027a4fb98f981185aabea94965343c724a5f84caeab59c0298f6bb41ca18f",
-            "bytes": 1467384,
+            "sha256": "39675addf90916d1a71484fffea987ad9e53d7f280a8a3bc2e1eff9b195b4867",
+            "bytes": 1466823,
             "dimensions": [
               1280,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_level_01_gameplay.png",
-            "sha256": "66497440a9cd9f76b16065e53e521f25152378b1a94ceb66454f7f022a1a2e7a",
-            "bytes": 1472868,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_level_01_gameplay.png",
+            "sha256": "db0027a4fb98f981185aabea94965343c724a5f84caeab59c0298f6bb41ca18f",
+            "bytes": 1467384,
             "dimensions": [
               1280,
               720
@@ -1056,8 +1112,8 @@
           "scope": "gameplay",
           "original": {
             "path": "../atom_runtime_v1/review/engine/original_level_08_gameplay.png",
-            "sha256": "5efafd636e93ed4a06162afc4d348ab5b506287cb672906cf5a7d9501fb1906f",
-            "bytes": 993910,
+            "sha256": "47d633d53ba3a916e85d3e206bbb500fb11e4e878ac2cb37b0a80fb617cf7fdb",
+            "bytes": 994702,
             "dimensions": [
               1280,
               720
@@ -1065,17 +1121,17 @@
           },
           "after": {
             "path": "../atom_runtime_v1/review/engine/new_level_08_gameplay.png",
-            "sha256": "1d0ae5a5ccd4a9949084d76558d4257803151dc27ee528268d70bbfcf9d9c7a0",
-            "bytes": 1019646,
+            "sha256": "948117dec247bb33b084ff11b39e0d13b93ac8f3dc215b1591d1fa335c07ef01",
+            "bytes": 1020776,
             "dimensions": [
               1280,
               720
             ]
           },
           "before": {
-            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/new_level_08_gameplay.png",
-            "sha256": "08b888d6c205a85ff2f47e84912b699900283314eb44e8d9fdeeab2ae3062c55",
-            "bytes": 1026663,
+            "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/new_level_08_gameplay.png",
+            "sha256": "1d0ae5a5ccd4a9949084d76558d4257803151dc27ee528268d70bbfcf9d9c7a0",
+            "bytes": 1019646,
             "dimensions": [
               1280,
               720
@@ -1086,12 +1142,12 @@
       "metrics": [
         {
           "label": "頭部相對原版最大位移",
-          "value": "15.658%",
+          "value": "12.641%",
           "note": "按該原部件最小軸尺寸正規化；不是概念圖相似率。"
         },
         {
           "label": "胸肩部相對原版最大位移",
-          "value": "15.837%",
+          "value": "19.789%",
           "note": "按該原部件最小軸尺寸正規化；不是概念圖相似率。"
         },
         {
@@ -1116,8 +1172,8 @@
           "status": "PASS",
           "evidence": {
             "path": "../atom_runtime_v1/review/runtime_test.json",
-            "sha256": "33e299dddebad241e7bd735dc5b2644992213bbf2b5c92e1e024bc0e02628128",
-            "bytes": 12573
+            "sha256": "f802c030c37fc1f2a240a0b6341e33b33da94765cc658bbe8f25073b150cfe36",
+            "bytes": 12580
           }
         },
         {
@@ -1125,8 +1181,8 @@
           "status": "PASS",
           "evidence": {
             "path": "../atom_runtime_v1/review/roundtrip_test.json",
-            "sha256": "e8f5d464c90b7c246e8f99277d2d6741ee97cc5ce36d8303a394050a663dd7de",
-            "bytes": 11880
+            "sha256": "7edfea7d59475835e46687eda39715e80afa0407e1a7cf9533bd8ac968bd89f5",
+            "bytes": 11868
           }
         },
         {
@@ -1134,8 +1190,8 @@
           "status": "PASS",
           "evidence": {
             "path": "../atom_runtime_v1/review/proportion_test.json",
-            "sha256": "82849e264fa0ff73f1a59d3f4068a8fb9cd7de847a592c2ce34e5cbebf43b112",
-            "bytes": 11197
+            "sha256": "638bb54c28dbe1b3887789a0778f6d3cb74defd3970043f52b371b897c9dcc0a",
+            "bytes": 11196
           }
         },
         {
@@ -1143,8 +1199,8 @@
           "status": "PASS",
           "evidence": {
             "path": "../atom_runtime_v1/review/delivery_validate.json",
-            "sha256": "0079b0574965144ca6c51fc4d3349ed262a2b16d2e75e13d1c7b4b04f495715c",
-            "bytes": 10098
+            "sha256": "e118b93c5fa3bd16f30865b647f1aba7bb0a213285a7b0dc0a44e9a96c604678",
+            "bytes": 10096
           }
         },
         {
@@ -1152,8 +1208,8 @@
           "status": "PASS",
           "evidence": {
             "path": "../atom_runtime_v1/review/original_scene_invariants.json",
-            "sha256": "5493d32fc726a6211bd81399ee718cb77d458c7a76aee0c836fb79e5af436b9d",
-            "bytes": 3201
+            "sha256": "aa85b99589d7c0ee82723b90f427bb87174a0ee5b2147b92d5a4794c617bd5f3",
+            "bytes": 3200
           }
         },
         {
@@ -1161,66 +1217,73 @@
           "status": "PASS",
           "evidence": {
             "path": "../atom_runtime_v1/review/glb_images_test.json",
-            "sha256": "d85496883fe4edb3d913fe15d93f23f4aed74a67afcfd6d908cc7131338c3794",
+            "sha256": "3e40c611bfaa6375aaa76694ba0a77aa05e8c61601f71da948c22eb920afe7b7",
             "bytes": 9194
           }
         }
       ],
       "residuals": [
-        "原頭部已縮短下巴、壓低冠頂，六點耳蓋側視比例從約1.96:1改為1.19:1；金屬耳盤已畫回真正耳蓋，仍保留低多邊形外殼輪廓。",
-        "紫頂／鋼藍冠燈、三額燈與青玻璃已呈現；中央鋼藍冠區較草稿短，玻璃的V形對稱反光較強，缺少草稿的獨立青色頰窗。",
-        "長肩刺改成較短厚的楔形鰭，前面青燈可見但小且靠根，仍較草稿外張，未宣稱草稿肩部逐形一致。",
-        "body10實機是一個高胸青服務模組，已非舊領口燈或低胸燈；相對理想UV標示仍偏高，胸甲放射分片與下方五角板保留較多原版特色。",
-        "前臂圓燈改為矩形窗；白色磨邊與紫裂紋仍較草稿密。背面沿原版推定，概念未展示隱藏側背，不能稱完全還原。",
-        "15裝備姿勢／9GLB姿勢及64張ANGLE擷取通過；未做完整連續動畫全角度或手機效能實測，美術仍待使用者審閱。"
+        "head04 已有全頂鋼藍冠脊、真耳圓盤與獨立青頰窗，下巴也縮短；紫殼及冠脊仍受原低多邊形折面影響，輪廓較草稿扁平、圓潤度不同。",
+        "面罩仍是原有繪製上緣和較矮的青面窗，中央強 V 形對稱反光未完全消除。head05 的過度玻璃稿未採用；未完成上緣移到新 UV polygon 的美術目標。舊「可見玻璃增加35%」指標已撤回，不能用作還原證據。",
+        "肩鰭已由整片原頂點改成連續上斜寬楔、長青前燈可辨，沒有舊 L 形突然直立段；根底仍較外偏、末端仍比草稿短厚直立片更扁，未宣稱逐形一致。",
+        "body12 已消除舊紫色放射胸條，形成雙大藍胸面與胸甲中央下移青服務件；服務框仍比概念簡化、較小，中央紫領塊與下方五角腹甲保留原版構造，不將現在模組誤判為頸燈。",
+        "紫／鋼藍／青配色連續、前臂矩形窗與腿側圓燈保留辨識；白磨邊、硬板縫與腿甲折角仍比草稿密／銳，四肢及原短壯比例尚有明顯原版特徵。",
+        "概念沒有展示背面；後腦封閉後蓋、藍背板與背側青件只檢查连貫性，不宣稱隱藏側背完全還原。",
+        "64張固定取樣沒有顯見新增裝甲裂口或飛片，換彈外部長方物是原版也有的彈匣；武器與背包遮住部分胸背，未檢查完整連續動畫全角度、手機螢幕或GPU效能。"
       ],
       "sources": [
         {
           "path": "../atom_runtime_v1/manifest.json",
-          "sha256": "5a0a2358a5f178a8431a8bfcdb3f88adb1c0cf92df696e372f154e15eaab30a6",
-          "bytes": 118968,
+          "sha256": "d919cdad4425fde9ce99d0b3cb73f96ea9ef0be225a59f2ffffd20ad38a018b2",
+          "bytes": 138321,
           "label": "完整素材與工程 manifest"
         },
         {
           "path": "../atom_runtime_v1/review/engine/capture.json",
-          "sha256": "2eb9ba50868965fc1108912bde1adbb2b0bb3530ce09d29c186d8d1b1726e34a",
+          "sha256": "ba8bb01fc5229407bf1c3ab83c5029e25092f747859e143bd357234ba1d2a26a",
           "bytes": 23403,
           "label": "正常引擎擷取紀錄"
+        },
+        {
+          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/snapshot.json",
+          "sha256": "dceb6a0fc6706e3a82aaf97ac9f0b50ae0a9d613902be7626a8223c7b0a358fb",
+          "bytes": 33337,
+          "label": "3ed1c291 上一版交付凍結清單"
+        },
+        {
+          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/manifest.json",
+          "sha256": "5a0a2358a5f178a8431a8bfcdb3f88adb1c0cf92df696e372f154e15eaab30a6",
+          "bytes": 118968,
+          "label": "3ed1c291 素材與工程 manifest"
+        },
+        {
+          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/capture.json",
+          "sha256": "2eb9ba50868965fc1108912bde1adbb2b0bb3530ce09d29c186d8d1b1726e34a",
+          "bytes": 23403,
+          "label": "3ed1c291 引擎擷取紀錄"
         },
         {
           "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/snapshot.json",
           "sha256": "b11f3dbef7eb700e02dfef178703d1828e700f06c4d51aa1332211e169db1d6d",
           "bytes": 33327,
-          "label": "f94323e4 僅貼圖版凍結清單"
-        },
-        {
-          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/manifest.json",
-          "sha256": "53386d2991243706da3caf07236f7bb88cb91a09632f1846fedc5a0aa769eb0b",
-          "bytes": 75571,
-          "label": "f94323e4 素材與工程 manifest"
-        },
-        {
-          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/capture.json",
-          "sha256": "7201bc40ba97a1deeb43513892e9d8358551d25ac6172af9609b70201a4d82a6",
-          "bytes": 23403,
-          "label": "f94323e4 引擎擷取紀錄"
+          "label": "f94323e4 僅貼圖版歷史快照（保留）"
         },
         {
           "path": "../atom_runtime_v1/review/visual_review.json",
-          "sha256": "73f9b44aa8b73942add0593ae9bba72022de2bfe0459b5c406202b9d4d5e13d8",
-          "bytes": 43767,
+          "sha256": "d385163a818716c211f518729c7da8528c1b4649e9e8b9008e6d54c0a16ea42a",
+          "bytes": 48081,
           "label": "逐張實際目視紀錄"
         },
         {
           "path": "../atom_runtime_v1/index.html",
-          "sha256": "e298feeb75cd5770e9af04af4e7b40f54920c2fa8225c9366355b706b76e74dd",
-          "bytes": 10002,
+          "sha256": "ababe2c9a03e8bf0f02946c10fc63bb2ea9c6d1a26fb5a39d085b7a47dbd6867",
+          "bytes": 10469,
           "label": "各套獨立比對頁"
         },
         {
           "path": "../atom_runtime_v1/generation_inputs.json",
-          "sha256": "a8c311fefa579234900be406834c4b002a24e8a153515a7dce831206a6cb56ca",
-          "bytes": 44511,
+          "sha256": "dc6d4d5e7cf7a77ae3f915ad9d68e6c1c9a82c2f6f48196c1ec08a5e03f53390",
+          "bytes": 56385,
           "label": "生成圖、實送 Prompt 與來源"
         },
         {
@@ -1247,15 +1310,15 @@
           "caption": "同一擷取管線的原始模型與貼圖。"
         },
         "before": {
-          "title": "f94323e4 · 僅貼圖版",
-          "caption": "上一輪保留原模型輪廓的素材，從凍結快照讀取。"
+          "title": "3ed1c291 · 上一版改模",
+          "caption": "上一輪已修改頭部與胸肩模型的素材，從凍結快照讀取。"
         },
         "after": {
-          "title": "本輪 · 草稿改模版",
+          "title": "本輪 · 草稿再修版 v3",
           "caption": "實際正式模型與貼圖；外觀待使用者評價。"
         }
       },
-      "before_note": "依序比較真正原版、f94323e4 僅貼圖版、這輪依草稿改模版。灰模可直接檢查形狀變化，概念圖另列；不宣稱與草稿完全一致。",
+      "before_note": "依序比較真正原版、3ed1c291 上一版改模、本輪草稿再修版。灰模可直接檢查形狀變化；f94323e4 僅貼圖版保留於歷史快照，不宣稱本輪與草稿完全一致。",
       "art_acceptance": "NOT RUN・等待使用者美術評價",
       "browser_interaction": "NOT RUN",
       "visual_inspection": "ENGINEERING_CANDIDATE_PENDING_USER_ART_REVIEW",
@@ -1274,33 +1337,34 @@
       },
       "scene": {
         "path": "../../../assets/armors/atom_v1/atom.scn",
-        "sha256": "4cc7e88aa5f70c8c93331699d29a93042c1c4ab53891cd7eaad7512ed9efaad8",
+        "sha256": "094cdf8fe9061c1ca9d8bb8e914ea23083168b79d6b2d89f94fe0809d6ce0dda",
         "bytes": 63846
       },
       "baseline": {
-        "source_commit": "f94323e40b3e7002268b39944bdcb58c2737c41f",
+        "source_commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
         "scene": {
-          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/assets/armors/atom_v1/atom.scn",
-          "sha256": "a8f70bdf81ed11aeccc1834be6a7b542599335f4b283e8988922a1ca299fc638",
+          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/assets/armors/atom_v1/atom.scn",
+          "sha256": "4cc7e88aa5f70c8c93331699d29a93042c1c4ab53891cd7eaad7512ed9efaad8",
           "bytes": 63846
         },
         "snapshot": {
-          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/snapshot.json",
-          "sha256": "b11f3dbef7eb700e02dfef178703d1828e700f06c4d51aa1332211e169db1d6d",
-          "bytes": 33327
+          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/snapshot.json",
+          "sha256": "dceb6a0fc6706e3a82aaf97ac9f0b50ae0a9d613902be7626a8223c7b0a358fb",
+          "bytes": 33337
         },
         "manifest": {
-          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/manifest.json",
-          "sha256": "53386d2991243706da3caf07236f7bb88cb91a09632f1846fedc5a0aa769eb0b",
-          "bytes": 75571
+          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/manifest.json",
+          "sha256": "5a0a2358a5f178a8431a8bfcdb3f88adb1c0cf92df696e372f154e15eaab30a6",
+          "bytes": 118968
         },
         "capture_summary": {
-          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v2/docs/art/atom_runtime_v1/review/engine/capture.json",
-          "sha256": "7201bc40ba97a1deeb43513892e9d8358551d25ac6172af9609b70201a4d82a6",
+          "path": "../atom_runtime_v1/revisions/before_draft_refinement_v3/docs/art/atom_runtime_v1/review/engine/capture.json",
+          "sha256": "2eb9ba50868965fc1108912bde1adbb2b0bb3530ce09d29c186d8d1b1726e34a",
           "bytes": 23403
         }
       },
-      "model_refinement_observed": true
+      "model_refinement_observed": true,
+      "changed_since_previous_delivery": true
     },
     {
       "key": "pegasus",
@@ -1325,17 +1389,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_head_front.png",
-            "sha256": "b402bbdf74493c22dd7b58360f706f6ddac60f7ed61404de0b2a84c37bb2923f",
-            "bytes": 554511,
+            "sha256": "a791e4d895830cde60d2ae7be3da5671981b90fac93e88d900818871f0e00c92",
+            "bytes": 498015,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_head_front.png",
-            "sha256": "13a2ba72ea88bac7bad291e71c8bdde0e4052d7abed6fd49412d4768b5e5339e",
-            "bytes": 607386,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_head_front.png",
+            "sha256": "b402bbdf74493c22dd7b58360f706f6ddac60f7ed61404de0b2a84c37bb2923f",
+            "bytes": 554511,
             "dimensions": [
               640,
               720
@@ -1356,17 +1420,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_head_quarter.png",
-            "sha256": "29709f74a4b8cabe40692fddd0c609493a0bc68323073fa1303f152729bb061a",
-            "bytes": 562773,
+            "sha256": "ff1897ea8f4cc80416b3bbf5a350787de9322d19ab8a66af59df1a4c097b48f7",
+            "bytes": 516114,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_head_quarter.png",
-            "sha256": "90f0c06d4eaffda4458226e10088f2ad38d14cda6acd6733894b8e02bc206481",
-            "bytes": 598273,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_head_quarter.png",
+            "sha256": "29709f74a4b8cabe40692fddd0c609493a0bc68323073fa1303f152729bb061a",
+            "bytes": 562773,
             "dimensions": [
               640,
               720
@@ -1387,17 +1451,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_head_side.png",
-            "sha256": "67cf5d5120e6814cdeec392f9d800ecc86faf7caa56232f5a57a10dd133ff5c5",
-            "bytes": 497381,
+            "sha256": "b51a1a33dc34bf6540da0c98e2685e84035529624ecbbe9fc989d8fcacb68592",
+            "bytes": 443768,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_head_side.png",
-            "sha256": "f90718d604139322b862c28fe20043d4a27f6d6907c14069345a26a3d2090cbf",
-            "bytes": 546098,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_head_side.png",
+            "sha256": "67cf5d5120e6814cdeec392f9d800ecc86faf7caa56232f5a57a10dd133ff5c5",
+            "bytes": 497381,
             "dimensions": [
               640,
               720
@@ -1418,17 +1482,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_head_rear.png",
-            "sha256": "b7b549c649938ee9e937e5d08ca90f5759e55f4f4a3b3df9bbe3d285fe416e80",
-            "bytes": 498845,
+            "sha256": "3e8f5ccc1057c760536aa4ab31e9539910f44a47795e5cc17b56e9ffbaf3be87",
+            "bytes": 464323,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_head_rear.png",
-            "sha256": "92a33358ebce209d48fefd2697c6ddc447715826136937418d0956d3d46ef477",
-            "bytes": 536633,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_head_rear.png",
+            "sha256": "b7b549c649938ee9e937e5d08ca90f5759e55f4f4a3b3df9bbe3d285fe416e80",
+            "bytes": 498845,
             "dimensions": [
               640,
               720
@@ -1449,17 +1513,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_diffuse_front.png",
-            "sha256": "1c92975297c3d7aa1dbb7387d03b691810a4581eba3f56ecc4ae073d57783e88",
-            "bytes": 295124,
+            "sha256": "bc6c8c48500e15fa169d9b36ac6689e108a637e39b9f926f206e30773b6d8d2d",
+            "bytes": 286637,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_diffuse_front.png",
-            "sha256": "652c287d25cad957e9d891057c6caa5a1941522733fc01faee7fb70a9e363110",
-            "bytes": 302879,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_diffuse_front.png",
+            "sha256": "1c92975297c3d7aa1dbb7387d03b691810a4581eba3f56ecc4ae073d57783e88",
+            "bytes": 295124,
             "dimensions": [
               640,
               720
@@ -1480,17 +1544,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_diffuse_quarter.png",
-            "sha256": "4c6327a4109e3aae718b57bf5be8568e634e5c35f648c178ad37f48baa55f422",
-            "bytes": 301759,
+            "sha256": "321776284d7ec42d13e7a84b13d23fd3f14da66041cbdff1b63344021305e7c3",
+            "bytes": 294879,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_diffuse_quarter.png",
-            "sha256": "3bfcc38939ec33e287faf6b5b84ca28bbc062db004dfbd88c5c2b3a85b3122d3",
-            "bytes": 308454,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_diffuse_quarter.png",
+            "sha256": "4c6327a4109e3aae718b57bf5be8568e634e5c35f648c178ad37f48baa55f422",
+            "bytes": 301759,
             "dimensions": [
               640,
               720
@@ -1511,17 +1575,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_diffuse_side.png",
-            "sha256": "1cff74d56f3e1c71be7acf65cbc4bf9c9756f22ea9f4b1c2e04ca63e60324f09",
-            "bytes": 185794,
+            "sha256": "b0879ebdd217a37a030f70eedb71a68b3c9c57f350cbe5acb0334abdb93d1fb1",
+            "bytes": 177811,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_diffuse_side.png",
-            "sha256": "7dcc0d32cf6f8aa97b37c92ddc05e456451b899ca6b487a92beb5ee973c9bfbf",
-            "bytes": 195019,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_diffuse_side.png",
+            "sha256": "1cff74d56f3e1c71be7acf65cbc4bf9c9756f22ea9f4b1c2e04ca63e60324f09",
+            "bytes": 185794,
             "dimensions": [
               640,
               720
@@ -1542,17 +1606,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_diffuse_rear.png",
-            "sha256": "ba73e59a38092d03bb2f0fd7b2b4abb4682c1362e3b7b4cd4fe73f7d04e013c7",
-            "bytes": 286170,
+            "sha256": "e0c72f121da2941d456a40f8ea75fa9044e5723c68f13f891750e30dfed8924a",
+            "bytes": 281289,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_diffuse_rear.png",
-            "sha256": "29599fb29d13e86dd22ed82566fb2b2fa946ef570c1539fbe72fbbfa22bf5e7e",
-            "bytes": 291468,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_diffuse_rear.png",
+            "sha256": "ba73e59a38092d03bb2f0fd7b2b4abb4682c1362e3b7b4cd4fe73f7d04e013c7",
+            "bytes": 286170,
             "dimensions": [
               640,
               720
@@ -1573,17 +1637,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_clay_front.png",
-            "sha256": "2a81718328f0dc215b01d048c535dd81906acaff6f94ca6fceb701718622f16e",
-            "bytes": 45923,
+            "sha256": "51fc72b36fd8d43bf9204ecd7ac1b741734046ccd0d261b7ef20fe2d309c7e42",
+            "bytes": 45388,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_clay_front.png",
-            "sha256": "cc3140b7446625cc92e4f365bed5a6de97e3bbc9f1f304ae291abc7d285c4ca4",
-            "bytes": 47418,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_clay_front.png",
+            "sha256": "2a81718328f0dc215b01d048c535dd81906acaff6f94ca6fceb701718622f16e",
+            "bytes": 45923,
             "dimensions": [
               640,
               720
@@ -1604,17 +1668,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_clay_side.png",
-            "sha256": "d763a609e66661a128bbc7c316899e2fdaca6dd449ae369e3a9c0c9a60ba6620",
-            "bytes": 30257,
+            "sha256": "d4ec9d9829663482a89d859b7742bbb271a7e3d72d174c28d51b3f8dd012d909",
+            "bytes": 29756,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_clay_side.png",
-            "sha256": "b6a8c021d541454472a49bdaba657bbbe00d5273835d35880fdb9cd83d41f180",
-            "bytes": 31071,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_clay_side.png",
+            "sha256": "d763a609e66661a128bbc7c316899e2fdaca6dd449ae369e3a9c0c9a60ba6620",
+            "bytes": 30257,
             "dimensions": [
               640,
               720
@@ -1635,17 +1699,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_idle_rifle.png",
-            "sha256": "f7e0e5c1c3c37e6c22055f42fa04ca575403851d20facd15e1817010c8ab87b3",
-            "bytes": 243920,
+            "sha256": "0c6f0a17d388ae0100bbb74086204fbc3cb76be1b7e18804b96d47a0ffb0dfa2",
+            "bytes": 238570,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_idle_rifle.png",
-            "sha256": "745af58bf0c045f041af319e8e63496ff7834d07669dd5a9eb11bea9f44fadd3",
-            "bytes": 246793,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_idle_rifle.png",
+            "sha256": "f7e0e5c1c3c37e6c22055f42fa04ca575403851d20facd15e1817010c8ab87b3",
+            "bytes": 243920,
             "dimensions": [
               640,
               720
@@ -1666,17 +1730,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_run_rifle.png",
-            "sha256": "18f260a9d88085240051a8839909a6652fe7e688e9f59bd9b98eff5f204c8b4c",
-            "bytes": 225889,
+            "sha256": "f82575eec7d6e84a300f6f8b553ca24088473a47225c2e20e643f32c822e31b4",
+            "bytes": 220447,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_run_rifle.png",
-            "sha256": "189549fb2184be82952ad1bf481d29d031e24616ca866a867973f88aeaf6c51e",
-            "bytes": 230606,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_run_rifle.png",
+            "sha256": "18f260a9d88085240051a8839909a6652fe7e688e9f59bd9b98eff5f204c8b4c",
+            "bytes": 225889,
             "dimensions": [
               640,
               720
@@ -1688,8 +1752,8 @@
           "scope": "animation",
           "original": {
             "path": "../pegasus_runtime_v1/review/engine/original_reload_04.png",
-            "sha256": "d3b6a7f8aad063ff6e40ca4d7ee6eaaa9b66d04d2f6967eefe69921bb4e095d9",
-            "bytes": 184987,
+            "sha256": "c3e1f787914447668e5aa3fe2e7ee7e5495c7bf2a559e7f82793ca8fd06b7cb4",
+            "bytes": 183945,
             "dimensions": [
               640,
               720
@@ -1697,17 +1761,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_reload_04.png",
-            "sha256": "4017fb5015877a905f35d98a212fb000cd183a0921a36d3226087944103da1c5",
-            "bytes": 229062,
+            "sha256": "a7f3c86d9ae23e5fbe57d796c73a1a5be0c365db60069ca38099acb930742427",
+            "bytes": 225280,
             "dimensions": [
               640,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_reload_04.png",
-            "sha256": "ee7669d7832420ace1d9b256dcd4c9c204c57983f8f36804875b1675834d35af",
-            "bytes": 232249,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_reload_04.png",
+            "sha256": "4017fb5015877a905f35d98a212fb000cd183a0921a36d3226087944103da1c5",
+            "bytes": 229062,
             "dimensions": [
               640,
               720
@@ -1719,8 +1783,8 @@
           "scope": "gameplay",
           "original": {
             "path": "../pegasus_runtime_v1/review/engine/original_level_01_gameplay.png",
-            "sha256": "7cc024c16f2fcf636027c0e4b511f076663b5a07379fd932df252daeebfdeabc",
-            "bytes": 1412658,
+            "sha256": "f27ecbc74b18c4b215caef41bfbf216772d5b29c9ac8a0992c531dfa82d6b3b7",
+            "bytes": 1412694,
             "dimensions": [
               1280,
               720
@@ -1728,17 +1792,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_level_01_gameplay.png",
-            "sha256": "7746035f1f971b31a1f1a6a085e7f32a3399f4804fbdf248798dc3ec01f576f7",
-            "bytes": 1464801,
+            "sha256": "46b9ed0755a3251d23d6d20f20053e0544ddad97c51e968760abc2640b4a6a32",
+            "bytes": 1461284,
             "dimensions": [
               1280,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_level_01_gameplay.png",
-            "sha256": "8d7e0a285a51decc86c9dd8f42810b2751aa23fe17ecb4adb376f3e8e510229d",
-            "bytes": 1462986,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_level_01_gameplay.png",
+            "sha256": "7746035f1f971b31a1f1a6a085e7f32a3399f4804fbdf248798dc3ec01f576f7",
+            "bytes": 1464801,
             "dimensions": [
               1280,
               720
@@ -1750,8 +1814,8 @@
           "scope": "gameplay",
           "original": {
             "path": "../pegasus_runtime_v1/review/engine/original_level_08_gameplay.png",
-            "sha256": "33a001b79566d7c71edee3160ee8ea2d6c1f56f7f0d6f71f9240adcbb642fa21",
-            "bytes": 966507,
+            "sha256": "fe183271f40d65c64047f8c0f1e32bb38ba59de250a845325b02237b1e398cf6",
+            "bytes": 966917,
             "dimensions": [
               1280,
               720
@@ -1759,17 +1823,17 @@
           },
           "after": {
             "path": "../pegasus_runtime_v1/review/engine/new_level_08_gameplay.png",
-            "sha256": "9e0c564bb61934f4b528b08c1b6136693b7e20062f843d9f35e36f6a674ce7e7",
-            "bytes": 1016901,
+            "sha256": "c622096f9f94b538154c1409c563be2929124e8e20146a6d2eb2d884f55dda18",
+            "bytes": 1011952,
             "dimensions": [
               1280,
               720
             ]
           },
           "before": {
-            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_level_08_gameplay.png",
-            "sha256": "c308f9c6b3ffdb7d87df15d90bf39fde8843df62e635c1228d39050d575df64f",
-            "bytes": 1017683,
+            "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/new_level_08_gameplay.png",
+            "sha256": "9e0c564bb61934f4b528b08c1b6136693b7e20062f843d9f35e36f6a674ce7e7",
+            "bytes": 1016901,
             "dimensions": [
               1280,
               720
@@ -1780,12 +1844,12 @@
       "metrics": [
         {
           "label": "頭部相對原版最大位移",
-          "value": "17.529%",
+          "value": "19.290%",
           "note": "按該原部件最小軸尺寸正規化；不是概念圖相似率。"
         },
         {
           "label": "胸肩部相對原版最大位移",
-          "value": "4.828%",
+          "value": "10.711%",
           "note": "按該原部件最小軸尺寸正規化；不是概念圖相似率。"
         },
         {
@@ -1810,7 +1874,7 @@
           "status": "PASS",
           "evidence": {
             "path": "../pegasus_runtime_v1/review/runtime_test.json",
-            "sha256": "0ee8dff4220645d47df79059977f27ee336783aee3566b140b69462b54c92037",
+            "sha256": "622f7785c1a86aab9c17e363392c7b78f5d33c72096d6749f1b06d8925b1a871",
             "bytes": 12580
           }
         },
@@ -1819,8 +1883,8 @@
           "status": "PASS",
           "evidence": {
             "path": "../pegasus_runtime_v1/review/roundtrip_test.json",
-            "sha256": "39014e9dfc0240d90dd77ed2d7ac3e08477ed7978a2b5a9c4aa74ab01648d374",
-            "bytes": 11734
+            "sha256": "b270e8e44225f36fcc7a18b4ab808fc54550681f59fa11bd6369c9098517782a",
+            "bytes": 11813
           }
         },
         {
@@ -1828,8 +1892,8 @@
           "status": "PASS",
           "evidence": {
             "path": "../pegasus_runtime_v1/review/proportion_test.json",
-            "sha256": "acae7a469f3f508edd215a1e23a856377edf59cdf4783c2dbb21880ed4e4a74e",
-            "bytes": 11201
+            "sha256": "dbbbcfa0e996ef838db1514fb1a573e6faeb3a293c90a49e887cb3b6af1aa623",
+            "bytes": 11212
           }
         },
         {
@@ -1837,8 +1901,8 @@
           "status": "PASS",
           "evidence": {
             "path": "../pegasus_runtime_v1/review/delivery_validate.json",
-            "sha256": "53dd0ecece9de54393a321849188e0221be095fbdb96625716d81b1c1dec9a47",
-            "bytes": 10114
+            "sha256": "1c809f0e0d0ef927e17b7734b66fe085284bd60bc081de1af2961589b1e53eb0",
+            "bytes": 10113
           }
         },
         {
@@ -1846,8 +1910,8 @@
           "status": "PASS",
           "evidence": {
             "path": "../pegasus_runtime_v1/review/original_scene_invariants.json",
-            "sha256": "b17e47873ebad9319d6482ac2d8275b7a63ba7c1bca11a530eaedc3ee7c9cd84",
-            "bytes": 3200
+            "sha256": "31e07f9103f746a3770968710770dc71610f9e455b45e36f7188a836c57ed362",
+            "bytes": 3202
           }
         },
         {
@@ -1855,66 +1919,73 @@
           "status": "PASS",
           "evidence": {
             "path": "../pegasus_runtime_v1/review/glb_images_test.json",
-            "sha256": "74681f86f0d51dfb5f45d327ec79378732dc99f5341ddd875d3e231e7b2bd456",
-            "bytes": 9200
+            "sha256": "5ba906cd0e0f0fb413db1a29e5abe3aa1acb6124aa91364f1186e982271ba015",
+            "bytes": 9197
           }
         }
       ],
       "residuals": [
-        "雙冠與下巴已由原頂點縮低、內收；冠頂仍是較寬側眉蓋與中央V階梯，和草稿窄鈍雙軌仍有差距。",
-        "深色面窗連續，前頜已縮短；厚眉與護唇仍佔較大比例，未宣稱草稿逐形一致。",
-        "白領／黑頸與中央黑直槽、藍肩橫帶已套用；胸槽較靠領口且保留共享中分線，槽下白件仍為原長五角輪廓。",
-        "外大腿白板稍延長，但正面黑布露出仍比草稿多；遊戲原短壯比例保留，未改成人比例。",
-        "側背是依原版與草稿延伸，概念只展示斜正面；保留原後腦與腳跟技術紋理。",
-        "15裝備姿勢／9GLB姿勢及64張ANGLE擷取通過；未做完整連續動畫全角度或手機效能實測，美術仍待使用者審閱。"
+        "中央上額板已由分層 V 改成較連續白面，但最低眉下仍留一個小 V 片／黑影；雙外額翼仍是尖厚楔形，未等同草稿低窄鈍雙軌與單一簡潔額面。",
+        "冠上黑通風孔仍較靠屋頂面，未精準落在真正 rail strip；側耳外殼在正側面仍是大塊多邊白板／黑直縫，沒有草稿明確圓耳輪廓。",
+        "面窗讀成一片連續深黑玻璃，下頜較短；厚眉沿、護唇及淺 V 窗形仍占臉較多，沒有宣稱與草稿逐形一致。",
+        "body06 的共享白中隔在無武器前面近照已消失，胸槽讀成一個黑開口；仍可見極細暗中線，槽框／槽體偏高長收腰，槽下白件仍較長五角形，未形成草稿較短矩形服務槽和胸腹比例。",
+        "外大腿白殼下緣稍延長，但正面仍露出較多黑布、仍有原版髖大腿分區；未達草稿較大白甲覆蓋。原短壯比例保留。",
+        "白甲磨邊與細線較銳利；是否足夠接近 Viper／Fortune 的共同手繪風格仍待使用者評價。草稿沒有背面，後腦、背甲與腳跟僅驗收連貫性。",
+        "待機、跑動及九個換彈時間點與區域01／08畫面未見新增甲片飛離或明顯破洞；槍會遮住胸口，未檢查完整連續動畫全角度、手機螢幕與 GPU 效能。"
       ],
       "sources": [
         {
           "path": "../pegasus_runtime_v1/manifest.json",
-          "sha256": "8530cd6b6cc34469450b94d2560cd2ec9955390c38bf02e04a7af19516550300",
-          "bytes": 77787,
+          "sha256": "01e7cddd9c3b5350cc1c9be08aae7563d8123e322f698b4ca798fec0375bd08f",
+          "bytes": 105351,
           "label": "完整素材與工程 manifest"
         },
         {
           "path": "../pegasus_runtime_v1/review/engine/capture.json",
-          "sha256": "d1bf53a60b8e13930216bad6e955c02f30f4e62b24cb10f684e62e651fa439c4",
+          "sha256": "90773d30ec3cd3c664d181fd557aff15b9e129add6f1a9d3206b7277f78db8de",
           "bytes": 23987,
           "label": "正常引擎擷取紀錄"
+        },
+        {
+          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/snapshot.json",
+          "sha256": "30d280ef5defb7d5f30b2b48fa5b97f6315e0d9f203f49943452fa54b49a6252",
+          "bytes": 34246,
+          "label": "3ed1c291 上一版交付凍結清單"
+        },
+        {
+          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/manifest.json",
+          "sha256": "8530cd6b6cc34469450b94d2560cd2ec9955390c38bf02e04a7af19516550300",
+          "bytes": 77787,
+          "label": "3ed1c291 素材與工程 manifest"
+        },
+        {
+          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/capture.json",
+          "sha256": "d1bf53a60b8e13930216bad6e955c02f30f4e62b24cb10f684e62e651fa439c4",
+          "bytes": 23987,
+          "label": "3ed1c291 引擎擷取紀錄"
         },
         {
           "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/snapshot.json",
           "sha256": "5f750a59cfbf2c5093f7701e89e25b9de430cfef5a0e4b7fe5a8d51dd1879f23",
           "bytes": 34237,
-          "label": "f94323e4 僅貼圖版凍結清單"
-        },
-        {
-          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/manifest.json",
-          "sha256": "1c41a1e180b1fa1b82882cd1607d2386388a586d72e2fbdb078d3cda49ab55cc",
-          "bytes": 58934,
-          "label": "f94323e4 素材與工程 manifest"
-        },
-        {
-          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/capture.json",
-          "sha256": "e2bb142a2941180f3c1270708d22eae8c7df1cb690a7b1767af0e4f1b9c14b9a",
-          "bytes": 23987,
-          "label": "f94323e4 引擎擷取紀錄"
+          "label": "f94323e4 僅貼圖版歷史快照（保留）"
         },
         {
           "path": "../pegasus_runtime_v1/review/visual_review.json",
-          "sha256": "9256036a9348eb19e7831516c1f27076678447f4a2856156f181bc82e6c62bb5",
-          "bytes": 41397,
+          "sha256": "283b0b204ff3196fa993d350631fcac426c56b65defef5fdbe283a4683d03a9d",
+          "bytes": 48124,
           "label": "逐張實際目視紀錄"
         },
         {
           "path": "../pegasus_runtime_v1/index.html",
-          "sha256": "2dde9932a7e9651385ab784ab31435fc4124ab36703fd77fe6afb2b005067551",
-          "bytes": 9881,
+          "sha256": "2bb9b05eb4fbec4e60772253f7fb217d2d2e09bc87a36a4db713a4b5115e335b",
+          "bytes": 10403,
           "label": "各套獨立比對頁"
         },
         {
           "path": "../pegasus_runtime_v1/generation_inputs.json",
-          "sha256": "143726ed9e57a7342fcf144babeec01732700e62f5bd09035dff33c5ae49622a",
-          "bytes": 20443,
+          "sha256": "97e3be91fd308ca393686943d34649ab24fce0dff6fcf0a9666d9b3225672de4",
+          "bytes": 36755,
           "label": "生成圖、實送 Prompt 與來源"
         },
         {
@@ -1941,15 +2012,15 @@
           "caption": "同一擷取管線的原始模型與貼圖。"
         },
         "before": {
-          "title": "f94323e4 · 僅貼圖版",
-          "caption": "上一輪保留原模型輪廓的素材，從凍結快照讀取。"
+          "title": "3ed1c291 · 上一版改模",
+          "caption": "上一輪已修改頭部與胸肩模型的素材，從凍結快照讀取。"
         },
         "after": {
-          "title": "本輪 · 草稿改模版",
+          "title": "本輪 · 草稿再修版 v3",
           "caption": "實際正式模型與貼圖；外觀待使用者評價。"
         }
       },
-      "before_note": "依序比較真正原版、f94323e4 僅貼圖版、這輪依草稿改模版。灰模可直接檢查形狀變化，概念圖另列；不宣稱與草稿完全一致。",
+      "before_note": "依序比較真正原版、3ed1c291 上一版改模、本輪草稿再修版。灰模可直接檢查形狀變化；f94323e4 僅貼圖版保留於歷史快照，不宣稱本輪與草稿完全一致。",
       "art_acceptance": "NOT RUN・等待使用者美術評價",
       "browser_interaction": "NOT RUN",
       "visual_inspection": "ENGINEERING_CANDIDATE_PENDING_USER_ART_REVIEW",
@@ -1968,33 +2039,34 @@
       },
       "scene": {
         "path": "../../../assets/armors/pegasus_v1/pegasus.scn",
-        "sha256": "ae114acb94c13fc46725905d62545f74fce14aea367b5c2af913249992270f9f",
+        "sha256": "78b44feaf346f8e134f65a9915195b35a7e2e366d675cbf4eed27ddb25390dc0",
         "bytes": 81438
       },
       "baseline": {
-        "source_commit": "f94323e40b3e7002268b39944bdcb58c2737c41f",
+        "source_commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
         "scene": {
-          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/assets/armors/pegasus_v1/pegasus.scn",
-          "sha256": "971733e8ab5da401c32cb81eb6f858075ed15d2c1a81370732c51061ded65cf4",
+          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/assets/armors/pegasus_v1/pegasus.scn",
+          "sha256": "ae114acb94c13fc46725905d62545f74fce14aea367b5c2af913249992270f9f",
           "bytes": 81438
         },
         "snapshot": {
-          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/snapshot.json",
-          "sha256": "5f750a59cfbf2c5093f7701e89e25b9de430cfef5a0e4b7fe5a8d51dd1879f23",
-          "bytes": 34237
+          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/snapshot.json",
+          "sha256": "30d280ef5defb7d5f30b2b48fa5b97f6315e0d9f203f49943452fa54b49a6252",
+          "bytes": 34246
         },
         "manifest": {
-          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/manifest.json",
-          "sha256": "1c41a1e180b1fa1b82882cd1607d2386388a586d72e2fbdb078d3cda49ab55cc",
-          "bytes": 58934
+          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/manifest.json",
+          "sha256": "8530cd6b6cc34469450b94d2560cd2ec9955390c38bf02e04a7af19516550300",
+          "bytes": 77787
         },
         "capture_summary": {
-          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/capture.json",
-          "sha256": "e2bb142a2941180f3c1270708d22eae8c7df1cb690a7b1767af0e4f1b9c14b9a",
+          "path": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/docs/art/pegasus_runtime_v1/review/engine/capture.json",
+          "sha256": "d1bf53a60b8e13930216bad6e955c02f30f4e62b24cb10f684e62e651fa439c4",
           "bytes": 23987
         }
       },
-      "model_refinement_observed": true
+      "model_refinement_observed": true,
+      "changed_since_previous_delivery": true
     }
   ]
 }

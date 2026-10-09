@@ -289,14 +289,20 @@
     "runtime_id": 8,
     "date": "2026-10-09",
     "scene": "assets/armors/pegasus_v1/pegasus.scn",
-    "scene_sha256": "ae114acb94c13fc46725905d62545f74fce14aea367b5c2af913249992270f9f",
+    "scene_sha256": "78b44feaf346f8e134f65a9915195b35a7e2e366d675cbf4eed27ddb25390dc0",
     "comparison_page": "../armor_original_based_v2/index.html#pegasus",
     "manifest": "../pegasus_runtime_v1/manifest.json",
-    "manifest_sha256": "8530cd6b6cc34469450b94d2560cd2ec9955390c38bf02e04a7af19516550300",
+    "manifest_sha256": "01e7cddd9c3b5350cc1c9be08aae7563d8123e322f698b4ca798fec0375bd08f",
     "original_based": true,
     "art_acceptance": "pending_user_review",
-    "revision": "draft_refinement_v2",
+    "revision": "draft_refinement_v3",
     "note": "依核准概念實際調整頭盔、胸肩輪廓與貼圖，保留遊戲比例、原骨架與裝配。",
+    "previous_draft_refinement": {
+      "source_commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
+      "snapshot": "../pegasus_runtime_v1/revisions/before_draft_refinement_v3/snapshot.json",
+      "snapshot_sha256": "30d280ef5defb7d5f30b2b48fa5b97f6315e0d9f203f49943452fa54b49a6252",
+      "scene_sha256": "ae114acb94c13fc46725905d62545f74fce14aea367b5c2af913249992270f9f"
+    },
     "previous_texture_only": {
       "source_commit": "f94323e40b3e7002268b39944bdcb58c2737c41f",
       "snapshot": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/snapshot.json",

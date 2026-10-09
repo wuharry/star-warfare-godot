@@ -1,12 +1,12 @@
 {
-	"current_scene_sha256": "4cc7e88aa5f70c8c93331699d29a93042c1c4ab53891cd7eaad7512ed9efaad8",
+	"current_scene_sha256": "094cdf8fe9061c1ca9d8bb8e914ea23083168b79d6b2d89f94fe0809d6ce0dda",
 	"errors": [],
 	"geometry_mode": "original_source_bounded_refinement",
 	"geometry_parts": [
 		"ArmorHead_07",
 		"ArmorBody_07"
 	],
-	"geometry_sha256": "bdab0086ba3544acfab0497dd2bc2a5f901261b82d2f5c1dc3a32370e0f7e017",
+	"geometry_sha256": "c373f525b9e57e5d1ea71065f5a832cdc6766e64fd2990e1e48bb1fbc2492be1",
 	"original_bones": 28,
 	"original_node_ids": {
 		"ArmorBody_07": 59.0,
@@ -21,9 +21,9 @@
 			"geometry_changed": true,
 			"immutable_arrays_exact": true,
 			"indices_skin_weights_bones_topology_exact": true,
-			"max_normal_tangent_error": 0.000146868856973015,
-			"max_raw_position_error_m": 0.00000000186264514923096,
-			"max_rest_error_m": 0.000000245784491426093,
+			"max_normal_tangent_error": 0.000170857034390792,
+			"max_raw_position_error_m": 0.000000119209289550781,
+			"max_rest_error_m": 0.000000245869159698486,
 			"normal_frames_verified_against_target": true,
 			"original_indices_skin_weights_topology_exact": true,
 			"part": "ArmorBody_07",
@@ -66,9 +66,9 @@
 			"geometry_changed": true,
 			"immutable_arrays_exact": true,
 			"indices_skin_weights_bones_topology_exact": true,
-			"max_normal_tangent_error": 0.000180668357643299,
+			"max_normal_tangent_error": 0.000172191401361488,
 			"max_raw_position_error_m": 0.000000000000014210854715202,
-			"max_rest_error_m": 0.00000011922384146601,
+			"max_rest_error_m": 0.000000120367815270583,
 			"normal_frames_verified_against_target": true,
 			"original_indices_skin_weights_topology_exact": true,
 			"part": "ArmorHead_07",
@@ -80,5 +80,5 @@
 	"scope": "Actual SCN versus true original: configured part positions/normal/tangent frames match authored target; all UV0, topology, skin, weights, transforms and every unchanged surface array exact. Normal/tangent octahedral quantization tolerance .001.",
 	"source_sha256": "9301bc56cebea872d086c8ad31308b11537d210cb0629916ff93eefe34b04c43",
 	"status": "PASS",
-	"target_sha256": "340dfca8ed5474a7e5e8517cde2cf3f7079a6c94eb313e49ae605501a80e359e"
+	"target_sha256": "a77ffd62243807477a375eb171a4978ffba2f07a6d78a0483687c69d6b3d597b"
 }

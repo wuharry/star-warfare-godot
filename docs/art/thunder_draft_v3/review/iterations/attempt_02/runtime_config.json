@@ -1,0 +1,53 @@
+{
+  "revision": "thunder_draft_v3",
+  "runtime_id": 6,
+  "source_scene": "res://assets/models/player/animated/player.gltf",
+  "source_scene_sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
+  "source_buffer": "res://assets/models/player/animated/player.bin",
+  "source_buffer_sha256": "9b1b4a428ae59b19d361f42f8aee762c608d9f174e535e125e0354f37a4c105d",
+  "original_head_texture": "res://assets/models/player/animated/armor_textures/09_head_1d5d05de7b53_2x.png",
+  "original_head_texture_sha256": "f53dedd36d57f5f5613ef149370349944363fa76c61963b52f739911e72063bc",
+  "before_scene": "res://docs/art/thunder_draft_v3/revisions/before_draft_v3/assets/armors/thunder/thunder.scn",
+  "before_scene_sha256": "c3837598313ba3c7743bcdc9a12400ceb33a9fcf78b61339558be881dd9fd2c7",
+  "body_baseline_commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
+  "output_scene": "res://assets/armors/thunder/thunder.scn",
+  "native_generated_png": "res://assets/armors/thunder/textures/draft_head_v3.png",
+  "portable_texture": "res://assets/armors/thunder/textures/draft_head_v3.res",
+  "work": "res://docs/art/thunder_draft_v3/",
+  "head_node": "ArmorHead_06",
+  "inherited_body_nodes": [
+    "ArmorBody_06",
+    "ArmorHand_06",
+    "ArmorFoot_06"
+  ],
+  "original_head_uv_count": 147,
+  "original_head_triangles": 196,
+  "original_head_skin_bind_count": 28,
+  "protected_alternates": {
+    "res://assets/armors/thunder/thunder_sw2.scn": "9f939667c6516ee3e2335cb973abeb7805d6865fd4df6b97821303bcd2661df5",
+    "res://assets/armors/thunder/thunder_prototype.scn": "7c37b7917eb161d05c414799abf7981768ef9b76b81f1123f73397e60e5185b3",
+    "res://assets/armors/thunder/textures/original_head_v2.png": "55ab873f422aff2b2e79a5efce7ab676198bdc3da6f7010389deb11bfc28bd30",
+    "res://assets/armors/thunder/textures/original_head_v2.res": "edc0ce3c9bbcf8885b99b60c261fae9b00c300088d6d2f33a671e36c1792c2fc"
+  },
+  "inherited_body_resource_sha256": {
+    "res://assets/armors/thunder/textures/dce7a1446714.png": "436b752b94895b8a7bb5df6cc283db3457a0d518eaefa6862b061aadae1f2e4d",
+    "res://assets/armors/thunder/textures/d6da6925f6b4.png": "0c17892c2a354118a7c7fe2688d48c5a38cf5f16a55b3c0f11c6e0a19add3949",
+    "res://assets/armors/thunder/textures/df2d0a0b46da.png": "32cfab203a11e94fd0bf80c42e4f36f5b1475c8739e97dca0b527a685d539989",
+    "res://assets/armors/thunder/textures/14ceb45bf36d.png": "d0868b7e939df0aeebdf303b488b6b3ca127158028acba9d743fea9fc63b50a4",
+    "res://assets/armors/thunder/textures/blue_shell_paint.png": "132e9dd5547c570079e8747324662f3072401083e8500845cfd069be0a656b99",
+    "res://assets/armors/thunder/painted_armor.gdshader": "d06e63dbd06da0a3731968f6e655b348e7e1e4853d1544883e0d443ffc3c0bc6",
+    "res://assets/armors/thunder/hard_surface.gdshader": "c350d4479c31205743a17b2e5d2fe4c0e629e4f5307786c6f52ae82042093ddc"
+  },
+  "constraint": "Only the true original SW1 head is position-refined within 20% of its original smallest AABB dimension and 20% per-axis dimensions; original UV/index/bones/weights/Skin/transforms remain exact. Body, hands and feet exactly inherit frozen 3ed1c291 (whose body derives from bef5b833); no original-whole-suit 20% claim.",
+  "before_snapshot": "res://docs/art/thunder_draft_v3/revisions/before_draft_v3/snapshot.json",
+  "before_snapshot_sha256": "8ef68f9c7d9e67b32d01c1632bdf765debc527117f872e1a56c8ab00c02c09fb",
+  "head_source_json": "res://docs/art/thunder_draft_v3/revisions/before_draft_v3/docs/art/thunder_original_v2/head_source.json",
+  "head_source_json_sha256": "0f705e2f53bc6f1d9499935f3d492d21b564d64ad6d9a7107ac507715d282be9",
+  "head_target": "res://docs/art/thunder_draft_v3/build/head_target.json",
+  "head_target_sha256": "7057674caeb8fe17697763b8b499fd766e33c45e30c4189b586a6aee7fdfed4b",
+  "native_generated_png_sha256": "93af5cadb454a77d6ff5d7b3a76161d616b8a6be83ed99c6abc2e090c595ad87",
+  "geometry_mode": "bounded_original_head_only",
+  "original_head_geometry_limit": 0.2,
+  "normal_policy": "recompute_face_normals_preserve_original_tangent_bytes",
+  "accepted_art_status": "NOT_RUN_PENDING_NATIVE_GEOMETRY_INTEGRATION"
+}

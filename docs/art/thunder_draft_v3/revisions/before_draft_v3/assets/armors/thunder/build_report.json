@@ -1,0 +1,99 @@
+{
+  "design": "Thunder helmet v5 / sw2 shell, inward cheek armor, narrow engraved trapezoid",
+  "revision": "thunder_helmet_v5_sw2",
+  "concept": "docs\\art\\thunder_mk_comparison_v1\\images\\b_mk1_reference_helmet_v2.png",
+  "concept_sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
+  "source_sha256": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf",
+  "parts": [
+    {
+      "name": "ArmorHead_06",
+      "triangles": 6284,
+      "authored_panels": 13,
+      "bounds": [
+        [
+          -0.2860451638698578,
+          0.2860451638698578
+        ],
+        [
+          1.1799999475479126,
+          1.9326679706573486
+        ],
+        [
+          -0.3205100893974304,
+          0.25644949078559875
+        ]
+      ]
+    },
+    {
+      "name": "ArmorBody_06",
+      "triangles": 3628,
+      "authored_panels": 29,
+      "bounds": [
+        [
+          -0.6197892427444458,
+          0.619789183139801
+        ],
+        [
+          0.3348872661590576,
+          1.4024790525436401
+        ],
+        [
+          -0.3240417540073395,
+          0.26353830099105835
+        ]
+      ]
+    },
+    {
+      "name": "ArmorHand_06",
+      "triangles": 980,
+      "authored_panels": 6,
+      "bounds": [
+        [
+          -0.5981501340866089,
+          0.5981501936912537
+        ],
+        [
+          0.549436628818512,
+          1.0512604713439941
+        ],
+        [
+          -0.09907814860343933,
+          0.15271490812301636
+        ]
+      ]
+    },
+    {
+      "name": "ArmorFoot_06",
+      "triangles": 1770,
+      "authored_panels": 10,
+      "bounds": [
+        [
+          -0.29568153619766235,
+          0.295681357383728
+        ],
+        [
+          0.024480635300278664,
+          0.46488046646118164
+        ],
+        [
+          -0.36794596910476685,
+          0.18254582583904266
+        ]
+      ]
+    }
+  ],
+  "texture_sha256": {
+    "14ceb45bf36d.png": "d0868b7e939df0aeebdf303b488b6b3ca127158028acba9d743fea9fc63b50a4",
+    "amber_visor_paint.png": "bfb941bd6bbb5abcd0d3e59f00c55a9b5dccce5881c8861006a53edba6123fb2",
+    "blue_shell_paint.png": "132e9dd5547c570079e8747324662f3072401083e8500845cfd069be0a656b99",
+    "d6da6925f6b4.png": "0c17892c2a354118a7c7fe2688d48c5a38cf5f16a55b3c0f11c6e0a19add3949",
+    "dce7a1446714.png": "436b752b94895b8a7bb5df6cc283db3457a0d518eaefa6862b061aadae1f2e4d",
+    "df2d0a0b46da.png": "32cfab203a11e94fd0bf80c42e4f36f5b1475c8739e97dca0b527a685d539989",
+    "helmet_detail_albedo.png": "3ecbcbeb9376bab75458c17f8a4fbdf069fe3a94b7ec4c531d481ecc4397287d",
+    "helmet_detail_emission.png": "054fbc63bd4e6fdb17a3ddc0c5950ddf4b56ed9edbeefbec7c4bc8c33279e844",
+    "helmet_detail_normal.png": "469f75d674c64f93fd71aeb3e6b435305e20207b8ad21c427e833009e9b29f0d",
+    "helmet_source_albedo.png": "10771919f82e5f787cb9d73bdd4e06af086d6e24f36d04fc8896909835f2240c"
+  },
+  "scope": "sw2 helmet base with narrowed visor and fitted cheek armor; unchanged v4 body and original bind pose; set06 only",
+  "head_source_sha256": "20bfa8c70bd1c25f34c48c7653505c76a56f524b2f821b18568c05eaee9485a3"
+}

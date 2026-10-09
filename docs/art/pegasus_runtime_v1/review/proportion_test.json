@@ -5,8 +5,8 @@
   "silhouettes": [
     {
       "view": "front",
-      "silhouette_iou": 0.9727019543841701,
-      "silhouette_changed_fraction": 0.027298045615829936,
+      "silhouette_iou": 0.9577160844380264,
+      "silhouette_changed_fraction": 0.04228391556197364,
       "camera_identical": true,
       "pixels": [
         640,
@@ -15,8 +15,8 @@
     },
     {
       "view": "side",
-      "silhouette_iou": 0.9513473812177085,
-      "silhouette_changed_fraction": 0.048652618782291546,
+      "silhouette_iou": 0.9188905736669194,
+      "silhouette_changed_fraction": 0.0811094263330806,
       "camera_identical": true,
       "pixels": [
         640,
@@ -25,8 +25,8 @@
     },
     {
       "view": "rear",
-      "silhouette_iou": 0.9727017327335618,
-      "silhouette_changed_fraction": 0.027298267266438248,
+      "silhouette_iou": 0.9577157413942772,
+      "silhouette_changed_fraction": 0.042284258605722824,
       "camera_identical": true,
       "pixels": [
         640,
@@ -35,8 +35,8 @@
     },
     {
       "view": "quarter",
-      "silhouette_iou": 0.9770128814759388,
-      "silhouette_changed_fraction": 0.022987118524061212,
+      "silhouette_iou": 0.9678988951695786,
+      "silhouette_changed_fraction": 0.03210110483042139,
       "camera_identical": true,
       "pixels": [
         640,
@@ -51,12 +51,12 @@
     "ArmorBody_08"
   ],
   "capture_directory": "docs\\art\\pegasus_runtime_v1\\review\\engine",
-  "capture_summary_sha256": "d1bf53a60b8e13930216bad6e955c02f30f4e62b24cb10f684e62e651fa439c4",
-  "current_scene_sha256": "ae114acb94c13fc46725905d62545f74fce14aea367b5c2af913249992270f9f",
-  "target_sha256": "886ea9dac6e92272ebc540102d1a02159bf29dc337a089abeed9072668fe6bff",
+  "capture_summary_sha256": "90773d30ec3cd3c664d181fd557aff15b9e129add6f1a9d3206b7277f78db8de",
+  "current_scene_sha256": "78b44feaf346f8e134f65a9915195b35a7e2e366d675cbf4eed27ddb25390dc0",
+  "target_sha256": "fb1a0807706b07cf247f96c39eb57f38f670bbabbe690ce021ae57297082f7ba",
   "canonical_diffuse_sha256": {
-    "head": "1be6f576be497cd26d29a17b5d7277173ff1c668767dd60ed8cace106cdf8793",
-    "body": "f9e669332c16e13ed4ad4aaa17c639e9eed933eea6d8539ba6b4e8200cf39b94",
+    "head": "5064cde404739d1d731efd6589738a4be3ff825ff004fb181a1a9ebc055e7683",
+    "body": "45538c0c770395e09afb438cef3199de985b6a250241c9cb47487eafa6834758",
     "shoulder": "ecb0a8acf6e50a7b0a2498cea73c08b2c5d1456aa82925dfa6f3a2c42e4741e1",
     "hand": "596f8e8095ae38728b15af92b938e9210371038e69a43636afd41c93722347eb",
     "foot": "61d40e0ad0a52bbbf6a11981541b1a0b8f11b6b6fbd1c73b06ededcc4f6fe48c"
@@ -94,8 +94,8 @@
           0.0,
           0.017685762462227972
         ],
-        "max_rest_displacement": 0.02715033699927287,
-        "max_displacement_fraction_of_smallest_dimension": 0.048283261821288746,
+        "max_rest_displacement": 0.06022906339977516,
+        "max_displacement_fraction_of_smallest_dimension": 0.10710937538124207,
         "triangles": 520,
         "uv_preserved": true,
         "original_uv_charts": 9,
@@ -128,7 +128,7 @@
           "new_degenerate_triangles": 0,
           "inherited_degenerate_triangles": 0,
           "coincident_seam_max_rest_gap": 0.0,
-          "min_triangle_normal_cosine_from_original": 0.9888339355239825
+          "min_triangle_normal_cosine_from_original": 0.9126979711958487
         },
         "added_vertex_count": 0,
         "triangle_growth_fraction": 0,
@@ -263,13 +263,13 @@
       "ArmorHead_08": {
         "bounds_game": {
           "min": [
-            -0.270517498254776,
+            -0.26825809478759766,
             1.234439730644226,
-            -0.36516323685646057
+            -0.336587131023407
           ],
           "max": [
-            0.27051493525505066,
-            1.8528510332107544,
+            0.26825588941574097,
+            1.842725396156311,
             0.24996443092823029
           ]
         },
@@ -286,12 +286,12 @@
           ]
         },
         "dimension_delta_fraction": [
-          0.0,
-          0.12482977772919102,
-          0.04031888630778935
+          0.008351531306867499,
+          0.13915949000125516,
+          0.08490141853173472
         ],
-        "max_rest_displacement": 0.09483595190127457,
-        "max_displacement_fraction_of_smallest_dimension": 0.17528699949843596,
+        "max_rest_displacement": 0.1043674948290379,
+        "max_displacement_fraction_of_smallest_dimension": 0.19290432211610156,
         "triangles": 216,
         "uv_preserved": true,
         "original_uv_charts": 3,
@@ -317,14 +317,14 @@
           "new_degenerate_triangles": 0,
           "inherited_degenerate_triangles": 0,
           "coincident_seam_max_rest_gap": 0.0,
-          "min_triangle_normal_cosine_from_original": 0.9364424998875344
+          "min_triangle_normal_cosine_from_original": 0.21049886246009863
         },
         "added_vertex_count": 0,
         "triangle_growth_fraction": 0,
         "geometry_changed": true
       }
     },
-    "stage": "approved_draft_refinement_v2",
+    "stage": "approved_draft_refinement_v3",
     "constraint": "True original source cumulative20% per-part rest displacement/dimensions; exact original UV0, indices, vertex counts, rig and weights.",
     "user_authorized_original_total_limit": 0.2,
     "geometry_mode": "original_source_bounded_refinement",
@@ -333,6 +333,6 @@
       "ArmorBody_08"
     ]
   },
-  "geometry_sha256": "2b181462b298abc54847262ad8ccba363732442991ea2c19d8ae946b0918c0f9",
+  "geometry_sha256": "05fd27b5a9f62e46898e3e550ad9b5e5ea98b167b3e610535fb172649743ea14",
   "source_sha256": "0575a8b0c0b5674f0770636ea8d4520af3b8242253ffe2adfeeb594010f68b64"
 }

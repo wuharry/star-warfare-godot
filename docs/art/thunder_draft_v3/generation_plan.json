@@ -1,0 +1,43 @@
+[
+  {
+    "label": "head",
+    "attempt": 3,
+    "variant": "thunder_draft_v3",
+    "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+    "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+    "prompt": "docs/art/thunder_draft_v3/prompts/head_attempt_03.txt",
+    "prompt_sha256": "9dd75badc0bfb9ddf254087880e891f2b728c91fe8875e26bb262c6c3bb7c841",
+    "references": [
+      {
+        "path": "assets/models/player/animated/armor_textures/09_head_1d5d05de7b53_2x.png",
+        "snapshot": "docs/art/thunder_draft_v3/generation_references/attempt_03/0_09_head_1d5d05de7b53_2x.png",
+        "sha256": "f53dedd36d57f5f5613ef149370349944363fa76c61963b52f739911e72063bc",
+        "role": "true_original_uv_layout_authority"
+      },
+      {
+        "path": "docs/art/thunder_draft_v3/generated/head_attempt_02.png",
+        "snapshot": "docs/art/thunder_draft_v3/generation_references/attempt_03/1_head_attempt_02.png",
+        "sha256": "93af5cadb454a77d6ff5d7b3a76161d616b8a6be83ed99c6abc2e090c595ad87",
+        "role": "previous_native_atlas_material_mapping_only"
+      },
+      {
+        "path": "docs/art/thunder_mk_comparison_v1/images/b_mk1_reference_helmet_v2.png",
+        "snapshot": "docs/art/thunder_draft_v3/generation_references/attempt_03/2_b_mk1_reference_helmet_v2.png",
+        "sha256": "11180e358451435942a1ef1749e9bbbb5e7d427744329d3377f5982a13e3bb9c",
+        "role": "current_gallery_preferred_art_design_authority"
+      },
+      {
+        "path": "docs/art/thunder_draft_v3/review/iterations/attempt_02/engine/new_head_rear.png",
+        "snapshot": "docs/art/thunder_draft_v3/generation_references/attempt_03/3_new_head_rear.png",
+        "sha256": "fc11b4473332cba4af74c8f7f472db861090b0d69f67bfc9b1fff6db165d9be9",
+        "role": "actual_previous_runtime_mapping_diagnostic"
+      }
+    ],
+    "reference_images": [
+      "docs/art/thunder_draft_v3/generation_references/attempt_03/0_09_head_1d5d05de7b53_2x.png",
+      "docs/art/thunder_draft_v3/generation_references/attempt_03/1_head_attempt_02.png",
+      "docs/art/thunder_draft_v3/generation_references/attempt_03/2_b_mk1_reference_helmet_v2.png",
+      "docs/art/thunder_draft_v3/generation_references/attempt_03/3_new_head_rear.png"
+    ]
+  }
+]

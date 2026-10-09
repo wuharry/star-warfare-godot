@@ -1,0 +1,3114 @@
+{
+  "schema_version": 1,
+  "design_id": "C-08",
+  "runtime_id": 7,
+  "name": "Atom",
+  "revision": "atom_runtime_v1",
+  "texture_surface_revision": "draft_refinement_v2",
+  "status": "runtime_integrated_pending_user_art_review",
+  "checked_at_utc": "2026-10-09T03:26:42.120321+00:00",
+  "design_authority": {
+    "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry10_1_c08_concept.png",
+    "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+    "bytes": 2019010,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "mode": "RGB"
+  },
+  "helmet_design_authority": {
+    "path": "docs/art/atom_runtime_v1/input_snapshots/head_ear_retry3_1_c08_concept.png",
+    "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+    "bytes": 2019010,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "mode": "RGB"
+  },
+  "original_source_snapshot": {
+    "path": "docs/art/atom_runtime_v1/revisions/original_source_v1/snapshot.json",
+    "sha256": "73f3272363d1b345858f83874d922a8d6a7b22c93d64aa5fe43ae87e75f0347d",
+    "bytes": 5461
+  },
+  "source_node_index": {
+    "path": "docs/art/atom_runtime_v1/revisions/original_source_v1/source_node_index.json",
+    "sha256": "07ed03b1149f1c2371c27a7039b371e27efdbefb363d62f6cf2d0aa37cbe485f",
+    "bytes": 1891
+  },
+  "original_node_ids": {
+    "ArmorHead_07": 58,
+    "ArmorBody_07": 59,
+    "ArmorHand_07": 60,
+    "ArmorFoot_07": 61
+  },
+  "geometry": {
+    "parts": {
+      "ArmorBody_07": {
+        "bounds_game": {
+          "min": [
+            -0.5811006426811218,
+            0.3317036032676697,
+            -0.28902900218963623
+          ],
+          "max": [
+            0.5807197093963623,
+            1.518799901008606,
+            0.26520925760269165
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.631988525390625,
+            0.3317036032676697,
+            -0.3040539622306824
+          ],
+          "max": [
+            0.6319862008094788,
+            1.5065566301345825,
+            0.26520925760269165
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.08081994996033426,
+          0.010421108508077648,
+          0.026393695425191877
+        ],
+        "max_rest_displacement": 0.09015345384490432,
+        "max_displacement_fraction_of_smallest_dimension": 0.15836866093560842,
+        "triangles": 354,
+        "uv_preserved": true,
+        "original_uv_charts": 10,
+        "uv_charts": 10,
+        "uv_coordinate_count": 340,
+        "original_uv_coordinate_count": 340,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "shoulder",
+            "uv_coordinate_count": 130,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          },
+          {
+            "surface": 1,
+            "label": "body",
+            "uv_coordinate_count": 210,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged",
+        "shape_quality": {
+          "reversed_triangles": 0,
+          "new_degenerate_triangles": 0,
+          "inherited_degenerate_triangles": 0,
+          "coincident_seam_max_rest_gap": 0.0,
+          "min_triangle_normal_cosine_from_original": 0.8432524916361537
+        },
+        "added_vertex_count": 0,
+        "triangle_growth_fraction": 0,
+        "geometry_changed": true
+      },
+      "ArmorFoot_07": {
+        "bounds_game": {
+          "min": [
+            -0.3963319659233093,
+            0.005678439512848854,
+            -0.24055488407611847
+          ],
+          "max": [
+            0.3963339030742645,
+            0.44935646653175354,
+            0.2527317702770233
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.3963319659233093,
+            0.005678439512848854,
+            -0.24055488407611847
+          ],
+          "max": [
+            0.3963339030742645,
+            0.44935646653175354,
+            0.2527317702770233
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 136,
+        "uv_preserved": true,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 122,
+        "original_uv_coordinate_count": 122,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "foot",
+            "uv_coordinate_count": 122,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged",
+        "shape_quality": {
+          "reversed_triangles": 0,
+          "new_degenerate_triangles": 0,
+          "inherited_degenerate_triangles": 0,
+          "coincident_seam_max_rest_gap": 0.0,
+          "min_triangle_normal_cosine_from_original": 0.9999999999999998
+        },
+        "added_vertex_count": 0,
+        "triangle_growth_fraction": 0,
+        "geometry_changed": false
+      },
+      "ArmorHand_07": {
+        "bounds_game": {
+          "min": [
+            -0.5564590692520142,
+            0.5403313040733337,
+            -0.0485774427652359
+          ],
+          "max": [
+            0.5564584732055664,
+            1.05312979221344,
+            0.17660044133663177
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.5564590692520142,
+            0.5403313040733337,
+            -0.0485774427652359
+          ],
+          "max": [
+            0.5564584732055664,
+            1.05312979221344,
+            0.17660044133663177
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_rest_displacement": 0.0,
+        "max_displacement_fraction_of_smallest_dimension": 0.0,
+        "triangles": 124,
+        "uv_preserved": true,
+        "original_uv_charts": 3,
+        "uv_charts": 3,
+        "uv_coordinate_count": 118,
+        "original_uv_coordinate_count": 118,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "hand",
+            "uv_coordinate_count": 118,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged",
+        "shape_quality": {
+          "reversed_triangles": 0,
+          "new_degenerate_triangles": 0,
+          "inherited_degenerate_triangles": 0,
+          "coincident_seam_max_rest_gap": 0.0,
+          "min_triangle_normal_cosine_from_original": 0.9999999999999998
+        },
+        "added_vertex_count": 0,
+        "triangle_growth_fraction": 0,
+        "geometry_changed": false
+      },
+      "ArmorHead_07": {
+        "bounds_game": {
+          "min": [
+            -0.29559850692749023,
+            1.228413701057434,
+            -0.3641605079174042
+          ],
+          "max": [
+            0.295596182346344,
+            1.8694913387298584,
+            0.21956589818000793
+          ]
+        },
+        "original_bounds": {
+          "min": [
+            -0.3075985014438629,
+            1.228413701057434,
+            -0.3641605079174042
+          ],
+          "max": [
+            0.3075961768627167,
+            1.89548921585083,
+            0.21956589818000793
+          ]
+        },
+        "dimension_delta_fraction": [
+          0.03901202315145036,
+          0.03897291467671937,
+          0.0
+        ],
+        "max_rest_displacement": 0.09140036173748978,
+        "max_displacement_fraction_of_smallest_dimension": 0.15658082413739033,
+        "triangles": 246,
+        "uv_preserved": true,
+        "original_uv_charts": 4,
+        "uv_charts": 4,
+        "uv_coordinate_count": 192,
+        "original_uv_coordinate_count": 192,
+        "uv_changed_count": 0,
+        "uv_changed_fraction": 0.0,
+        "uv_max_displacement_from_original": 0.0,
+        "uv_rms_displacement_from_original": 0.0,
+        "uv_by_surface": [
+          {
+            "surface": 0,
+            "label": "head",
+            "uv_coordinate_count": 192,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ],
+        "weight_source": "original, unchanged",
+        "shape_quality": {
+          "reversed_triangles": 0,
+          "new_degenerate_triangles": 0,
+          "inherited_degenerate_triangles": 0,
+          "coincident_seam_max_rest_gap": 0.0,
+          "min_triangle_normal_cosine_from_original": 0.7284953102698424
+        },
+        "added_vertex_count": 0,
+        "triangle_growth_fraction": 0,
+        "geometry_changed": true
+      }
+    },
+    "stage": "approved_draft_refinement_v2",
+    "constraint": "True original source cumulative20% per-part rest displacement/dimensions; exact original UV0, indices, vertex counts, rig and weights.",
+    "user_authorized_original_total_limit": 0.2,
+    "geometry_mode": "original_source_bounded_refinement",
+    "geometry_parts": [
+      "ArmorHead_07",
+      "ArmorBody_07"
+    ]
+  },
+  "limits": {
+    "local_geometry_displacement": 0.2,
+    "dimension_change": 0.2,
+    "silhouette_change": 0.2,
+    "uv_changed_fraction_per_material": 0.2,
+    "uv_coordinate_and_chart_counts_preserved": true
+  },
+  "topology": {
+    "triangles": 860,
+    "original_bones": 28,
+    "parts": 4,
+    "surfaces": 5,
+    "diffuse_maps": 5
+  },
+  "files": [
+    {
+      "path": "assets/armors/atom_v1/atom.scn",
+      "sha256": "4cc7e88aa5f70c8c93331699d29a93042c1c4ab53891cd7eaad7512ed9efaad8",
+      "bytes": 63846
+    },
+    {
+      "path": "assets/armors/atom_v1/atom.glb",
+      "sha256": "f361cc61d787ff8e3cd3926b8b0f702da7f9ae9f3008b30e20fc731d00fd31fe",
+      "bytes": 9945084
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/build/atom_master.blend",
+      "sha256": "9a914a6b331be3ca65a7d161abd6445ab03eba727c20d91d04ffc5d352de8de8",
+      "bytes": 10159604
+    },
+    {
+      "path": "assets/armors/atom_v1/body_diffuse.png",
+      "sha256": "616151182a74871e3f399ed1df4b3baa1f2edc6bc79ed8998bedcd25004aa15e",
+      "bytes": 2058548,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/atom_v1/foot_diffuse.png",
+      "sha256": "1f4d440764d94c879ca13e463d1285bd0b69435f70134398a1ee46e27ca815f5",
+      "bytes": 2260175,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/atom_v1/hand_diffuse.png",
+      "sha256": "2e02a9ed4cdc640720b7d669e4e88bb8b9a66923243f16b1d30673113fa4760b",
+      "bytes": 1994897,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/atom_v1/head_diffuse.png",
+      "sha256": "9d4f789427199081bd038b62301fbf82e67842d2a98e2677655099e77f7931d2",
+      "bytes": 1971931,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/armors/atom_v1/shoulder_diffuse.png",
+      "sha256": "9232eaeb7d2daedb8a2ca7f776137b61057c8265ebe237f78f0c8f74552a23d0",
+      "bytes": 2176980,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    }
+  ],
+  "generation": [
+    {
+      "label": "head",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/head_attempt_01.txt",
+        "sha256": "c9417e377f8df2764aa88c5bae9d88d889900d1f35a1f157804cb69d31873105",
+        "bytes": 6423
+      },
+      "prompt_sha256": "c9417e377f8df2764aa88c5bae9d88d889900d1f35a1f157804cb69d31873105",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/head.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_0_head.png",
+          "sha256": "2fca1535c7ff1c03a0b915ec4609f700009b8c9326754e60a5a28763f2f228dc",
+          "role": "edit_target",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/head_0_head.png",
+            "sha256": "2fca1535c7ff1c03a0b915ec4609f700009b8c9326754e60a5a28763f2f228dc",
+            "bytes": 365968,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "helmet_design_authority",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/head_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "assets/armors/viper_v2/head_diffuse.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_2_head_diffuse.png",
+          "sha256": "a1221cefc4ce785b05fe40dcd927010dafae9990332aad12c984c9c96308b0dc",
+          "role": "approved_surface_style_only",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/head_2_head_diffuse.png",
+            "sha256": "a1221cefc4ce785b05fe40dcd927010dafae9990332aad12c984c9c96308b0dc",
+            "bytes": 1937976,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/guides/head_uv.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_3_head_uv.png",
+          "sha256": "de17745ba0149cae75cf9ffd183b5c9aa3acf97434b8afe28b5f068070d270e3",
+          "role": "technical_uv_guide",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/head_3_head_uv.png",
+            "sha256": "de17745ba0149cae75cf9ffd183b5c9aa3acf97434b8afe28b5f068070d270e3",
+            "bytes": 269347,
+            "dimensions": [
+              1024,
+              1024
+            ],
+            "mode": "RGBA"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/head_0_head.png",
+        "docs/art/atom_runtime_v1/input_snapshots/head_1_c08_concept.png",
+        "docs/art/atom_runtime_v1/input_snapshots/head_2_head_diffuse.png",
+        "docs/art/atom_runtime_v1/input_snapshots/head_3_head_uv.png"
+      ],
+      "variant": "original_based_v1",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-5016557a-af7b-4fdd-b559-abdbfe8e527a.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/head_attempt_01.png",
+        "sha256": "50ab1708ac87ebbbcb91bb5ec1d37dcbb3aebb58a9a5c6632e0e92b2a77cd183",
+        "bytes": 2068602,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "50ab1708ac87ebbbcb91bb5ec1d37dcbb3aebb58a9a5c6632e0e92b2a77cd183",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/head_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/body_attempt_01.txt",
+        "sha256": "1ef2a7aebc85da2334f65a3c259a9d0c9fe78ad08e2506da551f474cf78fad17",
+        "bytes": 5958
+      },
+      "prompt_sha256": "1ef2a7aebc85da2334f65a3c259a9d0c9fe78ad08e2506da551f474cf78fad17",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/body.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_0_body.png",
+          "sha256": "2ee571cd15d4bad6e003bfbbda1a913fd7847f736b23428e4ba1bb4bb3f1908f",
+          "role": "edit_target",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_0_body.png",
+            "sha256": "2ee571cd15d4bad6e003bfbbda1a913fd7847f736b23428e4ba1bb4bb3f1908f",
+            "bytes": 356427,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "assets/armors/viper_v2/body_diffuse.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_2_body_diffuse.png",
+          "sha256": "0bbd05125ae61c081c207a1f814bdcfb4ab2bd94613afb36210dd9296b64eeba",
+          "role": "approved_surface_style_only",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_2_body_diffuse.png",
+            "sha256": "0bbd05125ae61c081c207a1f814bdcfb4ab2bd94613afb36210dd9296b64eeba",
+            "bytes": 1843529,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/guides/body_uv.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_3_body_uv.png",
+          "sha256": "187180565e3b82914978c1609eb3742efe2bf9e06d6876e4f61baf76a39e013c",
+          "role": "technical_uv_guide",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_3_body_uv.png",
+            "sha256": "187180565e3b82914978c1609eb3742efe2bf9e06d6876e4f61baf76a39e013c",
+            "bytes": 219336,
+            "dimensions": [
+              1024,
+              1024
+            ],
+            "mode": "RGBA"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/body_0_body.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_1_c08_concept.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_2_body_diffuse.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_3_body_uv.png"
+      ],
+      "variant": "original_based_v1",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-82aa30f5-bb67-47d8-9d39-0089cba42cde.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_01.png",
+        "sha256": "b48c5bf078b8fd57355031decbf573aa8d7ab92205a8a4324478fbac7ba0a563",
+        "bytes": 2112198,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "b48c5bf078b8fd57355031decbf573aa8d7ab92205a8a4324478fbac7ba0a563",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review"
+    },
+    {
+      "label": "shoulder",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/shoulder_attempt_01.txt",
+        "sha256": "f69446a5f2819610de7d166b0acf1409e4028def9f425e68569aa4a79c573635",
+        "bytes": 5836
+      },
+      "prompt_sha256": "f69446a5f2819610de7d166b0acf1409e4028def9f425e68569aa4a79c573635",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/shoulder.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_0_shoulder.png",
+          "sha256": "70aa31f956d00d4d7847de840f3be6fea0a7d06ba41d90fd34d04d93ef863d47",
+          "role": "edit_target",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/shoulder_0_shoulder.png",
+            "sha256": "70aa31f956d00d4d7847de840f3be6fea0a7d06ba41d90fd34d04d93ef863d47",
+            "bytes": 355617,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/shoulder_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "assets/armors/viper_v2/shoulder_diffuse.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_2_shoulder_diffuse.png",
+          "sha256": "963ed30b4a109b6dd4a5b2b2e993fd0f29e0e468928d053875ed3e49e9e1e860",
+          "role": "approved_surface_style_only",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/shoulder_2_shoulder_diffuse.png",
+            "sha256": "963ed30b4a109b6dd4a5b2b2e993fd0f29e0e468928d053875ed3e49e9e1e860",
+            "bytes": 1791235,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/guides/shoulder_uv.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_3_shoulder_uv.png",
+          "sha256": "a7754db40c737e10f12f7ec38bb22fdff34b53ad8f58a90f2981472857041882",
+          "role": "technical_uv_guide",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/shoulder_3_shoulder_uv.png",
+            "sha256": "a7754db40c737e10f12f7ec38bb22fdff34b53ad8f58a90f2981472857041882",
+            "bytes": 211255,
+            "dimensions": [
+              1024,
+              1024
+            ],
+            "mode": "RGBA"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/shoulder_0_shoulder.png",
+        "docs/art/atom_runtime_v1/input_snapshots/shoulder_1_c08_concept.png",
+        "docs/art/atom_runtime_v1/input_snapshots/shoulder_2_shoulder_diffuse.png",
+        "docs/art/atom_runtime_v1/input_snapshots/shoulder_3_shoulder_uv.png"
+      ],
+      "variant": "original_based_v1",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-88a735b9-5f70-4d09-97ae-530399eed2dd.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/shoulder_attempt_01.png",
+        "sha256": "ffceadf3bfff19a5270c3642e1c0c07a73e454441423ece86336b9be904405e1",
+        "bytes": 2222184,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "ffceadf3bfff19a5270c3642e1c0c07a73e454441423ece86336b9be904405e1",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/shoulder_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review"
+    },
+    {
+      "label": "hand",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/hand_attempt_01.txt",
+        "sha256": "7b0043465168571ee2c4942d643c99056553d501ff8f759c6b8ce072210fffe9",
+        "bytes": 5845
+      },
+      "prompt_sha256": "7b0043465168571ee2c4942d643c99056553d501ff8f759c6b8ce072210fffe9",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/hand.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/hand_0_hand.png",
+          "sha256": "a8ae7a58c8536045fe8ff6a423a155723d9b387414d73033401498001fff368a",
+          "role": "edit_target",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/hand_0_hand.png",
+            "sha256": "a8ae7a58c8536045fe8ff6a423a155723d9b387414d73033401498001fff368a",
+            "bytes": 317401,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/hand_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/hand_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "assets/armors/viper_v2/hand_diffuse.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/hand_2_hand_diffuse.png",
+          "sha256": "53a5d1bddd101de3db5652a2eb7343fbd48a40678b449900a09c5e979ab7fa62",
+          "role": "approved_surface_style_only",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/hand_2_hand_diffuse.png",
+            "sha256": "53a5d1bddd101de3db5652a2eb7343fbd48a40678b449900a09c5e979ab7fa62",
+            "bytes": 1603882,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/guides/hand_uv.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/hand_3_hand_uv.png",
+          "sha256": "0d1542fd7b5e3c75e602620a750abfd61f158aa76da70677a9a61fb69f242dc6",
+          "role": "technical_uv_guide",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/hand_3_hand_uv.png",
+            "sha256": "0d1542fd7b5e3c75e602620a750abfd61f158aa76da70677a9a61fb69f242dc6",
+            "bytes": 156977,
+            "dimensions": [
+              1024,
+              1024
+            ],
+            "mode": "RGBA"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/hand_0_hand.png",
+        "docs/art/atom_runtime_v1/input_snapshots/hand_1_c08_concept.png",
+        "docs/art/atom_runtime_v1/input_snapshots/hand_2_hand_diffuse.png",
+        "docs/art/atom_runtime_v1/input_snapshots/hand_3_hand_uv.png"
+      ],
+      "variant": "original_based_v1",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-c29b7607-7bbb-42b5-891c-528cd3012fd6.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/hand_attempt_01.png",
+        "sha256": "1e39d4dc9b6cc9a393ca3b1972f5486fa9a7b794eebad19d56f0de3469d0bf1f",
+        "bytes": 2070900,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "1e39d4dc9b6cc9a393ca3b1972f5486fa9a7b794eebad19d56f0de3469d0bf1f",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/hand_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review"
+    },
+    {
+      "label": "foot",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/foot_attempt_01.txt",
+        "sha256": "5e6ddf06750f72fc266333191fc55dabee319acc5ab5c6172db6706c085752a4",
+        "bytes": 5815
+      },
+      "prompt_sha256": "5e6ddf06750f72fc266333191fc55dabee319acc5ab5c6172db6706c085752a4",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/revisions/original_source_v1/atlases/foot.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/foot_0_foot.png",
+          "sha256": "05309542695bc332278871c11f415b4dfc3c6b8e08f58fa5183f36ebac7517a7",
+          "role": "edit_target",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/foot_0_foot.png",
+            "sha256": "05309542695bc332278871c11f415b4dfc3c6b8e08f58fa5183f36ebac7517a7",
+            "bytes": 352719,
+            "dimensions": [
+              512,
+              512
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/foot_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/foot_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "assets/armors/viper_v2/foot_diffuse.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/foot_2_foot_diffuse.png",
+          "sha256": "ae7e71a599d5ede22021fae67bd7ad3d3f90ec6f6dfb020b3cbeca387236e849",
+          "role": "approved_surface_style_only",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/foot_2_foot_diffuse.png",
+            "sha256": "ae7e71a599d5ede22021fae67bd7ad3d3f90ec6f6dfb020b3cbeca387236e849",
+            "bytes": 1660493,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/guides/foot_uv.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/foot_3_foot_uv.png",
+          "sha256": "2d1dc487ed88fb0bde0f7608b0ffa85d3086513c698baa83132e126979fe5919",
+          "role": "technical_uv_guide",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/foot_3_foot_uv.png",
+            "sha256": "2d1dc487ed88fb0bde0f7608b0ffa85d3086513c698baa83132e126979fe5919",
+            "bytes": 209771,
+            "dimensions": [
+              1024,
+              1024
+            ],
+            "mode": "RGBA"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/foot_0_foot.png",
+        "docs/art/atom_runtime_v1/input_snapshots/foot_1_c08_concept.png",
+        "docs/art/atom_runtime_v1/input_snapshots/foot_2_foot_diffuse.png",
+        "docs/art/atom_runtime_v1/input_snapshots/foot_3_foot_uv.png"
+      ],
+      "variant": "original_based_v1",
+      "tool": "builtin.image_gen",
+      "selected": true,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-2993b004-6a33-44ca-9a41-5d3d3c811353.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/foot_attempt_01.png",
+        "sha256": "1f4d440764d94c879ca13e463d1285bd0b69435f70134398a1ee46e27ca815f5",
+        "bytes": 2260175,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "1f4d440764d94c879ca13e463d1285bd0b69435f70134398a1ee46e27ca815f5",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/foot_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "runtime_integrated_pending_user_art_review",
+      "canonical": {
+        "path": "assets/armors/atom_v1/foot_diffuse.png",
+        "sha256": "1f4d440764d94c879ca13e463d1285bd0b69435f70134398a1ee46e27ca815f5",
+        "bytes": 2260175,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "foot"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/body_attempt_02.txt",
+        "sha256": "9b83c47094f1c1b438a136378eb9d7067fb80a8299430d8f3dba1d51577ba725",
+        "bytes": 7231
+      },
+      "prompt_sha256": "9b83c47094f1c1b438a136378eb9d7067fb80a8299430d8f3dba1d51577ba725",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/body_attempt_01.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry_0_body_attempt_01.png",
+          "sha256": "b48c5bf078b8fd57355031decbf573aa8d7ab92205a8a4324478fbac7ba0a563",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry_0_body_attempt_01.png",
+            "sha256": "b48c5bf078b8fd57355031decbf573aa8d7ab92205a8a4324478fbac7ba0a563",
+            "bytes": 2112198,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/guides/body_uv.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry_2_body_uv.png",
+          "sha256": "187180565e3b82914978c1609eb3742efe2bf9e06d6876e4f61baf76a39e013c",
+          "role": "technical_original_uv_guide",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry_2_body_uv.png",
+            "sha256": "187180565e3b82914978c1609eb3742efe2bf9e06d6876e4f61baf76a39e013c",
+            "bytes": 219336,
+            "dimensions": [
+              1024,
+              1024
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/revisions/body_wrong_position_attempt_01/engine/new_diffuse_front.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry_3_new_diffuse_front.png",
+          "sha256": "4dc6d9281a2accb65a770b48f6d89a54844d10382caec915a7e19c0020074b9a",
+          "role": "runtime_mapping_front_check_only",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry_3_new_diffuse_front.png",
+            "sha256": "4dc6d9281a2accb65a770b48f6d89a54844d10382caec915a7e19c0020074b9a",
+            "bytes": 302515,
+            "dimensions": [
+              640,
+              720
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/revisions/body_wrong_position_attempt_01/engine/new_diffuse_rear.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry_4_new_diffuse_rear.png",
+          "sha256": "b7587a6c03e1251e158de3d5e7a80a8717d13873ad75d962300c2c0839a23144",
+          "role": "runtime_mapping_back_check_only",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry_4_new_diffuse_rear.png",
+            "sha256": "b7587a6c03e1251e158de3d5e7a80a8717d13873ad75d962300c2c0839a23144",
+            "bytes": 291741,
+            "dimensions": [
+              640,
+              720
+            ],
+            "mode": "RGBA"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry_0_body_attempt_01.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry_1_c08_concept.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry_2_body_uv.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry_3_new_diffuse_front.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry_4_new_diffuse_rear.png"
+      ],
+      "variant": "original_based_v1",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-07321792-4e4b-4333-9393-059bd0d42055.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_02.png",
+        "sha256": "a8d5338310765635bebbac936eccbdaabf245d64aaf2a794f9f5932d7ca21ef5",
+        "bytes": 2117345,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "a8d5338310765635bebbac936eccbdaabf245d64aaf2a794f9f5932d7ca21ef5",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_generated_pending_runtime_visual_review"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/body_attempt_03.txt",
+        "sha256": "e87815c50804ef2021186da5cb294f86ff6e233b036a33e8c5a71e5b7becc894",
+        "bytes": 8153
+      },
+      "prompt_sha256": "e87815c50804ef2021186da5cb294f86ff6e233b036a33e8c5a71e5b7becc894",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/body_attempt_02.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry3_0_body_attempt_02.png",
+          "sha256": "a8d5338310765635bebbac936eccbdaabf245d64aaf2a794f9f5932d7ca21ef5",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry3_0_body_attempt_02.png",
+            "sha256": "a8d5338310765635bebbac936eccbdaabf245d64aaf2a794f9f5932d7ca21ef5",
+            "bytes": 2117345,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry3_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry3_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/guides/body_placement.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry3_2_body_placement.png",
+          "sha256": "9d59354dcd6e6cbc4dfb89ffacab0940e577edf7b843a9a8ff20d61a86231db8",
+          "role": "technical_original_uv_guide",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry3_2_body_placement.png",
+            "sha256": "9d59354dcd6e6cbc4dfb89ffacab0940e577edf7b843a9a8ff20d61a86231db8",
+            "bytes": 6989,
+            "dimensions": [
+              1024,
+              1024
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/revisions/body_wrong_position_attempt_01/engine/new_diffuse_front.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry3_3_new_diffuse_front.png",
+          "sha256": "4dc6d9281a2accb65a770b48f6d89a54844d10382caec915a7e19c0020074b9a",
+          "role": "runtime_mapping_front_check_only",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry3_3_new_diffuse_front.png",
+            "sha256": "4dc6d9281a2accb65a770b48f6d89a54844d10382caec915a7e19c0020074b9a",
+            "bytes": 302515,
+            "dimensions": [
+              640,
+              720
+            ],
+            "mode": "RGBA"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/revisions/body_wrong_position_attempt_01/engine/new_diffuse_rear.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry3_4_new_diffuse_rear.png",
+          "sha256": "b7587a6c03e1251e158de3d5e7a80a8717d13873ad75d962300c2c0839a23144",
+          "role": "runtime_mapping_back_check_only",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry3_4_new_diffuse_rear.png",
+            "sha256": "b7587a6c03e1251e158de3d5e7a80a8717d13873ad75d962300c2c0839a23144",
+            "bytes": 291741,
+            "dimensions": [
+              640,
+              720
+            ],
+            "mode": "RGBA"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry3_0_body_attempt_02.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry3_1_c08_concept.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry3_2_body_placement.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry3_3_new_diffuse_front.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry3_4_new_diffuse_rear.png"
+      ],
+      "variant": "original_based_v1",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-156ed009-9a9e-48cd-ae15-2a4b8b2df3a0.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_03.png",
+        "sha256": "c0dfca423e65e300a2b8db65d34ea94b0819c9ce9a21d53bb3a7bef4fbfc86e3",
+        "bytes": 2141834,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "c0dfca423e65e300a2b8db65d34ea94b0819c9ce9a21d53bb3a7bef4fbfc86e3",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_generated_pending_runtime_visual_review"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/body_attempt_04.txt",
+        "sha256": "b91e354b12ea28ed8e1e1382d0ad25f5c81d5f09d65519b5b0fc4fae6800dd47",
+        "bytes": 5668
+      },
+      "prompt_sha256": "b91e354b12ea28ed8e1e1382d0ad25f5c81d5f09d65519b5b0fc4fae6800dd47",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/body_attempt_03.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry4_0_body_attempt_03.png",
+          "sha256": "c0dfca423e65e300a2b8db65d34ea94b0819c9ce9a21d53bb3a7bef4fbfc86e3",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry4_0_body_attempt_03.png",
+            "sha256": "c0dfca423e65e300a2b8db65d34ea94b0819c9ce9a21d53bb3a7bef4fbfc86e3",
+            "bytes": 2141834,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry4_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry4_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry4_0_body_attempt_03.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry4_1_c08_concept.png"
+      ],
+      "variant": "original_based_v1",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-c3830f32-e445-4c1a-8229-ce2d5bd04b16.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_04.png",
+        "sha256": "349bec3172f9d1d1a43f7cdaac1c286ec03384c74c0889b618932a42811c9710",
+        "bytes": 2119385,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "349bec3172f9d1d1a43f7cdaac1c286ec03384c74c0889b618932a42811c9710",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/body_attempt_05.txt",
+        "sha256": "3e5bfee11167fa08f560b6dc6d5598d9d812057cebf22c7f6f6ee228997b3192",
+        "bytes": 6166
+      },
+      "prompt_sha256": "3e5bfee11167fa08f560b6dc6d5598d9d812057cebf22c7f6f6ee228997b3192",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/body_attempt_04.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry5_0_body_attempt_04.png",
+          "sha256": "349bec3172f9d1d1a43f7cdaac1c286ec03384c74c0889b618932a42811c9710",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry5_0_body_attempt_04.png",
+            "sha256": "349bec3172f9d1d1a43f7cdaac1c286ec03384c74c0889b618932a42811c9710",
+            "bytes": 2119385,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry5_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry5_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry5_0_body_attempt_04.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry5_1_c08_concept.png"
+      ],
+      "variant": "original_based_v1",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-138faa30-f91a-476a-89a6-9dbbc644de16.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_05.png",
+        "sha256": "5887b4dc2ddf12d1df08b3a5fb10785cb616f8e0d396864d8aaced37a9bf3b98",
+        "bytes": 2120337,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "5887b4dc2ddf12d1df08b3a5fb10785cb616f8e0d396864d8aaced37a9bf3b98",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review"
+    },
+    {
+      "label": "head",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/head_attempt_02.txt",
+        "sha256": "9003903b54a14f6daec4f93b5c8c76fd65e0dce61221ffc16d3a4a5c0604a929",
+        "bytes": 6130
+      },
+      "prompt_sha256": "9003903b54a14f6daec4f93b5c8c76fd65e0dce61221ffc16d3a4a5c0604a929",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/head_attempt_01.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_draft2_0_head_attempt_01.png",
+          "sha256": "50ab1708ac87ebbbcb91bb5ec1d37dcbb3aebb58a9a5c6632e0e92b2a77cd183",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/head_draft2_0_head_attempt_01.png",
+            "sha256": "50ab1708ac87ebbbcb91bb5ec1d37dcbb3aebb58a9a5c6632e0e92b2a77cd183",
+            "bytes": 2068602,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_draft2_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "helmet_design_authority",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/head_draft2_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/head_draft2_0_head_attempt_01.png",
+        "docs/art/atom_runtime_v1/input_snapshots/head_draft2_1_c08_concept.png"
+      ],
+      "variant": "draft_refinement_v2",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-4721d5ef-5d69-4ced-aaba-f6211495dfc1.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/head_attempt_02.png",
+        "sha256": "fb70541f295a6e8973350e9a0810388acb410f1fab7d806776cb5dba6b13bad8",
+        "bytes": 2101192,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "fb70541f295a6e8973350e9a0810388acb410f1fab7d806776cb5dba6b13bad8",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/head_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/body_attempt_06.txt",
+        "sha256": "32d55e291f87f0bb2e464299830b629f0f64b942791acea1f0e97075f6b39f5a",
+        "bytes": 6071
+      },
+      "prompt_sha256": "32d55e291f87f0bb2e464299830b629f0f64b942791acea1f0e97075f6b39f5a",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/body_attempt_05.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_draft6_0_body_attempt_05.png",
+          "sha256": "5887b4dc2ddf12d1df08b3a5fb10785cb616f8e0d396864d8aaced37a9bf3b98",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_draft6_0_body_attempt_05.png",
+            "sha256": "5887b4dc2ddf12d1df08b3a5fb10785cb616f8e0d396864d8aaced37a9bf3b98",
+            "bytes": 2120337,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_draft6_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_draft6_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/body_draft6_0_body_attempt_05.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_draft6_1_c08_concept.png"
+      ],
+      "variant": "draft_refinement_v2",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-08dce5f3-dc52-4b21-b063-ae0b656542bc.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_06.png",
+        "sha256": "57740f937170955868800a5f4a705aa42e28068462a79c9b71a80b2547b3f0ac",
+        "bytes": 2209559,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "57740f937170955868800a5f4a705aa42e28068462a79c9b71a80b2547b3f0ac",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_generated_pending_runtime_visual_review"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/body_attempt_07.txt",
+        "sha256": "78276ec7ae7b0d0d2dcae5ea0364366020e9e1d73b347d482294c9d8d9b08f03",
+        "bytes": 5726
+      },
+      "prompt_sha256": "78276ec7ae7b0d0d2dcae5ea0364366020e9e1d73b347d482294c9d8d9b08f03",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/body_attempt_06.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry7_0_body_attempt_06.png",
+          "sha256": "57740f937170955868800a5f4a705aa42e28068462a79c9b71a80b2547b3f0ac",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry7_0_body_attempt_06.png",
+            "sha256": "57740f937170955868800a5f4a705aa42e28068462a79c9b71a80b2547b3f0ac",
+            "bytes": 2209559,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry7_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry7_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry7_0_body_attempt_06.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry7_1_c08_concept.png"
+      ],
+      "variant": "draft_refinement_v2",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-33508ca9-7d4b-48a7-bada-14070e9c292a.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_07.png",
+        "sha256": "5945ae8002340a46ffd103099068db6d4a139ab7c1b08eedf898c113021b6fe5",
+        "bytes": 2135258,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "5945ae8002340a46ffd103099068db6d4a139ab7c1b08eedf898c113021b6fe5",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review"
+    },
+    {
+      "label": "shoulder",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/shoulder_attempt_02.txt",
+        "sha256": "a02fccf31d2051ea8151212de62198626405a925f550559dd3a366d55afa684a",
+        "bytes": 5580
+      },
+      "prompt_sha256": "a02fccf31d2051ea8151212de62198626405a925f550559dd3a366d55afa684a",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/shoulder_attempt_01.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_draft2_0_shoulder_attempt_01.png",
+          "sha256": "ffceadf3bfff19a5270c3642e1c0c07a73e454441423ece86336b9be904405e1",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/shoulder_draft2_0_shoulder_attempt_01.png",
+            "sha256": "ffceadf3bfff19a5270c3642e1c0c07a73e454441423ece86336b9be904405e1",
+            "bytes": 2222184,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_draft2_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/shoulder_draft2_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/shoulder_draft2_0_shoulder_attempt_01.png",
+        "docs/art/atom_runtime_v1/input_snapshots/shoulder_draft2_1_c08_concept.png"
+      ],
+      "variant": "draft_refinement_v2",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-260b4d62-c4fc-45ce-95d6-3f41a8097c2f.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/shoulder_attempt_02.png",
+        "sha256": "6d1ac11987aa4d73c3d458e064236d7823fb9e3c344ad5b0e3826b9bf29f7c63",
+        "bytes": 2333689,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "6d1ac11987aa4d73c3d458e064236d7823fb9e3c344ad5b0e3826b9bf29f7c63",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/shoulder_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_adopted_pending_runtime_visual_review"
+    },
+    {
+      "label": "hand",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/hand_attempt_02.txt",
+        "sha256": "8b92265b4c4ab9e4365c1dd7670866b30ea7e3962ab3a6584a4b306bc9e184f1",
+        "bytes": 5356
+      },
+      "prompt_sha256": "8b92265b4c4ab9e4365c1dd7670866b30ea7e3962ab3a6584a4b306bc9e184f1",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/hand_attempt_01.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/hand_draft2_0_hand_attempt_01.png",
+          "sha256": "1e39d4dc9b6cc9a393ca3b1972f5486fa9a7b794eebad19d56f0de3469d0bf1f",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/hand_draft2_0_hand_attempt_01.png",
+            "sha256": "1e39d4dc9b6cc9a393ca3b1972f5486fa9a7b794eebad19d56f0de3469d0bf1f",
+            "bytes": 2070900,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/hand_draft2_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/hand_draft2_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/hand_draft2_0_hand_attempt_01.png",
+        "docs/art/atom_runtime_v1/input_snapshots/hand_draft2_1_c08_concept.png"
+      ],
+      "variant": "draft_refinement_v2",
+      "tool": "builtin.image_gen",
+      "selected": true,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-732e02c2-3b1e-4b36-a033-a7a36ed28f27.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/hand_attempt_02.png",
+        "sha256": "2e02a9ed4cdc640720b7d669e4e88bb8b9a66923243f16b1d30673113fa4760b",
+        "bytes": 1994897,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "2e02a9ed4cdc640720b7d669e4e88bb8b9a66923243f16b1d30673113fa4760b",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/hand_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "runtime_integrated_pending_user_art_review",
+      "canonical": {
+        "path": "assets/armors/atom_v1/hand_diffuse.png",
+        "sha256": "2e02a9ed4cdc640720b7d669e4e88bb8b9a66923243f16b1d30673113fa4760b",
+        "bytes": 1994897,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "hand"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/body_attempt_08.txt",
+        "sha256": "d96663aaf4d877f20d079af5d09f07b8f0d8eac0c1dc6c371cb1348f0adcc75a",
+        "bytes": 6093
+      },
+      "prompt_sha256": "d96663aaf4d877f20d079af5d09f07b8f0d8eac0c1dc6c371cb1348f0adcc75a",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/body_attempt_07.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry8_0_body_attempt_07.png",
+          "sha256": "5945ae8002340a46ffd103099068db6d4a139ab7c1b08eedf898c113021b6fe5",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry8_0_body_attempt_07.png",
+            "sha256": "5945ae8002340a46ffd103099068db6d4a139ab7c1b08eedf898c113021b6fe5",
+            "bytes": 2135258,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry8_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry8_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/guides/body_chest_placement_v2.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry8_2_body_chest_placement_v2.png",
+          "sha256": "13a30e89c6cec48eafe6c80b70d79c68eed58aa00b6e85fb4674b2c9286eb3a3",
+          "role": "technical_uv_placement_guide_not_output_colors",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry8_2_body_chest_placement_v2.png",
+            "sha256": "13a30e89c6cec48eafe6c80b70d79c68eed58aa00b6e85fb4674b2c9286eb3a3",
+            "bytes": 42910,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry8_0_body_attempt_07.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry8_1_c08_concept.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry8_2_body_chest_placement_v2.png"
+      ],
+      "variant": "draft_refinement_v2",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-43a13b60-258f-41f7-9ade-c55ff40e6b55.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_08.png",
+        "sha256": "5062e345747882772f835fd172409ff36ee79571ebcf92dbeeb1a29fd34f6707",
+        "bytes": 2114387,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "5062e345747882772f835fd172409ff36ee79571ebcf92dbeeb1a29fd34f6707",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_generated_pending_runtime_visual_review"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/body_attempt_09.txt",
+        "sha256": "ed451b20f07bcf99434cff7b60d231cb621fc51797592b55a43caf1f7671b5f5",
+        "bytes": 5928
+      },
+      "prompt_sha256": "ed451b20f07bcf99434cff7b60d231cb621fc51797592b55a43caf1f7671b5f5",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/body_attempt_05.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry9_0_body_attempt_05.png",
+          "sha256": "5887b4dc2ddf12d1df08b3a5fb10785cb616f8e0d396864d8aaced37a9bf3b98",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry9_0_body_attempt_05.png",
+            "sha256": "5887b4dc2ddf12d1df08b3a5fb10785cb616f8e0d396864d8aaced37a9bf3b98",
+            "bytes": 2120337,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/guides/body_chest_placement_v2.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry9_1_body_chest_placement_v2.png",
+          "sha256": "13a30e89c6cec48eafe6c80b70d79c68eed58aa00b6e85fb4674b2c9286eb3a3",
+          "role": "technical_uv_placement_guide_not_output_colors",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry9_1_body_chest_placement_v2.png",
+            "sha256": "13a30e89c6cec48eafe6c80b70d79c68eed58aa00b6e85fb4674b2c9286eb3a3",
+            "bytes": 42910,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry9_2_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry9_2_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry9_0_body_attempt_05.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry9_1_body_chest_placement_v2.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry9_2_c08_concept.png"
+      ],
+      "variant": "draft_refinement_v2",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a11c03-f354-7f82-9539-4f818f8c4ad7\\exec-69ac7bfb-c44a-4ab4-a395-386617be304d.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_09.png",
+        "sha256": "1f8c4b5f890bd8d7d3c1f171a1613e1551f83644530653435e53e8f8324ef004",
+        "bytes": 2093689,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "1f8c4b5f890bd8d7d3c1f171a1613e1551f83644530653435e53e8f8324ef004",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "native_generated_pending_runtime_visual_review"
+    },
+    {
+      "label": "shoulder",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/shoulder_attempt_03.txt",
+        "sha256": "37cb49f494bf40f3ada3abb4b089f9ade5af789917f65aeacf7ce44760fdbe78",
+        "bytes": 5782
+      },
+      "prompt_sha256": "37cb49f494bf40f3ada3abb4b089f9ade5af789917f65aeacf7ce44760fdbe78",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/shoulder_attempt_02.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_retry3_0_shoulder_attempt_02.png",
+          "sha256": "6d1ac11987aa4d73c3d458e064236d7823fb9e3c344ad5b0e3826b9bf29f7c63",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/shoulder_retry3_0_shoulder_attempt_02.png",
+            "sha256": "6d1ac11987aa4d73c3d458e064236d7823fb9e3c344ad5b0e3826b9bf29f7c63",
+            "bytes": 2333689,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/shoulder_retry3_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/shoulder_retry3_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/shoulder_retry3_0_shoulder_attempt_02.png",
+        "docs/art/atom_runtime_v1/input_snapshots/shoulder_retry3_1_c08_concept.png"
+      ],
+      "variant": "draft_refinement_v2",
+      "tool": "builtin.image_gen",
+      "selected": true,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a11c04-1bee-7df3-b1ff-529d73848eae\\exec-9ecfd58f-3e97-463c-8768-41628f9bb523.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/shoulder_attempt_03.png",
+        "sha256": "9232eaeb7d2daedb8a2ca7f776137b61057c8265ebe237f78f0c8f74552a23d0",
+        "bytes": 2176980,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "9232eaeb7d2daedb8a2ca7f776137b61057c8265ebe237f78f0c8f74552a23d0",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/shoulder_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "runtime_integrated_pending_user_art_review",
+      "canonical": {
+        "path": "assets/armors/atom_v1/shoulder_diffuse.png",
+        "sha256": "9232eaeb7d2daedb8a2ca7f776137b61057c8265ebe237f78f0c8f74552a23d0",
+        "bytes": 2176980,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "shoulder"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/body_attempt_10.txt",
+        "sha256": "a50026111d92eb57350c3d8cf36eef55ff8c3fe9b231a67aa63425f9500900bf",
+        "bytes": 6246
+      },
+      "prompt_sha256": "a50026111d92eb57350c3d8cf36eef55ff8c3fe9b231a67aa63425f9500900bf",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/body_attempt_09.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry10_0_body_attempt_09.png",
+          "sha256": "1f8c4b5f890bd8d7d3c1f171a1613e1551f83644530653435e53e8f8324ef004",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry10_0_body_attempt_09.png",
+            "sha256": "1f8c4b5f890bd8d7d3c1f171a1613e1551f83644530653435e53e8f8324ef004",
+            "bytes": 2093689,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry10_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry10_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/guides/body_chest_placement_v3.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry10_2_body_chest_placement_v3.png",
+          "sha256": "6655fb46e0601bca1c8d14da0fd093ee8a68ccb11e7e24dd7aa6b862508efef0",
+          "role": "technical_uv_placement_guide_not_output_colors",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry10_2_body_chest_placement_v3.png",
+            "sha256": "6655fb46e0601bca1c8d14da0fd093ee8a68ccb11e7e24dd7aa6b862508efef0",
+            "bytes": 41372,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry10_0_body_attempt_09.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry10_1_c08_concept.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry10_2_body_chest_placement_v3.png"
+      ],
+      "variant": "draft_refinement_v2",
+      "tool": "builtin.image_gen",
+      "selected": true,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a11c03-f354-7f82-9539-4f818f8c4ad7\\exec-4c05f7d5-01cf-4bc3-8439-024ae470ad1f.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_10.png",
+        "sha256": "616151182a74871e3f399ed1df4b3baa1f2edc6bc79ed8998bedcd25004aa15e",
+        "bytes": 2058548,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "616151182a74871e3f399ed1df4b3baa1f2edc6bc79ed8998bedcd25004aa15e",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "runtime_integrated_pending_user_art_review",
+      "canonical": {
+        "path": "assets/armors/atom_v1/body_diffuse.png",
+        "sha256": "616151182a74871e3f399ed1df4b3baa1f2edc6bc79ed8998bedcd25004aa15e",
+        "bytes": 2058548,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "body"
+    },
+    {
+      "label": "head",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/head_attempt_03.txt",
+        "sha256": "f84e6914ad50ca247a1eecbe32a11637861b74edc199d935b2cf477114d3a253",
+        "bytes": 6440
+      },
+      "prompt_sha256": "f84e6914ad50ca247a1eecbe32a11637861b74edc199d935b2cf477114d3a253",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/head_attempt_02.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_ear_retry3_0_head_attempt_02.png",
+          "sha256": "fb70541f295a6e8973350e9a0810388acb410f1fab7d806776cb5dba6b13bad8",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/head_ear_retry3_0_head_attempt_02.png",
+            "sha256": "fb70541f295a6e8973350e9a0810388acb410f1fab7d806776cb5dba6b13bad8",
+            "bytes": 2101192,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/head_ear_retry3_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "helmet_design_authority",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/head_ear_retry3_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/head_ear_retry3_0_head_attempt_02.png",
+        "docs/art/atom_runtime_v1/input_snapshots/head_ear_retry3_1_c08_concept.png"
+      ],
+      "variant": "draft_refinement_v2",
+      "tool": "builtin.image_gen",
+      "selected": true,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a11c04-1bee-7df3-b1ff-529d73848eae\\exec-95d949d6-f48a-4875-8da9-a2af0563ebf8.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/head_attempt_03.png",
+        "sha256": "9d4f789427199081bd038b62301fbf82e67842d2a98e2677655099e77f7931d2",
+        "bytes": 1971931,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "9d4f789427199081bd038b62301fbf82e67842d2a98e2677655099e77f7931d2",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/head_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "runtime_integrated_pending_user_art_review",
+      "canonical": {
+        "path": "assets/armors/atom_v1/head_diffuse.png",
+        "sha256": "9d4f789427199081bd038b62301fbf82e67842d2a98e2677655099e77f7931d2",
+        "bytes": 1971931,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "runtime_label": "head"
+    },
+    {
+      "label": "body",
+      "prompt": {
+        "path": "docs/art/atom_runtime_v1/prompts/body_attempt_11.txt",
+        "sha256": "a5d11ed3ab2204bf25d94b8c6d5930cb69e3ec7dcb8681138556e2cde574484c",
+        "bytes": 5133
+      },
+      "prompt_sha256": "a5d11ed3ab2204bf25d94b8c6d5930cb69e3ec7dcb8681138556e2cde574484c",
+      "base_prompt": "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt",
+      "base_prompt_sha256": "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9",
+      "references": [
+        {
+          "path": "docs/art/atom_runtime_v1/generated/body_attempt_10.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry11_0_body_attempt_10.png",
+          "sha256": "616151182a74871e3f399ed1df4b3baa1f2edc6bc79ed8998bedcd25004aa15e",
+          "role": "edit_target_previous_attempt",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry11_0_body_attempt_10.png",
+            "sha256": "616151182a74871e3f399ed1df4b3baa1f2edc6bc79ed8998bedcd25004aa15e",
+            "bytes": 2058548,
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGB"
+          }
+        },
+        {
+          "path": "docs/art/original_armors_v1/images/c08_concept.png",
+          "snapshot": "docs/art/atom_runtime_v1/input_snapshots/body_retry11_1_c08_concept.png",
+          "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+          "role": "approved_body_design",
+          "immutable_file": {
+            "path": "docs/art/atom_runtime_v1/input_snapshots/body_retry11_1_c08_concept.png",
+            "sha256": "6c9283757f5f837e06205b76dbda5520ea4f2ad303462a0a4e21d4978f8bf22d",
+            "bytes": 2019010,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "mode": "RGB"
+          }
+        }
+      ],
+      "reference_images": [
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry11_0_body_attempt_10.png",
+        "docs/art/atom_runtime_v1/input_snapshots/body_retry11_1_c08_concept.png"
+      ],
+      "variant": "draft_refinement_v2",
+      "tool": "builtin.image_gen",
+      "selected": false,
+      "generated_file": "C:\\Users\\whw88\\.codex\\generated_images\\01a11c03-f354-7f82-9539-4f818f8c4ad7\\exec-5510b3f9-e7ba-4799-8281-195a9484be86.png",
+      "archive": {
+        "path": "docs/art/atom_runtime_v1/generated/body_attempt_11.png",
+        "sha256": "818fea16418fe87851ddde2ec316788403cbeab02202606814e180859462f385",
+        "bytes": 2048034,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      },
+      "archive_sha256": "818fea16418fe87851ddde2ec316788403cbeab02202606814e180859462f385",
+      "output_size": [
+        1254,
+        1254
+      ],
+      "output": "assets/armors/atom_v1/body_diffuse.png",
+      "user_authorized_engineering_limit": 0.2,
+      "status": "rejected_moved_rear_lamp_instead_of_front_window"
+    }
+  ],
+  "tests": {
+    "runtime_test": {
+      "file": {
+        "path": "docs/art/atom_runtime_v1/review/runtime_test.json",
+        "sha256": "33e299dddebad241e7bd735dc5b2644992213bbf2b5c92e1e024bc0e02628128",
+        "bytes": 12573
+      },
+      "status": "PASS"
+    },
+    "roundtrip_test": {
+      "file": {
+        "path": "docs/art/atom_runtime_v1/review/roundtrip_test.json",
+        "sha256": "e8f5d464c90b7c246e8f99277d2d6741ee97cc5ce36d8303a394050a663dd7de",
+        "bytes": 11880
+      },
+      "status": "PASS"
+    },
+    "proportion_test": {
+      "file": {
+        "path": "docs/art/atom_runtime_v1/review/proportion_test.json",
+        "sha256": "82849e264fa0ff73f1a59d3f4068a8fb9cd7de847a592c2ce34e5cbebf43b112",
+        "bytes": 11197
+      },
+      "status": "PASS"
+    },
+    "delivery_validate": {
+      "file": {
+        "path": "docs/art/atom_runtime_v1/review/delivery_validate.json",
+        "sha256": "0079b0574965144ca6c51fc4d3349ed262a2b16d2e75e13d1c7b4b04f495715c",
+        "bytes": 10098
+      },
+      "status": "PASS"
+    },
+    "original_scene_invariants": {
+      "file": {
+        "path": "docs/art/atom_runtime_v1/review/original_scene_invariants.json",
+        "sha256": "5493d32fc726a6211bd81399ee718cb77d458c7a76aee0c836fb79e5af436b9d",
+        "bytes": 3201
+      },
+      "status": "PASS"
+    },
+    "glb_images_test": {
+      "file": {
+        "path": "docs/art/atom_runtime_v1/review/glb_images_test.json",
+        "sha256": "d85496883fe4edb3d913fe15d93f23f4aed74a67afcfd6d908cc7131338c3794",
+        "bytes": 9194
+      },
+      "status": "PASS"
+    }
+  },
+  "captures": [
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_clay_front.png",
+      "sha256": "d66d9aa8b25ff37e09a47975c847e0159d9f8e7e3c30213089e0a6413ff44dc9",
+      "bytes": 44194,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_clay_front.png",
+      "sha256": "1d1e56fd6bd4423cb21c0ceba41504d38fd02701aa15f19ad0fb5e90dbaf43f9",
+      "bytes": 44205,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_painted_front.png",
+      "sha256": "c90f4e51559181adda7b2d36e55d9750cd59f6f8d46ba5d57e5657da1069a290",
+      "bytes": 241696,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_painted_front.png",
+      "sha256": "90ccbf558896834e1e51831617ce5c0ef16ea51412cba76ca30f5d27251be6c8",
+      "bytes": 300236,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_diffuse_front.png",
+      "sha256": "e4c8d23355173e6013f1c99d5550a5d62fc58305c53647cdc6d0f4a017ec3bbd",
+      "bytes": 254131,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_diffuse_front.png",
+      "sha256": "90ccbf558896834e1e51831617ce5c0ef16ea51412cba76ca30f5d27251be6c8",
+      "bytes": 300236,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_clay_side.png",
+      "sha256": "c4370ca35a89f8051a7aeda527f95ebdbf2a801b74c118bbe2c5f53e727b1bf6",
+      "bytes": 27993,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_clay_side.png",
+      "sha256": "77d817d5b2c5830da407b0cb2110ca1936cb67b48c4d71d2f78da5df5ffe8729",
+      "bytes": 28434,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_painted_side.png",
+      "sha256": "f0769914b9aed3ca4c04bd789ef7c126401a83b8843e6551c8328aa322ab2cf1",
+      "bytes": 157303,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_painted_side.png",
+      "sha256": "b5ef35cc3ecfebcd50fd0e5bbed503a011998af7ceda162b2c3839d4b708fe04",
+      "bytes": 184696,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_diffuse_side.png",
+      "sha256": "3d7fd0b35ee324c070157130c67d1d70d3d4215eb6128d8bbd4c988595c0b284",
+      "bytes": 165495,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_diffuse_side.png",
+      "sha256": "b5ef35cc3ecfebcd50fd0e5bbed503a011998af7ceda162b2c3839d4b708fe04",
+      "bytes": 184696,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_clay_rear.png",
+      "sha256": "13a57117cadef586422ae3b7c476affd6316d0003a3b4be41f3ecd5365205ea8",
+      "bytes": 46643,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_clay_rear.png",
+      "sha256": "b12b5ab6cb6003cf87f043174969ff7a40a69ff46ff38f1f2a722fce20ad4c8d",
+      "bytes": 47100,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_painted_rear.png",
+      "sha256": "69c3dad009d54c5cea28ad04798fe2b3e3a4689da41ca5981a26c3373c39f70e",
+      "bytes": 236780,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_painted_rear.png",
+      "sha256": "a1e701e63689c9468132deb6fee05f8c207481796eba8b8b7a69c6c5d87eea5b",
+      "bytes": 285759,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_diffuse_rear.png",
+      "sha256": "123c4b1fb5cc1fc469c1171f4095f29a0c511763f33abccffa0bcb75620b16ca",
+      "bytes": 249056,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_diffuse_rear.png",
+      "sha256": "a1e701e63689c9468132deb6fee05f8c207481796eba8b8b7a69c6c5d87eea5b",
+      "bytes": 285759,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_clay_quarter.png",
+      "sha256": "96940c460bd1f766f3845ec3e6a8fe341bba639a6254cb5a0d553602d9991d17",
+      "bytes": 43925,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_clay_quarter.png",
+      "sha256": "30c3358a9d4db44522c1645f75c175d3e7699da8b992757c340bedb40ff21535",
+      "bytes": 43424,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_painted_quarter.png",
+      "sha256": "7a4007b68a7a7058c13352a64961f49d53e11b837547464240e3c93620ad65ab",
+      "bytes": 249266,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_painted_quarter.png",
+      "sha256": "200e6c04e652a004d5d48d2a9fa6cb23fbbb80c21ae685e661171af93e84896b",
+      "bytes": 308625,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_diffuse_quarter.png",
+      "sha256": "c36225c8fd1c29a5654ddfe872f8990adc5f7bb73d75145e7b04a94d4cee9b42",
+      "bytes": 262791,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "sha256": "200e6c04e652a004d5d48d2a9fa6cb23fbbb80c21ae685e661171af93e84896b",
+      "bytes": 308625,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_head_front.png",
+      "sha256": "b696071bb54ed214625108a5088391067bf18e2e5af4d0f3348a47fa73abcd5f",
+      "bytes": 493953,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_head_front.png",
+      "sha256": "f227525f63be5ef4118616d4ddd81951d5d594362c7fbfc24d95a4a674473ce1",
+      "bytes": 554861,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_head_side.png",
+      "sha256": "bdab305db555357fdd97b620e69dde0d806f4aa4213624fda9c13d5e8448366e",
+      "bytes": 469880,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_head_side.png",
+      "sha256": "5a9e8afc04fb114a551ca2e861770f3669bf9ba17636064f5da7efe596555267",
+      "bytes": 489916,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_head_rear.png",
+      "sha256": "869a2a72e37ed1783e67cc144162130b9f17e4f1172adaf60e58a1b24002401b",
+      "bytes": 505488,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_head_rear.png",
+      "sha256": "67d9baa503d4eac110f7bec8ca0c2c73ba58d7879bc4386af45f1d2c73849269",
+      "bytes": 527245,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_head_quarter.png",
+      "sha256": "e5a72b58f6bc7ffb9d0d225bd57588dbd4b6234084bf1dab543fd49f0c51f62b",
+      "bytes": 523775,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_head_quarter.png",
+      "sha256": "d4b3a8dd364fe811c3308ccad9c0d2d66153680d00535f913f7c653f091c896f",
+      "bytes": 582892,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/family_original_01_front.png",
+      "sha256": "154b241c14d0b70b5407948f676335df72f3b0537efe7cb1bf927492c331d406",
+      "bytes": 226782,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/family_original_06_front.png",
+      "sha256": "7c3e7b99a68d4508dce73cf27f7fedeadcc84819b01b61770286344f8fdf244a",
+      "bytes": 244546,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_idle_rifle.png",
+      "sha256": "bd69405f8dbff3c505951f102121d247beeb237f3c2c61e46b4eca813d97b644",
+      "bytes": 211623,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_idle_rifle.png",
+      "sha256": "1da81cde23918513aaa24a209ec0c33565da8111085226c0503f93e5065903b0",
+      "bytes": 244090,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_run_rifle.png",
+      "sha256": "6064422666fb98e317c1fc61403f724e4914af1df39f6dff57c00ba1fa983bf2",
+      "bytes": 193291,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_run_rifle.png",
+      "sha256": "69606ce3664d54ebfb34198ee1f1c5376f536474f0ec9151bacdd1011c3d67e6",
+      "bytes": 225215,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_reload_00.png",
+      "sha256": "4c0c748c36a32999fabf147bcc03968457a3e52723c63c05dd4e872f1f9f2bee",
+      "bytes": 203433,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_reload_00.png",
+      "sha256": "6bd94ba8946d9af76ce5e356c972390657f61ef0c2d7a3316e9575182a578447",
+      "bytes": 232763,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_reload_01.png",
+      "sha256": "09880c8c4b45fc870951e1ae4d0470c6318f3b512e4cc9289e98b7be9f688bf1",
+      "bytes": 189522,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_reload_01.png",
+      "sha256": "518caca7d74a7aec83b40fe7acc3d4d376de08b2e8cc19fcf3599d94f376c1f6",
+      "bytes": 218879,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_reload_02.png",
+      "sha256": "e360d1b57fa60ce9f37b857879e38e7d7df67aad1d2a40c6d159e2bffa13e62d",
+      "bytes": 191604,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_reload_02.png",
+      "sha256": "2a9111d2f05245c07d7f20ee2504cb07032bb80e2cfb87a06cef51d8fcd39dda",
+      "bytes": 222727,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_reload_03.png",
+      "sha256": "f631bd58127b0617de7bd8a6a9e584804434dd9460118fe10103e0aacf8680de",
+      "bytes": 191788,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_reload_03.png",
+      "sha256": "8327614e4b5cb293c2373218b1d24b8ac3c5122a1f9f123bea42e9eab3382c2e",
+      "bytes": 222690,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_reload_04.png",
+      "sha256": "530111c8a260efca34cb8c8f418d7544717ec67d5822a88911b6fcec34b340da",
+      "bytes": 199243,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_reload_04.png",
+      "sha256": "8518d765f4f13626fc73378c154f4aee4280b66c6d394fff2df308e9d3bdc147",
+      "bytes": 228968,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_reload_05.png",
+      "sha256": "68cd967081500b02dfeb271d45c3ac483e327f343fd66d022654316507291530",
+      "bytes": 199433,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_reload_05.png",
+      "sha256": "1d5bbefbf8cb76373dec50e02aaa0aeac6ad6caf17e7b3ea6892ed8f35d7f6de",
+      "bytes": 228331,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_reload_06.png",
+      "sha256": "8a07ce676504f83e371e4f35de6c0c8956b5500df002f683f6020b16b6e9e876",
+      "bytes": 194472,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_reload_06.png",
+      "sha256": "d5be67cf908464aa4b8c83bb6ff97871f8c5e60b941882940cd19898bafd1928",
+      "bytes": 224569,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_reload_07.png",
+      "sha256": "3122261452dbbb93844940d79fd3a8ab000393663ef5b893ba64178cc55a3020",
+      "bytes": 189870,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_reload_07.png",
+      "sha256": "fc8e5a1a6c92a4af9cfe3de273af8629384df1a1ddf353309017a4acc2c62c8d",
+      "bytes": 219925,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_reload_08.png",
+      "sha256": "b97a9f8fde2a9417f1130a2081210dfa9da8ce9ececab0e6a9df59d367c9ee48",
+      "bytes": 204020,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_reload_08.png",
+      "sha256": "629f027b8ebe390fe247e5d56e70f8b08b5e3cdcd3fae6c65db4ceb016a888dc",
+      "bytes": 233198,
+      "dimensions": [
+        640,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_level_01_gameplay.png",
+      "sha256": "60b826909afcc583e44741a4383ec4c103fc5013b64e062f292cd2131cb97f82",
+      "bytes": 1438878,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "sha256": "db0027a4fb98f981185aabea94965343c724a5f84caeab59c0298f6bb41ca18f",
+      "bytes": 1467384,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_level_01_front.png",
+      "sha256": "6e42aee3e22939825fd6a62072cac35987481b09ffe5b7f27153e4bc70b40cb5",
+      "bytes": 1085744,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_level_01_front.png",
+      "sha256": "f8e7a8d710c37798bd4e02f550f294e06b4417e974879dc04adf8455ad2bb166",
+      "bytes": 1107081,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_level_08_gameplay.png",
+      "sha256": "5efafd636e93ed4a06162afc4d348ab5b506287cb672906cf5a7d9501fb1906f",
+      "bytes": 993910,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "sha256": "1d0ae5a5ccd4a9949084d76558d4257803151dc27ee528268d70bbfcf9d9c7a0",
+      "bytes": 1019646,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/original_level_08_front.png",
+      "sha256": "d5b4d4ea4db9a2da6a183e60f80f6044eed165c10660fe8ea4028a2164c0b72f",
+      "bytes": 916432,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/atom_runtime_v1/review/engine/new_level_08_front.png",
+      "sha256": "cf0b500ac950b16bfc22bfb764f17004e9470fc0d3761d7f908082b0296c690b",
+      "bytes": 933058,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGBA"
+    }
+  ],
+  "capture_summary": {
+    "path": "docs/art/atom_runtime_v1/review/engine/capture.json",
+    "sha256": "2eb9ba50868965fc1108912bde1adbb2b0bb3530ce09d29c186d8d1b1726e34a",
+    "bytes": 23403
+  },
+  "capture_driver_evidence": {
+    "driver": "opengl3_angle",
+    "renderer_banner": "OpenGL API OpenGL ES 3.0 (ANGLE 2.1.1 git hash: aaebda1c5a40) - Compatibility - Using Device: Google Inc. (NVIDIA) - ANGLE (NVIDIA, NVIDIA GeForce RTX 4080 Laptop GPU (0x000027A0) Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.9579)",
+    "log": {
+      "path": "docs/art/atom_runtime_v1/review/original_integration_angle_capture.log",
+      "sha256": "df397b9b2e2160aca3339f43bf93313c9c885bdb54a8a71495d5dd28395eb6ba",
+      "bytes": 347
+    }
+  },
+  "uv_summary": {
+    "original_coordinate_count": 772,
+    "changed_coordinate_count": 0,
+    "changed_coordinate_fraction": 0,
+    "per_material": {
+      "ArmorBody_07_surface_0": {
+        "authored_charts": 5,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 130,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 5
+      },
+      "ArmorBody_07_surface_1": {
+        "authored_charts": 5,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 210,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 5
+      },
+      "ArmorFoot_07_surface_0": {
+        "authored_charts": 4,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 122,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 4
+      },
+      "ArmorHand_07_surface_0": {
+        "authored_charts": 3,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 118,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 3
+      },
+      "ArmorHead_07_surface_0": {
+        "authored_charts": 4,
+        "changed": 0,
+        "changed_fraction": 0.0,
+        "coordinates": 192,
+        "maximum_uv_displacement": 0.0,
+        "original_charts": 4
+      }
+    }
+  },
+  "inherited_out_of_range_uv": [],
+  "geometry_mode": "original_source_bounded_refinement",
+  "geometry_revision": "approved_draft_refinement_v2",
+  "geometry_parts": [
+    "ArmorHead_07",
+    "ArmorBody_07"
+  ],
+  "independent_original_geometry": {
+    "original_measurements": [
+      {
+        "part": "ArmorBody_07",
+        "original_total_limit": 0.2,
+        "original_max_rest_displacement_fraction": 0.1583686612799385,
+        "original_dimension_delta_fractions": [
+          0.08081994996033448,
+          0.010421108508079868,
+          0.026393695425191877
+        ],
+        "original_uv_changed_fraction": 0.0,
+        "surfaces": [
+          {
+            "surface": 0,
+            "label": "shoulder",
+            "uv_coordinate_count": 130,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          },
+          {
+            "surface": 1,
+            "label": "body",
+            "uv_coordinate_count": 210,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
+      },
+      {
+        "part": "ArmorFoot_07",
+        "original_total_limit": 0.2,
+        "original_max_rest_displacement_fraction": 0.0,
+        "original_dimension_delta_fractions": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original_uv_changed_fraction": 0.0,
+        "surfaces": [
+          {
+            "surface": 0,
+            "label": "foot",
+            "uv_coordinate_count": 122,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
+      },
+      {
+        "part": "ArmorHand_07",
+        "original_total_limit": 0.2,
+        "original_max_rest_displacement_fraction": 0.0,
+        "original_dimension_delta_fractions": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original_uv_changed_fraction": 0.0,
+        "surfaces": [
+          {
+            "surface": 0,
+            "label": "hand",
+            "uv_coordinate_count": 118,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
+      },
+      {
+        "part": "ArmorHead_07",
+        "original_total_limit": 0.2,
+        "original_max_rest_displacement_fraction": 0.15658082551289376,
+        "original_dimension_delta_fractions": [
+          0.039012023151451136,
+          0.038972914676725146,
+          2.220446049250313e-16
+        ],
+        "original_uv_changed_fraction": 0.0,
+        "surfaces": [
+          {
+            "surface": 0,
+            "label": "head",
+            "uv_coordinate_count": 192,
+            "uv_changed_count": 0,
+            "uv_changed_fraction": 0.0
+          }
+        ]
+      }
+    ],
+    "triangles": 860,
+    "surfaces": 5,
+    "uv_coordinates": 772,
+    "uv_charts": 21,
+    "geometry_mode": "original_source_bounded_refinement",
+    "movable_parts": [
+      "ArmorBody_07",
+      "ArmorHead_07"
+    ],
+    "shape_quality": {
+      "ArmorBody_07": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.8432524916361537
+      },
+      "ArmorFoot_07": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.9999999999999998
+      },
+      "ArmorHand_07": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.9999999999999998
+      },
+      "ArmorHead_07": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.7284953102698424
+      }
+    }
+  },
+  "true_source_evidence": {
+    "original_source_snapshot_records_verified": 13,
+    "original_source_snapshot_sha256": "73f3272363d1b345858f83874d922a8d6a7b22c93d64aa5fe43ae87e75f0347d",
+    "original_node_index_sha256": "07ed03b1149f1c2371c27a7039b371e27efdbefb363d62f6cf2d0aa37cbe485f",
+    "used_node_ids": {
+      "ArmorHead_07": 58,
+      "ArmorBody_07": 59,
+      "ArmorHand_07": 60,
+      "ArmorFoot_07": 61
+    },
+    "previous_texture_only_delivery": {
+      "path": "docs/art/atom_runtime_v1/revisions/before_draft_refinement_v2/snapshot.json",
+      "sha256": "b11f3dbef7eb700e02dfef178703d1828e700f06c4d51aa1332211e169db1d6d",
+      "files_verified": 96,
+      "source_commit": "f94323e40b3e7002268b39944bdcb58c2737c41f"
+    }
+  },
+  "metric_scope": "True original source cumulative per-part20% positions/dimensions; configured parts ArmorHead_07, ArmorBody_07 may change positions and recalculated normal/tangent frames. Every unchanged surface array, all original UV0, topology, skin, weights and transforms stay exact. GLB exporter normalizes exchange weights, per-triangle identity independently verified. Artistic similarity is not measured by20%; pending user review.",
+  "residuals": [
+    "原頭部已縮短下巴、壓低冠頂，六點耳蓋側視比例從約1.96:1改為1.19:1；金屬耳盤已畫回真正耳蓋，仍保留低多邊形外殼輪廓。",
+    "紫頂／鋼藍冠燈、三額燈與青玻璃已呈現；中央鋼藍冠區較草稿短，玻璃的V形對稱反光較強，缺少草稿的獨立青色頰窗。",
+    "長肩刺改成較短厚的楔形鰭，前面青燈可見但小且靠根，仍較草稿外張，未宣稱草稿肩部逐形一致。",
+    "body10實機是一個高胸青服務模組，已非舊領口燈或低胸燈；相對理想UV標示仍偏高，胸甲放射分片與下方五角板保留較多原版特色。",
+    "前臂圓燈改為矩形窗；白色磨邊與紫裂紋仍較草稿密。背面沿原版推定，概念未展示隱藏側背，不能稱完全還原。",
+    "15裝備姿勢／9GLB姿勢及64張ANGLE擷取通過；未做完整連續動畫全角度或手機效能實測，美術仍待使用者審閱。"
+  ]
+}

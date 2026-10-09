@@ -1,12 +1,12 @@
 {
-	"current_scene_sha256": "ae114acb94c13fc46725905d62545f74fce14aea367b5c2af913249992270f9f",
+	"current_scene_sha256": "78b44feaf346f8e134f65a9915195b35a7e2e366d675cbf4eed27ddb25390dc0",
 	"errors": [],
 	"geometry_mode": "original_source_bounded_refinement",
 	"geometry_parts": [
 		"ArmorHead_08",
 		"ArmorBody_08"
 	],
-	"geometry_sha256": "2b181462b298abc54847262ad8ccba363732442991ea2c19d8ae946b0918c0f9",
+	"geometry_sha256": "05fd27b5a9f62e46898e3e550ad9b5e5ea98b167b3e610535fb172649743ea14",
 	"original_bones": 28,
 	"original_node_ids": {
 		"ArmorBody_08": 63.0,
@@ -22,7 +22,7 @@
 			"immutable_arrays_exact": true,
 			"indices_skin_weights_bones_topology_exact": true,
 			"max_normal_tangent_error": 0.000176368717802688,
-			"max_raw_position_error_m": 0.0000000298023223876953,
+			"max_raw_position_error_m": 0.00000000372529029846191,
 			"max_rest_error_m": 0.000000140577270713038,
 			"normal_frames_verified_against_target": true,
 			"original_indices_skin_weights_topology_exact": true,
@@ -66,9 +66,9 @@
 			"geometry_changed": true,
 			"immutable_arrays_exact": true,
 			"indices_skin_weights_bones_topology_exact": true,
-			"max_normal_tangent_error": 0.00016156499623321,
-			"max_raw_position_error_m": 0.000000000000014210854715202,
-			"max_rest_error_m": 0.000000119209289550781,
+			"max_normal_tangent_error": 0.000174138142028823,
+			"max_raw_position_error_m": 0.000000000000028421709430404,
+			"max_rest_error_m": 0.000000123103788496337,
 			"normal_frames_verified_against_target": true,
 			"original_indices_skin_weights_topology_exact": true,
 			"part": "ArmorHead_08",
@@ -80,5 +80,5 @@
 	"scope": "Actual SCN versus true original: configured part positions/normal/tangent frames match authored target; all UV0, topology, skin, weights, transforms and every unchanged surface array exact. Normal/tangent octahedral quantization tolerance .001.",
 	"source_sha256": "0575a8b0c0b5674f0770636ea8d4520af3b8242253ffe2adfeeb594010f68b64",
 	"status": "PASS",
-	"target_sha256": "886ea9dac6e92272ebc540102d1a02159bf29dc337a089abeed9072668fe6bff"
+	"target_sha256": "fb1a0807706b07cf247f96c39eb57f38f670bbabbe690ce021ae57297082f7ba"
 }

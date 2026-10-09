@@ -1,0 +1,1042 @@
+{
+  "status": "ENGINEERING_CANDIDATE_PENDING_USER_ART_REVIEW",
+  "date": "2026-10-09",
+  "armor": "Pegasus",
+  "design_id": "C-09",
+  "runtime_id": 8,
+  "revision": "draft_refinement_v2",
+  "reviewer": "Codex visual inspection through view_image of each of all 64 untouched actual PNG files; no contact sheet, raster repaint, engine run or Blender run by reviewer",
+  "capture_summary": {
+    "path": "docs/art/pegasus_runtime_v1/review/engine/capture.json",
+    "sha256": "d1bf53a60b8e13930216bad6e955c02f30f4e62b24cb10f684e62e651fa439c4",
+    "bytes": 23987
+  },
+  "runtime_scene": {
+    "path": "assets/armors/pegasus_v1/pegasus.scn",
+    "sha256": "ae114acb94c13fc46725905d62545f74fce14aea367b5c2af913249992270f9f",
+    "bytes": 81438
+  },
+  "capture_runtime_scene_sha256": "ae114acb94c13fc46725905d62545f74fce14aea367b5c2af913249992270f9f",
+  "actual_images_inspected": 64,
+  "matched_view_pairs": 31,
+  "images": [
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/family_original_01_front.png",
+      "sha256": "c001c084d2f93f58fac64f09b0f4803ca1b64bd34702c906973820b7e38d41a1",
+      "bytes": 226642,
+      "version": "family_original",
+      "view": "family_original_01_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "原版Fortune同家族短壯比例及手繪大色塊參照，並非Pegasus改版前素材。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/family_original_06_front.png",
+      "sha256": "83d14707387894ce712e7ee8cd8132d9c159ac5607100c485e72da7527a51cd7",
+      "bytes": 244189,
+      "version": "family_original",
+      "view": "family_original_06_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "原版Thunder高冠/金面罩家族參照；本輪未改Thunder，也不把它當Pegasus概念。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_clay_front.png",
+      "sha256": "2a81718328f0dc215b01d048c535dd81906acaff6f94ca6fceb701718622f16e",
+      "bytes": 45923,
+      "version": "new",
+      "view": "clay_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "無貼圖下仍可見頭頂峰降低、下頜較平短及肩外緣變化，證明本輪有模型形變；非只替換色彩。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_clay_quarter.png",
+      "sha256": "49e6a6e488dd789a7da6bc478c00aadac03ef1a3d6f9ee2c61a17a49509d13d6",
+      "bytes": 45086,
+      "version": "new",
+      "view": "clay_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "灰模冠峰降低、前頜內收，胸肩局部輪廓維持連接；未見飛散甲片。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_clay_rear.png",
+      "sha256": "56f711e3596fb3423916abb6b93a52a91193006e3e3f0a731b7c79340e9ad5ff",
+      "bytes": 48550,
+      "version": "new",
+      "view": "clay_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "灰模後冠降低，肩與軀幹左右連接完整；沒有明顯新增背面破口。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_clay_side.png",
+      "sha256": "d763a609e66661a128bbc7c316899e2fdaca6dd449ae369e3a9c0c9a60ba6620",
+      "bytes": 30257,
+      "version": "new",
+      "view": "clay_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "灰模前頜縮短及頭頂降低可與原版區分，肩/上臂保持完整連接。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_diffuse_front.png",
+      "sha256": "1c92975297c3d7aa1dbb7387d03b691810a4581eba3f56ecc4ae073d57783e88",
+      "bytes": 295124,
+      "version": "new",
+      "view": "diffuse_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "上胸中央已為不發光深色直槽、兩側白甲與藍肩橫帶。槽中細分線可見；下方白件仍偏五角長形，正面大腿黑色覆蓋多。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "sha256": "4c6327a4109e3aae718b57bf5be8568e634e5c35f648c178ad37f48baa55f422",
+      "bytes": 301759,
+      "version": "new",
+      "view": "diffuse_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "胸槽、低白領緣與藍肩橫帶位置連貫；頭頜比前版短。槽仍靠近領口，白胸板及大腿覆蓋與概念不同。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_diffuse_rear.png",
+      "sha256": "ba73e59a38092d03bb2f0fd7b2b4abb4682c1362e3b7b4cd4fe73f7d04e013c7",
+      "bytes": 286170,
+      "version": "new",
+      "view": "diffuse_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "後腦、放射白背板與背中央圓件連接完整，雙肩藍帶連續；後背為原版延伸而非概念可直接比對部位。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_diffuse_side.png",
+      "sha256": "1cff74d56f3e1c71be7acf65cbc4bf9c9756f22ea9f4b1c2e04ca63e60324f09",
+      "bytes": 185794,
+      "version": "new",
+      "view": "diffuse_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "短頜輪廓與肩帶分層可讀，未見手臂/胸部新增裂口；髖板仍偏外側，概念正面大腿白甲未完整形成。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_head_front.png",
+      "sha256": "b402bbdf74493c22dd7b58360f706f6ddac60f7ed61404de0b2a84c37bb2923f",
+      "bytes": 554511,
+      "version": "new",
+      "view": "head_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "雙峰已降低、下頜縮短；白灰頭殼與連續深色V玻璃沒有中央裂縫。厚眉蓋、中央階梯與護唇仍比概念突出。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_head_quarter.png",
+      "sha256": "29709f74a4b8cabe40692fddd0c609493a0bc68323073fa1303f152729bb061a",
+      "bytes": 562773,
+      "version": "new",
+      "view": "head_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "斜面可見較低的冠、較短頜及額中通風紋；側大片眉蓋仍厚，不是概念窄冠軌，黑窗較窄。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_head_rear.png",
+      "sha256": "b7b549c649938ee9e937e5d08ca90f5759e55f4f4a3b3df9bbe3d285fe416e80",
+      "bytes": 498845,
+      "version": "new",
+      "view": "head_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "兩側後冠尖峰比前版低，後腦深藍技術板與白側殼連接完整；概念未提供背面，不能宣稱背面完全還原。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_head_side.png",
+      "sha256": "67cf5d5120e6814cdeec392f9d800ecc86faf7caa56232f5a57a10dd133ff5c5",
+      "bytes": 497381,
+      "version": "new",
+      "view": "head_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原長尖前頜明顯內收，冠頂降低；側眉蓋仍是大多邊形，玻璃較概念淺。頭下黑區為頸部/陰影，未見新增透空裂縫。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_idle_rifle.png",
+      "sha256": "f7e0e5c1c3c37e6c22055f42fa04ca575403851d20facd15e1817010c8ab87b3",
+      "bytes": 243920,
+      "version": "new",
+      "view": "idle_rifle",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版白頭短頜、低冠與藍肩帶在持槍待機清楚；胸槽被槍遮住，未見甲片破裂。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_level_01_front.png",
+      "sha256": "f6a3a4cdae8db40b91d85776b75d17df13490e8af856949bef201841a319721c",
+      "bytes": 1108113,
+      "version": "new",
+      "view": "level_01_front",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "沙地正面實機白頭/黑玻璃與藍肩帶辨識清楚；槍遮胸槽，裝甲未見新增破口。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_level_01_gameplay.png",
+      "sha256": "7746035f1f971b31a1f1a6a085e7f32a3399f4804fbdf248798dc3ec01f576f7",
+      "bytes": 1464801,
+      "version": "new",
+      "view": "level_01_gameplay",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "沙地肩後實際視角，白後腦與藍肩帶可讀，背包遮住背甲部分；未見新增頭肩穿模。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_level_08_front.png",
+      "sha256": "22b927238da7a0295f809428f8b843fb95cea04c0ee3bb69578b09db29d0aa6f",
+      "bytes": 935285,
+      "version": "new",
+      "view": "level_08_front",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "雪地正面白灰輪廓仍可分辨，背景降低腿部白甲對比；黑面窗可讀，槍遮胸槽。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_level_08_gameplay.png",
+      "sha256": "9e0c564bb61934f4b528b08c1b6136693b7e20062f843d9f35e36f6a674ce7e7",
+      "bytes": 1016901,
+      "version": "new",
+      "view": "level_08_gameplay",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "雪地肩後白後腦與藍肩帶可讀，白甲與雪景對比偏低；背包遮擋屬現有裝配，未見新增裂口。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_painted_front.png",
+      "sha256": "1c92975297c3d7aa1dbb7387d03b691810a4581eba3f56ecc4ae073d57783e88",
+      "bytes": 295124,
+      "version": "new",
+      "view": "painted_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "上胸中央已為不發光深色直槽、兩側白甲與藍肩橫帶。槽中細分線可見；下方白件仍偏五角長形，正面大腿黑色覆蓋多。 新版使用白灰頭部材質，未重現原版紅色覆色。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_painted_quarter.png",
+      "sha256": "4c6327a4109e3aae718b57bf5be8568e634e5c35f648c178ad37f48baa55f422",
+      "bytes": 301759,
+      "version": "new",
+      "view": "painted_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "胸槽、低白領緣與藍肩橫帶位置連貫；頭頜比前版短。槽仍靠近領口，白胸板及大腿覆蓋與概念不同。 新版使用白灰頭部材質，未重現原版紅色覆色。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_painted_rear.png",
+      "sha256": "ba73e59a38092d03bb2f0fd7b2b4abb4682c1362e3b7b4cd4fe73f7d04e013c7",
+      "bytes": 286170,
+      "version": "new",
+      "view": "painted_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "後腦、放射白背板與背中央圓件連接完整，雙肩藍帶連續；後背為原版延伸而非概念可直接比對部位。 新版使用白灰頭部材質，未重現原版紅色覆色。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_painted_side.png",
+      "sha256": "1cff74d56f3e1c71be7acf65cbc4bf9c9756f22ea9f4b1c2e04ca63e60324f09",
+      "bytes": 185794,
+      "version": "new",
+      "view": "painted_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "短頜輪廓與肩帶分層可讀，未見手臂/胸部新增裂口；髖板仍偏外側，概念正面大腿白甲未完整形成。 新版使用白灰頭部材質，未重現原版紅色覆色。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_00.png",
+      "sha256": "31a0ef1baf33104fa8a8880ee86d942011235aa465d0363118a3b3c121939850",
+      "bytes": 234051,
+      "version": "new",
+      "view": "reload_00",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版：換彈起始，槍橫擋胸口，雙手與前臂貼合；頭頜仍可見。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_01.png",
+      "sha256": "57794853de395c1814d998ad876bfaedc2ed88debfd443d135369b49ed0a9308",
+      "bytes": 219136,
+      "version": "new",
+      "view": "reload_01",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版：槍抬高至臉前，手掌/手套維持持槍連接，肩板未飛散；武器遮擋部分臉與胸。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_02.png",
+      "sha256": "fd68ed887e0b23e715c0895f64eb88f89d0b1e8ca26fcfc0d26edeab20a7372d",
+      "bytes": 223559,
+      "version": "new",
+      "view": "reload_02",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版：左手離開彈匣區開始動作，前臂甲與手套連接；槍遮蔽胸槽。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_03.png",
+      "sha256": "8cc89d8eb01951f907a2fb78225e1d4a1987958c326add4aedcbc370d68e1c73",
+      "bytes": 223782,
+      "version": "new",
+      "view": "reload_03",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版：彈匣已脫離並下落，屬武器動畫，非裝甲片脫落；肩、肘連接未見新增破裂。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_04.png",
+      "sha256": "4017fb5015877a905f35d98a212fb000cd183a0921a36d3226087944103da1c5",
+      "bytes": 229062,
+      "version": "new",
+      "view": "reload_04",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版：落下彈匣靠近腿旁，左腕轉出；前臂與胸/領無明顯新增穿模。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_05.png",
+      "sha256": "b7d5941cb3a65b19ee65b40e56bbc1a17303e4ba7bba9f8368fa60bb887136c3",
+      "bytes": 227945,
+      "version": "new",
+      "view": "reload_05",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版：左手回到供彈位置，甲片與手套持續連接，頭盔不與領口產生明顯新增碰穿。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_06.png",
+      "sha256": "1ea711d12d27168698c296c59deb209448d3bb0b0eaa2994fcdeba7aa44724a5",
+      "bytes": 221397,
+      "version": "new",
+      "view": "reload_06",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版：左手推回彈匣區，持槍側腕甲未新增斷裂；臉下沿可讀。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_07.png",
+      "sha256": "f0b047b1f96585ef619bd3afdecb2799c4dd96746bc807a18e05f0ba90216a91",
+      "bytes": 219493,
+      "version": "new",
+      "view": "reload_07",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版：槍開始降低，左右肩帶與腕部保持連續，頭、胸部分被武器遮擋。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_reload_08.png",
+      "sha256": "f34a91f2d6e75af9fc264130cc13801ff639a7ccea54d0aa334174e25ab72bad",
+      "bytes": 235063,
+      "version": "new",
+      "view": "reload_08",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版：回到接近持槍姿勢，頭盔、雙臂和膝甲完整；取樣不代表整段連續動畫全角度驗收。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/new_run_rifle.png",
+      "sha256": "18f260a9d88085240051a8839909a6652fe7e688e9f59bd9b98eff5f204c8b4c",
+      "bytes": 225889,
+      "version": "new",
+      "view": "run_rifle",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "新版跑動取樣中低冠/短頜可讀，抬腿與髖板連接完整，未見新增飛片或明顯透空裂縫。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_clay_front.png",
+      "sha256": "cc3140b7446625cc92e4f365bed5a6de97e3bbc9f1f304ae291abc7d285c4ca4",
+      "bytes": 47418,
+      "version": "original",
+      "view": "clay_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版尖雙峰與較長下頜的無貼圖輪廓，作為改模對照。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_clay_quarter.png",
+      "sha256": "eb93f3d878e994b88d56aa094d76e9ace74115ee9a1ec92924caa371891e4b2d",
+      "bytes": 46196,
+      "version": "original",
+      "view": "clay_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版高雙冠與前頜、原肩外緣的灰模對照。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_clay_rear.png",
+      "sha256": "fdb25dca1bc3f329e8f39f6522582f4ee0dbd12710a418bfd505b020366b13e9",
+      "bytes": 50148,
+      "version": "original",
+      "view": "clay_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版高後尖峰及原肩輪廓對照，和新版灰模不同。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_clay_side.png",
+      "sha256": "b6a8c021d541454472a49bdaba657bbbe00d5273835d35880fdb9cd83d41f180",
+      "bytes": 31071,
+      "version": "original",
+      "view": "clay_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版灰模前頜較長、冠頂較高；不是新版形狀。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_diffuse_front.png",
+      "sha256": "8e2fa3dfccd9ee1c1b5688b91a7dd117f005d68ef2e0c36339c558a886e6d6ab",
+      "bytes": 255264,
+      "version": "original",
+      "view": "diffuse_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版白灰甲、紫玻璃與藍電路關節，中央為小白件且肩正面無新版橫帶；作為真原版來源對照。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_diffuse_quarter.png",
+      "sha256": "39183b2a1888ce855ecda77c5dfddc2120d3ae0ebb8a4b716ceb325b22df9ab6",
+      "bytes": 257320,
+      "version": "original",
+      "view": "diffuse_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版高冠長頜、原胸板和外側髖板清楚；新版保留遊戲短身比例但改頭與胸肩形狀。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_diffuse_rear.png",
+      "sha256": "3d31dca5653e3cccc2c831a4c200fec923c69f6016435d995e3f07ba66d0220d",
+      "bytes": 245566,
+      "version": "original",
+      "view": "diffuse_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版亮藍電路、白放射背甲及黑大腿對照，沒有新增版本標示混淆。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_diffuse_side.png",
+      "sha256": "54469ca0c9d6c1ba8c821d92fd7b0935b9f160d5bf144bae045a91de80173759",
+      "bytes": 166946,
+      "version": "original",
+      "view": "diffuse_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版長下巴和原肩外尖對照，手肘與膝蓋完整。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_head_front.png",
+      "sha256": "64cceae444dff069d5704d92455e02181952994d13f955ae7f1f3c055bdb97ca",
+      "bytes": 540735,
+      "version": "original",
+      "view": "head_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版高雙峰、厚中央V階梯及長下巴的對照；紫面窗與藍頸紋為原始材質。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_head_quarter.png",
+      "sha256": "369a4a22fa97bfb8385cd7777dd9f3fab8ffa49127b08abbe05a2ab2804d16e7",
+      "bytes": 535737,
+      "version": "original",
+      "view": "head_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版高尖側冠與長前頜明顯；用來對照新版實際形變，非新版設計目標。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_head_rear.png",
+      "sha256": "b94e4ac58d1f36d0a54f4112efc41236ba3d7f8d546efdff0bc4983ab0e13a0e",
+      "bytes": 462648,
+      "version": "original",
+      "view": "head_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版高後尖峰與亮藍技術紋保留為來源對照；沒有把它當作概念背面。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_head_side.png",
+      "sha256": "4f74f2baa963dcf710bd935b719472ce687798d765a96fcbbb1b32e2daafd1a9",
+      "bytes": 494756,
+      "version": "original",
+      "view": "head_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版側面長前頜、前凸眉蓋及高冠輪廓完整，對照新版短頜與低頂。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_idle_rifle.png",
+      "sha256": "b4674f9a18c1ac47fc3b353cdf78269db3a86e06228e2bd889f2898f12d9f91b",
+      "bytes": 190065,
+      "version": "original",
+      "view": "idle_rifle",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版紅頭長頜持槍待機；槍械與前臂遮胸，作動作控制對照。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_level_01_front.png",
+      "sha256": "31f9f2c87676ede364795a7f90eb3199f5d9966b9028f3deea8c58f479703983",
+      "bytes": 1072084,
+      "version": "original",
+      "view": "level_01_front",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "沙地原版紅頭/原白甲對照，同場景但不作逐像素控制實驗。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_level_01_gameplay.png",
+      "sha256": "7cc024c16f2fcf636027c0e4b511f076663b5a07379fd932df252daeebfdeabc",
+      "bytes": 1412658,
+      "version": "original",
+      "view": "level_01_gameplay",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "沙地原版紅後腦與原肩板、背包遮擋對照。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_level_08_front.png",
+      "sha256": "9ed0116ff57695b12bf4c167e03f4f8938a59126527f0d5e7f10d530c0519b39",
+      "bytes": 903666,
+      "version": "original",
+      "view": "level_08_front",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "雪地原版紅頭/灰身甲對照，不能用頭部紅色對比推定新版灰白不可用。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_level_08_gameplay.png",
+      "sha256": "33a001b79566d7c71edee3160ee8ea2d6c1f56f7f0d6f71f9240adcbb642fa21",
+      "bytes": 966507,
+      "version": "original",
+      "view": "level_08_gameplay",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": false,
+      "observation": "雪地原版紅後腦/原肩甲與背包對照；環境強光使白甲邊緣變亮。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_painted_front.png",
+      "sha256": "58dd014b1a06f8261af3eb903ea426809bcbc6580008979dd9b94607b2f8202f",
+      "bytes": 212264,
+      "version": "original",
+      "view": "painted_front",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版正常材質的紅頭覆色與白灰身甲，是原始來源差異；原版白灰甲、紫玻璃與藍電路關節，中央為小白件且肩正面無新版橫帶；作為真原版來源對照。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_painted_quarter.png",
+      "sha256": "3ce395263a382994c1ec8a8ce9ee251596e9f4e8675fafdb26d388b12f3c8120",
+      "bytes": 215734,
+      "version": "original",
+      "view": "painted_quarter",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版正常材質的紅頭覆色與白灰身甲，是原始來源差異；原版高冠長頜、原胸板和外側髖板清楚；新版保留遊戲短身比例但改頭與胸肩形狀。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_painted_rear.png",
+      "sha256": "eec802a38452aee4c667bbcd9e81b9c80f0a16da011fd1138d62e6f5e0d5282d",
+      "bytes": 207702,
+      "version": "original",
+      "view": "painted_rear",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版正常材質的紅頭覆色與白灰身甲，是原始來源差異；原版亮藍電路、白放射背甲及黑大腿對照，沒有新增版本標示混淆。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_painted_side.png",
+      "sha256": "d788447d335294b25515a1789b05a596817e615e892b04205c2916faa48b3cbb",
+      "bytes": 132744,
+      "version": "original",
+      "view": "painted_side",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版正常材質的紅頭覆色與白灰身甲，是原始來源差異；原版長下巴和原肩外尖對照，手肘與膝蓋完整。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_00.png",
+      "sha256": "5b8ffb08226eac65424e804f47a58d3fb276915bb4344290f6c43790f3b29d97",
+      "bytes": 186807,
+      "version": "original",
+      "view": "reload_00",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版紅頭動作對照：換彈起始，槍橫擋胸口，雙手與前臂貼合；頭頜仍可見。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_01.png",
+      "sha256": "f7ca6f7f8dcd8c7c2e43b5edf20968266d213875a43a5797bc922979c2b715c8",
+      "bytes": 173852,
+      "version": "original",
+      "view": "reload_01",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版紅頭動作對照：槍抬高至臉前，手掌/手套維持持槍連接，肩板未飛散；武器遮擋部分臉與胸。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_02.png",
+      "sha256": "5d79f409209bf7718ad1f5f6dd8487ff3862ab47836b4f4dbf0286d525ad9544",
+      "bytes": 177071,
+      "version": "original",
+      "view": "reload_02",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版紅頭動作對照：左手離開彈匣區開始動作，前臂甲與手套連接；槍遮蔽胸槽。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_03.png",
+      "sha256": "b3194728b86bcde0dd5a200f6ec927aaefc4721e12409b890c1135567a72c2c4",
+      "bytes": 178451,
+      "version": "original",
+      "view": "reload_03",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版紅頭動作對照：彈匣已脫離並下落，屬武器動畫，非裝甲片脫落；肩、肘連接未見新增破裂。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_04.png",
+      "sha256": "d3b6a7f8aad063ff6e40ca4d7ee6eaaa9b66d04d2f6967eefe69921bb4e095d9",
+      "bytes": 184987,
+      "version": "original",
+      "view": "reload_04",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版紅頭動作對照：落下彈匣靠近腿旁，左腕轉出；前臂與胸/領無明顯新增穿模。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_05.png",
+      "sha256": "238bb8d3b3d345ba4d79517209576eacb7d86c62e5cb73ea98ce4318777081bf",
+      "bytes": 186160,
+      "version": "original",
+      "view": "reload_05",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版紅頭動作對照：左手回到供彈位置，甲片與手套持續連接，頭盔不與領口產生明顯新增碰穿。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_06.png",
+      "sha256": "5fd8d75563d9bba29e243b55cce7e652f3f91e305d70386d5a287dfd73aa5901",
+      "bytes": 177646,
+      "version": "original",
+      "view": "reload_06",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版紅頭動作對照：左手推回彈匣區，持槍側腕甲未新增斷裂；臉下沿可讀。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_07.png",
+      "sha256": "f6b1c77654911cb39b2a0de6d6457ddcf687b61bf30966e9bca0a687cb13b5d2",
+      "bytes": 173426,
+      "version": "original",
+      "view": "reload_07",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版紅頭動作對照：槍開始降低，左右肩帶與腕部保持連續，頭、胸部分被武器遮擋。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_reload_08.png",
+      "sha256": "79336696e2a9e2756cbfbd4e16a8d560a5980d254e4860cf975b18952f127f53",
+      "bytes": 187496,
+      "version": "original",
+      "view": "reload_08",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版紅頭動作對照：回到接近持槍姿勢，頭盔、雙臂和膝甲完整；取樣不代表整段連續動畫全角度驗收。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/review/engine/original_run_rifle.png",
+      "sha256": "a5830bc57ee0aeb2ca03e0564d6c4f6cfbf4ace640df02397d9131584e781bf7",
+      "bytes": 173812,
+      "version": "original",
+      "view": "run_rifle",
+      "dimensions": [
+        640,
+        720
+      ],
+      "visually_inspected": true,
+      "controlled_pair": true,
+      "observation": "原版紅頭跑動取樣對照，抬腿與外側髖板為原動作連接。"
+    }
+  ],
+  "reference_images_inspected": [
+    {
+      "path": "docs/art/original_armors_v1/images/c09_concept.png",
+      "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+      "bytes": 1956621,
+      "role": "approved_C09_concept",
+      "observation": "白灰裝甲、低鈍雙冠軌、寬黑面窗、短護頜、黑直胸槽、藍肩扣帶；成人概念身高不作遊戲比例目標。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_head_front.png",
+      "sha256": "13a2ba72ea88bac7bad291e71c8bdde0e4052d7abed6fd49412d4768b5e5339e",
+      "bytes": 607386,
+      "role": "f94323e4_texture_only_baseline",
+      "observation": "已實看前版同視角：高尖雙冠、長前頜；上胸藍領及白小五角中央件，肩正面未形成新藍橫帶。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_head_quarter.png",
+      "sha256": "90f0c06d4eaffda4458226e10088f2ad38d14cda6acd6733894b8e02bc206481",
+      "bytes": 598273,
+      "role": "f94323e4_texture_only_baseline",
+      "observation": "已實看前版同視角：高尖雙冠、長前頜；上胸藍領及白小五角中央件，肩正面未形成新藍橫帶。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_head_side.png",
+      "sha256": "f90718d604139322b862c28fe20043d4a27f6d6907c14069345a26a3d2090cbf",
+      "bytes": 546098,
+      "role": "f94323e4_texture_only_baseline",
+      "observation": "已實看前版同視角：高尖雙冠、長前頜；上胸藍領及白小五角中央件，肩正面未形成新藍橫帶。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_head_rear.png",
+      "sha256": "92a33358ebce209d48fefd2697c6ddc447715826136937418d0956d3d46ef477",
+      "bytes": 536633,
+      "role": "f94323e4_texture_only_baseline",
+      "observation": "已實看前版背面：後尖峰較高，藍技術紋與背甲為前輪貼圖版。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_diffuse_front.png",
+      "sha256": "652c287d25cad957e9d891057c6caa5a1941522733fc01faee7fb70a9e363110",
+      "bytes": 302879,
+      "role": "f94323e4_texture_only_baseline",
+      "observation": "已實看前版同視角：高尖雙冠、長前頜；上胸藍領及白小五角中央件，肩正面未形成新藍橫帶。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_diffuse_quarter.png",
+      "sha256": "3bfcc38939ec33e287faf6b5b84ca28bbc062db004dfbd88c5c2b3a85b3122d3",
+      "bytes": 308454,
+      "role": "f94323e4_texture_only_baseline",
+      "observation": "已實看前版同視角：高尖雙冠、長前頜；上胸藍領及白小五角中央件，肩正面未形成新藍橫帶。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_diffuse_side.png",
+      "sha256": "7dcc0d32cf6f8aa97b37c92ddc05e456451b899ca6b487a92beb5ee973c9bfbf",
+      "bytes": 195019,
+      "role": "f94323e4_texture_only_baseline",
+      "observation": "已實看前版同視角：高尖雙冠、長前頜；上胸藍領及白小五角中央件，肩正面未形成新藍橫帶。"
+    },
+    {
+      "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/engine/new_diffuse_rear.png",
+      "sha256": "29599fb29d13e86dd22ed82566fb2b2fa946ef570c1539fbe72fbbfa22bf5e7e",
+      "bytes": 291468,
+      "role": "f94323e4_texture_only_baseline",
+      "observation": "已實看前版背面：後尖峰較高，藍技術紋與背甲為前輪貼圖版。"
+    }
+  ],
+  "approved_concept": {
+    "path": "docs/art/original_armors_v1/images/c09_concept.png",
+    "sha256": "94ceca4823ccc332e9440a31b6923b008c8c76df164d8485924348272dcc50ab",
+    "bytes": 1956621
+  },
+  "texture_only_baseline": {
+    "source_commit": "f94323e40b3e7002268b39944bdcb58c2737c41f",
+    "snapshot": {
+      "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v2/snapshot.json",
+      "sha256": "5f750a59cfbf2c5093f7701e89e25b9de430cfef5a0e4b7fe5a8d51dd1879f23",
+      "bytes": 34237
+    },
+    "previous_visual_review": {
+      "path": "docs/art/pegasus_runtime_v1/revisions/before_draft_refinement_v2/docs/art/pegasus_runtime_v1/review/visual_review.json",
+      "sha256": "cdfce5de923fa4298df8f6166810faa9edc828315423cab44408357ddace29c0",
+      "bytes": 40162
+    }
+  },
+  "comparison_summary": {
+    "actual_model_changes_visible_in_clay": true,
+    "crown": "降低但仍大片眉蓋與中央階梯",
+    "chin": "側面縮短內收",
+    "visor": "黑玻璃連續但仍淺V",
+    "chest": "黑直槽/白領已落地，比例位置仍不同",
+    "shoulders": "藍橫帶與分層白肩可見",
+    "pose_integrity": "本次固定取樣未見顯見新增裂縫或飛片"
+  },
+  "blocking_findings": [],
+  "blocking_scope": "No visible new runtime seam/fragmentation blocker in the sampled PNGs; this does not certify exact draft design or full animation coverage.",
+  "art_verdict": "Visible draft-driven head and chest/shoulder refinement compared with f94323e4, suitable for user comparison as an engineering candidate; clear concept-shape residuals remain, not a complete concept reconstruction.",
+  "residuals": [
+    "雙冠已實際降低，但仍是大片側眉蓋和中央V階梯，不是概念兩條較窄、鈍、帶矩形通風槽的冠軌；部分通風紋是貼圖。",
+    "前頜已縮短內收，玻璃連續，未見中心黑縫；但厚眉/護唇仍占臉較多，黑窗比概念淺窄且V感更強。",
+    "中央已是黑色直式胸槽、白領緣與藍肩橫帶；胸槽較靠近領口、可見中央分線，槽下白件仍偏長五角形，與概念胸腹服務件不同。",
+    "髖/大腿正面仍露較多黑色織物，外側白板形狀仍有原版特徵，未完整形成概念白甲覆蓋。",
+    "白甲磨邊較銳利；與Viper/Fortune的共同畫風是否足夠一致仍待使用者評價。概念未展示背面，背部只驗收連貫性。",
+    "11張動作取樣和兩區域4張實機沒有顯見新增飛片、裂口或頭領穿模，但武器會遮胸；未檢查完整連續動畫所有角度、手機螢幕及GPU效能。"
+  ],
+  "user_art_approval": "NOT RUN",
+  "browser_interaction": "NOT RUN",
+  "browser_limitation": "CUA file:// preview was rejected by tool safety policy; no alternate surface or HTTP bypass attempted.",
+  "mobile_performance": "NOT RUN",
+  "engine_run_by_reviewer": false,
+  "blender_run_by_reviewer": false,
+  "renderer": "gl_compatibility",
+  "resource_mode": "normal_imported_resources",
+  "viewports": {
+    "gameplay": [
+      1280,
+      720
+    ],
+    "review": [
+      640,
+      720
+    ]
+  },
+  "revalidation_rule": "Any runtime scene, canonical texture, target, capture summary or PNG byte change invalidates this report and requires a fresh review of the affected evidence."
+}

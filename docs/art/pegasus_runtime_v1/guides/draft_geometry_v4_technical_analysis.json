@@ -1,0 +1,232 @@
+{
+  "status": "ANALYTICAL_CANDIDATE_NOT_ENGINE_VALIDATED",
+  "source": "docs/art/pegasus_runtime_v1/revisions/original_source_v1/source.json",
+  "source_sha256": "0575a8b0c0b5674f0770636ea8d4520af3b8242253ffe2adfeeb594010f68b64",
+  "shape": "tools/armor_runtime_v1/shapes/pegasus.py",
+  "shape_sha256": "8c49c02564772d339a82fd2045de95f006f474f9667b76b54686d219b17040f5",
+  "engineering_limit": 0.2,
+  "metrics": {
+    "ArmorBody_08": {
+      "max_original_displacement_fraction": 0.10710935225285384,
+      "dimension_delta_fraction": [
+        0.038422607470532166,
+        0.0,
+        0.017685780042536958
+      ],
+      "quality": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.9126980130605081
+      },
+      "hand_or_foot_original_positions_exact": null,
+      "uv_changes": 0,
+      "vertex_count_changes": 0,
+      "topology_changes": 0,
+      "skin_changes": 0
+    },
+    "ArmorFoot_08": {
+      "max_original_displacement_fraction": 0.0,
+      "dimension_delta_fraction": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "quality": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.9999999999999998
+      },
+      "hand_or_foot_original_positions_exact": true,
+      "uv_changes": 0,
+      "vertex_count_changes": 0,
+      "topology_changes": 0,
+      "skin_changes": 0
+    },
+    "ArmorHand_08": {
+      "max_original_displacement_fraction": 0.0,
+      "dimension_delta_fraction": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "quality": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.9999999999999998
+      },
+      "hand_or_foot_original_positions_exact": true,
+      "uv_changes": 0,
+      "vertex_count_changes": 0,
+      "topology_changes": 0,
+      "skin_changes": 0
+    },
+    "ArmorHead_08": {
+      "max_original_displacement_fraction": 0.1929042300298904,
+      "dimension_delta_fraction": [
+        0.008351531306867277,
+        0.1391594292678422,
+        0.084901400417278
+      ],
+      "quality": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.210499271632343
+      },
+      "hand_or_foot_original_positions_exact": null,
+      "uv_changes": 0,
+      "vertex_count_changes": 0,
+      "topology_changes": 0,
+      "skin_changes": 0
+    }
+  },
+  "central_profile": {
+    "source_vertex_ids": [
+      6,
+      118,
+      68,
+      9
+    ],
+    "candidate_xyz": [
+      [
+        -1.12794100459723e-06,
+        1.8027499428891303,
+        -0.24008501941667787
+      ],
+      [
+        -7.90103058534442e-07,
+        1.7051120758525118,
+        -0.27328189420964655
+      ],
+      [
+        -6.07953325015842e-07,
+        1.6285373816291535,
+        -0.29931729024579207
+      ],
+      [
+        -4.27449435846938e-07,
+        1.5190546322678915,
+        -0.33658714263424705
+      ]
+    ],
+    "candidate_yz_slopes": [
+      0.3400000000053094,
+      0.34000000000266023,
+      0.3404175781654427
+    ],
+    "plane_z_equation": "-.240+.340*(y-1.803)+.800*x*x",
+    "max_plane_residual_m": 4.571760547633641e-05,
+    "single_brow_bevel_rear_edge_preserved": true,
+    "candidate_center_brow_vertex9_y": 1.5190546322678915,
+    "candidate_glass_corner8_y": 1.529304914096406
+  },
+  "central_board_native_repaint": {
+    "guide": "docs/art/pegasus_runtime_v1/guides/head_central_board_v4.png",
+    "guide_sha256": "e1766036bcf1b3ecc5e8a38af30d1ed2402cb1521e4ced8d6891c1e3e0b9db90",
+    "uv_convention": "top-left (u*1254,v*1254), no Y flip; mirrored sides share UV",
+    "target_triangles": [
+      39,
+      42,
+      44,
+      45,
+      46,
+      47,
+      48,
+      50
+    ],
+    "source_boundary_vertex_ids": [
+      6,
+      31,
+      67,
+      120,
+      8,
+      9,
+      68,
+      118
+    ],
+    "uv_polygon": [
+      [
+        0.275150001049042,
+        0.107900023460388
+      ],
+      [
+        0.301023006439209,
+        0.225858986377716
+      ],
+      [
+        0.186599999666214,
+        0.350000023841858
+      ],
+      [
+        0.263375014066696,
+        0.427630007266998
+      ],
+      [
+        0.192300006747246,
+        0.579526007175446
+      ],
+      [
+        0.0355000011622906,
+        0.626800000667572
+      ],
+      [
+        0.0390000008046627,
+        0.476199984550476
+      ],
+      [
+        0.0654999986290932,
+        0.308799982070923
+      ]
+    ],
+    "pixel_polygon_1254": [
+      [
+        345,
+        135
+      ],
+      [
+        377,
+        283
+      ],
+      [
+        234,
+        439
+      ],
+      [
+        330,
+        536
+      ],
+      [
+        241,
+        727
+      ],
+      [
+        45,
+        786
+      ],
+      [
+        49,
+        597
+      ],
+      [
+        82,
+        387
+      ]
+    ],
+    "instruction": "Within the cyan mesh board paint one continuous off-white face with a single lower brow outline. Remove every inner dark V shadow, raised-step bevel and blue pentagon; retain the surrounding black glass and the already narrowed side rails. Never paint the technical linework or cyan color into the diffuse."
+  },
+  "ear_outline": {
+    "center_original_yz": [
+      1.665,
+      0.075
+    ],
+    "nominal_outer_radius_m": 0.112,
+    "implementation": "Source-coordinate continuous lateral mask pulls existing Y/Z outline toward compact rounded shell; preserves original count/UV/skin. No added disk or separated ear accessory."
+  }
+}

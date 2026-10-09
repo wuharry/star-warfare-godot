@@ -332,14 +332,20 @@
     "runtime_id": 7,
     "date": "2026-10-09",
     "scene": "assets/armors/atom_v1/atom.scn",
-    "scene_sha256": "4cc7e88aa5f70c8c93331699d29a93042c1c4ab53891cd7eaad7512ed9efaad8",
+    "scene_sha256": "094cdf8fe9061c1ca9d8bb8e914ea23083168b79d6b2d89f94fe0809d6ce0dda",
     "comparison_page": "../armor_original_based_v2/index.html#atom",
     "manifest": "../atom_runtime_v1/manifest.json",
-    "manifest_sha256": "5a0a2358a5f178a8431a8bfcdb3f88adb1c0cf92df696e372f154e15eaab30a6",
+    "manifest_sha256": "d919cdad4425fde9ce99d0b3cb73f96ea9ef0be225a59f2ffffd20ad38a018b2",
     "original_based": true,
     "art_acceptance": "pending_user_review",
-    "revision": "draft_refinement_v2",
+    "revision": "draft_refinement_v3",
     "note": "依核准概念實際調整頭盔、胸肩輪廓與貼圖，保留遊戲比例、原骨架與裝配。",
+    "previous_draft_refinement": {
+      "source_commit": "3ed1c2911e1eea5162e30d0bab331fd41a1d29f9",
+      "snapshot": "../atom_runtime_v1/revisions/before_draft_refinement_v3/snapshot.json",
+      "snapshot_sha256": "dceb6a0fc6706e3a82aaf97ac9f0b50ae0a9d613902be7626a8223c7b0a358fb",
+      "scene_sha256": "4cc7e88aa5f70c8c93331699d29a93042c1c4ab53891cd7eaad7512ed9efaad8"
+    },
     "previous_texture_only": {
       "source_commit": "f94323e40b3e7002268b39944bdcb58c2737c41f",
       "snapshot": "../atom_runtime_v1/revisions/before_draft_refinement_v2/snapshot.json",
