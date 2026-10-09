@@ -59,6 +59,9 @@ def main():
     work, assets = ROOT / f"docs/art/{slug}_runtime_v1", ROOT / f"assets/armors/{slug}_v1"
     config = validator.read(work / "runtime_config.json")
     target = validator.read(work / "build/target.json")
+    geometry = validator.read(work / "build/geometry.json")
+    measured = (validator.measure_original_geometry(source,target,geometry,{name:.20 for name in source["parts"]},config)
+                if slug in ["atom","pegasus"] else None)
     generated = validator.verify_first_generation(slug, work, assets)
     native_sha = {row["label"]: row["canonical_sha256"] for row in generated}
     path = assets / f"{slug}.glb"
@@ -95,9 +98,10 @@ def main():
             indices = [row[0] for row in read_accessor(gltf, binary, primitive["indices"])]
             assert len(indices) == len(original["indices"])
             uv = read_accessor(gltf, binary, primitive["attributes"]["TEXCOORD_0"])
+            positions = read_accessor(gltf, binary, primitive["attributes"]["POSITION"])
             joint_values = read_accessor(gltf, binary, primitive["attributes"]["JOINTS_0"])
             weights = read_accessor(gltf, binary, primitive["attributes"]["WEIGHTS_0"])
-            assert len(uv) == len(joint_values) == len(weights)
+            assert len(uv) == len(positions) == len(joint_values) == len(weights)
             assert all(isinstance(index, int) and 0 <= index < len(uv) for index in indices)
             actual_weights = []
             for binds, ws in zip(joint_values, weights):
@@ -117,7 +121,8 @@ def main():
                     if weight > 0:
                         grouped[name] = grouped.get(name, 0) + weight / total
                 expected_weights.append(grouped)
-            maximum_uv_error = maximum_weight_error = 0.0
+            maximum_uv_error = maximum_weight_error = maximum_position_error = 0.0
+            expected_positions = authored.get("raw_positions",original["raw_positions"]) if slug in ["atom","pegasus"] else None
             for start in range(0, len(indices), 3):
                 # Blender-to-glTF may rotate the corner order or reverse winding;
                 # preserve the exact source triangle's UV/bone-weight identity.
@@ -129,6 +134,7 @@ def main():
                     for shift in range(3):
                         order = row[shift:] + row[:shift]
                         uv_error = max(math.dist(uv[new], authored["uv"][old]) for old, new in zip(old_triangle, order))
+                        position_error = max(math.dist(positions[new],expected_positions[old]) for old,new in zip(old_triangle,order)) if expected_positions is not None else 0.0
                         weight_error = 0.0
                         compatible = True
                         for old, new in zip(old_triangle, order):
@@ -136,11 +142,13 @@ def main():
                             compatible &= set(expected) == set(actual)
                             weight_error = max(weight_error, max((abs(actual.get(name, 0) - value) for name, value in expected.items()), default=0))
                         if compatible:
-                            candidates.append((uv_error, weight_error))
+                            candidates.append((uv_error, weight_error, position_error))
                 assert candidates, f"{slug}/{label}: original triangle skin/bone assignment changed"
-                uv_error, weight_error = min(candidates, key=lambda pair: max(pair))
+                uv_error, weight_error, position_error = min(candidates, key=lambda pair: max(pair))
                 assert uv_error <= 1e-6 and weight_error <= 2e-6, f"{slug}/{label}: original triangle UV/normalized weight identity changed"
+                assert position_error <= 2e-6, f"{slug}/{label}: portable GLB bind positions differ from actual authored target"
                 maximum_uv_error, maximum_weight_error = max(maximum_uv_error, uv_error), max(maximum_weight_error, weight_error)
+                maximum_position_error = max(maximum_position_error,position_error)
             material_index = primitive["material"]
             material = gltf["materials"][material_index]
             texture_index = material["pbrMetallicRoughness"]["baseColorTexture"]["index"]
@@ -165,12 +173,13 @@ def main():
                                     "max_channel_error_8bit": maximum, "pixels_equal": True}
             primitive_records.append({"part": node_name, "surface": sid, "label": label, "original_triangle_count": len(indices) // 3,
                                       "original_triangle_uv_skin_weight_identity_verified": True,
+                                      "authored_raw_positions_verified":expected_positions is not None,"max_raw_position_error_m":maximum_position_error if expected_positions is not None else None,
                                       "max_uv_error": maximum_uv_error, "max_normalized_weight_error": maximum_weight_error})
     assert set(image_records) == validator.LABELS and len(primitive_records) == 5
     report = {"status": "PASS", "scope": "Full native RGB pixels plus original triangle UV/skin/normalized-weight identity in the portable GLB. SCN original quantized weights stay exact; exchange weights are necessarily normalized by glTF export.",
-              "glb_sha256": digest(path), "source_sha256": digest(work / "build/source.json"), "target_sha256": digest(work / "build/target.json"),
+              "glb_sha256": digest(path), "source_sha256": digest(work / "build/source.json"), "target_sha256": digest(work / "build/target.json"),"geometry_sha256":digest(work / "build/geometry.json"),
               "original_source_snapshot_sha256": snapshot["original_source_snapshot_sha256"], "original_node_ids": snapshot["used_node_ids"],
-              "original_bones": 28, "original_topology_skin_weights_verified": True, "primitives": primitive_records, "images": image_records}
+              "original_bones": 28, "original_topology_skin_weights_verified": True, "original_geometry": measured, "primitives": primitive_records, "images": image_records}
     output = work / "review/glb_images_test.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

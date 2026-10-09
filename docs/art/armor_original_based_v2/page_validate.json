@@ -2,13 +2,13 @@
   "status": "PASS_STATIC_BROWSER_NOT_RUN",
   "page": {
     "path": "index.html",
-    "sha256": "b4de4a328b8da9651112a63405f34d0bc548f8b51403a2ff10fd7e0888f3b034",
-    "bytes": 53109
+    "sha256": "bc947e1dbf947a7884c8fcc95e57b1322d52a5ec3508075baa146856961644dd",
+    "bytes": 65608
   },
   "data": {
     "path": "review_data.json",
-    "sha256": "ee98f906ef1d2aebf633be088a6c4ae6cbf6aceef4a69c99935cfa22a3d381ac",
-    "bytes": 58596
+    "sha256": "bd87447405e09fd691510963103101fcd8f53b54ed78ac97594dc3c1642c1927",
+    "bytes": 76435
   },
   "armors_ready": [
     "thunder",
@@ -20,29 +20,9 @@
   "art_acceptance": "NOT RUN",
   "gallery": {
     "updated_catalog_rows": [
-      "C-07",
       "C-08",
       "C-09"
     ],
-    "unrelated_catalog_rows_unchanged": 43
-  },
-  "javascript_syntax": {
-    "status": "PASS",
-    "pages": [
-      "docs/art/armor_original_based_v2/index.html",
-      "docs/art/original_armors_v1/index.html"
-    ]
-  },
-  "local_resource_sha_checks": {
-    "status": "PASS",
-    "records_verified": 148
-  },
-  "metadata_catalog_consistency": {
-    "status": "PASS",
-    "design_ids": [
-      "C-07",
-      "C-08",
-      "C-09"
-    ]
+    "unrelated_catalog_rows_unchanged": 44
   }
 }

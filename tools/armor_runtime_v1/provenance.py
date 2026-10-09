@@ -1,6 +1,7 @@
 """Validate fresh first-integration evidence and emit an armor delivery manifest."""
 import argparse
 import hashlib
+import importlib.util
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -33,12 +34,21 @@ def main():
     slug = parser.parse_args().armor
     work = ROOT / f'docs/art/{slug}_runtime_v1'
     config = load(work / 'runtime_config.json')
+    bounded = config.get('geometry_mode') == 'original_source_bounded_refinement'
     if config.get('head_refinement'):
         raise SystemExit('First-integration provenance does not certify the refined head. Use validate_titan_helmet.py and the active revision manifest.')
     assets = ROOT / config['asset']
     source_path, target_path = work / 'build/source.json', work / 'build/target.json'
     scene, glb, master = assets / f'{slug}.scn', assets / f'{slug}.glb', work / f'build/{slug}_master.blend'
     geometry_path = work / 'build/geometry.json'
+    measured = None
+    source_evidence = None
+    if slug in ['atom', 'pegasus']:
+        spec = importlib.util.spec_from_file_location('first_integration_contract', ROOT / 'tools/armor_runtime_v1/first_integration_contract.py')
+        contract = importlib.util.module_from_spec(spec); spec.loader.exec_module(contract)
+        original, source_evidence = contract.verify_first_source(slug)
+        measured = contract.measure_original_geometry(original,load(target_path),load(geometry_path),{name:.20 for name in original['parts']},config)
+        contract.verify_first_generation(slug,work,assets)
     hashes = {'source_sha256': describe(source_path)['sha256'], 'target_sha256': describe(target_path)['sha256'],
               'geometry_sha256': describe(geometry_path)['sha256'], 'current_scene_sha256': describe(scene)['sha256'],
               'glb_sha256': describe(glb)['sha256'], 'master_sha256': describe(master)['sha256']}
@@ -57,7 +67,9 @@ def main():
     generation = []
     for row in inputs:
         archive = describe(row['archive'])
-        assert archive['sha256'] == row['archive_sha256'] == describe(row['generated_file'])['sha256']
+        assert archive['sha256'] == row['archive_sha256']
+        if Path(row['generated_file']).is_file():
+            assert archive['sha256'] == describe(row['generated_file'])['sha256']
         assert archive['dimensions'] == row['output_size']
         assert describe(row['prompt'])['sha256'] == row['prompt_sha256']
         assert describe(row['base_prompt'])['sha256'] == row['base_prompt_sha256']
@@ -101,6 +113,16 @@ def main():
     assert actual_scene['original_bones'] == 28 and actual_scene['original_node_ids'] == config['original_node_ids']
     for record in actual_scene['records']:
         assert record['indices_skin_weights_bones_topology_exact'] and record['rest_position_uv_verified_against_target']
+        if bounded:
+            modified = any(row['geometry_changed'] for row in load(target_path)['parts'][record['part']]['surfaces'])
+            assert record['geometry_changed'] is modified and record['immutable_arrays_exact']
+            if modified:
+                assert record['normal_frames_verified_against_target'] and record['body_limbs_all_arrays_exact'] is None
+                assert record['max_raw_position_error_m'] <= 2e-6 and record['max_normal_tangent_error'] <= .001
+            elif not record['part'].startswith('ArmorHead_'):
+                assert record['body_limbs_all_arrays_exact']
+    if bounded:
+        assert actual_scene['geometry_mode'] == config['geometry_mode'] and actual_scene['geometry_parts'] == config['geometry_parts']
     for key in ['glb_sha256', 'source_sha256', 'target_sha256']:
         assert images[key] == hashes[key]
     assert images['original_topology_skin_weights_verified'] and set(images['images']) == LABELS
@@ -130,6 +152,10 @@ def main():
     body_ref = next(r['snapshot'] for row in chosen if row['label'] == 'body'
                     for r in row['references'] if r['role'] in ['approved_design', 'approved_body_design'])
     geometry = load(geometry_path)
+    scope = ('True original source cumulative per-part20% positions/dimensions; configured parts '+', '.join(config['geometry_parts'])+
+             ' may change positions and recalculated normal/tangent frames. Every unchanged surface array, all original UV0, topology, skin, weights and transforms stay exact. '
+             if bounded else 'True original source totals, head-only geometry deformation and unchanged original UV. Body/limb actual SCN raw mesh buffers exact; skin/indices/weights preserved. ')
+    scope += 'GLB exporter normalizes exchange weights, per-triangle identity independently verified. Artistic similarity is not measured by20%; pending user review.'
     manifest = {'schema_version': 1, 'design_id': config['design_id'], 'runtime_id': config['runtime_id'], 'name': config['name'],
                 'revision': slug + '_runtime_v1', 'texture_surface_revision': head_input['variant'],
                 'status': 'runtime_integrated_pending_user_art_review', 'checked_at_utc': datetime.now(timezone.utc).isoformat(),
@@ -143,7 +169,11 @@ def main():
                 'capture_driver_evidence': {'driver': 'opengl3_angle', 'renderer_banner': banner, 'log': describe(log_path)},
                 'uv_summary': {'original_coordinate_count': delivery['original_uv_coordinate_count'], 'changed_coordinate_count': 0, 'changed_coordinate_fraction': 0, 'per_material': reports['runtime_test']['uv_edits']},
                 'inherited_out_of_range_uv': reports['runtime_test'].get('legacy_out_of_range_uv', []),
-                'metric_scope': 'True original source totals, head-only geometry deformation and unchanged original UV. Body/limb actual SCN raw mesh buffers exact; skin/indices/weights preserved. GLB exporter normalizes exchange weights, per-triangle identity independently verified. Artistic similarity is not measured by20%; pending user review.',
+                'geometry_mode': config.get('geometry_mode', 'texture_only' if config.get('preserve_all_geometry') else 'legacy_head_refinement'),
+                'geometry_revision': config.get('active_geometry_revision', 'approved_draft_refinement_v2' if bounded else 'original_integration_v1'),
+                'geometry_parts': config.get('geometry_parts', []), 'independent_original_geometry': measured,
+                'true_source_evidence': source_evidence,
+                'metric_scope': scope,
                 'residuals': config.get('art_residuals', ['Original low-poly facets and some bright hand-painted contact edges remain.'])}
     (work / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     print(slug.upper() + '_PROVENANCE_PASS 5 native maps / original-source20% / actual15+9 / fresh64 normal ANGLE')

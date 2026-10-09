@@ -1,7 +1,12 @@
 {
-	"current_scene_sha256": "971733e8ab5da401c32cb81eb6f858075ed15d2c1a81370732c51061ded65cf4",
+	"current_scene_sha256": "ae114acb94c13fc46725905d62545f74fce14aea367b5c2af913249992270f9f",
 	"errors": [],
-	"geometry_sha256": "752d22b6dbaa04380a5fff7308b2d9a0813265634829a819455bd452144a3581",
+	"geometry_mode": "original_source_bounded_refinement",
+	"geometry_parts": [
+		"ArmorHead_08",
+		"ArmorBody_08"
+	],
+	"geometry_sha256": "2b181462b298abc54847262ad8ccba363732442991ea2c19d8ae946b0918c0f9",
 	"original_bones": 28,
 	"original_node_ids": {
 		"ArmorBody_08": 63.0,
@@ -12,9 +17,14 @@
 	"original_source_snapshot_sha256": "6866d0c6e0096aac19df0dbb966c407054776de26523d198d2031007e9209ed5",
 	"records": [
 		{
-			"body_limbs_all_arrays_exact": true,
+			"body_limbs_all_arrays_exact": null,
+			"geometry_changed": true,
+			"immutable_arrays_exact": true,
 			"indices_skin_weights_bones_topology_exact": true,
-			"max_rest_error_m": 0.0,
+			"max_normal_tangent_error": 0.000176368717802688,
+			"max_raw_position_error_m": 0.0000000298023223876953,
+			"max_rest_error_m": 0.000000140577270713038,
+			"normal_frames_verified_against_target": true,
 			"original_indices_skin_weights_topology_exact": true,
 			"part": "ArmorBody_08",
 			"refinement_contract_verified": null,
@@ -23,8 +33,13 @@
 		},
 		{
 			"body_limbs_all_arrays_exact": true,
+			"geometry_changed": false,
+			"immutable_arrays_exact": true,
 			"indices_skin_weights_bones_topology_exact": true,
+			"max_normal_tangent_error": 0.0,
+			"max_raw_position_error_m": 0.0,
 			"max_rest_error_m": 0.0,
+			"normal_frames_verified_against_target": null,
 			"original_indices_skin_weights_topology_exact": true,
 			"part": "ArmorFoot_08",
 			"refinement_contract_verified": null,
@@ -33,8 +48,13 @@
 		},
 		{
 			"body_limbs_all_arrays_exact": true,
+			"geometry_changed": false,
+			"immutable_arrays_exact": true,
 			"indices_skin_weights_bones_topology_exact": true,
+			"max_normal_tangent_error": 0.0,
+			"max_raw_position_error_m": 0.0,
 			"max_rest_error_m": 0.0,
+			"normal_frames_verified_against_target": null,
 			"original_indices_skin_weights_topology_exact": true,
 			"part": "ArmorHand_08",
 			"refinement_contract_verified": null,
@@ -43,8 +63,13 @@
 		},
 		{
 			"body_limbs_all_arrays_exact": null,
+			"geometry_changed": true,
+			"immutable_arrays_exact": true,
 			"indices_skin_weights_bones_topology_exact": true,
-			"max_rest_error_m": 0.0,
+			"max_normal_tangent_error": 0.00016156499623321,
+			"max_raw_position_error_m": 0.000000000000014210854715202,
+			"max_rest_error_m": 0.000000119209289550781,
+			"normal_frames_verified_against_target": true,
 			"original_indices_skin_weights_topology_exact": true,
 			"part": "ArmorHead_08",
 			"refinement_contract_verified": null,
@@ -52,8 +77,8 @@
 			"surfaces": 1
 		}
 	],
-	"scope": "Actual SCN versus current original player.gltf. Body/limb arrays and all skin binds exact; explicit head subdivision budget, parent weights, UVs and authored rest positions checked.",
+	"scope": "Actual SCN versus true original: configured part positions/normal/tangent frames match authored target; all UV0, topology, skin, weights, transforms and every unchanged surface array exact. Normal/tangent octahedral quantization tolerance .001.",
 	"source_sha256": "0575a8b0c0b5674f0770636ea8d4520af3b8242253ffe2adfeeb594010f68b64",
 	"status": "PASS",
-	"target_sha256": "3ca1147883913e43bd13ab860fdbf8563f1baab1ab90cfb3ea42814d360482b0"
+	"target_sha256": "886ea9dac6e92272ebc540102d1a02159bf29dc337a089abeed9072668fe6bff"
 }

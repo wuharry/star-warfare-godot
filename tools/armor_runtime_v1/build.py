@@ -1,8 +1,8 @@
 """Build an armor editable master using its runtime_config and true original snapshot.
 
 The original four-part topology, bones, weights and UV charts are retained.
-Only the configured head deformation may move source positions. All first
-integration UV samples and the remaining three original parts stay exact.
+Bounded refinements move only configured original parts. UV samples, topology,
+weights and the remaining original part arrays stay exact.
 """
 import json
 import math
@@ -25,15 +25,38 @@ shape=None
 if shape_path.exists():
     spec=importlib.util.spec_from_file_location('armor_shape',shape_path)
     shape=importlib.util.module_from_spec(spec);spec.loader.exec_module(shape)
+contract=None; MOVABLE=set(); BOUNDED=False
+if slug in ['atom','pegasus']:
+    spec=importlib.util.spec_from_file_location('first_integration_contract',ROOT/'tools/armor_runtime_v1/first_integration_contract.py')
+    contract=importlib.util.module_from_spec(spec);spec.loader.exec_module(contract)
+    contract.verify_first_source(slug)
+    MOVABLE=contract.geometry_parts(CONFIG,SOURCE['parts']); BOUNDED=bool(MOVABLE)
+    if BOUNDED:assert shape and hasattr(shape,'reshape_part'), 'Bounded refinement requires reshape_part(name, point, surface_id)'
 
 def reshape(name, point, surface_id=0):
     p=Vector(point)
+    if BOUNDED:
+        return Vector(shape.reshape_part(name,list(p),surface_id)) if name in MOVABLE else p
     return Vector(shape.reshape(list(p),surface_id)) if name==HEAD and shape else p
 
 def adjusted_uv(name, point, uv, surface_id=0):
+    if contract:return list(uv)
     if name == HEAD and shape and hasattr(shape, 'adjust_uv'):
         return shape.adjust_uv(list(point), list(uv))
     return list(uv) # All five authored maps use unchanged true original UV.
+
+
+def bind_positions(part, row, authored):
+    bones={bone['name']:Matrix(bone['matrix']) for bone in SOURCE['bones']}
+    raw=[]
+    for index,point in enumerate(authored):
+        weighted=Matrix(((0,0,0),(0,0,0),(0,0,0)))
+        for bind,weight in zip(row['bone_indices'][index],row['weights'][index]):
+            record=part['bind_records'][bind]
+            weighted+=(bones[record['name']]@Matrix(record['matrix'])).to_3x3()*weight
+        delta=point-Vector(row['positions'][index])
+        raw.append(list(Vector(row['raw_positions'][index])+weighted.inverted()@delta))
+    return raw
 
 
 def uv_components(surfaces):
@@ -77,6 +100,9 @@ def main():
         if row['parent']>=0:bone.parent=arm.edit_bones[SOURCE['bones'][row['parent']]['name']]
     bpy.ops.object.mode_set(mode='OBJECT'); rig.select_set(False)
     target={'revision':CONFIG.get('active_helmet_revision',slug+'_runtime_v1'),'id':CONFIG['runtime_id'],'parts':{}}
+    if contract:
+        target['geometry_mode']='original_source_bounded_refinement' if BOUNDED else 'texture_only'
+        target['geometry_parts']=CONFIG.get('geometry_parts',[]) if BOUNDED else []
     guide_polygons={}
     geometry={'parts':{},'stage':CONFIG.get('active_helmet_revision','original_integration_v1'),'constraint':'Original-total20% shape/dimensions; only explicitly configured visor edges may be subdivided. Broad chart count and original rig retained.','user_authorized_original_total_limit':.20}
 
@@ -88,7 +114,7 @@ def main():
             offset=len(points); offsets.append(offset)
             authored=[reshape(name,p,sid) for p in row['positions']]
             authored_uv=[adjusted_uv(name,p,t,sid) for p,t in zip(authored,row['uv'])]
-            if name == HEAD and shape and hasattr(shape, 'refine_surface'):
+            if name == HEAD and shape and hasattr(shape, 'refine_surface') and not contract:
                 row, authored_list=shape.refine_surface(row,[list(p) for p in authored],authored_uv)
                 authored=[Vector(p) for p in authored_list]; authored_uv=row['uv']
             points.extend(C@p for p in authored); uv.extend(authored_uv)
@@ -97,6 +123,18 @@ def main():
             for i in range(0,len(row['indices']),3):
                 faces.append(tuple(offset+j for j in reversed(row['indices'][i:i+3]))); mids.append(sid)
             target_row={'positions':[list(p) for p in authored], 'uv':authored_uv, 'label':LABELS[name][sid]}
+            if contract:
+                assert len(authored)==len(original_row['positions']) and row['indices']==original_row['indices']
+                assert authored_uv==original_row['uv'], (name,sid,'Original UV0 must remain exact')
+                geometry_changed=any((point-Vector(old)).length>1e-6 for point,old in zip(authored,original_row['positions']))
+                target_row['geometry_changed']=geometry_changed
+                if geometry_changed:
+                    assert name in MOVABLE
+                    target_row['raw_positions']=bind_positions(part,original_row,authored)
+                    target_row['normals'],target_row['tangents']=contract.bind_normal_frames(original_row,target_row['raw_positions'])
+                else:
+                    # Retain exact original JSON decimals for unchanged surfaces.
+                    target_row['positions']=original_row['positions']
             if CONFIG.get('preserve_all_geometry'):
                 assert all((point-Vector(old)).length == 0 for point,old in zip(authored,original_row['positions'])), (name,sid,'Texture-only source positions changed')
                 # Godot JSON decimal text differs from mathutils float32 by
@@ -161,7 +199,14 @@ def main():
         normalizer=min(before['max'][i]-before['min'][i] for i in range(3))
         assert max(ratios)<=.20 and max_delta/normalizer<=.20
         geometry['parts'][name]={'bounds_game':after,'original_bounds':before,'dimension_delta_fraction':ratios,'max_rest_displacement':max_delta,'max_displacement_fraction_of_smallest_dimension':max_delta/normalizer,'triangles':len(faces),'uv_preserved':changed_uv==0, 'original_uv_charts':original_charts,'uv_charts':edited_charts,'uv_coordinate_count':len(uv), 'original_uv_coordinate_count':len(original_uv), 'uv_changed_count':changed_uv, 'uv_changed_fraction':changed_uv/len(original_uv), 'uv_max_displacement_from_original':max(uv_displacements), 'uv_rms_displacement_from_original':math.sqrt(sum(distance*distance for distance in uv_displacements)/len(uv_displacements)), 'uv_by_surface':uv_by_surface,'weight_source':'original, unchanged'}
-        if name == HEAD:
+        if contract:
+            quality=contract.part_shape_quality(part['surfaces'],target_surfaces)
+            geometry['parts'][name]['shape_quality']=quality
+            geometry['parts'][name]['added_vertex_count']=0
+            geometry['parts'][name]['triangle_growth_fraction']=0
+            geometry['parts'][name]['geometry_changed']=any(row['geometry_changed'] for row in target_surfaces)
+            assert quality['reversed_triangles']==quality['new_degenerate_triangles']==0 and quality['coincident_seam_max_rest_gap']<=1e-6
+        elif name == HEAD:
             row=part['surfaces'][0]; candidate=target_surfaces[0]['positions']
             reversed_triangles=0;zero_area=0;cosines=[];groups={}
             for index,point in enumerate(row['positions']):groups.setdefault(tuple(point),[]).append(index)
@@ -200,6 +245,11 @@ def main():
             guide_polygons.setdefault(guide_name,[]).extend(paths)
     for guide_name,paths in guide_polygons.items():
         (WORK/'guides'/f'{guide_name}.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><rect width="1024" height="1024" fill="#17222d"/>'+''.join(paths)+'</svg>')
+    if contract:
+        geometry['geometry_mode']=target['geometry_mode'];geometry['geometry_parts']=target['geometry_parts']
+        if BOUNDED:geometry['stage']=CONFIG.get('active_geometry_revision','approved_draft_refinement_v2')
+        geometry['constraint']='True original source cumulative20% per-part rest displacement/dimensions; exact original UV0, indices, vertex counts, rig and weights.'
+        contract.measure_original_geometry(SOURCE,target,geometry,{name:.20 for name in SOURCE['parts']},CONFIG)
     (WORK/'build/target.json').write_text(json.dumps(target,indent=2))
     (WORK/'build/geometry.json').write_text(json.dumps(geometry,indent=2))
     scene.view_settings.view_transform='Standard'

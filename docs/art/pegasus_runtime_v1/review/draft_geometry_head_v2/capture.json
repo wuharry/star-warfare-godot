@@ -1,0 +1,75 @@
+{
+	"candidate_scene_path": "res://assets/armors/pegasus_v1/pegasus.scn",
+	"candidate_target_path": "res://docs/art/pegasus_runtime_v1/build/target.json",
+	"canonical_diffuse_sha256_at_start": {
+		"body": "2b1b18f1644dc9a21c08147d2831eb87d9bd5d841655502a70b728ebd20e510d",
+		"foot": "61d40e0ad0a52bbbf6a11981541b1a0b8f11b6b6fbd1c73b06ededcc4f6fe48c",
+		"hand": "596f8e8095ae38728b15af92b938e9210371038e69a43636afd41c93722347eb",
+		"head": "3db5d7e5daec768592cba87259a0fee66ad1fbf4a2e48b358254bdc27bd61f8b",
+		"shoulder": "7848f6b144f11cb446bc10def77646a3951ea59c9952080597d13e56bb806a19"
+	},
+	"capture_sha256": {
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/new_head_front.png": "f309d06138f458a5b0e1a07206640f767ebb3a9fabbe4a7ff69b8c27b66d4d03",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/new_head_quarter.png": "4fa0c7c6cde2600f4dd72d92b9873279f214b3267f764ab4f6c9249b4b18bb9e",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/new_head_rear.png": "962df7dbd557b95af736e89b7f1e92068e92a0a7a248b17f2ad585eb81d8aa49",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/new_head_side.png": "674aba502d54ec40382505026ad6b3bc287a202163abafe3e2ead212789875fe",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/original_head_front.png": "64cceae444dff069d5704d92455e02181952994d13f955ae7f1f3c055bdb97ca",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/original_head_quarter.png": "369a4a22fa97bfb8385cd7777dd9f3fab8ffa49127b08abbe05a2ab2804d16e7",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/original_head_rear.png": "b94e4ac58d1f36d0a54f4112efc41236ba3d7f8d546efdff0bc4983ab0e13a0e",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/original_head_side.png": "4f74f2baa963dcf710bd935b719472ce687798d765a96fcbbb1b32e2daafd1a9"
+	},
+	"engine_arguments": [
+		"res://tools/armor_runtime_v1/capture.tscn"
+	],
+	"files": [
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/original_head_front.png",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/new_head_front.png",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/original_head_side.png",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/new_head_side.png",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/original_head_rear.png",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/new_head_rear.png",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/original_head_quarter.png",
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/new_head_quarter.png"
+	],
+	"image_dimensions": {
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/new_head_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/new_head_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/new_head_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/new_head_side.png": [
+			640,
+			720
+		],
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/original_head_front.png": [
+			640,
+			720
+		],
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/original_head_quarter.png": [
+			640,
+			720
+		],
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/original_head_rear.png": [
+			640,
+			720
+		],
+		"res://docs/art/pegasus_runtime_v1/review/draft_geometry_head_v2/original_head_side.png": [
+			640,
+			720
+		]
+	},
+	"preview_not_applied_to_gameplay": false,
+	"renderer": "gl_compatibility",
+	"resource_mode": "normal_imported_resources",
+	"runtime_scene_sha256": "fdd87d030f6bdcf7938e14aa9d6102aef8fc6fed50fddfa8c25667145cd60b0a",
+	"save_unchanged": true,
+	"target_sha256": "886ea9dac6e92272ebc540102d1a02159bf29dc337a089abeed9072668fe6bff",
+	"view": "same original skeleton and fixed orthographic front/side/rear/quarter cameras"
+}

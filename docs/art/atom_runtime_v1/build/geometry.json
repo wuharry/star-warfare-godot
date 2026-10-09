@@ -3,13 +3,13 @@
     "ArmorBody_07": {
       "bounds_game": {
         "min": [
-          -0.631988525390625,
+          -0.5811006426811218,
           0.3317036032676697,
-          -0.3040539622306824
+          -0.28902900218963623
         ],
         "max": [
-          0.6319862008094788,
-          1.5065566301345825,
+          0.5807197093963623,
+          1.518799901008606,
           0.26520925760269165
         ]
       },
@@ -26,12 +26,12 @@
         ]
       },
       "dimension_delta_fraction": [
-        0.0,
-        0.0,
-        0.0
+        0.08081994996033426,
+        0.010421108508077648,
+        0.026393695425191877
       ],
-      "max_rest_displacement": 0.0,
-      "max_displacement_fraction_of_smallest_dimension": 0.0,
+      "max_rest_displacement": 0.09015345384490432,
+      "max_displacement_fraction_of_smallest_dimension": 0.15836866093560842,
       "triangles": 354,
       "uv_preserved": true,
       "original_uv_charts": 10,
@@ -58,7 +58,17 @@
           "uv_changed_fraction": 0.0
         }
       ],
-      "weight_source": "original, unchanged"
+      "weight_source": "original, unchanged",
+      "shape_quality": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.8432524916361537
+      },
+      "added_vertex_count": 0,
+      "triangle_growth_fraction": 0,
+      "geometry_changed": true
     },
     "ArmorFoot_07": {
       "bounds_game": {
@@ -111,7 +121,17 @@
           "uv_changed_fraction": 0.0
         }
       ],
-      "weight_source": "original, unchanged"
+      "weight_source": "original, unchanged",
+      "shape_quality": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.9999999999999998
+      },
+      "added_vertex_count": 0,
+      "triangle_growth_fraction": 0,
+      "geometry_changed": false
     },
     "ArmorHand_07": {
       "bounds_game": {
@@ -164,18 +184,28 @@
           "uv_changed_fraction": 0.0
         }
       ],
-      "weight_source": "original, unchanged"
+      "weight_source": "original, unchanged",
+      "shape_quality": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.9999999999999998
+      },
+      "added_vertex_count": 0,
+      "triangle_growth_fraction": 0,
+      "geometry_changed": false
     },
     "ArmorHead_07": {
       "bounds_game": {
         "min": [
-          -0.3075985014438629,
+          -0.29559850692749023,
           1.228413701057434,
           -0.3641605079174042
         ],
         "max": [
-          0.3075961768627167,
-          1.89548921585083,
+          0.295596182346344,
+          1.8694913387298584,
           0.21956589818000793
         ]
       },
@@ -192,12 +222,12 @@
         ]
       },
       "dimension_delta_fraction": [
-        0.0,
-        0.0,
+        0.03901202315145036,
+        0.03897291467671937,
         0.0
       ],
-      "max_rest_displacement": 0.0,
-      "max_displacement_fraction_of_smallest_dimension": 0.0,
+      "max_rest_displacement": 0.09140036173748978,
+      "max_displacement_fraction_of_smallest_dimension": 0.15658082413739033,
       "triangles": 246,
       "uv_preserved": true,
       "original_uv_charts": 4,
@@ -217,18 +247,25 @@
           "uv_changed_fraction": 0.0
         }
       ],
-      "weight_source": "Original vertices unchanged; arc midpoint vertices inherit identical parent binds and weights",
+      "weight_source": "original, unchanged",
       "shape_quality": {
         "reversed_triangles": 0,
-        "zero_area_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
         "coincident_seam_max_rest_gap": 0.0,
-        "min_triangle_normal_cosine_from_original": 0.9999997948762029
+        "min_triangle_normal_cosine_from_original": 0.7284953102698424
       },
       "added_vertex_count": 0,
-      "triangle_growth_fraction": 0.0
+      "triangle_growth_fraction": 0,
+      "geometry_changed": true
     }
   },
-  "stage": "original_integration_v1",
-  "constraint": "Original-total20% shape/dimensions; only explicitly configured visor edges may be subdivided. Broad chart count and original rig retained.",
-  "user_authorized_original_total_limit": 0.2
+  "stage": "approved_draft_refinement_v2",
+  "constraint": "True original source cumulative20% per-part rest displacement/dimensions; exact original UV0, indices, vertex counts, rig and weights.",
+  "user_authorized_original_total_limit": 0.2,
+  "geometry_mode": "original_source_bounded_refinement",
+  "geometry_parts": [
+    "ArmorHead_07",
+    "ArmorBody_07"
+  ]
 }

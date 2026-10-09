@@ -47,7 +47,8 @@ def main():
     config = validator.read(work / "runtime_config.json")
     target = validator.read(work / "build/target.json")
     geometry = validator.read(work / "build/geometry.json")
-    original_metrics = validator.measure_original_geometry(source, target, geometry, {name: .20 for name in source["parts"]})
+    options = {"config": config} if slug in ["atom", "pegasus"] else {}
+    original_metrics = validator.measure_original_geometry(source, target, geometry, {name: .20 for name in source["parts"]}, **options)
     generated = validator.verify_first_generation(slug, work, assets)
     native_sha = {row["label"]: row["canonical_sha256"] for row in generated}
     master = work / f"build/{slug}_master.blend"

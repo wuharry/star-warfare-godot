@@ -3,7 +3,9 @@
 No Godot, Blender, native image generation or real runtime resource is invoked.
 """
 import importlib.util
+import copy
 import json
+import math
 from pathlib import Path
 import shutil
 import sys
@@ -131,6 +133,40 @@ class NextArmorPipelineTest(unittest.TestCase):
         for row in rows:
             CONTRACT.verify_edit_lineage(row, rows, "original_atlas")
 
+    def test_selected_ancestor_can_be_restored_when_retry_rejected(self):
+        rows = self._retry_lineage()
+        rows[1]["selected"] = True
+        rows[2]["selected"] = False
+        rows[2]["status"] = "rejected_moved_rear_lamp_instead_of_front_window"
+        for row in rows:
+            CONTRACT.verify_edit_lineage(row, rows, "original_atlas")
+
+    def test_selected_retry_and_parent_are_rejected(self):
+        rows = self._retry_lineage()
+        rows[1]["selected"] = True
+        with self.assertRaisesRegex(AssertionError, "cannot both be selected"):
+            CONTRACT.verify_edit_lineage(rows[2], rows, "original_atlas")
+
+    def test_selected_retry_and_distant_ancestor_are_rejected(self):
+        rows = self._retry_lineage()
+        rows[0]["selected"] = True
+        with self.assertRaisesRegex(AssertionError, "cannot both be selected"):
+            CONTRACT.verify_edit_lineage(rows[2], rows, "original_atlas")
+
+    def test_rejected_retry_does_not_hide_two_selected_ancestors(self):
+        rows = self._retry_lineage()
+        rows[2]["selected"] = False
+        rows[0]["selected"] = rows[1]["selected"] = True
+        with self.assertRaisesRegex(AssertionError, "cannot both be selected"):
+            CONTRACT.verify_edit_lineage(rows[2], rows, "original_atlas")
+
+    def test_retry_duplicate_native_parent_hash_is_rejected(self):
+        rows = self._retry_lineage()
+        duplicate = dict(rows[0])
+        rows.insert(1, duplicate)
+        with self.assertRaisesRegex(AssertionError, "one retained"):
+            CONTRACT.verify_edit_lineage(rows[-1], rows, "original_atlas")
+
     def test_retry_without_retained_native_parent_is_rejected(self):
         rows = self._retry_lineage()
         rows[1]["references"][0]["sha256"] = "missing_native"
@@ -218,15 +254,130 @@ class NextArmorPipelineTest(unittest.TestCase):
         self.assertIn("512.000000,1044.480000", svg)
         self.assertEqual(PREPARE.chart_count(surface), 1)
 
-    def test_identity_shapes_do_not_modify_any_point(self):
+    def test_shapes_obey_current_explicit_source_contract(self):
         for slug in ["atom", "pegasus"]:
             shape = load(slug + "_shape_guard", f"tools/armor_runtime_v1/shapes/{slug}.py")
-            for point in [[0, 0, 0], [-.246, 1.622, -.31], [.246, 1.822, .31]]:
-                result = shape.reshape(point)
-                self.assertEqual(result, point)
-                self.assertIsNot(result, point)
+            work=ROOT / f"docs/art/{slug}_runtime_v1"
+            config=CONTRACT.read(work / "runtime_config.json")
+            source=CONTRACT.read(work / "revisions/original_source_v1/source.json")
+            movable=CONTRACT.geometry_parts(config,source["parts"])
+            for name,part in source["parts"].items():
+                old=[point for row in part["surfaces"] for point in row["positions"]]
+                new=[]
+                for sid,row in enumerate(part["surfaces"]):
+                    for point in row["positions"]:
+                        result=shape.reshape_part(name,point,sid) if movable else shape.reshape(point)
+                        self.assertTrue(len(result)==3 and all(math.isfinite(value) for value in result))
+                        if name not in movable:self.assertEqual(result,point)
+                        new.append(result)
+                dimensions=lambda points:[max(point[axis] for point in points)-min(point[axis] for point in points) for axis in range(3)]
+                before,after=dimensions(old),dimensions(new)
+                self.assertLessEqual(max(math.dist(a,b) for a,b in zip(old,new))/min(before),.20)
+                self.assertTrue(all(abs(a/b-1)<=.20 for a,b in zip(after,before)))
             self.assertFalse(hasattr(shape, "adjust_uv"))
             self.assertFalse(hasattr(shape, "refine_surface"))
+
+    def _bounded_fixture(self, displacement=.05):
+        identity=[[int(i==j) for j in range(4)] for i in range(4)]
+        points=[[0.,0.,0.],[1.,0.,0.],[0.,1.,0.],[0.,0.,1.]]
+        old={"positions":points,"raw_positions":copy.deepcopy(points),"normals":[[0.,0.,1.] for _ in points],
+             "uv":[[0.,0.],[1.,0.],[0.,1.],[1.,1.]],"indices":[0,1,2,0,3,1,0,2,3,1,3,2],
+             "bone_indices":[[0]*4 for _ in points],"bone_names":[["Root"]*4 for _ in points],"weights":[[1.,0.,0.,0.] for _ in points]}
+        name="ArmorHead_07"
+        source={"bones":[{"name":"Root","matrix":identity}],"parts":{name:{"surfaces":[old],"bind_records":[{"name":"Root","matrix":identity}]}}}
+        positions=[[x+displacement,y,z] for x,y,z in points]
+        new={"positions":positions,"uv":copy.deepcopy(old["uv"]),"label":"head","geometry_changed":displacement>1e-6,
+             "raw_positions":copy.deepcopy(positions)}
+        new["normals"],new["tangents"]=CONTRACT.bind_normal_frames(old,new["raw_positions"])
+        target={"geometry_mode":"original_source_bounded_refinement","geometry_parts":[name],"parts":{name:{"surfaces":[new]}}}
+        config={"preserve_all_geometry":False,"geometry_mode":target["geometry_mode"],"geometry_parts":[name]}
+        surface={"surface":0,"label":"head","uv_coordinate_count":4,"uv_changed_count":0,"uv_changed_fraction":0}
+        measured=max(math.dist(a,b) for a,b in zip(points,positions))
+        geometry={"parts":{name:{"triangles":4,"uv_coordinate_count":4,"original_uv_coordinate_count":4,
+                  "uv_changed_count":0,"original_uv_charts":1,"uv_charts":1,"uv_changed_fraction":0,
+                  "max_displacement_fraction_of_smallest_dimension":measured,"dimension_delta_fraction":[0.,0.,0.],"uv_by_surface":[surface]}}}
+        return source,target,geometry,{name:.20},config
+
+    def test_bounded_refinement_accepts_authored_frames_with_exact_uv_and_original_budget(self):
+        source,target,geometry,limits,config=self._bounded_fixture()
+        measured=CONTRACT.measure_original_geometry(source,target,geometry,limits,config)
+        self.assertEqual(measured["geometry_mode"],"original_source_bounded_refinement")
+        self.assertAlmostEqual(measured["original_measurements"][0]["original_max_rest_displacement_fraction"],.05)
+        self.assertEqual(measured["uv_coordinates"],4)
+
+    def test_bounded_cannot_exceed_cumulative_true_original_twenty_percent(self):
+        with self.assertRaisesRegex(AssertionError,"original-total shape limit exceeded"):
+            CONTRACT.measure_original_geometry(*self._bounded_fixture(.201))
+
+    def test_bounded_does_not_relax_twenty_percent_limit(self):
+        args=list(self._bounded_fixture());args[3]={"ArmorHead_07":.25}
+        with self.assertRaisesRegex(AssertionError,"remain 20%"):
+            CONTRACT.measure_original_geometry(*args)
+
+    def test_bounded_unknown_mode_or_nonoriginal_part_is_rejected(self):
+        source,target,geometry,limits,config=self._bounded_fixture()
+        for key,value in [("geometry_mode","anything"),("geometry_parts",["ArmorHead_99"])]:
+            bad={**config,key:value}
+            with self.assertRaises(AssertionError):CONTRACT.measure_original_geometry(source,target,geometry,limits,bad)
+
+    def test_bounded_unauthorized_source_part_cannot_move(self):
+        source,target,geometry,limits,config=self._bounded_fixture()
+        source["parts"]["ArmorBody_07"]=copy.deepcopy(source["parts"]["ArmorHead_07"])
+        target["parts"]["ArmorBody_07"]=copy.deepcopy(target["parts"]["ArmorHead_07"])
+        with self.assertRaisesRegex(AssertionError,"positions changed"):
+            CONTRACT.measure_original_geometry(source,target,geometry,limits,config)
+
+    def test_bounded_cannot_hide_a_position_edit_as_unchanged(self):
+        source,target,geometry,limits,config=self._bounded_fixture()
+        target["parts"]["ArmorHead_07"]["surfaces"][0]["geometry_changed"]=False
+        with self.assertRaisesRegex(AssertionError,"false geometry-change"):
+            CONTRACT.measure_original_geometry(source,target,geometry,limits,config)
+
+    def test_bounded_indices_weights_and_uv_must_remain_original(self):
+        for field,replacement in [("indices",[0,2,1]),("weights",[[.5,.5,0.,0.]]*4),("uv",[[.01,0.],[1,0],[0,1],[1,1]])]:
+            source,target,geometry,limits,config=self._bounded_fixture()
+            target["parts"]["ArmorHead_07"]["surfaces"][0][field]=replacement
+            with self.assertRaises(AssertionError):CONTRACT.measure_original_geometry(source,target,geometry,limits,config)
+
+    def test_bounded_raw_bind_positions_must_resolve_to_authored_rest(self):
+        source,target,geometry,limits,config=self._bounded_fixture()
+        target["parts"]["ArmorHead_07"]["surfaces"][0]["raw_positions"][0][0]+=.01
+        with self.assertRaisesRegex(AssertionError,"raw bind positions differ"):
+            CONTRACT.measure_original_geometry(source,target,geometry,limits,config)
+
+    def test_bounded_authored_normal_and_tangent_cannot_be_substituted(self):
+        for field in ["normals","tangents"]:
+            source,target,geometry,limits,config=self._bounded_fixture()
+            target["parts"]["ArmorHead_07"]["surfaces"][0][field][0][0]+=.01
+            with self.assertRaisesRegex(AssertionError,"normal/tangent frame changed"):
+                CONTRACT.measure_original_geometry(source,target,geometry,limits,config)
+
+    def test_triangle_reversal_and_new_degenerate_are_detected(self):
+        old={"positions":[[0,0,0],[1,0,0],[0,1,0]],"indices":[0,1,2]}
+        reversed_row={"positions":[[0,0,0],[0,1,0],[1,0,0]]}
+        self.assertEqual(CONTRACT.part_shape_quality([old],[reversed_row])["reversed_triangles"],1)
+        collapsed={"positions":[[0,0,0],[0,0,0],[0,1,0]]}
+        self.assertEqual(CONTRACT.part_shape_quality([old],[collapsed])["new_degenerate_triangles"],1)
+
+    def test_cross_surface_coincident_seams_must_not_split(self):
+        old={"positions":[[0,0,0],[1,0,0],[0,1,0]],"indices":[0,1,2]}
+        a,b=copy.deepcopy(old),copy.deepcopy(old);b["positions"][0][2]=.01
+        self.assertAlmostEqual(CONTRACT.part_shape_quality([old,old],[a,b])["coincident_seam_max_rest_gap"],.01)
+
+    def test_frozen_texture_only_delivery_remains_strict_and_verifiable(self):
+        for slug in ["atom","pegasus"]:
+            self.assertEqual(CONTRACT.verify_texture_history(slug)["files_verified"],96)
+            frozen=ROOT/f"docs/art/{slug}_runtime_v1/revisions/before_draft_refinement_v2"
+            files=CONTRACT.read(frozen/"snapshot.json")["files"]
+            def locate(suffix):
+                candidates=[ROOT/row['snapshot_path'] for row in files if row['original_path'].endswith(suffix)]
+                self.assertEqual(len(candidates),1,suffix)
+                return CONTRACT.read(candidates[0])
+            source=locate("build/source.json");target=locate("build/target.json");geometry=locate("build/geometry.json");config=locate("runtime_config.json")
+            self.assertTrue(config["preserve_all_geometry"])
+            result=CONTRACT.measure_original_geometry(source,target,geometry,{name:.20 for name in source["parts"]},config)
+            self.assertEqual(result["geometry_mode"],"texture_only")
+            self.assertTrue(all(row["original_max_rest_displacement_fraction"]==0 for row in result["original_measurements"]))
 
     def test_existing_snapshot_cannot_be_overwritten(self):
         output = ROOT / "test_output"
