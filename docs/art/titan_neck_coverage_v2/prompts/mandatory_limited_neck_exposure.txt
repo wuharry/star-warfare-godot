@@ -1,0 +1,63 @@
+MANDATORY ADDENDUM — COMPACT HELMET-TO-COLLAR FIT
+
+Append this addendum to the existing fixed armor integration prompt and the
+original neck-interface addendum. Do not rewrite either historical base prompt.
+
+The direct user requirement is a short, mostly concealed neck seal matching the
+existing armor family. A large exposed black neck tube, even if opaque and
+correctly skinned, is a visual failure. Do not present the old original-neck
+position contract alone as proof that the helmet-to-body fit is acceptable.
+
+Before authoring, inspect the actual original helmets and the currently accepted
+Viper/Fortune/Tank family in the same engine camera, body, pose and lighting. Use
+the real current Titan mesh as the before comparison. Preserve the approved round
+gold pressure visor, helmet scale and continuous lower frame. Aim for a small
+sealed collar seam rather than a tall visible neck column. All body IDs must be
+compatible; a tall collar on one matching suit cannot stand in for mixed bodies.
+
+Keep the original source neck component fixed, including physical seam
+duplicates, UVs, faces, active named bones and weights. Fit the actual shell over
+this protected interface. Never hide a mismatch by darkening the whole material,
+using transparency, enlarging every body collar or changing the head pivot.
+
+For Titan v7 only, the authorized change is an overall downward rest-space
+fit plus a small explicitly recorded lower-frame extension. The 24 source-neck
+UV vertices remain exact. The runtime shell_fit records the overall delta_y and
+every lower_frame_offsets original physical seam group; no incomplete duplicate
+group, overlapping group, neck point or unknown vertex is allowed. Extra lower
+offsets must be negative, at most 110 mm, and below Y=1.58 after the overall fit.
+Keep the reviewed gold visor vertices free from these local extra offsets.
+The 40 existing arc midpoints inherit the mean extra offset of their two
+original parents; no independent new midpoint shape is authorized.
+Keep all 334 UV coordinates, 164 triangles,
+3 head charts, 28 bones, indices and weights exact to delivered v6. Verify the
+complete result against the true original 20% geometry/dimension budget. The
+five selected PNGs are byte-for-byte inherited; this revision is not a new
+imagegen attempt. Keep its inherited-native provenance typed and unambiguous.
+
+Acceptance requires both interface invariants and actual exposed-neck coverage.
+Measure rendered visible neck pixels using an isolated mesh/component mask with
+the four equipped armor pieces still occluding it. After EVERY animation/reload
+pose, hide weapons, backpacks and reload debris; only the selected helmet,
+body, hands and feet may occlude this diagnostic. Do not let a weapon mask a
+helmet-to-collar gap. Compare matched views and
+poses against the frozen before Titan and the actual family references. Record
+the measurement definition, denominator, camera, renderer, thresholds, resource
+SHA256 and every failed row. Thresholds must be chosen from family evidence
+before adoption; never relax them merely because an authored candidate fails.
+Both equipped-geometry and complete-head mask passes must prove completion and
+exact source/rendered surface and triangle-index counts for every sample.
+Actual nonindexed triangle surfaces require an explicit full vertex sequence;
+never silently omit them. Reject any paired engine log with a script or parse
+error, even when a partial JSON report claims PASS.
+
+Check all 29 body IDs with idle, running and reload samples. Review front,
+quarter, side and rear closeups, including low collars and weapon-occluded poses.
+Quantified sampled coverage is not a guarantee for every camera or animation
+time. Inspect remaining black seams, background holes, jaw/collar clipping,
+continuous visor/frame silhouette and skin deformation in actual images.
+
+Future armor pipelines must retain this visible-neck coverage check in addition
+to the original-neck save gate. A valid source interface plus a visibly exposed
+long neck must be rejected. Keep engineering PASS, visual inspection, user art
+acceptance, browser interaction and mobile performance as separate statuses.

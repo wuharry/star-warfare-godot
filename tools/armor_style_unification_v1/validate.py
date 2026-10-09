@@ -825,8 +825,176 @@ def verify_first_generation(name: str, runtime: Path, assets: Path) -> list[dict
     return images
 
 
+def verify_titan_neck_exposure(before: dict, scene_sha256: str) -> dict:
+    """Verify frozen peers and actual depth-tested masks, separately from neck integrity."""
+    from PIL import Image
+
+    review = ROOT / "docs/art/titan_neck_coverage_v2/review"
+    baseline_path = review / "before_final/capture.json"
+    after_path = review / "after_all29_no_weapon/capture.json"
+    baseline, after = read(baseline_path), read(after_path)
+    views, poses = ("front", "quarter", "side", "rear"), ("idle", "run", "reload")
+    peer_paths = {"res://assets/models/player/animated/player.gltf", "res://assets/models/player/animated/player.bin",
+                  *(f"res://assets/armors/{name}/{name.split('_')[0]}.scn"
+                    for name in ("viper_v2", "fortune_v1", "tank_v1", "hydra_v1", "strike_v1"))}
+    assert peer_paths <= set(baseline["reference_resource_sha256"])
+    titan_refinement_validator()  # Add the runtime tools directory for its shared read-only policy.
+    from publish_titan_shell_fit import verify_reference_resources
+    verify_reference_resources(after["reference_resource_sha256"], baseline["reference_resource_sha256"])
+    for path, checksum in after["reference_resource_sha256"].items():
+        assert path.startswith("res://") and digest(ROOT / path.removeprefix("res://")) == checksum
+    for path, checksum in baseline["reference_resource_sha256"].items():
+        assert path.startswith("res://") and digest(ROOT / path.removeprefix("res://")) == checksum
+    for path, checksum in after["resource_sha256"].items():
+        assert path.startswith("res://") and digest(ROOT / path.removeprefix("res://")) == checksum
+    assert after["resource_sha256"]["res://assets/armors/titan_v1/titan.scn"] == scene_sha256
+    frozen_scene = next(row for row in before["files"] if row["path"] == "assets/armors/titan_v1/titan.scn")
+    assert baseline["resource_sha256"]["res://assets/armors/titan_v1/titan.scn"] == frozen_scene["sha256"]
+    assert after["baseline_path"] == "res://" + baseline_path.relative_to(ROOT).as_posix()
+    assert after["baseline_sha256"] == digest(baseline_path)
+    assert baseline["mode"] == "calibrate" and after["mode"] == "verify"
+    assert baseline["status"] == baseline["style_coverage"] == "FAIL" and baseline["style_failures"]
+    assert after["status"] == after["style_coverage"] == "PASS" and not after["style_failures"]
+    assert after["thresholds"] == baseline["thresholds"] and set(after["thresholds"]) == set(views)
+    assert "res://tests/armor_neck_exposure_test.tscn" in after["engine_arguments"]
+    required_resources = peer_paths | {"res://assets/armors/titan_v1/titan.scn",
+                                      "res://assets/equipment_refined/armors/armor_10.scn",
+                                      "res://tools/armor_runtime_v1/neck_exposure_capture.gd",
+                                      "res://tests/armor_neck_exposure_test.gd"}
+    assert required_resources <= set(after["resource_sha256"])
+    execution_log = review / "after_all29_no_weapon.log"
+    log = execution_log.read_text(encoding="utf-8-sig")
+    assert "ARMOR_NECK_EXPOSURE_PASS integrity=PASS style=PASS candidate_samples=348 references=20" in log
+    assert not any(line.lstrip().startswith("ERROR:") or any(token in line.lower() for token in
+                   ("script error:", "parse error", "traceback (most recent call last)", "segmentation fault", "crash_handler", "fatal error"))
+                   for line in log.splitlines()), "Exposure engine log contains errors despite JSON PASS"
+    expected_references = {(head, view) for head in range(5) for view in views}
+    frame_total = 0
+    for report_path, report in ((baseline_path, baseline), (after_path, after)):
+        bodies = tuple(range(29)) if report is after else (0, 3, 4, 10)
+        expected_candidates = {(body, pose, view) for body in bodies for pose in poses for view in views}
+        expected_measurements = ({("legacy", head, 0, "idle", view) for head in range(21) for view in views}
+                                 | {("current", head, 0, "idle", view) for head in range(6) for view in views}
+                                 | {("candidate", 5, body, pose, view) for body, pose, view in expected_candidates})
+        assert report["schema"] == "armor_neck_exposure_v1" and report["measurement_integrity"] == "PASS" and not report["failures"]
+        assert report["reference_ids"] == list(range(5)) and report["candidate_head"] == 5
+        assert report["candidate_bodies"] == list(bodies) and report["candidate_poses"] == list(poses)
+        assert report["thresholds_frozen_before_candidate_measurements"] and report["renderer"] == "gl_compatibility"
+        assert report["save_unchanged"] and report["gamestate_restored"]
+        assert report["real_save_path"] == "user://star_warfare_save.json"
+        assert len(report["real_save_sha256_at_start"]) == 64 and report["real_save_sha256_at_start"] == report["real_save_sha256_at_end"]
+        assert report["isolated_save_path"].startswith("user://neck_exposure_")
+        assert report["camera"] == {"center": [0, 1.47, .015], "diagnostic_viewport": [384, 384],
+                                    "normal_viewport": [720, 720], "projection": "orthographic", "size": 1.35, "views": list(views)}
+        rows = report["measurements"]
+        row_key = lambda row: (row["version"], row["head_id"], row["body_id"], row["pose"], row["view"])
+        assert len(rows) == len(expected_measurements) and {row_key(row) for row in rows} == expected_measurements
+        if report is after:
+            for row in rows:
+                assert row["measurement_integrity"] == "PASS"
+                surface_passes = row["diagnostic_surface_coverage"]
+                assert set(surface_passes) == {"equipped_geometry", "complete_head"}
+                for kind, coverage in surface_passes.items():
+                    surfaces = coverage["surfaces"]
+                    assert coverage["completed"] and coverage["expected_surfaces"] == coverage["rendered_surfaces"] == len(surfaces) > 0
+                    assert len({(surface["part"], surface["surface"]) for surface in surfaces}) == len(surfaces)
+                    expected_parts = {f"ArmorHead_{row['head_id']:02d}"}
+                    if kind == "equipped_geometry":
+                        expected_parts |= {f"ArmorBody_{row['body_id']:02d}", "ArmorHand_00", "ArmorFoot_00"}
+                    assert {surface["part"] for surface in surfaces} == expected_parts, "Exposure pass omitted an equipped mesh"
+                    for surface in surfaces:
+                        count = surface["source_triangle_indices"]
+                        assert type(count) is int and count > 0 and count % 3 == 0
+                        assert surface["complete"] and count == surface["rendered_triangle_indices"]
+                        assert surface["indices_mode"] in ("source_indexed", "explicit_sequence_for_actual_nonindexed_triangles")
+        references, candidates = report["reference_measurements"], report["candidate_measurements"]
+        assert len(references) == 20 and {(row["head_id"], row["view"]) for row in references} == expected_references
+        assert len(candidates) == len(expected_candidates) and {(row["body_id"], row["pose"], row["view"]) for row in candidates} == expected_candidates
+        assert all(row["version"] == "current" and row["body_id"] == 0 and row["pose"] == "idle" for row in references)
+        assert all(row["version"] == "candidate" and row["head_id"] == 5 for row in candidates)
+        assert all(row in rows for row in references + candidates)
+        frames = {row["file"]: row for row in report["frames"]}
+        expected_frames = {row[field] for row in rows for field in ("diagnostic_exposed", "diagnostic_head_mask")}
+        expected_frames |= {"gameplay_loader_quarter_idle.png", "room_preview_front_idle_reproduction.png"}
+        if report is after:
+            expected_frames |= {"regression_isolated_actual_neck.png", "regression_opaque_blocker.png"}
+        assert len(frames) == len(report["frames"]) and set(frames) == expected_frames
+        for filename, frame in frames.items():
+            assert Path(filename).name == filename and filename.endswith(".png"), "Exposure image path escapes evidence folder"
+            path = report_path.parent / filename
+            assert digest(path) == frame["sha256"], "Exposure frame SHA changed: " + filename
+            with Image.open(path) as image:
+                assert list(image.size) == [frame["width"], frame["height"]]
+                expected_size = (720, 720) if filename in {"gameplay_loader_quarter_idle.png", "room_preview_front_idle_reproduction.png"} else (384, 384)
+                assert image.size == expected_size
+        frame_total += len(frames)
+
+        def red_mask(filename):
+            with Image.open(report_path.parent / filename) as image:
+                return {i for i, (r, g, b, alpha) in enumerate(image.convert("RGBA").getdata())
+                        if r >= 204 and g <= 25 and b <= 25 and alpha >= 253}
+
+        for row in references + candidates:
+            assert row["same_camera_as_approved_peers"] and row["complete_head_unclipped"]
+            assert row["camera_size"] == 1.35 and len(row["camera_center"]) == 3
+            assert all(abs(a - b) < 1e-6 for a, b in zip(row["camera_center"], [0, 1.47, .015]))
+            visible, complete = red_mask(row["diagnostic_exposed"]), red_mask(row["diagnostic_head_mask"])
+            assert len(complete) > 100 and visible <= complete
+            assert len(visible) == row["visible_neck_pixels"] and len(complete) == row["complete_head_pixels"]
+            x, y = [i % 384 for i in complete], [i // 384 for i in complete]
+            bounds = [min(x), min(y), max(x) - min(x) + 1, max(y) - min(y) + 1]
+            assert bounds == row["complete_head_bounds_px"]
+            assert min(x) > 1 and min(y) > 1 and max(x) + 1 < 383 and max(y) + 1 < 383
+            fraction = len(visible) / len(complete)
+            assert math.isfinite(row["visible_neck_fraction"]) and abs(row["visible_neck_fraction"] - fraction) < 1e-12
+            assert abs(row["visible_neck_percent"] - 100 * fraction) < 1e-10
+            if row["version"] == "candidate":
+                threshold = report["thresholds"][row["view"]]["maximum_fraction"]
+                assert row["maximum_fraction"] == threshold
+                assert row["style_coverage"] == ("PASS" if fraction <= threshold else "FAIL")
+                if report is after:
+                    assert fraction <= threshold, "Rendered Titan neck exceeds frozen peer coverage"
+        for view in views:
+            peers = [row for row in references if row["view"] == view]
+            selected = max(peers, key=lambda row: (row["visible_neck_pixels"] + 2) / row["complete_head_pixels"])
+            expected = (selected["visible_neck_pixels"] + 2) / selected["complete_head_pixels"]
+            limit = report["thresholds"][view]
+            assert limit["pixel_margin"] == 2 and limit["reference_count"] == 5 and limit["selected_reference_head"] == selected["head_id"]
+            assert math.isfinite(limit["maximum_fraction"]) and 0 <= limit["maximum_fraction"] < 1
+            assert abs(limit["maximum_fraction"] - expected) < 1e-12 and abs(limit["maximum_percent"] - expected * 100) < 1e-10
+        if report is after:
+            checks = {row["check"]: row for row in report["regression_checks"]}
+            assert len(checks) == len(report["regression_checks"]) == 3
+            topology = checks["actual_nonindexed_triangle_surface_and_invalid_topology"]
+            assert all(topology[field] for field in ("actual_nonindexed_arraymesh", "exact_explicit_sequence_accepted",
+                       "invalid_vertex_multiple_rejected", "nontriangle_primitive_rejected", "out_of_bounds_triangle_rejected"))
+            parser = checks["actual_json_float_id_normalization_and_strict_baseline_validation"]
+            assert parser["actual_frozen_json_accepted"]
+            negatives = parser["negative_fixtures"]
+            expected_negatives = {"string_id", "fractional_id", "reordered_ids", "reference_rows_not_array", "scalar_reference_row",
+                                  "pins_not_dictionary", "missing_source_pin", "threshold_not_dictionary", "nonfinite_threshold",
+                                  "candidate_widened_threshold", "clipped_reference"}
+            assert len(negatives) == len(expected_negatives) and {row["fixture"] for row in negatives} == expected_negatives
+            assert all(row["rejected"] and row["errors"] for row in negatives)
+            depth = checks["real_depth_occlusion_and_rendered_denominator"]
+            quarter = next(row for row in candidates if row["body_id"] == 0 and row["pose"] == "idle" and row["view"] == "quarter")
+            isolated = len(red_mask("regression_isolated_actual_neck.png"))
+            blocked = len(red_mask("regression_opaque_blocker.png"))
+            assert isolated == depth["actual_isolated_red_tube_pixels"] > 0 and depth["independent_positive_tube_nonempty"]
+            assert blocked == depth["opaque_blocker_red_pixels"] == 0 and depth["depth_occlusion_pass"]
+            assert depth["actual_visible_neck_pixels"] == quarter["visible_neck_pixels"] <= isolated
+            assert depth["actual_complete_head_pixels"] == quarter["complete_head_pixels"] > 100 and depth["denominator_nonempty"]
+            assert depth["full_exposure_rejected_without_changing_threshold"] and report["thresholds"]["quarter"]["maximum_fraction"] < 1
+    return {"baseline": baseline_path.relative_to(ROOT).as_posix(), "baseline_sha256": digest(baseline_path),
+            "capture": after_path.relative_to(ROOT).as_posix(), "capture_sha256": digest(after_path),
+            "candidate_samples": 348, "peer_reference_samples": 20, "frame_sha256_verified": frame_total,
+            "thresholds": after["thresholds"], "actual_pixel_counts_verified": True,
+            "execution_log": execution_log.relative_to(ROOT).as_posix(), "execution_log_sha256": digest(execution_log),
+            "regression_controls": [row["check"] for row in after["regression_checks"]]}
+
+
 def verify_titan_refinement() -> dict:
-    """Dedicated active v3/v4/v5 contract; do not recertify the v1 target as current."""
+    """Dedicated active refinement contract; preserve each historical delivery's limits."""
     helper = titan_refinement_validator()
     config = read(ROOT / "docs/art/titan_runtime_v1/runtime_config.json")
     version = helper.active_version(config)
@@ -844,19 +1012,42 @@ def verify_titan_refinement() -> dict:
     paths = {"scene": assets / "titan.scn", "glb": assets / "titan.glb", "source": runtime / "build/source.json",
              "target": runtime / "build/target.json", "geometry": runtime / "build/geometry.json", "master": runtime / "build/titan_master.blend"}
     hashes = {key: digest(path) for key, path in paths.items()}
+    exposure = {}
     if version >= 6:
-        mix_root = ROOT / "docs/art/titan_neck_mix_v1/review"
-        for label in ("after", "after_test_shared_finite"):
+        mix_root = ROOT / ("docs/art/titan_neck_coverage_v2/review" if version >= 7 else "docs/art/titan_neck_mix_v1/review")
+        mix_labels = ("interface_final", "interface_test_final") if version >= 7 else ("after", "after_test_shared_finite")
+        for label in mix_labels:
             mixed = read(mix_root / label / "capture.json")
             assert mixed["status"] == "PASS" and not mixed["failures"]
             assert len(mixed["poses"]) == 261 and mixed["save_unchanged"] and mixed["gamestate_restored"]
             assert mixed["resource_sha256"]["res://assets/armors/titan_v1/titan.scn"] == hashes["scene"]
+            if version >= 7:
+                expected_mixed_poses = ({(body, clip, time) for body in range(29) for clip in ("idle_rifle", "run_rifle") for time in (0, .30, .65)}
+                                        | {(body, "reload", time) for body in range(29) for time in (.15, .50, .85)})
+                assert {(row["body_id"], row["clip"], round(row["time"], 2)) for row in mixed["poses"]} == expected_mixed_poses
+                assert all(row["neck_vertex_samples"] == 24 and math.isfinite(row["original_neck_maximum_error_m"])
+                           and 0 <= row["original_neck_maximum_error_m"] <= 2e-6 for row in mixed["poses"])
             for frame in mixed["frames"]:
                 assert digest(mix_root / label / frame["file"]) == frame["sha256"]
-            if label == "after":
+            if label == mix_labels[0]:
                 assert len(mixed["frames"]) == 35
             else:
                 assert len(mixed["negative_fixtures"]) >= 20 and len(mixed["shared_gate_checks"]) >= 24
+                if version >= 7:
+                    assert all(row["rejected_for_independent_reason"] and row["errors"] for row in mixed["negative_fixtures"])
+                    shared = {row["check"]: row for row in mixed["shared_gate_checks"]}
+                    assert len(shared) == len(mixed["shared_gate_checks"])
+                    assert all(shared[f"original_head_{i:02d}_positive"]["accepted"] for i in range(21))
+                    assert shared["original_head_02_positive"]["source_neck_surfaces"] == [1]
+                    assert shared["opaque_palette_without_charcoal_optin"]["accepted"] and shared["transparent_pixels_without_charcoal_optin"]["rejected"]
+                    writer = shared["production_writer_rejects_corrupt_interface_before_save"]
+                    assert writer["existing_destination_preserved"] and writer["missing_destination_stays_missing"] and writer["actual_decoded_nan_vertex_retained"]
+                    for kind in ("existing", "missing"):
+                        refused = writer[f"{kind}_report"]
+                        assert refused["status"] == "FAIL" and refused["errors"] and not refused["wrote_scene"]
+                        assert refused["output_sha256_before"] == refused["output_sha256_after"]
+        if version >= 7:
+            exposure = verify_titan_neck_exposure(before, hashes["scene"])
     filenames = {"runtime": "runtime_test.json", "roundtrip": "roundtrip_test.json", "scene": "original_scene_invariants.json",
                  "master": f"helmet_v{version}_master_test.json", "glb_images": f"helmet_v{version}_glb_test.json",
                  "guards": f"helmet_v{version}_contract_and_guards_test.json"}
@@ -941,19 +1132,27 @@ def verify_titan_refinement() -> dict:
             # already pinned historical EOL forms. Active v4/v5 files remain raw.
             helper.hash_matches(path, checked[path.relative_to(ROOT).as_posix()],
                                 historical=path == runtime / "generation_inputs.json")
-    assert len(guards["checks"]) == (6 if version >= 6 else 5)
+    assert len(guards["checks"]) == (7 if version >= 7 else 6 if version >= 6 else 5)
     commands = [" ".join(row["command"]) for row in guards["checks"]]
     guard_tokens = ["adopt.py", "provenance.py", "review.py", "compile.gd", "armor_head_refinement_contract_test.gd"]
     if version >= 6:
         guard_tokens.append("neck_source_contract.py")
+    if version >= 7:
+        guard_tokens.append("test_titan_v7_fit.py")
     for token in guard_tokens:
         selected = [row for row, command in zip(guards["checks"], commands) if token in command]
         assert len(selected) == 1
         row = selected[0]
-        expected = 0 if "contract_test.gd" in token or token == "neck_source_contract.py" else 1
+        expected = 0 if "contract_test.gd" in token or token in ("neck_source_contract.py", "test_titan_v7_fit.py") else 1
         assert row["status"] == "PASS" and row["exit_code"] == row["expected_exit_code"] == expected
+        if version >= 7:
+            assert row["expected_marker_present"] and not row["timed_out"] and not row["unexpected_runtime_errors"]
         if expected == 0:
-            marker = "ARMOR_NECK_SOURCE_CONTRACT_PASS" if token == "neck_source_contract.py" else "ARMOR_HEAD_REFINEMENT_CONTRACT_PASS"
+            if token == "test_titan_v7_fit.py":
+                assert "--check-active" in row["command"]
+                marker = "TITAN_V7_SHELL_FIT_CONTRACT_PASS"
+            else:
+                marker = "ARMOR_NECK_SOURCE_CONTRACT_PASS" if token == "neck_source_contract.py" else "ARMOR_HEAD_REFINEMENT_CONTRACT_PASS"
             assert marker in row["stdout"]
         else:
             assert row["stderr"], "Refusal guard did not record its reason"
@@ -1061,7 +1260,7 @@ def verify_titan_refinement() -> dict:
             "images": images, "reports": {key: (runtime / "review" / filename).relative_to(ROOT).as_posix() for key, filename in filenames.items()},
             "capture_summary": (capture_folder / "capture.json").relative_to(ROOT).as_posix(),
             "capture_summary_sha256": digest(capture_folder / "capture.json"), "current_artifact_sha256": hashes,
-            "silhouettes": silhouettes, "captures": captures,
+            "silhouettes": silhouettes, "captures": captures, **({"rendered_neck_coverage": exposure} if exposure else {}),
             "capture_execution": log_path.relative_to(ROOT).as_posix() if log_path else "pinned historical Mac v3 capture"}
 
 

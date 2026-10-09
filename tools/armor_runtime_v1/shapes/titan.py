@@ -12,9 +12,28 @@ candidate. Their direction is inferred from the single quarter-view concept.
 """
 import copy
 import math
+import struct
 from neck_source_contract import discover_neck, matching_neck_point, verify_neck
 
 _neck_source = None
+_shell_delta_y = 0.0
+_lower_frame_offsets = {}
+
+
+def configure_shell_fit(fit):
+    """Lower the rigid helmet in rest space; never stretch the source neck."""
+    global _shell_delta_y, _lower_frame_offsets
+    delta = fit.get('delta_y', 0.0)
+    assert math.isfinite(delta)
+    assert delta == 0.0 or -.075 <= delta <= -.040
+    _shell_delta_y = delta
+    _lower_frame_offsets = {}
+    for row in fit.get('lower_frame_offsets', []):
+        extra = row['delta_y']
+        assert math.isfinite(extra) and -.110 <= extra < 0
+        for index in row['vertex_ids']:
+            assert type(index) is int and index not in _lower_frame_offsets
+            _lower_frame_offsets[index] = extra
 
 
 def configure_neck_source(original):
@@ -228,6 +247,19 @@ def refine_surface(original, positions, uv):
     assert len(row['indices']) <= len(original['indices']) * 1.35
     assert len(row['uv']) <= len(original['uv']) * 1.35
     align_ear_and_lower_frame(original, authored, added)
+    if _shell_delta_y:
+        protected = set(_neck_source['vertex_ids'])
+        assert not protected.intersection(_lower_frame_offsets)
+        extras = dict(_lower_frame_offsets)
+        for record in added:
+            a, b = record['parents']
+            extras[record['index']] = (extras.get(a, 0.0) + extras.get(b, 0.0)) / 2
+        for index, point in enumerate(authored):
+            if index not in protected:
+                # Translate the delivered float32 shell, rather than subtly
+                # rebuilding a different rounding of the accepted v6 shape.
+                point[1] = (struct.unpack('<f', struct.pack('<f', point[1]))[0]
+                            + _shell_delta_y + extras.get(index, 0.0))
     row['triangle_parents'], row['added_vertices'] = parents, added
     # Alignment and future arc refinements must also preserve the discovered
     # connection. This checks physical seam duplicates and exact old faces.

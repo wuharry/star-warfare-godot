@@ -47,7 +47,7 @@ func _begin() -> void:
 func _run() -> void:
 	var config: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://docs/art/titan_runtime_v1/runtime_config.json"))
 	var revision := int(str(config.active_helmet_revision).trim_prefix("helmet_refinement_v"))
-	assert(revision in [4, 5, 6])
+	assert(revision in [4, 5, 6, 7])
 	report_path = "res://docs/art/titan_runtime_v1/review/helmet_v%d_lossless_import.json" % revision
 	for path: String in TARGETS: hashes[path] = FileAccess.get_sha256(path)
 	importer = HeadImporter.new()

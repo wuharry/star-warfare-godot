@@ -34,6 +34,8 @@ if shape_path.exists():
         neck_source = json.loads(neck_source_path.read_text(encoding='utf-8-sig'))
         assert SOURCE == neck_source, 'Neck guard requires the unchanged true original source'
         shape.configure_neck_source(neck_source['parts'][HEAD]['surfaces'][0])
+    if hasattr(shape, 'configure_shell_fit'):
+        shape.configure_shell_fit(CONFIG.get('shell_fit', {}))
 contract=None; MOVABLE=set(); BOUNDED=False
 if slug in ['atom','pegasus']:
     spec=importlib.util.spec_from_file_location('first_integration_contract',ROOT/'tools/armor_runtime_v1/first_integration_contract.py')

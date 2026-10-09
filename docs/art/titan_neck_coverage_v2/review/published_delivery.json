@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "revision": "helmet_refinement_v7",
+  "current_scene_sha256": "799438862e8c615b7d9b4914cbcabebbd0ee777a4981fc8ba78f9ed55ee36233",
+  "inputs": {
+    "coverage-before": {
+      "path": "docs/art/titan_neck_coverage_v2/review/before_final/capture.json",
+      "sha256": "b7815a104d5a45f22fa3fb80a58681a39e98a1096cc2d41f78a514823244c0af",
+      "bytes": 557055
+    },
+    "coverage-after": {
+      "path": "docs/art/titan_neck_coverage_v2/review/after_all29_no_weapon/capture.json",
+      "sha256": "e9259028f89c2af22a7b4b646577f1c10416212eddfdf5cf7786fd81a75adf7a",
+      "bytes": 3416701
+    },
+    "mixed-capture": {
+      "path": "docs/art/titan_neck_coverage_v2/review/interface_final/capture.json",
+      "sha256": "4a6d8494b3adc18ba803b5fc40eb7792c4fd5b58fdc8df65afecb3cc6fbcd53d",
+      "bytes": 59960
+    },
+    "mixed-test": {
+      "path": "docs/art/titan_neck_coverage_v2/review/interface_test_final/capture.json",
+      "sha256": "538800d1c1105891ecbef7d2550f3d8f5ad6d471f29e658b7568021379dfaf40",
+      "bytes": 64668
+    },
+    "final-capture": {
+      "path": "docs/art/titan_runtime_v1/review/helmet_v7_final/capture.json",
+      "sha256": "284c85a962d8b1cf4e9ef5207eaddc90424810f42097ddb0efd476fe77ecacfc",
+      "bytes": 25331
+    },
+    "coverage-log": {
+      "path": "docs/art/titan_neck_coverage_v2/review/after_all29_no_weapon.log",
+      "sha256": "c7bc693c15511cd4a89cfb06e25b5d2a5cc704c3464a6e9e5544febcb584624b",
+      "bytes": 386
+    }
+  },
+  "manifest": {
+    "path": "docs/art/titan_runtime_v1/manifest.json",
+    "sha256": "8c6b74663e9bef90cfda8198658b4d051b12c1b2a9a59fca3e05cbb3ec319439",
+    "bytes": 66778
+  },
+  "preview": {
+    "path": "docs/art/titan_neck_coverage_v2/index.html",
+    "sha256": "8f54cb13d539925f1020a157865877edf60693a2eac0dd0800314fb7741ea45d",
+    "bytes": 3469911
+  },
+  "series_archive": {
+    "path": "docs/art/armor_style_unification_v1/revisions/titan_v6_before_shell_fit_v7/snapshot.json",
+    "sha256": "d2a78d5f7201376e4adc1817b72ef7ebf58f4866a1dfdb5bf62f3cc44ed92bbe",
+    "bytes": 7223
+  },
+  "series_after15": {
+    "path": "docs/art/armor_style_unification_v1/titan_helmet_refinement_v7_after_snapshot.json",
+    "sha256": "f6af79ad4ac7d10d56352182a4fb3052e77f690e0df4b805049f9a22f0129460",
+    "bytes": 7123
+  },
+  "visual_inspection": "PASS",
+  "browser_interaction": "NOT RUN",
+  "user_art_acceptance": "NOT RUN"
+}

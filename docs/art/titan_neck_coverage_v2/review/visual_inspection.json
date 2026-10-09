@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "current_scene_sha256": "799438862e8c615b7d9b4914cbcabebbd0ee777a4981fc8ba78f9ed55ee36233",
+  "scope": "Root directly inspected six selected final native-material images: front/quarter camera reproductions, low-collar body28 quarter, rear body0, reload quarter and actual level01 gameplay. This is selected-image inspection, not a claim of reviewing every frame or browser interaction.",
+  "files": [
+    {
+      "path": "docs/art/titan_neck_coverage_v2/review/after_all29_no_weapon/room_preview_front_idle_reproduction.png",
+      "sha256": "2623a847d90a1e38588c2fe2bce143bba5aeba3a596020466a47ba1ed842fd36"
+    },
+    {
+      "path": "docs/art/titan_neck_coverage_v2/review/after_all29_no_weapon/gameplay_loader_quarter_idle.png",
+      "sha256": "162591c98db82d9f83cb29537f747706f997b01bb431f87eaec7e2a255b4aaa6"
+    },
+    {
+      "path": "docs/art/titan_neck_coverage_v2/review/interface_final/interface_final_body_28_rest_quarter.png",
+      "sha256": "deeac4880b12304322247d2f33ca41ddd87f4b4a1197fb159e72f9d0d031b161"
+    },
+    {
+      "path": "docs/art/titan_neck_coverage_v2/review/interface_final/interface_final_body_00_rest_rear.png",
+      "sha256": "bfe427bab4f8faf6703601cfe162ff3131ed97de89a38fe36846f9a17b1ab223"
+    },
+    {
+      "path": "docs/art/titan_neck_coverage_v2/review/interface_final/interface_final_body_00_reload_quarter.png",
+      "sha256": "29535ced1d7d71fa048345e0e3f25afe660c18ddb3efb8f55f79ba37df79aa91"
+    },
+    {
+      "path": "docs/art/titan_runtime_v1/review/helmet_v7_final/new_level_01_gameplay.png",
+      "sha256": "47d6d88002af5375be0daab557b258630dbc6f187cbfbb0c1b2f2374799e7b8a"
+    }
+  ],
+  "observations": [
+    "Original tall black neck column is covered in inspected front/quarter views. Short rear cloth seal remains.",
+    "Round amber visor is retained. Existing blue jaw/frame becomes deeper to cover low collars; its thickness remains subject to user art review.",
+    "Reload weapon can visually occlude the chin in normal gameplay; the separate final diagnostic explicitly hides all weapons and still passes all348 samples."
+  ],
+  "user_art_acceptance": "PENDING",
+  "all_animation_frames_checked": false,
+  "browser_interaction": "NOT RUN"
+}

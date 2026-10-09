@@ -1,0 +1,12 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API OpenGL ES 3.0 (ANGLE 2.1.1 git hash: aaebda1c5a40) - Compatibility - Using Device: Google Inc. (NVIDIA) - ANGLE (NVIDIA, NVIDIA GeForce RTX 4080 Laptop GPU (0x000027A0) Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.9579)
+
+ARMOR_NECK_EXPOSURE_FAIL integrity=PASS style=FAIL candidate_samples=348 references=20
+ERROR: STYLE_NECK_COVERAGE: body18 run/front exposes 5.319% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:652)
+ERROR: STYLE_NECK_COVERAGE: body28 run/front exposes 3.177% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:652)

@@ -98,8 +98,11 @@ class TitanV6NativeLineageTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.snapshot = validation.verify_before(6)
-        cls.config = validation.read(validation.WORK / "runtime_config.json")
-        cls.generation = validation.read(ROOT / cls.config["generation_record"])
+        # The delivered v6 is now a pinned historical fixture, independent of
+        # whichever revision is active. Its original generation rules stay exact.
+        frozen = {row["path"]: row for row in validation.verify_before(7)["files"]}
+        cls.config = validation.read(ROOT / frozen["docs/art/titan_runtime_v1/runtime_config.json"]["snapshot"])
+        cls.generation = validation.read(ROOT / frozen[cls.config["generation_record"]]["snapshot"])
         assert cls.config["active_helmet_revision"] == "helmet_refinement_v6"
 
     def setUp(self):

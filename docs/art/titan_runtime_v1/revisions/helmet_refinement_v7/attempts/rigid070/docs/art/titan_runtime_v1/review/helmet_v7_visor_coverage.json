@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "minimum_fraction": 0.5,
+  "projected_front_visor_fraction": 0.60056046561759,
+  "visor_pixels": 117012,
+  "helmet_silhouette_pixels": 194838,
+  "helmet_bounds_px": [
+    87,
+    105,
+    552,
+    634
+  ],
+  "definition": "Visible amber glass pixels divided by the whole ArmorHead_05 mesh front orthographic white silhouette interior; all other meshes, background and antialias edges excluded. Any neck geometry contained in ArmorHead_05 remains in the denominator. Not UV area, total 3D surface area, roundness or artistic likeness.",
+  "classification": "mask RGB channels >=224; amber r>g>b, r-g>=7, g-b>=9, r-b>=35; fixed for selected amber/steel-blue palette",
+  "capture_summary_sha256": "bdf9d0e6232f2be932ab8740dc63446a15a24596eaef53d71e1531ad61484e86",
+  "capture_sha256": {
+    "mask": "4695ad566893c804c2ca8f098b2ffaa8c227770d91b54dcf5cf7a31a2d83fa7f",
+    "color": "09c9b0af6b71220223873fcd55cfde184bdfb115375b0786b2ef3e9f39e1f440"
+  },
+  "current_scene_sha256": "29b4063410f01d426e2e2c3be03d4c259c6056045e075adbd8db60b9f10169e3",
+  "target_sha256": "27911b0133ea765345b9507cd991d298be7bb7c81094993625840b1bd3411614",
+  "canonical_head_sha256": "a963e84b7b672dab1fd62031bb456d6e88f6f89abd34741eb7d8d66cdd4fb6c1",
+  "geometry_sha256": "8d89f59f5371d1f912036aaca838e14ec3b117f969e879954800846c80b63ae2"
+}
