@@ -332,12 +332,19 @@
     "runtime_id": 7,
     "date": "2026-10-09",
     "scene": "assets/armors/atom_v1/atom.scn",
-    "scene_sha256": "a8f70bdf81ed11aeccc1834be6a7b542599335f4b283e8988922a1ca299fc638",
+    "scene_sha256": "4cc7e88aa5f70c8c93331699d29a93042c1c4ab53891cd7eaad7512ed9efaad8",
     "comparison_page": "../armor_original_based_v2/index.html#atom",
     "manifest": "../atom_runtime_v1/manifest.json",
-    "manifest_sha256": "53386d2991243706da3caf07236f7bb88cb91a09632f1846fedc5a0aa769eb0b",
+    "manifest_sha256": "5a0a2358a5f178a8431a8bfcdb3f88adb1c0cf92df696e372f154e15eaab30a6",
     "original_based": true,
     "art_acceptance": "pending_user_review",
-    "note": "以真正原版四部件與 UV 為基底，轉譯既有裝甲概念。"
+    "revision": "draft_refinement_v2",
+    "note": "依核准概念實際調整頭盔、胸肩輪廓與貼圖，保留遊戲比例、原骨架與裝配。",
+    "previous_texture_only": {
+      "source_commit": "f94323e40b3e7002268b39944bdcb58c2737c41f",
+      "snapshot": "../atom_runtime_v1/revisions/before_draft_refinement_v2/snapshot.json",
+      "snapshot_sha256": "b11f3dbef7eb700e02dfef178703d1828e700f06c4d51aa1332211e169db1d6d",
+      "scene_sha256": "a8f70bdf81ed11aeccc1834be6a7b542599335f4b283e8988922a1ca299fc638"
+    }
   }
 }

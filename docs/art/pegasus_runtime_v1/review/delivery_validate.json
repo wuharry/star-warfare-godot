@@ -3,11 +3,11 @@
   "errors": [],
   "scope": "Read-only first-integration packed master, true original indices/weights/rig and original-total20% geometry/UV. No artistic likeness score.",
   "master": "docs/art/pegasus_runtime_v1/build/pegasus_master.blend",
-  "master_sha256": "a01e1559b3548a69ccfec86584af3d0e87f44e3d22963b3a725e33c514d9d324",
+  "master_sha256": "15fc4ee5eaa2ea229ae02f1b6af1e505ce5ce7c8f240339467d166afaa02f83d",
   "loaded_master": "E:\\Star-Warfare-Godot-Restoration\\docs\\art\\pegasus_runtime_v1\\build\\pegasus_master.blend",
   "source_sha256": "0575a8b0c0b5674f0770636ea8d4520af3b8242253ffe2adfeeb594010f68b64",
-  "target_sha256": "3ca1147883913e43bd13ab860fdbf8563f1baab1ab90cfb3ea42814d360482b0",
-  "geometry_sha256": "752d22b6dbaa04380a5fff7308b2d9a0813265634829a819455bd452144a3581",
+  "target_sha256": "886ea9dac6e92272ebc540102d1a02159bf29dc337a089abeed9072668fe6bff",
+  "geometry_sha256": "2b181462b298abc54847262ad8ccba363732442991ea2c19d8ae946b0918c0f9",
   "blender": "5.1.0",
   "original_source_snapshot_sha256": "6866d0c6e0096aac19df0dbb966c407054776de26523d198d2031007e9209ed5",
   "original_node_ids": {
@@ -45,11 +45,11 @@
       {
         "part": "ArmorBody_08",
         "original_total_limit": 0.2,
-        "original_max_rest_displacement_fraction": 0.0,
+        "original_max_rest_displacement_fraction": 0.04828326164722079,
         "original_dimension_delta_fractions": [
-          0.0,
-          0.0,
-          0.0
+          0.03842265807229217,
+          4.3298697960381105e-15,
+          0.01768576246222675
         ],
         "original_uv_changed_fraction": 0.0,
         "surfaces": [
@@ -112,11 +112,11 @@
       {
         "part": "ArmorHead_08",
         "original_total_limit": 0.2,
-        "original_max_rest_displacement_fraction": 0.0,
+        "original_max_rest_displacement_fraction": 0.17528699895077207,
         "original_dimension_delta_fractions": [
-          0.0,
-          0.0,
-          0.0
+          6.661338147750939e-16,
+          0.12482977772919568,
+          0.04031888630778968
         ],
         "original_uv_changed_fraction": 0.0,
         "surfaces": [
@@ -133,7 +133,42 @@
     "triangles": 1128,
     "surfaces": 5,
     "uv_coordinates": 1096,
-    "uv_charts": 19
+    "uv_charts": 19,
+    "geometry_mode": "original_source_bounded_refinement",
+    "movable_parts": [
+      "ArmorBody_08",
+      "ArmorHead_08"
+    ],
+    "shape_quality": {
+      "ArmorBody_08": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.9888339355239825
+      },
+      "ArmorFoot_08": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.9999999999999998
+      },
+      "ArmorHand_08": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.9999999999999998
+      },
+      "ArmorHead_08": {
+        "reversed_triangles": 0,
+        "new_degenerate_triangles": 0,
+        "inherited_degenerate_triangles": 0,
+        "coincident_seam_max_rest_gap": 0.0,
+        "min_triangle_normal_cosine_from_original": 0.9364424998875344
+      }
+    }
   },
   "meshes": [
     {
@@ -228,8 +263,8 @@
         1254,
         1254
       ],
-      "canonical_sha256": "2b1b18f1644dc9a21c08147d2831eb87d9bd5d841655502a70b728ebd20e510d",
-      "packed_sha256": "2b1b18f1644dc9a21c08147d2831eb87d9bd5d841655502a70b728ebd20e510d",
+      "canonical_sha256": "f9e669332c16e13ed4ad4aaa17c639e9eed933eea6d8539ba6b4e8200cf39b94",
+      "packed_sha256": "f9e669332c16e13ed4ad4aaa17c639e9eed933eea6d8539ba6b4e8200cf39b94",
       "byte_identical": true
     },
     "shoulder": {
@@ -239,8 +274,8 @@
         1254,
         1254
       ],
-      "canonical_sha256": "7848f6b144f11cb446bc10def77646a3951ea59c9952080597d13e56bb806a19",
-      "packed_sha256": "7848f6b144f11cb446bc10def77646a3951ea59c9952080597d13e56bb806a19",
+      "canonical_sha256": "ecb0a8acf6e50a7b0a2498cea73c08b2c5d1456aa82925dfa6f3a2c42e4741e1",
+      "packed_sha256": "ecb0a8acf6e50a7b0a2498cea73c08b2c5d1456aa82925dfa6f3a2c42e4741e1",
       "byte_identical": true
     },
     "foot": {
@@ -272,8 +307,8 @@
         1254,
         1254
       ],
-      "canonical_sha256": "3db5d7e5daec768592cba87259a0fee66ad1fbf4a2e48b358254bdc27bd61f8b",
-      "packed_sha256": "3db5d7e5daec768592cba87259a0fee66ad1fbf4a2e48b358254bdc27bd61f8b",
+      "canonical_sha256": "1be6f576be497cd26d29a17b5d7277173ff1c668767dd60ed8cace106cdf8793",
+      "packed_sha256": "1be6f576be497cd26d29a17b5d7277173ff1c668767dd60ed8cace106cdf8793",
       "byte_identical": true
     }
   }

@@ -1,37 +1,138 @@
 {
   "status": "PASS_STATIC_BROWSER_NOT_RUN",
-  "pages": [
-    {
-      "path": "docs/art/armor_original_based_v2/index.html",
-      "sha256": "b4de4a328b8da9651112a63405f34d0bc548f8b51403a2ff10fd7e0888f3b034",
-      "javascript_syntax": "PASS"
+  "executed_at_utc": "2026-10-09T03:35:01.617458+00:00",
+  "validator": {
+    "path": "docs/art/armor_original_based_v2/validate_review.py",
+    "sha256": "e91f40b529519868ec2232cf05015e18004620b76a0eaee36086d400a29398fd",
+    "bytes": 12305
+  },
+  "checks": {
+    "javascript_syntax": {
+      "status": "PASS",
+      "node_version": "v22.17.0",
+      "pages": [
+        {
+          "path": "docs/art/armor_original_based_v2/index.html",
+          "sha256": "bc947e1dbf947a7884c8fcc95e57b1322d52a5ec3508075baa146856961644dd",
+          "bytes": 65608,
+          "status": "PASS",
+          "inline_scripts": [
+            {
+              "script_ordinal": 2,
+              "command": [
+                "C:\\nvm4w\\nodejs\\node.EXE",
+                "--check"
+              ],
+              "stdin_sha256": "c9288b7450ed94b99a91b9ff55ecd4b9df0c6bbd56bdbd2d884d33828544047b",
+              "exit_code": 0
+            }
+          ]
+        },
+        {
+          "path": "docs/art/original_armors_v1/index.html",
+          "sha256": "abc22f65440266fb361460e06fe1acdd5d7980aff05ad6808d0168afe0cf5b9a",
+          "bytes": 307684,
+          "status": "PASS",
+          "inline_scripts": [
+            {
+              "script_ordinal": 2,
+              "command": [
+                "C:\\nvm4w\\nodejs\\node.EXE",
+                "--check"
+              ],
+              "stdin_sha256": "0555ff2e412f3c4b265606b0fbd9cbf4b1febd64659ad587461309ddb62fa26f",
+              "exit_code": 0
+            }
+          ]
+        },
+        {
+          "path": "docs/art/atom_runtime_v1/index.html",
+          "sha256": "e298feeb75cd5770e9af04af4e7b40f54920c2fa8225c9366355b706b76e74dd",
+          "bytes": 10002,
+          "status": "PASS",
+          "inline_scripts": [
+            {
+              "script_ordinal": 1,
+              "command": [
+                "C:\\nvm4w\\nodejs\\node.EXE",
+                "--check"
+              ],
+              "stdin_sha256": "f1f663089dff446b759a12a41de6320857f7ce69f4a7066e7363f84c9152c43d",
+              "exit_code": 0
+            }
+          ]
+        },
+        {
+          "path": "docs/art/pegasus_runtime_v1/index.html",
+          "sha256": "2dde9932a7e9651385ab784ab31435fc4124ab36703fd77fe6afb2b005067551",
+          "bytes": 9881,
+          "status": "PASS",
+          "inline_scripts": [
+            {
+              "script_ordinal": 1,
+              "command": [
+                "C:\\nvm4w\\nodejs\\node.EXE",
+                "--check"
+              ],
+              "stdin_sha256": "1c0639de6e9f3ae5dbce1747138dba51e3c24a1a7f9af002df3d8e94fb6a0bef",
+              "exit_code": 0
+            }
+          ]
+        }
+      ],
+      "limitation": "node --check verifies syntax only; no DOM, rendering or user interaction was run."
     },
-    {
-      "path": "docs/art/original_armors_v1/index.html",
-      "sha256": "6bcd9c6f6ab0624d66736d515b2b4098abf08954d45fd3deadd034de8ae0fc2f",
-      "javascript_syntax": "PASS"
+    "aggregate_embedded_data": {
+      "status": "PASS",
+      "page": {
+        "path": "docs/art/armor_original_based_v2/index.html",
+        "sha256": "bc947e1dbf947a7884c8fcc95e57b1322d52a5ec3508075baa146856961644dd",
+        "bytes": 65608
+      },
+      "data": {
+        "path": "docs/art/armor_original_based_v2/review_data.json",
+        "sha256": "bd87447405e09fd691510963103101fcd8f53b54ed78ac97594dc3c1642c1927",
+        "bytes": 76435
+      },
+      "three_stage_design_ids": [
+        "C-08",
+        "C-09"
+      ]
     },
-    {
-      "path": "docs/art/atom_runtime_v1/index.html",
-      "sha256": "17a9dff1440fe0e7fb347d8092b7cc2711c665bea2fc57fc151ce89194dceab8",
-      "javascript_syntax": "PASS"
+    "local_resource_sha": {
+      "status": "PASS",
+      "resource_records_verified": 192,
+      "unique_local_files_verified": 185,
+      "scope": "Every recursive path/SHA record in review_data.json, including the frozen before images."
     },
-    {
-      "path": "docs/art/pegasus_runtime_v1/index.html",
-      "sha256": "f462a7bcf3ea5d28ae8903f7eeec242acbfdcb1fbf7d2c0f889d1c1278d3c678",
-      "javascript_syntax": "PASS"
+    "metadata_catalog_consistency": {
+      "status": "PASS",
+      "metadata_catalog_design_ids": [
+        "C-08",
+        "C-09"
+      ],
+      "unrelated_rows_deep_equal": 44,
+      "thunder_C07_unchanged": true,
+      "baseline_commit": "f94323e40b3e7002268b39944bdcb58c2737c41f",
+      "baseline_git_command": [
+        "git",
+        "show",
+        "f94323e40b3e7002268b39944bdcb58c2737c41f:docs/art/original_armors_v1/index.html"
+      ],
+      "catalog_rows": 46
+    },
+    "page_generation_report": {
+      "status": "PASS",
+      "generation_report": {
+        "path": "docs/art/armor_original_based_v2/page_validate.json",
+        "sha256": "8f437bb7ef16befb0f63daefb08ebde5504229563837e2260f22549363b825f4",
+        "bytes": 821
+      },
+      "page_and_data_sha_fresh": true
     }
-  ],
-  "unrelated_catalog_rows_unchanged": 43,
-  "ready_armors": [
-    "thunder",
-    "atom",
-    "pegasus"
-  ],
-  "runtime_captures_sha_verified": true,
-  "protected_hooks_and_harness": "UNCHANGED",
+  },
   "browser_interaction": "NOT RUN",
-  "browser_reason": "The browser tool rejected file:// navigation; no workaround attempted.",
-  "whitespace_note": "Two frozen copies of the original inspect_sources.gd retain the source tab-only line 11. Exact sent prompts retain intentional original terminal newline bytes. Other changed source passes diff whitespace checks.",
-  "checkout_byte_stability": "LF-normalized catalog files match declared eol=lf; delivery snapshots and sent prompts retain raw bytes."
+  "browser_limitation": "NOT RUN: CUA rejected the file:// preview protocol. No browser, network request or alternate-surface bypass was attempted by this validator.",
+  "art_acceptance": "NOT RUN",
+  "mobile_performance": "NOT RUN"
 }

@@ -4,7 +4,7 @@ const Visuals = preload("res://scripts/game/armor_visuals.gd")
 const Fixture = preload("res://tests/reload_catalog_fixture.gd")
 const HeadContract = preload("res://tools/armor_runtime_v1/refined_head_contract.gd")
 const PREFIXES := ["ArmorHead_", "ArmorBody_", "ArmorHand_", "ArmorFoot_"]
-const LOCAL_GEOMETRY_CHANGE_LIMIT := .20 # Latest authorized original-total head limit; unchanged body/limbs independently exact.
+const LOCAL_GEOMETRY_CHANGE_LIMIT := .20 # Cumulative per-part true-original rest displacement/dimension limit.
 const UV_CHANGED_COORDINATE_LIMIT := .20 # Per-surface original total; this iteration also requires exact v2 UV.
 var slug := ""
 var id := 0
@@ -15,6 +15,9 @@ var scene_path := ""
 var target_path := ""
 var head_name := ""
 var non_head_names: Array[String] = []
+var bounded := false
+var geometry_parts: Array = []
+var original_rest_min_dimensions: Dictionary = {}
 
 func _configure() -> void:
 	for argument: String in OS.get_cmdline_user_args():
@@ -22,6 +25,9 @@ func _configure() -> void:
 	assert(slug in ["hydra","strike","titan","atom","pegasus"])
 	config=JSON.parse_string(FileAccess.get_file_as_string("res://docs/art/"+slug+"_runtime_v1/runtime_config.json"))
 	id=int(config.runtime_id)
+	bounded=str(config.get("geometry_mode", "texture_only")) == "original_source_bounded_refinement"
+	geometry_parts=config.get("geometry_parts", []) if bounded else []
+	if bounded:assert(slug in ["atom", "pegasus"] and config.get("preserve_all_geometry") == false and not geometry_parts.is_empty())
 	work_path="res://"+str(config.work)+"/";asset_path="res://"+str(config.asset)+"/"
 	scene_path=asset_path+slug+".scn";target_path=work_path+"build/target.json"
 	head_name="ArmorHead_%02d"%id
@@ -62,6 +68,7 @@ func _run() -> void:
 	_check(Visuals.reworked_scene_path(6)=="res://assets/armors/thunder/thunder.scn","Adopted Thunder changed")
 	var source := (load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate()
 	var authored: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(target_path))
+	if bounded:_check(authored.geometry_mode == config.geometry_mode and authored.geometry_parts == geometry_parts,"Changed geometry contract")
 	var geometry: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(work_path+"build/geometry.json"))
 	GameState.equipped_armor=_equipped()
 	player._apply_recovered_armor_visibility()
@@ -89,6 +96,7 @@ func _run() -> void:
 		var expected: Dictionary=geometry.parts[str(part.name)].bounds_game
 		var actual := _posed_bounds(part,skeleton)
 		var old_rest := _posed_bounds(baseline,skeleton)
+		original_rest_min_dimensions[str(part.name)]=minf(old_rest.size.x,minf(old_rest.size.y,old_rest.size.z))
 		var dimension_deltas: Array[float] = []
 		for axis: int in 3:
 			var relative := absf(actual.size[axis]/old_rest.size[axis]-1.0)
@@ -104,7 +112,7 @@ func _run() -> void:
 		var displacement_fraction := max_rest_displacement/minf(old_rest.size.x,minf(old_rest.size.y,old_rest.size.z))
 		_check(displacement_fraction<=LOCAL_GEOMETRY_CHANGE_LIMIT,"Runtime rest vertex displacement exceeds original20% head budget")
 		rest_geometry_records[str(part.name)]={"dimension_delta_fraction":dimension_deltas,"max_rest_displacement":max_rest_displacement,"max_displacement_fraction_of_smallest_dimension":displacement_fraction}
-		if part.name==head_name:
+		if part.name==head_name or (bounded and str(part.name) in geometry_parts):
 			_check(actual.position.distance_to(Vector3(expected.min[0],expected.min[1],expected.min[2]))<.001,"Authored head shifted")
 			_check(actual.end.distance_to(Vector3(expected.max[0],expected.max[1],expected.max[2]))<.001,"Authored head scaled")
 		elif part.name in non_head_names:
@@ -112,6 +120,9 @@ func _run() -> void:
 		for sid: int in part.mesh.get_surface_count():
 			var arrays:=part.mesh.surface_get_arrays(sid)
 			var raw:=baseline.mesh.surface_get_arrays(sid)
+			var surface_target: Dictionary=authored.parts[str(part.name)].surfaces[sid]
+			var changed := bounded and bool(surface_target.get("geometry_changed", false))
+			_check(not changed or str(part.name) in geometry_parts,"Surface outside authorized geometry scope changed")
 			if is_refined_head:
 				for error: String in HeadContract.verify(arrays, raw, authored.parts[str(part.name)].surfaces[sid], config.head_refinement):
 					_check(false,error)
@@ -138,7 +149,20 @@ func _run() -> void:
 			if not is_refined_head:
 				_check(arrays[Mesh.ARRAY_INDEX]==raw[Mesh.ARRAY_INDEX],"Reordered original triangles")
 				_check(arrays[Mesh.ARRAY_BONES]==raw[Mesh.ARRAY_BONES] and arrays[Mesh.ARRAY_WEIGHTS]==raw[Mesh.ARRAY_WEIGHTS],"Changed original rig weights")
-			if part.name!=head_name:_check(arrays[Mesh.ARRAY_VERTEX]==raw[Mesh.ARRAY_VERTEX],"Untouched body/limb geometry changed")
+			if part.name!=head_name and not changed:_check(arrays[Mesh.ARRAY_VERTEX]==raw[Mesh.ARRAY_VERTEX],"Untouched body/limb geometry changed")
+			if bounded:
+				for channel: int in Mesh.ARRAY_MAX:
+					if changed and channel in [Mesh.ARRAY_VERTEX,Mesh.ARRAY_NORMAL,Mesh.ARRAY_TANGENT]:continue
+					_check(arrays[channel]==raw[channel], "Immutable original array changed %s/%d/%d" % [part.name,sid,channel])
+				if changed:
+					for index: int in arrays[Mesh.ARRAY_VERTEX].size():
+						var p: Array=surface_target.raw_positions[index]
+						var n: Array=surface_target.normals[index]
+						var t: Array=surface_target.tangents[index]
+						_check(arrays[Mesh.ARRAY_VERTEX][index].distance_to(Vector3(p[0],p[1],p[2]))<=.000002,"Equipped bind position differs from authored target")
+						_check(arrays[Mesh.ARRAY_NORMAL][index].distance_to(Vector3(n[0],n[1],n[2]))<=.001,"Equipped normal differs from authored target")
+						var tangent:=Vector3(arrays[Mesh.ARRAY_TANGENT][index*4],arrays[Mesh.ARRAY_TANGENT][index*4+1],arrays[Mesh.ARRAY_TANGENT][index*4+2])
+						_check(tangent.distance_to(Vector3(t[0],t[1],t[2]))<=.001 and absf(arrays[Mesh.ARRAY_TANGENT][index*4+3]-float(t[3]))<.000001,"Equipped tangent frame differs from authored target")
 			if config.get("preserve_all_geometry", false):
 				for channel: int in Mesh.ARRAY_MAX:
 					_check(arrays[channel]==raw[channel], "Texture-only integration changed original mesh array %s/%d/%d" % [part.name,sid,channel])
@@ -213,11 +237,22 @@ func _check_pose(parts: Array[MeshInstance3D], skeleton: Skeleton3D, source: Nod
 	for part: MeshInstance3D in parts:
 		var bounds:=_posed_bounds(part,skeleton)
 		_check(bounds.size.length()<3.2,"Mesh exploded during "+clip)
-		if part.name in non_head_names:
+		if bounded and str(part.name) in geometry_parts:
+			var original:=source.find_child(str(part.name),true,false) as MeshInstance3D
+			var before:=_posed_vertices(original,skeleton)
+			var after:=_posed_vertices(part,skeleton)
+			_check(before.size()==after.size(),"Bounded geometry changed original posed vertex count")
+			var maximum:=0.0
+			for index: int in mini(before.size(),after.size()):maximum=maxf(maximum,before[index].distance_to(after[index]))
+			var fraction:=maximum/float(original_rest_min_dimensions[str(part.name)])
+			_check(fraction<=LOCAL_GEOMETRY_CHANGE_LIMIT,"Posed vertex displacement exceeds true-original rest-dimension20% for "+str(part.name)+" in "+clip)
+			if not pose_record.has("part_vertex_displacement_fractions"):pose_record.part_vertex_displacement_fractions={}
+			pose_record.part_vertex_displacement_fractions[str(part.name)]=fraction
+		elif part.name in non_head_names:
 			var original:=source.find_child(str(part.name),true,false) as MeshInstance3D
 			var previous:=_posed_bounds(original,skeleton)
 			_check(bounds.position.distance_to(previous.position)<.003 and bounds.end.distance_to(previous.end)<.003,"Original limb deformation changed in "+clip)
-		if part.name==head_name:
+		if part.name==head_name and not bounded:
 			var original:=source.find_child(str(part.name),true,false) as MeshInstance3D
 			var previous:=_posed_bounds(original,skeleton)
 			var relative:=maxf(bounds.position.distance_to(previous.position),bounds.end.distance_to(previous.end))/minf(previous.size.x,minf(previous.size.y,previous.size.z))

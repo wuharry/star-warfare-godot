@@ -16,6 +16,8 @@ import re
 ROOT = Path(__file__).resolve().parents[3]
 WORK = Path(__file__).resolve().parent
 ART = ROOT / 'docs/art/original_armors_v1'
+REFINED_ARMORS = {'atom', 'pegasus'}
+BASELINE_COMMIT = 'f94323e40b3e7002268b39944bdcb58c2737c41f'
 BROWSER_LIMITATION = ('NOT RUN：本輪 CUA 預覽被安全政策拒絕，file:// 協定不受支援；'
                       '未以 HTTP 或其他介面繞過。已檢查 JavaScript 語法與本機資源 SHA。')
 ARMORS = (
@@ -75,16 +77,63 @@ def lookup_record(records: list[dict], path: Path) -> dict | None:
     return None
 
 
+def collect_texture_baseline(work: Path, scene: Path) -> dict:
+    """Bind the previous texture-only stage to its immutable snapshot bytes."""
+    frozen = work / 'revisions/before_draft_refinement_v2'
+    snapshot_path = frozen / 'snapshot.json'
+    snapshot = load(snapshot_path)
+    if (snapshot.get('source_commit') != BASELINE_COMMIT or
+            snapshot.get('status') != 'FROZEN_TEXTURE_ONLY_BASELINE'):
+        raise ValueError(f'Unexpected texture-only baseline: {snapshot_path}')
+
+    def frozen_resource(original: Path, expected_sha: str | None = None) -> dict:
+        record = lookup_record(
+            [{'path': row['original_path'], **row} for row in snapshot['files']], original)
+        if not record or (expected_sha and record['sha256'] != expected_sha):
+            raise ValueError(f'Baseline snapshot does not bind: {original}')
+        path = ROOT / record['snapshot_path']
+        if not path.resolve().is_relative_to(frozen.resolve()):
+            raise ValueError(f'Baseline resource is outside its snapshot: {path}')
+        return resource(path, record['sha256'])
+
+    manifest_record = frozen_resource(work / 'manifest.json')
+    manifest = load(WORK / manifest_record['path'])
+    capture_record = frozen_resource(work / 'review/engine/capture.json')
+    capture = load(WORK / capture_record['path'])
+    scene_record = frozen_resource(scene)
+    bound_capture = manifest.get('capture_summary', {})
+    bound_scene = lookup_record(manifest.get('files', []), scene)
+    if (bound_capture.get('sha256') != capture_record['sha256'] or not bound_scene or
+            bound_scene['sha256'] != scene_record['sha256']):
+        raise ValueError(f'Baseline manifest does not bind its frozen evidence: {work}')
+    if (capture.get('runtime_scene_sha256') != scene_record['sha256'] or
+            capture.get('resource_mode') != 'normal_imported_resources' or
+            not capture.get('save_unchanged')):
+        raise ValueError(f'Baseline capture does not bind its frozen scene: {work}')
+    captures = {}
+    for record in manifest.get('captures', []):
+        original_path = ROOT / record['path']
+        if original_path.stem.startswith('new_'):
+            captures[original_path.stem] = {
+                **frozen_resource(original_path, record['sha256']),
+                'dimensions': record.get('dimensions'),
+            }
+    return {'source_commit': BASELINE_COMMIT, 'scene': scene_record,
+            'snapshot': resource(snapshot_path), 'manifest': manifest_record,
+            'capture_summary': capture_record, 'captures': captures}
+
+
 def format_metrics(manifest: dict, runtime_id: int) -> list[dict]:
     geometry = manifest.get('geometry', {})
-    part = geometry.get('parts', {}).get(f'ArmorHead_{runtime_id:02}', {})
     topology = manifest.get('topology', {})
     uv = manifest.get('uv_summary', {})
     rows = []
-    if 'max_displacement_fraction_of_smallest_dimension' in part:
-        value = part['max_displacement_fraction_of_smallest_dimension']
-        rows.append({'label': '頭部相對原版最大位移', 'value': f'{value * 100:.3f}%',
-                     'note': '按原頭部最小軸尺寸正規化；不是概念圖相似率。'})
+    for part_name, label in [('ArmorHead', '頭部'), ('ArmorBody', '胸肩部')]:
+        part = geometry.get('parts', {}).get(f'{part_name}_{runtime_id:02}', {})
+        if 'max_displacement_fraction_of_smallest_dimension' in part:
+            value = part['max_displacement_fraction_of_smallest_dimension']
+            rows.append({'label': f'{label}相對原版最大位移', 'value': f'{value * 100:.3f}%',
+                         'note': '按該原部件最小軸尺寸正規化；不是概念圖相似率。'})
     if uv:
         count = uv.get('original_coordinate_count')
         changed = uv.get('changed_coordinate_count', uv.get('changed_coordinates'))
@@ -115,8 +164,25 @@ def collect_armor(spec: tuple) -> dict:
         'key': slug, 'name': name, 'design_id': design_id, 'runtime_id': runtime_id,
         'status': '尚未取得完整正式擷取與驗收', 'ready': False,
         'scope': ('以真正原版 Thunder 頭部重新生成貼圖；修改前身甲保留。'
-                  if slug == 'thunder' else '以真正原版四部件與 UV 為基底，轉譯既有裝甲概念。'),
+                  if slug == 'thunder' else
+                  '依核准概念實際調整頭盔、胸肩輪廓與貼圖，保留遊戲比例、原骨架與裝配。'),
         'captures': {}, 'metrics': [], 'tests': [], 'residuals': [], 'sources': [],
+        'comparison_order': ['original', 'after', 'before'] if slug == 'thunder' else
+                            ['original', 'before', 'after'],
+        'stage_labels': {
+            'original': {'title': '真正原版 ' + name,
+                         'caption': '同一擷取管線的原始模型與貼圖。'},
+            'before': {'title': '修改前（已還原版本）' if slug == 'thunder' else
+                               'f94323e4 · 僅貼圖版',
+                       'caption': 'bef5b833 身甲與頭盔；不是本輪採用的新頭部。' if slug == 'thunder' else
+                                  '上一輪保留原模型輪廓的素材，從凍結快照讀取。'},
+            'after': {'title': '這輪 ' + name if slug == 'thunder' else
+                              '本輪 · 草稿改模版',
+                      'caption': '實際正式模型與貼圖；外觀待使用者評價。'},
+        },
+        'before_note': ('Thunder 的第三欄為已還原的 bef5b833 版本；身甲與本輪相同，頭盔仍是舊低圓冠，可看出這輪只換回原版頭部基底。'
+                        if slug == 'thunder' else
+                        '依序比較真正原版、f94323e4 僅貼圖版、這輪依草稿改模版。灰模可直接檢查形狀變化，概念圖另列；不宣稱與草稿完全一致。'),
         'art_acceptance': 'NOT RUN・等待使用者美術評價',
         'browser_interaction': 'NOT RUN',
         'visual_inspection': 'NOT RUN',
@@ -156,6 +222,13 @@ def collect_armor(spec: tuple) -> dict:
         path = ROOT / record['path']
         available[path.stem] = {**resource(path, record['sha256']),
                                 'dimensions': record.get('dimensions')}
+    baseline = collect_texture_baseline(work, scene) if slug in REFINED_ARMORS else None
+    if baseline:
+        result['baseline'] = {key: value for key, value in baseline.items() if key != 'captures'}
+        for label, key in [('f94323e4 僅貼圖版凍結清單', 'snapshot'),
+                           ('f94323e4 素材與工程 manifest', 'manifest'),
+                           ('f94323e4 引擎擷取紀錄', 'capture_summary')]:
+            result['sources'].append({**baseline[key], 'label': label})
     aliases = ({'diffuse_front': 'full_front', 'diffuse_quarter': 'full_quarter',
         'diffuse_side': 'full_side', 'diffuse_rear': 'full_rear', 'idle_rifle': 'idle',
         'run_rifle': 'run', 'reload_04': 'reload', 'level_01_gameplay': 'game_level_1',
@@ -164,13 +237,19 @@ def collect_armor(spec: tuple) -> dict:
         native_suffix = aliases.get(suffix, suffix)
         original = available.get('original_' + native_suffix)
         after = available.get('new_' + native_suffix)
-        before = available.get('before_' + native_suffix)
+        before = (baseline['captures'].get('new_' + native_suffix) if baseline else
+                  available.get('before_' + native_suffix))
         if original or after:
             if slug == 'thunder' and suffix == 'level_08_gameplay':
                 label = '區域 03・遊戲'
             result['captures'][suffix] = {'label': label, 'scope': scope,
                                           'original': original, 'after': after, 'before': before}
     result['metrics'] = format_metrics(manifest, runtime_id)
+    if slug in REFINED_ARMORS:
+        parts = manifest.get('geometry', {}).get('parts', {})
+        result['model_refinement_observed'] = all(
+            parts.get(f'{part}_{runtime_id:02}', {}).get('max_rest_displacement', 0) > 0
+            for part in ['ArmorHead', 'ArmorBody'])
     for label, record in manifest.get('tests', {}).items():
         entry = {'label': label, 'status': record.get('status', 'NOT RUN')}
         report = record.get('file')
@@ -194,6 +273,8 @@ def collect_armor(spec: tuple) -> dict:
         'VISUALLY_REVIEWED_PENDING_USER_REVIEW', 'ENGINEERING_CANDIDATE_PENDING_USER_ART_REVIEW'}
     result['ready'] = bool(visual_ready and capture_summary and len(result['captures']) == len(VIEWS) and
         all(row['original'] and row['after'] for row in result['captures'].values()) and
+        (not baseline or all(row['before'] for row in result['captures'].values())) and
+        (slug not in REFINED_ARMORS or result['model_refinement_observed']) and
         all(row['status'] == 'PASS' and row.get('evidence') for row in result['tests']) and result['tests'])
     result['status'] = ('已套用正式素材・工程紀錄通過・待美術評價' if result['ready'] else
                        '已發現需修正的美術問題' if result['visual_inspection'] == 'NEEDS_ART_REVISION' else
@@ -209,8 +290,9 @@ def collect_armor(spec: tuple) -> dict:
 
 
 def update_gallery(data: dict) -> dict:
-    """Patch only three catalog rows; keep all other embedded values identical."""
-    pending = [armor['name'] for armor in data['armors'] if not armor['ready']]
+    """Publish C08/C09 refinements; preserve Thunder and all other catalog rows."""
+    publish = [armor for armor in data['armors'] if armor['key'] in REFINED_ARMORS]
+    pending = [armor['name'] for armor in publish if not armor['ready']]
     if pending:
         raise ValueError('Do not publish incomplete runtime gallery metadata: ' + ', '.join(pending))
     path = ART / 'index.html'
@@ -220,9 +302,11 @@ def update_gallery(data: dict) -> dict:
     if not match:
         raise ValueError('Gallery catalog not found')
     catalog = json.loads(match.group(2))
-    untouched_before = [row for row in catalog if row['design_id'] not in {'C-07', 'C-08', 'C-09'}]
+    untouched_before = [row for row in catalog if row['design_id'] not in {'C-08', 'C-09'}]
     updated = []
     for armor, spec in zip(data['armors'], ARMORS):
+        if armor['key'] not in REFINED_ARMORS:
+            continue
         metadata_path = ART / spec[6]
         metadata = load(metadata_path)
         manifest = armor['sources'][0]
@@ -235,29 +319,36 @@ def update_gallery(data: dict) -> dict:
             'manifest': '../' + spec[4] + '/manifest.json',
             'manifest_sha256': manifest['sha256'],
             'original_based': True, 'art_acceptance': 'pending_user_review',
-            'note': armor['scope'],
+            'revision': 'draft_refinement_v2', 'note': armor['scope'],
+            'previous_texture_only': {
+                'source_commit': armor['baseline']['source_commit'],
+                'snapshot': '../' + spec[4] + '/revisions/before_draft_refinement_v2/snapshot.json',
+                'snapshot_sha256': armor['baseline']['snapshot']['sha256'],
+                'scene_sha256': armor['baseline']['scene']['sha256'],
+            },
         }
         metadata['original_based_runtime'] = delivery
         metadata_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
         row = next(row for row in catalog if row['design_id'] == armor['design_id'])
         row['original_based_runtime'] = delivery
-        if armor['design_id'] == 'C-07':
-            row['helmet_art'] = metadata['helmet_art']
         updated.append(armor['design_id'])
     untouched_after = [row for row in catalog if row['design_id'] not in set(updated)]
     if untouched_after != untouched_before:
         raise ValueError('Unrelated gallery rows changed')
     embedded = json.dumps(catalog, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
-    path.write_text(text[:match.start(2)] + embedded + text[match.end(2):], encoding='utf-8', newline='\n')
+    template = (ART / 'tools/gallery.template.html').read_text(encoding='utf-8')
+    if template.count('__CATALOG_JSON__') != 1:
+        raise ValueError('Invalid original gallery catalog slot')
+    path.write_text(template.replace('__CATALOG_JSON__', embedded), encoding='utf-8', newline='\n')
     return {'updated_catalog_rows': updated, 'unrelated_catalog_rows_unchanged': len(untouched_after)}
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('--update-gallery', action='store_true',
-                        help='Publish only after all three runtime deliveries are ready')
+                        help='Publish C08/C09 only after both refinement deliveries are ready')
     args = parser.parse_args()
-    data = {'schema_version': 1, 'date': date.today().isoformat(),
+    data = {'schema_version': 2, 'date': date.today().isoformat(),
             'title': 'Thunder／Atom／Pegasus · 原版基底遊戲素材',
             'browser_interaction': 'NOT RUN', 'browser_limitation': BROWSER_LIMITATION,
             'armors': [collect_armor(spec) for spec in ARMORS]}

@@ -45,10 +45,17 @@ def main():
     parser.add_argument('--report',help='Report path, or a filename within this armor review directory.')
     args=parser.parse_args();slug=args.armor
     work=ROOT/f'docs/art/{slug}_runtime_v1'
+    config=json.loads((work/'runtime_config.json').read_text(encoding='utf-8'))
     output=report_path(args.report,work)
     report={'status':'FAIL','scope':'Geometry silhouettes only; does not measure texture likeness or artistic approval.',
             'limit':.20,'silhouettes':[],
             'inferred':'Head-only source deformation guided by approved design. Original mesh owns game scale, hidden rear, UV charts and joints; all body/limbs exact.'}
+    if config.get('geometry_mode')=='original_source_bounded_refinement':
+        report['geometry_mode']=config['geometry_mode']
+        report['geometry_parts']=config['geometry_parts']
+        report['inferred']=('Approved concept guides positions in the explicitly configured original parts: '+', '.join(config['geometry_parts'])+
+                            '. Their normal/tangent frames are recalculated; all other surface arrays and every original UV0, index, vertex count, skin, weight and transform stay exact. '
+                            'Per-part displacement/dimension budgets are cumulative from the true original source, never from the last revision. Hidden side/back forms remain inferred from the approved concept; image silhouette change is measured independently at the same four original cameras.')
     try:
         captures=capture_path(args.capture_dir,work)
         report['capture_directory']=str(captures.relative_to(ROOT)) if captures.is_relative_to(ROOT) else str(captures)
@@ -57,7 +64,6 @@ def main():
         if args.capture_dir is not None or summary_path.is_file():
             summary=json.loads(summary_path.read_text(encoding='utf-8'))
             report['capture_summary_sha256']=digest(summary_path)
-            config=json.loads((work/'runtime_config.json').read_text(encoding='utf-8'))
             assets=ROOT/config['asset']
             scene=assets/f'{slug}.scn';target=work/'build/target.json'
             maps={label:assets/config.get('texture_files',{}).get(label,label+'_diffuse.png')

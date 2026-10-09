@@ -21,6 +21,12 @@ func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT))
 	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(WORK+"target.json"))
 	assert(data.revision == slug+"_runtime_v1" and data.id == config.runtime_id)
+	var bounded := str(config.get("geometry_mode", "texture_only")) == "original_source_bounded_refinement"
+	var movable: Array = config.get("geometry_parts", []) if bounded else []
+	if bounded:
+		assert(slug in ["atom", "pegasus"] and config.get("preserve_all_geometry") == false and not movable.is_empty())
+		assert(data.geometry_mode == config.geometry_mode and data.geometry_parts == movable)
+		for part_name: String in movable:assert(config.parts.has(part_name))
 	var original := (load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate()
 	root.add_child(original)
 	var sk := original.find_children("*","Skeleton3D",true,false)[0] as Skeleton3D
@@ -53,11 +59,29 @@ func _run() -> void:
 				if delta.length() > .000001:
 					geometry_changed = true
 					a[Mesh.ARRAY_VERTEX][i] += basis.inverse()*delta
+			if bounded:
+				assert(geometry_changed == bool(row.geometry_changed))
+				assert(not geometry_changed or name_key in movable)
+				if geometry_changed:
+					assert(row.raw_positions.size() == a[Mesh.ARRAY_VERTEX].size() and row.normals.size() == row.raw_positions.size() and row.tangents.size() == row.raw_positions.size())
+					for i: int in row.raw_positions.size():
+						var expected_raw := Vector3(row.raw_positions[i][0],row.raw_positions[i][1],row.raw_positions[i][2])
+						assert(a[Mesh.ARRAY_VERTEX][i].distance_to(expected_raw) <= .000002)
+						var n := Vector3(row.normals[i][0],row.normals[i][1],row.normals[i][2])
+						var t := Vector3(row.tangents[i][0],row.tangents[i][1],row.tangents[i][2])
+						assert(n.is_finite() and t.is_finite() and absf(n.length()-1) < .000001 and absf(t.length()-1) < .000001 and absf(n.dot(t)) < .000001)
+						assert(absf(float(row.tangents[i][3])) == 1)
+						a[Mesh.ARRAY_NORMAL][i] = n
+						for component: int in 4:a[Mesh.ARRAY_TANGENT][i*4+component] = row.tangents[i][component]
+			elif config.get("preserve_all_geometry", false):
+				assert(not geometry_changed)
 			assert(row.uv.size() == a[Mesh.ARRAY_TEX_UV].size())
 			for uv_index: int in row.uv.size():
+				if slug in ["atom", "pegasus"]:
+					assert(a[Mesh.ARRAY_TEX_UV][uv_index] == Vector2(row.uv[uv_index][0],row.uv[uv_index][1]))
 				a[Mesh.ARRAY_TEX_UV][uv_index] = Vector2(row.uv[uv_index][0],row.uv[uv_index][1])
 			# Texture-only Atom/Pegasus keep original normal/tangent buffers too.
-			var regenerate_head := name_key == "ArmorHead_%02d" % int(config.runtime_id) and (geometry_changed or slug not in ["atom", "pegasus"])
+			var regenerate_head := not bounded and name_key == "ArmorHead_%02d" % int(config.runtime_id) and (geometry_changed or slug not in ["atom", "pegasus"])
 			if regenerate_head:
 				var sums := PackedVector3Array()
 				sums.resize(a[Mesh.ARRAY_VERTEX].size())
@@ -85,7 +109,7 @@ func _run() -> void:
 			# Preserve the engine's actual serialized buffers, editing only the
 			# allowed head position bytes and four-byte encoded normal entries.
 			var raw_surface: Dictionary=(old.mesh.get("_surfaces") as Array)[sid].duplicate(true)
-			if regenerate_head:
+			if regenerate_head or (bounded and geometry_changed):
 				var generated:=RenderingServer.mesh_get_surface(mesh.get_rid(),sid)
 				assert(raw_surface.format==generated.format)
 				var source_bytes: PackedByteArray=raw_surface.vertex_data.duplicate()
@@ -97,7 +121,7 @@ func _run() -> void:
 				assert(vertex_stride==12 and tangent_offset-normal_offset==4)
 				for byte: int in count*vertex_stride:source_bytes[byte]=edited_bytes[byte]
 				for i: int in count:
-					for byte: int in 4:source_bytes[normal_offset+i*8+byte]=edited_bytes[normal_offset+i*8+byte]
+					for byte: int in (8 if bounded else 4):source_bytes[normal_offset+i*8+byte]=edited_bytes[normal_offset+i*8+byte]
 				raw_surface.vertex_data=source_bytes
 				raw_surface.aabb=generated.aabb;raw_surface.bone_aabbs=generated.bone_aabbs
 			raw_surface.material=mat

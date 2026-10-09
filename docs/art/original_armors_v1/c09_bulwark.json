@@ -289,12 +289,19 @@
     "runtime_id": 8,
     "date": "2026-10-09",
     "scene": "assets/armors/pegasus_v1/pegasus.scn",
-    "scene_sha256": "971733e8ab5da401c32cb81eb6f858075ed15d2c1a81370732c51061ded65cf4",
+    "scene_sha256": "ae114acb94c13fc46725905d62545f74fce14aea367b5c2af913249992270f9f",
     "comparison_page": "../armor_original_based_v2/index.html#pegasus",
     "manifest": "../pegasus_runtime_v1/manifest.json",
-    "manifest_sha256": "1c41a1e180b1fa1b82882cd1607d2386388a586d72e2fbdb078d3cda49ab55cc",
+    "manifest_sha256": "8530cd6b6cc34469450b94d2560cd2ec9955390c38bf02e04a7af19516550300",
     "original_based": true,
     "art_acceptance": "pending_user_review",
-    "note": "以真正原版四部件與 UV 為基底，轉譯既有裝甲概念。"
+    "revision": "draft_refinement_v2",
+    "note": "依核准概念實際調整頭盔、胸肩輪廓與貼圖，保留遊戲比例、原骨架與裝配。",
+    "previous_texture_only": {
+      "source_commit": "f94323e40b3e7002268b39944bdcb58c2737c41f",
+      "snapshot": "../pegasus_runtime_v1/revisions/before_draft_refinement_v2/snapshot.json",
+      "snapshot_sha256": "5f750a59cfbf2c5093f7701e89e25b9de430cfef5a0e4b7fe5a8d51dd1879f23",
+      "scene_sha256": "971733e8ab5da401c32cb81eb6f858075ed15d2c1a81370732c51061ded65cf4"
+    }
   }
 }

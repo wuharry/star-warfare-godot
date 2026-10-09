@@ -29,6 +29,13 @@ def main():
     head = next(r for r in inputs if r['selected'] and r['label'] == 'head')
     part = manifest['geometry']['parts'][f"ArmorHead_{config['runtime_id']:02}"]
     topology = manifest['topology']
+    bounded = config.get('geometry_mode') == 'original_source_bounded_refinement'
+    description = DESCRIPTIONS[slug]
+    geometry_scope = '身體手腳保持原數據。'
+    if bounded:
+        description = description.replace('初版保持原幾何。', '依核准草稿修正頭盔與身甲／肩甲輪廓，UV0與原骨架精確保留。')
+        geometry_scope = ('允許改形的原部件：'+ '、'.join(config['geometry_parts']) +
+                          '；只調整位置、重新計算法線與切線，其餘部件及全部UV0／原拓撲／skin／權重／transform保持原值。')
     # All captures, geometry and five maps influence this digest. A hand-only
     # or shape-only revision must invalidate offline preview image caches.
     revision = manifest['capture_summary']['sha256'][:12]
@@ -39,23 +46,31 @@ def main():
                f"{manifest['uv_summary']['original_coordinate_count']}原UV，0改動 · "
                f"頭部最大局部位移 {part['max_displacement_fraction_of_smallest_dimension']*100:.2f}% · "
                f"各軸尺寸差最大 {max(part['dimension_delta_fraction'])*100:.2f}% · 真正原版總上限20%")
+    if bounded:
+        details = [f"{name} 位移{row['max_displacement_fraction_of_smallest_dimension']*100:.2f}%／尺寸{max(row['dimension_delta_fraction'])*100:.2f}%"
+                   for name,row in manifest['geometry']['parts'].items()]
+        metrics = (f"{topology['triangles']} triangles · 28原骨架 · 四部件／五surfaces／五貼圖 · "
+                   f"{manifest['uv_summary']['original_coordinate_count']}原UV，0改動 · "+' · '.join(details)+' · 各部件由真正原版累積量算上限20%')
     tokens = {'__NAME__': config['name'], '__DESIGN_ID__': config['design_id'], '__SLUG__': slug,
-              '__DESCRIPTION__': DESCRIPTIONS[slug], '__METRICS_TEXT__': metrics,
+              '__DESCRIPTION__': description, '__METRICS_TEXT__': metrics,
               '__BODY_REF__': relative(manifest['design_authority']['path']),
               '__HEAD_REF__': relative(manifest['helmet_design_authority']['path']),
               '__REVISION__': revision, '__HEAD_PROMPT__': relative(head['prompt']),
               '__RESIDUALS__': '尚待美術評價：' + '；'.join(manifest['residuals']),
               '__SOURCE_MAPS__': json.dumps(maps)}
     template = Path(__file__).with_name('review_template.html').read_text()
+    if bounded:
+        template = template.replace('新五張圖／head局部模型修正', '新五張圖／依草稿修正頭盔與身甲輪廓')
+        template = template.replace('只有頭部造型位置／法線調整，身體手腳原始render buffers、索引、原skin和權重保持相同。', geometry_scope)
     for token, value in tokens.items():
         template = template.replace(token, value)
     assert '__' not in template, 'Unexpanded template token'
     (work / 'index.html').write_text(template, encoding='utf-8')
     readme = f"""# {config['name']} · {config['design_id']} runtime v1
 
-{DESCRIPTIONS[slug]} 本輪已套到遊戲模型，仍待使用者美術評價。對應原版ID {config['runtime_id']}，原節點 {config['original_node_ids']}；不改裝甲數值、技能、存檔ID或背包。
+{description} 本輪已套到遊戲模型，仍待使用者美術評價。對應原版ID {config['runtime_id']}，原節點 {config['original_node_ids']}；不改裝甲數值、技能、存檔ID或背包。
 
-{metrics}。幾何來自真正原版skin-space source；身體手腳保持原數據。GLB交換格式會將權重正規化，但SCN保留原16-bit量化權重，GLB每個原三角形UV、bone名稱、正規化權重身份另行驗證。
+{metrics}。幾何來自真正原版skin-space source；{geometry_scope}GLB交換格式會將權重正規化，但SCN保留原16-bit量化權重，GLB每個原三角形UV、bone名稱、正規化權重身份另行驗證。
 
 交付：assets/armors/{slug}_v1/{slug}.scn、{slug}.glb與五張原生1254² diffuse；build/{slug}_master.blend內嵌全部原生PNG。原版13檔快照與節點buffer索引位於 revisions/original_source_v1，原來源、生成失敗稿、完整實送prompt、不可變參照SHA都保留。
 

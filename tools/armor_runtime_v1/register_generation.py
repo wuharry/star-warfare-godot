@@ -39,7 +39,7 @@ def register_generation(slug, label, native):
     for row in records:
         if row['label']==label:
             row['selected']=False
-    record = {**plan, 'variant':'original_based_v1', 'tool':'builtin.image_gen', 'selected':True,
+    record = {**plan, 'variant':plan.get('variant', 'original_based_v1'), 'tool':'builtin.image_gen', 'selected':True,
               'generated_file':str(native), 'archive':archive.relative_to(ROOT).as_posix(),
               'archive_sha256':sha(archive), 'output_size':size,
               'output':f'assets/armors/{slug}_v1/{label}_diffuse.png',

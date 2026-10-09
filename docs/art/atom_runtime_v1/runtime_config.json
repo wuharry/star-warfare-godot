@@ -88,17 +88,24 @@
   "original_total_geometry_limit": 0.2,
   "original_total_uv_changed_fraction_per_surface_limit": 0.2,
   "shape_file": "tools/armor_runtime_v1/shapes/atom.py",
-  "preserve_all_geometry": true,
-  "accepted_art_status": "runtime_integrated_engineering_candidate_pending_user_art_review",
-  "geometry_authoring": "Texture-only first integration: all original position, UV, index, bone and weight arrays must remain exact.",
+  "preserve_all_geometry": false,
+  "accepted_art_status": "runtime_integrated_pending_user_art_review",
+  "geometry_authoring": "Draft-driven head and torso/shoulder fitting from the immutable true original source; topology/UV/skin preserved, total position/dimension budget20%.",
   "art_residuals": [
-    "原幾何／UV 全保留，所以 Atom 長下巴、平多角耳蓋及長肩刺仍在；概念短頜、圓耳與較收斂肩部尚未完整形成。",
-    "青玻璃中心為亮 V 反射，未見黑色拼接裂縫；其亮度與對稱高光較概念硬，仍待使用者美術評價。",
-    "前胸已是單一直立青窄窗，但尺寸與高度受原短壯胸部 UV 面積限制，外框形狀較概念成人版狹長。",
-    "後背雙盒已移除，中央改為不發光鋼藍板；不是原圓燈的完全恢復。",
-    "部分白色磨邊及紫色裂紋較概念密，和 Viper/Fortune 的柔和大色塊仍有細節密度差異。",
-    "動畫只核對待機／跑動各一張與換彈九張固定取樣；未見新增破裂，不代表完整連續動畫或手機效能全面驗收。"
+    "原頭部已縮短下巴、壓低冠頂，六點耳蓋側視比例從約1.96:1改為1.19:1；金屬耳盤已畫回真正耳蓋，仍保留低多邊形外殼輪廓。",
+    "紫頂／鋼藍冠燈、三額燈與青玻璃已呈現；中央鋼藍冠區較草稿短，玻璃的V形對稱反光較強，缺少草稿的獨立青色頰窗。",
+    "長肩刺改成較短厚的楔形鰭，前面青燈可見但小且靠根，仍較草稿外張，未宣稱草稿肩部逐形一致。",
+    "body10實機是一個高胸青服務模組，已非舊領口燈或低胸燈；相對理想UV標示仍偏高，胸甲放射分片與下方五角板保留較多原版特色。",
+    "前臂圓燈改為矩形窗；白色磨邊與紫裂紋仍較草稿密。背面沿原版推定，概念未展示隱藏側背，不能稱完全還原。",
+    "15裝備姿勢／9GLB姿勢及64張ANGLE擷取通過；未做完整連續動畫全角度或手機效能實測，美術仍待使用者審閱。"
   ],
   "original_source_snapshot_sha256": "73f3272363d1b345858f83874d922a8d6a7b22c93d64aa5fe43ae87e75f0347d",
-  "source_node_index_sha256": "07ed03b1149f1c2371c27a7039b371e27efdbefb363d62f6cf2d0aa37cbe485f"
+  "source_node_index_sha256": "07ed03b1149f1c2371c27a7039b371e27efdbefb363d62f6cf2d0aa37cbe485f",
+  "geometry_mode": "original_source_bounded_refinement",
+  "geometry_parts": [
+    "ArmorHead_07",
+    "ArmorBody_07"
+  ],
+  "active_helmet_revision": "atom_runtime_v1",
+  "active_geometry_revision": "approved_draft_refinement_v2"
 }
