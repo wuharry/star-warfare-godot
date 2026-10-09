@@ -8,7 +8,11 @@ import hashlib
 import json
 import math
 import struct
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from neck_source_contract import verify_neck
 
 ROOT = Path(__file__).resolve().parents[2]
 WORK = ROOT / "docs/art/titan_runtime_v1"
@@ -22,7 +26,8 @@ def read(path):
     return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
-REVISIONS = {"helmet_refinement_v3": 3, "helmet_refinement_v4": 4, "helmet_refinement_v5": 5}
+REVISIONS = {"helmet_refinement_v3": 3, "helmet_refinement_v4": 4, "helmet_refinement_v5": 5,
+             "helmet_refinement_v6": 6}
 LABELS = {"head", "body", "shoulder", "hand", "foot"}
 SOURCE_INDEX_SHA = "1d2883a7123e3297245ee9845569335981d82f26842b661ca98393fd6a3ff0cc"
 FIRST_INDEX_SHA = "9a04729f9df7c23134eb377bf22f9e0d9580e824dda7949992d65a400d860009"
@@ -30,7 +35,9 @@ BEFORE_INDEX_SHA = {
     3: "2c1ada36a339d4b2e10d9795dd572d54692571fccc6be9e2ba19204fdeebd66e",
     4: "0328e353a7843e0e5f85e8bd5c9b54b274860b2fc7668b62988882a7170562c3",
     5: "1f4781ca2c5c8564c57dd153a621bb92f82ff36879b5eab19764dd3b1d454bd5",
+    6: "30accd5a3e51eea7bdc02e69c9dadc19bcdcb62568a92df6076a4a8326852412",
 }
+NECK_BEFORE = ROOT / "docs/art/titan_neck_mix_v1/revisions/before_neck_fix/snapshot.json"
 CAPTURE_NAMES = {
     *(f"{version}_{kind}_{view}.png" for version in ("original", "new")
       for kind in ("diffuse", "painted", "clay", "head") for view in ("front", "quarter", "side", "rear")),
@@ -155,6 +162,23 @@ def verify_baselines():
 
 
 def verify_before(version):
+    if version == 6:
+        # This new archive pins 216 files from the exact delivered v5 commit.
+        # Its field names differ from the older archives; normalize only the
+        # in-memory view, while verifying every archived byte independently.
+        assert digest(NECK_BEFORE) == BEFORE_INDEX_SHA[6], "Titan neck before archive index changed"
+        data = read(NECK_BEFORE)
+        assert data["status"] == "FROZEN_TITAN_V5_BEFORE_NECK_MIX_FIX"
+        assert data["source_commit"] == "46e449993fa7767e95324ca1aa0ae81b6cc40736"
+        assert len(data["files"]) == 216 and len({r["original_path"] for r in data["files"]}) == 216
+        rows = []
+        for row in data["files"]:
+            path = ROOT / row["snapshot_path"]
+            assert path.resolve().is_relative_to(NECK_BEFORE.parent.resolve()), "Escaping neck before archive"
+            assert digest(path) == row["sha256"] and path.stat().st_size == row["bytes"], "Historical neck before bytes changed: " + str(path)
+            rows.append({"path": row["original_path"], "snapshot": row["snapshot_path"],
+                         "sha256": row["sha256"], "bytes": row["bytes"]})
+        return {**data, "files": rows}
     prefix = "docs/art/titan_runtime_v1/"
     if version == 3:
         paths = {*("assets/armors/titan_v1/" + name for name in (
@@ -201,11 +225,12 @@ def active_version(config):
         assert 302 <= budget["vertices"] <= math.floor(294 * 1.35)
         assert 132 <= budget["triangles"] <= math.floor(124 * 1.35)
         verify_user_constraints()
-        if version == 5:
-            assert (budget["vertices"], budget["triangles"]) == (334, 164), "Titan v5 cannot increase the reviewed v4 head counts"
+        if version >= 5:
+            assert (budget["vertices"], budget["triangles"]) == (334, 164), "Titan v5/v6 cannot increase the reviewed head counts"
             assert budget["revision"] == revision
     assert config["generation_record"] == f"docs/art/titan_runtime_v1/revisions/{revision}/generation_record.json"
-    assert config["before_revision_snapshot"] == f"docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v{version}/snapshot.json"
+    expected_before = NECK_BEFORE.relative_to(ROOT).as_posix() if version == 6 else f"docs/art/titan_runtime_v1/revisions/before_helmet_refinement_v{version}/snapshot.json"
+    assert config["before_revision_snapshot"] == expected_before
     assert config["original_total_geometry_limit"] == config["original_total_uv_changed_fraction_per_surface_limit"] == .20
     assert (config["runtime_id"], config["original_triangles"], config["original_bones"], config["original_surface_count"], config["original_uv_coordinate_count"]) == (5, 700, 28, 5, 1607)
     assert config["texture_files"] == {label: ("titan_head_diffuse.png" if label == "head" else f"{label}_diffuse.png") for label in LABELS}
@@ -279,8 +304,13 @@ def verify_head_contract(original, authored, budget):
     assert all(abs(covered[i] - _area(baseline_uv, original["indices"][i * 3:i * 3 + 3])) <= 1e-7 for i in range(old_triangles)), "Missing/lost original face coverage"
     changed = sum(math.dist(a, b) > 1e-6 for a, b in zip(original["uv"], authored["uv"][:old_count]))
     assert changed / old_count <= .20
-    return {"original_head_vertices": old_count, "head_vertices": count, "original_head_triangles": old_triangles,
-            "head_triangles": triangles, "changed_original_head_uv": changed, "original_head_uv_fraction": changed / old_count}
+    result = {"original_head_vertices": old_count, "head_vertices": count, "original_head_triangles": old_triangles,
+              "head_triangles": triangles, "changed_original_head_uv": changed, "original_head_uv_fraction": changed / old_count}
+    # Earlier revisions retain their exact historical contract. The v6 fix
+    # adds this new mandatory interface guarantee without recertifying v5.
+    if budget.get("revision") == "helmet_refinement_v6":
+        result["original_neck_interface"] = verify_neck(original, authored)
+    return result
 
 
 def verify_target(config, source, target, snapshot):
@@ -305,9 +335,9 @@ def verify_target(config, source, target, snapshot):
     if active_version(config) >= 4:
         head = target["parts"]["ArmorHead_05"]["surfaces"][0]
         previous_head = previous["parts"]["ArmorHead_05"]["surfaces"][0]
-        if active_version(config) == 5:
+        if active_version(config) >= 5:
             for field in ("uv", "indices", "triangle_parents", "baseline_positions", "weights", "bone_indices", "bone_names"):
-                assert head[field] == previous_head[field], f"Titan v5 changed the reviewed v4 head {field}"
+                assert head[field] == previous_head[field], f"Titan v5/v6 changed the reviewed head {field}"
             edge_identity = lambda rows: [(row["index"], row["parents"]) for row in rows]
             assert edge_identity(head["added_vertices"]) == edge_identity(previous_head["added_vertices"]), "Titan v5 changed original-edge ownership"
             for row in head["added_vertices"]:
@@ -317,6 +347,20 @@ def verify_target(config, source, target, snapshot):
                 # metadata retains the Python calculation's double precision.
                 # Use the same micrometre tolerance as actual mesh positions.
                 assert math.dist(actual_bend, row["bend"]) < 1e-6, "Titan v5 bend metadata differs from actual positions"
+            if active_version(config) == 6:
+                protected = set(result["original_neck_interface"]["vertex_ids"])
+                assert len(protected) == 24 and len(head["positions"]) == 334
+                for index, point in enumerate(head["positions"]):
+                    if index not in protected:
+                        assert point == previous_head["positions"][index], f"Titan v6 changed accepted non-neck helmet vertex {index}"
+                assert head["added_vertices"] == previous_head["added_vertices"], "Titan v6 changed existing arc ownership/bends"
+                restored = sorted(index for index in protected if head["positions"][index] != previous_head["positions"][index])
+                assert len(restored) == 8, "Titan v6 must restore the eight actually displaced v5 neck vertices"
+                result["neck_only_geometry_revision"] = {
+                    "before_snapshot_sha256": BEFORE_INDEX_SHA[6], "protected_original_neck_vertices": 24,
+                    "restored_neck_vertex_ids": restored,
+                    "other_helmet_positions_exact": 310, "all_previous_head_uv_topology_bindings_exact": True,
+                }
         result["additional_uv_changes"] = sum(math.dist(a, b) > 1e-6 for a, b in zip(previous_head["uv"][:294], head["uv"][:294]))
         result["additional_head_uv_coordinates"] = len(head["uv"]) - len(previous_head["uv"])
         result["additional_head_triangles"] = len(head["indices"]) // 3 - len(previous_head["indices"]) // 3
@@ -411,6 +455,69 @@ def verify_geometry(config, source, target):
     return {"original_measurements": measurements,
             "triangles": 700 - 124 + config["head_refinement"]["triangles"], "surfaces": 5,
             "uv_coordinates": 1607 - 294 + config["head_refinement"]["vertices"]}
+
+
+def verify_v6_generation(config, generation, snapshot):
+    """Bind a new native edit to the immutable delivered v5 and original atlas."""
+    frozen = {row["path"]: row for row in snapshot["files"]}
+    parent_path = "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/generation_record.json"
+    parent_row = frozen[parent_path]
+    expected_parent = {"path": parent_row["snapshot"], "sha256": parent_row["sha256"]}
+    assert generation["previous_revision_record"] == expected_parent
+    assert digest(ROOT / parent_path) == parent_row["sha256"], "Historical Titan v5 generation record was rewritten"
+    previous_config = read(ROOT / frozen["docs/art/titan_runtime_v1/runtime_config.json"]["snapshot"])
+    assert previous_config["active_helmet_revision"] == "helmet_refinement_v5"
+    previous_textures = {label: ROOT / frozen["assets/armors/titan_v1/" + filename]["snapshot"]
+                         for label, filename in previous_config["texture_files"].items()}
+    # Re-run v5's existing strict v4/v3 lineage checks against its old snapshots.
+    # Its selected native PNG and record remain historical, never overwritten.
+    verify_generation(previous_config, previous_textures, verify_before(5))
+    parent = read(ROOT / parent_row["snapshot"])
+    canonical_before = frozen["assets/armors/titan_v1/titan_head_diffuse.png"]
+    assert parent["native_output_sha256"] == canonical_before["sha256"]
+    base_path = ROOT / "docs/art/armor_style_unification_v1/armor_runtime_integration_prompt.txt"
+    assert digest(base_path) == "45ce003f7eac9ab1464b44bc314eb5f7ab7cbe7985a6ab0480021110f68a4df9"
+    neck_atlas_sha = config["texture_slots"]["head"]["original_sha256"]
+    assert neck_atlas_sha == "a131e4a51e90518915f0060b203ff322c45b032640d5bc860a58d58ad5960dba"
+    revision_root = WORK / "revisions/helmet_refinement_v6"
+    stage = generation
+    attempt = stage["attempt"]
+    assert type(attempt) is int and 1 <= attempt <= 99, "Invalid v6 generation attempt"
+    while True:
+        assert stage["model_revision"] == "helmet_refinement_v6" and stage["tool"] == "image_gen.imagegen"
+        assert stage["use_case"] == "precise-object-edit" and stage["attempt"] == attempt
+        assert stage["previous_revision_record"] == expected_parent
+        assert stage["canonical_path"] == "assets/armors/titan_v1/titan_head_diffuse.png"
+        archive = revision_root / f"head_diffuse_attempt_{attempt:02d}.png"
+        prompt_path = revision_root / f"head_diffuse_prompt_attempt_{attempt:02d}.txt"
+        assert stage["archive_path"] == archive.relative_to(ROOT).as_posix()
+        assert stage["prompt_path"] == prompt_path.relative_to(ROOT).as_posix()
+        assert digest(archive) == stage["native_output_sha256"]
+        assert digest(prompt_path) == stage["prompt_sha256"]
+        assert base_path.read_text(encoding="utf-8") in prompt_path.read_text(encoding="utf-8"), "v6 edit omitted required full base prompt"
+        assert stage["dimensions"] == parent["dimensions"] == [1254, 1254]
+        assert stage["alpha_extrema"] == [255, 255]
+        assert stage["processing"] == "byte-for-byte native copy; no painting, recoloring, crop, resize or compositing"
+        refs = stage["references"]
+        assert len(refs) >= 2 and refs[0]["role"] == "edit_target"
+        for ref in refs:
+            assert isinstance(ref["role"], str) and ref["role"]
+            assert digest(ROOT / ref["snapshot"]) == ref["sha256"]
+        original_refs = [r for r in refs if r["role"] == "original_neck_texture"]
+        assert len(original_refs) == 1 and original_refs[0]["sha256"] == neck_atlas_sha, "v6 edit lacks the true-original neck atlas"
+        native = Path(stage["native_output_path"])
+        if native.is_file():
+            assert digest(native) == stage["native_output_sha256"]
+        if attempt == 1:
+            assert refs[0]["sha256"] == canonical_before["sha256"], "First v6 edit was not based on frozen v5 head"
+            assert "previous_attempt_record" not in stage
+            break
+        prior_path = revision_root / f"generation_record_attempt_{attempt-1:02d}.json"
+        assert stage["previous_attempt_record"] == {"path": prior_path.relative_to(ROOT).as_posix(), "sha256": digest(prior_path)}
+        prior = read(prior_path)
+        assert refs[0]["sha256"] == prior["native_output_sha256"], "v6 attempt input does not match the preserved native parent"
+        stage = prior
+        attempt -= 1
 
 
 def verify_generation(config, textures, snapshot):
@@ -544,6 +651,8 @@ def verify_generation(config, textures, snapshot):
         initial_v4 = read(WORK / "revisions/helmet_refinement_v4/generation_record_attempt_01.json")
         assert initial["references"][3]["sha256"] == initial_v4["references"][3]["sha256"]
         assert generation["dimensions"] == initial["dimensions"] == parent["dimensions"] == [1254, 1254]
+    elif version == 6:
+        verify_v6_generation(config, generation, snapshot)
     with Image.open(textures["head"]) as image:
         assert list(image.size) == generation["dimensions"] and image.size[0] == image.size[1]
         assert image.convert("RGBA").getextrema()[3] == (255, 255) and generation["alpha_extrema"] == [255, 255]

@@ -1,6 +1,7 @@
 """Run Titan's real refinement contract and safe first-integration refusals.
 
-The five commands run sequentially. Refusal text is part of the expectation:
+Five historical commands, plus the mandatory v6 neck guard, run sequentially.
+Refusal text is part of the expectation:
 an unrelated exit 1, parser failure or engine crash cannot pass a guard.
 Only this test's revision-specific JSON report is written by this wrapper.
 """
@@ -15,7 +16,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 WORK = ROOT / "docs/art/titan_runtime_v1"
 LABELS = ("head", "body", "shoulder", "hand", "foot")
-REVISIONS = {"helmet_refinement_v3": 3, "helmet_refinement_v4": 4, "helmet_refinement_v5": 5}
+REVISIONS = {"helmet_refinement_v3": 3, "helmet_refinement_v4": 4, "helmet_refinement_v5": 5,
+             "helmet_refinement_v6": 6}
 
 
 def digest(path):
@@ -93,7 +95,7 @@ def main():
     config = json.loads((WORK / "runtime_config.json").read_text(encoding="utf-8"))
     revision = config.get("active_helmet_revision")
     if revision not in REVISIONS:
-        parser.error("Only helmet_refinement_v3, helmet_refinement_v4 and helmet_refinement_v5 are supported")
+        parser.error("Only helmet_refinement_v3 through helmet_refinement_v6 are supported")
     if not config.get("head_refinement"):
         parser.error("Titan refinement guard requires the existing head_refinement contract")
 
@@ -112,6 +114,9 @@ def main():
           "res://tests/armor_head_refinement_contract_test.gd"], 0,
          "ARMOR_HEAD_REFINEMENT_CONTRACT_PASS valid_asset / changed_weights_rejected / duplicate_and_lost_faces_rejected"),
     ]
+    if REVISIONS[revision] >= 6:
+        commands.insert(0, ([sys.executable, "tools/armor_runtime_v1/neck_source_contract.py", "--armor=titan"], 0,
+                            "ARMOR_NECK_SOURCE_CONTRACT_PASS"))
     checks = [run_check(*command) for command in commands]
     after = resource_hashes(config)
     changed = [path for path in sorted(before.keys() | after.keys())
@@ -122,11 +127,11 @@ def main():
               "resource_files_unchanged": unchanged, "checked_resource_sha256": before,
               "checked_resource_sha256_after": after, "changed_resource_files": changed,
               "checks": checks,
-              "scope": "Five actual sequential subprocesses; exact refusal/PASS markers and resource before/after hashes. No expectation or refinement contract is rewritten."}
+              "scope": "Actual sequential subprocesses; v6 adds the mandatory true-original neck interface guard. Exact refusal/PASS markers and resource before/after hashes; historical v3-v5 expectations are retained."}
     output = WORK / f"review/helmet_v{REVISIONS[revision]}_contract_and_guards_test.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"TITAN_HELMET_GUARDS_{report['status']} revision={revision} checks=5 resources_unchanged={str(unchanged).lower()}")
+    print(f"TITAN_HELMET_GUARDS_{report['status']} revision={revision} checks={len(checks)} resources_unchanged={str(unchanged).lower()}")
     return 0 if passed else 1
 
 

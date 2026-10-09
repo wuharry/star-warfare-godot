@@ -4,6 +4,7 @@ extends SceneTree
 const ASSET := "res://assets/armors/titan_v1/"
 const WORK := "res://docs/art/titan_runtime_v1/"
 const HEAD := "ArmorHead_05"
+const NeckContract = preload("res://tools/armor_runtime_v1/neck_contract.gd")
 
 func _initialize() -> void:
 	_run.call_deferred()
@@ -77,6 +78,13 @@ func _run() -> void:
 	for i: int in sums.size():
 		assert(sums[i].length_squared() > 0.000000001)
 		arrays[Mesh.ARRAY_NORMAL][i] = sums[i].normalized()
+	var channel_errors: Array[String] = NeckContract.validate_channels(arrays, source.skin, "Titan-before-upload")
+	if not channel_errors.is_empty():
+		for message: String in channel_errors: push_error(message)
+		current.free()
+		original.free()
+		quit(1)
+		return
 	var rebuilt := ArrayMesh.new()
 	rebuilt.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	var generated := RenderingServer.mesh_get_surface(rebuilt.get_rid(), 0)
@@ -109,6 +117,23 @@ func _run() -> void:
 	var mesh := ArrayMesh.new()
 	mesh.set("_surfaces", [surface])
 	head.mesh = mesh
+	# Check the REAL candidate and material before either production write.
+	# Face roundness/count budgets cannot prove mixed-equipment neck safety.
+	var neck_report: Dictionary = NeckContract.verify(source, head)
+	neck_report.candidate_target = target_path
+	neck_report.candidate_target_sha256 = FileAccess.get_sha256(target_path)
+	neck_report.canonical_head_png_sha256 = FileAccess.get_sha256(ASSET + "titan_head_diffuse.png")
+	neck_report.output_scene = ASSET + "titan.scn" if preview_output.is_empty() else preview_output
+	neck_report.stage = "before_PackedScene_pack_ResourceSaver_save_and_GLB_export"
+	var neck_file := FileAccess.open(WORK + "review/neck_contract_gate.json", FileAccess.WRITE)
+	if neck_file != null: neck_file.store_string(JSON.stringify(neck_report, "\t") + "\n")
+	if not neck_report.errors.is_empty():
+		for message: String in neck_report.errors: push_error(message)
+		current.free()
+		original.free()
+		print("TITAN_NECK_CONTRACT_FAIL production SCN and GLB not written")
+		quit(1)
+		return
 	var packed := PackedScene.new()
 	assert(packed.pack(current) == OK)
 	assert(ResourceSaver.save(packed, ASSET + "titan.scn" if preview_output.is_empty() else preview_output) == OK)

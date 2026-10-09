@@ -12,6 +12,15 @@ candidate. Their direction is inferred from the single quarter-view concept.
 """
 import copy
 import math
+from neck_source_contract import discover_neck, matching_neck_point, verify_neck
+
+_neck_source = None
+
+
+def configure_neck_source(original):
+    """Discover the immutable physical neck from the true source surface."""
+    global _neck_source
+    _neck_source = discover_neck(original)
 
 def interpolate(value, knots):
     if value<knots[0][0] or value>knots[-1][0]:return value
@@ -102,6 +111,10 @@ def pressure_glass(point, source):
     return [x, y, z+(cap_z-z)*amount]
 
 def reshape(point, surface_id=0):
+    assert _neck_source is not None, "Titan shape requires its true original neck source"
+    neck_point = matching_neck_point(point, _neck_source)
+    if neck_point is not None:
+        return list(neck_point)
     x,y,z=point
     weight=min(1.0,max(0.0,(-z+.015)/.19))
     mapped=interpolate(y,KNOTS)
@@ -216,6 +229,9 @@ def refine_surface(original, positions, uv):
     assert len(row['uv']) <= len(original['uv']) * 1.35
     align_ear_and_lower_frame(original, authored, added)
     row['triangle_parents'], row['added_vertices'] = parents, added
+    # Alignment and future arc refinements must also preserve the discovered
+    # connection. This checks physical seam duplicates and exact old faces.
+    verify_neck(original, {**row, 'positions': authored})
     return row, authored
 
 

@@ -844,6 +844,19 @@ def verify_titan_refinement() -> dict:
     paths = {"scene": assets / "titan.scn", "glb": assets / "titan.glb", "source": runtime / "build/source.json",
              "target": runtime / "build/target.json", "geometry": runtime / "build/geometry.json", "master": runtime / "build/titan_master.blend"}
     hashes = {key: digest(path) for key, path in paths.items()}
+    if version >= 6:
+        mix_root = ROOT / "docs/art/titan_neck_mix_v1/review"
+        for label in ("after", "after_test_shared_finite"):
+            mixed = read(mix_root / label / "capture.json")
+            assert mixed["status"] == "PASS" and not mixed["failures"]
+            assert len(mixed["poses"]) == 261 and mixed["save_unchanged"] and mixed["gamestate_restored"]
+            assert mixed["resource_sha256"]["res://assets/armors/titan_v1/titan.scn"] == hashes["scene"]
+            for frame in mixed["frames"]:
+                assert digest(mix_root / label / frame["file"]) == frame["sha256"]
+            if label == "after":
+                assert len(mixed["frames"]) == 35
+            else:
+                assert len(mixed["negative_fixtures"]) >= 20 and len(mixed["shared_gate_checks"]) >= 24
     filenames = {"runtime": "runtime_test.json", "roundtrip": "roundtrip_test.json", "scene": "original_scene_invariants.json",
                  "master": f"helmet_v{version}_master_test.json", "glb_images": f"helmet_v{version}_glb_test.json",
                  "guards": f"helmet_v{version}_contract_and_guards_test.json"}
@@ -928,16 +941,20 @@ def verify_titan_refinement() -> dict:
             # already pinned historical EOL forms. Active v4/v5 files remain raw.
             helper.hash_matches(path, checked[path.relative_to(ROOT).as_posix()],
                                 historical=path == runtime / "generation_inputs.json")
-    assert len(guards["checks"]) == 5
+    assert len(guards["checks"]) == (6 if version >= 6 else 5)
     commands = [" ".join(row["command"]) for row in guards["checks"]]
-    for token in ("adopt.py", "provenance.py", "review.py", "compile.gd", "armor_head_refinement_contract_test.gd"):
+    guard_tokens = ["adopt.py", "provenance.py", "review.py", "compile.gd", "armor_head_refinement_contract_test.gd"]
+    if version >= 6:
+        guard_tokens.append("neck_source_contract.py")
+    for token in guard_tokens:
         selected = [row for row, command in zip(guards["checks"], commands) if token in command]
         assert len(selected) == 1
         row = selected[0]
-        expected = 0 if "contract_test.gd" in token else 1
+        expected = 0 if "contract_test.gd" in token or token == "neck_source_contract.py" else 1
         assert row["status"] == "PASS" and row["exit_code"] == row["expected_exit_code"] == expected
         if expected == 0:
-            assert "ARMOR_HEAD_REFINEMENT_CONTRACT_PASS" in row["stdout"]
+            marker = "ARMOR_NECK_SOURCE_CONTRACT_PASS" if token == "neck_source_contract.py" else "ARMOR_HEAD_REFINEMENT_CONTRACT_PASS"
+            assert marker in row["stdout"]
         else:
             assert row["stderr"], "Refusal guard did not record its reason"
     capture_folder = runtime / f"review/helmet_v{version}_final"

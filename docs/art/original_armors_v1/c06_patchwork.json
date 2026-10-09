@@ -296,13 +296,13 @@
     ],
     "original_bones_weights_skin_retained": true,
     "original_vertex_uv_triangle_counts_retained": false,
-    "date": "2026-10-06",
-    "selected_head_generation": "helmet_refinement_v5",
+    "date": "2026-10-09",
+    "selected_head_generation": "helmet_refinement_v6",
     "selected_native_generations": {
       "body": "original_integration_v1",
       "shoulder": "original_integration_v1",
       "foot": "original_integration_v1",
-      "head": "helmet_refinement_v5_attempt_03",
+      "head": "helmet_refinement_v6_attempt_01",
       "hand": "original_integration_v2_hand"
     },
     "original_source_snapshot": "../titan_runtime_v1/revisions/original_source_v1/snapshot.json",
@@ -311,26 +311,27 @@
     "art_review_status": "pending_user_review",
     "style_optimization": {
       "status": "runtime_integrated_pending_user_art_review",
-      "stage": "helmet_refinement_v5",
-      "comparison_page": "../armor_style_unification_v1/index.html#titan",
+      "stage": "helmet_refinement_v6",
+      "comparison_page": "../titan_neck_mix_v1/index.html",
       "mandatory_prompt": "../armor_style_unification_v1/armor_runtime_integration_prompt.txt",
       "prompt_set": [
         "../titan_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
         "../titan_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
         "../titan_runtime_v1/prompts/hand_diffuse_original_integration_v2_hand.txt",
-        "../titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_prompt_attempt_03.txt",
-        "../titan_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt"
+        "../titan_runtime_v1/revisions/helmet_refinement_v6/head_diffuse_prompt_attempt_01.txt",
+        "../titan_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+        "../titan_neck_mix_v1/prompts/mandatory_neck_interface.txt"
       ],
-      "latest_variant": "helmet_refinement_v5",
+      "latest_variant": "helmet_refinement_v6",
       "added_uv_changes": 0,
       "user_authorized_original_ceiling": 0.2,
       "actual_original_validation_limit": 0.2,
       "baseline": "../titan_runtime_v1/revisions/original_source_v1/snapshot.json",
       "verification": "../titan_runtime_v1/manifest.json",
-      "note": "在固定 v4 上小收耳側／下框，採用原生 attempt 3 的連續琥珀玻璃上緣反光與細橫線；正面玻璃投影 58.0930%。與 v4 的 UV、三角形數和索引相同；其他四圖、非頭部模型及前臂三點保留。冠頂與側板仍有低面數切面，沒有概念中的獨立小圓耳或單一銀扣，不宣稱完美或逐像素還原。",
+      "note": "恢復真正原版頸管；其餘310頭盔頂點和所有UV／拓樸沿用v5。深色原生內襯；29身甲×9姿勢與35圖混搭驗收。低領原有重疊輪廓仍保留，美術待評。",
       "added_head_uv_coordinates": 40,
       "head_count_growth_limit": 0.35,
-      "helmet_prompt_requirements": "../titan_runtime_v1/revisions/helmet_refinement_v5/asset_brief.md"
+      "helmet_prompt_requirements": "../titan_neck_mix_v1/prompts/mandatory_neck_interface.txt"
     },
     "non_head_vertex_uv_triangle_counts_retained": true,
     "head_triangles": 164,
@@ -343,17 +344,17 @@
     "head_triangle_growth_fraction": 0.32258064516129026,
     "head_uv_coordinate_growth_fraction": 0.1360544217687074,
     "added_uv_coordinates": 40,
-    "projected_front_visor_fraction": 0.580930083568084,
+    "projected_front_visor_fraction": 0.5501044037698226,
     "user_art_acceptance": "NOT RUN",
     "mobile_performance": "NOT RUN"
   },
   "helmet_studies": {
-    "comparison_page": "../titan_runtime_v1/revisions/helmet_refinement_v5/index.html",
-    "link_label": "Titan v5 · 真原版／固定 v4／本輪頭盔比對 ↗",
-    "latest_variant": "helmet_refinement_v5",
+    "comparison_page": "../titan_neck_mix_v1/index.html",
+    "link_label": "Titan v6 · 頸部混搭修正與前後近拍 ↗",
+    "latest_variant": "helmet_refinement_v6",
     "status": "runtime_integrated_pending_user_art_review",
-    "scope": "head_geometry_and_native_paint_refinement",
-    "note": "在固定 v4 上小收耳側／下框，採用原生 attempt 3 的連續琥珀玻璃上緣反光與細橫線；正面玻璃投影 58.0930%。與 v4 的 UV、三角形數和索引相同；其他四圖、非頭部模型及前臂三點保留。冠頂與側板仍有低面數切面，沒有概念中的獨立小圓耳或單一銀扣，不宣稱完美或逐像素還原。",
+    "scope": "neck_interface_repair",
+    "note": "恢復真正原版頸管；其餘310頭盔頂點和所有UV／拓樸沿用v5。深色原生內襯；29身甲×9姿勢與35圖混搭驗收。低領原有重疊輪廓仍保留，美術待評。",
     "style_comparison_page": "../armor_style_unification_v1/index.html#titan",
     "mandatory_style_prompt": "../armor_style_unification_v1/armor_runtime_integration_prompt.txt"
   }

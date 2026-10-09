@@ -1,0 +1,114 @@
+MANDATORY ADDENDUM — MIXED-ARMOR NECK INTERFACE
+
+Append this addendum to the complete, pinned armor-runtime integration prompt.
+Do not replace, silently rewrite, or change the SHA of that base prompt. This
+addendum is both an art requirement and an engineering acceptance contract;
+prompt compliance alone is not evidence that the runtime asset is safe.
+
+Preserve the approved helmet design, proportions, rounded visor, crown, frame,
+ear areas and the series' hand-painted shading. Any requested helmet redesign
+must stop at the original neck interface. A helmet may be equipped with a body
+from another armor set. Its neck cannot depend on its matching body's collar
+to hide a seam, an unfinished patch, a missing face or an incorrectly colored
+undersuit.
+
+Discover the neck from ALL surfaces of the TRUE ORIGINAL source mesh, using position-welded
+triangle connected components and their active named head/torso bone influences.
+Do not identify it from the proposed target, an editable target whitelist or a
+hand-authored list of convenient vertex IDs. Include every seam-duplicate UV
+vertex that shares a protected physical position. For Titan the source-derived
+component has 12 physical positions, 24 UV vertices and 12 triangles, with
+Bip01 Head and Bip01 Spine1 influences. Those are cross-checks of the discovered
+source, not permission to hard-code the selection for other helmets.
+
+Keep all protected source neck positions, body-interface anchors, UVs, triangle
+indices and winding, bone bindings and normalized skin weights unchanged.
+Preserve all source neck faces exactly once. Do not delete, reverse, duplicate,
+bridge, shrink or displace them. Apply this protection after every face-shaping,
+alignment, export and compile stage. An overall 15–20% silhouette/UV budget
+does not permit any change to the protected neck interface. Added helmet arc
+subdivision vertices must not move or replace the original neck component.
+
+For Titan's native diffuse atlas, render the actual neck UV chart as opaque, near-black
+matte undersuit cloth, continuous through all triangle edges and seam padding.
+Use subtle broad cloth shading. Do not paint gray metal, bright wear, blue/gold
+armor, exposed skin or transparent pixels inside this chart. Preserve the layout
+and design of every other chart. For the current Titan layout, the protected neck
+lies around U=0.013–0.562 and V=0.878–0.982; derive the exact triangle coverage
+from the original UVs rather than treating this bounding rectangle as a mask.
+Keep the native image's full dimensions and archive every attempt and complete
+sent prompt. Adopt its PNG bytes unchanged. No scripted painting, recoloring,
+cropping, resizing or compositing of artwork is permitted.
+
+Correct the source texture and geometry. Do not hide a failure with material
+tint, transparency, extra ambient darkness, a camera crop, an enlarged matching
+collar or a lowered whole helmet. Use the normal runtime material and lighting.
+Check actual equipped material samples, including tint, UV transforms and alpha.
+Geometry, UV, named skin/weights, exact neck faces and opacity are hard shared
+compiler requirements. Charcoal color limits are design-specific: the shared
+pipeline enables them only with neck_charcoal_required=true; other designs keep
+their approved source cloth palette. Titan's dedicated compiler always enforces
+its strict charcoal limits. Do not disable or relax Titan's pinned material or
+interface limits to make a candidate pass.
+
+The build/compile gate must independently derive and validate the original neck
+component. A failed position, UV, topology, named skin or weight check must stop
+the build before promotion. Runtime validation must inspect the compiled SCN
+and exported GLB, not just target JSON or a same-suit preview.
+
+Reject non-finite values explicitly BEFORE ArrayMesh/GPU upload and before
+distance/budget comparisons: NaN and infinity in source/candidate positions,
+UVs, weights, transforms, Skin binds, material tint/UV parameters or sampled
+pixels must fail closed. NaN can make a comparison evaluate false; a small-error
+assertion alone does not validate the input. Validate required parts and triangle
+counts before packing, saving or exporting any runtime file.
+
+Prove the guard rejects independent, in-memory negative fixtures, including a
+moved anchor, changed UV, changed bone binding/weight, removed/reversed/duplicated
+neck face, added bridge and transparent chart. For Titan/charcoal-enabled checks,
+also reject gray cloth and include the frozen defective
+native atlas on known-valid original geometry so an unrelated geometry failure
+cannot make a material test appear to work. Fixtures must actually change the
+tested channel. Preserve real source assets and the user's save data. In the
+shared pipeline, separately prove that valid opaque non-charcoal palettes remain
+allowed when charcoal is not enabled, while transparent pixels and corrupt
+interfaces are still rejected. Exercise the real production writer: failure must
+preserve an existing destination's bytes and must not create a previously missing
+output scene.
+
+Add real non-finite regression fixtures, not only labels or mocked return values.
+Confirm the invalid value survives in the actual packed channel or decoded
+ArrayMesh, then prove rejection at the production validation stage. For channels
+tested before upload, exercise that same production pre-upload validator. Include
+true-original source corruption as well as candidate corruption. The real writer
+must also refuse a candidate with a retained NaN vertex without overwriting an
+existing scene or creating a missing destination. Preserve each earlier test
+report and append the final finite-safety report as separate evidence.
+
+For Titan, equip the delivered helmet with ALL 29 body IDs (0–28). Test the real
+gameplay and store equipment paths. Sample idle, running and reloading at three
+times each: 29 bodies × 9 poses = 261 actual posed checks. Compare the protected
+posed neck with the true-original source, not the new target. Capture at least
+35 normal-resource neck close-ups: eight representative bodies × front/quarter/
+side/rear neutral views, plus Viper-body idle/run/reload quarter views. Include
+the low collars, a same-set control and late Call of Mini bodies. Inspect these
+renders for background holes, collar separation, clipping and visible unfinished
+cloth. If coverage still fails after interface restoration, repair the actual
+skinned geometry and repeat the complete checks; painting alone is insufficient.
+
+Bind all reports and captures to actual resource SHA256 values, renderer,
+dimensions and unchanged/restored real save state. Preserve before evidence and
+failed attempts. Do not reuse stale prior-revision PASS reports as current proof.
+Shared-compiler and Titan-dedicated-compiler integration does not prove that
+every other custom compiler has been migrated or every existing asset has been
+revalidated. Name the actual paths and tests completed. Engineering PASS, human
+visual inspection, user art acceptance and device
+performance are separate statuses. Leave user art acceptance pending until the
+user evaluates the delivered result.
+
+Record the limits of human inspection: reviewed frame count, resolution,
+background, selected camera angles and any weapon/armor occlusion. Inspect
+collar overlaps as well as obvious background holes. A charcoal luminance
+threshold is an upper limit, not proof of exact original-cloth color matching.
+Document any remaining rectangular source-neck outline, visible collar overlap
+or brighter cloth instead of presenting a contract PASS as a perfect appearance.
