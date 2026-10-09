@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "revision": "helmet_refinement_v7",
+  "target_sha256": "27911b0133ea765345b9507cd991d298be7bb7c81094993625840b1bd3411614",
+  "before_snapshot_sha256": "1b40ce0d9ba6dda2b11c6c9ea0a931deaa8cd044301952627543bca491789f6f",
+  "generation_record_sha256": "e0be5f376837a5f4a1ed62b2051a5d7b5436506eee3f60e945149049c2951db0",
+  "shell_fit": {
+    "delta_y_m": -0.07,
+    "translated_shell_vertices": 310,
+    "original_neck_vertices_exact": 24,
+    "all_reviewed_uv_topology_skin_exact": true,
+    "scope": "Rest-space rigid shell translation only; rendered mixed-body neck coverage is verified separately"
+  },
+  "native_images": [
+    {
+      "label": "head",
+      "canonical_sha256": "a963e84b7b672dab1fd62031bb456d6e88f6f89abd34741eb7d8d66cdd4fb6c1",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v6/head_diffuse_prompt_attempt_01.txt",
+      "postprocessing": "none; inherited native PNG bytes",
+      "provenance": "unchanged v6 native PNG; v7 geometry-only fit",
+      "inherited_generation_record": {
+        "path": "docs/art/titan_neck_coverage_v2/revisions/before_shell_fit_v7/docs/art/titan_runtime_v1/revisions/helmet_refinement_v6/generation_record.json",
+        "sha256": "5877c23a498e775aa62b60e6fadd1f3da7606230c088f2d07f4118e27904365b"
+      }
+    },
+    {
+      "label": "body",
+      "canonical_sha256": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "docs/art/titan_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; inherited native PNG bytes"
+    },
+    {
+      "label": "foot",
+      "canonical_sha256": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "docs/art/titan_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; inherited native PNG bytes"
+    },
+    {
+      "label": "hand",
+      "canonical_sha256": "511a205683e0e98bd9f8468edebf5a73052085e49e7fed66bd98ac3328ea74ec",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "docs/art/titan_runtime_v1/prompts/hand_diffuse_original_integration_v2_hand.txt",
+      "postprocessing": "none; inherited native PNG bytes"
+    },
+    {
+      "label": "shoulder",
+      "canonical_sha256": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "docs/art/titan_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; inherited native PNG bytes"
+    }
+  ],
+  "scope": "Actual authored target and native PNG lineage. In-engine neck coverage is a separate rendered requirement."
+}

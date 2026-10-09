@@ -1,0 +1,1592 @@
+{
+  "schema": "titan_lower_frame_profile_proposal_v1",
+  "status": "STATIC_GEOMETRY_PASS_PENDING_ENGINE_VISUAL_REVIEW",
+  "source": {
+    "path": "docs/art/titan_runtime_v1/revisions/original_source_v1/source.json",
+    "sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
+    "scope": "true original source; never the authored v6/v7 cage"
+  },
+  "base_target": {
+    "path": "docs/art/titan_runtime_v1/build/target.json",
+    "sha256": "27911b0133ea765345b9507cd991d298be7bb7c81094993625840b1bd3411614",
+    "revision": "helmet_refinement_v7",
+    "shell_fit_delta_y_m": -0.07
+  },
+  "native_atlas": {
+    "path": "assets/armors/titan_v1/titan_head_diffuse.png",
+    "sha256": "a963e84b7b672dab1fd62031bb456d6e88f6f89abd34741eb7d8d66cdd4fb6c1",
+    "pixels_modified": false
+  },
+  "construction_rule": {
+    "original_vertices": "For each source physical row, apply its common delta_y to ALL listed UV seam duplicates, keeping current X/Z. Match source physical points, never current shape positions.",
+    "added_vertices": "For EVERY one of the 40 existing added vertices, use mean(delta_y(parent_a),delta_y(parent_b)); a missing parent offset is 0. Preserve the original added bend record.",
+    "rounding": "Only round final position components to float32 after adding delta_y; geometry JSON/SCN/GLB must use this same candidate.",
+    "unchanged": "All 24 source neck vertices, all current amber face vertices and forehead, UV coordinates/charts/counts, indices/triangle_parents, original baseline_positions, Skin bone names/indices/weights and all non-head parts."
+  },
+  "physical_rows": [
+    {
+      "representative_source_vertex": 0,
+      "source_physical_position_m": [
+        -0.317086040973663,
+        1.60634529590607,
+        -0.0177524704486132
+      ],
+      "signed_source_key_rounded_4": [
+        -0.3171,
+        1.6063,
+        -0.0178
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        0,
+        8,
+        14
+      ],
+      "before_y_m": 1.5650676488876343,
+      "target_y_m": 1.53,
+      "delta_y_m": -0.03506764888763425,
+      "maximum_additional_down_before_original_20_percent_m": 0.06570413778646668,
+      "after_y_float32_m": 1.5299999713897705,
+      "max_candidate_original_displacement_m": 0.09357787836424912,
+      "max_candidate_original_displacement_fraction": 0.15610785208395803
+    },
+    {
+      "representative_source_vertex": 2,
+      "source_physical_position_m": [
+        -0.23285798728466,
+        1.54952144622803,
+        -0.0134143596515059
+      ],
+      "signed_source_key_rounded_4": [
+        -0.2329,
+        1.5495,
+        -0.0134
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        2,
+        5,
+        9
+      ],
+      "before_y_m": 1.5129477977752686,
+      "target_y_m": 1.46,
+      "delta_y_m": -0.05294779777526859,
+      "maximum_additional_down_before_original_20_percent_m": 0.0806113039064494,
+      "after_y_float32_m": 1.4600000381469727,
+      "max_candidate_original_displacement_m": 0.0930326956993199,
+      "max_candidate_original_displacement_fraction": 0.15519837116492896
+    },
+    {
+      "representative_source_vertex": 26,
+      "source_physical_position_m": [
+        -0.0962665751576424,
+        1.35252964496613,
+        -0.14850315451622
+      ],
+      "signed_source_key_rounded_4": [
+        -0.0963,
+        1.3525,
+        -0.1485
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        26,
+        29,
+        50,
+        193,
+        198,
+        211
+      ],
+      "before_y_m": 1.3599960803985596,
+      "target_y_m": 1.31,
+      "delta_y_m": -0.04999608039855952,
+      "maximum_additional_down_before_original_20_percent_m": 0.11362275198472116,
+      "after_y_float32_m": 1.309999942779541,
+      "max_candidate_original_displacement_m": 0.07009226096957637,
+      "max_candidate_original_displacement_fraction": 0.11692883509367018
+    },
+    {
+      "representative_source_vertex": 27,
+      "source_physical_position_m": [
+        -0.147116661071777,
+        1.4499945640564,
+        -0.182511210441589
+      ],
+      "signed_source_key_rounded_4": [
+        -0.1471,
+        1.45,
+        -0.1825
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        27,
+        45,
+        64
+      ],
+      "before_y_m": 1.3954899311065674,
+      "target_y_m": 1.345,
+      "delta_y_m": -0.05048993110656741,
+      "maximum_additional_down_before_original_20_percent_m": 0.06440760823811933,
+      "after_y_float32_m": 1.3450000286102295,
+      "max_candidate_original_displacement_m": 0.10609921956787934,
+      "max_candidate_original_displacement_fraction": 0.17699611878413413
+    },
+    {
+      "representative_source_vertex": 28,
+      "source_physical_position_m": [
+        -0.131208568811417,
+        1.35790848731995,
+        -0.148001208901405
+      ],
+      "signed_source_key_rounded_4": [
+        -0.1312,
+        1.3579,
+        -0.148
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        28,
+        48,
+        66
+      ],
+      "before_y_m": 1.36577570438385,
+      "target_y_m": 1.32,
+      "delta_y_m": -0.045775704383850035,
+      "maximum_additional_down_before_original_20_percent_m": 0.11422703096078321,
+      "after_y_float32_m": 1.3200000524520874,
+      "max_candidate_original_displacement_m": 0.06706677601949368,
+      "max_candidate_original_displacement_fraction": 0.11188168115808587
+    },
+    {
+      "representative_source_vertex": 32,
+      "source_physical_position_m": [
+        -1.40469956022571e-06,
+        1.53312408924103,
+        0.270258098840714
+      ],
+      "signed_source_key_rounded_4": [
+        -0.0,
+        1.5331,
+        0.2703
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        32,
+        86,
+        195,
+        243
+      ],
+      "before_y_m": 1.4631240367889404,
+      "target_y_m": 1.425,
+      "delta_y_m": -0.038124036788940385,
+      "maximum_additional_down_before_original_20_percent_m": 0.04988870024680858,
+      "after_y_float32_m": 1.4249999523162842,
+      "max_candidate_original_displacement_m": 0.10812413692474587,
+      "max_candidate_original_displacement_fraction": 0.18037411265141898
+    },
+    {
+      "representative_source_vertex": 33,
+      "source_physical_position_m": [
+        -0.118455320596695,
+        1.53090810775757,
+        0.235465317964554
+      ],
+      "signed_source_key_rounded_4": [
+        -0.1185,
+        1.5309,
+        0.2355
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        33,
+        35,
+        197,
+        203
+      ],
+      "before_y_m": 1.460908055305481,
+      "target_y_m": 1.425,
+      "delta_y_m": -0.03590805530548091,
+      "maximum_additional_down_before_original_20_percent_m": 0.04988870024680925,
+      "after_y_float32_m": 1.4249999523162842,
+      "max_candidate_original_displacement_m": 0.10590815544128573,
+      "max_candidate_original_displacement_fraction": 0.17667738308575973
+    },
+    {
+      "representative_source_vertex": 38,
+      "source_physical_position_m": [
+        -0.185497105121613,
+        1.50534355640411,
+        0.107203677296638
+      ],
+      "signed_source_key_rounded_4": [
+        -0.1855,
+        1.5053,
+        0.1072
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        38,
+        202,
+        206,
+        213
+      ],
+      "before_y_m": 1.4353435039520264,
+      "target_y_m": 1.4,
+      "delta_y_m": -0.035343503952026456,
+      "maximum_additional_down_before_original_20_percent_m": 0.04988870024681458,
+      "after_y_float32_m": 1.399999976158142,
+      "max_candidate_original_displacement_m": 0.1053435802459679,
+      "max_candidate_original_displacement_fraction": 0.17573555129152
+    },
+    {
+      "representative_source_vertex": 47,
+      "source_physical_position_m": [
+        -0.177118867635727,
+        1.4735095500946,
+        -0.0328312776982784
+      ],
+      "signed_source_key_rounded_4": [
+        -0.1771,
+        1.4735,
+        -0.0328
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        47,
+        199,
+        205,
+        214
+      ],
+      "before_y_m": 1.4094016551971436,
+      "target_y_m": 1.365,
+      "delta_y_m": -0.044401655197143564,
+      "maximum_additional_down_before_original_20_percent_m": 0.05552316472055267,
+      "after_y_float32_m": 1.3650000095367432,
+      "max_candidate_original_displacement_m": 0.10879357972990455,
+      "max_candidate_original_displacement_fraction": 0.18149088597683674
+    },
+    {
+      "representative_source_vertex": 49,
+      "source_physical_position_m": [
+        -0.210555851459503,
+        1.47129547595978,
+        -0.0440433211624622
+      ],
+      "signed_source_key_rounded_4": [
+        -0.2106,
+        1.4713,
+        -0.044
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        49,
+        65,
+        220
+      ],
+      "before_y_m": 1.4087885618209839,
+      "target_y_m": 1.365,
+      "delta_y_m": -0.043788561820983896,
+      "maximum_additional_down_before_original_20_percent_m": 0.056959242118244685,
+      "after_y_float32_m": 1.3650000095367432,
+      "max_candidate_original_displacement_m": 0.10677020518364116,
+      "max_candidate_original_displacement_fraction": 0.17811546584656793
+    },
+    {
+      "representative_source_vertex": 80,
+      "source_physical_position_m": [
+        0.0962653681635857,
+        1.3525298833847,
+        -0.148502886295319
+      ],
+      "signed_source_key_rounded_4": [
+        0.0963,
+        1.3525,
+        -0.1485
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        80,
+        83,
+        103,
+        242,
+        246,
+        260
+      ],
+      "before_y_m": 1.359995722770691,
+      "target_y_m": 1.31,
+      "delta_y_m": -0.049995722770690865,
+      "maximum_additional_down_before_original_20_percent_m": 0.11362196320507063,
+      "after_y_float32_m": 1.309999942779541,
+      "max_candidate_original_displacement_m": 0.07009269753179821,
+      "max_candidate_original_displacement_fraction": 0.11692956337253206
+    },
+    {
+      "representative_source_vertex": 81,
+      "source_physical_position_m": [
+        0.147115260362625,
+        1.44999504089355,
+        -0.182510823011398
+      ],
+      "signed_source_key_rounded_4": [
+        0.1471,
+        1.45,
+        -0.1825
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        81,
+        100,
+        118
+      ],
+      "before_y_m": 1.3954893350601196,
+      "target_y_m": 1.345,
+      "delta_y_m": -0.050489335060119656,
+      "maximum_additional_down_before_original_20_percent_m": 0.06440642605197122,
+      "after_y_float32_m": 1.3450000286102295,
+      "max_candidate_original_displacement_m": 0.10609981394206616,
+      "max_candidate_original_displacement_fraction": 0.1769971103269994
+    },
+    {
+      "representative_source_vertex": 84,
+      "source_physical_position_m": [
+        0.131207346916199,
+        1.35790884494781,
+        -0.148000851273537
+      ],
+      "signed_source_key_rounded_4": [
+        0.1312,
+        1.3579,
+        -0.148
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        84,
+        102,
+        121
+      ],
+      "before_y_m": 1.3657753467559814,
+      "target_y_m": 1.32,
+      "delta_y_m": -0.04577534675598138,
+      "maximum_additional_down_before_original_20_percent_m": 0.11422611508357242,
+      "after_y_float32_m": 1.3200000524520874,
+      "max_candidate_original_displacement_m": 0.06706729632308482,
+      "max_candidate_original_displacement_fraction": 0.11188254913540556
+    },
+    {
+      "representative_source_vertex": 88,
+      "source_physical_position_m": [
+        0.118452608585358,
+        1.53090846538544,
+        0.2354656457901
+      ],
+      "signed_source_key_rounded_4": [
+        0.1185,
+        1.5309,
+        0.2355
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        88,
+        89,
+        244,
+        250
+      ],
+      "before_y_m": 1.4609084129333496,
+      "target_y_m": 1.425,
+      "delta_y_m": -0.035908412933349565,
+      "maximum_additional_down_before_original_20_percent_m": 0.049888700246807915,
+      "after_y_float32_m": 1.4249999523162842,
+      "max_candidate_original_displacement_m": 0.10590851306915572,
+      "max_candidate_original_displacement_fraction": 0.17667797968529375
+    },
+    {
+      "representative_source_vertex": 91,
+      "source_physical_position_m": [
+        0.185494780540466,
+        1.50534403324127,
+        0.107204169034958
+      ],
+      "signed_source_key_rounded_4": [
+        0.1855,
+        1.5053,
+        0.1072
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        91,
+        251,
+        253,
+        261
+      ],
+      "before_y_m": 1.4353439807891846,
+      "target_y_m": 1.4,
+      "delta_y_m": -0.03534398078918466,
+      "maximum_additional_down_before_original_20_percent_m": 0.0498887002468128,
+      "after_y_float32_m": 1.399999976158142,
+      "max_candidate_original_displacement_m": 0.10534405708312788,
+      "max_candidate_original_displacement_fraction": 0.1757363467575654
+    },
+    {
+      "representative_source_vertex": 101,
+      "source_physical_position_m": [
+        0.177117019891739,
+        1.47351002693176,
+        -0.0328308083117008
+      ],
+      "signed_source_key_rounded_4": [
+        0.1771,
+        1.4735,
+        -0.0328
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        101,
+        248,
+        254,
+        263
+      ],
+      "before_y_m": 1.4094020128250122,
+      "target_y_m": 1.365,
+      "delta_y_m": -0.044402012825012216,
+      "maximum_additional_down_before_original_20_percent_m": 0.055523054661476126,
+      "after_y_float32_m": 1.3650000095367432,
+      "max_candidate_original_displacement_m": 0.10879404526046867,
+      "max_candidate_original_displacement_fraction": 0.18149166258106963
+    },
+    {
+      "representative_source_vertex": 104,
+      "source_physical_position_m": [
+        0.210554033517838,
+        1.47129595279694,
+        -0.0440427623689175
+      ],
+      "signed_source_key_rounded_4": [
+        0.2106,
+        1.4713,
+        -0.044
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        104,
+        119,
+        269
+      ],
+      "before_y_m": 1.4087889194488525,
+      "target_y_m": 1.365,
+      "delta_y_m": -0.04378891944885255,
+      "maximum_additional_down_before_original_20_percent_m": 0.056959137480493055,
+      "after_y_float32_m": 1.3650000095367432,
+      "max_candidate_original_displacement_m": 0.10677066359646255,
+      "max_candidate_original_displacement_fraction": 0.17811623057688844
+    },
+    {
+      "representative_source_vertex": 126,
+      "source_physical_position_m": [
+        0.317083775997162,
+        1.60634624958038,
+        -0.0177516285330057
+      ],
+      "signed_source_key_rounded_4": [
+        0.3171,
+        1.6063,
+        -0.0178
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        126,
+        132,
+        140
+      ],
+      "before_y_m": 1.5650686025619507,
+      "target_y_m": 1.53,
+      "delta_y_m": -0.03506860256195066,
+      "maximum_additional_down_before_original_20_percent_m": 0.06570499219811073,
+      "after_y_float32_m": 1.5299999713897705,
+      "max_candidate_original_displacement_m": 0.09357767962243527,
+      "max_candidate_original_displacement_fraction": 0.1561075205402404
+    },
+    {
+      "representative_source_vertex": 129,
+      "source_physical_position_m": [
+        0.232855871319771,
+        1.54952216148376,
+        -0.0134137412533164
+      ],
+      "signed_source_key_rounded_4": [
+        0.2329,
+        1.5495,
+        -0.0134
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        129,
+        131,
+        135
+      ],
+      "before_y_m": 1.5129485130310059,
+      "target_y_m": 1.46,
+      "delta_y_m": -0.052948513031005895,
+      "maximum_additional_down_before_original_20_percent_m": 0.0806113039064567,
+      "after_y_float32_m": 1.4600000381469727,
+      "max_candidate_original_displacement_m": 0.0930333839597057,
+      "max_candidate_original_displacement_fraction": 0.15519951932999082
+    },
+    {
+      "representative_source_vertex": 194,
+      "source_physical_position_m": [
+        -4.25898633693578e-07,
+        1.29936480522156,
+        -0.223358005285263
+      ],
+      "signed_source_key_rounded_4": [
+        -0.0,
+        1.2994,
+        -0.2234
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        194,
+        210,
+        230,
+        241,
+        258,
+        277
+      ],
+      "before_y_m": 1.34499990940094,
+      "target_y_m": 1.29,
+      "delta_y_m": -0.054999909400939906,
+      "maximum_additional_down_before_original_20_percent_m": 0.1643184594268146,
+      "after_y_float32_m": 1.2899999618530273,
+      "max_candidate_original_displacement_m": 0.019372003051463985,
+      "max_candidate_original_displacement_fraction": 0.0323166312358207
+    },
+    {
+      "representative_source_vertex": 196,
+      "source_physical_position_m": [
+        -8.55229245644296e-07,
+        1.40839374065399,
+        -0.0137960463762283
+      ],
+      "signed_source_key_rounded_4": [
+        -0.0,
+        1.4084,
+        -0.0138
+      ],
+      "physical_weld_tolerance_m": 1e-05,
+      "all_original_duplicate_vertex_ids": [
+        196,
+        200,
+        201,
+        204,
+        212,
+        245,
+        247,
+        249,
+        252,
+        259
+      ],
+      "before_y_m": 1.344775676727295,
+      "target_y_m": 1.3,
+      "delta_y_m": -0.04477567672729488,
+      "maximum_additional_down_before_original_20_percent_m": 0.056270688772202274,
+      "after_y_float32_m": 1.2999999523162842,
+      "max_candidate_original_displacement_m": 0.10839378833770677,
+      "max_candidate_original_displacement_fraction": 0.18082394869840518
+    }
+  ],
+  "added_vertex_offsets": [
+    {
+      "index": 294,
+      "parents": [
+        19,
+        20
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        -1.1368685635634087e-15,
+        -5.172636106109962e-07,
+        -0.03641500558373029
+      ]
+    },
+    {
+      "index": 295,
+      "parents": [
+        73,
+        75
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        -1.1368685635634087e-15,
+        -5.172636106109962e-07,
+        -0.03641500558373029
+      ]
+    },
+    {
+      "index": 296,
+      "parents": [
+        186,
+        188
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        1.3642421809848839e-14,
+        0.002715625892758311,
+        -0.027127559237404453
+      ]
+    },
+    {
+      "index": 297,
+      "parents": [
+        234,
+        235
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        1.3642421809848839e-14,
+        0.002715625892758311,
+        -0.027127559237404453
+      ]
+    },
+    {
+      "index": 298,
+      "parents": [
+        22,
+        24
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        0.0012803850039597858,
+        1.7294440131099265e-06,
+        -0.028245688987563244
+      ]
+    },
+    {
+      "index": 299,
+      "parents": [
+        186,
+        187
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        0.0012803850039597858,
+        1.7294440131099265e-06,
+        -0.028245688987563244
+      ]
+    },
+    {
+      "index": 300,
+      "parents": [
+        76,
+        79
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        -0.0012803955504592235,
+        1.7405332501940762e-06,
+        -0.028245392267338687
+      ]
+    },
+    {
+      "index": 301,
+      "parents": [
+        234,
+        236
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        -0.0012803955504592235,
+        1.7405332501940762e-06,
+        -0.028245392267338687
+      ]
+    },
+    {
+      "index": 302,
+      "parents": [
+        77,
+        78
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        0.006153998294623181,
+        0.016485484142675588,
+        0.006264488334296464
+      ]
+    },
+    {
+      "index": 303,
+      "parents": [
+        110,
+        112
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        0.006153998294623181,
+        0.016485484142675588,
+        0.006264488334296464
+      ]
+    },
+    {
+      "index": 304,
+      "parents": [
+        23,
+        25
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        -0.006154107223123026,
+        0.016485259113823147,
+        0.00626441198754667
+      ]
+    },
+    {
+      "index": 305,
+      "parents": [
+        56,
+        59
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        -0.006154107223123026,
+        0.016485259113823147,
+        0.00626441198754667
+      ]
+    },
+    {
+      "index": 306,
+      "parents": [
+        94,
+        95
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        0.008876709720581105,
+        0.00569072294998052,
+        0.0021624703638930404
+      ]
+    },
+    {
+      "index": 307,
+      "parents": [
+        237,
+        238
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        0.008876709720581105,
+        0.00569072294998052,
+        0.0021624703638930404
+      ]
+    },
+    {
+      "index": 308,
+      "parents": [
+        40,
+        42
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        -0.008876623110800785,
+        0.005690580530898215,
+        0.002162418405310132
+      ]
+    },
+    {
+      "index": 309,
+      "parents": [
+        189,
+        191
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        -0.008876623110800785,
+        0.005690580530898215,
+        0.002162418405310132
+      ]
+    },
+    {
+      "index": 310,
+      "parents": [
+        232,
+        233
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        0.006632386413494729,
+        -0.0016801365557574943,
+        0.0393615611860712
+      ]
+    },
+    {
+      "index": 311,
+      "parents": [
+        265,
+        266
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        0.006632386413494729,
+        -0.0016801365557574943,
+        0.0393615611860712
+      ]
+    },
+    {
+      "index": 312,
+      "parents": [
+        184,
+        185
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        -0.0066320817606357885,
+        -0.0016801481024690812,
+        0.039361542940240885
+      ]
+    },
+    {
+      "index": 313,
+      "parents": [
+        217,
+        218
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        -0.0066320817606357885,
+        -0.0016801481024690812,
+        0.039361542940240885
+      ]
+    },
+    {
+      "index": 314,
+      "parents": [
+        98,
+        100
+      ],
+      "delta_y_m": -0.025244667530059828,
+      "original_bend_unchanged": [
+        0.005382630953580825,
+        -0.004498271548328603,
+        -0.0017093238526181276
+      ]
+    },
+    {
+      "index": 315,
+      "parents": [
+        118,
+        120
+      ],
+      "delta_y_m": -0.025244667530059828,
+      "original_bend_unchanged": [
+        0.005382630953580825,
+        -0.004498271548328603,
+        -0.0017093238526181276
+      ]
+    },
+    {
+      "index": 316,
+      "parents": [
+        44,
+        45
+      ],
+      "delta_y_m": -0.025244965553283705,
+      "original_bend_unchanged": [
+        -0.005382575779440291,
+        -0.004498203078189045,
+        -0.0017093031983831108
+      ]
+    },
+    {
+      "index": 317,
+      "parents": [
+        64,
+        67
+      ],
+      "delta_y_m": -0.025244965553283705,
+      "original_bend_unchanged": [
+        -0.005382575779440291,
+        -0.004498203078189045,
+        -0.0017093031983831108
+      ]
+    },
+    {
+      "index": 318,
+      "parents": [
+        80,
+        81
+      ],
+      "delta_y_m": -0.05024252891540526,
+      "original_bend_unchanged": [
+        0.0013248885702634994,
+        -0.0024516565968406567,
+        -0.0009316274563996862
+      ]
+    },
+    {
+      "index": 319,
+      "parents": [
+        81,
+        83
+      ],
+      "delta_y_m": -0.05024252891540526,
+      "original_bend_unchanged": [
+        0.0013248885702634994,
+        -0.0024516565968406567,
+        -0.0009316274563996862
+      ]
+    },
+    {
+      "index": 320,
+      "parents": [
+        26,
+        27
+      ],
+      "delta_y_m": -0.05024300575256346,
+      "original_bend_unchanged": [
+        -0.001324904005247568,
+        -0.0024516622406889343,
+        -0.0009316272168762296
+      ]
+    },
+    {
+      "index": 321,
+      "parents": [
+        27,
+        29
+      ],
+      "delta_y_m": -0.05024300575256346,
+      "original_bend_unchanged": [
+        -0.001324904005247568,
+        -0.0024516622406889343,
+        -0.0009316272168762296
+      ]
+    },
+    {
+      "index": 322,
+      "parents": [
+        241,
+        242
+      ],
+      "delta_y_m": -0.052497816085815385,
+      "original_bend_unchanged": [
+        0.0006536255119077641,
+        -0.0037215259255745092,
+        -0.0014141959807351945
+      ]
+    },
+    {
+      "index": 323,
+      "parents": [
+        258,
+        260
+      ],
+      "delta_y_m": -0.052497816085815385,
+      "original_bend_unchanged": [
+        0.0006536255119077641,
+        -0.0037215259255745092,
+        -0.0014141959807351945
+      ]
+    },
+    {
+      "index": 324,
+      "parents": [
+        193,
+        194
+      ],
+      "delta_y_m": -0.05249799489974971,
+      "original_bend_unchanged": [
+        -0.0006536434194044927,
+        -0.0037215498966867155,
+        -0.0014142041956881624
+      ]
+    },
+    {
+      "index": 325,
+      "parents": [
+        210,
+        211
+      ],
+      "delta_y_m": -0.05249799489974971,
+      "original_bend_unchanged": [
+        -0.0006536434194044927,
+        -0.0037215498966867155,
+        -0.0014142041956881624
+      ]
+    },
+    {
+      "index": 326,
+      "parents": [
+        72,
+        75
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        1.4901208600370808e-09,
+        3.0133153750000474e-09,
+        -0.016044489792112482
+      ]
+    },
+    {
+      "index": 327,
+      "parents": [
+        274,
+        275
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        1.4901208600370808e-09,
+        3.0133153750000474e-09,
+        -0.016044489792112482
+      ]
+    },
+    {
+      "index": 328,
+      "parents": [
+        18,
+        20
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        2.9802794954125744e-10,
+        2.6418279563955593e-08,
+        -0.016044628320435628
+      ]
+    },
+    {
+      "index": 329,
+      "parents": [
+        226,
+        227
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        2.9802794954125744e-10,
+        2.6418279563955593e-08,
+        -0.016044628320435628
+      ]
+    },
+    {
+      "index": 330,
+      "parents": [
+        255,
+        256
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        -0.000687966570474069,
+        -6.972805222105194e-09,
+        -0.014935219481279571
+      ]
+    },
+    {
+      "index": 331,
+      "parents": [
+        273,
+        275
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        -0.000687966570474069,
+        -6.972805222105194e-09,
+        -0.014935219481279571
+      ]
+    },
+    {
+      "index": 332,
+      "parents": [
+        207,
+        209
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        0.0006880036371610665,
+        -1.9767521619584727e-08,
+        -0.01493555271829175
+      ]
+    },
+    {
+      "index": 333,
+      "parents": [
+        225,
+        226
+      ],
+      "delta_y_m": 0.0,
+      "original_bend_unchanged": [
+        0.0006880036371610665,
+        -1.9767521619584727e-08,
+        -0.01493555271829175
+      ]
+    }
+  ],
+  "metrics": {
+    "physical_source_rows": 21,
+    "changed_original_vertices": 86,
+    "changed_added_vertices": 12,
+    "changed_total_vertices": 98,
+    "head_vertices_and_uv": 334,
+    "head_triangles": 164,
+    "source_bones": 28,
+    "original_dimensions_m": [
+      0.638219833374024,
+      0.67258036136627,
+      0.599443763494491
+    ],
+    "original_smallest_dimension_m": 0.599443763494491,
+    "original_total_limit": 0.2,
+    "maximum_original_displacement_m": 0.11549536192810013,
+    "maximum_original_displacement_fraction": 0.1926708875154751,
+    "worst_vertex": 98,
+    "original_dimension_delta_fraction": [
+      0.15645625629462345,
+      0.08918199940340177,
+      0.03562156597931043
+    ],
+    "head_shell_minimum_y_m": 1.2899999618530273,
+    "head_shell_maximum_y_m": 1.875
+  },
+  "triangle_quality": {
+    "status": "PASS",
+    "reference": "current rigid -.070 delivered target, not a new source baseline",
+    "triangles_checked": 164,
+    "flipped_or_degenerate_triangles": [],
+    "minimum_normal_cosine": 0.8927546328344088,
+    "minimum_before_area_m2": 8.615748308212296e-05,
+    "minimum_after_area_m2": 1.4568958271472063e-05,
+    "minimum_area_ratio": 0.16909646835131253,
+    "maximum_area_ratio": 2.2888351274099707,
+    "worst_normal_triangle": {
+      "triangle": 17,
+      "indices": [
+        320,
+        27,
+        28
+      ],
+      "before_area_m2": 8.615767327087987e-05,
+      "after_area_m2": 1.4568958271472063e-05,
+      "area_ratio": 0.16909646835131253,
+      "normal_cosine_to_current": 0.8927546328344088
+    }
+  },
+  "neck_source_contract": {
+    "status": "PASS",
+    "errors": [],
+    "scope": "Original neck position/UV/topology/named-skin interface only; rendered mixed-body coverage is a separate requirement",
+    "discovery": "true-original position-welded triangle components with active named head and torso/neck bones",
+    "weld_tolerance_m": 1e-05,
+    "component_count": 1,
+    "physical_vertex_count": 12,
+    "vertex_ids": [
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167
+    ],
+    "triangle_ids": [
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81
+    ],
+    "moved_vertex_ids": [],
+    "max_neck_displacement_m": 4.686995553407168e-15,
+    "channel_changes": {
+      "uv": [],
+      "bone_indices": [],
+      "bone_names": [],
+      "weights": []
+    },
+    "neck_triangles_exact": true
+  },
+  "amber_geometry_check": {
+    "status": "PASS",
+    "scope": "Conservative sampled native-atlas geometry classification only; not in-engine projected visor coverage or final artistic approval.",
+    "rgb_rule": "r>g>b; r-g>=7; g-b>=9; r-b>=35",
+    "uv_barycentric_samples": [
+      [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      [
+        0.6,
+        0.2,
+        0.2
+      ],
+      [
+        0.2,
+        0.6,
+        0.2
+      ],
+      [
+        0.2,
+        0.2,
+        0.6
+      ]
+    ],
+    "amber_triangle_required_samples": 2,
+    "sampled_amber_triangle_ids": [
+      8,
+      9,
+      10,
+      11,
+      33,
+      34,
+      45,
+      46,
+      47,
+      48,
+      70,
+      71,
+      109,
+      110,
+      111,
+      120,
+      121,
+      125,
+      129,
+      130,
+      131,
+      135,
+      136,
+      137,
+      146,
+      147,
+      152,
+      155,
+      156,
+      157
+    ],
+    "sampled_amber_triangles": 30,
+    "changed_amber_face_vertices": []
+  },
+  "warnings": [
+    "Proposal only. No target/config/asset modified and no Godot/Blender process run by this audit.",
+    "Rendered all-29-body idle/run/reload neck coverage, collar intersections, apparent visor roundness and projected front visor minimum50% must be measured again on a fresh immutable evidence directory.",
+    "Current rigid-shell-only v7 contract intentionally rejects this profile; root must add an explicit reviewed lower-skirt contract without weakening historical v6 or original source-neck protection.",
+    "Normals will need the normal compile pipeline recalculation; current-relative triangle quality alone does not prove animation or visual acceptance."
+  ],
+  "lower_frame_offsets": [
+    {
+      "vertex_ids": [
+        0,
+        8,
+        14
+      ],
+      "delta_y": -0.03506764888763425,
+      "source_physical_position_m": [
+        -0.317086040973663,
+        1.60634529590607,
+        -0.0177524704486132
+      ]
+    },
+    {
+      "vertex_ids": [
+        2,
+        5,
+        9
+      ],
+      "delta_y": -0.05294779777526859,
+      "source_physical_position_m": [
+        -0.23285798728466,
+        1.54952144622803,
+        -0.0134143596515059
+      ]
+    },
+    {
+      "vertex_ids": [
+        26,
+        29,
+        50,
+        193,
+        198,
+        211
+      ],
+      "delta_y": -0.04999608039855952,
+      "source_physical_position_m": [
+        -0.0962665751576424,
+        1.35252964496613,
+        -0.14850315451622
+      ]
+    },
+    {
+      "vertex_ids": [
+        27,
+        45,
+        64
+      ],
+      "delta_y": -0.05048993110656741,
+      "source_physical_position_m": [
+        -0.147116661071777,
+        1.4499945640564,
+        -0.182511210441589
+      ]
+    },
+    {
+      "vertex_ids": [
+        28,
+        48,
+        66
+      ],
+      "delta_y": -0.045775704383850035,
+      "source_physical_position_m": [
+        -0.131208568811417,
+        1.35790848731995,
+        -0.148001208901405
+      ]
+    },
+    {
+      "vertex_ids": [
+        32,
+        86,
+        195,
+        243
+      ],
+      "delta_y": -0.038124036788940385,
+      "source_physical_position_m": [
+        -1.40469956022571e-06,
+        1.53312408924103,
+        0.270258098840714
+      ]
+    },
+    {
+      "vertex_ids": [
+        33,
+        35,
+        197,
+        203
+      ],
+      "delta_y": -0.03590805530548091,
+      "source_physical_position_m": [
+        -0.118455320596695,
+        1.53090810775757,
+        0.235465317964554
+      ]
+    },
+    {
+      "vertex_ids": [
+        38,
+        202,
+        206,
+        213
+      ],
+      "delta_y": -0.035343503952026456,
+      "source_physical_position_m": [
+        -0.185497105121613,
+        1.50534355640411,
+        0.107203677296638
+      ]
+    },
+    {
+      "vertex_ids": [
+        47,
+        199,
+        205,
+        214
+      ],
+      "delta_y": -0.044401655197143564,
+      "source_physical_position_m": [
+        -0.177118867635727,
+        1.4735095500946,
+        -0.0328312776982784
+      ]
+    },
+    {
+      "vertex_ids": [
+        49,
+        65,
+        220
+      ],
+      "delta_y": -0.043788561820983896,
+      "source_physical_position_m": [
+        -0.210555851459503,
+        1.47129547595978,
+        -0.0440433211624622
+      ]
+    },
+    {
+      "vertex_ids": [
+        80,
+        83,
+        103,
+        242,
+        246,
+        260
+      ],
+      "delta_y": -0.049995722770690865,
+      "source_physical_position_m": [
+        0.0962653681635857,
+        1.3525298833847,
+        -0.148502886295319
+      ]
+    },
+    {
+      "vertex_ids": [
+        81,
+        100,
+        118
+      ],
+      "delta_y": -0.050489335060119656,
+      "source_physical_position_m": [
+        0.147115260362625,
+        1.44999504089355,
+        -0.182510823011398
+      ]
+    },
+    {
+      "vertex_ids": [
+        84,
+        102,
+        121
+      ],
+      "delta_y": -0.04577534675598138,
+      "source_physical_position_m": [
+        0.131207346916199,
+        1.35790884494781,
+        -0.148000851273537
+      ]
+    },
+    {
+      "vertex_ids": [
+        88,
+        89,
+        244,
+        250
+      ],
+      "delta_y": -0.035908412933349565,
+      "source_physical_position_m": [
+        0.118452608585358,
+        1.53090846538544,
+        0.2354656457901
+      ]
+    },
+    {
+      "vertex_ids": [
+        91,
+        251,
+        253,
+        261
+      ],
+      "delta_y": -0.03534398078918466,
+      "source_physical_position_m": [
+        0.185494780540466,
+        1.50534403324127,
+        0.107204169034958
+      ]
+    },
+    {
+      "vertex_ids": [
+        101,
+        248,
+        254,
+        263
+      ],
+      "delta_y": -0.044402012825012216,
+      "source_physical_position_m": [
+        0.177117019891739,
+        1.47351002693176,
+        -0.0328308083117008
+      ]
+    },
+    {
+      "vertex_ids": [
+        104,
+        119,
+        269
+      ],
+      "delta_y": -0.04378891944885255,
+      "source_physical_position_m": [
+        0.210554033517838,
+        1.47129595279694,
+        -0.0440427623689175
+      ]
+    },
+    {
+      "vertex_ids": [
+        126,
+        132,
+        140
+      ],
+      "delta_y": -0.03506860256195066,
+      "source_physical_position_m": [
+        0.317083775997162,
+        1.60634624958038,
+        -0.0177516285330057
+      ]
+    },
+    {
+      "vertex_ids": [
+        129,
+        131,
+        135
+      ],
+      "delta_y": -0.052948513031005895,
+      "source_physical_position_m": [
+        0.232855871319771,
+        1.54952216148376,
+        -0.0134137412533164
+      ]
+    },
+    {
+      "vertex_ids": [
+        194,
+        210,
+        230,
+        241,
+        258,
+        277
+      ],
+      "delta_y": -0.054999909400939906,
+      "source_physical_position_m": [
+        -4.25898633693578e-07,
+        1.29936480522156,
+        -0.223358005285263
+      ]
+    },
+    {
+      "vertex_ids": [
+        196,
+        200,
+        201,
+        204,
+        212,
+        245,
+        247,
+        249,
+        252,
+        259
+      ],
+      "delta_y": -0.04477567672729488,
+      "source_physical_position_m": [
+        -8.55229245644296e-07,
+        1.40839374065399,
+        -0.0137960463762283
+      ]
+    }
+  ]
+}

@@ -102,19 +102,216 @@
     "hand": "hand_diffuse.png",
     "foot": "foot_diffuse.png"
   },
-  "active_helmet_revision": "helmet_refinement_v6",
-  "generation_record": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v6/generation_record.json",
-  "before_revision_snapshot": "docs/art/titan_neck_mix_v1/revisions/before_neck_fix/snapshot.json",
+  "active_helmet_revision": "helmet_refinement_v7",
+  "generation_record": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v7/generation_record.json",
+  "before_revision_snapshot": "docs/art/titan_neck_coverage_v2/revisions/before_shell_fit_v7/snapshot.json",
   "head_refinement": {
     "vertices": 334,
     "triangles": 164,
     "count_growth_ceiling": 0.35,
     "scope": "Titan helmet only: user requested additional UV/arc cuts below 1.6-2x; choose 1.35x original count ceiling, preserve original-total20% geometry.",
-    "revision": "helmet_refinement_v6"
+    "revision": "helmet_refinement_v7"
   },
   "neck_interface_contract": {
     "source": "true original physical neck connected component",
     "policy": "positions/UV/faces/bone names/weights immutable; opaque near-black raw/effective albedo; mix all body IDs at idle/run/reload",
-    "review": "docs/art/titan_neck_mix_v1/index.html"
+    "review": "docs/art/titan_neck_coverage_v2/index.html",
+    "style_policy": "Visible original neck must stay within frozen current-peer per-view coverage thresholds in mixed body idle/run/reload captures; source-interface integrity alone is insufficient."
+  },
+  "shell_fit": {
+    "delta_y": -0.07,
+    "lower_frame_offsets": [
+      {
+        "vertex_ids": [
+          0,
+          8,
+          14
+        ],
+        "delta_y": -0.03506764888763425
+      },
+      {
+        "vertex_ids": [
+          2,
+          5,
+          9
+        ],
+        "delta_y": -0.05294779777526859
+      },
+      {
+        "vertex_ids": [
+          26,
+          29,
+          50,
+          193,
+          198,
+          211
+        ],
+        "delta_y": -0.08499614238739017
+      },
+      {
+        "vertex_ids": [
+          27,
+          45,
+          64
+        ],
+        "delta_y": -0.05048993110656741
+      },
+      {
+        "vertex_ids": [
+          28,
+          48,
+          66
+        ],
+        "delta_y": -0.08077575683593752
+      },
+      {
+        "vertex_ids": [
+          32,
+          86,
+          195,
+          243
+        ],
+        "delta_y": -0.038124036788940385
+      },
+      {
+        "vertex_ids": [
+          33,
+          35,
+          197,
+          203
+        ],
+        "delta_y": -0.03590805530548091
+      },
+      {
+        "vertex_ids": [
+          38,
+          202,
+          206,
+          213
+        ],
+        "delta_y": -0.035343503952026456
+      },
+      {
+        "vertex_ids": [
+          47,
+          199,
+          205,
+          214
+        ],
+        "delta_y": -0.044401655197143564
+      },
+      {
+        "vertex_ids": [
+          49,
+          65,
+          220
+        ],
+        "delta_y": -0.043788561820983896
+      },
+      {
+        "vertex_ids": [
+          80,
+          83,
+          103,
+          242,
+          246,
+          260
+        ],
+        "delta_y": -0.08499578475952152
+      },
+      {
+        "vertex_ids": [
+          81,
+          100,
+          118
+        ],
+        "delta_y": -0.050489335060119656
+      },
+      {
+        "vertex_ids": [
+          84,
+          102,
+          121
+        ],
+        "delta_y": -0.08077539920806887
+      },
+      {
+        "vertex_ids": [
+          88,
+          89,
+          244,
+          250
+        ],
+        "delta_y": -0.035908412933349565
+      },
+      {
+        "vertex_ids": [
+          91,
+          251,
+          253,
+          261
+        ],
+        "delta_y": -0.03534398078918466
+      },
+      {
+        "vertex_ids": [
+          101,
+          248,
+          254,
+          263
+        ],
+        "delta_y": -0.044402012825012216
+      },
+      {
+        "vertex_ids": [
+          104,
+          119,
+          269
+        ],
+        "delta_y": -0.04378891944885255
+      },
+      {
+        "vertex_ids": [
+          126,
+          132,
+          140
+        ],
+        "delta_y": -0.03506860256195066
+      },
+      {
+        "vertex_ids": [
+          129,
+          131,
+          135
+        ],
+        "delta_y": -0.052948513031005895
+      },
+      {
+        "vertex_ids": [
+          194,
+          210,
+          230,
+          241,
+          258,
+          277
+        ],
+        "delta_y": -0.0999999904632567
+      },
+      {
+        "vertex_ids": [
+          196,
+          200,
+          201,
+          204,
+          212,
+          245,
+          247,
+          249,
+          252,
+          259
+        ],
+        "delta_y": -0.05477574825286857
+      }
+    ]
   }
 }

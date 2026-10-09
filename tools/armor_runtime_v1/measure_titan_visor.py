@@ -10,7 +10,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
 WORK = ROOT / "docs/art/titan_runtime_v1"
-REVISIONS = {"helmet_refinement_v4": 4, "helmet_refinement_v5": 5, "helmet_refinement_v6": 6}
+REVISIONS = {"helmet_refinement_v4": 4, "helmet_refinement_v5": 5, "helmet_refinement_v6": 6, "helmet_refinement_v7": 7}
 
 
 def digest(path):

@@ -1,6 +1,6 @@
 {
   "title": "Viper／Fortune／Tank／Hydra／Strike／Titan 裝甲實機比較",
-  "date": "2026-10-06",
+  "date": "2026-10-09",
   "status": "六套保留工程證據；Titan 目前 v5 最新正常資源與工程 PASS，美術待使用者評價",
   "summary": "Viper／Fortune／Tank／Hydra／Strike 的圖與工程資料保持。Titan 目前 after15 為本輪 v5，另有真原版／固定 v4／本輪 v5 頭盔三欄比對；最早 v2 和上一版 v4 擷取留在固定歷史。",
   "base_prompt": "base_prompt.txt",
@@ -991,74 +991,69 @@
       "game_visual_id": 5,
       "design_id": "C-06",
       "comparison_mode": "first_runtime",
-      "variant_after": "helmet_refinement_v6",
-      "status": "Titan v6 頸部混搭工程 PASS；美術待評",
+      "variant_after": "helmet_refinement_v7",
+      "status": "Titan v7 露頸遮蔽量工程 PASS；美術待評",
       "after_ready": true,
       "original_prefix": "original/titan/review/",
       "after_prefix": "after/titan/review/",
-      "change_scope": "頸部接口與原生黑色內襯；圓面罩模型沿用v5",
-      "scope_description": "恢復8個偏移頸圈頂點與深色內襯；其餘310個頭盔頂點、全部UV／拓樸沿用v5。29身甲×9姿勢及35圖混搭驗收通過。低領原有重疊輪廓仍保留，美術待評。",
-      "review_status": "Titan v6 · 混搭修正／美術待評",
+      "change_scope": "圓面罩外殼向下貼合固定頸圈；原生貼圖完全沿用v6",
+      "scope_description": "圓面罩外殼整體下收70 mm，另依明列profile小幅延伸下緣，24個原頸圈頂點固定；全部UV／拓樸／skin及五張原生PNG完全沿用v6。以同家族頭盔門檻驗證348個露頸量取樣，另有29身甲×9姿勢及35張近拍；仍待使用者美術評價。",
+      "review_status": "Titan v7 · 縮短可見頸部／美術待評",
       "column_labels": {
         "after": {
-          "title": "Titan v6 遊戲素材",
-          "description": "原版頸部接口／深色內襯 · 最新正常資源"
+          "title": "Titan v7 遊戲素材",
+          "description": "外殼貼合固定原頸圈 · 最新正常資源"
         }
       },
       "reference_art": {
         "path": "../original_armors_v1/images/c06_concept.png",
         "title": "Titan 目前設計參考",
-        "description": "C06壓力面罩設計；v6修正頸部混搭，原有低面數限制與美術待評。"
+        "description": "C06壓力面罩設計；v7保持圓面罩形狀，修正露頸量。"
       },
-      "summary": "恢復8個偏移頸圈頂點與深色內襯；其餘310個頭盔頂點、全部UV／拓樸沿用v5。29身甲×9姿勢及35圖混搭驗收通過。低領原有重疊輪廓仍保留，美術待評。",
+      "summary": "圓面罩外殼整體下收70 mm，另依明列profile小幅延伸下緣，24個原頸圈頂點固定；全部UV／拓樸／skin及五張原生PNG完全沿用v6。以同家族頭盔門檻驗證348個露頸量取樣，另有29身甲×9姿勢及35張近拍；仍待使用者美術評價。",
       "changes": [
         {
-          "part": "頸部接合",
-          "before": "v5頸圈8點漂移、貼圖偏灰。",
-          "after": "恢復真正原版24點頸圈，改深色內襯；共用保存gate。",
-          "preserved": "其餘310個頭盔頂點、全部UV／拓樸／bindings；肩胸手靴四張原生圖。"
+          "part": "頭盔與衣領比例",
+          "before": "v6來源接口合法，但圓面罩下緣偏高，黑色頸管露出過多。",
+          "after": "圓面罩外殼整體下收70 mm，另依明列profile小幅延伸下緣，24個原頸圈頂點固定；全部UV／拓樸／skin及五張原生PNG完全沿用v6。以同家族頭盔門檻驗證348個露頸量取樣，另有29身甲×9姿勢及35張近拍；仍待使用者美術評價。",
+          "preserved": "原頸圈24點、334 UV／164 tris／3 charts／28 bones與五張原生PNG。"
         }
       ],
       "verification": [
         {
           "label": "原版總形狀／尺寸",
-          "result": "19.4967% 位移；20% 上限 PASS",
+          "result": "19.7506% 位移；20% 上限 PASS",
           "evidence": "../titan_runtime_v1/build/geometry.json"
         },
         {
-          "label": "本輪 UV／拓撲",
-          "result": "164 tris／334 UV／3 charts；與固定 v4 相同，新 UV 0",
-          "evidence": "../titan_runtime_v1/review/helmet_v6_contract_and_guards_test.json"
+          "label": "本輪UV／拓樸／固定頸圈",
+          "result": "新增UV 0；整體下收與下緣小幅延伸、24原頸點固定 PASS",
+          "evidence": "../titan_runtime_v1/review/helmet_v7_shell_fit_test.json"
         },
         {
           "label": "正面面罩投影",
-          "result": "55.0104% ≥50%；PASS",
-          "evidence": "../titan_runtime_v1/review/helmet_v6_visor_coverage.json"
+          "result": "59.1202% ≥50%；PASS",
+          "evidence": "../titan_runtime_v1/review/helmet_v7_visor_coverage.json"
         },
         {
           "label": "四向整體灰模",
-          "result": "最大1−IoU 3.7609%；20% 上限 PASS",
-          "evidence": "../titan_runtime_v1/review/helmet_v6_proportion_test.json"
+          "result": "最大1−IoU 5.8838%；20% 上限 PASS",
+          "evidence": "../titan_runtime_v1/review/helmet_v7_proportion_test.json"
+        },
+        {
+          "label": "露頸遮蔽量",
+          "result": "348個混搭／動作／視角取樣；同家族門檻 PASS",
+          "evidence": "../titan_neck_coverage_v2/index.html"
         },
         {
           "label": "runtime／GLB／五圖",
-          "result": "15 runtime＋9 GLB；五圖 RGB／packed master／SCN／guards PASS",
+          "result": "15 runtime＋9 GLB；native PNG／packed master／SCN／guards PASS",
           "evidence": "../titan_runtime_v1/manifest.json"
-        },
-        {
-          "label": "正式擷取／存檔",
-          "result": "64 Windows ANGLE 正常資源；當前 SHA／存檔不變 PASS",
-          "evidence": "../titan_runtime_v1/review/helmet_v6_final/capture.json"
         },
         {
           "label": "使用者美術／手機效能",
           "result": "NOT RUN",
-          "evidence": "../titan_runtime_v1/README.md"
-        },
-        {
-          "label": "29身甲混搭與負面案例",
-          "result": "261姿勢／35圖／保存前拒絕壞輸出",
-          "evidence": "../titan_neck_mix_v1/index.html"
+          "evidence": "../titan_neck_coverage_v2/README.md"
         }
       ],
       "limits": {
@@ -1070,6 +1065,38 @@
         "projected_front_visor_minimum_fraction": 0.5
       },
       "sources": [
+        {
+          "label": "Titan v7 露頸量／混搭前後與必要prompt",
+          "path": "../titan_neck_coverage_v2/index.html"
+        },
+        {
+          "label": "後續必要露頸標準附錄",
+          "path": "../titan_neck_coverage_v2/prompts/mandatory_limited_neck_exposure.txt"
+        },
+        {
+          "label": "當前v7正式after15 SHA索引",
+          "path": "titan_helmet_refinement_v7_after_snapshot.json"
+        },
+        {
+          "label": "上一交付系列頁固定快照（含沿用v5的15圖）",
+          "path": "revisions/titan_v6_before_shell_fit_v7/snapshot.json"
+        },
+        {
+          "label": "Titan v7 露頸量／混搭前後與必要prompt",
+          "path": "../titan_neck_coverage_v2/index.html"
+        },
+        {
+          "label": "後續必要露頸標準附錄",
+          "path": "../titan_neck_coverage_v2/prompts/mandatory_limited_neck_exposure.txt"
+        },
+        {
+          "label": "當前v7正式after15 SHA索引",
+          "path": "titan_helmet_refinement_v7_after_snapshot.json"
+        },
+        {
+          "label": "上一交付系列頁固定快照（含沿用v5的15圖）",
+          "path": "revisions/titan_v6_before_shell_fit_v7/snapshot.json"
+        },
         {
           "label": "Titan v6 混搭修正前後與必要prompt",
           "path": "../titan_neck_mix_v1/index.html"
@@ -1103,11 +1130,11 @@
           "path": "../legacy_armor_base_v2/inventory.json"
         },
         {
-          "label": "歷史 Titan 目前版本入口（v5）",
+          "label": "目前 Titan v7 素材入口",
           "path": "../titan_runtime_v1/index.html"
         },
         {
-          "label": "歷史 Titan v5 最新正式工程與素材 manifest",
+          "label": "目前 Titan v7 正式工程與素材 manifest",
           "path": "../titan_runtime_v1/manifest.json"
         },
         {
@@ -1212,10 +1239,10 @@
         }
       ],
       "engineering_details": {
-        "head_max_displacement_fraction": 0.19496740509866334,
+        "head_max_displacement_fraction": 0.19750606211103516,
         "head_dimensions_absolute_delta_fraction": [
           0.15645625629462268,
-          0.013127406831568766,
+          0.06330896437140432,
           0.03562156597930932
         ],
         "total_uv_coordinates": 1647,
@@ -1225,8 +1252,8 @@
         "head_uv_coordinate_growth_fraction": 0.1360544217687074,
         "head_triangle_growth_fraction": 0.32258064516129026,
         "head_uv_charts": 3,
-        "max_wholebody_gray_1_minus_iou": 0.03760945315212216,
-        "projected_front_visor_fraction": 0.5501044037698226,
+        "max_wholebody_gray_1_minus_iou": 0.05883787808760843,
+        "projected_front_visor_fraction": 0.591202150097981,
         "topology": {
           "triangles": 740,
           "original_triangles": 700,
@@ -1241,28 +1268,29 @@
         },
         "user_authorized_original_ceiling": 0.2,
         "head_count_growth_ceiling": 0.35,
-        "head_scene_sha256": "fe77152022e2a685832de8f850186a4a8ed274f91a10daee7f4bf3f3913e1756",
+        "head_scene_sha256": "799438862e8c615b7d9b4914cbcabebbd0ee777a4981fc8ba78f9ed55ee36233",
         "canonical_diffuse_sha256": {
+          "head": "a963e84b7b672dab1fd62031bb456d6e88f6f89abd34741eb7d8d66cdd4fb6c1",
           "body": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
-          "foot": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a",
+          "shoulder": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
           "hand": "511a205683e0e98bd9f8468edebf5a73052085e49e7fed66bd98ac3328ea74ec",
-          "head": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
-          "shoulder": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4"
+          "foot": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a"
         },
         "capture_resource_mode": "normal_imported_resources",
-        "current_capture_save_unchanged": true
+        "current_capture_save_unchanged": true,
+        "shell_fit_delta_y_m": -0.07
       },
       "art_residuals": [
-        "低領背面保留原頸管下緣與原有衣領重疊痕；未宣稱零穿插。",
-        "新內襯較v5深，但仍比真正原版貼圖亮。",
-        "美術待使用者評價；瀏覽器操作與手機效能未驗。"
+        "A short visible neck seal may remain; sampled family coverage does not prove zero exposed cloth or zero clipping at every animation time/view.",
+        "The original neck interface alone does not certify visual fit. This revision separately measures occluded visible-neck pixels.",
+        "Actual user art acceptance, browser interaction, mobile performance and exported product smoke remain NOT RUN."
       ],
       "latest_revision": {
-        "variant": "helmet_refinement_v6",
+        "variant": "helmet_refinement_v7",
         "status": "engineering_PASS_pending_user_art_review",
         "after_ready": true,
-        "comparison_page": "../titan_neck_mix_v1/index.html",
-        "generation_record": "../titan_runtime_v1/revisions/helmet_refinement_v6/generation_record.json",
+        "comparison_page": "../titan_neck_coverage_v2/index.html",
+        "generation_record": "../titan_runtime_v1/revisions/helmet_refinement_v7/generation_record.json",
         "selected_native_attempt": 1,
         "selected_native_prompt": "../titan_runtime_v1/revisions/helmet_refinement_v6/head_diffuse_prompt_attempt_01.txt",
         "selected_native_head_sha256": "a963e84b7b672dab1fd62031bb456d6e88f6f89abd34741eb7d8d66cdd4fb6c1",
@@ -1280,25 +1308,27 @@
         "added_head_coordinates_vs_original": 40,
         "uv_charts": 3,
         "original_bones": 28,
-        "head_max_original_displacement_fraction": 0.19496740509866334,
+        "head_max_original_displacement_fraction": 0.19750606211103516,
         "head_dimension_absolute_delta_fraction": [
           0.15645625629462268,
-          0.013127406831568766,
+          0.06330896437140432,
           0.03562156597930932
         ],
         "geometry_original_total_ceiling": 0.2,
         "visor_projected_frontal_coverage_target_fraction": 0.5,
-        "visor_projected_frontal_coverage_measured_fraction": 0.5501044037698226,
+        "visor_projected_frontal_coverage_measured_fraction": 0.591202150097981,
         "candidate_whole_triangles": 740,
         "candidate_whole_uv_coordinates": 1647,
         "fresh_capture_status": "PASS",
         "fresh_engineering_status": "PASS",
         "user_art_acceptance": "NOT RUN",
         "mobile_performance": "NOT RUN",
-        "note": "恢復8個偏移頸圈頂點與深色內襯；其餘310個頭盔頂點、全部UV／拓樸沿用v5。29身甲×9姿勢及35圖混搭驗收通過。低領原有重疊輪廓仍保留，美術待評。",
-        "max_wholebody_gray_1_minus_iou": 0.03760945315212216,
-        "scene_sha256": "3dbbbc2e3042c5a774bf1400ffe90e86bf18513c814cd1fc7b650b98960a49ea",
-        "capture_summary_sha256": "8cc46ee25f37c6bb0804315831f95c24659e50619df39749df5ddd725553adb6"
+        "note": "圓面罩外殼整體下收70 mm，另依明列profile小幅延伸下緣，24個原頸圈頂點固定；全部UV／拓樸／skin及五張原生PNG完全沿用v6。以同家族頭盔門檻驗證348個露頸量取樣，另有29身甲×9姿勢及35張近拍；仍待使用者美術評價。",
+        "max_wholebody_gray_1_minus_iou": 0.05883787808760843,
+        "scene_sha256": "799438862e8c615b7d9b4914cbcabebbd0ee777a4981fc8ba78f9ed55ee36233",
+        "capture_summary_sha256": "284c85a962d8b1cf4e9ef5207eaddc90424810f42097ddb0efd476fe77ecacfc",
+        "selected_native_revision": "helmet_refinement_v6",
+        "raster_generation_performed": false
       }
     }
   ]

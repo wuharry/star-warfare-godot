@@ -1,0 +1,144 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API OpenGL ES 3.0 (ANGLE 2.1.1 git hash: aaebda1c5a40) - Compatibility - Using Device: Google Inc. (NVIDIA) - ANGLE (NVIDIA, NVIDIA GeForce RTX 4080 Laptop GPU (0x000027A0) Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.9579)
+
+ARMOR_NECK_EXPOSURE_FAIL integrity=PASS style=FAIL candidate_samples=48 references=20
+ERROR: STYLE_NECK_COVERAGE: body0 idle/front exposes 5.705% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body0 idle/quarter exposes 4.313% above frozen peers 3.864%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body0 idle/rear exposes 9.106% above frozen peers 5.418%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body0 run/front exposes 7.911% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body0 run/quarter exposes 7.129% above frozen peers 3.864%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body0 run/side exposes 6.854% above frozen peers 6.468%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body0 run/rear exposes 10.695% above frozen peers 5.418%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body0 reload/front exposes 6.243% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body0 reload/rear exposes 8.564% above frozen peers 5.418%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body3 idle/front exposes 7.961% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body3 idle/quarter exposes 6.617% above frozen peers 3.864%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body3 idle/side exposes 7.731% above frozen peers 6.468%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body3 idle/rear exposes 9.796% above frozen peers 5.418%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body3 run/front exposes 8.207% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body3 run/quarter exposes 7.518% above frozen peers 3.864%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body3 run/side exposes 7.583% above frozen peers 6.468%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body3 run/rear exposes 11.535% above frozen peers 5.418%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body3 reload/front exposes 9.180% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body3 reload/rear exposes 9.210% above frozen peers 5.418%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body4 idle/front exposes 5.133% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body4 idle/rear exposes 9.420% above frozen peers 5.418%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body4 run/front exposes 7.063% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body4 run/quarter exposes 6.479% above frozen peers 3.864%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body4 run/side exposes 6.887% above frozen peers 6.468%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body4 run/rear exposes 11.005% above frozen peers 5.418%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body4 reload/front exposes 5.647% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body4 reload/rear exposes 8.869% above frozen peers 5.418%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body10 idle/front exposes 4.703% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body10 idle/rear exposes 9.743% above frozen peers 5.418%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body10 run/front exposes 6.866% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body10 run/quarter exposes 6.289% above frozen peers 3.864%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body10 run/side exposes 6.752% above frozen peers 6.468%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body10 run/rear exposes 11.173% above frozen peers 5.418%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body10 reload/front exposes 5.171% above frozen peers 2.605%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)
+ERROR: STYLE_NECK_COVERAGE: body10 reload/rear exposes 9.205% above frozen peers 5.418%
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _finish (res://tools/armor_runtime_v1/neck_exposure_capture.gd:535)

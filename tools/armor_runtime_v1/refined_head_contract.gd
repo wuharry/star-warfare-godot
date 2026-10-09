@@ -13,10 +13,10 @@ static func verify(actual: Array, original: Array, authored: Dictionary, budget:
 		errors.append("Refined head metadata length mismatch")
 		return errors
 	var ceiling := float(budget.get("count_growth_ceiling", 0.10))
-	if ceiling not in [0.10, 0.35] or (ceiling == 0.35 and budget.get("revision") not in ["helmet_refinement_v4", "helmet_refinement_v5", "helmet_refinement_v6"]):
+	if ceiling not in [0.10, 0.35] or (ceiling == 0.35 and budget.get("revision") not in ["helmet_refinement_v4", "helmet_refinement_v5", "helmet_refinement_v6", "helmet_refinement_v7"]):
 		errors.append("Unknown head subdivision count budget")
-	if budget.get("revision") in ["helmet_refinement_v5", "helmet_refinement_v6"] and (ceiling != 0.35 or count != 334 or triangles != 164):
-		errors.append("Titan v5/v6 must preserve the reviewed v4 head vertex and triangle counts")
+	if budget.get("revision") in ["helmet_refinement_v5", "helmet_refinement_v6", "helmet_refinement_v7"] and (ceiling != 0.35 or count != 334 or triangles != 164):
+		errors.append("Titan v5/v6/v7 must preserve the reviewed v4 head vertex and triangle counts")
 	if float(count) / original_count > 1.0 + ceiling or float(triangles) / (original[Mesh.ARRAY_INDEX].size() / 3) > 1.0 + ceiling:
 		errors.append("Refined head exceeds its explicit original-count growth ceiling")
 	if actual[Mesh.ARRAY_INDEX] != PackedInt32Array(authored.indices):

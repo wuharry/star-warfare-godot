@@ -1,0 +1,268 @@
+{
+  "status": "PASS",
+  "revision": "helmet_refinement_v7",
+  "target_sha256": "7b41251b932f264f17f732723fa77952455736e8c1029424fd521ec69c1ab031",
+  "before_snapshot_sha256": "1b40ce0d9ba6dda2b11c6c9ea0a931deaa8cd044301952627543bca491789f6f",
+  "generation_record_sha256": "9b840fcfd9541c11c2f781c5d61817b3e45c137bd054b80270e6cca972541a71",
+  "shell_fit": {
+    "delta_y_m": -0.07,
+    "translated_shell_vertices": 310,
+    "profiled_original_shell_vertices": 86,
+    "profiled_arc_midpoints": 12,
+    "lower_frame_offsets": [
+      {
+        "vertex_ids": [
+          0,
+          8,
+          14
+        ],
+        "delta_y": -0.03506764888763425
+      },
+      {
+        "vertex_ids": [
+          2,
+          5,
+          9
+        ],
+        "delta_y": -0.05294779777526859
+      },
+      {
+        "vertex_ids": [
+          26,
+          29,
+          50,
+          193,
+          198,
+          211
+        ],
+        "delta_y": -0.08499614238739017
+      },
+      {
+        "vertex_ids": [
+          27,
+          45,
+          64
+        ],
+        "delta_y": -0.05048993110656741
+      },
+      {
+        "vertex_ids": [
+          28,
+          48,
+          66
+        ],
+        "delta_y": -0.08077575683593752
+      },
+      {
+        "vertex_ids": [
+          32,
+          86,
+          195,
+          243
+        ],
+        "delta_y": -0.038124036788940385
+      },
+      {
+        "vertex_ids": [
+          33,
+          35,
+          197,
+          203
+        ],
+        "delta_y": -0.03590805530548091
+      },
+      {
+        "vertex_ids": [
+          38,
+          202,
+          206,
+          213
+        ],
+        "delta_y": -0.035343503952026456
+      },
+      {
+        "vertex_ids": [
+          47,
+          199,
+          205,
+          214
+        ],
+        "delta_y": -0.044401655197143564
+      },
+      {
+        "vertex_ids": [
+          49,
+          65,
+          220
+        ],
+        "delta_y": -0.043788561820983896
+      },
+      {
+        "vertex_ids": [
+          80,
+          83,
+          103,
+          242,
+          246,
+          260
+        ],
+        "delta_y": -0.08499578475952152
+      },
+      {
+        "vertex_ids": [
+          81,
+          100,
+          118
+        ],
+        "delta_y": -0.050489335060119656
+      },
+      {
+        "vertex_ids": [
+          84,
+          102,
+          121
+        ],
+        "delta_y": -0.08077539920806887
+      },
+      {
+        "vertex_ids": [
+          88,
+          89,
+          244,
+          250
+        ],
+        "delta_y": -0.035908412933349565
+      },
+      {
+        "vertex_ids": [
+          91,
+          251,
+          253,
+          261
+        ],
+        "delta_y": -0.03534398078918466
+      },
+      {
+        "vertex_ids": [
+          101,
+          248,
+          254,
+          263
+        ],
+        "delta_y": -0.044402012825012216
+      },
+      {
+        "vertex_ids": [
+          104,
+          119,
+          269
+        ],
+        "delta_y": -0.04378891944885255
+      },
+      {
+        "vertex_ids": [
+          126,
+          132,
+          140
+        ],
+        "delta_y": -0.03506860256195066
+      },
+      {
+        "vertex_ids": [
+          129,
+          131,
+          135
+        ],
+        "delta_y": -0.052948513031005895
+      },
+      {
+        "vertex_ids": [
+          194,
+          210,
+          230,
+          241,
+          258,
+          277
+        ],
+        "delta_y": -0.0999999904632567
+      },
+      {
+        "vertex_ids": [
+          196,
+          200,
+          201,
+          204,
+          212,
+          245,
+          247,
+          249,
+          252,
+          259
+        ],
+        "delta_y": -0.05477574825286857
+      }
+    ],
+    "reviewed_native_gold_faces_preserved": 30,
+    "original_neck_vertices_exact": 24,
+    "all_reviewed_uv_topology_skin_exact": true,
+    "scope": "Explicit shell down-fit and lower-frame extension only; rendered mixed-body neck coverage is verified separately"
+  },
+  "native_images": [
+    {
+      "label": "head",
+      "canonical_sha256": "a963e84b7b672dab1fd62031bb456d6e88f6f89abd34741eb7d8d66cdd4fb6c1",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v6/head_diffuse_prompt_attempt_01.txt",
+      "postprocessing": "none; inherited native PNG bytes",
+      "provenance": "unchanged v6 native PNG; v7 geometry-only fit",
+      "inherited_generation_record": {
+        "path": "docs/art/titan_neck_coverage_v2/revisions/before_shell_fit_v7/docs/art/titan_runtime_v1/revisions/helmet_refinement_v6/generation_record.json",
+        "sha256": "5877c23a498e775aa62b60e6fadd1f3da7606230c088f2d07f4118e27904365b"
+      }
+    },
+    {
+      "label": "body",
+      "canonical_sha256": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "docs/art/titan_runtime_v1/prompts/body_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; inherited native PNG bytes"
+    },
+    {
+      "label": "foot",
+      "canonical_sha256": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "docs/art/titan_runtime_v1/prompts/foot_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; inherited native PNG bytes"
+    },
+    {
+      "label": "hand",
+      "canonical_sha256": "511a205683e0e98bd9f8468edebf5a73052085e49e7fed66bd98ac3328ea74ec",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "docs/art/titan_runtime_v1/prompts/hand_diffuse_original_integration_v2_hand.txt",
+      "postprocessing": "none; inherited native PNG bytes"
+    },
+    {
+      "label": "shoulder",
+      "canonical_sha256": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "docs/art/titan_runtime_v1/prompts/shoulder_diffuse_original_integration_v1.txt",
+      "postprocessing": "none; inherited native PNG bytes"
+    }
+  ],
+  "scope": "Actual authored target and native PNG lineage. In-engine neck coverage is a separate rendered requirement."
+}

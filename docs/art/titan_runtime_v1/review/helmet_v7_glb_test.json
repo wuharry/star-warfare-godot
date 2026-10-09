@@ -1,0 +1,386 @@
+{
+  "status": "PASS",
+  "revision": "helmet_refinement_v7",
+  "scope": "Current revision; exact source snapshot, actual SCN original-array check, preserved non-head textures and native generation provenance. Historical integration hashes are not recertified.",
+  "source_sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
+  "target_sha256": "7b41251b932f264f17f732723fa77952455736e8c1029424fd521ec69c1ab031",
+  "geometry_sha256": "35d7fb05092bddfba8e8d9b2e3478ebaa053be68c05e3a12b7bf6fbad89c426e",
+  "current_scene_sha256": "799438862e8c615b7d9b4914cbcabebbd0ee777a4981fc8ba78f9ed55ee36233",
+  "original_source_snapshot_sha256": "1d2883a7123e3297245ee9845569335981d82f26842b661ca98393fd6a3ff0cc",
+  "before_revision_snapshot_sha256": "1b40ce0d9ba6dda2b11c6c9ea0a931deaa8cd044301952627543bca491789f6f",
+  "canonical_diffuse_sha256": {
+    "head": "a963e84b7b672dab1fd62031bb456d6e88f6f89abd34741eb7d8d66cdd4fb6c1",
+    "body": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
+    "shoulder": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
+    "hand": "511a205683e0e98bd9f8468edebf5a73052085e49e7fed66bd98ac3328ea74ec",
+    "foot": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a"
+  },
+  "head_contract": {
+    "original_head_vertices": 294,
+    "head_vertices": 334,
+    "original_head_triangles": 124,
+    "head_triangles": 164,
+    "changed_original_head_uv": 10,
+    "original_head_uv_fraction": 0.034013605442176874,
+    "original_neck_interface": {
+      "status": "PASS",
+      "errors": [],
+      "scope": "Original neck position/UV/topology/named-skin interface only; rendered mixed-body coverage is a separate requirement",
+      "discovery": "true-original position-welded triangle components with active named head and torso/neck bones",
+      "weld_tolerance_m": 1e-05,
+      "component_count": 1,
+      "physical_vertex_count": 12,
+      "vertex_ids": [
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167
+      ],
+      "triangle_ids": [
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ],
+      "moved_vertex_ids": [],
+      "max_neck_displacement_m": 4.686995553407168e-15,
+      "channel_changes": {
+        "uv": [],
+        "bone_indices": [],
+        "bone_names": [],
+        "weights": []
+      },
+      "neck_triangles_exact": true
+    },
+    "shell_fit_geometry_revision": {
+      "delta_y_m": -0.07,
+      "translated_shell_vertices": 310,
+      "profiled_original_shell_vertices": 86,
+      "profiled_arc_midpoints": 12,
+      "lower_frame_offsets": [
+        {
+          "vertex_ids": [
+            0,
+            8,
+            14
+          ],
+          "delta_y": -0.03506764888763425
+        },
+        {
+          "vertex_ids": [
+            2,
+            5,
+            9
+          ],
+          "delta_y": -0.05294779777526859
+        },
+        {
+          "vertex_ids": [
+            26,
+            29,
+            50,
+            193,
+            198,
+            211
+          ],
+          "delta_y": -0.08499614238739017
+        },
+        {
+          "vertex_ids": [
+            27,
+            45,
+            64
+          ],
+          "delta_y": -0.05048993110656741
+        },
+        {
+          "vertex_ids": [
+            28,
+            48,
+            66
+          ],
+          "delta_y": -0.08077575683593752
+        },
+        {
+          "vertex_ids": [
+            32,
+            86,
+            195,
+            243
+          ],
+          "delta_y": -0.038124036788940385
+        },
+        {
+          "vertex_ids": [
+            33,
+            35,
+            197,
+            203
+          ],
+          "delta_y": -0.03590805530548091
+        },
+        {
+          "vertex_ids": [
+            38,
+            202,
+            206,
+            213
+          ],
+          "delta_y": -0.035343503952026456
+        },
+        {
+          "vertex_ids": [
+            47,
+            199,
+            205,
+            214
+          ],
+          "delta_y": -0.044401655197143564
+        },
+        {
+          "vertex_ids": [
+            49,
+            65,
+            220
+          ],
+          "delta_y": -0.043788561820983896
+        },
+        {
+          "vertex_ids": [
+            80,
+            83,
+            103,
+            242,
+            246,
+            260
+          ],
+          "delta_y": -0.08499578475952152
+        },
+        {
+          "vertex_ids": [
+            81,
+            100,
+            118
+          ],
+          "delta_y": -0.050489335060119656
+        },
+        {
+          "vertex_ids": [
+            84,
+            102,
+            121
+          ],
+          "delta_y": -0.08077539920806887
+        },
+        {
+          "vertex_ids": [
+            88,
+            89,
+            244,
+            250
+          ],
+          "delta_y": -0.035908412933349565
+        },
+        {
+          "vertex_ids": [
+            91,
+            251,
+            253,
+            261
+          ],
+          "delta_y": -0.03534398078918466
+        },
+        {
+          "vertex_ids": [
+            101,
+            248,
+            254,
+            263
+          ],
+          "delta_y": -0.044402012825012216
+        },
+        {
+          "vertex_ids": [
+            104,
+            119,
+            269
+          ],
+          "delta_y": -0.04378891944885255
+        },
+        {
+          "vertex_ids": [
+            126,
+            132,
+            140
+          ],
+          "delta_y": -0.03506860256195066
+        },
+        {
+          "vertex_ids": [
+            129,
+            131,
+            135
+          ],
+          "delta_y": -0.052948513031005895
+        },
+        {
+          "vertex_ids": [
+            194,
+            210,
+            230,
+            241,
+            258,
+            277
+          ],
+          "delta_y": -0.0999999904632567
+        },
+        {
+          "vertex_ids": [
+            196,
+            200,
+            201,
+            204,
+            212,
+            245,
+            247,
+            249,
+            252,
+            259
+          ],
+          "delta_y": -0.05477574825286857
+        }
+      ],
+      "reviewed_native_gold_faces_preserved": 30,
+      "original_neck_vertices_exact": 24,
+      "all_reviewed_uv_topology_skin_exact": true,
+      "scope": "Explicit shell down-fit and lower-frame extension only; rendered mixed-body neck coverage is verified separately",
+      "before_snapshot_sha256": "1b40ce0d9ba6dda2b11c6c9ea0a931deaa8cd044301952627543bca491789f6f"
+    },
+    "additional_uv_changes": 0,
+    "additional_head_uv_coordinates": 0,
+    "additional_head_triangles": 0,
+    "user_constraints": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v4/user_constraints.json",
+    "user_constraints_sha256": "d7c6bbb758585ac1f97d08549376dfe9e87f2473d3977341f8ce6c266540a0c0",
+    "head_count_growth_ceiling": 0.35,
+    "front_projected_visor_minimum_fraction": 0.5
+  },
+  "original_metrics": {
+    "original_measurements": [
+      {
+        "part": "ArmorBody_05",
+        "original_max_rest_displacement_fraction": 9.095843481806661e-15,
+        "original_dimension_delta_fractions": [
+          2.220446049250313e-16,
+          2.220446049250313e-16,
+          7.771561172376096e-16
+        ],
+        "original_uv_changed_count": 0
+      },
+      {
+        "part": "ArmorFoot_05",
+        "original_max_rest_displacement_fraction": 1.3978468570097316e-15,
+        "original_dimension_delta_fractions": [
+          0.0,
+          4.440892098500626e-16,
+          1.7763568394002505e-15
+        ],
+        "original_uv_changed_count": 0
+      },
+      {
+        "part": "ArmorHand_05",
+        "original_max_rest_displacement_fraction": 1.735483901366589e-14,
+        "original_dimension_delta_fractions": [
+          0.0,
+          2.886579864025407e-15,
+          9.992007221626409e-16
+        ],
+        "original_uv_changed_count": 0
+      },
+      {
+        "part": "ArmorHead_05",
+        "original_max_rest_displacement_fraction": 0.19750606480711444,
+        "original_dimension_delta_fractions": [
+          0.15645625629462345,
+          0.06330896437140154,
+          0.03562156597931043
+        ],
+        "original_uv_changed_count": 10
+      }
+    ],
+    "triangles": 740,
+    "surfaces": 5,
+    "uv_coordinates": 1647
+  },
+  "glb_sha256": "a71df2d9b338b0402a9500e81314be4cafcf1b4bfc4ce7eaa77c6ae432849511",
+  "authored_triangle_uv_normalized_skin_verified": true,
+  "images": {
+    "head": {
+      "canonical_sha256": "a963e84b7b672dab1fd62031bb456d6e88f6f89abd34741eb7d8d66cdd4fb6c1",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgb_exact": true
+    },
+    "shoulder": {
+      "canonical_sha256": "e6079fc4093aa4f21ff4a8233863aa618d3a1e646aa72f7b3ee674e70218e3c4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgb_exact": true
+    },
+    "body": {
+      "canonical_sha256": "1ea58ae6e95f859caa55790ea066dd077d1fe21e9c8ba9c15089881f1bcae40e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgb_exact": true
+    },
+    "hand": {
+      "canonical_sha256": "511a205683e0e98bd9f8468edebf5a73052085e49e7fed66bd98ac3328ea74ec",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgb_exact": true
+    },
+    "foot": {
+      "canonical_sha256": "8fe35fed0763a672586465d5523799c78d8c89d176931786372c217081e5962a",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgb_exact": true
+    }
+  }
+}
