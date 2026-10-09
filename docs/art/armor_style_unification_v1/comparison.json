@@ -991,44 +991,32 @@
       "game_visual_id": 5,
       "design_id": "C-06",
       "comparison_mode": "first_runtime",
-      "variant_after": "helmet_refinement_v5",
-      "status": "Titan v5 最新正常資源與工程 PASS；正面覆蓋 58.0930%，美術接受與手機效能 NOT RUN",
+      "variant_after": "helmet_refinement_v6",
+      "status": "Titan v6 頸部混搭工程 PASS；美術待評",
       "after_ready": true,
       "original_prefix": "original/titan/review/",
       "after_prefix": "after/titan/review/",
-      "change_scope": "耳側／下框既有形狀小收＋原生 attempt 3 頭圖；UV／拓撲和非頭部四圖保留 v4",
-      "scope_description": "真正原版總位移 19.4967%，尺寸差寬 15.6456%／高 1.3127%／深 3.5622%，整體灰模最大 3.7609%，均低於 20%。164 tris／334 UV／3 charts，與 v4 完全相同；對原版仍 +32.2581%／+13.6054%，在 35% 計數上限內。原 UV 修改 10／294，新增40個原邊中點均承襲 v4，骨架28。正面玻璃投影 58.0930%；分母為整個頭盔 mesh，包含頸部，不是美術相似率。",
-      "review_status": "Titan v5 · 工程 PASS／正面面罩 58.0930% · 美術待評",
+      "change_scope": "頸部接口與原生黑色內襯；圓面罩模型沿用v5",
+      "scope_description": "恢復8個偏移頸圈頂點與深色內襯；其餘310個頭盔頂點、全部UV／拓樸沿用v5。29身甲×9姿勢及35圖混搭驗收通過。低領原有重疊輪廓仍保留，美術待評。",
+      "review_status": "Titan v6 · 混搭修正／美術待評",
       "column_labels": {
         "after": {
-          "title": "Titan v5 遊戲素材",
-          "description": "連續玻璃反光／耳側下框小收 · 最新正常資源"
+          "title": "Titan v6 遊戲素材",
+          "description": "原版頸部接口／深色內襯 · 最新正常資源"
         }
       },
       "reference_art": {
         "path": "../original_armors_v1/images/c06_concept.png",
         "title": "Titan 目前設計參考",
-        "description": "C06 指定壓力面罩設計；v5 工程完成，冠頂／側板等仍有原低面數差異，美術待使用者評價。"
+        "description": "C06壓力面罩設計；v6修正頸部混搭，原有低面數限制與美術待評。"
       },
-      "summary": "在固定 v4 上小收耳側／下框，採用原生 attempt 3 的連續琥珀玻璃上緣反光與細橫線；正面玻璃投影 58.0930%。與 v4 的 UV、三角形數和索引相同；其他四圖、非頭部模型及前臂三點保留。冠頂與側板仍有低面數切面，沒有概念中的獨立小圓耳或單一銀扣，不宣稱完美或逐像素還原。",
+      "summary": "恢復8個偏移頸圈頂點與深色內襯；其餘310個頭盔頂點、全部UV／拓樸沿用v5。29身甲×9姿勢及35圖混搭驗收通過。低領原有重疊輪廓仍保留，美術待評。",
       "changes": [
         {
-          "part": "面罩上緣反光／細橫線",
-          "before": "固定 v4 的玻璃較不透明，反光與低模表面一起讀成金色板。",
-          "after": "原生 attempt 3 使用較寬連續上緣反光與細橫線，正面投影 58.0930%。",
-          "preserved": "圓弧玻璃本體、原 UV 鏡像；沒有實際透明材質。"
-        },
-        {
-          "part": "耳側與短下框",
-          "before": "固定 v4 的耳側甲面較寬、下框較突出。",
-          "after": "既有座標局部小收，冠部／下框鋼藍分色更連續。",
-          "preserved": "164 tris／334 UV／3 charts 與 v4 相同；低面數冠頂／側板仍保留。"
-        },
-        {
-          "part": "胸肩／前臂三點／腿靴",
-          "before": "v4 採用的四張非頭部 atlas 與非頭部模型。",
-          "after": "四張圖位元組、非頭部 arrays 與 skin 完全保留。",
-          "preserved": "每側前臂三金點、遊戲 ID5、28 骨架、技能與獨立背包對應。"
+          "part": "頸部接合",
+          "before": "v5頸圈8點漂移、貼圖偏灰。",
+          "after": "恢復真正原版24點頸圈，改深色內襯；共用保存gate。",
+          "preserved": "其餘310個頭盔頂點、全部UV／拓樸／bindings；肩胸手靴四張原生圖。"
         }
       ],
       "verification": [
@@ -1040,17 +1028,17 @@
         {
           "label": "本輪 UV／拓撲",
           "result": "164 tris／334 UV／3 charts；與固定 v4 相同，新 UV 0",
-          "evidence": "../titan_runtime_v1/review/helmet_v5_contract_and_guards_test.json"
+          "evidence": "../titan_runtime_v1/review/helmet_v6_contract_and_guards_test.json"
         },
         {
           "label": "正面面罩投影",
-          "result": "58.0930% ≥50%；PASS（整個頭盔 mesh 投影）",
-          "evidence": "../titan_runtime_v1/review/helmet_v5_visor_coverage.json"
+          "result": "55.0104% ≥50%；PASS",
+          "evidence": "../titan_runtime_v1/review/helmet_v6_visor_coverage.json"
         },
         {
           "label": "四向整體灰模",
           "result": "最大1−IoU 3.7609%；20% 上限 PASS",
-          "evidence": "../titan_runtime_v1/review/helmet_v5_proportion_test.json"
+          "evidence": "../titan_runtime_v1/review/helmet_v6_proportion_test.json"
         },
         {
           "label": "runtime／GLB／五圖",
@@ -1060,12 +1048,17 @@
         {
           "label": "正式擷取／存檔",
           "result": "64 Windows ANGLE 正常資源；當前 SHA／存檔不變 PASS",
-          "evidence": "../titan_runtime_v1/review/helmet_v5_final/capture.json"
+          "evidence": "../titan_runtime_v1/review/helmet_v6_final/capture.json"
         },
         {
           "label": "使用者美術／手機效能",
           "result": "NOT RUN",
           "evidence": "../titan_runtime_v1/README.md"
+        },
+        {
+          "label": "29身甲混搭與負面案例",
+          "result": "261姿勢／35圖／保存前拒絕壞輸出",
+          "evidence": "../titan_neck_mix_v1/index.html"
         }
       ],
       "limits": {
@@ -1078,7 +1071,11 @@
       },
       "sources": [
         {
-          "label": "Titan v5 真原版／固定 v4／本輪三欄比對",
+          "label": "Titan v6 混搭修正前後與必要prompt",
+          "path": "../titan_neck_mix_v1/index.html"
+        },
+        {
+          "label": "歷史 Titan v5 真原版／固定 v4／本輪三欄比對",
           "path": "../titan_runtime_v1/revisions/helmet_refinement_v5/index.html"
         },
         {
@@ -1106,11 +1103,11 @@
           "path": "../legacy_armor_base_v2/inventory.json"
         },
         {
-          "label": "Titan 目前版本入口（v5）",
+          "label": "歷史 Titan 目前版本入口（v5）",
           "path": "../titan_runtime_v1/index.html"
         },
         {
-          "label": "Titan v5 最新正式工程與素材 manifest",
+          "label": "歷史 Titan v5 最新正式工程與素材 manifest",
           "path": "../titan_runtime_v1/manifest.json"
         },
         {
@@ -1182,19 +1179,19 @@
           "path": "../titan_runtime_v1/revisions/before_helmet_refinement_v4/snapshot.json"
         },
         {
-          "label": "v5 採用 attempt 3 完整實送 prompt",
+          "label": "歷史 v5 採用 attempt 3 完整實送 prompt",
           "path": "../titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_prompt_attempt_03.txt"
         },
         {
-          "label": "v5 原生生成與完整 reference 記錄",
+          "label": "歷史 v5 原生生成與完整 reference 記錄",
           "path": "../titan_runtime_v1/revisions/helmet_refinement_v5/generation_record.json"
         },
         {
-          "label": "v5 未採用 attempt 1",
+          "label": "歷史 v5 未採用 attempt 1",
           "path": "../titan_runtime_v1/revisions/helmet_refinement_v5/generation_record_attempt_01.json"
         },
         {
-          "label": "v5 未採用 attempt 2",
+          "label": "歷史 v5 未採用 attempt 2",
           "path": "../titan_runtime_v1/revisions/helmet_refinement_v5/generation_record_attempt_02.json"
         },
         {
@@ -1202,15 +1199,15 @@
           "path": "../titan_runtime_v1/revisions/helmet_refinement_v5/asset_brief.md"
         },
         {
-          "label": "v5 本輪前固定 v4 素材與報告",
+          "label": "歷史 v5 本輪前固定 v4 素材與報告",
           "path": "../titan_runtime_v1/revisions/before_helmet_refinement_v5/snapshot.json"
         },
         {
-          "label": "v5 最新 after15 SHA 索引",
+          "label": "歷史 v5 最新 after15 SHA 索引",
           "path": "titan_helmet_refinement_v5_after_snapshot.json"
         },
         {
-          "label": "v5 正面面罩實測",
+          "label": "歷史 v5 正面面罩實測",
           "path": "../titan_runtime_v1/review/helmet_v5_visor_coverage.json"
         }
       ],
@@ -1229,7 +1226,7 @@
         "head_triangle_growth_fraction": 0.32258064516129026,
         "head_uv_charts": 3,
         "max_wholebody_gray_1_minus_iou": 0.03760945315212216,
-        "projected_front_visor_fraction": 0.580930083568084,
+        "projected_front_visor_fraction": 0.5501044037698226,
         "topology": {
           "triangles": 740,
           "original_triangles": 700,
@@ -1256,19 +1253,19 @@
         "current_capture_save_unchanged": true
       },
       "art_residuals": [
-        "原遊戲短比例、冠頂與側板仍有低面數切面，沒有概念中的獨立圓耳／中心銀扣。",
-        "只有指定斜視概念；側後方依原頭殼推定，並非逐像素還原。",
-        "反光是 opaque diffuse 畫法；使用者美術接受與手機 GPU 記憶體／效能 NOT RUN。"
+        "低領背面保留原頸管下緣與原有衣領重疊痕；未宣稱零穿插。",
+        "新內襯較v5深，但仍比真正原版貼圖亮。",
+        "美術待使用者評價；瀏覽器操作與手機效能未驗。"
       ],
       "latest_revision": {
-        "variant": "helmet_refinement_v5",
+        "variant": "helmet_refinement_v6",
         "status": "engineering_PASS_pending_user_art_review",
         "after_ready": true,
-        "comparison_page": "../titan_runtime_v1/revisions/helmet_refinement_v5/index.html",
-        "generation_record": "../titan_runtime_v1/revisions/helmet_refinement_v5/generation_record.json",
-        "selected_native_attempt": 3,
-        "selected_native_prompt": "../titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_prompt_attempt_03.txt",
-        "selected_native_head_sha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
+        "comparison_page": "../titan_neck_mix_v1/index.html",
+        "generation_record": "../titan_runtime_v1/revisions/helmet_refinement_v6/generation_record.json",
+        "selected_native_attempt": 1,
+        "selected_native_prompt": "../titan_runtime_v1/revisions/helmet_refinement_v6/head_diffuse_prompt_attempt_01.txt",
+        "selected_native_head_sha256": "a963e84b7b672dab1fd62031bb456d6e88f6f89abd34741eb7d8d66cdd4fb6c1",
         "source_geometry": "../titan_runtime_v1/build/geometry.json",
         "source_config": "../titan_runtime_v1/runtime_config.json",
         "original_head_triangles": 124,
@@ -1291,17 +1288,17 @@
         ],
         "geometry_original_total_ceiling": 0.2,
         "visor_projected_frontal_coverage_target_fraction": 0.5,
-        "visor_projected_frontal_coverage_measured_fraction": 0.580930083568084,
+        "visor_projected_frontal_coverage_measured_fraction": 0.5501044037698226,
         "candidate_whole_triangles": 740,
         "candidate_whole_uv_coordinates": 1647,
         "fresh_capture_status": "PASS",
         "fresh_engineering_status": "PASS",
         "user_art_acceptance": "NOT RUN",
         "mobile_performance": "NOT RUN",
-        "note": "目前欄為正式 v5；v2／v4 固定15圖與真原版保留。UV／三角形索引和 v4 相同。工程 PASS 與覆蓋比例不代表完美、藝術接受或手機效能。",
+        "note": "恢復8個偏移頸圈頂點與深色內襯；其餘310個頭盔頂點、全部UV／拓樸沿用v5。29身甲×9姿勢及35圖混搭驗收通過。低領原有重疊輪廓仍保留，美術待評。",
         "max_wholebody_gray_1_minus_iou": 0.03760945315212216,
-        "scene_sha256": "fe77152022e2a685832de8f850186a4a8ed274f91a10daee7f4bf3f3913e1756",
-        "capture_summary_sha256": "9b66f54028b9bcb0840a592b9b56222707fd3705341d12afd4d3bd75fd94832f"
+        "scene_sha256": "3dbbbc2e3042c5a774bf1400ffe90e86bf18513c814cd1fc7b650b98960a49ea",
+        "capture_summary_sha256": "8cc46ee25f37c6bb0804315831f95c24659e50619df39749df5ddd725553adb6"
       }
     }
   ]

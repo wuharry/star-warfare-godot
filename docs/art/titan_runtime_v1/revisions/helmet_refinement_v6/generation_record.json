@@ -1,0 +1,41 @@
+{
+  "tool": "image_gen.imagegen",
+  "use_case": "precise-object-edit",
+  "model_revision": "helmet_refinement_v6",
+  "attempt": 1,
+  "prompt_path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v6/head_diffuse_prompt_attempt_01.txt",
+  "prompt_sha256": "51f394e4dd8742927a24820c8ac7b8c4a43b4511642931608b8a9a698e269f51",
+  "references": [
+    {
+      "path": "docs/art/titan_neck_mix_v1/revisions/before_neck_fix/assets/armors/titan_v1/titan_head_diffuse.png",
+      "role": "edit_target",
+      "sha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
+      "snapshot": "docs/art/titan_neck_mix_v1/revisions/before_neck_fix/assets/armors/titan_v1/titan_head_diffuse.png"
+    },
+    {
+      "path": "assets/models/player/animated/armor_textures/r_tou_54434b4b8e32_2x.png",
+      "role": "original_neck_texture",
+      "sha256": "a131e4a51e90518915f0060b203ff322c45b032640d5bc860a58d58ad5960dba",
+      "snapshot": "assets/models/player/animated/armor_textures/r_tou_54434b4b8e32_2x.png"
+    }
+  ],
+  "native_output_path": "C:\\Users\\whw88\\.codex\\generated_images\\01a0d34a-7c78-72d0-b7ae-7c134c979b6f\\exec-68ad3980-31a4-432e-b273-1f1876febe72.png",
+  "native_output_sha256": "a963e84b7b672dab1fd62031bb456d6e88f6f89abd34741eb7d8d66cdd4fb6c1",
+  "archive_path": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v6/head_diffuse_attempt_01.png",
+  "canonical_path": "assets/armors/titan_v1/titan_head_diffuse.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "processing": "byte-for-byte native copy; no painting, recoloring, crop, resize or compositing",
+  "previous_revision_record": {
+    "path": "docs/art/titan_neck_mix_v1/revisions/before_neck_fix/docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/generation_record.json",
+    "sha256": "14b58c48ed4a9794a30b5392d60768b2a0b2476e3df8cd5fd90a949a989ad1c5"
+  },
+  "status": "runtime_integrated_pending_user_art_review",
+  "repair_scope": "Restore original neck tube and opaque black undersuit while retaining reviewed V5 visor geometry; generated rest-of-atlas pixels may differ slightly."
+}

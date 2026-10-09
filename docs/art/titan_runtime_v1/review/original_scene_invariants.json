@@ -1,7 +1,7 @@
 {
-	"current_scene_sha256": "fe77152022e2a685832de8f850186a4a8ed274f91a10daee7f4bf3f3913e1756",
+	"current_scene_sha256": "3dbbbc2e3042c5a774bf1400ffe90e86bf18513c814cd1fc7b650b98960a49ea",
 	"errors": [],
-	"geometry_sha256": "9945a3d0a48371c28ed32296701ec6e087552cce3e33a0948fadf44ed228253f",
+	"geometry_sha256": "3def6703653ecc5c1dd6e81c353ea443ba03460002cc2ec90f14ca6e246b5748",
 	"original_bones": 28,
 	"original_node_ids": {
 		"ArmorBody_05": 51.0,
@@ -13,8 +13,13 @@
 	"records": [
 		{
 			"body_limbs_all_arrays_exact": null,
+			"geometry_changed": false,
+			"immutable_arrays_exact": null,
 			"indices_skin_weights_bones_topology_exact": null,
+			"max_normal_tangent_error": 0.0,
+			"max_raw_position_error_m": 0.0,
 			"max_rest_error_m": 0.000000120367815270583,
+			"normal_frames_verified_against_target": null,
 			"original_indices_skin_weights_topology_exact": null,
 			"part": "ArmorHead_05",
 			"refinement_contract_verified": true,
@@ -23,8 +28,13 @@
 		},
 		{
 			"body_limbs_all_arrays_exact": true,
+			"geometry_changed": false,
+			"immutable_arrays_exact": null,
 			"indices_skin_weights_bones_topology_exact": true,
+			"max_normal_tangent_error": 0.0,
+			"max_raw_position_error_m": 0.0,
 			"max_rest_error_m": 0.0,
+			"normal_frames_verified_against_target": null,
 			"original_indices_skin_weights_topology_exact": true,
 			"part": "ArmorBody_05",
 			"refinement_contract_verified": null,
@@ -33,8 +43,13 @@
 		},
 		{
 			"body_limbs_all_arrays_exact": true,
+			"geometry_changed": false,
+			"immutable_arrays_exact": null,
 			"indices_skin_weights_bones_topology_exact": true,
+			"max_normal_tangent_error": 0.0,
+			"max_raw_position_error_m": 0.0,
 			"max_rest_error_m": 0.0,
+			"normal_frames_verified_against_target": null,
 			"original_indices_skin_weights_topology_exact": true,
 			"part": "ArmorHand_05",
 			"refinement_contract_verified": null,
@@ -43,8 +58,13 @@
 		},
 		{
 			"body_limbs_all_arrays_exact": true,
+			"geometry_changed": false,
+			"immutable_arrays_exact": null,
 			"indices_skin_weights_bones_topology_exact": true,
+			"max_normal_tangent_error": 0.0,
+			"max_raw_position_error_m": 0.0,
 			"max_rest_error_m": 0.0,
+			"normal_frames_verified_against_target": null,
 			"original_indices_skin_weights_topology_exact": true,
 			"part": "ArmorFoot_05",
 			"refinement_contract_verified": null,
@@ -55,5 +75,5 @@
 	"scope": "Actual SCN versus current original player.gltf. Body/limb arrays and all skin binds exact; explicit head subdivision budget, parent weights, UVs and authored rest positions checked.",
 	"source_sha256": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
 	"status": "PASS",
-	"target_sha256": "4dd127a135f0585d6c5d229864eb40dc49246c5f3ce130eae7ae5d8abc2b7acf"
+	"target_sha256": "f98cf28821bdefb973d1d869d810984d5e6b659ffc64fd593dc980fc203cbacb"
 }

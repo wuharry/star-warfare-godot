@@ -13,6 +13,9 @@ import bpy
 from mathutils import Matrix, Vector
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / 'tools/armor_runtime_v1'))
+from neck_source_contract import verify_neck
+
 args=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
 slug=next((a.split('=',1)[1] for a in args if a.startswith('--armor=')),None)
 assert slug in ['hydra','strike','titan','atom','pegasus'], 'Pass -- --armor=hydra/strike/titan/atom/pegasus'
@@ -25,6 +28,12 @@ shape=None
 if shape_path.exists():
     spec=importlib.util.spec_from_file_location('armor_shape',shape_path)
     shape=importlib.util.module_from_spec(spec);spec.loader.exec_module(shape)
+    if hasattr(shape, 'configure_neck_source'):
+        assert len(SOURCE['parts'][HEAD]['surfaces']) == 1
+        neck_source_path = (ROOT / CONFIG['original_source_snapshot']).parent / 'source.json'
+        neck_source = json.loads(neck_source_path.read_text(encoding='utf-8-sig'))
+        assert SOURCE == neck_source, 'Neck guard requires the unchanged true original source'
+        shape.configure_neck_source(neck_source['parts'][HEAD]['surfaces'][0])
 contract=None; MOVABLE=set(); BOUNDED=False
 if slug in ['atom','pegasus']:
     spec=importlib.util.spec_from_file_location('first_integration_contract',ROOT/'tools/armor_runtime_v1/first_integration_contract.py')
@@ -147,6 +156,8 @@ def main():
                 for field in ['indices','bone_indices','bone_names','weights','triangle_parents','added_vertices']:
                     target_row[field]=row[field]
                 target_row['baseline_positions']=row['positions']
+            if name == HEAD and shape and hasattr(shape, 'configure_neck_source'):
+                verify_neck(original_row, target_row)
             target_surfaces.append(target_row)
             deltas.extend((p-Vector(old)).length for p,old in zip(authored,row['positions']))
             changed=sum((Vector(a)-Vector(b)).length>.000001 for a,b in zip(authored_uv,original_row['uv']))

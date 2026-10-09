@@ -1012,8 +1012,8 @@
     },
     {
       "name": "titan",
-      "scope": "explicit head refinement from true original source; original-total20% shape/UV-prefix limit; v5 head-only original-edge subdivisions within35% count growth; original weights/bones and body/limbs unchanged",
-      "active_helmet_revision": "helmet_refinement_v5",
+      "scope": "explicit head refinement from true original source; original-total20% shape/UV-prefix limit; v6 head-only original-edge subdivisions within35% count growth; original weights/bones and body/limbs unchanged",
+      "active_helmet_revision": "helmet_refinement_v6",
       "user_authorized_original_ceiling": 0.2,
       "actual_delivery_original_limit": 0.2,
       "head_count_growth_ceiling": 0.35,
@@ -1036,6 +1036,80 @@
       "head_triangles": 164,
       "changed_original_head_uv": 10,
       "original_head_uv_fraction": 0.034013605442176874,
+      "original_neck_interface": {
+        "status": "PASS",
+        "errors": [],
+        "scope": "Original neck position/UV/topology/named-skin interface only; rendered mixed-body coverage is a separate requirement",
+        "discovery": "true-original position-welded triangle components with active named head and torso/neck bones",
+        "weld_tolerance_m": 1e-05,
+        "component_count": 1,
+        "physical_vertex_count": 12,
+        "vertex_ids": [
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159,
+          160,
+          161,
+          162,
+          163,
+          164,
+          165,
+          166,
+          167
+        ],
+        "triangle_ids": [
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81
+        ],
+        "moved_vertex_ids": [],
+        "max_neck_displacement_m": 4.686995553407168e-15,
+        "channel_changes": {
+          "uv": [],
+          "bone_indices": [],
+          "bone_names": [],
+          "weights": []
+        },
+        "neck_triangles_exact": true
+      },
+      "neck_only_geometry_revision": {
+        "before_snapshot_sha256": "30accd5a3e51eea7bdc02e69c9dadc19bcdcb62568a92df6076a4a8326852412",
+        "protected_original_neck_vertices": 24,
+        "restored_neck_vertex_ids": [
+          152,
+          155,
+          156,
+          157,
+          158,
+          159,
+          161,
+          162
+        ],
+        "other_helmet_positions_exact": 310,
+        "all_previous_head_uv_topology_bindings_exact": true
+      },
       "additional_uv_changes": 0,
       "additional_head_uv_coordinates": 0,
       "additional_head_triangles": 0,
@@ -1078,7 +1152,7 @@
           "original_max_rest_displacement_fraction": 0.19496740815465188,
           "original_dimension_delta_fractions": [
             0.15645625629462345,
-            0.013127406831571875,
+            0.014894861107199953,
             0.03562156597931043
           ],
           "original_uv_changed_count": 10
@@ -1087,16 +1161,16 @@
       "triangles": 740,
       "surfaces": 5,
       "uv_coordinates": 1647,
-      "before_revision_snapshot_sha256": "1f4781ca2c5c8564c57dd153a621bb92f82ff36879b5eab19764dd3b1d454bd5",
+      "before_revision_snapshot_sha256": "30accd5a3e51eea7bdc02e69c9dadc19bcdcb62568a92df6076a4a8326852412",
       "images": [
         {
           "label": "head",
-          "canonical_sha256": "4fc63720e6fccd8a11e904ebb8afa4896bd9947c3f8d8fe4e01212405d9ba66f",
+          "canonical_sha256": "a963e84b7b672dab1fd62031bb456d6e88f6f89abd34741eb7d8d66cdd4fb6c1",
           "dimensions": [
             1254,
             1254
           ],
-          "prompt": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v5/head_diffuse_prompt_attempt_03.txt",
+          "prompt": "docs/art/titan_runtime_v1/revisions/helmet_refinement_v6/head_diffuse_prompt_attempt_01.txt",
           "postprocessing": "none; native PNG bytes"
         },
         {
@@ -1144,21 +1218,21 @@
         "runtime": "docs/art/titan_runtime_v1/review/runtime_test.json",
         "roundtrip": "docs/art/titan_runtime_v1/review/roundtrip_test.json",
         "scene": "docs/art/titan_runtime_v1/review/original_scene_invariants.json",
-        "master": "docs/art/titan_runtime_v1/review/helmet_v5_master_test.json",
-        "glb_images": "docs/art/titan_runtime_v1/review/helmet_v5_glb_test.json",
-        "guards": "docs/art/titan_runtime_v1/review/helmet_v5_contract_and_guards_test.json",
-        "proportion": "docs/art/titan_runtime_v1/review/helmet_v5_proportion_test.json",
-        "visor_coverage": "docs/art/titan_runtime_v1/review/helmet_v5_visor_coverage.json"
+        "master": "docs/art/titan_runtime_v1/review/helmet_v6_master_test.json",
+        "glb_images": "docs/art/titan_runtime_v1/review/helmet_v6_glb_test.json",
+        "guards": "docs/art/titan_runtime_v1/review/helmet_v6_contract_and_guards_test.json",
+        "proportion": "docs/art/titan_runtime_v1/review/helmet_v6_proportion_test.json",
+        "visor_coverage": "docs/art/titan_runtime_v1/review/helmet_v6_visor_coverage.json"
       },
-      "capture_summary": "docs/art/titan_runtime_v1/review/helmet_v5_final/capture.json",
-      "capture_summary_sha256": "9b66f54028b9bcb0840a592b9b56222707fd3705341d12afd4d3bd75fd94832f",
+      "capture_summary": "docs/art/titan_runtime_v1/review/helmet_v6_final/capture.json",
+      "capture_summary_sha256": "8cc46ee25f37c6bb0804315831f95c24659e50619df39749df5ddd725553adb6",
       "current_artifact_sha256": {
-        "scene": "fe77152022e2a685832de8f850186a4a8ed274f91a10daee7f4bf3f3913e1756",
-        "glb": "59831832459b7b60bbdecca0833d3e653ca2ae5015c8dcf230ce5ff50672e5a3",
+        "scene": "3dbbbc2e3042c5a774bf1400ffe90e86bf18513c814cd1fc7b650b98960a49ea",
+        "glb": "2a1f665a6f8b3aabb7e33a8d1f886a0306f5236b900e8ada2a6b59452ec6d850",
         "source": "b3d440649bffaaa107437b57193311b38e649cbd73c0f3aa2d0c54fbb851e58b",
-        "target": "4dd127a135f0585d6c5d229864eb40dc49246c5f3ce130eae7ae5d8abc2b7acf",
-        "geometry": "9945a3d0a48371c28ed32296701ec6e087552cce3e33a0948fadf44ed228253f",
-        "master": "6a8de725f60468439bc2ca08c1e6927534c68b2ef23e765ed1bd4bcc9a7e1f47"
+        "target": "f98cf28821bdefb973d1d869d810984d5e6b659ffc64fd593dc980fc203cbacb",
+        "geometry": "3def6703653ecc5c1dd6e81c353ea443ba03460002cc2ec90f14ca6e246b5748",
+        "master": "fb5cb4f63dc2a275decb64a79e9cdd2cfcc439fc2e0353fec33040a7ae073732"
       },
       "silhouettes": [
         {
@@ -1181,66 +1255,66 @@
       "captures": [
         {
           "view": "diffuse_front",
-          "sha256": "813c16fb853930d87f1e70af57f12e3acfa660379ee05849d9618df1ecfc9172"
+          "sha256": "6aa5e7921f40c679cc95966473d2ba94d87f7f24808fd83dd656546945565d6e"
         },
         {
           "view": "diffuse_quarter",
-          "sha256": "613e865355035b8e82e9e56c56c11db682f2804de4bc1347ff0bbb5e1f1805e8"
+          "sha256": "2d66d030bd2fe26b740a82cd7a2121a657ca1d25c09ccedce7bebd23e351b218"
         },
         {
           "view": "diffuse_side",
-          "sha256": "99aa59e0e71db4530382e0f256bfef93a9c40a579ee4d27b249d4256cff7e7f6"
+          "sha256": "7f5bdc1657fb0266441b4b9b527a448517adf685cdb6a06f83a684a36bcde498"
         },
         {
           "view": "diffuse_rear",
-          "sha256": "03f3a1482d7c70a345b521b5251c198c75f509f2424114fa5d75af78a2d817fe"
+          "sha256": "075f2be3ba18a9e25e4f55b5d8932b6b9b3063f760a26b2f6429b1781ebd090c"
         },
         {
           "view": "head_front",
-          "sha256": "b27002fa0af4960d30ae7f79062581a8b51c3ed4cf854861f498a74d98537782"
+          "sha256": "4ea653e1ce39bcab52db4e1d1540f9f70e9912c01d621501b513e476e76540d4"
         },
         {
           "view": "head_quarter",
-          "sha256": "50ed3623d01cc5c4d3dc48e9dc0951ef5cde67dbd94b72ee382fd19e5bcce878"
+          "sha256": "5d7f8e299d3935611b5a603b6d1fe76bf6b01395c7367661b3a049025aa1b9c2"
         },
         {
           "view": "head_side",
-          "sha256": "ed18b9042d2d5d98f462a28e6f97d0d8413a573d0d57b24b5ae8e21c2a54712d"
+          "sha256": "d02469d215b9f581d99568791d7d9af038f88d51d30d89cce71034b763599f71"
         },
         {
           "view": "head_rear",
-          "sha256": "2abc2d04276d300088dfedaff59291155b58bc945d76a3db5dc7a68fae0a045b"
+          "sha256": "790d901d5edb8c42473ea19ada5606676bd894a917fa41a255ceaa2ba8c86c26"
         },
         {
           "view": "clay_front",
-          "sha256": "a6214849d7e963d3101a32cad72faf5592ce6b30a96cf360e493a28e47a26452"
+          "sha256": "36300deaab65ffa2479f7c96727d45e8ef7b315c8f76e20f2b2486df4ad2cab8"
         },
         {
           "view": "clay_side",
-          "sha256": "0a6a66e8cde386e1802875639812513bfe684f88f4396bda697581c98766e216"
+          "sha256": "9017f92bbefb583555728d4b5bafc94885bd0077fd164871bf1661f9742ec404"
         },
         {
           "view": "level_01_gameplay",
-          "sha256": "d10fe98d7716361f63507007c043bffe89dd5a1ddc8145639c5178b239192183"
+          "sha256": "1ae71613ddfc6070ad9b97100737e6a43eb24f8d0ced140fb8048ab7c1f53ff9"
         },
         {
           "view": "level_08_gameplay",
-          "sha256": "922fbaf151d96f9b9388901a8a646fbe360fc7fea0b7d117c92116b0cbcc5508"
+          "sha256": "c616e46a9558f689b38a6f69fece374219467641d0052e95241351f82b98a888"
         },
         {
           "view": "idle_rifle",
-          "sha256": "210c711bf93187c2e135812dd2f8f412a1cdacc651c7e67a7c46784c65c72a24"
+          "sha256": "e2e9a9a7b2a6ab59546909925c2d7bb3b0be88d9386921b5770ebf66ad618742"
         },
         {
           "view": "run_rifle",
-          "sha256": "b82821bfbec50e3f71c96365d8d40c2e926e623341aee1264770c6c4ec39e98a"
+          "sha256": "ebf90952534885f90ca92c81eb3f6a437c567fef0b2e2918ccfcb827fd5eec0a"
         },
         {
           "view": "reload_04",
-          "sha256": "8d147eb512687ac253bbd0bca34109d33b4936f35d36421375f6b893e1174eaa"
+          "sha256": "87379f0995ccba32eb5d313f5e39b11814d796bb32099fc5b21f993ab34c729f"
         }
       ],
-      "capture_execution": "docs/art/titan_runtime_v1/review/helmet_v5_angle_capture.log"
+      "capture_execution": "docs/art/titan_runtime_v1/review/helmet_v6_angle_capture.log"
     }
   ],
   "art_review": "runtime-verified first pass; pending user preference review; no objective style score",

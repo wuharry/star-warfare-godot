@@ -1,3 +1,15 @@
+# Titan · C-06 · 混搭頸部修正 v6
+
+目前正式版本為 `helmet_refinement_v6`。[修正前後與35張混搭近拍](../titan_neck_mix_v1/index.html)、[必要頸部接口 prompt](../titan_neck_mix_v1/prompts/mandatory_neck_interface.txt)。圓面罩的310個非頸部頂點、全部UV／拓樸／skin沿用v5，恢復8個偏移頸圈頂點；24個頸部UV頂點與真正原版一致。新原生貼圖將頸管改回深色內襯，其他四張貼圖不變。
+
+29套身甲×9動作取樣共261項與35張正常資源近拍已通過；保留低領背面的原頸管下緣及原有衣領重疊痕，美術待使用者評價。面罩正面投影本輪55.0104%，仍達50%門檻。共享製作工具與Titan專用工具均在保存前阻擋壞頸部；其他自訂製作工具尚未全部移植，不宣稱全系列皆已修正。
+
+正式流程：Blender `build.py -- --armor=titan` → Godot editor import → `update_titan_helmet.gd`（頸部gate先通過才save/export）→ editor GLB import與`reimport_titan_head_lossless.gd` → `validate_scene.gd -- --armor=titan` → runtime／roundtrip／混搭／原生來源與master驗證 → `publish_titan_neck_fix.py`。Blender master驗證需讓其Python找到本機既有Pillow site-packages；不可為取得PASS跳過原生PNG解碼檢查。
+
+以下保留舊v5交付記錄；其中數值與PASS只屬於v5歷史，最新證據以v6 manifest及混搭頁為準。
+
+---
+
 # Titan · C-06 · 玻璃與護框修正版 v5
 
 **本輪採用原生 attempt 3 頭圖，收整耳側與下護框，面罩上緣反光更連續、玻璃的細橫線更克制。** v4 的大面罩已達工程門檻，這次修正較不透明的玻璃畫法與硬側框。肩、胸、手、靴四張貼圖與非頭部模型保留 v4；遊戲 ID 5、四件裝備、獨立背包與 28 原骨架對應不變。

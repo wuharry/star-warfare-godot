@@ -1,0 +1,2973 @@
+{
+	"engine_arguments": [
+		"res://tools/armor_runtime_v1/mixed_neck_capture.tscn"
+	],
+	"failures": [
+		"NECK_POSITION: original tube vertex moved: 152",
+		"NECK_POSITION: original tube vertex moved: 155",
+		"NECK_POSITION: original tube vertex moved: 156",
+		"NECK_POSITION: original tube vertex moved: 157",
+		"NECK_POSITION: original tube vertex moved: 158",
+		"NECK_POSITION: original tube vertex moved: 159",
+		"NECK_POSITION: original tube vertex moved: 161",
+		"NECK_POSITION: original tube vertex moved: 162",
+		"NECK_CHARCOAL: sampled tube is too light/gray for the black undersuit",
+		"MIX_POSE: original neck tube moved in body 0/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 0/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 0/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 0/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 0/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 0/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 0/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 0/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 0/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 1/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 1/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 1/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 1/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 1/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 1/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 1/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 1/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 1/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 2/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 2/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 2/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 2/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 2/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 2/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 2/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 2/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 2/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 3/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 3/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 3/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 3/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 3/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 3/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 3/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 3/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 3/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 4/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 4/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 4/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 4/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 4/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 4/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 4/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 4/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 4/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 5/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 5/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 5/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 5/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 5/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 5/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 5/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 5/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 5/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 6/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 6/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 6/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 6/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 6/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 6/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 6/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 6/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 6/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 7/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 7/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 7/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 7/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 7/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 7/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 7/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 7/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 7/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 8/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 8/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 8/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 8/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 8/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 8/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 8/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 8/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 8/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 9/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 9/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 9/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 9/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 9/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 9/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 9/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 9/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 9/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 10/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 10/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 10/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 10/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 10/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 10/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 10/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 10/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 10/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 11/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 11/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 11/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 11/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 11/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 11/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 11/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 11/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 11/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 12/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 12/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 12/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 12/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 12/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 12/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 12/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 12/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 12/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 13/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 13/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 13/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 13/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 13/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 13/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 13/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 13/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 13/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 14/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 14/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 14/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 14/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 14/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 14/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 14/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 14/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 14/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 15/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 15/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 15/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 15/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 15/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 15/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 15/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 15/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 15/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 16/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 16/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 16/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 16/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 16/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 16/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 16/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 16/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 16/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 17/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 17/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 17/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 17/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 17/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 17/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 17/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 17/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 17/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 18/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 18/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 18/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 18/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 18/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 18/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 18/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 18/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 18/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 19/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 19/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 19/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 19/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 19/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 19/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 19/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 19/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 19/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 20/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 20/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 20/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 20/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 20/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 20/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 20/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 20/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 20/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 21/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 21/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 21/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 21/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 21/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 21/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 21/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 21/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 21/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 22/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 22/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 22/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 22/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 22/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 22/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 22/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 22/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 22/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 23/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 23/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 23/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 23/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 23/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 23/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 23/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 23/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 23/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 24/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 24/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 24/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 24/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 24/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 24/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 24/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 24/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 24/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 25/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 25/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 25/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 25/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 25/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 25/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 25/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 25/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 25/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 26/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 26/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 26/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 26/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 26/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 26/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 26/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 26/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 26/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 27/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 27/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 27/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 27/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 27/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 27/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 27/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 27/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 27/reload/0.85",
+		"MIX_POSE: original neck tube moved in body 28/idle_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 28/idle_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 28/idle_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 28/run_rifle/0.00",
+		"MIX_POSE: original neck tube moved in body 28/run_rifle/0.30",
+		"MIX_POSE: original neck tube moved in body 28/run_rifle/0.65",
+		"MIX_POSE: original neck tube moved in body 28/reload/0.15",
+		"MIX_POSE: original neck tube moved in body 28/reload/0.50",
+		"MIX_POSE: original neck tube moved in body 28/reload/0.85"
+	],
+	"frames": [
+		{
+			"body_id": 0,
+			"file": "before_body_00_rest_front.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "6e9feb0552dcc4a67b7f8b9ad0b69bc672c4bf7cba8440a4ada5f4a71223377d",
+			"view": "front",
+			"width": 720
+		},
+		{
+			"body_id": 0,
+			"file": "before_body_00_rest_quarter.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "fc06ea990ec7d4a9a951bfeb869e3cc230c166a6ca7f83d5ba94177395db229d",
+			"view": "quarter",
+			"width": 720
+		},
+		{
+			"body_id": 0,
+			"file": "before_body_00_rest_side.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "bf9510c08e623672edcd8b3bc013977dbaba8035b5b72853bf7d09d8b4863fff",
+			"view": "side",
+			"width": 720
+		},
+		{
+			"body_id": 0,
+			"file": "before_body_00_rest_rear.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "056965d595b86705bdd813576cbf71d43f4b7cd792dfa2e13129fe895b8c2293",
+			"view": "rear",
+			"width": 720
+		},
+		{
+			"body_id": 1,
+			"file": "before_body_01_rest_front.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "94112c250d31afb343dec7a1818cce1bcce1a32cd817c06b6209080b9c39cacc",
+			"view": "front",
+			"width": 720
+		},
+		{
+			"body_id": 1,
+			"file": "before_body_01_rest_quarter.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "e89776571555312624e413c6178c9e1afc3fb6c534a3da01e6c0f13d76fbb597",
+			"view": "quarter",
+			"width": 720
+		},
+		{
+			"body_id": 1,
+			"file": "before_body_01_rest_side.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "e4fd8e5434ab9311bc6ceefc166fcda56220a4ed0c70baa3a6f41ffb7caa0192",
+			"view": "side",
+			"width": 720
+		},
+		{
+			"body_id": 1,
+			"file": "before_body_01_rest_rear.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "1ebb1f9205007963c087aba6eafa492030bfd52a9854f72ccfd08b156eaae596",
+			"view": "rear",
+			"width": 720
+		},
+		{
+			"body_id": 4,
+			"file": "before_body_04_rest_front.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "999f9dd95e5f55b817eb8ee6b61030542a30f93c2556a64e60e8cdc747a94d6b",
+			"view": "front",
+			"width": 720
+		},
+		{
+			"body_id": 4,
+			"file": "before_body_04_rest_quarter.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "319cef104f122db8a31aaea63c913dc2a94db1856e09810e43b106432f4e6408",
+			"view": "quarter",
+			"width": 720
+		},
+		{
+			"body_id": 4,
+			"file": "before_body_04_rest_side.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "65ae741b9a847d79a4c2be184fb5b5ce3f9771329c909b25ace1e6ee3faa06db",
+			"view": "side",
+			"width": 720
+		},
+		{
+			"body_id": 4,
+			"file": "before_body_04_rest_rear.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "f48d37175aa317bdf2b932884b994fec0862f9db7a85719cae7c96cccf205463",
+			"view": "rear",
+			"width": 720
+		},
+		{
+			"body_id": 5,
+			"file": "before_body_05_rest_front.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "10295e5ddd808898565d4227cfc9fa8a89f60fee7b1f61b1fdd555f57f1d159d",
+			"view": "front",
+			"width": 720
+		},
+		{
+			"body_id": 5,
+			"file": "before_body_05_rest_quarter.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "046a93451338c0954e08f137887e04bfc634d2cc5b2bff64a49cdf853600cc75",
+			"view": "quarter",
+			"width": 720
+		},
+		{
+			"body_id": 5,
+			"file": "before_body_05_rest_side.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "820c959fc1601a42c210a66f51d05d56816e0728711994ad4336fd4cd32887d7",
+			"view": "side",
+			"width": 720
+		},
+		{
+			"body_id": 5,
+			"file": "before_body_05_rest_rear.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "c3503b3c2640dd5710f4cecadf211fd581005d70637ad092841d4259346f522e",
+			"view": "rear",
+			"width": 720
+		},
+		{
+			"body_id": 10,
+			"file": "before_body_10_rest_front.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "6ca837475ed923351636c46b114b516957addad94da08ca1e6c30acf253f08f9",
+			"view": "front",
+			"width": 720
+		},
+		{
+			"body_id": 10,
+			"file": "before_body_10_rest_quarter.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "105910a85e2c62ece31f8570a1a7e36868b779d4576c65c6159685848c1648c1",
+			"view": "quarter",
+			"width": 720
+		},
+		{
+			"body_id": 10,
+			"file": "before_body_10_rest_side.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "ffe95b85fe3fc45b109145338febc4c027d72deebe94c6c66227652e73aa3033",
+			"view": "side",
+			"width": 720
+		},
+		{
+			"body_id": 10,
+			"file": "before_body_10_rest_rear.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "40b3c454bffb3f9662b2e0eeecfe0517a9c57d8d4d603d4f68b941a02ff61ea1",
+			"view": "rear",
+			"width": 720
+		},
+		{
+			"body_id": 11,
+			"file": "before_body_11_rest_front.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "931b0821ac7f989e1059ea4bf551d62fc08ca16dd8fbabd37c04447290d957c4",
+			"view": "front",
+			"width": 720
+		},
+		{
+			"body_id": 11,
+			"file": "before_body_11_rest_quarter.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "606fa1f73feccdcf034267413fe6da08df4f6e4635e83f144fb9568f8d496803",
+			"view": "quarter",
+			"width": 720
+		},
+		{
+			"body_id": 11,
+			"file": "before_body_11_rest_side.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "c2727186940df988645e54d48f41124675fd845d79573de9b60567c598ab8e77",
+			"view": "side",
+			"width": 720
+		},
+		{
+			"body_id": 11,
+			"file": "before_body_11_rest_rear.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "b7c8f9a1c97106e36182dbabe05c5d6593e90c9407ed6933c4fb4abfe962aeb6",
+			"view": "rear",
+			"width": 720
+		},
+		{
+			"body_id": 21,
+			"file": "before_body_21_rest_front.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "1164cc59f4addeee14c8e2eab87e24bc37698bad06e0f4f0811fd79b0d2e4415",
+			"view": "front",
+			"width": 720
+		},
+		{
+			"body_id": 21,
+			"file": "before_body_21_rest_quarter.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "2109dc2bcff059b78e005578d96071af4939be1c40a9b59725f27acc5be3fe0f",
+			"view": "quarter",
+			"width": 720
+		},
+		{
+			"body_id": 21,
+			"file": "before_body_21_rest_side.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "b2819297a59950e9e449a02b2aa7b69eb2fce7cb59fd99367b828341f3029d7e",
+			"view": "side",
+			"width": 720
+		},
+		{
+			"body_id": 21,
+			"file": "before_body_21_rest_rear.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "4687adb49e0a23edadd995b0a7c575e0f33329fabd4b01a388ef87b19adbba57",
+			"view": "rear",
+			"width": 720
+		},
+		{
+			"body_id": 28,
+			"file": "before_body_28_rest_front.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "c20dbf53820eb865c3c3b53bec236a3c9f1250a08fe7f85e7ea032f875b403f4",
+			"view": "front",
+			"width": 720
+		},
+		{
+			"body_id": 28,
+			"file": "before_body_28_rest_quarter.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "ee40c1bb3786ef15b032493793ff5556ab806d5b468cffe49ff74810982814cb",
+			"view": "quarter",
+			"width": 720
+		},
+		{
+			"body_id": 28,
+			"file": "before_body_28_rest_side.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "cd6d5565ba76c55e7e24984ab067ca76635680c193f64ce6ecf674200932cce2",
+			"view": "side",
+			"width": 720
+		},
+		{
+			"body_id": 28,
+			"file": "before_body_28_rest_rear.png",
+			"height": 720,
+			"pose": "rest",
+			"sha256": "3e87ebd0f10a906f3cad760cf063cd7aba873b997ec3bdcbcdaee576bfd7eb13",
+			"view": "rear",
+			"width": 720
+		},
+		{
+			"body_id": 0,
+			"file": "before_body_00_idle_rifle_quarter.png",
+			"height": 720,
+			"pose": "idle_rifle",
+			"sha256": "364bbfeb2c5badc1281d267fb417160379509a8e3b52daf4be9a53400665556a",
+			"view": "quarter",
+			"width": 720
+		},
+		{
+			"body_id": 0,
+			"file": "before_body_00_run_rifle_quarter.png",
+			"height": 720,
+			"pose": "run_rifle",
+			"sha256": "70d5c09c4ed32ce9b5994dd3a3bdf8292ba7be78b6838e87d7178ecdf0b08219",
+			"view": "quarter",
+			"width": 720
+		},
+		{
+			"body_id": 0,
+			"file": "before_body_00_reload_quarter.png",
+			"height": 720,
+			"pose": "reload",
+			"sha256": "3b219411adaca737f941d5e582b7a26f81a5dd9e5988484a035509848fd980b2",
+			"view": "quarter",
+			"width": 720
+		}
+	],
+	"gamestate_restored": true,
+	"isolated_save_path": "user://titan_neck_mix_before_profile.json",
+	"label": "before",
+	"mixes": [
+		{
+			"body_id": 0,
+			"body_loaded": true,
+			"body_name": "Viper",
+			"body_scene": "res://assets/armors/viper_v2/viper.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_00",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 1,
+			"body_loaded": true,
+			"body_name": "Fortune",
+			"body_scene": "res://assets/armors/fortune_v1/fortune.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_01",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 2,
+			"body_loaded": true,
+			"body_name": "Tank",
+			"body_scene": "res://assets/armors/tank_v1/tank.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_02",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 3,
+			"body_loaded": true,
+			"body_name": "Hydra",
+			"body_scene": "res://assets/armors/hydra_v1/hydra.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_03",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 4,
+			"body_loaded": true,
+			"body_name": "Strike",
+			"body_scene": "res://assets/armors/strike_v1/strike.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_04",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 5,
+			"body_loaded": true,
+			"body_name": "Titan",
+			"body_scene": "res://assets/armors/titan_v1/titan.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_05",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 6,
+			"body_loaded": true,
+			"body_name": "Thunder",
+			"body_scene": "res://assets/armors/thunder/thunder.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_06",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 7,
+			"body_loaded": true,
+			"body_name": "Atom",
+			"body_scene": "res://assets/armors/atom_v1/atom.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_07",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 8,
+			"body_loaded": true,
+			"body_name": "Pegasus",
+			"body_scene": "res://assets/armors/pegasus_v1/pegasus.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_08",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 9,
+			"body_loaded": true,
+			"body_name": "Draco",
+			"body_scene": "res://assets/equipment_refined/armors/armor_09.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_09",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 10,
+			"body_loaded": true,
+			"body_name": "Phoenix",
+			"body_scene": "res://assets/equipment_refined/armors/armor_10.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_10",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 11,
+			"body_loaded": true,
+			"body_name": "Cygni",
+			"body_scene": "res://assets/armors/cygni_v2/cygni.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_11",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 12,
+			"body_loaded": true,
+			"body_name": "Andromedae",
+			"body_scene": "res://assets/equipment_refined/armors/armor_12.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_12",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 13,
+			"body_loaded": true,
+			"body_name": "Perseus",
+			"body_scene": "res://assets/equipment_refined/armors/armor_13.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_13",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 14,
+			"body_loaded": true,
+			"body_name": "Chaos",
+			"body_scene": "res://assets/equipment_refined/armors/armor_14.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_14",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 15,
+			"body_loaded": true,
+			"body_name": "DEC.24",
+			"body_scene": "res://assets/equipment_refined/armors/armor_15.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_15",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 16,
+			"body_loaded": true,
+			"body_name": "Knight",
+			"body_scene": "res://assets/equipment_refined/armors/armor_16.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_16",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 17,
+			"body_loaded": true,
+			"body_name": "R.O.M.E",
+			"body_scene": "res://assets/equipment_refined/armors/armor_17.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_17",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 18,
+			"body_loaded": true,
+			"body_name": "Black Hole",
+			"body_scene": "res://assets/equipment_refined/armors/armor_18.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_18",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 19,
+			"body_loaded": true,
+			"body_name": "X-Field",
+			"body_scene": "res://assets/equipment_refined/armors/armor_19.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_19",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 20,
+			"body_loaded": true,
+			"body_name": "Wrath",
+			"body_scene": "res://assets/equipment_refined/armors/armor_20.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_20",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 21,
+			"body_loaded": true,
+			"body_name": "Assault Armor",
+			"body_scene": "res://assets/equipment_refined/armors/armor_21.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_21",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 22,
+			"body_loaded": true,
+			"body_name": "Combat Suit",
+			"body_scene": "res://assets/equipment_refined/armors/armor_22.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_22",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 23,
+			"body_loaded": true,
+			"body_name": "Drillmaster",
+			"body_scene": "res://assets/equipment_refined/armors/armor_23.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_23",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 24,
+			"body_loaded": true,
+			"body_name": "Heavy Battlesuit",
+			"body_scene": "res://assets/equipment_refined/armors/armor_24.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_24",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 25,
+			"body_loaded": true,
+			"body_name": "Mark-6 117R",
+			"body_scene": "res://assets/equipment_refined/armors/armor_25.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_25",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 26,
+			"body_loaded": true,
+			"body_name": "Recon Suit",
+			"body_scene": "res://assets/equipment_refined/armors/armor_26.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_26",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 27,
+			"body_loaded": true,
+			"body_name": "Sanguine Chaos",
+			"body_scene": "res://assets/equipment_refined/armors/armor_27.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_27",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		},
+		{
+			"body_id": 28,
+			"body_loaded": true,
+			"body_name": "Training Suit",
+			"body_scene": "res://assets/equipment_refined/armors/armor_28.scn",
+			"head_scene": "res://assets/armors/titan_v1/titan.scn",
+			"pose_samples": 9,
+			"visible_parts": [
+				"ArmorBody_28",
+				"ArmorFoot_00",
+				"ArmorHand_00",
+				"ArmorHead_05"
+			]
+		}
+	],
+	"neck_contract": {
+		"errors": [
+			"NECK_POSITION: original tube vertex moved: 152",
+			"NECK_POSITION: original tube vertex moved: 155",
+			"NECK_POSITION: original tube vertex moved: 156",
+			"NECK_POSITION: original tube vertex moved: 157",
+			"NECK_POSITION: original tube vertex moved: 158",
+			"NECK_POSITION: original tube vertex moved: 159",
+			"NECK_POSITION: original tube vertex moved: 161",
+			"NECK_POSITION: original tube vertex moved: 162",
+			"NECK_CHARCOAL: sampled tube is too light/gray for the black undersuit"
+		],
+		"material": {
+			"alpha_minimum": 0.999,
+			"errors": [
+				"NECK_CHARCOAL: sampled tube is too light/gray for the black undersuit"
+			],
+			"logical_texture_size": [
+				1254,
+				1254
+			],
+			"mean_luminance": 0.172928993410179,
+			"mean_luminance_limit": 0.14,
+			"minimum_alpha": 1.0,
+			"p95_max_rgb": 0.215686276555061,
+			"p95_max_rgb_limit": 0.26,
+			"samples": 432,
+			"sampling": "Actual equipped texture pixels at a 9-step barycentric grid inside every original neck UV triangle; effective albedo includes material tint",
+			"texture_path": "res://assets/armors/titan_v1/titan_head_diffuse.png"
+		},
+		"maximum_original_body_interface_displacement_m": 0.00332399317994714,
+		"maximum_original_tube_displacement_m": 0.0157990306615829,
+		"position_epsilon_m": 0.000002,
+		"scope": "Original neck tube geometry, UV, topology, Skin and sampled opaque charcoal pixels. This does not replace mixed-pose visual inspection.",
+		"source_component": {
+			"errors": [],
+			"lower_bone": "Bip01 Spine1",
+			"lower_interface_ids": [
+				145,
+				147,
+				149,
+				151,
+				153,
+				155,
+				157,
+				159,
+				161,
+				163,
+				165,
+				167
+			],
+			"physical_vertices": 12,
+			"scope": "Original welded connected component with Head/Spine1 influences; no target metadata or vertex-ID whitelist",
+			"surface": 0,
+			"triangle_ids": [
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81
+			],
+			"upper_bone": "Bip01 Head",
+			"vertex_ids": [
+				144,
+				145,
+				146,
+				147,
+				148,
+				149,
+				150,
+				151,
+				152,
+				153,
+				154,
+				155,
+				156,
+				157,
+				158,
+				159,
+				160,
+				161,
+				162,
+				163,
+				164,
+				165,
+				166,
+				167
+			]
+		},
+		"status": "FAIL"
+	},
+	"negative_fixtures": [],
+	"poses": [
+		{
+			"body_id": 0,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 0,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 0,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 0,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 0,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 0,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 0,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 0,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 0,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 1,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 1,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 1,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 1,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 1,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 1,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 1,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 1,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 1,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 2,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 2,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 2,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 2,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 2,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 2,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 2,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 2,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 2,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 3,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 3,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 3,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 3,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 3,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 3,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 3,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 3,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 3,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 4,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 4,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 4,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 4,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 4,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 4,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 4,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 4,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 4,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 5,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 5,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 5,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 5,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 5,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 5,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 5,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 5,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 5,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 6,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 6,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 6,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 6,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 6,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 6,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 6,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 6,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 6,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 7,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 7,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 7,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 7,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 7,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 7,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 7,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 7,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 7,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 8,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 8,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 8,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 8,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 8,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 8,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 8,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 8,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 8,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 9,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 9,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 9,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 9,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 9,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 9,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 9,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 9,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 9,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 10,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 10,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 10,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 10,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 10,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 10,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 10,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 10,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 10,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 11,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 11,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 11,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 11,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 11,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 11,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 11,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 11,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 11,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 12,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 12,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 12,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 12,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 12,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 12,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 12,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 12,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 12,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 13,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 13,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 13,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 13,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 13,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 13,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 13,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 13,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 13,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 14,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 14,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 14,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 14,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 14,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 14,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 14,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 14,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 14,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 15,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 15,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 15,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 15,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 15,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 15,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 15,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 15,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 15,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 16,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 16,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 16,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 16,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 16,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 16,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 16,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 16,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 16,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 17,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 17,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 17,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 17,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 17,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 17,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 17,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 17,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 17,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 18,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 18,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 18,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 18,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 18,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 18,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 18,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 18,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 18,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 19,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 19,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 19,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 19,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 19,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 19,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 19,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 19,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 19,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 20,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 20,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 20,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 20,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 20,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 20,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 20,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 20,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 20,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 21,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 21,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 21,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 21,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 21,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 21,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 21,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 21,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 21,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 22,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 22,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 22,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 22,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 22,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 22,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 22,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 22,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 22,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 23,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 23,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 23,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 23,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 23,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 23,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 23,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 23,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 23,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 24,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 24,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 24,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 24,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 24,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 24,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 24,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 24,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 24,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 25,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 25,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 25,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 25,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 25,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 25,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 25,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 25,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 25,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 26,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 26,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 26,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 26,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 26,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 26,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 26,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 26,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 26,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 27,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 27,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 27,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 27,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 27,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 27,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 27,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 27,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 27,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		},
+		{
+			"body_id": 28,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990120351315,
+			"time": 0.0
+		},
+		{
+			"body_id": 28,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.3
+		},
+		{
+			"body_id": 28,
+			"clip": "idle_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799043700099,
+			"time": 0.65
+		},
+		{
+			"body_id": 28,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989803701639,
+			"time": 0.0
+		},
+		{
+			"body_id": 28,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157989989966154,
+			"time": 0.3
+		},
+		{
+			"body_id": 28,
+			"clip": "run_rifle",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.015799006447196,
+			"time": 0.65
+		},
+		{
+			"body_id": 28,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990157604218,
+			"time": 0.15
+		},
+		{
+			"body_id": 28,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990548759699,
+			"time": 0.5
+		},
+		{
+			"body_id": 28,
+			"clip": "reload",
+			"neck_vertex_samples": 24,
+			"original_neck_maximum_error_m": 0.0157990232110024,
+			"time": 0.85
+		}
+	],
+	"real_save_path": "user://star_warfare_save.json",
+	"real_save_sha256_at_end": "9fad031ea58158e9c268bdd19d81559d9589ce8051ebe39a2a7490f1e2759be4",
+	"real_save_sha256_at_start": "9fad031ea58158e9c268bdd19d81559d9589ce8051ebe39a2a7490f1e2759be4",
+	"renderer": "gl_compatibility",
+	"resource_sha256": {
+		"res://assets/armors/atom_v1/atom.scn": "094cdf8fe9061c1ca9d8bb8e914ea23083168b79d6b2d89f94fe0809d6ce0dda",
+		"res://assets/armors/cygni_v2/cygni.scn": "753adeae47667b1d77cd50ad087fc9a6c2f1972140af13b7d70957f09902824d",
+		"res://assets/armors/fortune_v1/fortune.scn": "499da48815ccf3eb140355b3ab16bcea2549603abfb5b91a26f06357ab80b724",
+		"res://assets/armors/hydra_v1/hydra.scn": "3dcdb111e499c95879a8d2fedbaa440fab6938c2bbfeb1ca4a966704f2432a5d",
+		"res://assets/armors/pegasus_v1/pegasus.scn": "78b44feaf346f8e134f65a9915195b35a7e2e366d675cbf4eed27ddb25390dc0",
+		"res://assets/armors/strike_v1/strike.scn": "09d47849d7a455e1cec9e5e3f40fb6bf2cb1a1fa9abd53a1d131db80b4f9a4c5",
+		"res://assets/armors/tank_v1/tank.scn": "daa91815d79c729bf767a05f247e1dffa840edb620023e38b078f2db7c1b5af8",
+		"res://assets/armors/thunder/thunder.scn": "c7762f82a92a12c25e120c1f6e2a751d7a117212554c21c110a376b37a4a9b84",
+		"res://assets/armors/titan_v1/titan.scn": "fe77152022e2a685832de8f850186a4a8ed274f91a10daee7f4bf3f3913e1756",
+		"res://assets/armors/viper_v2/viper.scn": "2b475fbb1f515555bbb602dbb300087a51c2f3b0ed7cc8acf7b94325858e46e6",
+		"res://assets/equipment_refined/armors/armor_09.scn": "05a86a83d0b8dd76e5e594a672fd628a94f86b84cbe5f908cf562b26c9a0c1fc",
+		"res://assets/equipment_refined/armors/armor_10.scn": "4784193a388323c203882f7a8338e4ab5626f0730e7527172408d2d95192b157",
+		"res://assets/equipment_refined/armors/armor_12.scn": "5d27c55fdd22f3f384b50725bf9fb5967c1fc88c1dab730fe925de9b115b7116",
+		"res://assets/equipment_refined/armors/armor_13.scn": "13fa44c53fcabf69be2b67b0659330ec067f427d7df55a905bfda2a5711e580c",
+		"res://assets/equipment_refined/armors/armor_14.scn": "f76a7a345e3d67b858c91b870eef57f428cc90371c355780f44abf6f814785ad",
+		"res://assets/equipment_refined/armors/armor_15.scn": "f19e27e1754097c62cbe1c40c6bf85192bd8bf397b10df38fc40d33f0c1a8d46",
+		"res://assets/equipment_refined/armors/armor_16.scn": "7f883a82ecc3c76f5e4c14b90bc365843fc3d134327a1aa0c9fa088f05e6cc1e",
+		"res://assets/equipment_refined/armors/armor_17.scn": "9d7af923e6f059c0f482f5e4919700eeb72f2a31a45b47e9437a4fd369972be9",
+		"res://assets/equipment_refined/armors/armor_18.scn": "0b2cef940f82c7e5b73d513c3bfbc12029a6d274f64ecc307d2a8e66e99b7f8d",
+		"res://assets/equipment_refined/armors/armor_19.scn": "b111acd5727087c1c9e925b9d690d289939e458512cd84329b43c7cea577154e",
+		"res://assets/equipment_refined/armors/armor_20.scn": "8fe682412bdae71fac8f5261207bdc6a6c0ee62660b1ea4e080ae43579957e1c",
+		"res://assets/equipment_refined/armors/armor_21.scn": "aaef3ddcead9d0bd751b92ed785e374d3763b24c70b92dd255fb304b0406a14e",
+		"res://assets/equipment_refined/armors/armor_22.scn": "b624c29c217e58ed03b21389f4cf15850695615a3a39f6cce14608767c8caabd",
+		"res://assets/equipment_refined/armors/armor_23.scn": "41f4b643ad9916de5914a37326a94042b2f753120cd07f4cc0f3b21181238d27",
+		"res://assets/equipment_refined/armors/armor_24.scn": "c6257c43de3f6ad9239d71651324082488ab4fc66e7c772f68fd57934335ec04",
+		"res://assets/equipment_refined/armors/armor_25.scn": "f5430b9f17b1263c8cd91de568834fd55e6529801b559433bcfd525f69d1716d",
+		"res://assets/equipment_refined/armors/armor_26.scn": "08220ec410a5789aab957fea9b7ec086cf2f0e90372219b4b0aaecade50bc7b3",
+		"res://assets/equipment_refined/armors/armor_27.scn": "56eea58018041d37bd44cccfb09b0375fbba7b0ee929d4c2c914023280651a48",
+		"res://assets/equipment_refined/armors/armor_28.scn": "09a960232483f943d79d8e086d19db906e73138ae4a6aa2d0bdb37cd1f33064f",
+		"res://assets/models/player/animated/player.bin": "9b1b4a428ae59b19d361f42f8aee762c608d9f174e535e125e0354f37a4c105d",
+		"res://assets/models/player/animated/player.gltf": "75b4aa6802914878cbc1878d2d92da00fed6ce1e75ca807a209dc13e107d26cf"
+	},
+	"save_unchanged": true,
+	"scope": "Actual gameplay-loader Titan head with every 0-28 body, original-neck invariants at nine idle/run/reload poses. 35 normal-resource close-ups require visual inspection; finite vertices and exact interfaces alone do not prove artistic neck coverage.",
+	"status": "FAIL"
+}

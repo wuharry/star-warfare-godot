@@ -1,5 +1,7 @@
 extends SceneTree
 
+const NeckContract = preload("res://tools/armor_runtime_v1/neck_contract.gd")
+
 var OUT := ""
 var WORK := ""
 var config: Dictionary
@@ -21,6 +23,9 @@ func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT))
 	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(WORK+"target.json"))
 	assert(data.revision == slug+"_runtime_v1" and data.id == config.runtime_id)
+	assert(data.parts.size() == config.parts.size(), "Target must contain exactly the configured armor parts before delivery")
+	for part_name: String in config.parts:
+		assert(data.parts.has(part_name), "Target is missing configured armor part " + part_name)
 	var bounded := str(config.get("geometry_mode", "texture_only")) == "original_source_bounded_refinement"
 	var movable: Array = config.get("geometry_parts", []) if bounded else []
 	if bounded:
@@ -93,6 +98,13 @@ func _run() -> void:
 					for index: int in [i,j,k]:sums[index] += n
 				for i: int in sums.size():
 					if sums[i].length_squared()>.000000001:a[Mesh.ARRAY_NORMAL][i] = sums[i].normalized()
+			var channel_errors: Array[String] = NeckContract.validate_channels(a, old.skin, "shared-before-upload " + name_key)
+			if not channel_errors.is_empty():
+				for message: String in channel_errors: push_error(message)
+				container.free()
+				original.free()
+				quit(1)
+				return
 			mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,a)
 			triangles += a[Mesh.ARRAY_INDEX].size()/3
 			var path := OUT+str(row.label)+"_diffuse.png"
@@ -134,9 +146,23 @@ func _run() -> void:
 		part.transform = old.transform; part.skeleton = NodePath("..")
 		part.extra_cull_margin = 1.0; part.set_meta("armor_rework",slug+"_runtime_v1")
 		container.add_child(part); part.owner = container
-	var packed := PackedScene.new()
-	assert(packed.pack(container) == OK)
-	assert(ResourceSaver.save(packed,OUT+slug+".scn") == OK)
+	assert(triangles==config.original_triangles, "Triangle budget must pass before any SCN/GLB write")
+	# Every shared-pipeline output retains the actual original neck interface.
+	# Color limits belong to the individual design; opaque cloth is mandatory.
+	var gate: Dictionary = save_checked_candidate(original, container,
+		"ArmorHead_%02d" % int(config.runtime_id), OUT + slug + ".scn",
+		bool(config.get("neck_charcoal_required", false)))
+	gate.candidate_target_sha256 = FileAccess.get_sha256(WORK + "target.json")
+	gate.stage = "before_shared_PackedScene_pack_ResourceSaver_save_and_GLB_export"
+	var gate_file := FileAccess.open("res://" + str(config.work) + "/review/neck_interface_gate.json", FileAccess.WRITE)
+	if gate_file != null: gate_file.store_string(JSON.stringify(gate, "\t") + "\n")
+	if not gate.errors.is_empty():
+		for message: String in gate.errors: push_error(message)
+		container.free()
+		original.free()
+		print("ARMOR_NECK_INTERFACE_FAIL production SCN and GLB not written")
+		quit(1)
+		return
 	if "--geometry-preview" not in OS.get_cmdline_user_args():
 		for part: MeshInstance3D in container.get_children():
 			var old := original.find_child(str(part.name),true,false) as MeshInstance3D
@@ -149,6 +175,31 @@ func _run() -> void:
 		assert(document.append_from_scene(original,state) == OK)
 		assert(document.write_to_filesystem(state,OUT+slug+".glb") == OK)
 	container.free(); original.free()
-	assert(triangles==config.original_triangles)
 	print("%s_COMPILE_PASS triangles=%d parts=4 surfaces=%d bones=28" % [slug.to_upper(),triangles,int(config.original_surface_count)])
 	quit()
+
+
+static func save_checked_candidate(original: Node3D, candidate: Node3D,
+		head_name: String, scene_path: String, check_charcoal: bool = false) -> Dictionary:
+	## The test exercises this exact production writer with corrupt interfaces.
+	## No pack/save can run when geometry, sampling, Skin or opacity is invalid.
+	var source := original.find_child(head_name, true, false) as MeshInstance3D
+	var head := candidate.find_child(head_name, true, false) as MeshInstance3D
+	var report: Dictionary = NeckContract.verify_interface(source, head, check_charcoal)
+	report.output_scene = scene_path
+	report.wrote_scene = false
+	report.output_sha256_before = FileAccess.get_sha256(scene_path) if FileAccess.file_exists(scene_path) else "missing"
+	if not report.errors.is_empty():
+		report.output_sha256_after = FileAccess.get_sha256(scene_path) if FileAccess.file_exists(scene_path) else "missing"
+		return report
+	var packed := PackedScene.new()
+	var result: Error = packed.pack(candidate)
+	if result != OK:
+		report.errors.append("NECK_DELIVERY: candidate packing failed: " + error_string(result))
+	else:
+		result = ResourceSaver.save(packed, scene_path)
+		if result != OK: report.errors.append("NECK_DELIVERY: candidate saving failed: " + error_string(result))
+		else: report.wrote_scene = true
+	report.status = "PASS" if report.errors.is_empty() else "FAIL"
+	report.output_sha256_after = FileAccess.get_sha256(scene_path) if FileAccess.file_exists(scene_path) else "missing"
+	return report
