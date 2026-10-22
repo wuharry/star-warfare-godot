@@ -18,18 +18,18 @@
 
 ## 名詞:白話定義 → 真實例子 → 何時遇到
 
-| 名詞                | 白話定義                                                         | 本工作區的真實例子                                      |
-| ------------------- | ---------------------------------------------------------------- | ------------------------------------------------------- |
-| `exit 2`            | hook 唯一有攔阻力的回傳碼；stdout 進 context，非 0 非 2 只是雜訊 | `eslint-changed.mjs` 有 error 才 `exit 2`；warning 不擋 |
-| permissions `allow` | 免詢問直接放行                                                   | `Bash(bun run lint)`                                    |
-| permissions `ask`   | 每次跳確認；規則寫「不要代改」時用它，讓繞過被看見               | card-game 的 `Edit(src/**/*.gd)`                        |
-| permissions `deny`  | 直接拒絕，agent 無法選擇                                         | `Edit(**/.env*)`、`Write(**/*.uid)`                     |
-| ratchet（棘輪）     | 只准減少的數量上限，用來凍結技術債                               | `as any` 基線 crm 46 / sales-ranking 8                  |
-| Stop gate           | 收工前的全專案驗收，失敗就退回繼續修                             | 三支 `verify.sh`                                        |
-| 生成物 vs canonical | 帶 `AUTO-GENERATED` 檔頭的是投影，改它會被下次 sync 蓋掉         | 改 `rules/mentor/*.md` 而不是 `CLAUDE.md`               |
-| import 樁           | 只有 `@` 引用的薄檔，讓內容維持單一來源又能依目錄載入            | `apps/client/CLAUDE.md` 8 行                            |
-| domain（條件領域）  | 依 glob 命中才進 context 的規則，避免常駐吃 token                | `rules/domains/godot.md` 只在 Godot repo 掛載           |
-| 逃生艙              | 明示繞過學習協定的開關，要求標註而非禁止                         | 「直接做」/「正常模式」                                 |
+| 名詞                | 白話定義                                                         | 本工作區的真實例子                                          |
+| ------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
+| `exit 2`            | hook 唯一有攔阻力的回傳碼；stdout 進 context，非 0 非 2 只是雜訊 | `eslint-changed.mjs` 有 error 才 `exit 2`；warning 不擋     |
+| permissions `allow` | 免詢問直接放行                                                   | `Bash(bun run lint)`                                        |
+| permissions `ask`   | 每次跳確認；規則寫「不要代改」時用它，讓繞過被看見               | 目前沒有在用；Godot `.gd`／`.tscn` ask 已於 2026-10-22 移除 |
+| permissions `deny`  | 直接拒絕，agent 無法選擇                                         | `Edit(**/.env*)`、`Write(**/*.uid)`                         |
+| ratchet（棘輪）     | 只准減少的數量上限，用來凍結技術債                               | `as any` 基線 crm 46 / sales-ranking 8                      |
+| Stop gate           | 收工前的全專案驗收，失敗就退回繼續修                             | 三支 `verify.sh`                                            |
+| 生成物 vs canonical | 帶 `AUTO-GENERATED` 檔頭的是投影，改它會被下次 sync 蓋掉         | 改 `rules/mentor/*.md` 而不是 `CLAUDE.md`                   |
+| import 樁           | 只有 `@` 引用的薄檔，讓內容維持單一來源又能依目錄載入            | `apps/client/CLAUDE.md` 8 行                                |
+| domain（條件領域）  | 依 glob 命中才進 context 的規則，避免常駐吃 token                | `rules/domains/godot.md` 只在 Godot repo 掛載               |
+| 逃生艙              | 明示繞過學習協定的開關，要求標註而非禁止                         | 「直接做」/「正常模式」                                     |
 
 ## 為什麼「請你講短一點」只有效幾輪
 

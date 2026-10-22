@@ -35,7 +35,7 @@ def handle(payload, root):
             return {'hookSpecificOutput': {
                 'hookEventName': event, 'permissionDecision': 'deny',
                 'permissionDecisionReason': 'Mentor policy: protected metadata or secret; use the approved editor/configuration workflow.'}}
-        # .gd/.tscn ask lives in permissions, so existing runtime approval is not re-asked here.
+        # .gd/.tscn edits are intentionally not gated (Godot ask retired 2026-10-22).
     if event == 'UserPromptSubmit':
         prompt = payload.get('prompt', '')
         hints = []
