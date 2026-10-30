@@ -3,6 +3,7 @@ extends Node
 
 const CareerData = preload("res://scripts/core/career_progress.gd")
 const PanelScript = preload("res://scripts/ui/career_panel.gd")
+const OUTPUT_DIR := "res://test_output/career_progress"
 
 
 func _ready() -> void:
@@ -12,6 +13,11 @@ func _ready() -> void:
 func _capture() -> void:
 	if not str(GameState.save_path).begins_with("user://star_warfare_test_"):
 		push_error("CAREER_CAPTURE requires isolated --test-profile= argument")
+		get_tree().quit(1)
+		return
+	var directory_error := DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUTPUT_DIR))
+	if directory_error != OK:
+		push_error("CAREER_CAPTURE output directory failed: " + error_string(directory_error))
 		get_tree().quit(1)
 		return
 	var compact := OS.get_cmdline_user_args().has("--career-compact")
@@ -33,7 +39,7 @@ func _capture() -> void:
 		await get_tree().process_frame
 		await RenderingServer.frame_post_draw
 		var picture := get_viewport().get_texture().get_image()
-		var path := "res://tests/career_progress_%s%s_preview.png" % ["stats" if index == 0 else "achievements", "_compact" if compact else ""]
+		var path := OUTPUT_DIR.path_join("career_progress_%s%s_preview.png" % ["stats" if index == 0 else "achievements", "_compact" if compact else ""])
 		var result := picture.save_png(path)
 		if result != OK:
 			push_error("CAREER_CAPTURE failed: " + error_string(result))

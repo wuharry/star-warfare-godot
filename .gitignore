@@ -4,6 +4,9 @@
 builds/
 test_output/*
 !test_output/.gdignore
+# Legacy career captures are generated locally, never stored in Git LFS.
+/tests/career_progress_*_preview.png
+/tests/career_progress_*_preview.png.import
 tools/**/__pycache__/
 tools/unity_exporter/.work/
 tools/unity_exporter/*.log
