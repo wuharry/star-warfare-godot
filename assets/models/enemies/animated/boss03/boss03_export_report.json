@@ -1,0 +1,80 @@
+{
+  "prefab": "Resources/enemy/boss03.prefab",
+  "output": "/Users/harvey/repo/star-warfare-godot/assets/models/enemies/animated/boss03/boss03.gltf",
+  "bones": 32,
+  "vertices": 1894,
+  "source_mesh_guid": "2a2748bf592bf52429e86763dcfa0610",
+  "source_material_guids": [
+    "bf66d3a3855d24e4790ae7ce5b1a0f36"
+  ],
+  "rigid_mesh_paths": [],
+  "retargeted_animation_paths": {},
+  "animation_binding_repairs": [],
+  "skipped_animation_paths": [
+    {
+      "clip": "attacked",
+      "path": "Bone weiba",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "attack03",
+      "path": "Bone weiba",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "attack04",
+      "path": "Bone weiba",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "chong",
+      "path": "Bone weiba",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone weiba",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "dead",
+      "path": "Point01",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "idle",
+      "path": "Bone weiba",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "jump03",
+      "path": "Bone weiba",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "run",
+      "path": "Bone weiba",
+      "reason": "No unambiguous hierarchy-compatible target"
+    }
+  ],
+  "animations": [
+    "attacked",
+    "attack",
+    "attack02",
+    "attack03",
+    "attack04",
+    "chong",
+    "dead",
+    "idle",
+    "jump01",
+    "jump02",
+    "jump03",
+    "run",
+    "Take 001",
+    "try_run"
+  ],
+  "unmatched_animation_paths": [
+    "Bone weiba",
+    "Point01"
+  ]
+}

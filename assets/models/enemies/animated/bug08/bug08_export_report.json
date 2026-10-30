@@ -1,0 +1,33 @@
+{
+  "prefab": "Resources/enemy/bug08.prefab",
+  "output": "/Users/harvey/repo/star-warfare-godot/assets/models/enemies/animated/bug08/bug08.gltf",
+  "bones": 24,
+  "vertices": 547,
+  "source_mesh_guid": "480d50b6d7acecf4db0321876541858b",
+  "source_material_guids": [
+    "f8ce430da2fb84a44aeade2a44bd41d6"
+  ],
+  "rigid_mesh_paths": [],
+  "retargeted_animation_paths": {},
+  "animation_binding_repairs": [],
+  "skipped_animation_paths": [
+    {
+      "clip": "run",
+      "path": "Bip01/Bip01 Footsteps",
+      "reason": "No unambiguous hierarchy-compatible target"
+    }
+  ],
+  "animations": [
+    "attacked",
+    "attack",
+    "dead",
+    "idle",
+    "run",
+    "idle01",
+    "chong",
+    "Take 001"
+  ],
+  "unmatched_animation_paths": [
+    "Bip01/Bip01 Footsteps"
+  ]
+}

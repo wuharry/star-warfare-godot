@@ -53,7 +53,7 @@ func _run() -> void:
 	_check(is_instance_valid(shell), "shared Store/Customize shell was not created")
 	if is_instance_valid(shell):
 		_check(shell.desktop_layout and shell.size.is_equal_approx(UnityEquipmentShell.DESKTOP_DESIGN_SIZE), "widescreen armory did not activate the desktop canvas")
-		_check(shell.section_buttons.size() == 2, "desktop armory is missing GEAR/SUPPLY navigation")
+		_check(shell.section_buttons.size() == 3 and shell.section_buttons.has("package"), "desktop armory is missing GEAR/SUPPLY/PACKAGE navigation")
 		_check(shell.desktop_equipment_buttons.size() == 6, "desktop armory does not expose all six equipment categories")
 		_check(shell.supply_buttons.size() == 3, "desktop armory does not expose all three original supply categories")
 		_check(shell.category_layer.visible, "equipment catalog has no visible category controls")
@@ -248,7 +248,7 @@ func _run() -> void:
 		]
 		var visible_armor_names: Array[String] = []
 		var all_armor_names: Array[String] = []
-		var thunder_template := (load(ArmorVisuals.reworked_scene_path(6)) as PackedScene).instantiate()
+		var original_template := (load(UnityEquipmentShell.ARMOR_AVATAR_PATH) as PackedScene).instantiate()
 		var viper_path := ArmorVisuals.reworked_scene_path(0)
 		var viper_template := (load(viper_path) as PackedScene).instantiate()
 		var viper_shader := "res://assets/armors/angular/armor_surface.gdshader" if viper_path == "res://assets/armors/angular/armor_00.scn" else "res://assets/armors/viper/painted_armor.gdshader"
@@ -259,18 +259,16 @@ func _run() -> void:
 				visible_armor_names.append(armor_mesh.name)
 				for surface_index in armor_mesh.mesh.get_surface_count():
 					var material := armor_mesh.get_active_material(surface_index)
-					if str(armor_mesh.name).ends_with("_06"):
-						var thunder_part := thunder_template.find_child(str(armor_mesh.name), true, false) as MeshInstance3D
-						_check(thunder_part != null and material == thunder_part.get_active_material(surface_index), "shop preview lost authored Thunder material")
-					elif str(armor_mesh.name).ends_with("_00"):
+					if str(armor_mesh.name).ends_with("_00"):
 						var viper_part := viper_template.find_child(str(armor_mesh.name), true, false) as MeshInstance3D
 						_check(viper_part != null and armor_mesh.mesh == viper_part.mesh and material == viper_part.get_active_material(surface_index), "shop preview lost the selected Viper geometry/material")
 						_check(material is ShaderMaterial and material.shader.resource_path == viper_shader, "shop preview lost the selected Viper surface shader")
-					elif armor_mesh.has_meta("armor_rework") and int(str(armor_mesh.name).right(2)) < 21:
-						_check(material is ShaderMaterial and material.shader.resource_path == "res://assets/equipment_refined/painted_equipment.gdshader", "shop preview lost refined armor material")
 					else:
 						_check(material is BaseMaterial3D and material.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED, "shop preview lost the original unlit armor shader")
-		thunder_template.free()
+						var original_part := original_template.find_child(str(armor_mesh.name), true, false) as MeshInstance3D
+						if original_part != null:
+							_check(armor_mesh.mesh == original_part.mesh, "shop preview replaced original armor geometry")
+		original_template.free()
 		viper_template.free()
 		_check(visible_armor_names.size() == 4, "animated armor preview does not show exactly four equipped pieces")
 		for expected_mesh_name: String in expected_mesh_names:

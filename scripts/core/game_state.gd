@@ -7,11 +7,14 @@ signal armor_changed(part_key: String, armor_key: String)
 signal equipment_upgraded(item_key: String)
 
 const SAVE_PATH := "user://star_warfare_save.json"
-const SAVE_VERSION := 5
+const SAVE_VERSION := 6
 const Source = preload("res://scripts/core/recovered_game_data.gd")
 const ArmorCatalogData = preload("res://scripts/core/armor_catalog.gd")
 const PropsCatalogData = preload("res://scripts/core/props_catalog.gd")
 const UpgradeRules = preload("res://scripts/core/equipment_upgrade_rules.gd")
+const CareerData = preload("res://scripts/core/career_progress.gd")
+const Missions = preload("res://scripts/core/solo_missions.gd")
+const StoreOffersData = preload("res://scripts/core/store_offers.gd")
 const SINGLEPLAYER_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8]
 const MULTIPLAYER_LEVELS := [13, 14, 15, 16, 17, 18, 19, 20, 21]
 const CAMPAIGN_LEVELS := [1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19, 20, 21]
@@ -58,6 +61,12 @@ var owned_props: Dictionary = {}
 ## Optional SW1 mobile package arrangement. Ownership remains authoritative.
 var package_slots: Array[String] = []
 var package_storage: Array[String] = []
+var selected_substage := -1 # -1 retains the existing freeplay wave setup.
+var solo_completed: Dictionary = {}
+var solo_stage_bonuses: Dictionary = {}
+var settled_runs: Dictionary = {}
+var career := CareerData.new()
+var store_offers := StoreOffersData.new()
 
 # Three graphics presets. render_scale drives the root viewport's 3D
 # resolution (the biggest lever after the 2x texture upscale), while shadows,
@@ -143,14 +152,45 @@ var settings := {
 }
 
 func _ready() -> void:
+	# Existing scene tests can exercise real rewards/purchases without ever
+	# writing the player's profile. Separate names also allow parallel checks.
+	for argument: String in OS.get_cmdline_user_args():
+		if save_path != SAVE_PATH:
+			break
+		if argument == "--test-profile":
+			save_path = TEST_SAVE_PATH
+		elif argument.begins_with("--test-profile="):
+			var suffix := argument.trim_prefix("--test-profile=")
+			save_path = TEST_SAVE_PATH
+			if suffix.is_valid_identifier() and suffix.length() <= 64:
+				save_path = "user://star_warfare_test_%s.json" % suffix
 	_build_weapon_database()
 	_build_armor_database()
 	_build_props_database()
 	_configure_input_map()
 	_load_save()
+	career.sync_inventory(owned_armor, weapon_levels, false)
 	settings.show_touch_controls = bool(settings.show_touch_controls) or _device_prefers_touch()
 	_apply_audio_settings()
 	apply_viewport_quality()
+
+func _process(delta: float) -> void:
+	var now := int(Time.get_unix_time_from_system())
+	var report := store_offers.advance(delta, get_rank_id(), owned_weapons, now)
+	if str(report.get("event", "none")) == "offered":
+		store_offers.activate(now)
+	if str(report.get("event", "none")) in ["offered", "expired", "reset"]:
+		_save()
+		store_changed.emit()
+
+func get_purchase_quote(weapon_id: String) -> Dictionary:
+	if not WEAPONS.has(weapon_id):
+		return {}
+	store_offers.expire(int(Time.get_unix_time_from_system()))
+	var weapon: Dictionary = WEAPONS[weapon_id]
+	var quote := store_offers.quote(weapon_id, int(weapon.mithril), get_rank_id())
+	quote["price"] = int(weapon.price)
+	return quote
 
 func _build_armor_database() -> void:
 	ARMOR_ITEMS = ArmorCatalogData.build_items()
@@ -408,13 +448,35 @@ func start_level(level_number: int, game_mode: String = "") -> void:
 	if not is_level_unlocked(level_number, selected_game_mode):
 		return
 	selected_level = level_number
+	selected_substage = -1
 	_save()
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
+
+func is_solo_mission_unlocked(level_number: int, substage: int) -> bool:
+	if level_number not in SINGLEPLAYER_LEVELS or substage < 0 or substage > 5:
+		return false
+	if bool(ProjectSettings.get_setting("debug/restoration/unlock_original_campaign", false)):
+		return true
+	if level_number > unlocked_level:
+		return false
+	# Preserve maps already earned in old profiles. New progress follows the
+	# original five missions; survival is accessible with its map.
+	return level_number < unlocked_level or substage in [0, 5] or solo_completed.has("%d:%d" % [level_number, substage - 1])
+
+func start_solo_mission(level_number: int, substage: int) -> bool:
+	if not is_solo_mission_unlocked(level_number, substage):
+		return false
+	selected_game_mode = "singleplayer"
+	selected_level = level_number
+	selected_substage = substage
+	_save()
+	return get_tree().change_scene_to_file("res://scenes/game.tscn") == OK
 
 func start_expanse() -> void:
 	# THE EXPANSE is not a campaign sector, so selected_game_mode is left alone:
 	# the armoury, the store and the level select all keep working off whichever
 	# campaign mode the player was last in.
+	selected_substage = -1
 	_save()
 	get_tree().change_scene_to_file("res://scenes/expanse.tscn")
 
@@ -549,6 +611,10 @@ func set_package(slots: Array[String], storage: Array[String]) -> bool:
 	# Validate before touching the loadout: never remove its last weapon.
 	if not _valid_package(slots):
 		return false
+	var previous_slots := package_slots.duplicate()
+	var previous_storage := package_storage.duplicate()
+	var previous_weapons := battle_weapons.duplicate()
+	var previous_selected := selected_weapon
 	package_slots = slots.duplicate()
 	package_slots.resize(get_bag_capacity())
 	package_storage = storage.duplicate()
@@ -558,7 +624,12 @@ func set_package(slots: Array[String], storage: Array[String]) -> bool:
 			battle_weapons.append(key)
 	selected_weapon = battle_weapons[0]
 	get_package_storage() # Reconcile counts/order without altering ownership.
-	_save()
+	if not _save():
+		package_slots = previous_slots
+		package_storage = previous_storage
+		battle_weapons = previous_weapons
+		selected_weapon = previous_selected
+		return false
 	loadout_changed.emit()
 	store_changed.emit()
 	return true
@@ -594,19 +665,19 @@ func apply_equipment_preview(selection: Dictionary) -> bool:
 			if index != primary and resized.size() < capacity:
 				resized.append(slots[index])
 		slots = resized
+	var previous_outfit := equipped_armor.duplicate()
 	equipped_armor = outfit
 	# All validation above precedes this one save and the observer notifications.
-	set_package(slots, package_storage)
+	if not set_package(slots, package_storage):
+		equipped_armor = previous_outfit
+		return false
 	for part: String in ArmorCatalogData.PART_KEYS:
 		armor_changed.emit(part, str(outfit[part]))
 	return true
 
 func get_rank_id() -> int:
-	# Preserve the existing sector-based unlock floor, including test profiles.
-	# Recovered experience thresholds now allow progression through all 12 ranks.
-	var rank_id := clampi(unlocked_level - 1, 0, 8)
-	if best_scores.has(str(SINGLEPLAYER_LEVELS[-1])):
-		rank_id = maxi(rank_id, 8)
+	# UserState.GetRank reads XP only; opening a map is not a rank promotion.
+	var rank_id := 0
 	for index in range(Source.RANK_ROWS.size()):
 		if experience >= int(Source.RANK_ROWS[index][1]):
 			rank_id = maxi(rank_id, index)
@@ -630,9 +701,11 @@ func purchase_weapon(weapon_id: String) -> String:
 		return "owned"
 	if not is_weapon_rank_unlocked(weapon_id):
 		return "rank_locked"
+	var before := _store_snapshot()
 	var weapon: Dictionary = WEAPONS[weapon_id]
-	var mithril_price := int(weapon.mithril)
-	if mithril_price > 0:
+	var quote := get_purchase_quote(weapon_id)
+	var mithril_price := int(quote.mithril)
+	if int(weapon.mithril) > 0:
 		if mithril < mithril_price:
 			return "not_enough_mithril"
 		mithril -= mithril_price
@@ -651,7 +724,9 @@ func purchase_weapon(weapon_id: String) -> String:
 		battle_weapons[0] = weapon_id
 	selected_weapon = weapon_id
 	_normalize_store_state()
-	_save()
+	store_offers.report_purchase(weapon_id, mithril_price if int(weapon.mithril) > 0 else 0)
+	if not _finish_store_transaction(before):
+		return "save_failed"
 	loadout_changed.emit()
 	store_changed.emit()
 	return "purchased"
@@ -742,20 +817,13 @@ func upgrade_equipment(item_key: String, expected_level := -1) -> String:
 		return "stale"
 	if str(quote.status) != "ready":
 		return str(quote.status)
+	var before := _store_snapshot()
 	var levels: Dictionary = weapon_levels if WEAPONS.has(item_key) else armor_set_levels
 	var key := item_key if WEAPONS.has(item_key) else str(ARMOR_ITEMS[item_key].set_id)
-	var had_entry := levels.has(key)
-	var old_value: Variant = levels.get(key)
 	credits -= int(quote.credits)
 	mithril -= int(quote.mithril)
 	levels[key] = int(quote.next_level)
-	if not _save():
-		credits += int(quote.credits)
-		mithril += int(quote.mithril)
-		if had_entry:
-			levels[key] = old_value
-		else:
-			levels.erase(key)
+	if not _finish_store_transaction(before):
 		return "save_failed"
 	equipment_upgraded.emit(item_key)
 	store_changed.emit()
@@ -796,6 +864,7 @@ func purchase_armor(armor_key: String) -> String:
 		return "owned"
 	if not is_armor_rank_unlocked(armor_key):
 		return "rank_locked"
+	var before := _store_snapshot()
 	var item: Dictionary = ARMOR_ITEMS[armor_key]
 	var mithril_price := int(item.mithril)
 	if mithril_price > 0:
@@ -817,7 +886,8 @@ func purchase_armor(armor_key: String) -> String:
 	var part_key := str(item.part_key)
 	equipped_armor[part_key] = armor_key
 	_normalize_armor_state()
-	_save()
+	if not _finish_store_transaction(before):
+		return "save_failed"
 	armor_changed.emit(part_key, armor_key)
 	if part_key == "bag":
 		loadout_changed.emit()
@@ -844,11 +914,30 @@ func get_prop_ids(category_key: String) -> Array[String]:
 func get_prop_count(prop_key: String) -> int:
 	return maxi(0, int(owned_props.get(prop_key, 0)))
 
+func consume_package_prop(slot_index: int) -> bool:
+	var slots := get_package_slots()
+	if slot_index < 0 or slot_index >= slots.size():
+		return false
+	var prop_key := slots[slot_index]
+	if not PROPS.has(prop_key) or get_prop_count(prop_key) <= 0:
+		return false
+	var previous_count := get_prop_count(prop_key)
+	package_slots[slot_index] = ""
+	owned_props[prop_key] = previous_count - 1
+	# A failed save must not grant a free consumable on the next launch.
+	if not _save():
+		package_slots[slot_index] = prop_key
+		owned_props[prop_key] = previous_count
+		return false
+	store_changed.emit()
+	return true
+
 func purchase_prop(prop_key: String) -> String:
 	if not PROPS.has(prop_key):
 		return "invalid"
 	if get_prop_count(prop_key) >= 99:
 		return "full"
+	var before := _store_snapshot()
 	var item: Dictionary = PROPS[prop_key]
 	var mithril_price := int(item.mithril)
 	if mithril_price > 0:
@@ -862,9 +951,31 @@ func purchase_prop(prop_key: String) -> String:
 		credits -= credit_price
 	owned_props[prop_key] = get_prop_count(prop_key) + 1
 	_normalize_props_state()
-	_save()
+	if not _finish_store_transaction(before):
+		return "save_failed"
 	store_changed.emit()
 	return "purchased"
+
+func _store_snapshot() -> Dictionary:
+	var snapshot := {"career_progress": career.serialize(), "store_offers": store_offers.serialize()}
+	for key: String in ["credits", "mithril", "owned_weapons", "battle_weapons", "selected_weapon", "owned_armor", "equipped_armor", "owned_props", "package_slots", "package_storage", "weapon_levels", "armor_set_levels"]:
+		var value: Variant = get(key)
+		snapshot[key] = value.duplicate(true) if value is Dictionary or value is Array else value
+	return snapshot
+
+func _finish_store_transaction(before: Dictionary) -> bool:
+	career.record_spend(maxi(0, int(before.credits) - credits))
+	career.sync_inventory(owned_armor, weapon_levels)
+	if _save():
+		return true
+	for key: String in before:
+		if key == "career_progress":
+			career.load_data(before[key])
+		elif key == "store_offers":
+			store_offers.restore(before[key])
+		else:
+			set(key, before[key])
+	return false
 
 func equip_armor_set(set_id: int) -> bool:
 	if set_id < 0 or set_id >= ArmorCatalogData.SET_NAMES.size():
@@ -949,15 +1060,69 @@ func _armor_part_key(part: Variant) -> String:
 	return part_key if ArmorCatalogData.PART_KEYS.has(part_key) else ""
 
 func complete_level(level_number: int, score: int, earned_credits: int) -> void:
-	var money_multiplier := 1.0 + float(get_armor_skills().get("money_boost", 0.0))
-	credits += maxi(0, roundi(float(earned_credits) * maxf(0.0, money_multiplier)))
-	best_scores[str(level_number)] = max(score, int(best_scores.get(str(level_number), 0)))
-	if selected_game_mode == "singleplayer":
-		var index := SINGLEPLAYER_LEVELS.find(level_number)
-		if index >= 0 and index + 1 < SINGLEPLAYER_LEVELS.size():
-			unlocked_level = max(unlocked_level, int(SINGLEPLAYER_LEVELS[index + 1]))
-	store_changed.emit()
-	_save()
+	var multiplier := maxf(0.0, 1.0 + float(get_armor_skills().get("money_boost", 0.0)))
+	settle_solo_run(level_number, -1, true, {"credits": int(float(earned_credits) * multiplier), "score": score})
+
+func settle_solo_run(level_number: int, substage: int, victory: bool, rewards: Dictionary, career_after: Dictionary = {}) -> Dictionary:
+	var run_id := str(rewards.get("run_id", "")).left(96)
+	if not run_id.is_empty() and settled_runs.has(run_id):
+		return settled_runs[run_id].duplicate(true)
+	var before := {"credits": credits, "mithril": mithril, "experience": experience, "unlocked_level": unlocked_level,
+		"best_scores": best_scores.duplicate(), "solo_completed": solo_completed.duplicate(),
+		"solo_stage_bonuses": solo_stage_bonuses.duplicate(), "settled_runs": settled_runs.duplicate(true),
+		"career_progress": career.serialize()}
+	if not career_after.is_empty():
+		career.load_data(career_after)
+	var result := rewards.duplicate(true)
+	result.credits = maxi(0, int(rewards.get("credits", 0)))
+	result.experience = maxi(0, int(rewards.get("experience", 0)))
+	# Restoration rule approved by Harvey: one Mithril per completed Boss
+	# encounter, including a two-boss encounter as ONE victory. No ads or Bank.
+	result.mithril = 1 if victory and bool(rewards.get("boss_encounter", false)) else 0
+	result.score = maxi(0, int(rewards.get("score", 0)))
+	result.rank_before = get_rank_id()
+	result.stage_bonus = 0
+	result.next_mission = {}
+	result.saved = true
+	var is_campaign := level_number in SINGLEPLAYER_LEVELS and selected_game_mode == "singleplayer" and bool(rewards.get("campaign_progress", true))
+	if victory and is_campaign and substage >= 0 and substage < 5:
+		solo_completed["%d:%d" % [level_number, substage]] = true
+		if substage == 4:
+			if not solo_stage_bonuses.has(str(level_number)):
+				result.stage_bonus = Missions.stage_bonus(level_number)
+				solo_stage_bonuses[str(level_number)] = true
+			unlocked_level = maxi(unlocked_level, mini(8, level_number + 1))
+			result.next_mission = {"level": level_number % 8 + 1, "substage": 0}
+		else:
+			result.next_mission = {"level": level_number, "substage": substage + 1}
+	elif victory and is_campaign and substage == -1:
+		unlocked_level = maxi(unlocked_level, mini(8, level_number + 1))
+	result.credits += int(result.stage_bonus)
+	credits += int(result.credits)
+	mithril += int(result.mithril)
+	experience += int(result.experience)
+	result.rank_after = get_rank_id()
+	var score_key := "%d:%d" % [level_number, substage] if substage >= 0 else ("expanse" if level_number == 22 else str(level_number))
+	best_scores[score_key] = maxi(int(result.score), int(best_scores.get(score_key, 0)))
+	if not run_id.is_empty():
+		settled_runs[run_id] = result.duplicate(true)
+		while settled_runs.size() > 32:
+			settled_runs.erase(settled_runs.keys()[0])
+	if not _save():
+		for key: String in before:
+			if key == "career_progress":
+				career.load_data(before[key])
+			else:
+				set(key, before[key])
+		result.saved = false
+		result.credits = 0
+		result.experience = 0
+		result.mithril = 0
+		result.stage_bonus = 0
+		result.rank_after = get_rank_id()
+	else:
+		store_changed.emit()
+	return result
 
 func get_level_data(level_number: int) -> Dictionary:
 	var index: int = maxi(0, CAMPAIGN_LEVELS.find(level_number))
@@ -1053,6 +1218,29 @@ func _load_save() -> void:
 			push_warning("Recovered Star Warfare save from backup: %s" % backup_path)
 	if not parsed is Dictionary:
 		return
+	selected_substage = clampi(int(parsed.get("selected_substage", -1)), -1, 5)
+	solo_completed.clear()
+	var stored_missions: Variant = parsed.get("solo_completed", {})
+	if stored_missions is Dictionary:
+		for key: String in stored_missions:
+			if _is_mission_score_key(key) and stored_missions[key] == true:
+				solo_completed[key] = true
+	solo_stage_bonuses.clear()
+	var stored_bonuses: Variant = parsed.get("solo_stage_bonuses", {})
+	if stored_bonuses is Dictionary:
+		for key: String in stored_bonuses:
+			if key.is_valid_int() and int(key) in SINGLEPLAYER_LEVELS and stored_bonuses[key] == true:
+				solo_stage_bonuses[key] = true
+	settled_runs.clear()
+	var receipts: Variant = parsed.get("settled_runs", {})
+	if receipts is Dictionary:
+		for key: String in receipts.keys().slice(-32):
+			if key.length() <= 96 and receipts[key] is Dictionary:
+				settled_runs[key] = receipts[key].duplicate(true)
+	var stored_offers: Variant = parsed.get("store_offers", {})
+	if stored_offers is Dictionary:
+		store_offers.restore(stored_offers)
+		store_offers.expire(int(Time.get_unix_time_from_system()))
 	selected_level = int(parsed.get("selected_level", selected_level))
 	if selected_level not in CAMPAIGN_LEVELS:
 		selected_level = 1
@@ -1071,7 +1259,7 @@ func _load_save() -> void:
 		best_scores.clear()
 		for level_key in stored_best_scores:
 			var normalized_key := str(level_key)
-			if normalized_key.is_valid_int() and int(normalized_key) in CAMPAIGN_LEVELS:
+			if normalized_key == "expanse" or _is_mission_score_key(normalized_key) or (normalized_key.is_valid_int() and int(normalized_key) in CAMPAIGN_LEVELS):
 				best_scores[normalized_key] = maxi(0, int(stored_best_scores[level_key]))
 	var stored_owned: Variant = parsed.get("owned_weapons")
 	if stored_owned is Array:
@@ -1132,6 +1320,10 @@ func _load_save() -> void:
 	var stored_settings = parsed.get("settings", {})
 	weapon_levels = _read_upgrade_levels(parsed.get("weapon_levels", {}), true)
 	armor_set_levels = _read_upgrade_levels(parsed.get("armor_set_levels", {}), false)
+	var career_save: Dictionary = parsed.duplicate()
+	career_save["owned_armor"] = owned_armor
+	career_save["weapon_levels"] = weapon_levels
+	career.load_save_section(career_save)
 	package_slots.clear()
 	package_storage.clear()
 	for field: String in ["package_slots", "package_storage"]:
@@ -1144,6 +1336,10 @@ func _load_save() -> void:
 		for key in stored_settings:
 			if settings.has(key):
 				settings[key] = stored_settings[key]
+
+func _is_mission_score_key(key: String) -> bool:
+	var parts := key.split(":")
+	return parts.size() == 2 and parts[0].is_valid_int() and parts[1].is_valid_int() and int(parts[0]) in SINGLEPLAYER_LEVELS and int(parts[1]) >= 0 and int(parts[1]) <= 5
 
 func _read_save_dictionary(path: String) -> Variant:
 	if not FileAccess.file_exists(path):
@@ -1213,6 +1409,12 @@ func _save() -> bool:
 		return false
 	var data := {
 		"save_version": SAVE_VERSION,
+		"selected_substage": selected_substage,
+		"solo_completed": solo_completed,
+		"solo_stage_bonuses": solo_stage_bonuses,
+		"settled_runs": settled_runs,
+		"career_progress": career.serialize(),
+		"store_offers": store_offers.serialize(),
 		"selected_level": selected_level,
 		"selected_weapon": selected_weapon,
 		"selected_game_mode": selected_game_mode,

@@ -1,0 +1,56 @@
+{
+  "prefab": "Resources/enemy/boss06.prefab",
+  "output": "/Users/harvey/repo/star-warfare-godot/assets/models/enemies/animated/boss06/boss06.gltf",
+  "bones": 40,
+  "vertices": 4668,
+  "source_mesh_guid": "969ecee07c6cd4d4ca943157b820b867",
+  "source_material_guids": [
+    "aaa91d0efcd7b7249b3272b9b69dc0e7"
+  ],
+  "rigid_mesh_paths": [
+    "boss06/Dummy_global/Bone02/Object13/Light/Center/xmas_light01/xmas_light01",
+    "boss06/Dummy_global/Bone02/Object13/Light/Left/1",
+    "boss06/Dummy_global/Bone02/Object13/Light/Left/2",
+    "boss06/Dummy_global/Bone02/Object13/Light/Left/3",
+    "boss06/Dummy_global/Bone02/Object13/Light/Left/4/xmas_light01",
+    "boss06/Dummy_global/Bone02/Object13/Light/Left/5",
+    "boss06/Dummy_global/Bone02/Object13/Light/Left/6",
+    "boss06/Dummy_global/Bone02/Object13/Light/Left/7",
+    "boss06/Dummy_global/Bone02/Object13/Light/Right/1",
+    "boss06/Dummy_global/Bone02/Object13/Light/Right/2",
+    "boss06/Dummy_global/Bone02/Object13/Light/Right/3",
+    "boss06/Dummy_global/Bone02/Object13/Light/Right/4/xmas_light01",
+    "boss06/Dummy_global/Bone02/Object13/Light/Right/5",
+    "boss06/Dummy_global/Bone02/Object13/Light/Right/6",
+    "boss06/Dummy_global/Bone02/Object13/Light/Right/7"
+  ],
+  "retargeted_animation_paths": {
+    "Point05/Bone05/Bone06": "boss06/Point05/Bone05/Dummy_armLink_L/Bone06",
+    "Point06/Bone15/Bone16": "boss06/Point06/Bone15/Dummy_armLink_R/Bone16"
+  },
+  "animation_binding_repairs": [],
+  "skipped_animation_paths": [],
+  "animations": [
+    "attack",
+    "attack01_christ",
+    "attack01_joky",
+    "attack02_christ",
+    "attack03_christ",
+    "attack04_christ",
+    "attack_begin_joky",
+    "attack_end_joky",
+    "attack_joky",
+    "attacked",
+    "attacked_joky",
+    "death",
+    "head_christ",
+    "head_joky",
+    "idle",
+    "idle01",
+    "idle02",
+    "idle_joky",
+    "run",
+    "run_joky"
+  ],
+  "unmatched_animation_paths": []
+}

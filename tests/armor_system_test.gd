@@ -59,6 +59,7 @@ func _run() -> void:
 	_check(state.purchase_armor("armor_head_01") == "owned", "owned armor purchase was not rejected")
 	_check(state.purchase_armor("armor_head_14") == "rank_locked", "rank locked armor was purchasable")
 	state.unlocked_level = 2
+	state.experience = 300 # Rank 1 is earned by XP, independently of map access.
 	state.mithril = 8
 	state.credits = 999999
 	_check(state.purchase_armor("armor_bag_03") == "purchased", "mithril pack purchase failed")
@@ -87,10 +88,11 @@ func _run() -> void:
 	_check(state.battle_weapons.size() == 8, "smaller bag destructively truncated an existing loadout")
 
 	state.unlocked_level = 8
+	state.experience = 0
 	state.best_scores.clear()
-	_check(state.get_rank_id() == 7, "opening the final sector should award only rank 7")
+	_check(state.get_rank_id() == 0, "opening a sector must not grant rank without source XP")
 	state.best_scores["8"] = 1
-	_check(state.get_rank_id() == 8, "completing the final sector did not award rank 8")
+	_check(state.get_rank_id() == 0, "a sector score must not replace source XP rank thresholds")
 	# Recovered CoM suits replace the former copied Viper contract. Buying one
 	# part grants the suit exactly once, while mixed-part equipment stays valid.
 	state.credits = 200000

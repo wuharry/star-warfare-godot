@@ -57,6 +57,10 @@ func _run() -> void:
 	await _test_ranged_fire_leads_target()
 	await _test_flanking_leaves_the_direct_line()
 	await _test_token_released_on_death()
+	# The last world teardown stops its MP3 player. Let AudioServer release
+	# the stopped playback before ending this very short headless scene.
+	AudioDirector.stop_all_sfx()
+	await get_tree().create_timer(0.25).timeout
 	if failures.is_empty():
 		print("ENEMY_AI_TEST_PASS checks=8")
 		get_tree().quit(0)

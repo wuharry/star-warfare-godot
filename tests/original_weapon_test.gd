@@ -65,5 +65,8 @@ func _ready() -> void:
 		if special=="Effect/TrackingRobot": check(not effect.skeleton_links.is_empty(),"J.O.K.E robot lost animated skin")
 		effect.free()
 	AudioDirector.stop_all_sfx()
+	# Let queued audio players and the mixer release their stopped streams.
+	await get_tree().process_frame
+	await get_tree().create_timer(0.2).timeout
 	print("ORIGINAL_WEAPON_TEST_PASS weapons=17" if failures.is_empty() else failures)
 	get_tree().quit(0 if failures.is_empty() else 1)

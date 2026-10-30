@@ -5,6 +5,7 @@ const JoystickScript = preload("res://scripts/ui/virtual_joystick.gd")
 const TouchActionButtonScript = preload("res://scripts/ui/touch_action_button.gd")
 const Atlas = preload("res://scripts/ui/original_atlas.gd")
 const HitMarkerScript = preload("res://scripts/ui/hit_marker.gd")
+const ItemsBarScript = preload("res://scripts/ui/battle_items_bar.gd")
 const POWER_SLOT_KEYS := [
 	KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5,
 	KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10,
@@ -46,6 +47,11 @@ var power_icons: Dictionary = {}
 var power_shadows: Dictionary = {}
 var power_cooldown_labels: Dictionary = {}
 var power_shortcut_labels: Dictionary = {}
+var items_bar: WarfareBattleItemsBar
+var revival_overlay: Control
+var revival_countdown: Label
+var combo_label: Label
+var next_mission: Dictionary = {}
 
 func setup(game_world: WarfareGameWorld, controlled_player: WarfarePlayer, data: Dictionary) -> void:
 	world = game_world
@@ -58,6 +64,12 @@ func _ready() -> void:
 	_build_crosshair()
 	_build_touch_controls()
 	_build_armor_power_hud()
+	_build_items_hud()
+	combo_label = _center_label("", 23, Color(1.0, 0.79, 0.28))
+	hud_root.add_child(combo_label)
+	world.progress.combo_changed.connect(func(combo: int, _maximum: int):
+		combo_label.text = tr("%d COMBO") % combo if combo >= 2 else ""
+	)
 	_build_pause_overlay()
 	get_viewport().size_changed.connect(_layout_original_hud)
 	_layout_original_hud()
@@ -96,6 +108,8 @@ func _process(delta: float) -> void:
 	_update_armor_power_hud()
 	if not is_instance_valid(world):
 		return
+	if is_instance_valid(revival_countdown):
+		revival_countdown.text = "%d" % ceili(world.revival_left)
 	fire_reticle_left = maxf(0.0, fire_reticle_left - delta)
 	_update_fire_reticle_visibility()
 	reticle_target_refresh -= delta
@@ -332,7 +346,7 @@ func _rebuild_armor_power_buttons() -> void:
 		var button := _atlas_button("ArmorPower_%d" % skill_index, "skill_bk")
 		button.custom_minimum_size = Vector2(54, 54)
 		button.tooltip_text = "%s\n%s\n%s: %.0fs  %s: %.0fs" % [
-			str(state.get("name", "ARMOR POWER")), str(state.get("summary", "")),
+			tr(str(state.get("name", "ARMOR POWER"))), tr(str(state.get("summary", ""))),
 			tr("DURATION"), float(state.get("duration", 0.0)),
 			tr("COOLDOWN"), float(state.get("cooldown", 0.0)),
 		]
@@ -388,7 +402,7 @@ func _activate_armor_power(skill_index: int) -> void:
 	if power_controller.request_activate(skill_index):
 		var state := power_controller.get_skill_state(skill_index)
 		AudioDirector.play_ui("accept", -5.0)
-		announce(str(state.get("name", "ARMOR POWER")), 0.85)
+		announce(tr(str(state.get("name", "ARMOR POWER"))), 0.85)
 		_update_armor_power_hud()
 
 func _update_armor_power_hud() -> void:
@@ -427,6 +441,9 @@ func _layout_original_hud() -> void:
 	if not is_instance_valid(hud_root):
 		return
 	var ui_scale := _original_ui_scale()
+	if is_instance_valid(items_bar):
+		items_bar.position = Vector2(14, 112) * ui_scale
+		items_bar.scale = Vector2.ONE * ui_scale
 
 	# HUD.prefab coordinates after converting Unity's positive-up Y to
 	# Godot's positive-down canvas coordinates.
@@ -439,6 +456,7 @@ func _layout_original_hud() -> void:
 	_place_original(skill_button, Vector2(1.0, 0.5), Vector2(-50, 50), Vector2(102, 98), ui_scale)
 	_place_original(boss_panel, Vector2(0.5, 0.0), Vector2(0, 20), Vector2(510, 32), ui_scale)
 	_place_original(announcement, Vector2(0.5, 0.0), Vector2(0, 72), Vector2(600, 40), ui_scale)
+	_place_original(combo_label, Vector2(0.5, 0.0), Vector2(0, 110), Vector2(250, 32), ui_scale)
 	if is_instance_valid(power_panel) and power_panel.visible:
 		var power_count := power_buttons.size()
 		var power_columns := maxi(1, mini(5, power_count))
@@ -480,6 +498,42 @@ func _layout_original_hud() -> void:
 		_place_original(reload_button, Vector2(1.0, 0.5), Vector2(-172, 42), Vector2(88, 88), ui_scale)
 
 	_resize_crosshair()
+
+func _build_items_hud() -> void:
+	if not is_instance_valid(player.battle_items):
+		return
+	items_bar = ItemsBarScript.new()
+	items_bar.name = "BattleItemsBar"
+	items_bar.controller = player.battle_items
+	hud_root.add_child(items_bar)
+
+func show_revival() -> void:
+	hide_revival()
+	revival_overlay = _modal_base()
+	add_child(revival_overlay)
+	var box := _modal_panel(revival_overlay, Vector2(430, 260))
+	box.add_child(_center_label(tr("FIRST AID"), 24, Color(0.5, 1.0, 0.8)))
+	revival_countdown = _center_label("9", 28, Color.WHITE)
+	box.add_child(revival_countdown)
+	for entry: Dictionary in player.battle_items.get_slots():
+		if not entry.item.effects.has("revive_ratio"):
+			continue
+		var button := _modal_button(tr(str(entry.item.name)))
+		button.icon = ItemsBarScript.item_icon(entry.item)
+		button.expand_icon = true
+		button.add_theme_constant_override("icon_max_width", 38)
+		button.pressed.connect(func(): player.battle_items.use_slot(int(entry.slot)))
+		box.add_child(button)
+	var give_up := _modal_button(tr("END RUN"))
+	give_up.pressed.connect(world._finish_defeat)
+	box.add_child(give_up)
+
+func hide_revival() -> void:
+	if is_instance_valid(revival_overlay):
+		revival_overlay.hide()
+		revival_overlay.queue_free()
+	revival_overlay = null
+	revival_countdown = null
 
 func _place_original(control: Control, anchor: Vector2, center_offset: Vector2, logical_size: Vector2, ui_scale: float) -> void:
 	if not is_instance_valid(control):
@@ -527,15 +581,15 @@ func _build_pause_overlay() -> void:
 	var restart := _modal_button(tr("RESTART ARENA") if bool(level_data.get("pvp", false)) else tr("RESTART SECTOR"))
 	restart.pressed.connect(_restart)
 	box.add_child(restart)
-	var options := _modal_button(tr("TOGGLE TOUCH CONTROLS"))
 	if is_instance_valid(touch_root):
+		var options := _modal_button(tr("TOGGLE TOUCH CONTROLS"))
 		options.pressed.connect(func():
 			GameState.set_setting("show_touch_controls", not bool(GameState.settings.show_touch_controls))
 			touch_root.visible = bool(GameState.settings.show_touch_controls)
 		)
 		box.add_child(options)
 	var menu := _modal_button(tr("ABORT TO MENU"))
-	menu.pressed.connect(GameState.return_to_menu)
+	menu.pressed.connect(_return_to_menu)
 	box.add_child(menu)
 
 func toggle_pause() -> void:
@@ -545,7 +599,11 @@ func toggle_pause() -> void:
 	AudioDirector.play_ui("pause" if pausing else "resume")
 	get_tree().paused = pausing
 	pause_overlay.visible = pausing
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if pausing or OS.has_feature("mobile") else Input.MOUSE_MODE_CAPTURED
+	if is_instance_valid(revival_overlay):
+		revival_overlay.visible = not pausing
+	if pausing:
+		move_child(pause_overlay, get_child_count() - 1)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if pausing or player.dead or OS.has_feature("mobile") else Input.MOUSE_MODE_CAPTURED
 
 func show_result(victory: bool, stats: Dictionary) -> void:
 	if is_instance_valid(result_overlay):
@@ -564,10 +622,29 @@ func show_result(victory: bool, stats: Dictionary) -> void:
 	if not is_pvp:
 		box.add_child(_center_label(tr("HOSTILES     %d") % int(stats.kills), 18, Color.WHITE))
 	box.add_child(_center_label(tr("CREDITS      +%d") % int(stats.credits), 18, Color(1.0, 0.78, 0.2)))
+	if stats.has("experience"):
+		box.add_child(_center_label(tr("EXPERIENCE   +%d") % int(stats.experience), 18, Color(0.5, 0.9, 1.0)))
+	if int(stats.get("mithril", 0)) > 0:
+		box.add_child(_center_label(tr("MITHRIL      +%d") % int(stats.mithril), 18, Color(0.6, 0.9, 1.0)))
+	if int(stats.get("max_combo", 0)) > 1:
+		box.add_child(_center_label(tr("MAX COMBO    %d") % int(stats.max_combo), 16, Color(1.0, 0.78, 0.2)))
+	if int(stats.get("stage_bonus", 0)) > 0:
+		box.add_child(_center_label(tr("STAGE BONUS  +%d") % int(stats.stage_bonus), 16, Color(1.0, 0.78, 0.2)))
 	box.add_child(_center_label(tr("TIME         %02d:%02d") % [int(int(stats.time) / 60), int(stats.time) % 60], 18, Color.WHITE))
+	if not bool(stats.get("saved", true)):
+		var save_retry := _modal_button(tr("RETRY SAVING PROGRESS"))
+		save_retry.pressed.connect(func():
+			var updated := world._settle_battle(victory)
+			result_overlay.queue_free()
+			result_overlay = null
+			show_result(victory, updated)
+		)
+		box.add_child(save_retry)
+		return
+	next_mission = stats.get("next_mission", {})
 	var mode_levels := GameState.get_levels_for_mode(GameState.selected_game_mode)
 	var level_index := mode_levels.find(int(level_data.number))
-	if victory and level_index >= 0 and level_index + 1 < mode_levels.size():
+	if victory and (not next_mission.is_empty() or (GameState.selected_substage < 0 and level_index >= 0 and level_index + 1 < mode_levels.size())):
 		var next := _modal_button(tr("NEXT ARENA") if is_pvp else tr("NEXT SECTOR"))
 		next.pressed.connect(_next_level)
 		box.add_child(next)
@@ -575,7 +652,7 @@ func show_result(victory: bool, stats: Dictionary) -> void:
 	retry.pressed.connect(_restart)
 	box.add_child(retry)
 	var menu := _modal_button(tr("RETURN TO MENU"))
-	menu.pressed.connect(GameState.return_to_menu)
+	menu.pressed.connect(_return_to_menu)
 	box.add_child(menu)
 
 func announce(message: String, duration := 2.0) -> void:
@@ -650,11 +727,27 @@ func _on_dash_changed(ratio: float) -> void:
 		skill_button.modulate = Color(1.0, 1.0, 1.0, lerpf(0.42, 1.0, clampf(ratio, 0.0, 1.0)))
 
 func _restart() -> void:
+	if not _prepare_leave():
+		return
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
+func _return_to_menu() -> void:
+	if _prepare_leave():
+		GameState.return_to_menu()
+
+func _prepare_leave() -> bool:
+	if is_instance_valid(world) and world.has_method("prepare_leave") and not world.prepare_leave():
+		pause_overlay.hide()
+		show_result(false, world.settled_stats)
+		return false
+	return true
+
 func _next_level() -> void:
 	get_tree().paused = false
+	if not next_mission.is_empty():
+		GameState.start_solo_mission(int(next_mission.level), int(next_mission.substage))
+		return
 	var mode_levels := GameState.get_levels_for_mode(GameState.selected_game_mode)
 	var index := mode_levels.find(int(level_data.number))
 	if index >= 0 and index + 1 < mode_levels.size():

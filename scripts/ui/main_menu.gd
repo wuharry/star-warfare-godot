@@ -74,6 +74,9 @@ func _ready() -> void:
 	resized.connect(_rescale_design)
 	_start_intro_animation()
 	_start_music()
+	if NetworkSession.phase == "lobby" or NetworkSession.reopen_lobby_on_menu:
+		NetworkSession.reopen_lobby_on_menu = false
+		_show_multiplayer.call_deferred()
 
 
 func _notification(what: int) -> void:
@@ -166,11 +169,11 @@ func _build_main_page() -> void:
 
 	var coop := _deployment_button("main_online_normal", "main_online_pressed")
 	coop.name = "MultiplayerButton"
-	coop.tooltip_text = tr("ONLINE • ORIGINAL PVP ARENAS 13-21")
+	coop.tooltip_text = tr("DIRECT CONNECT • IP / LAN • CO-OP / PVP")
 	_set_rect(coop, Rect2(521, 35, 348, 87))
 	coop.pressed.connect(func():
 		AudioDirector.play_ui("accept")
-		_show_level_select("multiplayer")
+		_show_multiplayer()
 	)
 	strip.add_child(coop)
 
@@ -259,7 +262,8 @@ func _build_navigation_drawer() -> void:
 	bank.stretch_mode = TextureButton.STRETCH_SCALE
 	bank.tooltip_text = tr("BANK")
 	_set_rect(bank, Rect2(520, 17, 410, 100))
-	bank.pressed.connect(_show_bank_notice)
+	bank.visible = false
+	bank.disabled = true
 	drawer.add_child(bank)
 
 	var customize := _drawer_button(tr("CUSTOMIZE"), "main_nav_customize_icon", "main_nav_customize_icon_pressed")
@@ -278,6 +282,13 @@ func _build_navigation_drawer() -> void:
 	_set_rect(options, Rect2(29, 17, 190, 100))
 	options.pressed.connect(_show_options)
 	drawer.add_child(options)
+	var profile_button := Button.new()
+	profile_button.name = "ProfileButton"
+	profile_button.text = tr("PROFILE")
+	profile_button.tooltip_text = tr("LOCAL STATISTICS AND ACHIEVEMENTS")
+	_set_rect(profile_button, Rect2(520, 17, 410, 100))
+	profile_button.pressed.connect(_show_profile)
+	drawer.add_child(profile_button)
 
 	var edit_name := TextureButton.new()
 	edit_name.name = "EditNameButton"
@@ -465,6 +476,13 @@ func _show_level_select(game_mode: String = "singleplayer") -> void:
 	body.add_theme_constant_override("separation", 10)
 	var heading := tr("SELECT SOLO SECTOR") if game_mode == "singleplayer" else tr("SELECT PVP ARENA")
 	body.add_child(_label(heading, 25, Color(0.72, 0.94, 1.0)))
+	if game_mode == "singleplayer":
+		var bosses := Button.new()
+		bosses.name = "SoloBossButton"
+		bosses.text = tr("BOSS • SIX SOURCE ENCOUNTERS")
+		bosses.custom_minimum_size.y = 38
+		bosses.pressed.connect(_show_solo_bosses)
+		body.add_child(bosses)
 	if game_mode == "multiplayer":
 		var note := _label(tr("Levels 13-21 are the original PvP arenas. Offline arena preview only; no PvE waves are used."), 12, Color(0.55, 0.76, 0.84))
 		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -491,10 +509,70 @@ func _show_level_select(game_mode: String = "singleplayer") -> void:
 		button.disabled = is_locked
 		button.pressed.connect(func():
 			AudioDirector.play_ui("accept")
-			GameState.start_level(level_number, game_mode)
+			if game_mode == "singleplayer":
+				_show_solo_missions(level_number)
+			else:
+				GameState.start_level(level_number, game_mode)
 		)
 		grid.add_child(button)
 	_show_modal(body, Vector2(880, 570))
+
+
+func _show_multiplayer() -> void:
+	var lobby := preload("res://scripts/ui/multiplayer_lobby.gd").new()
+	_show_modal(lobby, Vector2(880, 600))
+
+
+func _show_profile() -> void:
+	_toggle_drawer(false)
+	var panel := preload("res://scripts/ui/career_panel.gd").new()
+	panel.name = "CareerPanel"
+	add_child(panel)
+	panel.dismissed.connect(panel.queue_free)
+	panel.show_progress(GameState.get("career"))
+
+
+func _show_solo_missions(level_number: int) -> void:
+	var body := VBoxContainer.new()
+	body.add_theme_constant_override("separation", 12)
+	body.add_child(_label(tr("SECTOR %02d • MISSIONS") % level_number, 25, CYAN))
+	var skirmish := Button.new()
+	skirmish.name = "SkirmishButton"
+	skirmish.text = tr("SKIRMISH / FREE BATTLE")
+	skirmish.custom_minimum_size.y = 44
+	skirmish.pressed.connect(func(): GameState.start_level(level_number, "singleplayer"))
+	body.add_child(skirmish)
+	for substage in range(6):
+		var button := Button.new()
+		button.name = "SoloMission%d" % substage
+		button.text = tr("SURVIVAL") if substage == 5 else tr("MISSION %d") % (substage + 1)
+		button.custom_minimum_size.y = 54
+		button.disabled = not bool(GameState.call("is_solo_mission_unlocked", level_number, substage))
+		if button.disabled:
+			button.text += " • " + tr("LOCKED")
+		button.pressed.connect(func(): GameState.call("start_solo_mission", level_number, substage))
+		body.add_child(button)
+	_show_modal(body, Vector2(620, 570))
+
+
+func _show_solo_bosses() -> void:
+	var body := VBoxContainer.new()
+	body.add_child(_label(tr("BOSS CHALLENGE"), 25, CYAN))
+	body.add_child(_wrapped_label(tr(" Source bosses and arenas. Every cleared boss encounter awards each participant 1 Mithril."), 15, Color.WHITE))
+	for index in range(6):
+		var button := Button.new()
+		button.text = tr(str(MatchRules.BOSS_TYPES[index]))
+		button.custom_minimum_size.y = 45
+		button.pressed.connect(func():
+			var error := NetworkSession.host_room({"mode": "Boss", "level": 8, "boss_index": index})
+			if error == OK:
+				NetworkSession.set_ready(true, 0)
+				NetworkSession.start_match()
+			else:
+				_show_multiplayer()
+		)
+		body.add_child(button)
+	_show_modal(body, Vector2(740, 580))
 
 
 func _show_options() -> void:

@@ -50,14 +50,19 @@ static func create(path: String, one_shot := false) -> OriginalWeaponEffect:
 		if mesh_record.has("m_Mesh") and mesh_record.m_Mesh.has("guid"):
 			var instance := MeshInstance3D.new()
 			instance.name = "SourceMesh"
-			instance.mesh = mesh_resource(mesh_record.m_Mesh.guid)
+			# Keep the cached geometry immutable: each renderer owns its materials.
+			# Skinned meshes also query the surface material when overrides tear
+			# down, so the surface must retain the same material until disposal.
+			instance.mesh = mesh_resource(mesh_record.m_Mesh.guid).duplicate() as ArrayMesh
 			instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 			var renderer: Dictionary = c.get("MeshRenderer", c.get("SkinnedMeshRenderer", [{}]))[0]
 			instance.visible = bool(renderer.get("m_Enabled", 1))
 			for i in instance.mesh.get_surface_count():
 				var refs: Array = renderer.get("m_Materials", [])
 				if not refs.is_empty():
-					instance.set_surface_override_material(i, material_resource(refs[mini(i, refs.size()-1)].guid))
+					var material := material_resource(refs[mini(i, refs.size()-1)].guid)
+					instance.mesh.surface_set_material(i, material)
+					instance.set_surface_override_material(i, material)
 			node.add_child(instance)
 			if c.has("SkinnedMeshRenderer") and not data.meshes[mesh_record.m_Mesh.guid].skin.is_empty():
 				var skeleton := Skeleton3D.new()

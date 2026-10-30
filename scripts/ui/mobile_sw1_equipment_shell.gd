@@ -125,7 +125,9 @@ func _build_catalog() -> void:
 	var ammo := _side_button(equipment_controls, "AMMO", Layout.rect(11, 49))
 	ammo.name = "AmmoButton"
 	ammo.pressed.connect(_show_ammo)
-	_module_art(equipment_controls, 11, 76)
+	# Ammo-refill services are intentionally excluded from this restoration.
+	ammo.hide()
+	_module_art(equipment_controls, 11, 76).hide()
 	_build_props()
 	_build_customize()
 
@@ -584,7 +586,7 @@ func _armor_description(item: Dictionary) -> String:
 
 
 func _set_price(item: Dictionary) -> void:
-	price_label.text = ("#%s" % _format_price(int(item.mithril))) if int(item.get("mithril", 0)) > 0 else ("$%s" % _format_price(int(item.get("price", 0))))
+	price_label.text = _item_price_token(item)
 
 
 func _refresh_currency() -> void:
@@ -750,6 +752,19 @@ func _fill_gear_cell(card: Control, item_key: String) -> void:
 	var instance := MeshInstance3D.new()
 	instance.mesh = mesh
 	_normalize_preview_mesh(instance, 2.9, Color.WHITE, 0.0, weapon_id)
+	if selected_category in ARMOR_MESH_PARTS:
+		var visual_id := int(GameState.get_armor_item(item_key).get("visual_id", 0))
+		if visual_id > 0:
+			# The generic weapon preview whitens its materials. Armor cards need
+			# the same source tint and unlit finish as the complete character.
+			for surface in mesh.get_surface_count():
+				var source_material := mesh.surface_get_material(surface) as BaseMaterial3D
+				if source_material == null:
+					continue
+				var material := source_material.duplicate() as BaseMaterial3D
+				if visual_id < ArmorVisuals.Catalog.CALLOFMINI_FIRST_ID:
+					material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+				instance.set_surface_override_material(surface, material)
 	pivot.add_child(instance)
 	var state := _get_item_state(item_key)
 	if state == "locked":
@@ -771,7 +786,7 @@ func _armor_part_mesh(item_key: String) -> Mesh:
 		var path := "%sArmorBag_%02d/ArmorBag_%02d.obj" % [ARMOR_BAG_DIR, visual_id, visual_id]
 		return load(path) as Mesh if ResourceLoader.exists(path) else null
 	var path := ArmorVisuals.reworked_scene_path(visual_id)
-	if not ResourceLoader.exists(path):
+	if path.is_empty() or not ResourceLoader.exists(path):
 		path = preload("res://scripts/core/armor_catalog.gd").gameplay_scene_path(visual_id)
 	if path.is_empty() or not ResourceLoader.exists(path):
 		path = ARMOR_AVATAR_PATH
@@ -958,21 +973,6 @@ func _side_button(parent: Node, caption: String, rect: Rect2, component := "armo
 	_set_rect(button, rect)
 	parent.add_child(button)
 	return button
-
-
-func _release_preview(node: Node) -> void:
-	# Hold overrides until instances leave the renderer. Otherwise destruction of
-	# shader overrides can invalidate RIDs while MeshInstance3D tears down surfaces.
-	var materials: Array[Material] = []
-	for mesh: MeshInstance3D in node.find_children("*", "MeshInstance3D", true, false):
-		if mesh.material_override != null:
-			materials.append(mesh.material_override)
-		for surface in mesh.get_surface_override_material_count():
-			var material := mesh.get_surface_override_material(surface)
-			if material != null:
-				materials.append(material)
-		mesh.mesh = null
-	node.free()
 
 
 func _comparison_weapon(use_preview: bool) -> Dictionary:

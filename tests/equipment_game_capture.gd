@@ -9,6 +9,7 @@ func _ready() -> void:
 	_run.call_deferred()
 
 func _run() -> void:
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT))
 	var real_save_path: String = GameState.save_path
 	var real_save_hash := FileAccess.get_sha256(real_save_path) if FileAccess.file_exists(real_save_path) else "MISSING"
 	GameState.save_path = CAPTURE_PROFILE
@@ -44,6 +45,10 @@ func _run() -> void:
 			_set_armor(sample[0])
 			var world := (load("res://scenes/game.tscn") as PackedScene).instantiate()
 			add_child(world)
+			# Inspect equipment in a real arena without combat or a result overlay
+			# pausing the next capture while resources are being loaded.
+			world.completed = true
+			world.player.set_physics_process(false)
 			for tick in 12: await get_tree().process_frame
 			await _save("game_%d_%02d_%s" % [level, sample[0], sample[1]])
 			world.queue_free()

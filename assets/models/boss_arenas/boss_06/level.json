@@ -1,0 +1,918 @@
+{
+  "format": 3,
+  "level": 6,
+  "source": "Resources/level/Boss6.prefab",
+  "visual": "stage.obj",
+  "visual_with_uv2": "level.glb",
+  "collision_mesh": "collision.obj",
+  "visual_bounds_min": [
+    -178.51033,
+    -55.4910927,
+    -174.60881
+  ],
+  "visual_bounds_max": [
+    171.44133,
+    208.984451,
+    175.508179
+  ],
+  "render_settings": {
+    "fog_enabled": false,
+    "fog_color": [
+      0.49803922,
+      0.49803922,
+      0.49803922,
+      1.0
+    ],
+    "fog_density": 0.01,
+    "ambient_color": [
+      0.2,
+      0.2,
+      0.2,
+      1.0
+    ],
+    "ambient_intensity": 1.0
+  },
+  "material_render_modes": {
+    "groundsnow_0_Tiled_1325703672402824": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.55859375,
+        0.55859375
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1209811017829362": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.016601562,
+        0.016601562
+      ],
+      "lightmap_offset": [
+        0.6933594,
+        0.52734375
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark02_0_Tiled_1536271256590522": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.056640625,
+        0.056640625
+      ],
+      "lightmap_offset": [
+        0.5878906,
+        0.9345703
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1674200579773734": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.07128906,
+        0.07128906
+      ],
+      "lightmap_offset": [
+        0.921875,
+        0.5605469
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark02_0_Tiled_1810309417861548": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.026367188,
+        0.026367188
+      ],
+      "lightmap_offset": [
+        0.6230469,
+        0.52734375
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1026484003801434": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.03515625,
+        0.03515625
+      ],
+      "lightmap_offset": [
+        0.25878906,
+        0.96191406
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1509023907119930": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.028320312,
+        0.028320312
+      ],
+      "lightmap_offset": [
+        0.59277344,
+        0.52734375
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "groundsnow_0_Tiled_1828139244958877": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.07519531,
+        0.07519531
+      ],
+      "lightmap_offset": [
+        0.69433594,
+        0.5605469
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1880737556617835": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.07128906,
+        0.07128906
+      ],
+      "lightmap_offset": [
+        0.8486328,
+        0.5605469
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark02_0_Tiled_1880737556617835": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.07128906,
+        0.07128906
+      ],
+      "lightmap_offset": [
+        0.8486328,
+        0.5605469
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1155103346509029": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.052734375,
+        0.052734375
+      ],
+      "lightmap_offset": [
+        0.65722656,
+        0.83496094
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "groundsnow_0_Tiled_1206378990511721": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.34375,
+        0.34375
+      ],
+      "lightmap_offset": [
+        0.5605469,
+        0.0
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark02_0_Tiled_1182760905480228": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.14355469,
+        0.14355469
+      ],
+      "lightmap_offset": [
+        0.31835938,
+        0.5605469
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1244290858346185": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.091796875,
+        0.091796875
+      ],
+      "lightmap_offset": [
+        0.90625,
+        0.0
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1257227485205358": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.13183594,
+        0.13183594
+      ],
+      "lightmap_offset": [
+        0.31835938,
+        0.7060547
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1999826593032231": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.07519531,
+        0.07519531
+      ],
+      "lightmap_offset": [
+        0.7714844,
+        0.5605469
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1776494525506736": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.10546875,
+        0.10546875
+      ],
+      "lightmap_offset": [
+        0.4638672,
+        0.6845703
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1209519530914508": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.049804688,
+        0.049804688
+      ],
+      "lightmap_offset": [
+        0.65722656,
+        0.88964844
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1358513669553031": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.08203125,
+        0.08203125
+      ],
+      "lightmap_offset": [
+        0.90625,
+        0.1796875
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark02_0_Tiled_1358513669553031": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.08203125,
+        0.08203125
+      ],
+      "lightmap_offset": [
+        0.90625,
+        0.1796875
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark02_0_Tiled_1726296013833666": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.055664062,
+        0.055664062
+      ],
+      "lightmap_offset": [
+        0.65722656,
+        0.6669922
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark02_0_Tiled_1515707013912806": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.04296875,
+        0.04296875
+      ],
+      "lightmap_offset": [
+        0.8544922,
+        0.6669922
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1515707013912806": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.04296875,
+        0.04296875
+      ],
+      "lightmap_offset": [
+        0.8544922,
+        0.6669922
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark02_0_Tiled_1918677870033124": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.08105469,
+        0.08105469
+      ],
+      "lightmap_offset": [
+        0.4638672,
+        0.8984375
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1498180752345433": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.083984375,
+        0.083984375
+      ],
+      "lightmap_offset": [
+        0.90625,
+        0.09375
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1303833284395266": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.099609375,
+        0.099609375
+      ],
+      "lightmap_offset": [
+        0.89453125,
+        0.34570312
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark02_0_Tiled_1303833284395266": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.099609375,
+        0.099609375
+      ],
+      "lightmap_offset": [
+        0.89453125,
+        0.34570312
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "groundsnow_0_Tiled_1055483010200103": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.09472656,
+        0.09472656
+      ],
+      "lightmap_offset": [
+        0.89453125,
+        0.44726562
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "swpark01_0_Tiled_1935774154224459": {
+      "shader": "Optimized/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_06/lightmap_fc75c9e14892.png",
+      "lightmap_scale": [
+        0.06347656,
+        0.06347656
+      ],
+      "lightmap_offset": [
+        0.5878906,
+        0.8691406
+      ],
+      "lightmap_multiplier": 2.0,
+      "lightmap_repeat": false
+    },
+    "SKY": {
+      "shader": "iPhone/SolidTexture",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5
+    }
+  },
+  "source_lights": [],
+  "markers": {
+    "Respawn": [],
+    "EnemySpawnPoint": [],
+    "BossSpawnPoint": [
+      {
+        "name": "BossSpawnPoint",
+        "game_object": 11,
+        "position": [
+          -1.5793585,
+          0.0,
+          9.212838
+        ],
+        "transform": [
+          1.0,
+          0.0,
+          0.0,
+          -1.5793585,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          9.212838,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    ],
+    "PlayerSpawnInBoss": [
+      {
+        "name": "GameObject",
+        "game_object": 8,
+        "position": [
+          -2.96464,
+          1.0,
+          -11.434792
+        ],
+        "transform": [
+          -0.9999999999999467,
+          0.0,
+          3.2584135999999134e-07,
+          -2.96464,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          -3.2584135999999134e-07,
+          0.0,
+          -0.9999999999999467,
+          -11.434792,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "GameObject",
+        "game_object": 9,
+        "position": [
+          -1.6566219,
+          1.0,
+          -17.791864
+        ],
+        "transform": [
+          -0.7660444621580378,
+          0.0,
+          0.6427875869966706,
+          -1.6566219,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          -0.6427875869966706,
+          0.0,
+          -0.7660444621580378,
+          -17.791864,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "GameObject",
+        "game_object": 10,
+        "position": [
+          -13.24483,
+          1.0,
+          -10.819013
+        ],
+        "transform": [
+          -0.7660442447098099,
+          0.0,
+          -0.6427878461413047,
+          -13.24483,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.6427878461413047,
+          0.0,
+          -0.7660442447098099,
+          -10.819013,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    ],
+    "WayPoint": [],
+    "FlagSpawn": [],
+    "GiftSpawn": [],
+    "Grave": []
+  },
+  "waypoint_graph": [],
+  "primitive_colliders": [
+    {
+      "type": "box",
+      "name": "ground_01",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -1.9097716468641661,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        129.33089,
+        3.8195431,
+        132.96938
+      ]
+    }
+  ],
+  "mesh_colliders": [
+    {
+      "name": "PZ_c_01",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_02",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_03",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_04",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_05",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_06",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_07",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_08",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_09",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_010",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_011",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_012",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_013",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_014",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_015",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_016",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_017",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_018",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_019",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_020",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_021",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_022",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_023",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_024",
+      "convex": false
+    },
+    {
+      "name": "PZ_c_025",
+      "convex": false
+    }
+  ],
+  "source_summary": {
+    "game_objects": 28,
+    "visual_renderers": 26,
+    "primitive_colliders": 1,
+    "mesh_colliders": 25,
+    "source_lights": 0,
+    "lightmapped_materials": 29
+  },
+  "warnings": [],
+  "boss": true,
+  "boss_type": "SantaMachine",
+  "resource_directory": "res://assets/models/boss_arenas/boss_06",
+  "source_sha256": "1a700b5bdaa3581bf5a4869e14e12534310b639a552978d3ef70e2b2453e5570",
+  "source_root": {
+    "game_object": 1922599321717071,
+    "transform_file_id": 4975806402882704,
+    "active": true,
+    "source_unity_transform": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      300.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "runtime_unity_transform": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "local_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "policy": "GameWorld.CreateBoss: Instantiate(prefab, Vector3.zero, Quaternion.identity); preserve scale and child active states"
+  },
+  "spawn_source": "Scenes/Level8.unity",
+  "spawn_source_sha256": "8b4273a7506353d11cc677f81d29f29aa55ef97e1b369f867f3148733c097443",
+  "spawn_order": "source YAML GameObject order; Unity FindGameObjectsWithTag order is not specified",
+  "render_settings_source": "Scenes/Level8.unity",
+  "source_effects": [],
+  "restoration_limits": [
+    "Static geometry, source UV0/UV2, material lightmaps and collider transforms are restored.",
+    "Dynamic Unity lights, particle playback and MonoBehaviour-driven texture animation are not restored."
+  ]
+}

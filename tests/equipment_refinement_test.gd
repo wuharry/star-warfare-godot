@@ -24,13 +24,6 @@ func _run() -> void:
 	var original_avatar := (load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate()
 	var checked_armor_sets := 0
 	for id in range(1, Catalog.SET_NAMES.size()):
-		if id == 6:
-			# Thunder now has deliberately redesigned helmet / plate geometry and
-			# materials. Old-atlas and < .025 silhouette parity are not its contract.
-			# tests/thunder_armor_test.tscn owns skinning, animation and mixed equips;
-			# all other refinement-only sets keep the original strict assertions.
-			_check(Visuals.REWORKED_SCENES.get(6, "") == "res://assets/armors/thunder/thunder.scn", "Thunder redesign lost its dedicated runtime mapping")
-			continue
 		checked_armor_sets += 1
 		var original: Node = original_avatar
 		if id >= Catalog.CALLOFMINI_FIRST_ID:
@@ -39,11 +32,12 @@ func _run() -> void:
 		Visuals.ensure_parts(avatar, ids)
 		for prefix in Visuals.ORIGINAL_PART_PREFIXES:
 			var part := avatar.find_child(prefix + "%02d" % id, true, false) as MeshInstance3D
-			_check(part != null and part.has_meta("armor_rework"), "missing refined armor %s%d" % [prefix, id])
+			_check(part != null and not part.has_meta("armor_rework"), "original armor was missing or replaced %s%d" % [prefix, id])
 			if part == null: continue
 			_check(part.skin != null, "missing original skin " + str(part.name))
 			_validate_mesh(part.mesh, str(part.name), skeleton.get_bone_count())
 			var source_part := original.find_child(str(part.name), true, false) as MeshInstance3D
+			_check(part.mesh == source_part.mesh and part.skin == source_part.skin, "original geometry or skin changed " + str(part.name))
 			for surface in source_part.mesh.get_surface_count():
 				_validate_material(source_part.get_active_material(surface), part.get_active_material(surface), str(part.name))
 		var count := skeleton.get_child_count()
@@ -109,7 +103,7 @@ func _run() -> void:
 	fixture.cleanup()
 	fixture.queue_free()
 	await get_tree().process_frame
-	print("EQUIPMENT_REFINEMENT_TEST_PASS armor_sets=%d weapon_meshes=%d armor_textures=%d thunder=dedicated_test" % [checked_armor_sets, checked_models.size(), checked_armor_textures.size()] if failures.is_empty() else "EQUIPMENT_REFINEMENT_TEST_FAIL count=%d" % failures.size())
+	print("EQUIPMENT_REFINEMENT_TEST_PASS original_armor_sets=%d weapon_meshes=%d armor_textures=%d" % [checked_armor_sets, checked_models.size(), checked_armor_textures.size()] if failures.is_empty() else "EQUIPMENT_REFINEMENT_TEST_FAIL count=%d" % failures.size())
 	get_tree().quit(0 if failures.is_empty() else 1)
 
 func _posed_bounds(instance: MeshInstance3D, skeleton: Skeleton3D) -> AABB:
@@ -166,9 +160,11 @@ func _validate_material(source: Material, refined: Material, label: String) -> v
 			var tint: Color = refined.get_shader_parameter("albedo_tint")
 			_check(source.albedo_color.is_equal_approx(tint), "painted material lost original tint " + label)
 		if source.albedo_texture != null:
-			_check(actual != null and actual.resource_path == Refined.texture_path(source.albedo_texture.resource_path), "incorrect refined atlas " + label)
-			if actual != null and label.begins_with("Armor"):
-				_validate_armor_texture(actual)
+			var original_armor := label.begins_with("Armor")
+			var expected_path: String = source.albedo_texture.resource_path if original_armor else Refined.texture_path(source.albedo_texture.resource_path)
+			_check(actual != null and actual.resource_path == expected_path, "incorrect atlas " + label)
+			if original_armor and actual != null:
+				checked_armor_textures[actual.resource_path] = true
 
 
 func _validate_armor_texture(texture: Texture2D) -> void:

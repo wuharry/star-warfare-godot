@@ -31,7 +31,7 @@ const DISPLAY_NAMES: Array[String] = [
 ]
 const EFFECT_SUMMARIES: Array[String] = [
 	"Damage x1.5 and speed +2", "Speed +2", "85% incoming damage reduction",
-	"Restore 100 HP, speed +1 and 30% damage reduction",
+	"Restore 10000 HP, speed +1 and 30% damage reduction",
 	"Deal 65% damage and recover the actual damage dealt",
 	"Damage nearby enemies every 0.25 seconds", "Fire a penetrating, life-stealing wave",
 	"Fire a wave that marks and slows one enemy", "Convert incoming damage into 60% healing",

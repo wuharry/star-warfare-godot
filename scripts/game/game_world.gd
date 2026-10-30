@@ -6,6 +6,10 @@ const EnemyScript = preload("res://scripts/game/enemy.gd")
 const PickupScript = preload("res://scripts/game/pickup.gd")
 const HUDScript = preload("res://scripts/ui/hud.gd")
 const ArmorPowerControllerScript = preload("res://scripts/game/armor_power_controller.gd")
+const BattleItemsScript = preload("res://scripts/game/battle_items.gd")
+const BattleProgressScript = preload("res://scripts/game/battle_progress.gd")
+const MissionDirectorScript = preload("res://scripts/game/mission_director.gd")
+const Missions = preload("res://scripts/core/solo_missions.gd")
 const UnityColliderBuilderScript = preload("res://scripts/core/unity_collider_builder.gd")
 const UnityMaterialRestorerScript = preload("res://scripts/core/unity_material_restorer.gd")
 const UnitySceneEffectsScript = preload("res://scripts/game/unity_scene_effects.gd")
@@ -21,9 +25,19 @@ var total_spawned := 0
 var kills := 0
 var score := 0
 var battle_credits := 0
+var battle_experience := 0
+var progress := BattleProgressScript.new()
+var settled_stats: Dictionary = {}
+var pending_career: Dictionary = {}
+var run_id := ""
+var mission_data: Dictionary = {}
+var mission_director: Node
+var next_mission_door := 0
 var elapsed_time := 0.0
 var spawning := false
+var wave_pending := false
 var completed := false
+var revival_left := 0.0
 var pvp_arena := false
 var arena_size := 30.0
 var rng := RandomNumberGenerator.new()
@@ -55,6 +69,13 @@ var difficulty_profile: Dictionary = {}
 
 func _ready() -> void:
 	level_data = GameState.get_level_data(GameState.selected_level)
+	if GameState.selected_game_mode == "singleplayer" and GameState.selected_substage >= 0:
+		mission_data = Missions.get_mission(GameState.selected_level, GameState.selected_substage)
+		if not mission_data.is_empty():
+			level_data.waves = mission_data.round_count
+			level_data.boss = false
+			level_data["substage"] = GameState.selected_substage
+			level_data["survival"] = mission_data.endless
 	pvp_arena = bool(level_data.get("pvp", false))
 	arena_size = float(level_data.arena_size)
 	difficulty_profile = GameState.get_difficulty_profile()
@@ -72,6 +93,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not completed:
 		elapsed_time += delta
+		progress.advance(delta)
+		_update_revival(delta)
+
+func _update_revival(delta: float) -> void:
+	if revival_left <= 0.0:
+		return
+	revival_left = maxf(0.0, revival_left - delta)
+	if not player.dead:
+		revival_left = 0.0
+	elif revival_left <= 0.0:
+		_finish_defeat()
 
 func _is_pvp_arena() -> bool:
 	return pvp_arena or bool(level_data.get("pvp", false)) or str(level_data.get("mode", "")) == "pvp"
@@ -172,6 +204,11 @@ func _build_arena() -> void:
 		strip.rotation.y = -strip_angle
 
 func _build_player() -> void:
+	run_id = "%d_%d" % [int(Time.get_unix_time_from_system() * 1000.0), get_instance_id()]
+	var substage := GameState.selected_substage if int(level_data.number) in GameState.SINGLEPLAYER_LEVELS else -1
+	progress.start(GameState.career, {"level_key": "%d:%d" % [int(level_data.number), substage],
+		"pve": not _is_pvp_arena(), "source_stage": int(level_data.number) - 1,
+		"source_substage": substage})
 	player = PlayerScript.new()
 	add_child(player)
 	if player_spawn_points.is_empty():
@@ -185,7 +222,13 @@ func _build_player() -> void:
 	armor_power_controller.configure(player, self)
 	player.set_armor_power_controller(armor_power_controller)
 	player.add_child(armor_power_controller)
+	player.battle_items = BattleItemsScript.new()
+	player.battle_items.name = "BattleItems"
+	player.battle_items.configure(player, GameState)
+	player.add_child(player.battle_items)
 	player.died.connect(_on_player_died)
+	player.revived.connect(_on_player_revived)
+	player.damaged.connect(progress.record_damage)
 
 func _build_hud() -> void:
 	hud = HUDScript.new()
@@ -213,11 +256,28 @@ func _begin_level() -> void:
 		return
 	if pvp_arena:
 		hud.announce(tr("OFFLINE ARENA PREVIEW • ONLINE MATCHMAKING NOT RESTORED"), 3.2)
+	elif not mission_data.is_empty():
+		mission_director = MissionDirectorScript.new()
+		mission_director.name = "OriginalMissionDirector"
+		add_child(mission_director)
+		mission_director.round_started.connect(func(round_index: int, _difficulty: int):
+			current_wave = round_index + 1
+			hud.announce(tr("WAVE %d INBOUND") % current_wave, 1.2)
+		)
+		mission_director.mission_completed.connect(func(_mission: Dictionary): _victory())
+		mission_director.mission_failed.connect(func(reason: String):
+			push_error("Original mission failed: " + reason)
+			hud.announce(tr("MISSION CONTENT UNAVAILABLE"), 10.0)
+			_finish_defeat()
+		)
+		mission_director.configure(self, mission_data)
 	else:
 		_start_next_wave()
 
 func _start_next_wave() -> void:
-	if _is_pvp_arena() or spawning or completed:
+	if _is_pvp_arena() or not mission_data.is_empty() or spawning or completed:
+		return
+	if is_instance_valid(player) and player.dead:
 		return
 	current_wave += 1
 	if current_wave > int(level_data.waves):
@@ -323,13 +383,67 @@ func _spawn_enemy(kind: String, elite: bool, position_override: Vector3 = Vector
 	total_spawned += 1
 	return enemy
 
+func spawn_mission_enemy(request: Dictionary) -> bool:
+	if completed or _is_pvp_arena() or not is_instance_valid(player):
+		return false
+	var spawn_position := _mission_spawn_position(int(request.get("spawn_from", 0)))
+	if spawn_position == Vector3.INF:
+		return false
+	var enemy := EnemyScript.new()
+	if not enemy.configure_original(player, int(request.monster_id), 1.0, bool(request.get("elite", false)), int(request.get("difficulty", 0))):
+		push_error("Original enemy unavailable: " + enemy.configuration_error)
+		enemy.free()
+		return false
+	# EnemySpawnScript only applies the grave-rise invulnerability to Grave
+	# requests. Door enemies enter the arena already above ground.
+	if int(request.get("spawn_from", 0)) == 0:
+		enemy.spawn_left = 0.0
+	enemy.position = spawn_position
+	enemy.died.connect(_on_enemy_died)
+	enemy.health_reported.connect(_on_enemy_health_reported.bind(enemy))
+	add_child(enemy)
+	alive_enemies += 1
+	total_spawned += 1
+	return true
+
+func _mission_spawn_position(spawn_from: int) -> Vector3:
+	if spawn_from == 0 and not enemy_spawn_points.is_empty():
+		var position_value := enemy_spawn_points[next_mission_door % enemy_spawn_points.size()]
+		next_mission_door += 1
+		return _snap_enemy_spawn_to_ground(position_value)
+	var graves: Array = stage_metadata.get("markers", {}).get("Grave", [])
+	var nearest: Dictionary = {}
+	var distance := INF
+	for grave: Dictionary in graves:
+		var coordinates: Array = grave.position
+		var centre := Vector3(float(coordinates[0]), float(coordinates[1]), float(coordinates[2]))
+		var candidate_distance := player.global_position.distance_squared_to(centre)
+		if candidate_distance < distance:
+			distance = candidate_distance
+			nearest = grave
+	if not nearest.is_empty():
+		var matrix: Array = nearest.transform
+		var centre := Vector3(float(matrix[3]), float(matrix[7]), float(matrix[11]))
+		var axis_x := Vector3(float(matrix[0]), float(matrix[4]), float(matrix[8]))
+		var axis_z := Vector3(float(matrix[2]), float(matrix[6]), float(matrix[10]))
+		for attempt in 12:
+			var position_value := centre + axis_x * rng.randf_range(-0.5, 0.5) + axis_z * rng.randf_range(-0.5, 0.5)
+			var grounded := _snap_enemy_spawn_to_ground(position_value + Vector3.UP * 0.25)
+			if grounded != Vector3.INF:
+				return grounded
+	return _choose_restored_enemy_spawn("crawler")
+
 func _on_enemy_died(enemy: WarfareEnemy, death_position: Vector3, reward: int, score_value_amount: int) -> void:
 	alive_enemies = maxi(0, alive_enemies - 1)
 	kills += 1
 	score += score_value_amount
-	# Source lootCash is awarded for every kill; it is not a score or drop chance.
-	add_battle_credits(reward)
-	GameState.add_experience(enemy.experience_value)
+	progress.record_enemy_kill(int(enemy.source_spec.get("achievement_boss_category", -1)))
+	var combo_rate := progress.get_combo_bonus_rate()
+	var skills := GameState.get_armor_skills()
+	# Enemy.AddCashAndExpToPlayer truncates each cash term separately. Combo
+	# adds a base-loot bonus; it does not multiply the equipment's cash bonus.
+	add_battle_credits(int(float(reward) * maxf(0.0, 1.0 + float(skills.get("money_boost", 0.0)))) + int(float(reward) * combo_rate))
+	battle_experience += maxi(0, int(float(enemy.experience_value) * (1.0 + float(skills.get("exp_boost", 0.0)) + combo_rate)))
 	if rng.randf() < 0.18:
 		spawn_pickup(death_position + Vector3(rng.randf_range(-0.7, 0.7), 1.0, rng.randf_range(-0.7, 0.7)), "energy", 22.0)
 	elif rng.randf() < 0.14:
@@ -341,31 +455,78 @@ func _on_enemy_health_reported(current: float, maximum: float, is_boss: bool, en
 		hud.report_boss(current, maximum, enemy.source_monster_name if not enemy.source_monster_name.is_empty() else "ALIEN OVERLORD")
 
 func _check_wave_complete() -> void:
-	if _is_pvp_arena() or spawning or alive_enemies > 0 or completed:
+	if _is_pvp_arena() or not mission_data.is_empty() or spawning or wave_pending or alive_enemies > 0 or completed:
+		return
+	if is_instance_valid(player) and player.dead:
 		return
 	if current_wave >= int(level_data.waves):
 		_victory()
 	else:
+		wave_pending = true
+		var cleared_wave := current_wave
 		hud.announce(tr("WAVE CLEAR"), 1.3)
 		await get_tree().create_timer(2.1).timeout
-		_start_next_wave()
+		wave_pending = false
+		if not completed and not player.dead and alive_enemies == 0 and current_wave == cleared_wave:
+			_start_next_wave()
 
 func _victory() -> void:
 	if completed:
 		return
 	completed = true
+	player.battle_items.enabled = false
 	var time_bonus := maxi(0, 7200 - int(elapsed_time * 20.0))
 	score += time_bonus
-	GameState.complete_level(int(level_data.number), score, battle_credits)
+	_settle_battle(true)
 	await get_tree().create_timer(0.75).timeout
-	hud.show_result(true, {"score": score, "kills": kills, "credits": battle_credits, "time": elapsed_time})
+	hud.show_result(true, settled_stats)
 
 func _on_player_died() -> void:
 	if completed:
 		return
+	if is_instance_valid(mission_director):
+		mission_director.set_running(false)
+	if player.battle_items.has_revival_item():
+		# Original LocalPlayer: four seconds of death animation followed by a
+		# five-second first-aid window. The HUD exposes kits throughout it.
+		revival_left = 9.0
+		hud.show_revival()
+		return
+	_finish_defeat()
+
+func _on_player_revived() -> void:
+	revival_left = 0.0
+	progress.record_revival()
+	if is_instance_valid(mission_director):
+		mission_director.set_running(true)
+	if is_instance_valid(hud):
+		hud.hide_revival()
+	_check_wave_complete()
+
+func _finish_defeat() -> void:
+	if completed:
+		return
+	revival_left = 0.0
 	completed = true
+	player.battle_items.enabled = false
+	hud.hide_revival()
+	_settle_battle(false)
 	await get_tree().create_timer(1.1).timeout
-	hud.show_result(false, {"score": score, "kills": kills, "credits": battle_credits, "time": elapsed_time})
+	hud.show_result(false, settled_stats)
+
+func _settle_battle(victory: bool) -> Dictionary:
+	if bool(settled_stats.get("saved", false)):
+		return settled_stats
+	if pending_career.is_empty():
+		var before := GameState.career.serialize()
+		progress.finish(victory, score)
+		pending_career = GameState.career.serialize()
+		GameState.career.load_data(before)
+	var substage := GameState.selected_substage if int(level_data.number) in GameState.SINGLEPLAYER_LEVELS else -1
+	settled_stats = GameState.settle_solo_run(int(level_data.number), substage, victory,
+		{"run_id": run_id, "score": score, "kills": kills, "credits": battle_credits,
+		"experience": battle_experience, "max_combo": progress.max_combo, "time": elapsed_time}, pending_career)
+	return settled_stats
 
 func add_battle_credits(amount: int) -> void:
 	battle_credits += maxi(0, amount)
@@ -902,7 +1063,8 @@ func _material(color: Color, roughness: float, metallic: float, emission := Colo
 
 func _load_stage_metadata() -> void:
 	var level_number := int(level_data.number)
-	var metadata_path := "res://assets/models/levels/level_%02d/level.json" % level_number
+	var level_root := str(level_data.get("resource_directory", "res://assets/models/levels/level_%02d" % level_number))
+	var metadata_path := "%s/level.json" % level_root
 	if not FileAccess.file_exists(metadata_path):
 		return
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(metadata_path))
@@ -912,6 +1074,8 @@ func _load_stage_metadata() -> void:
 	stage_metadata = parsed
 	var markers: Dictionary = stage_metadata.get("markers", {})
 	player_spawn_points = _marker_positions(markers.get("Respawn", []))
+	if bool(level_data.get("boss", false)) and not markers.get("PlayerSpawnInBoss", []).is_empty():
+		player_spawn_points = _marker_positions(markers.PlayerSpawnInBoss)
 	enemy_spawn_points = _marker_positions(markers.get("EnemySpawnPoint", []))
 	boss_spawn_points = _marker_positions(markers.get("BossSpawnPoint", []))
 	var flag_spawn_points := _marker_positions(markers.get("FlagSpawn", []))
@@ -949,7 +1113,7 @@ func _build_restored_arena() -> bool:
 	if stage_metadata.is_empty():
 		return false
 	var level_number := int(level_data.number)
-	var level_root := "res://assets/models/levels/level_%02d" % level_number
+	var level_root := str(level_data.get("resource_directory", "res://assets/models/levels/level_%02d" % level_number))
 	var visual_path := "%s/stage.obj" % level_root
 	if not ResourceLoader.exists(visual_path):
 		push_warning("Restored level art is missing: %s" % visual_path)
@@ -984,7 +1148,8 @@ func _build_restored_arena() -> bool:
 				collision_shape.shape = collision_mesh.create_trimesh_shape()
 				if collision_shape.shape:
 					physics_body.add_child(collision_shape)
-	UnitySceneEffectsScript.build(self, level_number, GameState.get_quality_profile())
+	if not level_data.has("resource_directory"):
+		UnitySceneEffectsScript.build(self, level_number, GameState.get_quality_profile())
 	return true
 
 func _color_from_json(values: Variant) -> Color:

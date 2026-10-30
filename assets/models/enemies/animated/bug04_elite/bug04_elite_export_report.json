@@ -1,0 +1,415 @@
+{
+  "prefab": "Resources/enemy/bug04_elite.prefab",
+  "output": "/Users/harvey/repo/star-warfare-godot/assets/models/enemies/animated/bug04_elite/bug04_elite.gltf",
+  "bones": 45,
+  "vertices": 362,
+  "source_mesh_guid": "6e840b5ee4247a745948f12ec1448844",
+  "source_material_guids": [
+    "6838fc4956e016a4499e8732162dca13"
+  ],
+  "rigid_mesh_paths": [],
+  "retargeted_animation_paths": {
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01/Bone L Up02/Bone L Up03": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01/Bone L Up02/Bone L Up03",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Down01/Bone L Down02/Bone L Down03": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Down01/Bone L Down02/Bone L Down03",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01/Bone R Up02/Bone R Up03": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01/Bone R Up02/Bone R Up03",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01/Bone R Up02": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01/Bone R Up02",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Down01": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Down01",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01/Bone L Up02/Bone L Up03/Bone L Up04": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01/Bone L Up02/Bone L Up03/Bone L Up04",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01/Bone L Up02": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01/Bone L Up02",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01/Bone R Up02/Bone R Up03/Bone R Up04": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01/Bone R Up02/Bone R Up03/Bone R Up04",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Down01": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Down01",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Down01/Bone R Down02": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Down01/Bone R Down02",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Down01/Bone L Down02": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Down01/Bone L Down02"
+  },
+  "animation_binding_repairs": [
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01/Bone L Up02/Bone L Up03",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01/Bone L Up02/Bone L Up03",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Down01/Bone L Down02/Bone L Down03",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Down01/Bone L Down02/Bone L Down03",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01",
+      "removed_parents": [
+        "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06"
+      ],
+      "method": "compose_parent_curves_120hz"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01",
+      "removed_parents": [
+        "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06"
+      ],
+      "method": "compose_parent_curves_120hz"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01/Bone R Up02/Bone R Up03",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01/Bone R Up02/Bone R Up03",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01/Bone R Up02",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01/Bone R Up02",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Down01",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Down01",
+      "removed_parents": [
+        "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06"
+      ],
+      "method": "compose_parent_curves_120hz"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01/Bone L Up02/Bone L Up03/Bone L Up04",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01/Bone L Up02/Bone L Up03/Bone L Up04",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01/Bone L Up02",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01/Bone L Up02",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01/Bone R Up02/Bone R Up03/Bone R Up04",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01/Bone R Up02/Bone R Up03/Bone R Up04",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Down01",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Down01",
+      "removed_parents": [
+        "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06"
+      ],
+      "method": "compose_parent_curves_120hz"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Down01/Bone R Down02",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Down01/Bone R Down02",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Down01/Bone L Down02",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Down01/Bone L Down02",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01/Bone L Up02/Bone L Up03",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01/Bone L Up02/Bone L Up03",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Down01/Bone L Down02/Bone L Down03",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Down01/Bone L Down02/Bone L Down03",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01",
+      "removed_parents": [
+        "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06"
+      ],
+      "method": "compose_parent_curves_120hz"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01",
+      "removed_parents": [
+        "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06"
+      ],
+      "method": "compose_parent_curves_120hz"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01/Bone R Up02/Bone R Up03",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01/Bone R Up02/Bone R Up03",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01/Bone R Up02",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01/Bone R Up02",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Down01",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Down01",
+      "removed_parents": [
+        "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06"
+      ],
+      "method": "compose_parent_curves_120hz"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01/Bone L Up02/Bone L Up03/Bone L Up04",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01/Bone L Up02/Bone L Up03/Bone L Up04",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01/Bone L Up02",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01/Bone L Up02",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01/Bone R Up02/Bone R Up03/Bone R Up04",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01/Bone R Up02/Bone R Up03/Bone R Up04",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Down01",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Down01",
+      "removed_parents": [
+        "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06"
+      ],
+      "method": "compose_parent_curves_120hz"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Down01/Bone R Down02",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Down01/Bone R Down02",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Down01/Bone L Down02",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Down01/Bone L Down02",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01/Bone L Up02/Bone L Up03",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01/Bone L Up02/Bone L Up03",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Down01/Bone L Down02/Bone L Down03",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Down01/Bone L Down02/Bone L Down03",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01",
+      "removed_parents": [
+        "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06"
+      ],
+      "method": "compose_parent_curves_120hz"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01",
+      "removed_parents": [
+        "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06"
+      ],
+      "method": "compose_parent_curves_120hz"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01/Bone R Up02/Bone R Up03",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01/Bone R Up02/Bone R Up03",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01/Bone R Up02",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01/Bone R Up02",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Down01",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Down01",
+      "removed_parents": [
+        "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06"
+      ],
+      "method": "compose_parent_curves_120hz"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01/Bone L Up02/Bone L Up03/Bone L Up04",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01/Bone L Up02/Bone L Up03/Bone L Up04",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Up01/Bone L Up02",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Up01/Bone L Up02",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Up01/Bone R Up02/Bone R Up03/Bone R Up04",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Up01/Bone R Up02/Bone R Up03/Bone R Up04",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Down01",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Down01",
+      "removed_parents": [
+        "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06"
+      ],
+      "method": "compose_parent_curves_120hz"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Down01/Bone R Down02",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Down01/Bone R Down02",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone L Down01/Bone L Down02",
+      "node": "bug04_elite/Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone L Down01/Bone L Down02",
+      "removed_parents": [],
+      "method": "retained_parent_local_frame"
+    }
+  ],
+  "skipped_animation_paths": [
+    {
+      "clip": "attack",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone tail 07",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "attack",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Down01/Bone R Down02/Bone R Down03",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "attack",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Down01/Bone R Down02/Bone R Down03",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "attacked",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone tail 07",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Down01/Bone R Down02/Bone R Down03",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "dead",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone tail 07",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "idle",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone tail 07",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "idle",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Down01/Bone R Down02/Bone R Down03",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "idle",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Down01/Bone R Down02/Bone R Down03",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "run",
+      "path": "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone tail 07",
+      "reason": "No unambiguous hierarchy-compatible target"
+    }
+  ],
+  "animations": [
+    "attack",
+    "attacked",
+    "dead",
+    "idle",
+    "run"
+  ],
+  "unmatched_animation_paths": [
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone R Down01/Bone R Down02/Bone R Down03",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone R Down01/Bone R Down02/Bone R Down03",
+    "Bone Spline 01/Bone tail 01/Bone tail 02/Bone tail 03/Bone tail 04/Bone tail 05/Bone tail 06/Bone tail 07"
+  ]
+}

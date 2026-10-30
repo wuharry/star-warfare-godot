@@ -13,7 +13,9 @@
         "--headless",
         "--path",
         ".",
-        "res://tests/smoke_test.tscn"
+        "res://tests/smoke_test.tscn",
+        "--",
+        "--test-profile=harness_godot_smoke"
       ],
       "timeout": 90
     },
@@ -24,13 +26,180 @@
         "--headless",
         "--path",
         ".",
-        "res://tests/settings_test.tscn"
+        "res://tests/settings_test.tscn",
+        "--",
+        "--test-profile=harness_godot_settings"
       ],
       "timeout": 90
     },
     {
       "id": "visual",
       "manual": "跑與改動相關的 tests/*visual_capture.tscn／capture 腳本，固定 renderer 與 viewport，檢視圖片或互動結果。"
+    },
+    {
+      "id": "godot-battle-items",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/battle_items_test.tscn",
+        "--",
+        "--test-profile=harness_battle_items_test"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "godot-battle-flow",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/battle_flow_test.tscn",
+        "--",
+        "--test-profile=harness_battle_flow_test"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "godot-solo-progress",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/solo_progress_test.tscn",
+        "--",
+        "--test-profile=harness_solo_progress_test"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "godot-original-missions",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/solo_mission_integration_test.tscn",
+        "--",
+        "--test-profile=harness_solo_mission_integration_test"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "godot-career",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/career_progress_test.tscn",
+        "--",
+        "--test-profile=harness_career_progress_test"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "godot-network-rules",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/network_modes_test.tscn",
+        "--",
+        "--test-profile=harness_network_modes_test"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "godot-solo-data",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/solo_missions_test.tscn",
+        "--",
+        "--test-profile=harness_solo_missions_test"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "godot-store-offers",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/store_offers_test.tscn",
+        "--",
+        "--test-profile=harness_store_offers_test"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "godot-lan-discovery",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/lan_discovery_test.tscn",
+        "--",
+        "--test-profile=harness_lan_discovery_test"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "godot-source-enemies",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/enemy_source_runtime_test.tscn",
+        "--",
+        "--test-profile=harness_enemy_source_runtime_test"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "godot-network-actions",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/network_actions_test.tscn",
+        "--",
+        "--test-profile=harness_network_actions_test"
+      ],
+      "timeout": 90
+    },
+    {
+      "id": "godot-network-transport",
+      "manual": "以兩個 Godot process 跑 tests/network_transport_test.tscn，分別 --role=host/client，同一 --port、不同 --test-profile；兩端須都輸出 NETWORK_TRANSPORT_PASS。單獨 host 會因缺少 client 逾時。"
+    },
+    {
+      "id": "godot-player-enemy-effects",
+      "argv": ["godot", "--headless", "--path", ".", "res://tests/player_enemy_effects_test.tscn", "--", "--test-profile=harness_player_enemy_effects"],
+      "timeout": 90
+    },
+    {
+      "id": "godot-boss-encounters",
+      "argv": [
+        "godot",
+        "--headless",
+        "--path",
+        ".",
+        "res://tests/network_boss_test.tscn",
+        "--",
+        "--test-profile=harness_network_boss_test"
+      ],
+      "timeout": 180
     }
   ],
   "adopt": {},

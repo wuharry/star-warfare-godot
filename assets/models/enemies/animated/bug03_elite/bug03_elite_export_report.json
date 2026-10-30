@@ -1,0 +1,31 @@
+{
+  "prefab": "Resources/enemy/bug03_elite.prefab",
+  "output": "/Users/harvey/repo/star-warfare-godot/assets/models/enemies/animated/bug03_elite/bug03_elite.gltf",
+  "bones": 39,
+  "vertices": 449,
+  "source_mesh_guid": "5a4ed078e77f6144c966721380de091d",
+  "source_material_guids": [
+    "39b839028575b674db9e14e747ff7fe9"
+  ],
+  "rigid_mesh_paths": [],
+  "retargeted_animation_paths": {},
+  "animation_binding_repairs": [],
+  "skipped_animation_paths": [
+    {
+      "clip": "dead",
+      "path": "Bip01/Bip01 Footsteps",
+      "reason": "No unambiguous hierarchy-compatible target"
+    }
+  ],
+  "animations": [
+    "Take 001",
+    "attack",
+    "attacked",
+    "dead",
+    "idle",
+    "run"
+  ],
+  "unmatched_animation_paths": [
+    "Bip01/Bip01 Footsteps"
+  ]
+}

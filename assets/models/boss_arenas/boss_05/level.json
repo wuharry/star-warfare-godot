@@ -1,0 +1,1056 @@
+{
+  "format": 3,
+  "level": 5,
+  "source": "Resources/level/Boss5.prefab",
+  "visual": "stage.obj",
+  "visual_with_uv2": "level.glb",
+  "collision_mesh": "",
+  "visual_bounds_min": [
+    -720.561568,
+    -129.225638,
+    -723.2601
+  ],
+  "visual_bounds_max": [
+    723.893028,
+    407.495608,
+    721.194497
+  ],
+  "render_settings": {
+    "fog_enabled": false,
+    "fog_color": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "fog_density": 0.01,
+    "ambient_color": [
+      0.2,
+      0.2,
+      0.2,
+      1.0
+    ],
+    "ambient_intensity": 1.0
+  },
+  "material_render_modes": {
+    "boss_ground": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_6bde4db91fa2.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_seat_01": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_6f0907927530.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_seat_02": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_6f0907927530.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_tower_01": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_e3c2a07ac810.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_vip_lightmap01": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_a606dc91a0f6.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_vip_lightmap02": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_a606dc91a0f6.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_vip_lightmap05": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_a606dc91a0f6.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_vip_lightmap04": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_a606dc91a0f6.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_vip_lightmap03": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_a606dc91a0f6.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_vip_lightmap06": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_a606dc91a0f6.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_vip_lightmap07": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_a606dc91a0f6.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_tower_02": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_e3c2a07ac810.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_shap_lightmap01": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_815ea3633275.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_shap_lightmap02": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_815ea3633275.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_shap_lightmap04": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_815ea3633275.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "boss_shap_lightmap03": {
+      "shader": "iPhone/LightMap",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5,
+      "lightmap_texture": "res://assets/models/boss_arenas/boss_05/lightmap_815ea3633275.png",
+      "lightmap_scale": [
+        1.0,
+        1.0
+      ],
+      "lightmap_offset": [
+        0.0,
+        0.0
+      ],
+      "lightmap_multiplier": 1.0,
+      "lightmap_repeat": true
+    },
+    "sky": {
+      "shader": "iPhone/SolidTexture",
+      "blend": "opaque",
+      "cull_disabled": false,
+      "depth_write": true,
+      "unshaded": true,
+      "alpha_scissor_threshold": 0.5
+    }
+  },
+  "source_lights": [],
+  "markers": {
+    "Respawn": [],
+    "EnemySpawnPoint": [],
+    "BossSpawnPoint": [
+      {
+        "name": "BossSpawnPoint",
+        "game_object": 12,
+        "position": [
+          -1.5793585,
+          0.0,
+          9.212838
+        ],
+        "transform": [
+          1.0,
+          0.0,
+          0.0,
+          -1.5793585,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          9.212838,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    ],
+    "PlayerSpawnInBoss": [
+      {
+        "name": "GameObject",
+        "game_object": 9,
+        "position": [
+          -0.5542064,
+          0.1,
+          -18.264528
+        ],
+        "transform": [
+          -0.9999999999999964,
+          0.0,
+          8.742277999999984e-08,
+          -0.5542064,
+          0.0,
+          1.0,
+          0.0,
+          0.1,
+          -8.742277999999984e-08,
+          0.0,
+          -0.9999999999999964,
+          -18.264528,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "GameObject",
+        "game_object": 10,
+        "position": [
+          13.207718,
+          0.1,
+          -16.318823
+        ],
+        "transform": [
+          -0.7660444698859308,
+          0.0,
+          0.642787577786926,
+          13.207718,
+          0.0,
+          1.0,
+          0.0,
+          0.1,
+          -0.642787577786926,
+          0.0,
+          -0.7660444698859308,
+          -16.318823,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "GameObject",
+        "game_object": 11,
+        "position": [
+          -14.3161335,
+          0.1,
+          -16.845272
+        ],
+        "transform": [
+          -0.7660444259166708,
+          0.0,
+          -0.6427876301874502,
+          -14.3161335,
+          0.0,
+          1.0,
+          0.0,
+          0.1,
+          0.6427876301874502,
+          0.0,
+          -0.7660444259166708,
+          -16.845272,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    ],
+    "WayPoint": [],
+    "FlagSpawn": [],
+    "GiftSpawn": [],
+    "Grave": []
+  },
+  "waypoint_graph": [],
+  "primitive_colliders": [
+    {
+      "type": "box",
+      "name": "ground",
+      "transform": [
+        0.7209805,
+        0.0,
+        0.0,
+        2.14443850081955,
+        0.0,
+        -1.6008983028115154e-16,
+        -0.7209805000000001,
+        4.405915145699657e-17,
+        0.0,
+        0.7209805000000001,
+        -1.6008983028115154e-16,
+        -2.70643997808399,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        99.95088,
+        70.29494,
+        0.0
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00002",
+      "transform": [
+        -0.36049033766271177,
+        -0.6243874934911688,
+        0.0,
+        -32.042270581368555,
+        0.0,
+        -1.6008985248561202e-16,
+        -0.7209805000000001,
+        2.8237915378855,
+        0.6243874934911688,
+        -0.3604903376627116,
+        -1.6008983028115154e-16,
+        21.39107718232394,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        0.0989275,
+        5.035754,
+        9.279254
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00003",
+      "transform": [
+        0.7209805,
+        0.0,
+        0.0,
+        -14.89686,
+        0.0,
+        -1.6008983028115154e-16,
+        -0.7209805000000001,
+        7.24669545641475,
+        0.0,
+        0.7209805000000001,
+        -1.6008983028115154e-16,
+        35.147312,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        43.249744,
+        35.556248,
+        2.9898834
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00004",
+      "transform": [
+        0.7209805,
+        0.0,
+        0.0,
+        17.668715,
+        0.0,
+        -1.6008983028115154e-16,
+        -0.7209805000000001,
+        7.246695456414749,
+        0.0,
+        0.7209805000000001,
+        -1.6008983028115154e-16,
+        35.14731337516136,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        47.087162,
+        35.556244,
+        2.9898834
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00005",
+      "transform": [
+        0.0,
+        -0.7209805,
+        0.0,
+        17.668716,
+        0.0,
+        0.0,
+        -0.7209805,
+        2.8237915378855,
+        0.7209805,
+        0.0,
+        0.0,
+        22.329633375161077,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        3.814697e-06,
+        47.087162,
+        9.279254
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00006",
+      "transform": [
+        0.0,
+        -0.7209805,
+        0.0,
+        -14.896858624838925,
+        0.0,
+        0.0,
+        -0.7209805,
+        2.8237915378855,
+        0.7209805,
+        0.0,
+        0.0,
+        22.329632,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        7.629394e-06,
+        43.249744,
+        9.279254
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00007",
+      "transform": [
+        0.4563966939021726,
+        0.5523031508017094,
+        -0.08047506491519923,
+        -41.42758775061503,
+        -0.12519695006619325,
+        -9.000842078206927e-09,
+        -0.7100271852330444,
+        7.4442353987885586,
+        -0.5439123271361945,
+        0.46343743395507486,
+        0.09590642072971337,
+        30.261064418741654,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        36.422596,
+        54.8145,
+        3.9427016
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00008",
+      "transform": [
+        0.7137005304334827,
+        0.0,
+        -0.10219802902454574,
+        -46.30665366825001,
+        -0.10219801484968043,
+        -1.6008983028115154e-16,
+        -0.713700629423751,
+        7.2853570171383275,
+        0.0,
+        0.7209805000000001,
+        -1.6008985248561202e-16,
+        -2.6174449855572357,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        35.340797,
+        64.113846,
+        2.148563
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00010",
+      "transform": [
+        0.7209805,
+        0.0,
+        0.0,
+        2.0776029,
+        0.0,
+        -1.6008983028115154e-16,
+        -0.7209805000000001,
+        7.24669545641475,
+        0.0,
+        0.7209805000000001,
+        -1.6008983028115154e-16,
+        -40.3822,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        90.33691,
+        35.556248,
+        2.9898834
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00011",
+      "transform": [
+        0.0,
+        0.7209805,
+        0.0,
+        2.077607075161075,
+        0.0,
+        0.0,
+        -0.7209805,
+        2.8237915378855,
+        -0.7209805,
+        0.0,
+        0.0,
+        -27.56451875032215,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        7.629394e-06,
+        90.33689,
+        9.279254
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00012",
+      "transform": [
+        -0.36049033766271177,
+        0.6243874934911688,
+        0.0,
+        -32.04225929007568,
+        0.0,
+        -1.6008985248561202e-16,
+        -0.7209805000000001,
+        2.8237915378855,
+        -0.6243874934911688,
+        -0.3604903376627116,
+        -1.6008983028115154e-16,
+        -26.62595941955242,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        0.0989289,
+        5.035759,
+        9.279254
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00013",
+      "transform": [
+        0.3604902458968663,
+        0.6243875811132205,
+        0.0,
+        36.19747877876688,
+        0.0,
+        -1.6008986136739621e-16,
+        -0.7209805000000001,
+        2.8237916820816,
+        -0.6243875464722025,
+        0.3604902658968634,
+        -1.6008983028115154e-16,
+        -26.625958122214456,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        0.09893403,
+        5.035771,
+        9.279256
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00014",
+      "transform": [
+        0.7209805,
+        0.0,
+        0.0,
+        37.75178,
+        0.0,
+        -1.6008983028115154e-16,
+        -0.7209805000000001,
+        2.8237914153188153,
+        0.0,
+        0.7209805000000001,
+        -1.6008983028115154e-16,
+        -2.617442271895147,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        0.0,
+        63.99609,
+        9.279256
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00015",
+      "transform": [
+        -0.5099907297163107,
+        0.5080931338721593,
+        0.03954498372968592,
+        45.17299497242766,
+        0.0065683056021288815,
+        0.062493342728593845,
+        -0.7182370527715117,
+        7.8518710123144215,
+        -0.5095874765138473,
+        -0.5076896993310228,
+        -0.048833962201230596,
+        -35.7278621785902,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        54.930275,
+        36.935417,
+        2.107207
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00022",
+      "transform": [
+        0.7209805,
+        0.0,
+        0.0,
+        50.46742412548315,
+        0.0,
+        -1.6008983028115154e-16,
+        -0.7209805000000001,
+        7.24669617739525,
+        0.0,
+        0.7209805000000001,
+        -1.6008983028115154e-16,
+        -2.617444828104853,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        35.27318,
+        64.113846,
+        2.9898834
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00023",
+      "transform": [
+        0.5559083103440716,
+        0.454340811291648,
+        0.06597973780919635,
+        45.58799033181693,
+        -0.01703529595685335,
+        0.12395618253451457,
+        -0.7100403748416395,
+        7.60212146150884,
+        -0.45879055652707335,
+        0.5459140318106306,
+        0.10631089022059972,
+        30.227791305183388,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        54.766895,
+        36.40562,
+        4.2621818
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00024",
+      "transform": [
+        0.3604902458968663,
+        -0.6243875811132205,
+        0.0,
+        36.1974745451967,
+        0.0,
+        -1.6008986136739621e-16,
+        -0.7209805000000001,
+        2.8237916820816005,
+        0.6243875464722025,
+        0.3604902658968634,
+        -1.6008983028115154e-16,
+        21.391068595595065,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        0.09893454,
+        5.0357614,
+        9.279256
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00031",
+      "transform": [
+        -0.7209804999999916,
+        1.0886503049027325e-07,
+        0.0,
+        -33.59657412548353,
+        0.0,
+        1.6008983028115154e-16,
+        -0.7209804999999999,
+        2.8237914153188153,
+        -1.0886503049027325e-07,
+        -0.7209804999999917,
+        1.6008983028115154e-16,
+        -2.6174501736651266,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        3.814702e-06,
+        63.9961,
+        9.279271
+      ]
+    },
+    {
+      "type": "box",
+      "name": "lc00033",
+      "transform": [
+        0.4615688479734966,
+        -0.5522051667494455,
+        -0.04285519814355291,
+        -41.418923467287634,
+        -0.06275162215230878,
+        0.0032886255629292777,
+        -0.7182370391671684,
+        7.819698314167488,
+        0.5502994258347296,
+        0.4635423140108623,
+        -0.04595664409871801,
+        -35.48364393785996,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "size": [
+        36.57801,
+        54.814674,
+        2.0181625
+      ]
+    }
+  ],
+  "mesh_colliders": [],
+  "source_summary": {
+    "game_objects": 27,
+    "visual_renderers": 26,
+    "primitive_colliders": 19,
+    "mesh_colliders": 0,
+    "source_lights": 0,
+    "lightmapped_materials": 16
+  },
+  "warnings": [],
+  "boss": true,
+  "boss_type": "Earthworm",
+  "resource_directory": "res://assets/models/boss_arenas/boss_05",
+  "source_sha256": "0e21f15c78778dfb4c04696a3929014073c896daef1bdb2e913ef764b40dfa88",
+  "source_root": {
+    "game_object": 1935328607644880,
+    "transform_file_id": 4505030586616336,
+    "active": true,
+    "source_unity_transform": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "runtime_unity_transform": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "local_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "policy": "GameWorld.CreateBoss: Instantiate(prefab, Vector3.zero, Quaternion.identity); preserve scale and child active states"
+  },
+  "spawn_source": "Scenes/Level7.unity",
+  "spawn_source_sha256": "d3f7c724a138e33eda36149798e03d721ea84fca0067c217acffbe6d61832f71",
+  "spawn_order": "source YAML GameObject order; Unity FindGameObjectsWithTag order is not specified",
+  "render_settings_source": "Scenes/Level7.unity",
+  "source_effects": [],
+  "restoration_limits": [
+    "Static geometry, source UV0/UV2, material lightmaps and collider transforms are restored.",
+    "Dynamic Unity lights, particle playback and MonoBehaviour-driven texture animation are not restored."
+  ]
+}

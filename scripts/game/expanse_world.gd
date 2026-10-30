@@ -436,7 +436,7 @@ func _on_enemy_died(enemy: WarfareEnemy, death_position: Vector3, reward: int, s
 		boss_alive = false
 	super(enemy, death_position, reward, score_value_amount)
 
-func _on_player_died() -> void:
+func _finish_defeat() -> void:
 	_bank_run()
 	super()
 
@@ -472,5 +472,11 @@ func _district_at(point: Vector2) -> Dictionary:
 func _bank_run() -> void:
 	if banked:
 		return
-	banked = true
-	GameState.complete_expanse_run(score, battle_credits)
+	banked = bool(_settle_battle(false).get("saved", false))
+
+func prepare_leave() -> bool:
+	# Keep this world and its receipt alive if persistence fails; the HUD then
+	# exposes the same save retry as a completed battle.
+	completed = true
+	_bank_run()
+	return banked

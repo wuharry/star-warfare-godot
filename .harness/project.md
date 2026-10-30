@@ -10,7 +10,7 @@ Godot / GDScript；入口：res://scenes/main_menu.tscn。
 
 程式在 scripts/；節點路徑、autoload 與 renderer 以 project.godot 為準。
 
-autoload：GameState, AudioDirector, Localization。
+autoload：GameState, AudioDirector, Localization, NetworkSession。
 
 tests/ 已有邏輯測試場景與 visual_capture 場景；不要把「原本缺 harness」誤寫成「沒有測試」。
 
@@ -25,6 +25,12 @@ tests/ 已有邏輯測試場景與 visual_capture 場景；不要把「原本缺
 精確命令維護在 `.harness/project.json`；`python3 .harness/verify.py --list` 列出，`--run --only ID` 執行。
 
 未安裝工具、需要外部服務或人工視覺驗收時標 NOT RUN，不能回報全綠。
+
+會修改 GameState 的檢查一律帶 `-- --test-profile=<唯一識別字>`，避免碰玩家正式存檔。LAN／ENet 多程序驗證每個 process 使用不同 profile 和測試 port。
+
+原版功能補齊的範圍、來源及驗證見 `docs/reconstruction_v1/SW1_PARITY.md`。Bank、廣告、購買／補充彈藥服務排除；已接受的彈匣換彈保留。Boss 戰完整勝利固定每人 1 秘銀，雙 Boss 只算一場；重複結果不能再次付款。
+
+裝甲外觀依 2026-10-30 的使用者決定：Viper 保留現有模型、材質及開發切換選項；其他套裝使用原版來源模型與既有貼圖。戰鬥、商店、手機預覽與縮圖須一致，不再自動替換為 Thunder 重製或 equipment_refined 裝甲。
 
 
 

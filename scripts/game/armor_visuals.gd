@@ -4,25 +4,22 @@ const Catalog = preload("res://scripts/core/armor_catalog.gd")
 const ORIGINAL_PART_PREFIXES := ["ArmorHead_", "ArmorBody_", "ArmorHand_", "ArmorFoot_"]
 const REWORKED_SCENES := {
 	0: "res://assets/armors/viper/viper.scn",
-	6: "res://assets/armors/thunder/thunder.scn",
 }
 
 
 static func reworked_scene_path(visual_id: int) -> String:
+	# Viper retains its accepted variants. Other sets use the source avatar
+	# (including its original 2x atlases), or the original CoM adapter scene.
+	if visual_id != 0:
+		return ""
 	# Development comparison uses the same loader in gameplay and the store.
 	if visual_id == 0 and "--armor-style=cartoon" in OS.get_cmdline_user_args():
 		return "res://assets/armors/cartoon_viper/viper.scn"
-	if visual_id == 6:
-		for argument in OS.get_cmdline_user_args():
-			if argument == "--thunder-helmet=prototype":
-				return "res://assets/armors/thunder/thunder_prototype.scn"
-			if argument == "--thunder-helmet=sw2":
-				return "res://assets/armors/thunder/thunder_sw2.scn"
-	elif visual_id == 0 and "--armor-style=legacy" not in OS.get_cmdline_user_args():
+	if "--armor-style=legacy" not in OS.get_cmdline_user_args():
 		var angular_path := "res://assets/armors/angular/armor_%02d.scn" % visual_id
 		if ResourceLoader.exists(angular_path):
 			return angular_path
-	return str(REWORKED_SCENES.get(visual_id, "res://assets/equipment_refined/armors/armor_%02d.scn" % visual_id))
+	return REWORKED_SCENES[0]
 
 
 static func ensure_parts(avatar: Node3D, visual_ids: Dictionary) -> void:
@@ -55,7 +52,7 @@ static func ensure_parts(avatar: Node3D, visual_ids: Dictionary) -> void:
 static func _ensure_reworked_parts(avatar: Node3D, skeleton: Skeleton3D, visual_ids: Dictionary) -> void:
 	for visual_id: int in visual_ids.values():
 		var scene_path := reworked_scene_path(visual_id)
-		if not ResourceLoader.exists(scene_path):
+		if scene_path.is_empty() or not ResourceLoader.exists(scene_path):
 			continue
 		var marker := "armor_rework_%02d" % visual_id
 		if avatar.has_meta(marker):

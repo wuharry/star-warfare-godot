@@ -61,7 +61,7 @@ func _run() -> void:
 			_check(enemy.health == 25.0, "source HP/damage is not used in combat")
 			enemy.take_damage(100.0, Vector3.ZERO, world.player)
 			enemy.take_damage(100.0, Vector3.ZERO, world.player)
-			_check(world.battle_credits == 90 and GameState.experience == 10 and world.kills == 1, "kill did not award original cash/XP exactly once")
+			_check(world.battle_credits == 90 and world.battle_experience == 10 and GameState.experience == 0 and world.kills == 1, "kill did not record original cash/XP once for end-of-run settlement")
 		if kind == "spitter":
 			_check(enemy.attack_interval == 5.0 and enemy.attack_range == 18.0 and enemy.projectile_speed == 14.0, "Scorpion attack table is not used")
 	var elite := world._spawn_enemy("crawler", true)
@@ -83,7 +83,8 @@ func _test_save_and_ranks() -> void:
 	var state := StateScript.new()
 	state.save_path = path
 	add_child(state)
-	_check(state.experience == 0 and state.get_rank_id() == 8, "old profile lost its unlock floor")
+	_check(state.experience == 0 and state.get_rank_id() == 0, "legacy map progress must not invent experience or a source rank")
+	_check(state.is_weapon_owned("gun00") and state.unlocked_level == 8, "source rank migration removed legacy gear or map access")
 	_check(state.credits == 999999999999 and state.mithril == 99999999, "test funds were changed by migration")
 	state.unlocked_level = 1
 	state.best_scores.clear()

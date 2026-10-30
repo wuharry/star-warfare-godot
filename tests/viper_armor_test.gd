@@ -93,9 +93,11 @@ func _run() -> void:
 	var authored_head := template.find_child("ArmorHead_00", true, false) as MeshInstance3D
 	_check(head.get_active_material(0) == authored_head.get_active_material(0), "material restore overwrote Viper")
 	var legacy := avatar.find_child("ArmorHead_02", true, false) as MeshInstance3D
-	var legacy_template := (load(Visuals.reworked_scene_path(2)) as PackedScene).instantiate()
+	var legacy_template := (load("res://assets/models/player/animated/player.gltf") as PackedScene).instantiate()
 	var authored_legacy := legacy_template.find_child("ArmorHead_02", true, false) as MeshInstance3D
-	_check(legacy.mesh == authored_legacy.mesh and legacy.get_active_material(0) == authored_legacy.get_active_material(0), "Viper equip changed accepted set 02")
+	var legacy_material := legacy.get_active_material(0) as BaseMaterial3D
+	var source_material := authored_legacy.get_active_material(0) as BaseMaterial3D
+	_check(legacy.mesh == authored_legacy.mesh and legacy_material != null and legacy_material.albedo_texture == source_material.albedo_texture, "Viper equip changed original set 02")
 	legacy_template.free()
 	template.free()
 	player.queue_free()

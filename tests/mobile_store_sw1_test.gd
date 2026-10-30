@@ -126,7 +126,7 @@ func _run() -> void:
 	_check(GameState.is_weapon_owned("gun01") and GameState.credits == 75000, "weapon Buy charged wrong amount or failed")
 	await _click(shell.action_button)
 	_check(GameState.credits == 75000, "owned weapon charged twice")
-	_check(shell.upgrade_dialog.visible, "owned mobile weapon should preview an upgrade")
+	_check(is_instance_valid(shell.upgrade_dialog) and shell.upgrade_dialog.visible, "owned mobile weapon should preview an upgrade")
 	shell.close_upgrade_dialog()
 	shell.set_mode("customize", false)
 	shell._select_item("gun00", false)

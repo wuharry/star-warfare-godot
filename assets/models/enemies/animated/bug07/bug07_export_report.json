@@ -1,0 +1,36 @@
+{
+  "prefab": "Resources/enemy/bug07.prefab",
+  "output": "/Users/harvey/repo/star-warfare-godot/assets/models/enemies/animated/bug07/bug07.gltf",
+  "bones": 28,
+  "vertices": 874,
+  "source_mesh_guid": "297a6edeea54d054799672bf6df3b5b3",
+  "source_material_guids": [
+    "dbab47452ad246448a169f186af50938"
+  ],
+  "rigid_mesh_paths": [],
+  "retargeted_animation_paths": {},
+  "animation_binding_repairs": [],
+  "skipped_animation_paths": [
+    {
+      "clip": "attacked",
+      "path": "Point01",
+      "reason": "No unambiguous hierarchy-compatible target"
+    },
+    {
+      "clip": "dead",
+      "path": "Point01",
+      "reason": "No unambiguous hierarchy-compatible target"
+    }
+  ],
+  "animations": [
+    "Take 001",
+    "attack",
+    "attacked",
+    "dead",
+    "idle",
+    "run"
+  ],
+  "unmatched_animation_paths": [
+    "Point01"
+  ]
+}

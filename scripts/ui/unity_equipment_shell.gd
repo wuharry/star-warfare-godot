@@ -11,6 +11,7 @@ const ArmorySkin = preload("res://scripts/ui/recovered_armory_skin.gd")
 const UpgradeDialog = preload("res://scripts/ui/equipment_upgrade_dialog.gd")
 const ManufacturerData = preload("res://scripts/core/manufacturer_catalog.gd")
 const WeaponInformation = preload("res://scripts/ui/weapon_information_dialog.gd")
+const PackageDialog = preload("res://scripts/ui/package_dialog.gd")
 const COMPONENT_DIR := "res://assets/ui/components/"
 const ARMOR_THUMBNAIL_DIR := "res://assets/ui/armor_thumbnails/"
 const DESIGN_SIZE := Vector2(960.0, 640.0)
@@ -100,6 +101,7 @@ var upgrade_button: Button
 var upgrade_dialog: Control
 var weapon_info_button: Button
 var weapon_info_dialog: Control
+var package_dialog: Control
 var comparison_title: Label
 var comparison_rows: Array[Dictionary] = []
 var comparison_panel: Control
@@ -136,6 +138,8 @@ func _exit_tree() -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
+	if is_instance_valid(package_dialog):
+		return
 	if is_instance_valid(weapon_info_dialog) and weapon_info_dialog.visible:
 		return
 	if is_instance_valid(upgrade_dialog) and upgrade_dialog.visible:
@@ -175,10 +179,10 @@ func _build_catalog() -> void:
 	catalog_panel.name = "EquipmentCatalog"
 	catalog_panel.add_theme_stylebox_override("panel", ArmorySkin.panel())
 	add_child(catalog_panel)
-	for section_key in ["equipment", "supplies"]:
+	for section_key in ["equipment", "supplies", "package"]:
 		var button := Button.new()
 		button.name = "%sSection" % section_key.capitalize()
-		button.text = tr("GEAR" if section_key == "equipment" else "SUPPLY")
+		button.text = tr({"equipment": "GEAR", "supplies": "SUPPLY", "package": "PACKAGE"}[section_key])
 		button.add_theme_font_size_override("font_size", 14)
 		button.pressed.connect(_select_desktop_section.bind(section_key))
 		section_buttons[section_key] = button
@@ -620,8 +624,9 @@ func apply_layout(use_desktop_layout: bool) -> void:
 	_set_rect(catalog_panel, Rect2(20, 88, catalog_width, 532))
 	_set_rect(detail_panel, Rect2(detail_x, 88, detail_width, 532))
 	var inner := catalog_width - 24.0
-	_set_rect(section_buttons.equipment, Rect2(12, 12, (inner - 8) / 2, 34))
-	_set_rect(section_buttons.supplies, Rect2(16 + inner / 2, 12, (inner - 8) / 2, 34))
+	for index in 3:
+		var section_key: String = ["equipment", "supplies", "package"][index]
+		_set_rect(section_buttons[section_key], Rect2(12 + index * (inner + 8) / 3, 12, (inner - 16) / 3, 34))
 	_set_rect(category_layer, Rect2(12, 58, inner, 50))
 	var category_width := (inner - 20.0) / 6.0
 	for index in range(CATEGORIES.size()):
@@ -697,7 +702,11 @@ func set_mode(next_mode: String, play_sound := true) -> void:
 
 
 func _select_desktop_section(section_key: String) -> void:
-	if section_key == "supplies":
+	if section_key == "package":
+		if not is_instance_valid(package_dialog):
+			package_dialog = PackageDialog.new()
+			add_child(package_dialog)
+	elif section_key == "supplies":
 		_select_supply_category(selected_supply_category, true)
 	else:
 		_select_category(selected_category, true)
@@ -867,7 +876,19 @@ func _layout_item_card(button: Button) -> void:
 
 
 func _item_price_token(item: Dictionary) -> String:
-	return "#%s" % _format_price(int(item.mithril)) if int(item.get("mithril", 0)) > 0 else "$%s" % _format_price(int(item.get("price", 0)))
+	var priced := _priced_item(item)
+	var value := "#%s" % _format_price(int(priced.mithril)) if int(item.get("mithril", 0)) > 0 else "$%s" % _format_price(int(priced.get("price", 0)))
+	if bool(priced.get("discounted", false)):
+		value += "  -%d%%" % roundi((1.0 - float(priced.multiplier)) * 100.0)
+	return value
+
+func _priced_item(item: Dictionary) -> Dictionary:
+	var key := str(item.get("model", ""))
+	if GameState.WEAPONS.has(key):
+		var result := item.duplicate()
+		result.merge(GameState.get_purchase_quote(key), true)
+		return result
+	return item
 
 
 func _select_item(item_key: String, play_sound := true) -> void:
@@ -1457,7 +1478,10 @@ func _set_price(item: Dictionary) -> void:
 		price_label.text = tr("OWNED • READY FOR LOADOUT")
 		return
 	if int(item.get("mithril", 0)) > 0:
-		price_label.text = tr("PRICE  #%s MITHRIL") % _format_price(int(item.mithril))
+		var priced := _priced_item(item)
+		price_label.text = tr("PRICE  #%s MITHRIL") % _format_price(int(priced.mithril))
+		if bool(priced.get("discounted", false)):
+			price_label.text += "  -%d%%" % roundi((1.0 - float(priced.multiplier)) * 100.0)
 	else:
 		price_label.text = tr("PRICE  $%s CREDITS") % _format_price(int(item.get("price", 0)))
 
@@ -1519,7 +1543,7 @@ func _rebuild_preview() -> void:
 	if preview_tween and preview_tween.is_valid():
 		preview_tween.kill()
 	for child in preview_root.get_children():
-		child.free()
+		_release_preview(child)
 	if is_instance_valid(supply_preview_art):
 		supply_preview_art.visible = selected_section == "supplies"
 	if selected_section == "supplies":
@@ -1535,6 +1559,24 @@ func _rebuild_preview() -> void:
 		preview_root.rotation_degrees = Vector3(-8, -68, -6)
 	_fit_preview_camera()
 	preview_tween = null
+
+
+func _release_preview(node: Node) -> void:
+	# Keep overrides alive until the meshes leave the renderer, including a
+	# preview whose root is itself a mesh. Both desktop and mobile rebuild here.
+	var materials: Array[Material] = []
+	var meshes: Array[Node] = node.find_children("*", "MeshInstance3D", true, false)
+	if node is MeshInstance3D:
+		meshes.append(node)
+	for mesh: MeshInstance3D in meshes:
+		if mesh.material_override != null:
+			materials.append(mesh.material_override)
+		for surface in mesh.get_surface_override_material_count():
+			var material := mesh.get_surface_override_material(surface)
+			if material != null:
+				materials.append(material)
+		mesh.mesh = null
+	node.free()
 
 
 func _fit_preview_camera() -> void:

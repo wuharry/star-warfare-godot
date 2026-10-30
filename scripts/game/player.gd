@@ -9,6 +9,8 @@ signal hit_confirmed(actual_damage: float)
 signal kill_confirmed
 signal shot_fired(weapon_data: Dictionary)
 signal died
+signal revived
+signal damaged(actual_damage: float)
 
 const ProjectileScript = preload("res://scripts/game/projectile.gd")
 const RocketReloadPose = preload("res://scripts/game/rocket_reload_pose.gd")
@@ -38,6 +40,8 @@ var armor_skills: Dictionary = {}
 var speed_on_hit_left := 0.0
 var float_audio_state := ""
 var armor_power_controller: Node
+var battle_items: WarfareBattleItems
+var death_tween: Tween
 
 var camera_yaw := 0.0
 var body_yaw := 0.0
@@ -118,6 +122,9 @@ var weapon_audio_active := false
 var shoot_pose_left := 0.0
 var restart_shoot_animation_requested := false
 var hurt_pose_left := 0.0
+var enemy_knockback_left := 0.0
+var enemy_knockback_velocity := Vector3.ZERO
+var enemy_knockback_animation := "attacked"
 var footstep_clock := 0.0
 var tracer_shot_counts: Dictionary = {}
 
@@ -755,11 +762,50 @@ func _build_audio() -> void:
 		hurt_audio.stream = load(hurt_path)
 	add_child(hurt_audio)
 
+func get_enemy_knockback_forward() -> Vector3:
+	# The avatar rotates independently of this CharacterBody and of the camera.
+	return Vector3(-sin(body_yaw), 0.0, -cos(body_yaw))
+
+func apply_enemy_knockback(signed_source_step: float) -> void:
+	if dead or not is_finite(signed_source_step) or is_zero_approx(signed_source_step):
+		return
+	# Player.GetKnocked used a displacement each Update. Preserve its direction
+	# and 60 Hz displacement while making motion independent of render FPS.
+	enemy_knockback_velocity = -get_enemy_knockback_forward() * signed_source_step * 60.0
+	enemy_knockback_animation = "attacked_back" if signed_source_step < 0.0 else "attacked"
+	enemy_knockback_left = 0.4
+	if is_instance_valid(recovered_animation_player) and recovered_animation_player.has_animation(enemy_knockback_animation):
+		enemy_knockback_left = maxf(0.01, recovered_animation_player.get_animation(enemy_knockback_animation).length)
+	_cancel_reload()
+	_stop_continuous_weapon_audio()
+	dash_time = 0.0
+	touch_dash_requested = false
+	shoot_pose_left = 0.0
+	restart_shoot_animation_requested = false
+	_update_recovered_animation(0.0)
+
+func _advance_enemy_knockback(delta: float) -> bool:
+	if enemy_knockback_left <= 0.0 or dead or delta <= 0.0:
+		return false
+	velocity.x = enemy_knockback_velocity.x
+	velocity.z = enemy_knockback_velocity.z
+	velocity.y = -0.5 if is_on_floor() else velocity.y - gravity * delta
+	move_and_slide()
+	_update_visual_animation(delta, 0.0)
+	enemy_knockback_left = maxf(0.0, enemy_knockback_left - delta)
+	if enemy_knockback_left <= 0.0:
+		velocity.x = 0.0
+		velocity.z = 0.0
+		enemy_knockback_velocity = Vector3.ZERO
+	return true
+
 func _physics_process(delta: float) -> void:
 	if dead:
 		_stop_flying_audio()
 		velocity.y -= gravity * delta
 		move_and_slide()
+		return
+	if _advance_enemy_knockback(delta):
 		return
 
 	shot_cooldown = maxf(0.0, shot_cooldown - delta)
@@ -801,7 +847,9 @@ func _physics_process(delta: float) -> void:
 		velocity.z = dash_direction.z * dash_speed
 	else:
 		var power_speed_bonus := float(armor_power_controller.get_speed_bonus()) if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("get_speed_bonus") else 0.0
-		var active_move_speed := maxf(3.5, move_speed + float(current_weapon.get("speed_drag", 0.0)) + power_speed_bonus + (float(armor_skills.get("speed_on_hit", 0.0)) if speed_on_hit_left > 0.0 else 0.0)) * maxf(0.0, float(current_weapon.get("move_speed_multiplier", 1.0)))
+		var item_speed_bonus := battle_items.get_bonus("speed_boost") if is_instance_valid(battle_items) else 0.0
+		var active_move_speed := maxf(3.5, move_speed + float(current_weapon.get("speed_drag", 0.0)) + power_speed_bonus + item_speed_bonus + (float(armor_skills.get("speed_on_hit", 0.0)) if speed_on_hit_left > 0.0 else 0.0)) * maxf(0.0, float(current_weapon.get("move_speed_multiplier", 1.0)))
+		active_move_speed *= clampf(float(get_meta("enemy_move_multiplier", 1.0)), 0.0, 1.0)
 		velocity.x = move_toward(velocity.x, desired.x * active_move_speed, 34.0 * delta)
 		velocity.z = move_toward(velocity.z, desired.z * active_move_speed, 34.0 * delta)
 	if is_on_floor():
@@ -1038,7 +1086,7 @@ func _shoot_animation_rate(animation_name: String) -> float:
 	return clampf(clip.length / interval, SHOOT_ANIMATION_RATE_MIN, SHOOT_ANIMATION_RATE_MAX)
 
 func _try_fire() -> void:
-	if shot_cooldown > 0.0 or reload_left > 0.0 or dead or current_weapon.is_empty():
+	if shot_cooldown > 0.0 or reload_left > 0.0 or dead or enemy_knockback_left > 0.0 or current_weapon.is_empty():
 		return
 	if _uses_magazine() and _magazine_rounds() <= 0:
 		AudioDirector.play_3d(str(current_weapon.get("blank_sound", "blank/blank_shot01.wav")), global_position, -4.0)
@@ -1782,6 +1830,8 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 	# harmless for ordinary enemies, which do not expose a weapon category.
 	var damage_multiplier := maxf(0.0, 1.0 + float(armor_skills.get("damage_reduce", 0.0)))
 	damage_multiplier *= maxf(0.0, 1.0 + float(armor_skills.get("team_damage_reduce", 0.0)))
+	if is_instance_valid(battle_items):
+		damage_multiplier *= maxf(0.0, 1.0 - battle_items.get_bonus("damage_reduction"))
 	if is_instance_valid(_source) and _source.has_method("get_damage_category"):
 		var defence_key := str(_source.get_damage_category())
 		if not defence_key.is_empty():
@@ -1800,6 +1850,8 @@ func take_damage(amount: float, _hit_position := Vector3.ZERO, _source: Node = n
 		remaining -= absorbed
 	health = maxf(0.0, health - remaining)
 	var actual_damage := maxf(0.0, health_before + shield_before - health - shield)
+	if actual_damage > 0.0:
+		damaged.emit(actual_damage)
 	if actual_damage > 0.0 and not source_shield_profile.is_empty():
 		source_shield_delay_left = float(source_shield_profile.delay)
 		source_shield_recovering = false
@@ -1843,6 +1895,31 @@ func restore(kind: String, amount: float) -> void:
 
 func set_armor_power_controller(controller: Node) -> void:
 	armor_power_controller = controller
+
+func revive(health_ratio: float = 1.0) -> bool:
+	if not dead or health_ratio <= 0.0:
+		return false
+	if is_instance_valid(death_tween):
+		death_tween.kill()
+	dead = false
+	enemy_knockback_left = 0.0
+	enemy_knockback_velocity = Vector3.ZERO
+	health = maxf(1.0, max_health * clampf(health_ratio, 0.0, 1.0))
+	shield = 0.0
+	velocity = Vector3.ZERO
+	dash_time = 0.0
+	touch_fire = false
+	touch_fire_started = false
+	camera_pitch = 0.0
+	pitch_node.rotation.x = camera_pitch
+	model.rotation = Vector3.ZERO
+	model.scale = Vector3.ONE
+	recovered_animation_name = ""
+	_update_visual_animation(0.0, 0.0)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if OS.has_feature("mobile") else Input.MOUSE_MODE_CAPTURED
+	health_changed.emit(health, shield)
+	revived.emit()
+	return true
 
 func heal_from_armor_power(amount: float) -> float:
 	if dead or amount <= 0.0:
@@ -1912,6 +1989,8 @@ func _current_weapon_damage() -> float:
 	)
 	var category_multiplier := maxf(0.0, 1.0 + float(armor_skills.get(_weapon_skill_key(), 0.0)))
 	var result := base_damage * global_multiplier * category_multiplier
+	if is_instance_valid(battle_items):
+		result *= 1.0 + battle_items.get_bonus("attack_boost")
 	if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("modify_outgoing_damage"):
 		result = float(armor_power_controller.modify_outgoing_damage(result))
 	return result
@@ -1957,6 +2036,9 @@ func get_damage_category() -> String:
 
 func _die(killer: Node = null) -> void:
 	dead = true
+	enemy_knockback_left = 0.0
+	enemy_knockback_velocity = Vector3.ZERO
+	_cancel_reload()
 	if is_instance_valid(killer) and killer != self and killer.has_method("on_enemy_defeated"):
 		killer.on_enemy_defeated()
 	if is_instance_valid(armor_power_controller) and armor_power_controller.has_method("cancel_all_active"):
@@ -1969,8 +2051,8 @@ func _die(killer: Node = null) -> void:
 		recovered_animation_name = ""
 		_play_recovered_animation("dead", 0.08)
 	else:
-		var tween := create_tween()
-		tween.tween_property(model, "rotation:z", deg_to_rad(82.0), 0.42).set_trans(Tween.TRANS_QUAD)
+		death_tween = create_tween()
+		death_tween.tween_property(model, "rotation:z", deg_to_rad(82.0), 0.42).set_trans(Tween.TRANS_QUAD)
 	died.emit()
 
 func set_touch_move(value: Vector2) -> void:
@@ -2020,6 +2102,9 @@ func _reload_idle_animation() -> String:
 
 func _update_recovered_animation(movement: float, movement_input := Vector2.ZERO) -> void:
 	if not is_instance_valid(recovered_animation_player):
+		return
+	if enemy_knockback_left > 0.0 and recovered_animation_player.has_animation(enemy_knockback_animation):
+		_play_recovered_animation(enemy_knockback_animation, 0.04)
 		return
 	var restart_shoot_animation := restart_shoot_animation_requested
 	restart_shoot_animation_requested = false
