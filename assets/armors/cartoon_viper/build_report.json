@@ -1,0 +1,46 @@
+{
+  "design": "faceted combat armor; fuller human proportions, flexible weighted joints, bold assembly details and flat-color UV atlases",
+  "preserved": "Original Viper helmet silhouette, authored panel artwork and 28-bone rig; body, five-digit gloves, anatomical boots and backpack rebuilt",
+  "source": "docs/art/armor_rework/viper.blend",
+  "source_sha256": "b442f2cbb757c860b0bb1ca90e14c44226830cfc8cc209888d7c75effee8c7cf",
+  "rig_bones": 28,
+  "parts": [
+    {
+      "part": "ArmorHead_00",
+      "triangles": 578,
+      "texture": "head_albedo.png"
+    },
+    {
+      "part": "ArmorBody_00",
+      "triangles": 13640,
+      "texture": "body_albedo.png"
+    },
+    {
+      "part": "ArmorHand_00",
+      "triangles": 11120,
+      "texture": "hand_albedo.png"
+    },
+    {
+      "part": "ArmorFoot_00",
+      "triangles": 3400,
+      "texture": "foot_albedo.png"
+    },
+    {
+      "part": "ArmorBag_00",
+      "triangles": 3500,
+      "texture": "bag_albedo.png"
+    }
+  ],
+  "palette": {
+    "ink": "19222f",
+    "rubber": "30343b",
+    "blue": "517c99",
+    "blue_light": "8eb1be",
+    "blue_dark": "2b455d",
+    "cream": "ddd5b6",
+    "purple": "70669b",
+    "purple_light": "c1b7de",
+    "gold": "c8aa70",
+    "sole": "202631"
+  }
+}

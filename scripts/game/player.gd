@@ -438,6 +438,11 @@ func _add_recovered_backpack() -> void:
 		Vector3.ZERO
 	)
 	backpack_socket.add_child(backpack_visual)
+	if bag_id == 0 and "--armor-style=cartoon" in OS.get_cmdline_user_args():
+		backpack_visual.mesh = load("res://assets/armors/cartoon_viper/backpack.res")
+		backpack_visual.material_override = null
+		# The new bag is authored in the same complete bind pose as the suit.
+		backpack_visual.transform = fly_bag_rest.affine_inverse()
 
 func _refresh_recovered_backpack() -> void:
 	if is_instance_valid(backpack_socket):
@@ -811,7 +816,10 @@ func _physics_process(delta: float) -> void:
 	# shoot window alive on the exact frame its cooldown expires instead of
 	# briefly falling back to run/idle between consecutive shots.
 	_handle_weapon_input()
-	_update_visual_animation(delta, desired.length(), move_input)
+	# Input goes to zero before the character finishes slowing down. Driving
+	# the pose from actual travel keeps the legs moving through that short stop.
+	var visual_movement := clampf(Vector2(velocity.x, velocity.z).length() / maxf(move_speed, 0.01), 0.0, 1.0)
+	_update_visual_animation(delta, visual_movement, move_input)
 	_update_reload_pose()
 
 func _update_camera_controller(delta: float) -> void:

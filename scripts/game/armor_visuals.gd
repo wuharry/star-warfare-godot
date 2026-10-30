@@ -10,6 +10,8 @@ const REWORKED_SCENES := {
 
 static func reworked_scene_path(visual_id: int) -> String:
 	# Development comparison uses the same loader in gameplay and the store.
+	if visual_id == 0 and "--armor-style=cartoon" in OS.get_cmdline_user_args():
+		return "res://assets/armors/cartoon_viper/viper.scn"
 	if visual_id == 6:
 		for argument in OS.get_cmdline_user_args():
 			if argument == "--thunder-helmet=prototype":

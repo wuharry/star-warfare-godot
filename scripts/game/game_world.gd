@@ -770,7 +770,8 @@ func spawn_impact(position_value: Vector3, normal: Vector3, color: Color, style 
 		impact.create_tween().tween_property(light, "light_energy", 0.0, 0.16)
 	var tween := impact.create_tween()
 	tween.tween_property(impact, "scale", Vector3.ONE * 2.8, 0.12)
-	tween.tween_property(impact, "scale", Vector3.ZERO, 0.18)
+	# Child particles still invert this transform on their last rendered frame.
+	tween.tween_property(impact, "scale", Vector3.ONE * 0.001, 0.18)
 	tween.tween_callback(impact.queue_free)
 	return impact
 
